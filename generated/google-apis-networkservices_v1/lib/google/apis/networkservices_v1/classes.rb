@@ -459,10 +459,150 @@ module Google
         end
       end
       
+      # A single extension chain wrapper that contains the match conditions and
+      # extensions to execute.
+      class ExtensionChain
+        include Google::Apis::Core::Hashable
+      
+        # Required. A set of extensions to execute for the matching request. At least
+        # one extension is required. Up to 3 extensions can be defined for each
+        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains
+        # are limited to 1 extension per extension chain.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Google::Apis::NetworkservicesV1::ExtensionChainExtension>]
+        attr_accessor :extensions
+      
+        # Conditions under which this chain is invoked for a request.
+        # Corresponds to the JSON property `matchCondition`
+        # @return [Google::Apis::NetworkservicesV1::ExtensionChainMatchCondition]
+        attr_accessor :match_condition
+      
+        # Required. The name for this extension chain. The name is logged as part of the
+        # HTTP request logs. The name must conform with RFC-1034, is restricted to lower-
+        # cased letters, numbers and hyphens, and can have a maximum length of 63
+        # characters. Additionally, the first character must be a letter and the last a
+        # letter or a number.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extensions = args[:extensions] if args.key?(:extensions)
+          @match_condition = args[:match_condition] if args.key?(:match_condition)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A single extension in the chain to execute for the matching request.
+      class ExtensionChainExtension
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The `:authority` header in the gRPC request sent from Envoy to the
+        # extension service.
+        # Corresponds to the JSON property `authority`
+        # @return [String]
+        attr_accessor :authority
+      
+        # Optional. Determines how the proxy behaves if the call to the extension fails
+        # or times out. When set to `TRUE`, request or response processing continues
+        # without error. Any subsequent extensions in the extension chain are also
+        # executed. When set to `FALSE`: * If response headers have not been delivered
+        # to the downstream client, a generic 500 error is returned to the client. The
+        # error response can be tailored by configuring a custom error response in the
+        # load balancer. * If response headers have been delivered, then the HTTP stream
+        # to the downstream client is reset. Default is `FALSE`.
+        # Corresponds to the JSON property `failOpen`
+        # @return [Boolean]
+        attr_accessor :fail_open
+        alias_method :fail_open?, :fail_open
+      
+        # Optional. List of the HTTP headers to forward to the extension (from the
+        # client or backend). If omitted, all headers are sent. Each element is a string
+        # indicating the header name.
+        # Corresponds to the JSON property `forwardHeaders`
+        # @return [Array<String>]
+        attr_accessor :forward_headers
+      
+        # Required. The name for this extension. The name is logged as part of the HTTP
+        # request logs. The name must conform with RFC-1034, is restricted to lower-
+        # cased letters, numbers and hyphens, and can have a maximum length of 63
+        # characters. Additionally, the first character must be a letter and the last a
+        # letter or a number.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The reference to the service that runs the extension. Currently only
+        # Callout extensions are supported here. To configure a Callout extension, `
+        # service` must be a fully-qualified reference to a [backend service](https://
+        # cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
+        # `https://www.googleapis.com/compute/v1/projects/`project`/regions/`region`/
+        # backendServices/`backendService`` or `https://www.googleapis.com/compute/v1/
+        # projects/`project`/global/backendServices/`backendService``.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # Optional. A set of events during request or response processing for which this
+        # extension is called. This field is required for the `LbTrafficExtension`
+        # resource. It's not relevant for the `LbRouteExtension` resource.
+        # Corresponds to the JSON property `supportedEvents`
+        # @return [Array<String>]
+        attr_accessor :supported_events
+      
+        # Required. Specifies the timeout for each individual message on the stream. The
+        # timeout must be between 10-1000 milliseconds.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authority = args[:authority] if args.key?(:authority)
+          @fail_open = args[:fail_open] if args.key?(:fail_open)
+          @forward_headers = args[:forward_headers] if args.key?(:forward_headers)
+          @name = args[:name] if args.key?(:name)
+          @service = args[:service] if args.key?(:service)
+          @supported_events = args[:supported_events] if args.key?(:supported_events)
+          @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # Conditions under which this chain is invoked for a request.
+      class ExtensionChainMatchCondition
+        include Google::Apis::Core::Hashable
+      
+        # Required. A Common Expression Language (CEL) expression that is used to match
+        # requests for which the extension chain is executed. For more information, see [
+        # CEL matcher language reference](https://cloud.google.com/service-extensions/
+        # docs/cel-matcher-language-reference).
+        # Corresponds to the JSON property `celExpression`
+        # @return [String]
+        attr_accessor :cel_expression
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cel_expression = args[:cel_expression] if args.key?(:cel_expression)
+        end
+      end
+      
       # Gateway represents the configuration for a proxy, typically a load balancer.
       # It captures the ip:port over which the services are exposed by the proxy,
       # along with any policy configurations. Routes have reference to to Gateways to
-      # dictate how requests should be routed by this Gateway. Next id: 30
+      # dictate how requests should be routed by this Gateway. Next id: 32
       class Gateway
         include Google::Apis::Core::Hashable
       
@@ -1983,6 +2123,160 @@ module Google
         end
       end
       
+      # `LbRouteExtension` is a resource that lets you control where traffic is routed
+      # to for a given request.
+      class LbRouteExtension
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. A set of ordered extension chains that contain the match conditions
+        # and extensions to execute. Match conditions for each extension chain are
+        # evaluated in sequence for a given request. The first extension chain that has
+        # a condition that matches the request is executed. Any subsequent extension
+        # chains do not execute. Limited to 5 extension chains per resource.
+        # Corresponds to the JSON property `extensionChains`
+        # @return [Array<Google::Apis::NetworkservicesV1::ExtensionChain>]
+        attr_accessor :extension_chains
+      
+        # Required. A list of references to the forwarding rules to which this service
+        # extension is attached to. At least one forwarding rule is required. There can
+        # be only one `LbRouteExtension` resource per forwarding rule.
+        # Corresponds to the JSON property `forwardingRules`
+        # @return [Array<String>]
+        attr_accessor :forwarding_rules
+      
+        # Optional. Set of labels associated with the `LbRouteExtension` resource. The
+        # format must comply with [the following requirements](/compute/docs/labeling-
+        # resources#requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. All backend services and forwarding rules referenced by this
+        # extension must share the same load balancing scheme. Supported values: `
+        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [
+        # Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-
+        # service).
+        # Corresponds to the JSON property `loadBalancingScheme`
+        # @return [String]
+        attr_accessor :load_balancing_scheme
+      
+        # Required. Identifier. Name of the `LbRouteExtension` resource in the following
+        # format: `projects/`project`/locations/`location`/lbRouteExtensions/`
+        # lb_route_extension``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @extension_chains = args[:extension_chains] if args.key?(:extension_chains)
+          @forwarding_rules = args[:forwarding_rules] if args.key?(:forwarding_rules)
+          @labels = args[:labels] if args.key?(:labels)
+          @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # `LbTrafficExtension` is a resource that lets the extension service modify the
+      # headers and payloads of both requests and responses without impacting the
+      # choice of backend services or any other security policies associated with the
+      # backend service.
+      class LbTrafficExtension
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. A set of ordered extension chains that contain the match conditions
+        # and extensions to execute. Match conditions for each extension chain are
+        # evaluated in sequence for a given request. The first extension chain that has
+        # a condition that matches the request is executed. Any subsequent extension
+        # chains do not execute. Limited to 5 extension chains per resource.
+        # Corresponds to the JSON property `extensionChains`
+        # @return [Array<Google::Apis::NetworkservicesV1::ExtensionChain>]
+        attr_accessor :extension_chains
+      
+        # Required. A list of references to the forwarding rules to which this service
+        # extension is attached to. At least one forwarding rule is required. There can
+        # be only one `LBTrafficExtension` resource per forwarding rule.
+        # Corresponds to the JSON property `forwardingRules`
+        # @return [Array<String>]
+        attr_accessor :forwarding_rules
+      
+        # Optional. Set of labels associated with the `LbTrafficExtension` resource. The
+        # format must comply with [the following requirements](/compute/docs/labeling-
+        # resources#requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. All backend services and forwarding rules referenced by this
+        # extension must share the same load balancing scheme. Supported values: `
+        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [
+        # Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-
+        # service).
+        # Corresponds to the JSON property `loadBalancingScheme`
+        # @return [String]
+        attr_accessor :load_balancing_scheme
+      
+        # Required. Identifier. Name of the `LbTrafficExtension` resource in the
+        # following format: `projects/`project`/locations/`location`/lbTrafficExtensions/
+        # `lb_traffic_extension``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @extension_chains = args[:extension_chains] if args.key?(:extension_chains)
+          @forwarding_rules = args[:forwarding_rules] if args.key?(:forwarding_rules)
+          @labels = args[:labels] if args.key?(:labels)
+          @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Response returned by the ListEndpointPolicies method.
       class ListEndpointPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -2097,6 +2391,68 @@ module Google
         end
       end
       
+      # Message for response to listing `LbRouteExtension` resources.
+      class ListLbRouteExtensionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `LbRouteExtension` resources.
+        # Corresponds to the JSON property `lbRouteExtensions`
+        # @return [Array<Google::Apis::NetworkservicesV1::LbRouteExtension>]
+        attr_accessor :lb_route_extensions
+      
+        # A token identifying a page of results that the server returns.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lb_route_extensions = args[:lb_route_extensions] if args.key?(:lb_route_extensions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing `LbTrafficExtension` resources.
+      class ListLbTrafficExtensionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `LbTrafficExtension` resources.
+        # Corresponds to the JSON property `lbTrafficExtensions`
+        # @return [Array<Google::Apis::NetworkservicesV1::LbTrafficExtension>]
+        attr_accessor :lb_traffic_extensions
+      
+        # A token identifying a page of results that the server returns.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lb_traffic_extensions = args[:lb_traffic_extensions] if args.key?(:lb_traffic_extensions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -2198,6 +2554,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @service_bindings = args[:service_bindings] if args.key?(:service_bindings)
+        end
+      end
+      
+      # Response returned by the ListServiceLbPolicies method.
+      class ListServiceLbPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of ServiceLbPolicy resources.
+        # Corresponds to the JSON property `serviceLbPolicies`
+        # @return [Array<Google::Apis::NetworkservicesV1::ServiceLbPolicy>]
+        attr_accessor :service_lb_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @service_lb_policies = args[:service_lb_policies] if args.key?(:service_lb_policies)
         end
       end
       
@@ -2646,6 +3029,121 @@ module Google
           @service = args[:service] if args.key?(:service)
           @service_id = args[:service_id] if args.key?(:service_id)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # ServiceLbPolicy holds global load balancing and traffic distribution
+      # configuration that can be applied to a BackendService.
+      class ServiceLbPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Option to specify if an unhealthy IG/NEG should be considered for global load
+        # balancing and traffic routing.
+        # Corresponds to the JSON property `autoCapacityDrain`
+        # @return [Google::Apis::NetworkservicesV1::ServiceLbPolicyAutoCapacityDrain]
+        attr_accessor :auto_capacity_drain
+      
+        # Output only. The timestamp when this resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Option to specify health based failover behavior. This is not related to
+        # Network load balancer FailoverPolicy.
+        # Corresponds to the JSON property `failoverConfig`
+        # @return [Google::Apis::NetworkservicesV1::ServiceLbPolicyFailoverConfig]
+        attr_accessor :failover_config
+      
+        # Optional. Set of label tags associated with the ServiceLbPolicy resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. The type of load balancing algorithm to be used. The default
+        # behavior is WATERFALL_BY_REGION.
+        # Corresponds to the JSON property `loadBalancingAlgorithm`
+        # @return [String]
+        attr_accessor :load_balancing_algorithm
+      
+        # Required. Name of the ServiceLbPolicy resource. It matches pattern `projects/`
+        # project`/locations/`location`/serviceLbPolicies/`service_lb_policy_name``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when this resource was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_capacity_drain = args[:auto_capacity_drain] if args.key?(:auto_capacity_drain)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @failover_config = args[:failover_config] if args.key?(:failover_config)
+          @labels = args[:labels] if args.key?(:labels)
+          @load_balancing_algorithm = args[:load_balancing_algorithm] if args.key?(:load_balancing_algorithm)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Option to specify if an unhealthy IG/NEG should be considered for global load
+      # balancing and traffic routing.
+      class ServiceLbPolicyAutoCapacityDrain
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to 'True', an unhealthy IG/NEG will be set as drained. - An
+        # IG/NEG is considered unhealthy if less than 25% of the instances/endpoints in
+        # the IG/NEG are healthy. - This option will never result in draining more than
+        # 50% of the configured IGs/NEGs for the Backend Service.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
+        end
+      end
+      
+      # Option to specify health based failover behavior. This is not related to
+      # Network load balancer FailoverPolicy.
+      class ServiceLbPolicyFailoverConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The percentage threshold that a load balancer will begin to send
+        # traffic to failover backends. If the percentage of endpoints in a MIG/NEG is
+        # smaller than this value, traffic would be sent to failover backends if
+        # possible. This field should be set to a value between 1 and 99. The default
+        # value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless
+        # service mesh, and 70 for others.
+        # Corresponds to the JSON property `failoverHealthThreshold`
+        # @return [Fixnum]
+        attr_accessor :failover_health_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failover_health_threshold = args[:failover_health_threshold] if args.key?(:failover_health_threshold)
         end
       end
       
