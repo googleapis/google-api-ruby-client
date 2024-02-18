@@ -1068,6 +1068,8 @@ module Google
         #   Array of layer IDs to get the summary for.
         # @param [String] volume_id
         #   Volume id to get the summary for.
+        # @param [String] source
+        #   Optional. String to identify the originator of this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1085,11 +1087,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def summarize_my_library_annotation(layer_ids, volume_id, fields: nil, quota_user: nil, options: nil, &block)
+        def summarize_my_library_annotation(layer_ids, volume_id, source: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'books/v1/mylibrary/annotations/summary', options)
           command.response_representation = Google::Apis::BooksV1::AnnotationsSummary::Representation
           command.response_class = Google::Apis::BooksV1::AnnotationsSummary
           command.query['layerIds'] = layer_ids unless layer_ids.nil?
+          command.query['source'] = source unless source.nil?
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
