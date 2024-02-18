@@ -218,7 +218,13 @@ module Google
       class AppLinkDataAppLinkInfoAppTarget
         include Google::Apis::Core::Hashable
       
-        # URI for AppTarget. The description on the URI must be set.
+        # Package name for AppTarget. For example: com.google.android.gm
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # URI for AppTarget. The description on the URI must be set. Prefer setting
+        # package field instead, if this target is defined for your application.
         # Corresponds to the JSON property `targetUri`
         # @return [Google::Apis::WalletobjectsV1::Uri]
         attr_accessor :target_uri
@@ -229,6 +235,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @package_name = args[:package_name] if args.key?(:package_name)
           @target_uri = args[:target_uri] if args.key?(:target_uri)
         end
       end
@@ -3107,6 +3114,12 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::LinksModuleData]
         attr_accessor :links_module_data
       
+        # An array of messages displayed in the app. All users of this object will
+        # receive its associated messages. The maximum number of these fields is 10.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::WalletobjectsV1::Message>]
+        attr_accessor :messages
+      
         # Identifies whether multiple users and devices will save the same object
         # referencing this class.
         # Corresponds to the JSON property `multipleDevicesAndHoldersAllowedStatus`
@@ -3152,11 +3165,32 @@ module Google
           @id = args[:id] if args.key?(:id)
           @image_modules_data = args[:image_modules_data] if args.key?(:image_modules_data)
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
+          @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
           @redemption_issuers = args[:redemption_issuers] if args.key?(:redemption_issuers)
           @security_animation = args[:security_animation] if args.key?(:security_animation)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
           @view_unlock_requirement = args[:view_unlock_requirement] if args.key?(:view_unlock_requirement)
+        end
+      end
+      
+      # Response to adding a new issuer message to the class. This contains the entire
+      # updated GenericClass.
+      class GenericClassAddMessageResponse
+        include Google::Apis::Core::Hashable
+      
+        # Generic Class
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::WalletobjectsV1::GenericClass]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       
@@ -3367,6 +3401,26 @@ module Google
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
           @valid_time_interval = args[:valid_time_interval] if args.key?(:valid_time_interval)
           @wide_logo = args[:wide_logo] if args.key?(:wide_logo)
+        end
+      end
+      
+      # Response to adding a new issuer message to the object. This contains the
+      # entire updated GenericObject.
+      class GenericObjectAddMessageResponse
+        include Google::Apis::Core::Hashable
+      
+        # Generic Object Next ID: 121
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::WalletobjectsV1::GenericObject]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       
@@ -6425,62 +6479,6 @@ module Google
         end
       end
       
-      # Private data for TextModule. This data will be rendered as a TextModule for a
-      # pass.
-      class PrivateText
-        include Google::Apis::Core::Hashable
-      
-        # Translated strings for the body.
-        # Corresponds to the JSON property `body`
-        # @return [Google::Apis::WalletobjectsV1::LocalizedString]
-        attr_accessor :body
-      
-        # Translated strings for the header.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::WalletobjectsV1::LocalizedString]
-        attr_accessor :header
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @body = args[:body] if args.key?(:body)
-          @header = args[:header] if args.key?(:header)
-        end
-      end
-      
-      # Private data for LinkModule. This data will be rendered as the LinkModule for
-      # a pass.
-      class PrivateUri
-        include Google::Apis::Core::Hashable
-      
-        # The URI's title appearing in the app as text and its translated strings.
-        # Recommended maximum is 20 characters to ensure the full string is displayed on
-        # smaller screens.
-        # Corresponds to the JSON property `description`
-        # @return [Google::Apis::WalletobjectsV1::LocalizedString]
-        attr_accessor :description
-      
-        # The location of a web page, image, or other resource. URIs in the `
-        # LinksModuleData` can have different prefixes indicating the type of URI (a
-        # link to a web page, a link to a map, a telephone number, or an email address).
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
       # 
       class PurchaseDetails
         include Google::Apis::Core::Hashable
@@ -8186,102 +8184,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_notification = args[:enable_notification] if args.key?(:enable_notification)
-        end
-      end
-      
-      # Request for sending user private Text or URI by the Issuer.
-      class UploadPrivateDataRequest
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the issuer sending the data.
-        # Corresponds to the JSON property `issuerId`
-        # @return [Fixnum]
-        attr_accessor :issuer_id
-      
-        # Private data for TextModule. This data will be rendered as a TextModule for a
-        # pass.
-        # Corresponds to the JSON property `text`
-        # @return [Google::Apis::WalletobjectsV1::PrivateText]
-        attr_accessor :text
-      
-        # Private data for LinkModule. This data will be rendered as the LinkModule for
-        # a pass.
-        # Corresponds to the JSON property `uri`
-        # @return [Google::Apis::WalletobjectsV1::PrivateUri]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @issuer_id = args[:issuer_id] if args.key?(:issuer_id)
-          @text = args[:text] if args.key?(:text)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # Response for uploading user private data (text or URIs)
-      class UploadPrivateDataResponse
-        include Google::Apis::Core::Hashable
-      
-        # A 64-bit content id for the private data that was uploaded by the Issuer.
-        # Corresponds to the JSON property `privateContentId`
-        # @return [Fixnum]
-        attr_accessor :private_content_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @private_content_id = args[:private_content_id] if args.key?(:private_content_id)
-        end
-      end
-      
-      # Request to upload user's private images by Issuers to be used in passes.
-      class UploadPrivateImageRequest
-        include Google::Apis::Core::Hashable
-      
-        # A reference to data stored on the filesystem, on GFS or in blobstore.
-        # Corresponds to the JSON property `blob`
-        # @return [Google::Apis::WalletobjectsV1::Media]
-        attr_accessor :blob
-      
-        # Extra information added to operations that support Scotty media requests.
-        # Corresponds to the JSON property `mediaRequestInfo`
-        # @return [Google::Apis::WalletobjectsV1::MediaRequestInfo]
-        attr_accessor :media_request_info
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @blob = args[:blob] if args.key?(:blob)
-          @media_request_info = args[:media_request_info] if args.key?(:media_request_info)
-        end
-      end
-      
-      # Response for uploading the private image
-      class UploadPrivateImageResponse
-        include Google::Apis::Core::Hashable
-      
-        # A 64-bit content id for the image that was uploaded by the Issuer.
-        # Corresponds to the JSON property `privateContentId`
-        # @return [Fixnum]
-        attr_accessor :private_content_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @private_content_id = args[:private_content_id] if args.key?(:private_content_id)
         end
       end
       
