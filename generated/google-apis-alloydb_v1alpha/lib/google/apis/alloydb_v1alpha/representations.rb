@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainOperationError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1078,6 +1084,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :feed_timestamp, as: 'feedTimestamp'
           property :feed_type, as: 'feedType'
+          property :recommendation_signal_data, as: 'recommendationSignalData', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData::Representation
+      
           property :resource_health_signal_data, as: 'resourceHealthSignalData', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData::Representation
       
           property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
@@ -1143,6 +1151,17 @@ module Google
           property :resource_name, as: 'resourceName'
           property :updation_time, as: 'updationTime'
           hash :user_labels, as: 'userLabels'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_metadata, as: 'additionalMetadata'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :recommendation_state, as: 'recommendationState'
+          property :resource_name, as: 'resourceName'
+          property :signal_type, as: 'signalType'
         end
       end
       
