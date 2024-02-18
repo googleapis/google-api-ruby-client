@@ -274,6 +274,7 @@ module Google
       class ValidatorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :beacon_fee_recipient, as: 'beaconFeeRecipient'
           property :managed_validator_client, as: 'managedValidatorClient'
           collection :mev_relay_urls, as: 'mevRelayUrls'
         end

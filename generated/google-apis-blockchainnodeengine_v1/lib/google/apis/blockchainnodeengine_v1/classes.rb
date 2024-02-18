@@ -598,6 +598,16 @@ module Google
       class ValidatorConfig
         include Google::Apis::Core::Hashable
       
+        # An Ethereum address which the beacon client will send fee rewards to if no
+        # recipient is configured in the validator client. See https://lighthouse-book.
+        # sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/
+        # docs/execution-node/fee-recipient for examples of how this is used. Note that
+        # while this is often described as "suggested", as we run the execution node we
+        # can trust the execution node, and therefore this is considered enforced.
+        # Corresponds to the JSON property `beaconFeeRecipient`
+        # @return [String]
+        attr_accessor :beacon_fee_recipient
+      
         # Immutable. When true, deploys a GCP-managed validator client alongside the
         # beacon client.
         # Corresponds to the JSON property `managedValidatorClient`
@@ -617,6 +627,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @beacon_fee_recipient = args[:beacon_fee_recipient] if args.key?(:beacon_fee_recipient)
           @managed_validator_client = args[:managed_validator_client] if args.key?(:managed_validator_client)
           @mev_relay_urls = args[:mev_relay_urls] if args.key?(:mev_relay_urls)
         end
