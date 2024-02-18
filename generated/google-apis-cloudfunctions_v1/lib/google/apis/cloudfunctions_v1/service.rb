@@ -85,19 +85,13 @@ module Google
         # Lists operations that match the specified filter in the request. If the server
         # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] filter
-        #   Required. A filter for matching the requested operations. The supported
-        #   formats of *filter* are: To query for a specific function: project:*,location:*
-        #   ,function:* To query for all of the latest operations for a project: project:*,
-        #   latest:true
+        #   The standard list filter.
         # @param [String] name
-        #   Must not be set.
+        #   The name of the operation's parent resource.
         # @param [Fixnum] page_size
-        #   The maximum number of records that should be returned. Requested page size
-        #   cannot exceed 100. If not set, the default page size is 100. Pagination is
-        #   only supported when querying for a specific function.
+        #   The standard list page size.
         # @param [String] page_token
-        #   Token identifying which result to start with, which is returned by a previous
-        #   list call. Pagination is only supported when querying for a specific function.
+        #   The standard list page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
