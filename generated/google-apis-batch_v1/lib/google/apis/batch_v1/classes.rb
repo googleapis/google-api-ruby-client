@@ -1272,7 +1272,7 @@ module Google
         # @return [Array<Google::Apis::BatchV1::TaskGroup>]
         attr_accessor :task_groups
       
-        # Output only. A system generated unique ID (in UUID4 format) for the Job.
+        # Output only. A system generated unique ID for the Job.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
