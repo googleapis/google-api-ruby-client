@@ -92,8 +92,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new advertiser. Returns the newly created advertiser if successful.
-        # This method can take up to 180 seconds to complete.
+        # Creates a new advertiser. Returns the newly created advertiser if successful. *
+        # *This method regularly experiences high latency.** We recommend [increasing
+        # your default timeout](/display-video/api/guides/best-practices/timeouts#
+        # client_library_timeout) to avoid errors.
         # @param [Google::Apis::DisplayvideoV3::Advertiser] advertiser_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -838,7 +840,10 @@ module Google
         
         # Permanently deletes a campaign. A deleted campaign cannot be recovered. The
         # campaign should be archived first, i.e. set entity_status to `
-        # ENTITY_STATUS_ARCHIVED`, to be able to delete it.
+        # ENTITY_STATUS_ARCHIVED`, to be able to delete it. **This method regularly
+        # experiences high latency.** We recommend [increasing your default timeout](/
+        # display-video/api/guides/best-practices/timeouts#client_library_timeout) to
+        # avoid errors.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser this campaign belongs to.
         # @param [Fixnum] campaign_id
@@ -1562,7 +1567,9 @@ module Google
         
         # Replaces all of the sites under a single channel. The operation will replace
         # the sites under a channel with the sites provided in ReplaceSitesRequest.
-        # new_sites.
+        # new_sites. **This method regularly experiences high latency.** We recommend [
+        # increasing your default timeout](/display-video/api/guides/best-practices/
+        # timeouts#client_library_timeout) to avoid errors.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser that owns the parent channel.
         # @param [Fixnum] channel_id
@@ -2678,7 +2685,10 @@ module Google
         end
         
         # Duplicates a line item. Returns the ID of the created line item if successful.
-        # YouTube & Partners line items cannot be created or updated using the API.
+        # YouTube & Partners line items cannot be created or updated using the API. **
+        # This method regularly experiences high latency.** We recommend [increasing
+        # your default timeout](/display-video/api/guides/best-practices/timeouts#
+        # client_library_timeout) to avoid errors.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this line item belongs to.
         # @param [Fixnum] line_item_id
@@ -2860,7 +2870,9 @@ module Google
         # requests updating the same line item: * BulkEditAssignedTargetingOptions *
         # BulkUpdateLineItems * assignedTargetingOptions.create *
         # assignedTargetingOptions.delete YouTube & Partners line items cannot be
-        # created or updated using the API.
+        # created or updated using the API. **This method regularly experiences high
+        # latency.** We recommend [increasing your default timeout](/display-video/api/
+        # guides/best-practices/timeouts#client_library_timeout) to avoid errors.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the line item belongs to.
         # @param [Fixnum] line_item_id
@@ -6726,7 +6738,9 @@ module Google
         
         # Replaces all of the sites under a single channel. The operation will replace
         # the sites under a channel with the sites provided in ReplaceSitesRequest.
-        # new_sites.
+        # new_sites. **This method regularly experiences high latency.** We recommend [
+        # increasing your default timeout](/display-video/api/guides/best-practices/
+        # timeouts#client_library_timeout) to avoid errors.
         # @param [Fixnum] partner_id
         #   The ID of the partner that owns the parent channel.
         # @param [Fixnum] channel_id
