@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExplainOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Filter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -564,6 +570,13 @@ module Google
         end
       end
       
+      class ExplainOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analyze, as: 'analyze'
+        end
+      end
+      
       class Filter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -993,6 +1006,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_query, as: 'aggregationQuery', class: Google::Apis::DatastoreV1beta3::AggregationQuery, decorator: Google::Apis::DatastoreV1beta3::AggregationQuery::Representation
       
+          property :explain_options, as: 'explainOptions', class: Google::Apis::DatastoreV1beta3::ExplainOptions, decorator: Google::Apis::DatastoreV1beta3::ExplainOptions::Representation
+      
           property :gql_query, as: 'gqlQuery', class: Google::Apis::DatastoreV1beta3::GqlQuery, decorator: Google::Apis::DatastoreV1beta3::GqlQuery::Representation
       
           property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1beta3::PartitionId, decorator: Google::Apis::DatastoreV1beta3::PartitionId::Representation
@@ -1015,6 +1030,8 @@ module Google
       class RunQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :explain_options, as: 'explainOptions', class: Google::Apis::DatastoreV1beta3::ExplainOptions, decorator: Google::Apis::DatastoreV1beta3::ExplainOptions::Representation
+      
           property :gql_query, as: 'gqlQuery', class: Google::Apis::DatastoreV1beta3::GqlQuery, decorator: Google::Apis::DatastoreV1beta3::GqlQuery::Representation
       
           property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1beta3::PartitionId, decorator: Google::Apis::DatastoreV1beta3::PartitionId::Representation
