@@ -1204,6 +1204,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ToolCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3TrainFlowRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1919,6 +1925,24 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1TextInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ToolCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ToolCallResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ToolCallResultError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3281,6 +3305,7 @@ module Google
           property :action, as: 'action'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :language_code, as: 'languageCode'
           property :name, as: 'name'
           property :resource, as: 'resource'
           property :type, as: 'type'
@@ -4565,6 +4590,8 @@ module Google
           property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettings::Representation
       
           property :allow_answer_feedback, as: 'allowAnswerFeedback'
+          property :current_flow, as: 'currentFlow', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Flow, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Flow::Representation
+      
           property :current_page, as: 'currentPage', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Page, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Page::Representation
       
           hash :diagnostic_info, as: 'diagnosticInfo'
@@ -4585,9 +4612,13 @@ module Google
           property :transcript, as: 'transcript'
           property :trigger_event, as: 'triggerEvent'
           property :trigger_intent, as: 'triggerIntent'
+          collection :webhook_display_names, as: 'webhookDisplayNames'
+          collection :webhook_ids, as: 'webhookIds'
+          collection :webhook_latencies, as: 'webhookLatencies'
           collection :webhook_payloads, as: 'webhookPayloads'
           collection :webhook_statuses, as: 'webhookStatuses', class: Google::Apis::DialogflowV3::GoogleRpcStatus, decorator: Google::Apis::DialogflowV3::GoogleRpcStatus::Representation
       
+          collection :webhook_tags, as: 'webhookTags'
         end
       end
       
@@ -4630,6 +4661,8 @@ module Google
           property :telephony_transfer_call, as: 'telephonyTransferCall', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall::Representation
       
           property :text, as: 'text', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageText, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageText::Representation
+      
+          property :tool_call, as: 'toolCall', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ToolCall, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ToolCall::Representation
       
         end
       end
@@ -5005,6 +5038,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :synthesize_speech_configs, as: 'synthesizeSpeechConfigs', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SynthesizeSpeechConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SynthesizeSpeechConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ToolCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          hash :input_parameters, as: 'inputParameters'
+          property :tool, as: 'tool'
         end
       end
       
@@ -5953,6 +5995,8 @@ module Google
           property :language_code, as: 'languageCode'
           property :text, as: 'text', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1TextInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1TextInput::Representation
       
+          property :tool_call_result, as: 'toolCallResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCallResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCallResult::Representation
+      
         end
       end
       
@@ -5986,6 +6030,8 @@ module Google
           property :telephony_transfer_call, as: 'telephonyTransferCall', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall::Representation
       
           property :text, as: 'text', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ResponseMessageText, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ResponseMessageText::Representation
+      
+          property :tool_call, as: 'toolCall', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCall, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCall::Representation
       
         end
       end
@@ -6173,6 +6219,33 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ToolCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          hash :input_parameters, as: 'inputParameters'
+          property :tool, as: 'tool'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ToolCallResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :error, as: 'error', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCallResultError, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCallResultError::Representation
+      
+          hash :output_parameters, as: 'outputParameters'
+          property :tool, as: 'tool'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ToolCallResultError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
         end
       end
       

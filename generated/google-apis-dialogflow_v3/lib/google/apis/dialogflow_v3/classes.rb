@@ -226,7 +226,9 @@ module Google
       
         # Immutable. Name of the start flow in this agent. A start flow will be
         # automatically created when the agent is created, and can only be deleted by
-        # deleting the agent. Format: `projects//locations//agents//flows/`.
+        # deleting the agent. Format: `projects//locations//agents//flows/`. Currently
+        # only the default start flow with id "00000000-0000-0000-0000-000000000000" is
+        # allowed.
         # Corresponds to the JSON property `startFlow`
         # @return [String]
         attr_accessor :start_flow
@@ -774,6 +776,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # The affected language code of the change.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # The unique identifier of the changelog. Format: `projects//locations//agents//
         # changelogs/`.
         # Corresponds to the JSON property `name`
@@ -804,6 +811,7 @@ module Google
           @action = args[:action] if args.key?(:action)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
           @resource = args[:resource] if args.key?(:resource)
           @type = args[:type] if args.key?(:type)
@@ -5526,6 +5534,21 @@ module Google
         attr_accessor :allow_answer_feedback
         alias_method :allow_answer_feedback?, :allow_answer_feedback
       
+        # Flows represents the conversation flows when you build your chatbot agent. A
+        # flow consists of many pages connected by the transition routes. Conversations
+        # always start with the built-in Start Flow (with an all-0 ID). Transition
+        # routes can direct the conversation session from the current flow (parent flow)
+        # to another flow (sub flow). When the sub flow is finished, Dialogflow will
+        # bring the session back to the parent flow, where the sub flow is started.
+        # Usually, when a transition route is followed by a matched intent, the intent
+        # will be "consumed". This means the intent won't activate more transition
+        # routes. However, when the followed transition route moves the conversation
+        # session into a different flow, the matched intent can be carried over and to
+        # be consumed in the target flow.
+        # Corresponds to the JSON property `currentFlow`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Flow]
+        attr_accessor :current_flow
+      
         # A Dialogflow CX conversation (session) can be described and visualized as a
         # state machine. The states of a CX session are represented by pages. For each
         # flow, you define many pages, where your combined pages can handle a complete
@@ -5644,6 +5667,21 @@ module Google
         # @return [String]
         attr_accessor :trigger_intent
       
+        # The list of webhook display names in the order of call sequence.
+        # Corresponds to the JSON property `webhookDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :webhook_display_names
+      
+        # The list of webhook ids in the order of call sequence.
+        # Corresponds to the JSON property `webhookIds`
+        # @return [Array<String>]
+        attr_accessor :webhook_ids
+      
+        # The list of webhook latencies in the order of call sequence.
+        # Corresponds to the JSON property `webhookLatencies`
+        # @return [Array<String>]
+        attr_accessor :webhook_latencies
+      
         # The list of webhook payload in WebhookResponse.payload, in the order of call
         # sequence. If some webhook call fails or doesn't return any payload, an empty `
         # Struct` would be used instead.
@@ -5656,6 +5694,11 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3::GoogleRpcStatus>]
         attr_accessor :webhook_statuses
       
+        # The list of webhook tags in the order of call sequence.
+        # Corresponds to the JSON property `webhookTags`
+        # @return [Array<String>]
+        attr_accessor :webhook_tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5664,6 +5707,7 @@ module Google
         def update!(**args)
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @allow_answer_feedback = args[:allow_answer_feedback] if args.key?(:allow_answer_feedback)
+          @current_flow = args[:current_flow] if args.key?(:current_flow)
           @current_page = args[:current_page] if args.key?(:current_page)
           @diagnostic_info = args[:diagnostic_info] if args.key?(:diagnostic_info)
           @dtmf = args[:dtmf] if args.key?(:dtmf)
@@ -5678,8 +5722,12 @@ module Google
           @transcript = args[:transcript] if args.key?(:transcript)
           @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
           @trigger_intent = args[:trigger_intent] if args.key?(:trigger_intent)
+          @webhook_display_names = args[:webhook_display_names] if args.key?(:webhook_display_names)
+          @webhook_ids = args[:webhook_ids] if args.key?(:webhook_ids)
+          @webhook_latencies = args[:webhook_latencies] if args.key?(:webhook_latencies)
           @webhook_payloads = args[:webhook_payloads] if args.key?(:webhook_payloads)
           @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
+          @webhook_tags = args[:webhook_tags] if args.key?(:webhook_tags)
         end
       end
       
@@ -5826,6 +5874,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageText]
         attr_accessor :text
       
+        # Represents a call of a specific tool's action with the specified inputs.
+        # Corresponds to the JSON property `toolCall`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ToolCall]
+        attr_accessor :tool_call
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5844,6 +5897,7 @@ module Google
           @response_type = args[:response_type] if args.key?(:response_type)
           @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
           @text = args[:text] if args.key?(:text)
+          @tool_call = args[:tool_call] if args.key?(:tool_call)
         end
       end
       
@@ -7131,6 +7185,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @synthesize_speech_configs = args[:synthesize_speech_configs] if args.key?(:synthesize_speech_configs)
+        end
+      end
+      
+      # Represents a call of a specific tool's action with the specified inputs.
+      class GoogleCloudDialogflowCxV3ToolCall
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the tool's action associated with this call.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Optional. The action's input parameters.
+        # Corresponds to the JSON property `inputParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :input_parameters
+      
+        # Required. The tool associated with this call. Format: `projects//locations//
+        # agents//tools/`.
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @tool = args[:tool] if args.key?(:tool)
         end
       end
       
@@ -10574,6 +10660,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1TextInput]
         attr_accessor :text
       
+        # The result of calling a tool's action that has been executed by the client.
+        # Corresponds to the JSON property `toolCallResult`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCallResult]
+        attr_accessor :tool_call_result
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10586,6 +10677,7 @@ module Google
           @intent = args[:intent] if args.key?(:intent)
           @language_code = args[:language_code] if args.key?(:language_code)
           @text = args[:text] if args.key?(:text)
+          @tool_call_result = args[:tool_call_result] if args.key?(:tool_call_result)
         end
       end
       
@@ -10702,6 +10794,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ResponseMessageText]
         attr_accessor :text
       
+        # Represents a call of a specific tool's action with the specified inputs.
+        # Corresponds to the JSON property `toolCall`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCall]
+        attr_accessor :tool_call
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10719,6 +10816,7 @@ module Google
           @play_audio = args[:play_audio] if args.key?(:play_audio)
           @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
           @text = args[:text] if args.key?(:text)
+          @tool_call = args[:tool_call] if args.key?(:tool_call)
         end
       end
       
@@ -11338,6 +11436,95 @@ module Google
         # Update properties of this object
         def update!(**args)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents a call of a specific tool's action with the specified inputs.
+      class GoogleCloudDialogflowCxV3beta1ToolCall
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the tool's action associated with this call.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Optional. The action's input parameters.
+        # Corresponds to the JSON property `inputParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :input_parameters
+      
+        # Required. The tool associated with this call. Format: `projects//locations//
+        # agents//tools/`.
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @tool = args[:tool] if args.key?(:tool)
+        end
+      end
+      
+      # The result of calling a tool's action that has been executed by the client.
+      class GoogleCloudDialogflowCxV3beta1ToolCallResult
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the tool's action associated with this call.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # An error produced by the tool call.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCallResultError]
+        attr_accessor :error
+      
+        # The tool call's output parameters.
+        # Corresponds to the JSON property `outputParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :output_parameters
+      
+        # Required. The tool associated with this call. Format: `projects//locations//
+        # agents//tools/`.
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @error = args[:error] if args.key?(:error)
+          @output_parameters = args[:output_parameters] if args.key?(:output_parameters)
+          @tool = args[:tool] if args.key?(:tool)
+        end
+      end
+      
+      # An error produced by the tool call.
+      class GoogleCloudDialogflowCxV3beta1ToolCallResultError
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The error message of the function.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
