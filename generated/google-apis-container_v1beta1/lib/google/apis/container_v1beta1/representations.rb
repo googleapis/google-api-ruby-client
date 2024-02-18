@@ -3112,6 +3112,8 @@ module Google
           property :node_pool_id, as: 'nodePoolId'
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
+          property :queued_provisioning, as: 'queuedProvisioning', class: Google::Apis::ContainerV1beta1::QueuedProvisioning, decorator: Google::Apis::ContainerV1beta1::QueuedProvisioning::Representation
+      
           property :resource_labels, as: 'resourceLabels', class: Google::Apis::ContainerV1beta1::ResourceLabels, decorator: Google::Apis::ContainerV1beta1::ResourceLabels::Representation
       
           property :resource_manager_tags, as: 'resourceManagerTags', class: Google::Apis::ContainerV1beta1::ResourceManagerTags, decorator: Google::Apis::ContainerV1beta1::ResourceManagerTags::Representation
