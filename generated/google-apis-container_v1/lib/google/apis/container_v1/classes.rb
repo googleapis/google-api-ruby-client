@@ -3863,6 +3863,12 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Optional. Reserved for future use.
+        # Corresponds to the JSON property `enableConfidentialStorage`
+        # @return [Boolean]
+        attr_accessor :enable_confidential_storage
+        alias_method :enable_confidential_storage?, :enable_confidential_storage
+      
         # EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral
         # storage using Local SSDs.
         # Corresponds to the JSON property `ephemeralStorageLocalSsdConfig`
@@ -4087,6 +4093,7 @@ module Google
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @enable_confidential_storage = args[:enable_confidential_storage] if args.key?(:enable_confidential_storage)
           @ephemeral_storage_local_ssd_config = args[:ephemeral_storage_local_ssd_config] if args.key?(:ephemeral_storage_local_ssd_config)
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
@@ -6863,6 +6870,11 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # QueuedProvisioning defines the queued provisioning used by the node pool.
+        # Corresponds to the JSON property `queuedProvisioning`
+        # @return [Google::Apis::ContainerV1::QueuedProvisioning]
+        attr_accessor :queued_provisioning
+      
         # Collection of [GCP labels](https://cloud.google.com/resource-manager/docs/
         # creating-managing-labels).
         # Corresponds to the JSON property `resourceLabels`
@@ -6971,6 +6983,7 @@ module Google
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @queued_provisioning = args[:queued_provisioning] if args.key?(:queued_provisioning)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @tags = args[:tags] if args.key?(:tags)

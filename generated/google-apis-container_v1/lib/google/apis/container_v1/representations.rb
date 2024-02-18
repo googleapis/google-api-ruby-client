@@ -2060,6 +2060,7 @@ module Google
       
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
+          property :enable_confidential_storage, as: 'enableConfidentialStorage'
           property :ephemeral_storage_local_ssd_config, as: 'ephemeralStorageLocalSsdConfig', class: Google::Apis::ContainerV1::EphemeralStorageLocalSsdConfig, decorator: Google::Apis::ContainerV1::EphemeralStorageLocalSsdConfig::Representation
       
           property :fast_socket, as: 'fastSocket', class: Google::Apis::ContainerV1::FastSocket, decorator: Google::Apis::ContainerV1::FastSocket::Representation
@@ -2790,6 +2791,8 @@ module Google
           property :node_pool_id, as: 'nodePoolId'
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
+          property :queued_provisioning, as: 'queuedProvisioning', class: Google::Apis::ContainerV1::QueuedProvisioning, decorator: Google::Apis::ContainerV1::QueuedProvisioning::Representation
+      
           property :resource_labels, as: 'resourceLabels', class: Google::Apis::ContainerV1::ResourceLabels, decorator: Google::Apis::ContainerV1::ResourceLabels::Representation
       
           property :resource_manager_tags, as: 'resourceManagerTags', class: Google::Apis::ContainerV1::ResourceManagerTags, decorator: Google::Apis::ContainerV1::ResourceManagerTags::Representation
