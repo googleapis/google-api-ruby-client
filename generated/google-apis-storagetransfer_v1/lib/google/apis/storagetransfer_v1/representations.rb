@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HdfsData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -391,6 +397,13 @@ module Google
         end
       end
       
+      class HdfsData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+        end
+      end
+      
       class HttpData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -658,6 +671,8 @@ module Google
           property :gcs_data_source, as: 'gcsDataSource', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
       
           property :gcs_intermediate_data_location, as: 'gcsIntermediateDataLocation', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
+      
+          property :hdfs_data_source, as: 'hdfsDataSource', class: Google::Apis::StoragetransferV1::HdfsData, decorator: Google::Apis::StoragetransferV1::HdfsData::Representation
       
           property :http_data_source, as: 'httpDataSource', class: Google::Apis::StoragetransferV1::HttpData, decorator: Google::Apis::StoragetransferV1::HttpData::Representation
       

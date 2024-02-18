@@ -545,6 +545,28 @@ module Google
         end
       end
       
+      # An HdfsData resource specifies a path within an HDFS entity (e.g. a cluster).
+      # All cluster-specific settings, such as namenodes and ports, are configured on
+      # the transfer agents servicing requests, so HdfsData only contains the root
+      # path to the data in our transfer.
+      class HdfsData
+        include Google::Apis::Core::Hashable
+      
+        # Root path to transfer files.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # An HttpData resource specifies a list of objects on the web to be transferred
       # over HTTP. The information of the objects to be transferred is contained in a
       # file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"
@@ -1743,6 +1765,14 @@ module Google
         # @return [Google::Apis::StoragetransferV1::GcsData]
         attr_accessor :gcs_intermediate_data_location
       
+        # An HdfsData resource specifies a path within an HDFS entity (e.g. a cluster).
+        # All cluster-specific settings, such as namenodes and ports, are configured on
+        # the transfer agents servicing requests, so HdfsData only contains the root
+        # path to the data in our transfer.
+        # Corresponds to the JSON property `hdfsDataSource`
+        # @return [Google::Apis::StoragetransferV1::HdfsData]
+        attr_accessor :hdfs_data_source
+      
         # An HttpData resource specifies a list of objects on the web to be transferred
         # over HTTP. The information of the objects to be transferred is contained in a
         # file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"
@@ -1823,6 +1853,7 @@ module Google
           @gcs_data_sink = args[:gcs_data_sink] if args.key?(:gcs_data_sink)
           @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
           @gcs_intermediate_data_location = args[:gcs_intermediate_data_location] if args.key?(:gcs_intermediate_data_location)
+          @hdfs_data_source = args[:hdfs_data_source] if args.key?(:hdfs_data_source)
           @http_data_source = args[:http_data_source] if args.key?(:http_data_source)
           @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
           @posix_data_sink = args[:posix_data_sink] if args.key?(:posix_data_sink)
