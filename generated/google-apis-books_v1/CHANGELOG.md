@@ -1,5 +1,10 @@
 # Release history for google-apis-books_v1
 
+### v0.16.0 (2024-02-18)
+
+* Regenerated from discovery document revision 20240214
+* Regenerated using generator version 0.13.1
+
 ### v0.15.0 (2024-01-23)
 
 * Regenerated using generator version 0.13.0
