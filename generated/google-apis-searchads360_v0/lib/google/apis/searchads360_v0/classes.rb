@@ -973,6 +973,11 @@ module Google
         # @return [Float]
         attr_accessor :content_rank_lost_impression_share
       
+        # The conversion custom metrics.
+        # Corresponds to the JSON property `conversionCustomMetrics`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue>]
+        attr_accessor :conversion_custom_metrics
+      
         # The number of conversions. This only includes conversion actions which
         # include_in_conversions_metric attribute is set to true. If you use conversion-
         # based bidding, your bid strategies will optimize for these conversions.
@@ -1267,6 +1272,11 @@ module Google
         # @return [Float]
         attr_accessor :mobile_friendly_clicks_percentage
       
+        # The raw event conversion metrics.
+        # Corresponds to the JSON property `rawEventConversionMetrics`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue>]
+        attr_accessor :raw_event_conversion_metrics
+      
         # The percentage of the customer's Shopping or Search ad impressions that are
         # shown in the most prominent Shopping position. See https://support.google.com/
         # sa360/answer/9566729 for details. Any value below 0.1 is reported as 0.0999.
@@ -1434,6 +1444,7 @@ module Google
           @content_budget_lost_impression_share = args[:content_budget_lost_impression_share] if args.key?(:content_budget_lost_impression_share)
           @content_impression_share = args[:content_impression_share] if args.key?(:content_impression_share)
           @content_rank_lost_impression_share = args[:content_rank_lost_impression_share] if args.key?(:content_rank_lost_impression_share)
+          @conversion_custom_metrics = args[:conversion_custom_metrics] if args.key?(:conversion_custom_metrics)
           @conversions = args[:conversions] if args.key?(:conversions)
           @conversions_by_conversion_date = args[:conversions_by_conversion_date] if args.key?(:conversions_by_conversion_date)
           @conversions_from_interactions_rate = args[:conversions_from_interactions_rate] if args.key?(:conversions_from_interactions_rate)
@@ -1467,6 +1478,7 @@ module Google
           @lead_revenue_micros = args[:lead_revenue_micros] if args.key?(:lead_revenue_micros)
           @lead_units_sold = args[:lead_units_sold] if args.key?(:lead_units_sold)
           @mobile_friendly_clicks_percentage = args[:mobile_friendly_clicks_percentage] if args.key?(:mobile_friendly_clicks_percentage)
+          @raw_event_conversion_metrics = args[:raw_event_conversion_metrics] if args.key?(:raw_event_conversion_metrics)
           @search_absolute_top_impression_share = args[:search_absolute_top_impression_share] if args.key?(:search_absolute_top_impression_share)
           @search_budget_lost_absolute_top_impression_share = args[:search_budget_lost_absolute_top_impression_share] if args.key?(:search_budget_lost_absolute_top_impression_share)
           @search_budget_lost_impression_share = args[:search_budget_lost_impression_share] if args.key?(:search_budget_lost_impression_share)
@@ -1780,6 +1792,11 @@ module Google
         # @return [String]
         attr_accessor :conversion_action_name
       
+        # The conversion custom dimensions.
+        # Corresponds to the JSON property `conversionCustomDimensions`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue>]
+        attr_accessor :conversion_custom_dimensions
+      
         # Date to which metrics apply. yyyy-MM-dd format, for example, 2018-04-17.
         # Corresponds to the JSON property `date`
         # @return [String]
@@ -2029,6 +2046,11 @@ module Google
         # @return [String]
         attr_accessor :quarter
       
+        # The raw event conversion dimensions.
+        # Corresponds to the JSON property `rawEventConversionDimensions`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue>]
+        attr_accessor :raw_event_conversion_dimensions
+      
         # Week as defined as Monday through Sunday, and represented by the date of
         # Monday. Formatted as yyyy-MM-dd.
         # Corresponds to the JSON property `week`
@@ -2051,6 +2073,7 @@ module Google
           @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
           @conversion_action_category = args[:conversion_action_category] if args.key?(:conversion_action_category)
           @conversion_action_name = args[:conversion_action_name] if args.key?(:conversion_action_name)
+          @conversion_custom_dimensions = args[:conversion_custom_dimensions] if args.key?(:conversion_custom_dimensions)
           @date = args[:date] if args.key?(:date)
           @day_of_week = args[:day_of_week] if args.key?(:day_of_week)
           @device = args[:device] if args.key?(:device)
@@ -2100,6 +2123,7 @@ module Google
           @product_type_l4 = args[:product_type_l4] if args.key?(:product_type_l4)
           @product_type_l5 = args[:product_type_l5] if args.key?(:product_type_l5)
           @quarter = args[:quarter] if args.key?(:quarter)
+          @raw_event_conversion_dimensions = args[:raw_event_conversion_dimensions] if args.key?(:raw_event_conversion_dimensions)
           @week = args[:week] if args.key?(:week)
           @year = args[:year] if args.key?(:year)
         end
@@ -3441,6 +3465,31 @@ module Google
           @always_use_default_value = args[:always_use_default_value] if args.key?(:always_use_default_value)
           @default_currency_code = args[:default_currency_code] if args.key?(:default_currency_code)
           @default_value = args[:default_value] if args.key?(:default_value)
+        end
+      end
+      
+      # Information for Search Ads 360 Floodlight Conversion Custom Variables.
+      class GoogleAdsSearchads360V0ResourcesConversionCustomVariableFloodlightConversionCustomVariableInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Floodlight variable data type defined in Search Ads 360.
+        # Corresponds to the JSON property `floodlightVariableDataType`
+        # @return [String]
+        attr_accessor :floodlight_variable_data_type
+      
+        # Output only. Floodlight variable type defined in Search Ads 360.
+        # Corresponds to the JSON property `floodlightVariableType`
+        # @return [String]
+        attr_accessor :floodlight_variable_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @floodlight_variable_data_type = args[:floodlight_variable_data_type] if args.key?(:floodlight_variable_data_type)
+          @floodlight_variable_type = args[:floodlight_variable_type] if args.key?(:floodlight_variable_type)
         end
       end
       
@@ -5950,6 +5999,89 @@ module Google
         end
       end
       
+      # A conversion custom variable. See "About custom Floodlight metrics and
+      # dimensions in the new Search Ads 360" at https://support.google.com/sa360/
+      # answer/13567857
+      class GoogleAdsSearchads360V0ResourcesConversionCustomVariable
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Cardinality of the conversion custom variable.
+        # Corresponds to the JSON property `cardinality`
+        # @return [String]
+        attr_accessor :cardinality
+      
+        # Output only. The IDs of custom columns that use this conversion custom
+        # variable.
+        # Corresponds to the JSON property `customColumnIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :custom_column_ids
+      
+        # Output only. Family of the conversion custom variable.
+        # Corresponds to the JSON property `family`
+        # @return [String]
+        attr_accessor :family
+      
+        # Information for Search Ads 360 Floodlight Conversion Custom Variables.
+        # Corresponds to the JSON property `floodlightConversionCustomVariableInfo`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionCustomVariableFloodlightConversionCustomVariableInfo]
+        attr_accessor :floodlight_conversion_custom_variable_info
+      
+        # Output only. The ID of the conversion custom variable.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Required. The name of the conversion custom variable. Name should be unique.
+        # The maximum length of name is 100 characters. There should not be any extra
+        # spaces before and after.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The resource name of the customer that owns the conversion custom
+        # variable.
+        # Corresponds to the JSON property `ownerCustomer`
+        # @return [String]
+        attr_accessor :owner_customer
+      
+        # Immutable. The resource name of the conversion custom variable. Conversion
+        # custom variable resource names have the form: `customers/`customer_id`/
+        # conversionCustomVariables/`conversion_custom_variable_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # The status of the conversion custom variable for conversion event accrual.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Required. Immutable. The tag of the conversion custom variable. Tag should be
+        # unique and consist of a "u" character directly followed with a number less
+        # than ormequal to 100. For example: "u4".
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cardinality = args[:cardinality] if args.key?(:cardinality)
+          @custom_column_ids = args[:custom_column_ids] if args.key?(:custom_column_ids)
+          @family = args[:family] if args.key?(:family)
+          @floodlight_conversion_custom_variable_info = args[:floodlight_conversion_custom_variable_info] if args.key?(:floodlight_conversion_custom_variable_info)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @owner_customer = args[:owner_customer] if args.key?(:owner_customer)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
       # A collection of customer-wide settings related to Search Ads 360 Conversion
       # Tracking.
       class GoogleAdsSearchads360V0ResourcesConversionTrackingSetting
@@ -7193,6 +7325,56 @@ module Google
         end
       end
       
+      # Message for conversion custom dimension header.
+      class GoogleAdsSearchads360V0ServicesConversionCustomDimensionHeader
+        include Google::Apis::Core::Hashable
+      
+        # The conversion custom dimension ID.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The user defined name of the conversion custom dimension.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Message for conversion custom metric header.
+      class GoogleAdsSearchads360V0ServicesConversionCustomMetricHeader
+        include Google::Apis::Core::Hashable
+      
+        # The conversion custom metric ID.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The user defined name of the conversion custom metric.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Message for custom column header.
       class GoogleAdsSearchads360V0ServicesCustomColumnHeader
         include Google::Apis::Core::Hashable
@@ -7261,6 +7443,56 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_columns = args[:custom_columns] if args.key?(:custom_columns)
+        end
+      end
+      
+      # Message for raw event conversion dimension header.
+      class GoogleAdsSearchads360V0ServicesRawEventConversionDimensionHeader
+        include Google::Apis::Core::Hashable
+      
+        # The conversion custom variable ID.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The user defined name of the raw event dimension.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Message for raw event conversion metric header.
+      class GoogleAdsSearchads360V0ServicesRawEventConversionMetricHeader
+        include Google::Apis::Core::Hashable
+      
+        # The conversion custom variable ID.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The user defined name of the raw event metric.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -7443,6 +7675,13 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionAction]
         attr_accessor :conversion_action
       
+        # A conversion custom variable. See "About custom Floodlight metrics and
+        # dimensions in the new Search Ads 360" at https://support.google.com/sa360/
+        # answer/13567857
+        # Corresponds to the JSON property `conversionCustomVariable`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionCustomVariable]
+        attr_accessor :conversion_custom_variable
+      
         # The custom columns.
         # Corresponds to the JSON property `customColumns`
         # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue>]
@@ -7592,6 +7831,7 @@ module Google
           @cart_data_sales_view = args[:cart_data_sales_view] if args.key?(:cart_data_sales_view)
           @conversion = args[:conversion] if args.key?(:conversion)
           @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
+          @conversion_custom_variable = args[:conversion_custom_variable] if args.key?(:conversion_custom_variable)
           @custom_columns = args[:custom_columns] if args.key?(:custom_columns)
           @customer = args[:customer] if args.key?(:customer)
           @customer_asset = args[:customer_asset] if args.key?(:customer_asset)
@@ -7746,6 +7986,16 @@ module Google
       class GoogleAdsSearchads360V0ServicesSearchSearchAds360Response
         include Google::Apis::Core::Hashable
       
+        # The headers of the conversion custom dimensions in the results.
+        # Corresponds to the JSON property `conversionCustomDimensionHeaders`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesConversionCustomDimensionHeader>]
+        attr_accessor :conversion_custom_dimension_headers
+      
+        # The headers of the conversion custom metrics in the results.
+        # Corresponds to the JSON property `conversionCustomMetricHeaders`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesConversionCustomMetricHeader>]
+        attr_accessor :conversion_custom_metric_headers
+      
         # The headers of the custom columns in the results.
         # Corresponds to the JSON property `customColumnHeaders`
         # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesCustomColumnHeader>]
@@ -7762,6 +8012,16 @@ module Google
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
+      
+        # The headers of the raw event conversion dimensions in the results.
+        # Corresponds to the JSON property `rawEventConversionDimensionHeaders`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesRawEventConversionDimensionHeader>]
+        attr_accessor :raw_event_conversion_dimension_headers
+      
+        # The headers of the raw event conversion metrics in the results.
+        # Corresponds to the JSON property `rawEventConversionMetricHeaders`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesRawEventConversionMetricHeader>]
+        attr_accessor :raw_event_conversion_metric_headers
       
         # The list of rows that matched the query.
         # Corresponds to the JSON property `results`
@@ -7784,9 +8044,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @conversion_custom_dimension_headers = args[:conversion_custom_dimension_headers] if args.key?(:conversion_custom_dimension_headers)
+          @conversion_custom_metric_headers = args[:conversion_custom_metric_headers] if args.key?(:conversion_custom_metric_headers)
           @custom_column_headers = args[:custom_column_headers] if args.key?(:custom_column_headers)
           @field_mask = args[:field_mask] if args.key?(:field_mask)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @raw_event_conversion_dimension_headers = args[:raw_event_conversion_dimension_headers] if args.key?(:raw_event_conversion_dimension_headers)
+          @raw_event_conversion_metric_headers = args[:raw_event_conversion_metric_headers] if args.key?(:raw_event_conversion_metric_headers)
           @results = args[:results] if args.key?(:results)
           @summary_row = args[:summary_row] if args.key?(:summary_row)
           @total_results_count = args[:total_results_count] if args.key?(:total_results_count)
