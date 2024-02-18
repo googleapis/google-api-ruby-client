@@ -367,10 +367,10 @@ module Google
         # @param [String] order_by
         #   Optional. The attribute by which to order conversations in the response. If
         #   empty, conversations will be ordered by descending creation time. Supported
-        #   values are one of the following: * create_time * duration * turn_count *
-        #   latest_analysis The default sort order is ascending. To specify order, append `
-        #   asc` or `desc`, i.e. `create_time desc`. See https://google.aip.dev/132#
-        #   ordering for more details.
+        #   values are one of the following: * create_time * customer_satisfaction_rating *
+        #   duration * latest_analysis * start_time * turn_count The default sort order
+        #   is ascending. To specify order, append `asc` or `desc`, i.e. `create_time desc`
+        #   . See https://google.aip.dev/132#ordering for more details.
         # @param [Fixnum] page_size
         #   The maximum number of conversations to return in the response. A valid page
         #   size ranges from 0 to 1,000 inclusive. If the page size is zero or unspecified,
