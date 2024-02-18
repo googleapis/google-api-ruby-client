@@ -457,7 +457,7 @@ module Google
         # @return [Array<Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociationReference>]
         attr_accessor :associations
       
-        # Optional. Project to bill on endpoint uptime usage.
+        # Required. Project to bill on endpoint uptime usage.
         # Corresponds to the JSON property `billingProjectId`
         # @return [String]
         attr_accessor :billing_project_id
