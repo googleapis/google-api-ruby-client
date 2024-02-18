@@ -430,6 +430,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerColumn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerRdbms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartBackfillJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -523,6 +565,8 @@ module Google
       
           property :postgresql_excluded_objects, as: 'postgresqlExcludedObjects', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
       
+          property :sql_server_excluded_objects, as: 'sqlServerExcludedObjects', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
+      
         end
       end
       
@@ -599,6 +643,8 @@ module Google
           property :postgresql_profile, as: 'postgresqlProfile', class: Google::Apis::DatastreamV1::PostgresqlProfile, decorator: Google::Apis::DatastreamV1::PostgresqlProfile::Representation
       
           property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatastreamV1::PrivateConnectivity, decorator: Google::Apis::DatastreamV1::PrivateConnectivity::Representation
+      
+          property :sql_server_profile, as: 'sqlServerProfile', class: Google::Apis::DatastreamV1::SqlServerProfile, decorator: Google::Apis::DatastreamV1::SqlServerProfile::Representation
       
           property :static_service_ip_connectivity, as: 'staticServiceIpConnectivity', class: Google::Apis::DatastreamV1::StaticServiceIpConnectivity, decorator: Google::Apis::DatastreamV1::StaticServiceIpConnectivity::Representation
       
@@ -1171,6 +1217,8 @@ module Google
           property :postgresql_source_config, as: 'postgresqlSourceConfig', class: Google::Apis::DatastreamV1::PostgresqlSourceConfig, decorator: Google::Apis::DatastreamV1::PostgresqlSourceConfig::Representation
       
           property :source_connection_profile, as: 'sourceConnectionProfile'
+          property :sql_server_source_config, as: 'sqlServerSourceConfig', class: Google::Apis::DatastreamV1::SqlServerSourceConfig, decorator: Google::Apis::DatastreamV1::SqlServerSourceConfig::Representation
+      
         end
       end
       
@@ -1191,6 +1239,8 @@ module Google
       
           property :postgresql_identifier, as: 'postgresqlIdentifier', class: Google::Apis::DatastreamV1::PostgresqlObjectIdentifier, decorator: Google::Apis::DatastreamV1::PostgresqlObjectIdentifier::Representation
       
+          property :sql_server_identifier, as: 'sqlServerIdentifier', class: Google::Apis::DatastreamV1::SqlServerObjectIdentifier, decorator: Google::Apis::DatastreamV1::SqlServerObjectIdentifier::Representation
+      
         end
       end
       
@@ -1201,6 +1251,77 @@ module Google
       
           property :oracle_scn_position, as: 'oracleScnPosition', class: Google::Apis::DatastreamV1::OracleScnPosition, decorator: Google::Apis::DatastreamV1::OracleScnPosition::Representation
       
+        end
+      end
+      
+      class SqlServerColumn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :data_type, as: 'dataType'
+          property :length, as: 'length'
+          property :nullable, as: 'nullable'
+          property :ordinal_position, as: 'ordinalPosition'
+          property :precision, as: 'precision'
+          property :primary_key, as: 'primaryKey'
+          property :scale, as: 'scale'
+        end
+      end
+      
+      class SqlServerObjectIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema, as: 'schema'
+          property :table, as: 'table'
+        end
+      end
+      
+      class SqlServerProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :hostname, as: 'hostname'
+          property :password, as: 'password'
+          property :port, as: 'port'
+          property :username, as: 'username'
+        end
+      end
+      
+      class SqlServerRdbms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :schemas, as: 'schemas', class: Google::Apis::DatastreamV1::SqlServerSchema, decorator: Google::Apis::DatastreamV1::SqlServerSchema::Representation
+      
+        end
+      end
+      
+      class SqlServerSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema, as: 'schema'
+          collection :tables, as: 'tables', class: Google::Apis::DatastreamV1::SqlServerTable, decorator: Google::Apis::DatastreamV1::SqlServerTable::Representation
+      
+        end
+      end
+      
+      class SqlServerSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
+      
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
+      
+          property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
+          property :max_concurrent_cdc_tasks, as: 'maxConcurrentCdcTasks'
+        end
+      end
+      
+      class SqlServerTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::DatastreamV1::SqlServerColumn, decorator: Google::Apis::DatastreamV1::SqlServerColumn::Representation
+      
+          property :table, as: 'table'
         end
       end
       

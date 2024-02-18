@@ -55,6 +55,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
         attr_accessor :postgresql_excluded_objects
       
+        # SQLServer database structure.
+        # Corresponds to the JSON property `sqlServerExcludedObjects`
+        # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
+        attr_accessor :sql_server_excluded_objects
+      
         def initialize(**args)
            update!(**args)
         end
@@ -64,6 +69,7 @@ module Google
           @mysql_excluded_objects = args[:mysql_excluded_objects] if args.key?(:mysql_excluded_objects)
           @oracle_excluded_objects = args[:oracle_excluded_objects] if args.key?(:oracle_excluded_objects)
           @postgresql_excluded_objects = args[:postgresql_excluded_objects] if args.key?(:postgresql_excluded_objects)
+          @sql_server_excluded_objects = args[:sql_server_excluded_objects] if args.key?(:sql_server_excluded_objects)
         end
       end
       
@@ -276,6 +282,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PrivateConnectivity]
         attr_accessor :private_connectivity
       
+        # SQLServer database profile
+        # Corresponds to the JSON property `sqlServerProfile`
+        # @return [Google::Apis::DatastreamV1::SqlServerProfile]
+        attr_accessor :sql_server_profile
+      
         # Static IP address connectivity. Used when the source database is configured to
         # allow incoming connections from the Datastream public IP addresses for the
         # region specified in the connection profile.
@@ -305,6 +316,7 @@ module Google
           @oracle_profile = args[:oracle_profile] if args.key?(:oracle_profile)
           @postgresql_profile = args[:postgresql_profile] if args.key?(:postgresql_profile)
           @private_connectivity = args[:private_connectivity] if args.key?(:private_connectivity)
+          @sql_server_profile = args[:sql_server_profile] if args.key?(:sql_server_profile)
           @static_service_ip_connectivity = args[:static_service_ip_connectivity] if args.key?(:static_service_ip_connectivity)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2226,6 +2238,11 @@ module Google
         # @return [String]
         attr_accessor :source_connection_profile
       
+        # SQLServer data source configuration
+        # Corresponds to the JSON property `sqlServerSourceConfig`
+        # @return [Google::Apis::DatastreamV1::SqlServerSourceConfig]
+        attr_accessor :sql_server_source_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2236,6 +2253,7 @@ module Google
           @oracle_source_config = args[:oracle_source_config] if args.key?(:oracle_source_config)
           @postgresql_source_config = args[:postgresql_source_config] if args.key?(:postgresql_source_config)
           @source_connection_profile = args[:source_connection_profile] if args.key?(:source_connection_profile)
+          @sql_server_source_config = args[:sql_server_source_config] if args.key?(:sql_server_source_config)
         end
       end
       
@@ -2278,6 +2296,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlObjectIdentifier]
         attr_accessor :postgresql_identifier
       
+        # SQLServer data source object identifier.
+        # Corresponds to the JSON property `sqlServerIdentifier`
+        # @return [Google::Apis::DatastreamV1::SqlServerObjectIdentifier]
+        attr_accessor :sql_server_identifier
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2287,6 +2310,7 @@ module Google
           @mysql_identifier = args[:mysql_identifier] if args.key?(:mysql_identifier)
           @oracle_identifier = args[:oracle_identifier] if args.key?(:oracle_identifier)
           @postgresql_identifier = args[:postgresql_identifier] if args.key?(:postgresql_identifier)
+          @sql_server_identifier = args[:sql_server_identifier] if args.key?(:sql_server_identifier)
         end
       end
       
@@ -2312,6 +2336,244 @@ module Google
         def update!(**args)
           @mysql_log_position = args[:mysql_log_position] if args.key?(:mysql_log_position)
           @oracle_scn_position = args[:oracle_scn_position] if args.key?(:oracle_scn_position)
+        end
+      end
+      
+      # SQLServer Column.
+      class SqlServerColumn
+        include Google::Apis::Core::Hashable
+      
+        # Column name.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # The SQLServer data type.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Column length.
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # Whether or not the column can accept a null value.
+        # Corresponds to the JSON property `nullable`
+        # @return [Boolean]
+        attr_accessor :nullable
+        alias_method :nullable?, :nullable
+      
+        # The ordinal position of the column in the table.
+        # Corresponds to the JSON property `ordinalPosition`
+        # @return [Fixnum]
+        attr_accessor :ordinal_position
+      
+        # Column precision.
+        # Corresponds to the JSON property `precision`
+        # @return [Fixnum]
+        attr_accessor :precision
+      
+        # Whether or not the column represents a primary key.
+        # Corresponds to the JSON property `primaryKey`
+        # @return [Boolean]
+        attr_accessor :primary_key
+        alias_method :primary_key?, :primary_key
+      
+        # Column scale.
+        # Corresponds to the JSON property `scale`
+        # @return [Fixnum]
+        attr_accessor :scale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @length = args[:length] if args.key?(:length)
+          @nullable = args[:nullable] if args.key?(:nullable)
+          @ordinal_position = args[:ordinal_position] if args.key?(:ordinal_position)
+          @precision = args[:precision] if args.key?(:precision)
+          @primary_key = args[:primary_key] if args.key?(:primary_key)
+          @scale = args[:scale] if args.key?(:scale)
+        end
+      end
+      
+      # SQLServer data source object identifier.
+      class SqlServerObjectIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # Required. The schema name.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Required. The table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema = args[:schema] if args.key?(:schema)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # SQLServer database profile
+      class SqlServerProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Database for the SQLServer connection.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Required. Hostname for the SQLServer connection.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Required. Password for the SQLServer connection.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Port for the SQLServer connection, default value is 1433.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Required. Username for the SQLServer connection.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @password = args[:password] if args.key?(:password)
+          @port = args[:port] if args.key?(:port)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # SQLServer database structure.
+      class SqlServerRdbms
+        include Google::Apis::Core::Hashable
+      
+        # SQLServer schemas in the database server.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::DatastreamV1::SqlServerSchema>]
+        attr_accessor :schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
+      # SQLServer schema.
+      class SqlServerSchema
+        include Google::Apis::Core::Hashable
+      
+        # Schema name.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Tables in the schema.
+        # Corresponds to the JSON property `tables`
+        # @return [Array<Google::Apis::DatastreamV1::SqlServerTable>]
+        attr_accessor :tables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema = args[:schema] if args.key?(:schema)
+          @tables = args[:tables] if args.key?(:tables)
+        end
+      end
+      
+      # SQLServer data source configuration
+      class SqlServerSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # SQLServer database structure.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
+        attr_accessor :exclude_objects
+      
+        # SQLServer database structure.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
+        attr_accessor :include_objects
+      
+        # Max concurrent backfill tasks.
+        # Corresponds to the JSON property `maxConcurrentBackfillTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_backfill_tasks
+      
+        # Max concurrent CDC tasks.
+        # Corresponds to the JSON property `maxConcurrentCdcTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_cdc_tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
+          @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
+        end
+      end
+      
+      # SQLServer table.
+      class SqlServerTable
+        include Google::Apis::Core::Hashable
+      
+        # SQLServer columns in the schema. When unspecified as part of include/exclude
+        # objects, includes/excludes everything.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::DatastreamV1::SqlServerColumn>]
+        attr_accessor :columns
+      
+        # Table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @table = args[:table] if args.key?(:table)
         end
       end
       
