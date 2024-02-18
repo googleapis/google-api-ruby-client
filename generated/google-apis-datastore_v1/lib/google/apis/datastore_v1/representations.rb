@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExplainOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Filter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -626,6 +632,13 @@ module Google
       
           property :update_time, as: 'updateTime'
           property :version, :numeric_string => true, as: 'version'
+        end
+      end
+      
+      class ExplainOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analyze, as: 'analyze'
         end
       end
       
@@ -1136,6 +1149,8 @@ module Google
           property :aggregation_query, as: 'aggregationQuery', class: Google::Apis::DatastoreV1::AggregationQuery, decorator: Google::Apis::DatastoreV1::AggregationQuery::Representation
       
           property :database_id, as: 'databaseId'
+          property :explain_options, as: 'explainOptions', class: Google::Apis::DatastoreV1::ExplainOptions, decorator: Google::Apis::DatastoreV1::ExplainOptions::Representation
+      
           property :gql_query, as: 'gqlQuery', class: Google::Apis::DatastoreV1::GqlQuery, decorator: Google::Apis::DatastoreV1::GqlQuery::Representation
       
           property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1::PartitionId, decorator: Google::Apis::DatastoreV1::PartitionId::Representation
@@ -1160,6 +1175,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :database_id, as: 'databaseId'
+          property :explain_options, as: 'explainOptions', class: Google::Apis::DatastoreV1::ExplainOptions, decorator: Google::Apis::DatastoreV1::ExplainOptions::Representation
+      
           property :gql_query, as: 'gqlQuery', class: Google::Apis::DatastoreV1::GqlQuery, decorator: Google::Apis::DatastoreV1::GqlQuery::Representation
       
           property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1::PartitionId, decorator: Google::Apis::DatastoreV1::PartitionId::Representation
