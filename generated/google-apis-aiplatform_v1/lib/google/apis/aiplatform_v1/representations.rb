@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiNlLlmProtoServiceUsageMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1444,6 +1450,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1FeatureViewSyncSyncSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1Featurestore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1619,6 +1631,30 @@ module Google
       end
       
       class GoogleCloudAiplatformV1GenericOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GoogleSearchRetrieval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GroundingAttribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GroundingAttributionWeb
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GroundingMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2596,19 +2632,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2987,6 +3011,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1ResumeScheduleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1Retrieval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4090,6 +4120,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1Segment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1ShieldedVmConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4595,6 +4631,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1Value
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1VertexAiSearch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5419,7 +5461,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blocked, as: 'blocked'
           property :category, as: 'category'
+          collection :influential_terms, as: 'influentialTerms', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm::Representation
+      
           property :probability, as: 'probability'
+          property :probability_score, as: 'probabilityScore'
+          property :severity, as: 'severity'
+          property :severity_score, as: 'severityScore'
+        end
+      end
+      
+      class CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :begin_offset, as: 'beginOffset'
+          property :confidence, as: 'confidence'
+          property :source, as: 'source'
+          property :term, as: 'term'
         end
       end
       
@@ -5967,6 +6024,8 @@ module Google
       
           property :finish_message, as: 'finishMessage'
           property :finish_reason, as: 'finishReason'
+          property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingMetadata, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingMetadata::Representation
+      
           property :index, as: 'index'
           collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating::Representation
       
@@ -6281,7 +6340,6 @@ module Google
           property :pipeline_job, as: 'pipelineJob', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJob, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJob::Representation
       
           property :pipeline_job_id, as: 'pipelineJobId'
-          property :preflight_validations, as: 'preflightValidations'
         end
       end
       
@@ -6783,6 +6841,8 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :predict_request_response_logging_config, as: 'predictRequestResponseLoggingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig::Representation
+      
+          property :private_service_connect_config, as: 'privateServiceConnectConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrivateServiceConnectConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrivateServiceConnectConfig::Representation
       
           hash :traffic_split, as: 'trafficSplit'
           property :update_time, as: 'updateTime'
@@ -7451,6 +7511,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :feature_groups, as: 'featureGroups', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup::Representation
       
+          property :project_number, :numeric_string => true, as: 'projectNumber'
         end
       end
       
@@ -7471,6 +7532,8 @@ module Google
           property :name, as: 'name'
           property :run_time, as: 'runTime', class: Google::Apis::AiplatformV1::GoogleTypeInterval, decorator: Google::Apis::AiplatformV1::GoogleTypeInterval::Representation
       
+          property :sync_summary, as: 'syncSummary', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncSyncSummary, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncSyncSummary::Representation
+      
         end
       end
       
@@ -7478,6 +7541,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cron, as: 'cron'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FeatureViewSyncSyncSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :row_synced, :numeric_string => true, as: 'rowSynced'
+          property :total_slot, :numeric_string => true, as: 'totalSlot'
         end
       end
       
@@ -7767,6 +7838,41 @@ module Google
           collection :partial_failures, as: 'partialFailures', class: Google::Apis::AiplatformV1::GoogleRpcStatus, decorator: Google::Apis::AiplatformV1::GoogleRpcStatus::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GoogleSearchRetrieval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_attribution, as: 'disableAttribution'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GroundingAttribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_score, as: 'confidenceScore'
+          property :segment, as: 'segment', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Segment, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Segment::Representation
+      
+          property :web, as: 'web', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttributionWeb, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttributionWeb::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GroundingAttributionWeb
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GroundingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :grounding_attributions, as: 'groundingAttributions', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttribution, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttribution::Representation
+      
+          collection :web_search_queries, as: 'webSearchQueries'
         end
       end
       
@@ -9509,8 +9615,6 @@ module Google
       class GoogleCloudAiplatformV1PipelineJobRuntimeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :default_runtime, as: 'defaultRuntime', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime::Representation
-      
           property :failure_policy, as: 'failurePolicy'
           property :gcs_output_directory, as: 'gcsOutputDirectory'
           hash :input_artifacts, as: 'inputArtifacts', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact::Representation
@@ -9521,25 +9625,10 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :persistent_resource_runtime_detail, as: 'persistentResourceRuntimeDetail', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail::Representation
-      
-        end
-      end
-      
       class GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_id, as: 'artifactId'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :persistent_resource_name, as: 'persistentResourceName'
         end
       end
       
@@ -10129,6 +10218,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :catch_up, as: 'catchUp'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1Retrieval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_attribution, as: 'disableAttribution'
+          property :vertex_ai_search, as: 'vertexAiSearch', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexAiSearch, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexAiSearch::Representation
+      
         end
       end
       
@@ -11944,6 +12042,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1Segment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_index, as: 'endIndex'
+          property :part_index, as: 'partIndex'
+          property :start_index, as: 'startIndex'
+        end
+      end
+      
       class GoogleCloudAiplatformV1ShieldedVmConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12458,6 +12565,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration::Representation
       
+          property :google_search_retrieval, as: 'googleSearchRetrieval', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleSearchRetrieval, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleSearchRetrieval::Representation
+      
+          property :retrieval, as: 'retrieval', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Retrieval, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Retrieval::Representation
+      
         end
       end
       
@@ -12764,6 +12875,13 @@ module Google
           property :double_value, as: 'doubleValue'
           property :int_value, :numeric_string => true, as: 'intValue'
           property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1VertexAiSearch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :datastore, as: 'datastore'
         end
       end
       
@@ -13581,6 +13699,7 @@ module Google
           property :finish_reason, as: 'finishReason'
           property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata::Representation
       
+          property :is_code, as: 'isCode'
           property :is_fallback, as: 'isFallback'
           property :langid_result, as: 'langidResult', class: Google::Apis::AiplatformV1::NlpSaftLangIdResult, decorator: Google::Apis::AiplatformV1::NlpSaftLangIdResult::Representation
       

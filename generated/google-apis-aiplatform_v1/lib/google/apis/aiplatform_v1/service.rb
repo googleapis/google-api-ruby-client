@@ -5099,7 +5099,7 @@ module Google
         #   to the resource, not the full request. A field will be overwritten if it is in
         #   the mask. If the user does not provide a mask then only the non-empty fields
         #   present in the request will be overwritten. Set the update_mask to `*` to
-        #   override all fields. Updatable fields: * `labels`
+        #   override all fields. Updatable fields: * `labels` * `serviceAgentType`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13725,9 +13725,6 @@ module Google
         #   the PipelineJob name. If not provided, an ID will be automatically generated.
         #   This value should be less than 128 characters, and valid characters are `/a-z-/
         #   `.
-        # @param [Boolean] preflight_validations
-        #   Optional. Whether to do component level validations before job creation.
-        #   Currently we only support Google First Party Component/Pipelines.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13745,7 +13742,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_pipeline_job(parent, google_cloud_aiplatform_v1_pipeline_job_object = nil, pipeline_job_id: nil, preflight_validations: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_pipeline_job(parent, google_cloud_aiplatform_v1_pipeline_job_object = nil, pipeline_job_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/pipelineJobs', options)
           command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJob::Representation
           command.request_object = google_cloud_aiplatform_v1_pipeline_job_object
@@ -13753,7 +13750,6 @@ module Google
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJob
           command.params['parent'] = parent unless parent.nil?
           command.query['pipelineJobId'] = pipeline_job_id unless pipeline_job_id.nil?
-          command.query['preflightValidations'] = preflight_validations unless preflight_validations.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
