@@ -1911,6 +1911,11 @@ module Google
       class ChannelToStoreLinkDetails
         include Google::Apis::Core::Hashable
       
+        # Information specific to billing.
+        # Corresponds to the JSON property `billingDetails`
+        # @return [Google::Apis::YoutubeV3::ChannelToStoreLinkDetailsBillingDetails]
+        attr_accessor :billing_details
+      
         # Google Merchant Center id of the store.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
@@ -1932,9 +1937,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billing_details = args[:billing_details] if args.key?(:billing_details)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @store_name = args[:store_name] if args.key?(:store_name)
           @store_url = args[:store_url] if args.key?(:store_url)
+        end
+      end
+      
+      # Information specific to billing.
+      class ChannelToStoreLinkDetailsBillingDetails
+        include Google::Apis::Core::Hashable
+      
+        # The current billing profile status.
+        # Corresponds to the JSON property `billingStatus`
+        # @return [String]
+        attr_accessor :billing_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_status = args[:billing_status] if args.key?(:billing_status)
         end
       end
       
@@ -4308,7 +4333,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Next ID: 33
+        # Next ID: 34
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::LiveChatMessageSnippet]
         attr_accessor :snippet
@@ -4505,7 +4530,7 @@ module Google
         end
       end
       
-      # Next ID: 33
+      # Next ID: 34
       class LiveChatMessageSnippet
         include Google::Apis::Core::Hashable
       
@@ -4518,7 +4543,8 @@ module Google
         # messageDeletedEvent - the moderator that took the action messageRetractedEvent
         # - the author that retracted their message userBannedEvent - the moderator that
         # took the action superChatEvent - the user that made the purchase
-        # superStickerEvent - the user that made the purchase
+        # superStickerEvent - the user that made the purchase pollEvent - the user that
+        # created the poll
         # Corresponds to the JSON property `authorChannelId`
         # @return [String]
         attr_accessor :author_channel_id
@@ -4581,6 +4607,11 @@ module Google
         # @return [Google::Apis::YoutubeV3::LiveChatNewSponsorDetails]
         attr_accessor :new_sponsor_details
       
+        # Details about the poll event, this is only set if the type is 'pollEvent'.
+        # Corresponds to the JSON property `pollDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatPollDetails]
+        attr_accessor :poll_details
+      
         # The date and time when the message was orignally published.
         # Corresponds to the JSON property `publishedAt`
         # @return [DateTime]
@@ -4632,6 +4663,7 @@ module Google
           @message_deleted_details = args[:message_deleted_details] if args.key?(:message_deleted_details)
           @message_retracted_details = args[:message_retracted_details] if args.key?(:message_retracted_details)
           @new_sponsor_details = args[:new_sponsor_details] if args.key?(:new_sponsor_details)
+          @poll_details = args[:poll_details] if args.key?(:poll_details)
           @published_at = args[:published_at] if args.key?(:published_at)
           @super_chat_details = args[:super_chat_details] if args.key?(:super_chat_details)
           @super_sticker_details = args[:super_sticker_details] if args.key?(:super_sticker_details)
@@ -4803,6 +4835,81 @@ module Google
         def update!(**args)
           @is_upgrade = args[:is_upgrade] if args.key?(:is_upgrade)
           @member_level_name = args[:member_level_name] if args.key?(:member_level_name)
+        end
+      end
+      
+      # 
+      class LiveChatPollDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::YoutubeV3::LiveChatPollDetailsPollMetadata]
+        attr_accessor :metadata
+      
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class LiveChatPollDetailsPollMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The options will be returned in the order that is displayed in 1P
+        # Corresponds to the JSON property `options`
+        # @return [Array<Google::Apis::YoutubeV3::LiveChatPollDetailsPollMetadataPollOption>]
+        attr_accessor :options
+      
+        # 
+        # Corresponds to the JSON property `questionText`
+        # @return [String]
+        attr_accessor :question_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @options = args[:options] if args.key?(:options)
+          @question_text = args[:question_text] if args.key?(:question_text)
+        end
+      end
+      
+      # 
+      class LiveChatPollDetailsPollMetadataPollOption
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `optionText`
+        # @return [String]
+        attr_accessor :option_text
+      
+        # 
+        # Corresponds to the JSON property `tally`
+        # @return [Fixnum]
+        attr_accessor :tally
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @option_text = args[:option_text] if args.key?(:option_text)
+          @tally = args[:tally] if args.key?(:tally)
         end
       end
       
