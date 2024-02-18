@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalyzeOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoscalingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -604,6 +610,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepairNodeGroupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepositoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -861,6 +873,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_count, as: 'acceleratorCount'
           property :accelerator_type_uri, as: 'acceleratorTypeUri'
+        end
+      end
+      
+      class AnalyzeOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analyzed_workload_name, as: 'analyzedWorkloadName'
+          property :analyzed_workload_type, as: 'analyzedWorkloadType'
+          property :analyzed_workload_uuid, as: 'analyzedWorkloadUuid'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :done_time, as: 'doneTime'
+          hash :labels, as: 'labels'
+          collection :warnings, as: 'warnings'
         end
       end
       
@@ -1953,6 +1979,15 @@ module Google
           collection :node_pools, as: 'nodePools', class: Google::Apis::DataprocV1::NodePool, decorator: Google::Apis::DataprocV1::NodePool::Representation
       
           property :parent_operation_id, as: 'parentOperationId'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class RepairNodeGroupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instance_names, as: 'instanceNames'
+          property :repair_action, as: 'repairAction'
           property :request_id, as: 'requestId'
         end
       end
