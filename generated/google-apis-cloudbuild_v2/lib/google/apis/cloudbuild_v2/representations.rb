@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BitbucketCloudConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BitbucketDataCenterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +527,34 @@ module Google
         end
       end
       
+      class BitbucketCloudConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorizer_credential, as: 'authorizerCredential', class: Google::Apis::CloudbuildV2::UserCredential, decorator: Google::Apis::CloudbuildV2::UserCredential::Representation
+      
+          property :read_authorizer_credential, as: 'readAuthorizerCredential', class: Google::Apis::CloudbuildV2::UserCredential, decorator: Google::Apis::CloudbuildV2::UserCredential::Representation
+      
+          property :webhook_secret_secret_version, as: 'webhookSecretSecretVersion'
+          property :workspace, as: 'workspace'
+        end
+      end
+      
+      class BitbucketDataCenterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorizer_credential, as: 'authorizerCredential', class: Google::Apis::CloudbuildV2::UserCredential, decorator: Google::Apis::CloudbuildV2::UserCredential::Representation
+      
+          property :host_uri, as: 'hostUri'
+          property :read_authorizer_credential, as: 'readAuthorizerCredential', class: Google::Apis::CloudbuildV2::UserCredential, decorator: Google::Apis::CloudbuildV2::UserCredential::Representation
+      
+          property :server_version, as: 'serverVersion'
+          property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::CloudbuildV2::GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig, decorator: Google::Apis::CloudbuildV2::GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig::Representation
+      
+          property :ssl_ca, as: 'sslCa'
+          property :webhook_secret_secret_version, as: 'webhookSecretSecretVersion'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -544,6 +584,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :bitbucket_cloud_config, as: 'bitbucketCloudConfig', class: Google::Apis::CloudbuildV2::BitbucketCloudConfig, decorator: Google::Apis::CloudbuildV2::BitbucketCloudConfig::Representation
+      
+          property :bitbucket_data_center_config, as: 'bitbucketDataCenterConfig', class: Google::Apis::CloudbuildV2::BitbucketDataCenterConfig, decorator: Google::Apis::CloudbuildV2::BitbucketDataCenterConfig::Representation
+      
           property :create_time, as: 'createTime'
           property :disabled, as: 'disabled'
           property :etag, as: 'etag'
@@ -887,6 +931,7 @@ module Google
       
           property :provenance, as: 'provenance', class: Google::Apis::CloudbuildV2::Provenance, decorator: Google::Apis::CloudbuildV2::Provenance::Representation
       
+          property :record, as: 'record'
           property :resolved_pipeline_spec, as: 'resolvedPipelineSpec', class: Google::Apis::CloudbuildV2::PipelineSpec, decorator: Google::Apis::CloudbuildV2::PipelineSpec::Representation
       
           property :security, as: 'security', class: Google::Apis::CloudbuildV2::Security, decorator: Google::Apis::CloudbuildV2::Security::Representation

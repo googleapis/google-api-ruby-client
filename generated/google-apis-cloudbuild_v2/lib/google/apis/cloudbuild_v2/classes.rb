@@ -232,6 +232,107 @@ module Google
         end
       end
       
+      # Configuration for connections to Bitbucket Cloud.
+      class BitbucketCloudConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `authorizerCredential`
+        # @return [Google::Apis::CloudbuildV2::UserCredential]
+        attr_accessor :authorizer_credential
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `readAuthorizerCredential`
+        # @return [Google::Apis::CloudbuildV2::UserCredential]
+        attr_accessor :read_authorizer_credential
+      
+        # Required. SecretManager resource containing the webhook secret used to verify
+        # webhook events, formatted as `projects/*/secrets/*/versions/*`.
+        # Corresponds to the JSON property `webhookSecretSecretVersion`
+        # @return [String]
+        attr_accessor :webhook_secret_secret_version
+      
+        # Required. The Bitbucket Cloud Workspace ID to be connected to Google Cloud
+        # Platform.
+        # Corresponds to the JSON property `workspace`
+        # @return [String]
+        attr_accessor :workspace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorizer_credential = args[:authorizer_credential] if args.key?(:authorizer_credential)
+          @read_authorizer_credential = args[:read_authorizer_credential] if args.key?(:read_authorizer_credential)
+          @webhook_secret_secret_version = args[:webhook_secret_secret_version] if args.key?(:webhook_secret_secret_version)
+          @workspace = args[:workspace] if args.key?(:workspace)
+        end
+      end
+      
+      # Configuration for connections to Bitbucket Data Center.
+      class BitbucketDataCenterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `authorizerCredential`
+        # @return [Google::Apis::CloudbuildV2::UserCredential]
+        attr_accessor :authorizer_credential
+      
+        # Required. The URI of the Bitbucket Data Center instance or cluster this
+        # connection is for.
+        # Corresponds to the JSON property `hostUri`
+        # @return [String]
+        attr_accessor :host_uri
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `readAuthorizerCredential`
+        # @return [Google::Apis::CloudbuildV2::UserCredential]
+        attr_accessor :read_authorizer_credential
+      
+        # Output only. Version of the Bitbucket Data Center running on the `host_uri`.
+        # Corresponds to the JSON property `serverVersion`
+        # @return [String]
+        attr_accessor :server_version
+      
+        # ServiceDirectoryConfig represents Service Directory configuration for a
+        # connection.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::CloudbuildV2::GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
+        # Optional. SSL certificate to use for requests to the Bitbucket Data Center.
+        # Corresponds to the JSON property `sslCa`
+        # @return [String]
+        attr_accessor :ssl_ca
+      
+        # Required. Immutable. SecretManager resource containing the webhook secret used
+        # to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+        # Corresponds to the JSON property `webhookSecretSecretVersion`
+        # @return [String]
+        attr_accessor :webhook_secret_secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorizer_credential = args[:authorizer_credential] if args.key?(:authorizer_credential)
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
+          @read_authorizer_credential = args[:read_authorizer_credential] if args.key?(:read_authorizer_credential)
+          @server_version = args[:server_version] if args.key?(:server_version)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
+          @ssl_ca = args[:ssl_ca] if args.key?(:ssl_ca)
+          @webhook_secret_secret_version = args[:webhook_secret_secret_version] if args.key?(:webhook_secret_secret_version)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -309,8 +410,8 @@ module Google
         end
       end
       
-      # A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or
-      # GitLab.
+      # A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center,
+      # Bitbucket Cloud or GitLab.
       class Connection
         include Google::Apis::Core::Hashable
       
@@ -318,6 +419,16 @@ module Google
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
+      
+        # Configuration for connections to Bitbucket Cloud.
+        # Corresponds to the JSON property `bitbucketCloudConfig`
+        # @return [Google::Apis::CloudbuildV2::BitbucketCloudConfig]
+        attr_accessor :bitbucket_cloud_config
+      
+        # Configuration for connections to Bitbucket Data Center.
+        # Corresponds to the JSON property `bitbucketDataCenterConfig`
+        # @return [Google::Apis::CloudbuildV2::BitbucketDataCenterConfig]
+        attr_accessor :bitbucket_data_center_config
       
         # Output only. Server assigned timestamp for when the connection was created.
         # Corresponds to the JSON property `createTime`
@@ -386,6 +497,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @bitbucket_cloud_config = args[:bitbucket_cloud_config] if args.key?(:bitbucket_cloud_config)
+          @bitbucket_data_center_config = args[:bitbucket_data_center_config] if args.key?(:bitbucket_data_center_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @disabled = args[:disabled] if args.key?(:disabled)
           @etag = args[:etag] if args.key?(:etag)
@@ -1569,6 +1682,12 @@ module Google
         # @return [Google::Apis::CloudbuildV2::Provenance]
         attr_accessor :provenance
       
+        # Output only. The `Record` of this `PipelineRun`. Format: `projects/`project`/
+        # locations/`location`/results/`result_id`/records/`record_id``
+        # Corresponds to the JSON property `record`
+        # @return [String]
+        attr_accessor :record
+      
         # PipelineSpec defines the desired state of Pipeline.
         # Corresponds to the JSON property `resolvedPipelineSpec`
         # @return [Google::Apis::CloudbuildV2::PipelineSpec]
@@ -1652,6 +1771,7 @@ module Google
           @pipeline_run_status = args[:pipeline_run_status] if args.key?(:pipeline_run_status)
           @pipeline_spec = args[:pipeline_spec] if args.key?(:pipeline_spec)
           @provenance = args[:provenance] if args.key?(:provenance)
+          @record = args[:record] if args.key?(:record)
           @resolved_pipeline_spec = args[:resolved_pipeline_spec] if args.key?(:resolved_pipeline_spec)
           @security = args[:security] if args.key?(:security)
           @service_account = args[:service_account] if args.key?(:service_account)
