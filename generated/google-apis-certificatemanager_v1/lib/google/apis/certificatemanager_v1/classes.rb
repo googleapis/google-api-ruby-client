@@ -438,6 +438,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Immutable. Type of DnsAuthorization. If unset during resource creation the
+        # following default will be used: - in location global: FIXED_RECORD.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Output only. The last update timestamp of a DnsAuthorization.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -455,6 +461,7 @@ module Google
           @domain = args[:domain] if args.key?(:domain)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

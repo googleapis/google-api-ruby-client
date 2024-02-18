@@ -318,6 +318,7 @@ module Google
           property :domain, as: 'domain'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :type, as: 'type'
           property :update_time, as: 'updateTime'
         end
       end
