@@ -4343,9 +4343,7 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # Optional. Enable confidential storage on Hyperdisk. boot_disk_kms_key is
-        # required when enable_confidential_storage is true. This is only available for
-        # private preview.
+        # Optional. Reserved for future use.
         # Corresponds to the JSON property `enableConfidentialStorage`
         # @return [Boolean]
         attr_accessor :enable_confidential_storage
@@ -7523,6 +7521,11 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # QueuedProvisioning defines the queued provisioning used by the node pool.
+        # Corresponds to the JSON property `queuedProvisioning`
+        # @return [Google::Apis::ContainerV1beta1::QueuedProvisioning]
+        attr_accessor :queued_provisioning
+      
         # Collection of [GCP labels](https://cloud.google.com/resource-manager/docs/
         # creating-managing-labels).
         # Corresponds to the JSON property `resourceLabels`
@@ -7632,6 +7635,7 @@ module Google
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @queued_provisioning = args[:queued_provisioning] if args.key?(:queued_provisioning)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @tags = args[:tags] if args.key?(:tags)
