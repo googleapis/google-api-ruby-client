@@ -559,6 +559,12 @@ module Google
         # @return [String]
         attr_accessor :connected_work_and_personal_app
       
+        # Optional. Whether the app is allowed to act as a credential provider on
+        # Android 14 and above.
+        # Corresponds to the JSON property `credentialProviderPolicy`
+        # @return [String]
+        attr_accessor :credential_provider_policy
+      
         # The default policy for all permissions requested by the app. If specified,
         # this overrides the policy-level default_permission_policy which applies to all
         # apps. It does not override the permission_grants which applies to all apps.
@@ -597,11 +603,11 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::InstallConstraint>]
         attr_accessor :install_constraint
       
-        # Optional. Amongst apps with installTypeset to:FORCE_INSTALLEDPREINSTALLED this
-        # controls the relative priority of installation. A value of 0 (default) means
-        # this app has no priority over other apps. For values between 1 and 10,000, a
-        # lower value means a higher priority. Values outside of the range 0 to 10,000
-        # inclusive are rejected.
+        # Optional. Amongst apps with installType set to: FORCE_INSTALLED
+        # PREINSTALLEDthis controls the relative priority of installation. A value of 0 (
+        # default) means this app has no priority over other apps. For values between 1
+        # and 10,000, a lower value means a higher priority. Values outside of the range
+        # 0 to 10,000 inclusive are rejected.
         # Corresponds to the JSON property `installPriority`
         # @return [Fixnum]
         attr_accessor :install_priority
@@ -673,6 +679,7 @@ module Google
           @always_on_vpn_lockdown_exemption = args[:always_on_vpn_lockdown_exemption] if args.key?(:always_on_vpn_lockdown_exemption)
           @auto_update_mode = args[:auto_update_mode] if args.key?(:auto_update_mode)
           @connected_work_and_personal_app = args[:connected_work_and_personal_app] if args.key?(:connected_work_and_personal_app)
+          @credential_provider_policy = args[:credential_provider_policy] if args.key?(:credential_provider_policy)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
           @delegated_scopes = args[:delegated_scopes] if args.key?(:delegated_scopes)
           @disabled = args[:disabled] if args.key?(:disabled)
@@ -2568,9 +2575,9 @@ module Google
         end
       end
       
-      # Amongst apps with InstallTypeset to:FORCE_INSTALLEDPREINSTALLED this defines a
-      # set of restrictions for the app installation. At least one of the fields must
-      # be set. When multiple fields are set, then all the constraints need to be
+      # Amongst apps with InstallType set to: FORCE_INSTALLED PREINSTALLEDthis defines
+      # a set of restrictions for the app installation. At least one of the fields
+      # must be set. When multiple fields are set, then all the constraints need to be
       # satisfied for the app to be installed.
       class InstallConstraint
         include Google::Apis::Core::Hashable
@@ -4288,6 +4295,15 @@ module Google
         attr_accessor :create_windows_disabled
         alias_method :create_windows_disabled?, :create_windows_disabled
       
+        # Controls which apps are allowed to act as credential providers on Android 14
+        # and above. These apps store credentials, see this (https://developer.android.
+        # com/training/sign-in/passkeys) and this (https://developer.android.com/
+        # reference/androidx/credentials/CredentialManager) for details. See also
+        # credentialProviderPolicy.
+        # Corresponds to the JSON property `credentialProviderPolicyDefault`
+        # @return [String]
+        attr_accessor :credential_provider_policy_default
+      
         # Whether configuring user credentials is disabled.
         # Corresponds to the JSON property `credentialsConfigDisabled`
         # @return [Boolean]
@@ -4565,6 +4581,12 @@ module Google
         # @return [String]
         attr_accessor :preferential_network_service
       
+        # Optional. Controls whether printing is allowed. This is supported on devices
+        # running Android 9 and above. .
+        # Corresponds to the JSON property `printingPolicy`
+        # @return [String]
+        attr_accessor :printing_policy
+      
         # Allows showing UI on a device for a user to choose a private key alias if
         # there are no matching rules in ChoosePrivateKeyRules. For devices below
         # Android P, setting this may leave enterprise keys vulnerable. This value will
@@ -4772,6 +4794,7 @@ module Google
           @choose_private_key_rules = args[:choose_private_key_rules] if args.key?(:choose_private_key_rules)
           @compliance_rules = args[:compliance_rules] if args.key?(:compliance_rules)
           @create_windows_disabled = args[:create_windows_disabled] if args.key?(:create_windows_disabled)
+          @credential_provider_policy_default = args[:credential_provider_policy_default] if args.key?(:credential_provider_policy_default)
           @credentials_config_disabled = args[:credentials_config_disabled] if args.key?(:credentials_config_disabled)
           @cross_profile_policies = args[:cross_profile_policies] if args.key?(:cross_profile_policies)
           @data_roaming_disabled = args[:data_roaming_disabled] if args.key?(:data_roaming_disabled)
@@ -4816,6 +4839,7 @@ module Google
           @play_store_mode = args[:play_store_mode] if args.key?(:play_store_mode)
           @policy_enforcement_rules = args[:policy_enforcement_rules] if args.key?(:policy_enforcement_rules)
           @preferential_network_service = args[:preferential_network_service] if args.key?(:preferential_network_service)
+          @printing_policy = args[:printing_policy] if args.key?(:printing_policy)
           @private_key_selection_enabled = args[:private_key_selection_enabled] if args.key?(:private_key_selection_enabled)
           @recommended_global_proxy = args[:recommended_global_proxy] if args.key?(:recommended_global_proxy)
           @remove_user_disabled = args[:remove_user_disabled] if args.key?(:remove_user_disabled)
