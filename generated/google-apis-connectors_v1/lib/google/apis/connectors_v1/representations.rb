@@ -1060,6 +1060,7 @@ module Google
           property :name, as: 'name'
           property :service_account, as: 'serviceAccount'
           property :spec_location, as: 'specLocation'
+          property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
       end

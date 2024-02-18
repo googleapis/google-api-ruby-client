@@ -1276,6 +1276,11 @@ module Google
         # @return [String]
         attr_accessor :spec_location
       
+        # Output only. State of the custom connector version.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1296,6 +1301,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @service_account = args[:service_account] if args.key?(:service_account)
           @spec_location = args[:spec_location] if args.key?(:spec_location)
+          @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
