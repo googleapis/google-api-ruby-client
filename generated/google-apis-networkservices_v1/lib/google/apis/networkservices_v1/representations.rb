@@ -82,6 +82,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExtensionChain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionChainExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionChainMatchCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Gateway
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -274,6 +292,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LbRouteExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LbTrafficExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEndpointPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,6 +328,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListLbRouteExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLbTrafficExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +359,12 @@ module Google
       end
       
       class ListServiceBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListServiceLbPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -365,6 +413,24 @@ module Google
       end
       
       class ServiceBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceLbPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceLbPolicyAutoCapacityDrain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceLbPolicyFailoverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,6 +616,37 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class ExtensionChain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :extensions, as: 'extensions', class: Google::Apis::NetworkservicesV1::ExtensionChainExtension, decorator: Google::Apis::NetworkservicesV1::ExtensionChainExtension::Representation
+      
+          property :match_condition, as: 'matchCondition', class: Google::Apis::NetworkservicesV1::ExtensionChainMatchCondition, decorator: Google::Apis::NetworkservicesV1::ExtensionChainMatchCondition::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class ExtensionChainExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authority, as: 'authority'
+          property :fail_open, as: 'failOpen'
+          collection :forward_headers, as: 'forwardHeaders'
+          property :name, as: 'name'
+          property :service, as: 'service'
+          collection :supported_events, as: 'supportedEvents'
+          property :timeout, as: 'timeout'
+        end
+      end
+      
+      class ExtensionChainMatchCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cel_expression, as: 'celExpression'
         end
       end
       
@@ -917,6 +1014,36 @@ module Google
         end
       end
       
+      class LbRouteExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :extension_chains, as: 'extensionChains', class: Google::Apis::NetworkservicesV1::ExtensionChain, decorator: Google::Apis::NetworkservicesV1::ExtensionChain::Representation
+      
+          collection :forwarding_rules, as: 'forwardingRules'
+          hash :labels, as: 'labels'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class LbTrafficExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :extension_chains, as: 'extensionChains', class: Google::Apis::NetworkservicesV1::ExtensionChain, decorator: Google::Apis::NetworkservicesV1::ExtensionChain::Representation
+      
+          collection :forwarding_rules, as: 'forwardingRules'
+          hash :labels, as: 'labels'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ListEndpointPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -954,6 +1081,26 @@ module Google
         end
       end
       
+      class ListLbRouteExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :lb_route_extensions, as: 'lbRouteExtensions', class: Google::Apis::NetworkservicesV1::LbRouteExtension, decorator: Google::Apis::NetworkservicesV1::LbRouteExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListLbTrafficExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :lb_traffic_extensions, as: 'lbTrafficExtensions', class: Google::Apis::NetworkservicesV1::LbTrafficExtension, decorator: Google::Apis::NetworkservicesV1::LbTrafficExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -986,6 +1133,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :service_bindings, as: 'serviceBindings', class: Google::Apis::NetworkservicesV1::ServiceBinding, decorator: Google::Apis::NetworkservicesV1::ServiceBinding::Representation
+      
+        end
+      end
+      
+      class ListServiceLbPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :service_lb_policies, as: 'serviceLbPolicies', class: Google::Apis::NetworkservicesV1::ServiceLbPolicy, decorator: Google::Apis::NetworkservicesV1::ServiceLbPolicy::Representation
       
         end
       end
@@ -1080,6 +1236,36 @@ module Google
           property :service, as: 'service'
           property :service_id, as: 'serviceId'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ServiceLbPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_capacity_drain, as: 'autoCapacityDrain', class: Google::Apis::NetworkservicesV1::ServiceLbPolicyAutoCapacityDrain, decorator: Google::Apis::NetworkservicesV1::ServiceLbPolicyAutoCapacityDrain::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :failover_config, as: 'failoverConfig', class: Google::Apis::NetworkservicesV1::ServiceLbPolicyFailoverConfig, decorator: Google::Apis::NetworkservicesV1::ServiceLbPolicyFailoverConfig::Representation
+      
+          hash :labels, as: 'labels'
+          property :load_balancing_algorithm, as: 'loadBalancingAlgorithm'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ServiceLbPolicyAutoCapacityDrain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+        end
+      end
+      
+      class ServiceLbPolicyFailoverConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failover_health_threshold, as: 'failoverHealthThreshold'
         end
       end
       
