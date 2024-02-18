@@ -2648,6 +2648,11 @@ module Google
         # @return [String]
         attr_accessor :stage
       
+        # Supported operating systems for the runtime, e.g., 'ubuntu22', etc.
+        # Corresponds to the JSON property `supportedOperatingSystems`
+        # @return [Array<String>]
+        attr_accessor :supported_operating_systems
+      
         # Warning messages, e.g., a deprecation warning.
         # Corresponds to the JSON property `warnings`
         # @return [Array<String>]
@@ -2665,6 +2670,7 @@ module Google
           @environment = args[:environment] if args.key?(:environment)
           @name = args[:name] if args.key?(:name)
           @stage = args[:stage] if args.key?(:stage)
+          @supported_operating_systems = args[:supported_operating_systems] if args.key?(:supported_operating_systems)
           @warnings = args[:warnings] if args.key?(:warnings)
         end
       end

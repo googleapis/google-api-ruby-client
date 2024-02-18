@@ -1177,6 +1177,7 @@ module Google
           property :environment, as: 'environment'
           property :name, as: 'name'
           property :stage, as: 'stage'
+          collection :supported_operating_systems, as: 'supportedOperatingSystems'
           collection :warnings, as: 'warnings'
         end
       end
