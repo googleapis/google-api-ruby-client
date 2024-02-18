@@ -2055,6 +2055,12 @@ module Google
         # @return [Google::Apis::TestingV1::DirectAccessVersionInfo]
         attr_accessor :direct_access_version_info
       
+        # Output only. The estimated wait time for a single interactive device session
+        # using Direct Access.
+        # Corresponds to the JSON property `interactiveDeviceAvailabilityEstimate`
+        # @return [String]
+        attr_accessor :interactive_device_availability_estimate
+      
         # An Android version.
         # Corresponds to the JSON property `versionId`
         # @return [String]
@@ -2068,6 +2074,7 @@ module Google
         def update!(**args)
           @device_capacity = args[:device_capacity] if args.key?(:device_capacity)
           @direct_access_version_info = args[:direct_access_version_info] if args.key?(:direct_access_version_info)
+          @interactive_device_availability_estimate = args[:interactive_device_availability_estimate] if args.key?(:interactive_device_availability_estimate)
           @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
