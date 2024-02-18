@@ -550,6 +550,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :ordinal_position
       
+        # Represents the type of a field element.
+        # Corresponds to the JSON property `rangeElementType`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchemaFieldElementType]
+        attr_accessor :range_element_type
+      
         # Optional. Schema of sub-columns. A column can have zero or more sub-columns.
         # Corresponds to the JSON property `subcolumns`
         # @return [Array<Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchema>]
@@ -575,7 +580,27 @@ module Google
           @looker_column_spec = args[:looker_column_spec] if args.key?(:looker_column_spec)
           @mode = args[:mode] if args.key?(:mode)
           @ordinal_position = args[:ordinal_position] if args.key?(:ordinal_position)
+          @range_element_type = args[:range_element_type] if args.key?(:range_element_type)
           @subcolumns = args[:subcolumns] if args.key?(:subcolumns)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents the type of a field element.
+      class GoogleCloudDatacatalogV1ColumnSchemaFieldElementType
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of a field element. See ColumnSchema.type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @type = args[:type] if args.key?(:type)
         end
       end
