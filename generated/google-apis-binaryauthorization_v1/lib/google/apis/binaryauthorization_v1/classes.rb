@@ -171,10 +171,10 @@ module Google
       class AttestationSource
         include Google::Apis::Core::Hashable
       
-        # The IDs of the GCP projects storing the SLSA attestations as Container
-        # Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of
-        # `container_analysis_attestation_projects` allowed in each `AttestationSource`
-        # is 10.
+        # The IDs of the Google Cloud projects that store the SLSA attestations as
+        # Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum
+        # number of `container_analysis_attestation_projects` allowed in each `
+        # AttestationSource` is 10.
         # Corresponds to the JSON property `containerAnalysisAttestationProjects`
         # @return [Array<String>]
         attr_accessor :container_analysis_attestation_projects
@@ -421,6 +421,12 @@ module Google
         # @return [Google::Apis::BinaryauthorizationV1::ImageFreshnessCheck]
         attr_accessor :image_freshness_check
       
+        # A Sigstore signature check, which verifies the Sigstore signature associated
+        # with an image.
+        # Corresponds to the JSON property `sigstoreSignatureCheck`
+        # @return [Google::Apis::BinaryauthorizationV1::SigstoreSignatureCheck]
+        attr_accessor :sigstore_signature_check
+      
         # Require a signed [DSSE](https://github.com/secure-systems-lab/dsse)
         # attestation with type SimpleSigning.
         # Corresponds to the JSON property `simpleSigningAttestationCheck`
@@ -455,6 +461,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @image_allowlist = args[:image_allowlist] if args.key?(:image_allowlist)
           @image_freshness_check = args[:image_freshness_check] if args.key?(:image_freshness_check)
+          @sigstore_signature_check = args[:sigstore_signature_check] if args.key?(:sigstore_signature_check)
           @simple_signing_attestation_check = args[:simple_signing_attestation_check] if args.key?(:simple_signing_attestation_check)
           @slsa_check = args[:slsa_check] if args.key?(:slsa_check)
           @trusted_directory_check = args[:trusted_directory_check] if args.key?(:trusted_directory_check)
@@ -1155,6 +1162,99 @@ module Google
         def update!(**args)
           @public_key_id = args[:public_key_id] if args.key?(:public_key_id)
           @signature = args[:signature] if args.key?(:signature)
+        end
+      end
+      
+      # A Sigstore authority, used to verify signatures that are created by Sigstore.
+      # An authority is analogous to an attestation authenticator, verifying that a
+      # signature is valid or invalid.
+      class SigstoreAuthority
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A user-provided name for this `SigstoreAuthority`. This field has no
+        # effect on the policy evaluation behavior except to improve readability of
+        # messages in evaluation results.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A bundle of Sigstore public keys, used to verify Sigstore signatures. A
+        # signature is authenticated by a `SigstorePublicKeySet` if any of the keys
+        # verify it.
+        # Corresponds to the JSON property `publicKeySet`
+        # @return [Google::Apis::BinaryauthorizationV1::SigstorePublicKeySet]
+        attr_accessor :public_key_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @public_key_set = args[:public_key_set] if args.key?(:public_key_set)
+        end
+      end
+      
+      # A Sigstore public key. `SigstorePublicKey` is the public key material used to
+      # authenticate Sigstore signatures.
+      class SigstorePublicKey
+        include Google::Apis::Core::Hashable
+      
+        # The public key material in PEM format.
+        # Corresponds to the JSON property `publicKeyPem`
+        # @return [String]
+        attr_accessor :public_key_pem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_key_pem = args[:public_key_pem] if args.key?(:public_key_pem)
+        end
+      end
+      
+      # A bundle of Sigstore public keys, used to verify Sigstore signatures. A
+      # signature is authenticated by a `SigstorePublicKeySet` if any of the keys
+      # verify it.
+      class SigstorePublicKeySet
+        include Google::Apis::Core::Hashable
+      
+        # Required. `public_keys` must have at least one entry.
+        # Corresponds to the JSON property `publicKeys`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::SigstorePublicKey>]
+        attr_accessor :public_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_keys = args[:public_keys] if args.key?(:public_keys)
+        end
+      end
+      
+      # A Sigstore signature check, which verifies the Sigstore signature associated
+      # with an image.
+      class SigstoreSignatureCheck
+        include Google::Apis::Core::Hashable
+      
+        # Required. The authorities required by this check to verify the signature. A
+        # signature only needs to be verified by one authority to pass the check.
+        # Corresponds to the JSON property `sigstoreAuthorities`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::SigstoreAuthority>]
+        attr_accessor :sigstore_authorities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sigstore_authorities = args[:sigstore_authorities] if args.key?(:sigstore_authorities)
         end
       end
       

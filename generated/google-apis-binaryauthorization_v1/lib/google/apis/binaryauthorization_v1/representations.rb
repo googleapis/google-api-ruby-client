@@ -178,6 +178,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SigstoreAuthority
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SigstorePublicKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SigstorePublicKeySet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SigstoreSignatureCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SimpleSigningAttestationCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,6 +346,8 @@ module Google
           property :image_allowlist, as: 'imageAllowlist', class: Google::Apis::BinaryauthorizationV1::ImageAllowlist, decorator: Google::Apis::BinaryauthorizationV1::ImageAllowlist::Representation
       
           property :image_freshness_check, as: 'imageFreshnessCheck', class: Google::Apis::BinaryauthorizationV1::ImageFreshnessCheck, decorator: Google::Apis::BinaryauthorizationV1::ImageFreshnessCheck::Representation
+      
+          property :sigstore_signature_check, as: 'sigstoreSignatureCheck', class: Google::Apis::BinaryauthorizationV1::SigstoreSignatureCheck, decorator: Google::Apis::BinaryauthorizationV1::SigstoreSignatureCheck::Representation
       
           property :simple_signing_attestation_check, as: 'simpleSigningAttestationCheck', class: Google::Apis::BinaryauthorizationV1::SimpleSigningAttestationCheck, decorator: Google::Apis::BinaryauthorizationV1::SimpleSigningAttestationCheck::Representation
       
@@ -494,6 +520,38 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :public_key_id, as: 'publicKeyId'
           property :signature, :base64 => true, as: 'signature'
+        end
+      end
+      
+      class SigstoreAuthority
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :public_key_set, as: 'publicKeySet', class: Google::Apis::BinaryauthorizationV1::SigstorePublicKeySet, decorator: Google::Apis::BinaryauthorizationV1::SigstorePublicKeySet::Representation
+      
+        end
+      end
+      
+      class SigstorePublicKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_key_pem, as: 'publicKeyPem'
+        end
+      end
+      
+      class SigstorePublicKeySet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :public_keys, as: 'publicKeys', class: Google::Apis::BinaryauthorizationV1::SigstorePublicKey, decorator: Google::Apis::BinaryauthorizationV1::SigstorePublicKey::Representation
+      
+        end
+      end
+      
+      class SigstoreSignatureCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sigstore_authorities, as: 'sigstoreAuthorities', class: Google::Apis::BinaryauthorizationV1::SigstoreAuthority, decorator: Google::Apis::BinaryauthorizationV1::SigstoreAuthority::Representation
+      
         end
       end
       
