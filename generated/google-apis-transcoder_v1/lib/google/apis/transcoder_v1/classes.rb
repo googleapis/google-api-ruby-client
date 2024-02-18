@@ -835,14 +835,16 @@ module Google
         attr_accessor :entropy_coder
       
         # Required. The target video frame rate in frames per second (FPS). Must be less
-        # than or equal to 120. Will default to the input frame rate if larger than the
-        # input frame rate. The API will generate an output FPS that is divisible by the
-        # input FPS, and smaller or equal to the target FPS. See [Calculating frame rate]
-        # (https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more
-        # information.
+        # than or equal to 120.
         # Corresponds to the JSON property `frameRate`
         # @return [Float]
         attr_accessor :frame_rate
+      
+        # Optional. Frame rate conversion strategy for desired frame rate. The default
+        # is `DOWNSAMPLE`.
+        # Corresponds to the JSON property `frameRateConversionStrategy`
+        # @return [String]
+        attr_accessor :frame_rate_conversion_strategy
       
         # Select the GOP size based on the specified duration. The default is `3s`. Note
         # that `gopDuration` must be less than or equal to [`segmentDuration`](#
@@ -958,6 +960,7 @@ module Google
           @enable_two_pass = args[:enable_two_pass] if args.key?(:enable_two_pass)
           @entropy_coder = args[:entropy_coder] if args.key?(:entropy_coder)
           @frame_rate = args[:frame_rate] if args.key?(:frame_rate)
+          @frame_rate_conversion_strategy = args[:frame_rate_conversion_strategy] if args.key?(:frame_rate_conversion_strategy)
           @gop_duration = args[:gop_duration] if args.key?(:gop_duration)
           @gop_frame_count = args[:gop_frame_count] if args.key?(:gop_frame_count)
           @height_pixels = args[:height_pixels] if args.key?(:height_pixels)
@@ -1051,14 +1054,16 @@ module Google
         alias_method :enable_two_pass?, :enable_two_pass
       
         # Required. The target video frame rate in frames per second (FPS). Must be less
-        # than or equal to 120. Will default to the input frame rate if larger than the
-        # input frame rate. The API will generate an output FPS that is divisible by the
-        # input FPS, and smaller or equal to the target FPS. See [Calculating frame rate]
-        # (https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more
-        # information.
+        # than or equal to 120.
         # Corresponds to the JSON property `frameRate`
         # @return [Float]
         attr_accessor :frame_rate
+      
+        # Optional. Frame rate conversion strategy for desired frame rate. The default
+        # is `DOWNSAMPLE`.
+        # Corresponds to the JSON property `frameRateConversionStrategy`
+        # @return [String]
+        attr_accessor :frame_rate_conversion_strategy
       
         # Select the GOP size based on the specified duration. The default is `3s`. Note
         # that `gopDuration` must be less than or equal to [`segmentDuration`](#
@@ -1181,6 +1186,7 @@ module Google
           @crf_level = args[:crf_level] if args.key?(:crf_level)
           @enable_two_pass = args[:enable_two_pass] if args.key?(:enable_two_pass)
           @frame_rate = args[:frame_rate] if args.key?(:frame_rate)
+          @frame_rate_conversion_strategy = args[:frame_rate_conversion_strategy] if args.key?(:frame_rate_conversion_strategy)
           @gop_duration = args[:gop_duration] if args.key?(:gop_duration)
           @gop_frame_count = args[:gop_frame_count] if args.key?(:gop_frame_count)
           @hdr10 = args[:hdr10] if args.key?(:hdr10)
@@ -2264,14 +2270,16 @@ module Google
         attr_accessor :crf_level
       
         # Required. The target video frame rate in frames per second (FPS). Must be less
-        # than or equal to 120. Will default to the input frame rate if larger than the
-        # input frame rate. The API will generate an output FPS that is divisible by the
-        # input FPS, and smaller or equal to the target FPS. See [Calculating frame rate]
-        # (https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more
-        # information.
+        # than or equal to 120.
         # Corresponds to the JSON property `frameRate`
         # @return [Float]
         attr_accessor :frame_rate
+      
+        # Optional. Frame rate conversion strategy for desired frame rate. The default
+        # is `DOWNSAMPLE`.
+        # Corresponds to the JSON property `frameRateConversionStrategy`
+        # @return [String]
+        attr_accessor :frame_rate_conversion_strategy
       
         # Select the GOP size based on the specified duration. The default is `3s`. Note
         # that `gopDuration` must be less than or equal to [`segmentDuration`](#
@@ -2352,6 +2360,7 @@ module Google
           @bitrate_bps = args[:bitrate_bps] if args.key?(:bitrate_bps)
           @crf_level = args[:crf_level] if args.key?(:crf_level)
           @frame_rate = args[:frame_rate] if args.key?(:frame_rate)
+          @frame_rate_conversion_strategy = args[:frame_rate_conversion_strategy] if args.key?(:frame_rate_conversion_strategy)
           @gop_duration = args[:gop_duration] if args.key?(:gop_duration)
           @gop_frame_count = args[:gop_frame_count] if args.key?(:gop_frame_count)
           @height_pixels = args[:height_pixels] if args.key?(:height_pixels)
