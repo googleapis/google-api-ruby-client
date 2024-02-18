@@ -939,6 +939,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Adds a message to the generic class referenced by the given class ID.
+        # @param [String] resource_id
+        #   The unique identifier for a class. This ID must be unique across all classes
+        #   from an issuer. This value should follow the format issuer ID. identifier
+        #   where the former is issued by Google and latter is chosen by you. Your unique
+        #   identifier should only include alphanumeric characters, '.', '_', or '-'.
+        # @param [Google::Apis::WalletobjectsV1::AddMessageRequest] add_message_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WalletobjectsV1::GenericClassAddMessageResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WalletobjectsV1::GenericClassAddMessageResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def addmessage_genericclass(resource_id, add_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'walletobjects/v1/genericClass/{resourceId}/addMessage', options)
+          command.request_representation = Google::Apis::WalletobjectsV1::AddMessageRequest::Representation
+          command.request_object = add_message_request_object
+          command.response_representation = Google::Apis::WalletobjectsV1::GenericClassAddMessageResponse::Representation
+          command.response_class = Google::Apis::WalletobjectsV1::GenericClassAddMessageResponse
+          command.params['resourceId'] = resource_id unless resource_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the generic class with the given class ID.
         # @param [String] resource_id
         #   The unique identifier for a class. This ID must be unique across all classes
@@ -1110,6 +1146,42 @@ module Google
           command.request_object = generic_class_object
           command.response_representation = Google::Apis::WalletobjectsV1::GenericClass::Representation
           command.response_class = Google::Apis::WalletobjectsV1::GenericClass
+          command.params['resourceId'] = resource_id unless resource_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a message to the generic object referenced by the given object ID.
+        # @param [String] resource_id
+        #   The unique identifier for an object. This ID must be unique across all classes
+        #   from an issuer. This value should follow the format issuer ID. identifier
+        #   where the former is issued by Google and latter is chosen by you. Your unique
+        #   identifier should only include alphanumeric characters, '.', '_', or '-'.
+        # @param [Google::Apis::WalletobjectsV1::AddMessageRequest] add_message_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WalletobjectsV1::GenericObjectAddMessageResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WalletobjectsV1::GenericObjectAddMessageResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def addmessage_genericobject(resource_id, add_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'walletobjects/v1/genericObject/{resourceId}/addMessage', options)
+          command.request_representation = Google::Apis::WalletobjectsV1::AddMessageRequest::Representation
+          command.request_object = add_message_request_object
+          command.response_representation = Google::Apis::WalletobjectsV1::GenericObjectAddMessageResponse::Representation
+          command.response_class = Google::Apis::WalletobjectsV1::GenericObjectAddMessageResponse
           command.params['resourceId'] = resource_id unless resource_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3395,36 +3467,6 @@ module Google
           command.response_representation = Google::Apis::WalletobjectsV1::TransitObject::Representation
           command.response_class = Google::Apis::WalletobjectsV1::TransitObject
           command.params['resourceId'] = resource_id unless resource_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Upload private data (text or URI) and returns an Id to be used in its place.
-        # @param [Google::Apis::WalletobjectsV1::UploadPrivateDataRequest] upload_private_data_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::WalletobjectsV1::UploadPrivateDataResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::WalletobjectsV1::UploadPrivateDataResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_private_content_private_data(upload_private_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'walletobjects/v1/privateContent/uploadPrivateData', options)
-          command.request_representation = Google::Apis::WalletobjectsV1::UploadPrivateDataRequest::Representation
-          command.request_object = upload_private_data_request_object
-          command.response_representation = Google::Apis::WalletobjectsV1::UploadPrivateDataResponse::Representation
-          command.response_class = Google::Apis::WalletobjectsV1::UploadPrivateDataResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

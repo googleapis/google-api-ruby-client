@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenericClassAddMessageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenericClassListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +395,12 @@ module Google
       end
       
       class GenericObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenericObjectAddMessageResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -694,18 +706,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PrivateText
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PrivateUri
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PurchaseDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -880,30 +880,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UploadPrivateDataRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UploadPrivateDataResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UploadPrivateImageRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UploadPrivateImageResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Uri
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -974,6 +950,7 @@ module Google
       class AppLinkDataAppLinkInfoAppTarget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :package_name, as: 'packageName'
           property :target_uri, as: 'targetUri', class: Google::Apis::WalletobjectsV1::Uri, decorator: Google::Apis::WalletobjectsV1::Uri::Representation
       
         end
@@ -1721,6 +1698,8 @@ module Google
       
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
+          collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
+      
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
           collection :redemption_issuers, as: 'redemptionIssuers'
           property :security_animation, as: 'securityAnimation', class: Google::Apis::WalletobjectsV1::SecurityAnimation, decorator: Google::Apis::WalletobjectsV1::SecurityAnimation::Representation
@@ -1728,6 +1707,14 @@ module Google
           collection :text_modules_data, as: 'textModulesData', class: Google::Apis::WalletobjectsV1::TextModuleData, decorator: Google::Apis::WalletobjectsV1::TextModuleData::Representation
       
           property :view_unlock_requirement, as: 'viewUnlockRequirement'
+        end
+      end
+      
+      class GenericClassAddMessageResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::WalletobjectsV1::GenericClass, decorator: Google::Apis::WalletobjectsV1::GenericClass::Representation
+      
         end
       end
       
@@ -1782,6 +1769,14 @@ module Google
           property :valid_time_interval, as: 'validTimeInterval', class: Google::Apis::WalletobjectsV1::TimeInterval, decorator: Google::Apis::WalletobjectsV1::TimeInterval::Representation
       
           property :wide_logo, as: 'wideLogo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
+      
+        end
+      end
+      
+      class GenericObjectAddMessageResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::WalletobjectsV1::GenericObject, decorator: Google::Apis::WalletobjectsV1::GenericObject::Representation
       
         end
       end
@@ -2596,25 +2591,6 @@ module Google
         end
       end
       
-      class PrivateText
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :body, as: 'body', class: Google::Apis::WalletobjectsV1::LocalizedString, decorator: Google::Apis::WalletobjectsV1::LocalizedString::Representation
-      
-          property :header, as: 'header', class: Google::Apis::WalletobjectsV1::LocalizedString, decorator: Google::Apis::WalletobjectsV1::LocalizedString::Representation
-      
-        end
-      end
-      
-      class PrivateUri
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description', class: Google::Apis::WalletobjectsV1::LocalizedString, decorator: Google::Apis::WalletobjectsV1::LocalizedString::Representation
-      
-          property :uri, as: 'uri'
-        end
-      end
-      
       class PurchaseDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3080,41 +3056,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_notification, as: 'enableNotification'
-        end
-      end
-      
-      class UploadPrivateDataRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :issuer_id, :numeric_string => true, as: 'issuerId'
-          property :text, as: 'text', class: Google::Apis::WalletobjectsV1::PrivateText, decorator: Google::Apis::WalletobjectsV1::PrivateText::Representation
-      
-          property :uri, as: 'uri', class: Google::Apis::WalletobjectsV1::PrivateUri, decorator: Google::Apis::WalletobjectsV1::PrivateUri::Representation
-      
-        end
-      end
-      
-      class UploadPrivateDataResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :private_content_id, :numeric_string => true, as: 'privateContentId'
-        end
-      end
-      
-      class UploadPrivateImageRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :blob, as: 'blob', class: Google::Apis::WalletobjectsV1::Media, decorator: Google::Apis::WalletobjectsV1::Media::Representation
-      
-          property :media_request_info, as: 'mediaRequestInfo', class: Google::Apis::WalletobjectsV1::MediaRequestInfo, decorator: Google::Apis::WalletobjectsV1::MediaRequestInfo::Representation
-      
-        end
-      end
-      
-      class UploadPrivateImageResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :private_content_id, :numeric_string => true, as: 'privateContentId'
         end
       end
       
