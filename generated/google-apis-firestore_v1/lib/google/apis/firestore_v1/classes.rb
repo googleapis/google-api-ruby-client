@@ -869,6 +869,29 @@ module Google
         end
       end
       
+      # Explain options for the query.
+      class ExplainOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to execute this query. When false (the default), the query
+        # will be planned, returning only metrics from the planning stages. When true,
+        # the query will be planned and executed, returning the full query results along
+        # with both planning and execution stage metrics.
+        # Corresponds to the JSON property `analyze`
+        # @return [Boolean]
+        attr_accessor :analyze
+        alias_method :analyze?, :analyze
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analyze = args[:analyze] if args.key?(:analyze)
+        end
+      end
+      
       # A filter on a specific field.
       class FieldFilter
         include Google::Apis::Core::Hashable
@@ -1126,6 +1149,42 @@ module Google
         end
       end
       
+      # The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+      # database. If not present, the database is secured by the default Google
+      # encryption key.
+      class GoogleFirestoreAdminV1CmekConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Currently in-use [KMS key versions](https://cloud.google.com/kms/
+        # docs/resource-hierarchy#key_versions). During [key rotation](https://cloud.
+        # google.com/kms/docs/key-rotation), there can be multiple in-use key versions.
+        # The expected format is `projects/`project_id`/locations/`kms_location`/
+        # keyRings/`key_ring`/cryptoKeys/`crypto_key`/cryptoKeyVersions/`key_version``.
+        # Corresponds to the JSON property `activeKeyVersion`
+        # @return [Array<String>]
+        attr_accessor :active_key_version
+      
+        # Required. Only keys in the same location as this database are allowed to be
+        # used for encryption. For Firestore's nam5 multi-region, this corresponds to
+        # Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds
+        # to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/
+        # locations. The expected format is `projects/`project_id`/locations/`
+        # kms_location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_key_version = args[:active_key_version] if args.key?(:active_key_version)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
       # Metadata related to the create database operation.
       class GoogleFirestoreAdminV1CreateDatabaseMetadata
         include Google::Apis::Core::Hashable
@@ -1161,6 +1220,13 @@ module Google
         # Corresponds to the JSON property `appEngineIntegrationMode`
         # @return [String]
         attr_accessor :app_engine_integration_mode
+      
+        # The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+        # database. If not present, the database is secured by the default Google
+        # encryption key.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CmekConfig]
+        attr_accessor :cmek_config
       
         # The concurrency control mode to use for this database.
         # Corresponds to the JSON property `concurrencyMode`
@@ -1255,6 +1321,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_engine_integration_mode = args[:app_engine_integration_mode] if args.key?(:app_engine_integration_mode)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_protection_state = args[:delete_protection_state] if args.key?(:delete_protection_state)
@@ -2973,6 +3040,11 @@ module Google
       class RunAggregationQueryRequest
         include Google::Apis::Core::Hashable
       
+        # Explain options for the query.
+        # Corresponds to the JSON property `explainOptions`
+        # @return [Google::Apis::FirestoreV1::ExplainOptions]
+        attr_accessor :explain_options
+      
         # Options for creating a new transaction.
         # Corresponds to the JSON property `newTransaction`
         # @return [Google::Apis::FirestoreV1::TransactionOptions]
@@ -3003,6 +3075,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @explain_options = args[:explain_options] if args.key?(:explain_options)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
           @structured_aggregation_query = args[:structured_aggregation_query] if args.key?(:structured_aggregation_query)
@@ -3053,6 +3126,11 @@ module Google
       class RunQueryRequest
         include Google::Apis::Core::Hashable
       
+        # Explain options for the query.
+        # Corresponds to the JSON property `explainOptions`
+        # @return [Google::Apis::FirestoreV1::ExplainOptions]
+        attr_accessor :explain_options
+      
         # Options for creating a new transaction.
         # Corresponds to the JSON property `newTransaction`
         # @return [Google::Apis::FirestoreV1::TransactionOptions]
@@ -3084,6 +3162,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @explain_options = args[:explain_options] if args.key?(:explain_options)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
           @structured_query = args[:structured_query] if args.key?(:structured_query)
