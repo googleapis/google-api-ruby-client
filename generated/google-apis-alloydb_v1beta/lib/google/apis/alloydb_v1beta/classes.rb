@@ -2339,6 +2339,11 @@ module Google
         # @return [String]
         attr_accessor :feed_type
       
+        # Common model for database resource recommendation signal data.
+        # Corresponds to the JSON property `recommendationSignalData`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData]
+        attr_accessor :recommendation_signal_data
+      
         # Common model for database resource health signal data.
         # Corresponds to the JSON property `resourceHealthSignalData`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData]
@@ -2362,6 +2367,7 @@ module Google
         def update!(**args)
           @feed_timestamp = args[:feed_timestamp] if args.key?(:feed_timestamp)
           @feed_type = args[:feed_type] if args.key?(:feed_type)
+          @recommendation_signal_data = args[:recommendation_signal_data] if args.key?(:recommendation_signal_data)
           @resource_health_signal_data = args[:resource_health_signal_data] if args.key?(:resource_health_signal_data)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @resource_metadata = args[:resource_metadata] if args.key?(:resource_metadata)
@@ -2631,6 +2637,51 @@ module Google
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
+      # Common model for database resource recommendation signal data.
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
+        include Google::Apis::Core::Hashable
+      
+        # Required. Any other additional metadata
+        # Corresponds to the JSON property `additionalMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_metadata
+      
+        # Required. last time recommendationw as refreshed
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # Required. Recommendation state
+        # Corresponds to the JSON property `recommendationState`
+        # @return [String]
+        attr_accessor :recommendation_state
+      
+        # Required. Database resource name associated with the signal. Resource name to
+        # follow CAIS resource_name format as noted here go/condor-common-datamodel
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Required. Type of signal, for example, `SIGNAL_TYPE_IDLE`, `
+        # SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES`, etc.
+        # Corresponds to the JSON property `signalType`
+        # @return [String]
+        attr_accessor :signal_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_metadata = args[:additional_metadata] if args.key?(:additional_metadata)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @recommendation_state = args[:recommendation_state] if args.key?(:recommendation_state)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @signal_type = args[:signal_type] if args.key?(:signal_type)
         end
       end
       
