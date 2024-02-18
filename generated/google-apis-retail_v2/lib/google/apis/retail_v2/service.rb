@@ -20,11 +20,12 @@ require 'google/apis/errors'
 module Google
   module Apis
     module RetailV2
-      # Retail API
+      # Vertex AI Search for Retail API
       #
-      # Cloud Retail service enables customers to build end-to-end personalized
-      #  recommendation systems without requiring a high level of expertise in machine
-      #  learning, recommendation system, or Google Cloud.
+      # Vertex AI Search for Retail API is made up of Retail Search, Browse and
+      #  Recommendations. These discovery AI solutions help you implement personalized
+      #  search, browse and recommendations, based on machine learning models, across
+      #  your websites and mobile applications.
       #
       # @example
       #    require 'google/apis/retail_v2'
