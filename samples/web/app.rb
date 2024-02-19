@@ -101,7 +101,7 @@ get('/calendar') do
 end
 
 
-# Callback for authorization requests. This saves the autorization code and
+# Callback for authorization requests. This saves the authorization code and
 # redirects back to the URL that originally requested authorization. The code is
 # redeemed on the next request.
 #

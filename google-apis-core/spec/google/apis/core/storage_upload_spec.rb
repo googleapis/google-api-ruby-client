@@ -157,7 +157,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
         .to_return(body: %(OK))
     end
 
-    it 'should retry resumable intiation and continue' do
+    it 'should retry resumable initiation and continue' do
       command.execute(client)
       expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
         .with(body: 'Hello world')).to have_been_made.twice

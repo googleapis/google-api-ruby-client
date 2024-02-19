@@ -159,7 +159,7 @@ module Google
       end
 
       # Modifies an API description to support ruby code generation. Primarily does:
-      # - Ensure all names follow appopriate ruby conventions
+      # - Ensure all names follow appropriate ruby conventions
       # - Maps types to ruby types, classes, and resolves $refs
       # - Attempts to simplify names where possible to make APIs more sensible
       class Annotator
