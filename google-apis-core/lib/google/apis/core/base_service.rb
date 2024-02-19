@@ -319,7 +319,7 @@ module Google
         #   Name of the field in the result containing the items. Defaults to :items
         # @param [Boolean] cache
         #  True (default) if results should be cached so multiple iterations can be used.
-        # @return [Enumerble]
+        # @return [Enumerable]
         # @yield [token, service]
         #   Current page token & service instance
         # @yieldparam [String] token

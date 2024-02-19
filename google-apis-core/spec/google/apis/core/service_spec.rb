@@ -50,7 +50,7 @@ RSpec.describe Google::Apis::Core::BaseService do
     expect(service.authorization).to eql 'a token'
   end
 
-  it 'should allow overiding authorization' do
+  it 'should allow overriding authorization' do
     Google::Apis::RequestOptions.default.authorization = 'a token'
     service.authorization = 'another token'
     expect(service.authorization).to eql 'another token'
@@ -528,12 +528,12 @@ EOF
     expect(service_ud.root_url).to eql "https://www.googleapis.com/"
   end
 
-  it "should suppport setting root url to a static value" do
+  it "should support setting root url to a static value" do
     service_ud.root_url = "https://endpoint1.mydomain5.com/"
     expect(service_ud.root_url).to eql "https://endpoint1.mydomain5.com/"
   end
 
-  it "should suppport setting root url to a dynamic value" do
+  it "should support setting root url to a dynamic value" do
     service.universe_domain = "mydomain6.com"
     service.root_url = "https://endpoint2.$UNIVERSE_DOMAIN$/"
     expect(service.root_url).to eql "https://endpoint2.mydomain6.com/"

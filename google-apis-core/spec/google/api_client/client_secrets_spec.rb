@@ -377,7 +377,7 @@ RSpec.describe Google::APIClient::ClientSecrets do
     end
   end
 
-  context 'with folder wihout client_secrets.json' do
+  context 'with folder without client_secrets.json' do
     it "should raise exception", fakefs: true do
       FileUtils.mkdir("/tmp")
       expect { Google::APIClient::ClientSecrets.load('/tmp') }.to raise_exception(ArgumentError)

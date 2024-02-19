@@ -25,7 +25,7 @@ module Google
 
         # Execute the upload request once. Overrides the default implementation to handle streaming/chunking
         # of file content.
-        # Note: This method is overriden from DownloadCommand in order to respond back with 
+        # Note: This method is overridden from DownloadCommand in order to respond back with 
         # http header. All changes made to `execute_once` of DownloadCommand, should be made 
         # here too.
         #

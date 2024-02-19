@@ -40,7 +40,7 @@ RSpec.describe Google::Apis::RequestOptions do
   end
 
   it 'sets default values' do
-    expect(defaults.retries).to eq(5) # Overriden in spec_helper.rb
+    expect(defaults.retries).to eq(5) # Overridden in spec_helper.rb
     expect(defaults.max_elapsed_time).to eq(900)
     expect(defaults.base_interval).to eq(1)
     expect(defaults.max_interval).to eq(60)
