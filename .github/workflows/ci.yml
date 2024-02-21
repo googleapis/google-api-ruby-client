@@ -24,12 +24,15 @@ jobs:
             task: "--include-spec"
           - os: ubuntu-latest
             ruby: "3.2"
+            task: "--include-spec"
+          - os: ubuntu-latest
+            ruby: "3.3"
             task: "--include-spec --include-yardoc --include-build"
           - os: macos-latest
-            ruby: "3.2"
+            ruby: "3.3"
             task: "--include-spec"
           - os: windows-latest
-            ruby: "3.2"
+            ruby: "3.3"
             task: "--include-spec"
       fail-fast: false
     runs-on: ${{ matrix.os }}
