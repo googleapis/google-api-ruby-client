@@ -1,5 +1,9 @@
 # Release history for google-apis-translate_v2
 
+### v0.15.0 (2024-02-23)
+
+* Regenerated using generator version 0.13.1
+
 ### v0.14.0 (2024-01-23)
 
 * Regenerated using generator version 0.13.0
