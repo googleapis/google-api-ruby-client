@@ -1806,8 +1806,8 @@ module Google
         attr_accessor :provisioned_iops
       
         # Indicates how much throughput to provision for the disk. This sets the number
-        # of throughput mb per second that the disk can handle. Values must be between 1
-        # and 7,124.
+        # of throughput mb per second that the disk can handle. Values must greater than
+        # or equal to 1.
         # Corresponds to the JSON property `provisionedThroughput`
         # @return [Fixnum]
         attr_accessor :provisioned_throughput
@@ -7361,8 +7361,8 @@ module Google
         attr_accessor :provisioned_iops
       
         # Indicates how much throughput to provision for the disk. This sets the number
-        # of throughput mb per second that the disk can handle. Values must be between 1
-        # and 7,124.
+        # of throughput mb per second that the disk can handle. Values must be greater
+        # than or equal to 1.
         # Corresponds to the JSON property `provisionedThroughput`
         # @return [Fixnum]
         attr_accessor :provisioned_throughput
@@ -8117,6 +8117,16 @@ module Google
       class DiskSettings
         include Google::Apis::Core::Hashable
       
+        # AccessLocation is only used for regional snapshot. It contains which regions
+        # are allowed to create a regional snapshot from disks located in the given
+        # region/zone. It includes key-value pairs designed to store the following
+        # structure. The keys should match their corresponding values, which must be
+        # provided: access_location: ` locations ` us-central1 ` region: "us-central1" `,
+        # asia-west2 ` region: "asia-west2" ` ` `
+        # Corresponds to the JSON property `accessLocation`
+        # @return [Google::Apis::ComputeAlpha::DiskSettingsAccessLocation]
+        attr_accessor :access_location
+      
         # An optional parameter for storing the default resource policies that will be
         # used for the Disks created in the given scope. The Key is a string type,
         # provided by customers to uniquely identify the default Resource Policy entry.
@@ -8132,7 +8142,51 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_location = args[:access_location] if args.key?(:access_location)
           @default_resource_policies = args[:default_resource_policies] if args.key?(:default_resource_policies)
+        end
+      end
+      
+      # AccessLocation is only used for regional snapshot. It contains which regions
+      # are allowed to create a regional snapshot from disks located in the given
+      # region/zone. It includes key-value pairs designed to store the following
+      # structure. The keys should match their corresponding values, which must be
+      # provided: access_location: ` locations ` us-central1 ` region: "us-central1" `,
+      # asia-west2 ` region: "asia-west2" ` ` `
+      class DiskSettingsAccessLocation
+        include Google::Apis::Core::Hashable
+      
+        # List of regions that can create a regional snapshot from the current region
+        # Corresponds to the JSON property `locations`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::DiskSettingsAccessLocationAccessLocationPreference>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+        end
+      end
+      
+      # A structure for specifying an allowed target region to create snapshot.
+      class DiskSettingsAccessLocationAccessLocationPreference
+        include Google::Apis::Core::Hashable
+      
+        # Accessible region name
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -11443,6 +11497,16 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ShareSettings]
         attr_accessor :share_settings
       
+        # Indicates whether the auto-created reservation can be consumed by VMs with
+        # affinity for "any" reservation. If the field is set, then only VMs that target
+        # the reservation by name can consume from the delivered reservation. If set to
+        # true,the delivered resevervation will have the same name as the future
+        # reservation.
+        # Corresponds to the JSON property `specificReservationRequired`
+        # @return [Boolean]
+        attr_accessor :specific_reservation_required
+        alias_method :specific_reservation_required?, :specific_reservation_required
+      
         # Future Reservation configuration to indicate instance properties and total
         # count.
         # Corresponds to the JSON property `specificSkuProperties`
@@ -11483,6 +11547,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @share_settings = args[:share_settings] if args.key?(:share_settings)
+          @specific_reservation_required = args[:specific_reservation_required] if args.key?(:specific_reservation_required)
           @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
           @status = args[:status] if args.key?(:status)
           @time_window = args[:time_window] if args.key?(:time_window)
@@ -17449,6 +17514,12 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>]
         attr_accessor :instance_selections
       
+        # Provisioning model configuration used by this managed instance group to create
+        # instances.
+        # Corresponds to the JSON property `provisioningModelMix`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix]
+        attr_accessor :provisioning_model_mix
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17457,6 +17528,7 @@ module Google
         def update!(**args)
           @instance_selection_lists = args[:instance_selection_lists] if args.key?(:instance_selection_lists)
           @instance_selections = args[:instance_selections] if args.key?(:instance_selections)
+          @provisioning_model_mix = args[:provisioning_model_mix] if args.key?(:provisioning_model_mix)
         end
       end
       
@@ -17485,6 +17557,36 @@ module Google
         def update!(**args)
           @machine_types = args[:machine_types] if args.key?(:machine_types)
           @rank = args[:rank] if args.key?(:rank)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix
+        include Google::Apis::Core::Hashable
+      
+        # The base capacity that will always use Standard VMs to avoid risk of more
+        # preemption than the minimum capacity user needs. MIG will create only Standard
+        # VMs until it reaches standard_capacity_base and only then will start using
+        # standard_capacity_percent_above_base to mix Spot with Standard VMs.
+        # Corresponds to the JSON property `standardCapacityBase`
+        # @return [Fixnum]
+        attr_accessor :standard_capacity_base
+      
+        # The percentage of target capacity that should use Standard VM. The remaining
+        # percentage will use Spot VMs. The percentage applies only to the capacity
+        # above standard_capacity_base.
+        # Corresponds to the JSON property `standardCapacityPercentAboveBase`
+        # @return [Fixnum]
+        attr_accessor :standard_capacity_percent_above_base
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @standard_capacity_base = args[:standard_capacity_base] if args.key?(:standard_capacity_base)
+          @standard_capacity_percent_above_base = args[:standard_capacity_percent_above_base] if args.key?(:standard_capacity_percent_above_base)
         end
       end
       
@@ -26270,6 +26372,11 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # The provisioning model to be used for this instance.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
         def initialize(**args)
            update!(**args)
         end
@@ -26277,6 +26384,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
         end
       end
       
@@ -33990,6 +34098,13 @@ module Google
       class Project
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The Cloud Armor tier for this project. It can be one of the
+        # following values: CA_STANDARD, CA_ENTERPRISE_PAYGO. If this field is not
+        # specified, it is assumed to be CA_STANDARD.
+        # Corresponds to the JSON property `cloudArmorTier`
+        # @return [String]
+        attr_accessor :cloud_armor_tier
+      
         # A metadata key/value entry.
         # Corresponds to the JSON property `commonInstanceMetadata`
         # @return [Google::Apis::ComputeAlpha::Metadata]
@@ -34081,6 +34196,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_armor_tier = args[:cloud_armor_tier] if args.key?(:cloud_armor_tier)
           @common_instance_metadata = args[:common_instance_metadata] if args.key?(:common_instance_metadata)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @default_network_tier = args[:default_network_tier] if args.key?(:default_network_tier)
@@ -34203,6 +34319,25 @@ module Google
         def update!(**args)
           @organization = args[:organization] if args.key?(:organization)
           @return_partial_page = args[:return_partial_page] if args.key?(:return_partial_page)
+        end
+      end
+      
+      # 
+      class ProjectsSetCloudArmorTierRequest
+        include Google::Apis::Core::Hashable
+      
+        # Managed protection tier to be set.
+        # Corresponds to the JSON property `cloudArmorTier`
+        # @return [String]
+        attr_accessor :cloud_armor_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_armor_tier = args[:cloud_armor_tier] if args.key?(:cloud_armor_tier)
         end
       end
       
@@ -42643,6 +42778,11 @@ module Google
         # @return [String]
         attr_accessor :on_host_maintenance
       
+        # Defines the behaviour for instances with the instance_termination_action STOP.
+        # Corresponds to the JSON property `onInstanceStopAction`
+        # @return [Google::Apis::ComputeAlpha::SchedulingOnInstanceStopAction]
+        attr_accessor :on_instance_stop_action
+      
         # Defines whether the instance is preemptible. This can only be set during
         # instance creation or while the instance is stopped and therefore, in a `
         # TERMINATED` state. See Instance Life Cycle for more information on the
@@ -42686,6 +42826,7 @@ module Google
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
+          @on_instance_stop_action = args[:on_instance_stop_action] if args.key?(:on_instance_stop_action)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
@@ -42751,6 +42892,28 @@ module Google
           @key = args[:key] if args.key?(:key)
           @operator = args[:operator] if args.key?(:operator)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Defines the behaviour for instances with the instance_termination_action STOP.
+      class SchedulingOnInstanceStopAction
+        include Google::Apis::Core::Hashable
+      
+        # If true, the contents of any attached Local SSD disks will be discarded else,
+        # the Local SSD data will be preserved when the instance is stopped at the end
+        # of the run duration/termination time.
+        # Corresponds to the JSON property `discardLocalSsd`
+        # @return [Boolean]
+        attr_accessor :discard_local_ssd
+        alias_method :discard_local_ssd?, :discard_local_ssd
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discard_local_ssd = args[:discard_local_ssd] if args.key?(:discard_local_ssd)
         end
       end
       

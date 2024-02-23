@@ -55,7 +55,8 @@ module Google
           @batch_path = 'batch/compute/alpha'
         end
         
-        # Retrieves an aggregated list of accelerator types.
+        # Retrieves an aggregated list of accelerator types. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -115,7 +116,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -251,7 +254,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -288,7 +293,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of addresses.
+        # Retrieves an aggregated list of addresses. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -348,7 +354,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -584,7 +592,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -770,7 +780,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of autoscalers.
+        # Retrieves an aggregated list of autoscalers. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -830,7 +841,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -1066,7 +1079,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1581,7 +1596,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1902,7 +1919,8 @@ module Google
         end
         
         # Retrieves the list of all BackendService resources, regional and global,
-        # available to the specified project.
+        # available to the specified project. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -1962,7 +1980,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -2320,7 +2340,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2410,7 +2432,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2821,7 +2845,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of disk types.
+        # Retrieves an aggregated list of disk types. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -2881,7 +2906,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -3016,7 +3043,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3107,7 +3136,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of persistent disks.
+        # Retrieves an aggregated list of persistent disks. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -3167,7 +3197,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -3564,7 +3596,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4248,7 +4282,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4801,7 +4837,9 @@ module Google
         #   an organization.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5367,7 +5405,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5546,7 +5586,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of forwarding rules.
+        # Retrieves an aggregated list of forwarding rules. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -5606,7 +5647,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -5843,7 +5886,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6085,7 +6130,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of future reservations.
+        # Retrieves an aggregated list of future reservations. To prevent failure,
+        # Google recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -6145,7 +6191,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -6431,7 +6479,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6746,7 +6796,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7097,7 +7149,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7604,7 +7658,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7696,7 +7752,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7733,7 +7791,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of all operations.
+        # Retrieves an aggregated list of all operations. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -7793,7 +7852,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -7957,7 +8018,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8163,7 +8226,9 @@ module Google
         #   Parent ID for this request.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8383,7 +8448,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8472,7 +8539,8 @@ module Google
         end
         
         # Retrieves the list of all HealthCheck resources, regional and global,
-        # available to the specified project.
+        # available to the specified project. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -8532,7 +8600,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -8757,7 +8827,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9120,7 +9192,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9483,7 +9557,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10023,7 +10099,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] zone
         #   The zone query parameter.
         # @param [String] fields
@@ -10508,7 +10586,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10610,7 +10690,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of managed instance groups and groups them by zone.
+        # Retrieves the list of managed instance groups and groups them by zone. To
+        # prevent failure, Google recommends that you set the `returnPartialSuccess`
+        # parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -10670,7 +10752,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -11123,7 +11207,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11221,7 +11307,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11322,7 +11410,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11419,7 +11509,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12420,7 +12512,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of instance groups and sorts them by zone.
+        # Retrieves the list of instance groups and sorts them by zone. To prevent
+        # failure, Google recommends that you set the `returnPartialSuccess` parameter
+        # to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -12480,7 +12574,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -12722,7 +12818,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12820,7 +12918,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13101,7 +13201,8 @@ module Google
         end
         
         # Retrieves the list of all InstanceTemplates resources, regional and global,
-        # available to the specified project.
+        # available to the specified project. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -13161,7 +13262,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -13434,7 +13537,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] view
         #   View of the instance template.
         # @param [String] fields
@@ -13719,7 +13824,9 @@ module Google
         
         # Retrieves an aggregated list of all of the instances in your project across
         # all regions and zones. The performance of this method degrades when a filter
-        # is specified on a project that has a very large number of instances.
+        # is specified on a project that has a very large number of instances. To
+        # prevent failure, Google recommends that you set the `returnPartialSuccess`
+        # parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -13779,7 +13886,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -14661,7 +14770,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] view
         #   View of the instance.
         # @param [String] fields
@@ -14762,7 +14873,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16581,7 +16694,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of instantSnapshots.
+        # Retrieves an aggregated list of instantSnapshots. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -16641,7 +16755,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -16925,7 +17041,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17101,7 +17219,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of interconnect attachments.
+        # Retrieves an aggregated list of interconnect attachments. To prevent failure,
+        # Google recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -17161,7 +17280,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -17444,7 +17565,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17766,7 +17889,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17932,7 +18057,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18308,7 +18435,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18912,7 +19041,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19261,7 +19392,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19376,7 +19509,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of machine types.
+        # Retrieves an aggregated list of machine types. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -19436,7 +19570,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -19571,7 +19707,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19609,7 +19747,8 @@ module Google
         end
         
         # Retrieves the list of all NetworkAttachment resources, regional and global,
-        # available to the specified project.
+        # available to the specified project. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -19669,7 +19808,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -19950,7 +20091,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20129,7 +20272,8 @@ module Google
         end
         
         # Retrieves the list of all NetworkEdgeSecurityService resources available to
-        # the specified project.
+        # the specified project. To prevent failure, Google recommends that you set the `
+        # returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -20189,7 +20333,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -20431,7 +20577,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of network endpoint groups and sorts them by zone.
+        # Retrieves the list of network endpoint groups and sorts them by zone. To
+        # prevent failure, Google recommends that you set the `returnPartialSuccess`
+        # parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -20491,7 +20639,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -20846,7 +20996,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20943,7 +21095,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21495,7 +21649,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22133,7 +22289,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22224,7 +22382,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] types
         #   (Optional) types filter separate by comma, valid values are: SUBNETWORK,
         #   RESERVED, PEER_USED, PEER_RESERVED, REMOTE_USED, REMOTE_RESERVED.
@@ -22326,7 +22486,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] subnet_name
         #   (Optional) Subnetwork name filter.
         # @param [String] subnet_region
@@ -22434,7 +22596,9 @@ module Google
         #   routes and dynamic routes in the region.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22767,7 +22931,8 @@ module Google
         end
         
         # Retrieves an aggregated list of node groups. Note: use nodeGroups.listNodes
-        # for more details about each group.
+        # for more details about each group. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -22827,7 +22992,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -23165,7 +23332,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23259,7 +23428,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23595,7 +23766,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of node templates.
+        # Retrieves an aggregated list of node templates. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -23655,7 +23827,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -23934,7 +24108,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -24056,7 +24232,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of node types.
+        # Retrieves an aggregated list of node types. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -24116,7 +24293,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -24251,7 +24430,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -24686,7 +24867,9 @@ module Google
         #   Parent ID for this request.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -24993,7 +25176,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of packetMirrorings.
+        # Retrieves an aggregated list of packetMirrorings. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -25053,7 +25237,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -25290,7 +25476,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25735,7 +25923,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25825,7 +26015,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25953,6 +26145,55 @@ module Google
           command = make_simple_command(:post, 'projects/{project}/moveInstance', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceMoveRequest::Representation
           command.request_object = instance_move_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the Cloud Armor tier of the project. To set ENTERPRISE or above the
+        # billing account of the project must be subscribed to Cloud Armor Enterprise.
+        # See Subscribing to Cloud Armor Enterprise for more information.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeAlpha::ProjectsSetCloudArmorTierRequest] projects_set_cloud_armor_tier_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_cloud_armor_tier(project, projects_set_cloud_armor_tier_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/setCloudArmorTier', options)
+          command.request_representation = Google::Apis::ComputeAlpha::ProjectsSetCloudArmorTierRequest::Representation
+          command.request_object = projects_set_cloud_armor_tier_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -26439,7 +26680,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26575,7 +26818,8 @@ module Google
         end
         
         # Lists all PublicDelegatedPrefix resources owned by the specific project across
-        # all scopes.
+        # all scopes. To prevent failure, Google recommends that you set the `
+        # returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -26635,7 +26879,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -26922,7 +27168,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27260,7 +27508,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27729,7 +27979,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27823,7 +28075,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -28110,7 +28364,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of commitments by region.
+        # Retrieves an aggregated list of commitments by region. To prevent failure,
+        # Google recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -28170,7 +28425,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -28456,7 +28713,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -28831,7 +29090,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -29276,7 +29537,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -29774,7 +30037,8 @@ module Google
         end
         
         # Retrieves the list of all HealthCheckService resources, regional and global,
-        # available to the specified project.
+        # available to the specified project. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -29834,7 +30098,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -30073,7 +30339,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30403,7 +30671,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31062,7 +31332,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31159,7 +31431,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31258,7 +31532,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31354,7 +31630,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32381,7 +32659,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32479,7 +32759,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32814,7 +33096,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] view
         #   View of the instance template.
         # @param [String] fields
@@ -33148,7 +33432,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -33637,7 +33923,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -33733,7 +34021,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -34309,7 +34599,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -34760,7 +35052,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -34996,7 +35290,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -35206,7 +35502,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -35577,7 +35875,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36100,7 +36400,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36473,7 +36775,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36751,7 +37055,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36844,7 +37150,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -37173,7 +37481,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -37501,7 +37811,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -37937,7 +38249,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38243,7 +38557,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38513,7 +38829,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38652,7 +38970,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38688,7 +39008,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of reservations.
+        # Retrieves an aggregated list of reservations. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -38748,7 +39069,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -39028,7 +39351,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -39262,7 +39587,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of resource policies.
+        # Retrieves an aggregated list of resource policies. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -39322,7 +39648,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -39601,7 +39929,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -39781,7 +40111,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of routers.
+        # Retrieves an aggregated list of routers. To prevent failure, Google recommends
+        # that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -39841,7 +40172,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -40226,7 +40559,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -40453,7 +40788,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -40557,7 +40894,9 @@ module Google
         #   policy routes.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] route_type
         #   (Required) limit results to this type of route (either LEARNED or ADVERTISED)
         # @param [String] fields
@@ -40660,7 +40999,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -40756,7 +41097,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -41280,7 +41623,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -41398,7 +41743,8 @@ module Google
         end
         
         # Retrieves the list of all SecurityPolicy resources, regional and global,
-        # available to the specified project.
+        # available to the specified project. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -41458,7 +41804,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -41725,7 +42073,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -41815,7 +42165,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -42077,7 +42429,8 @@ module Google
         end
         
         # Retrieves the list of all ServiceAttachment resources, regional and global,
-        # available to the specified project.
+        # available to the specified project. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -42137,7 +42490,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -42416,7 +42771,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -42678,7 +43035,8 @@ module Google
         end
         
         # Retrieves an aggregated list of all of the snapshots in your project across
-        # all regions and global scope.
+        # all regions and global scope. To prevent failure, Google recommends that you
+        # set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -42738,7 +43096,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -43010,7 +43370,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -43166,7 +43528,8 @@ module Google
         end
         
         # Retrieves the list of all SslCertificate resources, regional and global,
-        # available to the specified project.
+        # available to the specified project. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -43226,7 +43589,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -43452,7 +43817,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -43528,7 +43895,8 @@ module Google
         end
         
         # Retrieves the list of all SslPolicy resources, regional and global, available
-        # to the specified project.
+        # to the specified project. To prevent failure, Google recommends that you set
+        # the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -43588,7 +43956,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -43815,7 +44185,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -43905,7 +44277,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -44031,7 +44405,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of storage pool types.
+        # Retrieves an aggregated list of storage pool types. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -44091,7 +44466,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -44226,7 +44603,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -44263,7 +44642,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of storage pools.
+        # Retrieves an aggregated list of storage pools. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -44323,7 +44703,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -44605,7 +44987,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -44699,7 +45083,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -44934,7 +45320,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of subnetworks.
+        # Retrieves an aggregated list of subnetworks. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -44994,7 +45381,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -45326,7 +45715,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -45416,7 +45807,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] service_project
         #   The project id or project number in which the subnetwork is intended to be
         #   used. Only applied for Shared VPC. See [Shared VPC documentation](https://
@@ -45845,7 +46238,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -45973,7 +46368,8 @@ module Google
         end
         
         # Retrieves the list of all TargetHttpProxy resources, regional and global,
-        # available to the specified project.
+        # available to the specified project. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -46033,7 +46429,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -46259,7 +46657,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -46437,7 +46837,8 @@ module Google
         end
         
         # Retrieves the list of all TargetHttpsProxy resources, regional and global,
-        # available to the specified project.
+        # available to the specified project. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -46497,7 +46898,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -46723,7 +47126,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -47106,7 +47511,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of target instances.
+        # Retrieves an aggregated list of target instances. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -47166,7 +47572,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -47403,7 +47811,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -47643,7 +48053,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of target pools.
+        # Retrieves an aggregated list of target pools. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -47703,7 +48114,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -47982,7 +48395,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -48463,7 +48878,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -48794,7 +49211,8 @@ module Google
         end
         
         # Retrieves the list of all TargetTcpProxy resources, regional and global,
-        # available to the specified project.
+        # available to the specified project. To prevent failure, Google recommends that
+        # you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -48854,7 +49272,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -49080,7 +49500,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -49255,7 +49677,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of target VPN gateways.
+        # Retrieves an aggregated list of target VPN gateways. To prevent failure,
+        # Google recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -49315,7 +49738,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -49552,7 +49977,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -49686,7 +50113,8 @@ module Google
         end
         
         # Retrieves the list of all UrlMap resources, regional and global, available to
-        # the specified project.
+        # the specified project. To prevent failure, Google recommends that you set the `
+        # returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -49746,7 +50174,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -50023,7 +50453,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -50240,7 +50672,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of VPN gateways.
+        # Retrieves an aggregated list of VPN gateways. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -50300,7 +50733,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -50575,7 +51010,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -50708,7 +51145,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of VPN tunnels.
+        # Retrieves an aggregated list of VPN tunnels. To prevent failure, Google
+        # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -50768,7 +51206,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -51005,7 +51445,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -51269,7 +51711,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -51355,7 +51799,8 @@ module Google
         end
         
         # Retrieves an aggregated list of all of the queued resources in a project
-        # across all zones.
+        # across all zones. To prevent failure, Google recommends that you set the `
+        # returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -51415,7 +51860,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -51703,7 +52150,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -51829,7 +52278,9 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
+        #   failure. The default value is false. For example, when partial success
+        #   behavior is enabled, aggregatedList for a single zone scope either returns all
+        #   resources in the zone or no resources, with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
