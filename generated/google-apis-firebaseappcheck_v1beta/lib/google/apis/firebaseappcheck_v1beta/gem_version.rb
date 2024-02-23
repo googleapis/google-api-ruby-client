@@ -16,10 +16,10 @@ module Google
   module Apis
     module FirebaseappcheckV1beta
       # Version of the google-apis-firebaseappcheck_v1beta gem
-      GEM_VERSION = "0.36.0"
+      GEM_VERSION = "0.37.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.13.1"
+      GENERATOR_VERSION = "0.14.0"
 
       # Revision of the discovery document this client was generated from
       REVISION = "20240122"
