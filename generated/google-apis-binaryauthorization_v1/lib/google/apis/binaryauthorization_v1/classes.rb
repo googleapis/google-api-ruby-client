@@ -84,6 +84,25 @@ module Google
         end
       end
       
+      # Result of evaluating an image name allowlist.
+      class AllowlistResult
+        include Google::Apis::Core::Hashable
+      
+        # The allowlist pattern that the image matched.
+        # Corresponds to the JSON property `matchedPattern`
+        # @return [String]
+        attr_accessor :matched_pattern
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matched_pattern = args[:matched_pattern] if args.key?(:matched_pattern)
+        end
+      end
+      
       # An attestation authenticator that will be used to verify attestations.
       # Typically this is just a set of public keys. Conceptually, an authenticator
       # can be treated as always returning either "authenticated" or "not
@@ -469,6 +488,74 @@ module Google
         end
       end
       
+      # Result of evaluating one check.
+      class CheckResult
+        include Google::Apis::Core::Hashable
+      
+        # Result of evaluating an image name allowlist.
+        # Corresponds to the JSON property `allowlistResult`
+        # @return [Google::Apis::BinaryauthorizationV1::AllowlistResult]
+        attr_accessor :allowlist_result
+      
+        # The name of the check.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Result of evaluating one check.
+        # Corresponds to the JSON property `evaluationResult`
+        # @return [Google::Apis::BinaryauthorizationV1::EvaluationResult]
+        attr_accessor :evaluation_result
+      
+        # Explanation of this check result.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # The index of the check.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # The type of the check.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowlist_result = args[:allowlist_result] if args.key?(:allowlist_result)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @evaluation_result = args[:evaluation_result] if args.key?(:evaluation_result)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @index = args[:index] if args.key?(:index)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Result of evaluating one or more checks.
+      class CheckResults
+        include Google::Apis::Core::Hashable
+      
+        # Per-check details.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::CheckResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
       # A conjunction of policy checks, scoped to a particular namespace or Kubernetes
       # service account. In order for evaluation of a `CheckSet` to return "allowed"
       # for a given image in a given Pod, one of the following conditions must be
@@ -514,6 +601,56 @@ module Google
         end
       end
       
+      # Result of evaluating one check set.
+      class CheckSetResult
+        include Google::Apis::Core::Hashable
+      
+        # Result of evaluating an image name allowlist.
+        # Corresponds to the JSON property `allowlistResult`
+        # @return [Google::Apis::BinaryauthorizationV1::AllowlistResult]
+        attr_accessor :allowlist_result
+      
+        # Result of evaluating one or more checks.
+        # Corresponds to the JSON property `checkResults`
+        # @return [Google::Apis::BinaryauthorizationV1::CheckResults]
+        attr_accessor :check_results
+      
+        # The name of the check set.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Explanation of this check set result. Only populated if no checks were
+        # evaluated.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # The index of the check set.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # A scope specifier for `CheckSet` objects.
+        # Corresponds to the JSON property `scope`
+        # @return [Google::Apis::BinaryauthorizationV1::Scope]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowlist_result = args[:allowlist_result] if args.key?(:allowlist_result)
+          @check_results = args[:check_results] if args.key?(:check_results)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @index = args[:index] if args.key?(:index)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -527,6 +664,69 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for PlatformPolicyEvaluationService.EvaluateGkePolicy.
+      class EvaluateGkePolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. JSON or YAML blob representing a Kubernetes resource.
+        # Corresponds to the JSON property `resource`
+        # @return [Hash<String,Object>]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # Response message for PlatformPolicyEvaluationService.EvaluateGkePolicy.
+      class EvaluateGkePolicyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Evaluation result for each Pod contained in the request.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::PodResult>]
+        attr_accessor :results
+      
+        # The result of evaluating all Pods in the request.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results = args[:results] if args.key?(:results)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
+      # Result of evaluating one check.
+      class EvaluationResult
+        include Google::Apis::Core::Hashable
+      
+        # The result of evaluating this check.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @verdict = args[:verdict] if args.key?(:verdict)
         end
       end
       
@@ -755,6 +955,50 @@ module Google
         end
       end
       
+      # Result of evaluating one image.
+      class ImageResult
+        include Google::Apis::Core::Hashable
+      
+        # Result of evaluating an image name allowlist.
+        # Corresponds to the JSON property `allowlistResult`
+        # @return [Google::Apis::BinaryauthorizationV1::AllowlistResult]
+        attr_accessor :allowlist_result
+      
+        # Result of evaluating one check set.
+        # Corresponds to the JSON property `checkSetResult`
+        # @return [Google::Apis::BinaryauthorizationV1::CheckSetResult]
+        attr_accessor :check_set_result
+      
+        # Explanation of this image result. Only populated if no check sets were
+        # evaluated.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Image URI from the request.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # The result of evaluating this image.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowlist_result = args[:allowlist_result] if args.key?(:allowlist_result)
+          @check_set_result = args[:check_set_result] if args.key?(:check_set_result)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
       # 
       class Jwt
         include Google::Apis::Core::Hashable
@@ -935,6 +1179,49 @@ module Google
           @gke_policy = args[:gke_policy] if args.key?(:gke_policy)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Result of evaluating the whole GKE policy for one Pod.
+      class PodResult
+        include Google::Apis::Core::Hashable
+      
+        # Per-image details.
+        # Corresponds to the JSON property `imageResults`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::ImageResult>]
+        attr_accessor :image_results
+      
+        # The Kubernetes namespace of the Pod.
+        # Corresponds to the JSON property `kubernetesNamespace`
+        # @return [String]
+        attr_accessor :kubernetes_namespace
+      
+        # The Kubernetes service account of the Pod.
+        # Corresponds to the JSON property `kubernetesServiceAccount`
+        # @return [String]
+        attr_accessor :kubernetes_service_account
+      
+        # The name of the Pod.
+        # Corresponds to the JSON property `podName`
+        # @return [String]
+        attr_accessor :pod_name
+      
+        # The result of evaluating this Pod.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_results = args[:image_results] if args.key?(:image_results)
+          @kubernetes_namespace = args[:kubernetes_namespace] if args.key?(:kubernetes_namespace)
+          @kubernetes_service_account = args[:kubernetes_service_account] if args.key?(:kubernetes_service_account)
+          @pod_name = args[:pod_name] if args.key?(:pod_name)
+          @verdict = args[:verdict] if args.key?(:verdict)
         end
       end
       
