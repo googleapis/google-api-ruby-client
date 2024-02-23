@@ -618,8 +618,7 @@ module Google
         end
       end
       
-      # Data format for a list of app versions. Only one app version is supported for
-      # now.
+      # Data format for a list of app versions.
       class AppVersionList
         include Google::Apis::Core::Hashable
       
@@ -663,7 +662,7 @@ module Google
         end
       end
       
-      # Request message for ArchiveSubscription.
+      # Deprecated: subscription archiving is not supported.
       class ArchiveSubscriptionRequest
         include Google::Apis::Core::Hashable
       
@@ -4471,7 +4470,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # You must tell us if your app contains streaming products to correctly charge
-        # US state and local sales tax. Field only supported in United States.
+        # US state and local sales tax. Field only supported in the United States.
         # Corresponds to the JSON property `eligibleForStreamingServiceTaxRate`
         # @return [Boolean]
         attr_accessor :eligible_for_streaming_service_tax_rate
@@ -4847,10 +4846,10 @@ module Google
       
         # Required. Contents of the CSV file containing Data Safety responses. For the
         # format of this file, see the Help Center documentation at https://support.
-        # google.com/googleplay/android-developer/answer/10787469?hl=en#zippy=%
-        # 2Cunderstand-the-csv-format To download an up to date template, follow the
-        # steps at https://support.google.com/googleplay/android-developer/answer/
-        # 10787469?hl=en#zippy=%2Cexport-to-a-csv-file
+        # google.com/googleplay/android-developer/answer/10787469?#zippy=%2Cunderstand-
+        # the-csv-format To download an up to date template, follow the steps at https://
+        # support.google.com/googleplay/android-developer/answer/10787469?#zippy=%
+        # 2Cexport-to-a-csv-file
         # Corresponds to the JSON property `safetyLabels`
         # @return [String]
         attr_accessor :safety_labels
@@ -5100,9 +5099,7 @@ module Google
       class Subscription
         include Google::Apis::Core::Hashable
       
-        # Output only. Whether this subscription is archived. Archived subscriptions are
-        # not available to any subscriber any longer, cannot be updated, and are not
-        # returned in list requests unless the show archived flag is passed in.
+        # Output only. Deprecated: subscription archiving is not supported.
         # Corresponds to the JSON property `archived`
         # @return [Boolean]
         attr_accessor :archived
@@ -6075,8 +6072,7 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::Regions]
         attr_accessor :regions
       
-        # Data format for a list of app versions. Only one app version is supported for
-        # now.
+        # Data format for a list of app versions.
         # Corresponds to the JSON property `versionList`
         # @return [Google::Apis::AndroidpublisherV3::AppVersionList]
         attr_accessor :version_list
