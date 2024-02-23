@@ -16,13 +16,13 @@ module Google
   module Apis
     module AppengineV1alpha
       # Version of the google-apis-appengine_v1alpha gem
-      GEM_VERSION = "0.29.0"
+      GEM_VERSION = "0.30.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.13.0"
+      GENERATOR_VERSION = "0.14.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20231004"
+      REVISION = "20240218"
     end
   end
 end
