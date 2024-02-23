@@ -940,6 +940,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskSettingsAccessLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskSettingsAccessLocationAccessLocationPreference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskSettingsResourcePolicyDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1991,6 +2003,12 @@ module Google
       end
       
       class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4342,6 +4360,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProjectsSetCloudArmorTierRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProjectsSetDefaultNetworkTierRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5537,6 +5561,12 @@ module Google
       end
       
       class SchedulingNodeAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchedulingOnInstanceStopAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9370,8 +9400,25 @@ module Google
       class DiskSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_location, as: 'accessLocation', class: Google::Apis::ComputeAlpha::DiskSettingsAccessLocation, decorator: Google::Apis::ComputeAlpha::DiskSettingsAccessLocation::Representation
+      
           hash :default_resource_policies, as: 'defaultResourcePolicies', class: Google::Apis::ComputeAlpha::DiskSettingsResourcePolicyDetails, decorator: Google::Apis::ComputeAlpha::DiskSettingsResourcePolicyDetails::Representation
       
+        end
+      end
+      
+      class DiskSettingsAccessLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :locations, as: 'locations', class: Google::Apis::ComputeAlpha::DiskSettingsAccessLocationAccessLocationPreference, decorator: Google::Apis::ComputeAlpha::DiskSettingsAccessLocationAccessLocationPreference::Representation
+      
+        end
+      end
+      
+      class DiskSettingsAccessLocationAccessLocationPreference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region, as: 'region'
         end
       end
       
@@ -10120,6 +10167,7 @@ module Google
           property :self_link_with_id, as: 'selfLinkWithId'
           property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeAlpha::ShareSettings, decorator: Google::Apis::ComputeAlpha::ShareSettings::Representation
       
+          property :specific_reservation_required, as: 'specificReservationRequired'
           property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeAlpha::FutureReservationSpecificSkuProperties, decorator: Google::Apis::ComputeAlpha::FutureReservationSpecificSkuProperties::Representation
       
           property :status, as: 'status', class: Google::Apis::ComputeAlpha::FutureReservationStatus, decorator: Google::Apis::ComputeAlpha::FutureReservationStatus::Representation
@@ -11524,6 +11572,8 @@ module Google
       
           hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
       
+          property :provisioning_model_mix, as: 'provisioningModelMix', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix::Representation
+      
         end
       end
       
@@ -11532,6 +11582,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :machine_types, as: 'machineTypes'
           property :rank, as: 'rank'
+        end
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :standard_capacity_base, as: 'standardCapacityBase'
+          property :standard_capacity_percent_above_base, as: 'standardCapacityPercentAboveBase'
         end
       end
       
@@ -13825,6 +13883,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :machine_type, as: 'machineType'
+          property :provisioning_model, as: 'provisioningModel'
         end
       end
       
@@ -15775,6 +15834,7 @@ module Google
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_armor_tier, as: 'cloudArmorTier'
           property :common_instance_metadata, as: 'commonInstanceMetadata', class: Google::Apis::ComputeAlpha::Metadata, decorator: Google::Apis::ComputeAlpha::Metadata::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -15827,6 +15887,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :organization, as: 'organization'
           property :return_partial_page, as: 'returnPartialPage'
+        end
+      end
+      
+      class ProjectsSetCloudArmorTierRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_armor_tier, as: 'cloudArmorTier'
         end
       end
       
@@ -17996,6 +18063,8 @@ module Google
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeAlpha::SchedulingNodeAffinity, decorator: Google::Apis::ComputeAlpha::SchedulingNodeAffinity::Representation
       
           property :on_host_maintenance, as: 'onHostMaintenance'
+          property :on_instance_stop_action, as: 'onInstanceStopAction', class: Google::Apis::ComputeAlpha::SchedulingOnInstanceStopAction, decorator: Google::Apis::ComputeAlpha::SchedulingOnInstanceStopAction::Representation
+      
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
           property :termination_time, as: 'terminationTime'
@@ -18017,6 +18086,13 @@ module Google
           property :key, as: 'key'
           property :operator, as: 'operator'
           collection :values, as: 'values'
+        end
+      end
+      
+      class SchedulingOnInstanceStopAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discard_local_ssd, as: 'discardLocalSsd'
         end
       end
       
