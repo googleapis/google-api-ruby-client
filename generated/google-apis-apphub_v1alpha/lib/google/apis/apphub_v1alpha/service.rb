@@ -194,7 +194,9 @@ module Google
         #   Required. Value for parent.
         # @param [Google::Apis::ApphubV1alpha::Application] application_object
         # @param [String] application_id
-        #   Required. The Application identifier.
+        #   Required. The Application identifier. Must contain only lowercase letters,
+        #   numbers or hyphens, with the first character a letter, the last a letter or a
+        #   number, and a 63 character maximum.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -544,7 +546,9 @@ module Google
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] service_id
-        #   Required. The Service identifier.
+        #   Required. The Service identifier. Must contain only lowercase letters, numbers
+        #   or hyphens, with the first character a letter, the last a letter or a number,
+        #   and a 63 character maximum.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -762,7 +766,9 @@ module Google
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] workload_id
-        #   Required. The Workload identifier.
+        #   Required. The Workload identifier. Must contain only lowercase letters,
+        #   numbers or hyphens, with the first character a letter, the last a letter or a
+        #   number, and a 63 character maximum.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1037,7 +1043,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists discovered services in a host project and location.
+        # Lists discovered services that can be added to an application in a host
+        # project and location.
         # @param [String] parent
         #   Required. Value for parent.
         # @param [String] filter
@@ -1153,7 +1160,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists discovered workloads in a host project and location.
+        # Lists discovered workloads that can be added to an application in a host
+        # project and location.
         # @param [String] parent
         #   Required. Value for parent.
         # @param [String] filter

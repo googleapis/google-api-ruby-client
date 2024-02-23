@@ -368,6 +368,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :level, as: 'level'
           property :mission_critical, as: 'missionCritical'
+          property :type, as: 'type'
         end
       end
       
@@ -415,6 +416,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :environment, as: 'environment'
+          property :type, as: 'type'
         end
       end
       
