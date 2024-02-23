@@ -250,6 +250,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PscInterfaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QuantityBasedExpiry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +377,12 @@ module Google
       end
       
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainEntitlement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -563,6 +581,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :name, as: 'name'
           collection :pem_certificate_chain, as: 'pemCertificateChain'
+          property :psc_dns_name, as: 'pscDnsName'
           property :public_ip_address, as: 'publicIpAddress'
         end
       end
@@ -706,6 +725,8 @@ module Google
           property :network_config, as: 'networkConfig', class: Google::Apis::AlloydbV1beta::InstanceNetworkConfig, decorator: Google::Apis::AlloydbV1beta::InstanceNetworkConfig::Representation
       
           collection :nodes, as: 'nodes', class: Google::Apis::AlloydbV1beta::Node, decorator: Google::Apis::AlloydbV1beta::Node::Representation
+      
+          property :psc_instance_config, as: 'pscInstanceConfig', class: Google::Apis::AlloydbV1beta::PscInstanceConfig, decorator: Google::Apis::AlloydbV1beta::PscInstanceConfig::Representation
       
           property :public_ip_address, as: 'publicIpAddress'
           property :query_insights_config, as: 'queryInsightsConfig', class: Google::Apis::AlloydbV1beta::QueryInsightsInstanceConfig, decorator: Google::Apis::AlloydbV1beta::QueryInsightsInstanceConfig::Representation
@@ -871,6 +892,27 @@ module Google
           property :etag, as: 'etag'
           property :request_id, as: 'requestId'
           property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class PscInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_consumer_networks, as: 'allowedConsumerNetworks'
+          collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
+          collection :outgoing_service_attachment_links, as: 'outgoingServiceAttachmentLinks'
+          property :psc_enabled, as: 'pscEnabled'
+          collection :psc_interface_configs, as: 'pscInterfaceConfigs', class: Google::Apis::AlloydbV1beta::PscInterfaceConfig, decorator: Google::Apis::AlloydbV1beta::PscInterfaceConfig::Representation
+      
+          property :service_attachment_link, as: 'serviceAttachmentLink'
+        end
+      end
+      
+      class PscInterfaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consumer_endpoint_ips, as: 'consumerEndpointIps'
+          property :network_attachment, as: 'networkAttachment'
         end
       end
       
@@ -1073,6 +1115,8 @@ module Google
           property :current_state, as: 'currentState'
           property :custom_metadata, as: 'customMetadata', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainCustomMetadataData, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainCustomMetadataData::Representation
       
+          collection :entitlements, as: 'entitlements', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainEntitlement, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainEntitlement::Representation
+      
           property :expected_state, as: 'expectedState'
           property :id, as: 'id', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
@@ -1095,8 +1139,19 @@ module Google
           hash :additional_metadata, as: 'additionalMetadata'
           property :last_refresh_time, as: 'lastRefreshTime'
           property :recommendation_state, as: 'recommendationState'
+          property :recommender, as: 'recommender'
+          property :recommender_id, as: 'recommenderId'
+          property :recommender_subtype, as: 'recommenderSubtype'
           property :resource_name, as: 'resourceName'
           property :signal_type, as: 'signalType'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainEntitlement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entitlement_state, as: 'entitlementState'
+          property :type, as: 'type'
         end
       end
       
