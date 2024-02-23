@@ -199,7 +199,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1002,11 +1005,10 @@ module Google
         attr_accessor :ip_allocation
       
         # Optional. Name of the network in the customer project with which the Tenant
-        # Project will be peered for executing pipelines. This is required only when
-        # using connection type VPC peering. In case of shared VPC where the network
-        # resides in another host project the network should specified in the form of
-        # projects/`host-project-id`/global/networks/`network`. This is only required
-        # for connectivity type VPC_PEERING.
+        # Project will be peered for executing pipelines. In case of shared VPC where
+        # the network resides in another host project the network should specified in
+        # the form of projects/`host-project-id`/global/networks/`network`. This is only
+        # required for connectivity type VPC_PEERING.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
