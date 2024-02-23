@@ -311,6 +311,164 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # CreateOrgPolicyViolationsPreview creates an OrgPolicyViolationsPreview for the
+        # proposed changes in the provided OrgPolicyViolationsPreview.OrgPolicyOverlay.
+        # The changes to OrgPolicy are specified by this `OrgPolicyOverlay`. The
+        # resources to scan are inferred from these specified changes.
+        # @param [String] parent
+        #   Required. The organization under which this OrgPolicyViolationsPreview will be
+        #   created. Example: `organizations/my-example-org/locations/global`
+        # @param [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview] google_cloud_policysimulator_v1_org_policy_violations_preview_object
+        # @param [String] org_policy_violations_preview_id
+        #   Optional. An optional user-specified ID for the OrgPolicyViolationsPreview. If
+        #   not provided, a random ID will be generated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_org_policy_violations_preview(parent, google_cloud_policysimulator_v1_org_policy_violations_preview_object = nil, org_policy_violations_preview_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/orgPolicyViolationsPreviews', options)
+          command.request_representation = Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview::Representation
+          command.request_object = google_cloud_policysimulator_v1_org_policy_violations_preview_object
+          command.response_representation = Google::Apis::PolicysimulatorV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['orgPolicyViolationsPreviewId'] = org_policy_violations_preview_id unless org_policy_violations_preview_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # GetOrgPolicyViolationsPreview gets the specified OrgPolicyViolationsPreview.
+        # Each OrgPolicyViolationsPreview is available for at least 7 days.
+        # @param [String] name
+        #   Required. The name of the OrgPolicyViolationsPreview to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_org_policy_violations_preview(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ListOrgPolicyViolationsPreviews lists each OrgPolicyViolationsPreview in an
+        # organization. Each OrgPolicyViolationsPreview is available for at least 7 days.
+        # @param [String] parent
+        #   Required. The parent the violations are scoped to. Format: `organizations/`
+        #   organization`/locations/`location`` Example: `organizations/my-example-org/
+        #   locations/global`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. The service may return fewer
+        #   than this value. If unspecified, at most 5 items will be returned. The maximum
+        #   value is 10; values above 10 will be coerced to 10.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters must match
+        #   the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_org_policy_violations_previews(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/orgPolicyViolationsPreviews', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ListOrgPolicyViolations lists the OrgPolicyViolations that are present in an
+        # OrgPolicyViolationsPreview.
+        # @param [String] parent
+        #   Required. The OrgPolicyViolationsPreview to get OrgPolicyViolations from.
+        #   Format: organizations/`organization`/locations/`location`/
+        #   orgPolicyViolationsPreviews/`orgPolicyViolationsPreview`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. The service may return fewer
+        #   than this value. If unspecified, at most 50 items will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters must match
+        #   the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_org_policy_violations_preview_org_policy_violations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/orgPolicyViolations', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates and starts a Replay using the given ReplayConfig.
         # @param [String] parent
         #   Required. The parent resource where this Replay will be created. This resource
