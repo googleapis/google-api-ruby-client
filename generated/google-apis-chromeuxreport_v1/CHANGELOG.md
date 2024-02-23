@@ -1,5 +1,9 @@
 # Release history for google-apis-chromeuxreport_v1
 
+### v0.23.0 (2024-02-23)
+
+* Regenerated using generator version 0.14.0
+
 ### v0.22.0 (2024-01-22)
 
 * Regenerated using generator version 0.13.0
