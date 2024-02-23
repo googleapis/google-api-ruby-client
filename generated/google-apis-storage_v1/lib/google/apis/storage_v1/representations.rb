@@ -763,17 +763,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket, as: 'bucket'
+          property :create_time, as: 'createTime', type: DateTime
+      
           property :id, as: 'id'
           property :kind, as: 'kind'
-          hash :metadata, as: 'metadata'
           property :metageneration, :numeric_string => true, as: 'metageneration'
           property :name, as: 'name'
           property :pending_rename_info, as: 'pendingRenameInfo', class: Google::Apis::StorageV1::Folder::PendingRenameInfo, decorator: Google::Apis::StorageV1::Folder::PendingRenameInfo::Representation
       
           property :self_link, as: 'selfLink'
-          property :time_created, as: 'timeCreated', type: DateTime
-      
-          property :updated, as: 'updated', type: DateTime
+          property :update_time, as: 'updateTime', type: DateTime
       
         end
         

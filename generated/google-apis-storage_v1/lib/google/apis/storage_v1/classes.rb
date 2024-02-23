@@ -1468,6 +1468,11 @@ module Google
         # @return [String]
         attr_accessor :bucket
       
+        # The creation time of the folder in RFC 3339 format.
+        # Corresponds to the JSON property `createTime`
+        # @return [DateTime]
+        attr_accessor :create_time
+      
         # The ID of the folder, including the bucket name, folder name.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -1477,11 +1482,6 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
-        # User-provided metadata, in key/value pairs.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,String>]
-        attr_accessor :metadata
       
         # The version of the metadata for this folder. Used for preconditions and for
         # detecting changes in metadata.
@@ -1505,15 +1505,10 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The creation time of the folder in RFC 3339 format.
-        # Corresponds to the JSON property `timeCreated`
-        # @return [DateTime]
-        attr_accessor :time_created
-      
         # The modification time of the folder metadata in RFC 3339 format.
-        # Corresponds to the JSON property `updated`
+        # Corresponds to the JSON property `updateTime`
         # @return [DateTime]
-        attr_accessor :updated
+        attr_accessor :update_time
       
         def initialize(**args)
            update!(**args)
@@ -1522,15 +1517,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket = args[:bucket] if args.key?(:bucket)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
           @metageneration = args[:metageneration] if args.key?(:metageneration)
           @name = args[:name] if args.key?(:name)
           @pending_rename_info = args[:pending_rename_info] if args.key?(:pending_rename_info)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @time_created = args[:time_created] if args.key?(:time_created)
-          @updated = args[:updated] if args.key?(:updated)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
         
         # Only present if the folder is part of an ongoing rename folder operation.
