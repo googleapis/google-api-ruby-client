@@ -131,9 +131,6 @@ module Google
           if url_or_template.is_a?(String) && url_or_template.include?(ENDPOINT_SUBSTITUTION)
             @root_url_template = url_or_template
             @root_url = url_or_template.gsub ENDPOINT_SUBSTITUTION, universe_domain
-          elsif url_or_template.is_a?(Addressable::URI) && url_or_template.to_s.include?(ENDPOINT_SUBSTITUTION)
-            @root_url_template = url_or_template.to_s
-            @root_url = Addressable::URI.parse(url_or_template.to_s.gsub(ENDPOINT_SUBSTITUTION, universe_domain))
           else
             @root_url_template = nil
             @root_url = url_or_template

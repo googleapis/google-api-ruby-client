@@ -544,12 +544,6 @@ EOF
     expect(service.root_url).to eql "https://endpoint2.mydomain6.com/"
   end
 
-  it "should support setting root url to a dynamic Addressable::URI" do
-    service.universe_domain = "mydomain6.com"
-    service.root_url = Addressable::URI.parse("https://endpoint2.$UNIVERSE_DOMAIN$/")
-    expect(service.root_url).to eql Addressable::URI.parse("https://endpoint2.mydomain6.com/")
-  end
-
   describe "#verify_universe_domain!" do
     it "should skip universe domain verification if credentials do not have them" do
       service_ud.authorization = "I have no universe domain"
