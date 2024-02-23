@@ -1078,6 +1078,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Detail description of the source information of a Vertex Feature Online Store.
+        # Corresponds to the JSON property `featureOnlineStoreSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1FeatureOnlineStoreSpec]
+        attr_accessor :feature_online_store_spec
+      
         # Specification that applies to a fileset. Valid only for entries with the '
         # FILESET' type.
         # Corresponds to the JSON property `filesetSpec`
@@ -1225,6 +1230,7 @@ module Google
           @dataset_spec = args[:dataset_spec] if args.key?(:dataset_spec)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @feature_online_store_spec = args[:feature_online_store_spec] if args.key?(:feature_online_store_spec)
           @fileset_spec = args[:fileset_spec] if args.key?(:fileset_spec)
           @fully_qualified_name = args[:fully_qualified_name] if args.key?(:fully_qualified_name)
           @gcs_fileset_spec = args[:gcs_fileset_spec] if args.key?(:gcs_fileset_spec)
@@ -1327,6 +1333,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @taxonomies = args[:taxonomies] if args.key?(:taxonomies)
+        end
+      end
+      
+      # Detail description of the source information of a Vertex Feature Online Store.
+      class GoogleCloudDatacatalogV1FeatureOnlineStoreSpec
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Type of underelaying storage for the FeatureOnlineStore.
+        # Corresponds to the JSON property `storageType`
+        # @return [String]
+        attr_accessor :storage_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_type = args[:storage_type] if args.key?(:storage_type)
         end
       end
       
