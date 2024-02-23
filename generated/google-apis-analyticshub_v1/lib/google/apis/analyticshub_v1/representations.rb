@@ -322,6 +322,8 @@ module Google
       class DcrExchangeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :single_linked_dataset_per_cleanroom, as: 'singleLinkedDatasetPerCleanroom'
+          property :single_selected_resource_sharing_restriction, as: 'singleSelectedResourceSharingRestriction'
         end
       end
       
