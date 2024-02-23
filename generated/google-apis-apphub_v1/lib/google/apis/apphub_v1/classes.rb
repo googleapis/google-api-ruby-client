@@ -22,6 +22,122 @@ module Google
   module Apis
     module ApphubV1
       
+      # Application defines the governance boundary for App Hub Entities that perform
+      # a logical end-to-end business function. App Hub supports application level IAM
+      # permission to align with governance requirements.
+      class Application
+        include Google::Apis::Core::Hashable
+      
+        # Consumer provided attributes.
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::ApphubV1::Attributes]
+        attr_accessor :attributes
+      
+        # Output only. Create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User-defined description of an Application. Can have a maximum
+        # length of 2048 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User-defined name for the Application. Can have a maximum length of
+        # 63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of an Application. Format: "projects/`host-
+        # project-id`/locations/`location`/applications/`application-id`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Scope of an application.
+        # Corresponds to the JSON property `scope`
+        # @return [Google::Apis::ApphubV1::Scope]
+        attr_accessor :scope
+      
+        # Output only. Application state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. A universally unique identifier (in UUID4 format) for the `
+        # Application`.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @scope = args[:scope] if args.key?(:scope)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Consumer provided attributes.
+      class Attributes
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Business team that ensures user needs are met and value is delivered
+        # Corresponds to the JSON property `businessOwners`
+        # @return [Array<Google::Apis::ApphubV1::ContactInfo>]
+        attr_accessor :business_owners
+      
+        # Criticality of the Application, Service, or Workload
+        # Corresponds to the JSON property `criticality`
+        # @return [Google::Apis::ApphubV1::Criticality]
+        attr_accessor :criticality
+      
+        # Optional. Developer team that owns development and coding.
+        # Corresponds to the JSON property `developerOwners`
+        # @return [Array<Google::Apis::ApphubV1::ContactInfo>]
+        attr_accessor :developer_owners
+      
+        # Environment of the Application, Service, or Workload
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::ApphubV1::Environment]
+        attr_accessor :environment
+      
+        # Optional. Operator team that ensures runtime and operations.
+        # Corresponds to the JSON property `operatorOwners`
+        # @return [Array<Google::Apis::ApphubV1::ContactInfo>]
+        attr_accessor :operator_owners
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_owners = args[:business_owners] if args.key?(:business_owners)
+          @criticality = args[:criticality] if args.key?(:criticality)
+          @developer_owners = args[:developer_owners] if args.key?(:developer_owners)
+          @environment = args[:environment] if args.key?(:environment)
+          @operator_owners = args[:operator_owners] if args.key?(:operator_owners)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -207,6 +323,145 @@ module Google
         end
       end
       
+      # Contact information of stakeholders.
+      class ContactInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Contact's name. Can have a maximum length of 63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Email address of the contacts.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # Criticality of the Application, Service, or Workload
+      class Criticality
+        include Google::Apis::Core::Hashable
+      
+        # Required. Criticality Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Request for DetachServiceProjectAttachment.
+      class DetachServiceProjectAttachmentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for DetachServiceProjectAttachment.
+      class DetachServiceProjectAttachmentResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # DiscoveredService is a network/api interface that exposes some functionality
+      # to clients for consumption over the network. A discovered service can be
+      # registered to a App Hub service.
+      class DiscoveredService
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the discovered service. Format: "projects/`
+        # host-project-id`/locations/`location`/discoveredServices/`uuid`""
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Properties of an underlying cloud resource that can comprise a Service.
+        # Corresponds to the JSON property `serviceProperties`
+        # @return [Google::Apis::ApphubV1::ServiceProperties]
+        attr_accessor :service_properties
+      
+        # Reference to an underlying networking resource that can comprise a Service.
+        # Corresponds to the JSON property `serviceReference`
+        # @return [Google::Apis::ApphubV1::ServiceReference]
+        attr_accessor :service_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @service_properties = args[:service_properties] if args.key?(:service_properties)
+          @service_reference = args[:service_reference] if args.key?(:service_reference)
+        end
+      end
+      
+      # DiscoveredWorkload is a binary deployment (such as managed instance groups (
+      # MIGs) and GKE deployments) that performs the smallest logical subset of
+      # business functionality. A discovered workload can be registered to an App Hub
+      # Workload.
+      class DiscoveredWorkload
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the discovered workload. Format: "projects/`
+        # host-project-id`/locations/`location`/discoveredWorkloads/`uuid`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Properties of an underlying compute resource represented by the Workload.
+        # Corresponds to the JSON property `workloadProperties`
+        # @return [Google::Apis::ApphubV1::WorkloadProperties]
+        attr_accessor :workload_properties
+      
+        # Reference of an underlying compute resource represented by the Workload.
+        # Corresponds to the JSON property `workloadReference`
+        # @return [Google::Apis::ApphubV1::WorkloadReference]
+        attr_accessor :workload_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @workload_properties = args[:workload_properties] if args.key?(:workload_properties)
+          @workload_reference = args[:workload_reference] if args.key?(:workload_reference)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -220,6 +475,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Environment of the Application, Service, or Workload
+      class Environment
+        include Google::Apis::Core::Hashable
+      
+        # Required. Environment Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -277,6 +551,99 @@ module Google
         end
       end
       
+      # Response for ListApplications.
+      class ListApplicationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Applications.
+        # Corresponds to the JSON property `applications`
+        # @return [Array<Google::Apis::ApphubV1::Application>]
+        attr_accessor :applications
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applications = args[:applications] if args.key?(:applications)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for ListDiscoveredServices.
+      class ListDiscoveredServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of discovered services.
+        # Corresponds to the JSON property `discoveredServices`
+        # @return [Array<Google::Apis::ApphubV1::DiscoveredService>]
+        attr_accessor :discovered_services
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovered_services = args[:discovered_services] if args.key?(:discovered_services)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for ListDiscoveredWorkloads.
+      class ListDiscoveredWorkloadsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of discovered workloads.
+        # Corresponds to the JSON property `discoveredWorkloads`
+        # @return [Array<Google::Apis::ApphubV1::DiscoveredWorkload>]
+        attr_accessor :discovered_workloads
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovered_workloads = args[:discovered_workloads] if args.key?(:discovered_workloads)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -327,6 +694,99 @@ module Google
         end
       end
       
+      # Response for ListServiceProjectAttachments.
+      class ListServiceProjectAttachmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of service project attachments.
+        # Corresponds to the JSON property `serviceProjectAttachments`
+        # @return [Array<Google::Apis::ApphubV1::ServiceProjectAttachment>]
+        attr_accessor :service_project_attachments
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @service_project_attachments = args[:service_project_attachments] if args.key?(:service_project_attachments)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for ListServices.
+      class ListServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of Services.
+        # Corresponds to the JSON property `services`
+        # @return [Array<Google::Apis::ApphubV1::Service>]
+        attr_accessor :services
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @services = args[:services] if args.key?(:services)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for ListWorkloads.
+      class ListWorkloadsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # List of Workloads.
+        # Corresponds to the JSON property `workloads`
+        # @return [Array<Google::Apis::ApphubV1::Workload>]
+        attr_accessor :workloads
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @workloads = args[:workloads] if args.key?(:workloads)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -371,6 +831,29 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Response for LookupServiceProjectAttachment.
+      class LookupServiceProjectAttachmentResponse
+        include Google::Apis::Core::Hashable
+      
+        # ServiceProjectAttachment represents an attachment from a service project to a
+        # host project. Service projects contain the underlying cloud infrastructure
+        # resources, and expose these resources to the host project through a
+        # ServiceProjectAttachment. With the attachments, the host project can provide
+        # an aggregated view of resources across all service projects.
+        # Corresponds to the JSON property `serviceProjectAttachment`
+        # @return [Google::Apis::ApphubV1::ServiceProjectAttachment]
+        attr_accessor :service_project_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_project_attachment = args[:service_project_attachment] if args.key?(:service_project_attachment)
         end
       end
       
@@ -433,6 +916,65 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have been cancelled successfully have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
         end
       end
       
@@ -554,6 +1096,216 @@ module Google
         def update!(**args)
           @delete_resource = args[:delete_resource] if args.key?(:delete_resource)
           @exclusive_action = args[:exclusive_action] if args.key?(:exclusive_action)
+        end
+      end
+      
+      # Scope of an application.
+      class Scope
+        include Google::Apis::Core::Hashable
+      
+        # Required. Scope Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Service is an App Hub data model that contains a discovered service, which
+      # represents a network/api interface that exposes some functionality to clients
+      # for consumption over the network.
+      class Service
+        include Google::Apis::Core::Hashable
+      
+        # Consumer provided attributes.
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::ApphubV1::Attributes]
+        attr_accessor :attributes
+      
+        # Output only. Create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User-defined description of a Service. Can have a maximum length of
+        # 2048 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Immutable. The resource name of the original discovered service.
+        # Corresponds to the JSON property `discoveredService`
+        # @return [String]
+        attr_accessor :discovered_service
+      
+        # Optional. User-defined name for the Service. Can have a maximum length of 63
+        # characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of a Service. Format: "projects/`host-project-id`
+        # /locations/`location`/applications/`application-id`/services/`service-id`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Properties of an underlying cloud resource that can comprise a Service.
+        # Corresponds to the JSON property `serviceProperties`
+        # @return [Google::Apis::ApphubV1::ServiceProperties]
+        attr_accessor :service_properties
+      
+        # Reference to an underlying networking resource that can comprise a Service.
+        # Corresponds to the JSON property `serviceReference`
+        # @return [Google::Apis::ApphubV1::ServiceReference]
+        attr_accessor :service_reference
+      
+        # Output only. Service state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. A universally unique identifier (UUID) for the `Service` in the
+        # UUID4 format.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @discovered_service = args[:discovered_service] if args.key?(:discovered_service)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @service_properties = args[:service_properties] if args.key?(:service_properties)
+          @service_reference = args[:service_reference] if args.key?(:service_reference)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # ServiceProjectAttachment represents an attachment from a service project to a
+      # host project. Service projects contain the underlying cloud infrastructure
+      # resources, and expose these resources to the host project through a
+      # ServiceProjectAttachment. With the attachments, the host project can provide
+      # an aggregated view of resources across all service projects.
+      class ServiceProjectAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The resource name of a ServiceProjectAttachment. Format: "projects/
+        # `host-project-id`/locations/global/serviceProjectAttachments/`service-project-
+        # id`."
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. Service project name in the format: "projects/abc" or "
+        # projects/123". As input, project name with either project id or number are
+        # accepted. As output, this field will contain project number.
+        # Corresponds to the JSON property `serviceProject`
+        # @return [String]
+        attr_accessor :service_project
+      
+        # Output only. ServiceProjectAttachment state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. A globally unique identifier (in UUID4 format) for the `
+        # ServiceProjectAttachment`.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @service_project = args[:service_project] if args.key?(:service_project)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Properties of an underlying cloud resource that can comprise a Service.
+      class ServiceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The service project identifier that the underlying cloud resource
+        # resides in.
+        # Corresponds to the JSON property `gcpProject`
+        # @return [String]
+        attr_accessor :gcp_project
+      
+        # Output only. The location that the underlying resource resides in, for example,
+        # us-west1.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Output only. The location that the underlying resource resides in if it is
+        # zonal, for example, us-west1-a).
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_project = args[:gcp_project] if args.key?(:gcp_project)
+          @location = args[:location] if args.key?(:location)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Reference to an underlying networking resource that can comprise a Service.
+      class ServiceReference
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The underlying resource URI (For example, URI of Forwarding Rule,
+        # URL Map, and Backend Service).
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -686,6 +1438,145 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Workload is an App Hub data model that contains a discovered workload, which
+      # represents a binary deployment (such as managed instance groups (MIGs) and GKE
+      # deployments) that performs the smallest logical subset of business
+      # functionality.
+      class Workload
+        include Google::Apis::Core::Hashable
+      
+        # Consumer provided attributes.
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::ApphubV1::Attributes]
+        attr_accessor :attributes
+      
+        # Output only. Create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User-defined description of a Workload. Can have a maximum length of
+        # 2048 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Immutable. The resource name of the original discovered workload.
+        # Corresponds to the JSON property `discoveredWorkload`
+        # @return [String]
+        attr_accessor :discovered_workload
+      
+        # Optional. User-defined name for the Workload. Can have a maximum length of 63
+        # characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of the Workload. Format: "projects/`host-project-
+        # id`/locations/`location`/applications/`application-id`/workloads/`workload-id`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Workload state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. A universally unique identifier (UUID) for the `Workload` in the
+        # UUID4 format.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Properties of an underlying compute resource represented by the Workload.
+        # Corresponds to the JSON property `workloadProperties`
+        # @return [Google::Apis::ApphubV1::WorkloadProperties]
+        attr_accessor :workload_properties
+      
+        # Reference of an underlying compute resource represented by the Workload.
+        # Corresponds to the JSON property `workloadReference`
+        # @return [Google::Apis::ApphubV1::WorkloadReference]
+        attr_accessor :workload_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @discovered_workload = args[:discovered_workload] if args.key?(:discovered_workload)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @workload_properties = args[:workload_properties] if args.key?(:workload_properties)
+          @workload_reference = args[:workload_reference] if args.key?(:workload_reference)
+        end
+      end
+      
+      # Properties of an underlying compute resource represented by the Workload.
+      class WorkloadProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The service project identifier that the underlying cloud resource
+        # resides in. Empty for non cloud resources.
+        # Corresponds to the JSON property `gcpProject`
+        # @return [String]
+        attr_accessor :gcp_project
+      
+        # Output only. The location that the underlying compute resource resides in (e.g
+        # us-west1).
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Output only. The location that the underlying compute resource resides in if
+        # it is zonal (e.g us-west1-a).
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_project = args[:gcp_project] if args.key?(:gcp_project)
+          @location = args[:location] if args.key?(:location)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Reference of an underlying compute resource represented by the Workload.
+      class WorkloadReference
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The underlying compute resource uri.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
     end
