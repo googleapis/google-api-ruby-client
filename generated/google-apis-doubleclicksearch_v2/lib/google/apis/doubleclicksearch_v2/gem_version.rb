@@ -16,10 +16,10 @@ module Google
   module Apis
     module DoubleclicksearchV2
       # Version of the google-apis-doubleclicksearch_v2 gem
-      GEM_VERSION = "0.20.0"
+      GEM_VERSION = "0.21.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.13.1"
+      GENERATOR_VERSION = "0.14.0"
 
       # Revision of the discovery document this client was generated from
       REVISION = "20240124"
