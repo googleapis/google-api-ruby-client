@@ -222,7 +222,8 @@ module Google
         attr_accessor :display_name
       
         # The FCC identifier of the device. Refer to https://www.fcc.gov/oet/ea/fccid
-        # for FccID format.
+        # for FccID format. Accept underscores and periods because some test-SAS
+        # customers use them.
         # Corresponds to the JSON property `fccId`
         # @return [String]
         attr_accessor :fcc_id
