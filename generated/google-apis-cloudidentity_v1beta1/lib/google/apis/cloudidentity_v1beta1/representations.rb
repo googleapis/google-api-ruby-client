@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BrowserAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BrowserInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelUserInvitationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -751,6 +763,36 @@ module Google
         end
       end
       
+      class BrowserAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chrome_browser_info, as: 'chromeBrowserInfo', class: Google::Apis::CloudidentityV1beta1::BrowserInfo, decorator: Google::Apis::CloudidentityV1beta1::BrowserInfo::Representation
+      
+          property :chrome_profile_id, as: 'chromeProfileId'
+          property :last_profile_sync_time, as: 'lastProfileSyncTime'
+        end
+      end
+      
+      class BrowserInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :browser_management_state, as: 'browserManagementState'
+          property :browser_version, as: 'browserVersion'
+          property :is_built_in_dns_client_enabled, as: 'isBuiltInDnsClientEnabled'
+          property :is_bulk_data_entry_analysis_enabled, as: 'isBulkDataEntryAnalysisEnabled'
+          property :is_chrome_cleanup_enabled, as: 'isChromeCleanupEnabled'
+          property :is_chrome_remote_desktop_app_blocked, as: 'isChromeRemoteDesktopAppBlocked'
+          property :is_file_download_analysis_enabled, as: 'isFileDownloadAnalysisEnabled'
+          property :is_file_upload_analysis_enabled, as: 'isFileUploadAnalysisEnabled'
+          property :is_realtime_url_check_enabled, as: 'isRealtimeUrlCheckEnabled'
+          property :is_security_event_analysis_enabled, as: 'isSecurityEventAnalysisEnabled'
+          property :is_site_isolation_enabled, as: 'isSiteIsolationEnabled'
+          property :is_third_party_blocking_enabled, as: 'isThirdPartyBlockingEnabled'
+          property :password_protection_warning_trigger, as: 'passwordProtectionWarningTrigger'
+          property :safe_browsing_protection_level, as: 'safeBrowsingProtectionLevel'
+        end
+      end
+      
       class CancelUserInvitationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -978,6 +1020,9 @@ module Google
       class EndpointVerificationSpecificAttributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_signals, as: 'additionalSignals'
+          collection :browser_attributes, as: 'browserAttributes', class: Google::Apis::CloudidentityV1beta1::BrowserAttributes, decorator: Google::Apis::CloudidentityV1beta1::BrowserAttributes::Representation
+      
           collection :certificate_attributes, as: 'certificateAttributes', class: Google::Apis::CloudidentityV1beta1::CertificateAttributes, decorator: Google::Apis::CloudidentityV1beta1::CertificateAttributes::Representation
       
         end
