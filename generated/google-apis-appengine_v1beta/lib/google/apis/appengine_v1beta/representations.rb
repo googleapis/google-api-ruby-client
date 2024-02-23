@@ -1206,6 +1206,7 @@ module Google
       
           property :deprecation_date, as: 'deprecationDate', class: Google::Apis::AppengineV1beta::Date, decorator: Google::Apis::AppengineV1beta::Date::Representation
       
+          property :display_name, as: 'displayName'
           property :end_of_support_date, as: 'endOfSupportDate', class: Google::Apis::AppengineV1beta::Date, decorator: Google::Apis::AppengineV1beta::Date::Representation
       
           property :environment, as: 'environment'

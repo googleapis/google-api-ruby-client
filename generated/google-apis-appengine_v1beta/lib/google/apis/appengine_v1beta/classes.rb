@@ -2700,6 +2700,11 @@ module Google
         # @return [Google::Apis::AppengineV1beta::Date]
         attr_accessor :deprecation_date
       
+        # User-friendly display name, e.g. 'Node.js 12', etc.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -2745,6 +2750,7 @@ module Google
         def update!(**args)
           @decommissioned_date = args[:decommissioned_date] if args.key?(:decommissioned_date)
           @deprecation_date = args[:deprecation_date] if args.key?(:deprecation_date)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @end_of_support_date = args[:end_of_support_date] if args.key?(:end_of_support_date)
           @environment = args[:environment] if args.key?(:environment)
           @name = args[:name] if args.key?(:name)
