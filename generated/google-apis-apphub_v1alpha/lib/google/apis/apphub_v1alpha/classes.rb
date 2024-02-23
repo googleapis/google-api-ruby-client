@@ -38,12 +38,14 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. User-defined description of an Application.
+        # Optional. User-defined description of an Application. Can have a maximum
+        # length of 2048 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. User-defined name for the Application.
+        # Optional. User-defined name for the Application. Can have a maximum length of
+        # 63 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -349,7 +351,7 @@ module Google
         # @return [Google::Apis::ApphubV1alpha::Channel]
         attr_accessor :channel
       
-        # Optional. Contact's name.
+        # Optional. Contact's name. Can have a maximum length of 63 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -375,16 +377,23 @@ module Google
       class Criticality
         include Google::Apis::Core::Hashable
       
-        # Required. Criticality level.
+        # Optional. Criticality level. Can contain only lowercase letters, numeric
+        # characters, underscores, and dashes. Can have a maximum length of 63
+        # characters.
         # Corresponds to the JSON property `level`
         # @return [String]
         attr_accessor :level
       
-        # Required. Indicates mission-critical Application, Service, or Workload.
+        # Optional. Indicates mission-critical Application, Service, or Workload.
         # Corresponds to the JSON property `missionCritical`
         # @return [Boolean]
         attr_accessor :mission_critical
         alias_method :mission_critical?, :mission_critical
+      
+        # Required. Criticality Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
         def initialize(**args)
            update!(**args)
@@ -394,6 +403,7 @@ module Google
         def update!(**args)
           @level = args[:level] if args.key?(:level)
           @mission_critical = args[:mission_critical] if args.key?(:mission_critical)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -512,10 +522,17 @@ module Google
       class Environment
         include Google::Apis::Core::Hashable
       
-        # Required. Environment name.
+        # Optional. Environment name. Can contain only lowercase letters, numeric
+        # characters, underscores, and dashes. Can have a maximum length of 63
+        # characters.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
+      
+        # Required. Environment Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
         def initialize(**args)
            update!(**args)
@@ -524,6 +541,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @environment = args[:environment] if args.key?(:environment)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1200,7 +1218,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. User-defined description of a Service.
+        # Optional. User-defined description of a Service. Can have a maximum length of
+        # 2048 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1210,7 +1229,8 @@ module Google
         # @return [String]
         attr_accessor :discovered_service
       
-        # Optional. User-defined name for the Service.
+        # Optional. User-defined name for the Service. Can have a maximum length of 63
+        # characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1530,7 +1550,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. User-defined description of a Workload.
+        # Optional. User-defined description of a Workload. Can have a maximum length of
+        # 2048 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1540,7 +1561,8 @@ module Google
         # @return [String]
         attr_accessor :discovered_workload
       
-        # Optional. User-defined name for the Workload.
+        # Optional. User-defined name for the Workload. Can have a maximum length of 63
+        # characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
