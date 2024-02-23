@@ -119,16 +119,16 @@ module Google
         end
 
         # Root URL (host/port) for the API
-        # @return [Addressable::URI]
+        # @return [Addressable::URI, String]
         attr_reader :root_url
 
         # Set the root URL.
         # If the given url includes a universe domain substitution, it is
         # resolved in the current universe domain
         #
-        # @param url_or_template [String] The URL, which can include a universe domain substitution
+        # @param url_or_template [Addressable::URI, String] The URL, which can include a universe domain substitution
         def root_url= url_or_template
-          if url_or_template.include? ENDPOINT_SUBSTITUTION
+          if url_or_template.is_a?(String) && url_or_template.include?(ENDPOINT_SUBSTITUTION)
             @root_url_template = url_or_template
             @root_url = url_or_template.gsub ENDPOINT_SUBSTITUTION, universe_domain
           else

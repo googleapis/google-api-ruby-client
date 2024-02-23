@@ -533,6 +533,11 @@ EOF
     expect(service_ud.root_url).to eql "https://endpoint1.mydomain5.com/"
   end
 
+  it "should support setting root url to Addressable::URI" do
+    service_ud.root_url = Addressable::URI.parse("https://endpoint1.mydomain5.com/")
+    expect(service_ud.root_url).to be_a(Addressable::URI)
+  end
+
   it "should support setting root url to a dynamic value" do
     service.universe_domain = "mydomain6.com"
     service.root_url = "https://endpoint2.$UNIVERSE_DOMAIN$/"
