@@ -38,7 +38,7 @@ module Google
         end
       end
       
-      # Request to kick off a Takeout Archive job.
+      # Request to kick off an Archive job.
       class InitiatePortabilityArchiveRequest
         include Google::Apis::Core::Hashable
       
@@ -58,12 +58,12 @@ module Google
         end
       end
       
-      # Response from initiating a Take Archive job.
+      # Response from initiating an Archive job.
       class InitiatePortabilityArchiveResponse
         include Google::Apis::Core::Hashable
       
-        # The archive job ID that is initiated in the Takeout API. This can be used to
-        # get the state of the job.
+        # The archive job ID that is initiated in the API. This can be used to get the
+        # state of the job.
         # Corresponds to the JSON property `archiveJobId`
         # @return [String]
         attr_accessor :archive_job_id
@@ -78,7 +78,7 @@ module Google
         end
       end
       
-      # Resource that contains the state of a Takeout Archive job.
+      # Resource that contains the state of an Archive job.
       class PortabilityArchiveState
         include Google::Apis::Core::Hashable
       
@@ -89,7 +89,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Resource that represents the state of the Takeout Archive job.
+        # Resource that represents the state of the Archive job.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -143,7 +143,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The archive job ID that is initiated by the retry endpoint. This can be used
-        # to get the state of the new job
+        # to get the state of the new job.
         # Corresponds to the JSON property `archiveJobId`
         # @return [String]
         attr_accessor :archive_job_id

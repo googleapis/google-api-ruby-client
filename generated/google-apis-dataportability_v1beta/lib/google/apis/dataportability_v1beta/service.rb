@@ -54,12 +54,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Retrieves the state of a Takeout Archive job for the Portability API.
+        # Retrieves the state of an Archive job for the Portability API.
         # @param [String] name
         #   Required. The archive job ID that is returned when you request the state of
-        #   the job from Takeout. The format is: archiveJobs/`archive_job`/
-        #   portabilityArchiveState. archive_job is the job ID returned by the
-        #   InitiatePortabilityArchiveResponse.
+        #   the job. The format is: archiveJobs/`archive_job`/portabilityArchiveState.
+        #   archive_job is the job ID returned by the InitiatePortabilityArchiveResponse.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -89,9 +88,9 @@ module Google
         
         # Retries a failed Portability Archive job.
         # @param [String] name
-        #   Required. The archive job ID returned by the
-        #   InitiatePortabilityArchiveResponse to be retried. Retrying is only executed if
-        #   the initial job failed.
+        #   Required. The Archive job ID you're retrying. This is returned by the
+        #   InitiatePortabilityArchiveResponse. Retrying is only executed if the initial
+        #   job failed.
         # @param [Google::Apis::DataportabilityV1beta::RetryPortabilityArchiveRequest] retry_portability_archive_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -123,9 +122,9 @@ module Google
         end
         
         # Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This
-        # method allows you to initiate a Takeout request after a new consent is granted.
-        # This method also indicates that previous archives can be garbage collected.
-        # You should call this method when all jobs are complete and all archives are
+        # method allows you to initiate a request after a new consent is granted. This
+        # method also indicates that previous archives can be garbage collected. You
+        # should call this method when all jobs are complete and all archives are
         # downloaded. Do not call it only when you start a new job.
         # @param [Google::Apis::DataportabilityV1beta::ResetAuthorizationRequest] reset_authorization_request_object
         # @param [String] fields
@@ -156,7 +155,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Initiates a new Takeout Archive job for the Portability API.
+        # Initiates a new Archive job for the Portability API.
         # @param [Google::Apis::DataportabilityV1beta::InitiatePortabilityArchiveRequest] initiate_portability_archive_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
