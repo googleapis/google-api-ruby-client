@@ -455,6 +455,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Evaluates a Kubernetes object versus a GKE platform policy. Returns `NOT_FOUND`
+        # if the policy doesn't exist, `INVALID_ARGUMENT` if the policy or request is
+        # malformed and `PERMISSION_DENIED` if the client does not have sufficient
+        # permissions.
+        # @param [String] name
+        #   Required. The name of the platform policy to evaluate in the format `projects/*
+        #   /platforms/*/policies/*`.
+        # @param [Google::Apis::BinaryauthorizationV1::EvaluateGkePolicyRequest] evaluate_gke_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BinaryauthorizationV1::EvaluateGkePolicyResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BinaryauthorizationV1::EvaluateGkePolicyResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def evaluate_gke_policy(name, evaluate_gke_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:evaluate', options)
+          command.request_representation = Google::Apis::BinaryauthorizationV1::EvaluateGkePolicyRequest::Representation
+          command.request_object = evaluate_gke_policy_request_object
+          command.response_representation = Google::Apis::BinaryauthorizationV1::EvaluateGkePolicyResponse::Representation
+          command.response_class = Google::Apis::BinaryauthorizationV1::EvaluateGkePolicyResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a platform policy, and returns a copy of it. Returns `NOT_FOUND` if
         # the project or platform doesn't exist, `INVALID_ARGUMENT` if the request is
         # malformed, `ALREADY_EXISTS` if the policy already exists, and `

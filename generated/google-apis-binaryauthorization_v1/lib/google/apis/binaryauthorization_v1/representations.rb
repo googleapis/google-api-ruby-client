@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllowlistResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AttestationAuthenticator
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,13 +82,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckSetResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvaluateGkePolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvaluateGkePolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvaluationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -113,6 +155,12 @@ module Google
       end
       
       class ImageFreshnessCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +197,12 @@ module Google
       end
       
       class PlatformPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PodResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -278,6 +332,13 @@ module Google
         end
       end
       
+      class AllowlistResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :matched_pattern, as: 'matchedPattern'
+        end
+      end
+      
       class AttestationAuthenticator
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -360,6 +421,28 @@ module Google
         end
       end
       
+      class CheckResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowlist_result, as: 'allowlistResult', class: Google::Apis::BinaryauthorizationV1::AllowlistResult, decorator: Google::Apis::BinaryauthorizationV1::AllowlistResult::Representation
+      
+          property :display_name, as: 'displayName'
+          property :evaluation_result, as: 'evaluationResult', class: Google::Apis::BinaryauthorizationV1::EvaluationResult, decorator: Google::Apis::BinaryauthorizationV1::EvaluationResult::Representation
+      
+          property :explanation, as: 'explanation'
+          property :index, :numeric_string => true, as: 'index'
+          property :type, as: 'type'
+        end
+      end
+      
+      class CheckResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :results, as: 'results', class: Google::Apis::BinaryauthorizationV1::CheckResult, decorator: Google::Apis::BinaryauthorizationV1::CheckResult::Representation
+      
+        end
+      end
+      
       class CheckSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -373,9 +456,47 @@ module Google
         end
       end
       
+      class CheckSetResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowlist_result, as: 'allowlistResult', class: Google::Apis::BinaryauthorizationV1::AllowlistResult, decorator: Google::Apis::BinaryauthorizationV1::AllowlistResult::Representation
+      
+          property :check_results, as: 'checkResults', class: Google::Apis::BinaryauthorizationV1::CheckResults, decorator: Google::Apis::BinaryauthorizationV1::CheckResults::Representation
+      
+          property :display_name, as: 'displayName'
+          property :explanation, as: 'explanation'
+          property :index, :numeric_string => true, as: 'index'
+          property :scope, as: 'scope', class: Google::Apis::BinaryauthorizationV1::Scope, decorator: Google::Apis::BinaryauthorizationV1::Scope::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EvaluateGkePolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource, as: 'resource'
+        end
+      end
+      
+      class EvaluateGkePolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :results, as: 'results', class: Google::Apis::BinaryauthorizationV1::PodResult, decorator: Google::Apis::BinaryauthorizationV1::PodResult::Representation
+      
+          property :verdict, as: 'verdict'
+        end
+      end
+      
+      class EvaluationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :verdict, as: 'verdict'
         end
       end
       
@@ -420,6 +541,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_upload_age_days, as: 'maxUploadAgeDays'
+        end
+      end
+      
+      class ImageResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowlist_result, as: 'allowlistResult', class: Google::Apis::BinaryauthorizationV1::AllowlistResult, decorator: Google::Apis::BinaryauthorizationV1::AllowlistResult::Representation
+      
+          property :check_set_result, as: 'checkSetResult', class: Google::Apis::BinaryauthorizationV1::CheckSetResult, decorator: Google::Apis::BinaryauthorizationV1::CheckSetResult::Representation
+      
+          property :explanation, as: 'explanation'
+          property :image_uri, as: 'imageUri'
+          property :verdict, as: 'verdict'
         end
       end
       
@@ -473,6 +607,18 @@ module Google
       
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class PodResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :image_results, as: 'imageResults', class: Google::Apis::BinaryauthorizationV1::ImageResult, decorator: Google::Apis::BinaryauthorizationV1::ImageResult::Representation
+      
+          property :kubernetes_namespace, as: 'kubernetesNamespace'
+          property :kubernetes_service_account, as: 'kubernetesServiceAccount'
+          property :pod_name, as: 'podName'
+          property :verdict, as: 'verdict'
         end
       end
       
