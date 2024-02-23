@@ -776,6 +776,7 @@ module Google
       
           property :encryption_key, as: 'encryptionKey'
           property :execution_environment, as: 'executionEnvironment'
+          property :health_check_disabled, as: 'healthCheckDisabled'
           hash :labels, as: 'labels'
           property :max_instance_request_concurrency, as: 'maxInstanceRequestConcurrency'
           property :revision, as: 'revision'
@@ -832,6 +833,7 @@ module Google
           property :create_time, as: 'createTime'
           property :creator, as: 'creator'
           collection :custom_audiences, as: 'customAudiences'
+          property :default_uri_disabled, as: 'defaultUriDisabled'
           property :delete_time, as: 'deleteTime'
           property :description, as: 'description'
           property :etag, as: 'etag'
