@@ -394,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainEntitlement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainOperationError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -597,6 +603,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :name, as: 'name'
           collection :pem_certificate_chain, as: 'pemCertificateChain'
+          property :psc_dns_name, as: 'pscDnsName'
           property :public_ip_address, as: 'publicIpAddress'
         end
       end
@@ -1138,6 +1145,8 @@ module Google
           property :current_state, as: 'currentState'
           property :custom_metadata, as: 'customMetadata', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainCustomMetadataData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainCustomMetadataData::Representation
       
+          collection :entitlements, as: 'entitlements', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainEntitlement, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainEntitlement::Representation
+      
           property :expected_state, as: 'expectedState'
           property :id, as: 'id', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
@@ -1160,8 +1169,19 @@ module Google
           hash :additional_metadata, as: 'additionalMetadata'
           property :last_refresh_time, as: 'lastRefreshTime'
           property :recommendation_state, as: 'recommendationState'
+          property :recommender, as: 'recommender'
+          property :recommender_id, as: 'recommenderId'
+          property :recommender_subtype, as: 'recommenderSubtype'
           property :resource_name, as: 'resourceName'
           property :signal_type, as: 'signalType'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainEntitlement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entitlement_state, as: 'entitlementState'
+          property :type, as: 'type'
         end
       end
       
