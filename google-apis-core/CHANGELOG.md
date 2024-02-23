@@ -1,5 +1,14 @@
 # Release History
 
+### 0.14.0 (2024-02-23)
+
+#### Features
+
+* Update minimum Ruby version to 2.7 ([#17896](https://github.com/googleapis/google-api-ruby-client/issues/17896)) 
+#### Bug Fixes
+
+* allow BaseService#root_url to be an Addressable::URI ([#17895](https://github.com/googleapis/google-api-ruby-client/issues/17895)) 
+
 ### 0.13.0 (2024-01-26)
 
 #### Features
