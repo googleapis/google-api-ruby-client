@@ -2074,7 +2074,9 @@ module Google
         # optionally a stringified JSON object in the form: ` "ackedUserPresence": true `
         # . `ackedUserPresence` is a boolean. By default, `ackedUserPresence` is set to `
         # false`. To start a Chrome Remote Desktop session for an active device, set `
-        # ackedUserPresence` to `true`.
+        # ackedUserPresence` to `true`. * `REBOOT`: Payload is a stringified JSON object
+        # in the form: ` "user_session_delay_seconds": 300 `. The delay has to be in the
+        # range [0, 300].
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload
