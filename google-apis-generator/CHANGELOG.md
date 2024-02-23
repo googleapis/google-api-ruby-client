@@ -1,5 +1,11 @@
 # Release History
 
+### 0.14.0 (2024-02-23)
+
+#### Features
+
+* Update generated clients to require Ruby 2.7 or later ([#17898](https://github.com/googleapis/google-api-ruby-client/issues/17898)) 
+
 ### 0.13.1 (2024-01-22)
 
 #### Bug Fixes
