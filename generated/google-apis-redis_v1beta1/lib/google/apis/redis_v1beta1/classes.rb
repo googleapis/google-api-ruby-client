@@ -119,7 +119,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :shard_count
       
-        # Output only. Redis memory size in GB for the entire cluster.
+        # Output only. Redis memory size in GB for the entire cluster rounded up to the
+        # next integer.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
