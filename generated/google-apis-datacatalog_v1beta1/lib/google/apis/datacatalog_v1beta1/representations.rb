@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1FeatureOnlineStoreSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1FilesetSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -996,6 +1002,8 @@ module Google
       
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :feature_online_store_spec, as: 'featureOnlineStoreSpec', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1FeatureOnlineStoreSpec, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1FeatureOnlineStoreSpec::Representation
+      
           property :fileset_spec, as: 'filesetSpec', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1FilesetSpec, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1FilesetSpec::Representation
       
           property :fully_qualified_name, as: 'fullyQualifiedName'
@@ -1033,6 +1041,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :overview, as: 'overview'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1FeatureOnlineStoreSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_type, as: 'storageType'
         end
       end
       
