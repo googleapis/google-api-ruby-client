@@ -16,7 +16,7 @@ module Google
   module Apis
     module DocumentaiV1beta3
       # Version of the google-apis-documentai_v1beta3 gem
-      GEM_VERSION = "0.89.0"
+      GEM_VERSION = "0.90.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.13.1"
