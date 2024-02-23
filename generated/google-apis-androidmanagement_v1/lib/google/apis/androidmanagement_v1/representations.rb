@@ -833,6 +833,7 @@ module Google
           property :common_criteria_mode, as: 'commonCriteriaMode'
           property :developer_settings, as: 'developerSettings'
           property :google_play_protect_verify_apps, as: 'googlePlayProtectVerifyApps'
+          property :mte_policy, as: 'mtePolicy'
           collection :personal_apps_that_can_read_work_notifications, as: 'personalAppsThatCanReadWorkNotifications'
           property :untrusted_apps_policy, as: 'untrustedAppsPolicy'
         end

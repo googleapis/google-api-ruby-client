@@ -84,6 +84,13 @@ module Google
         # @return [String]
         attr_accessor :google_play_protect_verify_apps
       
+        # Optional. Controls Memory Tagging Extension (MTE) (https://source.android.com/
+        # docs/security/test/memory-safety/arm-mte) on the device. The device needs to
+        # be rebooted to apply changes to the MTE policy.
+        # Corresponds to the JSON property `mtePolicy`
+        # @return [String]
+        attr_accessor :mte_policy
+      
         # Personal apps that can read work profile notifications using a
         # NotificationListenerService (https://developer.android.com/reference/android/
         # service/notification/NotificationListenerService). By default, no personal
@@ -108,6 +115,7 @@ module Google
           @common_criteria_mode = args[:common_criteria_mode] if args.key?(:common_criteria_mode)
           @developer_settings = args[:developer_settings] if args.key?(:developer_settings)
           @google_play_protect_verify_apps = args[:google_play_protect_verify_apps] if args.key?(:google_play_protect_verify_apps)
+          @mte_policy = args[:mte_policy] if args.key?(:mte_policy)
           @personal_apps_that_can_read_work_notifications = args[:personal_apps_that_can_read_work_notifications] if args.key?(:personal_apps_that_can_read_work_notifications)
           @untrusted_apps_policy = args[:untrusted_apps_policy] if args.key?(:untrusted_apps_policy)
         end
