@@ -864,7 +864,7 @@ module Google
         end
       end
       
-      # The Condition evaluation.
+      # The condition evaluation.
       class ConditionEvaluation
         include Google::Apis::Core::Hashable
       
@@ -1389,7 +1389,7 @@ module Google
         # @return [Array<Google::Apis::CloudassetV1::GoogleCloudAssetV1Access>]
         attr_accessor :accesses
       
-        # The Condition evaluation.
+        # The condition evaluation.
         # Corresponds to the JSON property `conditionEvaluation`
         # @return [Google::Apis::CloudassetV1::ConditionEvaluation]
         attr_accessor :condition_evaluation
@@ -2127,7 +2127,7 @@ module Google
         # @return [Google::Apis::CloudassetV1::Expr]
         attr_accessor :condition
       
-        # The Condition evaluation.
+        # The condition evaluation.
         # Corresponds to the JSON property `conditionEvaluation`
         # @return [Google::Apis::CloudassetV1::ConditionEvaluation]
         attr_accessor :condition_evaluation
@@ -3852,9 +3852,9 @@ module Google
         # within the scope will be analyzed. This can only be an organization number (
         # such as "organizations/123"), a folder number (such as "folders/123"), a
         # project ID (such as "projects/my-project-id"), or a project number (such as "
-        # projects/12345"). To know how to get organization id, visit [here ](https://
+        # projects/12345"). To know how to get organization ID, visit [here ](https://
         # cloud.google.com/resource-manager/docs/creating-managing-organization#
-        # retrieving_your_organization_id). To know how to get folder or project id,
+        # retrieving_your_organization_id). To know how to get folder or project ID,
         # visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
         # folders#viewing_or_listing_folders_and_projects).
         # Corresponds to the JSON property `scope`
@@ -5938,7 +5938,7 @@ module Google
       end
       
       # The key and value for a [tag](https://cloud.google.com/resource-manager/docs/
-      # tags/tags-overview),
+      # tags/tags-overview).
       class Tag
         include Google::Apis::Core::Hashable
       
