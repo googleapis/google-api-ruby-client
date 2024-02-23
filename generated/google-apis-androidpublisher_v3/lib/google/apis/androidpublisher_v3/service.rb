@@ -2586,10 +2586,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Archives a subscription. Can only be done if at least one base plan was active
-        # in the past, and no base plan is available for new or existing subscribers
-        # currently. This action is irreversible, and the subscription ID will remain
-        # reserved.
+        # Deprecated: subscription archiving is not supported.
         # @param [String] package_name
         #   Required. The parent app (package name) of the app of the subscription to
         #   delete.
@@ -2828,8 +2825,7 @@ module Google
         #   provided to `ListSubscriptions` must match the call that provided the page
         #   token.
         # @param [Boolean] show_archived
-        #   Whether archived subscriptions should be included in the response. Defaults to
-        #   false.
+        #   Deprecated: subscription archiving is not supported.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
