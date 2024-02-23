@@ -622,14 +622,10 @@ module Google
       class CommonEventObject
         include Google::Apis::Core::Hashable
       
-        # A map containing the current values of the widgets in a card. The map keys are
-        # the string IDs assigned to each widget, and the values represent inputs to the
-        # widget. Depending on the input data type, a different object represents each
-        # input: For single-value widgets, `StringInput`. For multi-value widgets, an
-        # array of `StringInput` objects. For a date-time picker, a `DateTimeInput`. For
-        # a date-only picker, a `DateInput`. For a time-only picker, a `TimeInput`.
-        # Corresponds with the data entered by a user on a card in a [dialog](https://
-        # developers.google.com/chat/how-tos/dialogs).
+        # A map containing the values that a user inputs in a widget from a card or
+        # dialog. The map keys are the string IDs assigned to each widget, and the
+        # values represent inputs to the widget. For details, see [Process information
+        # inputted by users](https://developers.google.com/chat/ui/read-form-data).
         # Corresponds to the JSON property `formInputs`
         # @return [Hash<String,Google::Apis::ChatV1::Inputs>]
         attr_accessor :form_inputs
@@ -3123,9 +3119,9 @@ module Google
         end
       end
       
-      # Types of data that users can enter on cards or dialogs. To learn how to
-      # process information from users, see [Read form data input by users on cards](
-      # https://developers.google.com/chat/ui/read-form-data).
+      # Types of data that users can [input on cards or dialogs](https://developers.
+      # google.com/chat/ui/read-form-data). The input type depends on the type of
+      # values that the widget accepts.
       class Inputs
         include Google::Apis::Core::Hashable
       
@@ -4170,7 +4166,7 @@ module Google
       class StringInputs
         include Google::Apis::Core::Hashable
       
-        # An array of strings entered by the user.
+        # An list of strings entered by the user.
         # Corresponds to the JSON property `value`
         # @return [Array<String>]
         attr_accessor :value

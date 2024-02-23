@@ -21,8 +21,8 @@ module Google
   module Apis
     # Google Chat API
     #
-    # Enables apps to fetch information and perform actions in Google Chat.
-    # Authentication is a prerequisite for using the Google Chat REST API.
+    # The Google Chat API lets you build Chat apps to integrate your services with
+    # Google Chat and manage Chat resources such as spaces, members, and messages.
     #
     # @see https://developers.google.com/hangouts/chat
     module ChatV1
