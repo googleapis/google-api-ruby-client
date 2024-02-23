@@ -494,29 +494,6 @@ module Google
         end
       end
       
-      # Explain options for the query.
-      class ExplainOptions
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Whether to execute this query. When false (the default), the query
-        # will be planned, returning only metrics from the planning stages. When true,
-        # the query will be planned and executed, returning the full query results along
-        # with both planning and execution stage metrics.
-        # Corresponds to the JSON property `analyze`
-        # @return [Boolean]
-        attr_accessor :analyze
-        alias_method :analyze?, :analyze
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @analyze = args[:analyze] if args.key?(:analyze)
-        end
-      end
-      
       # A holder for any type of filter.
       class Filter
         include Google::Apis::Core::Hashable
@@ -1990,11 +1967,6 @@ module Google
         # @return [Google::Apis::DatastoreV1beta3::AggregationQuery]
         attr_accessor :aggregation_query
       
-        # Explain options for the query.
-        # Corresponds to the JSON property `explainOptions`
-        # @return [Google::Apis::DatastoreV1beta3::ExplainOptions]
-        attr_accessor :explain_options
-      
         # A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
         # Corresponds to the JSON property `gqlQuery`
         # @return [Google::Apis::DatastoreV1beta3::GqlQuery]
@@ -2026,7 +1998,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aggregation_query = args[:aggregation_query] if args.key?(:aggregation_query)
-          @explain_options = args[:explain_options] if args.key?(:explain_options)
           @gql_query = args[:gql_query] if args.key?(:gql_query)
           @partition_id = args[:partition_id] if args.key?(:partition_id)
           @read_options = args[:read_options] if args.key?(:read_options)
@@ -2061,11 +2032,6 @@ module Google
       # The request for Datastore.RunQuery.
       class RunQueryRequest
         include Google::Apis::Core::Hashable
-      
-        # Explain options for the query.
-        # Corresponds to the JSON property `explainOptions`
-        # @return [Google::Apis::DatastoreV1beta3::ExplainOptions]
-        attr_accessor :explain_options
       
         # A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
         # Corresponds to the JSON property `gqlQuery`
@@ -2102,7 +2068,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @explain_options = args[:explain_options] if args.key?(:explain_options)
           @gql_query = args[:gql_query] if args.key?(:gql_query)
           @partition_id = args[:partition_id] if args.key?(:partition_id)
           @query = args[:query] if args.key?(:query)
