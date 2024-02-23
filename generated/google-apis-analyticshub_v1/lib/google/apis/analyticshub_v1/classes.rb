@@ -325,12 +325,35 @@ module Google
       class DcrExchangeConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. If True, when subscribing to this DCR, it will create only one
+        # linked dataset containing all resources shared within the cleanroom. If False,
+        # when subscribing to this DCR, it will create 1 linked dataset per listing.
+        # This is not configurable, and by default, all new DCRs will have the
+        # restriction set to True.
+        # Corresponds to the JSON property `singleLinkedDatasetPerCleanroom`
+        # @return [Boolean]
+        attr_accessor :single_linked_dataset_per_cleanroom
+        alias_method :single_linked_dataset_per_cleanroom?, :single_linked_dataset_per_cleanroom
+      
+        # Output only. If True, this DCR restricts the contributors to sharing only a
+        # single resource in a Listing. And no two resources should have the same IDs.
+        # So if a contributor adds a view with a conflicting name, the CreateListing API
+        # will reject the request. if False, the data contributor can publish an entire
+        # dataset (as before). This is not configurable, and by default, all new DCRs
+        # will have the restriction set to True.
+        # Corresponds to the JSON property `singleSelectedResourceSharingRestriction`
+        # @return [Boolean]
+        attr_accessor :single_selected_resource_sharing_restriction
+        alias_method :single_selected_resource_sharing_restriction?, :single_selected_resource_sharing_restriction
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @single_linked_dataset_per_cleanroom = args[:single_linked_dataset_per_cleanroom] if args.key?(:single_linked_dataset_per_cleanroom)
+          @single_selected_resource_sharing_restriction = args[:single_selected_resource_sharing_restriction] if args.key?(:single_selected_resource_sharing_restriction)
         end
       end
       
