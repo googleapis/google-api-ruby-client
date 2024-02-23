@@ -606,6 +606,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :pem_certificate_chain
       
+        # Output only. The DNS name to use with PSC for the Instance.
+        # Corresponds to the JSON property `pscDnsName`
+        # @return [String]
+        attr_accessor :psc_dns_name
+      
         # Output only. The public IP addresses for the Instance. This is available ONLY
         # when enable_public_ip is set. This is the connection endpoint for an end-user
         # application.
@@ -623,6 +628,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @name = args[:name] if args.key?(:name)
           @pem_certificate_chain = args[:pem_certificate_chain] if args.key?(:pem_certificate_chain)
+          @psc_dns_name = args[:psc_dns_name] if args.key?(:psc_dns_name)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
         end
       end
@@ -1188,6 +1194,11 @@ module Google
         # @return [Array<Google::Apis::AlloydbV1beta::Node>]
         attr_accessor :nodes
       
+        # PscInstanceConfig contains PSC related configuration at an instance level.
+        # Corresponds to the JSON property `pscInstanceConfig`
+        # @return [Google::Apis::AlloydbV1beta::PscInstanceConfig]
+        attr_accessor :psc_instance_config
+      
         # Output only. The public IP addresses for the Instance. This is available ONLY
         # when enable_public_ip is set. This is the connection endpoint for an end-user
         # application.
@@ -1271,6 +1282,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @psc_instance_config = args[:psc_instance_config] if args.key?(:psc_instance_config)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
           @read_pool_config = args[:read_pool_config] if args.key?(:read_pool_config)
@@ -1820,6 +1832,98 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @request_id = args[:request_id] if args.key?(:request_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # PscInstanceConfig contains PSC related configuration at an instance level.
+      class PscInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of consumer networks that are allowed to create PSC endpoints
+        # to service-attachments to this instance.
+        # Corresponds to the JSON property `allowedConsumerNetworks`
+        # @return [Array<String>]
+        attr_accessor :allowed_consumer_networks
+      
+        # Optional. List of consumer projects that are allowed to create PSC endpoints
+        # to service-attachments to this instance.
+        # Corresponds to the JSON property `allowedConsumerProjects`
+        # @return [Array<String>]
+        attr_accessor :allowed_consumer_projects
+      
+        # Optional. List of service attachments that this instance has created endpoints
+        # to connect with. Currently, only a single outgoing service attachment is
+        # supported per instance.
+        # Corresponds to the JSON property `outgoingServiceAttachmentLinks`
+        # @return [Array<String>]
+        attr_accessor :outgoing_service_attachment_links
+      
+        # Optional. Whether PSC connectivity is enabled for this instance. This is
+        # populated by referencing the value from the parent cluster.
+        # Corresponds to the JSON property `pscEnabled`
+        # @return [Boolean]
+        attr_accessor :psc_enabled
+        alias_method :psc_enabled?, :psc_enabled
+      
+        # Optional. Configurations for setting up PSC interfaces attached to the
+        # instance which are used for outbound connectivity. Only primary instances can
+        # have PSC interface attached. All the VMs created for the primary instance will
+        # share the same configurations. Currently we only support 0 or 1 PSC interface.
+        # Corresponds to the JSON property `pscInterfaceConfigs`
+        # @return [Array<Google::Apis::AlloydbV1beta::PscInterfaceConfig>]
+        attr_accessor :psc_interface_configs
+      
+        # Output only. The service attachment created when Private Service Connect (PSC)
+        # is enabled for the instance. The name of the resource will be in the format of
+        # projects//regions//serviceAttachments/
+        # Corresponds to the JSON property `serviceAttachmentLink`
+        # @return [String]
+        attr_accessor :service_attachment_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_consumer_networks = args[:allowed_consumer_networks] if args.key?(:allowed_consumer_networks)
+          @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
+          @outgoing_service_attachment_links = args[:outgoing_service_attachment_links] if args.key?(:outgoing_service_attachment_links)
+          @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
+          @psc_interface_configs = args[:psc_interface_configs] if args.key?(:psc_interface_configs)
+          @service_attachment_link = args[:service_attachment_link] if args.key?(:service_attachment_link)
+        end
+      end
+      
+      # Configuration for setting up a PSC interface. This information needs to be
+      # provided by the customer. PSC interfaces will be created and added to VMs via
+      # SLM (adding a network interface will require recreating the VM). For HA
+      # instances this will be done via LDTM.
+      class PscInterfaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # A list of endpoints in the consumer VPC the interface might initiate outbound
+        # connections to. This list has to be provided when the PSC interface is created.
+        # Corresponds to the JSON property `consumerEndpointIps`
+        # @return [Array<String>]
+        attr_accessor :consumer_endpoint_ips
+      
+        # The NetworkAttachment resource created in the consumer VPC to which the PSC
+        # interface will be linked, in the form of: "projects/$`CONSUMER_PROJECT`/
+        # regions/$`REGION`/networkAttachments/$`NETWORK_ATTACHMENT_NAME`".
+        # NetworkAttachment has to be provided when the PSC interface is created.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_endpoint_ips = args[:consumer_endpoint_ips] if args.key?(:consumer_endpoint_ips)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
         end
       end
       
@@ -2493,9 +2597,10 @@ module Google
         # @return [String]
         attr_accessor :provider_description
       
-        # Required. The type of resource this ID is identifying. Ex alloydb.googleapis.
-        # com/Cluster, alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance
-        # REQUIRED Please refer go/condor-common-datamodel
+        # Required. The type of resource this ID is identifying. Ex redis.googleapis.com/
+        # Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster,
+        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance REQUIRED
+        # Please refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -2555,6 +2660,11 @@ module Google
         # Corresponds to the JSON property `customMetadata`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainCustomMetadataData]
         attr_accessor :custom_metadata
+      
+        # Entitlements associated with the resource
+        # Corresponds to the JSON property `entitlements`
+        # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainEntitlement>]
+        attr_accessor :entitlements
       
         # The state that the instance is expected to be in. For example, an instance
         # state can transition to UNHEALTHY due to wrong patch update, while the
@@ -2627,6 +2737,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @current_state = args[:current_state] if args.key?(:current_state)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
+          @entitlements = args[:entitlements] if args.key?(:entitlements)
           @expected_state = args[:expected_state] if args.key?(:expected_state)
           @id = args[:id] if args.key?(:id)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
@@ -2644,7 +2755,7 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
         include Google::Apis::Core::Hashable
       
-        # Required. Any other additional metadata
+        # Required. Any other additional metadata specific to recommendation
         # Corresponds to the JSON property `additionalMetadata`
         # @return [Hash<String,Object>]
         attr_accessor :additional_metadata
@@ -2658,6 +2769,31 @@ module Google
         # Corresponds to the JSON property `recommendationState`
         # @return [String]
         attr_accessor :recommendation_state
+      
+        # Required. Name of recommendation. Examples: organizations/1234/locations/us-
+        # central1/recommenders/google.cloudsql.instance.PerformanceRecommender/
+        # recommendations/9876
+        # Corresponds to the JSON property `recommender`
+        # @return [String]
+        attr_accessor :recommender
+      
+        # Required. ID of recommender. Examples: "google.cloudsql.instance.
+        # PerformanceRecommender"
+        # Corresponds to the JSON property `recommenderId`
+        # @return [String]
+        attr_accessor :recommender_id
+      
+        # Required. Contains an identifier for a subtype of recommendations produced for
+        # the same recommender. Subtype is a function of content and impact, meaning a
+        # new subtype might be added when significant changes to `content` or `
+        # primary_impact.category` are introduced. See the Recommenders section to see a
+        # list of subtypes for a given Recommender. Examples: For recommender = "google.
+        # cloudsql.instance.PerformanceRecommender", recommender_subtype can be "
+        # MYSQL_HIGH_NUMBER_OF_OPEN_TABLES_BEST_PRACTICE"/"
+        # POSTGRES_HIGH_TRANSACTION_ID_UTILIZATION_BEST_PRACTICE"
+        # Corresponds to the JSON property `recommenderSubtype`
+        # @return [String]
+        attr_accessor :recommender_subtype
       
         # Required. Database resource name associated with the signal. Resource name to
         # follow CAIS resource_name format as noted here go/condor-common-datamodel
@@ -2680,8 +2816,37 @@ module Google
           @additional_metadata = args[:additional_metadata] if args.key?(:additional_metadata)
           @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
           @recommendation_state = args[:recommendation_state] if args.key?(:recommendation_state)
+          @recommender = args[:recommender] if args.key?(:recommender)
+          @recommender_id = args[:recommender_id] if args.key?(:recommender_id)
+          @recommender_subtype = args[:recommender_subtype] if args.key?(:recommender_subtype)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @signal_type = args[:signal_type] if args.key?(:signal_type)
+        end
+      end
+      
+      # Proto representing the access that a user has to a specific feature/service.
+      # NextId: 3.
+      class StorageDatabasecenterPartnerapiV1mainEntitlement
+        include Google::Apis::Core::Hashable
+      
+        # The current state of user's accessibility to a feature/benefit.
+        # Corresponds to the JSON property `entitlementState`
+        # @return [String]
+        attr_accessor :entitlement_state
+      
+        # An enum that represents the type of this entitlement.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entitlement_state = args[:entitlement_state] if args.key?(:entitlement_state)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
