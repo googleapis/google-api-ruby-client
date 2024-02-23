@@ -273,9 +273,10 @@ module Google
         #   token to the second page. The `maxResults` query string is optional in the
         #   request. The default value is 1000.
         # @param [String] org_unit_id
-        #   ID of the organizational unit to report on. Activity records will be shown
-        #   only for users who belong to the specified organizational unit. Data before
-        #   Dec 17, 2018 doesn't appear in the filtered results.
+        #   `Deprecated`. This field is deprecated and is no longer supported. ID of the
+        #   organizational unit to report on. Activity records will be shown only for
+        #   users who belong to the specified organizational unit. Data before Dec 17,
+        #   2018 doesn't appear in the filtered results.
         # @param [String] page_token
         #   The token to specify next page. A report with multiple pages has a `
         #   nextPageToken` property in the response. In your follow-on request getting the
