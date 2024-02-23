@@ -1697,6 +1697,12 @@ module Google
         # @return [String]
         attr_accessor :execution_environment
       
+        # Optional. Disables health checking containers during deployment.
+        # Corresponds to the JSON property `healthCheckDisabled`
+        # @return [Boolean]
+        attr_accessor :health_check_disabled
+        alias_method :health_check_disabled?, :health_check_disabled
+      
         # Unstructured key value map that can be used to organize and categorize objects.
         # User-provided labels are shared with Google's billing system, so they can be
         # used to filter, or break down billing charges by team, component, environment,
@@ -1734,7 +1740,7 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
-        # Enable session affinity.
+        # Optional. Enable session affinity.
         # Corresponds to the JSON property `sessionAffinity`
         # @return [Boolean]
         attr_accessor :session_affinity
@@ -1766,6 +1772,7 @@ module Google
           @containers = args[:containers] if args.key?(:containers)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
+          @health_check_disabled = args[:health_check_disabled] if args.key?(:health_check_disabled)
           @labels = args[:labels] if args.key?(:labels)
           @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @revision = args[:revision] if args.key?(:revision)
@@ -1950,6 +1957,12 @@ module Google
         # Corresponds to the JSON property `customAudiences`
         # @return [Array<String>]
         attr_accessor :custom_audiences
+      
+        # Optional. Disables public resolution of the default URI of this service.
+        # Corresponds to the JSON property `defaultUriDisabled`
+        # @return [Boolean]
+        attr_accessor :default_uri_disabled
+        alias_method :default_uri_disabled?, :default_uri_disabled
       
         # Output only. The deletion time.
         # Corresponds to the JSON property `deleteTime`
@@ -2137,6 +2150,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
           @custom_audiences = args[:custom_audiences] if args.key?(:custom_audiences)
+          @default_uri_disabled = args[:default_uri_disabled] if args.key?(:default_uri_disabled)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
