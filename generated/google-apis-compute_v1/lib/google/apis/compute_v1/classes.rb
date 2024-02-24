@@ -1701,8 +1701,8 @@ module Google
         attr_accessor :provisioned_iops
       
         # Indicates how much throughput to provision for the disk. This sets the number
-        # of throughput mb per second that the disk can handle. Values must be between 1
-        # and 7,124.
+        # of throughput mb per second that the disk can handle. Values must greater than
+        # or equal to 1.
         # Corresponds to the JSON property `provisionedThroughput`
         # @return [Fixnum]
         attr_accessor :provisioned_throughput
@@ -2838,6 +2838,16 @@ module Google
         # @return [Float]
         attr_accessor :max_utilization
       
+        # This field indicates whether this backend should be fully utilized before
+        # sending traffic to backends with default preference. The possible values are: -
+        # PREFERRED: Backends with this preference level will be filled up to their
+        # capacity limits first, based on RTT. - DEFAULT: If preferred backends don't
+        # have enough capacity, backends in this layer would be used and traffic would
+        # be assigned based on the load balancing algorithm you use. This is the default
+        # Corresponds to the JSON property `preference`
+        # @return [String]
+        attr_accessor :preference
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2856,6 +2866,7 @@ module Google
           @max_rate_per_endpoint = args[:max_rate_per_endpoint] if args.key?(:max_rate_per_endpoint)
           @max_rate_per_instance = args[:max_rate_per_instance] if args.key?(:max_rate_per_instance)
           @max_utilization = args[:max_utilization] if args.key?(:max_utilization)
+          @preference = args[:preference] if args.key?(:preference)
         end
       end
       
@@ -3603,6 +3614,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :service_bindings
       
+        # URL to networkservices.ServiceLbPolicy resource. Can only be set if load
+        # balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or
+        # INTERNAL_SELF_MANAGED and the scope is global.
+        # Corresponds to the JSON property `serviceLbPolicy`
+        # @return [String]
+        attr_accessor :service_lb_policy
+      
         # Type of session affinity to use. The default is NONE. Only NONE and
         # HEADER_FIELD are supported when the backend service is referenced by a URL map
         # that is bound to target gRPC proxy that has validateForProxyless field set to
@@ -3679,6 +3697,7 @@ module Google
           @security_settings = args[:security_settings] if args.key?(:security_settings)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_bindings = args[:service_bindings] if args.key?(:service_bindings)
+          @service_lb_policy = args[:service_lb_policy] if args.key?(:service_lb_policy)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
@@ -6434,8 +6453,8 @@ module Google
         attr_accessor :provisioned_iops
       
         # Indicates how much throughput to provision for the disk. This sets the number
-        # of throughput mb per second that the disk can handle. Values must be between 1
-        # and 7,124.
+        # of throughput mb per second that the disk can handle. Values must be greater
+        # than or equal to 1.
         # Corresponds to the JSON property `provisionedThroughput`
         # @return [Fixnum]
         attr_accessor :provisioned_throughput
@@ -6550,6 +6569,25 @@ module Google
         # @return [String]
         attr_accessor :source_image_id
       
+        # The source instant snapshot used to create this disk. You can provide this as
+        # a partial or full URL to the resource. For example, the following are valid
+        # values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /
+        # instantSnapshots/instantSnapshot - projects/project/zones/zone/
+        # instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+        # Corresponds to the JSON property `sourceInstantSnapshot`
+        # @return [String]
+        attr_accessor :source_instant_snapshot
+      
+        # [Output Only] The unique ID of the instant snapshot used to create this disk.
+        # This value identifies the exact instant snapshot that was used to create this
+        # persistent disk. For example, if you created the persistent disk from an
+        # instant snapshot that was later deleted and recreated under the same name, the
+        # source instant snapshot ID would identify the exact version of the instant
+        # snapshot that was used.
+        # Corresponds to the JSON property `sourceInstantSnapshotId`
+        # @return [String]
+        attr_accessor :source_instant_snapshot_id
+      
         # The source snapshot used to create this disk. You can provide this as a
         # partial or full URL to the resource. For example, the following are valid
         # values: - https://www.googleapis.com/compute/v1/projects/project /global/
@@ -6655,6 +6693,8 @@ module Google
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
           @source_image_id = args[:source_image_id] if args.key?(:source_image_id)
+          @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
+          @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
           @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
@@ -8232,6 +8272,16 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # IPv6 address of the interface in the external VPN gateway. This IPv6 address
+        # can be either from your on-premise gateway or another Cloud provider's VPN
+        # gateway, it cannot be an IP address from Google Compute Engine. Must specify
+        # an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g.
+        # 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::
+        # 2d9:51:0:0).
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8240,6 +8290,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
         end
       end
       
@@ -14930,6 +14981,15 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicy
         include Google::Apis::Core::Hashable
       
+        # The action that a MIG performs on a failed or an unhealthy VM. A VM is marked
+        # as unhealthy when the application running on that VM fails a health check.
+        # Valid values are - REPAIR (default): MIG automatically repairs a failed or an
+        # unhealthy VM by recreating it. For more information, see About repairing VMs
+        # in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
+        # Corresponds to the JSON property `defaultActionOnFailure`
+        # @return [String]
+        attr_accessor :default_action_on_failure
+      
         # A bit indicating whether to forcefully apply the group's latest configuration
         # when repairing a VM. Valid options are: - NO (default): If configuration
         # updates are available, they are not forcefully applied during repair. Instead,
@@ -14945,6 +15005,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_action_on_failure = args[:default_action_on_failure] if args.key?(:default_action_on_failure)
           @force_update_on_repair = args[:force_update_on_repair] if args.key?(:force_update_on_repair)
         end
       end
@@ -17601,6 +17662,518 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
+        end
+      end
+      
+      # Represents a InstantSnapshot resource. You can use instant snapshots to create
+      # disk rollback points quickly..
+      class InstantSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The architecture of the instant snapshot. Valid values are ARM64
+        # or X86_64.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] Size of the source disk, specified in GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#instantSnapshot for
+        # InstantSnapshot resources.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A fingerprint for the labels being applied to this InstantSnapshot, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels, otherwise the request
+        # will fail with error 412 conditionNotMet. To see the latest fingerprint, make
+        # a get() request to retrieve a InstantSnapshot.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this InstantSnapshot. These can be later modified by the
+        # setLabels method. Label values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Name of the resource; provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] URL of the region where the instant snapshot resides. You must
+        # specify this field as part of the HTTP request URL. It is not settable as a
+        # field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Status information for the instant snapshot resource.
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeV1::InstantSnapshotResourceStatus]
+        attr_accessor :resource_status
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # URL of the source disk used to create this instant snapshot. Note that the
+        # source disk must be in the same zone/region as the instant snapshot to be
+        # created. This can be a full or valid partial URL. For example, the following
+        # are valid values: - https://www.googleapis.com/compute/v1/projects/project/
+        # zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/
+        # project/regions/region /disks/disk - projects/project/zones/zone/disks/disk -
+        # projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/
+        # region/disks/disk
+        # Corresponds to the JSON property `sourceDisk`
+        # @return [String]
+        attr_accessor :source_disk
+      
+        # [Output Only] The ID value of the disk used to create this InstantSnapshot.
+        # This value may be used to determine whether the InstantSnapshot was taken from
+        # the current or a previous instance of a given disk name.
+        # Corresponds to the JSON property `sourceDiskId`
+        # @return [String]
+        attr_accessor :source_disk_id
+      
+        # [Output Only] The status of the instantSnapshot. This can be CREATING,
+        # DELETING, FAILED, or READY.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] URL of the zone where the instant snapshot resides. You must
+        # specify this field as part of the HTTP request URL. It is not settable as a
+        # field in the request body.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @source_disk = args[:source_disk] if args.key?(:source_disk)
+          @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
+          @status = args[:status] if args.key?(:status)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class InstantSnapshotAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of InstantSnapshotsScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeV1::InstantSnapshotsScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#instantSnapshotAggregatedList
+        # for aggregated lists of instantSnapshots.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::InstantSnapshotAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::InstantSnapshotAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Contains a list of InstantSnapshot resources.
+      class InstantSnapshotList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of InstantSnapshot resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::InstantSnapshot>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::InstantSnapshotList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::InstantSnapshotList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class InstantSnapshotResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The storage size of this instant snapshot.
+        # Corresponds to the JSON property `storageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :storage_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_size_bytes = args[:storage_size_bytes] if args.key?(:storage_size_bytes)
+        end
+      end
+      
+      # 
+      class InstantSnapshotsScopedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of instantSnapshots contained in this scope.
+        # Corresponds to the JSON property `instantSnapshots`
+        # @return [Array<Google::Apis::ComputeV1::InstantSnapshot>]
+        attr_accessor :instant_snapshots
+      
+        # [Output Only] Informational warning which replaces the list of
+        # instantSnapshots when the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::InstantSnapshotsScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instant_snapshots = args[:instant_snapshots] if args.key?(:instant_snapshots)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning which replaces the list of
+        # instantSnapshots when the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::InstantSnapshotsScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -28313,6 +28886,13 @@ module Google
       class Project
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The Cloud Armor tier for this project. It can be one of the
+        # following values: CA_STANDARD, CA_ENTERPRISE_PAYGO. If this field is not
+        # specified, it is assumed to be CA_STANDARD.
+        # Corresponds to the JSON property `cloudArmorTier`
+        # @return [String]
+        attr_accessor :cloud_armor_tier
+      
         # A metadata key/value entry.
         # Corresponds to the JSON property `commonInstanceMetadata`
         # @return [Google::Apis::ComputeV1::Metadata]
@@ -28397,6 +28977,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_armor_tier = args[:cloud_armor_tier] if args.key?(:cloud_armor_tier)
           @common_instance_metadata = args[:common_instance_metadata] if args.key?(:common_instance_metadata)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @default_network_tier = args[:default_network_tier] if args.key?(:default_network_tier)
@@ -28507,6 +29088,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @organization = args[:organization] if args.key?(:organization)
+        end
+      end
+      
+      # 
+      class ProjectsSetCloudArmorTierRequest
+        include Google::Apis::Core::Hashable
+      
+        # Managed protection tier to be set.
+        # Corresponds to the JSON property `cloudArmorTier`
+        # @return [String]
+        attr_accessor :cloud_armor_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_armor_tier = args[:cloud_armor_tier] if args.key?(:cloud_armor_tier)
         end
       end
       
@@ -37647,6 +38247,30 @@ module Google
         # @return [String]
         attr_accessor :source_disk_id
       
+        # The source instant snapshot used to create this snapshot. You can provide this
+        # as a partial or full URL to the resource. For example, the following are valid
+        # values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /
+        # instantSnapshots/instantSnapshot - projects/project/zones/zone/
+        # instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+        # Corresponds to the JSON property `sourceInstantSnapshot`
+        # @return [String]
+        attr_accessor :source_instant_snapshot
+      
+        # Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        # Corresponds to the JSON property `sourceInstantSnapshotEncryptionKey`
+        # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
+        attr_accessor :source_instant_snapshot_encryption_key
+      
+        # [Output Only] The unique ID of the instant snapshot used to create this
+        # snapshot. This value identifies the exact instant snapshot that was used to
+        # create this persistent disk. For example, if you created the persistent disk
+        # from an instant snapshot that was later deleted and recreated under the same
+        # name, the source instant snapshot ID would identify the exact instant snapshot
+        # that was used.
+        # Corresponds to the JSON property `sourceInstantSnapshotId`
+        # @return [String]
+        attr_accessor :source_instant_snapshot_id
+      
         # [Output Only] URL of the resource policy which created this scheduled snapshot.
         # Corresponds to the JSON property `sourceSnapshotSchedulePolicy`
         # @return [String]
@@ -37716,6 +38340,9 @@ module Google
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
           @source_disk_for_recovery_checkpoint = args[:source_disk_for_recovery_checkpoint] if args.key?(:source_disk_for_recovery_checkpoint)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
+          @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
+          @source_instant_snapshot_encryption_key = args[:source_instant_snapshot_encryption_key] if args.key?(:source_instant_snapshot_encryption_key)
+          @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
           @source_snapshot_schedule_policy = args[:source_snapshot_schedule_policy] if args.key?(:source_snapshot_schedule_policy)
           @source_snapshot_schedule_policy_id = args[:source_snapshot_schedule_policy_id] if args.key?(:source_snapshot_schedule_policy_id)
           @status = args[:status] if args.key?(:status)
@@ -45038,6 +45665,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not
+        # specified, IPV4 will be used.
+        # Corresponds to the JSON property `gatewayIpVersion`
+        # @return [String]
+        attr_accessor :gateway_ip_version
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -45114,6 +45747,7 @@ module Google
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @gateway_ip_version = args[:gateway_ip_version] if args.key?(:gateway_ip_version)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -45522,6 +46156,13 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # [Output Only] IPv6 address for this VPN interface associated with the VPN
+        # gateway. The IPv6 address must be a regional external IPv6 address. The format
+        # is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         def initialize(**args)
            update!(**args)
         end
@@ -45531,6 +46172,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
         end
       end
       

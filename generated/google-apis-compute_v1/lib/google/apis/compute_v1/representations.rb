@@ -2188,6 +2188,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstantSnapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Int64RangeMatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3623,6 +3689,12 @@ module Google
       end
       
       class ProjectsListXpnHostsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectsSetCloudArmorTierRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6826,6 +6898,7 @@ module Google
           property :max_rate_per_endpoint, as: 'maxRatePerEndpoint'
           property :max_rate_per_instance, as: 'maxRatePerInstance'
           property :max_utilization, as: 'maxUtilization'
+          property :preference, as: 'preference'
         end
       end
       
@@ -6977,6 +7050,7 @@ module Google
       
           property :self_link, as: 'selfLink'
           collection :service_bindings, as: 'serviceBindings'
+          property :service_lb_policy, as: 'serviceLbPolicy'
           property :session_affinity, as: 'sessionAffinity'
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeV1::Subsetting, decorator: Google::Apis::ComputeV1::Subsetting::Representation
       
@@ -7633,6 +7707,8 @@ module Google
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
           property :source_image_id, as: 'sourceImageId'
+          property :source_instant_snapshot, as: 'sourceInstantSnapshot'
+          property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
           property :source_snapshot, as: 'sourceSnapshot'
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
@@ -8059,6 +8135,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
         end
       end
       
@@ -9554,6 +9631,7 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_action_on_failure, as: 'defaultActionOnFailure'
           property :force_update_on_repair, as: 'forceUpdateOnRepair'
         end
       end
@@ -10318,6 +10396,132 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :disks, as: 'disks', class: Google::Apis::ComputeV1::CustomerEncryptionKeyProtectedDisk, decorator: Google::Apis::ComputeV1::CustomerEncryptionKeyProtectedDisk::Representation
       
+        end
+      end
+      
+      class InstantSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::InstantSnapshotResourceStatus, decorator: Google::Apis::ComputeV1::InstantSnapshotResourceStatus::Representation
+      
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :source_disk, as: 'sourceDisk'
+          property :source_disk_id, as: 'sourceDiskId'
+          property :status, as: 'status'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class InstantSnapshotAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::InstantSnapshotsScopedList, decorator: Google::Apis::ComputeV1::InstantSnapshotsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstantSnapshotAggregatedList::Warning, decorator: Google::Apis::ComputeV1::InstantSnapshotAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::InstantSnapshotAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::InstantSnapshotAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InstantSnapshotList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::InstantSnapshot, decorator: Google::Apis::ComputeV1::InstantSnapshot::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstantSnapshotList::Warning, decorator: Google::Apis::ComputeV1::InstantSnapshotList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::InstantSnapshotList::Warning::Datum, decorator: Google::Apis::ComputeV1::InstantSnapshotList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InstantSnapshotResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_size_bytes, :numeric_string => true, as: 'storageSizeBytes'
+        end
+      end
+      
+      class InstantSnapshotsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instant_snapshots, as: 'instantSnapshots', class: Google::Apis::ComputeV1::InstantSnapshot, decorator: Google::Apis::ComputeV1::InstantSnapshot::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstantSnapshotsScopedList::Warning, decorator: Google::Apis::ComputeV1::InstantSnapshotsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::InstantSnapshotsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::InstantSnapshotsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -12990,6 +13194,7 @@ module Google
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_armor_tier, as: 'cloudArmorTier'
           property :common_instance_metadata, as: 'commonInstanceMetadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -13040,6 +13245,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :organization, as: 'organization'
+        end
+      end
+      
+      class ProjectsSetCloudArmorTierRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_armor_tier, as: 'cloudArmorTier'
         end
       end
       
@@ -15372,6 +15584,10 @@ module Google
       
           property :source_disk_for_recovery_checkpoint, as: 'sourceDiskForRecoveryCheckpoint'
           property :source_disk_id, as: 'sourceDiskId'
+          property :source_instant_snapshot, as: 'sourceInstantSnapshot'
+          property :source_instant_snapshot_encryption_key, as: 'sourceInstantSnapshotEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
+          property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
           property :source_snapshot_schedule_policy, as: 'sourceSnapshotSchedulePolicy'
           property :source_snapshot_schedule_policy_id, as: 'sourceSnapshotSchedulePolicyId'
           property :status, as: 'status'
@@ -17219,6 +17435,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :gateway_ip_version, as: 'gatewayIpVersion'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -17341,6 +17558,7 @@ module Google
           property :id, as: 'id'
           property :interconnect_attachment, as: 'interconnectAttachment'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
         end
       end
       
