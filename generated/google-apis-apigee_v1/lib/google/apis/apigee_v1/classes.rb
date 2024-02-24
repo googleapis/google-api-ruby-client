@@ -8767,9 +8767,11 @@ module Google
         # The following are a list of conditions. A valid SecurityAction must contain at
         # least one condition. Within a condition, each element is ORed. Across
         # conditions elements are ANDed. For example if a SecurityAction has the
-        # following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then
-        # this is interpreted as: enforce the action if the incoming request has ((
-        # api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2")).
+        # following: ip_address_ranges: ["ip1", "ip2"] and bot_reasons: ["Flooder", "
+        # Robot Abuser"] then this is interpreted as: enforce the action if the incoming
+        # request has ((ip_address_ranges = "ip1" OR ip_address_ranges = "ip2") AND (
+        # bot_reasons="Flooder" OR bot_reasons="Robot Abuser")). Conditions other than
+        # ip_address_ranges and bot_reasons cannot be ANDed.
         # Corresponds to the JSON property `conditionConfig`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionConditionConfig]
         attr_accessor :condition_config
@@ -8861,11 +8863,28 @@ module Google
       # The following are a list of conditions. A valid SecurityAction must contain at
       # least one condition. Within a condition, each element is ORed. Across
       # conditions elements are ANDed. For example if a SecurityAction has the
-      # following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then
-      # this is interpreted as: enforce the action if the incoming request has ((
-      # api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2")).
+      # following: ip_address_ranges: ["ip1", "ip2"] and bot_reasons: ["Flooder", "
+      # Robot Abuser"] then this is interpreted as: enforce the action if the incoming
+      # request has ((ip_address_ranges = "ip1" OR ip_address_ranges = "ip2") AND (
+      # bot_reasons="Flooder" OR bot_reasons="Robot Abuser")). Conditions other than
+      # ip_address_ranges and bot_reasons cannot be ANDed.
       class GoogleCloudApigeeV1SecurityActionConditionConfig
         include Google::Apis::Core::Hashable
+      
+        # Optional. A list of access_tokens. Limit 1000 per action.
+        # Corresponds to the JSON property `accessTokens`
+        # @return [Array<String>]
+        attr_accessor :access_tokens
+      
+        # Optional. A list of API keys. Limit 1000 per action.
+        # Corresponds to the JSON property `apiKeys`
+        # @return [Array<String>]
+        attr_accessor :api_keys
+      
+        # Optional. A list of API Products. Limit 1000 per action.
+        # Corresponds to the JSON property `apiProducts`
+        # @return [Array<String>]
+        attr_accessor :api_products
       
         # Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor,
         # Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced
@@ -8875,11 +8894,27 @@ module Google
         # @return [Array<String>]
         attr_accessor :bot_reasons
       
+        # Optional. A list of developer apps. Limit 1000 per action.
+        # Corresponds to the JSON property `developerApps`
+        # @return [Array<String>]
+        attr_accessor :developer_apps
+      
+        # Optional. A list of developers. Limit 1000 per action.
+        # Corresponds to the JSON property `developers`
+        # @return [Array<String>]
+        attr_accessor :developers
+      
         # Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited
         # to 100 per action.
         # Corresponds to the JSON property `ipAddressRanges`
         # @return [Array<String>]
         attr_accessor :ip_address_ranges
+      
+        # Optional. A list of user agents to deny. We look for exact matches. Limit 50
+        # per action.
+        # Corresponds to the JSON property `userAgents`
+        # @return [Array<String>]
+        attr_accessor :user_agents
       
         def initialize(**args)
            update!(**args)
@@ -8887,8 +8922,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_tokens = args[:access_tokens] if args.key?(:access_tokens)
+          @api_keys = args[:api_keys] if args.key?(:api_keys)
+          @api_products = args[:api_products] if args.key?(:api_products)
           @bot_reasons = args[:bot_reasons] if args.key?(:bot_reasons)
+          @developer_apps = args[:developer_apps] if args.key?(:developer_apps)
+          @developers = args[:developers] if args.key?(:developers)
           @ip_address_ranges = args[:ip_address_ranges] if args.key?(:ip_address_ranges)
+          @user_agents = args[:user_agents] if args.key?(:user_agents)
         end
       end
       
