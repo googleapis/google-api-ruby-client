@@ -1159,6 +1159,11 @@ module Google
       class CustomConnector
         include Google::Apis::Core::Hashable
       
+        # Optional. Active connector versions.
+        # Corresponds to the JSON property `activeConnectorVersions`
+        # @return [Array<String>]
+        attr_accessor :active_connector_versions
+      
         # Output only. Created time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1208,6 +1213,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_connector_versions = args[:active_connector_versions] if args.key?(:active_connector_versions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_connector_type = args[:custom_connector_type] if args.key?(:custom_connector_type)
           @description = args[:description] if args.key?(:description)
@@ -1271,7 +1277,9 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
-        # Optional. Location of the custom connector spec.
+        # Optional. Location of the custom connector spec. The location can be either a
+        # public url like `https://public-url.com/spec` Or a Google Cloud Storage
+        # location like `gs:///`
         # Corresponds to the JSON property `specLocation`
         # @return [String]
         attr_accessor :spec_location
@@ -2023,6 +2031,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::DestinationConfig]
         attr_accessor :registration_destination_config
       
+        # Optional. Additional eventing related field values
+        # Corresponds to the JSON property `triggerConfigVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
+        attr_accessor :trigger_config_variables
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2038,6 +2051,7 @@ module Google
           @private_connectivity_enabled = args[:private_connectivity_enabled] if args.key?(:private_connectivity_enabled)
           @proxy_destination_config = args[:proxy_destination_config] if args.key?(:proxy_destination_config)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
+          @trigger_config_variables = args[:trigger_config_variables] if args.key?(:trigger_config_variables)
         end
       end
       
@@ -2107,6 +2121,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::DestinationConfigTemplate]
         attr_accessor :registration_destination_config
       
+        # Trigger Config fields that needs to be rendered
+        # Corresponds to the JSON property `triggerConfigVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariableTemplate>]
+        attr_accessor :trigger_config_variables
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2124,6 +2143,7 @@ module Google
           @listener_auth_config_templates = args[:listener_auth_config_templates] if args.key?(:listener_auth_config_templates)
           @proxy_destination_config = args[:proxy_destination_config] if args.key?(:proxy_destination_config)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
+          @trigger_config_variables = args[:trigger_config_variables] if args.key?(:trigger_config_variables)
         end
       end
       
