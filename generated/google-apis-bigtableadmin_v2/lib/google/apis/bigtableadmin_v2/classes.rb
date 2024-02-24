@@ -261,7 +261,7 @@ module Google
       
         # Output only. Name of the backup from which this backup was copied. If a backup
         # is not created by copying a backup, this field will be empty. Values are of
-        # the form: projects//instances//backups/.
+        # the form: projects//instances//clusters//backups/
         # Corresponds to the JSON property `sourceBackup`
         # @return [String]
         attr_accessor :source_backup
@@ -320,7 +320,7 @@ module Google
       
         # Output only. Name of the backup from which this backup was copied. If a backup
         # is not created by copying a backup, this field will be empty. Values are of
-        # the form: projects//instances//backups/.
+        # the form: projects//instances//clusters//backups/
         # Corresponds to the JSON property `sourceBackup`
         # @return [String]
         attr_accessor :source_backup
@@ -431,7 +431,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -480,12 +483,6 @@ module Google
         # @return [String]
         attr_accessor :consistency_token
       
-        # Checks that all writes before the consistency token was generated is
-        # replicated in every cluster and readable.
-        # Corresponds to the JSON property `standardReadRemoteWrites`
-        # @return [Google::Apis::BigtableadminV2::StandardReadRemoteWrites]
-        attr_accessor :standard_read_remote_writes
-      
         def initialize(**args)
            update!(**args)
         end
@@ -493,7 +490,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consistency_token = args[:consistency_token] if args.key?(:consistency_token)
-          @standard_read_remote_writes = args[:standard_read_remote_writes] if args.key?(:standard_read_remote_writes)
         end
       end
       
@@ -2366,20 +2362,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @priority = args[:priority] if args.key?(:priority)
-        end
-      end
-      
-      # Checks that all writes before the consistency token was generated is
-      # replicated in every cluster and readable.
-      class StandardReadRemoteWrites
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
