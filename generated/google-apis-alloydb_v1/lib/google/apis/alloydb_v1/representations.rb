@@ -358,6 +358,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainEntitlement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainOperationError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -982,6 +994,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :feed_timestamp, as: 'feedTimestamp'
           property :feed_type, as: 'feedType'
+          property :recommendation_signal_data, as: 'recommendationSignalData', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData::Representation
+      
           property :resource_health_signal_data, as: 'resourceHealthSignalData', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData::Representation
       
           property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
@@ -1034,6 +1048,8 @@ module Google
           property :current_state, as: 'currentState'
           property :custom_metadata, as: 'customMetadata', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainCustomMetadataData, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainCustomMetadataData::Representation
       
+          collection :entitlements, as: 'entitlements', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainEntitlement, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainEntitlement::Representation
+      
           property :expected_state, as: 'expectedState'
           property :id, as: 'id', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
@@ -1047,6 +1063,28 @@ module Google
           property :resource_name, as: 'resourceName'
           property :updation_time, as: 'updationTime'
           hash :user_labels, as: 'userLabels'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_metadata, as: 'additionalMetadata'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :recommendation_state, as: 'recommendationState'
+          property :recommender, as: 'recommender'
+          property :recommender_id, as: 'recommenderId'
+          property :recommender_subtype, as: 'recommenderSubtype'
+          property :resource_name, as: 'resourceName'
+          property :signal_type, as: 'signalType'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainEntitlement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entitlement_state, as: 'entitlementState'
+          property :type, as: 'type'
         end
       end
       
