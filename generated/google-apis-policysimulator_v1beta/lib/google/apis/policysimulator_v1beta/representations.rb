@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPolicysimulatorV1alphaCreateOrgPolicyViolationsPreviewOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPolicysimulatorV1alphaGenerateOrgPolicyViolationsPreviewOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,12 @@ module Google
       end
       
       class GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -422,6 +434,18 @@ module Google
         end
       end
       
+      class GoogleCloudPolicysimulatorV1alphaCreateOrgPolicyViolationsPreviewOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_time, as: 'requestTime'
+          property :resources_found, as: 'resourcesFound'
+          property :resources_pending, as: 'resourcesPending'
+          property :resources_scanned, as: 'resourcesScanned'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleCloudPolicysimulatorV1alphaGenerateOrgPolicyViolationsPreviewOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -528,6 +552,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :membership, as: 'membership'
           property :relevance, as: 'relevance'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_time, as: 'requestTime'
+          property :resources_found, as: 'resourcesFound'
+          property :resources_pending, as: 'resourcesPending'
+          property :resources_scanned, as: 'resourcesScanned'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
         end
       end
       
