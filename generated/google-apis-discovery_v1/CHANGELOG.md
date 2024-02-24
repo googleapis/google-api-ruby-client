@@ -1,5 +1,9 @@
 # Release history for google-apis-discovery_v1
 
+### v0.16.0 (2024-02-24)
+
+* Regenerated using generator version 0.14.0
+
 ### v0.15.0 (2024-01-22)
 
 * Regenerated using generator version 0.13.0
