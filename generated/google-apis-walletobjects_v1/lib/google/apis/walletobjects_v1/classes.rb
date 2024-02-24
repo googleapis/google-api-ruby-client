@@ -5631,7 +5631,7 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::LocalizedString]
         attr_accessor :localized_header
       
-        # The type of the message. Currently, this can only be set for offers.
+        # The message type.
         # Corresponds to the JSON property `messageType`
         # @return [String]
         attr_accessor :message_type
