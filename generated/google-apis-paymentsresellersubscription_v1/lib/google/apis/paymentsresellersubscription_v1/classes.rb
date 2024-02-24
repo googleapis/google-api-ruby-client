@@ -518,7 +518,7 @@ module Google
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails]
         attr_accessor :finite_billing_cycle_details
       
-        # Output only. Response only. Resource name of the product. It will have the
+        # Identifier. Response only. Resource name of the product. It will have the
         # format of "partners/`partner_id`/products/`product_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -664,7 +664,7 @@ module Google
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails]
         attr_accessor :introductory_pricing_details
       
-        # Output only. Response only. Resource name of the subscription promotion. It
+        # Identifier. Response only. Resource name of the subscription promotion. It
         # will have the format of "partners/`partner_id`/promotion/`promotion_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -714,7 +714,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
         include Google::Apis::Core::Hashable
       
-        # Specifies the introductory pricing periods.
+        # Output only. Specifies the introductory pricing periods.
         # Corresponds to the JSON property `introductoryPricingSpecs`
         # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>]
         attr_accessor :introductory_pricing_specs
@@ -842,7 +842,7 @@ module Google
         # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>]
         attr_accessor :line_items
       
-        # Optional. Resource name of the subscription. It will have the format of "
+        # Identifier. Resource name of the subscription. It will have the format of "
         # partners/`partner_id`/subscriptions/`subscription_id`". This is available for
         # authorizeAddon, but otherwise is response only.
         # Corresponds to the JSON property `name`
@@ -957,7 +957,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails
         include Google::Apis::Core::Hashable
       
-        # The reason of the cancellation.
+        # Output only. The reason of the cancellation.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -1303,7 +1303,7 @@ module Google
       class SubscriptionLineItemBundleDetails
         include Google::Apis::Core::Hashable
       
-        # The details for each element in the hard bundle.
+        # Output only. The details for each element in the hard bundle.
         # Corresponds to the JSON property `bundleElementDetails`
         # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails>]
         attr_accessor :bundle_element_details
