@@ -1034,6 +1034,7 @@ module Google
       class CustomConnector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :active_connector_versions, as: 'activeConnectorVersions'
           property :create_time, as: 'createTime'
           property :custom_connector_type, as: 'customConnectorType'
           property :description, as: 'description'
@@ -1265,6 +1266,8 @@ module Google
       
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
       
+          collection :trigger_config_variables, as: 'triggerConfigVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
+      
         end
       end
       
@@ -1287,6 +1290,8 @@ module Google
           property :proxy_destination_config, as: 'proxyDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
       
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
+      
+          collection :trigger_config_variables, as: 'triggerConfigVariables', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
       
         end
       end
