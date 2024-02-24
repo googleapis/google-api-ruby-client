@@ -131,6 +131,7 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :dispute_status, as: 'disputeStatus'
           property :geo, as: 'geo'
+          property :google_ads_lead_id, :numeric_string => true, as: 'googleAdsLeadId'
           property :lead_category, as: 'leadCategory'
           property :lead_creation_timestamp, as: 'leadCreationTimestamp'
           property :lead_id, :numeric_string => true, as: 'leadId'
