@@ -184,12 +184,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ExplainOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class FieldFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -755,13 +749,6 @@ module Google
         end
       end
       
-      class ExplainOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :analyze, as: 'analyze'
-        end
-      end
-      
       class FieldFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1116,8 +1103,6 @@ module Google
       class RunAggregationQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :explain_options, as: 'explainOptions', class: Google::Apis::FirestoreV1beta1::ExplainOptions, decorator: Google::Apis::FirestoreV1beta1::ExplainOptions::Representation
-      
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1beta1::TransactionOptions, decorator: Google::Apis::FirestoreV1beta1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
@@ -1140,8 +1125,6 @@ module Google
       class RunQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :explain_options, as: 'explainOptions', class: Google::Apis::FirestoreV1beta1::ExplainOptions, decorator: Google::Apis::FirestoreV1beta1::ExplainOptions::Representation
-      
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1beta1::TransactionOptions, decorator: Google::Apis::FirestoreV1beta1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
