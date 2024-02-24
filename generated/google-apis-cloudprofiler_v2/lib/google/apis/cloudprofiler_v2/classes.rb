@@ -173,6 +173,12 @@ module Google
         # @return [String]
         attr_accessor :profile_type
       
+        # Output only. Start time for the profile. This output is only present in
+        # response from the ListProfiles method.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -185,6 +191,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @profile_bytes = args[:profile_bytes] if args.key?(:profile_bytes)
           @profile_type = args[:profile_type] if args.key?(:profile_type)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
     end

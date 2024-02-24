@@ -84,6 +84,7 @@ module Google
           property :name, as: 'name'
           property :profile_bytes, :base64 => true, as: 'profileBytes'
           property :profile_type, as: 'profileType'
+          property :start_time, as: 'startTime'
         end
       end
     end
