@@ -1750,8 +1750,8 @@ module Google
         attr_accessor :provisioned_iops
       
         # Indicates how much throughput to provision for the disk. This sets the number
-        # of throughput mb per second that the disk can handle. Values must be between 1
-        # and 7,124.
+        # of throughput mb per second that the disk can handle. Values must greater than
+        # or equal to 1.
         # Corresponds to the JSON property `provisionedThroughput`
         # @return [Fixnum]
         attr_accessor :provisioned_throughput
@@ -6746,8 +6746,8 @@ module Google
         attr_accessor :provisioned_iops
       
         # Indicates how much throughput to provision for the disk. This sets the number
-        # of throughput mb per second that the disk can handle. Values must be between 1
-        # and 7,124.
+        # of throughput mb per second that the disk can handle. Values must be greater
+        # than or equal to 1.
         # Corresponds to the JSON property `provisionedThroughput`
         # @return [Fixnum]
         attr_accessor :provisioned_throughput
@@ -25707,6 +25707,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Represents the port number to which PSC consumer sends packets. Only valid for
+        # network endpoint groups created with CLIENT_PORT_PER_ENDPOINT mapping mode.
+        # Corresponds to the JSON property `clientPort`
+        # @return [Fixnum]
+        attr_accessor :client_port
+      
         # Optional fully qualified domain name of network endpoint. This can only be
         # specified when NetworkEndpointGroup.network_endpoint_type is NON_GCP_FQDN_PORT.
         # Corresponds to the JSON property `fqdn`
@@ -25756,6 +25762,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client_port = args[:client_port] if args.key?(:client_port)
           @fqdn = args[:fqdn] if args.key?(:fqdn)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -25784,6 +25791,11 @@ module Google
         # Corresponds to the JSON property `appEngine`
         # @return [Google::Apis::ComputeBeta::NetworkEndpointGroupAppEngine]
         attr_accessor :app_engine
+      
+        # Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+        # Corresponds to the JSON property `clientPortMappingMode`
+        # @return [String]
+        attr_accessor :client_port_mapping_mode
       
         # Configuration for a Cloud Function network endpoint group (NEG). The function
         # must be provided explicitly or in the URL mask. Note: Cloud Function must be
@@ -25913,6 +25925,7 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @app_engine = args[:app_engine] if args.key?(:app_engine)
+          @client_port_mapping_mode = args[:client_port_mapping_mode] if args.key?(:client_port_mapping_mode)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -31368,6 +31381,13 @@ module Google
       class Project
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The Cloud Armor tier for this project. It can be one of the
+        # following values: CA_STANDARD, CA_ENTERPRISE_PAYGO. If this field is not
+        # specified, it is assumed to be CA_STANDARD.
+        # Corresponds to the JSON property `cloudArmorTier`
+        # @return [String]
+        attr_accessor :cloud_armor_tier
+      
         # A metadata key/value entry.
         # Corresponds to the JSON property `commonInstanceMetadata`
         # @return [Google::Apis::ComputeBeta::Metadata]
@@ -31459,6 +31479,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_armor_tier = args[:cloud_armor_tier] if args.key?(:cloud_armor_tier)
           @common_instance_metadata = args[:common_instance_metadata] if args.key?(:common_instance_metadata)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @default_network_tier = args[:default_network_tier] if args.key?(:default_network_tier)
@@ -31570,6 +31591,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @organization = args[:organization] if args.key?(:organization)
+        end
+      end
+      
+      # 
+      class ProjectsSetCloudArmorTierRequest
+        include Google::Apis::Core::Hashable
+      
+        # Managed protection tier to be set.
+        # Corresponds to the JSON property `cloudArmorTier`
+        # @return [String]
+        attr_accessor :cloud_armor_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_armor_tier = args[:cloud_armor_tier] if args.key?(:cloud_armor_tier)
         end
       end
       
@@ -38349,6 +38389,11 @@ module Google
         # @return [String]
         attr_accessor :on_host_maintenance
       
+        # Defines the behaviour for instances with the instance_termination_action STOP.
+        # Corresponds to the JSON property `onInstanceStopAction`
+        # @return [Google::Apis::ComputeBeta::SchedulingOnInstanceStopAction]
+        attr_accessor :on_instance_stop_action
+      
         # Defines whether the instance is preemptible. This can only be set during
         # instance creation or while the instance is stopped and therefore, in a `
         # TERMINATED` state. See Instance Life Cycle for more information on the
@@ -38387,6 +38432,7 @@ module Google
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
+          @on_instance_stop_action = args[:on_instance_stop_action] if args.key?(:on_instance_stop_action)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
@@ -38423,6 +38469,28 @@ module Google
           @key = args[:key] if args.key?(:key)
           @operator = args[:operator] if args.key?(:operator)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Defines the behaviour for instances with the instance_termination_action STOP.
+      class SchedulingOnInstanceStopAction
+        include Google::Apis::Core::Hashable
+      
+        # If true, the contents of any attached Local SSD disks will be discarded else,
+        # the Local SSD data will be preserved when the instance is stopped at the end
+        # of the run duration/termination time.
+        # Corresponds to the JSON property `discardLocalSsd`
+        # @return [Boolean]
+        attr_accessor :discard_local_ssd
+        alias_method :discard_local_ssd?, :discard_local_ssd
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discard_local_ssd = args[:discard_local_ssd] if args.key?(:discard_local_ssd)
         end
       end
       
