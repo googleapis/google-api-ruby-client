@@ -2259,6 +2259,11 @@ module Google
         # @return [String]
         attr_accessor :feed_type
       
+        # Common model for database resource recommendation signal data.
+        # Corresponds to the JSON property `recommendationSignalData`
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData]
+        attr_accessor :recommendation_signal_data
+      
         # Common model for database resource health signal data.
         # Corresponds to the JSON property `resourceHealthSignalData`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData]
@@ -2282,6 +2287,7 @@ module Google
         def update!(**args)
           @feed_timestamp = args[:feed_timestamp] if args.key?(:feed_timestamp)
           @feed_type = args[:feed_type] if args.key?(:feed_type)
+          @recommendation_signal_data = args[:recommendation_signal_data] if args.key?(:recommendation_signal_data)
           @resource_health_signal_data = args[:resource_health_signal_data] if args.key?(:resource_health_signal_data)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @resource_metadata = args[:resource_metadata] if args.key?(:resource_metadata)
@@ -2407,9 +2413,10 @@ module Google
         # @return [String]
         attr_accessor :provider_description
       
-        # Required. The type of resource this ID is identifying. Ex alloydb.googleapis.
-        # com/Cluster, alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance
-        # REQUIRED Please refer go/condor-common-datamodel
+        # Required. The type of resource this ID is identifying. Ex redis.googleapis.com/
+        # Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster,
+        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance REQUIRED
+        # Please refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -2469,6 +2476,11 @@ module Google
         # Corresponds to the JSON property `customMetadata`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainCustomMetadataData]
         attr_accessor :custom_metadata
+      
+        # Entitlements associated with the resource
+        # Corresponds to the JSON property `entitlements`
+        # @return [Array<Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainEntitlement>]
+        attr_accessor :entitlements
       
         # The state that the instance is expected to be in. For example, an instance
         # state can transition to UNHEALTHY due to wrong patch update, while the
@@ -2541,6 +2553,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @current_state = args[:current_state] if args.key?(:current_state)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
+          @entitlements = args[:entitlements] if args.key?(:entitlements)
           @expected_state = args[:expected_state] if args.key?(:expected_state)
           @id = args[:id] if args.key?(:id)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
@@ -2551,6 +2564,105 @@ module Google
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
+      # Common model for database resource recommendation signal data.
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
+        include Google::Apis::Core::Hashable
+      
+        # Required. Any other additional metadata specific to recommendation
+        # Corresponds to the JSON property `additionalMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_metadata
+      
+        # Required. last time recommendationw as refreshed
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # Required. Recommendation state
+        # Corresponds to the JSON property `recommendationState`
+        # @return [String]
+        attr_accessor :recommendation_state
+      
+        # Required. Name of recommendation. Examples: organizations/1234/locations/us-
+        # central1/recommenders/google.cloudsql.instance.PerformanceRecommender/
+        # recommendations/9876
+        # Corresponds to the JSON property `recommender`
+        # @return [String]
+        attr_accessor :recommender
+      
+        # Required. ID of recommender. Examples: "google.cloudsql.instance.
+        # PerformanceRecommender"
+        # Corresponds to the JSON property `recommenderId`
+        # @return [String]
+        attr_accessor :recommender_id
+      
+        # Required. Contains an identifier for a subtype of recommendations produced for
+        # the same recommender. Subtype is a function of content and impact, meaning a
+        # new subtype might be added when significant changes to `content` or `
+        # primary_impact.category` are introduced. See the Recommenders section to see a
+        # list of subtypes for a given Recommender. Examples: For recommender = "google.
+        # cloudsql.instance.PerformanceRecommender", recommender_subtype can be "
+        # MYSQL_HIGH_NUMBER_OF_OPEN_TABLES_BEST_PRACTICE"/"
+        # POSTGRES_HIGH_TRANSACTION_ID_UTILIZATION_BEST_PRACTICE"
+        # Corresponds to the JSON property `recommenderSubtype`
+        # @return [String]
+        attr_accessor :recommender_subtype
+      
+        # Required. Database resource name associated with the signal. Resource name to
+        # follow CAIS resource_name format as noted here go/condor-common-datamodel
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Required. Type of signal, for example, `SIGNAL_TYPE_IDLE`, `
+        # SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES`, etc.
+        # Corresponds to the JSON property `signalType`
+        # @return [String]
+        attr_accessor :signal_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_metadata = args[:additional_metadata] if args.key?(:additional_metadata)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @recommendation_state = args[:recommendation_state] if args.key?(:recommendation_state)
+          @recommender = args[:recommender] if args.key?(:recommender)
+          @recommender_id = args[:recommender_id] if args.key?(:recommender_id)
+          @recommender_subtype = args[:recommender_subtype] if args.key?(:recommender_subtype)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @signal_type = args[:signal_type] if args.key?(:signal_type)
+        end
+      end
+      
+      # Proto representing the access that a user has to a specific feature/service.
+      # NextId: 3.
+      class StorageDatabasecenterPartnerapiV1mainEntitlement
+        include Google::Apis::Core::Hashable
+      
+        # The current state of user's accessibility to a feature/benefit.
+        # Corresponds to the JSON property `entitlementState`
+        # @return [String]
+        attr_accessor :entitlement_state
+      
+        # An enum that represents the type of this entitlement.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entitlement_state = args[:entitlement_state] if args.key?(:entitlement_state)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
