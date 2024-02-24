@@ -946,6 +946,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StreamingScalingReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StreamingSetupTask
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2799,6 +2805,13 @@ module Google
         end
       end
       
+      class StreamingScalingReportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maximum_thread_count, as: 'maximumThreadCount'
+        end
+      end
+      
       class StreamingSetupTask
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3092,6 +3105,8 @@ module Google
       class WorkerMessageResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :streaming_scaling_report_response, as: 'streamingScalingReportResponse', class: Google::Apis::DataflowV1b3::StreamingScalingReportResponse, decorator: Google::Apis::DataflowV1b3::StreamingScalingReportResponse::Representation
+      
           property :worker_health_report_response, as: 'workerHealthReportResponse', class: Google::Apis::DataflowV1b3::WorkerHealthReportResponse, decorator: Google::Apis::DataflowV1b3::WorkerHealthReportResponse::Representation
       
           property :worker_metrics_response, as: 'workerMetricsResponse', class: Google::Apis::DataflowV1b3::ResourceUtilizationReportResponse, decorator: Google::Apis::DataflowV1b3::ResourceUtilizationReportResponse::Representation

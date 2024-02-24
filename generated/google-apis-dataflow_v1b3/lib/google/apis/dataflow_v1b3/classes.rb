@@ -514,7 +514,7 @@ module Google
       class ContainerSpec
         include Google::Apis::Core::Hashable
       
-        # The environment values to be set at runtime for flex template.
+        # The environment values to be set at runtime for flex template. LINT.IfChange
         # Corresponds to the JSON property `defaultEnvironment`
         # @return [Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment]
         attr_accessor :default_environment
@@ -1668,7 +1668,7 @@ module Google
         end
       end
       
-      # The environment values to be set at runtime for flex template.
+      # The environment values to be set at runtime for flex template. LINT.IfChange
       class FlexTemplateRuntimeEnvironment
         include Google::Apis::Core::Hashable
       
@@ -2806,7 +2806,7 @@ module Google
         # @return [String]
         attr_accessor :container_spec_gcs_path
       
-        # The environment values to be set at runtime for flex template.
+        # The environment values to be set at runtime for flex template. LINT.IfChange
         # Corresponds to the JSON property `environment`
         # @return [Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment]
         attr_accessor :environment
@@ -6207,6 +6207,25 @@ module Google
         end
       end
       
+      # Contains per-user-worker streaming scaling recommendation from the backend.
+      class StreamingScalingReportResponse
+        include Google::Apis::Core::Hashable
+      
+        # Maximum thread count limit;
+        # Corresponds to the JSON property `maximumThreadCount`
+        # @return [Fixnum]
+        attr_accessor :maximum_thread_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maximum_thread_count = args[:maximum_thread_count] if args.key?(:maximum_thread_count)
+        end
+      end
+      
       # A task which initializes part of a streaming Dataflow job.
       class StreamingSetupTask
         include Google::Apis::Core::Hashable
@@ -7347,6 +7366,11 @@ module Google
       class WorkerMessageResponse
         include Google::Apis::Core::Hashable
       
+        # Contains per-user-worker streaming scaling recommendation from the backend.
+        # Corresponds to the JSON property `streamingScalingReportResponse`
+        # @return [Google::Apis::DataflowV1b3::StreamingScalingReportResponse]
+        attr_accessor :streaming_scaling_report_response
+      
         # WorkerHealthReportResponse contains information returned to the worker in
         # response to a health ping.
         # Corresponds to the JSON property `workerHealthReportResponse`
@@ -7374,6 +7398,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @streaming_scaling_report_response = args[:streaming_scaling_report_response] if args.key?(:streaming_scaling_report_response)
           @worker_health_report_response = args[:worker_health_report_response] if args.key?(:worker_health_report_response)
           @worker_metrics_response = args[:worker_metrics_response] if args.key?(:worker_metrics_response)
           @worker_shutdown_notice_response = args[:worker_shutdown_notice_response] if args.key?(:worker_shutdown_notice_response)
