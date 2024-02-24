@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchTaskSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +77,12 @@ module Google
       end
       
       class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteObjectTaskSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTaskSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTransferJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,7 +166,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Manifest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetadataOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetadataTaskSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,6 +191,18 @@ module Google
       end
       
       class ObjectConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObjectPrefix
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObjectPrefixes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -332,6 +374,18 @@ module Google
         end
       end
       
+      class BatchTaskSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_object_task_spec, as: 'deleteObjectTaskSpec', class: Google::Apis::StoragetransferV1::DeleteObjectTaskSpec, decorator: Google::Apis::StoragetransferV1::DeleteObjectTaskSpec::Representation
+      
+          property :list_task_spec, as: 'listTaskSpec', class: Google::Apis::StoragetransferV1::ListTaskSpec, decorator: Google::Apis::StoragetransferV1::ListTaskSpec::Representation
+      
+          property :metadata_task_spec, as: 'metadataTaskSpec', class: Google::Apis::StoragetransferV1::MetadataTaskSpec, decorator: Google::Apis::StoragetransferV1::MetadataTaskSpec::Representation
+      
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -344,6 +398,16 @@ module Google
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
+        end
+      end
+      
+      class DeleteObjectTaskSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generation, :numeric_string => true, as: 'generation'
+          property :hard_delete_versioned_object, as: 'hardDeleteVersionedObject'
+          property :name, as: 'name'
+          property :size, :numeric_string => true, as: 'size'
         end
       end
       
@@ -429,6 +493,16 @@ module Google
         end
       end
       
+      class ListTaskSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :manifest, as: 'manifest', class: Google::Apis::StoragetransferV1::Manifest, decorator: Google::Apis::StoragetransferV1::Manifest::Representation
+      
+          property :object_prefixes, as: 'objectPrefixes', class: Google::Apis::StoragetransferV1::ObjectPrefixes, decorator: Google::Apis::StoragetransferV1::ObjectPrefixes::Representation
+      
+        end
+      end
+      
       class ListTransferJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -447,6 +521,14 @@ module Google
         end
       end
       
+      class Manifest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :manifest_location, as: 'manifestLocation'
+          property :root, as: 'root'
+        end
+      end
+      
       class MetadataOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -459,6 +541,16 @@ module Google
           property :temporary_hold, as: 'temporaryHold'
           property :time_created, as: 'timeCreated'
           property :uid, as: 'uid'
+        end
+      end
+      
+      class MetadataTaskSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name, as: 'bucketName'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :key, as: 'key'
+          property :size, :numeric_string => true, as: 'size'
         end
       end
       
@@ -480,6 +572,22 @@ module Google
           property :last_modified_since, as: 'lastModifiedSince'
           property :max_time_elapsed_since_last_modification, as: 'maxTimeElapsedSinceLastModification'
           property :min_time_elapsed_since_last_modification, as: 'minTimeElapsedSinceLastModification'
+        end
+      end
+      
+      class ObjectPrefix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name, as: 'bucketName'
+          property :object_prefix, as: 'objectPrefix'
+        end
+      end
+      
+      class ObjectPrefixes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :object_prefixes, as: 'objectPrefixes', class: Google::Apis::StoragetransferV1::ObjectPrefix, decorator: Google::Apis::StoragetransferV1::ObjectPrefix::Representation
+      
         end
       end
       
