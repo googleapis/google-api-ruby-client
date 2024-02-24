@@ -1622,6 +1622,48 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Deletes a single migration execution.
+        # @param [String] name
+        #   Required. The relative resource name of the migrationExecution to delete, in
+        #   the following form:projects/`project_number`/locations/`location_id`/services/`
+        #   service_id`/migrationExecutions/`migration_execution_id`.
+        # @param [String] request_id
+        #   Optional. A request ID. Specify a unique request ID to allow the server to
+        #   ignore the request if it has completed. The server will ignore subsequent
+        #   requests that provide a duplicate request ID for at least 60 minutes after the
+        #   first request.For example, if an initial request times out, followed by
+        #   another request with the same request ID, the server ignores the second
+        #   request to prevent the creation of duplicate commitments.The request ID must
+        #   be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#
+        #   Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_service_migration_execution(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MetastoreV1::Operation::Representation
+          command.response_class = Google::Apis::MetastoreV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
