@@ -99,6 +99,424 @@ module Google
         end
       end
       
+      # Request proto for AutocompletePlaces.
+      class GoogleMapsPlacesV1AutocompletePlacesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the response will include both Place and query predictions.
+        # Otherwise the response will only return Place predictions.
+        # Corresponds to the JSON property `includeQueryPredictions`
+        # @return [Boolean]
+        attr_accessor :include_query_predictions
+        alias_method :include_query_predictions?, :include_query_predictions
+      
+        # Optional. Included primary Place type (for example, "restaurant" or "
+        # gas_station") from https://developers.google.com/maps/documentation/places/web-
+        # service/place-types. A Place is only returned if its primary type is included
+        # in this list. Up to 5 values can be specified. If no types are specified, all
+        # Place types are returned.
+        # Corresponds to the JSON property `includedPrimaryTypes`
+        # @return [Array<String>]
+        attr_accessor :included_primary_types
+      
+        # Optional. Only include results in the specified regions, specified as up to 15
+        # CLDR two-character region codes. An empty set will not restrict the results.
+        # If both `location_restriction` and `included_region_codes` are set, the
+        # results will be located in the area of intersection.
+        # Corresponds to the JSON property `includedRegionCodes`
+        # @return [Array<String>]
+        attr_accessor :included_region_codes
+      
+        # Required. The text string on which to search.
+        # Corresponds to the JSON property `input`
+        # @return [String]
+        attr_accessor :input
+      
+        # Optional. A zero-based Unicode character offset of `input` indicating the
+        # cursor position in `input`. The cursor position may influence what predictions
+        # are returned. If empty, defaults to the length of `input`.
+        # Corresponds to the JSON property `inputOffset`
+        # @return [Fixnum]
+        attr_accessor :input_offset
+      
+        # Optional. The language in which to return results. Defaults to en-US. The
+        # results may be in mixed languages if the language used in `input` is different
+        # from `language_code` or if the returned Place does not have a translation from
+        # the local language to `language_code`.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # The region to search. The results may be biased around the specified region.
+        # Corresponds to the JSON property `locationBias`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias]
+        attr_accessor :location_bias
+      
+        # The region to search. The results will be restricted to the specified region.
+        # Corresponds to the JSON property `locationRestriction`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction]
+        attr_accessor :location_restriction
+      
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
+        # Corresponds to the JSON property `origin`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLatLng]
+        attr_accessor :origin
+      
+        # Optional. The region code, specified as a CLDR two-character region code. This
+        # affects address formatting, result ranking, and may influence what results are
+        # returned. This does not restrict results to the specified region. To restrict
+        # results to a region, use `region_code_restriction`.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Optional. A string which identifies an Autocomplete session for billing
+        # purposes. Must be a URL and filename safe base64 string with at most 36 ASCII
+        # characters in length. Otherwise an INVALID_ARGUMENT error is returned. The
+        # session begins when the user starts typing a query, and concludes when they
+        # select a place and a call to Place Details or Address Validation is made. Each
+        # session can have multiple queries, followed by one Place Details or Address
+        # Validation request. The credentials used for each request within a session
+        # must belong to the same Google Cloud Console project. Once a session has
+        # concluded, the token is no longer valid; your app must generate a fresh token
+        # for each session. If the `session_token` parameter is omitted, or if you reuse
+        # a session token, the session is charged as if no session token was provided (
+        # each request is billed separately). We recommend the following guidelines: *
+        # Use session tokens for all Place Autocomplete calls. * Generate a fresh token
+        # for each session. Using a version 4 UUID is recommended. * Ensure that the
+        # credentials used for all Place Autocomplete, Place Details, and Address
+        # Validation requests within a session belong to the same Cloud Console project.
+        # * Be sure to pass a unique session token for each new session. Using the same
+        # token for more than one session will result in each request being billed
+        # individually.
+        # Corresponds to the JSON property `sessionToken`
+        # @return [String]
+        attr_accessor :session_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_query_predictions = args[:include_query_predictions] if args.key?(:include_query_predictions)
+          @included_primary_types = args[:included_primary_types] if args.key?(:included_primary_types)
+          @included_region_codes = args[:included_region_codes] if args.key?(:included_region_codes)
+          @input = args[:input] if args.key?(:input)
+          @input_offset = args[:input_offset] if args.key?(:input_offset)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @location_bias = args[:location_bias] if args.key?(:location_bias)
+          @location_restriction = args[:location_restriction] if args.key?(:location_restriction)
+          @origin = args[:origin] if args.key?(:origin)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @session_token = args[:session_token] if args.key?(:session_token)
+        end
+      end
+      
+      # The region to search. The results may be biased around the specified region.
+      class GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias
+        include Google::Apis::Core::Hashable
+      
+        # Circle with a LatLng as center and radius.
+        # Corresponds to the JSON property `circle`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1Circle]
+        attr_accessor :circle
+      
+        # A latitude-longitude viewport, represented as two diagonally opposite `low`
+        # and `high` points. A viewport is considered a closed region, i.e. it includes
+        # its boundary. The latitude bounds must range between -90 to 90 degrees
+        # inclusive, and the longitude bounds must range between -180 to 180 degrees
+        # inclusive. Various cases include: - If `low` = `high`, the viewport consists
+        # of that single point. - If `low.longitude` > `high.longitude`, the longitude
+        # range is inverted (the viewport crosses the 180 degree longitude line). - If `
+        # low.longitude` = -180 degrees and `high.longitude` = 180 degrees, the viewport
+        # includes all longitudes. - If `low.longitude` = 180 degrees and `high.
+        # longitude` = -180 degrees, the longitude range is empty. - If `low.latitude` >
+        # `high.latitude`, the latitude range is empty. Both `low` and `high` must be
+        # populated, and the represented box cannot be empty (as specified by the
+        # definitions above). An empty viewport will result in an error. For example,
+        # this viewport fully encloses New York City: ` "low": ` "latitude": 40.477398, "
+        # longitude": -74.259087 `, "high": ` "latitude": 40.91618, "longitude": -73.
+        # 70018 ` `
+        # Corresponds to the JSON property `rectangle`
+        # @return [Google::Apis::PlacesV1::GoogleGeoTypeViewport]
+        attr_accessor :rectangle
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @circle = args[:circle] if args.key?(:circle)
+          @rectangle = args[:rectangle] if args.key?(:rectangle)
+        end
+      end
+      
+      # The region to search. The results will be restricted to the specified region.
+      class GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction
+        include Google::Apis::Core::Hashable
+      
+        # Circle with a LatLng as center and radius.
+        # Corresponds to the JSON property `circle`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1Circle]
+        attr_accessor :circle
+      
+        # A latitude-longitude viewport, represented as two diagonally opposite `low`
+        # and `high` points. A viewport is considered a closed region, i.e. it includes
+        # its boundary. The latitude bounds must range between -90 to 90 degrees
+        # inclusive, and the longitude bounds must range between -180 to 180 degrees
+        # inclusive. Various cases include: - If `low` = `high`, the viewport consists
+        # of that single point. - If `low.longitude` > `high.longitude`, the longitude
+        # range is inverted (the viewport crosses the 180 degree longitude line). - If `
+        # low.longitude` = -180 degrees and `high.longitude` = 180 degrees, the viewport
+        # includes all longitudes. - If `low.longitude` = 180 degrees and `high.
+        # longitude` = -180 degrees, the longitude range is empty. - If `low.latitude` >
+        # `high.latitude`, the latitude range is empty. Both `low` and `high` must be
+        # populated, and the represented box cannot be empty (as specified by the
+        # definitions above). An empty viewport will result in an error. For example,
+        # this viewport fully encloses New York City: ` "low": ` "latitude": 40.477398, "
+        # longitude": -74.259087 `, "high": ` "latitude": 40.91618, "longitude": -73.
+        # 70018 ` `
+        # Corresponds to the JSON property `rectangle`
+        # @return [Google::Apis::PlacesV1::GoogleGeoTypeViewport]
+        attr_accessor :rectangle
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @circle = args[:circle] if args.key?(:circle)
+          @rectangle = args[:rectangle] if args.key?(:rectangle)
+        end
+      end
+      
+      # Response proto for AutocompletePlaces.
+      class GoogleMapsPlacesV1AutocompletePlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Contains a list of suggestions, ordered in descending order of relevance.
+        # Corresponds to the JSON property `suggestions`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>]
+        attr_accessor :suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggestions = args[:suggestions] if args.key?(:suggestions)
+        end
+      end
+      
+      # An Autocomplete suggestion result.
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Prediction results for a Place Autocomplete prediction.
+        # Corresponds to the JSON property `placePrediction`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction]
+        attr_accessor :place_prediction
+      
+        # Prediction results for a Query Autocomplete prediction.
+        # Corresponds to the JSON property `queryPrediction`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction]
+        attr_accessor :query_prediction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @place_prediction = args[:place_prediction] if args.key?(:place_prediction)
+          @query_prediction = args[:query_prediction] if args.key?(:query_prediction)
+        end
+      end
+      
+      # Text representing a Place or query prediction. The text may be used as is or
+      # formatted.
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText
+        include Google::Apis::Core::Hashable
+      
+        # A list of string ranges identifying where the input request matched in `text`.
+        # The ranges can be used to format specific parts of `text`. The substrings may
+        # not be exact matches of `input` if the matching was determined by criteria
+        # other than string matching (for example, spell corrections or transliterations)
+        # . These values are Unicode character offsets of `text`. The ranges are
+        # guaranteed to be ordered in increasing offset values.
+        # Corresponds to the JSON property `matches`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>]
+        attr_accessor :matches
+      
+        # Text that may be used as is or formatted with `matches`.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matches = args[:matches] if args.key?(:matches)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Prediction results for a Place Autocomplete prediction.
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction
+        include Google::Apis::Core::Hashable
+      
+        # The length of the geodesic in meters from `origin` if `origin` is specified.
+        # Certain predictions such as routes may not populate this field.
+        # Corresponds to the JSON property `distanceMeters`
+        # @return [Fixnum]
+        attr_accessor :distance_meters
+      
+        # The resource name of the suggested Place. This name can be used in other APIs
+        # that accept Place names.
+        # Corresponds to the JSON property `place`
+        # @return [String]
+        attr_accessor :place
+      
+        # The unique identifier of the suggested Place. This identifier can be used in
+        # other APIs that accept Place IDs.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
+      
+        # Contains a breakdown of a Place or query prediction into main text and
+        # secondary text. For Place predictions, the main text contains the specific
+        # name of the Place. For query predictions, the main text contains the query.
+        # The secondary text contains additional disambiguating features (such as a city
+        # or region) to further identify the Place or refine the query.
+        # Corresponds to the JSON property `structuredFormat`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat]
+        attr_accessor :structured_format
+      
+        # Text representing a Place or query prediction. The text may be used as is or
+        # formatted.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText]
+        attr_accessor :text
+      
+        # List of types that apply to this Place from Table A or Table B in https://
+        # developers.google.com/maps/documentation/places/web-service/place-types. A
+        # type is a categorization of a Place. Places with shared types will share
+        # similar characteristics.
+        # Corresponds to the JSON property `types`
+        # @return [Array<String>]
+        attr_accessor :types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distance_meters = args[:distance_meters] if args.key?(:distance_meters)
+          @place = args[:place] if args.key?(:place)
+          @place_id = args[:place_id] if args.key?(:place_id)
+          @structured_format = args[:structured_format] if args.key?(:structured_format)
+          @text = args[:text] if args.key?(:text)
+          @types = args[:types] if args.key?(:types)
+        end
+      end
+      
+      # Prediction results for a Query Autocomplete prediction.
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction
+        include Google::Apis::Core::Hashable
+      
+        # Contains a breakdown of a Place or query prediction into main text and
+        # secondary text. For Place predictions, the main text contains the specific
+        # name of the Place. For query predictions, the main text contains the query.
+        # The secondary text contains additional disambiguating features (such as a city
+        # or region) to further identify the Place or refine the query.
+        # Corresponds to the JSON property `structuredFormat`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat]
+        attr_accessor :structured_format
+      
+        # Text representing a Place or query prediction. The text may be used as is or
+        # formatted.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @structured_format = args[:structured_format] if args.key?(:structured_format)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Identifies a substring within a given text.
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange
+        include Google::Apis::Core::Hashable
+      
+        # Zero-based offset of the last Unicode character (exclusive).
+        # Corresponds to the JSON property `endOffset`
+        # @return [Fixnum]
+        attr_accessor :end_offset
+      
+        # Zero-based offset of the first Unicode character of the string (inclusive).
+        # Corresponds to the JSON property `startOffset`
+        # @return [Fixnum]
+        attr_accessor :start_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
+        end
+      end
+      
+      # Contains a breakdown of a Place or query prediction into main text and
+      # secondary text. For Place predictions, the main text contains the specific
+      # name of the Place. For query predictions, the main text contains the query.
+      # The secondary text contains additional disambiguating features (such as a city
+      # or region) to further identify the Place or refine the query.
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat
+        include Google::Apis::Core::Hashable
+      
+        # Text representing a Place or query prediction. The text may be used as is or
+        # formatted.
+        # Corresponds to the JSON property `mainText`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText]
+        attr_accessor :main_text
+      
+        # Text representing a Place or query prediction. The text may be used as is or
+        # formatted.
+        # Corresponds to the JSON property `secondaryText`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText]
+        attr_accessor :secondary_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @main_text = args[:main_text] if args.key?(:main_text)
+          @secondary_text = args[:secondary_text] if args.key?(:secondary_text)
+        end
+      end
+      
       # Circle with a LatLng as center and radius.
       class GoogleMapsPlacesV1Circle
         include Google::Apis::Core::Hashable
@@ -529,7 +947,8 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePaymentOptions]
         attr_accessor :payment_options
       
-        # Information (including references) about photos of this place.
+        # Information (including references) about photos of this place. A maximum of 10
+        # photos can be returned.
         # Corresponds to the JSON property `photos`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Photo>]
         attr_accessor :photos
@@ -592,7 +1011,8 @@ module Google
         attr_accessor :restroom
         alias_method :restroom?, :restroom
       
-        # List of reviews about this place, sorted by relevance.
+        # List of reviews about this place, sorted by relevance. A maximum of 5 reviews
+        # can be returned.
         # Corresponds to the JSON property `reviews`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Review>]
         attr_accessor :reviews
