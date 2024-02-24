@@ -2516,18 +2516,6 @@ module Google
       class GoogleApiServiceusageV2alphaEnableRule
         include Google::Apis::Core::Hashable
       
-        # The names of the categories that are enabled. Example: `categories/
-        # googleServices`.
-        # Corresponds to the JSON property `categories`
-        # @return [Array<String>]
-        attr_accessor :categories
-      
-        # The names of the service groups that are enabled. Example: `services/container.
-        # googleapis.com/groups/dependencies`.
-        # Corresponds to the JSON property `groups`
-        # @return [Array<String>]
-        attr_accessor :groups
-      
         # The names of the services that are enabled. Example: `services/storage.
         # googleapis.com`.
         # Corresponds to the JSON property `services`
@@ -2540,8 +2528,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @categories = args[:categories] if args.key?(:categories)
-          @groups = args[:groups] if args.key?(:groups)
           @services = args[:services] if args.key?(:services)
         end
       end
