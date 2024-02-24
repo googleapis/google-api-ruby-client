@@ -5627,6 +5627,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
+        # Wrapper message for a list of contact information defining Customer Match
+        # audience members.
+        # Corresponds to the JSON property `removedContactInfoList`
+        # @return [Google::Apis::DisplayvideoV3::ContactInfoList]
+        attr_accessor :removed_contact_info_list
+      
+        # Wrapper message for a list of mobile device IDs defining Customer Match
+        # audience members.
+        # Corresponds to the JSON property `removedMobileDeviceIdList`
+        # @return [Google::Apis::DisplayvideoV3::MobileDeviceIdList]
+        attr_accessor :removed_mobile_device_id_list
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5636,6 +5648,8 @@ module Google
           @added_contact_info_list = args[:added_contact_info_list] if args.key?(:added_contact_info_list)
           @added_mobile_device_id_list = args[:added_mobile_device_id_list] if args.key?(:added_mobile_device_id_list)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @removed_contact_info_list = args[:removed_contact_info_list] if args.key?(:removed_contact_info_list)
+          @removed_mobile_device_id_list = args[:removed_mobile_device_id_list] if args.key?(:removed_mobile_device_id_list)
         end
       end
       

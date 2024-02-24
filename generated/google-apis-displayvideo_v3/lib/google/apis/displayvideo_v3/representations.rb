@@ -3565,6 +3565,10 @@ module Google
           property :added_mobile_device_id_list, as: 'addedMobileDeviceIdList', class: Google::Apis::DisplayvideoV3::MobileDeviceIdList, decorator: Google::Apis::DisplayvideoV3::MobileDeviceIdList::Representation
       
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :removed_contact_info_list, as: 'removedContactInfoList', class: Google::Apis::DisplayvideoV3::ContactInfoList, decorator: Google::Apis::DisplayvideoV3::ContactInfoList::Representation
+      
+          property :removed_mobile_device_id_list, as: 'removedMobileDeviceIdList', class: Google::Apis::DisplayvideoV3::MobileDeviceIdList, decorator: Google::Apis::DisplayvideoV3::MobileDeviceIdList::Representation
+      
         end
       end
       
