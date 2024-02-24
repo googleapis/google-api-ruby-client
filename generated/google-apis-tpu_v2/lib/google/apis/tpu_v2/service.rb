@@ -638,6 +638,186 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a QueuedResource TPU instance.
+        # @param [String] parent
+        #   Required. The parent resource name.
+        # @param [Google::Apis::TpuV2::QueuedResource] queued_resource_object
+        # @param [String] queued_resource_id
+        #   Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+
+        #   $` regex format.
+        # @param [String] request_id
+        #   Optional. Idempotent request UUID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TpuV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TpuV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_queued_resource(parent, queued_resource_object = nil, queued_resource_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/queuedResources', options)
+          command.request_representation = Google::Apis::TpuV2::QueuedResource::Representation
+          command.request_object = queued_resource_object
+          command.response_representation = Google::Apis::TpuV2::Operation::Representation
+          command.response_class = Google::Apis::TpuV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['queuedResourceId'] = queued_resource_id unless queued_resource_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a QueuedResource TPU instance.
+        # @param [String] name
+        #   Required. The resource name.
+        # @param [Boolean] force
+        #   Optional. If set to true, all running nodes belonging to this queued resource
+        #   will be deleted first and then the queued resource will be deleted. Otherwise (
+        #   i.e. force=false), the queued resource will only be deleted if its nodes have
+        #   already been deleted or the queued resource is in the ACCEPTED, FAILED, or
+        #   SUSPENDED state.
+        # @param [String] request_id
+        #   Optional. Idempotent request UUID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TpuV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TpuV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_queued_resource(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::TpuV2::Operation::Representation
+          command.response_class = Google::Apis::TpuV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a queued resource.
+        # @param [String] name
+        #   Required. The resource name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TpuV2::QueuedResource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TpuV2::QueuedResource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_queued_resource(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::TpuV2::QueuedResource::Representation
+          command.response_class = Google::Apis::TpuV2::QueuedResource
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists queued resources.
+        # @param [String] parent
+        #   Required. The parent resource name.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous List request, if
+        #   any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TpuV2::ListQueuedResourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TpuV2::ListQueuedResourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_queued_resources(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/queuedResources', options)
+          command.response_representation = Google::Apis::TpuV2::ListQueuedResourcesResponse::Representation
+          command.response_class = Google::Apis::TpuV2::ListQueuedResourcesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resets a QueuedResource TPU instance
+        # @param [String] name
+        #   Required. The name of the queued resource.
+        # @param [Google::Apis::TpuV2::ResetQueuedResourceRequest] reset_queued_resource_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TpuV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TpuV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reset_queued_resource(name, reset_queued_resource_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:reset', options)
+          command.request_representation = Google::Apis::TpuV2::ResetQueuedResourceRequest::Representation
+          command.request_object = reset_queued_resource_request_object
+          command.response_representation = Google::Apis::TpuV2::Operation::Representation
+          command.response_class = Google::Apis::TpuV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a runtime version.
         # @param [String] name
         #   Required. The resource name.
