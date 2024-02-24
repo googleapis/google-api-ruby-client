@@ -29,6 +29,33 @@ module Google
       # Version of the Google Workspace Events API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
+
+      # Private Service: https://www.googleapis.com/auth/chat.bot
+      AUTH_CHAT_BOT = 'https://www.googleapis.com/auth/chat.bot'
+
+      # View, add, and remove members from conversations in Google Chat
+      AUTH_CHAT_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.memberships'
+
+      # View members in Google Chat conversations.
+      AUTH_CHAT_MEMBERSHIPS_READONLY = 'https://www.googleapis.com/auth/chat.memberships.readonly'
+
+      # View, compose, send, update, and delete messages, and add, view, and delete reactions to messages.
+      AUTH_CHAT_MESSAGES = 'https://www.googleapis.com/auth/chat.messages'
+
+      # View, add, and delete reactions to messages in Google Chat
+      AUTH_CHAT_MESSAGES_REACTIONS = 'https://www.googleapis.com/auth/chat.messages.reactions'
+
+      # View reactions to messages in Google Chat
+      AUTH_CHAT_MESSAGES_REACTIONS_READONLY = 'https://www.googleapis.com/auth/chat.messages.reactions.readonly'
+
+      # View messages and reactions in Google Chat
+      AUTH_CHAT_MESSAGES_READONLY = 'https://www.googleapis.com/auth/chat.messages.readonly'
+
+      # Create conversations and spaces and see or edit metadata (including history settings and access settings) in Google Chat
+      AUTH_CHAT_SPACES = 'https://www.googleapis.com/auth/chat.spaces'
+
+      # View chat and spaces in Google Chat
+      AUTH_CHAT_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.spaces.readonly'
     end
   end
 end
