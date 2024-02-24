@@ -4018,6 +4018,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProjectsSetCloudArmorTierRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProjectsSetDefaultNetworkTierRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4979,6 +4985,12 @@ module Google
       end
       
       class SchedulingNodeAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchedulingOnInstanceStopAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -12830,6 +12842,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client_port, as: 'clientPort'
           property :fqdn, as: 'fqdn'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
@@ -12844,6 +12857,7 @@ module Google
           hash :annotations, as: 'annotations'
           property :app_engine, as: 'appEngine', class: Google::Apis::ComputeBeta::NetworkEndpointGroupAppEngine, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupAppEngine::Representation
       
+          property :client_port_mapping_mode, as: 'clientPortMappingMode'
           property :cloud_function, as: 'cloudFunction', class: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudFunction, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudFunction::Representation
       
           property :cloud_run, as: 'cloudRun', class: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudRun, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudRun::Representation
@@ -14270,6 +14284,7 @@ module Google
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_armor_tier, as: 'cloudArmorTier'
           property :common_instance_metadata, as: 'commonInstanceMetadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -14321,6 +14336,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :organization, as: 'organization'
+        end
+      end
+      
+      class ProjectsSetCloudArmorTierRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_armor_tier, as: 'cloudArmorTier'
         end
       end
       
@@ -16053,6 +16075,8 @@ module Google
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeBeta::SchedulingNodeAffinity, decorator: Google::Apis::ComputeBeta::SchedulingNodeAffinity::Representation
       
           property :on_host_maintenance, as: 'onHostMaintenance'
+          property :on_instance_stop_action, as: 'onInstanceStopAction', class: Google::Apis::ComputeBeta::SchedulingOnInstanceStopAction, decorator: Google::Apis::ComputeBeta::SchedulingOnInstanceStopAction::Representation
+      
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
           property :termination_time, as: 'terminationTime'
@@ -16065,6 +16089,13 @@ module Google
           property :key, as: 'key'
           property :operator, as: 'operator'
           collection :values, as: 'values'
+        end
+      end
+      
+      class SchedulingOnInstanceStopAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discard_local_ssd, as: 'discardLocalSsd'
         end
       end
       
