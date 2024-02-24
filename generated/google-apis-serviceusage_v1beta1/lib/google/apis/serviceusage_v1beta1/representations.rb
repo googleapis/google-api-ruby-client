@@ -1361,8 +1361,6 @@ module Google
       class GoogleApiServiceusageV2alphaEnableRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :categories, as: 'categories'
-          collection :groups, as: 'groups'
           collection :services, as: 'services'
         end
       end
