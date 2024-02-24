@@ -869,29 +869,6 @@ module Google
         end
       end
       
-      # Explain options for the query.
-      class ExplainOptions
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Whether to execute this query. When false (the default), the query
-        # will be planned, returning only metrics from the planning stages. When true,
-        # the query will be planned and executed, returning the full query results along
-        # with both planning and execution stage metrics.
-        # Corresponds to the JSON property `analyze`
-        # @return [Boolean]
-        attr_accessor :analyze
-        alias_method :analyze?, :analyze
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @analyze = args[:analyze] if args.key?(:analyze)
-        end
-      end
-      
       # A filter on a specific field.
       class FieldFilter
         include Google::Apis::Core::Hashable
@@ -3040,11 +3017,6 @@ module Google
       class RunAggregationQueryRequest
         include Google::Apis::Core::Hashable
       
-        # Explain options for the query.
-        # Corresponds to the JSON property `explainOptions`
-        # @return [Google::Apis::FirestoreV1::ExplainOptions]
-        attr_accessor :explain_options
-      
         # Options for creating a new transaction.
         # Corresponds to the JSON property `newTransaction`
         # @return [Google::Apis::FirestoreV1::TransactionOptions]
@@ -3075,7 +3047,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @explain_options = args[:explain_options] if args.key?(:explain_options)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
           @structured_aggregation_query = args[:structured_aggregation_query] if args.key?(:structured_aggregation_query)
@@ -3126,11 +3097,6 @@ module Google
       class RunQueryRequest
         include Google::Apis::Core::Hashable
       
-        # Explain options for the query.
-        # Corresponds to the JSON property `explainOptions`
-        # @return [Google::Apis::FirestoreV1::ExplainOptions]
-        attr_accessor :explain_options
-      
         # Options for creating a new transaction.
         # Corresponds to the JSON property `newTransaction`
         # @return [Google::Apis::FirestoreV1::TransactionOptions]
@@ -3162,7 +3128,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @explain_options = args[:explain_options] if args.key?(:explain_options)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
           @structured_query = args[:structured_query] if args.key?(:structured_query)
