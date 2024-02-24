@@ -257,6 +257,11 @@ module Google
         # @return [String]
         attr_accessor :geo
       
+        # Unique identifier of a Detailed Lead Report.
+        # Corresponds to the JSON property `googleAdsLeadId`
+        # @return [Fixnum]
+        attr_accessor :google_ads_lead_id
+      
         # Lead category (e.g. hvac, plumber)
         # Corresponds to the JSON property `leadCategory`
         # @return [String]
@@ -267,7 +272,8 @@ module Google
         # @return [String]
         attr_accessor :lead_creation_timestamp
       
-        # Unique identifier of a Detailed Lead Report.
+        # Deprecated in favor of google_ads_lead_id. Unique identifier of a Detailed
+        # Lead Report.
         # Corresponds to the JSON property `leadId`
         # @return [Fixnum]
         attr_accessor :lead_id
@@ -312,6 +318,7 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @dispute_status = args[:dispute_status] if args.key?(:dispute_status)
           @geo = args[:geo] if args.key?(:geo)
+          @google_ads_lead_id = args[:google_ads_lead_id] if args.key?(:google_ads_lead_id)
           @lead_category = args[:lead_category] if args.key?(:lead_category)
           @lead_creation_timestamp = args[:lead_creation_timestamp] if args.key?(:lead_creation_timestamp)
           @lead_id = args[:lead_id] if args.key?(:lead_id)
