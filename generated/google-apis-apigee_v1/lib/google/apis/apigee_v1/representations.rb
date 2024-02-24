@@ -4031,8 +4031,14 @@ module Google
       class GoogleCloudApigeeV1SecurityActionConditionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_tokens, as: 'accessTokens'
+          collection :api_keys, as: 'apiKeys'
+          collection :api_products, as: 'apiProducts'
           collection :bot_reasons, as: 'botReasons'
+          collection :developer_apps, as: 'developerApps'
+          collection :developers, as: 'developers'
           collection :ip_address_ranges, as: 'ipAddressRanges'
+          collection :user_agents, as: 'userAgents'
         end
       end
       
