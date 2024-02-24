@@ -389,15 +389,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GenerateOrgPolicyViolationsPreview generates an OrgPolicyViolationsPreview for
-        # the proposed changes in the provided OrgPolicyViolationsPreview.
-        # OrgPolicyOverlay. The changes to OrgPolicy are specified by this `
-        # OrgPolicyOverlay`. The resources to scan are inferred from these specified
-        # changes.
+        # CreateOrgPolicyViolationsPreview creates an OrgPolicyViolationsPreview for the
+        # proposed changes in the provided OrgPolicyViolationsPreview.OrgPolicyOverlay.
+        # The changes to OrgPolicy are specified by this `OrgPolicyOverlay`. The
+        # resources to scan are inferred from these specified changes.
         # @param [String] parent
         #   Required. The organization under which this OrgPolicyViolationsPreview will be
         #   created. Example: `organizations/my-example-org/locations/global`
         # @param [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreview] google_cloud_policysimulator_v1alpha_org_policy_violations_preview_object
+        # @param [String] org_policy_violations_preview_id
+        #   Optional. An optional user-specified ID for the OrgPolicyViolationsPreview. If
+        #   not provided, a random ID will be generated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -415,13 +417,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def org_organization_location_policy_violations_previews(parent, google_cloud_policysimulator_v1alpha_org_policy_violations_preview_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_organization_location_org_policy_violations_preview(parent, google_cloud_policysimulator_v1alpha_org_policy_violations_preview_object = nil, org_policy_violations_preview_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1alpha/{+parent}/orgPolicyViolationsPreviews', options)
           command.request_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreview::Representation
           command.request_object = google_cloud_policysimulator_v1alpha_org_policy_violations_preview_object
           command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['orgPolicyViolationsPreviewId'] = org_policy_violations_preview_id unless org_policy_violations_preview_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
