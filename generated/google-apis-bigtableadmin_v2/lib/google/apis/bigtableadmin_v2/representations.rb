@@ -406,12 +406,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class StandardReadRemoteWrites
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,8 +581,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consistency_token, as: 'consistencyToken'
-          property :standard_read_remote_writes, as: 'standardReadRemoteWrites', class: Google::Apis::BigtableadminV2::StandardReadRemoteWrites, decorator: Google::Apis::BigtableadminV2::StandardReadRemoteWrites::Representation
-      
         end
       end
       
@@ -1102,12 +1094,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :priority, as: 'priority'
-        end
-      end
-      
-      class StandardReadRemoteWrites
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
