@@ -1,5 +1,9 @@
 # Release history for google-apis-lifesciences_v2beta
 
+### v0.26.0 (2024-02-24)
+
+* Regenerated using generator version 0.14.0
+
 ### v0.25.0 (2024-01-22)
 
 * Regenerated from discovery document revision 20230707
