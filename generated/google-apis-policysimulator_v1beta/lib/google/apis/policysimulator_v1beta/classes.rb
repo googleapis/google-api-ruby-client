@@ -514,6 +514,58 @@ module Google
         end
       end
       
+      # CreateOrgPolicyViolationsPreviewOperationMetadata is metadata about an
+      # OrgPolicyViolationsPreview generations operation.
+      class GoogleCloudPolicysimulatorV1alphaCreateOrgPolicyViolationsPreviewOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time when the request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # Total number of resources that need scanning. Should equal resource_scanned +
+        # resources_pending
+        # Corresponds to the JSON property `resourcesFound`
+        # @return [Fixnum]
+        attr_accessor :resources_found
+      
+        # Number of resources still to scan.
+        # Corresponds to the JSON property `resourcesPending`
+        # @return [Fixnum]
+        attr_accessor :resources_pending
+      
+        # Number of resources already scanned.
+        # Corresponds to the JSON property `resourcesScanned`
+        # @return [Fixnum]
+        attr_accessor :resources_scanned
+      
+        # Time when the request started processing, i.e., when the state was set to
+        # RUNNING.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The current state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_time = args[:request_time] if args.key?(:request_time)
+          @resources_found = args[:resources_found] if args.key?(:resources_found)
+          @resources_pending = args[:resources_pending] if args.key?(:resources_pending)
+          @resources_scanned = args[:resources_scanned] if args.key?(:resources_scanned)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # GenerateOrgPolicyViolationsPreviewOperationMetadata is metadata about an
       # OrgPolicyViolationsPreview generations operation.
       class GoogleCloudPolicysimulatorV1alphaGenerateOrgPolicyViolationsPreviewOperationMetadata
@@ -968,6 +1020,58 @@ module Google
         def update!(**args)
           @membership = args[:membership] if args.key?(:membership)
           @relevance = args[:relevance] if args.key?(:relevance)
+        end
+      end
+      
+      # CreateOrgPolicyViolationsPreviewOperationMetadata is metadata about an
+      # OrgPolicyViolationsPreview generations operation.
+      class GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time when the request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # Total number of resources that need scanning. Should equal resource_scanned +
+        # resources_pending
+        # Corresponds to the JSON property `resourcesFound`
+        # @return [Fixnum]
+        attr_accessor :resources_found
+      
+        # Number of resources still to scan.
+        # Corresponds to the JSON property `resourcesPending`
+        # @return [Fixnum]
+        attr_accessor :resources_pending
+      
+        # Number of resources already scanned.
+        # Corresponds to the JSON property `resourcesScanned`
+        # @return [Fixnum]
+        attr_accessor :resources_scanned
+      
+        # Time when the request started processing, i.e., when the state was set to
+        # RUNNING.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The current state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_time = args[:request_time] if args.key?(:request_time)
+          @resources_found = args[:resources_found] if args.key?(:resources_found)
+          @resources_pending = args[:resources_pending] if args.key?(:resources_pending)
+          @resources_scanned = args[:resources_scanned] if args.key?(:resources_scanned)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
