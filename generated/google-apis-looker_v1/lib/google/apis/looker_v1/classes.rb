@@ -693,6 +693,18 @@ module Google
         attr_accessor :private_ip_enabled
         alias_method :private_ip_enabled?, :private_ip_enabled
       
+        # Information for Private Service Connect (PSC) setup for a Looker instance.
+        # Corresponds to the JSON property `pscConfig`
+        # @return [Google::Apis::LookerV1::PscConfig]
+        attr_accessor :psc_config
+      
+        # Optional. Whether to use Private Service Connect (PSC) for private IP
+        # connectivity. If true, VPC peering (PSA) will not be used.
+        # Corresponds to the JSON property `pscEnabled`
+        # @return [Boolean]
+        attr_accessor :psc_enabled
+        alias_method :psc_enabled?, :psc_enabled
+      
         # Whether public IP is enabled on the Looker instance.
         # Corresponds to the JSON property `publicIpEnabled`
         # @return [Boolean]
@@ -745,6 +757,8 @@ module Google
           @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
           @platform_edition = args[:platform_edition] if args.key?(:platform_edition)
           @private_ip_enabled = args[:private_ip_enabled] if args.key?(:private_ip_enabled)
+          @psc_config = args[:psc_config] if args.key?(:psc_config)
+          @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
           @public_ip_enabled = args[:public_ip_enabled] if args.key?(:public_ip_enabled)
           @reserved_range = args[:reserved_range] if args.key?(:reserved_range)
           @state = args[:state] if args.key?(:state)
@@ -1177,6 +1191,38 @@ module Google
         end
       end
       
+      # Information for Private Service Connect (PSC) setup for a Looker instance.
+      class PscConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of VPCs that are allowed ingress into looker. Format: projects/`
+        # project`/global/networks/`network`
+        # Corresponds to the JSON property `allowedVpcs`
+        # @return [Array<String>]
+        attr_accessor :allowed_vpcs
+      
+        # Output only. URI of the Looker service attachment.
+        # Corresponds to the JSON property `lookerServiceAttachmentUri`
+        # @return [String]
+        attr_accessor :looker_service_attachment_uri
+      
+        # Optional. List of egress service attachment configurations.
+        # Corresponds to the JSON property `serviceAttachments`
+        # @return [Array<Google::Apis::LookerV1::ServiceAttachment>]
+        attr_accessor :service_attachments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_vpcs = args[:allowed_vpcs] if args.key?(:allowed_vpcs)
+          @looker_service_attachment_uri = args[:looker_service_attachment_uri] if args.key?(:looker_service_attachment_uri)
+          @service_attachments = args[:service_attachments] if args.key?(:service_attachments)
+        end
+      end
+      
       # Request options for restarting an instance.
       class RestartInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1187,6 +1233,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Service attachment configuration.
+      class ServiceAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Connection status.
+        # Corresponds to the JSON property `connectionStatus`
+        # @return [String]
+        attr_accessor :connection_status
+      
+        # Required. Fully qualified domain name that will be used in the private DNS
+        # record created for the service attachment.
+        # Corresponds to the JSON property `localFqdn`
+        # @return [String]
+        attr_accessor :local_fqdn
+      
+        # Required. URI of the service attachment to connect to. Format: projects/`
+        # project`/regions/`region`/serviceAttachments/`service_attachment`
+        # Corresponds to the JSON property `targetServiceAttachmentUri`
+        # @return [String]
+        attr_accessor :target_service_attachment_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_status = args[:connection_status] if args.key?(:connection_status)
+          @local_fqdn = args[:local_fqdn] if args.key?(:local_fqdn)
+          @target_service_attachment_uri = args[:target_service_attachment_uri] if args.key?(:target_service_attachment_uri)
         end
       end
       
