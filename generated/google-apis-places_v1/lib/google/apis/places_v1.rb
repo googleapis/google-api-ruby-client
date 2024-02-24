@@ -35,6 +35,9 @@ module Google
       # Private Service: https://www.googleapis.com/auth/maps-platform.places
       AUTH_MAPS_PLATFORM_PLACES = 'https://www.googleapis.com/auth/maps-platform.places'
 
+      # Private Service: https://www.googleapis.com/auth/maps-platform.places.autocomplete
+      AUTH_MAPS_PLATFORM_PLACES_AUTOCOMPLETE = 'https://www.googleapis.com/auth/maps-platform.places.autocomplete'
+
       # Private Service: https://www.googleapis.com/auth/maps-platform.places.details
       AUTH_MAPS_PLATFORM_PLACES_DETAILS = 'https://www.googleapis.com/auth/maps-platform.places.details'
 

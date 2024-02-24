@@ -34,6 +34,66 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1AutocompletePlacesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1Circle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -236,6 +296,115 @@ module Google
           property :display_name, as: 'displayName'
           property :photo_uri, as: 'photoUri'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_query_predictions, as: 'includeQueryPredictions'
+          collection :included_primary_types, as: 'includedPrimaryTypes'
+          collection :included_region_codes, as: 'includedRegionCodes'
+          property :input, as: 'input'
+          property :input_offset, as: 'inputOffset'
+          property :language_code, as: 'languageCode'
+          property :location_bias, as: 'locationBias', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias::Representation
+      
+          property :location_restriction, as: 'locationRestriction', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction::Representation
+      
+          property :origin, as: 'origin', class: Google::Apis::PlacesV1::GoogleTypeLatLng, decorator: Google::Apis::PlacesV1::GoogleTypeLatLng::Representation
+      
+          property :region_code, as: 'regionCode'
+          property :session_token, as: 'sessionToken'
+        end
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :circle, as: 'circle', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Circle, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Circle::Representation
+      
+          property :rectangle, as: 'rectangle', class: Google::Apis::PlacesV1::GoogleGeoTypeViewport, decorator: Google::Apis::PlacesV1::GoogleGeoTypeViewport::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :circle, as: 'circle', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Circle, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Circle::Representation
+      
+          property :rectangle, as: 'rectangle', class: Google::Apis::PlacesV1::GoogleGeoTypeViewport, decorator: Google::Apis::PlacesV1::GoogleGeoTypeViewport::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :suggestions, as: 'suggestions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :place_prediction, as: 'placePrediction', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction::Representation
+      
+          property :query_prediction, as: 'queryPrediction', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :matches, as: 'matches', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange::Representation
+      
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distance_meters, as: 'distanceMeters'
+          property :place, as: 'place'
+          property :place_id, as: 'placeId'
+          property :structured_format, as: 'structuredFormat', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat::Representation
+      
+          property :text, as: 'text', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText::Representation
+      
+          collection :types, as: 'types'
+        end
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :structured_format, as: 'structuredFormat', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat::Representation
+      
+          property :text, as: 'text', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_offset, as: 'endOffset'
+          property :start_offset, as: 'startOffset'
+        end
+      end
+      
+      class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :main_text, as: 'mainText', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText::Representation
+      
+          property :secondary_text, as: 'secondaryText', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText::Representation
+      
         end
       end
       
