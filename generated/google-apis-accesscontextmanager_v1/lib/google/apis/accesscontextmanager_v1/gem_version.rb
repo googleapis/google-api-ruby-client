@@ -16,13 +16,13 @@ module Google
   module Apis
     module AccesscontextmanagerV1
       # Version of the google-apis-accesscontextmanager_v1 gem
-      GEM_VERSION = "0.40.0"
+      GEM_VERSION = "0.41.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.13.1"
+      GENERATOR_VERSION = "0.14.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240126"
+      REVISION = "20240221"
     end
   end
 end
