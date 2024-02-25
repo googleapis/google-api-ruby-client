@@ -22,7 +22,7 @@ module Google
       GENERATOR_VERSION = "0.14.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240213"
+      REVISION = "20240219"
     end
   end
 end

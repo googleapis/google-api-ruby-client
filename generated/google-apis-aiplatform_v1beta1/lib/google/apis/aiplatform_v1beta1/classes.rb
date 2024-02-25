@@ -135,7 +135,7 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionImageRaiScores]
         attr_accessor :image_rai_scores
       
-        # RAI info for image
+        # RAI info for image.
         # Corresponds to the JSON property `raiInfo`
         # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionRaiInfo]
         attr_accessor :rai_info
@@ -144,6 +144,11 @@ module Google
         # Corresponds to the JSON property `semanticFilterResponse`
         # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionSemanticFilterResponse]
         attr_accessor :semantic_filter_response
+      
+        # Text/Expanded text input for imagen.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
       
         # Path to another storage (typically Google Cloud Storage).
         # Corresponds to the JSON property `uri`
@@ -161,6 +166,7 @@ module Google
           @image_rai_scores = args[:image_rai_scores] if args.key?(:image_rai_scores)
           @rai_info = args[:rai_info] if args.key?(:rai_info)
           @semantic_filter_response = args[:semantic_filter_response] if args.key?(:semantic_filter_response)
+          @text = args[:text] if args.key?(:text)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -4144,13 +4150,6 @@ module Google
         # @return [String]
         attr_accessor :pipeline_job_id
       
-        # Optional. Whether to do component level validations before job creation.
-        # Currently we only support Google First Party Component/Pipelines.
-        # Corresponds to the JSON property `preflightValidations`
-        # @return [Boolean]
-        attr_accessor :preflight_validations
-        alias_method :preflight_validations?, :preflight_validations
-      
         def initialize(**args)
            update!(**args)
         end
@@ -4160,7 +4159,6 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @pipeline_job = args[:pipeline_job] if args.key?(:pipeline_job)
           @pipeline_job_id = args[:pipeline_job_id] if args.key?(:pipeline_job_id)
-          @preflight_validations = args[:preflight_validations] if args.key?(:preflight_validations)
         end
       end
       
@@ -4977,11 +4975,22 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The user-defined name of the DatasetVersion. The name can be up to 128
+        # characters long and can consist of any UTF-8 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Used to perform consistent read-modify-write updates. If not set, a blind "
         # overwrite" update happens.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
+      
+        # Required. Additional information about the DatasetVersion.
+        # Corresponds to the JSON property `metadata`
+        # @return [Object]
+        attr_accessor :metadata
       
         # Output only. The resource name of the DatasetVersion.
         # Corresponds to the JSON property `name`
@@ -5001,7 +5010,9 @@ module Google
         def update!(**args)
           @big_query_dataset_name = args[:big_query_dataset_name] if args.key?(:big_query_dataset_name)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -7959,6 +7970,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Entity responsible for maintaining this feature. Can be comma separated list
+        # of email addresses or URIs.
+        # Corresponds to the JSON property `pointOfContact`
+        # @return [String]
+        attr_accessor :point_of_contact
+      
         # Output only. Only applicable for Vertex AI Feature Store (Legacy). Timestamp
         # when this EntityType was most recently updated.
         # Corresponds to the JSON property `updateTime`
@@ -7993,6 +8010,7 @@ module Google
           @monitoring_stats = args[:monitoring_stats] if args.key?(:monitoring_stats)
           @monitoring_stats_anomalies = args[:monitoring_stats_anomalies] if args.key?(:monitoring_stats_anomalies)
           @name = args[:name] if args.key?(:name)
+          @point_of_contact = args[:point_of_contact] if args.key?(:point_of_contact)
           @update_time = args[:update_time] if args.key?(:update_time)
           @value_type = args[:value_type] if args.key?(:value_type)
           @version_column_name = args[:version_column_name] if args.key?(:version_column_name)
@@ -8071,8 +8089,8 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BigQuerySource]
         attr_accessor :big_query_source
       
-        # Optional. Columns to construct entity_id / row keys. Currently only supports 1
-        # entity_id_column. If not provided defaults to `entity_id`.
+        # Optional. Columns to construct entity_id / row keys. If not provided defaults
+        # to `entity_id`.
         # Corresponds to the JSON property `entityIdColumns`
         # @return [Array<String>]
         attr_accessor :entity_id_columns
@@ -8683,6 +8701,23 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. A Service Account unique to this FeatureView. The role bigquery.
+        # dataViewer should be granted to this service account to allow Vertex AI
+        # Feature Store to sync data to the online store.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Optional. Service agent type used during data sync. By default, the Vertex AI
+        # Service Agent is used. When using an IAM Policy to isolate this FeatureView
+        # within a project (https://cloud.google.com/vertex-ai/docs/featurestore/latest/
+        # resource-policy) a separate service account should be provisioned by setting
+        # this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate
+        # service account to access the BigQuery source table.
+        # Corresponds to the JSON property `serviceAgentType`
+        # @return [String]
+        attr_accessor :service_agent_type
+      
         # Configuration for Sync. Only one option is set.
         # Corresponds to the JSON property `syncConfig`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewSyncConfig]
@@ -8710,6 +8745,8 @@ module Google
           @feature_registry_source = args[:feature_registry_source] if args.key?(:feature_registry_source)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @service_agent_type = args[:service_agent_type] if args.key?(:service_agent_type)
           @sync_config = args[:sync_config] if args.key?(:sync_config)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vector_search_config = args[:vector_search_config] if args.key?(:vector_search_config)
@@ -8720,8 +8757,7 @@ module Google
       class GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource
         include Google::Apis::Core::Hashable
       
-        # Required. Columns to construct entity_id / row keys. Start by supporting 1
-        # only.
+        # Required. Columns to construct entity_id / row keys.
         # Corresponds to the JSON property `entityIdColumns`
         # @return [Array<String>]
         attr_accessor :entity_id_columns
@@ -8747,6 +8783,11 @@ module Google
       class GoogleCloudAiplatformV1beta1FeatureViewDataKey
         include Google::Apis::Core::Hashable
       
+        # ID that is comprised from several parts (columns).
+        # Corresponds to the JSON property `compositeKey`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewDataKeyCompositeKey]
+        attr_accessor :composite_key
+      
         # String key to use for lookup.
         # Corresponds to the JSON property `key`
         # @return [String]
@@ -8758,7 +8799,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @composite_key = args[:composite_key] if args.key?(:composite_key)
           @key = args[:key] if args.key?(:key)
+        end
+      end
+      
+      # ID that is comprised from several parts (columns).
+      class GoogleCloudAiplatformV1beta1FeatureViewDataKeyCompositeKey
+        include Google::Apis::Core::Hashable
+      
+        # Parts to construct Entity ID. Should match with the same ID columns as defined
+        # in FeatureView in the same order.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<String>]
+        attr_accessor :parts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parts = args[:parts] if args.key?(:parts)
         end
       end
       
@@ -10117,6 +10179,26 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @partial_failures = args[:partial_failures] if args.key?(:partial_failures)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Contains information about the source of the models generated from Generative
+      # AI Studio.
+      class GoogleCloudAiplatformV1beta1GenieSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The public base model URI.
+        # Corresponds to the JSON property `baseModelUri`
+        # @return [String]
+        attr_accessor :base_model_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_model_uri = args[:base_model_uri] if args.key?(:base_model_uri)
         end
       end
       
@@ -13407,6 +13489,12 @@ module Google
         # @return [String]
         attr_accessor :artifact_uri
       
+        # User input field to specify the base model source. Currently it only supports
+        # specifing the Model Garden models and Genie models.
+        # Corresponds to the JSON property `baseModelSource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelBaseModelSource]
+        attr_accessor :base_model_source
+      
         # Specification of a container for serving predictions. Some fields in this
         # message correspond to fields in the [Kubernetes Container v1 core
         # specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/
@@ -13619,6 +13707,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @artifact_uri = args[:artifact_uri] if args.key?(:artifact_uri)
+          @base_model_source = args[:base_model_source] if args.key?(:base_model_source)
           @container_spec = args[:container_spec] if args.key?(:container_spec)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deployed_models = args[:deployed_models] if args.key?(:deployed_models)
@@ -13646,6 +13735,34 @@ module Google
           @version_description = args[:version_description] if args.key?(:version_description)
           @version_id = args[:version_id] if args.key?(:version_id)
           @version_update_time = args[:version_update_time] if args.key?(:version_update_time)
+        end
+      end
+      
+      # User input field to specify the base model source. Currently it only supports
+      # specifing the Model Garden models and Genie models.
+      class GoogleCloudAiplatformV1beta1ModelBaseModelSource
+        include Google::Apis::Core::Hashable
+      
+        # Contains information about the source of the models generated from Generative
+        # AI Studio.
+        # Corresponds to the JSON property `genieSource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenieSource]
+        attr_accessor :genie_source
+      
+        # Contains information about the source of the models generated from Model
+        # Garden.
+        # Corresponds to the JSON property `modelGardenSource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGardenSource]
+        attr_accessor :model_garden_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @genie_source = args[:genie_source] if args.key?(:genie_source)
+          @model_garden_source = args[:model_garden_source] if args.key?(:model_garden_source)
         end
       end
       
@@ -14591,6 +14708,26 @@ module Google
         def update!(**args)
           @exportable_contents = args[:exportable_contents] if args.key?(:exportable_contents)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Contains information about the source of the models generated from Model
+      # Garden.
+      class GoogleCloudAiplatformV1beta1ModelGardenSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The model garden source model resource name.
+        # Corresponds to the JSON property `publicModelName`
+        # @return [String]
+        attr_accessor :public_model_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_model_name = args[:public_model_name] if args.key?(:public_model_name)
         end
       end
       
@@ -16663,6 +16800,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :pipeline_spec
       
+        # Optional. Whether to do component level validations before job creation.
+        # Corresponds to the JSON property `preflightValidations`
+        # @return [Boolean]
+        attr_accessor :preflight_validations
+        alias_method :preflight_validations?, :preflight_validations
+      
         # A list of names for the reserved ip ranges under the VPC network that can be
         # used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job'
         # s workload within the provided ip ranges. Otherwise, the job will be deployed
@@ -16737,6 +16880,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @pipeline_spec = args[:pipeline_spec] if args.key?(:pipeline_spec)
+          @preflight_validations = args[:preflight_validations] if args.key?(:preflight_validations)
           @reserved_ip_ranges = args[:reserved_ip_ranges] if args.key?(:reserved_ip_ranges)
           @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
           @schedule_name = args[:schedule_name] if args.key?(:schedule_name)
@@ -19200,6 +19344,21 @@ module Google
         # @return [String]
         attr_accessor :probability
       
+        # Output only. Harm probability score.
+        # Corresponds to the JSON property `probabilityScore`
+        # @return [Float]
+        attr_accessor :probability_score
+      
+        # Output only. Harm severity levels in the content.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Output only. Harm severity score.
+        # Corresponds to the JSON property `severityScore`
+        # @return [Float]
+        attr_accessor :severity_score
+      
         def initialize(**args)
            update!(**args)
         end
@@ -19209,6 +19368,9 @@ module Google
           @blocked = args[:blocked] if args.key?(:blocked)
           @category = args[:category] if args.key?(:category)
           @probability = args[:probability] if args.key?(:probability)
+          @probability_score = args[:probability_score] if args.key?(:probability_score)
+          @severity = args[:severity] if args.key?(:severity)
+          @severity_score = args[:severity_score] if args.key?(:severity_score)
         end
       end
       
@@ -27956,16 +28118,17 @@ module Google
       # Tool details that the model may use to generate response. A `Tool` is a piece
       # of code that enables the system to interact with external systems to perform
       # an action, or set of actions, outside of knowledge and scope of the model. A
-      # Tool object should contain exactly one type of Tool.
+      # Tool object should contain exactly one type of Tool (e.g FunctionDeclaration,
+      # Retrieval or GoogleSearchRetrieval).
       class GoogleCloudAiplatformV1beta1Tool
         include Google::Apis::Core::Hashable
       
-        # Optional. One or more function declarations to be passed to the model along
-        # with the current user query. Model may decide to call a subset of these
-        # functions by populating FunctionCall in the response. User should provide a
-        # FunctionResponse for each function call in the next turn. Based on the
-        # function responses, Model will generate the final response back to the user.
-        # Maximum 64 function declarations can be provided.
+        # Optional. Function tool type. One or more function declarations to be passed
+        # to the model along with the current user query. Model may decide to call a
+        # subset of these functions by populating FunctionCall in the response. User
+        # should provide a FunctionResponse for each function call in the next turn.
+        # Based on the function responses, Model will generate the final response back
+        # to the user. Maximum 64 function declarations can be provided.
         # Corresponds to the JSON property `functionDeclarations`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionDeclaration>]
         attr_accessor :function_declarations
@@ -30970,6 +31133,125 @@ module Google
         end
       end
       
+      # Stores all metadata relating to AIDA DoConversation.
+      class LearningGenaiRootCodeyChatMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the programming language of the code if the message is a code chunk.
+        # Corresponds to the JSON property `codeLanguage`
+        # @return [String]
+        attr_accessor :code_language
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code_language = args[:code_language] if args.key?(:code_language)
+        end
+      end
+      
+      # Describes a sample at a checkpoint for post-processing.
+      class LearningGenaiRootCodeyCheckpoint
+        include Google::Apis::Core::Hashable
+      
+        # Metadata describing what was truncated at each checkpoint.
+        # Corresponds to the JSON property `codeyTruncatorMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::LearningGenaiRootCodeyTruncatorMetadata]
+        attr_accessor :codey_truncator_metadata
+      
+        # Current state of the sample after truncator.
+        # Corresponds to the JSON property `currentSample`
+        # @return [String]
+        attr_accessor :current_sample
+      
+        # Postprocessor run that yielded this checkpoint.
+        # Corresponds to the JSON property `postInferenceStep`
+        # @return [String]
+        attr_accessor :post_inference_step
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @codey_truncator_metadata = args[:codey_truncator_metadata] if args.key?(:codey_truncator_metadata)
+          @current_sample = args[:current_sample] if args.key?(:current_sample)
+          @post_inference_step = args[:post_inference_step] if args.key?(:post_inference_step)
+        end
+      end
+      
+      # Stores all metadata relating to Completion.
+      class LearningGenaiRootCodeyCompletionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `checkpoints`
+        # @return [Array<Google::Apis::AiplatformV1beta1::LearningGenaiRootCodeyCheckpoint>]
+        attr_accessor :checkpoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @checkpoints = args[:checkpoints] if args.key?(:checkpoints)
+        end
+      end
+      
+      # Top-level wrapper used to store all things codey-related.
+      class LearningGenaiRootCodeyOutput
+        include Google::Apis::Core::Hashable
+      
+        # Stores all metadata relating to AIDA DoConversation.
+        # Corresponds to the JSON property `codeyChatMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::LearningGenaiRootCodeyChatMetadata]
+        attr_accessor :codey_chat_metadata
+      
+        # Stores all metadata relating to Completion.
+        # Corresponds to the JSON property `codeyCompletionMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::LearningGenaiRootCodeyCompletionMetadata]
+        attr_accessor :codey_completion_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @codey_chat_metadata = args[:codey_chat_metadata] if args.key?(:codey_chat_metadata)
+          @codey_completion_metadata = args[:codey_completion_metadata] if args.key?(:codey_completion_metadata)
+        end
+      end
+      
+      # Metadata describing what was truncated at each checkpoint.
+      class LearningGenaiRootCodeyTruncatorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Index of the current sample that trims off truncated text.
+        # Corresponds to the JSON property `cutoffIndex`
+        # @return [Fixnum]
+        attr_accessor :cutoff_index
+      
+        # Text that was truncated at a specific checkpoint.
+        # Corresponds to the JSON property `truncatedText`
+        # @return [String]
+        attr_accessor :truncated_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cutoff_index = args[:cutoff_index] if args.key?(:cutoff_index)
+          @truncated_text = args[:truncated_text] if args.key?(:truncated_text)
+        end
+      end
+      
       # 
       class LearningGenaiRootDataProviderOutput
         include Google::Apis::Core::Hashable
@@ -32188,6 +32470,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::LearningGenaiRootClassifierOutputSummary]
         attr_accessor :classifier_summary
       
+        # Top-level wrapper used to store all things codey-related.
+        # Corresponds to the JSON property `codeyOutput`
+        # @return [Google::Apis::AiplatformV1beta1::LearningGenaiRootCodeyOutput]
+        attr_accessor :codey_output
+      
         # 
         # Corresponds to the JSON property `currentStreamTextLength`
         # @return [Fixnum]
@@ -32318,6 +32605,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @classifier_summary = args[:classifier_summary] if args.key?(:classifier_summary)
+          @codey_output = args[:codey_output] if args.key?(:codey_output)
           @current_stream_text_length = args[:current_stream_text_length] if args.key?(:current_stream_text_length)
           @deleted = args[:deleted] if args.key?(:deleted)
           @filter_meta = args[:filter_meta] if args.key?(:filter_meta)
