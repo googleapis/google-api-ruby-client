@@ -485,6 +485,7 @@ module Google
           property :network, as: 'network'
           property :project, as: 'project'
           property :psc_connection_id, as: 'pscConnectionId'
+          property :selected_subnetwork, as: 'selectedSubnetwork'
           property :service_attachment_uri, as: 'serviceAttachmentUri'
           property :state, as: 'state'
         end
@@ -886,6 +887,7 @@ module Google
           property :error_type, as: 'errorType'
           property :gce_operation, as: 'gceOperation'
           property :psc_connection_id, as: 'pscConnectionId'
+          property :selected_subnetwork, as: 'selectedSubnetwork'
           property :state, as: 'state'
         end
       end
