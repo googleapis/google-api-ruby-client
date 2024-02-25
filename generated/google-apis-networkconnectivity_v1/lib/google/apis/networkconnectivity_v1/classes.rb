@@ -364,6 +364,12 @@ module Google
         # @return [String]
         attr_accessor :psc_connection_id
       
+        # Output only. The URI of the selected subnetwork selected to allocate IP
+        # address for this connection.
+        # Corresponds to the JSON property `selectedSubnetwork`
+        # @return [String]
+        attr_accessor :selected_subnetwork
+      
         # The URI of a service attachment which is the target of the PSC connection.
         # Corresponds to the JSON property `serviceAttachmentUri`
         # @return [String]
@@ -389,6 +395,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @project = args[:project] if args.key?(:project)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @selected_subnetwork = args[:selected_subnetwork] if args.key?(:selected_subnetwork)
           @service_attachment_uri = args[:service_attachment_uri] if args.key?(:service_attachment_uri)
           @state = args[:state] if args.key?(:state)
         end
@@ -1995,6 +2002,12 @@ module Google
         # @return [String]
         attr_accessor :psc_connection_id
       
+        # Output only. The URI of the subnetwork selected to allocate IP address for
+        # this connection.
+        # Corresponds to the JSON property `selectedSubnetwork`
+        # @return [String]
+        attr_accessor :selected_subnetwork
+      
         # State of the PSC Connection
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2014,6 +2027,7 @@ module Google
           @error_type = args[:error_type] if args.key?(:error_type)
           @gce_operation = args[:gce_operation] if args.key?(:gce_operation)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @selected_subnetwork = args[:selected_subnetwork] if args.key?(:selected_subnetwork)
           @state = args[:state] if args.key?(:state)
         end
       end
