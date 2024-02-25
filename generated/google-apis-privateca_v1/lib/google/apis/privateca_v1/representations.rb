@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertificateConfigKeyId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CertificateDescription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -571,8 +577,17 @@ module Google
       
           property :subject_config, as: 'subjectConfig', class: Google::Apis::PrivatecaV1::SubjectConfig, decorator: Google::Apis::PrivatecaV1::SubjectConfig::Representation
       
+          property :subject_key_id, as: 'subjectKeyId', class: Google::Apis::PrivatecaV1::CertificateConfigKeyId, decorator: Google::Apis::PrivatecaV1::CertificateConfigKeyId::Representation
+      
           property :x509_config, as: 'x509Config', class: Google::Apis::PrivatecaV1::X509Parameters, decorator: Google::Apis::PrivatecaV1::X509Parameters::Representation
       
+        end
+      end
+      
+      class CertificateConfigKeyId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_id, as: 'keyId'
         end
       end
       

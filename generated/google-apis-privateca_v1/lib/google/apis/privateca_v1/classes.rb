@@ -663,6 +663,11 @@ module Google
         # @return [Google::Apis::PrivatecaV1::SubjectConfig]
         attr_accessor :subject_config
       
+        # A KeyId identifies a specific public key, usually by hashing the public key.
+        # Corresponds to the JSON property `subjectKeyId`
+        # @return [Google::Apis::PrivatecaV1::CertificateConfigKeyId]
+        attr_accessor :subject_key_id
+      
         # An X509Parameters is used to describe certain fields of an X.509 certificate,
         # such as the key usage fields, fields specific to CA certificates, certificate
         # policy extensions and custom extensions.
@@ -678,7 +683,28 @@ module Google
         def update!(**args)
           @public_key = args[:public_key] if args.key?(:public_key)
           @subject_config = args[:subject_config] if args.key?(:subject_config)
+          @subject_key_id = args[:subject_key_id] if args.key?(:subject_key_id)
           @x509_config = args[:x509_config] if args.key?(:x509_config)
+        end
+      end
+      
+      # A KeyId identifies a specific public key, usually by hashing the public key.
+      class CertificateConfigKeyId
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The value of this KeyId encoded in lowercase hexadecimal. This is
+        # most likely the 160 bit SHA-1 hash of the public key.
+        # Corresponds to the JSON property `keyId`
+        # @return [String]
+        attr_accessor :key_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_id = args[:key_id] if args.key?(:key_id)
         end
       end
       
