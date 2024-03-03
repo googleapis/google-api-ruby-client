@@ -443,7 +443,7 @@ module Google
         # @return [Google::Apis::BackupdrV1::ManagementUri]
         attr_accessor :management_uri
       
-        # Output only. The resource name.
+        # Output only. Identifier. The resource name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
