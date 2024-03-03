@@ -311,37 +311,6 @@ module Google
         end
       end
       
-      # 
-      class BatchTaskSpec
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `deleteObjectTaskSpec`
-        # @return [Google::Apis::StoragetransferV1::DeleteObjectTaskSpec]
-        attr_accessor :delete_object_task_spec
-      
-        # 
-        # Corresponds to the JSON property `listTaskSpec`
-        # @return [Google::Apis::StoragetransferV1::ListTaskSpec]
-        attr_accessor :list_task_spec
-      
-        # 
-        # Corresponds to the JSON property `metadataTaskSpec`
-        # @return [Google::Apis::StoragetransferV1::MetadataTaskSpec]
-        attr_accessor :metadata_task_spec
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @delete_object_task_spec = args[:delete_object_task_spec] if args.key?(:delete_object_task_spec)
-          @list_task_spec = args[:list_task_spec] if args.key?(:list_task_spec)
-          @metadata_task_spec = args[:metadata_task_spec] if args.key?(:metadata_task_spec)
-        end
-      end
-      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -393,44 +362,6 @@ module Google
           @day = args[:day] if args.key?(:day)
           @month = args[:month] if args.key?(:month)
           @year = args[:year] if args.key?(:year)
-        end
-      end
-      
-      # 
-      class DeleteObjectTaskSpec
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `generation`
-        # @return [Fixnum]
-        attr_accessor :generation
-      
-        # 
-        # Corresponds to the JSON property `hardDeleteVersionedObject`
-        # @return [Boolean]
-        attr_accessor :hard_delete_versioned_object
-        alias_method :hard_delete_versioned_object?, :hard_delete_versioned_object
-      
-        # 
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # 
-        # Corresponds to the JSON property `size`
-        # @return [Fixnum]
-        attr_accessor :size
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generation = args[:generation] if args.key?(:generation)
-          @hard_delete_versioned_object = args[:hard_delete_versioned_object] if args.key?(:hard_delete_versioned_object)
-          @name = args[:name] if args.key?(:name)
-          @size = args[:size] if args.key?(:size)
         end
       end
       
@@ -727,31 +658,6 @@ module Google
         end
       end
       
-      # 
-      class ListTaskSpec
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `manifest`
-        # @return [Google::Apis::StoragetransferV1::Manifest]
-        attr_accessor :manifest
-      
-        # 
-        # Corresponds to the JSON property `objectPrefixes`
-        # @return [Google::Apis::StoragetransferV1::ObjectPrefixes]
-        attr_accessor :object_prefixes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @manifest = args[:manifest] if args.key?(:manifest)
-          @object_prefixes = args[:object_prefixes] if args.key?(:object_prefixes)
-        end
-      end
-      
       # Response from ListTransferJobs.
       class ListTransferJobsResponse
         include Google::Apis::Core::Hashable
@@ -817,31 +723,6 @@ module Google
           @enable_onprem_gcs_transfer_logs = args[:enable_onprem_gcs_transfer_logs] if args.key?(:enable_onprem_gcs_transfer_logs)
           @log_action_states = args[:log_action_states] if args.key?(:log_action_states)
           @log_actions = args[:log_actions] if args.key?(:log_actions)
-        end
-      end
-      
-      # 
-      class Manifest
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `manifestLocation`
-        # @return [String]
-        attr_accessor :manifest_location
-      
-        # 
-        # Corresponds to the JSON property `root`
-        # @return [String]
-        attr_accessor :root
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @manifest_location = args[:manifest_location] if args.key?(:manifest_location)
-          @root = args[:root] if args.key?(:root)
         end
       end
       
@@ -927,43 +808,6 @@ module Google
           @temporary_hold = args[:temporary_hold] if args.key?(:temporary_hold)
           @time_created = args[:time_created] if args.key?(:time_created)
           @uid = args[:uid] if args.key?(:uid)
-        end
-      end
-      
-      # 
-      class MetadataTaskSpec
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `bucketName`
-        # @return [String]
-        attr_accessor :bucket_name
-      
-        # 
-        # Corresponds to the JSON property `generation`
-        # @return [Fixnum]
-        attr_accessor :generation
-      
-        # 
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # 
-        # Corresponds to the JSON property `size`
-        # @return [Fixnum]
-        attr_accessor :size
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
-          @generation = args[:generation] if args.key?(:generation)
-          @key = args[:key] if args.key?(:key)
-          @size = args[:size] if args.key?(:size)
         end
       end
       
@@ -1113,50 +957,6 @@ module Google
           @last_modified_since = args[:last_modified_since] if args.key?(:last_modified_since)
           @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] if args.key?(:max_time_elapsed_since_last_modification)
           @min_time_elapsed_since_last_modification = args[:min_time_elapsed_since_last_modification] if args.key?(:min_time_elapsed_since_last_modification)
-        end
-      end
-      
-      # 
-      class ObjectPrefix
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `bucketName`
-        # @return [String]
-        attr_accessor :bucket_name
-      
-        # 
-        # Corresponds to the JSON property `objectPrefix`
-        # @return [String]
-        attr_accessor :object_prefix
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
-          @object_prefix = args[:object_prefix] if args.key?(:object_prefix)
-        end
-      end
-      
-      # 
-      class ObjectPrefixes
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `objectPrefixes`
-        # @return [Array<Google::Apis::StoragetransferV1::ObjectPrefix>]
-        attr_accessor :object_prefixes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @object_prefixes = args[:object_prefixes] if args.key?(:object_prefixes)
         end
       end
       
