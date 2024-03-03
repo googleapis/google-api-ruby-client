@@ -24,7 +24,7 @@ module Google
     # Discover and protect your sensitive data. A fully managed service designed to
     # help you discover, classify, and protect your valuable data assets with ease.
     #
-    # @see https://cloud.google.com/dlp/docs/
+    # @see https://cloud.google.com/sensitive-data-protection/docs/
     module DlpV2
       # Version of the Sensitive Data Protection (DLP) this client connects to.
       # This is NOT the gem version.
