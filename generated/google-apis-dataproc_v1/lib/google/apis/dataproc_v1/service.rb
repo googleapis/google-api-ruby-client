@@ -478,11 +478,13 @@ module Google
         #   logical expression constraining the values of various fields in each batch
         #   resource. Filters are case sensitive, and may contain multiple clauses
         #   combined with logical operators (AND/OR). Supported fields are batch_id,
-        #   batch_uuid, state, and create_time.e.g. state = RUNNING and create_time < "
-        #   2023-01-01T00:00:00Z" filters for batches in state RUNNING that were created
-        #   before 2023-01-01See https://google.aip.dev/assets/misc/ebnf-filtering.txt for
-        #   a detailed description of the filter syntax and a list of supported
-        #   comparisons.
+        #   batch_uuid, state, create_time, and labels.e.g. state = RUNNING and
+        #   create_time < "2023-01-01T00:00:00Z" filters for batches in state RUNNING that
+        #   were created before 2023-01-01. state = RUNNING and labels.environment=
+        #   production filters for batches in state in a RUNNING state that have a
+        #   production environment label.See https://google.aip.dev/assets/misc/ebnf-
+        #   filtering.txt for a detailed description of the filter syntax and a list of
+        #   supported comparisons.
         # @param [String] order_by
         #   Optional. Field(s) on which to sort the list of batches.Currently the only
         #   supported sort orders are unspecified (empty) and create_time desc to sort by
@@ -962,9 +964,11 @@ module Google
         #   logical expression constraining the values of various fields in each session
         #   resource. Filters are case sensitive, and may contain multiple clauses
         #   combined with logical operators (AND, OR). Supported fields are session_id,
-        #   session_uuid, state, and create_time.Example: state = ACTIVE and create_time <
-        #   "2023-01-01T00:00:00Z" is a filter for sessions in an ACTIVE state that were
-        #   created before 2023-01-01.See https://google.aip.dev/assets/misc/ebnf-
+        #   session_uuid, state, create_time, and labels.Example: state = ACTIVE and
+        #   create_time < "2023-01-01T00:00:00Z" is a filter for sessions in an ACTIVE
+        #   state that were created before 2023-01-01. state = ACTIVE and labels.
+        #   environment=production is a filter for sessions in an ACTIVE state that have a
+        #   production environment label.See https://google.aip.dev/assets/misc/ebnf-
         #   filtering.txt for a detailed description of the filter syntax and a list of
         #   supported comparators.
         # @param [Fixnum] page_size
