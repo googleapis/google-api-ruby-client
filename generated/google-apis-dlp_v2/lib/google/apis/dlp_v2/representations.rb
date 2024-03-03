@@ -928,6 +928,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ListColumnDataProfilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -964,7 +970,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ListProjectDataProfilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2ListStoredInfoTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ListTableDataProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1049,6 +1067,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2ProfileStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ProjectDataProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2111,6 +2135,8 @@ module Google
       
           property :inspect_config, as: 'inspectConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig::Representation
       
+          property :inspect_template_modified_time, as: 'inspectTemplateModifiedTime'
+          property :inspect_template_name, as: 'inspectTemplateName'
         end
       end
       
@@ -3131,6 +3157,15 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2ListColumnDataProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_data_profiles, as: 'columnDataProfiles', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ColumnDataProfile, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ColumnDataProfile::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3184,11 +3219,29 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2ListProjectDataProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :project_data_profiles, as: 'projectDataProfiles', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ProjectDataProfile, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ProjectDataProfile::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2ListStoredInfoTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :stored_info_types, as: 'storedInfoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2ListTableDataProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :table_data_profiles, as: 'tableDataProfiles', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile::Representation
       
         end
       end
@@ -3349,6 +3402,21 @@ module Google
           property :status, as: 'status', class: Google::Apis::DlpV2::GoogleRpcStatus, decorator: Google::Apis::DlpV2::GoogleRpcStatus::Representation
       
           property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class GooglePrivacyDlpV2ProjectDataProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_risk_level, as: 'dataRiskLevel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel::Representation
+      
+          property :name, as: 'name'
+          property :profile_last_generated, as: 'profileLastGenerated'
+          property :profile_status, as: 'profileStatus', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus::Representation
+      
+          property :project_id, as: 'projectId'
+          property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
+      
         end
       end
       
