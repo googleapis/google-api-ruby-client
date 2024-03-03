@@ -855,6 +855,44 @@ module Google
         end
       end
       
+      # The details of the latest scheduled backup.
+      class LatestBackup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ID of an in-progress scheduled backup. Empty if no backup is
+        # in progress.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        # Output only. The duration of the backup completion.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Output only. The time when the backup was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The current state of the backup.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @duration = args[:duration] if args.key?(:duration)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Response message for DataprocMetastore.ListBackups.
       class ListBackupsResponse
         include Google::Apis::Core::Hashable
@@ -1634,6 +1672,12 @@ module Google
         # @return [String]
         attr_accessor :backup
       
+        # Optional. A Cloud Storage URI specifying where the backup artifacts are stored,
+        # in the format gs:///.
+        # Corresponds to the JSON property `backupLocation`
+        # @return [String]
+        attr_accessor :backup_location
+      
         # Output only. The restore details containing the revision of the service to be
         # restored to, in format of JSON.
         # Corresponds to the JSON property `details`
@@ -1667,6 +1711,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
+          @backup_location = args[:backup_location] if args.key?(:backup_location)
           @details = args[:details] if args.key?(:details)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -1686,6 +1731,14 @@ module Google
         # Corresponds to the JSON property `backup`
         # @return [String]
         attr_accessor :backup
+      
+        # Optional. A Cloud Storage URI specifying the location of the backup artifacts,
+        # namely - backup avro files under "avro/", backup_metastore.json and service.
+        # json, in the following form:gs://. Mutually exclusive with backup, and exactly
+        # one of the two must be set.
+        # Corresponds to the JSON property `backupLocation`
+        # @return [String]
+        attr_accessor :backup_location
       
         # Optional. A request ID. Specify a unique request ID to allow the server to
         # ignore the request if it has completed. The server will ignore subsequent
@@ -1711,6 +1764,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
+          @backup_location = args[:backup_location] if args.key?(:backup_location)
           @request_id = args[:request_id] if args.key?(:request_id)
           @restore_type = args[:restore_type] if args.key?(:restore_type)
         end
@@ -1740,6 +1794,63 @@ module Google
         def update!(**args)
           @instance_size = args[:instance_size] if args.key?(:instance_size)
           @scaling_factor = args[:scaling_factor] if args.key?(:scaling_factor)
+        end
+      end
+      
+      # This specifies the configuration of scheduled backup.
+      class ScheduledBackup
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A Cloud Storage URI of a folder, in the format gs:///. A sub-folder
+        # containing backup files will be stored below it.
+        # Corresponds to the JSON property `backupLocation`
+        # @return [String]
+        attr_accessor :backup_location
+      
+        # Optional. The scheduled interval in Cron format, see https://en.wikipedia.org/
+        # wiki/Cron The default is empty: scheduled backup is not enabled. Must be
+        # specified to enable scheduled backups.
+        # Corresponds to the JSON property `cronSchedule`
+        # @return [String]
+        attr_accessor :cron_schedule
+      
+        # Optional. Defines whether the scheduled backup is enabled. The default value
+        # is false.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The details of the latest scheduled backup.
+        # Corresponds to the JSON property `latestBackup`
+        # @return [Google::Apis::MetastoreV1::LatestBackup]
+        attr_accessor :latest_backup
+      
+        # Output only. The time when the next backups execution is scheduled to start.
+        # Corresponds to the JSON property `nextScheduledTime`
+        # @return [String]
+        attr_accessor :next_scheduled_time
+      
+        # Optional. Specifies the time zone to be used when interpreting cron_schedule.
+        # Must be a time zone name from the time zone database (https://en.wikipedia.org/
+        # wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/
+        # Abidjan. If left unspecified, the default is UTC.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_location = args[:backup_location] if args.key?(:backup_location)
+          @cron_schedule = args[:cron_schedule] if args.key?(:cron_schedule)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @latest_backup = args[:latest_backup] if args.key?(:latest_backup)
+          @next_scheduled_time = args[:next_scheduled_time] if args.key?(:next_scheduled_time)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
@@ -1856,6 +1967,11 @@ module Google
         # @return [Google::Apis::MetastoreV1::ScalingConfig]
         attr_accessor :scaling_config
       
+        # This specifies the configuration of scheduled backup.
+        # Corresponds to the JSON property `scheduledBackup`
+        # @return [Google::Apis::MetastoreV1::ScheduledBackup]
+        attr_accessor :scheduled_backup
+      
         # Output only. The current state of the metastore service.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1909,6 +2025,7 @@ module Google
           @port = args[:port] if args.key?(:port)
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @scaling_config = args[:scaling_config] if args.key?(:scaling_config)
+          @scheduled_backup = args[:scheduled_backup] if args.key?(:scheduled_backup)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @telemetry_config = args[:telemetry_config] if args.key?(:telemetry_config)

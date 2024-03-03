@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LatestBackup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBackupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +305,12 @@ module Google
       end
       
       class ScalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScheduledBackup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -547,6 +559,16 @@ module Google
         end
       end
       
+      class LatestBackup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_id, as: 'backupId'
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
       class ListBackupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -762,6 +784,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
+          property :backup_location, as: 'backupLocation'
           property :details, as: 'details'
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
@@ -774,6 +797,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
+          property :backup_location, as: 'backupLocation'
           property :request_id, as: 'requestId'
           property :restore_type, as: 'restoreType'
         end
@@ -784,6 +808,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_size, as: 'instanceSize'
           property :scaling_factor, as: 'scalingFactor'
+        end
+      end
+      
+      class ScheduledBackup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_location, as: 'backupLocation'
+          property :cron_schedule, as: 'cronSchedule'
+          property :enabled, as: 'enabled'
+          property :latest_backup, as: 'latestBackup', class: Google::Apis::MetastoreV1::LatestBackup, decorator: Google::Apis::MetastoreV1::LatestBackup::Representation
+      
+          property :next_scheduled_time, as: 'nextScheduledTime'
+          property :time_zone, as: 'timeZone'
         end
       end
       
@@ -819,6 +856,8 @@ module Google
           property :port, as: 'port'
           property :release_channel, as: 'releaseChannel'
           property :scaling_config, as: 'scalingConfig', class: Google::Apis::MetastoreV1::ScalingConfig, decorator: Google::Apis::MetastoreV1::ScalingConfig::Representation
+      
+          property :scheduled_backup, as: 'scheduledBackup', class: Google::Apis::MetastoreV1::ScheduledBackup, decorator: Google::Apis::MetastoreV1::ScheduledBackup::Representation
       
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
