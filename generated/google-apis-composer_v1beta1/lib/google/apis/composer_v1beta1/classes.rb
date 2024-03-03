@@ -22,6 +22,31 @@ module Google
   module Apis
     module ComposerV1beta1
       
+      # The policy for airflow metadata database retention.
+      class AirflowMetadataRetentionPolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. How many days data should be retained for.
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        # Optional. Retention can be either enabled or disabled.
+        # Corresponds to the JSON property `retentionMode`
+        # @return [String]
+        attr_accessor :retention_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
+          @retention_mode = args[:retention_mode] if args.key?(:retention_mode)
+        end
+      end
+      
       # Allowed IP range with user-provided description.
       class AllowedIpRange
         include Google::Apis::Core::Hashable
@@ -283,6 +308,18 @@ module Google
       class DataRetentionConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The number of days describing for how long to store event-based
+        # records in airflow database. If the retention mechanism is enabled this value
+        # must be a positive integer otherwise, value should be set to 0.
+        # Corresponds to the JSON property `airflowDatabaseRetentionDays`
+        # @return [Fixnum]
+        attr_accessor :airflow_database_retention_days
+      
+        # The policy for airflow metadata database retention.
+        # Corresponds to the JSON property `airflowMetadataRetentionConfig`
+        # @return [Google::Apis::ComposerV1beta1::AirflowMetadataRetentionPolicyConfig]
+        attr_accessor :airflow_metadata_retention_config
+      
         # The configuration setting for Task Logs.
         # Corresponds to the JSON property `taskLogsRetentionConfig`
         # @return [Google::Apis::ComposerV1beta1::TaskLogsRetentionConfig]
@@ -294,6 +331,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @airflow_database_retention_days = args[:airflow_database_retention_days] if args.key?(:airflow_database_retention_days)
+          @airflow_metadata_retention_config = args[:airflow_metadata_retention_config] if args.key?(:airflow_metadata_retention_config)
           @task_logs_retention_config = args[:task_logs_retention_config] if args.key?(:task_logs_retention_config)
         end
       end
