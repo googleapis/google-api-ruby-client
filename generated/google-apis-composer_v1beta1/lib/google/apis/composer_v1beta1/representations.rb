@@ -22,6 +22,12 @@ module Google
   module Apis
     module ComposerV1beta1
       
+      class AirflowMetadataRetentionPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllowedIpRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,6 +400,14 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AirflowMetadataRetentionPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_days, as: 'retentionDays'
+          property :retention_mode, as: 'retentionMode'
+        end
+      end
+      
       class AllowedIpRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -467,6 +481,9 @@ module Google
       class DataRetentionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :airflow_database_retention_days, as: 'airflowDatabaseRetentionDays'
+          property :airflow_metadata_retention_config, as: 'airflowMetadataRetentionConfig', class: Google::Apis::ComposerV1beta1::AirflowMetadataRetentionPolicyConfig, decorator: Google::Apis::ComposerV1beta1::AirflowMetadataRetentionPolicyConfig::Representation
+      
           property :task_logs_retention_config, as: 'taskLogsRetentionConfig', class: Google::Apis::ComposerV1beta1::TaskLogsRetentionConfig, decorator: Google::Apis::ComposerV1beta1::TaskLogsRetentionConfig::Representation
       
         end
