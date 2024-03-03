@@ -433,6 +433,11 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV1::EnumOption>]
         attr_accessor :enum_options
       
+        # Optional. enum source denotes the source of api to fill the enum options
+        # Corresponds to the JSON property `enumSource`
+        # @return [String]
+        attr_accessor :enum_source
+      
         # Indicates if current template is part of advanced settings
         # Corresponds to the JSON property `isAdvanced`
         # @return [Boolean]
@@ -497,6 +502,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enum_options = args[:enum_options] if args.key?(:enum_options)
+          @enum_source = args[:enum_source] if args.key?(:enum_source)
           @is_advanced = args[:is_advanced] if args.key?(:is_advanced)
           @key = args[:key] if args.key?(:key)
           @location_type = args[:location_type] if args.key?(:location_type)
@@ -1834,6 +1840,11 @@ module Google
         # @return [String]
         attr_accessor :subscriber_link
       
+        # Optional. Configuration for configuring the trigger
+        # Corresponds to the JSON property `triggerConfigVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
+        attr_accessor :trigger_config_variables
+      
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1853,6 +1864,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @subscriber = args[:subscriber] if args.key?(:subscriber)
           @subscriber_link = args[:subscriber_link] if args.key?(:subscriber_link)
+          @trigger_config_variables = args[:trigger_config_variables] if args.key?(:trigger_config_variables)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -2031,11 +2043,6 @@ module Google
         # @return [Google::Apis::ConnectorsV1::DestinationConfig]
         attr_accessor :registration_destination_config
       
-        # Optional. Additional eventing related field values
-        # Corresponds to the JSON property `triggerConfigVariables`
-        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
-        attr_accessor :trigger_config_variables
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2051,7 +2058,6 @@ module Google
           @private_connectivity_enabled = args[:private_connectivity_enabled] if args.key?(:private_connectivity_enabled)
           @proxy_destination_config = args[:proxy_destination_config] if args.key?(:proxy_destination_config)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
-          @trigger_config_variables = args[:trigger_config_variables] if args.key?(:trigger_config_variables)
         end
       end
       

@@ -858,6 +858,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :enum_options, as: 'enumOptions', class: Google::Apis::ConnectorsV1::EnumOption, decorator: Google::Apis::ConnectorsV1::EnumOption::Representation
       
+          property :enum_source, as: 'enumSource'
           property :is_advanced, as: 'isAdvanced'
           property :key, as: 'key'
           property :location_type, as: 'locationType'
@@ -1212,6 +1213,8 @@ module Google
       
           property :subscriber, as: 'subscriber'
           property :subscriber_link, as: 'subscriberLink'
+          collection :trigger_config_variables, as: 'triggerConfigVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -1265,8 +1268,6 @@ module Google
           property :proxy_destination_config, as: 'proxyDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
       
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
-      
-          collection :trigger_config_variables, as: 'triggerConfigVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
         end
       end
