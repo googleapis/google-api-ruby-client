@@ -798,6 +798,19 @@ module Google
         end
       end
       
+      # Request message for 'CancelImageImportJob' request.
+      class CancelImageImportJobRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -1373,6 +1386,19 @@ module Google
         end
       end
       
+      # CreatingImageStep contains specific step details.
+      class CreatingImageStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # CutoverForecast holds information about future CutoverJobs of a MigratingVm.
       class CutoverForecast
         include Google::Apis::Core::Hashable
@@ -1602,6 +1628,19 @@ module Google
         end
       end
       
+      # Mentions that the image import is not using OS adaptation process.
+      class DataDiskImageImport
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # DatacenterConnector message describes a connector between the Source and
       # Google Cloud, which is installed on a vmware datacenter (an OVA vm installed
       # by the user) to connect the Datacenter to Google Cloud and support vm
@@ -1763,6 +1802,83 @@ module Google
         # Update properties of this object
         def update!(**args)
           @source_image = args[:source_image] if args.key?(:source_image)
+        end
+      end
+      
+      # The target details of the image resource that will be created by the import
+      # job.
+      class DiskImageTargetDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional licenses to assign to the image.
+        # Corresponds to the JSON property `additionalLicenses`
+        # @return [Array<String>]
+        attr_accessor :additional_licenses
+      
+        # Mentions that the image import is not using OS adaptation process.
+        # Corresponds to the JSON property `dataDiskImageImport`
+        # @return [Google::Apis::VmmigrationV1alpha1::DataDiskImageImport]
+        attr_accessor :data_disk_image_import
+      
+        # Optional. An optional description of the image.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Encryption message describes the details of the applied encryption.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::VmmigrationV1alpha1::Encryption]
+        attr_accessor :encryption
+      
+        # Optional. The name of the image family to which the new image belongs.
+        # Corresponds to the JSON property `familyName`
+        # @return [String]
+        attr_accessor :family_name
+      
+        # Required. The name of the image to be created.
+        # Corresponds to the JSON property `imageName`
+        # @return [String]
+        attr_accessor :image_name
+      
+        # Optional. A map of labels to associate with the image.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Parameters affecting the OS adaptation process.
+        # Corresponds to the JSON property `osAdaptationParameters`
+        # @return [Google::Apis::VmmigrationV1alpha1::ImageImportOsAdaptationParameters]
+        attr_accessor :os_adaptation_parameters
+      
+        # Optional. Set to true to set the image storageLocations to the single region
+        # of the import job. When false, the closest multi-region is selected.
+        # Corresponds to the JSON property `singleRegionStorage`
+        # @return [Boolean]
+        attr_accessor :single_region_storage
+        alias_method :single_region_storage?, :single_region_storage
+      
+        # Required. Reference to the TargetProject resource that represents the target
+        # project in which the imported image will be created.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
+          @data_disk_image_import = args[:data_disk_image_import] if args.key?(:data_disk_image_import)
+          @description = args[:description] if args.key?(:description)
+          @encryption = args[:encryption] if args.key?(:encryption)
+          @family_name = args[:family_name] if args.key?(:family_name)
+          @image_name = args[:image_name] if args.key?(:image_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @os_adaptation_parameters = args[:os_adaptation_parameters] if args.key?(:os_adaptation_parameters)
+          @single_region_storage = args[:single_region_storage] if args.key?(:single_region_storage)
+          @target_project = args[:target_project] if args.key?(:target_project)
         end
       end
       
@@ -2054,6 +2170,228 @@ module Google
         end
       end
       
+      # ImageImport describes the configuration of the image import to run.
+      class ImageImport
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The path to the Cloud Storage file from which the image should be
+        # imported.
+        # Corresponds to the JSON property `cloudStorageUri`
+        # @return [String]
+        attr_accessor :cloud_storage_uri
+      
+        # Output only. The time the image import was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The target details of the image resource that will be created by the import
+        # job.
+        # Corresponds to the JSON property `diskImageTargetDefaults`
+        # @return [Google::Apis::VmmigrationV1alpha1::DiskImageTargetDetails]
+        attr_accessor :disk_image_target_defaults
+      
+        # Encryption message describes the details of the applied encryption.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::VmmigrationV1alpha1::Encryption]
+        attr_accessor :encryption
+      
+        # Output only. The resource path of the ImageImport.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The result of the most recent runs for this ImageImport. All jobs
+        # for this ImageImport can be listed via ListImageImportJobs.
+        # Corresponds to the JSON property `recentImageImportJobs`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::ImageImportJob>]
+        attr_accessor :recent_image_import_jobs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_uri = args[:cloud_storage_uri] if args.key?(:cloud_storage_uri)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @disk_image_target_defaults = args[:disk_image_target_defaults] if args.key?(:disk_image_target_defaults)
+          @encryption = args[:encryption] if args.key?(:encryption)
+          @name = args[:name] if args.key?(:name)
+          @recent_image_import_jobs = args[:recent_image_import_jobs] if args.key?(:recent_image_import_jobs)
+        end
+      end
+      
+      # ImageImportJob describes the progress and result of an image import.
+      class ImageImportJob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The path to the Cloud Storage file from which the image should be
+        # imported.
+        # Corresponds to the JSON property `cloudStorageUri`
+        # @return [String]
+        attr_accessor :cloud_storage_uri
+      
+        # Output only. The time the image import was created (as an API call, not when
+        # it was actually created in the target).
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The resource paths of the resources created by the image import
+        # job.
+        # Corresponds to the JSON property `createdResources`
+        # @return [Array<String>]
+        attr_accessor :created_resources
+      
+        # The target details of the image resource that will be created by the import
+        # job.
+        # Corresponds to the JSON property `diskImageTargetDetails`
+        # @return [Google::Apis::VmmigrationV1alpha1::DiskImageTargetDetails]
+        attr_accessor :disk_image_target_details
+      
+        # Output only. The time the image import was ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Provides details on the error that led to the image import state
+        # in case of an error.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::Status>]
+        attr_accessor :errors
+      
+        # Output only. The resource path of the ImageImportJob.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the image import.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The image import steps list representing its progress.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::ImageImportStep>]
+        attr_accessor :steps
+      
+        # Output only. Warnings that occurred during the image import.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::MigrationWarning>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_uri = args[:cloud_storage_uri] if args.key?(:cloud_storage_uri)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @created_resources = args[:created_resources] if args.key?(:created_resources)
+          @disk_image_target_details = args[:disk_image_target_details] if args.key?(:disk_image_target_details)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @errors = args[:errors] if args.key?(:errors)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @steps = args[:steps] if args.key?(:steps)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Parameters affecting the OS adaptation process.
+      class ImageImportOsAdaptationParameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Set to true in order to generalize the imported image. The
+        # generalization process enables co-existence of multiple VMs created from the
+        # same image. For Windows, generalizing the image removes computer-specific
+        # information such as installed drivers and the computer security identifier (
+        # SID).
+        # Corresponds to the JSON property `generalize`
+        # @return [Boolean]
+        attr_accessor :generalize
+        alias_method :generalize?, :generalize
+      
+        # Optional. Choose which type of license to apply to the imported image.
+        # Corresponds to the JSON property `licenseType`
+        # @return [String]
+        attr_accessor :license_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generalize = args[:generalize] if args.key?(:generalize)
+          @license_type = args[:license_type] if args.key?(:license_type)
+        end
+      end
+      
+      # ImageImportStep holds information about the image import step progress.
+      class ImageImportStep
+        include Google::Apis::Core::Hashable
+      
+        # AdaptingOSStep contains specific step details.
+        # Corresponds to the JSON property `adaptingOs`
+        # @return [Google::Apis::VmmigrationV1alpha1::AdaptingOsStep]
+        attr_accessor :adapting_os
+      
+        # CreatingImageStep contains specific step details.
+        # Corresponds to the JSON property `creatingImage`
+        # @return [Google::Apis::VmmigrationV1alpha1::CreatingImageStep]
+        attr_accessor :creating_image
+      
+        # Output only. The time the step has ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # InitializingImageImportStep contains specific step details.
+        # Corresponds to the JSON property `initializing`
+        # @return [Google::Apis::VmmigrationV1alpha1::InitializingImageImportStep]
+        attr_accessor :initializing
+      
+        # LoadingImageSourceFilesStep contains specific step details.
+        # Corresponds to the JSON property `loadingSourceFiles`
+        # @return [Google::Apis::VmmigrationV1alpha1::LoadingImageSourceFilesStep]
+        attr_accessor :loading_source_files
+      
+        # Output only. The time the step has started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adapting_os = args[:adapting_os] if args.key?(:adapting_os)
+          @creating_image = args[:creating_image] if args.key?(:creating_image)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @initializing = args[:initializing] if args.key?(:initializing)
+          @loading_source_files = args[:loading_source_files] if args.key?(:loading_source_files)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # InitializingImageImportStep contains specific step details.
+      class InitializingImageImportStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # InitializingReplicationStep contains specific step details.
       class InitializingReplicationStep
         include Google::Apis::Core::Hashable
@@ -2228,6 +2566,70 @@ module Google
         # Update properties of this object
         def update!(**args)
           @groups = args[:groups] if args.key?(:groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for 'ListImageImportJobs' call.
+      class ListImageImportJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of target response.
+        # Corresponds to the JSON property `imageImportJobs`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::ImageImportJob>]
+        attr_accessor :image_import_jobs
+      
+        # Output only. A token, which can be sent as `page_token` to retrieve the next
+        # page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_import_jobs = args[:image_import_jobs] if args.key?(:image_import_jobs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for 'ListImageImports' call.
+      class ListImageImportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of target response.
+        # Corresponds to the JSON property `imageImports`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::ImageImport>]
+        attr_accessor :image_imports
+      
+        # Output only. A token, which can be sent as `page_token` to retrieve the next
+        # page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_imports = args[:image_imports] if args.key?(:image_imports)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -2440,6 +2842,19 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
           @utilization_reports = args[:utilization_reports] if args.key?(:utilization_reports)
+        end
+      end
+      
+      # LoadingImageSourceFilesStep contains specific step details.
+      class LoadingImageSourceFilesStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

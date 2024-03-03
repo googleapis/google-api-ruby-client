@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelImageImportJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreatingImageStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CutoverForecast
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataDiskImageImport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatacenterConnector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +251,12 @@ module Google
       end
       
       class DiskImageDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskImageTargetDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +316,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageImport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageImportJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageImportOsAdaptationParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageImportStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InitializingImageImportStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InitializingReplicationStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -334,6 +388,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListImageImportJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListImageImportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +437,12 @@ module Google
       end
       
       class ListUtilizationReportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LoadingImageSourceFilesStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -842,6 +914,12 @@ module Google
         end
       end
       
+      class CancelImageImportJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -990,6 +1068,12 @@ module Google
         end
       end
       
+      class CreatingImageStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CutoverForecast
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1055,6 +1139,12 @@ module Google
         end
       end
       
+      class DataDiskImageImport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DatacenterConnector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1091,6 +1181,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :source_image, as: 'sourceImage'
+        end
+      end
+      
+      class DiskImageTargetDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_licenses, as: 'additionalLicenses'
+          property :data_disk_image_import, as: 'dataDiskImageImport', class: Google::Apis::VmmigrationV1alpha1::DataDiskImageImport, decorator: Google::Apis::VmmigrationV1alpha1::DataDiskImageImport::Representation
+      
+          property :description, as: 'description'
+          property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
+      
+          property :family_name, as: 'familyName'
+          property :image_name, as: 'imageName'
+          hash :labels, as: 'labels'
+          property :os_adaptation_parameters, as: 'osAdaptationParameters', class: Google::Apis::VmmigrationV1alpha1::ImageImportOsAdaptationParameters, decorator: Google::Apis::VmmigrationV1alpha1::ImageImportOsAdaptationParameters::Representation
+      
+          property :single_region_storage, as: 'singleRegionStorage'
+          property :target_project, as: 'targetProject'
         end
       end
       
@@ -1182,6 +1291,71 @@ module Google
         end
       end
       
+      class ImageImport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_storage_uri, as: 'cloudStorageUri'
+          property :create_time, as: 'createTime'
+          property :disk_image_target_defaults, as: 'diskImageTargetDefaults', class: Google::Apis::VmmigrationV1alpha1::DiskImageTargetDetails, decorator: Google::Apis::VmmigrationV1alpha1::DiskImageTargetDetails::Representation
+      
+          property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
+      
+          property :name, as: 'name'
+          collection :recent_image_import_jobs, as: 'recentImageImportJobs', class: Google::Apis::VmmigrationV1alpha1::ImageImportJob, decorator: Google::Apis::VmmigrationV1alpha1::ImageImportJob::Representation
+      
+        end
+      end
+      
+      class ImageImportJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_storage_uri, as: 'cloudStorageUri'
+          property :create_time, as: 'createTime'
+          collection :created_resources, as: 'createdResources'
+          property :disk_image_target_details, as: 'diskImageTargetDetails', class: Google::Apis::VmmigrationV1alpha1::DiskImageTargetDetails, decorator: Google::Apis::VmmigrationV1alpha1::DiskImageTargetDetails::Representation
+      
+          property :end_time, as: 'endTime'
+          collection :errors, as: 'errors', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          collection :steps, as: 'steps', class: Google::Apis::VmmigrationV1alpha1::ImageImportStep, decorator: Google::Apis::VmmigrationV1alpha1::ImageImportStep::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::VmmigrationV1alpha1::MigrationWarning, decorator: Google::Apis::VmmigrationV1alpha1::MigrationWarning::Representation
+      
+        end
+      end
+      
+      class ImageImportOsAdaptationParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generalize, as: 'generalize'
+          property :license_type, as: 'licenseType'
+        end
+      end
+      
+      class ImageImportStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adapting_os, as: 'adaptingOs', class: Google::Apis::VmmigrationV1alpha1::AdaptingOsStep, decorator: Google::Apis::VmmigrationV1alpha1::AdaptingOsStep::Representation
+      
+          property :creating_image, as: 'creatingImage', class: Google::Apis::VmmigrationV1alpha1::CreatingImageStep, decorator: Google::Apis::VmmigrationV1alpha1::CreatingImageStep::Representation
+      
+          property :end_time, as: 'endTime'
+          property :initializing, as: 'initializing', class: Google::Apis::VmmigrationV1alpha1::InitializingImageImportStep, decorator: Google::Apis::VmmigrationV1alpha1::InitializingImageImportStep::Representation
+      
+          property :loading_source_files, as: 'loadingSourceFiles', class: Google::Apis::VmmigrationV1alpha1::LoadingImageSourceFilesStep, decorator: Google::Apis::VmmigrationV1alpha1::LoadingImageSourceFilesStep::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class InitializingImageImportStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class InitializingReplicationStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1236,6 +1410,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :groups, as: 'groups', class: Google::Apis::VmmigrationV1alpha1::Group, decorator: Google::Apis::VmmigrationV1alpha1::Group::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListImageImportJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :image_import_jobs, as: 'imageImportJobs', class: Google::Apis::VmmigrationV1alpha1::ImageImportJob, decorator: Google::Apis::VmmigrationV1alpha1::ImageImportJob::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListImageImportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :image_imports, as: 'imageImports', class: Google::Apis::VmmigrationV1alpha1::ImageImport, decorator: Google::Apis::VmmigrationV1alpha1::ImageImport::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -1307,6 +1501,12 @@ module Google
           collection :unreachable, as: 'unreachable'
           collection :utilization_reports, as: 'utilizationReports', class: Google::Apis::VmmigrationV1alpha1::UtilizationReport, decorator: Google::Apis::VmmigrationV1alpha1::UtilizationReport::Representation
       
+        end
+      end
+      
+      class LoadingImageSourceFilesStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

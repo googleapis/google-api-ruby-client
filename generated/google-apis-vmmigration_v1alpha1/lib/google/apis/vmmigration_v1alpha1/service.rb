@@ -408,6 +408,287 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new ImageImport in a given project.
+        # @param [String] parent
+        #   Required. The ImageImport's parent.
+        # @param [Google::Apis::VmmigrationV1alpha1::ImageImport] image_import_object
+        # @param [String] image_import_id
+        #   Required. The image import identifier. This value maximum length is 63
+        #   characters, and valid characters are /a-z-/. It must start with an english
+        #   letter and must not end with a hyphen.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1alpha1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1alpha1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_image_import(parent, image_import_object = nil, image_import_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/{+parent}/imageImports', options)
+          command.request_representation = Google::Apis::VmmigrationV1alpha1::ImageImport::Representation
+          command.request_object = image_import_object
+          command.response_representation = Google::Apis::VmmigrationV1alpha1::Operation::Representation
+          command.response_class = Google::Apis::VmmigrationV1alpha1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['imageImportId'] = image_import_id unless image_import_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single ImageImport.
+        # @param [String] name
+        #   Required. The ImageImport name.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes after the first request. For example, consider a situation
+        #   where you make an initial request and t he request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1alpha1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1alpha1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_image_import(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::VmmigrationV1alpha1::Operation::Representation
+          command.response_class = Google::Apis::VmmigrationV1alpha1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single ImageImport.
+        # @param [String] name
+        #   Required. The ImageImport name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1alpha1::ImageImport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1alpha1::ImageImport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_image_import(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::VmmigrationV1alpha1::ImageImport::Representation
+          command.response_class = Google::Apis::VmmigrationV1alpha1::ImageImport
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ImageImports in a given project.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of targets.
+        # @param [String] filter
+        #   Optional. The filter request (according to https://google.aip.dev/160).
+        # @param [String] order_by
+        #   Optional. The order by fields for the result (according to https://google.aip.
+        #   dev/132#ordering). Currently ordering is only possible by "name" field.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of targets to return. The service may return
+        #   fewer than this value. If unspecified, at most 500 targets will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListImageImports` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListImageImports` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1alpha1::ListImageImportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1alpha1::ListImageImportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_image_imports(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/imageImports', options)
+          command.response_representation = Google::Apis::VmmigrationV1alpha1::ListImageImportsResponse::Representation
+          command.response_class = Google::Apis::VmmigrationV1alpha1::ListImageImportsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Initiates the cancellation of a running clone job.
+        # @param [String] name
+        #   Required. The image import job id.
+        # @param [Google::Apis::VmmigrationV1alpha1::CancelImageImportJobRequest] cancel_image_import_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1alpha1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1alpha1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_image_import_job(name, cancel_image_import_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::VmmigrationV1alpha1::CancelImageImportJobRequest::Representation
+          command.request_object = cancel_image_import_job_request_object
+          command.response_representation = Google::Apis::VmmigrationV1alpha1::Operation::Representation
+          command.response_class = Google::Apis::VmmigrationV1alpha1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single ImageImportJob.
+        # @param [String] name
+        #   Required. The ImageImportJob name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1alpha1::ImageImportJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1alpha1::ImageImportJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_image_import_image_import_job(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::VmmigrationV1alpha1::ImageImportJob::Representation
+          command.response_class = Google::Apis::VmmigrationV1alpha1::ImageImportJob
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ImageImportJobs in a given project.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of targets.
+        # @param [String] filter
+        #   Optional. The filter request (according to https://google.aip.dev/160).
+        # @param [String] order_by
+        #   Optional. The order by fields for the result (according to https://google.aip.
+        #   dev/132#ordering). Currently ordering is only possible by "name" field.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of targets to return. The service may return
+        #   fewer than this value. If unspecified, at most 500 targets will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListImageImportJobs` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListImageImportJobs` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1alpha1::ListImageImportJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1alpha1::ListImageImportJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_image_import_image_import_jobs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/imageImportJobs', options)
+          command.response_representation = Google::Apis::VmmigrationV1alpha1::ListImageImportJobsResponse::Representation
+          command.response_class = Google::Apis::VmmigrationV1alpha1::ListImageImportJobsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
