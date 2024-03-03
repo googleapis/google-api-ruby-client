@@ -1859,6 +1859,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :managed_zones_per_network
       
+        # Maximum number of nameservers per delegation, meant to prevent abuse
+        # Corresponds to the JSON property `nameserversPerDelegation`
+        # @return [Fixnum]
+        attr_accessor :nameservers_per_delegation
+      
         # Maximum allowed number of networks to which a privately scoped zone can be
         # attached.
         # Corresponds to the JSON property `networksPerManagedZone`
@@ -1952,6 +1957,7 @@ module Google
           @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
           @managed_zones_per_gke_cluster = args[:managed_zones_per_gke_cluster] if args.key?(:managed_zones_per_gke_cluster)
           @managed_zones_per_network = args[:managed_zones_per_network] if args.key?(:managed_zones_per_network)
+          @nameservers_per_delegation = args[:nameservers_per_delegation] if args.key?(:nameservers_per_delegation)
           @networks_per_managed_zone = args[:networks_per_managed_zone] if args.key?(:networks_per_managed_zone)
           @networks_per_policy = args[:networks_per_policy] if args.key?(:networks_per_policy)
           @networks_per_response_policy = args[:networks_per_response_policy] if args.key?(:networks_per_response_policy)
