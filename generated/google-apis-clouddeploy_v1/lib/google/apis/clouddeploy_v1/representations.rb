@@ -1025,6 +1025,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advance_automation_runs, as: 'advanceAutomationRuns'
+          property :current_repair_automation_run, as: 'currentRepairAutomationRun'
           property :promote_automation_run, as: 'promoteAutomationRun'
           collection :repair_automation_runs, as: 'repairAutomationRuns'
         end

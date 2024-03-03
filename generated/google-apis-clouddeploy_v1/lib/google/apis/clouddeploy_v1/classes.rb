@@ -510,6 +510,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :advance_automation_runs
       
+        # Output only. The current AutomationRun repairing the rollout.
+        # Corresponds to the JSON property `currentRepairAutomationRun`
+        # @return [String]
+        attr_accessor :current_repair_automation_run
+      
         # Output only. The ID of the AutomationRun initiated by a promote release rule.
         # Corresponds to the JSON property `promoteAutomationRun`
         # @return [String]
@@ -527,6 +532,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advance_automation_runs = args[:advance_automation_runs] if args.key?(:advance_automation_runs)
+          @current_repair_automation_run = args[:current_repair_automation_run] if args.key?(:current_repair_automation_run)
           @promote_automation_run = args[:promote_automation_run] if args.key?(:promote_automation_run)
           @repair_automation_runs = args[:repair_automation_runs] if args.key?(:repair_automation_runs)
         end
