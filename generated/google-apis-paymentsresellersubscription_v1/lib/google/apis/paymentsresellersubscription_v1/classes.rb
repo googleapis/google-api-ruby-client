@@ -48,7 +48,7 @@ module Google
         end
       end
       
-      # 
+      # Request to cancel a subscription.
       class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest
         include Google::Apis::Core::Hashable
       
@@ -77,7 +77,7 @@ module Google
         end
       end
       
-      # 
+      # Response that contains the cancelled subscription resource.
       class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse
         include Google::Apis::Core::Hashable
       
@@ -178,7 +178,7 @@ module Google
         end
       end
       
-      # 
+      # Response that contains the entitled subscription resource.
       class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse
         include Google::Apis::Core::Hashable
       
@@ -234,7 +234,7 @@ module Google
         end
       end
       
-      # 
+      # Response that contains the timestamps after the extension.
       class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse
         include Google::Apis::Core::Hashable
       
@@ -298,19 +298,19 @@ module Google
         end
       end
       
-      # 
+      # Request to find eligible promotions for the current user.
       class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest
         include Google::Apis::Core::Hashable
       
         # Optional. Specifies the filters for the promotion results. The syntax is
-        # defined in https://google.aip.dev/160 with the following caveats: - Only the
+        # defined in https://google.aip.dev/160 with the following caveats: 1. Only the
         # following features are supported: - Logical operator `AND` - Comparison
         # operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (
-        # no wildcards `*`) - Only the following fields are supported: - `
+        # no wildcards `*`) 2. Only the following fields are supported: - `
         # applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `
-        # youtubePayload.postalCode` - Unless explicitly mentioned above, other features
-        # are not supported. Example: `applicableProducts:partners/partner1/products/
-        # product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND
+        # youtubePayload.postalCode` 3. Unless explicitly mentioned above, other
+        # features are not supported. Example: `applicableProducts:partners/partner1/
+        # products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND
         # youtubePayload.partnerEligibilityId=eligibility-id`
         # Corresponds to the JSON property `filter`
         # @return [String]
@@ -426,7 +426,7 @@ module Google
         end
       end
       
-      # 
+      # Response that contains the products.
       class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse
         include Google::Apis::Core::Hashable
       
@@ -452,7 +452,7 @@ module Google
         end
       end
       
-      # 
+      # Response that contains the promotions.
       class GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse
         include Google::Apis::Core::Hashable
       
