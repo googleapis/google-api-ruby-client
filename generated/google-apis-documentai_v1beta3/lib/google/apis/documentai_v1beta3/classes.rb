@@ -8842,6 +8842,11 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty
         include Google::Apis::Core::Hashable
       
+        # User defined name for the property.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # The name of the property. Follows the same guidelines as the EntityType name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -8870,6 +8875,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
           @property_metadata = args[:property_metadata] if args.key?(:property_metadata)
