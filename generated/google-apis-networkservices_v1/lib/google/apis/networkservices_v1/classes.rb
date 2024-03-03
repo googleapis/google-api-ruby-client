@@ -503,7 +503,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The `:authority` header in the gRPC request sent from Envoy to the
-        # extension service.
+        # extension service. Required for Callout extensions.
         # Corresponds to the JSON property `authority`
         # @return [String]
         attr_accessor :authority
@@ -511,11 +511,12 @@ module Google
         # Optional. Determines how the proxy behaves if the call to the extension fails
         # or times out. When set to `TRUE`, request or response processing continues
         # without error. Any subsequent extensions in the extension chain are also
-        # executed. When set to `FALSE`: * If response headers have not been delivered
-        # to the downstream client, a generic 500 error is returned to the client. The
-        # error response can be tailored by configuring a custom error response in the
-        # load balancer. * If response headers have been delivered, then the HTTP stream
-        # to the downstream client is reset. Default is `FALSE`.
+        # executed. When set to `FALSE` or the default setting of `FALSE` is used, one
+        # of the following happens: * If response headers have not been delivered to the
+        # downstream client, a generic 500 error is returned to the client. The error
+        # response can be tailored by configuring a custom error response in the load
+        # balancer. * If response headers have been delivered, then the HTTP stream to
+        # the downstream client is reset.
         # Corresponds to the JSON property `failOpen`
         # @return [Boolean]
         attr_accessor :fail_open
@@ -538,7 +539,7 @@ module Google
         attr_accessor :name
       
         # Required. The reference to the service that runs the extension. Currently only
-        # Callout extensions are supported here. To configure a Callout extension, `
+        # callout extensions are supported here. To configure a callout extension, `
         # service` must be a fully-qualified reference to a [backend service](https://
         # cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
         # `https://www.googleapis.com/compute/v1/projects/`project`/regions/`region`/
@@ -555,8 +556,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_events
       
-        # Required. Specifies the timeout for each individual message on the stream. The
-        # timeout must be between 10-1000 milliseconds.
+        # Optional. Specifies the timeout for each individual message on the stream. The
+        # timeout must be between 10-1000 milliseconds. Required for Callout extensions.
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
@@ -583,8 +584,8 @@ module Google
       
         # Required. A Common Expression Language (CEL) expression that is used to match
         # requests for which the extension chain is executed. For more information, see [
-        # CEL matcher language reference](https://cloud.google.com/service-extensions/
-        # docs/cel-matcher-language-reference).
+        # CEL matcher language reference](/service-extensions/docs/cel-matcher-language-
+        # reference).
         # Corresponds to the JSON property `celExpression`
         # @return [String]
         attr_accessor :cel_expression
@@ -2155,8 +2156,8 @@ module Google
         attr_accessor :forwarding_rules
       
         # Optional. Set of labels associated with the `LbRouteExtension` resource. The
-        # format must comply with [the following requirements](/compute/docs/labeling-
-        # resources#requirements).
+        # format must comply with [the requirements for labels](/compute/docs/labeling-
+        # resources#requirements) for Google Cloud resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2233,8 +2234,8 @@ module Google
         attr_accessor :forwarding_rules
       
         # Optional. Set of labels associated with the `LbTrafficExtension` resource. The
-        # format must comply with [the following requirements](/compute/docs/labeling-
-        # resources#requirements).
+        # format must comply with [the requirements for labels](/compute/docs/labeling-
+        # resources#requirements) for Google Cloud resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
