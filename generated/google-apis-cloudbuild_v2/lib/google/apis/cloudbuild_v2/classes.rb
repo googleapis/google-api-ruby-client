@@ -2893,25 +2893,6 @@ module Google
         end
       end
       
-      # VolumeClaim is a user's request for a volume.
-      class VolumeClaim
-        include Google::Apis::Core::Hashable
-      
-        # Volume size, e.g. 1gb.
-        # Corresponds to the JSON property `storage`
-        # @return [String]
-        attr_accessor :storage
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @storage = args[:storage] if args.key?(:storage)
-        end
-      end
-      
       # Pod volumes to mount into the container's filesystem.
       class VolumeMount
         include Google::Apis::Core::Hashable
@@ -3061,11 +3042,6 @@ module Google
         # @return [String]
         attr_accessor :sub_path
       
-        # VolumeClaim is a user's request for a volume.
-        # Corresponds to the JSON property `volumeClaim`
-        # @return [Google::Apis::CloudbuildV2::VolumeClaim]
-        attr_accessor :volume_claim
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3075,7 +3051,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @secret = args[:secret] if args.key?(:secret)
           @sub_path = args[:sub_path] if args.key?(:sub_path)
-          @volume_claim = args[:volume_claim] if args.key?(:volume_claim)
         end
       end
       

@@ -436,12 +436,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class VolumeClaim
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class VolumeMount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1240,13 +1234,6 @@ module Google
         end
       end
       
-      class VolumeClaim
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :storage, as: 'storage'
-        end
-      end
-      
       class VolumeMount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1290,8 +1277,6 @@ module Google
           property :secret, as: 'secret', class: Google::Apis::CloudbuildV2::SecretVolumeSource, decorator: Google::Apis::CloudbuildV2::SecretVolumeSource::Representation
       
           property :sub_path, as: 'subPath'
-          property :volume_claim, as: 'volumeClaim', class: Google::Apis::CloudbuildV2::VolumeClaim, decorator: Google::Apis::CloudbuildV2::VolumeClaim::Representation
-      
         end
       end
       
