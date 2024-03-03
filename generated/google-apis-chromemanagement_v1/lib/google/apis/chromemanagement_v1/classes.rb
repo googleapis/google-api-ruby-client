@@ -2549,6 +2549,53 @@ module Google
         end
       end
       
+      # Runtime counters retrieved from CPU. Currently the runtime counters telemetry
+      # is only supported by Intel vPro PSR on Gen 14+.
+      class GoogleChromeManagementV1RuntimeCountersReport
+        include Google::Apis::Core::Hashable
+      
+        # Number of times that the device has entered into the hibernation state.
+        # Currently obtained via the PSR, count from S0->S4.
+        # Corresponds to the JSON property `enterHibernationCount`
+        # @return [Fixnum]
+        attr_accessor :enter_hibernation_count
+      
+        # Number of times that the device has entered into the power-off state.
+        # Currently obtained via the PSR, count from S0->S5.
+        # Corresponds to the JSON property `enterPoweroffCount`
+        # @return [Fixnum]
+        attr_accessor :enter_poweroff_count
+      
+        # Number of times that the device has entered into the sleep state. Currently
+        # obtained via the PSR, count from S0->S3.
+        # Corresponds to the JSON property `enterSleepCount`
+        # @return [Fixnum]
+        attr_accessor :enter_sleep_count
+      
+        # Timestamp when the report was collected.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        # Total lifetime runtime. Currently always S0 runtime from Intel vPro PSR.
+        # Corresponds to the JSON property `uptimeRuntimeDuration`
+        # @return [String]
+        attr_accessor :uptime_runtime_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enter_hibernation_count = args[:enter_hibernation_count] if args.key?(:enter_hibernation_count)
+          @enter_poweroff_count = args[:enter_poweroff_count] if args.key?(:enter_poweroff_count)
+          @enter_sleep_count = args[:enter_sleep_count] if args.key?(:enter_sleep_count)
+          @report_time = args[:report_time] if args.key?(:report_time)
+          @uptime_runtime_duration = args[:uptime_runtime_duration] if args.key?(:uptime_runtime_duration)
+        end
+      end
+      
       # Status data for storage. * This field is telemetry information and this will
       # change over time as the device is utilized. * Data for this field is
       # controlled via policy: [ReportDeviceStorageStatus](https://chromeenterprise.
@@ -2815,6 +2862,13 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport>]
         attr_accessor :peripherals_report
       
+        # Output only. Runtime counters reports collected device lifetime runtime, as
+        # well as the counts of S0->S3, S0->S4, and S0->S5 transitions, meaning entering
+        # into sleep, hibernation, and power-off states
+        # Corresponds to the JSON property `runtimeCountersReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RuntimeCountersReport>]
+        attr_accessor :runtime_counters_report
+      
         # Output only. Device serial number. This value is the same as the Admin Console'
         # s Serial Number in the ChromeOS Devices tab.
         # Corresponds to the JSON property `serialNumber`
@@ -2871,6 +2925,7 @@ module Google
           @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
           @os_update_status = args[:os_update_status] if args.key?(:os_update_status)
           @peripherals_report = args[:peripherals_report] if args.key?(:peripherals_report)
+          @runtime_counters_report = args[:runtime_counters_report] if args.key?(:runtime_counters_report)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @storage_info = args[:storage_info] if args.key?(:storage_info)
           @storage_status_report = args[:storage_status_report] if args.key?(:storage_status_report)
