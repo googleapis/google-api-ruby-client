@@ -108,7 +108,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an enterprise. Only available for EMM-managed enterprises.
+        # Permanently deletes an enterprise and all accounts and data associated with it.
+        # Warning: this will result in a cascaded deletion of all AM API devices
+        # associated with the deleted enterprise. Only available for EMM-managed
+        # enterprises.
         # @param [String] name
         #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [String] fields
