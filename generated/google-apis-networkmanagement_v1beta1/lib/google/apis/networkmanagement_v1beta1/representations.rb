@@ -356,6 +356,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cause, as: 'cause'
+          property :ip_address, as: 'ipAddress'
           collection :projects_missing_permission, as: 'projectsMissingPermission'
           property :resource_uri, as: 'resourceUri'
         end
@@ -483,6 +484,7 @@ module Google
       class DeliverInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
           property :resource_uri, as: 'resourceUri'
           property :target, as: 'target'
         end
@@ -579,6 +581,7 @@ module Google
       class ForwardInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
           property :resource_uri, as: 'resourceUri'
           property :target, as: 'target'
         end
