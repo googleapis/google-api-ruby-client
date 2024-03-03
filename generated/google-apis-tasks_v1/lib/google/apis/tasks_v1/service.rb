@@ -391,8 +391,8 @@ module Google
         #   Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by.
         #   Optional. The default is not to filter by due date.
         # @param [Fixnum] max_results
-        #   Maximum number of task lists returned on one page. Optional. The default is 20
-        #   (max allowed: 100).
+        #   Maximum number of tasks returned on one page. Optional. The default is 20 (max
+        #   allowed: 100).
         # @param [String] page_token
         #   Token specifying the result page to return. Optional.
         # @param [Boolean] show_completed
