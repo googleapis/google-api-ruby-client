@@ -870,6 +870,7 @@ module Google
           property :managed_zones, as: 'managedZones'
           property :managed_zones_per_gke_cluster, as: 'managedZonesPerGkeCluster'
           property :managed_zones_per_network, as: 'managedZonesPerNetwork'
+          property :nameservers_per_delegation, as: 'nameserversPerDelegation'
           property :networks_per_managed_zone, as: 'networksPerManagedZone'
           property :networks_per_policy, as: 'networksPerPolicy'
           property :networks_per_response_policy, as: 'networksPerResponsePolicy'
