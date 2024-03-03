@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DefaultServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteBitbucketServerConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,6 +455,12 @@ module Google
       end
       
       class PrivatePoolV1Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateServiceConnect
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1097,6 +1109,14 @@ module Google
         end
       end
       
+      class DefaultServiceAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :service_account_email, as: 'serviceAccountEmail'
+        end
+      end
+      
       class DeleteBitbucketServerConfigOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1475,8 +1495,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :network_config, as: 'networkConfig', class: Google::Apis::CloudbuildV1::NetworkConfig, decorator: Google::Apis::CloudbuildV1::NetworkConfig::Representation
       
+          property :private_service_connect, as: 'privateServiceConnect', class: Google::Apis::CloudbuildV1::PrivateServiceConnect, decorator: Google::Apis::CloudbuildV1::PrivateServiceConnect::Representation
+      
           property :worker_config, as: 'workerConfig', class: Google::Apis::CloudbuildV1::WorkerConfig, decorator: Google::Apis::CloudbuildV1::WorkerConfig::Representation
       
+        end
+      end
+      
+      class PrivateServiceConnect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_attachment, as: 'networkAttachment'
+          property :public_ip_address_disabled, as: 'publicIpAddressDisabled'
+          property :route_all_traffic, as: 'routeAllTraffic'
         end
       end
       
