@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PscInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -561,6 +567,8 @@ module Google
           property :network_config, as: 'networkConfig', class: Google::Apis::AlloydbV1beta::NetworkConfig, decorator: Google::Apis::AlloydbV1beta::NetworkConfig::Representation
       
           property :primary_config, as: 'primaryConfig', class: Google::Apis::AlloydbV1beta::PrimaryConfig, decorator: Google::Apis::AlloydbV1beta::PrimaryConfig::Representation
+      
+          property :psc_config, as: 'pscConfig', class: Google::Apis::AlloydbV1beta::PscConfig, decorator: Google::Apis::AlloydbV1beta::PscConfig::Representation
       
           property :reconciling, as: 'reconciling'
           property :satisfies_pzs, as: 'satisfiesPzs'
@@ -895,6 +903,13 @@ module Google
         end
       end
       
+      class PscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :psc_enabled, as: 'pscEnabled'
+        end
+      end
+      
       class PscInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1159,6 +1174,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
+          property :error_type, as: 'errorType'
           property :message, as: 'message'
         end
       end
