@@ -874,6 +874,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecondaryBootDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityBulletinEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2366,6 +2372,8 @@ module Google
       
           property :sandbox_config, as: 'sandboxConfig', class: Google::Apis::ContainerV1beta1::SandboxConfig, decorator: Google::Apis::ContainerV1beta1::SandboxConfig::Representation
       
+          collection :secondary_boot_disks, as: 'secondaryBootDisks', class: Google::Apis::ContainerV1beta1::SecondaryBootDisk, decorator: Google::Apis::ContainerV1beta1::SecondaryBootDisk::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ContainerV1beta1::ShieldedInstanceConfig, decorator: Google::Apis::ContainerV1beta1::ShieldedInstanceConfig::Representation
       
@@ -2770,6 +2778,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sandbox_type, as: 'sandboxType'
           property :type, as: 'type'
+        end
+      end
+      
+      class SecondaryBootDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_image, as: 'diskImage'
+          property :mode, as: 'mode'
         end
       end
       
