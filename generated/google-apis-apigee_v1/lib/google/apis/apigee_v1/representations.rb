@@ -124,6 +124,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ApiDoc
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ApiDocDocumentation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ApiDocDocumentationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ApiDocResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ApiProduct
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1DocumentationFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1EnableSecurityActionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -616,6 +646,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1GraphqlDocumentation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1GrpcOperationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +737,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1ListApiCategoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListApiDocsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -941,6 +983,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1NodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1OasDocumentation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1826,6 +1874,63 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ApiDoc
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :anon_allowed, as: 'anonAllowed'
+          property :api_product_name, as: 'apiProductName'
+          collection :category_ids, as: 'categoryIds'
+          property :description, as: 'description'
+          property :edge_api_product_name, as: 'edgeAPIProductName'
+          property :graphql_endpoint_url, as: 'graphqlEndpointUrl'
+          property :graphql_schema, as: 'graphqlSchema'
+          property :graphql_schema_display_name, as: 'graphqlSchemaDisplayName'
+          property :id, :numeric_string => true, as: 'id'
+          property :image_url, as: 'imageUrl'
+          property :modified, :numeric_string => true, as: 'modified'
+          property :published, as: 'published'
+          property :require_callback_url, as: 'requireCallbackUrl'
+          property :site_id, as: 'siteId'
+          property :spec_id, as: 'specId'
+          property :title, as: 'title'
+          property :visibility, as: 'visibility'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApiDocDocumentation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :graphql_documentation, as: 'graphqlDocumentation', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphqlDocumentation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphqlDocumentation::Representation
+      
+          property :oas_documentation, as: 'oasDocumentation', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OasDocumentation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OasDocumentation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApiDocDocumentationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDocDocumentation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDocDocumentation::Representation
+      
+          property :error_code, as: 'errorCode'
+          property :message, as: 'message'
+          property :request_id, as: 'requestId'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApiDocResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDoc, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDoc::Representation
+      
+          property :error_code, as: 'errorCode'
+          property :message, as: 'message'
+          property :request_id, as: 'requestId'
+          property :status, as: 'status'
+        end
+      end
+      
       class GoogleCloudApigeeV1ApiProduct
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2564,6 +2669,14 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1DocumentationFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, :base64 => true, as: 'contents'
+          property :display_name, as: 'displayName'
+        end
+      end
+      
       class GoogleCloudApigeeV1EnableSecurityActionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2828,6 +2941,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1GraphqlDocumentation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint_uri, as: 'endpointUri'
+          property :schema, as: 'schema', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DocumentationFile, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DocumentationFile::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1GrpcOperationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2975,6 +3097,19 @@ module Google
       
           property :error_code, as: 'errorCode'
           property :message, as: 'message'
+          property :request_id, as: 'requestId'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListApiDocsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data, as: 'data', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDoc, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDoc::Representation
+      
+          property :error_code, as: 'errorCode'
+          property :message, as: 'message'
+          property :next_page_token, as: 'nextPageToken'
           property :request_id, as: 'requestId'
           property :status, as: 'status'
         end
@@ -3322,6 +3457,15 @@ module Google
           property :current_aggregate_node_count, :numeric_string => true, as: 'currentAggregateNodeCount'
           property :max_node_count, :numeric_string => true, as: 'maxNodeCount'
           property :min_node_count, :numeric_string => true, as: 'minNodeCount'
+        end
+      end
+      
+      class GoogleCloudApigeeV1OasDocumentation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          property :spec, as: 'spec', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DocumentationFile, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DocumentationFile::Representation
+      
         end
       end
       

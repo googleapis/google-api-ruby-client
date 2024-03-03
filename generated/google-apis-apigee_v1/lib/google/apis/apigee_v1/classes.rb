@@ -553,6 +553,273 @@ module Google
         end
       end
       
+      # `ApiDoc` represents an API catalog item. Catalog items are used in two ways in
+      # a portal: - Users can browse and interact with a visual representation of the
+      # API documentation - The `api_product_name` field provides a link to a backing
+      # API product. Through this link, portal users can create and manage developer
+      # apps linked to one or more API products.
+      class GoogleCloudApigeeV1ApiDoc
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Boolean flag that manages user access to the catalog item. When true,
+        # the catalog item can be viewed anonymously; otherwise, only registered users
+        # may view it. Note: when the parent portal is enrolled in the [audience
+        # management feature](https://cloud.google.com/apigee/docs/api-platform/publish/
+        # portal/portal-audience#
+        # enrolling_in_the_beta_release_of_the_audience_management_feature), this flag
+        # is ignored; instead visibility must be further managed in the management UI (
+        # see [Manage the visibility of an API in your portal](https://cloud.google.com/
+        # apigee/docs/api-platform/publish/portal/publish-apis#visibility)).
+        # Corresponds to the JSON property `anonAllowed`
+        # @return [Boolean]
+        attr_accessor :anon_allowed
+        alias_method :anon_allowed?, :anon_allowed
+      
+        # Required. Immutable. The `name` field of the associated [API product](/apigee/
+        # docs/reference/apis/apigee/rest/v1/organizations.apiproducts). A portal may
+        # have only one catalog item associated with a given API product.
+        # Corresponds to the JSON property `apiProductName`
+        # @return [String]
+        attr_accessor :api_product_name
+      
+        # Optional. The IDs of the API categories to which this catalog item belongs.
+        # Corresponds to the JSON property `categoryIds`
+        # @return [Array<String>]
+        attr_accessor :category_ids
+      
+        # Optional. Description of the catalog item. Max length is 10,000 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Immutable. DEPRECATED: use the `apiProductName` field instead
+        # Corresponds to the JSON property `edgeAPIProductName`
+        # @return [String]
+        attr_accessor :edge_api_product_name
+      
+        # Optional. DEPRECATED: manage documentation through the `getDocumentation` and `
+        # updateDocumentation` methods
+        # Corresponds to the JSON property `graphqlEndpointUrl`
+        # @return [String]
+        attr_accessor :graphql_endpoint_url
+      
+        # Optional. DEPRECATED: manage documentation through the `getDocumentation` and `
+        # updateDocumentation` methods
+        # Corresponds to the JSON property `graphqlSchema`
+        # @return [String]
+        attr_accessor :graphql_schema
+      
+        # Optional. DEPRECATED: manage documentation through the `getDocumentation` and `
+        # updateDocumentation` methods
+        # Corresponds to the JSON property `graphqlSchemaDisplayName`
+        # @return [String]
+        attr_accessor :graphql_schema_display_name
+      
+        # Output only. The ID of the catalog item.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Optional. Location of the image used for the catalog item in the catalog. For
+        # portal files, this can have the format `/files/`filename``. Max length is 2,
+        # 083 characters.
+        # Corresponds to the JSON property `imageUrl`
+        # @return [String]
+        attr_accessor :image_url
+      
+        # Output only. Time the catalog item was last modified in milliseconds since
+        # epoch.
+        # Corresponds to the JSON property `modified`
+        # @return [Fixnum]
+        attr_accessor :modified
+      
+        # Optional. Denotes whether the catalog item is published to the portal or is in
+        # a draft state. When the parent portal is enrolled in the [audience management
+        # feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/
+        # portal-audience#
+        # enrolling_in_the_beta_release_of_the_audience_management_feature), the
+        # visibility must be further managed in the management UI (see [Manage the
+        # visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-
+        # platform/publish/portal/publish-apis#visibility)) before it can be visible to
+        # any users. If not enrolled in the audience management feature, the visibility
+        # is further managed by the `anonAllowed` flag.
+        # Corresponds to the JSON property `published`
+        # @return [Boolean]
+        attr_accessor :published
+        alias_method :published?, :published
+      
+        # Optional. Whether a callback URL is required when this catalog item's API
+        # product is enabled in a developer app. When true, a portal user will be
+        # required to input a URL when managing the app (this is typically used for the
+        # app's OAuth flow).
+        # Corresponds to the JSON property `requireCallbackUrl`
+        # @return [Boolean]
+        attr_accessor :require_callback_url
+        alias_method :require_callback_url?, :require_callback_url
+      
+        # Output only. The ID of the parent portal.
+        # Corresponds to the JSON property `siteId`
+        # @return [String]
+        attr_accessor :site_id
+      
+        # Optional. DEPRECATED: DO NOT USE
+        # Corresponds to the JSON property `specId`
+        # @return [String]
+        attr_accessor :spec_id
+      
+        # Required. The user-facing name of the catalog item. `title` must be a non-
+        # empty string with a max length of 255 characters.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Optional. DEPRECATED: use the `published` field instead
+        # Corresponds to the JSON property `visibility`
+        # @return [Boolean]
+        attr_accessor :visibility
+        alias_method :visibility?, :visibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anon_allowed = args[:anon_allowed] if args.key?(:anon_allowed)
+          @api_product_name = args[:api_product_name] if args.key?(:api_product_name)
+          @category_ids = args[:category_ids] if args.key?(:category_ids)
+          @description = args[:description] if args.key?(:description)
+          @edge_api_product_name = args[:edge_api_product_name] if args.key?(:edge_api_product_name)
+          @graphql_endpoint_url = args[:graphql_endpoint_url] if args.key?(:graphql_endpoint_url)
+          @graphql_schema = args[:graphql_schema] if args.key?(:graphql_schema)
+          @graphql_schema_display_name = args[:graphql_schema_display_name] if args.key?(:graphql_schema_display_name)
+          @id = args[:id] if args.key?(:id)
+          @image_url = args[:image_url] if args.key?(:image_url)
+          @modified = args[:modified] if args.key?(:modified)
+          @published = args[:published] if args.key?(:published)
+          @require_callback_url = args[:require_callback_url] if args.key?(:require_callback_url)
+          @site_id = args[:site_id] if args.key?(:site_id)
+          @spec_id = args[:spec_id] if args.key?(:spec_id)
+          @title = args[:title] if args.key?(:title)
+          @visibility = args[:visibility] if args.key?(:visibility)
+        end
+      end
+      
+      # The documentation for a catalog item.
+      class GoogleCloudApigeeV1ApiDocDocumentation
+        include Google::Apis::Core::Hashable
+      
+        # GraphQL documentation for a catalog item.
+        # Corresponds to the JSON property `graphqlDocumentation`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphqlDocumentation]
+        attr_accessor :graphql_documentation
+      
+        # OpenAPI Specification documentation for a catalog item.
+        # Corresponds to the JSON property `oasDocumentation`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OasDocumentation]
+        attr_accessor :oas_documentation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @graphql_documentation = args[:graphql_documentation] if args.key?(:graphql_documentation)
+          @oas_documentation = args[:oas_documentation] if args.key?(:oas_documentation)
+        end
+      end
+      
+      # The catalog item documentation wrapped with response status, error_code, etc.
+      class GoogleCloudApigeeV1ApiDocDocumentationResponse
+        include Google::Apis::Core::Hashable
+      
+        # The documentation for a catalog item.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDocDocumentation]
+        attr_accessor :data
+      
+        # Output only. Unique error code for the request, if any.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # Output only. Description of the operation.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. Unique ID of the request.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Output only. Status of the operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @message = args[:message] if args.key?(:message)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The catalog item resource wrapped with response status, error_code, etc.
+      class GoogleCloudApigeeV1ApiDocResponse
+        include Google::Apis::Core::Hashable
+      
+        # `ApiDoc` represents an API catalog item. Catalog items are used in two ways in
+        # a portal: - Users can browse and interact with a visual representation of the
+        # API documentation - The `api_product_name` field provides a link to a backing
+        # API product. Through this link, portal users can create and manage developer
+        # apps linked to one or more API products.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDoc]
+        attr_accessor :data
+      
+        # Unique error code for the request, if any.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # Description of the operation.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Unique ID of the request.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Status of the operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @message = args[:message] if args.key?(:message)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1ApiProduct
         include Google::Apis::Core::Hashable
@@ -3602,6 +3869,33 @@ module Google
         end
       end
       
+      # Documentation file contents for a catalog item.
+      class GoogleCloudApigeeV1DocumentationFile
+        include Google::Apis::Core::Hashable
+      
+        # Required. The file contents. The max size is 4 MB.
+        # Corresponds to the JSON property `contents`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :contents
+      
+        # Required. A display name for the file, shown in the management UI. Max length
+        # is 255 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # Message to enable a disabled SecurityAction.
       class GoogleCloudApigeeV1EnableSecurityActionRequest
         include Google::Apis::Core::Hashable
@@ -4617,6 +4911,32 @@ module Google
         end
       end
       
+      # GraphQL documentation for a catalog item.
+      class GoogleCloudApigeeV1GraphqlDocumentation
+        include Google::Apis::Core::Hashable
+      
+        # Required. The GraphQL endpoint URI to be queried by API consumers. Max length
+        # is 2,083 characters.
+        # Corresponds to the JSON property `endpointUri`
+        # @return [String]
+        attr_accessor :endpoint_uri
+      
+        # Documentation file contents for a catalog item.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DocumentationFile]
+        attr_accessor :schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
+          @schema = args[:schema] if args.key?(:schema)
+        end
+      end
+      
       # Binds the resources in a proxy or remote service with the gRPC operation and
       # its associated quota enforcement.
       class GoogleCloudApigeeV1GrpcOperationConfig
@@ -5183,6 +5503,56 @@ module Google
           @data = args[:data] if args.key?(:data)
           @error_code = args[:error_code] if args.key?(:error_code)
           @message = args[:message] if args.key?(:message)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class GoogleCloudApigeeV1ListApiDocsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The catalog item resources.
+        # Corresponds to the JSON property `data`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDoc>]
+        attr_accessor :data
+      
+        # Unique error code for the request, if any.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # Description of the operation.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unique ID of the request.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Status of the operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @message = args[:message] if args.key?(:message)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @request_id = args[:request_id] if args.key?(:request_id)
           @status = args[:status] if args.key?(:status)
         end
@@ -6179,6 +6549,31 @@ module Google
           @current_aggregate_node_count = args[:current_aggregate_node_count] if args.key?(:current_aggregate_node_count)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+        end
+      end
+      
+      # OpenAPI Specification documentation for a catalog item.
+      class GoogleCloudApigeeV1OasDocumentation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The format of the input specification file contents.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Documentation file contents for a catalog item.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DocumentationFile]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @format = args[:format] if args.key?(:format)
+          @spec = args[:spec] if args.key?(:spec)
         end
       end
       
