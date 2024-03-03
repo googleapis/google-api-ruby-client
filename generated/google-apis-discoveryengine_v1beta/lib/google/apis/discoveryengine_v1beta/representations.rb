@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1DigitalParsingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1OcrParsingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1PurgeDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +317,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1UpdateTargetSiteMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAclConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -479,6 +509,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaFieldConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaIdpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -814,6 +856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaDigitalParsingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -845,6 +893,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaDocumentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1055,6 +1115,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaMediaInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaOcrParsingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1585,9 +1651,13 @@ module Google
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
           property :display_name, as: 'displayName'
+          property :document_processing_config, as: 'documentProcessingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfig::Representation
+      
           property :industry_vertical, as: 'industryVertical'
           property :name, as: 'name'
           collection :solution_types, as: 'solutionTypes'
+          property :starting_schema, as: 'startingSchema', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1Schema, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1Schema::Representation
+      
         end
       end
       
@@ -1623,6 +1693,12 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1DigitalParsingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1634,6 +1710,27 @@ module Google
       class GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_parsing_config, as: 'defaultParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig::Representation
+      
+          property :name, as: 'name'
+          hash :parsing_config_overrides, as: 'parsingConfigOverrides', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :digital_parsing_config, as: 'digitalParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DigitalParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DigitalParsingConfig::Representation
+      
+          property :ocr_parsing_config, as: 'ocrParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1OcrParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1OcrParsingConfig::Representation
+      
         end
       end
       
@@ -1780,11 +1877,20 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1OcrParsingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enhanced_document_elements, as: 'enhancedDocumentElements'
+          property :use_native_text, as: 'useNativeText'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1PurgeDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :ignored_count, :numeric_string => true, as: 'ignoredCount'
           property :success_count, :numeric_string => true, as: 'successCount'
           property :update_time, as: 'updateTime'
         end
@@ -1880,6 +1986,15 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAclConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfig::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSiteMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1931,13 +2046,20 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDataStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl_enabled, as: 'aclEnabled'
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
           property :display_name, as: 'displayName'
+          property :document_processing_config, as: 'documentProcessingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig::Representation
+      
+          property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfig::Representation
+      
           property :industry_vertical, as: 'industryVertical'
           property :name, as: 'name'
           collection :solution_types, as: 'solutionTypes'
+          property :starting_schema, as: 'startingSchema', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSchema, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSchema::Representation
+      
         end
       end
       
@@ -2035,6 +2157,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_multiple_data_stores_search_engine, as: 'allowMultipleDataStoresSearchEngine'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig::Representation
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata::Representation
@@ -2165,6 +2288,22 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaIdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_idp_config, as: 'externalIdpConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig::Representation
+      
+          property :idp_type, as: 'idpType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :workforce_pool_name, as: 'workforcePoolName'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2260,6 +2399,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :ignored_count, :numeric_string => true, as: 'ignoredCount'
           property :success_count, :numeric_string => true, as: 'successCount'
           property :update_time, as: 'updateTime'
         end
@@ -2548,6 +2688,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaConverseConversationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost_spec, as: 'boostSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec::Representation
+      
           property :conversation, as: 'conversation', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaConversation, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaConversation::Representation
       
           property :filter, as: 'filter'
@@ -2630,9 +2772,13 @@ module Google
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
           property :display_name, as: 'displayName'
+          property :document_processing_config, as: 'documentProcessingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig::Representation
+      
           property :industry_vertical, as: 'industryVertical'
           property :name, as: 'name'
           collection :solution_types, as: 'solutionTypes'
+          property :starting_schema, as: 'startingSchema', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSchema, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSchema::Representation
+      
         end
       end
       
@@ -2668,6 +2814,12 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaDigitalParsingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2695,6 +2847,7 @@ module Google
       
           hash :derived_struct_data, as: 'derivedStructData'
           property :id, as: 'id'
+          property :index_time, as: 'indexTime'
           property :json_data, as: 'jsonData'
           property :name, as: 'name'
           property :parent_document_id, as: 'parentDocumentId'
@@ -2720,6 +2873,27 @@ module Google
           collection :promotion_ids, as: 'promotionIds'
           property :quantity, as: 'quantity'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_parsing_config, as: 'defaultParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig::Representation
+      
+          property :name, as: 'name'
+          hash :parsing_config_overrides, as: 'parsingConfigOverrides', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :digital_parsing_config, as: 'digitalParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDigitalParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDigitalParsingConfig::Representation
+      
+          property :ocr_parsing_config, as: 'ocrParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaOcrParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaOcrParsingConfig::Representation
+      
         end
       end
       
@@ -3051,6 +3225,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaOcrParsingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enhanced_document_elements, as: 'enhancedDocumentElements'
+          property :use_native_text, as: 'useNativeText'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaPageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3076,6 +3258,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :ignored_count, :numeric_string => true, as: 'ignoredCount'
           property :success_count, :numeric_string => true, as: 'successCount'
           property :update_time, as: 'updateTime'
         end
