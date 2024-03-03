@@ -220,12 +220,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleFirestoreAdminV1CmekConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleFirestoreAdminV1CreateDatabaseMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -969,14 +963,6 @@ module Google
         end
       end
       
-      class GoogleFirestoreAdminV1CmekConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :active_key_version, as: 'activeKeyVersion'
-          property :kms_key_name, as: 'kmsKeyName'
-        end
-      end
-      
       class GoogleFirestoreAdminV1CreateDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -993,8 +979,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_engine_integration_mode, as: 'appEngineIntegrationMode'
-          property :cmek_config, as: 'cmekConfig', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CmekConfig, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CmekConfig::Representation
-      
           property :concurrency_mode, as: 'concurrencyMode'
           property :create_time, as: 'createTime'
           property :delete_protection_state, as: 'deleteProtectionState'
