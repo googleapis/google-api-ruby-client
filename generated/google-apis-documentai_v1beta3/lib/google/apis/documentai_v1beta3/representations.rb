@@ -4706,6 +4706,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :occurrence_type, as: 'occurrenceType'
           property :property_metadata, as: 'propertyMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3PropertyMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3PropertyMetadata::Representation
