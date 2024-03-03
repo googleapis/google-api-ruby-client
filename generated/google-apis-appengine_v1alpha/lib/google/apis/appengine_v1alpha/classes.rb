@@ -176,7 +176,7 @@ module Google
         # various systems. CCFE will provide the CLH with reasons for the current state
         # per system.The current systems that CCFE supports are: Service Management (
         # Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud
-        # Billing API)
+        # Billing API) Service Activation (Service Controller)
         # Corresponds to the JSON property `currentReasons`
         # @return [Google::Apis::AppengineV1alpha::Reasons]
         attr_accessor :current_reasons
@@ -185,7 +185,7 @@ module Google
         # various systems. CCFE will provide the CLH with reasons for the current state
         # per system.The current systems that CCFE supports are: Service Management (
         # Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud
-        # Billing API)
+        # Billing API) Service Activation (Service Controller)
         # Corresponds to the JSON property `previousReasons`
         # @return [Google::Apis::AppengineV1alpha::Reasons]
         attr_accessor :previous_reasons
@@ -966,7 +966,7 @@ module Google
       # various systems. CCFE will provide the CLH with reasons for the current state
       # per system.The current systems that CCFE supports are: Service Management (
       # Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud
-      # Billing API)
+      # Billing API) Service Activation (Service Controller)
       class Reasons
         include Google::Apis::Core::Hashable
       
@@ -985,6 +985,13 @@ module Google
         # @return [String]
         attr_accessor :data_governance
       
+        # Consumer Container denotes if the service is active within a project or not.
+        # This information could be used to clean up resources in case service in
+        # DISABLED_FULL i.e. Service is inactive > 30 days.
+        # Corresponds to the JSON property `serviceActivation`
+        # @return [String]
+        attr_accessor :service_activation
+      
         # 
         # Corresponds to the JSON property `serviceManagement`
         # @return [String]
@@ -999,6 +1006,7 @@ module Google
           @abuse = args[:abuse] if args.key?(:abuse)
           @billing = args[:billing] if args.key?(:billing)
           @data_governance = args[:data_governance] if args.key?(:data_governance)
+          @service_activation = args[:service_activation] if args.key?(:service_activation)
           @service_management = args[:service_management] if args.key?(:service_management)
         end
       end
