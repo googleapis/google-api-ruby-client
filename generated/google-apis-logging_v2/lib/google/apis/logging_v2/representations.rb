@@ -1136,13 +1136,13 @@ module Google
           property :ops_analytics_query, as: 'opsAnalyticsQuery', class: Google::Apis::LoggingV2::OpsAnalyticsQuery, decorator: Google::Apis::LoggingV2::OpsAnalyticsQuery::Representation
       
           property :update_time, as: 'updateTime'
+          property :visibility, as: 'visibility'
         end
       end
       
       class Settings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :analytics_mode, as: 'analyticsMode'
           property :default_sink_config, as: 'defaultSinkConfig', class: Google::Apis::LoggingV2::DefaultSinkConfig, decorator: Google::Apis::LoggingV2::DefaultSinkConfig::Representation
       
           property :disable_default_sink, as: 'disableDefaultSink'

@@ -3117,6 +3117,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Required. The visibility status of this query, which determines its ownership.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3130,6 +3135,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @ops_analytics_query = args[:ops_analytics_query] if args.key?(:ops_analytics_query)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -3137,12 +3143,6 @@ module Google
       # billing account.
       class Settings
         include Google::Apis::Core::Hashable
-      
-        # Optional. The default analytics mode of an org or folder which is inherited by
-        # all newly created child project buckets.
-        # Corresponds to the JSON property `analyticsMode`
-        # @return [String]
-        attr_accessor :analytics_mode
       
         # Describes the custom _Default sink configuration that is used to override the
         # built-in _Default sink configuration in newly created resource containers,
@@ -3212,7 +3212,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @analytics_mode = args[:analytics_mode] if args.key?(:analytics_mode)
           @default_sink_config = args[:default_sink_config] if args.key?(:default_sink_config)
           @disable_default_sink = args[:disable_default_sink] if args.key?(:disable_default_sink)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
