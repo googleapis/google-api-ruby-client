@@ -209,7 +209,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource. Returns an empty policy if the
+        # Gets the IAM policy policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See [Resource
@@ -329,8 +329,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
+        # Sets the IAM policy on the specified resource. Replaces any existing policy.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. See [Resource
         #   names](https://cloud.google.com/apis/design/resource_names) for the
