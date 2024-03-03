@@ -3077,6 +3077,7 @@ module Google
       class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :occurrence_type, as: 'occurrenceType'
           property :value_type, as: 'valueType'
@@ -3402,6 +3403,8 @@ module Google
           property :individual_page_selector, as: 'individualPageSelector', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector::Representation
       
           property :ocr_config, as: 'ocrConfig', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1OcrConfig, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1OcrConfig::Representation
+      
+          property :schema_override, as: 'schemaOverride', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema::Representation
       
         end
       end

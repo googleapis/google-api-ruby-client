@@ -3520,6 +3520,11 @@ module Google
       class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty
         include Google::Apis::Core::Hashable
       
+        # User defined name for the property.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # The name of the property. Follows the same guidelines as the EntityType name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3543,6 +3548,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
           @value_type = args[:value_type] if args.key?(:value_type)
@@ -4690,6 +4696,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1OcrConfig]
         attr_accessor :ocr_config
       
+        # The schema defines the output of the processed document by a processor.
+        # Corresponds to the JSON property `schemaOverride`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema]
+        attr_accessor :schema_override
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4700,6 +4711,7 @@ module Google
           @from_start = args[:from_start] if args.key?(:from_start)
           @individual_page_selector = args[:individual_page_selector] if args.key?(:individual_page_selector)
           @ocr_config = args[:ocr_config] if args.key?(:ocr_config)
+          @schema_override = args[:schema_override] if args.key?(:schema_override)
         end
       end
       
