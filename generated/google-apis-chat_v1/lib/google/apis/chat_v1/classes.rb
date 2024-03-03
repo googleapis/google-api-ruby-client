@@ -506,13 +506,13 @@ module Google
       # For a `SelectionInput` widget that uses a multiselect menu, a data source from
       # Google Chat. The data source populates selection items for the multiselect
       # menu. For example, a user can select Google Chat spaces that they're a member
-      # of. [Google Chat apps](https://developers.google.com/chat):
+      # of. [Google Chat apps](https://developers.google.com/workspace/chat):
       class ChatClientDataSourceMarkup
         include Google::Apis::Core::Hashable
       
         # A data source that populates Google Chat spaces as selection items for a
         # multiselect menu. Only populates spaces that the user is a member of. [Google
-        # Chat apps](https://developers.google.com/chat):
+        # Chat apps](https://developers.google.com/workspace/chat):
         # Corresponds to the JSON property `spaceDataSource`
         # @return [Google::Apis::ChatV1::SpaceDataSource]
         attr_accessor :space_data_source
@@ -1129,7 +1129,7 @@ module Google
         # app can open a [dialog](https://developers.google.com/chat/how-tos/dialogs).
         # When specified, a loading indicator isn't shown. If specified for an add-on,
         # the entire card is stripped and nothing is shown in the client. [Google Chat
-        # apps](https://developers.google.com/chat):
+        # apps](https://developers.google.com/workspace/chat):
         # Corresponds to the JSON property `interaction`
         # @return [String]
         attr_accessor :interaction
@@ -1644,7 +1644,9 @@ module Google
         end
       end
       
-      # A column. [Google Chat apps](https://developers.google.com/chat):
+      # A column. [Google Workspace Add-ons and Chat apps](https://developers.google.
+      # com/workspace/extend): Columns for Google Workspace Add-ons are in Developer
+      # Preview.
       class GoogleAppsCardV1Column
         include Google::Apis::Core::Hashable
       
@@ -1653,14 +1655,12 @@ module Google
         # @return [String]
         attr_accessor :horizontal_alignment
       
-        # Specifies how a column fills the width of the card. [Google Chat apps](https://
-        # developers.google.com/chat):
+        # Specifies how a column fills the width of the card.
         # Corresponds to the JSON property `horizontalSizeStyle`
         # @return [String]
         attr_accessor :horizontal_size_style
       
-        # Specifies whether widgets align to the top, bottom, or center of a column. [
-        # Google Chat apps](https://developers.google.com/chat):
+        # Specifies whether widgets align to the top, bottom, or center of a column.
         # Corresponds to the JSON property `verticalAlignment`
         # @return [String]
         attr_accessor :vertical_alignment
@@ -1684,8 +1684,8 @@ module Google
         end
       end
       
-      # The `Columns` widget displays up to 2 columns in a card message or dialog. You
-      # can add widgets to each column; the widgets appear in the order that they are
+      # The `Columns` widget displays up to 2 columns in a card or dialog. You can add
+      # widgets to each column; the widgets appear in the order that they are
       # specified. For an example in Google Chat apps, see [Columns](https://
       # developers.google.com/chat/ui/widgets/columns). The height of each column is
       # determined by the taller column. For example, if the first column is taller
@@ -1699,7 +1699,9 @@ module Google
       # column wraps if the screen width is less than or equal to 300 pt. * On Android
       # devices, the second column wraps if the screen width is less than or equal to
       # 320 dp. To include more than 2 columns, or to use rows, use the `Grid` widget.
-      # [Google Chat apps](https://developers.google.com/chat):
+      # [Google Workspace Add-ons and Chat apps](https://developers.google.com/
+      # workspace/extend): Columns for Google Workspace Add-ons are in Developer
+      # Preview.
       class GoogleAppsCardV1Columns
         include Google::Apis::Core::Hashable
       
@@ -2292,7 +2294,7 @@ module Google
       
       # For a `SelectionInput` widget that uses a multiselect menu, a data source from
       # Google Workspace. Used to populate items in a multiselect menu. [Google Chat
-      # apps](https://developers.google.com/chat):
+      # apps](https://developers.google.com/workspace/chat):
       class GoogleAppsCardV1PlatformDataSource
         include Google::Apis::Core::Hashable
       
@@ -2304,7 +2306,8 @@ module Google
       
         # For a `SelectionInput` widget that uses a multiselect menu, a data source from
         # a Google Workspace application. The data source populates selection items for
-        # the multiselect menu. [Google Chat apps](https://developers.google.com/chat):
+        # the multiselect menu. [Google Chat apps](https://developers.google.com/
+        # workspace/chat):
         # Corresponds to the JSON property `hostAppDataSource`
         # @return [Google::Apis::ChatV1::HostAppDataSourceMarkup]
         attr_accessor :host_app_data_source
@@ -2438,7 +2441,7 @@ module Google
       
         # For a `SelectionInput` widget that uses a multiselect menu, a data source from
         # Google Workspace. Used to populate items in a multiselect menu. [Google Chat
-        # apps](https://developers.google.com/chat):
+        # apps](https://developers.google.com/workspace/chat):
         # Corresponds to the JSON property `platformDataSource`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1PlatformDataSource]
         attr_accessor :platform_data_source
@@ -2696,7 +2699,7 @@ module Google
       
         # Text that appears in the text input field when the field is empty. Use this
         # text to prompt users to enter a value. For example, `Enter a number from 0 to
-        # 100`. [Google Chat apps](https://developers.google.com/chat):
+        # 100`. [Google Chat apps](https://developers.google.com/workspace/chat):
         # Corresponds to the JSON property `placeholderText`
         # @return [String]
         attr_accessor :placeholder_text
@@ -2771,8 +2774,8 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
         attr_accessor :button_list
       
-        # The `Columns` widget displays up to 2 columns in a card message or dialog. You
-        # can add widgets to each column; the widgets appear in the order that they are
+        # The `Columns` widget displays up to 2 columns in a card or dialog. You can add
+        # widgets to each column; the widgets appear in the order that they are
         # specified. For an example in Google Chat apps, see [Columns](https://
         # developers.google.com/chat/ui/widgets/columns). The height of each column is
         # determined by the taller column. For example, if the first column is taller
@@ -2786,7 +2789,9 @@ module Google
         # column wraps if the screen width is less than or equal to 300 pt. * On Android
         # devices, the second column wraps if the screen width is less than or equal to
         # 320 dp. To include more than 2 columns, or to use rows, use the `Grid` widget.
-        # [Google Chat apps](https://developers.google.com/chat):
+        # [Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend): Columns for Google Workspace Add-ons are in Developer
+        # Preview.
         # Corresponds to the JSON property `columns`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Columns]
         attr_accessor :columns
@@ -2908,8 +2913,9 @@ module Google
         end
       end
       
-      # The supported widgets that you can include in a column. [Google Chat apps](
-      # https://developers.google.com/chat):
+      # The supported widgets that you can include in a column. [Google Workspace Add-
+      # ons and Chat apps](https://developers.google.com/workspace/extend): Columns
+      # for Google Workspace Add-ons are in Developer Preview.
       class GoogleAppsCardV1Widgets
         include Google::Apis::Core::Hashable
       
@@ -3025,14 +3031,15 @@ module Google
       
       # For a `SelectionInput` widget that uses a multiselect menu, a data source from
       # a Google Workspace application. The data source populates selection items for
-      # the multiselect menu. [Google Chat apps](https://developers.google.com/chat):
+      # the multiselect menu. [Google Chat apps](https://developers.google.com/
+      # workspace/chat):
       class HostAppDataSourceMarkup
         include Google::Apis::Core::Hashable
       
         # For a `SelectionInput` widget that uses a multiselect menu, a data source from
         # Google Chat. The data source populates selection items for the multiselect
         # menu. For example, a user can select Google Chat spaces that they're a member
-        # of. [Google Chat apps](https://developers.google.com/chat):
+        # of. [Google Chat apps](https://developers.google.com/workspace/chat):
         # Corresponds to the JSON property `chatDataSource`
         # @return [Google::Apis::ChatV1::ChatClientDataSourceMarkup]
         attr_accessor :chat_data_source
@@ -4072,7 +4079,7 @@ module Google
       
       # A data source that populates Google Chat spaces as selection items for a
       # multiselect menu. Only populates spaces that the user is a member of. [Google
-      # Chat apps](https://developers.google.com/chat):
+      # Chat apps](https://developers.google.com/workspace/chat):
       class SpaceDataSource
         include Google::Apis::Core::Hashable
       
