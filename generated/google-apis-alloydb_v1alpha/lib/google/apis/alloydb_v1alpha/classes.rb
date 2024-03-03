@@ -499,8 +499,8 @@ module Google
       
         # Required. The resource link for the VPC network in which cluster resources are
         # created and from which they are accessible via Private IP. The network must
-        # belong to the same project as the cluster. It is specified in the form: "
-        # projects/`project`/global/networks/`network_id`". This is required to create a
+        # belong to the same project as the cluster. It is specified in the form: `
+        # projects/`project`/global/networks/`network_id``. This is required to create a
         # cluster. Deprecated, use network_config.network instead.
         # Corresponds to the JSON property `network`
         # @return [String]
@@ -1629,8 +1629,8 @@ module Google
       
         # Optional. The resource link for the VPC network in which cluster resources are
         # created and from which they are accessible via Private IP. The network must
-        # belong to the same project as the cluster. It is specified in the form: "
-        # projects/`project_number`/global/networks/`network_id`". This is required to
+        # belong to the same project as the cluster. It is specified in the form: `
+        # projects/`project_number`/global/networks/`network_id``. This is required to
         # create a cluster.
         # Corresponds to the JSON property `network`
         # @return [String]
@@ -1936,7 +1936,7 @@ module Google
       
         # Output only. The service attachment created when Private Service Connect (PSC)
         # is enabled for the instance. The name of the resource will be in the format of
-        # projects//regions//serviceAttachments/
+        # `projects//regions//serviceAttachments/`
         # Corresponds to the JSON property `serviceAttachmentLink`
         # @return [String]
         attr_accessor :service_attachment_link
@@ -1970,8 +1970,8 @@ module Google
         attr_accessor :consumer_endpoint_ips
       
         # The NetworkAttachment resource created in the consumer VPC to which the PSC
-        # interface will be linked, in the form of: "projects/$`CONSUMER_PROJECT`/
-        # regions/$`REGION`/networkAttachments/$`NETWORK_ATTACHMENT_NAME`".
+        # interface will be linked, in the form of: `projects/$`CONSUMER_PROJECT`/
+        # regions/$`REGION`/networkAttachments/$`NETWORK_ATTACHMENT_NAME``.
         # NetworkAttachment has to be provided when the PSC interface is created.
         # Corresponds to the JSON property `networkAttachment`
         # @return [String]
@@ -2816,7 +2816,7 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
         include Google::Apis::Core::Hashable
       
-        # Required. Any other additional metadata specific to recommendation
+        # Optional. Any other additional metadata specific to recommendation
         # Corresponds to the JSON property `additionalMetadata`
         # @return [Hash<String,Object>]
         attr_accessor :additional_metadata
@@ -2920,6 +2920,11 @@ module Google
         # @return [String]
         attr_accessor :code
       
+        # 
+        # Corresponds to the JSON property `errorType`
+        # @return [String]
+        attr_accessor :error_type
+      
         # Additional information about the error encountered. REQUIRED
         # Corresponds to the JSON property `message`
         # @return [String]
@@ -2932,6 +2937,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code = args[:code] if args.key?(:code)
+          @error_type = args[:error_type] if args.key?(:error_type)
           @message = args[:message] if args.key?(:message)
         end
       end
