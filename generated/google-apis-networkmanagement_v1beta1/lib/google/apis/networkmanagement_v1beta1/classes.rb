@@ -31,9 +31,13 @@ module Google
         # @return [String]
         attr_accessor :cause
       
-        # List of project IDs that the user has specified in the request but does not
-        # have permission to access network configs. Analysis is aborted in this case
-        # with the PERMISSION_DENIED cause.
+        # IP address that caused the abort.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # List of project IDs the user specified in the request but lacks access to. In
+        # this case, analysis is aborted with the PERMISSION_DENIED cause.
         # Corresponds to the JSON property `projectsMissingPermission`
         # @return [Array<String>]
         attr_accessor :projects_missing_permission
@@ -50,6 +54,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cause = args[:cause] if args.key?(:cause)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
           @projects_missing_permission = args[:projects_missing_permission] if args.key?(:projects_missing_permission)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
         end
@@ -560,6 +565,11 @@ module Google
       class DeliverInfo
         include Google::Apis::Core::Hashable
       
+        # IP address of the target (if applicable).
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
         # URI of the resource that the packet is delivered to.
         # Corresponds to the JSON property `resourceUri`
         # @return [String]
@@ -576,6 +586,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
           @target = args[:target] if args.key?(:target)
         end
@@ -978,6 +989,11 @@ module Google
       class ForwardInfo
         include Google::Apis::Core::Hashable
       
+        # IP address of the target (if applicable).
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
         # URI of the resource that the packet is forwarded to.
         # Corresponds to the JSON property `resourceUri`
         # @return [String]
@@ -994,6 +1010,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
           @target = args[:target] if args.key?(:target)
         end
