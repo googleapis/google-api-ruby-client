@@ -22,6 +22,24 @@ module Google
   module Apis
     module RedisV1beta1
       
+      class AvailabilityConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CertChain
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -40,6 +58,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Compliance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomMetadataData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseResourceFeed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseResourceHealthSignalData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseResourceId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseResourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseResourceRecommendationSignalData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiscoveryEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +113,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Entitlement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +269,12 @@ module Google
       end
       
       class PersistenceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Product
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +299,12 @@ module Google
       end
       
       class RescheduleMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetentionSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +352,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AvailabilityConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_type, as: 'availabilityType'
+          property :external_replica_configured, as: 'externalReplicaConfigured'
+          property :promotable_replica_configured, as: 'promotableReplicaConfigured'
+        end
+      end
+      
+      class BackupConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automated_backup_enabled, as: 'automatedBackupEnabled'
+          property :backup_retention_settings, as: 'backupRetentionSettings', class: Google::Apis::RedisV1beta1::RetentionSettings, decorator: Google::Apis::RedisV1beta1::RetentionSettings::Representation
+      
+          property :point_in_time_recovery_enabled, as: 'pointInTimeRecoveryEnabled'
+        end
+      end
+      
+      class BackupRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :error, as: 'error', class: Google::Apis::RedisV1beta1::OperationError, decorator: Google::Apis::RedisV1beta1::OperationError::Representation
+      
+          property :start_time, as: 'startTime'
+          property :status, as: 'status'
+        end
+      end
+      
       class CertChain
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -301,6 +421,128 @@ module Google
         end
       end
       
+      class Compliance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :standard, as: 'standard'
+          property :version, as: 'version'
+        end
+      end
+      
+      class CustomMetadataData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :database_metadata, as: 'databaseMetadata', class: Google::Apis::RedisV1beta1::DatabaseMetadata, decorator: Google::Apis::RedisV1beta1::DatabaseMetadata::Representation
+      
+        end
+      end
+      
+      class DatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::RedisV1beta1::BackupConfiguration, decorator: Google::Apis::RedisV1beta1::BackupConfiguration::Representation
+      
+          property :backup_run, as: 'backupRun', class: Google::Apis::RedisV1beta1::BackupRun, decorator: Google::Apis::RedisV1beta1::BackupRun::Representation
+      
+          property :product, as: 'product', class: Google::Apis::RedisV1beta1::Product, decorator: Google::Apis::RedisV1beta1::Product::Representation
+      
+          property :resource_id, as: 'resourceId', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
+      
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class DatabaseResourceFeed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feed_timestamp, as: 'feedTimestamp'
+          property :feed_type, as: 'feedType'
+          property :recommendation_signal_data, as: 'recommendationSignalData', class: Google::Apis::RedisV1beta1::DatabaseResourceRecommendationSignalData, decorator: Google::Apis::RedisV1beta1::DatabaseResourceRecommendationSignalData::Representation
+      
+          property :resource_health_signal_data, as: 'resourceHealthSignalData', class: Google::Apis::RedisV1beta1::DatabaseResourceHealthSignalData, decorator: Google::Apis::RedisV1beta1::DatabaseResourceHealthSignalData::Representation
+      
+          property :resource_id, as: 'resourceId', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
+      
+          property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::RedisV1beta1::DatabaseResourceMetadata, decorator: Google::Apis::RedisV1beta1::DatabaseResourceMetadata::Representation
+      
+        end
+      end
+      
+      class DatabaseResourceHealthSignalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_metadata, as: 'additionalMetadata'
+          collection :compliance, as: 'compliance', class: Google::Apis::RedisV1beta1::Compliance, decorator: Google::Apis::RedisV1beta1::Compliance::Representation
+      
+          property :description, as: 'description'
+          property :event_time, as: 'eventTime'
+          property :external_uri, as: 'externalUri'
+          property :name, as: 'name'
+          property :provider, as: 'provider'
+          property :resource_container, as: 'resourceContainer'
+          property :resource_name, as: 'resourceName'
+          property :signal_class, as: 'signalClass'
+          property :signal_id, as: 'signalId'
+          property :signal_type, as: 'signalType'
+          property :state, as: 'state'
+        end
+      end
+      
+      class DatabaseResourceId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :provider, as: 'provider'
+          property :provider_description, as: 'providerDescription'
+          property :resource_type, as: 'resourceType'
+          property :unique_id, as: 'uniqueId'
+        end
+      end
+      
+      class DatabaseResourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_configuration, as: 'availabilityConfiguration', class: Google::Apis::RedisV1beta1::AvailabilityConfiguration, decorator: Google::Apis::RedisV1beta1::AvailabilityConfiguration::Representation
+      
+          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::RedisV1beta1::BackupConfiguration, decorator: Google::Apis::RedisV1beta1::BackupConfiguration::Representation
+      
+          property :backup_run, as: 'backupRun', class: Google::Apis::RedisV1beta1::BackupRun, decorator: Google::Apis::RedisV1beta1::BackupRun::Representation
+      
+          property :creation_time, as: 'creationTime'
+          property :current_state, as: 'currentState'
+          property :custom_metadata, as: 'customMetadata', class: Google::Apis::RedisV1beta1::CustomMetadataData, decorator: Google::Apis::RedisV1beta1::CustomMetadataData::Representation
+      
+          collection :entitlements, as: 'entitlements', class: Google::Apis::RedisV1beta1::Entitlement, decorator: Google::Apis::RedisV1beta1::Entitlement::Representation
+      
+          property :expected_state, as: 'expectedState'
+          property :id, as: 'id', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
+      
+          property :instance_type, as: 'instanceType'
+          property :location, as: 'location'
+          property :primary_resource_id, as: 'primaryResourceId', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
+      
+          property :product, as: 'product', class: Google::Apis::RedisV1beta1::Product, decorator: Google::Apis::RedisV1beta1::Product::Representation
+      
+          property :resource_container, as: 'resourceContainer'
+          property :resource_name, as: 'resourceName'
+          property :updation_time, as: 'updationTime'
+          hash :user_labels, as: 'userLabels'
+        end
+      end
+      
+      class DatabaseResourceRecommendationSignalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_metadata, as: 'additionalMetadata'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :recommendation_state, as: 'recommendationState'
+          property :recommender, as: 'recommender'
+          property :recommender_id, as: 'recommenderId'
+          property :recommender_subtype, as: 'recommenderSubtype'
+          property :resource_name, as: 'resourceName'
+          property :signal_type, as: 'signalType'
+        end
+      end
+      
       class DiscoveryEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -314,6 +556,14 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Entitlement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entitlement_state, as: 'entitlementState'
+          property :type, as: 'type'
         end
       end
       
@@ -542,6 +792,15 @@ module Google
         end
       end
       
+      class OperationError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :error_type, as: 'errorType'
+          property :message, as: 'message'
+        end
+      end
+      
       class OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -570,6 +829,15 @@ module Google
           property :rdb_next_snapshot_time, as: 'rdbNextSnapshotTime'
           property :rdb_snapshot_period, as: 'rdbSnapshotPeriod'
           property :rdb_snapshot_start_time, as: 'rdbSnapshotStartTime'
+        end
+      end
+      
+      class Product
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :engine, as: 'engine'
+          property :type, as: 'type'
+          property :version, as: 'version'
         end
       end
       
@@ -604,6 +872,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reschedule_type, as: 'rescheduleType'
           property :schedule_time, as: 'scheduleTime'
+        end
+      end
+      
+      class RetentionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :quantity_based_retention, as: 'quantityBasedRetention'
+          property :retention_unit, as: 'retentionUnit'
+          property :time_based_retention, as: 'timeBasedRetention'
         end
       end
       

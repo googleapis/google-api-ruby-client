@@ -22,6 +22,114 @@ module Google
   module Apis
     module RedisV1beta1
       
+      # Configuration for availability of database instance
+      class AvailabilityConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Availability type. Potential values: * `ZONAL`: The instance serves data from
+        # only one zone. Outages in that zone affect data accessibility. * `REGIONAL`:
+        # The instance can serve data from more than one zone in a region (it is highly
+        # available).
+        # Corresponds to the JSON property `availabilityType`
+        # @return [String]
+        attr_accessor :availability_type
+      
+        # 
+        # Corresponds to the JSON property `externalReplicaConfigured`
+        # @return [Boolean]
+        attr_accessor :external_replica_configured
+        alias_method :external_replica_configured?, :external_replica_configured
+      
+        # 
+        # Corresponds to the JSON property `promotableReplicaConfigured`
+        # @return [Boolean]
+        attr_accessor :promotable_replica_configured
+        alias_method :promotable_replica_configured?, :promotable_replica_configured
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_type = args[:availability_type] if args.key?(:availability_type)
+          @external_replica_configured = args[:external_replica_configured] if args.key?(:external_replica_configured)
+          @promotable_replica_configured = args[:promotable_replica_configured] if args.key?(:promotable_replica_configured)
+        end
+      end
+      
+      # Configuration for automatic backups
+      class BackupConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Whether customer visible automated backups are enabled on the instance.
+        # Corresponds to the JSON property `automatedBackupEnabled`
+        # @return [Boolean]
+        attr_accessor :automated_backup_enabled
+        alias_method :automated_backup_enabled?, :automated_backup_enabled
+      
+        # Backup retention settings.
+        # Corresponds to the JSON property `backupRetentionSettings`
+        # @return [Google::Apis::RedisV1beta1::RetentionSettings]
+        attr_accessor :backup_retention_settings
+      
+        # Whether point-in-time recovery is enabled. This is optional field, if the
+        # database service does not have this feature or metadata is not available in
+        # control plane, this can be omitted.
+        # Corresponds to the JSON property `pointInTimeRecoveryEnabled`
+        # @return [Boolean]
+        attr_accessor :point_in_time_recovery_enabled
+        alias_method :point_in_time_recovery_enabled?, :point_in_time_recovery_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automated_backup_enabled = args[:automated_backup_enabled] if args.key?(:automated_backup_enabled)
+          @backup_retention_settings = args[:backup_retention_settings] if args.key?(:backup_retention_settings)
+          @point_in_time_recovery_enabled = args[:point_in_time_recovery_enabled] if args.key?(:point_in_time_recovery_enabled)
+        end
+      end
+      
+      # A backup run.
+      class BackupRun
+        include Google::Apis::Core::Hashable
+      
+        # The time the backup operation completed. REQUIRED
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # An error that occurred during a backup creation operation.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::RedisV1beta1::OperationError]
+        attr_accessor :error
+      
+        # The time the backup operation started. REQUIRED
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The status of this run. REQUIRED
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @error = args[:error] if args.key?(:error)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # 
       class CertChain
         include Google::Apis::Core::Hashable
@@ -169,6 +277,494 @@ module Google
         end
       end
       
+      # Contains compliance information about a security standard indicating unmet
+      # recommendations.
+      class Compliance
+        include Google::Apis::Core::Hashable
+      
+        # Industry-wide compliance standards or benchmarks, such as CIS, PCI, and OWASP.
+        # Corresponds to the JSON property `standard`
+        # @return [String]
+        attr_accessor :standard
+      
+        # Version of the standard or benchmark, for example, 1.1
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @standard = args[:standard] if args.key?(:standard)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Any custom metadata associated with the resource. i.e. A spanner instance can
+      # have multiple databases with its own unique metadata. Information for these
+      # individual databases can be captured in custom metadata data
+      class CustomMetadataData
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `databaseMetadata`
+        # @return [Array<Google::Apis::RedisV1beta1::DatabaseMetadata>]
+        attr_accessor :database_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_metadata = args[:database_metadata] if args.key?(:database_metadata)
+        end
+      end
+      
+      # Metadata for individual databases created in an instance. i.e. spanner
+      # instance can have multiple databases with unique configuration settings.
+      class DatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for automatic backups
+        # Corresponds to the JSON property `backupConfiguration`
+        # @return [Google::Apis::RedisV1beta1::BackupConfiguration]
+        attr_accessor :backup_configuration
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::RedisV1beta1::BackupRun]
+        attr_accessor :backup_run
+      
+        # Product specification for Condor resources.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::RedisV1beta1::Product]
+        attr_accessor :product
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::RedisV1beta1::DatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Required. Database name. Resource name to follow CAIS resource_name format as
+        # noted here go/condor-common-datamodel
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @product = args[:product] if args.key?(:product)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # DatabaseResourceFeed is the top level proto to be used to ingest different
+      # database resource level events into Condor platform.
+      class DatabaseResourceFeed
+        include Google::Apis::Core::Hashable
+      
+        # Required. Timestamp when feed is generated.
+        # Corresponds to the JSON property `feedTimestamp`
+        # @return [String]
+        attr_accessor :feed_timestamp
+      
+        # Required. Type feed to be ingested into condor
+        # Corresponds to the JSON property `feedType`
+        # @return [String]
+        attr_accessor :feed_type
+      
+        # Common model for database resource recommendation signal data.
+        # Corresponds to the JSON property `recommendationSignalData`
+        # @return [Google::Apis::RedisV1beta1::DatabaseResourceRecommendationSignalData]
+        attr_accessor :recommendation_signal_data
+      
+        # Common model for database resource health signal data.
+        # Corresponds to the JSON property `resourceHealthSignalData`
+        # @return [Google::Apis::RedisV1beta1::DatabaseResourceHealthSignalData]
+        attr_accessor :resource_health_signal_data
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::RedisV1beta1::DatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Common model for database resource instance metadata.
+        # Corresponds to the JSON property `resourceMetadata`
+        # @return [Google::Apis::RedisV1beta1::DatabaseResourceMetadata]
+        attr_accessor :resource_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feed_timestamp = args[:feed_timestamp] if args.key?(:feed_timestamp)
+          @feed_type = args[:feed_type] if args.key?(:feed_type)
+          @recommendation_signal_data = args[:recommendation_signal_data] if args.key?(:recommendation_signal_data)
+          @resource_health_signal_data = args[:resource_health_signal_data] if args.key?(:resource_health_signal_data)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_metadata = args[:resource_metadata] if args.key?(:resource_metadata)
+        end
+      end
+      
+      # Common model for database resource health signal data.
+      class DatabaseResourceHealthSignalData
+        include Google::Apis::Core::Hashable
+      
+        # Any other additional metadata
+        # Corresponds to the JSON property `additionalMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_metadata
+      
+        # Industry standards associated with this signal; if this signal is an issue,
+        # that could be a violation of the associated industry standard(s). For example,
+        # AUTO_BACKUP_DISABLED signal is associated with CIS GCP 1.1, CIS GCP 1.2, CIS
+        # GCP 1.3, NIST 800-53 and ISO-27001 compliance standards. If a database
+        # resource does not have automated backup enable, it will violate these
+        # following industry standards.
+        # Corresponds to the JSON property `compliance`
+        # @return [Array<Google::Apis::RedisV1beta1::Compliance>]
+        attr_accessor :compliance
+      
+        # Description associated with signal
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The last time at which the event described by this signal took place
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # The external-uri of the signal, using which more information about this signal
+        # can be obtained. In GCP, this will take user to SCC page to get more details
+        # about signals.
+        # Corresponds to the JSON property `externalUri`
+        # @return [String]
+        attr_accessor :external_uri
+      
+        # Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE,
+        # SQL_LOG_ERROR_VERBOSITY etc.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Cloud provider name. Ex: GCP/AWS/Azure/OnPrem/SelfManaged
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Closest parent container of this resource. In GCP, 'container' refers to a
+        # Cloud Resource Manager project. It must be resource name of a Cloud Resource
+        # Manager project with the format of "provider//", such as "projects/123". For
+        # GCP provided resources, number should be project number.
+        # Corresponds to the JSON property `resourceContainer`
+        # @return [String]
+        attr_accessor :resource_container
+      
+        # Required. Database resource name associated with the signal. Resource name to
+        # follow CAIS resource_name format as noted here go/condor-common-datamodel
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Required. The class of the signal, such as if it's a THREAT or VULNERABILITY.
+        # Corresponds to the JSON property `signalClass`
+        # @return [String]
+        attr_accessor :signal_class
+      
+        # Required. Unique identifier for the signal. This is an unique id which would
+        # be mainatined by partner to identify a signal.
+        # Corresponds to the JSON property `signalId`
+        # @return [String]
+        attr_accessor :signal_id
+      
+        # Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `
+        # LOGGING_MOST_ERRORS`, etc.
+        # Corresponds to the JSON property `signalType`
+        # @return [String]
+        attr_accessor :signal_type
+      
+        # 
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_metadata = args[:additional_metadata] if args.key?(:additional_metadata)
+          @compliance = args[:compliance] if args.key?(:compliance)
+          @description = args[:description] if args.key?(:description)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @external_uri = args[:external_uri] if args.key?(:external_uri)
+          @name = args[:name] if args.key?(:name)
+          @provider = args[:provider] if args.key?(:provider)
+          @resource_container = args[:resource_container] if args.key?(:resource_container)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @signal_class = args[:signal_class] if args.key?(:signal_class)
+          @signal_id = args[:signal_id] if args.key?(:signal_id)
+          @signal_type = args[:signal_type] if args.key?(:signal_type)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # DatabaseResourceId will serve as primary key for any resource ingestion event.
+      class DatabaseResourceId
+        include Google::Apis::Core::Hashable
+      
+        # Required. Cloud provider name. Ex: GCP/AWS/Azure/OnPrem/SelfManaged
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Optional. Needs to be used only when the provider is PROVIDER_OTHER.
+        # Corresponds to the JSON property `providerDescription`
+        # @return [String]
+        attr_accessor :provider_description
+      
+        # Required. The type of resource this ID is identifying. Ex redis.googleapis.com/
+        # Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster,
+        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance REQUIRED
+        # Please refer go/condor-common-datamodel
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # Required. A service-local token that distinguishes this resource from other
+        # resources within the same service.
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @provider = args[:provider] if args.key?(:provider)
+          @provider_description = args[:provider_description] if args.key?(:provider_description)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
+        end
+      end
+      
+      # Common model for database resource instance metadata.
+      class DatabaseResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for availability of database instance
+        # Corresponds to the JSON property `availabilityConfiguration`
+        # @return [Google::Apis::RedisV1beta1::AvailabilityConfiguration]
+        attr_accessor :availability_configuration
+      
+        # Configuration for automatic backups
+        # Corresponds to the JSON property `backupConfiguration`
+        # @return [Google::Apis::RedisV1beta1::BackupConfiguration]
+        attr_accessor :backup_configuration
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::RedisV1beta1::BackupRun]
+        attr_accessor :backup_run
+      
+        # The creation time of the resource, i.e. the time when resource is created and
+        # recorded in partner service.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Current state of the instance.
+        # Corresponds to the JSON property `currentState`
+        # @return [String]
+        attr_accessor :current_state
+      
+        # Any custom metadata associated with the resource. i.e. A spanner instance can
+        # have multiple databases with its own unique metadata. Information for these
+        # individual databases can be captured in custom metadata data
+        # Corresponds to the JSON property `customMetadata`
+        # @return [Google::Apis::RedisV1beta1::CustomMetadataData]
+        attr_accessor :custom_metadata
+      
+        # Entitlements associated with the resource
+        # Corresponds to the JSON property `entitlements`
+        # @return [Array<Google::Apis::RedisV1beta1::Entitlement>]
+        attr_accessor :entitlements
+      
+        # The state that the instance is expected to be in. For example, an instance
+        # state can transition to UNHEALTHY due to wrong patch update, while the
+        # expected state will remain at the HEALTHY.
+        # Corresponds to the JSON property `expectedState`
+        # @return [String]
+        attr_accessor :expected_state
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `id`
+        # @return [Google::Apis::RedisV1beta1::DatabaseResourceId]
+        attr_accessor :id
+      
+        # The type of the instance. Specified at creation time.
+        # Corresponds to the JSON property `instanceType`
+        # @return [String]
+        attr_accessor :instance_type
+      
+        # The resource location. REQUIRED
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `primaryResourceId`
+        # @return [Google::Apis::RedisV1beta1::DatabaseResourceId]
+        attr_accessor :primary_resource_id
+      
+        # Product specification for Condor resources.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::RedisV1beta1::Product]
+        attr_accessor :product
+      
+        # Closest parent Cloud Resource Manager container of this resource. It must be
+        # resource name of a Cloud Resource Manager project with the format of "/", such
+        # as "projects/123". For GCP provided resources, number should be project number.
+        # Corresponds to the JSON property `resourceContainer`
+        # @return [String]
+        attr_accessor :resource_container
+      
+        # Required. Different from DatabaseResourceId.unique_id, a resource name can be
+        # reused over time. That is, after a resource named "ABC" is deleted, the name "
+        # ABC" can be used to to create a new resource within the same source. Resource
+        # name to follow CAIS resource_name format as noted here go/condor-common-
+        # datamodel
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # The time at which the resource was updated and recorded at partner service.
+        # Corresponds to the JSON property `updationTime`
+        # @return [String]
+        attr_accessor :updation_time
+      
+        # User-provided labels, represented as a dictionary where each label is a single
+        # key value pair.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_configuration = args[:availability_configuration] if args.key?(:availability_configuration)
+          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @current_state = args[:current_state] if args.key?(:current_state)
+          @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
+          @entitlements = args[:entitlements] if args.key?(:entitlements)
+          @expected_state = args[:expected_state] if args.key?(:expected_state)
+          @id = args[:id] if args.key?(:id)
+          @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @location = args[:location] if args.key?(:location)
+          @primary_resource_id = args[:primary_resource_id] if args.key?(:primary_resource_id)
+          @product = args[:product] if args.key?(:product)
+          @resource_container = args[:resource_container] if args.key?(:resource_container)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @updation_time = args[:updation_time] if args.key?(:updation_time)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
+      # Common model for database resource recommendation signal data.
+      class DatabaseResourceRecommendationSignalData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Any other additional metadata specific to recommendation
+        # Corresponds to the JSON property `additionalMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_metadata
+      
+        # Required. last time recommendationw as refreshed
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # Required. Recommendation state
+        # Corresponds to the JSON property `recommendationState`
+        # @return [String]
+        attr_accessor :recommendation_state
+      
+        # Required. Name of recommendation. Examples: organizations/1234/locations/us-
+        # central1/recommenders/google.cloudsql.instance.PerformanceRecommender/
+        # recommendations/9876
+        # Corresponds to the JSON property `recommender`
+        # @return [String]
+        attr_accessor :recommender
+      
+        # Required. ID of recommender. Examples: "google.cloudsql.instance.
+        # PerformanceRecommender"
+        # Corresponds to the JSON property `recommenderId`
+        # @return [String]
+        attr_accessor :recommender_id
+      
+        # Required. Contains an identifier for a subtype of recommendations produced for
+        # the same recommender. Subtype is a function of content and impact, meaning a
+        # new subtype might be added when significant changes to `content` or `
+        # primary_impact.category` are introduced. See the Recommenders section to see a
+        # list of subtypes for a given Recommender. Examples: For recommender = "google.
+        # cloudsql.instance.PerformanceRecommender", recommender_subtype can be "
+        # MYSQL_HIGH_NUMBER_OF_OPEN_TABLES_BEST_PRACTICE"/"
+        # POSTGRES_HIGH_TRANSACTION_ID_UTILIZATION_BEST_PRACTICE"
+        # Corresponds to the JSON property `recommenderSubtype`
+        # @return [String]
+        attr_accessor :recommender_subtype
+      
+        # Required. Database resource name associated with the signal. Resource name to
+        # follow CAIS resource_name format as noted here go/condor-common-datamodel
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Required. Type of signal, for example, `SIGNAL_TYPE_IDLE`, `
+        # SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES`, etc.
+        # Corresponds to the JSON property `signalType`
+        # @return [String]
+        attr_accessor :signal_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_metadata = args[:additional_metadata] if args.key?(:additional_metadata)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @recommendation_state = args[:recommendation_state] if args.key?(:recommendation_state)
+          @recommender = args[:recommender] if args.key?(:recommender)
+          @recommender_id = args[:recommender_id] if args.key?(:recommender_id)
+          @recommender_subtype = args[:recommender_subtype] if args.key?(:recommender_subtype)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @signal_type = args[:signal_type] if args.key?(:signal_type)
+        end
+      end
+      
       # Endpoints on each network, for Redis clients to connect to the cluster.
       class DiscoveryEndpoint
         include Google::Apis::Core::Hashable
@@ -215,6 +811,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Proto representing the access that a user has to a specific feature/service.
+      # NextId: 3.
+      class Entitlement
+        include Google::Apis::Core::Hashable
+      
+        # The current state of user's accessibility to a feature/benefit.
+        # Corresponds to the JSON property `entitlementState`
+        # @return [String]
+        attr_accessor :entitlement_state
+      
+        # An enum that represents the type of this entitlement.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entitlement_state = args[:entitlement_state] if args.key?(:entitlement_state)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1113,6 +1735,37 @@ module Google
         end
       end
       
+      # An error that occurred during a backup creation operation.
+      class OperationError
+        include Google::Apis::Core::Hashable
+      
+        # Identifies the specific error that occurred. REQUIRED
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # 
+        # Corresponds to the JSON property `errorType`
+        # @return [String]
+        attr_accessor :error_type
+      
+        # Additional information about the error encountered. REQUIRED
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @error_type = args[:error_type] if args.key?(:error_type)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # Pre-defined metadata fields.
       class OperationMetadata
         include Google::Apis::Core::Hashable
@@ -1236,6 +1889,38 @@ module Google
         end
       end
       
+      # Product specification for Condor resources.
+      class Product
+        include Google::Apis::Core::Hashable
+      
+        # The specific engine that the underlying database is running.
+        # Corresponds to the JSON property `engine`
+        # @return [String]
+        attr_accessor :engine
+      
+        # Type of specific database product. It could be CloudSQL, AlloyDB etc..
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Version of the underlying database engine. Example values: For MySQL, it could
+        # be "8.0", "5.7" etc.. For Postgres, it could be "14", "15" etc..
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @engine = args[:engine] if args.key?(:engine)
+          @type = args[:type] if args.key?(:type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # 
       class PscConfig
         include Google::Apis::Core::Hashable
@@ -1355,6 +2040,37 @@ module Google
         def update!(**args)
           @reschedule_type = args[:reschedule_type] if args.key?(:reschedule_type)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
+        end
+      end
+      
+      # 
+      class RetentionSettings
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `quantityBasedRetention`
+        # @return [Fixnum]
+        attr_accessor :quantity_based_retention
+      
+        # The unit that 'retained_backups' represents.
+        # Corresponds to the JSON property `retentionUnit`
+        # @return [String]
+        attr_accessor :retention_unit
+      
+        # 
+        # Corresponds to the JSON property `timeBasedRetention`
+        # @return [String]
+        attr_accessor :time_based_retention
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quantity_based_retention = args[:quantity_based_retention] if args.key?(:quantity_based_retention)
+          @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
+          @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
         end
       end
       
