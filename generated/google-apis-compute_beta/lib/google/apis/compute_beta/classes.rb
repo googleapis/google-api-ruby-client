@@ -12071,6 +12071,20 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # The list of cloud regions from which health checks are performed. If any
+        # regions are specified, then exactly 3 regions should be specified. The region
+        # names must be valid names of GCP regions. This can only be set for global
+        # health check. If this list is non-empty, then there are restrictions on what
+        # other health check fields are supported and what other resources can use this
+        # health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP
+        # request field is not supported. - The proxyHeader field for HTTP, HTTPS, and
+        # TCP is not supported. - The checkIntervalSec field must be at least 30. - The
+        # health check cannot be used with BackendService nor with managed instance
+        # group auto-healing.
+        # Corresponds to the JSON property `sourceRegions`
+        # @return [Array<String>]
+        attr_accessor :source_regions
+      
         # 
         # Corresponds to the JSON property `sslHealthCheck`
         # @return [Google::Apis::ComputeBeta::SslHealthCheck]
@@ -12121,6 +12135,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @source_regions = args[:source_regions] if args.key?(:source_regions)
           @ssl_health_check = args[:ssl_health_check] if args.key?(:ssl_health_check)
           @tcp_health_check = args[:tcp_health_check] if args.key?(:tcp_health_check)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
@@ -40543,6 +40558,19 @@ module Google
         # @return [String]
         attr_accessor :producer_forwarding_rule
       
+        # The number of consumer Network Connectivity Center spokes that connected
+        # Private Service Connect endpoints can be propagated to. This limit lets a
+        # service producer indirectly limit how many propagated Private Service Connect
+        # connections can be established to the producer's service attachment. If the
+        # connection preference of the service attachment is ACCEPT_MANUAL, the limit
+        # applies to each project or network that is listed in the consumer accept list.
+        # If the connection preference of the service attachment is ACCEPT_AUTOMATIC,
+        # the limit applies to each project that contains a connected endpoint. If
+        # unspecified, the default propagated connection limit is 250.
+        # Corresponds to the JSON property `propagatedConnectionLimit`
+        # @return [Fixnum]
+        attr_accessor :propagated_connection_limit
+      
         # [Output Only] An 128-bit global unique ID of the PSC service attachment.
         # Corresponds to the JSON property `pscServiceAttachmentId`
         # @return [Google::Apis::ComputeBeta::Uint128]
@@ -40608,6 +40636,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nat_subnets = args[:nat_subnets] if args.key?(:nat_subnets)
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
+          @propagated_connection_limit = args[:propagated_connection_limit] if args.key?(:propagated_connection_limit)
           @psc_service_attachment_id = args[:psc_service_attachment_id] if args.key?(:psc_service_attachment_id)
           @reconcile_connections = args[:reconcile_connections] if args.key?(:reconcile_connections)
           @region = args[:region] if args.key?(:region)
@@ -40754,6 +40783,12 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
+        # The number of consumer Network Connectivity Center spokes that the connected
+        # Private Service Connect endpoint has propagated to.
+        # Corresponds to the JSON property `propagatedConnectionCount`
+        # @return [Fixnum]
+        attr_accessor :propagated_connection_count
+      
         # The PSC connection id of the connected endpoint.
         # Corresponds to the JSON property `pscConnectionId`
         # @return [Fixnum]
@@ -40772,6 +40807,7 @@ module Google
         def update!(**args)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @propagated_connection_count = args[:propagated_connection_count] if args.key?(:propagated_connection_count)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @status = args[:status] if args.key?(:status)
         end

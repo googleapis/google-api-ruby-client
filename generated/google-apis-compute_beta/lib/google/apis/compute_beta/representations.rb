@@ -9424,6 +9424,7 @@ module Google
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          collection :source_regions, as: 'sourceRegions'
           property :ssl_health_check, as: 'sslHealthCheck', class: Google::Apis::ComputeBeta::SslHealthCheck, decorator: Google::Apis::ComputeBeta::SslHealthCheck::Representation
       
           property :tcp_health_check, as: 'tcpHealthCheck', class: Google::Apis::ComputeBeta::TcpHealthCheck, decorator: Google::Apis::ComputeBeta::TcpHealthCheck::Representation
@@ -16612,6 +16613,7 @@ module Google
           property :name, as: 'name'
           collection :nat_subnets, as: 'natSubnets'
           property :producer_forwarding_rule, as: 'producerForwardingRule'
+          property :propagated_connection_limit, as: 'propagatedConnectionLimit'
           property :psc_service_attachment_id, as: 'pscServiceAttachmentId', class: Google::Apis::ComputeBeta::Uint128, decorator: Google::Apis::ComputeBeta::Uint128::Representation
       
           property :reconcile_connections, as: 'reconcileConnections'
@@ -16661,6 +16663,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_network, as: 'consumerNetwork'
           property :endpoint, as: 'endpoint'
+          property :propagated_connection_count, as: 'propagatedConnectionCount'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :status, as: 'status'
         end
