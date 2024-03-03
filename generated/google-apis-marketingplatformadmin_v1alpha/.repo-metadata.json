@@ -1,0 +1,7 @@
+{
+    "api_id": "marketingplatformadmin:v1alpha",
+    "name_pretty": "Google Marketing Platform Admin API",
+    "distribution_name": "google-apis-marketingplatformadmin_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
