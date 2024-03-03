@@ -1092,6 +1092,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
+          property :error_type, as: 'errorType'
           property :message, as: 'message'
         end
       end
