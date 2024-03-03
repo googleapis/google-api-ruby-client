@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1RuntimeCountersReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1StorageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1140,6 +1146,17 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1RuntimeCountersReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enter_hibernation_count, :numeric_string => true, as: 'enterHibernationCount'
+          property :enter_poweroff_count, :numeric_string => true, as: 'enterPoweroffCount'
+          property :enter_sleep_count, :numeric_string => true, as: 'enterSleepCount'
+          property :report_time, as: 'reportTime'
+          property :uptime_runtime_duration, as: 'uptimeRuntimeDuration'
+        end
+      end
+      
       class GoogleChromeManagementV1StorageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1216,6 +1233,8 @@ module Google
           collection :os_update_status, as: 'osUpdateStatus', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1OsUpdateStatus, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1OsUpdateStatus::Representation
       
           collection :peripherals_report, as: 'peripheralsReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport::Representation
+      
+          collection :runtime_counters_report, as: 'runtimeCountersReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RuntimeCountersReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RuntimeCountersReport::Representation
       
           property :serial_number, as: 'serialNumber'
           property :storage_info, as: 'storageInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageInfo::Representation
