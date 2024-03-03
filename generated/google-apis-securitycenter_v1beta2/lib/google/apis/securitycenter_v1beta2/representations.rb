@@ -1386,6 +1386,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assignees, as: 'assignees'
+          property :case_close_time, as: 'caseCloseTime'
+          property :case_create_time, as: 'caseCreateTime'
           property :case_priority, as: 'casePriority'
           property :case_sla, as: 'caseSla'
           property :case_uri, as: 'caseUri'
@@ -1842,6 +1844,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assignees, as: 'assignees'
+          property :case_close_time, as: 'caseCloseTime'
+          property :case_create_time, as: 'caseCreateTime'
           property :case_priority, as: 'casePriority'
           property :case_sla, as: 'caseSla'
           property :case_uri, as: 'caseUri'
