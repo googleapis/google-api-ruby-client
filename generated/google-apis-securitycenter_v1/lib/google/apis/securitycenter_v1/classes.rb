@@ -191,15 +191,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The base URI that identifies the network location of the application in which
-        # the vulnerability was detected. Examples: http://11.22.33.44, http://foo.com,
-        # http://11.22.33.44:8080
+        # the vulnerability was detected. For example, `http://example.com`.
         # Corresponds to the JSON property `baseUri`
         # @return [String]
         attr_accessor :base_uri
       
-        # The full URI with payload that can be used to reproduce the vulnerability.
-        # Example: http://11.22.33.44/reflected/parameter/attribute/singlequoted/js?p=
-        # aMmYgI6H
+        # The full URI with payload that can be used to reproduce the vulnerability. For
+        # example, `http://example.com?p=aMmYgI6H`.
         # Corresponds to the JSON property `fullUri`
         # @return [String]
         attr_accessor :full_uri
@@ -616,14 +614,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the Backup and DR appliance that captures, moves, and manages the
-        # lifecycle of backup data. For example, “backup-server-57137”.
+        # lifecycle of backup data. For example, `backup-server-57137`.
         # Corresponds to the JSON property `appliance`
         # @return [String]
         attr_accessor :appliance
       
         # The names of Backup and DR applications. An application is a VM, database, or
         # file system on a managed host monitored by a backup and recovery appliance.
-        # For example, “centos7-01-vol00”, “centos7-01-vol01”, “centos7-01-vol02”.
+        # For example, `centos7-01-vol00`, `centos7-01-vol01`, `centos7-01-vol02`.
         # Corresponds to the JSON property `applications`
         # @return [Array<String>]
         attr_accessor :applications
@@ -636,13 +634,13 @@ module Google
         # The name of a Backup and DR template which comprises one or more backup
         # policies. See the [Backup and DR documentation](https://cloud.google.com/
         # backup-disaster-recovery/docs/concepts/backup-plan#temp) for more information.
-        # For example, “snap-ov”.
+        # For example, `snap-ov`.
         # Corresponds to the JSON property `backupTemplate`
         # @return [String]
         attr_accessor :backup_template
       
-        # The backup type of the Backup and DR image. For example, “Snapshot”, “Remote
-        # Snapshot”, “OnVault”.
+        # The backup type of the Backup and DR image. For example, `Snapshot`, `Remote
+        # Snapshot`, `OnVault`.
         # Corresponds to the JSON property `backupType`
         # @return [String]
         attr_accessor :backup_type
@@ -652,14 +650,14 @@ module Google
         # (for example, Compute Engine, SQL Server, Oracle DB, SMB file system, etc.),
         # vCenter, or an ESX server. See the [Backup and DR documentation on hosts](
         # https://cloud.google.com/backup-disaster-recovery/docs/configuration/manage-
-        # hosts-and-their-applications) for more information. For example, “centos7-01”.
+        # hosts-and-their-applications) for more information. For example, `centos7-01`.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
         # The names of Backup and DR policies that are associated with a template and
         # that define when to run a backup, how frequently to run a backup, and how long
-        # to retain the backup image. For example, “onvaults”.
+        # to retain the backup image. For example, `onvaults`.
         # Corresponds to the JSON property `policies`
         # @return [Array<String>]
         attr_accessor :policies
@@ -667,7 +665,7 @@ module Google
         # The names of Backup and DR advanced policy options of a policy applying to an
         # application. See the [Backup and DR documentation on policy options](https://
         # cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings).
-        # For example, “skipofflineappsincongrp, nounmap”.
+        # For example, `skipofflineappsincongrp, nounmap`.
         # Corresponds to the JSON property `policyOptions`
         # @return [Array<String>]
         attr_accessor :policy_options
@@ -675,7 +673,7 @@ module Google
         # The name of the Backup and DR resource profile that specifies the storage
         # media for backups of application and VM data. See the [Backup and DR
         # documentation on profiles](https://cloud.google.com/backup-disaster-recovery/
-        # docs/concepts/backup-plan#profile). For example, “GCP”.
+        # docs/concepts/backup-plan#profile). For example, `GCP`.
         # Corresponds to the JSON property `profile`
         # @return [String]
         attr_accessor :profile
@@ -684,7 +682,7 @@ module Google
         # appliance is storing data in. The storage pool could be of type Cloud, Primary,
         # Snapshot, or OnVault. See the [Backup and DR documentation on storage pools](
         # https://cloud.google.com/backup-disaster-recovery/docs/concepts/storage-pools).
-        # For example, “DiskPoolOne”.
+        # For example, `DiskPoolOne`.
         # Corresponds to the JSON property `storagePool`
         # @return [String]
         attr_accessor :storage_pool
@@ -2657,6 +2655,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :assignees
       
+        # The time when the case was closed, as reported by the external system.
+        # Corresponds to the JSON property `caseCloseTime`
+        # @return [String]
+        attr_accessor :case_close_time
+      
+        # The time when the case was created, as reported by the external system.
+        # Corresponds to the JSON property `caseCreateTime`
+        # @return [String]
+        attr_accessor :case_create_time
+      
         # The priority of the finding's corresponding case in the external system.
         # Corresponds to the JSON property `casePriority`
         # @return [String]
@@ -2710,6 +2718,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assignees = args[:assignees] if args.key?(:assignees)
+          @case_close_time = args[:case_close_time] if args.key?(:case_close_time)
+          @case_create_time = args[:case_create_time] if args.key?(:case_create_time)
           @case_priority = args[:case_priority] if args.key?(:case_priority)
           @case_sla = args[:case_sla] if args.key?(:case_sla)
           @case_uri = args[:case_uri] if args.key?(:case_uri)
@@ -3660,15 +3670,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The base URI that identifies the network location of the application in which
-        # the vulnerability was detected. Examples: http://11.22.33.44, http://foo.com,
-        # http://11.22.33.44:8080
+        # the vulnerability was detected. For example, `http://example.com`.
         # Corresponds to the JSON property `baseUri`
         # @return [String]
         attr_accessor :base_uri
       
         # The full URI with payload that could be used to reproduce the vulnerability.
-        # Example: http://11.22.33.44/reflected/parameter/attribute/singlequoted/js?p=
-        # aMmYgI6H
+        # For example, `http://example.com?p=aMmYgI6H`.
         # Corresponds to the JSON property `fullUri`
         # @return [String]
         attr_accessor :full_uri
@@ -3752,14 +3760,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the Backup and DR appliance that captures, moves, and manages the
-        # lifecycle of backup data. For example, “backup-server-57137”.
+        # lifecycle of backup data. For example, `backup-server-57137`.
         # Corresponds to the JSON property `appliance`
         # @return [String]
         attr_accessor :appliance
       
         # The names of Backup and DR applications. An application is a VM, database, or
         # file system on a managed host monitored by a backup and recovery appliance.
-        # For example, “centos7-01-vol00”, “centos7-01-vol01”, “centos7-01-vol02”.
+        # For example, `centos7-01-vol00`, `centos7-01-vol01`, `centos7-01-vol02`.
         # Corresponds to the JSON property `applications`
         # @return [Array<String>]
         attr_accessor :applications
@@ -3772,13 +3780,13 @@ module Google
         # The name of a Backup and DR template which comprises one or more backup
         # policies. See the [Backup and DR documentation](https://cloud.google.com/
         # backup-disaster-recovery/docs/concepts/backup-plan#temp) for more information.
-        # For example, “snap-ov”.
+        # For example, `snap-ov`.
         # Corresponds to the JSON property `backupTemplate`
         # @return [String]
         attr_accessor :backup_template
       
-        # The backup type of the Backup and DR image. For example, “Snapshot”, “Remote
-        # Snapshot”, “OnVault”.
+        # The backup type of the Backup and DR image. For example, `Snapshot`, `Remote
+        # Snapshot`, `OnVault`.
         # Corresponds to the JSON property `backupType`
         # @return [String]
         attr_accessor :backup_type
@@ -3788,14 +3796,14 @@ module Google
         # (for example, Compute Engine, SQL Server, Oracle DB, SMB file system, etc.),
         # vCenter, or an ESX server. See the [Backup and DR documentation on hosts](
         # https://cloud.google.com/backup-disaster-recovery/docs/configuration/manage-
-        # hosts-and-their-applications) for more information. For example, “centos7-01”.
+        # hosts-and-their-applications) for more information. For example, `centos7-01`.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
         # The names of Backup and DR policies that are associated with a template and
         # that define when to run a backup, how frequently to run a backup, and how long
-        # to retain the backup image. For example, “onvaults”.
+        # to retain the backup image. For example, `onvaults`.
         # Corresponds to the JSON property `policies`
         # @return [Array<String>]
         attr_accessor :policies
@@ -3803,7 +3811,7 @@ module Google
         # The names of Backup and DR advanced policy options of a policy applying to an
         # application. See the [Backup and DR documentation on policy options](https://
         # cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings).
-        # For example, “skipofflineappsincongrp, nounmap”.
+        # For example, `skipofflineappsincongrp, nounmap`.
         # Corresponds to the JSON property `policyOptions`
         # @return [Array<String>]
         attr_accessor :policy_options
@@ -3811,7 +3819,7 @@ module Google
         # The name of the Backup and DR resource profile that specifies the storage
         # media for backups of application and VM data. See the [Backup and DR
         # documentation on profiles](https://cloud.google.com/backup-disaster-recovery/
-        # docs/concepts/backup-plan#profile). For example, “GCP”.
+        # docs/concepts/backup-plan#profile). For example, `GCP`.
         # Corresponds to the JSON property `profile`
         # @return [String]
         attr_accessor :profile
@@ -3820,7 +3828,7 @@ module Google
         # appliance is storing data in. The storage pool could be of type Cloud, Primary,
         # Snapshot, or OnVault. See the [Backup and DR documentation on storage pools](
         # https://cloud.google.com/backup-disaster-recovery/docs/concepts/storage-pools).
-        # For example, “DiskPoolOne”.
+        # For example, `DiskPoolOne`.
         # Corresponds to the JSON property `storagePool`
         # @return [String]
         attr_accessor :storage_pool
@@ -4609,6 +4617,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :assignees
       
+        # The time when the case was closed, as reported by the external system.
+        # Corresponds to the JSON property `caseCloseTime`
+        # @return [String]
+        attr_accessor :case_close_time
+      
+        # The time when the case was created, as reported by the external system.
+        # Corresponds to the JSON property `caseCreateTime`
+        # @return [String]
+        attr_accessor :case_create_time
+      
         # The priority of the finding's corresponding case in the external system.
         # Corresponds to the JSON property `casePriority`
         # @return [String]
@@ -4666,6 +4684,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assignees = args[:assignees] if args.key?(:assignees)
+          @case_close_time = args[:case_close_time] if args.key?(:case_close_time)
+          @case_create_time = args[:case_create_time] if args.key?(:case_create_time)
           @case_priority = args[:case_priority] if args.key?(:case_priority)
           @case_sla = args[:case_sla] if args.key?(:case_sla)
           @case_uri = args[:case_uri] if args.key?(:case_uri)
@@ -5789,13 +5809,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The detected value that violates the deployed posture, for example, `false` or
-        # `allowed_values=`"projects/22831892”``.
+        # `allowed_values=`"projects/22831892"``.
         # Corresponds to the JSON property `detectedValue`
         # @return [String]
         attr_accessor :detected_value
       
         # The value of this field that was configured in a posture, for example, `true`
-        # or `allowed_values=`"projects/29831892”``.
+        # or `allowed_values=`"projects/29831892"``.
         # Corresponds to the JSON property `expectedValue`
         # @return [String]
         attr_accessor :expected_value
@@ -8135,19 +8155,19 @@ module Google
         end
       end
       
-      # The policy field that violates the deployed posture and its expected and and
+      # The policy field that violates the deployed posture and its expected and
       # detected values.
       class PolicyDriftDetails
         include Google::Apis::Core::Hashable
       
         # The detected value that violates the deployed posture, for example, `false` or
-        # `allowed_values=`"projects/22831892”``.
+        # `allowed_values=`"projects/22831892"``.
         # Corresponds to the JSON property `detectedValue`
         # @return [String]
         attr_accessor :detected_value
       
         # The value of this field that was configured in a posture, for example, `true`
-        # or `allowed_values=`"projects/29831892”``.
+        # or `allowed_values=`"projects/29831892"``.
         # Corresponds to the JSON property `expectedValue`
         # @return [String]
         attr_accessor :expected_value
