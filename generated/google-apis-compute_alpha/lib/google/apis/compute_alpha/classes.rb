@@ -45167,9 +45167,15 @@ module Google
         # @return [String]
         attr_accessor :producer_forwarding_rule
       
-        # The number of VPCs to which this endpoint is allowed to be propagated per
-        # accept list resource (project or network). For ACCEPT_AUTOMATIC service
-        # attachment, this limit is default to per project.
+        # The number of consumer Network Connectivity Center spokes that connected
+        # Private Service Connect endpoints can be propagated to. This limit lets a
+        # service producer indirectly limit how many propagated Private Service Connect
+        # connections can be established to the producer's service attachment. If the
+        # connection preference of the service attachment is ACCEPT_MANUAL, the limit
+        # applies to each project or network that is listed in the consumer accept list.
+        # If the connection preference of the service attachment is ACCEPT_AUTOMATIC,
+        # the limit applies to each project that contains a connected endpoint. If
+        # unspecified, the default propagated connection limit is 250.
         # Corresponds to the JSON property `propagatedConnectionLimit`
         # @return [Fixnum]
         attr_accessor :propagated_connection_limit
@@ -45386,6 +45392,12 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
+        # The number of consumer Network Connectivity Center spokes that the connected
+        # Private Service Connect endpoint has propagated to.
+        # Corresponds to the JSON property `propagatedConnectionCount`
+        # @return [Fixnum]
+        attr_accessor :propagated_connection_count
+      
         # The PSC connection id of the connected endpoint.
         # Corresponds to the JSON property `pscConnectionId`
         # @return [Fixnum]
@@ -45404,6 +45416,7 @@ module Google
         def update!(**args)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @propagated_connection_count = args[:propagated_connection_count] if args.key?(:propagated_connection_count)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @status = args[:status] if args.key?(:status)
         end
