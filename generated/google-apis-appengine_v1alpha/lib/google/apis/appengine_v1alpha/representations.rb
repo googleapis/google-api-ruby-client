@@ -444,6 +444,7 @@ module Google
           property :abuse, as: 'abuse'
           property :billing, as: 'billing'
           property :data_governance, as: 'dataGovernance'
+          property :service_activation, as: 'serviceActivation'
           property :service_management, as: 'serviceManagement'
         end
       end
