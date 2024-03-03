@@ -549,6 +549,13 @@ module Google
       class CheckInfo
         include Google::Apis::Core::Hashable
       
+        # The unique id of the api key in the format of "apikey:". This field will be
+        # populated when the consumer passed to Chemist is an API key and all the API
+        # key related validations are successful.
+        # Corresponds to the JSON property `apiKeyUid`
+        # @return [String]
+        attr_accessor :api_key_uid
+      
         # `ConsumerInfo` provides information about the consumer.
         # Corresponds to the JSON property `consumerInfo`
         # @return [Google::Apis::ServicecontrolV1::ConsumerInfo]
@@ -567,6 +574,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_key_uid = args[:api_key_uid] if args.key?(:api_key_uid)
           @consumer_info = args[:consumer_info] if args.key?(:consumer_info)
           @unused_arguments = args[:unused_arguments] if args.key?(:unused_arguments)
         end

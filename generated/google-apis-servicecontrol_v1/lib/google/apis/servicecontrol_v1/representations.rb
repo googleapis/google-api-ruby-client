@@ -485,6 +485,7 @@ module Google
       class CheckInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_uid, as: 'apiKeyUid'
           property :consumer_info, as: 'consumerInfo', class: Google::Apis::ServicecontrolV1::ConsumerInfo, decorator: Google::Apis::ServicecontrolV1::ConsumerInfo::Representation
       
           collection :unused_arguments, as: 'unusedArguments'
