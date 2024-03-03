@@ -479,8 +479,8 @@ module Google
       
         # Required. The resource link for the VPC network in which cluster resources are
         # created and from which they are accessible via Private IP. The network must
-        # belong to the same project as the cluster. It is specified in the form: "
-        # projects/`project`/global/networks/`network_id`". This is required to create a
+        # belong to the same project as the cluster. It is specified in the form: `
+        # projects/`project`/global/networks/`network_id``. This is required to create a
         # cluster. Deprecated, use network_config.network instead.
         # Corresponds to the JSON property `network`
         # @return [String]
@@ -497,6 +497,11 @@ module Google
         # Corresponds to the JSON property `primaryConfig`
         # @return [Google::Apis::AlloydbV1beta::PrimaryConfig]
         attr_accessor :primary_config
+      
+        # PscConfig contains PSC related configuration at a cluster level.
+        # Corresponds to the JSON property `pscConfig`
+        # @return [Google::Apis::AlloydbV1beta::PscConfig]
+        attr_accessor :psc_config
       
         # Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to
         # true if the current state of Cluster does not match the user's intended state,
@@ -567,6 +572,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @network_config = args[:network_config] if args.key?(:network_config)
           @primary_config = args[:primary_config] if args.key?(:primary_config)
+          @psc_config = args[:psc_config] if args.key?(:psc_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secondary_config = args[:secondary_config] if args.key?(:secondary_config)
@@ -1589,8 +1595,8 @@ module Google
       
         # Optional. The resource link for the VPC network in which cluster resources are
         # created and from which they are accessible via Private IP. The network must
-        # belong to the same project as the cluster. It is specified in the form: "
-        # projects/`project_number`/global/networks/`network_id`". This is required to
+        # belong to the same project as the cluster. It is specified in the form: `
+        # projects/`project_number`/global/networks/`network_id``. This is required to
         # create a cluster.
         # Corresponds to the JSON property `network`
         # @return [String]
@@ -1835,6 +1841,27 @@ module Google
         end
       end
       
+      # PscConfig contains PSC related configuration at a cluster level.
+      class PscConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Create an instance that allows connections from Private Service
+        # Connect endpoints to the instance.
+        # Corresponds to the JSON property `pscEnabled`
+        # @return [Boolean]
+        attr_accessor :psc_enabled
+        alias_method :psc_enabled?, :psc_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
+        end
+      end
+      
       # PscInstanceConfig contains PSC related configuration at an instance level.
       class PscInstanceConfig
         include Google::Apis::Core::Hashable
@@ -1875,7 +1902,7 @@ module Google
       
         # Output only. The service attachment created when Private Service Connect (PSC)
         # is enabled for the instance. The name of the resource will be in the format of
-        # projects//regions//serviceAttachments/
+        # `projects//regions//serviceAttachments/`
         # Corresponds to the JSON property `serviceAttachmentLink`
         # @return [String]
         attr_accessor :service_attachment_link
@@ -1909,8 +1936,8 @@ module Google
         attr_accessor :consumer_endpoint_ips
       
         # The NetworkAttachment resource created in the consumer VPC to which the PSC
-        # interface will be linked, in the form of: "projects/$`CONSUMER_PROJECT`/
-        # regions/$`REGION`/networkAttachments/$`NETWORK_ATTACHMENT_NAME`".
+        # interface will be linked, in the form of: `projects/$`CONSUMER_PROJECT`/
+        # regions/$`REGION`/networkAttachments/$`NETWORK_ATTACHMENT_NAME``.
         # NetworkAttachment has to be provided when the PSC interface is created.
         # Corresponds to the JSON property `networkAttachment`
         # @return [String]
@@ -2755,7 +2782,7 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
         include Google::Apis::Core::Hashable
       
-        # Required. Any other additional metadata specific to recommendation
+        # Optional. Any other additional metadata specific to recommendation
         # Corresponds to the JSON property `additionalMetadata`
         # @return [Hash<String,Object>]
         attr_accessor :additional_metadata
@@ -2859,6 +2886,11 @@ module Google
         # @return [String]
         attr_accessor :code
       
+        # 
+        # Corresponds to the JSON property `errorType`
+        # @return [String]
+        attr_accessor :error_type
+      
         # Additional information about the error encountered. REQUIRED
         # Corresponds to the JSON property `message`
         # @return [String]
@@ -2871,6 +2903,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code = args[:code] if args.key?(:code)
+          @error_type = args[:error_type] if args.key?(:error_type)
           @message = args[:message] if args.key?(:message)
         end
       end
