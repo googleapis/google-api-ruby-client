@@ -1932,6 +1932,55 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists Memberships bound to a Scope. The response includes relevant Memberships
+        # from all regions.
+        # @param [String] scope_name
+        #   Required. Name of the Scope, in the format `projects/*/locations/global/scopes/
+        #   *`, to which the Memberships are bound.
+        # @param [String] filter
+        #   Optional. Lists Memberships that match the filter expression, following the
+        #   syntax outlined in https://google.aip.dev/160. Currently, filtering can be
+        #   done only based on Memberships's `name`, `labels`, `create_time`, `update_time`
+        #   , and `unique_id`.
+        # @param [Fixnum] page_size
+        #   Optional. When requesting a 'page' of resources, `page_size` specifies number
+        #   of resources to return. If unspecified or set to 0, all resources will be
+        #   returned. Pagination is currently not supported; therefore, setting this field
+        #   does not have any impact for now.
+        # @param [String] page_token
+        #   Optional. Token returned by previous call to `ListBoundMemberships` which
+        #   specifies the position in the list from where to continue listing the
+        #   resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::ListBoundMembershipsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::ListBoundMembershipsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_scope_memberships(scope_name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+scopeName}:listMemberships', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::ListBoundMembershipsResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::ListBoundMembershipsResponse
+          command.params['scopeName'] = scope_name unless scope_name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists permitted Scopes.
         # @param [String] parent
         #   Required. The parent (project and location) where the Scope will be listed.

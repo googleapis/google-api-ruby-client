@@ -580,6 +580,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBoundMembershipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListFeaturesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1978,6 +1984,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :admin_cluster_memberships, as: 'adminClusterMemberships', class: Google::Apis::GkehubV1alpha::Membership, decorator: Google::Apis::GkehubV1alpha::Membership::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListBoundMembershipsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :memberships, as: 'memberships', class: Google::Apis::GkehubV1alpha::Membership, decorator: Google::Apis::GkehubV1alpha::Membership::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
