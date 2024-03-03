@@ -4028,6 +4028,11 @@ module Google
         # @return [Google::Apis::ContainerV1::SandboxConfig]
         attr_accessor :sandbox_config
       
+        # List of secondary boot disks attached to the nodes.
+        # Corresponds to the JSON property `secondaryBootDisks`
+        # @return [Array<Google::Apis::ContainerV1::SecondaryBootDisk>]
+        attr_accessor :secondary_boot_disks
+      
         # The Google Cloud Platform Service Account to be used by the node VMs. Specify
         # the email address of the Service Account; otherwise, if no Service Account is
         # specified, the "default" service account is used.
@@ -4115,6 +4120,7 @@ module Google
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
+          @secondary_boot_disks = args[:secondary_boot_disks] if args.key?(:secondary_boot_disks)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @sole_tenant_config = args[:sole_tenant_config] if args.key?(:sole_tenant_config)
@@ -5499,6 +5505,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # SecondaryBootDisk represents a persistent disk attached to a node with special
+      # configurations based on its mode.
+      class SecondaryBootDisk
+        include Google::Apis::Core::Hashable
+      
+        # Fully-qualified resource ID for an existing disk image.
+        # Corresponds to the JSON property `diskImage`
+        # @return [String]
+        attr_accessor :disk_image
+      
+        # Disk mode (container image cache, etc.)
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_image = args[:disk_image] if args.key?(:disk_image)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
