@@ -3307,6 +3307,39 @@ module Google
         end
       end
       
+      # List of Memberships bound to a Scope.
+      class ListBoundMembershipsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Memberships bound to the given Scope.
+        # Corresponds to the JSON property `memberships`
+        # @return [Array<Google::Apis::GkehubV1alpha::Membership>]
+        attr_accessor :memberships
+      
+        # A token to request the next page of resources from the `ListBoundMemberships`
+        # method. The value of an empty string means that there are no more resources to
+        # return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of locations that could not be reached while fetching this list.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memberships = args[:memberships] if args.key?(:memberships)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response message for the `GkeHub.ListFeatures` method.
       class ListFeaturesResponse
         include Google::Apis::Core::Hashable
