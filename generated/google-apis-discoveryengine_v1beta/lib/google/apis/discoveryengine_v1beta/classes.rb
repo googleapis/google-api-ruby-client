@@ -2076,6 +2076,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration for chunking config.
+        # Corresponds to the JSON property `chunkingConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig]
+        attr_accessor :chunking_config
+      
         # Related configurations applied to a specific type of document parser.
         # Corresponds to the JSON property `defaultParsingConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig]
@@ -2108,10 +2113,58 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunking_config = args[:chunking_config] if args.key?(:chunking_config)
           @default_parsing_config = args[:default_parsing_config] if args.key?(:default_parsing_config)
           @name = args[:name] if args.key?(:name)
           @ocr_config = args[:ocr_config] if args.key?(:ocr_config)
           @parsing_config_overrides = args[:parsing_config_overrides] if args.key?(:parsing_config_overrides)
+        end
+      end
+      
+      # Configuration for chunking config.
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for the layout based chunking.
+        # Corresponds to the JSON property `layoutBasedChunkingConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig]
+        attr_accessor :layout_based_chunking_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @layout_based_chunking_config = args[:layout_based_chunking_config] if args.key?(:layout_based_chunking_config)
+        end
+      end
+      
+      # Configuration for the layout based chunking.
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The token size limit for each chunk. Supported values: 100-500 (inclusive).
+        # Default value: 500.
+        # Corresponds to the JSON property `chunkSize`
+        # @return [Fixnum]
+        attr_accessor :chunk_size
+      
+        # Whether to include appending different levels of headings to chunks from the
+        # middle of the document to prevent context loss. Default value: False.
+        # Corresponds to the JSON property `includeAncestorHeadings`
+        # @return [Boolean]
+        attr_accessor :include_ancestor_headings
+        alias_method :include_ancestor_headings?, :include_ancestor_headings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_size = args[:chunk_size] if args.key?(:chunk_size)
+          @include_ancestor_headings = args[:include_ancestor_headings] if args.key?(:include_ancestor_headings)
         end
       end
       
