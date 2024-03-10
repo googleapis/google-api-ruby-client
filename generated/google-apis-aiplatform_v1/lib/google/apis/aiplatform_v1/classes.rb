@@ -1858,6 +1858,27 @@ module Google
         end
       end
       
+      # Request message for PipelineService.BatchCancelPipelineJobs.
+      class GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The names of the PipelineJobs to cancel. A maximum of 32
+        # PipelineJobs can be cancelled in a batch. Format: `projects/`project`/
+        # locations/`location`/pipelineJobs/`pipelineJob``
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
       # Details of operations that perform batch create Features.
       class GoogleCloudAiplatformV1BatchCreateFeaturesOperationMetadata
         include Google::Apis::Core::Hashable
@@ -2028,6 +2049,27 @@ module Google
           @machine_spec = args[:machine_spec] if args.key?(:machine_spec)
           @max_replica_count = args[:max_replica_count] if args.key?(:max_replica_count)
           @starting_replica_count = args[:starting_replica_count] if args.key?(:starting_replica_count)
+        end
+      end
+      
+      # Request message for PipelineService.BatchDeletePipelineJobs.
+      class GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The names of the PipelineJobs to delete. A maximum of 32
+        # PipelineJobs can be deleted in a batch. Format: `projects/`project`/locations/`
+        # location`/pipelineJobs/`pipelineJob``
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
         end
       end
       
@@ -4811,7 +4853,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Required. Additional information about the DatasetVersion.
+        # Required. Output only. Additional information about the DatasetVersion.
         # Corresponds to the JSON property `metadata`
         # @return [Object]
         attr_accessor :metadata
@@ -9727,6 +9769,26 @@ module Google
         end
       end
       
+      # Contains information about the source of the models generated from Generative
+      # AI Studio.
+      class GoogleCloudAiplatformV1GenieSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The public base model URI.
+        # Corresponds to the JSON property `baseModelUri`
+        # @return [String]
+        attr_accessor :base_model_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_model_uri = args[:base_model_uri] if args.key?(:base_model_uri)
+        end
+      end
+      
       # Grounding attribution.
       class GoogleCloudAiplatformV1GroundingAttribution
         include Google::Apis::Core::Hashable
@@ -12896,6 +12958,12 @@ module Google
         # @return [String]
         attr_accessor :artifact_uri
       
+        # User input field to specify the base model source. Currently it only supports
+        # specifing the Model Garden models and Genie models.
+        # Corresponds to the JSON property `baseModelSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelBaseModelSource]
+        attr_accessor :base_model_source
+      
         # Specification of a container for serving predictions. Some fields in this
         # message correspond to fields in the [Kubernetes Container v1 core
         # specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/
@@ -13118,6 +13186,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @artifact_uri = args[:artifact_uri] if args.key?(:artifact_uri)
+          @base_model_source = args[:base_model_source] if args.key?(:base_model_source)
           @container_spec = args[:container_spec] if args.key?(:container_spec)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_stats = args[:data_stats] if args.key?(:data_stats)
@@ -13147,6 +13216,34 @@ module Google
           @version_description = args[:version_description] if args.key?(:version_description)
           @version_id = args[:version_id] if args.key?(:version_id)
           @version_update_time = args[:version_update_time] if args.key?(:version_update_time)
+        end
+      end
+      
+      # User input field to specify the base model source. Currently it only supports
+      # specifing the Model Garden models and Genie models.
+      class GoogleCloudAiplatformV1ModelBaseModelSource
+        include Google::Apis::Core::Hashable
+      
+        # Contains information about the source of the models generated from Generative
+        # AI Studio.
+        # Corresponds to the JSON property `genieSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenieSource]
+        attr_accessor :genie_source
+      
+        # Contains information about the source of the models generated from Model
+        # Garden.
+        # Corresponds to the JSON property `modelGardenSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelGardenSource]
+        attr_accessor :model_garden_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @genie_source = args[:genie_source] if args.key?(:genie_source)
+          @model_garden_source = args[:model_garden_source] if args.key?(:model_garden_source)
         end
       end
       
@@ -14137,6 +14234,26 @@ module Google
         def update!(**args)
           @exportable_contents = args[:exportable_contents] if args.key?(:exportable_contents)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Contains information about the source of the models generated from Model
+      # Garden.
+      class GoogleCloudAiplatformV1ModelGardenSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The model garden source model resource name.
+        # Corresponds to the JSON property `publicModelName`
+        # @return [String]
+        attr_accessor :public_model_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_model_name = args[:public_model_name] if args.key?(:public_model_name)
         end
       end
       

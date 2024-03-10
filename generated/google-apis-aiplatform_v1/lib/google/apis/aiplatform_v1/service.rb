@@ -13674,6 +13674,79 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Batch cancel PipelineJobs. Firstly the server will check if all the jobs are
+        # in non-terminal states, and skip the jobs that are already terminated. If the
+        # operation failed, none of the pipeline jobs are cancelled. The server will
+        # poll the states of all the pipeline jobs periodically to check the
+        # cancellation status. This operation will return an LRO.
+        # @param [String] parent
+        #   Required. The name of the PipelineJobs' parent resource. Format: `projects/`
+        #   project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest] google_cloud_aiplatform_v1_batch_cancel_pipeline_jobs_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_pipeline_job_cancel(parent, google_cloud_aiplatform_v1_batch_cancel_pipeline_jobs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/pipelineJobs:batchCancel', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_batch_cancel_pipeline_jobs_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Batch deletes PipelineJobs The Operation is atomic. If it fails, none of the
+        # PipelineJobs are deleted. If it succeeds, all of the PipelineJobs are deleted.
+        # @param [String] parent
+        #   Required. The name of the PipelineJobs' parent resource. Format: `projects/`
+        #   project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest] google_cloud_aiplatform_v1_batch_delete_pipeline_jobs_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_pipeline_job_delete(parent, google_cloud_aiplatform_v1_batch_delete_pipeline_jobs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/pipelineJobs:batchDelete', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_batch_delete_pipeline_jobs_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Cancels a PipelineJob. Starts asynchronous cancellation on the PipelineJob.
         # The server makes a best effort to cancel the pipeline, but success is not
         # guaranteed. Clients can use PipelineService.GetPipelineJob or other methods to

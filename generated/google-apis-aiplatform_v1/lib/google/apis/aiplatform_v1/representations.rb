@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1BatchCreateFeaturesOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +377,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1BatchDedicatedResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1642,6 +1654,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1GenieSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1GroundingAttribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2218,6 +2236,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1ModelBaseModelSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1ModelContainerSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2315,6 +2339,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1ModelExportFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ModelGardenSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5678,6 +5708,13 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+        end
+      end
+      
       class GoogleCloudAiplatformV1BatchCreateFeaturesOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5741,6 +5778,13 @@ module Google
       
           property :max_replica_count, as: 'maxReplicaCount'
           property :starting_replica_count, as: 'startingReplicaCount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
         end
       end
       
@@ -7872,6 +7916,13 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1GenieSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_model_uri, as: 'baseModelUri'
+        end
+      end
+      
       class GoogleCloudAiplatformV1GroundingAttribution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8813,6 +8864,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_uri, as: 'artifactUri'
+          property :base_model_source, as: 'baseModelSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelBaseModelSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelBaseModelSource::Representation
+      
           property :container_spec, as: 'containerSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelContainerSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelContainerSpec::Representation
       
           property :create_time, as: 'createTime'
@@ -8851,6 +8904,16 @@ module Google
           property :version_description, as: 'versionDescription'
           property :version_id, as: 'versionId'
           property :version_update_time, as: 'versionUpdateTime'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ModelBaseModelSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :genie_source, as: 'genieSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenieSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenieSource::Representation
+      
+          property :model_garden_source, as: 'modelGardenSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelGardenSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelGardenSource::Representation
+      
         end
       end
       
@@ -9063,6 +9126,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exportable_contents, as: 'exportableContents'
           property :id, as: 'id'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ModelGardenSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_model_name, as: 'publicModelName'
         end
       end
       
