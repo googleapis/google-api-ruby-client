@@ -22,6 +22,32 @@ module Google
   module Apis
     module WorkstationsV1
       
+      # An accelerator card attached to the instance.
+      class Accelerator
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of accelerator cards exposed to the instance.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Optional. Type of accelerator resource to attach to the instance, for example,
+        # `"nvidia-tesla-p100"`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -320,6 +346,32 @@ module Google
         end
       end
       
+      # An ephemeral directory which won't persist across workstation sessions. It is
+      # freshly created on every workstation start operation.
+      class EphemeralDirectory
+        include Google::Apis::Core::Hashable
+      
+        # An EphemeralDirectory is backed by a Compute Engine persistent disk.
+        # Corresponds to the JSON property `gcePd`
+        # @return [Google::Apis::WorkstationsV1::GcePersistentDisk]
+        attr_accessor :gce_pd
+      
+        # Required. Location of this directory in the running workstation.
+        # Corresponds to the JSON property `mountPath`
+        # @return [String]
+        attr_accessor :mount_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gce_pd = args[:gce_pd] if args.key?(:gce_pd)
+          @mount_path = args[:mount_path] if args.key?(:mount_path)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -398,6 +450,12 @@ module Google
       class GceInstance
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of the type and count of accelerator cards attached to the
+        # instance.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::WorkstationsV1::Accelerator>]
+        attr_accessor :accelerators
+      
         # Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum
         # boot disk size is `30` GB. Defaults to `50` GB.
         # Corresponds to the JSON property `bootDiskSizeGb`
@@ -420,8 +478,14 @@ module Google
         attr_accessor :disable_public_ip_addresses
         alias_method :disable_public_ip_addresses?, :disable_public_ip_addresses
       
+        # Optional. Whether to disable SSH access to the VM.
+        # Corresponds to the JSON property `disableSsh`
+        # @return [Boolean]
+        attr_accessor :disable_ssh
+        alias_method :disable_ssh?, :disable_ssh
+      
         # Optional. Whether to enable nested virtualization on Cloud Workstations VMs
-        # created under this workstation configuration. Nested virtualization lets you
+        # created using this workstation configuration. Nested virtualization lets you
         # run virtual machine (VM) instances inside your workstation. Before enabling
         # nested virtualization, consider the following important considerations. Cloud
         # Workstations instances are subject to the [same restrictions as Compute Engine
@@ -514,9 +578,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @disable_public_ip_addresses = args[:disable_public_ip_addresses] if args.key?(:disable_public_ip_addresses)
+          @disable_ssh = args[:disable_ssh] if args.key?(:disable_ssh)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool_size = args[:pool_size] if args.key?(:pool_size)
@@ -528,10 +594,55 @@ module Google
         end
       end
       
-      # A PersistentDirectory backed by a Compute Engine regional persistent disk. The
-      # persistent_directories field is repeated, but it may contain only one entry.
-      # It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/
-      # persistent-disks) that mounts to the workstation VM at `/home` when the
+      # An EphemeralDirectory is backed by a Compute Engine persistent disk.
+      class GcePersistentDisk
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Optional. Whether the disk is read only. If true, the disk may be shared by
+        # multiple VMs and source_snapshot must be set.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
+        # Optional. Name of the disk image to use as the source for the disk. Must be
+        # empty if source_snapshot is set. Updating source_image will update content in
+        # the ephemeral directory after the workstation is restarted. This field is
+        # mutable.
+        # Corresponds to the JSON property `sourceImage`
+        # @return [String]
+        attr_accessor :source_image
+      
+        # Optional. Name of the snapshot to use as the source for the disk. Must be
+        # empty if source_image is set. Must be empty if read_only is false. Updating
+        # source_snapshot will update content in the ephemeral directory after the
+        # workstation is restarted. This field is mutable.
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @read_only = args[:read_only] if args.key?(:read_only)
+          @source_image = args[:source_image] if args.key?(:source_image)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
+        end
+      end
+      
+      # A Persistent Directory backed by a Compute Engine regional persistent disk.
+      # The persistent_directories field is repeated, but it may contain only one
+      # entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/
+      # disks/persistent-disks) that mounts to the workstation VM at `/home` when the
       # session starts and detaches when the session ends. If this field is empty,
       # workstations created with this configuration do not have a persistent home
       # directory.
@@ -1090,10 +1201,10 @@ module Google
       class PersistentDirectory
         include Google::Apis::Core::Hashable
       
-        # A PersistentDirectory backed by a Compute Engine regional persistent disk. The
-        # persistent_directories field is repeated, but it may contain only one entry.
-        # It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/
-        # persistent-disks) that mounts to the workstation VM at `/home` when the
+        # A Persistent Directory backed by a Compute Engine regional persistent disk.
+        # The persistent_directories field is repeated, but it may contain only one
+        # entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/
+        # disks/persistent-disks) that mounts to the workstation VM at `/home` when the
         # session starts and detaches when the session ends. If this field is empty,
         # workstations created with this configuration do not have a persistent home
         # directory.
@@ -1764,10 +1875,10 @@ module Google
         attr_accessor :delete_time
       
         # Optional. Disables support for plain TCP connections in the workstation. By
-        # default the service supports TCP connections via a websocket relay. Setting
-        # this option to true disables that relay, which prevents the usage of services
-        # that require plain tcp connections, such as ssh. When enabled, all
-        # communication must occur over https or wss.
+        # default the service supports TCP connections through a websocket relay.
+        # Setting this option to true disables that relay, which prevents the usage of
+        # services that require plain TCP connections, such as SSH. When enabled, all
+        # communication must occur over HTTPS or WSS.
         # Corresponds to the JSON property `disableTcpConnections`
         # @return [Boolean]
         attr_accessor :disable_tcp_connections
@@ -1796,6 +1907,12 @@ module Google
         # Corresponds to the JSON property `encryptionKey`
         # @return [Google::Apis::WorkstationsV1::CustomerEncryptionKey]
         attr_accessor :encryption_key
+      
+        # Optional. Ephemeral directories which won't persist across workstation
+        # sessions.
+        # Corresponds to the JSON property `ephemeralDirectories`
+        # @return [Array<Google::Apis::WorkstationsV1::EphemeralDirectory>]
+        attr_accessor :ephemeral_directories
       
         # Optional. Checksum computed by the server. May be sent on update and delete
         # requests to make sure that the client has an up-to-date value before
@@ -1904,6 +2021,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_audit_agent = args[:enable_audit_agent] if args.key?(:enable_audit_agent)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @ephemeral_directories = args[:ephemeral_directories] if args.key?(:ephemeral_directories)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
           @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
