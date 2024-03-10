@@ -1268,6 +1268,12 @@ module Google
       class SapComponent
         include Google::Apis::Core::Hashable
       
+        # A list of host URIs that are part of the HA configuration if present. An empty
+        # list indicates the component is not configured for HA.
+        # Corresponds to the JSON property `haHosts`
+        # @return [Array<String>]
+        attr_accessor :ha_hosts
+      
         # Output only. resources in the component
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::WorkloadmanagerV1::CloudResource>]
@@ -1278,14 +1284,21 @@ module Google
         # @return [String]
         attr_accessor :sid
       
+        # The detected topology of the component.
+        # Corresponds to the JSON property `topologyType`
+        # @return [String]
+        attr_accessor :topology_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @ha_hosts = args[:ha_hosts] if args.key?(:ha_hosts)
           @resources = args[:resources] if args.key?(:resources)
           @sid = args[:sid] if args.key?(:sid)
+          @topology_type = args[:topology_type] if args.key?(:topology_type)
         end
       end
       
