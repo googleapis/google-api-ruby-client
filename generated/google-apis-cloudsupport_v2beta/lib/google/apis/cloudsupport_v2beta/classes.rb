@@ -180,7 +180,7 @@ module Google
       # unique identifiers, an ID and a number, and they look like this: ``` projects/
       # abc/cases/456 ``` ``` projects/123/cases/456 ``` You can use either of them
       # when calling the API. To learn more about project identifiers, see [AIP-2510](
-      # https://google.aip.dev/cloud/2510). Next ID: 38
+      # https://google.aip.dev/cloud/2510).
       class Case
         include Google::Apis::Core::Hashable
       

@@ -320,7 +320,8 @@ module Google
         #   A token identifying the page of results to return. If unspecified, the first
         #   page is retrieved.
         # @param [String] product_line
-        #   The product line to request cases for.
+        #   The product line for which to request cases for. If unspecified, only Google
+        #   Cloud cases will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
