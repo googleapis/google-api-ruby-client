@@ -78,6 +78,11 @@ module Google
       class AptRepository
         include Google::Apis::Core::Hashable
       
+        # Customer-specified publicly available remote repository.
+        # Corresponds to the JSON property `customRepository`
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository]
+        attr_accessor :custom_repository
+      
         # Publicly available Apt repositories constructed from a common repository base
         # and a custom repository path.
         # Corresponds to the JSON property `publicRepository`
@@ -90,6 +95,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_repository = args[:custom_repository] if args.key?(:custom_repository)
           @public_repository = args[:public_repository] if args.key?(:public_repository)
         end
       end
@@ -441,6 +447,11 @@ module Google
       class DockerRepository
         include Google::Apis::Core::Hashable
       
+        # Customer-specified publicly available remote repository.
+        # Corresponds to the JSON property `customRepository`
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository]
+        attr_accessor :custom_repository
+      
         # One of the publicly available Docker repositories supported by Artifact
         # Registry.
         # Corresponds to the JSON property `publicRepository`
@@ -453,6 +464,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_repository = args[:custom_repository] if args.key?(:custom_repository)
           @public_repository = args[:public_repository] if args.key?(:public_repository)
         end
       end
@@ -476,6 +488,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @immutable_tags = args[:immutable_tags] if args.key?(:immutable_tags)
+        end
+      end
+      
+      # The response to download a file.
+      class DownloadFileResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -676,6 +701,26 @@ module Google
         end
       end
       
+      # Customer-specified publicly available remote repository.
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository
+        include Google::Apis::Core::Hashable
+      
+        # An http/https uri reference to the upstream remote repository, for ex: "https:/
+        # /my.apt.registry/".
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Publicly available Apt repositories constructed from a common repository base
       # and a custom repository path.
       class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
@@ -699,6 +744,106 @@ module Google
         def update!(**args)
           @repository_base = args[:repository_base] if args.key?(:repository_base)
           @repository_path = args[:repository_path] if args.key?(:repository_path)
+        end
+      end
+      
+      # Customer-specified publicly available remote repository.
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository
+        include Google::Apis::Core::Hashable
+      
+        # An http/https uri reference to the custom remote repository, for ex: "https://
+        # registry-1.docker.io".
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Customer-specified publicly available remote repository.
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository
+        include Google::Apis::Core::Hashable
+      
+        # An http/https uri reference to the upstream remote repository, for ex: "https:/
+        # /my.maven.registry/".
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Customer-specified publicly available remote repository.
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository
+        include Google::Apis::Core::Hashable
+      
+        # An http/https uri reference to the upstream remote repository, for ex: "https:/
+        # /my.npm.registry/".
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Customer-specified publicly available remote repository.
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository
+        include Google::Apis::Core::Hashable
+      
+        # An http/https uri reference to the upstream remote repository, for ex: "https:/
+        # /my.python.registry/".
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Customer-specified publicly available remote repository.
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository
+        include Google::Apis::Core::Hashable
+      
+        # An http/https uri reference to the upstream remote repository, for ex: "https:/
+        # /my.yum.registry/".
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1493,6 +1638,11 @@ module Google
       class MavenRepository
         include Google::Apis::Core::Hashable
       
+        # Customer-specified publicly available remote repository.
+        # Corresponds to the JSON property `customRepository`
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository]
+        attr_accessor :custom_repository
+      
         # One of the publicly available Maven repositories supported by Artifact
         # Registry.
         # Corresponds to the JSON property `publicRepository`
@@ -1505,6 +1655,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_repository = args[:custom_repository] if args.key?(:custom_repository)
           @public_repository = args[:public_repository] if args.key?(:public_repository)
         end
       end
@@ -1593,6 +1744,11 @@ module Google
       class NpmRepository
         include Google::Apis::Core::Hashable
       
+        # Customer-specified publicly available remote repository.
+        # Corresponds to the JSON property `customRepository`
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository]
+        attr_accessor :custom_repository
+      
         # One of the publicly available Npm repositories supported by Artifact Registry.
         # Corresponds to the JSON property `publicRepository`
         # @return [String]
@@ -1604,6 +1760,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_repository = args[:custom_repository] if args.key?(:custom_repository)
           @public_repository = args[:public_repository] if args.key?(:public_repository)
         end
       end
@@ -1687,6 +1844,11 @@ module Google
       class Package
         include Google::Apis::Core::Hashable
       
+        # Optional. Client specified annotations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # The time when the package was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1716,6 +1878,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
@@ -1897,6 +2060,11 @@ module Google
       class PythonRepository
         include Google::Apis::Core::Hashable
       
+        # Customer-specified publicly available remote repository.
+        # Corresponds to the JSON property `customRepository`
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository]
+        attr_accessor :custom_repository
+      
         # One of the publicly available Python repositories supported by Artifact
         # Registry.
         # Corresponds to the JSON property `publicRepository`
@@ -1909,6 +2077,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_repository = args[:custom_repository] if args.key?(:custom_repository)
           @public_repository = args[:public_repository] if args.key?(:public_repository)
         end
       end
@@ -1926,6 +2095,13 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Input only. A create/update remote repo option to avoid making a HEAD/GET
+        # request to validate a remote repo and any supplied upstream credentials.
+        # Corresponds to the JSON property `disableUpstreamValidation`
+        # @return [Boolean]
+        attr_accessor :disable_upstream_validation
+        alias_method :disable_upstream_validation?, :disable_upstream_validation
       
         # Configuration for a Docker remote repository.
         # Corresponds to the JSON property `dockerRepository`
@@ -1965,6 +2141,7 @@ module Google
         def update!(**args)
           @apt_repository = args[:apt_repository] if args.key?(:apt_repository)
           @description = args[:description] if args.key?(:description)
+          @disable_upstream_validation = args[:disable_upstream_validation] if args.key?(:disable_upstream_validation)
           @docker_repository = args[:docker_repository] if args.key?(:docker_repository)
           @maven_repository = args[:maven_repository] if args.key?(:maven_repository)
           @npm_repository = args[:npm_repository] if args.key?(:npm_repository)
@@ -2789,6 +2966,11 @@ module Google
       class YumRepository
         include Google::Apis::Core::Hashable
       
+        # Customer-specified publicly available remote repository.
+        # Corresponds to the JSON property `customRepository`
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository]
+        attr_accessor :custom_repository
+      
         # Publicly available Yum repositories constructed from a common repository base
         # and a custom repository path.
         # Corresponds to the JSON property `publicRepository`
@@ -2801,6 +2983,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_repository = args[:custom_repository] if args.key?(:custom_repository)
           @public_repository = args[:public_repository] if args.key?(:public_repository)
         end
       end
