@@ -438,6 +438,191 @@ module Google
         end
       end
       
+      # Message describing Endpoint object
+      class FirewallEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of networks that are associated with this endpoint in the
+        # local zone. This is a projection of the FirewallEndpointAssociations pointing
+        # at this endpoint. A network will only appear in this list after traffic
+        # routing is fully configured. Format: projects/`project`/global/networks/`name`.
+        # Corresponds to the JSON property `associatedNetworks`
+        # @return [Array<String>]
+        attr_accessor :associated_networks
+      
+        # Output only. List of FirewallEndpointAssociations that are associated to this
+        # endpoint. An association will only appear in this list after traffic routing
+        # is fully configured.
+        # Corresponds to the JSON property `associations`
+        # @return [Array<Google::Apis::NetworksecurityV1::FirewallEndpointAssociationReference>]
+        attr_accessor :associations
+      
+        # Required. Project to bill on endpoint uptime usage.
+        # Corresponds to the JSON property `billingProjectId`
+        # @return [String]
+        attr_accessor :billing_project_id
+      
+        # Output only. Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the firewall endpoint. Max length 2048 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. name of resource
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the endpoint.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associated_networks = args[:associated_networks] if args.key?(:associated_networks)
+          @associations = args[:associations] if args.key?(:associations)
+          @billing_project_id = args[:billing_project_id] if args.key?(:billing_project_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message describing Association object
+      class FirewallEndpointAssociation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Whether the association is disabled. True indicates that traffic won'
+        # t be intercepted
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Required. The URL of the FirewallEndpoint that is being associated.
+        # Corresponds to the JSON property `firewallEndpoint`
+        # @return [String]
+        attr_accessor :firewall_endpoint
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. name of resource
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The URL of the network that is being associated.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the association.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. The URL of the TlsInspectionPolicy that is being associated.
+        # Corresponds to the JSON property `tlsInspectionPolicy`
+        # @return [String]
+        attr_accessor :tls_inspection_policy
+      
+        # Output only. Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @firewall_endpoint = args[:firewall_endpoint] if args.key?(:firewall_endpoint)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @tls_inspection_policy = args[:tls_inspection_policy] if args.key?(:tls_inspection_policy)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # This is a subset of the FirewallEndpointAssociation message, containing fields
+      # to be used by the consumer.
+      class FirewallEndpointAssociationReference
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the FirewallEndpointAssociation. Format:
+        # projects/`project`/locations/`location`/firewallEndpointAssociations/`id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The VPC network associated. Format: projects/`project`/global/
+        # networks/`name`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+        end
+      end
+      
       # The GatewaySecurityPolicy resource contains a collection of
       # GatewaySecurityPolicyRules and associated metadata.
       class GatewaySecurityPolicy
@@ -1146,6 +1331,68 @@ module Google
         end
       end
       
+      # Message for response to listing Associations
+      class ListFirewallEndpointAssociationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Association
+        # Corresponds to the JSON property `firewallEndpointAssociations`
+        # @return [Array<Google::Apis::NetworksecurityV1::FirewallEndpointAssociation>]
+        attr_accessor :firewall_endpoint_associations
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @firewall_endpoint_associations = args[:firewall_endpoint_associations] if args.key?(:firewall_endpoint_associations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing Endpoints
+      class ListFirewallEndpointsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Endpoint
+        # Corresponds to the JSON property `firewallEndpoints`
+        # @return [Array<Google::Apis::NetworksecurityV1::FirewallEndpoint>]
+        attr_accessor :firewall_endpoints
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @firewall_endpoints = args[:firewall_endpoints] if args.key?(:firewall_endpoints)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response returned by the ListGatewaySecurityPolicies method.
       class ListGatewaySecurityPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -1259,6 +1506,60 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response returned by the ListSecurityProfileGroups method.
+      class ListSecurityProfileGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of SecurityProfileGroups resources.
+        # Corresponds to the JSON property `securityProfileGroups`
+        # @return [Array<Google::Apis::NetworksecurityV1::SecurityProfileGroup>]
+        attr_accessor :security_profile_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_profile_groups = args[:security_profile_groups] if args.key?(:security_profile_groups)
+        end
+      end
+      
+      # Response returned by the ListSecurityProfiles method.
+      class ListSecurityProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of SecurityProfile resources.
+        # Corresponds to the JSON property `securityProfiles`
+        # @return [Array<Google::Apis::NetworksecurityV1::SecurityProfile>]
+        attr_accessor :security_profiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_profiles = args[:security_profiles] if args.key?(:security_profiles)
         end
       end
       
@@ -1628,6 +1929,135 @@ module Google
         end
       end
       
+      # SecurityProfile is a resource that defines the behavior for one of many
+      # ProfileTypes. Next ID: 9
+      class SecurityProfile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource creation timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An optional description of the profile. Max length 512 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. This checksum is computed by the server based on the value of
+        # other fields, and may be sent on update and delete requests to ensure the
+        # client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Labels as key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. Name of the SecurityProfile resource. It matches
+        # pattern `projects|organizations/*/locations/`location`/securityProfiles/`
+        # security_profile``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ThreatPreventionProfile defines an action for specific threat signatures or
+        # severity levels.
+        # Corresponds to the JSON property `threatPreventionProfile`
+        # @return [Google::Apis::NetworksecurityV1::ThreatPreventionProfile]
+        attr_accessor :threat_prevention_profile
+      
+        # Immutable. The single ProfileType that the SecurityProfile resource configures.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Last resource update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @threat_prevention_profile = args[:threat_prevention_profile] if args.key?(:threat_prevention_profile)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # SecurityProfileGroup is a resource that defines the behavior for various
+      # ProfileTypes. Next ID: 8
+      class SecurityProfileGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource creation timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An optional description of the profile group. Max length 2048
+        # characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. This checksum is computed by the server based on the value of
+        # other fields, and may be sent on update and delete requests to ensure the
+        # client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Labels as key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches
+        # pattern `projects|organizations/*/locations/`location`/securityProfileGroups/`
+        # security_profile_group``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Reference to a SecurityProfile with the threat prevention
+        # configuration for the SecurityProfileGroup.
+        # Corresponds to the JSON property `threatPreventionProfile`
+        # @return [String]
+        attr_accessor :threat_prevention_profile
+      
+        # Output only. Last resource update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @threat_prevention_profile = args[:threat_prevention_profile] if args.key?(:threat_prevention_profile)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # ServerTlsPolicy is a resource that specifies how a server should authenticate
       # incoming requests. This resource itself does not affect configuration unless
       # it is attached to a target HTTPS proxy or endpoint config selector resource.
@@ -1707,6 +2137,31 @@ module Google
         end
       end
       
+      # Defines what action to take for a specific severity match.
+      class SeverityOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. Threat action override.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. Severity level to match.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # Specification of traffic source attributes.
       class Source
         include Google::Apis::Core::Hashable
@@ -1777,6 +2232,66 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Defines what action to take for a specific threat_id match.
+      class ThreatOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. Threat action override. For some threat types, only a subset of
+        # actions applies.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. Vendor-specific ID of a threat to override.
+        # Corresponds to the JSON property `threatId`
+        # @return [String]
+        attr_accessor :threat_id
+      
+        # Output only. Type of the threat (read only).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @threat_id = args[:threat_id] if args.key?(:threat_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # ThreatPreventionProfile defines an action for specific threat signatures or
+      # severity levels.
+      class ThreatPreventionProfile
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Configuration for overriding threats actions by severity match.
+        # Corresponds to the JSON property `severityOverrides`
+        # @return [Array<Google::Apis::NetworksecurityV1::SeverityOverride>]
+        attr_accessor :severity_overrides
+      
+        # Optional. Configuration for overriding threats actions by threat_id match. If
+        # a threat is matched both by configuration provided in severity_overrides and
+        # threat_overrides, the threat_overrides action is applied.
+        # Corresponds to the JSON property `threatOverrides`
+        # @return [Array<Google::Apis::NetworksecurityV1::ThreatOverride>]
+        attr_accessor :threat_overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @severity_overrides = args[:severity_overrides] if args.key?(:severity_overrides)
+          @threat_overrides = args[:threat_overrides] if args.key?(:threat_overrides)
         end
       end
       
