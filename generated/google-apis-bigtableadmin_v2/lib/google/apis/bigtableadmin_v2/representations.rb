@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutomatedBackupPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoscalingLimits
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -517,6 +523,14 @@ module Google
         end
       end
       
+      class AutomatedBackupPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frequency, as: 'frequency'
+          property :retention_period, as: 'retentionPeriod'
+        end
+      end
+      
       class AutoscalingLimits
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -947,6 +961,7 @@ module Google
           property :id, as: 'id'
           property :update, as: 'update', class: Google::Apis::BigtableadminV2::ColumnFamily, decorator: Google::Apis::BigtableadminV2::ColumnFamily::Representation
       
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -1109,6 +1124,8 @@ module Google
       class Table
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :automated_backup_policy, as: 'automatedBackupPolicy', class: Google::Apis::BigtableadminV2::AutomatedBackupPolicy, decorator: Google::Apis::BigtableadminV2::AutomatedBackupPolicy::Representation
+      
           property :change_stream_config, as: 'changeStreamConfig', class: Google::Apis::BigtableadminV2::ChangeStreamConfig, decorator: Google::Apis::BigtableadminV2::ChangeStreamConfig::Representation
       
           hash :cluster_states, as: 'clusterStates', class: Google::Apis::BigtableadminV2::ClusterState, decorator: Google::Apis::BigtableadminV2::ClusterState::Representation
