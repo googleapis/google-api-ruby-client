@@ -3667,6 +3667,35 @@ module Google
         attr_accessor :enable_cdn
         alias_method :enable_cdn?, :enable_cdn
       
+        # Specifies the canary migration state. Possible values are PREPARE, TEST, and
+        # FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state
+        # must be changed to PREPARE. The state must be changed to FINALIZE before the
+        # loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST
+        # state can be used to migrate traffic by percentage using
+        # externalManagedMigrationTestingRate. Rolling back a migration requires the
+        # states to be set in reverse order. So changing the scheme from
+        # EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the
+        # same time. Optionally, the TEST state can be used to migrate some traffic back
+        # to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+        # Corresponds to the JSON property `externalManagedMigrationState`
+        # @return [String]
+        attr_accessor :external_managed_migration_state
+      
+        # Determines the fraction of requests that should be processed by the Global
+        # external Application Load Balancer. The value of this field must be in the
+        # range [0, 1]. For example: - A value of 0 will send all requests through the
+        # Classic ALB for the given resource. - A value of .001 will send .1% of
+        # requests through the Global external ALB for the given resource. - A value of .
+        # 01 will send 1% of requests through the Global external ALB for the given
+        # resource. - A value of 1 will send all requests through the Global external
+        # ALB for the given resource. Session affinity options will slightly affect this
+        # routing behavior, for more details, see: Session Affinity. This value is only
+        # used if the loadBalancingScheme in the BackendService is set to EXTERNAL when
+        # using the classic Application Load Balancer.
+        # Corresponds to the JSON property `externalManagedMigrationTestingRate`
+        # @return [Float]
+        attr_accessor :external_managed_migration_testing_rate
+      
         # For load balancers that have configurable failover: [Internal passthrough
         # Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/
         # failover-overview) and [external passthrough Network Load Balancers](https://
@@ -3969,6 +3998,8 @@ module Google
           @description = args[:description] if args.key?(:description)
           @edge_security_policy = args[:edge_security_policy] if args.key?(:edge_security_policy)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
+          @external_managed_migration_state = args[:external_managed_migration_state] if args.key?(:external_managed_migration_state)
+          @external_managed_migration_testing_rate = args[:external_managed_migration_testing_rate] if args.key?(:external_managed_migration_testing_rate)
           @failover_policy = args[:failover_policy] if args.key?(:failover_policy)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @ha_policy = args[:ha_policy] if args.key?(:ha_policy)
@@ -5493,12 +5524,6 @@ module Google
       class BgpRouteNetworkLayerReachabilityInformation
         include Google::Apis::Core::Hashable
       
-        # Human readable CIDR notation for a prefix. E.g. 10.42.0.0/16. Deprecated in
-        # favor of prefix.
-        # Corresponds to the JSON property `destination`
-        # @return [String]
-        attr_accessor :destination
-      
         # If the BGP session supports multiple paths (RFC 7911), the path identifier for
         # this route.
         # Corresponds to the JSON property `pathId`
@@ -5516,7 +5541,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @destination = args[:destination] if args.key?(:destination)
           @path_id = args[:path_id] if args.key?(:path_id)
           @prefix = args[:prefix] if args.key?(:prefix)
         end
@@ -12577,7 +12601,7 @@ module Google
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
-        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE -
+        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE -
         # TDX_CAPABLE - IDPF For more information, see Enabling guest operating system
         # features.
         # Corresponds to the JSON property `type`
@@ -23981,10 +24005,10 @@ module Google
       
         # [Output Only] Port pair remote location constraints, which can take one of the
         # following values: PORT_PAIR_UNCONSTRAINED_REMOTE_LOCATION,
-        # PORT_PAIR_MATCHING_REMOTE_LOCATION. GCP's API refers only to individual ports,
-        # but the UI uses this field when ordering a pair of ports, to prevent users
-        # from accidentally ordering something that is incompatible with their cloud
-        # provider. Specifically, when ordering a redundant pair of Cross-Cloud
+        # PORT_PAIR_MATCHING_REMOTE_LOCATION. Google Cloud API refers only to individual
+        # ports, but the UI uses this field when ordering a pair of ports, to prevent
+        # users from accidentally ordering something that is incompatible with their
+        # cloud provider. Specifically, when ordering a redundant pair of Cross-Cloud
         # Interconnect ports, and one of them uses a remote location with
         # portPairMatchingRemoteLocation set to matching, the UI requires that both
         # ports use the same remote location.
@@ -28459,6 +28483,12 @@ module Google
         # @return [String]
         attr_accessor :consumer_psc_address
       
+        # The psc producer port is used to connect PSC NEG with specific port on the PSC
+        # Producer side; should only be used for the PRIVATE_SERVICE_CONNECT NEG type
+        # Corresponds to the JSON property `producerPort`
+        # @return [Fixnum]
+        attr_accessor :producer_port
+      
         # [Output Only] The PSC connection id of the PSC Network Endpoint Group Consumer.
         # Corresponds to the JSON property `pscConnectionId`
         # @return [Fixnum]
@@ -28476,6 +28506,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consumer_psc_address = args[:consumer_psc_address] if args.key?(:consumer_psc_address)
+          @producer_port = args[:producer_port] if args.key?(:producer_port)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @psc_connection_status = args[:psc_connection_status] if args.key?(:psc_connection_status)
         end
@@ -50433,6 +50464,95 @@ module Google
       end
       
       # 
+      class SubnetworksScopedWarning
+        include Google::Apis::Core::Hashable
+      
+        # Name of the scope containing this set of Subnetworks.
+        # Corresponds to the JSON property `scopeName`
+        # @return [String]
+        attr_accessor :scope_name
+      
+        # An informational warning about unreachable scope
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::SubnetworksScopedWarning::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope_name = args[:scope_name] if args.key?(:scope_name)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # An informational warning about unreachable scope
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::SubnetworksScopedWarning::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
       class SubnetworksSetPrivateIpGoogleAccessRequest
         include Google::Apis::Core::Hashable
       
@@ -55500,10 +55620,21 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # [Output Only] Informational warning messages for failures encountered from
+        # scopes.
+        # Corresponds to the JSON property `scoped_warnings`
+        # @return [Array<Google::Apis::ComputeAlpha::SubnetworksScopedWarning>]
+        attr_accessor :scoped_warnings
+      
         # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
       
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
@@ -55520,7 +55651,9 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @scoped_warnings = args[:scoped_warnings] if args.key?(:scoped_warnings)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
