@@ -406,7 +406,8 @@ module Google
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   hyphens, and periods. Bucket identifiers must start with an alphanumeric
+        #   character.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -447,7 +448,8 @@ module Google
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   hyphens, and periods. Bucket identifiers must start with an alphanumeric
+        #   character.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2552,7 +2554,8 @@ module Google
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   hyphens, and periods. Bucket identifiers must start with an alphanumeric
+        #   character.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2593,7 +2596,8 @@ module Google
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   hyphens, and periods. Bucket identifiers must start with an alphanumeric
+        #   character.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4055,7 +4059,8 @@ module Google
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   hyphens, and periods. Bucket identifiers must start with an alphanumeric
+        #   character.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4096,7 +4101,8 @@ module Google
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   hyphens, and periods. Bucket identifiers must start with an alphanumeric
+        #   character.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5430,7 +5436,8 @@ module Google
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   hyphens, and periods. Bucket identifiers must start with an alphanumeric
+        #   character.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5471,7 +5478,8 @@ module Google
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   hyphens, and periods. Bucket identifiers must start with an alphanumeric
+        #   character.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7205,7 +7213,8 @@ module Google
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   hyphens, and periods. Bucket identifiers must start with an alphanumeric
+        #   character.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7246,7 +7255,8 @@ module Google
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   hyphens, and periods. Bucket identifiers must start with an alphanumeric
+        #   character.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
