@@ -323,6 +323,12 @@ module Google
         # Returns a function with the given name from the requested project.
         # @param [String] name
         #   Required. The name of the function which details should be obtained.
+        # @param [String] revision
+        #   Optional. The optional version of the 1st gen function whose details should be
+        #   obtained. The version of a 1st gen function is an integer that starts from 1
+        #   and gets incremented on redeployments. GCF may keep historical configs for old
+        #   versions of 1st gen function. This field can be specified to fetch the
+        #   historical configs. This field is valid only for GCF 1st gen function.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -340,11 +346,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_function(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_function(name, revision: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::CloudfunctionsV2::Function::Representation
           command.response_class = Google::Apis::CloudfunctionsV2::Function
           command.params['name'] = name unless name.nil?
+          command.query['revision'] = revision unless revision.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
