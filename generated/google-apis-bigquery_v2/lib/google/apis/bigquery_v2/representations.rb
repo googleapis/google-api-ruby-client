@@ -640,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LinkedDatasetMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LinkedDatasetSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -749,6 +755,18 @@ module Google
       end
       
       class ParquetOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionedColumn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitioningDefinition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1680,6 +1698,8 @@ module Google
           property :kind, as: 'kind'
           hash :labels, as: 'labels'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
+          property :linked_dataset_metadata, as: 'linkedDatasetMetadata', class: Google::Apis::BigqueryV2::LinkedDatasetMetadata, decorator: Google::Apis::BigqueryV2::LinkedDatasetMetadata::Representation
+      
           property :linked_dataset_source, as: 'linkedDatasetSource', class: Google::Apis::BigqueryV2::LinkedDatasetSource, decorator: Google::Apis::BigqueryV2::LinkedDatasetSource::Representation
       
           property :location, as: 'location'
@@ -2634,6 +2654,13 @@ module Google
         end
       end
       
+      class LinkedDatasetMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :link_state, as: 'linkState'
+        end
+      end
+      
       class LinkedDatasetSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2835,6 +2862,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_list_inference, as: 'enableListInference'
           property :enum_as_string, as: 'enumAsString'
+        end
+      end
+      
+      class PartitionedColumn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+        end
+      end
+      
+      class PartitioningDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partitioned_column, as: 'partitionedColumn', class: Google::Apis::BigqueryV2::PartitionedColumn, decorator: Google::Apis::BigqueryV2::PartitionedColumn::Representation
+      
         end
       end
       
@@ -3413,6 +3455,8 @@ module Google
           property :num_time_travel_physical_bytes, :numeric_string => true, as: 'numTimeTravelPhysicalBytes'
           property :num_total_logical_bytes, :numeric_string => true, as: 'numTotalLogicalBytes'
           property :num_total_physical_bytes, :numeric_string => true, as: 'numTotalPhysicalBytes'
+          property :partition_definition, as: 'partitionDefinition', class: Google::Apis::BigqueryV2::PartitioningDefinition, decorator: Google::Apis::BigqueryV2::PartitioningDefinition::Representation
+      
           property :range_partitioning, as: 'rangePartitioning', class: Google::Apis::BigqueryV2::RangePartitioning, decorator: Google::Apis::BigqueryV2::RangePartitioning::Representation
       
           collection :replicas, as: 'replicas', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
