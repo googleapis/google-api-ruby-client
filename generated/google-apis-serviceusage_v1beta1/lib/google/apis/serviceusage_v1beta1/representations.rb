@@ -658,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RolloutInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RubySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1812,6 +1818,8 @@ module Google
       
           property :producer_quota_policy, as: 'producerQuotaPolicy', class: Google::Apis::ServiceusageV1beta1::ProducerQuotaPolicy, decorator: Google::Apis::ServiceusageV1beta1::ProducerQuotaPolicy::Representation
       
+          property :rollout_info, as: 'rolloutInfo', class: Google::Apis::ServiceusageV1beta1::RolloutInfo, decorator: Google::Apis::ServiceusageV1beta1::RolloutInfo::Representation
+      
         end
       end
       
@@ -1854,6 +1862,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :parent, as: 'parent'
           collection :removed_values, as: 'removedValues'
+        end
+      end
+      
+      class RolloutInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_limit_ongoing_rollout, as: 'defaultLimitOngoingRollout'
         end
       end
       
