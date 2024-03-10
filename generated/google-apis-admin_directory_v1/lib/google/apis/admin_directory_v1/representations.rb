@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BacklightInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchChangeChromeOsDeviceStatusRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -788,6 +794,15 @@ module Google
         end
       end
       
+      class BacklightInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :brightness, as: 'brightness'
+          property :max_brightness, as: 'maxBrightness'
+          property :path, as: 'path'
+        end
+      end
+      
       class BatchChangeChromeOsDeviceStatusRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -995,6 +1010,8 @@ module Google
           property :annotated_location, as: 'annotatedLocation'
           property :annotated_user, as: 'annotatedUser'
           property :auto_update_expiration, :numeric_string => true, as: 'autoUpdateExpiration'
+          collection :backlight_info, as: 'backlightInfo', class: Google::Apis::AdminDirectoryV1::BacklightInfo, decorator: Google::Apis::AdminDirectoryV1::BacklightInfo::Representation
+      
           property :boot_mode, as: 'bootMode'
           collection :cpu_info, as: 'cpuInfo', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo::Representation
       
