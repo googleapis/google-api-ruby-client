@@ -2922,6 +2922,11 @@ module Google
         # @return [String]
         attr_accessor :proxy
       
+        # Configuration for the SAML Auth flow.
+        # Corresponds to the JSON property `samlConfig`
+        # @return [Google::Apis::GkehubV1alpha::IdentityServiceSamlConfig]
+        attr_accessor :saml_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2933,6 +2938,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @oidc_config = args[:oidc_config] if args.key?(:oidc_config)
           @proxy = args[:proxy] if args.key?(:proxy)
+          @saml_config = args[:saml_config] if args.key?(:saml_config)
         end
       end
       
@@ -2958,6 +2964,11 @@ module Google
         # @return [String]
         attr_accessor :encrypted_client_secret
       
+        # Optional. Format of the AzureAD groups that the client wants for auth.
+        # Corresponds to the JSON property `groupFormat`
+        # @return [String]
+        attr_accessor :group_format
+      
         # The redirect URL that kubectl uses for authorization.
         # Corresponds to the JSON property `kubectlRedirectUri`
         # @return [String]
@@ -2969,6 +2980,11 @@ module Google
         # @return [String]
         attr_accessor :tenant
       
+        # Optional. Claim in the AzureAD ID Token that holds the user details.
+        # Corresponds to the JSON property `userClaim`
+        # @return [String]
+        attr_accessor :user_claim
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2978,8 +2994,10 @@ module Google
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
           @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
+          @group_format = args[:group_format] if args.key?(:group_format)
           @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
           @tenant = args[:tenant] if args.key?(:tenant)
+          @user_claim = args[:user_claim] if args.key?(:user_claim)
         end
       end
       
@@ -3159,6 +3177,76 @@ module Google
           @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
           @scopes = args[:scopes] if args.key?(:scopes)
           @user_claim = args[:user_claim] if args.key?(:user_claim)
+          @user_prefix = args[:user_prefix] if args.key?(:user_prefix)
+        end
+      end
+      
+      # Configuration for the SAML Auth flow.
+      class IdentityServiceSamlConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The mapping of additional user attributes like nickname, birthday
+        # and address etc.. `key` is the name of this additional attribute. `value` is a
+        # string presenting as CEL(common expression language, go/cel) used for getting
+        # the value from the resources. Take nickname as an example, in this case, `key`
+        # is "attribute.nickname" and `value` is "assertion.nickname".
+        # Corresponds to the JSON property `attributeMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :attribute_mapping
+      
+        # Optional. Prefix to prepend to group name.
+        # Corresponds to the JSON property `groupPrefix`
+        # @return [String]
+        attr_accessor :group_prefix
+      
+        # Optional. The SAML attribute to read groups from. This value is expected to be
+        # a string and will be passed along as-is (with the option of being prefixed by
+        # the `group_prefix`).
+        # Corresponds to the JSON property `groupsAttribute`
+        # @return [String]
+        attr_accessor :groups_attribute
+      
+        # Required. The list of IdP certificates to validate the SAML response against.
+        # Corresponds to the JSON property `identityProviderCertificates`
+        # @return [Array<String>]
+        attr_accessor :identity_provider_certificates
+      
+        # Required. The entity ID of the SAML IdP.
+        # Corresponds to the JSON property `identityProviderId`
+        # @return [String]
+        attr_accessor :identity_provider_id
+      
+        # Required. The URI where the SAML IdP exposes the SSO service.
+        # Corresponds to the JSON property `identityProviderSsoUri`
+        # @return [String]
+        attr_accessor :identity_provider_sso_uri
+      
+        # Optional. The SAML attribute to read username from. If unspecified, the
+        # username will be read from the NameID element of the assertion in SAML
+        # response. This value is expected to be a string and will be passed along as-is
+        # (with the option of being prefixed by the `user_prefix`).
+        # Corresponds to the JSON property `userAttribute`
+        # @return [String]
+        attr_accessor :user_attribute
+      
+        # Optional. Prefix to prepend to user name.
+        # Corresponds to the JSON property `userPrefix`
+        # @return [String]
+        attr_accessor :user_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_mapping = args[:attribute_mapping] if args.key?(:attribute_mapping)
+          @group_prefix = args[:group_prefix] if args.key?(:group_prefix)
+          @groups_attribute = args[:groups_attribute] if args.key?(:groups_attribute)
+          @identity_provider_certificates = args[:identity_provider_certificates] if args.key?(:identity_provider_certificates)
+          @identity_provider_id = args[:identity_provider_id] if args.key?(:identity_provider_id)
+          @identity_provider_sso_uri = args[:identity_provider_sso_uri] if args.key?(:identity_provider_sso_uri)
+          @user_attribute = args[:user_attribute] if args.key?(:user_attribute)
           @user_prefix = args[:user_prefix] if args.key?(:user_prefix)
         end
       end
