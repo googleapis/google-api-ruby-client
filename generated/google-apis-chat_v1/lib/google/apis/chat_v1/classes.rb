@@ -433,15 +433,15 @@ module Google
         # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
         # Software Engineer", "imageUrl": "https://developers.google.com/chat/images/
         # quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for
-        # Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
+        # Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
         # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
-        # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
-        # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
-        # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
-        # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
-        # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
-        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+        # "knownIcon": "EMAIL" `, "text": "sasha@example.com" ` `, ` "decoratedText": `
+        # "startIcon": ` "knownIcon": "PERSON" `, "text": "Online" ` `, ` "decoratedText"
+        # : ` "startIcon": ` "knownIcon": "PHONE" `, "text": "+1 (555) 555-1234" ` `, ` "
+        # buttonList": ` "buttons": [ ` "text": "Share", "onClick": ` "openLink": ` "url"
+        # : "https://example.com/share" ` ` `, ` "text": "Edit", "onClick": ` "action": `
+        # "function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" `
+        # ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :card
@@ -942,15 +942,15 @@ module Google
         # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
         # Software Engineer", "imageUrl": "https://developers.google.com/chat/images/
         # quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for
-        # Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
+        # Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
         # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
-        # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
-        # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
-        # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
-        # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
-        # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
-        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+        # "knownIcon": "EMAIL" `, "text": "sasha@example.com" ` `, ` "decoratedText": `
+        # "startIcon": ` "knownIcon": "PERSON" `, "text": "Online" ` `, ` "decoratedText"
+        # : ` "startIcon": ` "knownIcon": "PHONE" `, "text": "+1 (555) 555-1234" ` `, ` "
+        # buttonList": ` "buttons": [ ` "text": "Share", "onClick": ` "openLink": ` "url"
+        # : "https://example.com/share" ` ` `, ` "text": "Edit", "onClick": ` "action": `
+        # "function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" `
+        # ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
         # Corresponds to the JSON property `body`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :body
@@ -1432,15 +1432,15 @@ module Google
       # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
       # Software Engineer", "imageUrl": "https://developers.google.com/chat/images/
       # quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for
-      # Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
+      # Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
       # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
-      # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
-      # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
-      # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
-      # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
-      # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
-      # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-      # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+      # "knownIcon": "EMAIL" `, "text": "sasha@example.com" ` `, ` "decoratedText": `
+      # "startIcon": ` "knownIcon": "PERSON" `, "text": "Online" ` `, ` "decoratedText"
+      # : ` "startIcon": ` "knownIcon": "PHONE" `, "text": "+1 (555) 555-1234" ` `, ` "
+      # buttonList": ` "buttons": [ ` "text": "Share", "onClick": ` "openLink": ` "url"
+      # : "https://example.com/share" ` ` `, ` "text": "Edit", "onClick": ` "action": `
+      # "function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" `
+      # ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
       class GoogleAppsCardV1Card
         include Google::Apis::Core::Hashable
       
@@ -2217,15 +2217,15 @@ module Google
         # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
         # Software Engineer", "imageUrl": "https://developers.google.com/chat/images/
         # quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for
-        # Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
+        # Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
         # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
-        # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
-        # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
-        # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
-        # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
-        # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
-        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+        # "knownIcon": "EMAIL" `, "text": "sasha@example.com" ` `, ` "decoratedText": `
+        # "startIcon": ` "knownIcon": "PERSON" `, "text": "Online" ` `, ` "decoratedText"
+        # : ` "startIcon": ` "knownIcon": "PHONE" `, "text": "+1 (555) 555-1234" ` `, ` "
+        # buttonList": ` "buttons": [ ` "text": "Share", "onClick": ` "openLink": ` "url"
+        # : "https://example.com/share" ` ` `, ` "text": "Edit", "onClick": ` "action": `
+        # "function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" `
+        # ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :card
@@ -3546,12 +3546,12 @@ module Google
         # Output only. Contains the message `text` with markups added to communicate
         # formatting. This field might not capture all formatting visible in the UI, but
         # includes the following: * [Markup syntax](https://developers.google.com/chat/
-        # format-messages) for bold, italic, strikethrough, monospace, and monospace
-        # block. * [User mentions](https://developers.google.com/chat/format-messages#
-        # messages-@mention) using the format ``. * Custom hyperlinks using the format `<
-        # `url`|`rendered_text`>` where the first string is the URL and the second is
-        # the rendered text—for example, ``. * Custom emoji using the format `:`
-        # emoji_name`:`—for example, `:smile:`. This doesn't apply to Unicode emoji,
+        # format-messages) for bold, italic, strikethrough, monospace, monospace block,
+        # and bulleted list. * [User mentions](https://developers.google.com/chat/format-
+        # messages#messages-@mention) using the format ``. * Custom hyperlinks using the
+        # format `<`url`|`rendered_text`>` where the first string is the URL and the
+        # second is the rendered text—for example, ``. * Custom emoji using the format `:
+        # `emoji_name`:`—for example, `:smile:`. This doesn't apply to Unicode emoji,
         # such as `U+1F600` for a grinning face emoji. For more information, see [View
         # text formatting sent in a message](https://developers.google.com/chat/format-
         # messages#view_text_formatting_sent_in_a_message)
