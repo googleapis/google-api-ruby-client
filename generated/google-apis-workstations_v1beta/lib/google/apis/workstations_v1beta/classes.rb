@@ -220,6 +220,49 @@ module Google
         end
       end
       
+      # A configuration that workstations can boost to.
+      class BoostConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of the type and count of accelerator cards attached to the
+        # boost instance. Defaults to `none`.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::WorkstationsV1beta::Accelerator>]
+        attr_accessor :accelerators
+      
+        # Optional. Required. The id to be used for the boost config.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. The type of machine that boosted VM instances will use—for example, `
+        # e2-standard-4`. For more information about machine types that Cloud
+        # Workstations supports, see the list of [available machine types](https://cloud.
+        # google.com/workstations/docs/available-machine-types). Defaults to `e2-
+        # standard-4`.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Optional. The number of boost VMs that the system should keep idle so that
+        # workstations can be boosted quickly. Defaults to `0`.
+        # Corresponds to the JSON property `poolSize`
+        # @return [Fixnum]
+        attr_accessor :pool_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @id = args[:id] if args.key?(:id)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @pool_size = args[:pool_size] if args.key?(:pool_size)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -456,6 +499,12 @@ module Google
         # @return [Array<Google::Apis::WorkstationsV1beta::Accelerator>]
         attr_accessor :accelerators
       
+        # Optional. A list of the boost configurations that workstations created using
+        # this workstation configuration are allowed to use.
+        # Corresponds to the JSON property `boostConfigs`
+        # @return [Array<Google::Apis::WorkstationsV1beta::BoostConfig>]
+        attr_accessor :boost_configs
+      
         # Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum
         # boot disk size is `30` GB. Defaults to `50` GB.
         # Corresponds to the JSON property `bootDiskSizeGb`
@@ -485,7 +534,7 @@ module Google
         alias_method :disable_ssh?, :disable_ssh
       
         # Optional. Whether to enable nested virtualization on Cloud Workstations VMs
-        # created under this workstation configuration. Nested virtualization lets you
+        # created using this workstation configuration. Nested virtualization lets you
         # run virtual machine (VM) instances inside your workstation. Before enabling
         # nested virtualization, consider the following important considerations. Cloud
         # Workstations instances are subject to the [same restrictions as Compute Engine
@@ -579,6 +628,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @boost_configs = args[:boost_configs] if args.key?(:boost_configs)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @disable_public_ip_addresses = args[:disable_public_ip_addresses] if args.key?(:disable_public_ip_addresses)
@@ -639,10 +689,10 @@ module Google
         end
       end
       
-      # A PersistentDirectory backed by a Compute Engine regional persistent disk. The
-      # persistent_directories field is repeated, but it may contain only one entry.
-      # It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/
-      # persistent-disks) that mounts to the workstation VM at `/home` when the
+      # A Persistent Directory backed by a Compute Engine regional persistent disk.
+      # The persistent_directories field is repeated, but it may contain only one
+      # entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/
+      # disks/persistent-disks) that mounts to the workstation VM at `/home` when the
       # session starts and detaches when the session ends. If this field is empty,
       # workstations created with this configuration do not have a persistent home
       # directory.
@@ -1129,10 +1179,10 @@ module Google
       class PersistentDirectory
         include Google::Apis::Core::Hashable
       
-        # A PersistentDirectory backed by a Compute Engine regional persistent disk. The
-        # persistent_directories field is repeated, but it may contain only one entry.
-        # It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/
-        # persistent-disks) that mounts to the workstation VM at `/home` when the
+        # A Persistent Directory backed by a Compute Engine regional persistent disk.
+        # The persistent_directories field is repeated, but it may contain only one
+        # entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/
+        # disks/persistent-disks) that mounts to the workstation VM at `/home` when the
         # session starts and detaches when the session ends. If this field is empty,
         # workstations created with this configuration do not have a persistent home
         # directory.
@@ -1381,6 +1431,12 @@ module Google
       class StartWorkstationRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If set, the workstation starts using the boost configuration with
+        # the specified ID.
+        # Corresponds to the JSON property `boostConfig`
+        # @return [String]
+        attr_accessor :boost_config
+      
         # Optional. If set, the request will be rejected if the latest version of the
         # workstation on the server does not have this ETag.
         # Corresponds to the JSON property `etag`
@@ -1400,6 +1456,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boost_config = args[:boost_config] if args.key?(:boost_config)
           @etag = args[:etag] if args.key?(:etag)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
@@ -1803,10 +1860,10 @@ module Google
         attr_accessor :delete_time
       
         # Optional. Disables support for plain TCP connections in the workstation. By
-        # default the service supports TCP connections via a websocket relay. Setting
-        # this option to true disables that relay, which prevents the usage of services
-        # that require plain tcp connections, such as ssh. When enabled, all
-        # communication must occur over https or wss.
+        # default the service supports TCP connections through a websocket relay.
+        # Setting this option to true disables that relay, which prevents the usage of
+        # services that require plain TCP connections, such as SSH. When enabled, all
+        # communication must occur over HTTPS or WSS.
         # Corresponds to the JSON property `disableTcpConnections`
         # @return [Boolean]
         attr_accessor :disable_tcp_connections
