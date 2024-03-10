@@ -328,6 +328,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaAlertConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaAlertConfigAlertPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaAlertConfigAlertPolicyRecipient
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaAttributesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1932,6 +1950,32 @@ module Google
       class GoogleCloudRetailV2alphaAddLocalInventoriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaAlertConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_policies, as: 'alertPolicies', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAlertConfigAlertPolicy, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAlertConfigAlertPolicy::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaAlertConfigAlertPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_group, as: 'alertGroup'
+          property :enroll_status, as: 'enrollStatus'
+          collection :recipients, as: 'recipients', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAlertConfigAlertPolicyRecipient, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAlertConfigAlertPolicyRecipient::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaAlertConfigAlertPolicyRecipient
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'emailAddress'
         end
       end
       
