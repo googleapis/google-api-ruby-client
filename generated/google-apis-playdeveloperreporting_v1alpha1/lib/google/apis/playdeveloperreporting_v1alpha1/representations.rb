@@ -413,6 +413,7 @@ module Google
       
           property :location, as: 'location'
           property :name, as: 'name'
+          collection :sample_error_reports, as: 'sampleErrorReports'
           property :type, as: 'type'
         end
       end
