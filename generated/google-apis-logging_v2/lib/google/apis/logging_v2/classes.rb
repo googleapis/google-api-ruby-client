@@ -404,7 +404,8 @@ module Google
       
         # Required. A client-assigned identifier such as "my-bucket". Identifiers are
         # limited to 100 characters and can include only letters, digits, underscores,
-        # hyphens, and periods.
+        # hyphens, and periods. Bucket identifiers must start with an alphanumeric
+        # character.
         # Corresponds to the JSON property `bucketId`
         # @return [String]
         attr_accessor :bucket_id
@@ -1452,8 +1453,8 @@ module Google
       class LogBucket
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether log analytics is enabled for this bucket.Once enabled, log
-        # analytics features cannot be disabled.
+        # Whether log analytics is enabled for this bucket.Once enabled, log analytics
+        # features cannot be disabled.
         # Corresponds to the JSON property `analyticsEnabled`
         # @return [Boolean]
         attr_accessor :analytics_enabled
@@ -3082,7 +3083,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. The user specified title for the SavedQuery.
+        # Required. The user specified title for the SavedQuery.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
