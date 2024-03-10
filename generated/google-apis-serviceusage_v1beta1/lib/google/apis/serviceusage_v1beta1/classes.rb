@@ -4420,6 +4420,11 @@ module Google
         # @return [Google::Apis::ServiceusageV1beta1::ProducerQuotaPolicy]
         attr_accessor :producer_quota_policy
       
+        # [Output only] Rollout information of a quota.
+        # Corresponds to the JSON property `rolloutInfo`
+        # @return [Google::Apis::ServiceusageV1beta1::RolloutInfo]
+        attr_accessor :rollout_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4433,6 +4438,7 @@ module Google
           @effective_limit = args[:effective_limit] if args.key?(:effective_limit)
           @producer_override = args[:producer_override] if args.key?(:producer_override)
           @producer_quota_policy = args[:producer_quota_policy] if args.key?(:producer_quota_policy)
+          @rollout_info = args[:rollout_info] if args.key?(:rollout_info)
         end
       end
       
@@ -4655,6 +4661,26 @@ module Google
         def update!(**args)
           @parent = args[:parent] if args.key?(:parent)
           @removed_values = args[:removed_values] if args.key?(:removed_values)
+        end
+      end
+      
+      # [Output only] Rollout information of a quota.
+      class RolloutInfo
+        include Google::Apis::Core::Hashable
+      
+        # Whether there is an ongoing rollout for the default limit or not.
+        # Corresponds to the JSON property `defaultLimitOngoingRollout`
+        # @return [Boolean]
+        attr_accessor :default_limit_ongoing_rollout
+        alias_method :default_limit_ongoing_rollout?, :default_limit_ongoing_rollout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_limit_ongoing_rollout = args[:default_limit_ongoing_rollout] if args.key?(:default_limit_ongoing_rollout)
         end
       end
       
