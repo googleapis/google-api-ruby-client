@@ -51,10 +51,13 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Detaches a service project from a host project. You can call this API from
-        # either a host or service project.
+        # Detaches a service project from a host project. You can call this API from any
+        # service project without needing access to the host project that it is attached
+        # to.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Service project id and location to detach from a host project. Only
+        #   global location is supported. Expected format: `projects/`project`/locations/`
+        #   location``.
         # @param [Google::Apis::ApphubV1::DetachServiceProjectAttachmentRequest] detach_service_project_attachment_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -158,10 +161,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up a service project attachment. You can call this API from either a
-        # host or service project.
+        # Lists a service project attachment for a given service project. You can call
+        # this API from any project to find if it is attached to a host project.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Service project ID and location to lookup service project attachment
+        #   for. Only global location is supported. Expected format: `projects/`project`/
+        #   locations/`location``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -191,7 +196,8 @@ module Google
         
         # Creates an Application in a host project and location.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. Project and location to create Application in. Expected format: `
+        #   projects/`project`/locations/`location``.
         # @param [Google::Apis::ApphubV1::Application] application_object
         # @param [String] application_id
         #   Required. The Application identifier. Must contain only lowercase letters,
@@ -241,7 +247,8 @@ module Google
         
         # Deletes an Application in a host project and location.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Fully qualified name of the Application to delete. Expected format: `
+        #   projects/`project`/locations/`location`/applications/`application``.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -283,7 +290,8 @@ module Google
         
         # Gets an Application in a host project and location.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Fully qualified name of the Application to fetch. Expected format: `
+        #   projects/`project`/locations/`location`/applications/`application``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -358,11 +366,12 @@ module Google
         
         # Lists Applications in a host project and location.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. Project and location to list Applications on. Expected format: `
+        #   projects/`project`/locations/`location``.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -532,7 +541,9 @@ module Google
         
         # Creates a Service in an Application.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. Fully qualified name of the parent Application to create the Service
+        #   in. Expected format: `projects/`project`/locations/`location`/applications/`
+        #   application``.
         # @param [Google::Apis::ApphubV1::Service] service_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -580,9 +591,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Service in an Application.
+        # Deletes a Service from an Application.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Fully qualified name of the Service to delete from an Application.
+        #   Expected format: `projects/`project`/locations/`location`/applications/`
+        #   application`/services/`service``.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -624,7 +637,9 @@ module Google
         
         # Gets a Service in an Application.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Fully qualified name of the Service to fetch. Expected format: `
+        #   projects/`project`/locations/`location`/applications/`application`/services/`
+        #   service``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -652,9 +667,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List Services in an Application.
+        # Lists Services in an Application.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. Fully qualified name of the parent Application to list Services for.
+        #   Expected format: `projects/`project`/locations/`location`/applications/`
+        #   application``.
         # @param [String] filter
         #   Optional. Filtering results
         # @param [String] order_by
@@ -752,7 +769,9 @@ module Google
         
         # Creates a Workload in an Application.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. Fully qualified name of the Application to create Workload in.
+        #   Expected format: `projects/`project`/locations/`location`/applications/`
+        #   application``.
         # @param [Google::Apis::ApphubV1::Workload] workload_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -800,9 +819,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Workload in an Application.
+        # Deletes a Workload from an Application.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Fully qualified name of the Workload to delete from an Application.
+        #   Expected format: `projects/`project`/locations/`location`/applications/`
+        #   application`/workloads/`workload``.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -844,7 +865,9 @@ module Google
         
         # Gets a Workload in an Application.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Fully qualified name of the Workload to fetch. Expected format: `
+        #   projects/`project`/locations/`location`/applications/`application`/workloads/`
+        #   workload``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -874,11 +897,13 @@ module Google
         
         # Lists Workloads in an Application.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. Fully qualified name of the parent Application to list Workloads for.
+        #   Expected format: `projects/`project`/locations/`location`/applications/`
+        #   application``.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -970,9 +995,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a discovered service in a host project and location.
+        # Gets a Discovered Service in a host project and location.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Fully qualified name of the Discovered Service to fetch. Expected
+        #   format: `projects/`project`/locations/`location`/discoveredServices/`
+        #   discoveredService``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1000,14 +1027,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists discovered services that can be added to an application in a host
+        # Lists Discovered Services that can be added to an Application in a host
         # project and location.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. Project and location to list Discovered Services on. Expected format:
+        #   `projects/`project`/locations/`location``.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -1044,9 +1072,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a discovered workload in a host project and location.
+        # Lists a Discovered Service in a host project and location, with a given
+        # resource URI.
+        # @param [String] parent
+        #   Required. Host project ID and location to lookup Discovered Service in.
+        #   Expected format: `projects/`project`/locations/`location``.
+        # @param [String] uri
+        #   Required. Resource URI to find DiscoveredService for. Accepts both project
+        #   number and project ID and does translation when needed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApphubV1::LookupDiscoveredServiceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApphubV1::LookupDiscoveredServiceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lookup_project_location_discovered_service(parent, uri: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/discoveredServices:lookup', options)
+          command.response_representation = Google::Apis::ApphubV1::LookupDiscoveredServiceResponse::Representation
+          command.response_class = Google::Apis::ApphubV1::LookupDiscoveredServiceResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['uri'] = uri unless uri.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Discovered Workload in a host project and location.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Fully qualified name of the Discovered Workload to fetch. Expected
+        #   format: `projects/`project`/locations/`location`/discoveredWorkloads/`
+        #   discoveredWorkload``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1074,14 +1140,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists discovered workloads that can be added to an application in a host
+        # Lists Discovered Workloads that can be added to an Application in a host
         # project and location.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. Project and location to list Discovered Workloads on. Expected
+        #   format: `projects/`project`/locations/`location``.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -1113,6 +1180,42 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists a Discovered Workload in a host project and location, with a given
+        # resource URI.
+        # @param [String] parent
+        #   Required. Host project ID and location to lookup Discovered Workload in.
+        #   Expected format: `projects/`project`/locations/`location``.
+        # @param [String] uri
+        #   Required. Resource URI to find Discovered Workload for. Accepts both project
+        #   number and project ID and does translation when needed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApphubV1::LookupDiscoveredWorkloadResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApphubV1::LookupDiscoveredWorkloadResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lookup_project_location_discovered_workload(parent, uri: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/discoveredWorkloads:lookup', options)
+          command.response_representation = Google::Apis::ApphubV1::LookupDiscoveredWorkloadResponse::Representation
+          command.response_class = Google::Apis::ApphubV1::LookupDiscoveredWorkloadResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['uri'] = uri unless uri.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1264,7 +1367,9 @@ module Google
         
         # Attaches a service project to the host project.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. Host project ID and location to which service project is being
+        #   attached. Only global location is supported. Expected format: `projects/`
+        #   project`/locations/`location``.
         # @param [Google::Apis::ApphubV1::ServiceProjectAttachment] service_project_attachment_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -1278,9 +1383,9 @@ module Google
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] service_project_attachment_id
-        #   Required. The service project attachment identifier must contain the
-        #   project_id of the service project specified in the service_project_attachment.
-        #   service_project field. Hint: "projects/`project_id`"
+        #   Required. The service project attachment identifier must contain the project
+        #   id of the service project specified in the service_project_attachment.
+        #   service_project field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1312,9 +1417,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a service project attached to the host project.
+        # Deletes a service project attachment.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Fully qualified name of the service project attachment to delete.
+        #   Expected format: `projects/`project`/locations/`location`/
+        #   serviceProjectAttachments/`serviceProjectAttachment``.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -1354,9 +1461,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a service project attached to the host project.
+        # Gets a service project attachment.
         # @param [String] name
-        #   Required. Value for name.
+        #   Required. Fully qualified name of the service project attachment to retrieve.
+        #   Expected format: `projects/`project`/locations/`location`/
+        #   serviceProjectAttachments/`serviceProjectAttachment``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1384,13 +1493,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List service projects attached to the host project.
+        # Lists service projects attached to the host project.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. Host project ID and location to list service project attachments.
+        #   Only global location is supported. Expected format: `projects/`project`/
+        #   locations/`location``.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.

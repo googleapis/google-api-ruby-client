@@ -586,7 +586,7 @@ module Google
       class ListDiscoveredServicesResponse
         include Google::Apis::Core::Hashable
       
-        # List of discovered services.
+        # List of Discovered Services.
         # Corresponds to the JSON property `discoveredServices`
         # @return [Array<Google::Apis::ApphubV1::DiscoveredService>]
         attr_accessor :discovered_services
@@ -617,7 +617,7 @@ module Google
       class ListDiscoveredWorkloadsResponse
         include Google::Apis::Core::Hashable
       
-        # List of discovered workloads.
+        # List of Discovered Workloads.
         # Corresponds to the JSON property `discoveredWorkloads`
         # @return [Array<Google::Apis::ApphubV1::DiscoveredWorkload>]
         attr_accessor :discovered_workloads
@@ -831,6 +831,49 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Response for LookupDiscoveredService.
+      class LookupDiscoveredServiceResponse
+        include Google::Apis::Core::Hashable
+      
+        # DiscoveredService is a network/api interface that exposes some functionality
+        # to clients for consumption over the network. A discovered service can be
+        # registered to a App Hub service.
+        # Corresponds to the JSON property `discoveredService`
+        # @return [Google::Apis::ApphubV1::DiscoveredService]
+        attr_accessor :discovered_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovered_service = args[:discovered_service] if args.key?(:discovered_service)
+        end
+      end
+      
+      # Response for LookupDiscoveredWorkload.
+      class LookupDiscoveredWorkloadResponse
+        include Google::Apis::Core::Hashable
+      
+        # DiscoveredWorkload is a binary deployment (such as managed instance groups (
+        # MIGs) and GKE deployments) that performs the smallest logical subset of
+        # business functionality. A discovered workload can be registered to an App Hub
+        # Workload.
+        # Corresponds to the JSON property `discoveredWorkload`
+        # @return [Google::Apis::ApphubV1::DiscoveredWorkload]
+        attr_accessor :discovered_workload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovered_workload = args[:discovered_workload] if args.key?(:discovered_workload)
         end
       end
       
