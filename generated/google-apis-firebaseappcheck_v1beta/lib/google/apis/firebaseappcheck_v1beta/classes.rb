@@ -267,11 +267,10 @@ module Google
         # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>]
         attr_accessor :requests
       
-        # Optional. A comma-separated list of names of fields in the
-        # ResourceConfigurations to update. Example: `enforcement_mode`. If this field
-        # is present, the `update_mask` field in the UpdateResourcePolicyRequest
-        # messages must all match this field, or the entire batch fails and no updates
-        # will be committed.
+        # Optional. A comma-separated list of names of fields in the ResourcePolicy
+        # objects to update. Example: `enforcement_mode`. If this field is present, the `
+        # update_mask` field in the UpdateResourcePolicyRequest messages must all match
+        # this field, or the entire batch fails and no updates will be committed.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -922,8 +921,8 @@ module Google
         # If the result list is too large to fit in a single response, then a token is
         # returned. If the string is empty or omitted, then this response is the last
         # page of results. This token can be used in a subsequent call to
-        # ListResourcePolicies to find the next group of ResourcePolicys. Page tokens
-        # are short-lived and should not be persisted.
+        # ListResourcePolicies to find the next group of ResourcePolicy objects. Page
+        # tokens are short-lived and should not be persisted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
