@@ -637,6 +637,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this folder.
+        # Each item in the map must be expressed as " : ". For example: "123/
+        # environment" : "production", "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. Timestamp when the folder was last modified.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -655,6 +662,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1430,6 +1438,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # project. Each item in the map must be expressed as " : ". For example: "123/
+        # environment" : "production", "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. The most recent time this resource was modified.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1450,6 +1465,7 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @project_id = args[:project_id] if args.key?(:project_id)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

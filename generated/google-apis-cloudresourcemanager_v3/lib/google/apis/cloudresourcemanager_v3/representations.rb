@@ -550,6 +550,7 @@ module Google
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :state, as: 'state'
+          hash :tags, as: 'tags'
           property :update_time, as: 'updateTime'
         end
       end
@@ -749,6 +750,7 @@ module Google
           property :parent, as: 'parent'
           property :project_id, as: 'projectId'
           property :state, as: 'state'
+          hash :tags, as: 'tags'
           property :update_time, as: 'updateTime'
         end
       end
