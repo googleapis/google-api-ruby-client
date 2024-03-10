@@ -679,7 +679,15 @@ module Google
         # @param [String] name
         #   Required. Name of the `TelemetryDevice` to return.
         # @param [String] read_mask
-        #   Required. Read mask to specify which fields to return.
+        #   Required. Read mask to specify which fields to return. Supported read_mask
+        #   paths are: - name - org_unit_id - device_id - serial_number - cpu_info -
+        #   cpu_status_report - memory_info - memory_status_report - network_info -
+        #   network_diagnostics_report - network_status_report - os_update_status -
+        #   graphics_info - graphics_status_report - battery_info - battery_status_report -
+        #   storage_info - storage_status_report - thunderbolt_info - audio_status_report
+        #   - boot_performance_report - heartbeat_status_report - network_bandwidth_report
+        #   - peripherals_report - kiosk_app_status_report - app_report -
+        #   runtime_counters_report
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -726,7 +734,15 @@ module Google
         # @param [String] page_token
         #   Token to specify next page in the list.
         # @param [String] read_mask
-        #   Required. Read mask to specify which fields to return.
+        #   Required. Read mask to specify which fields to return. Supported read_mask
+        #   paths are: - name - org_unit_id - device_id - serial_number - cpu_info -
+        #   cpu_status_report - memory_info - memory_status_report - network_info -
+        #   network_diagnostics_report - network_status_report - os_update_status -
+        #   graphics_info - graphics_status_report - battery_info - battery_status_report -
+        #   storage_info - storage_status_report - thunderbolt_info - audio_status_report
+        #   - boot_performance_report - heartbeat_status_report - network_bandwidth_report
+        #   - peripherals_report - kiosk_app_status_report - app_report -
+        #   runtime_counters_report
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -779,7 +795,11 @@ module Google
         # @param [String] read_mask
         #   Required. Read mask to specify which fields to return. Although currently
         #   required, this field will become optional, while the filter parameter with an
-        #   event type will be come required.
+        #   event type will be come required. Supported read_mask paths are: - device -
+        #   user - audio_severe_underrun_event - usb_peripherals_event -
+        #   https_latency_change_event - network_state_change_event -
+        #   wifi_signal_strength_event - vpn_connection_state_change_event -
+        #   app_install_event - app_uninstall_event - app_launch_event
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -921,7 +941,10 @@ module Google
         # @param [String] name
         #   Required. Name of the `TelemetryUser` to return.
         # @param [String] read_mask
-        #   Read mask to specify which fields to return.
+        #   Read mask to specify which fields to return. Supported read_mask paths are: -
+        #   name - org_unit_id - user_id - user_email - user_device.device_id -
+        #   user_device.audio_status_report - user_device.device_activity_report -
+        #   user_device.network_bandwidth_report - user_device.peripherals_report
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -963,7 +986,10 @@ module Google
         # @param [String] page_token
         #   Token to specify next page in the list.
         # @param [String] read_mask
-        #   Read mask to specify which fields to return.
+        #   Read mask to specify which fields to return. Supported read_mask paths are: -
+        #   name - org_unit_id - user_id - user_email - user_device.device_id -
+        #   user_device.audio_status_report - user_device.device_activity_report -
+        #   user_device.network_bandwidth_report - user_device.peripherals_report
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
