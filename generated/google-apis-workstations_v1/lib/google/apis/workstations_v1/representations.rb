@@ -22,6 +22,12 @@ module Google
   module Apis
     module WorkstationsV1
       
+      class Accelerator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EphemeralDirectory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +89,12 @@ module Google
       end
       
       class GceInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcePersistentDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,6 +274,14 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Accelerator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :type, as: 'type'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -316,6 +342,15 @@ module Google
         end
       end
       
+      class EphemeralDirectory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gce_pd, as: 'gcePd', class: Google::Apis::WorkstationsV1::GcePersistentDisk, decorator: Google::Apis::WorkstationsV1::GcePersistentDisk::Representation
+      
+          property :mount_path, as: 'mountPath'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -336,10 +371,13 @@ module Google
       class GceInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::WorkstationsV1::Accelerator, decorator: Google::Apis::WorkstationsV1::Accelerator::Representation
+      
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::WorkstationsV1::GceConfidentialInstanceConfig, decorator: Google::Apis::WorkstationsV1::GceConfidentialInstanceConfig::Representation
       
           property :disable_public_ip_addresses, as: 'disablePublicIpAddresses'
+          property :disable_ssh, as: 'disableSsh'
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
@@ -349,6 +387,16 @@ module Google
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::WorkstationsV1::GceShieldedInstanceConfig, decorator: Google::Apis::WorkstationsV1::GceShieldedInstanceConfig::Representation
       
           collection :tags, as: 'tags'
+        end
+      end
+      
+      class GcePersistentDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_type, as: 'diskType'
+          property :read_only, as: 'readOnly'
+          property :source_image, as: 'sourceImage'
+          property :source_snapshot, as: 'sourceSnapshot'
         end
       end
       
@@ -655,6 +703,8 @@ module Google
           property :display_name, as: 'displayName'
           property :enable_audit_agent, as: 'enableAuditAgent'
           property :encryption_key, as: 'encryptionKey', class: Google::Apis::WorkstationsV1::CustomerEncryptionKey, decorator: Google::Apis::WorkstationsV1::CustomerEncryptionKey::Representation
+      
+          collection :ephemeral_directories, as: 'ephemeralDirectories', class: Google::Apis::WorkstationsV1::EphemeralDirectory, decorator: Google::Apis::WorkstationsV1::EphemeralDirectory::Representation
       
           property :etag, as: 'etag'
           property :host, as: 'host', class: Google::Apis::WorkstationsV1::Host, decorator: Google::Apis::WorkstationsV1::Host::Representation
