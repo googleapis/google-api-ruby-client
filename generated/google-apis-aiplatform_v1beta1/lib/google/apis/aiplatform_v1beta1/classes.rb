@@ -4987,7 +4987,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Required. Additional information about the DatasetVersion.
+        # Required. Output only. Additional information about the DatasetVersion.
         # Corresponds to the JSON property `metadata`
         # @return [Object]
         attr_accessor :metadata
