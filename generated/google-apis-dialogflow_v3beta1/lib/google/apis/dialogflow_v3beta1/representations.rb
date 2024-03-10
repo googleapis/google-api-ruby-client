@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3AudioInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -664,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1Agent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +701,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3079,6 +3097,8 @@ module Google
       
           property :logging_settings, as: 'loggingSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings::Representation
       
+          property :speech_settings, as: 'speechSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings::Representation
+      
         end
       end
       
@@ -3096,6 +3116,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_interaction_logging, as: 'enableInteractionLogging'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpointer_sensitivity, as: 'endpointerSensitivity'
+          hash :models, as: 'models'
+          property :no_speech_timeout, as: 'noSpeechTimeout'
+          property :use_timeout_based_endpointing, as: 'useTimeoutBasedEndpointing'
         end
       end
       
@@ -4095,6 +4125,8 @@ module Google
       
           property :logging_settings, as: 'loggingSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings::Representation
       
+          property :speech_settings, as: 'speechSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings::Representation
+      
         end
       end
       
@@ -4112,6 +4144,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_interaction_logging, as: 'enableInteractionLogging'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpointer_sensitivity, as: 'endpointerSensitivity'
+          hash :models, as: 'models'
+          property :no_speech_timeout, as: 'noSpeechTimeout'
+          property :use_timeout_based_endpointing, as: 'useTimeoutBasedEndpointing'
         end
       end
       
@@ -4134,6 +4176,8 @@ module Google
       
           property :locked, as: 'locked'
           property :name, as: 'name'
+          property :personalization_settings, as: 'personalizationSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings::Representation
+      
           property :security_settings, as: 'securitySettings'
           property :speech_to_text_settings, as: 'speechToTextSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SpeechToTextSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SpeechToTextSettings::Representation
       
@@ -4175,6 +4219,13 @@ module Google
           property :display_name, as: 'displayName'
           property :repository_uri, as: 'repositoryUri'
           property :tracking_branch, as: 'trackingBranch'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :default_end_user_metadata, as: 'defaultEndUserMetadata'
         end
       end
       
