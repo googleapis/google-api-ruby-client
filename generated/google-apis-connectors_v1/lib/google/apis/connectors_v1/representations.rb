@@ -754,6 +754,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ValidateCustomConnectorSpecRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateCustomConnectorSpecResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebhookData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WeeklyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1062,6 +1080,7 @@ module Google
           property :name, as: 'name'
           property :service_account, as: 'serviceAccount'
           property :spec_location, as: 'specLocation'
+          collection :spec_server_urls, as: 'specServerUrls'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -1126,6 +1145,7 @@ module Google
       class DestinationConfigTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :autocomplete_suggestions, as: 'autocompleteSuggestions'
           property :default_port, as: 'defaultPort'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -1317,6 +1337,8 @@ module Google
           property :events_listener_endpoint, as: 'eventsListenerEndpoint'
           property :events_listener_psc_sa, as: 'eventsListenerPscSa'
           property :status, as: 'status', class: Google::Apis::ConnectorsV1::EventingStatus, decorator: Google::Apis::ConnectorsV1::EventingStatus::Representation
+      
+          property :webhook_data, as: 'webhookData', class: Google::Apis::ConnectorsV1::WebhookData, decorator: Google::Apis::ConnectorsV1::WebhookData::Representation
       
         end
       end
@@ -2151,6 +2173,35 @@ module Google
           property :password, as: 'password', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
       
           property :username, as: 'username'
+        end
+      end
+      
+      class ValidateCustomConnectorSpecRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account, as: 'serviceAccount'
+          property :spec_location, as: 'specLocation'
+          property :spec_type, as: 'specType'
+        end
+      end
+      
+      class ValidateCustomConnectorSpecResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+        end
+      end
+      
+      class WebhookData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
+      
+          property :create_time, as: 'createTime'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :next_refresh_time, as: 'nextRefreshTime'
+          property :update_time, as: 'updateTime'
         end
       end
       
