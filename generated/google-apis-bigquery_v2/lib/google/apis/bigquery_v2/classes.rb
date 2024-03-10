@@ -1833,6 +1833,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_time
       
+        # Metadata about the Linked Dataset.
+        # Corresponds to the JSON property `linkedDatasetMetadata`
+        # @return [Google::Apis::BigqueryV2::LinkedDatasetMetadata]
+        attr_accessor :linked_dataset_metadata
+      
         # A dataset source type which refers to another BigQuery dataset.
         # Corresponds to the JSON property `linkedDatasetSource`
         # @return [Google::Apis::BigqueryV2::LinkedDatasetSource]
@@ -1910,6 +1915,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @linked_dataset_metadata = args[:linked_dataset_metadata] if args.key?(:linked_dataset_metadata)
           @linked_dataset_source = args[:linked_dataset_source] if args.key?(:linked_dataset_source)
           @location = args[:location] if args.key?(:location)
           @max_time_travel_hours = args[:max_time_travel_hours] if args.key?(:max_time_travel_hours)
@@ -5843,6 +5849,26 @@ module Google
         end
       end
       
+      # Metadata about the Linked Dataset.
+      class LinkedDatasetMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Specifies whether Linked Dataset is currently in a linked state
+        # or not.
+        # Corresponds to the JSON property `linkState`
+        # @return [String]
+        attr_accessor :link_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @link_state = args[:link_state] if args.key?(:link_state)
+        end
+      end
+      
       # A dataset source type which refers to another BigQuery dataset.
       class LinkedDatasetSource
         include Google::Apis::Core::Hashable
@@ -6566,6 +6592,47 @@ module Google
         def update!(**args)
           @enable_list_inference = args[:enable_list_inference] if args.key?(:enable_list_inference)
           @enum_as_string = args[:enum_as_string] if args.key?(:enum_as_string)
+        end
+      end
+      
+      # The partitioning column information.
+      class PartitionedColumn
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the partition column.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # The partitioning information, which includes managed table and external table
+      # partition information.
+      class PartitioningDefinition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Details about each partitioning column. BigQuery native tables
+        # only support 1 partitioning column. Other table types may support 0, 1 or more
+        # partitioning columns.
+        # Corresponds to the JSON property `partitionedColumn`
+        # @return [Array<Google::Apis::BigqueryV2::PartitionedColumn>]
+        attr_accessor :partitioned_column
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partitioned_column = args[:partitioned_column] if args.key?(:partitioned_column)
         end
       end
       
@@ -8360,27 +8427,26 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :endpoints
       
-        # Output only. The Google Cloud Storage bucket that is used as the default
-        # filesystem by the Spark application. This fields is only filled when the Spark
-        # procedure uses the INVOKER security mode. It is inferred from the system
-        # variable @@spark_proc_properties.staging_bucket if it is provided. Otherwise,
-        # BigQuery creates a default staging bucket for the job and returns the bucket
-        # name in this field. Example: * `gs://[bucket_name]`
+        # Output only. The Google Cloud Storage bucket that is used as the default file
+        # system by the Spark application. This field is only filled when the Spark
+        # procedure uses the invoker security mode. The `gcsStagingBucket` bucket is
+        # inferred from the `@@spark_proc_properties.staging_bucket` system variable (if
+        # it is provided). Otherwise, BigQuery creates a default staging bucket for the
+        # job and returns the bucket name in this field. Example: * `gs://[bucket_name]`
         # Corresponds to the JSON property `gcsStagingBucket`
         # @return [String]
         attr_accessor :gcs_staging_bucket
       
         # Output only. The Cloud KMS encryption key that is used to protect the
-        # resources created by the Spark job. If the Spark procedure uses DEFINER
-        # security mode, the Cloud KMS key is inferred from the Spark connection
-        # associated with the procedure if it is provided. Otherwise the key is inferred
-        # from the default key of the Spark connection's project if the CMEK
-        # organization policy is enforced. If the Spark procedure uses INVOKER security
-        # mode, the Cloud KMS encryption key is inferred from the system variable @@
-        # spark_proc_properties.kms_key_name if it is provided. Otherwise, the key is
-        # inferred fromt he default key of the BigQuery job's project if the CMEK
-        # organization policy is enforced. Example: * `projects/[kms_project_id]/
-        # locations/[region]/keyRings/[key_region]/cryptoKeys/[key]`
+        # resources created by the Spark job. If the Spark procedure uses the invoker
+        # security mode, the Cloud KMS encryption key is either inferred from the
+        # provided system variable, `@@spark_proc_properties.kms_key_name`, or the
+        # default key of the BigQuery job's project (if the CMEK organization policy is
+        # enforced). Otherwise, the Cloud KMS key is either inferred from the Spark
+        # connection associated with the procedure (if it is provided), or from the
+        # default key of the Spark connection's project if the CMEK organization policy
+        # is enforced. Example: * `projects/[kms_project_id]/locations/[region]/keyRings/
+        # [key_region]/cryptoKeys/[key]`
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -8893,6 +8959,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_total_physical_bytes
       
+        # The partitioning information, which includes managed table and external table
+        # partition information.
+        # Corresponds to the JSON property `partitionDefinition`
+        # @return [Google::Apis::BigqueryV2::PartitioningDefinition]
+        attr_accessor :partition_definition
+      
         # If specified, configures range partitioning for this table.
         # Corresponds to the JSON property `rangePartitioning`
         # @return [Google::Apis::BigqueryV2::RangePartitioning]
@@ -9020,6 +9092,7 @@ module Google
           @num_time_travel_physical_bytes = args[:num_time_travel_physical_bytes] if args.key?(:num_time_travel_physical_bytes)
           @num_total_logical_bytes = args[:num_total_logical_bytes] if args.key?(:num_total_logical_bytes)
           @num_total_physical_bytes = args[:num_total_physical_bytes] if args.key?(:num_total_physical_bytes)
+          @partition_definition = args[:partition_definition] if args.key?(:partition_definition)
           @range_partitioning = args[:range_partitioning] if args.key?(:range_partitioning)
           @replicas = args[:replicas] if args.key?(:replicas)
           @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
@@ -9475,7 +9548,8 @@ module Google
         # Required. The field data type. Possible values include: * STRING * BYTES *
         # INTEGER (or INT64) * FLOAT (or FLOAT64) * BOOLEAN (or BOOL) * TIMESTAMP * DATE
         # * TIME * DATETIME * GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON * RECORD (or
-        # STRUCT) Use of RECORD/STRUCT indicates that the field contains a nested schema.
+        # STRUCT) * RANGE ([Preview](/products/#product-launch-stages)) Use of RECORD/
+        # STRUCT indicates that the field contains a nested schema.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -9546,7 +9620,8 @@ module Google
         class RangeElementType
           include Google::Apis::Core::Hashable
         
-          # Required. The type of a field element. See TableFieldSchema.type.
+          # Required. The type of a field element. For more information, see
+          # TableFieldSchema.type.
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type
