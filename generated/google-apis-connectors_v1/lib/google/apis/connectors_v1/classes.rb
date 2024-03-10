@@ -1290,6 +1290,11 @@ module Google
         # @return [String]
         attr_accessor :spec_location
       
+        # Output only. Server URLs parsed from the spec.
+        # Corresponds to the JSON property `specServerUrls`
+        # @return [Array<String>]
+        attr_accessor :spec_server_urls
+      
         # Output only. State of the custom connector version.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1315,6 +1320,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @service_account = args[:service_account] if args.key?(:service_account)
           @spec_location = args[:spec_location] if args.key?(:spec_location)
+          @spec_server_urls = args[:spec_server_urls] if args.key?(:spec_server_urls)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1522,6 +1528,11 @@ module Google
       class DestinationConfigTemplate
         include Google::Apis::Core::Hashable
       
+        # Autocomplete suggestions for destination URL field.
+        # Corresponds to the JSON property `autocompleteSuggestions`
+        # @return [Array<String>]
+        attr_accessor :autocomplete_suggestions
+      
         # The default port.
         # Corresponds to the JSON property `defaultPort`
         # @return [Fixnum]
@@ -1574,6 +1585,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autocomplete_suggestions = args[:autocomplete_suggestions] if args.key?(:autocomplete_suggestions)
           @default_port = args[:default_port] if args.key?(:default_port)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -2238,6 +2250,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::EventingStatus]
         attr_accessor :status
       
+        # WebhookData has details of webhook configuration.
+        # Corresponds to the JSON property `webhookData`
+        # @return [Google::Apis::ConnectorsV1::WebhookData]
+        attr_accessor :webhook_data
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2247,6 +2264,7 @@ module Google
           @events_listener_endpoint = args[:events_listener_endpoint] if args.key?(:events_listener_endpoint)
           @events_listener_psc_sa = args[:events_listener_psc_sa] if args.key?(:events_listener_psc_sa)
           @status = args[:status] if args.key?(:status)
+          @webhook_data = args[:webhook_data] if args.key?(:webhook_data)
         end
       end
       
@@ -5283,6 +5301,108 @@ module Google
         def update!(**args)
           @password = args[:password] if args.key?(:password)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Request message for ConnectorsService.ValidateCustomConnectorSpec
+      class ValidateCustomConnectorSpecRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Service account to access the spec from Google Cloud Storage.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Required. Location of the custom connector spec. The location can be either a
+        # public url like `https://public-url.com/spec` Or a Google Cloud Storage
+        # location like `gs:///`
+        # Corresponds to the JSON property `specLocation`
+        # @return [String]
+        attr_accessor :spec_location
+      
+        # Required. Spec type of the custom connector spec.
+        # Corresponds to the JSON property `specType`
+        # @return [String]
+        attr_accessor :spec_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @spec_location = args[:spec_location] if args.key?(:spec_location)
+          @spec_type = args[:spec_type] if args.key?(:spec_type)
+        end
+      end
+      
+      # Response message for ConnectorsService.ValidateCustomConnectorSpec
+      class ValidateCustomConnectorSpecResponse
+        include Google::Apis::Core::Hashable
+      
+        # Error message. The spec is valid if the error message is empty.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
+      # WebhookData has details of webhook configuration.
+      class WebhookData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Additional webhook related field values.
+        # Corresponds to the JSON property `additionalVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
+        attr_accessor :additional_variables
+      
+        # Output only. Timestamp when the webhook was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. ID to uniquely identify webhook.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. Name of the Webhook
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Next webhook refresh time. Will be null if refresh is not
+        # supported.
+        # Corresponds to the JSON property `nextRefreshTime`
+        # @return [String]
+        attr_accessor :next_refresh_time
+      
+        # Output only. Timestamp when the webhook was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @next_refresh_time = args[:next_refresh_time] if args.key?(:next_refresh_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
