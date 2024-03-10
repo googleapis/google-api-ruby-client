@@ -2082,7 +2082,7 @@ module Google
         # @return [String]
         attr_accessor :git_commitish
       
-        # Output only. The release config's name.
+        # Identifier. The release config's name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
