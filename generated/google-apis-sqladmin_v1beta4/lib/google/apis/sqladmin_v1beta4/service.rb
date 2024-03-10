@@ -531,6 +531,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Acquire a lease for the setup of SQL Server Reporting Services (SSRS).
+        # @param [String] project
+        #   Required. ID of the project that contains the instance (Example: project-id).
+        # @param [String] instance
+        #   Required. Cloud SQL instance ID. This doesn't include the project ID. It's
+        #   composed of lowercase letters, numbers, and hyphens, and it must start with a
+        #   letter. The total length must be 98 characters or less (Example: instance-id).
+        # @param [Google::Apis::SqladminV1beta4::InstancesAcquireSsrsLeaseRequest] instances_acquire_ssrs_lease_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::SqlInstancesAcquireSsrsLeaseResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::SqlInstancesAcquireSsrsLeaseResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def acquire_instance_ssrs_lease(project, instance, instances_acquire_ssrs_lease_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/acquireSsrsLease', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::InstancesAcquireSsrsLeaseRequest::Representation
+          command.request_object = instances_acquire_ssrs_lease_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::SqlInstancesAcquireSsrsLeaseResponse::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::SqlInstancesAcquireSsrsLeaseResponse
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Add a new trusted Certificate Authority (CA) version for the specified
         # instance. Required to prepare for a certificate rotation. If a CA version was
         # previously added but never used in a certificate rotation, this operation
@@ -1085,6 +1123,42 @@ module Google
           command.request_object = instances_reencrypt_request_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Release a lease for the setup of SQL Server Reporting Services (SSRS).
+        # @param [String] project
+        #   Required. The ID of the project that contains the instance (Example: project-
+        #   id).
+        # @param [String] instance
+        #   Required. The Cloud SQL instance ID. This doesn't include the project ID. It's
+        #   composed of lowercase letters, numbers, and hyphens, and it must start with a
+        #   letter. The total length must be 98 characters or less (Example: instance-id).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::SqlInstancesReleaseSsrsLeaseResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::SqlInstancesReleaseSsrsLeaseResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def release_instance_ssrs_lease(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/releaseSsrsLease', options)
+          command.response_representation = Google::Apis::SqladminV1beta4::SqlInstancesReleaseSsrsLeaseResponse::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::SqlInstancesReleaseSsrsLeaseResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['fields'] = fields unless fields.nil?
