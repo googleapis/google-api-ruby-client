@@ -1823,6 +1823,81 @@ module Google
         end
       end
       
+      # Chunk captures all raw metadata information of items to be recommended or
+      # searched in the chunk mode.
+      class GoogleCloudDiscoveryengineV1alphaChunk
+        include Google::Apis::Core::Hashable
+      
+        # Content is a string from a document (parsed content).
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. This field is OUTPUT_ONLY. It contains derived data that are not
+        # in the original input document.
+        # Corresponds to the JSON property `derivedStructData`
+        # @return [Hash<String,Object>]
+        attr_accessor :derived_struct_data
+      
+        # Document metadata contains the information of the document of the current
+        # chunk.
+        # Corresponds to the JSON property `documentMetadata`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata]
+        attr_accessor :document_metadata
+      
+        # Unique chunk id of the current chunk.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The full resource name of the chunk. Format: `projects/`project`/locations/`
+        # location`/collections/`collection`/dataStores/`data_store`/branches/`branch`/
+        # documents/`document_id`/chunks/`chunk_id``. This field must be a UTF-8 encoded
+        # string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @derived_struct_data = args[:derived_struct_data] if args.key?(:derived_struct_data)
+          @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Document metadata contains the information of the document of the current
+      # chunk.
+      class GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Title of the document.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Uri of the document.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Request message for CompletionService.CompleteQuery method.
       class GoogleCloudDiscoveryengineV1alphaCompleteQueryRequest
         include Google::Apis::Core::Hashable
@@ -1857,7 +1932,7 @@ module Google
         # imported search events. * `document-completable` - Using suggestions taken
         # directly from user-imported document fields marked as completable. Default
         # values: * `document` is the default model for regular dataStores. * `search-
-        # history` is the default model for site search dataStores.
+        # history` is the default model for site search dataStores. *
         # Corresponds to the JSON property `queryModel`
         # @return [String]
         attr_accessor :query_model
@@ -2906,6 +2981,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration for chunking config.
+        # Corresponds to the JSON property `chunkingConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig]
+        attr_accessor :chunking_config
+      
         # Related configurations applied to a specific type of document parser.
         # Corresponds to the JSON property `defaultParsingConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig]
@@ -2938,10 +3018,58 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunking_config = args[:chunking_config] if args.key?(:chunking_config)
           @default_parsing_config = args[:default_parsing_config] if args.key?(:default_parsing_config)
           @name = args[:name] if args.key?(:name)
           @ocr_config = args[:ocr_config] if args.key?(:ocr_config)
           @parsing_config_overrides = args[:parsing_config_overrides] if args.key?(:parsing_config_overrides)
+        end
+      end
+      
+      # Configuration for chunking config.
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for the layout based chunking.
+        # Corresponds to the JSON property `layoutBasedChunkingConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig]
+        attr_accessor :layout_based_chunking_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @layout_based_chunking_config = args[:layout_based_chunking_config] if args.key?(:layout_based_chunking_config)
+        end
+      end
+      
+      # Configuration for the layout based chunking.
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The token size limit for each chunk. Supported values: 100-500 (inclusive).
+        # Default value: 500.
+        # Corresponds to the JSON property `chunkSize`
+        # @return [Fixnum]
+        attr_accessor :chunk_size
+      
+        # Whether to include appending different levels of headings to chunks from the
+        # middle of the document to prevent context loss. Default value: False.
+        # Corresponds to the JSON property `includeAncestorHeadings`
+        # @return [Boolean]
+        attr_accessor :include_ancestor_headings
+        alias_method :include_ancestor_headings?, :include_ancestor_headings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_size = args[:chunk_size] if args.key?(:chunk_size)
+          @include_ancestor_headings = args[:include_ancestor_headings] if args.key?(:include_ancestor_headings)
         end
       end
       
@@ -5914,6 +6042,14 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec]
         attr_accessor :extractive_content_spec
       
+        # Specifies the search result mode. If unspecified, the search result mode is
+        # based on DataStore.DocumentProcessingConfig.chunking_config: * If DataStore.
+        # DocumentProcessingConfig.chunking_config is specified, it defaults to `CHUNKS`.
+        # * Otherwise, it defaults to `DOCUMENTS`.
+        # Corresponds to the JSON property `searchResultMode`
+        # @return [String]
+        attr_accessor :search_result_mode
+      
         # A specification for configuring snippets in a search response.
         # Corresponds to the JSON property `snippetSpec`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSnippetSpec]
@@ -5931,6 +6067,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @extractive_content_spec = args[:extractive_content_spec] if args.key?(:extractive_content_spec)
+          @search_result_mode = args[:search_result_mode] if args.key?(:search_result_mode)
           @snippet_spec = args[:snippet_spec] if args.key?(:snippet_spec)
           @summary_spec = args[:summary_spec] if args.key?(:summary_spec)
         end
@@ -6681,6 +6818,12 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult
         include Google::Apis::Core::Hashable
       
+        # Chunk captures all raw metadata information of items to be recommended or
+        # searched in the chunk mode.
+        # Corresponds to the JSON property `chunk`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunk]
+        attr_accessor :chunk
+      
         # Document captures all raw metadata information of items to be recommended or
         # searched.
         # Corresponds to the JSON property `document`
@@ -6703,6 +6846,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunk = args[:chunk] if args.key?(:chunk)
           @document = args[:document] if args.key?(:document)
           @id = args[:id] if args.key?(:id)
           @model_scores = args[:model_scores] if args.key?(:model_scores)
