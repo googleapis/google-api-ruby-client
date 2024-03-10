@@ -469,6 +469,9 @@ module Google
         #   A page token, received from a previous call. Provide this to retrieve the
         #   subsequent page. When paginating, all other parameters provided to the request
         #   must match the call that provided the page token.
+        # @param [Fixnum] sample_error_report_limit
+        #   Optional. Number of sample error reports to return per ErrorIssue. If
+        #   unspecified, 0 will be used. *Note:* currently only 0 and 1 are supported.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -486,7 +489,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_vital_error_issues(parent, filter: nil, interval_end_time_day: nil, interval_end_time_hours: nil, interval_end_time_minutes: nil, interval_end_time_month: nil, interval_end_time_nanos: nil, interval_end_time_seconds: nil, interval_end_time_time_zone_id: nil, interval_end_time_time_zone_version: nil, interval_end_time_utc_offset: nil, interval_end_time_year: nil, interval_start_time_day: nil, interval_start_time_hours: nil, interval_start_time_minutes: nil, interval_start_time_month: nil, interval_start_time_nanos: nil, interval_start_time_seconds: nil, interval_start_time_time_zone_id: nil, interval_start_time_time_zone_version: nil, interval_start_time_utc_offset: nil, interval_start_time_year: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_vital_error_issues(parent, filter: nil, interval_end_time_day: nil, interval_end_time_hours: nil, interval_end_time_minutes: nil, interval_end_time_month: nil, interval_end_time_nanos: nil, interval_end_time_seconds: nil, interval_end_time_time_zone_id: nil, interval_end_time_time_zone_version: nil, interval_end_time_utc_offset: nil, interval_end_time_year: nil, interval_start_time_day: nil, interval_start_time_hours: nil, interval_start_time_minutes: nil, interval_start_time_month: nil, interval_start_time_nanos: nil, interval_start_time_seconds: nil, interval_start_time_time_zone_id: nil, interval_start_time_time_zone_version: nil, interval_start_time_utc_offset: nil, interval_start_time_year: nil, order_by: nil, page_size: nil, page_token: nil, sample_error_report_limit: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/errorIssues:search', options)
           command.response_representation = Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse::Representation
           command.response_class = Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse
@@ -515,6 +518,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['sampleErrorReportLimit'] = sample_error_report_limit unless sample_error_report_limit.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -541,23 +545,25 @@ module Google
         #   Example: `errorIssueType = JAVA_CRASH OR errorIssueType = NATIVE_CRASH`. * `
         #   errorIssueId`: Matches error reports belonging to the requested error issue
         #   ids only. Example: `errorIssueId = 1234 OR errorIssueId = 4567`. * `
-        #   appProcessState`: Matches error reports on the process state of an app,
-        #   indicating whether an app runs in the foreground (user-visible) or background.
-        #   Valid candidates: `FOREGROUND`, `BACKGROUND`. Example: `appProcessState =
-        #   FOREGROUND`. * `isUserPerceived`: Matches error reports that are user-
-        #   perceived. It is not accompanied by any operators. Example: `isUserPerceived`.
-        #   ** Supported operators:** * Comparison operators: The only supported
-        #   comparison operator is equality. The filtered field must appear on the left
-        #   hand side of the comparison. * Logical Operators: Logical operators `AND` and `
-        #   OR` can be used to build complex filters following a conjunctive normal form (
-        #   CNF), i.e., conjunctions of disjunctions. The `OR` operator takes precedence
-        #   over `AND` so the use of parenthesis is not necessary when building CNF. The `
-        #   OR` operator is only supported to build disjunctions that apply to the same
-        #   field, e.g., `versionCode = 123 OR versionCode = ANR`. The filter expression `
-        #   versionCode = 123 OR errorIssueType = ANR` is not valid. ** Examples ** Some
-        #   valid filtering expressions: * `versionCode = 123 AND errorIssueType = ANR` * `
-        #   versionCode = 123 AND errorIssueType = OR errorIssueType = CRASH` * `
-        #   versionCode = 123 AND (errorIssueType = OR errorIssueType = CRASH)`
+        #   errorReportId`: Matches error reports with the requested error report id.
+        #   Example: `errorReportId = 1234 OR errorReportId = 4567`. * `appProcessState`:
+        #   Matches error reports on the process state of an app, indicating whether an
+        #   app runs in the foreground (user-visible) or background. Valid candidates: `
+        #   FOREGROUND`, `BACKGROUND`. Example: `appProcessState = FOREGROUND`. * `
+        #   isUserPerceived`: Matches error reports that are user-perceived. It is not
+        #   accompanied by any operators. Example: `isUserPerceived`. ** Supported
+        #   operators:** * Comparison operators: The only supported comparison operator is
+        #   equality. The filtered field must appear on the left hand side of the
+        #   comparison. * Logical Operators: Logical operators `AND` and `OR` can be used
+        #   to build complex filters following a conjunctive normal form (CNF), i.e.,
+        #   conjunctions of disjunctions. The `OR` operator takes precedence over `AND` so
+        #   the use of parenthesis is not necessary when building CNF. The `OR` operator
+        #   is only supported to build disjunctions that apply to the same field, e.g., `
+        #   versionCode = 123 OR versionCode = ANR`. The filter expression `versionCode =
+        #   123 OR errorIssueType = ANR` is not valid. ** Examples ** Some valid filtering
+        #   expressions: * `versionCode = 123 AND errorIssueType = ANR` * `versionCode =
+        #   123 AND errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123 AND (
+        #   errorIssueType = OR errorIssueType = CRASH)`
         # @param [Fixnum] interval_end_time_day
         #   Optional. Day of month. Must be from 1 to 31 and valid for the year and month,
         #   or 0 if specifying a datetime without a day.
