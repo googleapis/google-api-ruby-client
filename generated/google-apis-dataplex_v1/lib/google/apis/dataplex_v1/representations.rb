@@ -394,6 +394,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataScan
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1651,6 +1681,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bigquery_export, as: 'bigqueryExport', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport::Representation
       
+          property :notification_report, as: 'notificationReport', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport::Representation
+      
         end
       end
       
@@ -1658,6 +1690,46 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :results_table, as: 'resultsTable'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_end_trigger, as: 'jobEndTrigger', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger::Representation
+      
+          property :job_failure_trigger, as: 'jobFailureTrigger', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger::Representation
+      
+          property :recipients, as: 'recipients', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients::Representation
+      
+          property :score_threshold_trigger, as: 'scoreThresholdTrigger', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :emails, as: 'emails'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score_threshold, as: 'scoreThreshold'
         end
       end
       
