@@ -55,6 +55,292 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Gets the specified note.
+        # @param [String] name
+        #   Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[
+        #   NOTE_ID]`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContaineranalysisV1::Note] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContaineranalysisV1::Note]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_note(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ContaineranalysisV1::Note::Representation
+          command.response_class = Google::Apis::ContaineranalysisV1::Note
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists notes for the specified project.
+        # @param [String] parent
+        #   Required. The name of the project to list notes for in the form of `projects/[
+        #   PROJECT_ID]`.
+        # @param [String] filter
+        #   The filter expression.
+        # @param [Fixnum] page_size
+        #   Number of notes to return in the list. Must be positive. Max allowed page size
+        #   is 1000. If not specified, page size defaults to 20.
+        # @param [String] page_token
+        #   Token to provide to skip to a particular spot in the list.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContaineranalysisV1::ListNotesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContaineranalysisV1::ListNotesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_notes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/notes', options)
+          command.response_representation = Google::Apis::ContaineranalysisV1::ListNotesResponse::Representation
+          command.response_class = Google::Apis::ContaineranalysisV1::ListNotesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists occurrences referencing the specified note. Provider projects can use
+        # this method to get all occurrences across consumer projects referencing the
+        # specified note.
+        # @param [String] name
+        #   Required. The name of the note to list occurrences for in the form of `
+        #   projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+        # @param [String] filter
+        #   The filter expression.
+        # @param [Fixnum] page_size
+        #   Number of occurrences to return in the list.
+        # @param [String] page_token
+        #   Token to provide to skip to a particular spot in the list.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContaineranalysisV1::ListNoteOccurrencesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContaineranalysisV1::ListNoteOccurrencesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_note_occurrences(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/occurrences', options)
+          command.response_representation = Google::Apis::ContaineranalysisV1::ListNoteOccurrencesResponse::Representation
+          command.response_class = Google::Apis::ContaineranalysisV1::ListNoteOccurrencesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified occurrence.
+        # @param [String] name
+        #   Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/
+        #   occurrences/[OCCURRENCE_ID]`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContaineranalysisV1::Occurrence] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContaineranalysisV1::Occurrence]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_occurrence(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ContaineranalysisV1::Occurrence::Representation
+          command.response_class = Google::Apis::ContaineranalysisV1::Occurrence
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the note attached to the specified occurrence. Consumer projects can use
+        # this method to get a note that belongs to a provider project.
+        # @param [String] name
+        #   Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/
+        #   occurrences/[OCCURRENCE_ID]`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContaineranalysisV1::Note] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContaineranalysisV1::Note]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_occurrence_notes(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/notes', options)
+          command.response_representation = Google::Apis::ContaineranalysisV1::Note::Representation
+          command.response_class = Google::Apis::ContaineranalysisV1::Note
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a summary of the number and severity of occurrences.
+        # @param [String] parent
+        #   Required. The name of the project to get a vulnerability summary for in the
+        #   form of `projects/[PROJECT_ID]`.
+        # @param [String] filter
+        #   The filter expression.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContaineranalysisV1::VulnerabilityOccurrencesSummary] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContaineranalysisV1::VulnerabilityOccurrencesSummary]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_occurrence_vulnerability_summary(parent, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/occurrences:vulnerabilitySummary', options)
+          command.response_representation = Google::Apis::ContaineranalysisV1::VulnerabilityOccurrencesSummary::Representation
+          command.response_class = Google::Apis::ContaineranalysisV1::VulnerabilityOccurrencesSummary
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists occurrences for the specified project.
+        # @param [String] parent
+        #   Required. The name of the project to list occurrences for in the form of `
+        #   projects/[PROJECT_ID]`.
+        # @param [String] filter
+        #   The filter expression.
+        # @param [Fixnum] page_size
+        #   Number of occurrences to return in the list. Must be positive. Max allowed
+        #   page size is 1000. If not specified, page size defaults to 20.
+        # @param [String] page_token
+        #   Token to provide to skip to a particular spot in the list.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContaineranalysisV1::ListOccurrencesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContaineranalysisV1::ListOccurrencesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_occurrences(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/occurrences', options)
+          command.response_representation = Google::Apis::ContaineranalysisV1::ListOccurrencesResponse::Representation
+          command.response_class = Google::Apis::ContaineranalysisV1::ListOccurrencesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates an SBOM for the given resource.
+        # @param [String] name
+        #   Required. The name of the resource in the form of `projects/[PROJECT_ID]/
+        #   resources/[RESOURCE_URL]`.
+        # @param [Google::Apis::ContaineranalysisV1::ExportSbomRequest] export_sbom_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContaineranalysisV1::ExportSbomResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContaineranalysisV1::ExportSbomResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project_location_resource_sbom(name, export_sbom_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:exportSBOM', options)
+          command.request_representation = Google::Apis::ContaineranalysisV1::ExportSbomRequest::Representation
+          command.request_object = export_sbom_request_object
+          command.response_representation = Google::Apis::ContaineranalysisV1::ExportSbomResponse::Representation
+          command.response_class = Google::Apis::ContaineranalysisV1::ExportSbomResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates new notes in batch.
         # @param [String] parent
         #   Required. The name of the project in the form of `projects/[PROJECT_ID]`,

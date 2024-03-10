@@ -1296,6 +1296,7 @@ module Google
           property :cis_benchmark, as: 'cisBenchmark', class: Google::Apis::ContaineranalysisV1::CisBenchmark, decorator: Google::Apis::ContaineranalysisV1::CisBenchmark::Representation
       
           property :description, as: 'description'
+          property :impact, as: 'impact'
           property :rationale, as: 'rationale'
           property :remediation, as: 'remediation'
           property :scan_instructions, :base64 => true, as: 'scanInstructions'

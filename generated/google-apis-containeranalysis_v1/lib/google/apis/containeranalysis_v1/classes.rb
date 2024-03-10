@@ -1228,6 +1228,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # 
+        # Corresponds to the JSON property `impact`
+        # @return [String]
+        attr_accessor :impact
+      
         # A rationale for the existence of this compliance check.
         # Corresponds to the JSON property `rationale`
         # @return [String]
@@ -1262,6 +1267,7 @@ module Google
         def update!(**args)
           @cis_benchmark = args[:cis_benchmark] if args.key?(:cis_benchmark)
           @description = args[:description] if args.key?(:description)
+          @impact = args[:impact] if args.key?(:impact)
           @rationale = args[:rationale] if args.key?(:rationale)
           @remediation = args[:remediation] if args.key?(:remediation)
           @scan_instructions = args[:scan_instructions] if args.key?(:scan_instructions)
