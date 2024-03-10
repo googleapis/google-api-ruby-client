@@ -600,6 +600,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Sample error reports which belong to this ErrorIssue. *Note:*
+        # currently a maximum of 1 per ErrorIssue is supported. Format: "apps/`app`/`
+        # report`"
+        # Corresponds to the JSON property `sampleErrorReports`
+        # @return [Array<String>]
+        attr_accessor :sample_error_reports
+      
         # Type of the errors grouped in this issue.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -623,6 +630,7 @@ module Google
           @last_os_version = args[:last_os_version] if args.key?(:last_os_version)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @sample_error_reports = args[:sample_error_reports] if args.key?(:sample_error_reports)
           @type = args[:type] if args.key?(:type)
         end
       end
