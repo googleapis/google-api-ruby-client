@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MediaPlanner
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MobileApplicationTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -579,10 +585,13 @@ module Google
       
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          collection :eligible_seat_ids, as: 'eligibleSeatIds'
           property :estimated_gross_spend, as: 'estimatedGrossSpend', class: Google::Apis::AuthorizedbuyersmarketplaceV1::Money, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::Money::Representation
       
           property :flight_end_time, as: 'flightEndTime'
           property :flight_start_time, as: 'flightStartTime'
+          property :media_planner, as: 'mediaPlanner', class: Google::Apis::AuthorizedbuyersmarketplaceV1::MediaPlanner, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::MediaPlanner::Representation
+      
           property :name, as: 'name'
           property :preferred_deal_terms, as: 'preferredDealTerms', class: Google::Apis::AuthorizedbuyersmarketplaceV1::PreferredDealTerms, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::PreferredDealTerms::Representation
       
@@ -758,6 +767,13 @@ module Google
       
           property :video_targeting, as: 'videoTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::VideoTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::VideoTargeting::Representation
       
+        end
+      end
+      
+      class MediaPlanner
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
         end
       end
       
