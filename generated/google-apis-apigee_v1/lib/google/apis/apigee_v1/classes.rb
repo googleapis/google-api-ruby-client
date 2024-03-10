@@ -555,8 +555,9 @@ module Google
       
       # `ApiDoc` represents an API catalog item. Catalog items are used in two ways in
       # a portal: - Users can browse and interact with a visual representation of the
-      # API documentation - The `api_product_name` field provides a link to a backing
-      # API product. Through this link, portal users can create and manage developer
+      # API documentation - The `api_product_name` field provides a link to a backing [
+      # API product] (/apigee/docs/reference/apis/apigee/rest/v1/organizations.
+      # apiproducts). Through this link, portal users can create and manage developer
       # apps linked to one or more API products.
       class GoogleCloudApigeeV1ApiDoc
         include Google::Apis::Core::Hashable
@@ -779,8 +780,9 @@ module Google
       
         # `ApiDoc` represents an API catalog item. Catalog items are used in two ways in
         # a portal: - Users can browse and interact with a visual representation of the
-        # API documentation - The `api_product_name` field provides a link to a backing
-        # API product. Through this link, portal users can create and manage developer
+        # API documentation - The `api_product_name` field provides a link to a backing [
+        # API product] (/apigee/docs/reference/apis/apigee/rest/v1/organizations.
+        # apiproducts). Through this link, portal users can create and manage developer
         # apps linked to one or more API products.
         # Corresponds to the JSON property `data`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDoc]
