@@ -94,7 +94,13 @@ module Google
         #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
         #   element can be replaced with the project ID of the Firebase project. Learn
         #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
-        #   dev/cloud/2510) standard.
+        #   dev/cloud/2510) standard. Alternatively, if this method is being called for an
+        #   OAuth client protected by App Check, this field can also be in the format: ```
+        #   oauthClients/`oauth_client_id` ``` You can view the OAuth client ID for your
+        #   OAuth clients in the Google Cloud console. Note that only iOS OAuth clients
+        #   are supported at this time, and they must be linked to corresponding iOS
+        #   Firebase apps. Please see [the documentation](https://developers.google.com/
+        #   identity/sign-in/ios/appcheck/get-started#project-setup) for more information.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest] google_firebase_appcheck_v1beta_exchange_app_attest_assertion_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -136,7 +142,13 @@ module Google
         #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
         #   element can be replaced with the project ID of the Firebase project. Learn
         #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
-        #   dev/cloud/2510) standard.
+        #   dev/cloud/2510) standard. Alternatively, if this method is being called for an
+        #   OAuth client protected by App Check, this field can also be in the format: ```
+        #   oauthClients/`oauth_client_id` ``` You can view the OAuth client ID for your
+        #   OAuth clients in the Google Cloud console. Note that only iOS OAuth clients
+        #   are supported at this time, and they must be linked to corresponding iOS
+        #   Firebase apps. Please see [the documentation](https://developers.google.com/
+        #   identity/sign-in/ios/appcheck/get-started#project-setup) for more information.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest] google_firebase_appcheck_v1beta_exchange_app_attest_attestation_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -176,7 +188,13 @@ module Google
         #   project_number`/apps/`app_id` ``` If necessary, the `project_number` element
         #   can be replaced with the project ID of the Firebase project. Learn more about
         #   using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/
-        #   2510) standard.
+        #   2510) standard. Alternatively, if this method is being called for an OAuth
+        #   client protected by App Check, this field can also be in the format: ```
+        #   oauthClients/`oauth_client_id` ``` You can view the OAuth client ID for your
+        #   OAuth clients in the Google Cloud console. Note that only iOS OAuth clients
+        #   are supported at this time, and they must be linked to corresponding iOS
+        #   Firebase apps. Please see [the documentation](https://developers.google.com/
+        #   identity/sign-in/ios/appcheck/get-started#project-setup) for more information.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest] google_firebase_appcheck_v1beta_exchange_debug_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -215,7 +233,13 @@ module Google
         #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
         #   element can be replaced with the project ID of the Firebase project. Learn
         #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
-        #   dev/cloud/2510) standard.
+        #   dev/cloud/2510) standard. Alternatively, if this method is being called for an
+        #   OAuth client protected by App Check, this field can also be in the format: ```
+        #   oauthClients/`oauth_client_id` ``` You can view the OAuth client ID for your
+        #   OAuth clients in the Google Cloud console. Note that only iOS OAuth clients
+        #   are supported at this time, and they must be linked to corresponding iOS
+        #   Firebase apps. Please see [the documentation](https://developers.google.com/
+        #   identity/sign-in/ios/appcheck/get-started#project-setup) for more information.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest] google_firebase_appcheck_v1beta_generate_app_attest_challenge_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -311,7 +335,13 @@ module Google
         #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
         #   element can be replaced with the project ID of the Firebase project. Learn
         #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
-        #   dev/cloud/2510) standard.
+        #   dev/cloud/2510) standard. Alternatively, if this method is being called for an
+        #   OAuth client protected by App Check, this field can also be in the format: ```
+        #   oauthClients/`oauth_client_id` ``` You can view the OAuth client ID for your
+        #   OAuth clients in the Google Cloud console. Note that only iOS OAuth clients
+        #   are supported at this time, and they must be linked to corresponding iOS
+        #   Firebase apps. Please see [the documentation](https://developers.google.com/
+        #   identity/sign-in/ios/appcheck/get-started#project-setup) for more information.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest] google_firebase_appcheck_v1beta_exchange_app_attest_assertion_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -353,7 +383,13 @@ module Google
         #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
         #   element can be replaced with the project ID of the Firebase project. Learn
         #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
-        #   dev/cloud/2510) standard.
+        #   dev/cloud/2510) standard. Alternatively, if this method is being called for an
+        #   OAuth client protected by App Check, this field can also be in the format: ```
+        #   oauthClients/`oauth_client_id` ``` You can view the OAuth client ID for your
+        #   OAuth clients in the Google Cloud console. Note that only iOS OAuth clients
+        #   are supported at this time, and they must be linked to corresponding iOS
+        #   Firebase apps. Please see [the documentation](https://developers.google.com/
+        #   identity/sign-in/ios/appcheck/get-started#project-setup) for more information.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest] google_firebase_appcheck_v1beta_exchange_app_attest_attestation_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -431,7 +467,13 @@ module Google
         #   project_number`/apps/`app_id` ``` If necessary, the `project_number` element
         #   can be replaced with the project ID of the Firebase project. Learn more about
         #   using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/
-        #   2510) standard.
+        #   2510) standard. Alternatively, if this method is being called for an OAuth
+        #   client protected by App Check, this field can also be in the format: ```
+        #   oauthClients/`oauth_client_id` ``` You can view the OAuth client ID for your
+        #   OAuth clients in the Google Cloud console. Note that only iOS OAuth clients
+        #   are supported at this time, and they must be linked to corresponding iOS
+        #   Firebase apps. Please see [the documentation](https://developers.google.com/
+        #   identity/sign-in/ios/appcheck/get-started#project-setup) for more information.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest] google_firebase_appcheck_v1beta_exchange_debug_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -701,7 +743,13 @@ module Google
         #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
         #   element can be replaced with the project ID of the Firebase project. Learn
         #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
-        #   dev/cloud/2510) standard.
+        #   dev/cloud/2510) standard. Alternatively, if this method is being called for an
+        #   OAuth client protected by App Check, this field can also be in the format: ```
+        #   oauthClients/`oauth_client_id` ``` You can view the OAuth client ID for your
+        #   OAuth clients in the Google Cloud console. Note that only iOS OAuth clients
+        #   are supported at this time, and they must be linked to corresponding iOS
+        #   Firebase apps. Please see [the documentation](https://developers.google.com/
+        #   identity/sign-in/ios/appcheck/get-started#project-setup) for more information.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest] google_firebase_appcheck_v1beta_generate_app_attest_challenge_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
