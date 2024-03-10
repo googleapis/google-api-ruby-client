@@ -2338,8 +2338,8 @@ module Google
         
         # Update this Service.
         # @param [String] name
-        #   Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/
-        #   services/[SERVICE_ID]
+        #   Identifier. Resource name for this Service. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
         # @param [Google::Apis::MonitoringV3::Service] service_object
         # @param [String] update_mask
         #   A set of field paths defining which fields to use for the update.
@@ -2535,8 +2535,9 @@ module Google
         
         # Update the given ServiceLevelObjective.
         # @param [String] name
-        #   Resource name for this ServiceLevelObjective. The format is: projects/[
-        #   PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
+        #   Identifier. Resource name for this ServiceLevelObjective. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[
+        #   SLO_NAME]
         # @param [Google::Apis::MonitoringV3::ServiceLevelObjective] service_level_objective_object
         # @param [String] update_mask
         #   A set of field paths defining which fields to use for the update.

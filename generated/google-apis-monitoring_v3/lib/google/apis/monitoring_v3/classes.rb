@@ -4139,8 +4139,8 @@ module Google
         # @return [Google::Apis::MonitoringV3::MeshIstio]
         attr_accessor :mesh_istio
       
-        # Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/
-        # services/[SERVICE_ID]
+        # Identifier. Resource name for this Service. The format is: projects/[
+        # PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4259,8 +4259,9 @@ module Google
         # @return [Float]
         attr_accessor :goal
       
-        # Resource name for this ServiceLevelObjective. The format is: projects/[
-        # PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
+        # Identifier. Resource name for this ServiceLevelObjective. The format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[
+        # SLO_NAME]
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
