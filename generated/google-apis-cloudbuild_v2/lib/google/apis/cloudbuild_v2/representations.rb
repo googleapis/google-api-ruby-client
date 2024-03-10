@@ -280,7 +280,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PipelineResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PipelineRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PipelineRunResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +341,12 @@ module Google
       end
       
       class Repository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResultValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -902,6 +920,17 @@ module Google
         end
       end
       
+      class PipelineResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :type, as: 'type'
+          property :value, as: 'value', class: Google::Apis::CloudbuildV2::ResultValue, decorator: Google::Apis::CloudbuildV2::ResultValue::Representation
+      
+        end
+      end
+      
       class PipelineRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -928,6 +957,8 @@ module Google
           property :record, as: 'record'
           property :resolved_pipeline_spec, as: 'resolvedPipelineSpec', class: Google::Apis::CloudbuildV2::PipelineSpec, decorator: Google::Apis::CloudbuildV2::PipelineSpec::Representation
       
+          collection :results, as: 'results', class: Google::Apis::CloudbuildV2::PipelineRunResult, decorator: Google::Apis::CloudbuildV2::PipelineRunResult::Representation
+      
           property :security, as: 'security', class: Google::Apis::CloudbuildV2::Security, decorator: Google::Apis::CloudbuildV2::Security::Representation
       
           property :service_account, as: 'serviceAccount'
@@ -947,6 +978,15 @@ module Google
         end
       end
       
+      class PipelineRunResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value', class: Google::Apis::CloudbuildV2::ResultValue, decorator: Google::Apis::CloudbuildV2::ResultValue::Representation
+      
+        end
+      end
+      
       class PipelineSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -954,6 +994,8 @@ module Google
       
           property :generated_yaml, as: 'generatedYaml'
           collection :params, as: 'params', class: Google::Apis::CloudbuildV2::ParamSpec, decorator: Google::Apis::CloudbuildV2::ParamSpec::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::CloudbuildV2::PipelineResult, decorator: Google::Apis::CloudbuildV2::PipelineResult::Representation
       
           collection :tasks, as: 'tasks', class: Google::Apis::CloudbuildV2::PipelineTask, decorator: Google::Apis::CloudbuildV2::PipelineTask::Representation
       
@@ -1038,6 +1080,16 @@ module Google
           property :remote_uri, as: 'remoteUri'
           property :update_time, as: 'updateTime'
           property :webhook_id, as: 'webhookId'
+        end
+      end
+      
+      class ResultValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :array_val, as: 'arrayVal'
+          hash :object_val, as: 'objectVal'
+          property :string_val, as: 'stringVal'
+          property :type, as: 'type'
         end
       end
       
