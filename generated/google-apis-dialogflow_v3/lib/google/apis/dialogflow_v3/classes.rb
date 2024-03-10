@@ -49,6 +49,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings]
         attr_accessor :logging_settings
       
+        # Define behaviors of speech to text detection.
+        # Corresponds to the JSON property `speechSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings]
+        attr_accessor :speech_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -58,6 +63,7 @@ module Google
           @audio_export_gcs_destination = args[:audio_export_gcs_destination] if args.key?(:audio_export_gcs_destination)
           @dtmf_settings = args[:dtmf_settings] if args.key?(:dtmf_settings)
           @logging_settings = args[:logging_settings] if args.key?(:logging_settings)
+          @speech_settings = args[:speech_settings] if args.key?(:speech_settings)
         end
       end
       
@@ -121,6 +127,49 @@ module Google
         def update!(**args)
           @enable_interaction_logging = args[:enable_interaction_logging] if args.key?(:enable_interaction_logging)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
+        end
+      end
+      
+      # Define behaviors of speech to text detection.
+      class GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings
+        include Google::Apis::Core::Hashable
+      
+        # Sensitivity of the speech model that detects the end of speech. Scale from 0
+        # to 100.
+        # Corresponds to the JSON property `endpointerSensitivity`
+        # @return [Fixnum]
+        attr_accessor :endpointer_sensitivity
+      
+        # Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model
+        # will be selected for requests from its corresponding language. For more
+        # information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/
+        # concept/speech-models).
+        # Corresponds to the JSON property `models`
+        # @return [Hash<String,String>]
+        attr_accessor :models
+      
+        # Timeout before detecting no speech.
+        # Corresponds to the JSON property `noSpeechTimeout`
+        # @return [String]
+        attr_accessor :no_speech_timeout
+      
+        # Use timeout based endpointing, interpreting endpointer sensitivy as seconds of
+        # timeout value.
+        # Corresponds to the JSON property `useTimeoutBasedEndpointing`
+        # @return [Boolean]
+        attr_accessor :use_timeout_based_endpointing
+        alias_method :use_timeout_based_endpointing?, :use_timeout_based_endpointing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpointer_sensitivity = args[:endpointer_sensitivity] if args.key?(:endpointer_sensitivity)
+          @models = args[:models] if args.key?(:models)
+          @no_speech_timeout = args[:no_speech_timeout] if args.key?(:no_speech_timeout)
+          @use_timeout_based_endpointing = args[:use_timeout_based_endpointing] if args.key?(:use_timeout_based_endpointing)
         end
       end
       
@@ -213,6 +262,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Settings for end user personalization.
+        # Corresponds to the JSON property `personalizationSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentPersonalizationSettings]
+        attr_accessor :personalization_settings
+      
         # Name of the SecuritySettings reference for the agent. Format: `projects//
         # locations//securitySettings/`.
         # Corresponds to the JSON property `securitySettings`
@@ -266,6 +320,7 @@ module Google
           @git_integration_settings = args[:git_integration_settings] if args.key?(:git_integration_settings)
           @locked = args[:locked] if args.key?(:locked)
           @name = args[:name] if args.key?(:name)
+          @personalization_settings = args[:personalization_settings] if args.key?(:personalization_settings)
           @security_settings = args[:security_settings] if args.key?(:security_settings)
           @speech_to_text_settings = args[:speech_to_text_settings] if args.key?(:speech_to_text_settings)
           @start_flow = args[:start_flow] if args.key?(:start_flow)
@@ -377,6 +432,29 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @repository_uri = args[:repository_uri] if args.key?(:repository_uri)
           @tracking_branch = args[:tracking_branch] if args.key?(:tracking_branch)
+        end
+      end
+      
+      # Settings for end user personalization.
+      class GoogleCloudDialogflowCxV3AgentPersonalizationSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Default end user metadata, used when processing DetectIntent
+        # requests. Recommended to be filled as a template instead of hard-coded value,
+        # for example ` "age": "$session.params.age" `. The data will be merged with the
+        # QueryParameters.end_user_metadata in DetectIntentRequest.query_params during
+        # query processing.
+        # Corresponds to the JSON property `defaultEndUserMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :default_end_user_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_end_user_metadata = args[:default_end_user_metadata] if args.key?(:default_end_user_metadata)
         end
       end
       
@@ -6524,7 +6602,10 @@ module Google
         # Retains the data for the specified number of days. User must set a value lower
         # than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher
         # value will be ignored and use default. Setting a value higher than that has no
-        # effect. A missing value or setting to 0 also means we use default TTL.
+        # effect. A missing value or setting to 0 also means we use default TTL. When
+        # data retention configuration is changed, it only applies to the data created
+        # after the change; the TTL of existing data created before the change stays
+        # intact.
         # Corresponds to the JSON property `retentionWindowDays`
         # @return [Fixnum]
         attr_accessor :retention_window_days
@@ -6563,7 +6644,8 @@ module Google
         # @return [String]
         attr_accessor :audio_format
       
-        # Enable audio redaction if it is true.
+        # Enable audio redaction if it is true. Note that this only redacts end-user
+        # audio data; Synthesised audio from the virtual agent is not redacted.
         # Corresponds to the JSON property `enableAudioRedaction`
         # @return [Boolean]
         attr_accessor :enable_audio_redaction
@@ -8329,6 +8411,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings]
         attr_accessor :logging_settings
       
+        # Define behaviors of speech to text detection.
+        # Corresponds to the JSON property `speechSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings]
+        attr_accessor :speech_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8338,6 +8425,7 @@ module Google
           @audio_export_gcs_destination = args[:audio_export_gcs_destination] if args.key?(:audio_export_gcs_destination)
           @dtmf_settings = args[:dtmf_settings] if args.key?(:dtmf_settings)
           @logging_settings = args[:logging_settings] if args.key?(:logging_settings)
+          @speech_settings = args[:speech_settings] if args.key?(:speech_settings)
         end
       end
       
@@ -8401,6 +8489,49 @@ module Google
         def update!(**args)
           @enable_interaction_logging = args[:enable_interaction_logging] if args.key?(:enable_interaction_logging)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
+        end
+      end
+      
+      # Define behaviors of speech to text detection.
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings
+        include Google::Apis::Core::Hashable
+      
+        # Sensitivity of the speech model that detects the end of speech. Scale from 0
+        # to 100.
+        # Corresponds to the JSON property `endpointerSensitivity`
+        # @return [Fixnum]
+        attr_accessor :endpointer_sensitivity
+      
+        # Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model
+        # will be selected for requests from its corresponding language. For more
+        # information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/
+        # concept/speech-models).
+        # Corresponds to the JSON property `models`
+        # @return [Hash<String,String>]
+        attr_accessor :models
+      
+        # Timeout before detecting no speech.
+        # Corresponds to the JSON property `noSpeechTimeout`
+        # @return [String]
+        attr_accessor :no_speech_timeout
+      
+        # Use timeout based endpointing, interpreting endpointer sensitivy as seconds of
+        # timeout value.
+        # Corresponds to the JSON property `useTimeoutBasedEndpointing`
+        # @return [Boolean]
+        attr_accessor :use_timeout_based_endpointing
+        alias_method :use_timeout_based_endpointing?, :use_timeout_based_endpointing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpointer_sensitivity = args[:endpointer_sensitivity] if args.key?(:endpointer_sensitivity)
+          @models = args[:models] if args.key?(:models)
+          @no_speech_timeout = args[:no_speech_timeout] if args.key?(:no_speech_timeout)
+          @use_timeout_based_endpointing = args[:use_timeout_based_endpointing] if args.key?(:use_timeout_based_endpointing)
         end
       end
       
