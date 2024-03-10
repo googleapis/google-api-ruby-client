@@ -2123,8 +2123,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The location of the route. Uses the following form: "projects/`
-        # project`/locations/`location`" Example: projects/1234/locations/us-central1
+        # Output only. The origin location of the route. Uses the following form: "
+        # projects/`project`/locations/`location`" Example: projects/1234/locations/us-
+        # central1
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
