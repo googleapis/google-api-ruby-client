@@ -6586,6 +6586,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubnetworksScopedWarning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubnetworksSetPrivateIpGoogleAccessRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8398,6 +8416,8 @@ module Google
           property :description, as: 'description'
           property :edge_security_policy, as: 'edgeSecurityPolicy'
           property :enable_cdn, as: 'enableCDN'
+          property :external_managed_migration_state, as: 'externalManagedMigrationState'
+          property :external_managed_migration_testing_rate, as: 'externalManagedMigrationTestingRate'
           property :failover_policy, as: 'failoverPolicy', class: Google::Apis::ComputeAlpha::BackendServiceFailoverPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceFailoverPolicy::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -8811,7 +8831,6 @@ module Google
       class BgpRouteNetworkLayerReachabilityInformation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :destination, as: 'destination'
           property :path_id, as: 'pathId'
           property :prefix, as: 'prefix'
         end
@@ -14386,6 +14405,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_psc_address, as: 'consumerPscAddress'
+          property :producer_port, as: 'producerPort'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :psc_connection_status, as: 'pscConnectionStatus'
         end
@@ -19990,6 +20010,33 @@ module Google
         end
       end
       
+      class SubnetworksScopedWarning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope_name, as: 'scopeName'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::SubnetworksScopedWarning::Warning, decorator: Google::Apis::ComputeAlpha::SubnetworksScopedWarning::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::SubnetworksScopedWarning::Warning::Datum, decorator: Google::Apis::ComputeAlpha::SubnetworksScopedWarning::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class SubnetworksSetPrivateIpGoogleAccessRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -21245,7 +21292,10 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+          collection :scoped_warnings, as: 'scoped_warnings', class: Google::Apis::ComputeAlpha::SubnetworksScopedWarning, decorator: Google::Apis::ComputeAlpha::SubnetworksScopedWarning::Representation
+      
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::UsableSubnetworksAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::UsableSubnetworksAggregatedList::Warning::Representation
       
         end
