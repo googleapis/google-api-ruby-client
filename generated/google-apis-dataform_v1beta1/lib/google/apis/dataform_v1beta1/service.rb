@@ -1077,7 +1077,7 @@ module Google
         
         # Updates a single ReleaseConfig.
         # @param [String] name
-        #   Output only. The release config's name.
+        #   Identifier. The release config's name.
         # @param [Google::Apis::DataformV1beta1::ReleaseConfig] release_config_object
         # @param [String] update_mask
         #   Optional. Specifies the fields to be updated in the release config. If left
