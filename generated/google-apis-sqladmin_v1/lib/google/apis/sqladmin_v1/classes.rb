@@ -60,6 +60,45 @@ module Google
         end
       end
       
+      # Acquire SSRS lease context.
+      class AcquireSsrsLeaseContext
+        include Google::Apis::Core::Hashable
+      
+        # Lease duration needed for SSRS setup.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # The report database to be used for SSRS setup.
+        # Corresponds to the JSON property `reportDatabase`
+        # @return [String]
+        attr_accessor :report_database
+      
+        # The username to be used as the service login to connect to the report database
+        # for SSRS setup.
+        # Corresponds to the JSON property `serviceLogin`
+        # @return [String]
+        attr_accessor :service_login
+      
+        # The username to be used as the setup login to connect to the database server
+        # for SSRS setup.
+        # Corresponds to the JSON property `setupLogin`
+        # @return [String]
+        attr_accessor :setup_login
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @report_database = args[:report_database] if args.key?(:report_database)
+          @service_login = args[:service_login] if args.key?(:service_login)
+          @setup_login = args[:setup_login] if args.key?(:setup_login)
+        end
+      end
+      
       # Specifies options for controlling advanced machine features.
       class AdvancedMachineFeatures
         include Google::Apis::Core::Hashable
@@ -2041,6 +2080,25 @@ module Google
         end
       end
       
+      # Request to acquire a lease for SSRS.
+      class InstancesAcquireSsrsLeaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Acquire SSRS lease context.
+        # Corresponds to the JSON property `acquireSsrsLeaseContext`
+        # @return [Google::Apis::SqladminV1::AcquireSsrsLeaseContext]
+        attr_accessor :acquire_ssrs_lease_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acquire_ssrs_lease_context = args[:acquire_ssrs_lease_context] if args.key?(:acquire_ssrs_lease_context)
+        end
+      end
+      
       # Database instance clone request.
       class InstancesCloneRequest
         include Google::Apis::Core::Hashable
@@ -2693,6 +2751,11 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
+        # Acquire SSRS lease context.
+        # Corresponds to the JSON property `acquireSsrsLeaseContext`
+        # @return [Google::Apis::SqladminV1::AcquireSsrsLeaseContext]
+        attr_accessor :acquire_ssrs_lease_context
+      
         # An Admin API warning message.
         # Corresponds to the JSON property `apiWarning`
         # @return [Google::Apis::SqladminV1::ApiWarning]
@@ -2791,6 +2854,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acquire_ssrs_lease_context = args[:acquire_ssrs_lease_context] if args.key?(:acquire_ssrs_lease_context)
           @api_warning = args[:api_warning] if args.key?(:api_warning)
           @backup_context = args[:backup_context] if args.key?(:backup_context)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -3338,6 +3402,12 @@ module Google
         # @return [String]
         attr_accessor :edition
       
+        # Optional. Configuration to enable Cloud SQL Vertex AI Integration
+        # Corresponds to the JSON property `enableGoogleMlIntegration`
+        # @return [Boolean]
+        attr_accessor :enable_google_ml_integration
+        alias_method :enable_google_ml_integration?, :enable_google_ml_integration
+      
         # Insights configuration. This specifies when Cloud SQL Insights feature is
         # enabled and optional configuration.
         # Corresponds to the JSON property `insightsConfig`
@@ -3451,6 +3521,7 @@ module Google
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @deny_maintenance_periods = args[:deny_maintenance_periods] if args.key?(:deny_maintenance_periods)
           @edition = args[:edition] if args.key?(:edition)
+          @enable_google_ml_integration = args[:enable_google_ml_integration] if args.key?(:enable_google_ml_integration)
           @insights_config = args[:insights_config] if args.key?(:insights_config)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kind = args[:kind] if args.key?(:kind)
@@ -3525,6 +3596,25 @@ module Google
         end
       end
       
+      # Response for the acquire SSRS lease request.
+      class SqlInstancesAcquireSsrsLeaseResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier for this operation.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+        end
+      end
+      
       # Instance get disk shrink config response.
       class SqlInstancesGetDiskShrinkConfigResponse
         include Google::Apis::Core::Hashable
@@ -3578,6 +3668,25 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @latest_recovery_time = args[:latest_recovery_time] if args.key?(:latest_recovery_time)
+        end
+      end
+      
+      # Response for the release SSRS lease request.
+      class SqlInstancesReleaseSsrsLeaseResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier for this operation.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
         end
       end
       
@@ -3666,6 +3775,12 @@ module Google
         # @return [String]
         attr_accessor :sync_mode
       
+        # Optional. Parallel level for initial data sync. Currently only applicable for
+        # PostgreSQL.
+        # Corresponds to the JSON property `syncParallelLevel`
+        # @return [String]
+        attr_accessor :sync_parallel_level
+      
         # Flag to enable verifying connection only
         # Corresponds to the JSON property `verifyConnectionOnly`
         # @return [Boolean]
@@ -3686,6 +3801,7 @@ module Google
         def update!(**args)
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
+          @sync_parallel_level = args[:sync_parallel_level] if args.key?(:sync_parallel_level)
           @verify_connection_only = args[:verify_connection_only] if args.key?(:verify_connection_only)
           @verify_replication_only = args[:verify_replication_only] if args.key?(:verify_replication_only)
         end
