@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcquireSsrsLeaseContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdvancedMachineFeatures
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -274,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesAcquireSsrsLeaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesCloneRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -484,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlInstancesAcquireSsrsLeaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlInstancesGetDiskShrinkConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -491,6 +509,12 @@ module Google
       end
       
       class SqlInstancesGetLatestRecoveryTimeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlInstancesReleaseSsrsLeaseResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -641,6 +665,16 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class AcquireSsrsLeaseContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :report_database, as: 'reportDatabase'
+          property :service_login, as: 'serviceLogin'
+          property :setup_login, as: 'setupLogin'
         end
       end
       
@@ -1132,6 +1166,14 @@ module Google
         end
       end
       
+      class InstancesAcquireSsrsLeaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acquire_ssrs_lease_context, as: 'acquireSsrsLeaseContext', class: Google::Apis::SqladminV1::AcquireSsrsLeaseContext, decorator: Google::Apis::SqladminV1::AcquireSsrsLeaseContext::Representation
+      
+        end
+      end
+      
       class InstancesCloneRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1323,6 +1365,8 @@ module Google
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acquire_ssrs_lease_context, as: 'acquireSsrsLeaseContext', class: Google::Apis::SqladminV1::AcquireSsrsLeaseContext, decorator: Google::Apis::SqladminV1::AcquireSsrsLeaseContext::Representation
+      
           property :api_warning, as: 'apiWarning', class: Google::Apis::SqladminV1::ApiWarning, decorator: Google::Apis::SqladminV1::ApiWarning::Representation
       
           property :backup_context, as: 'backupContext', class: Google::Apis::SqladminV1::BackupContext, decorator: Google::Apis::SqladminV1::BackupContext::Representation
@@ -1488,6 +1532,7 @@ module Google
           collection :deny_maintenance_periods, as: 'denyMaintenancePeriods', class: Google::Apis::SqladminV1::DenyMaintenancePeriod, decorator: Google::Apis::SqladminV1::DenyMaintenancePeriod::Representation
       
           property :edition, as: 'edition'
+          property :enable_google_ml_integration, as: 'enableGoogleMlIntegration'
           property :insights_config, as: 'insightsConfig', class: Google::Apis::SqladminV1::InsightsConfig, decorator: Google::Apis::SqladminV1::InsightsConfig::Representation
       
           property :ip_configuration, as: 'ipConfiguration', class: Google::Apis::SqladminV1::IpConfiguration, decorator: Google::Apis::SqladminV1::IpConfiguration::Representation
@@ -1529,6 +1574,13 @@ module Google
         end
       end
       
+      class SqlInstancesAcquireSsrsLeaseResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_id, as: 'operationId'
+        end
+      end
+      
       class SqlInstancesGetDiskShrinkConfigResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1543,6 +1595,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :latest_recovery_time, as: 'latestRecoveryTime'
+        end
+      end
+      
+      class SqlInstancesReleaseSsrsLeaseResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_id, as: 'operationId'
         end
       end
       
@@ -1577,6 +1636,7 @@ module Google
           property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1::MySqlSyncConfig, decorator: Google::Apis::SqladminV1::MySqlSyncConfig::Representation
       
           property :sync_mode, as: 'syncMode'
+          property :sync_parallel_level, as: 'syncParallelLevel'
           property :verify_connection_only, as: 'verifyConnectionOnly'
           property :verify_replication_only, as: 'verifyReplicationOnly'
         end
