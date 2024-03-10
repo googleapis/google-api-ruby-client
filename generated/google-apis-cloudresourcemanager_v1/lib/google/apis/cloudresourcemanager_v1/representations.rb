@@ -824,6 +824,7 @@ module Google
       
           property :project_id, as: 'projectId'
           property :project_number, :numeric_string => true, as: 'projectNumber'
+          hash :tags, as: 'tags'
         end
       end
       
