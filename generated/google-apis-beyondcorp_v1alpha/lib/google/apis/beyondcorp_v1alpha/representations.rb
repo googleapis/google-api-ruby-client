@@ -436,6 +436,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudLocationListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1335,6 +1359,50 @@ module Google
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_gateways, as: 'securityGateways', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :egress_ip_addresses, as: 'egressIpAddresses'
+          property :region, as: 'region'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :region_configs, as: 'regionConfigs', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       

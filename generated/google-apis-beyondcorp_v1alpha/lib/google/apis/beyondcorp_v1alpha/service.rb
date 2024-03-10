@@ -4045,6 +4045,229 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new SecurityGateway in a given project and global location.
+        # @param [String] parent
+        #   Required. The resource project name of the SecurityGateway location using the
+        #   form: `projects/`project_id`/locations/global`
+        # @param [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway] google_cloud_beyondcorp_securitygateways_v1alpha_security_gateway_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request.
+        # @param [String] security_gateway_id
+        #   Optional. User-settable SecurityGateway resource ID. * Must start with a
+        #   letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with
+        #   a number or letter.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_global_security_gateway(parent, google_cloud_beyondcorp_securitygateways_v1alpha_security_gateway_object = nil, request_id: nil, security_gateway_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/securityGateways', options)
+          command.request_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway::Representation
+          command.request_object = google_cloud_beyondcorp_securitygateways_v1alpha_security_gateway_object
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['securityGatewayId'] = security_gateway_id unless security_gateway_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single SecurityGateway.
+        # @param [String] name
+        #   Required. BeyondCorp SecurityGateway name using the form: `projects/`
+        #   project_id`/locations/global/securityGateways/`security_gateway_id``
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validates request by executing a dry-run which would not
+        #   alter the resource in any way.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_global_security_gateway(name, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single SecurityGateway.
+        # @param [String] name
+        #   Required. The resource name of the PartnerTenant using the form: `projects/`
+        #   project_id`/locations/global/securityGateway/`security_gateway_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_global_security_gateway(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists SecurityGateways in a given project and global location.
+        # @param [String] parent
+        #   Required. The parent location to which the resources belong. `projects/`
+        #   project_id`/locations/global/`
+        # @param [String] filter
+        #   Optional. A filter specifying constraints of a list operation. All fields in
+        #   the SecurityGateway message are supported. For example, the following query
+        #   will return the SecurityGateway with displayName "test-security-gateway" For
+        #   more information, please refer to https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. Specifies the ordering of results. See [Sorting order](https://cloud.
+        #   google.com/apis/design/design_patterns#sorting_order) for more information.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 50 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous
+        #   ListSecurityGatewayRequest, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_global_security_gateways(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/securityGateways', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single SecurityGateway.
+        # @param [String] name
+        #   Identifier. Name of the resource.
+        # @param [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway] google_cloud_beyondcorp_securitygateways_v1alpha_security_gateway_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request timed out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Mutable fields include: display_name, gateway_regions.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_global_security_gateway(name, google_cloud_beyondcorp_securitygateways_v1alpha_security_gateway_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway::Representation
+          command.request_object = google_cloud_beyondcorp_securitygateways_v1alpha_security_gateway_object
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the value for a selected particular insight based on the provided filters.
         # Use the organization level path for fetching at org level and project level
         # path for fetching the insight value specific to a particular project.

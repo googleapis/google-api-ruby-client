@@ -2754,6 +2754,174 @@ module Google
         end
       end
       
+      # Message for response to listing SecurityGateways.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of BeyondCorp SecurityGateway in the project.
+        # Corresponds to the JSON property `securityGateways`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway>]
+        attr_accessor :security_gateways
+      
+        # A list of locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_gateways = args[:security_gateways] if args.key?(:security_gateways)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message contains the configuration for each supported region for the
+      # securityGateway instance.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. External IP addresses that will be used for establishing
+        # connection to the egress endpoints.
+        # Corresponds to the JSON property `egressIpAddresses`
+        # @return [Array<String>]
+        attr_accessor :egress_ip_addresses
+      
+        # Required. The region where the egress connectivity is required.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_ip_addresses = args[:egress_ip_addresses] if args.key?(:egress_ip_addresses)
+          @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # Information about a BeyoncCorp SecurityGateway resource.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An arbitrary user-provided name for the SecurityGateway. Cannot
+        # exceed 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. List of regions where the egress connectivity is required.
+        # Corresponds to the JSON property `regionConfigs`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig>]
+        attr_accessor :region_configs
+      
+        # Output only. The operational state of the SecurityGateway.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when the resource was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @region_configs = args[:region_configs] if args.key?(:region_configs)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have been cancelled successfully have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class GoogleCloudLocationListLocationsResponse
         include Google::Apis::Core::Hashable
