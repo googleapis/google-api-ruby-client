@@ -3223,11 +3223,6 @@ module Google
         # @return [Google::Apis::CloudbuildV1::NetworkConfig]
         attr_accessor :network_config
       
-        # Defines the Private Service Connect network configuration for the pool.
-        # Corresponds to the JSON property `privateServiceConnect`
-        # @return [Google::Apis::CloudbuildV1::PrivateServiceConnect]
-        attr_accessor :private_service_connect
-      
         # Defines the configuration to be used for creating workers in the pool.
         # Corresponds to the JSON property `workerConfig`
         # @return [Google::Apis::CloudbuildV1::WorkerConfig]
@@ -3240,55 +3235,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @network_config = args[:network_config] if args.key?(:network_config)
-          @private_service_connect = args[:private_service_connect] if args.key?(:private_service_connect)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
-        end
-      end
-      
-      # Defines the Private Service Connect network configuration for the pool.
-      class PrivateServiceConnect
-        include Google::Apis::Core::Hashable
-      
-        # Required. Immutable. The network attachment that the worker network interface
-        # is peered to. Must be in the format `projects/`project`/regions/`region`/
-        # networkAttachments/`networkAttachment``. The region of network attachment must
-        # be the same as the worker pool. See [Network Attachments](https://cloud.google.
-        # com/vpc/docs/about-network-attachments)
-        # Corresponds to the JSON property `networkAttachment`
-        # @return [String]
-        attr_accessor :network_attachment
-      
-        # Required. Immutable. Disable public IP on the primary network interface. If
-        # true, workers are created without any public address, which prevents network
-        # egress to public IPs unless a network proxy is configured. If false, workers
-        # are created with a public address which allows for public internet egress. The
-        # public address only applies to traffic through the primary network interface.
-        # If `route_all_traffic` is set to true, all traffic will go through the non-
-        # primary network interface, this boolean has no effect.
-        # Corresponds to the JSON property `publicIpAddressDisabled`
-        # @return [Boolean]
-        attr_accessor :public_ip_address_disabled
-        alias_method :public_ip_address_disabled?, :public_ip_address_disabled
-      
-        # Immutable. Route all traffic through PSC interface. Enable this if you want
-        # full control of traffic in the private pool. Configure Cloud NAT for the
-        # subnet of network attachment if you need to access public Internet. If false,
-        # Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16
-        # through PSC interface.
-        # Corresponds to the JSON property `routeAllTraffic`
-        # @return [Boolean]
-        attr_accessor :route_all_traffic
-        alias_method :route_all_traffic?, :route_all_traffic
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
-          @public_ip_address_disabled = args[:public_ip_address_disabled] if args.key?(:public_ip_address_disabled)
-          @route_all_traffic = args[:route_all_traffic] if args.key?(:route_all_traffic)
         end
       end
       
