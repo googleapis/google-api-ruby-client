@@ -2502,6 +2502,10 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2514,8 +2518,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_playlist_image(playlist_image_object = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'youtube/v3/playlistImages', options)
+        def update_playlist_image(playlist_image_object = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:put, 'youtube/v3/playlistImages', options)
+          else
+            command = make_upload_command(:put, 'youtube/v3/playlistImages', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
           command.request_representation = Google::Apis::YoutubeV3::PlaylistImage::Representation
           command.request_object = playlist_image_object
           command.response_representation = Google::Apis::YoutubeV3::PlaylistImage::Representation
