@@ -220,6 +220,216 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1ApprovalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1ApprovalResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1ArtifactObjects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Artifacts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Build
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuildApproval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuildOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuildOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuildStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuiltImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1ConnectedRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1FailureInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1GitSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Hash
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1InlineSecret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1MavenArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1NpmPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1PoolOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1PythonPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1RepoSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Results
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1SecretManagerSecret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Secrets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Source
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1SourceProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1StorageSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1StorageSourceManifest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1TimeSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1UploadedMavenArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1UploadedNpmPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1UploadedPythonPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Volume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Warning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -935,6 +1145,429 @@ module Google
           property :severity, as: 'severity'
           property :status, as: 'status'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1ApprovalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_required, as: 'approvalRequired'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1ApprovalResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_time, as: 'approvalTime'
+          property :approver_account, as: 'approverAccount'
+          property :comment, as: 'comment'
+          property :decision, as: 'decision'
+          property :url, as: 'url'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1ArtifactObjects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          collection :paths, as: 'paths'
+          property :timing, as: 'timing', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Artifacts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :images, as: 'images'
+          collection :maven_artifacts, as: 'mavenArtifacts', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1MavenArtifact, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1MavenArtifact::Representation
+      
+          collection :npm_packages, as: 'npmPackages', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1NpmPackage, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1NpmPackage::Representation
+      
+          property :objects, as: 'objects', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ArtifactObjects, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ArtifactObjects::Representation
+      
+          collection :python_packages, as: 'pythonPackages', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1PythonPackage, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1PythonPackage::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Build
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval, as: 'approval', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1BuildApproval, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1BuildApproval::Representation
+      
+          property :artifacts, as: 'artifacts', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Artifacts, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Artifacts::Representation
+      
+          property :available_secrets, as: 'availableSecrets', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Secrets, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Secrets::Representation
+      
+          property :build_trigger_id, as: 'buildTriggerId'
+          property :create_time, as: 'createTime'
+          property :failure_info, as: 'failureInfo', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FailureInfo, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FailureInfo::Representation
+      
+          property :finish_time, as: 'finishTime'
+          property :id, as: 'id'
+          collection :images, as: 'images'
+          property :log_url, as: 'logUrl'
+          property :logs_bucket, as: 'logsBucket'
+          property :name, as: 'name'
+          property :options, as: 'options', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1BuildOptions, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1BuildOptions::Representation
+      
+          property :project_id, as: 'projectId'
+          property :queue_ttl, as: 'queueTtl'
+          property :results, as: 'results', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Results, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Results::Representation
+      
+          collection :secrets, as: 'secrets', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Secret, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Secret::Representation
+      
+          property :service_account, as: 'serviceAccount'
+          property :source, as: 'source', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Source, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Source::Representation
+      
+          property :source_provenance, as: 'sourceProvenance', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1SourceProvenance, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1SourceProvenance::Representation
+      
+          property :start_time, as: 'startTime'
+          property :status, as: 'status'
+          property :status_detail, as: 'statusDetail'
+          collection :steps, as: 'steps', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1BuildStep, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1BuildStep::Representation
+      
+          hash :substitutions, as: 'substitutions'
+          collection :tags, as: 'tags'
+          property :timeout, as: 'timeout'
+          hash :timing, as: 'timing', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Warning, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Warning::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuildApproval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ApprovalConfig, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ApprovalConfig::Representation
+      
+          property :result, as: 'result', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ApprovalResult, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ApprovalResult::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuildOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build, as: 'build', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Build, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Build::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuildOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automap_substitutions, as: 'automapSubstitutions'
+          property :default_logs_bucket_behavior, as: 'defaultLogsBucketBehavior'
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :dynamic_substitutions, as: 'dynamicSubstitutions'
+          collection :env, as: 'env'
+          property :log_streaming_option, as: 'logStreamingOption'
+          property :logging, as: 'logging'
+          property :machine_type, as: 'machineType'
+          property :pool, as: 'pool', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1PoolOption, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1PoolOption::Representation
+      
+          property :requested_verify_option, as: 'requestedVerifyOption'
+          collection :secret_env, as: 'secretEnv'
+          collection :source_provenance_hash, as: 'sourceProvenanceHash'
+          property :substitution_option, as: 'substitutionOption'
+          collection :volumes, as: 'volumes', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Volume, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Volume::Representation
+      
+          property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuildStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allow_exit_codes, as: 'allowExitCodes'
+          property :allow_failure, as: 'allowFailure'
+          collection :args, as: 'args'
+          property :automap_substitutions, as: 'automapSubstitutions'
+          property :dir, as: 'dir'
+          property :entrypoint, as: 'entrypoint'
+          collection :env, as: 'env'
+          property :exit_code, as: 'exitCode'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :pull_timing, as: 'pullTiming', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          property :script, as: 'script'
+          collection :secret_env, as: 'secretEnv'
+          property :status, as: 'status'
+          property :timeout, as: 'timeout'
+          property :timing, as: 'timing', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          collection :volumes, as: 'volumes', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Volume, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Volume::Representation
+      
+          collection :wait_for, as: 'waitFor'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuiltImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :digest, as: 'digest'
+          property :name, as: 'name'
+          property :push_timing, as: 'pushTiming', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1ConnectedRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dir, as: 'dir'
+          property :repository, as: 'repository'
+          property :revision, as: 'revision'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1FailureInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1FileHashes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :file_hash, as: 'fileHash', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Hash, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Hash::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1GitSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dir, as: 'dir'
+          property :revision, as: 'revision'
+          property :url, as: 'url'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Hash
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :value, :base64 => true, as: 'value'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1InlineSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :env_map, as: 'envMap'
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1MavenArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_id, as: 'artifactId'
+          property :group_id, as: 'groupId'
+          property :path, as: 'path'
+          property :repository, as: 'repository'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1NpmPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :package_path, as: 'packagePath'
+          property :repository, as: 'repository'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1PoolOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1PythonPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :paths, as: 'paths'
+          property :repository, as: 'repository'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1RepoSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch_name, as: 'branchName'
+          property :commit_sha, as: 'commitSha'
+          property :dir, as: 'dir'
+          property :invert_regex, as: 'invertRegex'
+          property :project_id, as: 'projectId'
+          property :repo_name, as: 'repoName'
+          hash :substitutions, as: 'substitutions'
+          property :tag_name, as: 'tagName'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Results
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_manifest, as: 'artifactManifest'
+          property :artifact_timing, as: 'artifactTiming', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          collection :build_step_images, as: 'buildStepImages'
+          collection :build_step_outputs, as: 'buildStepOutputs'
+          collection :images, as: 'images', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1BuiltImage, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1BuiltImage::Representation
+      
+          collection :maven_artifacts, as: 'mavenArtifacts', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1UploadedMavenArtifact, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1UploadedMavenArtifact::Representation
+      
+          collection :npm_packages, as: 'npmPackages', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1UploadedNpmPackage, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1UploadedNpmPackage::Representation
+      
+          property :num_artifacts, :numeric_string => true, as: 'numArtifacts'
+          collection :python_packages, as: 'pythonPackages', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1UploadedPythonPackage, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1UploadedPythonPackage::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Secret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+          hash :secret_env, as: 'secretEnv'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1SecretManagerSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :env, as: 'env'
+          property :version_name, as: 'versionName'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Secrets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inline, as: 'inline', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1InlineSecret, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1InlineSecret::Representation
+      
+          collection :secret_manager, as: 'secretManager', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1SecretManagerSecret, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1SecretManagerSecret::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Source
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connected_repository, as: 'connectedRepository', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ConnectedRepository, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ConnectedRepository::Representation
+      
+          property :git_source, as: 'gitSource', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSource, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSource::Representation
+      
+          property :repo_source, as: 'repoSource', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1RepoSource, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1RepoSource::Representation
+      
+          property :storage_source, as: 'storageSource', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1StorageSource, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1StorageSource::Representation
+      
+          property :storage_source_manifest, as: 'storageSourceManifest', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1StorageSourceManifest, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1StorageSourceManifest::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1SourceProvenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :file_hashes, as: 'fileHashes', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes::Representation
+      
+          property :resolved_connected_repository, as: 'resolvedConnectedRepository', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ConnectedRepository, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ConnectedRepository::Representation
+      
+          property :resolved_git_source, as: 'resolvedGitSource', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSource, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSource::Representation
+      
+          property :resolved_repo_source, as: 'resolvedRepoSource', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1RepoSource, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1RepoSource::Representation
+      
+          property :resolved_storage_source, as: 'resolvedStorageSource', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1StorageSource, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1StorageSource::Representation
+      
+          property :resolved_storage_source_manifest, as: 'resolvedStorageSourceManifest', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1StorageSourceManifest, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1StorageSourceManifest::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1StorageSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object, as: 'object'
+          property :source_fetcher, as: 'sourceFetcher'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1StorageSourceManifest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object, as: 'object'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1TimeSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1UploadedMavenArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1UploadedNpmPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1UploadedPythonPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :path, as: 'path'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Warning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :priority, as: 'priority'
+          property :text, as: 'text'
         end
       end
       
