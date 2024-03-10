@@ -1604,6 +1604,43 @@ module Google
         end
       end
       
+      # A value produced by a Pipeline.
+      class PipelineResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Description of the result.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Name of the result.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The type of data that the result holds.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # ResultValue holds different types of data for a single result.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::CloudbuildV2::ResultValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Message describing PipelineRun object
       class PipelineRun
         include Google::Apis::Core::Hashable
@@ -1693,6 +1730,12 @@ module Google
         # @return [Google::Apis::CloudbuildV2::PipelineSpec]
         attr_accessor :resolved_pipeline_spec
       
+        # Optional. Output only. List of results written out by the pipeline's
+        # containers
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::CloudbuildV2::PipelineRunResult>]
+        attr_accessor :results
+      
         # Security configuration.
         # Corresponds to the JSON property `security`
         # @return [Google::Apis::CloudbuildV2::Security]
@@ -1773,6 +1816,7 @@ module Google
           @provenance = args[:provenance] if args.key?(:provenance)
           @record = args[:record] if args.key?(:record)
           @resolved_pipeline_spec = args[:resolved_pipeline_spec] if args.key?(:resolved_pipeline_spec)
+          @results = args[:results] if args.key?(:results)
           @security = args[:security] if args.key?(:security)
           @service_account = args[:service_account] if args.key?(:service_account)
           @skipped_tasks = args[:skipped_tasks] if args.key?(:skipped_tasks)
@@ -1784,6 +1828,31 @@ module Google
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
           @workflow = args[:workflow] if args.key?(:workflow)
           @workspaces = args[:workspaces] if args.key?(:workspaces)
+        end
+      end
+      
+      # PipelineRunResult used to describe the results of a pipeline
+      class PipelineRunResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the TaskRun
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ResultValue holds different types of data for a single result.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::CloudbuildV2::ResultValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1809,6 +1878,12 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV2::ParamSpec>]
         attr_accessor :params
       
+        # Optional. Output only. List of results written out by the pipeline's
+        # containers
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::CloudbuildV2::PipelineResult>]
+        attr_accessor :results
+      
         # List of Tasks that execute when this Pipeline is run.
         # Corresponds to the JSON property `tasks`
         # @return [Array<Google::Apis::CloudbuildV2::PipelineTask>]
@@ -1829,6 +1904,7 @@ module Google
           @finally_tasks = args[:finally_tasks] if args.key?(:finally_tasks)
           @generated_yaml = args[:generated_yaml] if args.key?(:generated_yaml)
           @params = args[:params] if args.key?(:params)
+          @results = args[:results] if args.key?(:results)
           @tasks = args[:tasks] if args.key?(:tasks)
           @workspaces = args[:workspaces] if args.key?(:workspaces)
         end
@@ -2168,6 +2244,43 @@ module Google
           @remote_uri = args[:remote_uri] if args.key?(:remote_uri)
           @update_time = args[:update_time] if args.key?(:update_time)
           @webhook_id = args[:webhook_id] if args.key?(:webhook_id)
+        end
+      end
+      
+      # ResultValue holds different types of data for a single result.
+      class ResultValue
+        include Google::Apis::Core::Hashable
+      
+        # Value of the result if type is array.
+        # Corresponds to the JSON property `arrayVal`
+        # @return [Array<String>]
+        attr_accessor :array_val
+      
+        # Value of the result if type is object.
+        # Corresponds to the JSON property `objectVal`
+        # @return [Hash<String,String>]
+        attr_accessor :object_val
+      
+        # Value of the result if type is string.
+        # Corresponds to the JSON property `stringVal`
+        # @return [String]
+        attr_accessor :string_val
+      
+        # Output only. The type of data that the result holds.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @array_val = args[:array_val] if args.key?(:array_val)
+          @object_val = args[:object_val] if args.key?(:object_val)
+          @string_val = args[:string_val] if args.key?(:string_val)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
