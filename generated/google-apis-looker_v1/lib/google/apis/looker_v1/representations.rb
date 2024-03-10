@@ -184,19 +184,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PscConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RestartInstanceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServiceAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -395,6 +383,7 @@ module Google
           property :ingress_public_ip, as: 'ingressPublicIp'
           property :last_deny_maintenance_period, as: 'lastDenyMaintenancePeriod', class: Google::Apis::LookerV1::DenyMaintenancePeriod, decorator: Google::Apis::LookerV1::DenyMaintenancePeriod::Representation
       
+          property :linked_lsp_project_number, :numeric_string => true, as: 'linkedLspProjectNumber'
           property :looker_uri, as: 'lookerUri'
           property :looker_version, as: 'lookerVersion'
           property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::LookerV1::MaintenanceSchedule, decorator: Google::Apis::LookerV1::MaintenanceSchedule::Representation
@@ -406,9 +395,6 @@ module Google
       
           property :platform_edition, as: 'platformEdition'
           property :private_ip_enabled, as: 'privateIpEnabled'
-          property :psc_config, as: 'pscConfig', class: Google::Apis::LookerV1::PscConfig, decorator: Google::Apis::LookerV1::PscConfig::Representation
-      
-          property :psc_enabled, as: 'pscEnabled'
           property :public_ip_enabled, as: 'publicIpEnabled'
           property :reserved_range, as: 'reservedRange'
           property :state, as: 'state'
@@ -519,28 +505,9 @@ module Google
         end
       end
       
-      class PscConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :allowed_vpcs, as: 'allowedVpcs'
-          property :looker_service_attachment_uri, as: 'lookerServiceAttachmentUri'
-          collection :service_attachments, as: 'serviceAttachments', class: Google::Apis::LookerV1::ServiceAttachment, decorator: Google::Apis::LookerV1::ServiceAttachment::Representation
-      
-        end
-      end
-      
       class RestartInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ServiceAttachment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :connection_status, as: 'connectionStatus'
-          property :local_fqdn, as: 'localFqdn'
-          property :target_service_attachment_uri, as: 'targetServiceAttachmentUri'
         end
       end
       
