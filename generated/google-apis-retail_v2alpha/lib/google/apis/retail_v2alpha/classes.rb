@@ -1380,6 +1380,84 @@ module Google
         end
       end
       
+      # Project level alert config.
+      class GoogleCloudRetailV2alphaAlertConfig
+        include Google::Apis::Core::Hashable
+      
+        # Alert policies for a customer. They must be unique by [AlertPolicy.alert_group]
+        # Corresponds to the JSON property `alertPolicies`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAlertConfigAlertPolicy>]
+        attr_accessor :alert_policies
+      
+        # Required. Immutable. The name of the AlertConfig singleton resource. Format:
+        # projects/*/alertConfig
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policies = args[:alert_policies] if args.key?(:alert_policies)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Alert policy for a customer.
+      class GoogleCloudRetailV2alphaAlertConfigAlertPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The feature that provides alerting capability. Supported value is only `search-
+        # data-quality` for now.
+        # Corresponds to the JSON property `alertGroup`
+        # @return [String]
+        attr_accessor :alert_group
+      
+        # The enrollment status of a customer.
+        # Corresponds to the JSON property `enrollStatus`
+        # @return [String]
+        attr_accessor :enroll_status
+      
+        # Recipients for the alert policy. One alert policy should not exceed 20
+        # recipients.
+        # Corresponds to the JSON property `recipients`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAlertConfigAlertPolicyRecipient>]
+        attr_accessor :recipients
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_group = args[:alert_group] if args.key?(:alert_group)
+          @enroll_status = args[:enroll_status] if args.key?(:enroll_status)
+          @recipients = args[:recipients] if args.key?(:recipients)
+        end
+      end
+      
+      # Recipient contact information.
+      class GoogleCloudRetailV2alphaAlertConfigAlertPolicyRecipient
+        include Google::Apis::Core::Hashable
+      
+        # Email address of the recipient.
+        # Corresponds to the JSON property `emailAddress`
+        # @return [String]
+        attr_accessor :email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_address = args[:email_address] if args.key?(:email_address)
+        end
+      end
+      
       # Catalog level attribute config.
       class GoogleCloudRetailV2alphaAttributesConfig
         include Google::Apis::Core::Hashable
