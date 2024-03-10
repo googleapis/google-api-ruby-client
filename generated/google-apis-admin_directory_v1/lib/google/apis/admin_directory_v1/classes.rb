@@ -224,6 +224,38 @@ module Google
         end
       end
       
+      # Information about the device's backlights.
+      class BacklightInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Current brightness of the backlight, between 0 and max_brightness.
+        # Corresponds to the JSON property `brightness`
+        # @return [Fixnum]
+        attr_accessor :brightness
+      
+        # Output only. Maximum brightness for the backlight.
+        # Corresponds to the JSON property `maxBrightness`
+        # @return [Fixnum]
+        attr_accessor :max_brightness
+      
+        # Output only. Path to this backlight on the system. Useful if the caller needs
+        # to correlate with other information.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brightness = args[:brightness] if args.key?(:brightness)
+          @max_brightness = args[:max_brightness] if args.key?(:max_brightness)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # A request for changing the status of a batch of ChromeOS devices.
       class BatchChangeChromeOsDeviceStatusRequest
         include Google::Apis::Core::Hashable
@@ -953,6 +985,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :auto_update_expiration
       
+        # Output only. Contains backlight information for the device.
+        # Corresponds to the JSON property `backlightInfo`
+        # @return [Array<Google::Apis::AdminDirectoryV1::BacklightInfo>]
+        attr_accessor :backlight_info
+      
         # The boot mode for the device. The possible values are: * `Verified`: The
         # device is running a valid version of the Chrome OS. * `Dev`: The devices's
         # developer hardware switch is enabled. When booted, the device has a command
@@ -1204,6 +1241,7 @@ module Google
           @annotated_location = args[:annotated_location] if args.key?(:annotated_location)
           @annotated_user = args[:annotated_user] if args.key?(:annotated_user)
           @auto_update_expiration = args[:auto_update_expiration] if args.key?(:auto_update_expiration)
+          @backlight_info = args[:backlight_info] if args.key?(:backlight_info)
           @boot_mode = args[:boot_mode] if args.key?(:boot_mode)
           @cpu_info = args[:cpu_info] if args.key?(:cpu_info)
           @cpu_status_reports = args[:cpu_status_reports] if args.key?(:cpu_status_reports)
