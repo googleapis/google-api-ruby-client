@@ -154,9 +154,10 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
-        # Optional. Cloudfront domain name pointing to this bucket (as origin), to use
-        # when fetching. Format: `https://`id`.cloudfront.net` or any valid custom
-        # domain `https://...`
+        # Optional. The CloudFront distribution domain name pointing to this bucket, to
+        # use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.
+        # com/storage-transfer/docs/s3-cloudfront) for more information. Format: `https:/
+        # /`id`.cloudfront.net` or any valid custom domain. Must begin with `https://`.
         # Corresponds to the JSON property `cloudfrontDomain`
         # @return [String]
         attr_accessor :cloudfront_domain
@@ -168,8 +169,7 @@ module Google
         # the resource. See [Configure access to a source: Amazon S3] (https://cloud.
         # google.com/storage-transfer/docs/source-amazon-s3#secret_manager) for more
         # information. If `credentials_secret` is specified, do not specify role_arn or
-        # aws_access_key. This feature is in [preview](https://cloud.google.com/terms/
-        # service-terms#1). Format: `projects/`project_number`/secrets/`secret_name``
+        # aws_access_key. Format: `projects/`project_number`/secrets/`secret_name``
         # Corresponds to the JSON property `credentialsSecret`
         # @return [String]
         attr_accessor :credentials_secret
@@ -234,8 +234,7 @@ module Google
         # the resource. See [Configure access to a source: Microsoft Azure Blob Storage]
         # (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#
         # secret_manager) for more information. If `credentials_secret` is specified, do
-        # not specify azure_credentials. This feature is in [preview](https://cloud.
-        # google.com/terms/service-terms#1). Format: `projects/`project_number`/secrets/`
+        # not specify azure_credentials. Format: `projects/`project_number`/secrets/`
         # secret_name``
         # Corresponds to the JSON property `credentialsSecret`
         # @return [String]
@@ -490,11 +489,12 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
-        # Transfer managed folders is in public preview. This option is only applicable
-        # to the Cloud Storage source bucket. If set to true: - The source managed
-        # folder will be transferred to the destination bucket - The destination managed
-        # folder will always be overwritten, other OVERWRITE options will not be
-        # supported
+        # Preview. Enables the transfer of managed folders between Cloud Storage buckets.
+        # Set this option on the gcs_data_source. If set to true: - Managed folders in
+        # the source bucket are transferred to the destination bucket. - Managed folders
+        # in the destination bucket are overwritten. Other OVERWRITE options are not
+        # supported. See [Transfer Cloud Storage managed folders](/storage-transfer/docs/
+        # managed-folders).
         # Corresponds to the JSON property `managedFolderTransferEnabled`
         # @return [Boolean]
         attr_accessor :managed_folder_transfer_enabled
