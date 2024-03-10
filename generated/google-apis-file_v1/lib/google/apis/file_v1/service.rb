@@ -548,8 +548,8 @@ module Google
         
         # Revert an existing instance's file system to a specified snapshot.
         # @param [String] name
-        #   Required. `projects/`project_id`/locations/`location_id`/instances/`
-        #   instance_id``. The resource name of the instance, in the format
+        #   Required. The resource name of the instance, in the format `projects/`
+        #   project_id`/locations/`location_id`/instances/`instance_id``.
         # @param [Google::Apis::FileV1::RevertInstanceRequest] revert_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
