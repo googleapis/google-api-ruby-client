@@ -154,6 +154,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBillingAnomaliesV1betaAnomaly
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBillingAnomaliesV1betaAnomalyDeviation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBillingAnomaliesV1betaCause
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBillingBillingaccountpricesV1betaAggregationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -852,6 +876,57 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :estimation_time_frame_offset, as: 'estimationTimeFrameOffset'
+        end
+      end
+      
+      class GoogleCloudBillingAnomaliesV1betaAnomaly
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detection_time, as: 'detectionTime'
+          property :deviation, as: 'deviation', class: Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomalyDeviation, decorator: Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomalyDeviation::Representation
+      
+          property :name, as: 'name'
+          property :resource_display_name, as: 'resourceDisplayName'
+          collection :root_causes, as: 'rootCauses', class: Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaCause, decorator: Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaCause::Representation
+      
+          property :scope, as: 'scope'
+          property :severity, as: 'severity'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudBillingAnomaliesV1betaAnomalyDeviation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actual_spend, as: 'actualSpend', class: Google::Apis::CloudbillingV1beta::Money, decorator: Google::Apis::CloudbillingV1beta::Money::Representation
+      
+          property :deviation_amount, as: 'deviationAmount', class: Google::Apis::CloudbillingV1beta::Money, decorator: Google::Apis::CloudbillingV1beta::Money::Representation
+      
+          property :deviation_percentage, as: 'deviationPercentage'
+          property :expected_spend, as: 'expectedSpend', class: Google::Apis::CloudbillingV1beta::Money, decorator: Google::Apis::CloudbillingV1beta::Money::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBillingAnomaliesV1betaCause
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cause_type, as: 'causeType'
+          property :deviation, as: 'deviation', class: Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomalyDeviation, decorator: Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomalyDeviation::Representation
+      
+          property :display_name, as: 'displayName'
+          property :resource, as: 'resource'
+          collection :sub_causes, as: 'subCauses', class: Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaCause, decorator: Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaCause::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :anomalies, as: 'anomalies', class: Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomaly, decorator: Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomaly::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
