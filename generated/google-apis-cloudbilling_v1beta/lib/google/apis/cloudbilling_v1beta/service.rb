@@ -89,6 +89,83 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets an anomaly for a billing account or a project.
+        # @param [String] name
+        #   Required. Format for project: projects/`project`/anomalies/`anomalies`. Format
+        #   for billing account: billingAccounts/`billing_account`/anomalies/`anomalies`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomaly] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomaly]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_billing_account_anomaly(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomaly::Representation
+          command.response_class = Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomaly
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists anomalies for a billing account or a project.
+        # @param [String] parent
+        #   Required. The project to list Anomaly for the project. Format for project:
+        #   projects/`project`. Format for billing account: billingAccounts/`
+        #   billing_account`.
+        # @param [String] filter
+        #   Optional. Options for how to filter the anomalies. Currently, only filter on `
+        #   start_time` and `end_time` is supported. Only =, AND operators are supported.
+        #   If start_time and/or end_time empty, we only retrieve the most recent 30 days'
+        #   anomalies. Examples: - start_time = "20231201" AND end_time = "20240120" .
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of anomalies to return. Results may return fewer than
+        #   this value. Default value is 50 and maximum value is 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListAnomalies call to retrieve
+        #   the next page of results. If this field is empty, the first page is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_billing_account_anomalies(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/anomalies', options)
+          command.response_representation = Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse::Representation
+          command.response_class = Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a Google Cloud service visible to a billing account.
         # @param [String] name
         #   Required. The name of the billing account service to retrieve. Format:
@@ -451,6 +528,83 @@ module Google
           command.response_class = Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['currencyCode'] = currency_code unless currency_code.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an anomaly for a billing account or a project.
+        # @param [String] name
+        #   Required. Format for project: projects/`project`/anomalies/`anomalies`. Format
+        #   for billing account: billingAccounts/`billing_account`/anomalies/`anomalies`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomaly] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomaly]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_anomaly(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomaly::Representation
+          command.response_class = Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaAnomaly
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists anomalies for a billing account or a project.
+        # @param [String] parent
+        #   Required. The project to list Anomaly for the project. Format for project:
+        #   projects/`project`. Format for billing account: billingAccounts/`
+        #   billing_account`.
+        # @param [String] filter
+        #   Optional. Options for how to filter the anomalies. Currently, only filter on `
+        #   start_time` and `end_time` is supported. Only =, AND operators are supported.
+        #   If start_time and/or end_time empty, we only retrieve the most recent 30 days'
+        #   anomalies. Examples: - start_time = "20231201" AND end_time = "20240120" .
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of anomalies to return. Results may return fewer than
+        #   this value. Default value is 50 and maximum value is 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListAnomalies call to retrieve
+        #   the next page of results. If this field is empty, the first page is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_anomalies(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/anomalies', options)
+          command.response_representation = Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse::Representation
+          command.response_class = Google::Apis::CloudbillingV1beta::GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
