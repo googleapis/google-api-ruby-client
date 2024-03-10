@@ -755,9 +755,11 @@ module Google
       class SapComponent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ha_hosts, as: 'haHosts'
           collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::CloudResource, decorator: Google::Apis::WorkloadmanagerV1::CloudResource::Representation
       
           property :sid, as: 'sid'
+          property :topology_type, as: 'topologyType'
         end
       end
       
