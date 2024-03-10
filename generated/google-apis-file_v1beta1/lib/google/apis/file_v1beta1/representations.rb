@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PromoteReplicaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -625,6 +631,12 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PromoteReplicaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

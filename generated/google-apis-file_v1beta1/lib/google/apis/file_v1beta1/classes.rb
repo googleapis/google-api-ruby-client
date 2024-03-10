@@ -1241,14 +1241,15 @@ module Google
       class ManagedActiveDirectoryConfig
         include Google::Apis::Core::Hashable
       
-        # The computer name is used as a prefix to the mount remote target. Example: if
-        # the computer_name is `my-computer`, the mount command will look like: `$mount -
-        # o vers=4,sec=krb5 my-computer.filestore.:`.
+        # Required. The computer name is used as a prefix to the mount remote target.
+        # Example: if the computer is `my-computer`, the mount command will look like: `$
+        # mount -o vers=4.1,sec=krb5 my-computer.filestore.: `.
         # Corresponds to the JSON property `computer`
         # @return [String]
         attr_accessor :computer
       
-        # Fully qualified domain name.
+        # Required. The domain resource name, in the format `projects/`project_id`/
+        # locations/global/domains/`domain``.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
@@ -1504,6 +1505,19 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # PromoteReplicaRequest promotes a Filestore standby instance (replica).
+      class PromoteReplicaRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
