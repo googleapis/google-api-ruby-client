@@ -416,6 +416,7 @@ module Google
           property :lifecycle_state, as: 'lifecycleState'
           property :name, as: 'name'
           property :parent, as: 'parent'
+          hash :tags, as: 'tags'
         end
       end
       
