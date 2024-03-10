@@ -2349,6 +2349,11 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport]
         attr_accessor :bigquery_export
       
+        # The configuration of notification report post scan action.
+        # Corresponds to the JSON property `notificationReport`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport]
+        attr_accessor :notification_report
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2356,6 +2361,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_export = args[:bigquery_export] if args.key?(:bigquery_export)
+          @notification_report = args[:notification_report] if args.key?(:notification_report)
         end
       end
       
@@ -2377,6 +2383,116 @@ module Google
         # Update properties of this object
         def update!(**args)
           @results_table = args[:results_table] if args.key?(:results_table)
+        end
+      end
+      
+      # This trigger is triggered whenever a scan job run ends, regardless of the
+      # result.
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # This trigger is triggered when the scan job itself fails, regardless of the
+      # result.
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The configuration of notification report post scan action.
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport
+        include Google::Apis::Core::Hashable
+      
+        # This trigger is triggered whenever a scan job run ends, regardless of the
+        # result.
+        # Corresponds to the JSON property `jobEndTrigger`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger]
+        attr_accessor :job_end_trigger
+      
+        # This trigger is triggered when the scan job itself fails, regardless of the
+        # result.
+        # Corresponds to the JSON property `jobFailureTrigger`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger]
+        attr_accessor :job_failure_trigger
+      
+        # The individuals or groups who are designated to receive notifications upon
+        # triggers.
+        # Corresponds to the JSON property `recipients`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients]
+        attr_accessor :recipients
+      
+        # This trigger is triggered when the DQ score in the job result is less than a
+        # specified input score.
+        # Corresponds to the JSON property `scoreThresholdTrigger`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger]
+        attr_accessor :score_threshold_trigger
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_end_trigger = args[:job_end_trigger] if args.key?(:job_end_trigger)
+          @job_failure_trigger = args[:job_failure_trigger] if args.key?(:job_failure_trigger)
+          @recipients = args[:recipients] if args.key?(:recipients)
+          @score_threshold_trigger = args[:score_threshold_trigger] if args.key?(:score_threshold_trigger)
+        end
+      end
+      
+      # The individuals or groups who are designated to receive notifications upon
+      # triggers.
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The email recipients who will receive the DataQualityScan results
+        # report.
+        # Corresponds to the JSON property `emails`
+        # @return [Array<String>]
+        attr_accessor :emails
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @emails = args[:emails] if args.key?(:emails)
+        end
+      end
+      
+      # This trigger is triggered when the DQ score in the job result is less than a
+      # specified input score.
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The score range is in 0,100.
+        # Corresponds to the JSON property `scoreThreshold`
+        # @return [Float]
+        attr_accessor :score_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score_threshold = args[:score_threshold] if args.key?(:score_threshold)
         end
       end
       
