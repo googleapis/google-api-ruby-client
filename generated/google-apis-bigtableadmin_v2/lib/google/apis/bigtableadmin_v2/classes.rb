@@ -163,6 +163,33 @@ module Google
         end
       end
       
+      # Defines an automated backup policy for a table
+      class AutomatedBackupPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Required. How frequently automated backups should occur. The only supported
+        # value at this time is 24 hours.
+        # Corresponds to the JSON property `frequency`
+        # @return [String]
+        attr_accessor :frequency
+      
+        # Required. How long the automated backups should be retained. The only
+        # supported value at this time is 3 days.
+        # Corresponds to the JSON property `retentionPeriod`
+        # @return [String]
+        attr_accessor :retention_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frequency = args[:frequency] if args.key?(:frequency)
+          @retention_period = args[:retention_period] if args.key?(:retention_period)
+        end
+      end
+      
       # Limits for the number of nodes a Cluster can autoscale up/down to.
       class AutoscalingLimits
         include Google::Apis::Core::Hashable
@@ -1770,6 +1797,13 @@ module Google
         # @return [Google::Apis::BigtableadminV2::ColumnFamily]
         attr_accessor :update
       
+        # Optional. A mask specifying which fields (e.g. `gc_rule`) in the `update` mod
+        # should be updated, ignored for other modification types. If unset or empty, we
+        # treat it as updating `gc_rule` to be backward compatible.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1780,6 +1814,7 @@ module Google
           @drop = args[:drop] if args.key?(:drop)
           @id = args[:id] if args.key?(:id)
           @update = args[:update] if args.key?(:update)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -2409,6 +2444,11 @@ module Google
       class Table
         include Google::Apis::Core::Hashable
       
+        # Defines an automated backup policy for a table
+        # Corresponds to the JSON property `automatedBackupPolicy`
+        # @return [Google::Apis::BigtableadminV2::AutomatedBackupPolicy]
+        attr_accessor :automated_backup_policy
+      
         # Change stream configuration.
         # Corresponds to the JSON property `changeStreamConfig`
         # @return [Google::Apis::BigtableadminV2::ChangeStreamConfig]
@@ -2474,6 +2514,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @automated_backup_policy = args[:automated_backup_policy] if args.key?(:automated_backup_policy)
           @change_stream_config = args[:change_stream_config] if args.key?(:change_stream_config)
           @cluster_states = args[:cluster_states] if args.key?(:cluster_states)
           @column_families = args[:column_families] if args.key?(:column_families)
