@@ -1679,6 +1679,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :project_number
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # project. Each item in the map must be expressed as " : ". For example: "123/
+        # environment" : "production", "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1692,6 +1699,7 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @project_id = args[:project_id] if args.key?(:project_id)
           @project_number = args[:project_number] if args.key?(:project_number)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
