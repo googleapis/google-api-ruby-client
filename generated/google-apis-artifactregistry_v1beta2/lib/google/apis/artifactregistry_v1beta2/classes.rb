@@ -175,6 +175,19 @@ module Google
         end
       end
       
+      # The response to download a file.
+      class DownloadFileResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -856,6 +869,11 @@ module Google
       class Package
         include Google::Apis::Core::Hashable
       
+        # Optional. Client specified annotations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # The time when the package was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -885,6 +903,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
