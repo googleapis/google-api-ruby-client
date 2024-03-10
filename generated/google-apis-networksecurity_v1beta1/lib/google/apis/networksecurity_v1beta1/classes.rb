@@ -527,6 +527,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Whether the association is disabled. True indicates that traffic won'
+        # t be intercepted
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # Required. The URL of the FirewallEndpoint that is being associated.
         # Corresponds to the JSON property `firewallEndpoint`
         # @return [String]
@@ -576,6 +583,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @firewall_endpoint = args[:firewall_endpoint] if args.key?(:firewall_endpoint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)

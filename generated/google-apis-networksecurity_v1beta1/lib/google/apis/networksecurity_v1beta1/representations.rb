@@ -492,6 +492,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :disabled, as: 'disabled'
           property :firewall_endpoint, as: 'firewallEndpoint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
