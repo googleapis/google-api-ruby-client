@@ -418,6 +418,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2118,6 +2130,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunking_config, as: 'chunkingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig::Representation
+      
           property :default_parsing_config, as: 'defaultParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig::Representation
       
           property :name, as: 'name'
@@ -2125,6 +2139,22 @@ module Google
       
           hash :parsing_config_overrides, as: 'parsingConfigOverrides', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :layout_based_chunking_config, as: 'layoutBasedChunkingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk_size, as: 'chunkSize'
+          property :include_ancestor_headings, as: 'includeAncestorHeadings'
         end
       end
       
