@@ -1919,6 +1919,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :outgoing_service_attachment_links
       
+        # Output only. The DNS name of the instance for PSC connectivity. Name
+        # convention: ...alloydb-psc.goog
+        # Corresponds to the JSON property `pscDnsName`
+        # @return [String]
+        attr_accessor :psc_dns_name
+      
         # Optional. Whether PSC connectivity is enabled for this instance. This is
         # populated by referencing the value from the parent cluster.
         # Corresponds to the JSON property `pscEnabled`
@@ -1950,6 +1956,7 @@ module Google
           @allowed_consumer_networks = args[:allowed_consumer_networks] if args.key?(:allowed_consumer_networks)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
           @outgoing_service_attachment_links = args[:outgoing_service_attachment_links] if args.key?(:outgoing_service_attachment_links)
+          @psc_dns_name = args[:psc_dns_name] if args.key?(:psc_dns_name)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
           @psc_interface_configs = args[:psc_interface_configs] if args.key?(:psc_interface_configs)
           @service_attachment_link = args[:service_attachment_link] if args.key?(:service_attachment_link)

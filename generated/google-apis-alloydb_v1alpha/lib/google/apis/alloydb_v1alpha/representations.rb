@@ -931,6 +931,7 @@ module Google
           collection :allowed_consumer_networks, as: 'allowedConsumerNetworks'
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
           collection :outgoing_service_attachment_links, as: 'outgoingServiceAttachmentLinks'
+          property :psc_dns_name, as: 'pscDnsName'
           property :psc_enabled, as: 'pscEnabled'
           collection :psc_interface_configs, as: 'pscInterfaceConfigs', class: Google::Apis::AlloydbV1alpha::PscInterfaceConfig, decorator: Google::Apis::AlloydbV1alpha::PscInterfaceConfig::Representation
       
