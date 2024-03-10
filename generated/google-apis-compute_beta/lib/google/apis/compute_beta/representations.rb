@@ -1870,6 +1870,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerResizeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5674,6 +5680,156 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StoragePool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolListDisks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolTypeAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolTypeList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolTypesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Subnetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7127,6 +7283,7 @@ module Google
           property :source_snapshot, as: 'sourceSnapshot'
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
+          property :storage_pool, as: 'storagePool'
         end
       end
       
@@ -8226,6 +8383,7 @@ module Google
           property :source_snapshot_id, as: 'sourceSnapshotId'
           property :source_storage_object, as: 'sourceStorageObject'
           property :status, as: 'status'
+          property :storage_pool, as: 'storagePool'
           property :storage_type, as: 'storageType'
           property :type, as: 'type'
           collection :user_licenses, as: 'userLicenses'
@@ -10282,6 +10440,8 @@ module Google
           property :name, as: 'name'
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeBeta::NamedPort, decorator: Google::Apis::ComputeBeta::NamedPort::Representation
       
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::InstanceGroupManagerParams, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerParams::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :service_account, as: 'serviceAccount'
@@ -10426,6 +10586,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InstanceGroupManagerParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -17326,6 +17493,312 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StoragePool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_provisioning_type, as: 'capacityProvisioningType'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :performance_provisioning_type, as: 'performanceProvisioningType'
+          property :pool_provisioned_capacity_gb, :numeric_string => true, as: 'poolProvisionedCapacityGb'
+          property :pool_provisioned_iops, :numeric_string => true, as: 'poolProvisionedIops'
+          property :pool_provisioned_throughput, :numeric_string => true, as: 'poolProvisionedThroughput'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeBeta::StoragePoolResourceStatus, decorator: Google::Apis::ComputeBeta::StoragePoolResourceStatus::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::ComputeBeta::StoragePoolResourceStatus, decorator: Google::Apis::ComputeBeta::StoragePoolResourceStatus::Representation
+      
+          property :storage_pool_type, as: 'storagePoolType'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class StoragePoolAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::StoragePoolsScopedList, decorator: Google::Apis::ComputeBeta::StoragePoolsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::StoragePoolAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::StoragePoolAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::StoragePoolAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::StoragePoolAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class StoragePoolDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attached_instances, as: 'attachedInstances'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :disk, as: 'disk'
+          property :name, as: 'name'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
+          collection :resource_policies, as: 'resourcePolicies'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :status, as: 'status'
+          property :type, as: 'type'
+          property :used_bytes, :numeric_string => true, as: 'usedBytes'
+        end
+      end
+      
+      class StoragePoolList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::StoragePool, decorator: Google::Apis::ComputeBeta::StoragePool::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::StoragePoolList::Warning, decorator: Google::Apis::ComputeBeta::StoragePoolList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::StoragePoolList::Warning::Datum, decorator: Google::Apis::ComputeBeta::StoragePoolList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class StoragePoolListDisks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::StoragePoolDisk, decorator: Google::Apis::ComputeBeta::StoragePoolDisk::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::StoragePoolListDisks::Warning, decorator: Google::Apis::ComputeBeta::StoragePoolListDisks::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::StoragePoolListDisks::Warning::Datum, decorator: Google::Apis::ComputeBeta::StoragePoolListDisks::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class StoragePoolResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_count, :numeric_string => true, as: 'diskCount'
+          property :last_resize_timestamp, as: 'lastResizeTimestamp'
+          property :max_total_provisioned_disk_capacity_gb, :numeric_string => true, as: 'maxTotalProvisionedDiskCapacityGb'
+          property :pool_used_capacity_bytes, :numeric_string => true, as: 'poolUsedCapacityBytes'
+          property :pool_used_iops, :numeric_string => true, as: 'poolUsedIops'
+          property :pool_used_throughput, :numeric_string => true, as: 'poolUsedThroughput'
+          property :pool_user_written_bytes, :numeric_string => true, as: 'poolUserWrittenBytes'
+          property :total_provisioned_disk_capacity_gb, :numeric_string => true, as: 'totalProvisionedDiskCapacityGb'
+          property :total_provisioned_disk_iops, :numeric_string => true, as: 'totalProvisionedDiskIops'
+          property :total_provisioned_disk_throughput, :numeric_string => true, as: 'totalProvisionedDiskThroughput'
+        end
+      end
+      
+      class StoragePoolType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :deprecated, as: 'deprecated', class: Google::Apis::ComputeBeta::DeprecationStatus, decorator: Google::Apis::ComputeBeta::DeprecationStatus::Representation
+      
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :max_pool_provisioned_capacity_gb, :numeric_string => true, as: 'maxPoolProvisionedCapacityGb'
+          property :max_pool_provisioned_iops, :numeric_string => true, as: 'maxPoolProvisionedIops'
+          property :max_pool_provisioned_throughput, :numeric_string => true, as: 'maxPoolProvisionedThroughput'
+          property :min_pool_provisioned_capacity_gb, :numeric_string => true, as: 'minPoolProvisionedCapacityGb'
+          property :min_pool_provisioned_iops, :numeric_string => true, as: 'minPoolProvisionedIops'
+          property :min_pool_provisioned_throughput, :numeric_string => true, as: 'minPoolProvisionedThroughput'
+          property :min_size_gb, :numeric_string => true, as: 'minSizeGb'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          collection :supported_disk_types, as: 'supportedDiskTypes'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class StoragePoolTypeAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::StoragePoolTypesScopedList, decorator: Google::Apis::ComputeBeta::StoragePoolTypesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::StoragePoolTypeAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::StoragePoolTypeAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::StoragePoolTypeAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::StoragePoolTypeAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class StoragePoolTypeList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::StoragePoolType, decorator: Google::Apis::ComputeBeta::StoragePoolType::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::StoragePoolTypeList::Warning, decorator: Google::Apis::ComputeBeta::StoragePoolTypeList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::StoragePoolTypeList::Warning::Datum, decorator: Google::Apis::ComputeBeta::StoragePoolTypeList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class StoragePoolTypesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :storage_pool_types, as: 'storagePoolTypes', class: Google::Apis::ComputeBeta::StoragePoolType, decorator: Google::Apis::ComputeBeta::StoragePoolType::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::StoragePoolTypesScopedList::Warning, decorator: Google::Apis::ComputeBeta::StoragePoolTypesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::StoragePoolTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::StoragePoolTypesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class StoragePoolsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :storage_pools, as: 'storagePools', class: Google::Apis::ComputeBeta::StoragePool, decorator: Google::Apis::ComputeBeta::StoragePool::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::StoragePoolsScopedList::Warning, decorator: Google::Apis::ComputeBeta::StoragePoolsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::StoragePoolsScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::StoragePoolsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
