@@ -56,6 +56,12 @@ module Google
 
       # View chat and spaces in Google Chat
       AUTH_CHAT_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.spaces.readonly'
+
+      # Create, edit, and see information about your Google Meet conferences created by the app.
+      AUTH_MEETINGS_SPACE_CREATED = 'https://www.googleapis.com/auth/meetings.space.created'
+
+      # Read information about any of your Google Meet conferences
+      AUTH_MEETINGS_SPACE_READONLY = 'https://www.googleapis.com/auth/meetings.space.readonly'
     end
   end
 end
