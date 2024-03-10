@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityServiceSamlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KubernetesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1724,6 +1730,8 @@ module Google
           property :oidc_config, as: 'oidcConfig', class: Google::Apis::GkehubV1beta::IdentityServiceOidcConfig, decorator: Google::Apis::GkehubV1beta::IdentityServiceOidcConfig::Representation
       
           property :proxy, as: 'proxy'
+          property :saml_config, as: 'samlConfig', class: Google::Apis::GkehubV1beta::IdentityServiceSamlConfig, decorator: Google::Apis::GkehubV1beta::IdentityServiceSamlConfig::Representation
+      
         end
       end
       
@@ -1733,8 +1741,10 @@ module Google
           property :client_id, as: 'clientId'
           property :client_secret, as: 'clientSecret'
           property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
+          property :group_format, as: 'groupFormat'
           property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
           property :tenant, as: 'tenant'
+          property :user_claim, as: 'userClaim'
         end
       end
       
@@ -1780,6 +1790,20 @@ module Google
           property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
           property :scopes, as: 'scopes'
           property :user_claim, as: 'userClaim'
+          property :user_prefix, as: 'userPrefix'
+        end
+      end
+      
+      class IdentityServiceSamlConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attribute_mapping, as: 'attributeMapping'
+          property :group_prefix, as: 'groupPrefix'
+          property :groups_attribute, as: 'groupsAttribute'
+          collection :identity_provider_certificates, as: 'identityProviderCertificates'
+          property :identity_provider_id, as: 'identityProviderId'
+          property :identity_provider_sso_uri, as: 'identityProviderSsoUri'
+          property :user_attribute, as: 'userAttribute'
           property :user_prefix, as: 'userPrefix'
         end
       end
