@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BoostConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -297,6 +303,17 @@ module Google
         end
       end
       
+      class BoostConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::WorkstationsV1beta::Accelerator, decorator: Google::Apis::WorkstationsV1beta::Accelerator::Representation
+      
+          property :id, as: 'id'
+          property :machine_type, as: 'machineType'
+          property :pool_size, as: 'poolSize'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -360,6 +377,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::WorkstationsV1beta::Accelerator, decorator: Google::Apis::WorkstationsV1beta::Accelerator::Representation
+      
+          collection :boost_configs, as: 'boostConfigs', class: Google::Apis::WorkstationsV1beta::BoostConfig, decorator: Google::Apis::WorkstationsV1beta::BoostConfig::Representation
       
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::WorkstationsV1beta::GceConfidentialInstanceConfig, decorator: Google::Apis::WorkstationsV1beta::GceConfidentialInstanceConfig::Representation
@@ -573,6 +592,7 @@ module Google
       class StartWorkstationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost_config, as: 'boostConfig'
           property :etag, as: 'etag'
           property :validate_only, as: 'validateOnly'
         end
