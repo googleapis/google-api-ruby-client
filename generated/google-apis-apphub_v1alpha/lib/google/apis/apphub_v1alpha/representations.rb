@@ -184,6 +184,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LookupDiscoveredServiceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LookupDiscoveredWorkloadResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LookupServiceProjectAttachmentResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -536,6 +548,22 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class LookupDiscoveredServiceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discovered_service, as: 'discoveredService', class: Google::Apis::ApphubV1alpha::DiscoveredService, decorator: Google::Apis::ApphubV1alpha::DiscoveredService::Representation
+      
+        end
+      end
+      
+      class LookupDiscoveredWorkloadResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discovered_workload, as: 'discoveredWorkload', class: Google::Apis::ApphubV1alpha::DiscoveredWorkload, decorator: Google::Apis::ApphubV1alpha::DiscoveredWorkload::Representation
+      
         end
       end
       
