@@ -49,6 +49,11 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings]
         attr_accessor :logging_settings
       
+        # Define behaviors of speech to text detection.
+        # Corresponds to the JSON property `speechSettings`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings]
+        attr_accessor :speech_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -58,6 +63,7 @@ module Google
           @audio_export_gcs_destination = args[:audio_export_gcs_destination] if args.key?(:audio_export_gcs_destination)
           @dtmf_settings = args[:dtmf_settings] if args.key?(:dtmf_settings)
           @logging_settings = args[:logging_settings] if args.key?(:logging_settings)
+          @speech_settings = args[:speech_settings] if args.key?(:speech_settings)
         end
       end
       
@@ -121,6 +127,49 @@ module Google
         def update!(**args)
           @enable_interaction_logging = args[:enable_interaction_logging] if args.key?(:enable_interaction_logging)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
+        end
+      end
+      
+      # Define behaviors of speech to text detection.
+      class GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings
+        include Google::Apis::Core::Hashable
+      
+        # Sensitivity of the speech model that detects the end of speech. Scale from 0
+        # to 100.
+        # Corresponds to the JSON property `endpointerSensitivity`
+        # @return [Fixnum]
+        attr_accessor :endpointer_sensitivity
+      
+        # Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model
+        # will be selected for requests from its corresponding language. For more
+        # information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/
+        # concept/speech-models).
+        # Corresponds to the JSON property `models`
+        # @return [Hash<String,String>]
+        attr_accessor :models
+      
+        # Timeout before detecting no speech.
+        # Corresponds to the JSON property `noSpeechTimeout`
+        # @return [String]
+        attr_accessor :no_speech_timeout
+      
+        # Use timeout based endpointing, interpreting endpointer sensitivy as seconds of
+        # timeout value.
+        # Corresponds to the JSON property `useTimeoutBasedEndpointing`
+        # @return [Boolean]
+        attr_accessor :use_timeout_based_endpointing
+        alias_method :use_timeout_based_endpointing?, :use_timeout_based_endpointing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpointer_sensitivity = args[:endpointer_sensitivity] if args.key?(:endpointer_sensitivity)
+          @models = args[:models] if args.key?(:models)
+          @no_speech_timeout = args[:no_speech_timeout] if args.key?(:no_speech_timeout)
+          @use_timeout_based_endpointing = args[:use_timeout_based_endpointing] if args.key?(:use_timeout_based_endpointing)
         end
       end
       
@@ -3743,6 +3792,11 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings]
         attr_accessor :logging_settings
       
+        # Define behaviors of speech to text detection.
+        # Corresponds to the JSON property `speechSettings`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings]
+        attr_accessor :speech_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3752,6 +3806,7 @@ module Google
           @audio_export_gcs_destination = args[:audio_export_gcs_destination] if args.key?(:audio_export_gcs_destination)
           @dtmf_settings = args[:dtmf_settings] if args.key?(:dtmf_settings)
           @logging_settings = args[:logging_settings] if args.key?(:logging_settings)
+          @speech_settings = args[:speech_settings] if args.key?(:speech_settings)
         end
       end
       
@@ -3815,6 +3870,49 @@ module Google
         def update!(**args)
           @enable_interaction_logging = args[:enable_interaction_logging] if args.key?(:enable_interaction_logging)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
+        end
+      end
+      
+      # Define behaviors of speech to text detection.
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings
+        include Google::Apis::Core::Hashable
+      
+        # Sensitivity of the speech model that detects the end of speech. Scale from 0
+        # to 100.
+        # Corresponds to the JSON property `endpointerSensitivity`
+        # @return [Fixnum]
+        attr_accessor :endpointer_sensitivity
+      
+        # Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model
+        # will be selected for requests from its corresponding language. For more
+        # information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/
+        # concept/speech-models).
+        # Corresponds to the JSON property `models`
+        # @return [Hash<String,String>]
+        attr_accessor :models
+      
+        # Timeout before detecting no speech.
+        # Corresponds to the JSON property `noSpeechTimeout`
+        # @return [String]
+        attr_accessor :no_speech_timeout
+      
+        # Use timeout based endpointing, interpreting endpointer sensitivy as seconds of
+        # timeout value.
+        # Corresponds to the JSON property `useTimeoutBasedEndpointing`
+        # @return [Boolean]
+        attr_accessor :use_timeout_based_endpointing
+        alias_method :use_timeout_based_endpointing?, :use_timeout_based_endpointing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpointer_sensitivity = args[:endpointer_sensitivity] if args.key?(:endpointer_sensitivity)
+          @models = args[:models] if args.key?(:models)
+          @no_speech_timeout = args[:no_speech_timeout] if args.key?(:no_speech_timeout)
+          @use_timeout_based_endpointing = args[:use_timeout_based_endpointing] if args.key?(:use_timeout_based_endpointing)
         end
       end
       
