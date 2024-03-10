@@ -546,6 +546,13 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this folder.
+        # Each item in the map must be expressed as " : ". For example: "123/
+        # environment" : "production", "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -557,6 +564,7 @@ module Google
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
