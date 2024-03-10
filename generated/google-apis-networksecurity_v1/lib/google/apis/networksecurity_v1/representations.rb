@@ -82,6 +82,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallEndpointAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallEndpointAssociationReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GatewaySecurityPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +202,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListFirewallEndpointAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListFirewallEndpointsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListGatewaySecurityPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +233,18 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSecurityProfileGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSecurityProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,7 +304,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityProfileGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServerTlsPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SeverityOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -275,6 +335,18 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ThreatOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ThreatPreventionProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -396,6 +468,47 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class FirewallEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associated_networks, as: 'associatedNetworks'
+          collection :associations, as: 'associations', class: Google::Apis::NetworksecurityV1::FirewallEndpointAssociationReference, decorator: Google::Apis::NetworksecurityV1::FirewallEndpointAssociationReference::Representation
+      
+          property :billing_project_id, as: 'billingProjectId'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class FirewallEndpointAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :disabled, as: 'disabled'
+          property :firewall_endpoint, as: 'firewallEndpoint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :tls_inspection_policy, as: 'tlsInspectionPolicy'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class FirewallEndpointAssociationReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :network, as: 'network'
         end
       end
       
@@ -558,6 +671,26 @@ module Google
         end
       end
       
+      class ListFirewallEndpointAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_endpoint_associations, as: 'firewallEndpointAssociations', class: Google::Apis::NetworksecurityV1::FirewallEndpointAssociation, decorator: Google::Apis::NetworksecurityV1::FirewallEndpointAssociation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListFirewallEndpointsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_endpoints, as: 'firewallEndpoints', class: Google::Apis::NetworksecurityV1::FirewallEndpoint, decorator: Google::Apis::NetworksecurityV1::FirewallEndpoint::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListGatewaySecurityPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -592,6 +725,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetworksecurityV1::Operation, decorator: Google::Apis::NetworksecurityV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListSecurityProfileGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_profile_groups, as: 'securityProfileGroups', class: Google::Apis::NetworksecurityV1::SecurityProfileGroup, decorator: Google::Apis::NetworksecurityV1::SecurityProfileGroup::Representation
+      
+        end
+      end
+      
+      class ListSecurityProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_profiles, as: 'securityProfiles', class: Google::Apis::NetworksecurityV1::SecurityProfile, decorator: Google::Apis::NetworksecurityV1::SecurityProfile::Representation
       
         end
       end
@@ -689,6 +840,34 @@ module Google
         end
       end
       
+      class SecurityProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :threat_prevention_profile, as: 'threatPreventionProfile', class: Google::Apis::NetworksecurityV1::ThreatPreventionProfile, decorator: Google::Apis::NetworksecurityV1::ThreatPreventionProfile::Representation
+      
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SecurityProfileGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :threat_prevention_profile, as: 'threatPreventionProfile'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ServerTlsPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -702,6 +881,14 @@ module Google
           property :server_certificate, as: 'serverCertificate', class: Google::Apis::NetworksecurityV1::GoogleCloudNetworksecurityV1CertificateProvider, decorator: Google::Apis::NetworksecurityV1::GoogleCloudNetworksecurityV1CertificateProvider::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SeverityOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :severity, as: 'severity'
         end
       end
       
@@ -719,6 +906,25 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class ThreatOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :threat_id, as: 'threatId'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ThreatPreventionProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :severity_overrides, as: 'severityOverrides', class: Google::Apis::NetworksecurityV1::SeverityOverride, decorator: Google::Apis::NetworksecurityV1::SeverityOverride::Representation
+      
+          collection :threat_overrides, as: 'threatOverrides', class: Google::Apis::NetworksecurityV1::ThreatOverride, decorator: Google::Apis::NetworksecurityV1::ThreatOverride::Representation
+      
         end
       end
       
