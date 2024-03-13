@@ -1,5 +1,11 @@
 # Release History
 
+### 0.14.1 (2024-03-13)
+
+#### Bug Fixes
+
+* fixes uninitialized Pathname issue ([#18480](https://github.com/googleapis/google-api-ruby-client/issues/18480)) 
+
 ### 0.14.0 (2024-02-23)
 
 #### Features
