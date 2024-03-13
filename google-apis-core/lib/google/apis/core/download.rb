@@ -15,6 +15,7 @@
 require 'google/apis/core/api_command'
 require 'google/apis/errors'
 require 'addressable/uri'
+require 'pathname'
 
 module Google
   module Apis
