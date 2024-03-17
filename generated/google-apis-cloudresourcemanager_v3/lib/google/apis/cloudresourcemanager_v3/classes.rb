@@ -639,7 +639,8 @@ module Google
       
         # Optional. Input only. Immutable. Tag keys/values directly bound to this folder.
         # Each item in the map must be expressed as " : ". For example: "123/
-        # environment" : "production", "123/costCenter" : "marketing"
+        # environment" : "production", "123/costCenter" : "marketing" Note: Currently
+        # this field is in Preview.
         # Corresponds to the JSON property `tags`
         # @return [Hash<String,String>]
         attr_accessor :tags
@@ -1440,7 +1441,8 @@ module Google
       
         # Optional. Input only. Immutable. Tag keys/values directly bound to this
         # project. Each item in the map must be expressed as " : ". For example: "123/
-        # environment" : "production", "123/costCenter" : "marketing"
+        # environment" : "production", "123/costCenter" : "marketing" Note: Currently
+        # this field is in Preview.
         # Corresponds to the JSON property `tags`
         # @return [Hash<String,String>]
         attr_accessor :tags
