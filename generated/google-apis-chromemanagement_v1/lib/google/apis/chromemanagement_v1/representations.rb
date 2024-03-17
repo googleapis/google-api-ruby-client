@@ -112,6 +112,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1CountChromeCrashEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1DeviceRequestingExtensionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1DiskInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +233,18 @@ module Google
       end
       
       class GoogleChromeManagementV1EnumeratePrintJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1FetchUsersRequestingExtensionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -502,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1UserRequestingExtensionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -706,6 +742,24 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1CountChromeCrashEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :crash_event_counts, as: 'crashEventCounts', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :browser_version, as: 'browserVersion'
+          property :count, :numeric_string => true, as: 'count'
+          property :date, as: 'date', class: Google::Apis::ChromemanagementV1::GoogleTypeDate, decorator: Google::Apis::ChromemanagementV1::GoogleTypeDate::Representation
+      
+        end
+      end
+      
       class GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -844,6 +898,14 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1DeviceRequestingExtensionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_name, as: 'deviceName'
+          property :justification, as: 'justification'
+        end
+      end
+      
       class GoogleChromeManagementV1DiskInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -895,6 +957,26 @@ module Google
           collection :print_jobs, as: 'printJobs', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PrintJob, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PrintJob::Representation
       
           property :total_size, :numeric_string => true, as: 'totalSize'
+        end
+      end
+      
+      class GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_details, as: 'deviceDetails', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceRequestingExtensionDetails, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceRequestingExtensionDetails::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class GoogleChromeManagementV1FetchUsersRequestingExtensionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+          collection :user_details, as: 'userDetails', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UserRequestingExtensionDetails, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UserRequestingExtensionDetails::Representation
+      
         end
       end
       
@@ -1435,6 +1517,14 @@ module Google
           property :printer_count, :numeric_string => true, as: 'printerCount'
           property :user_email, as: 'userEmail'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleChromeManagementV1UserRequestingExtensionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :justification, as: 'justification'
         end
       end
       

@@ -98,6 +98,98 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get a list of devices that have requested to install an extension.
+        # @param [String] customer
+        #   Required. The customer ID or "my_customer" prefixed with "customers/".
+        # @param [String] extension_id
+        #   Required. The extension for which we want to find requesting devices.
+        # @param [String] org_unit_id
+        #   The ID of the organizational unit. Only consider devices that directly belong
+        #   to this org unit, i.e. sub-orgunits are not counted. If omitted, all data will
+        #   be returned.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results to return. Maximum and default are 50. Any
+        #   page size larger than 50 will be coerced to 50.
+        # @param [String] page_token
+        #   Optional. Token to specify the page of the request to be returned. Token
+        #   expires after 1 day.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_customer_app_devices_requesting_extension(customer, extension_id: nil, org_unit_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/apps:fetchDevicesRequestingExtension', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['extensionId'] = extension_id unless extension_id.nil?
+          command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a list of users that have requested to install an extension.
+        # @param [String] customer
+        #   Required. The customer ID or "my_customer" prefixed with "customers/".
+        # @param [String] extension_id
+        #   Required. The extension for which we want to find the requesting users.
+        # @param [String] org_unit_id
+        #   The ID of the organizational unit. Only consider devices that directly belong
+        #   to this org unit, i.e. sub-orgunits are not counted. If omitted, all data will
+        #   be returned.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results to return. Maximum and default are 50. Any
+        #   page size larger than 50 will be coerced to 50.
+        # @param [String] page_token
+        #   Optional. Token to specify the page of the request to be returned. Token
+        #   expires after 1 day.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FetchUsersRequestingExtensionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FetchUsersRequestingExtensionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_customer_app_users_requesting_extension(customer, extension_id: nil, org_unit_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/apps:fetchUsersRequestingExtension', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FetchUsersRequestingExtensionResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FetchUsersRequestingExtensionResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['extensionId'] = extension_id unless extension_id.nil?
+          command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get a specific app for a customer by its resource name.
         # @param [String] name
         #   Required. The app for which details are being queried. Examples: "customers/
@@ -229,6 +321,50 @@ module Google
           command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse::Representation
           command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse
           command.params['customer'] = customer unless customer.nil?
+          command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a count of Chrome crash events.
+        # @param [String] customer
+        #   Customer ID.
+        # @param [String] filter
+        #   Query string to filter results, AND-separated fields in EBNF syntax. Supported
+        #   filter fields: * major_browser_version * minor_browser_version *
+        #   browser_channel * device_platform * past_number_days Example: `
+        #   major_browser_version = 'M115' AND past_number_days = '28'`.
+        # @param [String] order_by
+        #   Field used to order results. Supported order by fields: * browser_version *
+        #   count * date
+        # @param [String] org_unit_id
+        #   If specified, only count the number of crash events of the devices in this
+        #   organizational unit.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeCrashEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeCrashEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_chrome_crash_events(customer, filter: nil, order_by: nil, org_unit_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countChromeCrashEvents', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeCrashEventsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeCrashEventsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
