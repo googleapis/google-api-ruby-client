@@ -226,6 +226,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1342,6 +1390,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3WebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1967,6 +2021,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1WebhookGenericWebService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3425,6 +3485,87 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer, as: 'answer'
+          property :answer_generation_model_call_signals, as: 'answerGenerationModelCallSignals', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals::Representation
+      
+          collection :answer_parts, as: 'answerParts', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart::Representation
+      
+          collection :cited_snippets, as: 'citedSnippets', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet::Representation
+      
+          property :grounding_signals, as: 'groundingSignals', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals::Representation
+      
+          property :rewriter_model_call_signals, as: 'rewriterModelCallSignals', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals::Representation
+      
+          property :rewritten_query, as: 'rewrittenQuery'
+          property :safety_signals, as: 'safetySignals', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals::Representation
+      
+          collection :search_snippets, as: 'searchSnippets', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_output, as: 'modelOutput'
+          property :rendered_prompt, as: 'renderedPrompt'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :supporting_indices, as: 'supportingIndices'
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :search_snippet, as: 'searchSnippet', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet::Representation
+      
+          property :snippet_index, as: 'snippetIndex'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :decision, as: 'decision'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_output, as: 'modelOutput'
+          property :rendered_prompt, as: 'renderedPrompt'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :banned_phrase_match, as: 'bannedPhraseMatch'
+          property :decision, as: 'decision'
+          property :matched_banned_phrase, as: 'matchedBannedPhrase'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_title, as: 'documentTitle'
+          property :document_uri, as: 'documentUri'
+          property :text, as: 'text'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4589,6 +4730,7 @@ module Google
       
           hash :parameters, as: 'parameters'
           hash :payload, as: 'payload'
+          property :populate_data_store_connection_signals, as: 'populateDataStoreConnectionSignals'
           property :search_config, as: 'searchConfig', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SearchConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SearchConfig::Representation
       
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SessionEntityType, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SessionEntityType::Representation
@@ -4606,6 +4748,8 @@ module Google
       
           property :allow_answer_feedback, as: 'allowAnswerFeedback'
           property :current_page, as: 'currentPage', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Page, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Page::Representation
+      
+          property :data_store_connection_signals, as: 'dataStoreConnectionSignals', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignals, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignals::Representation
       
           hash :diagnostic_info, as: 'diagnosticInfo'
           property :dtmf, as: 'dtmf', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DtmfInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DtmfInput::Representation
@@ -5258,13 +5402,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_ca_certs, as: 'allowedCaCerts'
           property :http_method, as: 'httpMethod'
+          property :oauth_config, as: 'oauthConfig', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig::Representation
+      
           hash :parameter_mapping, as: 'parameterMapping'
           property :password, as: 'password'
           property :request_body, as: 'requestBody'
           hash :request_headers, as: 'requestHeaders'
+          property :service_agent_auth, as: 'serviceAgentAuth'
           property :uri, as: 'uri'
           property :username, as: 'username'
           property :webhook_type, as: 'webhookType'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          collection :scopes, as: 'scopes'
+          property :token_endpoint, as: 'tokenEndpoint'
         end
       end
       
@@ -6285,13 +6442,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_ca_certs, as: 'allowedCaCerts'
           property :http_method, as: 'httpMethod'
+          property :oauth_config, as: 'oauthConfig', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig::Representation
+      
           hash :parameter_mapping, as: 'parameterMapping'
           property :password, as: 'password'
           property :request_body, as: 'requestBody'
           hash :request_headers, as: 'requestHeaders'
+          property :service_agent_auth, as: 'serviceAgentAuth'
           property :uri, as: 'uri'
           property :username, as: 'username'
           property :webhook_type, as: 'webhookType'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          collection :scopes, as: 'scopes'
+          property :token_endpoint, as: 'tokenEndpoint'
         end
       end
       

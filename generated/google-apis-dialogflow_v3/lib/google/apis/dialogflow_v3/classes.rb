@@ -1230,6 +1230,265 @@ module Google
         end
       end
       
+      # Data store connection feature output signals. Might be only partially field if
+      # processing stop before the final answer. Reasons for this can be, but are not
+      # limited to: empty UCS search results, positive RAI check outcome, grounding
+      # failure, ...
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignals
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The final compiled answer.
+        # Corresponds to the JSON property `answer`
+        # @return [String]
+        attr_accessor :answer
+      
+        # Diagnostic info related to the answer generation model call.
+        # Corresponds to the JSON property `answerGenerationModelCallSignals`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals]
+        attr_accessor :answer_generation_model_call_signals
+      
+        # Optional. Answer parts with relevant citations. Concatenation of texts should
+        # add up the `answer` (not counting whitespaces).
+        # Corresponds to the JSON property `answerParts`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart>]
+        attr_accessor :answer_parts
+      
+        # Optional. Snippets cited by the answer generation model from the most to least
+        # relevant.
+        # Corresponds to the JSON property `citedSnippets`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet>]
+        attr_accessor :cited_snippets
+      
+        # Grounding signals.
+        # Corresponds to the JSON property `groundingSignals`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals]
+        attr_accessor :grounding_signals
+      
+        # Diagnostic info related to the rewriter model call.
+        # Corresponds to the JSON property `rewriterModelCallSignals`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals]
+        attr_accessor :rewriter_model_call_signals
+      
+        # Optional. Rewritten string query used for search.
+        # Corresponds to the JSON property `rewrittenQuery`
+        # @return [String]
+        attr_accessor :rewritten_query
+      
+        # Safety check results.
+        # Corresponds to the JSON property `safetySignals`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals]
+        attr_accessor :safety_signals
+      
+        # Optional. Search snippets included in the answer generation prompt.
+        # Corresponds to the JSON property `searchSnippets`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet>]
+        attr_accessor :search_snippets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer = args[:answer] if args.key?(:answer)
+          @answer_generation_model_call_signals = args[:answer_generation_model_call_signals] if args.key?(:answer_generation_model_call_signals)
+          @answer_parts = args[:answer_parts] if args.key?(:answer_parts)
+          @cited_snippets = args[:cited_snippets] if args.key?(:cited_snippets)
+          @grounding_signals = args[:grounding_signals] if args.key?(:grounding_signals)
+          @rewriter_model_call_signals = args[:rewriter_model_call_signals] if args.key?(:rewriter_model_call_signals)
+          @rewritten_query = args[:rewritten_query] if args.key?(:rewritten_query)
+          @safety_signals = args[:safety_signals] if args.key?(:safety_signals)
+          @search_snippets = args[:search_snippets] if args.key?(:search_snippets)
+        end
+      end
+      
+      # Diagnostic info related to the answer generation model call.
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals
+        include Google::Apis::Core::Hashable
+      
+        # Output of the generative model.
+        # Corresponds to the JSON property `modelOutput`
+        # @return [String]
+        attr_accessor :model_output
+      
+        # Prompt as sent to the model.
+        # Corresponds to the JSON property `renderedPrompt`
+        # @return [String]
+        attr_accessor :rendered_prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_output = args[:model_output] if args.key?(:model_output)
+          @rendered_prompt = args[:rendered_prompt] if args.key?(:rendered_prompt)
+        end
+      end
+      
+      # Answer part with citation.
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart
+        include Google::Apis::Core::Hashable
+      
+        # Citations for this answer part. Indices of `search_snippets`.
+        # Corresponds to the JSON property `supportingIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :supporting_indices
+      
+        # Substring of the answer.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @supporting_indices = args[:supporting_indices] if args.key?(:supporting_indices)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Snippet cited by the answer generation model.
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet
+        include Google::Apis::Core::Hashable
+      
+        # Search snippet details.
+        # Corresponds to the JSON property `searchSnippet`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet]
+        attr_accessor :search_snippet
+      
+        # Index of the snippet in `search_snippets` field.
+        # Corresponds to the JSON property `snippetIndex`
+        # @return [Fixnum]
+        attr_accessor :snippet_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @search_snippet = args[:search_snippet] if args.key?(:search_snippet)
+          @snippet_index = args[:snippet_index] if args.key?(:snippet_index)
+        end
+      end
+      
+      # Grounding signals.
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals
+        include Google::Apis::Core::Hashable
+      
+        # Represents the decision of the grounding check.
+        # Corresponds to the JSON property `decision`
+        # @return [String]
+        attr_accessor :decision
+      
+        # Grounding score bucket setting.
+        # Corresponds to the JSON property `score`
+        # @return [String]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @decision = args[:decision] if args.key?(:decision)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Diagnostic info related to the rewriter model call.
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals
+        include Google::Apis::Core::Hashable
+      
+        # Output of the generative model.
+        # Corresponds to the JSON property `modelOutput`
+        # @return [String]
+        attr_accessor :model_output
+      
+        # Prompt as sent to the model.
+        # Corresponds to the JSON property `renderedPrompt`
+        # @return [String]
+        attr_accessor :rendered_prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_output = args[:model_output] if args.key?(:model_output)
+          @rendered_prompt = args[:rendered_prompt] if args.key?(:rendered_prompt)
+        end
+      end
+      
+      # Safety check results.
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals
+        include Google::Apis::Core::Hashable
+      
+        # Specifies banned phrase match subject.
+        # Corresponds to the JSON property `bannedPhraseMatch`
+        # @return [String]
+        attr_accessor :banned_phrase_match
+      
+        # Safety decision.
+        # Corresponds to the JSON property `decision`
+        # @return [String]
+        attr_accessor :decision
+      
+        # The matched banned phrase if there was a match.
+        # Corresponds to the JSON property `matchedBannedPhrase`
+        # @return [String]
+        attr_accessor :matched_banned_phrase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @banned_phrase_match = args[:banned_phrase_match] if args.key?(:banned_phrase_match)
+          @decision = args[:decision] if args.key?(:decision)
+          @matched_banned_phrase = args[:matched_banned_phrase] if args.key?(:matched_banned_phrase)
+        end
+      end
+      
+      # Search snippet details.
+      class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet
+        include Google::Apis::Core::Hashable
+      
+        # Title of the enclosing document.
+        # Corresponds to the JSON property `documentTitle`
+        # @return [String]
+        attr_accessor :document_title
+      
+        # Uri for the document. Present if specified for the document.
+        # Corresponds to the JSON property `documentUri`
+        # @return [String]
+        attr_accessor :document_uri
+      
+        # Text included in the prompt.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_title = args[:document_title] if args.key?(:document_title)
+          @document_uri = args[:document_uri] if args.key?(:document_uri)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # Metadata for DeleteDocument operation.
       class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata
         include Google::Apis::Core::Hashable
@@ -5525,6 +5784,14 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :payload
       
+        # Optional. If set to true and data stores are involved in serving the request
+        # then DetectIntentResponse.query_result.data_store_connection_signals will be
+        # filled with data that can help evaluations.
+        # Corresponds to the JSON property `populateDataStoreConnectionSignals`
+        # @return [Boolean]
+        attr_accessor :populate_data_store_connection_signals
+        alias_method :populate_data_store_connection_signals?, :populate_data_store_connection_signals
+      
         # Search configuration for UCS search queries.
         # Corresponds to the JSON property `searchConfig`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SearchConfig]
@@ -5579,6 +5846,7 @@ module Google
           @geo_location = args[:geo_location] if args.key?(:geo_location)
           @parameters = args[:parameters] if args.key?(:parameters)
           @payload = args[:payload] if args.key?(:payload)
+          @populate_data_store_connection_signals = args[:populate_data_store_connection_signals] if args.key?(:populate_data_store_connection_signals)
           @search_config = args[:search_config] if args.key?(:search_config)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @session_ttl = args[:session_ttl] if args.key?(:session_ttl)
@@ -5625,6 +5893,14 @@ module Google
         # Corresponds to the JSON property `currentPage`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Page]
         attr_accessor :current_page
+      
+        # Data store connection feature output signals. Might be only partially field if
+        # processing stop before the final answer. Reasons for this can be, but are not
+        # limited to: empty UCS search results, positive RAI check outcome, grounding
+        # failure, ...
+        # Corresponds to the JSON property `dataStoreConnectionSignals`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DataStoreConnectionSignals]
+        attr_accessor :data_store_connection_signals
       
         # The free-form diagnostic info. For example, this field could contain webhook
         # call latency. The fields of this data can change without notice, so you should
@@ -5749,6 +6025,7 @@ module Google
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @allow_answer_feedback = args[:allow_answer_feedback] if args.key?(:allow_answer_feedback)
           @current_page = args[:current_page] if args.key?(:current_page)
+          @data_store_connection_signals = args[:data_store_connection_signals] if args.key?(:data_store_connection_signals)
           @diagnostic_info = args[:diagnostic_info] if args.key?(:diagnostic_info)
           @dtmf = args[:dtmf] if args.key?(:dtmf)
           @intent = args[:intent] if args.key?(:intent)
@@ -8000,6 +8277,12 @@ module Google
         # @return [String]
         attr_accessor :http_method
       
+        # Represents configuration of OAuth client credential flow for 3rd party API
+        # authentication.
+        # Corresponds to the JSON property `oauthConfig`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig]
+        attr_accessor :oauth_config
+      
         # Optional. Maps the values extracted from specific fields of the flexible
         # webhook response into session parameters. - Key: session parameter name -
         # Value: field path in the webhook response
@@ -8022,6 +8305,13 @@ module Google
         # Corresponds to the JSON property `requestHeaders`
         # @return [Hash<String,String>]
         attr_accessor :request_headers
+      
+        # Optional. Indicate the auth token type generated from the [Diglogflow service
+        # agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-
+        # agent). The generated token is sent in the Authorization header.
+        # Corresponds to the JSON property `serviceAgentAuth`
+        # @return [String]
+        attr_accessor :service_agent_auth
       
         # Required. The webhook URI for receiving POST requests. It must use https
         # protocol.
@@ -8047,13 +8337,54 @@ module Google
         def update!(**args)
           @allowed_ca_certs = args[:allowed_ca_certs] if args.key?(:allowed_ca_certs)
           @http_method = args[:http_method] if args.key?(:http_method)
+          @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
           @parameter_mapping = args[:parameter_mapping] if args.key?(:parameter_mapping)
           @password = args[:password] if args.key?(:password)
           @request_body = args[:request_body] if args.key?(:request_body)
           @request_headers = args[:request_headers] if args.key?(:request_headers)
+          @service_agent_auth = args[:service_agent_auth] if args.key?(:service_agent_auth)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
           @webhook_type = args[:webhook_type] if args.key?(:webhook_type)
+        end
+      end
+      
+      # Represents configuration of OAuth client credential flow for 3rd party API
+      # authentication.
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The client ID provided by the 3rd party platform.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Required. The client secret provided by the 3rd party platform.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Optional. The OAuth scopes to grant.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # Required. The token endpoint provided by the 3rd party platform to exchange an
+        # access token.
+        # Corresponds to the JSON property `tokenEndpoint`
+        # @return [String]
+        attr_accessor :token_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @token_endpoint = args[:token_endpoint] if args.key?(:token_endpoint)
         end
       end
       
@@ -11737,6 +12068,12 @@ module Google
         # @return [String]
         attr_accessor :http_method
       
+        # Represents configuration of OAuth client credential flow for 3rd party API
+        # authentication.
+        # Corresponds to the JSON property `oauthConfig`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig]
+        attr_accessor :oauth_config
+      
         # Optional. Maps the values extracted from specific fields of the flexible
         # webhook response into session parameters. - Key: session parameter name -
         # Value: field path in the webhook response
@@ -11759,6 +12096,13 @@ module Google
         # Corresponds to the JSON property `requestHeaders`
         # @return [Hash<String,String>]
         attr_accessor :request_headers
+      
+        # Optional. Indicate the auth token type generated from the [Diglogflow service
+        # agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-
+        # agent). The generated token is sent in the Authorization header.
+        # Corresponds to the JSON property `serviceAgentAuth`
+        # @return [String]
+        attr_accessor :service_agent_auth
       
         # Required. The webhook URI for receiving POST requests. It must use https
         # protocol.
@@ -11784,13 +12128,54 @@ module Google
         def update!(**args)
           @allowed_ca_certs = args[:allowed_ca_certs] if args.key?(:allowed_ca_certs)
           @http_method = args[:http_method] if args.key?(:http_method)
+          @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
           @parameter_mapping = args[:parameter_mapping] if args.key?(:parameter_mapping)
           @password = args[:password] if args.key?(:password)
           @request_body = args[:request_body] if args.key?(:request_body)
           @request_headers = args[:request_headers] if args.key?(:request_headers)
+          @service_agent_auth = args[:service_agent_auth] if args.key?(:service_agent_auth)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
           @webhook_type = args[:webhook_type] if args.key?(:webhook_type)
+        end
+      end
+      
+      # Represents configuration of OAuth client credential flow for 3rd party API
+      # authentication.
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The client ID provided by the 3rd party platform.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Required. The client secret provided by the 3rd party platform.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Optional. The OAuth scopes to grant.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # Required. The token endpoint provided by the 3rd party platform to exchange an
+        # access token.
+        # Corresponds to the JSON property `tokenEndpoint`
+        # @return [String]
+        attr_accessor :token_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @token_endpoint = args[:token_endpoint] if args.key?(:token_endpoint)
         end
       end
       
