@@ -116,6 +116,12 @@ module Google
         # @return [String]
         attr_accessor :updated
       
+        # An absolute link to the task in the Google Tasks Web UI. This field is read-
+        # only.
+        # Corresponds to the JSON property `webViewLink`
+        # @return [String]
+        attr_accessor :web_view_link
+      
         def initialize(**args)
            update!(**args)
         end
@@ -137,6 +143,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @title = args[:title] if args.key?(:title)
           @updated = args[:updated] if args.key?(:updated)
+          @web_view_link = args[:web_view_link] if args.key?(:web_view_link)
         end
         
         # 
