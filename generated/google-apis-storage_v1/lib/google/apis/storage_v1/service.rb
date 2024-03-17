@@ -1538,6 +1538,10 @@ module Google
         #   Name of the bucket containing the managed folder.
         # @param [String] managed_folder
         #   The managed folder name/path.
+        # @param [Boolean] allow_non_empty
+        #   Allows the deletion of a managed folder even if it is not empty. A managed
+        #   folder is empty if there are no objects or managed folders that it applies to.
+        #   Callers must have storage.managedFolders.setIamPolicy permission.
         # @param [Fixnum] if_metageneration_match
         #   If set, only deletes the managed folder if its metageneration matches this
         #   value.
@@ -1563,10 +1567,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_managed_folder(bucket, managed_folder, if_metageneration_match: nil, if_metageneration_not_match: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_managed_folder(bucket, managed_folder, allow_non_empty: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'b/{bucket}/managedFolders/{managedFolder}', options)
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['managedFolder'] = managed_folder unless managed_folder.nil?
+          command.query['allowNonEmpty'] = allow_non_empty unless allow_non_empty.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
           command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
           command.query['fields'] = fields unless fields.nil?
