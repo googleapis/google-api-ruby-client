@@ -434,6 +434,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
+          property :customer_managed_encryption, as: 'customerManagedEncryption', class: Google::Apis::SecretmanagerV1::CustomerManagedEncryption, decorator: Google::Apis::SecretmanagerV1::CustomerManagedEncryption::Representation
+      
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
           hash :labels, as: 'labels'
@@ -446,6 +448,7 @@ module Google
       
           property :ttl, as: 'ttl'
           hash :version_aliases, as: 'versionAliases'
+          property :version_destroy_ttl, as: 'versionDestroyTtl'
         end
       end
       
@@ -462,11 +465,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_specified_payload_checksum, as: 'clientSpecifiedPayloadChecksum'
           property :create_time, as: 'createTime'
+          property :customer_managed_encryption, as: 'customerManagedEncryption', class: Google::Apis::SecretmanagerV1::CustomerManagedEncryptionStatus, decorator: Google::Apis::SecretmanagerV1::CustomerManagedEncryptionStatus::Representation
+      
           property :destroy_time, as: 'destroyTime'
           property :etag, as: 'etag'
           property :name, as: 'name'
           property :replication_status, as: 'replicationStatus', class: Google::Apis::SecretmanagerV1::ReplicationStatus, decorator: Google::Apis::SecretmanagerV1::ReplicationStatus::Representation
       
+          property :scheduled_destroy_time, as: 'scheduledDestroyTime'
           property :state, as: 'state'
         end
       end
