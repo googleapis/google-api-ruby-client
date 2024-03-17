@@ -770,9 +770,9 @@ module Google
       class ComputeEnginePreferences
         include Google::Apis::Core::Hashable
       
-        # License type to consider when calculating costs for virtual machine insights
-        # and recommendations. If unspecified, costs are calculated based on the default
-        # licensing plan.
+        # Overridden by os_pricing_preferences if specified. License type to consider
+        # when calculating costs for virtual machine insights and recommendations. If
+        # unspecified, costs are calculated based on the default licensing plan.
         # Corresponds to the JSON property `licenseType`
         # @return [String]
         attr_accessor :license_type
