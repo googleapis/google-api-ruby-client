@@ -784,6 +784,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecondaryBootDiskUpdateStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityBulletinEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1407,7 +1413,9 @@ module Google
       
           property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1::DnsConfig, decorator: Google::Apis::ContainerV1::DnsConfig::Representation
       
+          property :desired_enable_cilium_clusterwide_network_policy, as: 'desiredEnableCiliumClusterwideNetworkPolicy'
           property :desired_enable_fqdn_network_policy, as: 'desiredEnableFqdnNetworkPolicy'
+          property :desired_enable_multi_networking, as: 'desiredEnableMultiNetworking'
           property :desired_enable_private_endpoint, as: 'desiredEnablePrivateEndpoint'
           property :desired_fleet, as: 'desiredFleet', class: Google::Apis::ContainerV1::Fleet, decorator: Google::Apis::ContainerV1::Fleet::Representation
       
@@ -1999,6 +2007,7 @@ module Google
       
           property :dns_config, as: 'dnsConfig', class: Google::Apis::ContainerV1::DnsConfig, decorator: Google::Apis::ContainerV1::DnsConfig::Representation
       
+          property :enable_cilium_clusterwide_network_policy, as: 'enableCiliumClusterwideNetworkPolicy'
           property :enable_fqdn_network_policy, as: 'enableFqdnNetworkPolicy'
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
           property :enable_l4ilb_subsetting, as: 'enableL4ilbSubsetting'
@@ -2098,6 +2107,8 @@ module Google
           property :resource_manager_tags, as: 'resourceManagerTags', class: Google::Apis::ContainerV1::ResourceManagerTags, decorator: Google::Apis::ContainerV1::ResourceManagerTags::Representation
       
           property :sandbox_config, as: 'sandboxConfig', class: Google::Apis::ContainerV1::SandboxConfig, decorator: Google::Apis::ContainerV1::SandboxConfig::Representation
+      
+          property :secondary_boot_disk_update_strategy, as: 'secondaryBootDiskUpdateStrategy', class: Google::Apis::ContainerV1::SecondaryBootDiskUpdateStrategy, decorator: Google::Apis::ContainerV1::SecondaryBootDiskUpdateStrategy::Representation
       
           collection :secondary_boot_disks, as: 'secondaryBootDisks', class: Google::Apis::ContainerV1::SecondaryBootDisk, decorator: Google::Apis::ContainerV1::SecondaryBootDisk::Representation
       
@@ -2476,6 +2487,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_image, as: 'diskImage'
           property :mode, as: 'mode'
+        end
+      end
+      
+      class SecondaryBootDiskUpdateStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

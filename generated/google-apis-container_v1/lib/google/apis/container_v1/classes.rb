@@ -1504,11 +1504,23 @@ module Google
         # @return [Google::Apis::ContainerV1::DnsConfig]
         attr_accessor :desired_dns_config
       
+        # Enable/Disable Cilium Clusterwide Network Policy for the cluster.
+        # Corresponds to the JSON property `desiredEnableCiliumClusterwideNetworkPolicy`
+        # @return [Boolean]
+        attr_accessor :desired_enable_cilium_clusterwide_network_policy
+        alias_method :desired_enable_cilium_clusterwide_network_policy?, :desired_enable_cilium_clusterwide_network_policy
+      
         # Enable/Disable FQDN Network Policy for the cluster.
         # Corresponds to the JSON property `desiredEnableFqdnNetworkPolicy`
         # @return [Boolean]
         attr_accessor :desired_enable_fqdn_network_policy
         alias_method :desired_enable_fqdn_network_policy?, :desired_enable_fqdn_network_policy
+      
+        # Enable/Disable Multi-Networking for the cluster
+        # Corresponds to the JSON property `desiredEnableMultiNetworking`
+        # @return [Boolean]
+        attr_accessor :desired_enable_multi_networking
+        alias_method :desired_enable_multi_networking?, :desired_enable_multi_networking
       
         # Enable/Disable private endpoint for the cluster's master.
         # Corresponds to the JSON property `desiredEnablePrivateEndpoint`
@@ -1785,7 +1797,9 @@ module Google
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
+          @desired_enable_cilium_clusterwide_network_policy = args[:desired_enable_cilium_clusterwide_network_policy] if args.key?(:desired_enable_cilium_clusterwide_network_policy)
           @desired_enable_fqdn_network_policy = args[:desired_enable_fqdn_network_policy] if args.key?(:desired_enable_fqdn_network_policy)
+          @desired_enable_multi_networking = args[:desired_enable_multi_networking] if args.key?(:desired_enable_multi_networking)
           @desired_enable_private_endpoint = args[:desired_enable_private_endpoint] if args.key?(:desired_enable_private_endpoint)
           @desired_fleet = args[:desired_fleet] if args.key?(:desired_fleet)
           @desired_gateway_api_config = args[:desired_gateway_api_config] if args.key?(:desired_gateway_api_config)
@@ -3610,6 +3624,12 @@ module Google
         # @return [Google::Apis::ContainerV1::DnsConfig]
         attr_accessor :dns_config
       
+        # Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
+        # Corresponds to the JSON property `enableCiliumClusterwideNetworkPolicy`
+        # @return [Boolean]
+        attr_accessor :enable_cilium_clusterwide_network_policy
+        alias_method :enable_cilium_clusterwide_network_policy?, :enable_cilium_clusterwide_network_policy
+      
         # Whether FQDN Network Policy is enabled on this cluster.
         # Corresponds to the JSON property `enableFqdnNetworkPolicy`
         # @return [Boolean]
@@ -3684,6 +3704,7 @@ module Google
           @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
           @dns_config = args[:dns_config] if args.key?(:dns_config)
+          @enable_cilium_clusterwide_network_policy = args[:enable_cilium_clusterwide_network_policy] if args.key?(:enable_cilium_clusterwide_network_policy)
           @enable_fqdn_network_policy = args[:enable_fqdn_network_policy] if args.key?(:enable_fqdn_network_policy)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
@@ -4028,6 +4049,12 @@ module Google
         # @return [Google::Apis::ContainerV1::SandboxConfig]
         attr_accessor :sandbox_config
       
+        # SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the
+        # future to define different options for updating secondary boot disks.
+        # Corresponds to the JSON property `secondaryBootDiskUpdateStrategy`
+        # @return [Google::Apis::ContainerV1::SecondaryBootDiskUpdateStrategy]
+        attr_accessor :secondary_boot_disk_update_strategy
+      
         # List of secondary boot disks attached to the nodes.
         # Corresponds to the JSON property `secondaryBootDisks`
         # @return [Array<Google::Apis::ContainerV1::SecondaryBootDisk>]
@@ -4120,6 +4147,7 @@ module Google
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
+          @secondary_boot_disk_update_strategy = args[:secondary_boot_disk_update_strategy] if args.key?(:secondary_boot_disk_update_strategy)
           @secondary_boot_disks = args[:secondary_boot_disks] if args.key?(:secondary_boot_disks)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
@@ -5531,6 +5559,20 @@ module Google
         def update!(**args)
           @disk_image = args[:disk_image] if args.key?(:disk_image)
           @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the
+      # future to define different options for updating secondary boot disks.
+      class SecondaryBootDiskUpdateStrategy
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
