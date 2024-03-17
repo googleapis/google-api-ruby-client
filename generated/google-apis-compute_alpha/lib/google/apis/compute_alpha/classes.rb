@@ -3667,35 +3667,6 @@ module Google
         attr_accessor :enable_cdn
         alias_method :enable_cdn?, :enable_cdn
       
-        # Specifies the canary migration state. Possible values are PREPARE, TEST, and
-        # FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state
-        # must be changed to PREPARE. The state must be changed to FINALIZE before the
-        # loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST
-        # state can be used to migrate traffic by percentage using
-        # externalManagedMigrationTestingRate. Rolling back a migration requires the
-        # states to be set in reverse order. So changing the scheme from
-        # EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the
-        # same time. Optionally, the TEST state can be used to migrate some traffic back
-        # to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
-        # Corresponds to the JSON property `externalManagedMigrationState`
-        # @return [String]
-        attr_accessor :external_managed_migration_state
-      
-        # Determines the fraction of requests that should be processed by the Global
-        # external Application Load Balancer. The value of this field must be in the
-        # range [0, 1]. For example: - A value of 0 will send all requests through the
-        # Classic ALB for the given resource. - A value of .001 will send .1% of
-        # requests through the Global external ALB for the given resource. - A value of .
-        # 01 will send 1% of requests through the Global external ALB for the given
-        # resource. - A value of 1 will send all requests through the Global external
-        # ALB for the given resource. Session affinity options will slightly affect this
-        # routing behavior, for more details, see: Session Affinity. This value is only
-        # used if the loadBalancingScheme in the BackendService is set to EXTERNAL when
-        # using the classic Application Load Balancer.
-        # Corresponds to the JSON property `externalManagedMigrationTestingRate`
-        # @return [Float]
-        attr_accessor :external_managed_migration_testing_rate
-      
         # For load balancers that have configurable failover: [Internal passthrough
         # Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/
         # failover-overview) and [external passthrough Network Load Balancers](https://
@@ -3998,8 +3969,6 @@ module Google
           @description = args[:description] if args.key?(:description)
           @edge_security_policy = args[:edge_security_policy] if args.key?(:edge_security_policy)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
-          @external_managed_migration_state = args[:external_managed_migration_state] if args.key?(:external_managed_migration_state)
-          @external_managed_migration_testing_rate = args[:external_managed_migration_testing_rate] if args.key?(:external_managed_migration_testing_rate)
           @failover_policy = args[:failover_policy] if args.key?(:failover_policy)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @ha_policy = args[:ha_policy] if args.key?(:ha_policy)
@@ -6888,10 +6857,10 @@ module Google
         attr_accessor :allow_methods
       
         # Specifies a regular expression that matches allowed origins. For more
-        # information about the regular expression syntax, see Syntax. An origin is
-        # allowed if it matches either an item in allowOrigins or an item in
-        # allowOriginRegexes. Regular expressions can only be used when the
-        # loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+        # information, see regular expression syntax . An origin is allowed if it
+        # matches either an item in allowOrigins or an item in allowOriginRegexes.
+        # Regular expressions can only be used when the loadBalancingScheme is set to
+        # INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `allowOriginRegexes`
         # @return [Array<String>]
         attr_accessor :allow_origin_regexes
@@ -6903,8 +6872,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :allow_origins
       
-        # If true, the setting specifies the CORS policy is disabled. The default value
-        # of false, which indicates that the CORS policy is in effect.
+        # If true, disables the CORS policy. The default value is false, which indicates
+        # that the CORS policy is in effect.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
@@ -12219,6 +12188,59 @@ module Google
       end
       
       # 
+      class GrpctlsHealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # The gRPC service name for the health check. This field is optional. The value
+        # of grpc_service_name has the following meanings by convention: - Empty
+        # service_name means the overall status of all services at the backend. - Non-
+        # empty service_name means the health of that gRPC service, as defined by the
+        # owner of the service. The grpc_service_name can only be ASCII.
+        # Corresponds to the JSON property `grpcServiceName`
+        # @return [String]
+        attr_accessor :grpc_service_name
+      
+        # The TCP port number to which the health check prober sends packets. Valid
+        # values are 1 through 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Specifies how a port is selected for health checking. Can be one of the
+        # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
+        # port field in the health check. Supported by backend services for passthrough
+        # load balancers and backend services for proxy load balancers. Not supported by
+        # target pools. The health check supports all backends supported by the backend
+        # service provided the backend can be health checked. For example, GCE_VM_IP
+        # network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance
+        # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
+        # indirect method of specifying the health check port by referring to the
+        # backend service. Only supported by backend services for proxy load balancers.
+        # Not supported by target pools. Not supported by backend services for
+        # passthrough load balancers. Supports all backends that can be health checked;
+        # for example, GCE_VM_IP_PORT network endpoint groups and instance group
+        # backends. For GCE_VM_IP_PORT network endpoint group backends, the health check
+        # uses the port number specified for each endpoint in the network endpoint group.
+        # For instance group backends, the health check uses the port number determined
+        # by looking up the backend service's named port in the instance group's list of
+        # named ports.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grpc_service_name = args[:grpc_service_name] if args.key?(:grpc_service_name)
+          @port = args[:port] if args.key?(:port)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
+        end
+      end
+      
+      # 
       class GetOwnerInstanceResponse
         include Google::Apis::Core::Hashable
       
@@ -12917,6 +12939,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::GrpcHealthCheck]
         attr_accessor :grpc_health_check
       
+        # 
+        # Corresponds to the JSON property `grpcTlsHealthCheck`
+        # @return [Google::Apis::ComputeAlpha::GrpctlsHealthCheck]
+        attr_accessor :grpc_tls_health_check
+      
         # A so-far unhealthy instance will be marked healthy after this many consecutive
         # successes. The default value is 2.
         # Corresponds to the JSON property `healthyThreshold`
@@ -13041,6 +13068,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @grpc_health_check = args[:grpc_health_check] if args.key?(:grpc_health_check)
+          @grpc_tls_health_check = args[:grpc_tls_health_check] if args.key?(:grpc_tls_health_check)
           @healthy_threshold = args[:healthy_threshold] if args.key?(:healthy_threshold)
           @http2_health_check = args[:http2_health_check] if args.key?(:http2_health_check)
           @http_health_check = args[:http_health_check] if args.key?(:http_health_check)
@@ -17829,7 +17857,8 @@ module Google
       class InstanceGroupManagerResizeRequest
         include Google::Apis::Core::Hashable
       
-        # The count of instances to create as part of this resize request.
+        # This field is deprecated, please use resize_by instead. The count of instances
+        # to create as part of this resize request.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
@@ -26909,6 +26938,15 @@ module Google
         # @return [String]
         attr_accessor :network_firewall_policy_enforcement_order
       
+        # A full or partial URL of the network placement to apply to this network. This
+        # field can be set only at resource creation time. For example, the following
+        # are valid URLs: - https://www.googleapis.com/compute/alpha/projects/`
+        # project_id`/global/networkPlacements/`network_placement_name` - projects/`
+        # project_id`/global/networkPlacements/`network_placement_name`
+        # Corresponds to the JSON property `networkPlacement`
+        # @return [String]
+        attr_accessor :network_placement
+      
         # [Output Only] A list of network peerings for the resource.
         # Corresponds to the JSON property `peerings`
         # @return [Array<Google::Apis::ComputeAlpha::NetworkPeering>]
@@ -26963,6 +27001,7 @@ module Google
           @mtu = args[:mtu] if args.key?(:mtu)
           @name = args[:name] if args.key?(:name)
           @network_firewall_policy_enforcement_order = args[:network_firewall_policy_enforcement_order] if args.key?(:network_firewall_policy_enforcement_order)
+          @network_placement = args[:network_placement] if args.key?(:network_placement)
           @peerings = args[:peerings] if args.key?(:peerings)
           @region = args[:region] if args.key?(:region)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
@@ -36095,6 +36134,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] Warning of fetching the `quotas` field for this region. This
+        # field is populated only if fetching of the `quotas` field fails.
+        # Corresponds to the JSON property `quotaStatusWarning`
+        # @return [Google::Apis::ComputeAlpha::Region::QuotaStatusWarning]
+        attr_accessor :quota_status_warning
+      
         # [Output Only] Quotas assigned to this region.
         # Corresponds to the JSON property `quotas`
         # @return [Array<Google::Apis::ComputeAlpha::Quota>]
@@ -36139,12 +36184,78 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @quota_status_warning = args[:quota_status_warning] if args.key?(:quota_status_warning)
           @quotas = args[:quotas] if args.key?(:quotas)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
           @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
           @zones = args[:zones] if args.key?(:zones)
+        end
+        
+        # [Output Only] Warning of fetching the `quotas` field for this region. This
+        # field is populated only if fetching of the `quotas` field fails.
+        class QuotaStatusWarning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::Region::QuotaStatusWarning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -37711,7 +37822,7 @@ module Google
         attr_accessor :rules
       
         # [Output Only] The type of the firewall policy. Can be one of HIERARCHY,
-        # NETWORK, NETWORK_REGIONAL.
+        # NETWORK, NETWORK_REGIONAL, SYSTEM_GLOBAL, SYSTEM_REGIONAL.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
