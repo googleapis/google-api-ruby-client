@@ -1051,6 +1051,55 @@ module Google
         end
       end
       
+      # Specifies the configuration for running a replication job.
+      class ReplicationSpec
+        include Google::Apis::Core::Hashable
+      
+        # In a GcsData resource, an object's name is the Cloud Storage object's name and
+        # its "last modification time" refers to the object's `updated` property of
+        # Cloud Storage objects, which changes when the content or the metadata of the
+        # object is updated.
+        # Corresponds to the JSON property `gcsDataSink`
+        # @return [Google::Apis::StoragetransferV1::GcsData]
+        attr_accessor :gcs_data_sink
+      
+        # In a GcsData resource, an object's name is the Cloud Storage object's name and
+        # its "last modification time" refers to the object's `updated` property of
+        # Cloud Storage objects, which changes when the content or the metadata of the
+        # object is updated.
+        # Corresponds to the JSON property `gcsDataSource`
+        # @return [Google::Apis::StoragetransferV1::GcsData]
+        attr_accessor :gcs_data_source
+      
+        # Conditions that determine which objects are transferred. Applies only to Cloud
+        # Data Sources such as S3, Azure, and Cloud Storage. The "last modification time"
+        # refers to the time of the last change to the object's content or metadata —
+        # specifically, this is the `updated` property of Cloud Storage objects, the `
+        # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
+        # blobs. Transfers with a PosixFilesystem source or destination don't support `
+        # ObjectConditions`.
+        # Corresponds to the JSON property `objectConditions`
+        # @return [Google::Apis::StoragetransferV1::ObjectConditions]
+        attr_accessor :object_conditions
+      
+        # TransferOptions define the actions to be performed on objects in a transfer.
+        # Corresponds to the JSON property `transferOptions`
+        # @return [Google::Apis::StoragetransferV1::TransferOptions]
+        attr_accessor :transfer_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_data_sink = args[:gcs_data_sink] if args.key?(:gcs_data_sink)
+          @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
+          @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
+          @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
+        end
+      end
+      
       # Request passed to ResumeTransferOperation.
       class ResumeTransferOperationRequest
         include Google::Apis::Core::Hashable
@@ -1506,6 +1555,11 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Specifies the configuration for running a replication job.
+        # Corresponds to the JSON property `replicationSpec`
+        # @return [Google::Apis::StoragetransferV1::ReplicationSpec]
+        attr_accessor :replication_spec
+      
         # Transfers can be scheduled to recur or to run just once.
         # Corresponds to the JSON property `schedule`
         # @return [Google::Apis::StoragetransferV1::Schedule]
@@ -1541,6 +1595,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @replication_spec = args[:replication_spec] if args.key?(:replication_spec)
           @schedule = args[:schedule] if args.key?(:schedule)
           @status = args[:status] if args.key?(:status)
           @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
