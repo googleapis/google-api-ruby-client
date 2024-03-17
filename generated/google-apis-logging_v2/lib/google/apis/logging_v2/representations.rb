@@ -956,8 +956,10 @@ module Google
       
           property :filter, as: 'filter'
           property :include_children, as: 'includeChildren'
+          property :intercept_children, as: 'interceptChildren'
           property :name, as: 'name'
           property :output_version_format, as: 'outputVersionFormat'
+          property :resource_name, as: 'resourceName'
           property :update_time, as: 'updateTime'
           property :writer_identity, as: 'writerIdentity'
         end
