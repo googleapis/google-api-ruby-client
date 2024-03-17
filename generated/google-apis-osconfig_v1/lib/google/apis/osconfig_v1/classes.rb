@@ -3196,6 +3196,33 @@ module Google
         end
       end
       
+      # ProjectFeatureSettings represents the features settings for the VM Manager.
+      # The project features settings can be set for a project.
+      class ProjectFeatureSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. Name of the config, e.g. projects/12345/locations/global/
+        # projectFeatureSettings
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Currently set PatchAndConfigFeatureSet for name.
+        # Corresponds to the JSON property `patchAndConfigFeatureSet`
+        # @return [String]
+        attr_accessor :patch_and_config_feature_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @patch_and_config_feature_set = args[:patch_and_config_feature_set] if args.key?(:patch_and_config_feature_set)
+        end
+      end
+      
       # Sets the time for recurring patch deployments.
       class RecurringSchedule
         include Google::Apis::Core::Hashable

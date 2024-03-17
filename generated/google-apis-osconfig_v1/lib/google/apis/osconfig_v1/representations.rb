@@ -484,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProjectFeatureSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RecurringSchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1420,6 +1426,14 @@ module Google
       class PausePatchDeploymentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ProjectFeatureSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :patch_and_config_feature_set, as: 'patchAndConfigFeatureSet'
         end
       end
       
