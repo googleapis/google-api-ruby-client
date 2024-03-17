@@ -1,0 +1,13 @@
+--hide-void-return
+--no-private
+--verbose
+--title=google-apis-secretmanager_v1beta2
+--markup-provider=redcarpet
+--markup=markdown
+--main OVERVIEW.md
+lib/google/apis/secretmanager_v1beta2/*.rb
+lib/google/apis/secretmanager_v1beta2.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md

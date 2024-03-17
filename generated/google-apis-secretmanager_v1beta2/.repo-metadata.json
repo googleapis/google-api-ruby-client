@@ -1,0 +1,7 @@
+{
+    "api_id": "secretmanager:v1beta2",
+    "name_pretty": "Secret Manager API",
+    "distribution_name": "google-apis-secretmanager_v1beta2",
+    "language": "ruby",
+    "library_type": "REST"
+}
