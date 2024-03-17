@@ -6107,10 +6107,10 @@ module Google
         attr_accessor :allow_methods
       
         # Specifies a regular expression that matches allowed origins. For more
-        # information about the regular expression syntax, see Syntax. An origin is
-        # allowed if it matches either an item in allowOrigins or an item in
-        # allowOriginRegexes. Regular expressions can only be used when the
-        # loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+        # information, see regular expression syntax . An origin is allowed if it
+        # matches either an item in allowOrigins or an item in allowOriginRegexes.
+        # Regular expressions can only be used when the loadBalancingScheme is set to
+        # INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `allowOriginRegexes`
         # @return [Array<String>]
         attr_accessor :allow_origin_regexes
@@ -6122,8 +6122,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :allow_origins
       
-        # If true, the setting specifies the CORS policy is disabled. The default value
-        # of false, which indicates that the CORS policy is in effect.
+        # If true, disables the CORS policy. The default value is false, which indicates
+        # that the CORS policy is in effect.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
@@ -15097,6 +15097,494 @@ module Google
           # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # InstanceGroupManagerResizeRequest represents a request to create a number of
+      # VMs: either immediately or by queuing the request for the specified time. This
+      # resize request is nested under InstanceGroupManager and the VMs created by
+      # this request are added to the owning InstanceGroupManager.
+      class InstanceGroupManagerResizeRequest
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The creation timestamp for this resize request in RFC3339 text
+        # format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] A unique identifier for this resource type. The server generates
+        # this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] The resource type, which is always compute#
+        # instanceGroupManagerResizeRequest for resize requests.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The name of this resize request. The name must be 1-63 characters long, and
+        # comply with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `requestedRunDuration`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :requested_run_duration
+      
+        # The number of instances to be created by this resize request. The group's
+        # target size will be increased by this number.
+        # Corresponds to the JSON property `resizeBy`
+        # @return [Fixnum]
+        attr_accessor :resize_by
+      
+        # [Output Only] The URL for this resize request. The server defines this URL.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output only] Current state of the request.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # [Output only] Status of the request.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus]
+        attr_accessor :status
+      
+        # [Output Only] The URL of a zone where the resize request is located. Populated
+        # only for zonal resize requests.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @requested_run_duration = args[:requested_run_duration] if args.key?(:requested_run_duration)
+          @resize_by = args[:resize_by] if args.key?(:resize_by)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerResizeRequestStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] Fatal errors encountered during the queueing or provisioning
+        # phases of the ResizeRequest that caused the transition to the FAILED state.
+        # Contrary to the last_attempt errors, this field is final and errors are never
+        # removed from here, as the ResizeRequest is not going to retry.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus::Error]
+        attr_accessor :error
+      
+        # [Output only] Information about the last attempt to fulfill the request. The
+        # value is temporary since the ResizeRequest can retry, as long as it's still
+        # active and the last attempt value can either be cleared or replaced with a
+        # different error. Since ResizeRequest retries infrequently, the value may be
+        # stale and no longer show an active problem. The value is cleared when
+        # ResizeRequest transitions to the final state (becomes inactive). If the final
+        # state is FAILED the error describing it will be storred in the "error" field
+        # only.
+        # Corresponds to the JSON property `lastAttempt`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt]
+        attr_accessor :last_attempt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
+        end
+        
+        # [Output only] Fatal errors encountered during the queueing or provisioning
+        # phases of the ResizeRequest that caused the transition to the FAILED state.
+        # Contrary to the last_attempt errors, this field is final and errors are never
+        # removed from here, as the ResizeRequest is not going to retry.
+        class Error
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] The array of errors encountered while processing this operation.
+          # Corresponds to the JSON property `errors`
+          # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus::Error::Error>]
+          attr_accessor :errors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @errors = args[:errors] if args.key?(:errors)
+          end
+          
+          # 
+          class Error
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] The error type identifier for this error.
+            # Corresponds to the JSON property `code`
+            # @return [String]
+            attr_accessor :code
+          
+            # [Output Only] An optional list of messages that contain the error details.
+            # There is a set of defined message types to use for providing details.The
+            # syntax depends on the error code. For example, QuotaExceededInfo will have
+            # details when the error code is QUOTA_EXCEEDED.
+            # Corresponds to the JSON property `errorDetails`
+            # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus::Error::Error::ErrorDetail>]
+            attr_accessor :error_details
+          
+            # [Output Only] Indicates the field in the request that caused the error. This
+            # property is optional.
+            # Corresponds to the JSON property `location`
+            # @return [String]
+            attr_accessor :location
+          
+            # [Output Only] An optional, human-readable error message.
+            # Corresponds to the JSON property `message`
+            # @return [String]
+            attr_accessor :message
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @code = args[:code] if args.key?(:code)
+              @error_details = args[:error_details] if args.key?(:error_details)
+              @location = args[:location] if args.key?(:location)
+              @message = args[:message] if args.key?(:message)
+            end
+            
+            # 
+            class ErrorDetail
+              include Google::Apis::Core::Hashable
+            
+              # Describes the cause of the error with structured details. Example of an error
+              # when contacting the "pubsub.googleapis.com" API when it is not enabled: ` "
+              # reason": "API_DISABLED" "domain": "googleapis.com" "metadata": ` "resource": "
+              # projects/123", "service": "pubsub.googleapis.com" ` ` This response indicates
+              # that the pubsub.googleapis.com API is not enabled. Example of an error that is
+              # returned when attempting to create a Spanner instance in a region that is out
+              # of stock: ` "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata"
+              # : ` "availableRegions": "us-central1,us-east2" ` `
+              # Corresponds to the JSON property `errorInfo`
+              # @return [Google::Apis::ComputeV1::ErrorInfo]
+              attr_accessor :error_info
+            
+              # Provides links to documentation or for performing an out of band action. For
+              # example, if a quota check failed with an error indicating the calling project
+              # hasn't enabled the accessed service, this can contain a URL pointing directly
+              # to the right place in the developer console to flip the bit.
+              # Corresponds to the JSON property `help`
+              # @return [Google::Apis::ComputeV1::Help]
+              attr_accessor :help
+            
+              # Provides a localized error message that is safe to return to the user which
+              # can be attached to an RPC error.
+              # Corresponds to the JSON property `localizedMessage`
+              # @return [Google::Apis::ComputeV1::LocalizedMessage]
+              attr_accessor :localized_message
+            
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeV1::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @error_info = args[:error_info] if args.key?(:error_info)
+                @help = args[:help] if args.key?(:help)
+                @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
+              end
+            end
+          end
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerResizeRequestStatusLastAttempt
+        include Google::Apis::Core::Hashable
+      
+        # Errors that prevented the ResizeRequest to be fulfilled.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt::Error]
+        attr_accessor :error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+        end
+        
+        # Errors that prevented the ResizeRequest to be fulfilled.
+        class Error
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] The array of errors encountered while processing this operation.
+          # Corresponds to the JSON property `errors`
+          # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error>]
+          attr_accessor :errors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @errors = args[:errors] if args.key?(:errors)
+          end
+          
+          # 
+          class Error
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] The error type identifier for this error.
+            # Corresponds to the JSON property `code`
+            # @return [String]
+            attr_accessor :code
+          
+            # [Output Only] An optional list of messages that contain the error details.
+            # There is a set of defined message types to use for providing details.The
+            # syntax depends on the error code. For example, QuotaExceededInfo will have
+            # details when the error code is QUOTA_EXCEEDED.
+            # Corresponds to the JSON property `errorDetails`
+            # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::ErrorDetail>]
+            attr_accessor :error_details
+          
+            # [Output Only] Indicates the field in the request that caused the error. This
+            # property is optional.
+            # Corresponds to the JSON property `location`
+            # @return [String]
+            attr_accessor :location
+          
+            # [Output Only] An optional, human-readable error message.
+            # Corresponds to the JSON property `message`
+            # @return [String]
+            attr_accessor :message
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @code = args[:code] if args.key?(:code)
+              @error_details = args[:error_details] if args.key?(:error_details)
+              @location = args[:location] if args.key?(:location)
+              @message = args[:message] if args.key?(:message)
+            end
+            
+            # 
+            class ErrorDetail
+              include Google::Apis::Core::Hashable
+            
+              # Describes the cause of the error with structured details. Example of an error
+              # when contacting the "pubsub.googleapis.com" API when it is not enabled: ` "
+              # reason": "API_DISABLED" "domain": "googleapis.com" "metadata": ` "resource": "
+              # projects/123", "service": "pubsub.googleapis.com" ` ` This response indicates
+              # that the pubsub.googleapis.com API is not enabled. Example of an error that is
+              # returned when attempting to create a Spanner instance in a region that is out
+              # of stock: ` "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata"
+              # : ` "availableRegions": "us-central1,us-east2" ` `
+              # Corresponds to the JSON property `errorInfo`
+              # @return [Google::Apis::ComputeV1::ErrorInfo]
+              attr_accessor :error_info
+            
+              # Provides links to documentation or for performing an out of band action. For
+              # example, if a quota check failed with an error indicating the calling project
+              # hasn't enabled the accessed service, this can contain a URL pointing directly
+              # to the right place in the developer console to flip the bit.
+              # Corresponds to the JSON property `help`
+              # @return [Google::Apis::ComputeV1::Help]
+              attr_accessor :help
+            
+              # Provides a localized error message that is safe to return to the user which
+              # can be attached to an RPC error.
+              # Corresponds to the JSON property `localizedMessage`
+              # @return [Google::Apis::ComputeV1::LocalizedMessage]
+              attr_accessor :localized_message
+            
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeV1::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @error_info = args[:error_info] if args.key?(:error_info)
+                @help = args[:help] if args.key?(:help)
+                @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
+              end
+            end
+          end
+        end
+      end
+      
+      # [Output Only] A list of resize requests.
+      class InstanceGroupManagerResizeRequestsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of resize request resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerResizeRequest>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#
+        # instanceGroupManagerResizeRequestList for a list of resize requests.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestsListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestsListResponse::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -31541,7 +32029,7 @@ module Google
         attr_accessor :rules
       
         # [Output Only] The type of the firewall policy. Can be one of HIERARCHY,
-        # NETWORK, NETWORK_REGIONAL.
+        # NETWORK, NETWORK_REGIONAL, SYSTEM_GLOBAL, SYSTEM_REGIONAL.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
