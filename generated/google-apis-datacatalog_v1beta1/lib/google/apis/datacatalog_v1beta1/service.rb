@@ -336,10 +336,10 @@ module Google
         # Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/
         # resource-project) for more information).
         # @param [String] name
-        #   The resource name of the entry group in URL format. Example: * projects/`
-        #   project_id`/locations/`location`/entryGroups/`entry_group_id` Note that this
-        #   EntryGroup and its child resources may not actually be stored in the location
-        #   in this name.
+        #   Identifier. The resource name of the entry group in URL format. Example: *
+        #   projects/`project_id`/locations/`location`/entryGroups/`entry_group_id` Note
+        #   that this EntryGroup and its child resources may not actually be stored in the
+        #   location in this name.
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1EntryGroup] google_cloud_datacatalog_v1beta1_entry_group_object
         # @param [String] update_mask
         #   Names of fields whose values to overwrite on an entry group. If this parameter
@@ -658,8 +658,8 @@ module Google
         # Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project)
         # for more information).
         # @param [String] name
-        #   Output only. The Data Catalog resource name of the entry in URL format.
-        #   Example: * projects/`project_id`/locations/`location`/entryGroups/`
+        #   Output only. Identifier. The Data Catalog resource name of the entry in URL
+        #   format. Example: * projects/`project_id`/locations/`location`/entryGroups/`
         #   entry_group_id`/entries/`entry_id` Note that this Entry and its child
         #   resources may not actually be stored in the location in this name.
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Entry] google_cloud_datacatalog_v1beta1_entry_object
@@ -858,10 +858,10 @@ module Google
         
         # Updates an existing tag.
         # @param [String] name
-        #   The resource name of the tag in URL format. Example: * projects/`project_id`/
-        #   locations/`location`/entrygroups/`entry_group_id`/entries/`entry_id`/tags/`
-        #   tag_id` where `tag_id` is a system-generated identifier. Note that this Tag
-        #   may not actually be stored in the location in this name.
+        #   Identifier. The resource name of the tag in URL format. Example: * projects/`
+        #   project_id`/locations/`location`/entrygroups/`entry_group_id`/entries/`
+        #   entry_id`/tags/`tag_id` where `tag_id` is a system-generated identifier. Note
+        #   that this Tag may not actually be stored in the location in this name.
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag] google_cloud_datacatalog_v1beta1_tag_object
         # @param [String] update_mask
         #   Note: Currently, this parameter can only take `"fields"` as value. Names of
@@ -1014,10 +1014,10 @@ module Google
         
         # Updates an existing tag.
         # @param [String] name
-        #   The resource name of the tag in URL format. Example: * projects/`project_id`/
-        #   locations/`location`/entrygroups/`entry_group_id`/entries/`entry_id`/tags/`
-        #   tag_id` where `tag_id` is a system-generated identifier. Note that this Tag
-        #   may not actually be stored in the location in this name.
+        #   Identifier. The resource name of the tag in URL format. Example: * projects/`
+        #   project_id`/locations/`location`/entrygroups/`entry_group_id`/entries/`
+        #   entry_id`/tags/`tag_id` where `tag_id` is a system-generated identifier. Note
+        #   that this Tag may not actually be stored in the location in this name.
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag] google_cloud_datacatalog_v1beta1_tag_object
         # @param [String] update_mask
         #   Note: Currently, this parameter can only take `"fields"` as value. Names of
@@ -1216,10 +1216,10 @@ module Google
         # name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/
         # data-catalog/docs/concepts/resource-project) for more information).
         # @param [String] name
-        #   The resource name of the tag template in URL format. Example: * projects/`
-        #   project_id`/locations/`location`/tagTemplates/`tag_template_id` Note that this
-        #   TagTemplate and its child resources may not actually be stored in the location
-        #   in this name.
+        #   Identifier. The resource name of the tag template in URL format. Example: *
+        #   projects/`project_id`/locations/`location`/tagTemplates/`tag_template_id` Note
+        #   that this TagTemplate and its child resources may not actually be stored in
+        #   the location in this name.
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagTemplate] google_cloud_datacatalog_v1beta1_tag_template_object
         # @param [String] update_mask
         #   Names of fields whose values to overwrite on a tag template. Currently, only `
