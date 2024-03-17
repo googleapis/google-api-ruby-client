@@ -1371,6 +1371,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ResourceUsageExportConfig]
         attr_accessor :resource_usage_export_config
       
+        # SecretManagerConfig is config for secret manager enablement.
+        # Corresponds to the JSON property `secretManagerConfig`
+        # @return [Google::Apis::ContainerV1beta1::SecretManagerConfig]
+        attr_accessor :secret_manager_config
+      
         # SecurityPostureConfig defines the flags needed to enable/disable features for
         # the Security Posture API.
         # Corresponds to the JSON property `securityPostureConfig`
@@ -1523,6 +1528,7 @@ module Google
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
+          @secret_manager_config = args[:secret_manager_config] if args.key?(:secret_manager_config)
           @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
@@ -1698,11 +1704,23 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::DnsConfig]
         attr_accessor :desired_dns_config
       
+        # Enable/Disable Cilium Clusterwide Network Policy for the cluster.
+        # Corresponds to the JSON property `desiredEnableCiliumClusterwideNetworkPolicy`
+        # @return [Boolean]
+        attr_accessor :desired_enable_cilium_clusterwide_network_policy
+        alias_method :desired_enable_cilium_clusterwide_network_policy?, :desired_enable_cilium_clusterwide_network_policy
+      
         # Enable/Disable FQDN Network Policy for the cluster.
         # Corresponds to the JSON property `desiredEnableFqdnNetworkPolicy`
         # @return [Boolean]
         attr_accessor :desired_enable_fqdn_network_policy
         alias_method :desired_enable_fqdn_network_policy?, :desired_enable_fqdn_network_policy
+      
+        # Enable/Disable Multi-Networking for the cluster
+        # Corresponds to the JSON property `desiredEnableMultiNetworking`
+        # @return [Boolean]
+        attr_accessor :desired_enable_multi_networking
+        alias_method :desired_enable_multi_networking?, :desired_enable_multi_networking
       
         # Enable/Disable private endpoint for the cluster's master.
         # Corresponds to the JSON property `desiredEnablePrivateEndpoint`
@@ -1932,6 +1950,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ResourceUsageExportConfig]
         attr_accessor :desired_resource_usage_export_config
       
+        # SecretManagerConfig is config for secret manager enablement.
+        # Corresponds to the JSON property `desiredSecretManagerConfig`
+        # @return [Google::Apis::ContainerV1beta1::SecretManagerConfig]
+        attr_accessor :desired_secret_manager_config
+      
         # SecurityPostureConfig defines the flags needed to enable/disable features for
         # the Security Posture API.
         # Corresponds to the JSON property `desiredSecurityPostureConfig`
@@ -2018,7 +2041,9 @@ module Google
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
+          @desired_enable_cilium_clusterwide_network_policy = args[:desired_enable_cilium_clusterwide_network_policy] if args.key?(:desired_enable_cilium_clusterwide_network_policy)
           @desired_enable_fqdn_network_policy = args[:desired_enable_fqdn_network_policy] if args.key?(:desired_enable_fqdn_network_policy)
+          @desired_enable_multi_networking = args[:desired_enable_multi_networking] if args.key?(:desired_enable_multi_networking)
           @desired_enable_private_endpoint = args[:desired_enable_private_endpoint] if args.key?(:desired_enable_private_endpoint)
           @desired_fleet = args[:desired_fleet] if args.key?(:desired_fleet)
           @desired_gateway_api_config = args[:desired_gateway_api_config] if args.key?(:desired_gateway_api_config)
@@ -2054,6 +2079,7 @@ module Google
           @desired_protect_config = args[:desired_protect_config] if args.key?(:desired_protect_config)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
+          @desired_secret_manager_config = args[:desired_secret_manager_config] if args.key?(:desired_secret_manager_config)
           @desired_security_posture_config = args[:desired_security_posture_config] if args.key?(:desired_security_posture_config)
           @desired_service_external_ips_config = args[:desired_service_external_ips_config] if args.key?(:desired_service_external_ips_config)
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
@@ -4082,6 +4108,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::DnsConfig]
         attr_accessor :dns_config
       
+        # Whether CiliumClusterWideNetworkPolicy is enabled on this cluster.
+        # Corresponds to the JSON property `enableCiliumClusterwideNetworkPolicy`
+        # @return [Boolean]
+        attr_accessor :enable_cilium_clusterwide_network_policy
+        alias_method :enable_cilium_clusterwide_network_policy?, :enable_cilium_clusterwide_network_policy
+      
         # Whether FQDN Network Policy is enabled on this cluster.
         # Corresponds to the JSON property `enableFqdnNetworkPolicy`
         # @return [Boolean]
@@ -4156,6 +4188,7 @@ module Google
           @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
           @dns_config = args[:dns_config] if args.key?(:dns_config)
+          @enable_cilium_clusterwide_network_policy = args[:enable_cilium_clusterwide_network_policy] if args.key?(:enable_cilium_clusterwide_network_policy)
           @enable_fqdn_network_policy = args[:enable_fqdn_network_policy] if args.key?(:enable_fqdn_network_policy)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
@@ -4519,6 +4552,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::SandboxConfig]
         attr_accessor :sandbox_config
       
+        # SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the
+        # future to define different options for updating secondary boot disks.
+        # Corresponds to the JSON property `secondaryBootDiskUpdateStrategy`
+        # @return [Google::Apis::ContainerV1beta1::SecondaryBootDiskUpdateStrategy]
+        attr_accessor :secondary_boot_disk_update_strategy
+      
         # List of secondary boot disks attached to the nodes.
         # Corresponds to the JSON property `secondaryBootDisks`
         # @return [Array<Google::Apis::ContainerV1beta1::SecondaryBootDisk>]
@@ -4613,6 +4652,7 @@ module Google
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
+          @secondary_boot_disk_update_strategy = args[:secondary_boot_disk_update_strategy] if args.key?(:secondary_boot_disk_update_strategy)
           @secondary_boot_disks = args[:secondary_boot_disks] if args.key?(:secondary_boot_disks)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
@@ -6145,6 +6185,40 @@ module Google
         def update!(**args)
           @disk_image = args[:disk_image] if args.key?(:disk_image)
           @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the
+      # future to define different options for updating secondary boot disks.
+      class SecondaryBootDiskUpdateStrategy
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # SecretManagerConfig is config for secret manager enablement.
+      class SecretManagerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the cluster is configured to use secret manager CSI component.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
