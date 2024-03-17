@@ -809,84 +809,6 @@ module Google
         end
       end
       
-      # Message for requests to generate a client certificate signed by the Cluster CA.
-      class GenerateClientCertificateRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. An optional hint to the endpoint to generate the client certificate
-        # with the requested duration. The duration can be from 1 hour to 24 hours. The
-        # endpoint may or may not honor the hint. If the hint is left unspecified or is
-        # not honored, then the endpoint will pick an appropriate default duration.
-        # Corresponds to the JSON property `certDuration`
-        # @return [String]
-        attr_accessor :cert_duration
-      
-        # Optional. The public key from the client.
-        # Corresponds to the JSON property `publicKey`
-        # @return [String]
-        attr_accessor :public_key
-      
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # Corresponds to the JSON property `requestId`
-        # @return [String]
-        attr_accessor :request_id
-      
-        # Optional. An optional hint to the endpoint to generate a client ceritificate
-        # that can be used by AlloyDB connectors to exchange additional metadata with
-        # the server after TLS handshake.
-        # Corresponds to the JSON property `useMetadataExchange`
-        # @return [Boolean]
-        attr_accessor :use_metadata_exchange
-        alias_method :use_metadata_exchange?, :use_metadata_exchange
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cert_duration = args[:cert_duration] if args.key?(:cert_duration)
-          @public_key = args[:public_key] if args.key?(:public_key)
-          @request_id = args[:request_id] if args.key?(:request_id)
-          @use_metadata_exchange = args[:use_metadata_exchange] if args.key?(:use_metadata_exchange)
-        end
-      end
-      
-      # Message returned by a GenerateClientCertificate operation.
-      class GenerateClientCertificateResponse
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The pem-encoded cluster ca X.509 certificate.
-        # Corresponds to the JSON property `caCert`
-        # @return [String]
-        attr_accessor :ca_cert
-      
-        # Output only. The pem-encoded chain that may be used to verify the X.509
-        # certificate. Expected to be in issuer-to-root order according to RFC 5246.
-        # Corresponds to the JSON property `pemCertificateChain`
-        # @return [Array<String>]
-        attr_accessor :pem_certificate_chain
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ca_cert = args[:ca_cert] if args.key?(:ca_cert)
-          @pem_certificate_chain = args[:pem_certificate_chain] if args.key?(:pem_certificate_chain)
-        end
-      end
-      
       # The response message for Locations.ListLocations.
       class GoogleCloudLocationListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -2535,6 +2457,13 @@ module Google
         # @return [String]
         attr_accessor :updation_time
       
+        # Message type for storing user labels. User labels are used to tag App Engine
+        # resources, allowing users to search for resources matching a set of labels and
+        # to aggregate usage data by labels.
+        # Corresponds to the JSON property `userLabelSet`
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUserLabels]
+        attr_accessor :user_label_set
+      
         # User-provided labels, represented as a dictionary where each label is a single
         # key value pair.
         # Corresponds to the JSON property `userLabels`
@@ -2563,6 +2492,7 @@ module Google
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
+          @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
@@ -2725,6 +2655,27 @@ module Google
           @quantity_based_retention = args[:quantity_based_retention] if args.key?(:quantity_based_retention)
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
+        end
+      end
+      
+      # Message type for storing user labels. User labels are used to tag App Engine
+      # resources, allowing users to search for resources matching a set of labels and
+      # to aggregate usage data by labels.
+      class StorageDatabasecenterPartnerapiV1mainUserLabels
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       

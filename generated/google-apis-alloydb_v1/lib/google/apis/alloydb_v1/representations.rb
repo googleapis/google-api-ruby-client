@@ -112,18 +112,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenerateClientCertificateRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GenerateClientCertificateResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudLocationListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -382,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainUserLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterProtoCommonProduct
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -613,24 +607,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
           property :validate_only, as: 'validateOnly'
-        end
-      end
-      
-      class GenerateClientCertificateRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cert_duration, as: 'certDuration'
-          property :public_key, as: 'publicKey'
-          property :request_id, as: 'requestId'
-          property :use_metadata_exchange, as: 'useMetadataExchange'
-        end
-      end
-      
-      class GenerateClientCertificateResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ca_cert, as: 'caCert'
-          collection :pem_certificate_chain, as: 'pemCertificateChain'
         end
       end
       
@@ -1062,6 +1038,8 @@ module Google
           property :resource_container, as: 'resourceContainer'
           property :resource_name, as: 'resourceName'
           property :updation_time, as: 'updationTime'
+          property :user_label_set, as: 'userLabelSet', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUserLabels, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUserLabels::Representation
+      
           hash :user_labels, as: 'userLabels'
         end
       end
@@ -1103,6 +1081,13 @@ module Google
           property :quantity_based_retention, as: 'quantityBasedRetention'
           property :retention_unit, as: 'retentionUnit'
           property :time_based_retention, as: 'timeBasedRetention'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainUserLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
         end
       end
       
