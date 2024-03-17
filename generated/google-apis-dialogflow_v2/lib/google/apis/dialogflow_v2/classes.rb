@@ -3381,6 +3381,12 @@ module Google
         # @return [String]
         attr_accessor :http_method
       
+        # Represents configuration of OAuth client credential flow for 3rd party API
+        # authentication.
+        # Corresponds to the JSON property `oauthConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig]
+        attr_accessor :oauth_config
+      
         # Optional. Maps the values extracted from specific fields of the flexible
         # webhook response into session parameters. - Key: session parameter name -
         # Value: field path in the webhook response
@@ -3403,6 +3409,13 @@ module Google
         # Corresponds to the JSON property `requestHeaders`
         # @return [Hash<String,String>]
         attr_accessor :request_headers
+      
+        # Optional. Indicate the auth token type generated from the [Diglogflow service
+        # agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-
+        # agent). The generated token is sent in the Authorization header.
+        # Corresponds to the JSON property `serviceAgentAuth`
+        # @return [String]
+        attr_accessor :service_agent_auth
       
         # Required. The webhook URI for receiving POST requests. It must use https
         # protocol.
@@ -3428,13 +3441,54 @@ module Google
         def update!(**args)
           @allowed_ca_certs = args[:allowed_ca_certs] if args.key?(:allowed_ca_certs)
           @http_method = args[:http_method] if args.key?(:http_method)
+          @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
           @parameter_mapping = args[:parameter_mapping] if args.key?(:parameter_mapping)
           @password = args[:password] if args.key?(:password)
           @request_body = args[:request_body] if args.key?(:request_body)
           @request_headers = args[:request_headers] if args.key?(:request_headers)
+          @service_agent_auth = args[:service_agent_auth] if args.key?(:service_agent_auth)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
           @webhook_type = args[:webhook_type] if args.key?(:webhook_type)
+        end
+      end
+      
+      # Represents configuration of OAuth client credential flow for 3rd party API
+      # authentication.
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The client ID provided by the 3rd party platform.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Required. The client secret provided by the 3rd party platform.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Optional. The OAuth scopes to grant.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # Required. The token endpoint provided by the 3rd party platform to exchange an
+        # access token.
+        # Corresponds to the JSON property `tokenEndpoint`
+        # @return [String]
+        attr_accessor :token_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @token_endpoint = args[:token_endpoint] if args.key?(:token_endpoint)
         end
       end
       
@@ -7118,6 +7172,12 @@ module Google
         # @return [String]
         attr_accessor :http_method
       
+        # Represents configuration of OAuth client credential flow for 3rd party API
+        # authentication.
+        # Corresponds to the JSON property `oauthConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig]
+        attr_accessor :oauth_config
+      
         # Optional. Maps the values extracted from specific fields of the flexible
         # webhook response into session parameters. - Key: session parameter name -
         # Value: field path in the webhook response
@@ -7140,6 +7200,13 @@ module Google
         # Corresponds to the JSON property `requestHeaders`
         # @return [Hash<String,String>]
         attr_accessor :request_headers
+      
+        # Optional. Indicate the auth token type generated from the [Diglogflow service
+        # agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-
+        # agent). The generated token is sent in the Authorization header.
+        # Corresponds to the JSON property `serviceAgentAuth`
+        # @return [String]
+        attr_accessor :service_agent_auth
       
         # Required. The webhook URI for receiving POST requests. It must use https
         # protocol.
@@ -7165,13 +7232,54 @@ module Google
         def update!(**args)
           @allowed_ca_certs = args[:allowed_ca_certs] if args.key?(:allowed_ca_certs)
           @http_method = args[:http_method] if args.key?(:http_method)
+          @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
           @parameter_mapping = args[:parameter_mapping] if args.key?(:parameter_mapping)
           @password = args[:password] if args.key?(:password)
           @request_body = args[:request_body] if args.key?(:request_body)
           @request_headers = args[:request_headers] if args.key?(:request_headers)
+          @service_agent_auth = args[:service_agent_auth] if args.key?(:service_agent_auth)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
           @webhook_type = args[:webhook_type] if args.key?(:webhook_type)
+        end
+      end
+      
+      # Represents configuration of OAuth client credential flow for 3rd party API
+      # authentication.
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The client ID provided by the 3rd party platform.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Required. The client secret provided by the 3rd party platform.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Optional. The OAuth scopes to grant.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # Required. The token endpoint provided by the 3rd party platform to exchange an
+        # access token.
+        # Corresponds to the JSON property `tokenEndpoint`
+        # @return [String]
+        attr_accessor :token_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @token_endpoint = args[:token_endpoint] if args.key?(:token_endpoint)
         end
       end
       
