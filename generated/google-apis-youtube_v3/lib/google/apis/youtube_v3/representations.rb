@@ -2337,6 +2337,8 @@ module Google
       class LiveChatMessageListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_poll_item, as: 'activePollItem', class: Google::Apis::YoutubeV3::LiveChatMessage, decorator: Google::Apis::YoutubeV3::LiveChatMessage::Representation
+      
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
           collection :items, as: 'items', class: Google::Apis::YoutubeV3::LiveChatMessage, decorator: Google::Apis::YoutubeV3::LiveChatMessage::Representation
