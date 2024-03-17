@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1SearchTextRequestEvOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1SearchTextRequestLocationBias
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -723,6 +729,8 @@ module Google
       class GoogleMapsPlacesV1SearchTextRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ev_options, as: 'evOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestEvOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestEvOptions::Representation
+      
           property :included_type, as: 'includedType'
           property :language_code, as: 'languageCode'
           property :location_bias, as: 'locationBias', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocationBias, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocationBias::Representation
@@ -737,6 +745,14 @@ module Google
           property :region_code, as: 'regionCode'
           property :strict_type_filtering, as: 'strictTypeFiltering'
           property :text_query, as: 'textQuery'
+        end
+      end
+      
+      class GoogleMapsPlacesV1SearchTextRequestEvOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connector_types, as: 'connectorTypes'
+          property :minimum_charging_rate_kw, as: 'minimumChargingRateKw'
         end
       end
       

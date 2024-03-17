@@ -1863,6 +1863,11 @@ module Google
       class GoogleMapsPlacesV1SearchTextRequest
         include Google::Apis::Core::Hashable
       
+        # Searchable EV options of a place search request.
+        # Corresponds to the JSON property `evOptions`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestEvOptions]
+        attr_accessor :ev_options
+      
         # The requested place type. Full list of types supported: https://developers.
         # google.com/maps/documentation/places/web-service/place-types. Only support one
         # included type.
@@ -1955,6 +1960,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ev_options = args[:ev_options] if args.key?(:ev_options)
           @included_type = args[:included_type] if args.key?(:included_type)
           @language_code = args[:language_code] if args.key?(:language_code)
           @location_bias = args[:location_bias] if args.key?(:location_bias)
@@ -1967,6 +1973,33 @@ module Google
           @region_code = args[:region_code] if args.key?(:region_code)
           @strict_type_filtering = args[:strict_type_filtering] if args.key?(:strict_type_filtering)
           @text_query = args[:text_query] if args.key?(:text_query)
+        end
+      end
+      
+      # Searchable EV options of a place search request.
+      class GoogleMapsPlacesV1SearchTextRequestEvOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of preferred EV connector types. A place that does not
+        # support any of the listed connector types are filter out.
+        # Corresponds to the JSON property `connectorTypes`
+        # @return [Array<String>]
+        attr_accessor :connector_types
+      
+        # Optional. Filtering places by minimum charging rate. Any places with charging
+        # a rate less than the minimum charging rate are filtered out.
+        # Corresponds to the JSON property `minimumChargingRateKw`
+        # @return [Float]
+        attr_accessor :minimum_charging_rate_kw
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connector_types = args[:connector_types] if args.key?(:connector_types)
+          @minimum_charging_rate_kw = args[:minimum_charging_rate_kw] if args.key?(:minimum_charging_rate_kw)
         end
       end
       
