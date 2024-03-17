@@ -228,7 +228,9 @@ module Google
         end
       end
       
-      # Configuration for resources used by Airflow DAG processors.
+      # Configuration for resources used by Airflow DAG processors. This field is
+      # supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.
+      # *.* and newer.
       class DagProcessorResource
         include Google::Apis::Core::Hashable
       
@@ -2113,8 +2115,7 @@ module Google
       class TaskLogsRetentionConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The mode of storage for Airflow workers task logs. For details, see
-        # go/composer-store-task-logs-in-cloud-logging-only-design-doc
+        # Optional. The mode of storage for Airflow workers task logs.
         # Corresponds to the JSON property `storageMode`
         # @return [String]
         attr_accessor :storage_mode
@@ -2345,7 +2346,9 @@ module Google
       class WorkloadsConfig
         include Google::Apis::Core::Hashable
       
-        # Configuration for resources used by Airflow DAG processors.
+        # Configuration for resources used by Airflow DAG processors. This field is
+        # supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.
+        # *.* and newer.
         # Corresponds to the JSON property `dagProcessor`
         # @return [Google::Apis::ComposerV1::DagProcessorResource]
         attr_accessor :dag_processor
