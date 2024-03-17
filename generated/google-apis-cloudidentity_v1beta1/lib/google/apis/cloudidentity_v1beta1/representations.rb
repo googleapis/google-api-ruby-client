@@ -262,6 +262,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCloudidentityDevicesV1BrowserAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1BrowserInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +293,18 @@ module Google
       end
       
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CertificateAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CertificateTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -323,6 +347,12 @@ module Google
       end
       
       class GoogleAppsCloudidentityDevicesV1DeviceUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1095,6 +1125,36 @@ module Google
         end
       end
       
+      class GoogleAppsCloudidentityDevicesV1BrowserAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chrome_browser_info, as: 'chromeBrowserInfo', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1BrowserInfo, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1BrowserInfo::Representation
+      
+          property :chrome_profile_id, as: 'chromeProfileId'
+          property :last_profile_sync_time, as: 'lastProfileSyncTime'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1BrowserInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :browser_management_state, as: 'browserManagementState'
+          property :browser_version, as: 'browserVersion'
+          property :is_built_in_dns_client_enabled, as: 'isBuiltInDnsClientEnabled'
+          property :is_bulk_data_entry_analysis_enabled, as: 'isBulkDataEntryAnalysisEnabled'
+          property :is_chrome_cleanup_enabled, as: 'isChromeCleanupEnabled'
+          property :is_chrome_remote_desktop_app_blocked, as: 'isChromeRemoteDesktopAppBlocked'
+          property :is_file_download_analysis_enabled, as: 'isFileDownloadAnalysisEnabled'
+          property :is_file_upload_analysis_enabled, as: 'isFileUploadAnalysisEnabled'
+          property :is_realtime_url_check_enabled, as: 'isRealtimeUrlCheckEnabled'
+          property :is_security_event_analysis_enabled, as: 'isSecurityEventAnalysisEnabled'
+          property :is_site_isolation_enabled, as: 'isSiteIsolationEnabled'
+          property :is_third_party_blocking_enabled, as: 'isThirdPartyBlockingEnabled'
+          property :password_protection_warning_trigger, as: 'passwordProtectionWarningTrigger'
+          property :safe_browsing_protection_level, as: 'safeBrowsingProtectionLevel'
+        end
+      end
+      
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1120,6 +1180,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_user, as: 'deviceUser', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser::Representation
       
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CertificateAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_template, as: 'certificateTemplate', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1CertificateTemplate, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1CertificateTemplate::Representation
+      
+          property :fingerprint, as: 'fingerprint'
+          property :issuer, as: 'issuer'
+          property :serial_number, as: 'serialNumber'
+          property :subject, as: 'subject'
+          property :thumbprint, as: 'thumbprint'
+          property :validation_state, as: 'validationState'
+          property :validity_expiration_time, as: 'validityExpirationTime'
+          property :validity_start_time, as: 'validityStartTime'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CertificateTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :major_version, as: 'majorVersion'
+          property :minor_version, as: 'minorVersion'
         end
       end
       
@@ -1186,6 +1271,8 @@ module Google
           property :enabled_developer_options, as: 'enabledDeveloperOptions'
           property :enabled_usb_debugging, as: 'enabledUsbDebugging'
           property :encryption_state, as: 'encryptionState'
+          property :endpoint_verification_specific_attributes, as: 'endpointVerificationSpecificAttributes', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes::Representation
+      
           property :hostname, as: 'hostname'
           property :imei, as: 'imei'
           property :kernel_version, as: 'kernelVersion'
@@ -1219,6 +1306,17 @@ module Google
           property :password_state, as: 'passwordState'
           property :user_agent, as: 'userAgent'
           property :user_email, as: 'userEmail'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_signals, as: 'additionalSignals'
+          collection :browser_attributes, as: 'browserAttributes', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1BrowserAttributes, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1BrowserAttributes::Representation
+      
+          collection :certificate_attributes, as: 'certificateAttributes', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1CertificateAttributes, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1CertificateAttributes::Representation
+      
         end
       end
       

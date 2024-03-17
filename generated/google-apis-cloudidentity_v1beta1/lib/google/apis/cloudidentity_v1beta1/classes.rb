@@ -1474,6 +1474,168 @@ module Google
         end
       end
       
+      # Contains information about browser profiles reported by the [Endpoint
+      # Verification extension](https://chromewebstore.google.com/detail/endpoint-
+      # verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+      class GoogleAppsCloudidentityDevicesV1BrowserAttributes
+        include Google::Apis::Core::Hashable
+      
+        # Browser-specific fields reported by the [Endpoint Verification extension](
+        # https://chromewebstore.google.com/detail/endpoint-verification/
+        # callobklhcbilhphinckomhgkigmfocg?pli=1). LINT.IfChange
+        # Corresponds to the JSON property `chromeBrowserInfo`
+        # @return [Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1BrowserInfo]
+        attr_accessor :chrome_browser_info
+      
+        # Chrome profile ID that is exposed by the Chrome API. It is unique for each
+        # device.
+        # Corresponds to the JSON property `chromeProfileId`
+        # @return [String]
+        attr_accessor :chrome_profile_id
+      
+        # Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+        # Corresponds to the JSON property `lastProfileSyncTime`
+        # @return [String]
+        attr_accessor :last_profile_sync_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chrome_browser_info = args[:chrome_browser_info] if args.key?(:chrome_browser_info)
+          @chrome_profile_id = args[:chrome_profile_id] if args.key?(:chrome_profile_id)
+          @last_profile_sync_time = args[:last_profile_sync_time] if args.key?(:last_profile_sync_time)
+        end
+      end
+      
+      # Browser-specific fields reported by the [Endpoint Verification extension](
+      # https://chromewebstore.google.com/detail/endpoint-verification/
+      # callobklhcbilhphinckomhgkigmfocg?pli=1). LINT.IfChange
+      class GoogleAppsCloudidentityDevicesV1BrowserInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Browser's management state.
+        # Corresponds to the JSON property `browserManagementState`
+        # @return [String]
+        attr_accessor :browser_management_state
+      
+        # Version of the request initiating browser.
+        # Corresponds to the JSON property `browserVersion`
+        # @return [String]
+        attr_accessor :browser_version
+      
+        # Current state of [built-in DNS client](https://chromeenterprise.google/
+        # policies/#BuiltInDnsClientEnabled).
+        # Corresponds to the JSON property `isBuiltInDnsClientEnabled`
+        # @return [Boolean]
+        attr_accessor :is_built_in_dns_client_enabled
+        alias_method :is_built_in_dns_client_enabled?, :is_built_in_dns_client_enabled
+      
+        # Current state of [bulk data analysis](https://chromeenterprise.google/policies/
+        # #OnBulkDataEntryEnterpriseConnector). Set to true if provider list from Chrome
+        # is non-empty.
+        # Corresponds to the JSON property `isBulkDataEntryAnalysisEnabled`
+        # @return [Boolean]
+        attr_accessor :is_bulk_data_entry_analysis_enabled
+        alias_method :is_bulk_data_entry_analysis_enabled?, :is_bulk_data_entry_analysis_enabled
+      
+        # Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#
+        # ChromeCleanupEnabled).
+        # Corresponds to the JSON property `isChromeCleanupEnabled`
+        # @return [Boolean]
+        attr_accessor :is_chrome_cleanup_enabled
+        alias_method :is_chrome_cleanup_enabled?, :is_chrome_cleanup_enabled
+      
+        # Current state of [Chrome Remote Desktop app](https://chromeenterprise.google/
+        # policies/#URLBlocklist).
+        # Corresponds to the JSON property `isChromeRemoteDesktopAppBlocked`
+        # @return [Boolean]
+        attr_accessor :is_chrome_remote_desktop_app_blocked
+        alias_method :is_chrome_remote_desktop_app_blocked?, :is_chrome_remote_desktop_app_blocked
+      
+        # Current state of [file download analysis](https://chromeenterprise.google/
+        # policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list
+        # from Chrome is non-empty.
+        # Corresponds to the JSON property `isFileDownloadAnalysisEnabled`
+        # @return [Boolean]
+        attr_accessor :is_file_download_analysis_enabled
+        alias_method :is_file_download_analysis_enabled?, :is_file_download_analysis_enabled
+      
+        # Current state of [file upload analysis](https://chromeenterprise.google/
+        # policies/#OnFileAttachedEnterpriseConnector). Set to true if provider list
+        # from Chrome is non-empty.
+        # Corresponds to the JSON property `isFileUploadAnalysisEnabled`
+        # @return [Boolean]
+        attr_accessor :is_file_upload_analysis_enabled
+        alias_method :is_file_upload_analysis_enabled?, :is_file_upload_analysis_enabled
+      
+        # Current state of [real-time URL check](https://chromeenterprise.google/
+        # policies/#EnterpriseRealTimeUrlCheckMode). Set to true if provider list from
+        # Chrome is non-empty.
+        # Corresponds to the JSON property `isRealtimeUrlCheckEnabled`
+        # @return [Boolean]
+        attr_accessor :is_realtime_url_check_enabled
+        alias_method :is_realtime_url_check_enabled?, :is_realtime_url_check_enabled
+      
+        # Current state of [security event analysis](https://chromeenterprise.google/
+        # policies/#OnSecurityEventEnterpriseConnector). Set to true if provider list
+        # from Chrome is non-empty.
+        # Corresponds to the JSON property `isSecurityEventAnalysisEnabled`
+        # @return [Boolean]
+        attr_accessor :is_security_event_analysis_enabled
+        alias_method :is_security_event_analysis_enabled?, :is_security_event_analysis_enabled
+      
+        # Current state of [site isolation](https://chromeenterprise.google/policies/?
+        # policy=IsolateOrigins).
+        # Corresponds to the JSON property `isSiteIsolationEnabled`
+        # @return [Boolean]
+        attr_accessor :is_site_isolation_enabled
+        alias_method :is_site_isolation_enabled?, :is_site_isolation_enabled
+      
+        # Current state of [third-party blocking](https://chromeenterprise.google/
+        # policies/#ThirdPartyBlockingEnabled).
+        # Corresponds to the JSON property `isThirdPartyBlockingEnabled`
+        # @return [Boolean]
+        attr_accessor :is_third_party_blocking_enabled
+        alias_method :is_third_party_blocking_enabled?, :is_third_party_blocking_enabled
+      
+        # Current state of [password protection trigger](https://chromeenterprise.google/
+        # policies/#PasswordProtectionWarningTrigger).
+        # Corresponds to the JSON property `passwordProtectionWarningTrigger`
+        # @return [String]
+        attr_accessor :password_protection_warning_trigger
+      
+        # Current state of [Safe Browsing protection level](https://chromeenterprise.
+        # google/policies/#SafeBrowsingProtectionLevel).
+        # Corresponds to the JSON property `safeBrowsingProtectionLevel`
+        # @return [String]
+        attr_accessor :safe_browsing_protection_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @browser_management_state = args[:browser_management_state] if args.key?(:browser_management_state)
+          @browser_version = args[:browser_version] if args.key?(:browser_version)
+          @is_built_in_dns_client_enabled = args[:is_built_in_dns_client_enabled] if args.key?(:is_built_in_dns_client_enabled)
+          @is_bulk_data_entry_analysis_enabled = args[:is_bulk_data_entry_analysis_enabled] if args.key?(:is_bulk_data_entry_analysis_enabled)
+          @is_chrome_cleanup_enabled = args[:is_chrome_cleanup_enabled] if args.key?(:is_chrome_cleanup_enabled)
+          @is_chrome_remote_desktop_app_blocked = args[:is_chrome_remote_desktop_app_blocked] if args.key?(:is_chrome_remote_desktop_app_blocked)
+          @is_file_download_analysis_enabled = args[:is_file_download_analysis_enabled] if args.key?(:is_file_download_analysis_enabled)
+          @is_file_upload_analysis_enabled = args[:is_file_upload_analysis_enabled] if args.key?(:is_file_upload_analysis_enabled)
+          @is_realtime_url_check_enabled = args[:is_realtime_url_check_enabled] if args.key?(:is_realtime_url_check_enabled)
+          @is_security_event_analysis_enabled = args[:is_security_event_analysis_enabled] if args.key?(:is_security_event_analysis_enabled)
+          @is_site_isolation_enabled = args[:is_site_isolation_enabled] if args.key?(:is_site_isolation_enabled)
+          @is_third_party_blocking_enabled = args[:is_third_party_blocking_enabled] if args.key?(:is_third_party_blocking_enabled)
+          @password_protection_warning_trigger = args[:password_protection_warning_trigger] if args.key?(:password_protection_warning_trigger)
+          @safe_browsing_protection_level = args[:safe_browsing_protection_level] if args.key?(:safe_browsing_protection_level)
+        end
+      end
+      
       # Metadata for CancelWipeDevice LRO.
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata
         include Google::Apis::Core::Hashable
@@ -1538,6 +1700,105 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_user = args[:device_user] if args.key?(:device_user)
+        end
+      end
+      
+      # Stores information about a certificate.
+      class GoogleAppsCloudidentityDevicesV1CertificateAttributes
+        include Google::Apis::Core::Hashable
+      
+        # CertificateTemplate (v3 Extension in X.509).
+        # Corresponds to the JSON property `certificateTemplate`
+        # @return [Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1CertificateTemplate]
+        attr_accessor :certificate_template
+      
+        # The encoded certificate fingerprint.
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # The name of the issuer of this certificate.
+        # Corresponds to the JSON property `issuer`
+        # @return [String]
+        attr_accessor :issuer
+      
+        # Serial number of the certificate, Example: "123456789".
+        # Corresponds to the JSON property `serialNumber`
+        # @return [String]
+        attr_accessor :serial_number
+      
+        # The subject name of this certificate.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        # The certificate thumbprint.
+        # Corresponds to the JSON property `thumbprint`
+        # @return [String]
+        attr_accessor :thumbprint
+      
+        # Output only. Validation state of this certificate.
+        # Corresponds to the JSON property `validationState`
+        # @return [String]
+        attr_accessor :validation_state
+      
+        # Certificate not valid at or after this timestamp.
+        # Corresponds to the JSON property `validityExpirationTime`
+        # @return [String]
+        attr_accessor :validity_expiration_time
+      
+        # Certificate not valid before this timestamp.
+        # Corresponds to the JSON property `validityStartTime`
+        # @return [String]
+        attr_accessor :validity_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_template = args[:certificate_template] if args.key?(:certificate_template)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @issuer = args[:issuer] if args.key?(:issuer)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
+          @subject = args[:subject] if args.key?(:subject)
+          @thumbprint = args[:thumbprint] if args.key?(:thumbprint)
+          @validation_state = args[:validation_state] if args.key?(:validation_state)
+          @validity_expiration_time = args[:validity_expiration_time] if args.key?(:validity_expiration_time)
+          @validity_start_time = args[:validity_start_time] if args.key?(:validity_start_time)
+        end
+      end
+      
+      # CertificateTemplate (v3 Extension in X.509).
+      class GoogleAppsCloudidentityDevicesV1CertificateTemplate
+        include Google::Apis::Core::Hashable
+      
+        # The template id of the template. Example: "1.3.6.1.4.1.311.21.8.15608621.
+        # 11768144.5720724.16068415.6889630.81.2472537.7784047".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The Major version of the template. Example: 100.
+        # Corresponds to the JSON property `majorVersion`
+        # @return [Fixnum]
+        attr_accessor :major_version
+      
+        # The minor version of the template. Example: 12.
+        # Corresponds to the JSON property `minorVersion`
+        # @return [Fixnum]
+        attr_accessor :minor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @major_version = args[:major_version] if args.key?(:major_version)
+          @minor_version = args[:minor_version] if args.key?(:minor_version)
         end
       end
       
@@ -1791,6 +2052,12 @@ module Google
         # @return [String]
         attr_accessor :encryption_state
       
+        # Resource representing the [Endpoint Verification-specific attributes](https://
+        # cloud.google.com/endpoint-verification/docs/device-information) of a device.
+        # Corresponds to the JSON property `endpointVerificationSpecificAttributes`
+        # @return [Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes]
+        attr_accessor :endpoint_verification_specific_attributes
+      
         # Host name of the device.
         # Corresponds to the JSON property `hostname`
         # @return [String]
@@ -1901,6 +2168,7 @@ module Google
           @enabled_developer_options = args[:enabled_developer_options] if args.key?(:enabled_developer_options)
           @enabled_usb_debugging = args[:enabled_usb_debugging] if args.key?(:enabled_usb_debugging)
           @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
+          @endpoint_verification_specific_attributes = args[:endpoint_verification_specific_attributes] if args.key?(:endpoint_verification_specific_attributes)
           @hostname = args[:hostname] if args.key?(:hostname)
           @imei = args[:imei] if args.key?(:imei)
           @kernel_version = args[:kernel_version] if args.key?(:kernel_version)
@@ -1995,6 +2263,43 @@ module Google
           @password_state = args[:password_state] if args.key?(:password_state)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_email = args[:user_email] if args.key?(:user_email)
+        end
+      end
+      
+      # Resource representing the [Endpoint Verification-specific attributes](https://
+      # cloud.google.com/endpoint-verification/docs/device-information) of a device.
+      class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes
+        include Google::Apis::Core::Hashable
+      
+        # Additional signals reported by Endpoint Verification. It includes the
+        # following attributes: 1. Non-configurable attributes: hotfixes, av_installed,
+        # av_enabled, windows_domain_name, is_os_native_firewall_enabled, and
+        # is_secure_boot_enabled. 2. [Configurable attributes](https://cloud.google.com/
+        # endpoint-verification/docs/collect-config-attributes): file, folder, and
+        # binary attributes; registry entries; and properties in a plist.
+        # Corresponds to the JSON property `additionalSignals`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_signals
+      
+        # Details of browser profiles reported by Endpoint Verification.
+        # Corresponds to the JSON property `browserAttributes`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1BrowserAttributes>]
+        attr_accessor :browser_attributes
+      
+        # Details of certificates.
+        # Corresponds to the JSON property `certificateAttributes`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1CertificateAttributes>]
+        attr_accessor :certificate_attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_signals = args[:additional_signals] if args.key?(:additional_signals)
+          @browser_attributes = args[:browser_attributes] if args.key?(:browser_attributes)
+          @certificate_attributes = args[:certificate_attributes] if args.key?(:certificate_attributes)
         end
       end
       
