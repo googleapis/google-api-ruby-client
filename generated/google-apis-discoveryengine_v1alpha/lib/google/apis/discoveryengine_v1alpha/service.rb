@@ -388,7 +388,7 @@ module Google
         #   imported search events. * `document-completable` - Using suggestions taken
         #   directly from user-imported document fields marked as completable. Default
         #   values: * `document` is the default model for regular dataStores. * `search-
-        #   history` is the default model for site search dataStores. *
+        #   history` is the default model for site search dataStores.
         # @param [String] user_pseudo_id
         #   A unique identifier for tracking visitors. For example, this could be
         #   implemented with an HTTP cookie, which should be able to uniquely identify a
@@ -1051,6 +1051,87 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Document.
+        # @param [String] name
+        #   Required. Full resource name of Chunk, such as `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store`/branches/`branch`/
+        #   documents/`document`/chunks/`chunk``. If the caller does not have permission
+        #   to access the Chunk, regardless of whether or not it exists, a `
+        #   PERMISSION_DENIED` error is returned. If the requested Chunk does not exist, a
+        #   `NOT_FOUND` error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunk] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunk]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_data_store_branch_document_chunk(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunk::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunk
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a list of Chunks.
+        # @param [String] parent
+        #   Required. The parent document resource name, such as `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
+        #   `branch`/documents/`document``. If the caller does not have permission to list
+        #   Chunks under this document, regardless of whether or not this document exists,
+        #   a `PERMISSION_DENIED` error is returned.
+        # @param [Fixnum] page_size
+        #   Maximum number of Chunks to return. If unspecified, defaults to 100. The
+        #   maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If
+        #   this field is negative, an `INVALID_ARGUMENT` error is returned.
+        # @param [String] page_token
+        #   A page token ListChunksResponse.next_page_token, received from a previous
+        #   ChunkService.ListChunks call. Provide this to retrieve the subsequent page.
+        #   When paginating, all other parameters provided to ChunkService.ListChunks must
+        #   match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT`
+        #   error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListChunksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListChunksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_collection_data_store_branch_document_chunks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/chunks', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListChunksResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListChunksResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1759,8 +1840,8 @@ module Google
         # exist.
         # @param [String] name
         #   Required. The resource name of the ServingConfig to get. Format: `projects/`
-        #   project_number`/locations/`location`/collections/`collection`/dataStores/`
-        #   data_store`/servingConfigs/`serving_config_id``
+        #   project_number`/locations/`location`/collections/`collection`/engines/`engine`/
+        #   servingConfigs/`serving_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1790,8 +1871,8 @@ module Google
         
         # Lists all ServingConfigs linked to this dataStore.
         # @param [String] parent
-        #   Required. The dataStore resource name. Format: `projects/`project_number`/
-        #   locations/`location`/collections/`collection`/dataStores/`data_store``
+        #   Required. Full resource name of the parent resource. Format: `projects/`
+        #   project_number`/locations/`location`/collections/`collection`/engines/`engine``
         # @param [Fixnum] page_size
         #   Optional. Maximum number of results to return. If unspecified, defaults to 100.
         #   If a value greater than 100 is provided, at most 100 results are returned.
@@ -1831,7 +1912,7 @@ module Google
         # not exist.
         # @param [String] name
         #   Immutable. Fully qualified name `projects/`project`/locations/`location`/
-        #   collections/`collection_id`/dataStores/`data_store_id`/servingConfigs/`
+        #   collections/`collection_id`/engines/`engine_id`/servingConfigs/`
         #   serving_config_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaServingConfig] google_cloud_discoveryengine_v1alpha_serving_config_object
         # @param [String] update_mask
@@ -3315,8 +3396,8 @@ module Google
         # exist.
         # @param [String] name
         #   Required. The resource name of the ServingConfig to get. Format: `projects/`
-        #   project_number`/locations/`location`/collections/`collection`/dataStores/`
-        #   data_store`/servingConfigs/`serving_config_id``
+        #   project_number`/locations/`location`/collections/`collection`/engines/`engine`/
+        #   servingConfigs/`serving_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3346,8 +3427,8 @@ module Google
         
         # Lists all ServingConfigs linked to this dataStore.
         # @param [String] parent
-        #   Required. The dataStore resource name. Format: `projects/`project_number`/
-        #   locations/`location`/collections/`collection`/dataStores/`data_store``
+        #   Required. Full resource name of the parent resource. Format: `projects/`
+        #   project_number`/locations/`location`/collections/`collection`/engines/`engine``
         # @param [Fixnum] page_size
         #   Optional. Maximum number of results to return. If unspecified, defaults to 100.
         #   If a value greater than 100 is provided, at most 100 results are returned.
@@ -3387,7 +3468,7 @@ module Google
         # not exist.
         # @param [String] name
         #   Immutable. Fully qualified name `projects/`project`/locations/`location`/
-        #   collections/`collection_id`/dataStores/`data_store_id`/servingConfigs/`
+        #   collections/`collection_id`/engines/`engine_id`/servingConfigs/`
         #   serving_config_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaServingConfig] google_cloud_discoveryengine_v1alpha_serving_config_object
         # @param [String] update_mask
@@ -3595,7 +3676,7 @@ module Google
         #   imported search events. * `document-completable` - Using suggestions taken
         #   directly from user-imported document fields marked as completable. Default
         #   values: * `document` is the default model for regular dataStores. * `search-
-        #   history` is the default model for site search dataStores. *
+        #   history` is the default model for site search dataStores.
         # @param [String] user_pseudo_id
         #   A unique identifier for tracking visitors. For example, this could be
         #   implemented with an HTTP cookie, which should be able to uniquely identify a
@@ -4223,6 +4304,87 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Document.
+        # @param [String] name
+        #   Required. Full resource name of Chunk, such as `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store`/branches/`branch`/
+        #   documents/`document`/chunks/`chunk``. If the caller does not have permission
+        #   to access the Chunk, regardless of whether or not it exists, a `
+        #   PERMISSION_DENIED` error is returned. If the requested Chunk does not exist, a
+        #   `NOT_FOUND` error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunk] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunk]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_data_store_branch_document_chunk(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunk::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunk
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a list of Chunks.
+        # @param [String] parent
+        #   Required. The parent document resource name, such as `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
+        #   `branch`/documents/`document``. If the caller does not have permission to list
+        #   Chunks under this document, regardless of whether or not this document exists,
+        #   a `PERMISSION_DENIED` error is returned.
+        # @param [Fixnum] page_size
+        #   Maximum number of Chunks to return. If unspecified, defaults to 100. The
+        #   maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If
+        #   this field is negative, an `INVALID_ARGUMENT` error is returned.
+        # @param [String] page_token
+        #   A page token ListChunksResponse.next_page_token, received from a previous
+        #   ChunkService.ListChunks call. Provide this to retrieve the subsequent page.
+        #   When paginating, all other parameters provided to ChunkService.ListChunks must
+        #   match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT`
+        #   error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListChunksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListChunksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_data_store_branch_document_chunks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/chunks', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListChunksResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListChunksResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4860,8 +5022,8 @@ module Google
         # exist.
         # @param [String] name
         #   Required. The resource name of the ServingConfig to get. Format: `projects/`
-        #   project_number`/locations/`location`/collections/`collection`/dataStores/`
-        #   data_store`/servingConfigs/`serving_config_id``
+        #   project_number`/locations/`location`/collections/`collection`/engines/`engine`/
+        #   servingConfigs/`serving_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4891,8 +5053,8 @@ module Google
         
         # Lists all ServingConfigs linked to this dataStore.
         # @param [String] parent
-        #   Required. The dataStore resource name. Format: `projects/`project_number`/
-        #   locations/`location`/collections/`collection`/dataStores/`data_store``
+        #   Required. Full resource name of the parent resource. Format: `projects/`
+        #   project_number`/locations/`location`/collections/`collection`/engines/`engine``
         # @param [Fixnum] page_size
         #   Optional. Maximum number of results to return. If unspecified, defaults to 100.
         #   If a value greater than 100 is provided, at most 100 results are returned.
@@ -4932,7 +5094,7 @@ module Google
         # not exist.
         # @param [String] name
         #   Immutable. Fully qualified name `projects/`project`/locations/`location`/
-        #   collections/`collection_id`/dataStores/`data_store_id`/servingConfigs/`
+        #   collections/`collection_id`/engines/`engine_id`/servingConfigs/`
         #   serving_config_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaServingConfig] google_cloud_discoveryengine_v1alpha_serving_config_object
         # @param [String] update_mask
