@@ -640,6 +640,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerBackups
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerConnectionProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerDatabaseBackup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerEncryptionOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerHomogeneousMigrationJobConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SshScript
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -999,6 +1029,8 @@ module Google
           property :postgresql, as: 'postgresql', class: Google::Apis::DatamigrationV1::PostgreSqlConnectionProfile, decorator: Google::Apis::DatamigrationV1::PostgreSqlConnectionProfile::Representation
       
           property :provider, as: 'provider'
+          property :sqlserver, as: 'sqlserver', class: Google::Apis::DatamigrationV1::SqlServerConnectionProfile, decorator: Google::Apis::DatamigrationV1::SqlServerConnectionProfile::Representation
+      
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -1535,6 +1567,8 @@ module Google
           property :source, as: 'source'
           property :source_database, as: 'sourceDatabase', class: Google::Apis::DatamigrationV1::DatabaseType, decorator: Google::Apis::DatamigrationV1::DatabaseType::Representation
       
+          property :sqlserver_homogeneous_migration_job_config, as: 'sqlserverHomogeneousMigrationJobConfig', class: Google::Apis::DatamigrationV1::SqlServerHomogeneousMigrationJobConfig, decorator: Google::Apis::DatamigrationV1::SqlServerHomogeneousMigrationJobConfig::Representation
+      
           property :state, as: 'state'
           property :static_ip_connectivity, as: 'staticIpConnectivity', class: Google::Apis::DatamigrationV1::StaticIpConnectivity, decorator: Google::Apis::DatamigrationV1::StaticIpConnectivity::Representation
       
@@ -1917,6 +1951,65 @@ module Google
           property :enable_ipv4, as: 'enableIpv4'
           property :private_network, as: 'privateNetwork'
           property :require_ssl, as: 'requireSsl'
+        end
+      end
+      
+      class SqlServerBackups
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_bucket, as: 'gcsBucket'
+          property :gcs_prefix, as: 'gcsPrefix'
+        end
+      end
+      
+      class SqlServerConnectionProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backups, as: 'backups', class: Google::Apis::DatamigrationV1::SqlServerBackups, decorator: Google::Apis::DatamigrationV1::SqlServerBackups::Representation
+      
+          property :cloud_sql_id, as: 'cloudSqlId'
+          property :forward_ssh_connectivity, as: 'forwardSshConnectivity', class: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity, decorator: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity::Representation
+      
+          property :host, as: 'host'
+          property :password, as: 'password'
+          property :password_set, as: 'passwordSet'
+          property :port, as: 'port'
+          property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatamigrationV1::PrivateConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateConnectivity::Representation
+      
+          property :private_service_connect_connectivity, as: 'privateServiceConnectConnectivity', class: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity::Representation
+      
+          property :ssl, as: 'ssl', class: Google::Apis::DatamigrationV1::SslConfig, decorator: Google::Apis::DatamigrationV1::SslConfig::Representation
+      
+          property :static_ip_connectivity, as: 'staticIpConnectivity', class: Google::Apis::DatamigrationV1::StaticIpConnectivity, decorator: Google::Apis::DatamigrationV1::StaticIpConnectivity::Representation
+      
+          property :username, as: 'username'
+        end
+      end
+      
+      class SqlServerDatabaseBackup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :encryption_options, as: 'encryptionOptions', class: Google::Apis::DatamigrationV1::SqlServerEncryptionOptions, decorator: Google::Apis::DatamigrationV1::SqlServerEncryptionOptions::Representation
+      
+        end
+      end
+      
+      class SqlServerEncryptionOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cert_path, as: 'certPath'
+          property :pvk_password, as: 'pvkPassword'
+          property :pvk_path, as: 'pvkPath'
+        end
+      end
+      
+      class SqlServerHomogeneousMigrationJobConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_file_pattern, as: 'backupFilePattern'
+          collection :database_backups, as: 'databaseBackups', class: Google::Apis::DatamigrationV1::SqlServerDatabaseBackup, decorator: Google::Apis::DatamigrationV1::SqlServerDatabaseBackup::Representation
+      
         end
       end
       
