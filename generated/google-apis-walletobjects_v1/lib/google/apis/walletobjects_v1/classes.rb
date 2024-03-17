@@ -509,14 +509,14 @@ module Google
       
         # URL for the merchant endpoint that would be called to request updates. The URL
         # should be hosted on HTTPS and robots.txt should allow the URL path to be
-        # accessible by UserAgent:Google-Valuables. Deprecated.
+        # accessible by UserAgent:Googlebot. Deprecated.
         # Corresponds to the JSON property `updateRequestUrl`
         # @return [String]
         attr_accessor :update_request_url
       
         # The HTTPS url configured by the merchant. The URL should be hosted on HTTPS
-        # and robots.txt should allow the URL path to be accessible by UserAgent:Google-
-        # Valuables.
+        # and robots.txt should allow the URL path to be accessible by UserAgent:
+        # Googlebot.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
