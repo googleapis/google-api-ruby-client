@@ -6437,7 +6437,6 @@ module Google
         # @param [String] future_reservation
         #   Name of the reservation to update. Name should conform to RFC1035.
         # @param [Google::Apis::ComputeBeta::FutureReservation] future_reservation_object
-        # @param [Array<String>, String] paths
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -6469,7 +6468,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_future_reservation(project, zone, future_reservation, future_reservation_object = nil, paths: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_future_reservation(project, zone, future_reservation, future_reservation_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:patch, 'projects/{project}/zones/{zone}/futureReservations/{futureReservation}', options)
           command.request_representation = Google::Apis::ComputeBeta::FutureReservation::Representation
           command.request_object = future_reservation_object
@@ -6478,7 +6477,6 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['futureReservation'] = future_reservation unless future_reservation.nil?
-          command.query['paths'] = paths unless paths.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?

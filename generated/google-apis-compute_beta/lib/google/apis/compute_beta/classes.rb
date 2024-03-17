@@ -6269,10 +6269,10 @@ module Google
         attr_accessor :allow_methods
       
         # Specifies a regular expression that matches allowed origins. For more
-        # information about the regular expression syntax, see Syntax. An origin is
-        # allowed if it matches either an item in allowOrigins or an item in
-        # allowOriginRegexes. Regular expressions can only be used when the
-        # loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+        # information, see regular expression syntax . An origin is allowed if it
+        # matches either an item in allowOrigins or an item in allowOriginRegexes.
+        # Regular expressions can only be used when the loadBalancingScheme is set to
+        # INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `allowOriginRegexes`
         # @return [Array<String>]
         attr_accessor :allow_origin_regexes
@@ -6284,8 +6284,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :allow_origins
       
-        # If true, the setting specifies the CORS policy is disabled. The default value
-        # of false, which indicates that the CORS policy is in effect.
+        # If true, disables the CORS policy. The default value is false, which indicates
+        # that the CORS policy is in effect.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
@@ -16511,7 +16511,8 @@ module Google
       class InstanceGroupManagerResizeRequest
         include Google::Apis::Core::Hashable
       
-        # The count of instances to create as part of this resize request.
+        # This field is deprecated, please use resize_by instead. The count of instances
+        # to create as part of this resize request.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
@@ -34281,7 +34282,7 @@ module Google
         attr_accessor :rules
       
         # [Output Only] The type of the firewall policy. Can be one of HIERARCHY,
-        # NETWORK, NETWORK_REGIONAL.
+        # NETWORK, NETWORK_REGIONAL, SYSTEM_GLOBAL, SYSTEM_REGIONAL.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
