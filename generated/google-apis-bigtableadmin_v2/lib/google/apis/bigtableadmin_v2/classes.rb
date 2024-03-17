@@ -163,6 +163,48 @@ module Google
         end
       end
       
+      # Placeholder for admin API work while we work out the internals.
+      class AuthorizedView
+        include Google::Apis::Core::Hashable
+      
+        # Set to true to make the AuthorizedView protected against deletion. The parent
+        # Table and containing Instance cannot be deleted if an AuthorizedView has this
+        # bit set.
+        # Corresponds to the JSON property `deletionProtection`
+        # @return [Boolean]
+        attr_accessor :deletion_protection
+        alias_method :deletion_protection?, :deletion_protection
+      
+        # The etag for this AuthorizedView. If this is provided on update, it must match
+        # the server's etag. The server returns ABORTED error on a mismatched etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The name of this AuthorizedView. Values are of the form `projects/`
+        # project`/instances/`instance`/tables/`table`/authorizedViews/`authorized_view``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Defines a simple AuthorizedView that is a subset of the underlying Table.
+        # Corresponds to the JSON property `subsetView`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2AuthorizedViewSubsetView]
+        attr_accessor :subset_view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @subset_view = args[:subset_view] if args.key?(:subset_view)
+        end
+      end
+      
       # Defines an automated backup policy for a table
       class AutomatedBackupPolicy
         include Google::Apis::Core::Hashable
@@ -829,6 +871,72 @@ module Google
         end
       end
       
+      # The metadata for the Operation returned by CreateAuthorizedView.
+      class CreateAuthorizedViewMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
+      
+        # The request for CreateAuthorizedView
+        # Corresponds to the JSON property `originalRequest`
+        # @return [Google::Apis::BigtableadminV2::CreateAuthorizedViewRequest]
+        attr_accessor :original_request
+      
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @original_request = args[:original_request] if args.key?(:original_request)
+          @request_time = args[:request_time] if args.key?(:request_time)
+        end
+      end
+      
+      # The request for CreateAuthorizedView
+      class CreateAuthorizedViewRequest
+        include Google::Apis::Core::Hashable
+      
+        # Placeholder for admin API work while we work out the internals.
+        # Corresponds to the JSON property `authorizedView`
+        # @return [Google::Apis::BigtableadminV2::AuthorizedView]
+        attr_accessor :authorized_view
+      
+        # Required. The id of the AuthorizedView to create. This AuthorizedView must not
+        # already exist. The `authorized_view_id` appended to `parent` forms the full
+        # AuthorizedView name of the form `projects/`project`/instances/`instance`/
+        # tables/`table`/authorizedView/`authorized_view``.
+        # Corresponds to the JSON property `authorizedViewId`
+        # @return [String]
+        attr_accessor :authorized_view_id
+      
+        # Required. This is the name of the table the AuthorizedView belongs to. Values
+        # are of the form `projects/`project`/instances/`instance`/tables/`table``.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_view = args[:authorized_view] if args.key?(:authorized_view)
+          @authorized_view_id = args[:authorized_view_id] if args.key?(:authorized_view_id)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
       # Metadata type for the operation returned by CreateBackup.
       class CreateBackupMetadata
         include Google::Apis::Core::Hashable
@@ -1339,6 +1447,60 @@ module Google
         end
       end
       
+      # Subsets of a column family that are included in this AuthorizedView.
+      class GoogleBigtableAdminV2AuthorizedViewFamilySubsets
+        include Google::Apis::Core::Hashable
+      
+        # Prefixes for qualifiers to be included in the AuthorizedView. Every qualifier
+        # starting with one of these prefixes is included in the AuthorizedView. To
+        # provide access to all qualifiers, include the empty string as a prefix ("").
+        # Corresponds to the JSON property `qualifierPrefixes`
+        # @return [Array<String>]
+        attr_accessor :qualifier_prefixes
+      
+        # Individual exact column qualifiers to be included in the AuthorizedView.
+        # Corresponds to the JSON property `qualifiers`
+        # @return [Array<String>]
+        attr_accessor :qualifiers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qualifier_prefixes = args[:qualifier_prefixes] if args.key?(:qualifier_prefixes)
+          @qualifiers = args[:qualifiers] if args.key?(:qualifiers)
+        end
+      end
+      
+      # Defines a simple AuthorizedView that is a subset of the underlying Table.
+      class GoogleBigtableAdminV2AuthorizedViewSubsetView
+        include Google::Apis::Core::Hashable
+      
+        # Map from column family name to the columns in this family to be included in
+        # the AuthorizedView.
+        # Corresponds to the JSON property `familySubsets`
+        # @return [Hash<String,Google::Apis::BigtableadminV2::GoogleBigtableAdminV2AuthorizedViewFamilySubsets>]
+        attr_accessor :family_subsets
+      
+        # Row prefixes to be included in the AuthorizedView. To provide access to all
+        # rows, include the empty string as a prefix ("").
+        # Corresponds to the JSON property `rowPrefixes`
+        # @return [Array<String>]
+        attr_accessor :row_prefixes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @family_subsets = args[:family_subsets] if args.key?(:family_subsets)
+          @row_prefixes = args[:row_prefixes] if args.key?(:row_prefixes)
+        end
+      end
+      
       # A tablet is a defined by a start and end key and is explained in https://cloud.
       # google.com/bigtable/docs/overview#architecture and https://cloud.google.com/
       # bigtable/docs/performance#optimization. A Hot tablet is a tablet that exhibits
@@ -1519,6 +1681,33 @@ module Google
         def update!(**args)
           @app_profiles = args[:app_profiles] if args.key?(:app_profiles)
           @failed_locations = args[:failed_locations] if args.key?(:failed_locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for google.bigtable.admin.v2.BigtableTableAdmin.
+      # ListAuthorizedViews
+      class ListAuthorizedViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The AuthorizedViews present in the requested table.
+        # Corresponds to the JSON property `authorizedViews`
+        # @return [Array<Google::Apis::BigtableadminV2::AuthorizedView>]
+        attr_accessor :authorized_views
+      
+        # Set if not all tables could be returned in a single response. Pass this value
+        # to `page_token` in another request to get the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_views = args[:authorized_views] if args.key?(:authorized_views)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2724,6 +2913,74 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata for the google.longrunning.Operation returned by UpdateAuthorizedView.
+      class UpdateAuthorizedViewMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
+      
+        # The request for UpdateAuthorizedView.
+        # Corresponds to the JSON property `originalRequest`
+        # @return [Google::Apis::BigtableadminV2::UpdateAuthorizedViewRequest]
+        attr_accessor :original_request
+      
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @original_request = args[:original_request] if args.key?(:original_request)
+          @request_time = args[:request_time] if args.key?(:request_time)
+        end
+      end
+      
+      # The request for UpdateAuthorizedView.
+      class UpdateAuthorizedViewRequest
+        include Google::Apis::Core::Hashable
+      
+        # Placeholder for admin API work while we work out the internals.
+        # Corresponds to the JSON property `authorizedView`
+        # @return [Google::Apis::BigtableadminV2::AuthorizedView]
+        attr_accessor :authorized_view
+      
+        # Optional. If true, ignore the safety checks when updating the AuthorizedView.
+        # Corresponds to the JSON property `ignoreWarnings`
+        # @return [Boolean]
+        attr_accessor :ignore_warnings
+        alias_method :ignore_warnings?, :ignore_warnings
+      
+        # Optional. The list of fields to update. A mask specifying which fields in the
+        # AuthorizedView resource should be updated. This mask is relative to the
+        # AuthorizedView resource, not to the request message. A field will be
+        # overwritten if it is in the mask. If empty, all fields set in the request will
+        # be overwritten. A special value `*` means to overwrite all fields (including
+        # fields not set in the request).
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_view = args[:authorized_view] if args.key?(:authorized_view)
+          @ignore_warnings = args[:ignore_warnings] if args.key?(:ignore_warnings)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       

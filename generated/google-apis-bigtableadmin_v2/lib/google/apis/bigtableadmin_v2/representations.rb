@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthorizedView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutomatedBackupPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateAuthorizedViewMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateAuthorizedViewRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateBackupMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,6 +256,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleBigtableAdminV2AuthorizedViewFamilySubsets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2AuthorizedViewSubsetView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HotTablet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +287,12 @@ module Google
       end
       
       class ListAppProfilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAuthorizedViewsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -472,6 +508,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateAuthorizedViewMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateAuthorizedViewRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateClusterMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -520,6 +568,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class AuthorizedView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deletion_protection, as: 'deletionProtection'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :subset_view, as: 'subsetView', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2AuthorizedViewSubsetView, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2AuthorizedViewSubsetView::Representation
+      
         end
       end
       
@@ -686,6 +745,26 @@ module Google
         end
       end
       
+      class CreateAuthorizedViewMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finish_time, as: 'finishTime'
+          property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::CreateAuthorizedViewRequest, decorator: Google::Apis::BigtableadminV2::CreateAuthorizedViewRequest::Representation
+      
+          property :request_time, as: 'requestTime'
+        end
+      end
+      
+      class CreateAuthorizedViewRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorized_view, as: 'authorizedView', class: Google::Apis::BigtableadminV2::AuthorizedView, decorator: Google::Apis::BigtableadminV2::AuthorizedView::Representation
+      
+          property :authorized_view_id, as: 'authorizedViewId'
+          property :parent, as: 'parent'
+        end
+      end
+      
       class CreateBackupMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -832,6 +911,23 @@ module Google
         end
       end
       
+      class GoogleBigtableAdminV2AuthorizedViewFamilySubsets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :qualifier_prefixes, as: 'qualifierPrefixes'
+          collection :qualifiers, as: 'qualifiers'
+        end
+      end
+      
+      class GoogleBigtableAdminV2AuthorizedViewSubsetView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :family_subsets, as: 'familySubsets', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2AuthorizedViewFamilySubsets, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2AuthorizedViewFamilySubsets::Representation
+      
+          collection :row_prefixes, as: 'rowPrefixes'
+        end
+      end
+      
       class HotTablet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -872,6 +968,15 @@ module Google
           collection :app_profiles, as: 'appProfiles', class: Google::Apis::BigtableadminV2::AppProfile, decorator: Google::Apis::BigtableadminV2::AppProfile::Representation
       
           collection :failed_locations, as: 'failedLocations'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAuthorizedViewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authorized_views, as: 'authorizedViews', class: Google::Apis::BigtableadminV2::AuthorizedView, decorator: Google::Apis::BigtableadminV2::AuthorizedView::Representation
+      
           property :next_page_token, as: 'nextPageToken'
         end
       end
@@ -1201,6 +1306,26 @@ module Google
       class UpdateAppProfileMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateAuthorizedViewMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finish_time, as: 'finishTime'
+          property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::UpdateAuthorizedViewRequest, decorator: Google::Apis::BigtableadminV2::UpdateAuthorizedViewRequest::Representation
+      
+          property :request_time, as: 'requestTime'
+        end
+      end
+      
+      class UpdateAuthorizedViewRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorized_view, as: 'authorizedView', class: Google::Apis::BigtableadminV2::AuthorizedView, decorator: Google::Apis::BigtableadminV2::AuthorizedView::Representation
+      
+          property :ignore_warnings, as: 'ignoreWarnings'
+          property :update_mask, as: 'updateMask'
         end
       end
       
