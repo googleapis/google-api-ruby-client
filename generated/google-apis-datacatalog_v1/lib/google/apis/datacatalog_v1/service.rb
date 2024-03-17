@@ -365,9 +365,9 @@ module Google
         # Data Catalog resource project](https://cloud.google.com/data-catalog/docs/
         # concepts/resource-project).
         # @param [String] name
-        #   The resource name of the entry group in URL format. Note: The entry group
-        #   itself and its child resources might not be stored in the location specified
-        #   in its name.
+        #   Identifier. The resource name of the entry group in URL format. Note: The
+        #   entry group itself and its child resources might not be stored in the location
+        #   specified in its name.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryGroup] google_cloud_datacatalog_v1_entry_group_object
         # @param [String] update_mask
         #   Names of fields whose values to overwrite on an entry group. If this parameter
@@ -799,9 +799,9 @@ module Google
         # Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/
         # resource-project).
         # @param [String] name
-        #   Output only. The resource name of an entry in URL format. Note: The entry
-        #   itself and its child resources might not be stored in the location specified
-        #   in its name.
+        #   Output only. Identifier. The resource name of an entry in URL format. Note:
+        #   The entry itself and its child resources might not be stored in the location
+        #   specified in its name.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Entry] google_cloud_datacatalog_v1_entry_object
         # @param [String] update_mask
         #   Names of fields whose values to overwrite on an entry. If this parameter is
@@ -1065,9 +1065,9 @@ module Google
         
         # Updates an existing tag.
         # @param [String] name
-        #   The resource name of the tag in URL format where tag ID is a system-generated
-        #   identifier. Note: The tag itself might not be stored in the location specified
-        #   in its name.
+        #   Identifier. The resource name of the tag in URL format where tag ID is a
+        #   system-generated identifier. Note: The tag itself might not be stored in the
+        #   location specified in its name.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Tag] google_cloud_datacatalog_v1_tag_object
         # @param [String] update_mask
         #   Names of fields whose values to overwrite on a tag. Currently, a tag has the
@@ -1256,9 +1256,9 @@ module Google
         
         # Updates an existing tag.
         # @param [String] name
-        #   The resource name of the tag in URL format where tag ID is a system-generated
-        #   identifier. Note: The tag itself might not be stored in the location specified
-        #   in its name.
+        #   Identifier. The resource name of the tag in URL format where tag ID is a
+        #   system-generated identifier. Note: The tag itself might not be stored in the
+        #   location specified in its name.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Tag] google_cloud_datacatalog_v1_tag_object
         # @param [String] update_mask
         #   Names of fields whose values to overwrite on a tag. Currently, a tag has the
@@ -1596,9 +1596,9 @@ module Google
         # resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-
         # project).
         # @param [String] name
-        #   The resource name of the tag template in URL format. Note: The tag template
-        #   itself and its child resources might not be stored in the location specified
-        #   in its name.
+        #   Identifier. The resource name of the tag template in URL format. Note: The tag
+        #   template itself and its child resources might not be stored in the location
+        #   specified in its name.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1TagTemplate] google_cloud_datacatalog_v1_tag_template_object
         # @param [String] update_mask
         #   Names of fields whose values to overwrite on a tag template. Currently, only `

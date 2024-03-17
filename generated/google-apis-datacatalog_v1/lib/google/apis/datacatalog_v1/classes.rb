@@ -1141,9 +1141,9 @@ module Google
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ModelSpec]
         attr_accessor :model_spec
       
-        # Output only. The resource name of an entry in URL format. Note: The entry
-        # itself and its child resources might not be stored in the location specified
-        # in its name.
+        # Output only. Identifier. The resource name of an entry in URL format. Note:
+        # The entry itself and its child resources might not be stored in the location
+        # specified in its name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1275,9 +1275,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the entry group in URL format. Note: The entry group
-        # itself and its child resources might not be stored in the location specified
-        # in its name.
+        # Identifier. The resource name of the entry group in URL format. Note: The
+        # entry group itself and its child resources might not be stored in the location
+        # specified in its name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2929,9 +2929,9 @@ module Google
         # @return [Hash<String,Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1TagField>]
         attr_accessor :fields
       
-        # The resource name of the tag in URL format where tag ID is a system-generated
-        # identifier. Note: The tag itself might not be stored in the location specified
-        # in its name.
+        # Identifier. The resource name of the tag in URL format where tag ID is a
+        # system-generated identifier. Note: The tag itself might not be stored in the
+        # location specified in its name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3087,9 +3087,9 @@ module Google
         attr_accessor :is_publicly_readable
         alias_method :is_publicly_readable?, :is_publicly_readable
       
-        # The resource name of the tag template in URL format. Note: The tag template
-        # itself and its child resources might not be stored in the location specified
-        # in its name.
+        # Identifier. The resource name of the tag template in URL format. Note: The tag
+        # template itself and its child resources might not be stored in the location
+        # specified in its name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3130,12 +3130,12 @@ module Google
         attr_accessor :is_required
         alias_method :is_required?, :is_required
       
-        # Output only. The resource name of the tag template field in URL format.
-        # Example: `projects/`PROJECT_ID`/locations/`LOCATION`/tagTemplates/`
-        # TAG_TEMPLATE`/fields/`FIELD`` Note: The tag template field itself might not be
-        # stored in the location specified in its name. The name must contain only
-        # letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a
-        # letter or underscore. The maximum length is 64 characters.
+        # Identifier. The resource name of the tag template field in URL format. Example:
+        # `projects/`PROJECT_ID`/locations/`LOCATION`/tagTemplates/`TAG_TEMPLATE`/
+        # fields/`FIELD`` Note: The tag template field itself might not be stored in the
+        # location specified in its name. The name must contain only letters (a-z, A-Z),
+        # numbers (0-9), or underscores (_), and must start with a letter or underscore.
+        # The maximum length is 64 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
