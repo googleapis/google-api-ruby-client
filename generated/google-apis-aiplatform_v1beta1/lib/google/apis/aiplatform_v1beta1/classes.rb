@@ -777,6 +777,11 @@ module Google
       class CloudAiNlLlmProtoServicePart
         include Google::Apis::Core::Hashable
       
+        # Metadata describes the original input document content.
+        # Corresponds to the JSON property `documentMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartDocumentMetadata]
+        attr_accessor :document_metadata
+      
         # Represents file data.
         # Corresponds to the JSON property `fileData`
         # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartFileData]
@@ -813,6 +818,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
           @file_data = args[:file_data] if args.key?(:file_data)
           @function_call = args[:function_call] if args.key?(:function_call)
           @function_response = args[:function_response] if args.key?(:function_response)
@@ -851,6 +857,32 @@ module Google
           @data = args[:data] if args.key?(:data)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @original_file_data = args[:original_file_data] if args.key?(:original_file_data)
+        end
+      end
+      
+      # Metadata describes the original input document content.
+      class CloudAiNlLlmProtoServicePartDocumentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Represents arbitrary blob data input.
+        # Corresponds to the JSON property `originalDocumentBlob`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartBlob]
+        attr_accessor :original_document_blob
+      
+        # The (1-indexed) page number of the image in the original document. The first
+        # page carries the original document content and mime type.
+        # Corresponds to the JSON property `pageNumber`
+        # @return [Fixnum]
+        attr_accessor :page_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @original_document_blob = args[:original_document_blob] if args.key?(:original_document_blob)
+          @page_number = args[:page_number] if args.key?(:page_number)
         end
       end
       
@@ -1028,6 +1060,11 @@ module Google
         attr_accessor :flagged
         alias_method :flagged?, :flagged
       
+        # The influential terms that could potentially block the response.
+        # Corresponds to the JSON property `influentialTerms`
+        # @return [Array<Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm>]
+        attr_accessor :influential_terms
+      
         # The RAI category.
         # Corresponds to the JSON property `raiCategory`
         # @return [String]
@@ -1046,8 +1083,46 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @flagged = args[:flagged] if args.key?(:flagged)
+          @influential_terms = args[:influential_terms] if args.key?(:influential_terms)
           @rai_category = args[:rai_category] if args.key?(:rai_category)
           @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # The influential term that could potentially block the response.
+      class CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm
+        include Google::Apis::Core::Hashable
+      
+        # The beginning offset of the influential term.
+        # Corresponds to the JSON property `beginOffset`
+        # @return [Fixnum]
+        attr_accessor :begin_offset
+      
+        # The confidence score of the influential term.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # The source of the influential term, prompt or response.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # The influential term.
+        # Corresponds to the JSON property `term`
+        # @return [String]
+        attr_accessor :term
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @begin_offset = args[:begin_offset] if args.key?(:begin_offset)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @source = args[:source] if args.key?(:source)
+          @term = args[:term] if args.key?(:term)
         end
       end
       
@@ -8710,8 +8785,7 @@ module Google
       
         # Optional. Service agent type used during data sync. By default, the Vertex AI
         # Service Agent is used. When using an IAM Policy to isolate this FeatureView
-        # within a project (https://cloud.google.com/vertex-ai/docs/featurestore/latest/
-        # resource-policy) a separate service account should be provisioned by setting
+        # within a project, a separate service account should be provisioned by setting
         # this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate
         # service account to access the BigQuery source table.
         # Corresponds to the JSON property `serviceAgentType`
@@ -9563,7 +9637,7 @@ module Google
         end
       end
       
-      # The request message for MatchService.FindNeighbors.
+      # LINT.IfChange The request message for MatchService.FindNeighbors.
       class GoogleCloudAiplatformV1beta1FindNeighborsRequest
         include Google::Apis::Core::Hashable
       

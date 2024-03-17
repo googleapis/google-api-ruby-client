@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiNlLlmProtoServicePartDocumentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiNlLlmProtoServicePartFileData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +203,12 @@ module Google
       end
       
       class CloudAiNlLlmProtoServiceRaiSignal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5655,6 +5667,8 @@ module Google
       class CloudAiNlLlmProtoServicePart
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_metadata, as: 'documentMetadata', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartDocumentMetadata, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartDocumentMetadata::Representation
+      
           property :file_data, as: 'fileData', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartFileData, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartFileData::Representation
       
           property :function_call, as: 'functionCall', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceFunctionCall, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceFunctionCall::Representation
@@ -5676,6 +5690,15 @@ module Google
           property :mime_type, as: 'mimeType'
           property :original_file_data, as: 'originalFileData', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartFileData, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartFileData::Representation
       
+        end
+      end
+      
+      class CloudAiNlLlmProtoServicePartDocumentMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :original_document_blob, as: 'originalDocumentBlob', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartBlob, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartBlob::Representation
+      
+          property :page_number, as: 'pageNumber'
         end
       end
       
@@ -5728,8 +5751,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :flagged, as: 'flagged'
+          collection :influential_terms, as: 'influentialTerms', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm::Representation
+      
           property :rai_category, as: 'raiCategory'
           property :score, as: 'score'
+        end
+      end
+      
+      class CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :begin_offset, as: 'beginOffset'
+          property :confidence, as: 'confidence'
+          property :source, as: 'source'
+          property :term, as: 'term'
         end
       end
       
