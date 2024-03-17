@@ -1732,6 +1732,78 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerResizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerResizeRequestStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerResizeRequestStatusLastAttempt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerResizeRequestsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9806,6 +9878,142 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeV1::InstanceGroupManagerList::Warning::Datum, decorator: Google::Apis::ComputeV1::InstanceGroupManagerList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InstanceGroupManagerResizeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :requested_run_duration, as: 'requestedRunDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
+          property :resize_by, as: 'resizeBy'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus::Representation
+      
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class InstanceGroupManagerResizeRequestStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus::Error, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus::Error::Representation
+      
+          property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt::Representation
+      
+        end
+        
+        class Error
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus::Error::Error, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus::Error::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatus::Error::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeV1::ErrorInfo, decorator: Google::Apis::ComputeV1::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeV1::Help, decorator: Google::Apis::ComputeV1::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeV1::LocalizedMessage, decorator: Google::Apis::ComputeV1::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeV1::QuotaExceededInfo, decorator: Google::Apis::ComputeV1::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
+        end
+      end
+      
+      class InstanceGroupManagerResizeRequestStatusLastAttempt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt::Error, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Representation
+      
+        end
+        
+        class Error
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeV1::ErrorInfo, decorator: Google::Apis::ComputeV1::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeV1::Help, decorator: Google::Apis::ComputeV1::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeV1::LocalizedMessage, decorator: Google::Apis::ComputeV1::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeV1::QuotaExceededInfo, decorator: Google::Apis::ComputeV1::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
+        end
+      end
+      
+      class InstanceGroupManagerResizeRequestsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequest, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequest::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestsListResponse::Warning, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestsListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestsListResponse::Warning::Datum, decorator: Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestsListResponse::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
