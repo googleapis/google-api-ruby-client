@@ -1741,7 +1741,8 @@ module Google
         # @return [Google::Apis::CloudbuildV2::Security]
         attr_accessor :security
       
-        # Service account used in the Pipeline.
+        # Service account used in the Pipeline. Deprecated; please use security.
+        # service_account instead.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
