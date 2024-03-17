@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReplicationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResumeTransferOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -508,6 +514,20 @@ module Google
         end
       end
       
+      class ReplicationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_data_sink, as: 'gcsDataSink', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
+      
+          property :gcs_data_source, as: 'gcsDataSource', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
+      
+          property :object_conditions, as: 'objectConditions', class: Google::Apis::StoragetransferV1::ObjectConditions, decorator: Google::Apis::StoragetransferV1::ObjectConditions::Representation
+      
+          property :transfer_options, as: 'transferOptions', class: Google::Apis::StoragetransferV1::TransferOptions, decorator: Google::Apis::StoragetransferV1::TransferOptions::Representation
+      
+        end
+      end
+      
       class ResumeTransferOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -608,6 +628,8 @@ module Google
           property :notification_config, as: 'notificationConfig', class: Google::Apis::StoragetransferV1::NotificationConfig, decorator: Google::Apis::StoragetransferV1::NotificationConfig::Representation
       
           property :project_id, as: 'projectId'
+          property :replication_spec, as: 'replicationSpec', class: Google::Apis::StoragetransferV1::ReplicationSpec, decorator: Google::Apis::StoragetransferV1::ReplicationSpec::Representation
+      
           property :schedule, as: 'schedule', class: Google::Apis::StoragetransferV1::Schedule, decorator: Google::Apis::StoragetransferV1::Schedule::Representation
       
           property :status, as: 'status'
