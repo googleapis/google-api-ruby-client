@@ -471,6 +471,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Cluster level configuration parameters related to the Gemini in Databases add-
+        # on. See go/prd-enable-duet-ai-databases for more details.
+        # Corresponds to the JSON property `geminiConfig`
+        # @return [Google::Apis::AlloydbV1alpha::GeminiClusterConfig]
+        attr_accessor :gemini_config
+      
         # The username/password for a database user. Used for specifying initial users
         # at cluster creation time.
         # Corresponds to the JSON property `initialUser`
@@ -481,6 +487,11 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # MaintenanceUpdatePolicy defines the policy for system updates.
+        # Corresponds to the JSON property `maintenanceUpdatePolicy`
+        # @return [Google::Apis::AlloydbV1alpha::MaintenanceUpdatePolicy]
+        attr_accessor :maintenance_update_policy
       
         # Subset of the source instance configuration that is available when reading the
         # cluster resource.
@@ -591,8 +602,10 @@ module Google
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @etag = args[:etag] if args.key?(:etag)
+          @gemini_config = args[:gemini_config] if args.key?(:gemini_config)
           @initial_user = args[:initial_user] if args.key?(:initial_user)
           @labels = args[:labels] if args.key?(:labels)
+          @maintenance_update_policy = args[:maintenance_update_policy] if args.key?(:maintenance_update_policy)
           @migration_source = args[:migration_source] if args.key?(:migration_source)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -769,6 +782,55 @@ module Google
         end
       end
       
+      # DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not
+      # be scheduled to start within this deny period. The start_date must be less
+      # than the end_date.
+      class DenyMaintenancePeriod
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::AlloydbV1alpha::GoogleTypeDate]
+        attr_accessor :end_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::AlloydbV1alpha::GoogleTypeDate]
+        attr_accessor :start_date
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `time`
+        # @return [Google::Apis::AlloydbV1alpha::GoogleTypeTimeOfDay]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -869,50 +931,19 @@ module Google
         end
       end
       
-      # Message for requests to generate a client certificate signed by the Cluster CA.
-      class GenerateClientCertificateRequest
+      # Cluster level configuration parameters related to the Gemini in Databases add-
+      # on. See go/prd-enable-duet-ai-databases for more details.
+      class GeminiClusterConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. An optional hint to the endpoint to generate the client certificate
-        # with the requested duration. The duration can be from 1 hour to 24 hours. The
-        # endpoint may or may not honor the hint. If the hint is left unspecified or is
-        # not honored, then the endpoint will pick an appropriate default duration.
-        # Corresponds to the JSON property `certDuration`
-        # @return [String]
-        attr_accessor :cert_duration
-      
-        # Optional. A pem-encoded X.509 certificate signing request (CSR). It is
-        # recommended to use public_key instead.
-        # Corresponds to the JSON property `pemCsr`
-        # @return [String]
-        attr_accessor :pem_csr
-      
-        # Optional. The public key from the client.
-        # Corresponds to the JSON property `publicKey`
-        # @return [String]
-        attr_accessor :public_key
-      
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # Corresponds to the JSON property `requestId`
-        # @return [String]
-        attr_accessor :request_id
-      
-        # Optional. An optional hint to the endpoint to generate a client ceritificate
-        # that can be used by AlloyDB connectors to exchange additional metadata with
-        # the server after TLS handshake.
-        # Corresponds to the JSON property `useMetadataExchange`
+        # Output only. Whether the Gemini in Databases add-on is enabled for the cluster.
+        # It will be true only if the add-on has been enabled for the billing account
+        # corresponding to the cluster. Its status is toggled from the Admin Control
+        # Center (ACC) and cannot be toggled using AlloyDB's APIs.
+        # Corresponds to the JSON property `entitled`
         # @return [Boolean]
-        attr_accessor :use_metadata_exchange
-        alias_method :use_metadata_exchange?, :use_metadata_exchange
+        attr_accessor :entitled
+        alias_method :entitled?, :entitled
       
         def initialize(**args)
            update!(**args)
@@ -920,33 +951,23 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @cert_duration = args[:cert_duration] if args.key?(:cert_duration)
-          @pem_csr = args[:pem_csr] if args.key?(:pem_csr)
-          @public_key = args[:public_key] if args.key?(:public_key)
-          @request_id = args[:request_id] if args.key?(:request_id)
-          @use_metadata_exchange = args[:use_metadata_exchange] if args.key?(:use_metadata_exchange)
+          @entitled = args[:entitled] if args.key?(:entitled)
         end
       end
       
-      # Message returned by a GenerateClientCertificate operation.
-      class GenerateClientCertificateResponse
+      # Instance level configuration parameters related to the Gemini in Databases add-
+      # on. See go/prd-enable-duet-ai-databases for more details.
+      class GeminiInstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The pem-encoded cluster ca X.509 certificate.
-        # Corresponds to the JSON property `caCert`
-        # @return [String]
-        attr_accessor :ca_cert
-      
-        # Output only. The pem-encoded, signed X.509 certificate.
-        # Corresponds to the JSON property `pemCertificate`
-        # @return [String]
-        attr_accessor :pem_certificate
-      
-        # Output only. The pem-encoded chain that may be used to verify the X.509
-        # certificate. Expected to be in issuer-to-root order according to RFC 5246.
-        # Corresponds to the JSON property `pemCertificateChain`
-        # @return [Array<String>]
-        attr_accessor :pem_certificate_chain
+        # Output only. Whether the Gemini in Databases add-on is enabled for the
+        # instance. It will be true only if the add-on has been enabled for the billing
+        # account corresponding to the instance. Its status is toggled from the Admin
+        # Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
+        # Corresponds to the JSON property `entitled`
+        # @return [Boolean]
+        attr_accessor :entitled
+        alias_method :entitled?, :entitled
       
         def initialize(**args)
            update!(**args)
@@ -954,9 +975,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ca_cert = args[:ca_cert] if args.key?(:ca_cert)
-          @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
-          @pem_certificate_chain = args[:pem_certificate_chain] if args.key?(:pem_certificate_chain)
+          @entitled = args[:entitled] if args.key?(:entitled)
         end
       end
       
@@ -1029,6 +1048,47 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class GoogleTypeDate
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
@@ -1183,6 +1243,12 @@ module Google
         # @return [String]
         attr_accessor :gce_zone
       
+        # Instance level configuration parameters related to the Gemini in Databases add-
+        # on. See go/prd-enable-duet-ai-databases for more details.
+        # Corresponds to the JSON property `geminiConfig`
+        # @return [Google::Apis::AlloydbV1alpha::GeminiInstanceConfig]
+        attr_accessor :gemini_config
+      
         # Required. The type of the instance. Specified at creation time.
         # Corresponds to the JSON property `instanceType`
         # @return [String]
@@ -1226,6 +1292,11 @@ module Google
         # Corresponds to the JSON property `nodes`
         # @return [Array<Google::Apis::AlloydbV1alpha::Node>]
         attr_accessor :nodes
+      
+        # Observability Instance specific configuration.
+        # Corresponds to the JSON property `observabilityConfig`
+        # @return [Google::Apis::AlloydbV1alpha::ObservabilityInstanceConfig]
+        attr_accessor :observability_config
       
         # PscInstanceConfig contains PSC related configuration at an instance level.
         # Corresponds to the JSON property `pscInstanceConfig`
@@ -1314,6 +1385,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
           @gce_zone = args[:gce_zone] if args.key?(:gce_zone)
+          @gemini_config = args[:gemini_config] if args.key?(:gemini_config)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @labels = args[:labels] if args.key?(:labels)
@@ -1321,6 +1393,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @observability_config = args[:observability_config] if args.key?(:observability_config)
           @psc_instance_config = args[:psc_instance_config] if args.key?(:psc_instance_config)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
@@ -1580,6 +1653,58 @@ module Google
         end
       end
       
+      # MaintenanceUpdatePolicy defines the policy for system updates.
+      class MaintenanceUpdatePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Periods to deny maintenance. Currently limited to 1.
+        # Corresponds to the JSON property `denyMaintenancePeriods`
+        # @return [Array<Google::Apis::AlloydbV1alpha::DenyMaintenancePeriod>]
+        attr_accessor :deny_maintenance_periods
+      
+        # Preferred windows to perform maintenance. Currently limited to 1.
+        # Corresponds to the JSON property `maintenanceWindows`
+        # @return [Array<Google::Apis::AlloydbV1alpha::MaintenanceWindow>]
+        attr_accessor :maintenance_windows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deny_maintenance_periods = args[:deny_maintenance_periods] if args.key?(:deny_maintenance_periods)
+          @maintenance_windows = args[:maintenance_windows] if args.key?(:maintenance_windows)
+        end
+      end
+      
+      # MaintenanceWindow specifies a preferred day and time for maintenance.
+      class MaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::AlloydbV1alpha::GoogleTypeTimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Subset of the source instance configuration that is available when reading the
       # cluster resource.
       class MigrationSource
@@ -1686,6 +1811,83 @@ module Google
           @ip = args[:ip] if args.key?(:ip)
           @state = args[:state] if args.key?(:state)
           @zone_id = args[:zone_id] if args.key?(:zone_id)
+        end
+      end
+      
+      # Observability Instance specific configuration.
+      class ObservabilityInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Observability feature status for an instance. This is a read-only flag and
+        # modifiable only by producer API. This flag is turned "off" by default.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Query string length. The default value is 10k.
+        # Corresponds to the JSON property `maxQueryStringLength`
+        # @return [Fixnum]
+        attr_accessor :max_query_string_length
+      
+        # Preserve comments in query string for an instance. This flag is turned "off"
+        # by default.
+        # Corresponds to the JSON property `preserveComments`
+        # @return [Boolean]
+        attr_accessor :preserve_comments
+        alias_method :preserve_comments?, :preserve_comments
+      
+        # Number of query execution plans captured by Insights per minute for all
+        # queries combined. The default value is 5. Any integer between 0 to 20 is
+        # considered valid.
+        # Corresponds to the JSON property `queryPlansPerMinute`
+        # @return [Fixnum]
+        attr_accessor :query_plans_per_minute
+      
+        # Record application tags for an instance. This flag is turned "off" by default.
+        # Corresponds to the JSON property `recordApplicationTags`
+        # @return [Boolean]
+        attr_accessor :record_application_tags
+        alias_method :record_application_tags?, :record_application_tags
+      
+        # Track actively running queries on the instance. If not set, this flag is "off"
+        # by default.
+        # Corresponds to the JSON property `trackActiveQueries`
+        # @return [Boolean]
+        attr_accessor :track_active_queries
+        alias_method :track_active_queries?, :track_active_queries
+      
+        # Output only. Track wait event types during query execution for an instance.
+        # This flag is turned "on" by default but tracking is enabled only after
+        # observability enabled flag is also turned on. This is read-only flag and only
+        # modifiable by producer API.
+        # Corresponds to the JSON property `trackWaitEventTypes`
+        # @return [Boolean]
+        attr_accessor :track_wait_event_types
+        alias_method :track_wait_event_types?, :track_wait_event_types
+      
+        # Track wait events during query execution for an instance. This flag is turned "
+        # on" by default but tracking is enabled only after observability enabled flag
+        # is also turned on.
+        # Corresponds to the JSON property `trackWaitEvents`
+        # @return [Boolean]
+        attr_accessor :track_wait_events
+        alias_method :track_wait_events?, :track_wait_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @max_query_string_length = args[:max_query_string_length] if args.key?(:max_query_string_length)
+          @preserve_comments = args[:preserve_comments] if args.key?(:preserve_comments)
+          @query_plans_per_minute = args[:query_plans_per_minute] if args.key?(:query_plans_per_minute)
+          @record_application_tags = args[:record_application_tags] if args.key?(:record_application_tags)
+          @track_active_queries = args[:track_active_queries] if args.key?(:track_active_queries)
+          @track_wait_event_types = args[:track_wait_event_types] if args.key?(:track_wait_event_types)
+          @track_wait_events = args[:track_wait_events] if args.key?(:track_wait_events)
         end
       end
       
@@ -2787,6 +2989,13 @@ module Google
         # @return [String]
         attr_accessor :updation_time
       
+        # Message type for storing user labels. User labels are used to tag App Engine
+        # resources, allowing users to search for resources matching a set of labels and
+        # to aggregate usage data by labels.
+        # Corresponds to the JSON property `userLabelSet`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUserLabels]
+        attr_accessor :user_label_set
+      
         # User-provided labels, represented as a dictionary where each label is a single
         # key value pair.
         # Corresponds to the JSON property `userLabels`
@@ -2815,6 +3024,7 @@ module Google
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
+          @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
@@ -2977,6 +3187,27 @@ module Google
           @quantity_based_retention = args[:quantity_based_retention] if args.key?(:quantity_based_retention)
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
+        end
+      end
+      
+      # Message type for storing user labels. User labels are used to tag App Engine
+      # resources, allowing users to search for resources matching a set of labels and
+      # to aggregate usage data by labels.
+      class StorageDatabasecenterPartnerapiV1mainUserLabels
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
