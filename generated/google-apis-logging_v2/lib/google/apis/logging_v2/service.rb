@@ -1652,6 +1652,14 @@ module Google
         #   Required. The parent resource whose sinks are to be listed: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
         #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+        # @param [String] filter
+        #   Optional. A filter expression to constrain the sinks returned. Today, this
+        #   only supports the following strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR"
+        #   )', 'in_scope("DEFAULT")'.Description of scopes below. ALL: Includes all of
+        #   the sinks which can be returned in any other scope. ANCESTOR: Includes
+        #   intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned
+        #   by parent.When the empty string is provided, then the filter 'in_scope("
+        #   DEFAULT")' is applied.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -1678,11 +1686,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_billing_account_sinks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_billing_account_sinks(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3800,6 +3809,14 @@ module Google
         #   Required. The parent resource whose sinks are to be listed: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
         #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+        # @param [String] filter
+        #   Optional. A filter expression to constrain the sinks returned. Today, this
+        #   only supports the following strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR"
+        #   )', 'in_scope("DEFAULT")'.Description of scopes below. ALL: Includes all of
+        #   the sinks which can be returned in any other scope. ANCESTOR: Includes
+        #   intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned
+        #   by parent.When the empty string is provided, then the filter 'in_scope("
+        #   DEFAULT")' is applied.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -3826,11 +3843,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_folder_sinks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_folder_sinks(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -6682,6 +6700,14 @@ module Google
         #   Required. The parent resource whose sinks are to be listed: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
         #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+        # @param [String] filter
+        #   Optional. A filter expression to constrain the sinks returned. Today, this
+        #   only supports the following strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR"
+        #   )', 'in_scope("DEFAULT")'.Description of scopes below. ALL: Includes all of
+        #   the sinks which can be returned in any other scope. ANCESTOR: Includes
+        #   intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned
+        #   by parent.When the empty string is provided, then the filter 'in_scope("
+        #   DEFAULT")' is applied.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -6708,11 +6734,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_sinks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_sinks(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -8633,6 +8660,14 @@ module Google
         #   Required. The parent resource whose sinks are to be listed: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
         #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+        # @param [String] filter
+        #   Optional. A filter expression to constrain the sinks returned. Today, this
+        #   only supports the following strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR"
+        #   )', 'in_scope("DEFAULT")'.Description of scopes below. ALL: Includes all of
+        #   the sinks which can be returned in any other scope. ANCESTOR: Includes
+        #   intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned
+        #   by parent.When the empty string is provided, then the filter 'in_scope("
+        #   DEFAULT")' is applied.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -8659,11 +8694,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_sinks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_sinks(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -8940,6 +8976,14 @@ module Google
         #   Required. The parent resource whose sinks are to be listed: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
         #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+        # @param [String] filter
+        #   Optional. A filter expression to constrain the sinks returned. Today, this
+        #   only supports the following strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR"
+        #   )', 'in_scope("DEFAULT")'.Description of scopes below. ALL: Includes all of
+        #   the sinks which can be returned in any other scope. ANCESTOR: Includes
+        #   intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned
+        #   by parent.When the empty string is provided, then the filter 'in_scope("
+        #   DEFAULT")' is applied.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -8966,11 +9010,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_sinks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_sinks(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
