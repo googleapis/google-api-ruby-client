@@ -477,6 +477,13 @@ module Google
       class ConnectivityTest
         include Google::Apis::Core::Hashable
       
+        # Whether the test should skip firewall checking. If not provided, we assume
+        # false.
+        # Corresponds to the JSON property `bypassFirewallChecks`
+        # @return [Boolean]
+        attr_accessor :bypass_firewall_checks
+        alias_method :bypass_firewall_checks?, :bypass_firewall_checks
+      
         # Output only. The time the test was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -546,6 +553,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bypass_firewall_checks = args[:bypass_firewall_checks] if args.key?(:bypass_firewall_checks)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @destination = args[:destination] if args.key?(:destination)
