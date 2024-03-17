@@ -461,6 +461,7 @@ module Google
       class ConnectivityTest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bypass_firewall_checks, as: 'bypassFirewallChecks'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :destination, as: 'destination', class: Google::Apis::NetworkmanagementV1::Endpoint, decorator: Google::Apis::NetworkmanagementV1::Endpoint::Representation
