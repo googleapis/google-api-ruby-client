@@ -556,6 +556,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpeakerSpotlight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpeakerSpotlightProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StretchedPictureFill
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1422,6 +1434,8 @@ module Google
       
           property :size, as: 'size', class: Google::Apis::SlidesV1::Size, decorator: Google::Apis::SlidesV1::Size::Representation
       
+          property :speaker_spotlight, as: 'speakerSpotlight', class: Google::Apis::SlidesV1::SpeakerSpotlight, decorator: Google::Apis::SlidesV1::SpeakerSpotlight::Representation
+      
           property :table, as: 'table', class: Google::Apis::SlidesV1::Table, decorator: Google::Apis::SlidesV1::Table::Representation
       
           property :title, as: 'title'
@@ -1844,6 +1858,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alpha, as: 'alpha'
           property :color, as: 'color', class: Google::Apis::SlidesV1::OpaqueColor, decorator: Google::Apis::SlidesV1::OpaqueColor::Representation
+      
+        end
+      end
+      
+      class SpeakerSpotlight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speaker_spotlight_properties, as: 'speakerSpotlightProperties', class: Google::Apis::SlidesV1::SpeakerSpotlightProperties, decorator: Google::Apis::SlidesV1::SpeakerSpotlightProperties::Representation
+      
+        end
+      end
+      
+      class SpeakerSpotlightProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :outline, as: 'outline', class: Google::Apis::SlidesV1::Outline, decorator: Google::Apis::SlidesV1::Outline::Representation
+      
+          property :shadow, as: 'shadow', class: Google::Apis::SlidesV1::Shadow, decorator: Google::Apis::SlidesV1::Shadow::Representation
       
         end
       end
