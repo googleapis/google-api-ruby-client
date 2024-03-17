@@ -108,6 +108,13 @@ module Google
         # @return [String]
         attr_accessor :dataset
       
+        # Optional. Resources in this dataset that are selectively shared. If this field
+        # is empty, then the entire dataset (all resources) are shared. This field is
+        # only valid for data clean room exchanges.
+        # Corresponds to the JSON property `selectedResources`
+        # @return [Array<Google::Apis::AnalyticshubV1::SelectedResource>]
+        attr_accessor :selected_resources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -115,6 +122,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataset = args[:dataset] if args.key?(:dataset)
+          @selected_resources = args[:selected_resources] if args.key?(:selected_resources)
         end
       end
       
@@ -1154,6 +1162,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Resource in this dataset that are selectively shared.
+      class SelectedResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Format: For table: `projects/`projectId`/datasets/`datasetId`/tables/
+        # `tableId`` Example:"projects/test_project/datasets/test_dataset/tables/
+        # test_table"
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table = args[:table] if args.key?(:table)
         end
       end
       

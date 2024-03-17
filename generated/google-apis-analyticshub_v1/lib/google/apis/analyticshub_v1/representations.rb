@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SelectedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -283,6 +289,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset, as: 'dataset'
+          collection :selected_resources, as: 'selectedResources', class: Google::Apis::AnalyticshubV1::SelectedResource, decorator: Google::Apis::AnalyticshubV1::SelectedResource::Representation
+      
         end
       end
       
@@ -536,6 +544,13 @@ module Google
       class RevokeSubscriptionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SelectedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :table, as: 'table'
         end
       end
       
