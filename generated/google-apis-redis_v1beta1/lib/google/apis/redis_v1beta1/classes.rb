@@ -660,6 +660,13 @@ module Google
         # @return [String]
         attr_accessor :updation_time
       
+        # Message type for storing user labels. User labels are used to tag App Engine
+        # resources, allowing users to search for resources matching a set of labels and
+        # to aggregate usage data by labels.
+        # Corresponds to the JSON property `userLabelSet`
+        # @return [Google::Apis::RedisV1beta1::UserLabels]
+        attr_accessor :user_label_set
+      
         # User-provided labels, represented as a dictionary where each label is a single
         # key value pair.
         # Corresponds to the JSON property `userLabels`
@@ -688,6 +695,7 @@ module Google
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
+          @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
@@ -2259,6 +2267,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @redis_version = args[:redis_version] if args.key?(:redis_version)
+        end
+      end
+      
+      # Message type for storing user labels. User labels are used to tag App Engine
+      # resources, allowing users to search for resources matching a set of labels and
+      # to aggregate usage data by labels.
+      class UserLabels
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
