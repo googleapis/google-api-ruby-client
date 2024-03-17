@@ -4440,6 +4440,11 @@ module Google
       class LiveChatMessageListResponse
         include Google::Apis::Core::Hashable
       
+        # A *liveChatMessage* resource represents a chat message in a YouTube Live Chat.
+        # Corresponds to the JSON property `activePollItem`
+        # @return [Google::Apis::YoutubeV3::LiveChatMessage]
+        attr_accessor :active_poll_item
+      
         # Etag of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -4498,6 +4503,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_poll_item = args[:active_poll_item] if args.key?(:active_poll_item)
           @etag = args[:etag] if args.key?(:etag)
           @event_id = args[:event_id] if args.key?(:event_id)
           @items = args[:items] if args.key?(:items)
