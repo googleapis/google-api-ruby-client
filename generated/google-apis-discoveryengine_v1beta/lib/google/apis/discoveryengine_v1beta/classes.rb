@@ -619,19 +619,6 @@ module Google
         end
       end
       
-      # The digital parsing configurations for documents.
-      class GoogleCloudDiscoveryengineV1DigitalParsingConfig
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Metadata related to the progress of the SiteSearchEngineService.
       # DisableAdvancedSiteSearch operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
@@ -718,12 +705,12 @@ module Google
       
         # The digital parsing configurations for documents.
         # Corresponds to the JSON property `digitalParsingConfig`
-        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DigitalParsingConfig]
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig]
         attr_accessor :digital_parsing_config
       
         # The OCR parsing configurations for documents.
         # Corresponds to the JSON property `ocrParsingConfig`
-        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1OcrParsingConfig]
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig]
         attr_accessor :ocr_parsing_config
       
         def initialize(**args)
@@ -734,6 +721,47 @@ module Google
         def update!(**args)
           @digital_parsing_config = args[:digital_parsing_config] if args.key?(:digital_parsing_config)
           @ocr_parsing_config = args[:ocr_parsing_config] if args.key?(:ocr_parsing_config)
+        end
+      end
+      
+      # The digital parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The OCR parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Apply additional enhanced OCR processing to a list of document elements.
+        # Supported values: * `table`: advanced table parsing model.
+        # Corresponds to the JSON property `enhancedDocumentElements`
+        # @return [Array<String>]
+        attr_accessor :enhanced_document_elements
+      
+        # If true, will use native text instead of OCR text on pages containing native
+        # text.
+        # Corresponds to the JSON property `useNativeText`
+        # @return [Boolean]
+        attr_accessor :use_native_text
+        alias_method :use_native_text?, :use_native_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
+          @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
         end
       end
       
@@ -1241,34 +1269,6 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @joined_events_count = args[:joined_events_count] if args.key?(:joined_events_count)
           @unjoined_events_count = args[:unjoined_events_count] if args.key?(:unjoined_events_count)
-        end
-      end
-      
-      # The OCR parsing configurations for documents.
-      class GoogleCloudDiscoveryengineV1OcrParsingConfig
-        include Google::Apis::Core::Hashable
-      
-        # Apply additional enhanced OCR processing to a list of document elements.
-        # Supported values: * `table`: advanced table parsing model.
-        # Corresponds to the JSON property `enhancedDocumentElements`
-        # @return [Array<String>]
-        attr_accessor :enhanced_document_elements
-      
-        # If true, will use native text instead of OCR text on pages containing native
-        # text.
-        # Corresponds to the JSON property `useNativeText`
-        # @return [Boolean]
-        attr_accessor :use_native_text
-        alias_method :use_native_text?, :use_native_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
-          @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
         end
       end
       
@@ -2016,19 +2016,6 @@ module Google
         end
       end
       
-      # The digital parsing configurations for documents.
-      class GoogleCloudDiscoveryengineV1alphaDigitalParsingConfig
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Metadata related to the progress of the SiteSearchEngineService.
       # DisableAdvancedSiteSearch operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
@@ -2092,11 +2079,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The OCR options for parsing documents.
-        # Corresponds to the JSON property `ocrConfig`
-        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOcrConfig]
-        attr_accessor :ocr_config
-      
         # Map from file type to override the default parsing configuration based on the
         # file type. Supported keys: * `pdf`: Override parsing config for PDF files,
         # either digital parsing, ocr parsing or layout parsing is supported. * `html`:
@@ -2116,7 +2098,6 @@ module Google
           @chunking_config = args[:chunking_config] if args.key?(:chunking_config)
           @default_parsing_config = args[:default_parsing_config] if args.key?(:default_parsing_config)
           @name = args[:name] if args.key?(:name)
-          @ocr_config = args[:ocr_config] if args.key?(:ocr_config)
           @parsing_config_overrides = args[:parsing_config_overrides] if args.key?(:parsing_config_overrides)
         end
       end
@@ -2174,17 +2155,17 @@ module Google
       
         # The digital parsing configurations for documents.
         # Corresponds to the JSON property `digitalParsingConfig`
-        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDigitalParsingConfig]
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfig]
         attr_accessor :digital_parsing_config
       
         # The layout parsing configurations for documents.
         # Corresponds to the JSON property `layoutParsingConfig`
-        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaLayoutParsingConfig]
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig]
         attr_accessor :layout_parsing_config
       
         # The OCR parsing configurations for documents.
         # Corresponds to the JSON property `ocrParsingConfig`
-        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOcrParsingConfig]
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig]
         attr_accessor :ocr_parsing_config
       
         def initialize(**args)
@@ -2196,6 +2177,60 @@ module Google
           @digital_parsing_config = args[:digital_parsing_config] if args.key?(:digital_parsing_config)
           @layout_parsing_config = args[:layout_parsing_config] if args.key?(:layout_parsing_config)
           @ocr_parsing_config = args[:ocr_parsing_config] if args.key?(:ocr_parsing_config)
+        end
+      end
+      
+      # The digital parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The layout parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The OCR parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Apply additional enhanced OCR processing to a list of document elements.
+        # Supported values: * `table`: advanced table parsing model.
+        # Corresponds to the JSON property `enhancedDocumentElements`
+        # @return [Array<String>]
+        attr_accessor :enhanced_document_elements
+      
+        # If true, will use native text instead of OCR text on pages containing native
+        # text.
+        # Corresponds to the JSON property `useNativeText`
+        # @return [Boolean]
+        attr_accessor :use_native_text
+        alias_method :use_native_text?, :use_native_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
+          @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
         end
       end
       
@@ -2243,14 +2278,6 @@ module Google
       # Metadata that describes the training and serving parameters of an Engine.
       class GoogleCloudDiscoveryengineV1alphaEngine
         include Google::Apis::Core::Hashable
-      
-        # Whether the search engine can associate with multiple data stores. If true,
-        # the generic search engine can associate with one or more data stores. This is
-        # an input-only field.
-        # Corresponds to the JSON property `allowMultipleDataStoresSearchEngine`
-        # @return [Boolean]
-        attr_accessor :allow_multiple_data_stores_search_engine
-        alias_method :allow_multiple_data_stores_search_engine?, :allow_multiple_data_stores_search_engine
       
         # Configurations for a Chat Engine.
         # Corresponds to the JSON property `chatEngineConfig`
@@ -2342,7 +2369,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allow_multiple_data_stores_search_engine = args[:allow_multiple_data_stores_search_engine] if args.key?(:allow_multiple_data_stores_search_engine)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
           @common_config = args[:common_config] if args.key?(:common_config)
@@ -3073,84 +3099,6 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @joined_events_count = args[:joined_events_count] if args.key?(:joined_events_count)
           @unjoined_events_count = args[:unjoined_events_count] if args.key?(:unjoined_events_count)
-        end
-      end
-      
-      # The layout parsing configurations for documents.
-      class GoogleCloudDiscoveryengineV1alphaLayoutParsingConfig
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # The OCR options for parsing documents.
-      class GoogleCloudDiscoveryengineV1alphaOcrConfig
-        include Google::Apis::Core::Hashable
-      
-        # Required. If OCR is enabled or not. OCR must be enabled for other OcrConfig
-        # options to apply. We will only perform OCR on the first 80 pages of the PDF
-        # files.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # Apply additional enhanced OCR processing to a list of document elements.
-        # Supported values: * `table`: advanced table parsing model.
-        # Corresponds to the JSON property `enhancedDocumentElements`
-        # @return [Array<String>]
-        attr_accessor :enhanced_document_elements
-      
-        # If true, will use native text instead of OCR text on pages containing native
-        # text.
-        # Corresponds to the JSON property `useNativeText`
-        # @return [Boolean]
-        attr_accessor :use_native_text
-        alias_method :use_native_text?, :use_native_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
-          @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
-        end
-      end
-      
-      # The OCR parsing configurations for documents.
-      class GoogleCloudDiscoveryengineV1alphaOcrParsingConfig
-        include Google::Apis::Core::Hashable
-      
-        # Apply additional enhanced OCR processing to a list of document elements.
-        # Supported values: * `table`: advanced table parsing model.
-        # Corresponds to the JSON property `enhancedDocumentElements`
-        # @return [Array<String>]
-        attr_accessor :enhanced_document_elements
-      
-        # If true, will use native text instead of OCR text on pages containing native
-        # text.
-        # Corresponds to the JSON property `useNativeText`
-        # @return [Boolean]
-        attr_accessor :use_native_text
-        alias_method :use_native_text?, :use_native_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
-          @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
         end
       end
       
@@ -4628,19 +4576,6 @@ module Google
         end
       end
       
-      # The digital parsing configurations for documents.
-      class GoogleCloudDiscoveryengineV1betaDigitalParsingConfig
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Metadata related to the progress of the SiteSearchEngineService.
       # DisableAdvancedSiteSearch operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
@@ -4913,12 +4848,12 @@ module Google
       
         # The digital parsing configurations for documents.
         # Corresponds to the JSON property `digitalParsingConfig`
-        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDigitalParsingConfig]
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig]
         attr_accessor :digital_parsing_config
       
         # The OCR parsing configurations for documents.
         # Corresponds to the JSON property `ocrParsingConfig`
-        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaOcrParsingConfig]
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig]
         attr_accessor :ocr_parsing_config
       
         def initialize(**args)
@@ -4929,6 +4864,47 @@ module Google
         def update!(**args)
           @digital_parsing_config = args[:digital_parsing_config] if args.key?(:digital_parsing_config)
           @ocr_parsing_config = args[:ocr_parsing_config] if args.key?(:ocr_parsing_config)
+        end
+      end
+      
+      # The digital parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The OCR parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Apply additional enhanced OCR processing to a list of document elements.
+        # Supported values: * `table`: advanced table parsing model.
+        # Corresponds to the JSON property `enhancedDocumentElements`
+        # @return [Array<String>]
+        attr_accessor :enhanced_document_elements
+      
+        # If true, will use native text instead of OCR text on pages containing native
+        # text.
+        # Corresponds to the JSON property `useNativeText`
+        # @return [Boolean]
+        attr_accessor :use_native_text
+        alias_method :use_native_text?, :use_native_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
+          @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
         end
       end
       
@@ -6014,34 +5990,6 @@ module Google
         end
       end
       
-      # The OCR parsing configurations for documents.
-      class GoogleCloudDiscoveryengineV1betaOcrParsingConfig
-        include Google::Apis::Core::Hashable
-      
-        # Apply additional enhanced OCR processing to a list of document elements.
-        # Supported values: * `table`: advanced table parsing model.
-        # Corresponds to the JSON property `enhancedDocumentElements`
-        # @return [Array<String>]
-        attr_accessor :enhanced_document_elements
-      
-        # If true, will use native text instead of OCR text on pages containing native
-        # text.
-        # Corresponds to the JSON property `useNativeText`
-        # @return [Boolean]
-        attr_accessor :use_native_text
-        alias_method :use_native_text?, :use_native_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
-          @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
-        end
-      end
-      
       # Detailed page information.
       class GoogleCloudDiscoveryengineV1betaPageInfo
         include Google::Apis::Core::Hashable
@@ -6676,6 +6624,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec]
         attr_accessor :content_search_spec
       
+        # A list of data store specs to apply on a search call.
+        # Corresponds to the JSON property `dataStoreSpecs`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec>]
+        attr_accessor :data_store_specs
+      
         # The specification that uses customized query embedding vector to do semantic
         # document retrieval.
         # Corresponds to the JSON property `embeddingSpec`
@@ -6831,6 +6784,7 @@ module Google
           @branch = args[:branch] if args.key?(:branch)
           @canonical_filter = args[:canonical_filter] if args.key?(:canonical_filter)
           @content_search_spec = args[:content_search_spec] if args.key?(:content_search_spec)
+          @data_store_specs = args[:data_store_specs] if args.key?(:data_store_specs)
           @embedding_spec = args[:embedding_spec] if args.key?(:embedding_spec)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
@@ -6894,8 +6848,8 @@ module Google
         # An expression which specifies a boost condition. The syntax and supported
         # fields are the same as a filter expression. See SearchRequest.filter for
         # detail syntax and limitations. Examples: * To boost documents with document ID
-        # "doc_1" or "doc_2", and color "Red" or "Blue": * (document_id: ANY("doc_1", "
-        # doc_2")) AND (color: ANY("Red", "Blue"))
+        # "doc_1" or "doc_2", and color "Red" or "Blue": `(document_id: ANY("doc_1", "
+        # doc_2")) AND (color: ANY("Red", "Blue"))`
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
@@ -6981,6 +6935,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_previous_segments
       
+        # Specifies whether to return the confidence score from the extractive segments
+        # in each search result. This feature is available only for new or allowlisted
+        # data stores. To allowlist your data store, please contact your Customer
+        # Engineer. The default value is `false`.
+        # Corresponds to the JSON property `returnExtractiveSegmentScore`
+        # @return [Boolean]
+        attr_accessor :return_extractive_segment_score
+        alias_method :return_extractive_segment_score?, :return_extractive_segment_score
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6991,6 +6954,7 @@ module Google
           @max_extractive_segment_count = args[:max_extractive_segment_count] if args.key?(:max_extractive_segment_count)
           @num_next_segments = args[:num_next_segments] if args.key?(:num_next_segments)
           @num_previous_segments = args[:num_previous_segments] if args.key?(:num_previous_segments)
+          @return_extractive_segment_score = args[:return_extractive_segment_score] if args.key?(:return_extractive_segment_score)
         end
       end
       
@@ -7093,8 +7057,7 @@ module Google
       
         # The number of top results to generate the summary from. If the number of
         # results returned is less than `summaryResultCount`, the summary is generated
-        # from all of the results. At most five results can be used to generate a
-        # summary.
+        # from all of the results. At most 10 results can be used to generate a summary.
         # Corresponds to the JSON property `summaryResultCount`
         # @return [Fixnum]
         attr_accessor :summary_result_count
@@ -7141,9 +7104,12 @@ module Google
       
         # The model version used to generate the summary. Supported values are: * `
         # stable`: string. Default value when no value is specified. Uses a generally
-        # available, fine-tuned version of the text-bison@001 model. * `preview`: string.
-        # (Public preview) Uses a fine-tuned version of the text-bison@002 model. This
-        # model works only for summaries in English.
+        # available, fine-tuned model. For more information, see [Answer generation
+        # model versions and lifecycle](https://cloud.google.com/generative-ai-app-
+        # builder/docs/answer-generation-models). * `preview`: string. (Public preview)
+        # Uses a preview model. For more information, see [Answer generation model
+        # versions and lifecycle](https://cloud.google.com/generative-ai-app-builder/
+        # docs/answer-generation-models).
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -7155,6 +7121,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # A struct to define data stores to filter on in a search call.
+      class GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full resource name of DataStore, such as `projects/`project`/
+        # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
         end
       end
       
@@ -8005,7 +7991,7 @@ module Google
         attr_accessor :model_id
       
         # Immutable. Fully qualified name `projects/`project`/locations/`location`/
-        # collections/`collection_id`/dataStores/`data_store_id`/servingConfigs/`
+        # collections/`collection_id`/engines/`engine_id`/servingConfigs/`
         # serving_config_id``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -8137,11 +8123,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :content_freshness_cutoff_days
       
-        # Specifies the content watched minutes threshold for demotion.
-        # Corresponds to the JSON property `contentWatchedMinutesThreshold`
-        # @return [Float]
-        attr_accessor :content_watched_minutes_threshold
-      
         # Specifies the content watched percentage threshold for demotion. Threshold
         # value must be between [0, 1.0] inclusive.
         # Corresponds to the JSON property `contentWatchedPercentageThreshold`
@@ -8169,7 +8150,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content_freshness_cutoff_days = args[:content_freshness_cutoff_days] if args.key?(:content_freshness_cutoff_days)
-          @content_watched_minutes_threshold = args[:content_watched_minutes_threshold] if args.key?(:content_watched_minutes_threshold)
           @content_watched_percentage_threshold = args[:content_watched_percentage_threshold] if args.key?(:content_watched_percentage_threshold)
           @content_watched_seconds_threshold = args[:content_watched_seconds_threshold] if args.key?(:content_watched_seconds_threshold)
           @demotion_event_type = args[:demotion_event_type] if args.key?(:demotion_event_type)
@@ -8389,6 +8369,149 @@ module Google
         def update!(**args)
           @context = args[:context] if args.key?(:context)
           @input = args[:input] if args.key?(:input)
+        end
+      end
+      
+      # Metadata related to the progress of the TrainCustomModel operation. This is
+      # returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaTrainCustomModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for SearchTuningService.TrainCustomModel method.
+      class GoogleCloudDiscoveryengineV1betaTrainCustomModelRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of destination for Import related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportErrorConfig]
+        attr_accessor :error_config
+      
+        # Cloud Storage training data input.
+        # Corresponds to the JSON property `gcsTrainingInput`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTrainCustomModelRequestGcsTrainingInput]
+        attr_accessor :gcs_training_input
+      
+        # Model to be trained. Supported values are: * **search-tuning**: Fine tuning
+        # the search system based on data provided.
+        # Corresponds to the JSON property `modelType`
+        # @return [String]
+        attr_accessor :model_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_config = args[:error_config] if args.key?(:error_config)
+          @gcs_training_input = args[:gcs_training_input] if args.key?(:gcs_training_input)
+          @model_type = args[:model_type] if args.key?(:model_type)
+        end
+      end
+      
+      # Cloud Storage training data input.
+      class GoogleCloudDiscoveryengineV1betaTrainCustomModelRequestGcsTrainingInput
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Storage corpus data which could be associated in train data. The
+        # data path format is `gs:///`. A newline delimited jsonl/ndjson file. For
+        # search-tuning model, each line should have the _id, title and text. Example: ``
+        # "_id": "doc1", title: "relevant doc", "text": "relevant text"``
+        # Corresponds to the JSON property `corpusDataPath`
+        # @return [String]
+        attr_accessor :corpus_data_path
+      
+        # The gcs query data which could be associated in train data. The data path
+        # format is `gs:///`. A newline delimited jsonl/ndjson file. For search-tuning
+        # model, each line should have the _id and text. Example: `"_id": "query1", "
+        # text": "example query"`
+        # Corresponds to the JSON property `queryDataPath`
+        # @return [String]
+        attr_accessor :query_data_path
+      
+        # Cloud Storage test data. Same format as train_data_path. If not provided, a
+        # random 80/20 train/test split will be performed on train_data_path.
+        # Corresponds to the JSON property `testDataPath`
+        # @return [String]
+        attr_accessor :test_data_path
+      
+        # Cloud Storage training data path whose format should be `gs:///`. The file
+        # should be in tsv format. Each line should have the doc_id and query_id and
+        # score (number). For search-tuning model, it should have the query-id corpus-id
+        # score as tsv file header. The score should be a number in `[0, inf+)`. The
+        # larger the number is, the more relevant the pair is. Example: * `query-id\
+        # tcorpus-id\tscore` * `query1\tdoc1\t1`
+        # Corresponds to the JSON property `trainDataPath`
+        # @return [String]
+        attr_accessor :train_data_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @corpus_data_path = args[:corpus_data_path] if args.key?(:corpus_data_path)
+          @query_data_path = args[:query_data_path] if args.key?(:query_data_path)
+          @test_data_path = args[:test_data_path] if args.key?(:test_data_path)
+          @train_data_path = args[:train_data_path] if args.key?(:train_data_path)
+        end
+      end
+      
+      # Response of the TrainCustomModelRequest. This message is returned by the
+      # google.longrunning.Operations.response field.
+      class GoogleCloudDiscoveryengineV1betaTrainCustomModelResponse
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of destination for Import related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportErrorConfig]
+        attr_accessor :error_config
+      
+        # A sample of errors encountered while processing the data.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # The trained model status. Possible values are: * **bad-data**: The training
+        # data quality is bad. * **no-improvement**: Tuning didn't improve performance.
+        # Won't deploy. * **in-progress**: Model training is in progress. * **ready**:
+        # The model is ready for serving.
+        # Corresponds to the JSON property `modelStatus`
+        # @return [String]
+        attr_accessor :model_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_config = args[:error_config] if args.key?(:error_config)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @model_status = args[:model_status] if args.key?(:model_status)
         end
       end
       
