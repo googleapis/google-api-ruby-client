@@ -124,6 +124,207 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Looks up a single entry.
+        # @param [String] name
+        #   Required. The project to which the request should be attributed in the
+        #   following form: projects/`project`/locations/`location`.
+        # @param [Array<String>, String] aspect_types
+        #   Optional. Limits the aspects returned to the provided aspect types. Only works
+        #   if the CUSTOM view is selected.
+        # @param [String] entry
+        #   Required. The resource name of the Entry: projects/`project`/locations/`
+        #   location`/entryGroups/`entry_group`/entries/`entry`.
+        # @param [Array<String>, String] paths
+        #   Optional. Limits the aspects returned to those associated with the provided
+        #   paths within the Entry. Only works if the CUSTOM view is selected.
+        # @param [String] view
+        #   Optional. View for controlling which parts of an entry are to be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lookup_project_location_entry(name, aspect_types: nil, entry: nil, paths: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:lookupEntry', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry
+          command.params['name'] = name unless name.nil?
+          command.query['aspectTypes'] = aspect_types unless aspect_types.nil?
+          command.query['entry'] = entry unless entry.nil?
+          command.query['paths'] = paths unless paths.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Searches for entries matching given query and scope.
+        # @param [String] name
+        #   Required. The project to which the request should be attributed in the
+        #   following form: projects/`project`/locations/`location`.
+        # @param [String] order_by
+        #   Optional. Ordering of the results. Supported options to be added later.
+        # @param [Fixnum] page_size
+        #   Optional. Pagination.
+        # @param [String] page_token
+        # @param [String] query
+        #   Required. The query against which entries in scope should be matched.
+        # @param [String] scope
+        #   Optional. The scope under which the search should be operating. Should either
+        #   be organizations/ or projects/. If left unspecified, it will default to the
+        #   organization where the project provided in name is located.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1SearchEntriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1SearchEntriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_entries(name, order_by: nil, page_size: nil, page_token: nil, query: nil, scope: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:searchEntries', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1SearchEntriesResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1SearchEntriesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['scope'] = scope unless scope.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an AspectType
+        # @param [String] parent
+        #   Required. The resource name of the AspectType, of the form: projects/`
+        #   project_number`/locations/`location_id` where location_id refers to a GCP
+        #   region.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectType] google_cloud_dataplex_v1_aspect_type_object
+        # @param [String] aspect_type_id
+        #   Required. AspectType identifier.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_aspect_type(parent, google_cloud_dataplex_v1_aspect_type_object = nil, aspect_type_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/aspectTypes', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectType::Representation
+          command.request_object = google_cloud_dataplex_v1_aspect_type_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['aspectTypeId'] = aspect_type_id unless aspect_type_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a AspectType resource.
+        # @param [String] name
+        #   Required. The resource name of the AspectType: projects/`project_number`/
+        #   locations/`location_id`/aspectTypes/`aspect_type_id`.
+        # @param [String] etag
+        #   Optional. If the client provided etag value does not match the current etag
+        #   value, the DeleteAspectTypeRequest method returns an ABORTED error response
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_aspect_type(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a AspectType resource.
+        # @param [String] name
+        #   Required. The resource name of the AspectType: projects/`project_number`/
+        #   locations/`location_id`/aspectTypes/`aspect_type_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_aspect_type(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectType::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectType
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -164,6 +365,98 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists AspectType resources in a project and location.
+        # @param [String] parent
+        #   Required. The resource name of the AspectType location, of the form: projects/`
+        #   project_number`/locations/`location_id` where location_id refers to a GCP
+        #   region.
+        # @param [String] filter
+        #   Optional. Filter request. Filters are case-sensitive. The following formats
+        #   are supported:labels.key1 = "value1" labels:key1 name = "value" These
+        #   restrictions can be coinjoined with AND, OR and NOT conjunctions.
+        # @param [String] order_by
+        #   Optional. Order by fields (name or create_time) for the result. If not
+        #   specified, the ordering is undefined.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of AspectTypes to return. The service may return
+        #   fewer than this value. If unspecified, at most 10 AspectTypes will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListAspectTypes call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to ListAspectTypes must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListAspectTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListAspectTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_aspect_types(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/aspectTypes', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListAspectTypesResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListAspectTypesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a AspectType resource.
+        # @param [String] name
+        #   Output only. The relative resource name of the AspectType, of the form:
+        #   projects/`project_number`/locations/`location_id`/aspectTypes/`aspect_type_id`.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectType] google_cloud_dataplex_v1_aspect_type_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_aspect_type(name, google_cloud_dataplex_v1_aspect_type_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectType::Representation
+          command.request_object = google_cloud_dataplex_v1_aspect_type_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -651,6 +944,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generates recommended DataQualityRule from a data profiling DataScan.
+        # @param [String] name
+        #   Required. The name should be either * the name of a datascan with at least one
+        #   successful completed data profiling job, or * the name of a successful
+        #   completed data profiling datascan job.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesRequest] google_cloud_dataplex_v1_generate_data_quality_rules_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_data_scan_data_quality_rules(name, google_cloud_dataplex_v1_generate_data_quality_rules_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:generateDataQualityRules', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesRequest::Representation
+          command.request_object = google_cloud_dataplex_v1_generate_data_quality_rules_request_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a DataScan resource.
         # @param [String] name
         #   Required. The resource name of the dataScan: projects/`project`/locations/`
@@ -929,6 +1257,41 @@ module Google
           command.response_representation = Google::Apis::DataplexV1::GoogleIamV1TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates recommended DataQualityRule from a data profiling DataScan.
+        # @param [String] name
+        #   Required. The name should be either * the name of a datascan with at least one
+        #   successful completed data profiling job, or * the name of a successful
+        #   completed data profiling datascan job.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesRequest] google_cloud_dataplex_v1_generate_data_quality_rules_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_data_scan_job_data_quality_rules(name, google_cloud_dataplex_v1_generate_data_quality_rules_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:generateDataQualityRules', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesRequest::Representation
+          command.request_object = google_cloud_dataplex_v1_generate_data_quality_rules_request_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1GenerateDataQualityRulesResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1668,6 +2031,114 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an EntryGroup
+        # @param [String] parent
+        #   Required. The resource name of the entryGroup, of the form: projects/`
+        #   project_number`/locations/`location_id` where location_id refers to a GCP
+        #   region.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryGroup] google_cloud_dataplex_v1_entry_group_object
+        # @param [String] entry_group_id
+        #   Required. EntryGroup identifier.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_entry_group(parent, google_cloud_dataplex_v1_entry_group_object = nil, entry_group_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/entryGroups', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryGroup::Representation
+          command.request_object = google_cloud_dataplex_v1_entry_group_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['entryGroupId'] = entry_group_id unless entry_group_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a EntryGroup resource.
+        # @param [String] name
+        #   Required. The resource name of the EntryGroup: projects/`project_number`/
+        #   locations/`location_id`/entryGroups/`entry_group_id`.
+        # @param [String] etag
+        #   Optional. If the client provided etag value does not match the current etag
+        #   value, the DeleteEntryGroupRequest method returns an ABORTED error response
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_entry_group(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a EntryGroup resource.
+        # @param [String] name
+        #   Required. The resource name of the EntryGroup: projects/`project_number`/
+        #   locations/`location_id`/entryGroups/`entry_group_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_entry_group(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryGroup::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryGroup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -1708,6 +2179,95 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists EntryGroup resources in a project and location.
+        # @param [String] parent
+        #   Required. The resource name of the entryGroup location, of the form: projects/`
+        #   project_number`/locations/`location_id` where location_id refers to a GCP
+        #   region.
+        # @param [String] filter
+        #   Optional. Filter request.
+        # @param [String] order_by
+        #   Optional. Order by fields for the result.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of EntryGroups to return. The service may return
+        #   fewer than this value. If unspecified, at most 10 EntryGroups will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListEntryGroups call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to ListEntryGroups must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntryGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntryGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_entry_groups(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/entryGroups', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntryGroupsResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntryGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a EntryGroup resource.
+        # @param [String] name
+        #   Output only. The relative resource name of the EntryGroup, of the form:
+        #   projects/`project_number`/locations/`location_id`/entryGroups/`entry_group_id`.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryGroup] google_cloud_dataplex_v1_entry_group_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_entry_group(name, google_cloud_dataplex_v1_entry_group_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryGroup::Representation
+          command.request_object = google_cloud_dataplex_v1_entry_group_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1789,6 +2349,336 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an Entry.
+        # @param [String] parent
+        #   Required. The resource name of the parent Entry Group: projects/`project`/
+        #   locations/`location`/entryGroups/`entry_group`.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry] google_cloud_dataplex_v1_entry_object
+        # @param [String] entry_id
+        #   Required. Entry identifier. It has to be unique within an Entry Group.Entries
+        #   corresponding to Google Cloud resources use Entry ID format based on Full
+        #   Resource Names (https://cloud.google.com/apis/design/resource_names#
+        #   full_resource_name). The format is a Full Resource Name of the resource
+        #   without the prefix double slashes in the API Service Name part of Full
+        #   Resource Name. This allows retrieval of entries using their associated
+        #   resource name.For example if the Full Resource Name of a resource is //library.
+        #   googleapis.com/shelves/shelf1/books/book2, then the suggested entry_id is
+        #   library.googleapis.com/shelves/shelf1/books/book2.It is also suggested to
+        #   follow the same convention for entries corresponding to resources from other
+        #   providers or systems than Google Cloud.The maximum size of the field is 4000
+        #   characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_entry_group_entry(parent, google_cloud_dataplex_v1_entry_object = nil, entry_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/entries', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
+          command.request_object = google_cloud_dataplex_v1_entry_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry
+          command.params['parent'] = parent unless parent.nil?
+          command.query['entryId'] = entry_id unless entry_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an Entry.
+        # @param [String] name
+        #   Required. The resource name of the Entry: projects/`project`/locations/`
+        #   location`/entryGroups/`entry_group`/entries/`entry`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_entry_group_entry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a single entry.
+        # @param [String] name
+        #   Required. The resource name of the Entry: projects/`project`/locations/`
+        #   location`/entryGroups/`entry_group`/entries/`entry`.
+        # @param [Array<String>, String] aspect_types
+        #   Optional. Limits the aspects returned to the provided aspect types. Only works
+        #   if the CUSTOM view is selected.
+        # @param [Array<String>, String] paths
+        #   Optional. Limits the aspects returned to those associated with the provided
+        #   paths within the Entry. Only works if the CUSTOM view is selected.
+        # @param [String] view
+        #   Optional. View for controlling which parts of an entry are to be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_entry_group_entry(name, aspect_types: nil, paths: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry
+          command.params['name'] = name unless name.nil?
+          command.query['aspectTypes'] = aspect_types unless aspect_types.nil?
+          command.query['paths'] = paths unless paths.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists entries within an entry group.
+        # @param [String] parent
+        #   Required. The resource name of the parent Entry Group: projects/`project`/
+        #   locations/`location`/entryGroups/`entry_group`.
+        # @param [String] filter
+        #   Optional. A filter on the entries to return. Filters are case-sensitive. The
+        #   request can be filtered by the following fields: entry_type, display_name. The
+        #   comparison operators are =, !=, <, >, <=, >= (strings are compared according
+        #   to lexical order) The logical operators AND, OR, NOT can be used in the filter.
+        #   Example filter expressions: "display_name=AnExampleDisplayName" "entry_type=
+        #   projects/example-project/locations/global/entryTypes/example-entry_type" "
+        #   entry_type=projects/a* OR "entry_type=projects/k*" "NOT display_name=
+        #   AnotherExampleDisplayName"
+        # @param [Fixnum] page_size
+        # @param [String] page_token
+        #   Optional. The pagination token returned by a previous request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_entry_group_entries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/entries', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntriesResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an Entry.
+        # @param [String] name
+        #   Identifier. The relative resource name of the Entry, of the form: projects/`
+        #   project`/locations/`location`/entryGroups/`entry_group`/entries/`entry`.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry] google_cloud_dataplex_v1_entry_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true and the entry does not exist, it will be created.
+        # @param [Array<String>, String] aspect_keys
+        #   Optional. The map keys of the Aspects which should be modified. Supports the
+        #   following syntaxes: * - matches aspect on given type and empty path * @path -
+        #   matches aspect on given type and specified path * * - matches aspects on given
+        #   type for all paths * *@path - matches aspects of all types on the given
+        #   pathExisting aspects matching the syntax will not be removed unless
+        #   delete_missing_aspects is set to true.If this field is left empty, it will be
+        #   treated as specifying exactly those Aspects present in the request.
+        # @param [Boolean] delete_missing_aspects
+        #   Optional. If set to true and the aspect_keys specify aspect ranges, any
+        #   existing aspects from that range not provided in the request will be deleted.
+        # @param [String] update_mask
+        #   Optional. Mask of fields to update. To update Aspects, the update_mask must
+        #   contain the value "aspects".If the update_mask is empty, all modifiable fields
+        #   present in the request will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_entry_group_entry(name, google_cloud_dataplex_v1_entry_object = nil, allow_missing: nil, aspect_keys: nil, delete_missing_aspects: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
+          command.request_object = google_cloud_dataplex_v1_entry_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['aspectKeys'] = aspect_keys unless aspect_keys.nil?
+          command.query['deleteMissingAspects'] = delete_missing_aspects unless delete_missing_aspects.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an EntryType
+        # @param [String] parent
+        #   Required. The resource name of the EntryType, of the form: projects/`
+        #   project_number`/locations/`location_id` where location_id refers to a GCP
+        #   region.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryType] google_cloud_dataplex_v1_entry_type_object
+        # @param [String] entry_type_id
+        #   Required. EntryType identifier.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_entry_type(parent, google_cloud_dataplex_v1_entry_type_object = nil, entry_type_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/entryTypes', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryType::Representation
+          command.request_object = google_cloud_dataplex_v1_entry_type_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['entryTypeId'] = entry_type_id unless entry_type_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a EntryType resource.
+        # @param [String] name
+        #   Required. The resource name of the EntryType: projects/`project_number`/
+        #   locations/`location_id`/entryTypes/`entry_type_id`.
+        # @param [String] etag
+        #   Optional. If the client provided etag value does not match the current etag
+        #   value, the DeleteEntryTypeRequest method returns an ABORTED error response
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_entry_type(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a EntryType resource.
+        # @param [String] name
+        #   Required. The resource name of the EntryType: projects/`project_number`/
+        #   locations/`location_id`/entryTypes/`entry_type_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_entry_type(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryType::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryType
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -1829,6 +2719,98 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists EntryType resources in a project and location.
+        # @param [String] parent
+        #   Required. The resource name of the EntryType location, of the form: projects/`
+        #   project_number`/locations/`location_id` where location_id refers to a GCP
+        #   region.
+        # @param [String] filter
+        #   Optional. Filter request. Filters are case-sensitive. The following formats
+        #   are supported:labels.key1 = "value1" labels:key1 name = "value" These
+        #   restrictions can be coinjoined with AND, OR and NOT conjunctions.
+        # @param [String] order_by
+        #   Optional. Order by fields (name or create_time) for the result. If not
+        #   specified, the ordering is undefined.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of EntryTypes to return. The service may return fewer
+        #   than this value. If unspecified, at most 10 EntryTypes will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListEntryTypes call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to ListEntryTypes must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntryTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntryTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_entry_types(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/entryTypes', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntryTypesResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListEntryTypesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a EntryType resource.
+        # @param [String] name
+        #   Output only. The relative resource name of the EntryType, of the form:
+        #   projects/`project_number`/locations/`location_id`/entryTypes/`entry_type_id`.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryType] google_cloud_dataplex_v1_entry_type_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_entry_type(name, google_cloud_dataplex_v1_entry_type_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryType::Representation
+          command.request_object = google_cloud_dataplex_v1_entry_type_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
