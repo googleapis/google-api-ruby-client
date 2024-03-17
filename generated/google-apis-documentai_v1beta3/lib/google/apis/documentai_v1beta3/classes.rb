@@ -10021,7 +10021,8 @@ module Google
         attr_accessor :external_processor_version_source
       
         # The source processor version to import from. The source processor version and
-        # destination processor need to be in the same environment and region.
+        # destination processor need to be in the same environment and region. Note that
+        # ProcessorVersions with `model_type` `MODEL_TYPE_LLM` are not supported.
         # Corresponds to the JSON property `processorVersionSource`
         # @return [String]
         attr_accessor :processor_version_source
