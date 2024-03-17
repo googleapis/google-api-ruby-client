@@ -582,7 +582,7 @@ module Google
         
         # Updates a single Repository.
         # @param [String] name
-        #   Output only. The repository's name.
+        #   Identifier. The repository's name.
         # @param [Google::Apis::DataformV1beta1::Repository] repository_object
         # @param [String] update_mask
         #   Optional. Specifies the fields to be updated in the repository. If left unset,

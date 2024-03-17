@@ -2193,7 +2193,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The repository's name.
+        # Identifier. The repository's name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2792,7 +2792,7 @@ module Google
       class Workspace
         include Google::Apis::Core::Hashable
       
-        # Output only. The workspace's name.
+        # Identifier. The workspace's name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
