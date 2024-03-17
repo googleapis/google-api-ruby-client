@@ -952,6 +952,11 @@ module Google
         # @return [String]
         attr_accessor :provider
       
+        # Specifies connection parameters required specifically for SQL Server databases.
+        # Corresponds to the JSON property `sqlserver`
+        # @return [Google::Apis::DatamigrationV1::SqlServerConnectionProfile]
+        attr_accessor :sqlserver
+      
         # The current connection profile state (e.g. DRAFT, READY, or FAILED).
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -981,6 +986,7 @@ module Google
           @oracle = args[:oracle] if args.key?(:oracle)
           @postgresql = args[:postgresql] if args.key?(:postgresql)
           @provider = args[:provider] if args.key?(:provider)
+          @sqlserver = args[:sqlserver] if args.key?(:sqlserver)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2925,6 +2931,11 @@ module Google
         # @return [Google::Apis::DatamigrationV1::DatabaseType]
         attr_accessor :source_database
       
+        # Configuration for homogeneous migration to Cloud SQL for SQL Server.
+        # Corresponds to the JSON property `sqlserverHomogeneousMigrationJobConfig`
+        # @return [Google::Apis::DatamigrationV1::SqlServerHomogeneousMigrationJobConfig]
+        attr_accessor :sqlserver_homogeneous_migration_job_config
+      
         # The current migration job state.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2982,6 +2993,7 @@ module Google
           @reverse_ssh_connectivity = args[:reverse_ssh_connectivity] if args.key?(:reverse_ssh_connectivity)
           @source = args[:source] if args.key?(:source)
           @source_database = args[:source_database] if args.key?(:source_database)
+          @sqlserver_homogeneous_migration_job_config = args[:sqlserver_homogeneous_migration_job_config] if args.key?(:sqlserver_homogeneous_migration_job_config)
           @state = args[:state] if args.key?(:state)
           @static_ip_connectivity = args[:static_ip_connectivity] if args.key?(:static_ip_connectivity)
           @type = args[:type] if args.key?(:type)
@@ -4506,6 +4518,220 @@ module Google
           @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @private_network = args[:private_network] if args.key?(:private_network)
           @require_ssl = args[:require_ssl] if args.key?(:require_ssl)
+        end
+      end
+      
+      # Specifies the backup details in Cloud Storage for homogeneous migration to
+      # Cloud SQL for SQL Server.
+      class SqlServerBackups
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud Storage bucket that stores backups for all replicated
+        # databases.
+        # Corresponds to the JSON property `gcsBucket`
+        # @return [String]
+        attr_accessor :gcs_bucket
+      
+        # Optional. Cloud Storage path inside the bucket that stores backups.
+        # Corresponds to the JSON property `gcsPrefix`
+        # @return [String]
+        attr_accessor :gcs_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
+          @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+        end
+      end
+      
+      # Specifies connection parameters required specifically for SQL Server databases.
+      class SqlServerConnectionProfile
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the backup details in Cloud Storage for homogeneous migration to
+        # Cloud SQL for SQL Server.
+        # Corresponds to the JSON property `backups`
+        # @return [Google::Apis::DatamigrationV1::SqlServerBackups]
+        attr_accessor :backups
+      
+        # If the source is a Cloud SQL database, use this field to provide the Cloud SQL
+        # instance ID of the source.
+        # Corresponds to the JSON property `cloudSqlId`
+        # @return [String]
+        attr_accessor :cloud_sql_id
+      
+        # Forward SSH Tunnel connectivity.
+        # Corresponds to the JSON property `forwardSshConnectivity`
+        # @return [Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity]
+        attr_accessor :forward_ssh_connectivity
+      
+        # Required. The IP or hostname of the source SQL Server database.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Required. Input only. The password for the user that Database Migration
+        # Service will be using to connect to the database. This field is not returned
+        # on request, and the value is encrypted when stored in Database Migration
+        # Service.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Output only. Indicates whether a new password is included in the request.
+        # Corresponds to the JSON property `passwordSet`
+        # @return [Boolean]
+        attr_accessor :password_set
+        alias_method :password_set?, :password_set
+      
+        # Required. The network port of the source SQL Server database.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Private Connectivity.
+        # Corresponds to the JSON property `privateConnectivity`
+        # @return [Google::Apis::DatamigrationV1::PrivateConnectivity]
+        attr_accessor :private_connectivity
+      
+        # [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/
+        # private-service-connect#service-attachments)
+        # Corresponds to the JSON property `privateServiceConnectConnectivity`
+        # @return [Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity]
+        attr_accessor :private_service_connect_connectivity
+      
+        # SSL configuration information.
+        # Corresponds to the JSON property `ssl`
+        # @return [Google::Apis::DatamigrationV1::SslConfig]
+        attr_accessor :ssl
+      
+        # The source database will allow incoming connections from the public IP of the
+        # destination database. You can retrieve the public IP of the Cloud SQL instance
+        # from the Cloud SQL console or using Cloud SQL APIs. No additional
+        # configuration is required.
+        # Corresponds to the JSON property `staticIpConnectivity`
+        # @return [Google::Apis::DatamigrationV1::StaticIpConnectivity]
+        attr_accessor :static_ip_connectivity
+      
+        # Required. The username that Database Migration Service will use to connect to
+        # the database. The value is encrypted when stored in Database Migration Service.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backups = args[:backups] if args.key?(:backups)
+          @cloud_sql_id = args[:cloud_sql_id] if args.key?(:cloud_sql_id)
+          @forward_ssh_connectivity = args[:forward_ssh_connectivity] if args.key?(:forward_ssh_connectivity)
+          @host = args[:host] if args.key?(:host)
+          @password = args[:password] if args.key?(:password)
+          @password_set = args[:password_set] if args.key?(:password_set)
+          @port = args[:port] if args.key?(:port)
+          @private_connectivity = args[:private_connectivity] if args.key?(:private_connectivity)
+          @private_service_connect_connectivity = args[:private_service_connect_connectivity] if args.key?(:private_service_connect_connectivity)
+          @ssl = args[:ssl] if args.key?(:ssl)
+          @static_ip_connectivity = args[:static_ip_connectivity] if args.key?(:static_ip_connectivity)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Specifies the backup details for a single database in Cloud Storage for
+      # homogeneous migration to Cloud SQL for SQL Server.
+      class SqlServerDatabaseBackup
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of a SQL Server database for which to define backup
+        # configuration.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Encryption settings for the SQL Server database.
+        # Corresponds to the JSON property `encryptionOptions`
+        # @return [Google::Apis::DatamigrationV1::SqlServerEncryptionOptions]
+        attr_accessor :encryption_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @encryption_options = args[:encryption_options] if args.key?(:encryption_options)
+        end
+      end
+      
+      # Encryption settings for the SQL Server database.
+      class SqlServerEncryptionOptions
+        include Google::Apis::Core::Hashable
+      
+        # Required. Path to certificate.
+        # Corresponds to the JSON property `certPath`
+        # @return [String]
+        attr_accessor :cert_path
+      
+        # Required. Input only. Private key password.
+        # Corresponds to the JSON property `pvkPassword`
+        # @return [String]
+        attr_accessor :pvk_password
+      
+        # Required. Path to certificate private key.
+        # Corresponds to the JSON property `pvkPath`
+        # @return [String]
+        attr_accessor :pvk_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cert_path = args[:cert_path] if args.key?(:cert_path)
+          @pvk_password = args[:pvk_password] if args.key?(:pvk_password)
+          @pvk_path = args[:pvk_path] if args.key?(:pvk_path)
+        end
+      end
+      
+      # Configuration for homogeneous migration to Cloud SQL for SQL Server.
+      class SqlServerHomogeneousMigrationJobConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Pattern that describes the default backup naming strategy. The
+        # specified pattern should ensure lexicographical order of backups. The pattern
+        # must define one of the following capture group sets: Capture group set #1 yy/
+        # yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of month, 1-31 hh -
+        # hour of day, 00-23 mi - minutes, 00-59 ss - seconds, 00-59 Example: For
+        # backup file TestDB_backup_20230802_155400.trn, use pattern: (?.*)_backup_(?\d`
+        # 4`)(?\d`2`)(?\d`2`)_(?\d`2`)(?\d`2`)(?\d`2`).trn Capture group set #2
+        # timestamp - unix timestamp Example: For backup file TestDB_backup_1691448254.
+        # trn, use pattern: (?.*)_backup_(?.*).trn
+        # Corresponds to the JSON property `backupFilePattern`
+        # @return [String]
+        attr_accessor :backup_file_pattern
+      
+        # Required. Backup details per database in Cloud Storage.
+        # Corresponds to the JSON property `databaseBackups`
+        # @return [Array<Google::Apis::DatamigrationV1::SqlServerDatabaseBackup>]
+        attr_accessor :database_backups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_file_pattern = args[:backup_file_pattern] if args.key?(:backup_file_pattern)
+          @database_backups = args[:database_backups] if args.key?(:database_backups)
         end
       end
       
