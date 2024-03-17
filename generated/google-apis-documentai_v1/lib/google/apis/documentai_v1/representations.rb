@@ -1012,6 +1012,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3608,6 +3614,8 @@ module Google
       
           property :document_schema, as: 'documentSchema', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema::Representation
       
+          property :foundation_model_tuning_options, as: 'foundationModelTuningOptions', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions::Representation
+      
           property :input_data, as: 'inputData', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData::Representation
       
           property :processor_version, as: 'processorVersion', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersion, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersion::Representation
@@ -3619,6 +3627,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :training_method, as: 'trainingMethod'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :learning_rate_multiplier, as: 'learningRateMultiplier'
+          property :train_steps, as: 'trainSteps'
         end
       end
       
