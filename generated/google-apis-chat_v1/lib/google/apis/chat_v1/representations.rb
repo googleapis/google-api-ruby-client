@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DriveLinkData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Emoji
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -508,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RichLinkMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Section
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -666,6 +678,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :length, as: 'length'
+          property :rich_link_metadata, as: 'richLinkMetadata', class: Google::Apis::ChatV1::RichLinkMetadata, decorator: Google::Apis::ChatV1::RichLinkMetadata::Representation
+      
           property :slash_command, as: 'slashCommand', class: Google::Apis::ChatV1::SlashCommandMetadata, decorator: Google::Apis::ChatV1::SlashCommandMetadata::Representation
       
           property :start_index, as: 'startIndex'
@@ -889,6 +903,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :drive_file_id, as: 'driveFileId'
+        end
+      end
+      
+      class DriveLinkData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :drive_data_ref, as: 'driveDataRef', class: Google::Apis::ChatV1::DriveDataRef, decorator: Google::Apis::ChatV1::DriveDataRef::Representation
+      
+          property :mime_type, as: 'mimeType'
         end
       end
       
@@ -1535,6 +1558,16 @@ module Google
           property :name, as: 'name'
           property :user, as: 'user', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
       
+        end
+      end
+      
+      class RichLinkMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :drive_link_data, as: 'driveLinkData', class: Google::Apis::ChatV1::DriveLinkData, decorator: Google::Apis::ChatV1::DriveLinkData::Representation
+      
+          property :rich_link_type, as: 'richLinkType'
+          property :uri, as: 'uri'
         end
       end
       
