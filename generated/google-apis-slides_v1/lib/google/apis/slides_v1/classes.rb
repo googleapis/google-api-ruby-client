@@ -2138,6 +2138,11 @@ module Google
         # @return [Google::Apis::SlidesV1::Size]
         attr_accessor :size
       
+        # A PageElement kind representing a Speaker Spotlight.
+        # Corresponds to the JSON property `speakerSpotlight`
+        # @return [Google::Apis::SlidesV1::SpeakerSpotlight]
+        attr_accessor :speaker_spotlight
+      
         # A PageElement kind representing a table.
         # Corresponds to the JSON property `table`
         # @return [Google::Apis::SlidesV1::Table]
@@ -2182,6 +2187,7 @@ module Google
           @shape = args[:shape] if args.key?(:shape)
           @sheets_chart = args[:sheets_chart] if args.key?(:sheets_chart)
           @size = args[:size] if args.key?(:size)
+          @speaker_spotlight = args[:speaker_spotlight] if args.key?(:speaker_spotlight)
           @table = args[:table] if args.key?(:table)
           @title = args[:title] if args.key?(:title)
           @transform = args[:transform] if args.key?(:transform)
@@ -3616,6 +3622,56 @@ module Google
         def update!(**args)
           @alpha = args[:alpha] if args.key?(:alpha)
           @color = args[:color] if args.key?(:color)
+        end
+      end
+      
+      # A PageElement kind representing a Speaker Spotlight.
+      class SpeakerSpotlight
+        include Google::Apis::Core::Hashable
+      
+        # The properties of the SpeakerSpotlight.
+        # Corresponds to the JSON property `speakerSpotlightProperties`
+        # @return [Google::Apis::SlidesV1::SpeakerSpotlightProperties]
+        attr_accessor :speaker_spotlight_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker_spotlight_properties = args[:speaker_spotlight_properties] if args.key?(:speaker_spotlight_properties)
+        end
+      end
+      
+      # The properties of the SpeakerSpotlight.
+      class SpeakerSpotlightProperties
+        include Google::Apis::Core::Hashable
+      
+        # The outline of a PageElement. If these fields are unset, they may be inherited
+        # from a parent placeholder if it exists. If there is no parent, the fields will
+        # default to the value used for new page elements created in the Slides editor,
+        # which may depend on the page element kind.
+        # Corresponds to the JSON property `outline`
+        # @return [Google::Apis::SlidesV1::Outline]
+        attr_accessor :outline
+      
+        # The shadow properties of a page element. If these fields are unset, they may
+        # be inherited from a parent placeholder if it exists. If there is no parent,
+        # the fields will default to the value used for new page elements created in the
+        # Slides editor, which may depend on the page element kind.
+        # Corresponds to the JSON property `shadow`
+        # @return [Google::Apis::SlidesV1::Shadow]
+        attr_accessor :shadow
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @outline = args[:outline] if args.key?(:outline)
+          @shadow = args[:shadow] if args.key?(:shadow)
         end
       end
       
