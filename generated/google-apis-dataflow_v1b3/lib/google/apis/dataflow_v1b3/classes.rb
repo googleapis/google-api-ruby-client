@@ -1431,6 +1431,8 @@ module Google
         # Reduces cost and latency but might result in duplicate messages committed to
         # storage. Designed to run simple mapping streaming ETL jobs at the lowest cost.
         # For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        # For more information, see [Set the pipeline streaming mode](https://cloud.
+        # google.com/dataflow/docs/guides/streaming-modes).
         # Corresponds to the JSON property `streamingMode`
         # @return [String]
         attr_accessor :streaming_mode
@@ -1792,6 +1794,8 @@ module Google
         # Reduces cost and latency but might result in duplicate messages committed to
         # storage. Designed to run simple mapping streaming ETL jobs at the lowest cost.
         # For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        # For more information, see [Set the pipeline streaming mode](https://cloud.
+        # google.com/dataflow/docs/guides/streaming-modes).
         # Corresponds to the JSON property `streamingMode`
         # @return [String]
         attr_accessor :streaming_mode
@@ -4490,6 +4494,8 @@ module Google
         # Reduces cost and latency but might result in duplicate messages committed to
         # storage. Designed to run simple mapping streaming ETL jobs at the lowest cost.
         # For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        # For more information, see [Set the pipeline streaming mode](https://cloud.
+        # google.com/dataflow/docs/guides/streaming-modes).
         # Corresponds to the JSON property `streamingMode`
         # @return [String]
         attr_accessor :streaming_mode
@@ -4607,7 +4613,9 @@ module Google
       
         # Target worker utilization, compared against the aggregate utilization of the
         # worker pool by autoscaler, to determine upscaling and downscaling when absent
-        # other constraints such as backlog.
+        # other constraints such as backlog. For more information, see [Update an
+        # existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-
+        # pipeline).
         # Corresponds to the JSON property `workerUtilizationHint`
         # @return [Float]
         attr_accessor :worker_utilization_hint
