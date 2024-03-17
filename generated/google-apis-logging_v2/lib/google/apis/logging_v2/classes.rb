@@ -2198,6 +2198,19 @@ module Google
         attr_accessor :include_children
         alias_method :include_children?, :include_children
       
+        # Optional. This field applies only to sinks owned by organizations and folders.
+        # When the value of 'intercept_children' is true, the following restrictions
+        # apply: The sink must have the include_children flag set to true. The sink
+        # destination must be a Cloud project.Also, the following behaviors apply: Any
+        # logs matched by the sink won't be included by non-_Required sinks owned by
+        # child resources. The sink appears in the results of a ListSinks call from a
+        # child resource if the value of the filter field in its request is either '
+        # in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+        # Corresponds to the JSON property `interceptChildren`
+        # @return [Boolean]
+        attr_accessor :intercept_children
+        alias_method :intercept_children?, :intercept_children
+      
         # Output only. The client-assigned sink identifier, unique within the project.
         # For example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100
         # characters and can include only the following characters: upper and lower-case
@@ -2211,6 +2224,14 @@ module Google
         # Corresponds to the JSON property `outputVersionFormat`
         # @return [String]
         attr_accessor :output_version_format
+      
+        # Output only. The resource name of the sink. "projects/[PROJECT_ID]/sinks/[
+        # SINK_NAME] "organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME] "billingAccounts/
+        # [BILLING_ACCOUNT_ID]/sinks/[SINK_NAME] "folders/[FOLDER_ID]/sinks/[SINK_NAME]
+        # For example: projects/my_project/sinks/SINK_NAME
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
       
         # Output only. The last update timestamp of the sink.This field may not be
         # present for older sinks.
@@ -2248,8 +2269,10 @@ module Google
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @filter = args[:filter] if args.key?(:filter)
           @include_children = args[:include_children] if args.key?(:include_children)
+          @intercept_children = args[:intercept_children] if args.key?(:intercept_children)
           @name = args[:name] if args.key?(:name)
           @output_version_format = args[:output_version_format] if args.key?(:output_version_format)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
         end
