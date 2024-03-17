@@ -604,6 +604,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3WebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1229,6 +1235,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1WebhookGenericWebService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4079,13 +4091,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_ca_certs, as: 'allowedCaCerts'
           property :http_method, as: 'httpMethod'
+          property :oauth_config, as: 'oauthConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig::Representation
+      
           hash :parameter_mapping, as: 'parameterMapping'
           property :password, as: 'password'
           property :request_body, as: 'requestBody'
           hash :request_headers, as: 'requestHeaders'
+          property :service_agent_auth, as: 'serviceAgentAuth'
           property :uri, as: 'uri'
           property :username, as: 'username'
           property :webhook_type, as: 'webhookType'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          collection :scopes, as: 'scopes'
+          property :token_endpoint, as: 'tokenEndpoint'
         end
       end
       
@@ -5106,13 +5131,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_ca_certs, as: 'allowedCaCerts'
           property :http_method, as: 'httpMethod'
+          property :oauth_config, as: 'oauthConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig::Representation
+      
           hash :parameter_mapping, as: 'parameterMapping'
           property :password, as: 'password'
           property :request_body, as: 'requestBody'
           hash :request_headers, as: 'requestHeaders'
+          property :service_agent_auth, as: 'serviceAgentAuth'
           property :uri, as: 'uri'
           property :username, as: 'username'
           property :webhook_type, as: 'webhookType'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          collection :scopes, as: 'scopes'
+          property :token_endpoint, as: 'tokenEndpoint'
         end
       end
       
