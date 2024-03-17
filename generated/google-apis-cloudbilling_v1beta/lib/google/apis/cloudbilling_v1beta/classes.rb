@@ -863,7 +863,7 @@ module Google
         attr_accessor :display_name
       
         # The resource name of the cause. project: projects/`project`. service: services/
-        # `service`. sku: services/`service`/skus/`sku`.
+        # `service`. sku: services/`service`/skus/`sku`. location: locations/`location`.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
