@@ -1998,6 +1998,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. If true, this channel group will be used as the default channel
+        # group for reports. Only one channel group can be set as `primary` at any time.
+        # If the `primary` field gets set on a channel group, it will get unset on the
+        # previous primary channel group. The Google Analytics predefined channel group
+        # is the primary by default.
+        # Corresponds to the JSON property `primary`
+        # @return [Boolean]
+        attr_accessor :primary
+        alias_method :primary?, :primary
+      
         # Output only. If true, then this channel group is the Default Channel Group
         # predefined by Google Analytics. Display name and grouping rules cannot be
         # updated for this channel group.
@@ -2016,6 +2026,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @grouping_rule = args[:grouping_rule] if args.key?(:grouping_rule)
           @name = args[:name] if args.key?(:name)
+          @primary = args[:primary] if args.key?(:primary)
           @system_defined = args[:system_defined] if args.key?(:system_defined)
         end
       end
