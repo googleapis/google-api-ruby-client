@@ -820,6 +820,64 @@ module Google
         end
       end
       
+      # Response contains a list of CrashEventCountByVersionPerDay which count the
+      # chrome crash at the certain date.
+      class GoogleChromeManagementV1CountChromeCrashEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Crash event counts grouped by date and browser version.
+        # Corresponds to the JSON property `crashEventCounts`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>]
+        attr_accessor :crash_event_counts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crash_event_counts = args[:crash_event_counts] if args.key?(:crash_event_counts)
+        end
+      end
+      
+      # The `count` of the Chrome crash events at the `date`.
+      class GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount
+        include Google::Apis::Core::Hashable
+      
+        # Browser version this is counting.
+        # Corresponds to the JSON property `browserVersion`
+        # @return [String]
+        attr_accessor :browser_version
+      
+        # Total count of crash events.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::ChromemanagementV1::GoogleTypeDate]
+        attr_accessor :date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @browser_version = args[:browser_version] if args.key?(:browser_version)
+          @count = args[:count] if args.key?(:count)
+          @date = args[:date] if args.key?(:date)
+        end
+      end
+      
       # Response containing a list of devices expiring in each month of a selected
       # time frame. Counts are grouped by model and Auto Update Expiration date.
       class GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse
@@ -1318,6 +1376,32 @@ module Google
         end
       end
       
+      # Details of a device requesting an extension, including the name of the device
+      # and the justification of the request.
+      class GoogleChromeManagementV1DeviceRequestingExtensionDetails
+        include Google::Apis::Core::Hashable
+      
+        # The name of a device that has requested the extension.
+        # Corresponds to the JSON property `deviceName`
+        # @return [String]
+        attr_accessor :device_name
+      
+        # Request justification as entered by the user.
+        # Corresponds to the JSON property `justification`
+        # @return [String]
+        attr_accessor :justification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_name = args[:device_name] if args.key?(:device_name)
+          @justification = args[:justification] if args.key?(:justification)
+        end
+      end
+      
       # Status of the single storage device.
       class GoogleChromeManagementV1DiskInfo
         include Google::Apis::Core::Hashable
@@ -1546,6 +1630,70 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @print_jobs = args[:print_jobs] if args.key?(:print_jobs)
           @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response containing a list of devices that have requested the queried
+      # extension.
+      class GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Details of devices that have requested the queried extension.
+        # Corresponds to the JSON property `deviceDetails`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceRequestingExtensionDetails>]
+        attr_accessor :device_details
+      
+        # Optional. Token to specify the next page in the list. Token expires after 1
+        # day.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Optional. Total number of devices in response.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_details = args[:device_details] if args.key?(:device_details)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response containing a list of users that have requested the queried extension.
+      class GoogleChromeManagementV1FetchUsersRequestingExtensionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to specify the next page in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Total number of users in response.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        # Details of users that have requested the queried extension.
+        # Corresponds to the JSON property `userDetails`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UserRequestingExtensionDetails>]
+        attr_accessor :user_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+          @user_details = args[:user_details] if args.key?(:user_details)
         end
       end
       
@@ -3613,6 +3761,32 @@ module Google
           @printer_count = args[:printer_count] if args.key?(:printer_count)
           @user_email = args[:user_email] if args.key?(:user_email)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Details of a user requesting an extension, including the email and the
+      # justification.
+      class GoogleChromeManagementV1UserRequestingExtensionDetails
+        include Google::Apis::Core::Hashable
+      
+        # The e-mail address of a user that has requested the extension.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Request justification as entered by the user.
+        # Corresponds to the JSON property `justification`
+        # @return [String]
+        attr_accessor :justification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @justification = args[:justification] if args.key?(:justification)
         end
       end
       
