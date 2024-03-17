@@ -1586,6 +1586,7 @@ module Google
           collection :grouping_rule, as: 'groupingRule', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGroupingRule, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGroupingRule::Representation
       
           property :name, as: 'name'
+          property :primary, as: 'primary'
           property :system_defined, as: 'systemDefined'
         end
       end
