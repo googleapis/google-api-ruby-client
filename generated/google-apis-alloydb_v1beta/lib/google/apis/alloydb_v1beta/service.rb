@@ -539,44 +539,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generate a client certificate signed by a Cluster CA. The sole purpose of this
-        # endpoint is to support AlloyDB connectors and the Auth Proxy client. The
-        # endpoint's behavior is subject to change without notice, so do not rely on its
-        # behavior remaining constant. Future changes will not break AlloyDB connectors
-        # or the Auth Proxy client.
-        # @param [String] parent
-        #   Required. The name of the parent resource. The required format is: * projects/`
-        #   project`/locations/`location`/clusters/`cluster`
-        # @param [Google::Apis::AlloydbV1beta::GenerateClientCertificateRequest] generate_client_certificate_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AlloydbV1beta::GenerateClientCertificateResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AlloydbV1beta::GenerateClientCertificateResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_cluster_client_certificate(parent, generate_client_certificate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta/{+parent}:generateClientCertificate', options)
-          command.request_representation = Google::Apis::AlloydbV1beta::GenerateClientCertificateRequest::Representation
-          command.request_object = generate_client_certificate_request_object
-          command.response_representation = Google::Apis::AlloydbV1beta::GenerateClientCertificateResponse::Representation
-          command.response_class = Google::Apis::AlloydbV1beta::GenerateClientCertificateResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets details of a single Cluster.
         # @param [String] name
         #   Required. The name of the resource. For the required format, see the comment

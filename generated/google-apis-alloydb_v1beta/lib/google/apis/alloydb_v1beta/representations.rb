@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DenyMaintenancePeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,13 +118,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenerateClientCertificateRequest
+      class GeminiClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenerateClientCertificateResponse
+      class GeminiInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -131,6 +137,12 @@ module Google
       end
       
       class GoogleCloudLocationLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeDate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,6 +220,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaintenanceUpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MigrationSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +245,12 @@ module Google
       end
       
       class Node
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObservabilityInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -406,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainUserLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterProtoCommonProduct
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,9 +593,13 @@ module Google
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::AlloydbV1beta::EncryptionInfo, decorator: Google::Apis::AlloydbV1beta::EncryptionInfo::Representation
       
           property :etag, as: 'etag'
+          property :gemini_config, as: 'geminiConfig', class: Google::Apis::AlloydbV1beta::GeminiClusterConfig, decorator: Google::Apis::AlloydbV1beta::GeminiClusterConfig::Representation
+      
           property :initial_user, as: 'initialUser', class: Google::Apis::AlloydbV1beta::UserPassword, decorator: Google::Apis::AlloydbV1beta::UserPassword::Representation
       
           hash :labels, as: 'labels'
+          property :maintenance_update_policy, as: 'maintenanceUpdatePolicy', class: Google::Apis::AlloydbV1beta::MaintenanceUpdatePolicy, decorator: Google::Apis::AlloydbV1beta::MaintenanceUpdatePolicy::Representation
+      
           property :migration_source, as: 'migrationSource', class: Google::Apis::AlloydbV1beta::MigrationSource, decorator: Google::Apis::AlloydbV1beta::MigrationSource::Representation
       
           property :name, as: 'name'
@@ -623,6 +663,18 @@ module Google
         end
       end
       
+      class DenyMaintenancePeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::AlloydbV1beta::GoogleTypeDate, decorator: Google::Apis::AlloydbV1beta::GoogleTypeDate::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::AlloydbV1beta::GoogleTypeDate, decorator: Google::Apis::AlloydbV1beta::GoogleTypeDate::Representation
+      
+          property :time, as: 'time', class: Google::Apis::AlloydbV1beta::GoogleTypeTimeOfDay, decorator: Google::Apis::AlloydbV1beta::GoogleTypeTimeOfDay::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -652,23 +704,17 @@ module Google
         end
       end
       
-      class GenerateClientCertificateRequest
+      class GeminiClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cert_duration, as: 'certDuration'
-          property :pem_csr, as: 'pemCsr'
-          property :public_key, as: 'publicKey'
-          property :request_id, as: 'requestId'
-          property :use_metadata_exchange, as: 'useMetadataExchange'
+          property :entitled, as: 'entitled'
         end
       end
       
-      class GenerateClientCertificateResponse
+      class GeminiInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ca_cert, as: 'caCert'
-          property :pem_certificate, as: 'pemCertificate'
-          collection :pem_certificate_chain, as: 'pemCertificateChain'
+          property :entitled, as: 'entitled'
         end
       end
       
@@ -689,6 +735,15 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleTypeDate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       
@@ -724,6 +779,8 @@ module Google
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
           property :gce_zone, as: 'gceZone'
+          property :gemini_config, as: 'geminiConfig', class: Google::Apis::AlloydbV1beta::GeminiInstanceConfig, decorator: Google::Apis::AlloydbV1beta::GeminiInstanceConfig::Representation
+      
           property :instance_type, as: 'instanceType'
           property :ip_address, as: 'ipAddress'
           hash :labels, as: 'labels'
@@ -733,6 +790,8 @@ module Google
           property :network_config, as: 'networkConfig', class: Google::Apis::AlloydbV1beta::InstanceNetworkConfig, decorator: Google::Apis::AlloydbV1beta::InstanceNetworkConfig::Representation
       
           collection :nodes, as: 'nodes', class: Google::Apis::AlloydbV1beta::Node, decorator: Google::Apis::AlloydbV1beta::Node::Representation
+      
+          property :observability_config, as: 'observabilityConfig', class: Google::Apis::AlloydbV1beta::ObservabilityInstanceConfig, decorator: Google::Apis::AlloydbV1beta::ObservabilityInstanceConfig::Representation
       
           property :psc_instance_config, as: 'pscInstanceConfig', class: Google::Apis::AlloydbV1beta::PscInstanceConfig, decorator: Google::Apis::AlloydbV1beta::PscInstanceConfig::Representation
       
@@ -835,6 +894,25 @@ module Google
         end
       end
       
+      class MaintenanceUpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deny_maintenance_periods, as: 'denyMaintenancePeriods', class: Google::Apis::AlloydbV1beta::DenyMaintenancePeriod, decorator: Google::Apis::AlloydbV1beta::DenyMaintenancePeriod::Representation
+      
+          collection :maintenance_windows, as: 'maintenanceWindows', class: Google::Apis::AlloydbV1beta::MaintenanceWindow, decorator: Google::Apis::AlloydbV1beta::MaintenanceWindow::Representation
+      
+        end
+      end
+      
+      class MaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :start_time, as: 'startTime', class: Google::Apis::AlloydbV1beta::GoogleTypeTimeOfDay, decorator: Google::Apis::AlloydbV1beta::GoogleTypeTimeOfDay::Representation
+      
+        end
+      end
+      
       class MigrationSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -859,6 +937,20 @@ module Google
           property :ip, as: 'ip'
           property :state, as: 'state'
           property :zone_id, as: 'zoneId'
+        end
+      end
+      
+      class ObservabilityInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :max_query_string_length, as: 'maxQueryStringLength'
+          property :preserve_comments, as: 'preserveComments'
+          property :query_plans_per_minute, as: 'queryPlansPerMinute'
+          property :record_application_tags, as: 'recordApplicationTags'
+          property :track_active_queries, as: 'trackActiveQueries'
+          property :track_wait_event_types, as: 'trackWaitEventTypes'
+          property :track_wait_events, as: 'trackWaitEvents'
         end
       end
       
@@ -1145,6 +1237,8 @@ module Google
           property :resource_container, as: 'resourceContainer'
           property :resource_name, as: 'resourceName'
           property :updation_time, as: 'updationTime'
+          property :user_label_set, as: 'userLabelSet', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUserLabels, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUserLabels::Representation
+      
           hash :user_labels, as: 'userLabels'
         end
       end
@@ -1186,6 +1280,13 @@ module Google
           property :quantity_based_retention, as: 'quantityBasedRetention'
           property :retention_unit, as: 'retentionUnit'
           property :time_based_retention, as: 'timeBasedRetention'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainUserLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
         end
       end
       
