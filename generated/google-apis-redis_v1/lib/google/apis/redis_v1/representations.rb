@@ -346,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WeeklyMaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -525,6 +531,8 @@ module Google
           property :resource_container, as: 'resourceContainer'
           property :resource_name, as: 'resourceName'
           property :updation_time, as: 'updationTime'
+          property :user_label_set, as: 'userLabelSet', class: Google::Apis::RedisV1::UserLabels, decorator: Google::Apis::RedisV1::UserLabels::Representation
+      
           hash :user_labels, as: 'userLabels'
         end
       end
@@ -934,6 +942,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :redis_version, as: 'redisVersion'
+        end
+      end
+      
+      class UserLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
         end
       end
       
