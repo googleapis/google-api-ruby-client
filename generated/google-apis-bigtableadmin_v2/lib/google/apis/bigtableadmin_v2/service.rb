@@ -1798,6 +1798,211 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new AuthorizedView in a table.
+        # @param [String] parent
+        #   Required. This is the name of the table the AuthorizedView belongs to. Values
+        #   are of the form `projects/`project`/instances/`instance`/tables/`table``.
+        # @param [Google::Apis::BigtableadminV2::AuthorizedView] authorized_view_object
+        # @param [String] authorized_view_id
+        #   Required. The id of the AuthorizedView to create. This AuthorizedView must not
+        #   already exist. The `authorized_view_id` appended to `parent` forms the full
+        #   AuthorizedView name of the form `projects/`project`/instances/`instance`/
+        #   tables/`table`/authorizedView/`authorized_view``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_instance_table_authorized_view(parent, authorized_view_object = nil, authorized_view_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/authorizedViews', options)
+          command.request_representation = Google::Apis::BigtableadminV2::AuthorizedView::Representation
+          command.request_object = authorized_view_object
+          command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
+          command.response_class = Google::Apis::BigtableadminV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['authorizedViewId'] = authorized_view_id unless authorized_view_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Permanently deletes a specified AuthorizedView.
+        # @param [String] name
+        #   Required. The unique name of the AuthorizedView to be deleted. Values are of
+        #   the form `projects/`project`/instances/`instance`/tables/`table`/
+        #   authorizedViews/`authorized_view``.
+        # @param [String] etag
+        #   Optional. The current etag of the AuthorizedView. If an etag is provided and
+        #   does not match the current etag of the AuthorizedView, deletion will be
+        #   blocked and an ABORTED error will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_instance_table_authorized_view(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::BigtableadminV2::Empty::Representation
+          command.response_class = Google::Apis::BigtableadminV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information from a specified AuthorizedView.
+        # @param [String] name
+        #   Required. The unique name of the requested AuthorizedView. Values are of the
+        #   form `projects/`project`/instances/`instance`/tables/`table`/authorizedViews/`
+        #   authorized_view``.
+        # @param [String] view
+        #   Optional. The resource_view to be applied to the returned AuthorizedView's
+        #   fields. Default to BASIC.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::AuthorizedView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::AuthorizedView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_instance_table_authorized_view(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::BigtableadminV2::AuthorizedView::Representation
+          command.response_class = Google::Apis::BigtableadminV2::AuthorizedView
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all AuthorizedViews from a specific table.
+        # @param [String] parent
+        #   Required. The unique name of the table for which AuthorizedViews should be
+        #   listed. Values are of the form `projects/`project`/instances/`instance`/tables/
+        #   `table``.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results per page. A page_size of zero lets the
+        #   server choose the number of items to return. A page_size which is strictly
+        #   positive will return at most that many items. A negative page_size will cause
+        #   an error. Following the first request, subsequent paginated calls are not
+        #   required to pass a page_size. If a page_size is set in subsequent calls, it
+        #   must match the page_size given in the first request.
+        # @param [String] page_token
+        #   Optional. The value of `next_page_token` returned by a previous call.
+        # @param [String] view
+        #   Optional. The resource_view to be applied to the returned views' fields.
+        #   Default to NAME_ONLY.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::ListAuthorizedViewsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::ListAuthorizedViewsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_instance_table_authorized_views(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/authorizedViews', options)
+          command.response_representation = Google::Apis::BigtableadminV2::ListAuthorizedViewsResponse::Representation
+          command.response_class = Google::Apis::BigtableadminV2::ListAuthorizedViewsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an AuthorizedView in a table.
+        # @param [String] name
+        #   Identifier. The name of this AuthorizedView. Values are of the form `projects/`
+        #   project`/instances/`instance`/tables/`table`/authorizedViews/`authorized_view``
+        # @param [Google::Apis::BigtableadminV2::AuthorizedView] authorized_view_object
+        # @param [Boolean] ignore_warnings
+        #   Optional. If true, ignore the safety checks when updating the AuthorizedView.
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. A mask specifying which fields in the
+        #   AuthorizedView resource should be updated. This mask is relative to the
+        #   AuthorizedView resource, not to the request message. A field will be
+        #   overwritten if it is in the mask. If empty, all fields set in the request will
+        #   be overwritten. A special value `*` means to overwrite all fields (including
+        #   fields not set in the request).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_instance_table_authorized_view(name, authorized_view_object = nil, ignore_warnings: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::BigtableadminV2::AuthorizedView::Representation
+          command.request_object = authorized_view_object
+          command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
+          command.response_class = Google::Apis::BigtableadminV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['ignoreWarnings'] = ignore_warnings unless ignore_warnings.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists information about the supported locations for this service.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
