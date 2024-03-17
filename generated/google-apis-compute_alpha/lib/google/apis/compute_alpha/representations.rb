@@ -1444,6 +1444,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GrpctlsHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetOwnerInstanceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4602,6 +4608,18 @@ module Google
       
       class Region
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class QuotaStatusWarning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8416,8 +8434,6 @@ module Google
           property :description, as: 'description'
           property :edge_security_policy, as: 'edgeSecurityPolicy'
           property :enable_cdn, as: 'enableCDN'
-          property :external_managed_migration_state, as: 'externalManagedMigrationState'
-          property :external_managed_migration_testing_rate, as: 'externalManagedMigrationTestingRate'
           property :failover_policy, as: 'failoverPolicy', class: Google::Apis::ComputeAlpha::BackendServiceFailoverPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceFailoverPolicy::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -10369,6 +10385,15 @@ module Google
         end
       end
       
+      class GrpctlsHealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :grpc_service_name, as: 'grpcServiceName'
+          property :port, as: 'port'
+          property :port_specification, as: 'portSpecification'
+        end
+      end
+      
       class GetOwnerInstanceResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10527,6 +10552,8 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :grpc_health_check, as: 'grpcHealthCheck', class: Google::Apis::ComputeAlpha::GrpcHealthCheck, decorator: Google::Apis::ComputeAlpha::GrpcHealthCheck::Representation
+      
+          property :grpc_tls_health_check, as: 'grpcTlsHealthCheck', class: Google::Apis::ComputeAlpha::GrpctlsHealthCheck, decorator: Google::Apis::ComputeAlpha::GrpctlsHealthCheck::Representation
       
           property :healthy_threshold, as: 'healthyThreshold'
           property :http2_health_check, as: 'http2HealthCheck', class: Google::Apis::ComputeAlpha::Http2HealthCheck, decorator: Google::Apis::ComputeAlpha::Http2HealthCheck::Representation
@@ -14034,6 +14061,7 @@ module Google
           property :mtu, as: 'mtu'
           property :name, as: 'name'
           property :network_firewall_policy_enforcement_order, as: 'networkFirewallPolicyEnforcementOrder'
+          property :network_placement, as: 'networkPlacement'
           collection :peerings, as: 'peerings', class: Google::Apis::ComputeAlpha::NetworkPeering, decorator: Google::Apis::ComputeAlpha::NetworkPeering::Representation
       
           property :region, as: 'region'
@@ -16364,6 +16392,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :quota_status_warning, as: 'quotaStatusWarning', class: Google::Apis::ComputeAlpha::Region::QuotaStatusWarning, decorator: Google::Apis::ComputeAlpha::Region::QuotaStatusWarning::Representation
+      
           collection :quotas, as: 'quotas', class: Google::Apis::ComputeAlpha::Quota, decorator: Google::Apis::ComputeAlpha::Quota::Representation
       
           property :self_link, as: 'selfLink'
@@ -16371,6 +16401,24 @@ module Google
           property :status, as: 'status'
           property :supports_pzs, as: 'supportsPzs'
           collection :zones, as: 'zones'
+        end
+        
+        class QuotaStatusWarning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::Region::QuotaStatusWarning::Datum, decorator: Google::Apis::ComputeAlpha::Region::QuotaStatusWarning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
