@@ -52,6 +52,75 @@ module Google
           @batch_path = 'batch'
         end
         
+        # GetProjectFeatureSettings returns the feature settings for a project
+        # @param [String] name
+        #   Required. Name of the billing config. "projects//locations/global/
+        #   projectFeatureSettings"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::ProjectFeatureSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::ProjectFeatureSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_global_project_feature_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OsconfigV1::ProjectFeatureSettings::Representation
+          command.response_class = Google::Apis::OsconfigV1::ProjectFeatureSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # UpdateProjectFeatureSettings sets the feature settings for a project.
+        # @param [String] name
+        #   Required. Immutable. Name of the config, e.g. projects/12345/locations/global/
+        #   projectFeatureSettings
+        # @param [Google::Apis::OsconfigV1::ProjectFeatureSettings] project_feature_settings_object
+        # @param [String] update_mask
+        #   Optional. Field mask that controls which fields of the ProjectFeatureSettings
+        #   should be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::ProjectFeatureSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::ProjectFeatureSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_global_project_feature_settings(name, project_feature_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OsconfigV1::ProjectFeatureSettings::Representation
+          command.request_object = project_feature_settings_object
+          command.response_representation = Google::Apis::OsconfigV1::ProjectFeatureSettings::Representation
+          command.response_class = Google::Apis::OsconfigV1::ProjectFeatureSettings
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get inventory data for the specified VM instance. If the VM has no associated
         # inventory, the message `NOT_FOUND` is returned.
         # @param [String] name
