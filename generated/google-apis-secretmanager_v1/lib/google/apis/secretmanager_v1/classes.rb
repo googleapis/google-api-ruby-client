@@ -855,6 +855,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Configuration for encrypting secret payloads using customer-managed encryption
+        # keys (CMEK).
+        # Corresponds to the JSON property `customerManagedEncryption`
+        # @return [Google::Apis::SecretmanagerV1::CustomerManagedEncryption]
+        attr_accessor :customer_managed_encryption
+      
         # Optional. Etag of the currently stored Secret.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -917,6 +923,14 @@ module Google
         # @return [Hash<String,Fixnum>]
         attr_accessor :version_aliases
       
+        # Optional. Secret Version TTL after destruction request This is a part of the
+        # Delayed secret version destroy feature. For secret with TTL>0, version
+        # destruction doesn't happen immediately on calling destroy instead the version
+        # goes to a disabled state and destruction happens after the TTL expires.
+        # Corresponds to the JSON property `versionDestroyTtl`
+        # @return [String]
+        attr_accessor :version_destroy_ttl
+      
         def initialize(**args)
            update!(**args)
         end
@@ -925,6 +939,7 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customer_managed_encryption = args[:customer_managed_encryption] if args.key?(:customer_managed_encryption)
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @labels = args[:labels] if args.key?(:labels)
@@ -934,6 +949,7 @@ module Google
           @topics = args[:topics] if args.key?(:topics)
           @ttl = args[:ttl] if args.key?(:ttl)
           @version_aliases = args[:version_aliases] if args.key?(:version_aliases)
+          @version_destroy_ttl = args[:version_destroy_ttl] if args.key?(:version_destroy_ttl)
         end
       end
       
@@ -988,6 +1004,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Describes the status of customer-managed encryption.
+        # Corresponds to the JSON property `customerManagedEncryption`
+        # @return [Google::Apis::SecretmanagerV1::CustomerManagedEncryptionStatus]
+        attr_accessor :customer_managed_encryption
+      
         # Output only. The time this SecretVersion was destroyed. Only present if state
         # is DESTROYED.
         # Corresponds to the JSON property `destroyTime`
@@ -1011,6 +1032,15 @@ module Google
         # @return [Google::Apis::SecretmanagerV1::ReplicationStatus]
         attr_accessor :replication_status
       
+        # Optional. Output only. Scheduled destroy time for secret version. This is a
+        # part of the Delayed secret version destroy feature. For a Secret with a valid
+        # version destroy TTL, when a secert version is destroyed, version is moved to
+        # disabled state and it is scheduled for destruction Version is destroyed only
+        # after the scheduled_destroy_time.
+        # Corresponds to the JSON property `scheduledDestroyTime`
+        # @return [String]
+        attr_accessor :scheduled_destroy_time
+      
         # Output only. The current state of the SecretVersion.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1024,10 +1054,12 @@ module Google
         def update!(**args)
           @client_specified_payload_checksum = args[:client_specified_payload_checksum] if args.key?(:client_specified_payload_checksum)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customer_managed_encryption = args[:customer_managed_encryption] if args.key?(:customer_managed_encryption)
           @destroy_time = args[:destroy_time] if args.key?(:destroy_time)
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @replication_status = args[:replication_status] if args.key?(:replication_status)
+          @scheduled_destroy_time = args[:scheduled_destroy_time] if args.key?(:scheduled_destroy_time)
           @state = args[:state] if args.key?(:state)
         end
       end
