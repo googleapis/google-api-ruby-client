@@ -133,6 +133,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :length
       
+        # A rich link to a resource.
+        # Corresponds to the JSON property `richLinkMetadata`
+        # @return [Google::Apis::ChatV1::RichLinkMetadata]
+        attr_accessor :rich_link_metadata
+      
         # Annotation metadata for slash commands (/).
         # Corresponds to the JSON property `slashCommand`
         # @return [Google::Apis::ChatV1::SlashCommandMetadata]
@@ -161,6 +166,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @length = args[:length] if args.key?(:length)
+          @rich_link_metadata = args[:rich_link_metadata] if args.key?(:rich_link_metadata)
           @slash_command = args[:slash_command] if args.key?(:slash_command)
           @start_index = args[:start_index] if args.key?(:start_index)
           @type = args[:type] if args.key?(:type)
@@ -1008,6 +1014,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @drive_file_id = args[:drive_file_id] if args.key?(:drive_file_id)
+        end
+      end
+      
+      # Data for Google Drive links.
+      class DriveLinkData
+        include Google::Apis::Core::Hashable
+      
+        # A reference to the data of a drive attachment.
+        # Corresponds to the JSON property `driveDataRef`
+        # @return [Google::Apis::ChatV1::DriveDataRef]
+        attr_accessor :drive_data_ref
+      
+        # The mime type of the linked Google Drive resource.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drive_data_ref = args[:drive_data_ref] if args.key?(:drive_data_ref)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -3785,6 +3816,37 @@ module Google
           @emoji = args[:emoji] if args.key?(:emoji)
           @name = args[:name] if args.key?(:name)
           @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # A rich link to a resource.
+      class RichLinkMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Data for Google Drive links.
+        # Corresponds to the JSON property `driveLinkData`
+        # @return [Google::Apis::ChatV1::DriveLinkData]
+        attr_accessor :drive_link_data
+      
+        # The rich link type.
+        # Corresponds to the JSON property `richLinkType`
+        # @return [String]
+        attr_accessor :rich_link_type
+      
+        # The URI of this link.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drive_link_data = args[:drive_link_data] if args.key?(:drive_link_data)
+          @rich_link_type = args[:rich_link_type] if args.key?(:rich_link_type)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
