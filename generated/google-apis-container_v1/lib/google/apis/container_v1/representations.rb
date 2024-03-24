@@ -664,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationProgress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1574,7 +1580,11 @@ module Google
       class DatabaseEncryption
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_state, as: 'currentState'
+          collection :decryption_keys, as: 'decryptionKeys'
           property :key_name, as: 'keyName'
+          collection :last_operation_errors, as: 'lastOperationErrors', class: Google::Apis::ContainerV1::OperationError, decorator: Google::Apis::ContainerV1::OperationError::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -2309,6 +2319,15 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target_link, as: 'targetLink'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class OperationError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :key_name, as: 'keyName'
+          property :timestamp, as: 'timestamp'
         end
       end
       
