@@ -510,7 +510,8 @@ module Google
         attr_accessor :environment
       
         # Maximum duration the task should run. The task will be killed and marked as
-        # FAILED if over this limit.
+        # FAILED if over this limit. The valid value range for max_run_duration in
+        # seconds is [0, 315576000000.999999999],
         # Corresponds to the JSON property `maxRunDuration`
         # @return [String]
         attr_accessor :max_run_duration
@@ -2440,7 +2441,8 @@ module Google
         attr_accessor :max_retry_count
       
         # Maximum duration the task should run. The task will be killed and marked as
-        # FAILED if over this limit.
+        # FAILED if over this limit. The valid value range for max_run_duration in
+        # seconds is [0, 315576000000.999999999],
         # Corresponds to the JSON property `maxRunDuration`
         # @return [String]
         attr_accessor :max_run_duration

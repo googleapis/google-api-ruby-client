@@ -21,7 +21,7 @@ module Google
   module Apis
     # Batch API
     #
-    # An API to manage the running of batch resources on Google Cloud Platform.
+    # An API to manage the running of Batch resources on Google Cloud Platform.
     #
     # @see https://cloud.google.com/batch/
     module BatchV1
