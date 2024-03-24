@@ -928,6 +928,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaProcessedDocument
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3167,6 +3173,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaProcessedDocument
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document, as: 'document'
+          property :json_data, as: 'jsonData'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3481,6 +3495,7 @@ module Google
           property :model_spec, as: 'modelSpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec::Representation
       
           property :summary_result_count, as: 'summaryResultCount'
+          property :use_semantic_chunks, as: 'useSemanticChunks'
         end
       end
       
