@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCardV1MaterialIcon
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCardV1OnClick
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1143,6 +1149,8 @@ module Google
           property :icon_url, as: 'iconUrl'
           property :image_type, as: 'imageType'
           property :known_icon, as: 'knownIcon'
+          property :material_icon, as: 'materialIcon', class: Google::Apis::ChatV1::GoogleAppsCardV1MaterialIcon, decorator: Google::Apis::ChatV1::GoogleAppsCardV1MaterialIcon::Representation
+      
         end
       end
       
@@ -1173,6 +1181,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aspect_ratio, as: 'aspectRatio'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleAppsCardV1MaterialIcon
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fill, as: 'fill'
+          property :grade, as: 'grade'
+          property :name, as: 'name'
+          property :weight, as: 'weight'
         end
       end
       

@@ -817,10 +817,13 @@ module Google
       
       # A Google Chat app interaction event. To learn about interaction events, see [
       # Receive and respond to interactions with your Google Chat app](https://
-      # developers.google.com/chat/api/guides/message-formats). To learn about event
-      # types and for example event payloads, see [Types of Google Chat app
-      # interaction events](https://developers.google.com/chat/api/guides/message-
-      # formats/events).
+      # developers.google.com/workspace/chat/api/guides/message-formats). To learn
+      # about event types and for example event payloads, see [Types of Google Chat
+      # app interaction events](https://developers.google.com/workspace/chat/events).
+      # In addition to receiving events from user interactions, Chat apps can receive
+      # events about changes to spaces, such as when a new member is added to a space.
+      # To learn about space events, see [Work with events from Google Chat](https://
+      # developers.google.com/workspace/chat/events-overview).
       class DeprecatedEvent
         include Google::Apis::Core::Hashable
       
@@ -894,8 +897,7 @@ module Google
         attr_accessor :token
       
         # The type of interaction event. For details, see [Types of Google Chat app
-        # interaction events](https://developers.google.com/chat/api/guides/message-
-        # formats/events).
+        # interaction events](https://developers.google.com/workspace/chat/events).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2096,6 +2098,17 @@ module Google
         # @return [String]
         attr_accessor :known_icon
       
+        # A [Google Material Icon](https://fonts.google.com/icons), which includes over
+        # 2500+ options. For example, to display a [checkbox icon](https://fonts.google.
+        # com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%
+        # 40400%3BGRAD%400%3Bopsz%4048) with customized weight and grade, write ` "name":
+        # "check_box", "fill": true, "weight": 300, "grade": -25 ` Available for Chat
+        # apps and in [Developer Preview](https://developers.google.com/workspace/
+        # preview) for Google Workspace Add-ons.
+        # Corresponds to the JSON property `materialIcon`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1MaterialIcon]
+        attr_accessor :material_icon
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2106,6 +2119,7 @@ module Google
           @icon_url = args[:icon_url] if args.key?(:icon_url)
           @image_type = args[:image_type] if args.key?(:image_type)
           @known_icon = args[:known_icon] if args.key?(:known_icon)
+          @material_icon = args[:material_icon] if args.key?(:material_icon)
         end
       end
       
@@ -2216,6 +2230,60 @@ module Google
         def update!(**args)
           @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A [Google Material Icon](https://fonts.google.com/icons), which includes over
+      # 2500+ options. For example, to display a [checkbox icon](https://fonts.google.
+      # com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%
+      # 40400%3BGRAD%400%3Bopsz%4048) with customized weight and grade, write ` "name":
+      # "check_box", "fill": true, "weight": 300, "grade": -25 ` Available for Chat
+      # apps and in [Developer Preview](https://developers.google.com/workspace/
+      # preview) for Google Workspace Add-ons.
+      class GoogleAppsCardV1MaterialIcon
+        include Google::Apis::Core::Hashable
+      
+        # Whether it renders a filled icon. Default value is false. See Customization in
+        # [Google Font Icon](https://fonts.google.com/icons) for details.
+        # Corresponds to the JSON property `fill`
+        # @return [Boolean]
+        attr_accessor :fill
+        alias_method :fill?, :fill
+      
+        # Weight and grade affect a symbol’s thickness. Adjustments to grade are more
+        # granular than adjustments to weight and have a small impact on the size of the
+        # symbol. Choose from `-25, 0, 200`. If absent, default value is 0. If any other
+        # value is specified, a broken image icon is displayed. See Customization in [
+        # Google Font Icon](https://fonts.google.com/icons) for details.
+        # Corresponds to the JSON property `grade`
+        # @return [Fixnum]
+        attr_accessor :grade
+      
+        # The icon name defined in the [Google Material Icon Icon](https://fonts.google.
+        # com/icons) in snake_case. e.g. "check_box". Any invalid names are abandoned
+        # and replaced with empty string and results in the icon failing to render.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The stroke weight of the icon. Choose from `100, 200, 300, 400, 500, 600, 700`.
+        # If absent, default value is 400. If any other value is specified, a broken
+        # image icon is displayed. See Customization in [Google Font Icon](https://fonts.
+        # google.com/icons) for details.
+        # Corresponds to the JSON property `weight`
+        # @return [Fixnum]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fill = args[:fill] if args.key?(:fill)
+          @grade = args[:grade] if args.key?(:grade)
+          @name = args[:name] if args.key?(:name)
+          @weight = args[:weight] if args.key?(:weight)
         end
       end
       
