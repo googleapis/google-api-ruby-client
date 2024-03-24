@@ -586,6 +586,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BgpRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BgpRouteAsPath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BgpRouteNetworkLayerReachabilityInformation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3940,6 +3958,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartnerMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PathMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4786,6 +4810,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RoutePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutePolicyPolicyTerm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Router
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4926,6 +4962,48 @@ module Google
       
       class RouterStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutersGetRoutePolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutersListBgpRoutes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutersListRoutePolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5826,6 +5904,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StructuredEntries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -7991,6 +8075,35 @@ module Google
           property :num_rx_rejected, as: 'numRxRejected'
           property :num_rx_successful, as: 'numRxSuccessful'
           property :num_tx, as: 'numTx'
+        end
+      end
+      
+      class BgpRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :as_paths, as: 'asPaths', class: Google::Apis::ComputeBeta::BgpRouteAsPath, decorator: Google::Apis::ComputeBeta::BgpRouteAsPath::Representation
+      
+          collection :communities, as: 'communities'
+          property :destination, as: 'destination', class: Google::Apis::ComputeBeta::BgpRouteNetworkLayerReachabilityInformation, decorator: Google::Apis::ComputeBeta::BgpRouteNetworkLayerReachabilityInformation::Representation
+      
+          property :med, as: 'med'
+          property :origin, as: 'origin'
+        end
+      end
+      
+      class BgpRouteAsPath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asns, as: 'asns'
+          property :type, as: 'type'
+        end
+      end
+      
+      class BgpRouteNetworkLayerReachabilityInformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path_id, as: 'pathId'
+          property :prefix, as: 'prefix'
         end
       end
       
@@ -10241,6 +10354,8 @@ module Google
       
           property :params, as: 'params', class: Google::Apis::ComputeBeta::InstanceParams, decorator: Google::Apis::ComputeBeta::InstanceParams::Representation
       
+          hash :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ComputeBeta::StructuredEntries, decorator: Google::Apis::ComputeBeta::StructuredEntries::Representation
+      
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeBeta::ReservationAffinity, decorator: Google::Apis::ComputeBeta::ReservationAffinity::Representation
@@ -11236,6 +11351,8 @@ module Google
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeBeta::NetworkInterface, decorator: Google::Apis::ComputeBeta::NetworkInterface::Representation
       
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeBeta::NetworkPerformanceConfig, decorator: Google::Apis::ComputeBeta::NetworkPerformanceConfig::Representation
+      
+          hash :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ComputeBeta::StructuredEntries, decorator: Google::Apis::ComputeBeta::StructuredEntries::Representation
       
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
@@ -14342,6 +14459,15 @@ module Google
         end
       end
       
+      class PartnerMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          hash :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ComputeBeta::StructuredEntries, decorator: Google::Apis::ComputeBeta::StructuredEntries::Representation
+      
+        end
+      end
+      
       class PathMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15791,6 +15917,28 @@ module Google
         end
       end
       
+      class RoutePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :name, as: 'name'
+          collection :terms, as: 'terms', class: Google::Apis::ComputeBeta::RoutePolicyPolicyTerm, decorator: Google::Apis::ComputeBeta::RoutePolicyPolicyTerm::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class RoutePolicyPolicyTerm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions', class: Google::Apis::ComputeBeta::Expr, decorator: Google::Apis::ComputeBeta::Expr::Representation
+      
+          property :match, as: 'match', class: Google::Apis::ComputeBeta::Expr, decorator: Google::Apis::ComputeBeta::Expr::Representation
+      
+          property :priority, as: 'priority'
+        end
+      end
+      
       class Router
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16116,6 +16264,82 @@ module Google
           property :kind, as: 'kind'
           property :result, as: 'result', class: Google::Apis::ComputeBeta::RouterStatus, decorator: Google::Apis::ComputeBeta::RouterStatus::Representation
       
+        end
+      end
+      
+      class RoutersGetRoutePolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::ComputeBeta::RoutePolicy, decorator: Google::Apis::ComputeBeta::RoutePolicy::Representation
+      
+        end
+      end
+      
+      class RoutersListBgpRoutes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :result, as: 'result', class: Google::Apis::ComputeBeta::BgpRoute, decorator: Google::Apis::ComputeBeta::BgpRoute::Representation
+      
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::RoutersListBgpRoutes::Warning, decorator: Google::Apis::ComputeBeta::RoutersListBgpRoutes::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::RoutersListBgpRoutes::Warning::Datum, decorator: Google::Apis::ComputeBeta::RoutersListBgpRoutes::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class RoutersListRoutePolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :result, as: 'result', class: Google::Apis::ComputeBeta::RoutePolicy, decorator: Google::Apis::ComputeBeta::RoutePolicy::Representation
+      
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::RoutersListRoutePolicies::Warning, decorator: Google::Apis::ComputeBeta::RoutersListRoutePolicies::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::RoutersListRoutePolicies::Warning::Datum, decorator: Google::Apis::ComputeBeta::RoutersListRoutePolicies::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -17799,6 +18023,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class StructuredEntries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :entries, as: 'entries'
         end
       end
       
