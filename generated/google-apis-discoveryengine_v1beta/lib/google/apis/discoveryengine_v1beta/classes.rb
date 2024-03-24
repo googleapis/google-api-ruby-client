@@ -6840,7 +6840,10 @@ module Google
         # document a big demotion. However, results that are deeply relevant might still
         # be shown. The document will have an upstream battle to get a fairly high
         # ranking, but it is not blocked out completely. Setting to 0.0 means no boost
-        # applied. The boosting condition is ignored.
+        # applied. The boosting condition is ignored. Only one of the (condition, boost)
+        # combination or the boost_control_spec below are set. If both are set then the
+        # global boost is ignored and the more fine-grained boost_control_spec is
+        # applied.
         # Corresponds to the JSON property `boost`
         # @return [Float]
         attr_accessor :boost
@@ -7062,6 +7065,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :summary_result_count
       
+        # If true, answer will be generated from most relevant chunks from top search
+        # results. This feature will improve summary quality. Please note that with this
+        # feature enabled, not all top search results will be referenced and included in
+        # the reference list, so the citation source index only points to the search
+        # results listed in the reference list.
+        # Corresponds to the JSON property `useSemanticChunks`
+        # @return [Boolean]
+        attr_accessor :use_semantic_chunks
+        alias_method :use_semantic_chunks?, :use_semantic_chunks
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7075,6 +7088,7 @@ module Google
           @model_prompt_spec = args[:model_prompt_spec] if args.key?(:model_prompt_spec)
           @model_spec = args[:model_spec] if args.key?(:model_spec)
           @summary_result_count = args[:summary_result_count] if args.key?(:summary_result_count)
+          @use_semantic_chunks = args[:use_semantic_chunks] if args.key?(:use_semantic_chunks)
         end
       end
       
