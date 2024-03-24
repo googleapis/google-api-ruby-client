@@ -3522,6 +3522,7 @@ module Google
           property :model_spec, as: 'modelSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec::Representation
       
           property :summary_result_count, as: 'summaryResultCount'
+          property :use_semantic_chunks, as: 'useSemanticChunks'
         end
       end
       
