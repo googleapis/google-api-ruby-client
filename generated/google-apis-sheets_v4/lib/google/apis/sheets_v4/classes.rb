@@ -9361,6 +9361,13 @@ module Google
         # @return [Google::Apis::SheetsV4::CellFormat]
         attr_accessor :default_format
       
+        # Whether to allow external url access for image and import functions. Read only
+        # when true. When false, you can set to true.
+        # Corresponds to the JSON property `importFunctionsExternalUrlAccessAllowed`
+        # @return [Boolean]
+        attr_accessor :import_functions_external_url_access_allowed
+        alias_method :import_functions_external_url_access_allowed?, :import_functions_external_url_access_allowed
+      
         # Settings to control how circular dependencies are resolved with iterative
         # calculation.
         # Corresponds to the JSON property `iterativeCalculationSettings`
@@ -9401,6 +9408,7 @@ module Google
         def update!(**args)
           @auto_recalc = args[:auto_recalc] if args.key?(:auto_recalc)
           @default_format = args[:default_format] if args.key?(:default_format)
+          @import_functions_external_url_access_allowed = args[:import_functions_external_url_access_allowed] if args.key?(:import_functions_external_url_access_allowed)
           @iterative_calculation_settings = args[:iterative_calculation_settings] if args.key?(:iterative_calculation_settings)
           @locale = args[:locale] if args.key?(:locale)
           @spreadsheet_theme = args[:spreadsheet_theme] if args.key?(:spreadsheet_theme)

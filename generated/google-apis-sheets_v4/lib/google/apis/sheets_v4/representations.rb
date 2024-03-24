@@ -3885,6 +3885,7 @@ module Google
           property :auto_recalc, as: 'autoRecalc'
           property :default_format, as: 'defaultFormat', class: Google::Apis::SheetsV4::CellFormat, decorator: Google::Apis::SheetsV4::CellFormat::Representation
       
+          property :import_functions_external_url_access_allowed, as: 'importFunctionsExternalUrlAccessAllowed'
           property :iterative_calculation_settings, as: 'iterativeCalculationSettings', class: Google::Apis::SheetsV4::IterativeCalculationSettings, decorator: Google::Apis::SheetsV4::IterativeCalculationSettings::Representation
       
           property :locale, as: 'locale'
