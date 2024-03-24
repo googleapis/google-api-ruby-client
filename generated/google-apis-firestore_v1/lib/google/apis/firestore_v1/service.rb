@@ -383,8 +383,8 @@ module Google
         
         # Deletes a backup schedule.
         # @param [String] name
-        #   Required. The name of backup schedule. Format `projects/`project`/databases/`
-        #   database`/backupSchedules/`backup_schedule``
+        #   Required. The name of the backup schedule. Format `projects/`project`/
+        #   databases/`database`/backupSchedules/`backup_schedule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
