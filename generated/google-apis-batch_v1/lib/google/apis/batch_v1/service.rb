@@ -22,7 +22,7 @@ module Google
     module BatchV1
       # Batch API
       #
-      # An API to manage the running of batch resources on Google Cloud Platform.
+      # An API to manage the running of Batch resources on Google Cloud Platform.
       #
       # @example
       #    require 'google/apis/batch_v1'
