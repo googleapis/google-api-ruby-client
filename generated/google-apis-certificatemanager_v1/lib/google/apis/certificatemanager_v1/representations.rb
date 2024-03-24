@@ -22,6 +22,12 @@ module Google
   module Apis
     module CertificatemanagerV1
       
+      class AllowlistedCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthorizationAttemptInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -212,6 +218,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllowlistedCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pem_certificate, as: 'pemCertificate'
+        end
       end
       
       class AuthorizationAttemptInfo
@@ -526,6 +539,8 @@ module Google
       class TrustConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowlisted_certificates, as: 'allowlistedCertificates', class: Google::Apis::CertificatemanagerV1::AllowlistedCertificate, decorator: Google::Apis::CertificatemanagerV1::AllowlistedCertificate::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :etag, as: 'etag'

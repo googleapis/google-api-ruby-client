@@ -22,6 +22,26 @@ module Google
   module Apis
     module CertificatemanagerV1
       
+      # Defines an allowlisted certificate.
+      class AllowlistedCertificate
+        include Google::Apis::Core::Hashable
+      
+        # Required. PEM certificate that is allowlisted. The certificate can be up to 5k
+        # bytes, and must be a parseable X.509 certificate.
+        # Corresponds to the JSON property `pemCertificate`
+        # @return [String]
+        attr_accessor :pem_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
+        end
+      end
+      
       # State of the latest attempt to authorize a domain for certificate issuance.
       class AuthorizationAttemptInfo
         include Google::Apis::Core::Hashable
@@ -1185,6 +1205,14 @@ module Google
       class TrustConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. A certificate matching an allowlisted certificate is always
+        # considered valid as long as the certificate is parseable, proof of private key
+        # possession is established, and constraints on the certificate’s SAN field are
+        # met.
+        # Corresponds to the JSON property `allowlistedCertificates`
+        # @return [Array<Google::Apis::CertificatemanagerV1::AllowlistedCertificate>]
+        attr_accessor :allowlisted_certificates
+      
         # Output only. The creation timestamp of a TrustConfig.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1232,6 +1260,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowlisted_certificates = args[:allowlisted_certificates] if args.key?(:allowlisted_certificates)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
