@@ -1011,7 +1011,7 @@ module Google
         end
       end
       
-      # Response to request to list firewall policies belonging to a key.
+      # Response to request to list firewall policies belonging to a project.
       class GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse
         include Google::Apis::Core::Hashable
       
