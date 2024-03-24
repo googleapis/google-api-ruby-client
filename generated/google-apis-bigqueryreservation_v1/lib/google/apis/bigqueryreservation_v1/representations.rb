@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FailoverReservationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAssignmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -177,6 +183,12 @@ module Google
         end
       end
       
+      class FailoverReservationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ListAssignmentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -230,6 +242,9 @@ module Google
           property :ignore_idle_slots, as: 'ignoreIdleSlots'
           property :multi_region_auxiliary, as: 'multiRegionAuxiliary'
           property :name, as: 'name'
+          property :original_primary_location, as: 'originalPrimaryLocation'
+          property :primary_location, as: 'primaryLocation'
+          property :secondary_location, as: 'secondaryLocation'
           property :slot_capacity, :numeric_string => true, as: 'slotCapacity'
           property :update_time, as: 'updateTime'
         end
