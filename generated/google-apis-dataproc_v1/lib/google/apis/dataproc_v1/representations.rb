@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalyzeBatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnalyzeOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -873,6 +879,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_count, as: 'acceleratorCount'
           property :accelerator_type_uri, as: 'acceleratorTypeUri'
+        end
+      end
+      
+      class AnalyzeBatchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
         end
       end
       
