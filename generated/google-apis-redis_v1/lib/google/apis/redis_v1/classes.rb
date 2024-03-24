@@ -22,6 +22,25 @@ module Google
   module Apis
     module RedisV1
       
+      # Configuration of the AOF based persistence.
+      class AofConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. fsync configuration.
+        # Corresponds to the JSON property `appendFsync`
+        # @return [String]
+        attr_accessor :append_fsync
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @append_fsync = args[:append_fsync] if args.key?(:append_fsync)
+        end
+      end
+      
       # Configuration for availability of database instance
       class AvailabilityConfiguration
         include Google::Apis::Core::Hashable
@@ -204,6 +223,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configuration of the persistence functionality.
+        # Corresponds to the JSON property `persistenceConfig`
+        # @return [Google::Apis::RedisV1::ClusterPersistenceConfig]
+        attr_accessor :persistence_config
+      
         # Required. Each PscConfig configures the consumer network where IPs will be
         # designated to the cluster for client access through Private Service Connect
         # Automation. Currently, only one PscConfig is supported.
@@ -216,6 +240,11 @@ module Google
         # Corresponds to the JSON property `pscConnections`
         # @return [Array<Google::Apis::RedisV1::PscConnection>]
         attr_accessor :psc_connections
+      
+        # Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+        # Corresponds to the JSON property `redisConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :redis_configs
       
         # Optional. The number of replica nodes per shard.
         # Corresponds to the JSON property `replicaCount`
@@ -265,8 +294,10 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @discovery_endpoints = args[:discovery_endpoints] if args.key?(:discovery_endpoints)
           @name = args[:name] if args.key?(:name)
+          @persistence_config = args[:persistence_config] if args.key?(:persistence_config)
           @psc_configs = args[:psc_configs] if args.key?(:psc_configs)
           @psc_connections = args[:psc_connections] if args.key?(:psc_connections)
+          @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
           @replica_count = args[:replica_count] if args.key?(:replica_count)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
@@ -274,6 +305,37 @@ module Google
           @state_info = args[:state_info] if args.key?(:state_info)
           @transit_encryption_mode = args[:transit_encryption_mode] if args.key?(:transit_encryption_mode)
           @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Configuration of the persistence functionality.
+      class ClusterPersistenceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of the AOF based persistence.
+        # Corresponds to the JSON property `aofConfig`
+        # @return [Google::Apis::RedisV1::AofConfig]
+        attr_accessor :aof_config
+      
+        # Optional. The mode of persistence.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Configuration of the RDB based persistence.
+        # Corresponds to the JSON property `rdbConfig`
+        # @return [Google::Apis::RedisV1::RdbConfig]
+        attr_accessor :rdb_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aof_config = args[:aof_config] if args.key?(:aof_config)
+          @mode = args[:mode] if args.key?(:mode)
+          @rdb_config = args[:rdb_config] if args.key?(:rdb_config)
         end
       end
       
@@ -1991,6 +2053,33 @@ module Google
           @network = args[:network] if args.key?(:network)
           @project_id = args[:project_id] if args.key?(:project_id)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+        end
+      end
+      
+      # Configuration of the RDB based persistence.
+      class RdbConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Period between RDB snapshots.
+        # Corresponds to the JSON property `rdbSnapshotPeriod`
+        # @return [String]
+        attr_accessor :rdb_snapshot_period
+      
+        # Optional. The time that the first snapshot was/will be attempted, and to which
+        # future snapshots will be aligned. If not provided, the current time will be
+        # used.
+        # Corresponds to the JSON property `rdbSnapshotStartTime`
+        # @return [String]
+        attr_accessor :rdb_snapshot_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rdb_snapshot_period = args[:rdb_snapshot_period] if args.key?(:rdb_snapshot_period)
+          @rdb_snapshot_start_time = args[:rdb_snapshot_start_time] if args.key?(:rdb_snapshot_start_time)
         end
       end
       
