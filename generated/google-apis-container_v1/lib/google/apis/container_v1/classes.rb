@@ -2142,11 +2142,27 @@ module Google
       class DatabaseEncryption
         include Google::Apis::Core::Hashable
       
+        # Output only. The current state of etcd encryption.
+        # Corresponds to the JSON property `currentState`
+        # @return [String]
+        attr_accessor :current_state
+      
+        # Output only. Keys in use by the cluster for decrypting existing objects, in
+        # addition to the key in `key_name`. Each item is a CloudKMS key resource.
+        # Corresponds to the JSON property `decryptionKeys`
+        # @return [Array<String>]
+        attr_accessor :decryption_keys
+      
         # Name of CloudKMS key to use for the encryption of secrets in etcd. Ex.
         # projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
         # Corresponds to the JSON property `keyName`
         # @return [String]
         attr_accessor :key_name
+      
+        # Output only. Records errors seen during DatabaseEncryption update operations.
+        # Corresponds to the JSON property `lastOperationErrors`
+        # @return [Array<Google::Apis::ContainerV1::OperationError>]
+        attr_accessor :last_operation_errors
       
         # The desired state of etcd encryption.
         # Corresponds to the JSON property `state`
@@ -2159,7 +2175,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @current_state = args[:current_state] if args.key?(:current_state)
+          @decryption_keys = args[:decryption_keys] if args.key?(:decryption_keys)
           @key_name = args[:key_name] if args.key?(:key_name)
+          @last_operation_errors = args[:last_operation_errors] if args.key?(:last_operation_errors)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -4924,6 +4943,38 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target_link = args[:target_link] if args.key?(:target_link)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # OperationError records errors seen from CloudKMS keys encountered during
+      # updates to DatabaseEncryption configuration.
+      class OperationError
+        include Google::Apis::Core::Hashable
+      
+        # Description of the error seen during the operation.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # CloudKMS key resource that had the error.
+        # Corresponds to the JSON property `keyName`
+        # @return [String]
+        attr_accessor :key_name
+      
+        # Time when the CloudKMS error was seen.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @key_name = args[:key_name] if args.key?(:key_name)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
         end
       end
       
