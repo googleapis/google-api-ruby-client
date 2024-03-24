@@ -27,6 +27,19 @@ module Google
       class AppProfile
         include Google::Apis::Core::Hashable
       
+        # Data Boost is a serverless compute capability that lets you run high-
+        # throughput read jobs on your Bigtable data, without impacting the performance
+        # of the clusters that handle your application traffic. Currently, Data Boost
+        # exclusively supports read-only use-cases with single-cluster routing. Data
+        # Boost reads are only guaranteed to see the results of writes that were written
+        # at least 30 minutes ago. This means newly written values may not become
+        # visible for up to 30m, and also means that old values may remain visible for
+        # up to 30m after being deleted or overwritten. To mitigate the staleness of the
+        # data, users may either wait 30m, or use CheckConsistency.
+        # Corresponds to the JSON property `dataBoostIsolationReadOnly`
+        # @return [Google::Apis::BigtableadminV2::DataBoostIsolationReadOnly]
+        attr_accessor :data_boost_isolation_read_only
+      
         # Long form description of the use case for this AppProfile.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -82,6 +95,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_boost_isolation_read_only = args[:data_boost_isolation_read_only] if args.key?(:data_boost_isolation_read_only)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @multi_cluster_routing_use_any = args[:multi_cluster_routing_use_any] if args.key?(:multi_cluster_routing_use_any)
@@ -552,6 +566,18 @@ module Google
         # @return [String]
         attr_accessor :consistency_token
       
+        # Checks that all writes before the consistency token was generated in the same
+        # cluster are readable by Databoost.
+        # Corresponds to the JSON property `dataBoostReadLocalWrites`
+        # @return [Google::Apis::BigtableadminV2::DataBoostReadLocalWrites]
+        attr_accessor :data_boost_read_local_writes
+      
+        # Checks that all writes before the consistency token was generated are
+        # replicated in every cluster and readable.
+        # Corresponds to the JSON property `standardReadRemoteWrites`
+        # @return [Google::Apis::BigtableadminV2::StandardReadRemoteWrites]
+        attr_accessor :standard_read_remote_writes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -559,6 +585,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consistency_token = args[:consistency_token] if args.key?(:consistency_token)
+          @data_boost_read_local_writes = args[:data_boost_read_local_writes] if args.key?(:data_boost_read_local_writes)
+          @standard_read_remote_writes = args[:standard_read_remote_writes] if args.key?(:standard_read_remote_writes)
         end
       end
       
@@ -737,6 +765,34 @@ module Google
         # @return [Google::Apis::BigtableadminV2::ColumnFamilyStats]
         attr_accessor :stats
       
+        # `Type` represents the type of data that is written to, read from, or stored in
+        # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
+        # familiarity and consistency across products and features. For compatibility
+        # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
+        # which describes how to convert to/from the underlying data. This might involve
+        # composing a series of steps into an "encoding chain," for example to convert
+        # from INT64 -> STRING -> raw bytes. In most cases, a "link" in the encoding
+        # chain will be based an on existing GoogleSQL conversion function like `CAST`.
+        # Each link in the encoding chain also defines the following properties: *
+        # Natural sort: Does the encoded value sort consistently with the original typed
+        # value? Note that Bigtable will always sort data based on the raw encoded value,
+        # *not* the decoded type. - Example: STRING values sort in the same order as
+        # their UTF-8 encodings. - Counterexample: Encoding INT64 to a fixed-width
+        # STRING does *not* preserve sort order when dealing with negative numbers.
+        # INT64(1) > INT64(-1), but STRING("-00001") > STRING("00001). - The overall
+        # encoding chain sorts naturally if *every* link does. * Self-delimiting: If we
+        # concatenate two encoded values, can we always tell where the first one ends
+        # and the second one begins? - Example: If we encode INT64s to fixed-width
+        # STRINGs, the first value will always contain exactly N digits, possibly
+        # preceded by a sign. - Counterexample: If we concatenate two UTF-8 encoded
+        # STRINGs, we have no way to tell where the first one ends. - The overall
+        # encoding chain is self-delimiting if *any* link is. * Compatibility: Which
+        # other systems have matching encoding schemes? For example, does this encoding
+        # have a GoogleSQL equivalent? HBase? Java?
+        # Corresponds to the JSON property `valueType`
+        # @return [Google::Apis::BigtableadminV2::Type]
+        attr_accessor :value_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -745,6 +801,7 @@ module Google
         def update!(**args)
           @gc_rule = args[:gc_rule] if args.key?(:gc_rule)
           @stats = args[:stats] if args.key?(:stats)
+          @value_type = args[:value_type] if args.key?(:value_type)
         end
       end
       
@@ -1166,6 +1223,47 @@ module Google
         end
       end
       
+      # Data Boost is a serverless compute capability that lets you run high-
+      # throughput read jobs on your Bigtable data, without impacting the performance
+      # of the clusters that handle your application traffic. Currently, Data Boost
+      # exclusively supports read-only use-cases with single-cluster routing. Data
+      # Boost reads are only guaranteed to see the results of writes that were written
+      # at least 30 minutes ago. This means newly written values may not become
+      # visible for up to 30m, and also means that old values may remain visible for
+      # up to 30m after being deleted or overwritten. To mitigate the staleness of the
+      # data, users may either wait 30m, or use CheckConsistency.
+      class DataBoostIsolationReadOnly
+        include Google::Apis::Core::Hashable
+      
+        # The Compute Billing Owner for this Data Boost App Profile.
+        # Corresponds to the JSON property `computeBillingOwner`
+        # @return [String]
+        attr_accessor :compute_billing_owner
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compute_billing_owner = args[:compute_billing_owner] if args.key?(:compute_billing_owner)
+        end
+      end
+      
+      # Checks that all writes before the consistency token was generated in the same
+      # cluster are readable by Databoost.
+      class DataBoostReadLocalWrites
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for google.bigtable.admin.v2.BigtableTableAdmin.DropRowRange
       class DropRowRangeRequest
         include Google::Apis::Core::Hashable
@@ -1498,6 +1596,217 @@ module Google
         def update!(**args)
           @family_subsets = args[:family_subsets] if args.key?(:family_subsets)
           @row_prefixes = args[:row_prefixes] if args.key?(:row_prefixes)
+        end
+      end
+      
+      # A value that combines incremental updates into a summarized value. Data is
+      # never directly written or read using type `Aggregate`. Writes will provide
+      # either the `input_type` or `state_type`, and reads will always return the `
+      # state_type` .
+      class GoogleBigtableAdminV2TypeAggregate
+        include Google::Apis::Core::Hashable
+      
+        # `Type` represents the type of data that is written to, read from, or stored in
+        # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
+        # familiarity and consistency across products and features. For compatibility
+        # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
+        # which describes how to convert to/from the underlying data. This might involve
+        # composing a series of steps into an "encoding chain," for example to convert
+        # from INT64 -> STRING -> raw bytes. In most cases, a "link" in the encoding
+        # chain will be based an on existing GoogleSQL conversion function like `CAST`.
+        # Each link in the encoding chain also defines the following properties: *
+        # Natural sort: Does the encoded value sort consistently with the original typed
+        # value? Note that Bigtable will always sort data based on the raw encoded value,
+        # *not* the decoded type. - Example: STRING values sort in the same order as
+        # their UTF-8 encodings. - Counterexample: Encoding INT64 to a fixed-width
+        # STRING does *not* preserve sort order when dealing with negative numbers.
+        # INT64(1) > INT64(-1), but STRING("-00001") > STRING("00001). - The overall
+        # encoding chain sorts naturally if *every* link does. * Self-delimiting: If we
+        # concatenate two encoded values, can we always tell where the first one ends
+        # and the second one begins? - Example: If we encode INT64s to fixed-width
+        # STRINGs, the first value will always contain exactly N digits, possibly
+        # preceded by a sign. - Counterexample: If we concatenate two UTF-8 encoded
+        # STRINGs, we have no way to tell where the first one ends. - The overall
+        # encoding chain is self-delimiting if *any* link is. * Compatibility: Which
+        # other systems have matching encoding schemes? For example, does this encoding
+        # have a GoogleSQL equivalent? HBase? Java?
+        # Corresponds to the JSON property `inputType`
+        # @return [Google::Apis::BigtableadminV2::Type]
+        attr_accessor :input_type
+      
+        # `Type` represents the type of data that is written to, read from, or stored in
+        # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
+        # familiarity and consistency across products and features. For compatibility
+        # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
+        # which describes how to convert to/from the underlying data. This might involve
+        # composing a series of steps into an "encoding chain," for example to convert
+        # from INT64 -> STRING -> raw bytes. In most cases, a "link" in the encoding
+        # chain will be based an on existing GoogleSQL conversion function like `CAST`.
+        # Each link in the encoding chain also defines the following properties: *
+        # Natural sort: Does the encoded value sort consistently with the original typed
+        # value? Note that Bigtable will always sort data based on the raw encoded value,
+        # *not* the decoded type. - Example: STRING values sort in the same order as
+        # their UTF-8 encodings. - Counterexample: Encoding INT64 to a fixed-width
+        # STRING does *not* preserve sort order when dealing with negative numbers.
+        # INT64(1) > INT64(-1), but STRING("-00001") > STRING("00001). - The overall
+        # encoding chain sorts naturally if *every* link does. * Self-delimiting: If we
+        # concatenate two encoded values, can we always tell where the first one ends
+        # and the second one begins? - Example: If we encode INT64s to fixed-width
+        # STRINGs, the first value will always contain exactly N digits, possibly
+        # preceded by a sign. - Counterexample: If we concatenate two UTF-8 encoded
+        # STRINGs, we have no way to tell where the first one ends. - The overall
+        # encoding chain is self-delimiting if *any* link is. * Compatibility: Which
+        # other systems have matching encoding schemes? For example, does this encoding
+        # have a GoogleSQL equivalent? HBase? Java?
+        # Corresponds to the JSON property `stateType`
+        # @return [Google::Apis::BigtableadminV2::Type]
+        attr_accessor :state_type
+      
+        # Computes the sum of the input values. Allowed input: `Int64` State: same as
+        # input
+        # Corresponds to the JSON property `sum`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeAggregateSum]
+        attr_accessor :sum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_type = args[:input_type] if args.key?(:input_type)
+          @state_type = args[:state_type] if args.key?(:state_type)
+          @sum = args[:sum] if args.key?(:sum)
+        end
+      end
+      
+      # Computes the sum of the input values. Allowed input: `Int64` State: same as
+      # input
+      class GoogleBigtableAdminV2TypeAggregateSum
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Bytes Values of type `Bytes` are stored in `Value.bytes_value`.
+      class GoogleBigtableAdminV2TypeBytes
+        include Google::Apis::Core::Hashable
+      
+        # Rules used to convert to/from lower level types.
+        # Corresponds to the JSON property `encoding`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytesEncoding]
+        attr_accessor :encoding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+        end
+      end
+      
+      # Rules used to convert to/from lower level types.
+      class GoogleBigtableAdminV2TypeBytesEncoding
+        include Google::Apis::Core::Hashable
+      
+        # Leaves the value "as-is" * Natural sort? Yes * Self-delimiting? No *
+        # Compatibility? N/A
+        # Corresponds to the JSON property `raw`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytesEncodingRaw]
+        attr_accessor :raw
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @raw = args[:raw] if args.key?(:raw)
+        end
+      end
+      
+      # Leaves the value "as-is" * Natural sort? Yes * Self-delimiting? No *
+      # Compatibility? N/A
+      class GoogleBigtableAdminV2TypeBytesEncodingRaw
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Int64 Values of type `Int64` are stored in `Value.int_value`.
+      class GoogleBigtableAdminV2TypeInt64
+        include Google::Apis::Core::Hashable
+      
+        # Rules used to convert to/from lower level types.
+        # Corresponds to the JSON property `encoding`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64Encoding]
+        attr_accessor :encoding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+        end
+      end
+      
+      # Rules used to convert to/from lower level types.
+      class GoogleBigtableAdminV2TypeInt64Encoding
+        include Google::Apis::Core::Hashable
+      
+        # Encodes the value as an 8-byte big endian twos complement `Bytes` value. *
+        # Natural sort? No (positive values only) * Self-delimiting? Yes * Compatibility?
+        # - BigQuery Federation `BINARY` encoding - HBase `Bytes.toBytes` - Java `
+        # ByteBuffer.putLong()` with `ByteOrder.BIG_ENDIAN`
+        # Corresponds to the JSON property `bigEndianBytes`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes]
+        attr_accessor :big_endian_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_endian_bytes = args[:big_endian_bytes] if args.key?(:big_endian_bytes)
+        end
+      end
+      
+      # Encodes the value as an 8-byte big endian twos complement `Bytes` value. *
+      # Natural sort? No (positive values only) * Self-delimiting? Yes * Compatibility?
+      # - BigQuery Federation `BINARY` encoding - HBase `Bytes.toBytes` - Java `
+      # ByteBuffer.putLong()` with `ByteOrder.BIG_ENDIAN`
+      class GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes
+        include Google::Apis::Core::Hashable
+      
+        # Bytes Values of type `Bytes` are stored in `Value.bytes_value`.
+        # Corresponds to the JSON property `bytesType`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytes]
+        attr_accessor :bytes_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_type = args[:bytes_type] if args.key?(:bytes_type)
         end
       end
       
@@ -2589,6 +2898,20 @@ module Google
         end
       end
       
+      # Checks that all writes before the consistency token was generated are
+      # replicated in every cluster and readable.
+      class StandardReadRemoteWrites
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -2836,6 +3159,63 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # `Type` represents the type of data that is written to, read from, or stored in
+      # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
+      # familiarity and consistency across products and features. For compatibility
+      # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
+      # which describes how to convert to/from the underlying data. This might involve
+      # composing a series of steps into an "encoding chain," for example to convert
+      # from INT64 -> STRING -> raw bytes. In most cases, a "link" in the encoding
+      # chain will be based an on existing GoogleSQL conversion function like `CAST`.
+      # Each link in the encoding chain also defines the following properties: *
+      # Natural sort: Does the encoded value sort consistently with the original typed
+      # value? Note that Bigtable will always sort data based on the raw encoded value,
+      # *not* the decoded type. - Example: STRING values sort in the same order as
+      # their UTF-8 encodings. - Counterexample: Encoding INT64 to a fixed-width
+      # STRING does *not* preserve sort order when dealing with negative numbers.
+      # INT64(1) > INT64(-1), but STRING("-00001") > STRING("00001). - The overall
+      # encoding chain sorts naturally if *every* link does. * Self-delimiting: If we
+      # concatenate two encoded values, can we always tell where the first one ends
+      # and the second one begins? - Example: If we encode INT64s to fixed-width
+      # STRINGs, the first value will always contain exactly N digits, possibly
+      # preceded by a sign. - Counterexample: If we concatenate two UTF-8 encoded
+      # STRINGs, we have no way to tell where the first one ends. - The overall
+      # encoding chain is self-delimiting if *any* link is. * Compatibility: Which
+      # other systems have matching encoding schemes? For example, does this encoding
+      # have a GoogleSQL equivalent? HBase? Java?
+      class Type
+        include Google::Apis::Core::Hashable
+      
+        # A value that combines incremental updates into a summarized value. Data is
+        # never directly written or read using type `Aggregate`. Writes will provide
+        # either the `input_type` or `state_type`, and reads will always return the `
+        # state_type` .
+        # Corresponds to the JSON property `aggregateType`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeAggregate]
+        attr_accessor :aggregate_type
+      
+        # Bytes Values of type `Bytes` are stored in `Value.bytes_value`.
+        # Corresponds to the JSON property `bytesType`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytes]
+        attr_accessor :bytes_type
+      
+        # Int64 Values of type `Int64` are stored in `Value.int_value`.
+        # Corresponds to the JSON property `int64Type`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64]
+        attr_accessor :int64_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_type = args[:aggregate_type] if args.key?(:aggregate_type)
+          @bytes_type = args[:bytes_type] if args.key?(:bytes_type)
+          @int64_type = args[:int64_type] if args.key?(:int64_type)
         end
       end
       
