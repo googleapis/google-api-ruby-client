@@ -519,8 +519,8 @@ module Google
       
         # Required. A Common Expression Language (CEL) expression that is used to match
         # requests for which the extension chain is executed. For more information, see [
-        # CEL matcher language reference](/service-extensions/docs/cel-matcher-language-
-        # reference).
+        # CEL matcher language reference](https://cloud.google.com/service-extensions/
+        # docs/cel-matcher-language-reference).
         # Corresponds to the JSON property `celExpression`
         # @return [String]
         attr_accessor :cel_expression
@@ -2091,8 +2091,8 @@ module Google
         attr_accessor :forwarding_rules
       
         # Optional. Set of labels associated with the `LbRouteExtension` resource. The
-        # format must comply with [the requirements for labels](/compute/docs/labeling-
-        # resources#requirements) for Google Cloud resources.
+        # format must comply with [the requirements for labels](https://cloud.google.com/
+        # compute/docs/labeling-resources#requirements) for Google Cloud resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2169,8 +2169,8 @@ module Google
         attr_accessor :forwarding_rules
       
         # Optional. Set of labels associated with the `LbTrafficExtension` resource. The
-        # format must comply with [the requirements for labels](/compute/docs/labeling-
-        # resources#requirements) for Google Cloud resources.
+        # format must comply with [the requirements for labels](https://cloud.google.com/
+        # compute/docs/labeling-resources#requirements) for Google Cloud resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
