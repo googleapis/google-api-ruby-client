@@ -22,6 +22,12 @@ module Google
   module Apis
     module RedisV1beta1
       
+      class AofConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AvailabilityConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,12 @@ module Google
       end
       
       class Cluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterPersistenceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RdbConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReconciliationOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,6 +376,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AofConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :append_fsync, as: 'appendFsync'
+        end
+      end
+      
       class AvailabilityConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -412,10 +437,13 @@ module Google
           collection :discovery_endpoints, as: 'discoveryEndpoints', class: Google::Apis::RedisV1beta1::DiscoveryEndpoint, decorator: Google::Apis::RedisV1beta1::DiscoveryEndpoint::Representation
       
           property :name, as: 'name'
+          property :persistence_config, as: 'persistenceConfig', class: Google::Apis::RedisV1beta1::ClusterPersistenceConfig, decorator: Google::Apis::RedisV1beta1::ClusterPersistenceConfig::Representation
+      
           collection :psc_configs, as: 'pscConfigs', class: Google::Apis::RedisV1beta1::PscConfig, decorator: Google::Apis::RedisV1beta1::PscConfig::Representation
       
           collection :psc_connections, as: 'pscConnections', class: Google::Apis::RedisV1beta1::PscConnection, decorator: Google::Apis::RedisV1beta1::PscConnection::Representation
       
+          hash :redis_configs, as: 'redisConfigs'
           property :replica_count, as: 'replicaCount'
           property :shard_count, as: 'shardCount'
           property :size_gb, as: 'sizeGb'
@@ -424,6 +452,17 @@ module Google
       
           property :transit_encryption_mode, as: 'transitEncryptionMode'
           property :uid, as: 'uid'
+        end
+      end
+      
+      class ClusterPersistenceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aof_config, as: 'aofConfig', class: Google::Apis::RedisV1beta1::AofConfig, decorator: Google::Apis::RedisV1beta1::AofConfig::Representation
+      
+          property :mode, as: 'mode'
+          property :rdb_config, as: 'rdbConfig', class: Google::Apis::RedisV1beta1::RdbConfig, decorator: Google::Apis::RedisV1beta1::RdbConfig::Representation
+      
         end
       end
       
@@ -864,6 +903,14 @@ module Google
           property :network, as: 'network'
           property :project_id, as: 'projectId'
           property :psc_connection_id, as: 'pscConnectionId'
+        end
+      end
+      
+      class RdbConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rdb_snapshot_period, as: 'rdbSnapshotPeriod'
+          property :rdb_snapshot_start_time, as: 'rdbSnapshotStartTime'
         end
       end
       
