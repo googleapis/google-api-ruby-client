@@ -1844,6 +1844,222 @@ module Google
         end
       end
       
+      # Auth configuration to run the extension.
+      class GoogleCloudAiplatformV1beta1AuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Config for authentication with API key.
+        # Corresponds to the JSON property `apiKeyConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfig]
+        attr_accessor :api_key_config
+      
+        # Type of auth scheme.
+        # Corresponds to the JSON property `authType`
+        # @return [String]
+        attr_accessor :auth_type
+      
+        # Config for Google Service Account Authentication.
+        # Corresponds to the JSON property `googleServiceAccountConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AuthConfigGoogleServiceAccountConfig]
+        attr_accessor :google_service_account_config
+      
+        # Config for HTTP Basic Authentication.
+        # Corresponds to the JSON property `httpBasicAuthConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AuthConfigHttpBasicAuthConfig]
+        attr_accessor :http_basic_auth_config
+      
+        # Empty message, used to indicate no authentication for an endpoint.
+        # Corresponds to the JSON property `noAuth`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AuthConfigNoAuth]
+        attr_accessor :no_auth
+      
+        # Config for user oauth.
+        # Corresponds to the JSON property `oauthConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AuthConfigOauthConfig]
+        attr_accessor :oauth_config
+      
+        # Config for user OIDC auth.
+        # Corresponds to the JSON property `oidcConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AuthConfigOidcConfig]
+        attr_accessor :oidc_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key_config = args[:api_key_config] if args.key?(:api_key_config)
+          @auth_type = args[:auth_type] if args.key?(:auth_type)
+          @google_service_account_config = args[:google_service_account_config] if args.key?(:google_service_account_config)
+          @http_basic_auth_config = args[:http_basic_auth_config] if args.key?(:http_basic_auth_config)
+          @no_auth = args[:no_auth] if args.key?(:no_auth)
+          @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
+          @oidc_config = args[:oidc_config] if args.key?(:oidc_config)
+        end
+      end
+      
+      # Config for authentication with API key.
+      class GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the SecretManager secret version resource storing the
+        # API key. Format: `projects/`project`/secrets/`secrete`/versions/`version`` -
+        # If specified, the `secretmanager.versions.access` permission should be granted
+        # to Vertex AI Extension Service Agent (https://cloud.google.com/vertex-ai/docs/
+        # general/access-control#service-agents) on the specified resource.
+        # Corresponds to the JSON property `apiKeySecret`
+        # @return [String]
+        attr_accessor :api_key_secret
+      
+        # Required. The location of the API key.
+        # Corresponds to the JSON property `httpElementLocation`
+        # @return [String]
+        attr_accessor :http_element_location
+      
+        # Required. The parameter name of the API key. E.g. If the API request is "https:
+        # //example.com/act?api_key=", "api_key" would be the parameter name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key_secret = args[:api_key_secret] if args.key?(:api_key_secret)
+          @http_element_location = args[:http_element_location] if args.key?(:http_element_location)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Config for Google Service Account Authentication.
+      class GoogleCloudAiplatformV1beta1AuthConfigGoogleServiceAccountConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The service account that the extension execution service runs as. -
+        # If the service account is specified, the `iam.serviceAccounts.getAccessToken`
+        # permission should be granted to Vertex AI Extension Service Agent (https://
+        # cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the
+        # specified service account. - If not specified, the Vertex AI Extension Service
+        # Agent will be used to execute the Extension.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # Config for HTTP Basic Authentication.
+      class GoogleCloudAiplatformV1beta1AuthConfigHttpBasicAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the SecretManager secret version resource storing the
+        # base64 encoded credentials. Format: `projects/`project`/secrets/`secrete`/
+        # versions/`version`` - If specified, the `secretmanager.versions.access`
+        # permission should be granted to Vertex AI Extension Service Agent (https://
+        # cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the
+        # specified resource.
+        # Corresponds to the JSON property `credentialSecret`
+        # @return [String]
+        attr_accessor :credential_secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @credential_secret = args[:credential_secret] if args.key?(:credential_secret)
+        end
+      end
+      
+      # Empty message, used to indicate no authentication for an endpoint.
+      class GoogleCloudAiplatformV1beta1AuthConfigNoAuth
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Config for user oauth.
+      class GoogleCloudAiplatformV1beta1AuthConfigOauthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Access token for extension endpoint. Only used to propagate token from [[
+        # ExecuteExtensionRequest.runtime_auth_config]] at request time.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # The service account used to generate access tokens for executing the Extension.
+        # - If the service account is specified, the `iam.serviceAccounts.
+        # getAccessToken` permission should be granted to Vertex AI Extension Service
+        # Agent (https://cloud.google.com/vertex-ai/docs/general/access-control#service-
+        # agents) on the provided service account.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # Config for user OIDC auth.
+      class GoogleCloudAiplatformV1beta1AuthConfigOidcConfig
+        include Google::Apis::Core::Hashable
+      
+        # OpenID Connect formatted ID token for extension endpoint. Only used to
+        # propagate token from [[ExecuteExtensionRequest.runtime_auth_config]] at
+        # request time.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # The service account used to generate an OpenID Connect (OIDC)-compatible JWT
+        # token signed by the Google OIDC Provider (accounts.google.com) for extension
+        # endpoint (https://cloud.google.com/iam/docs/create-short-lived-credentials-
+        # direct#sa-credentials-oidc). - The audience for the token will be set to the
+        # URL in the server url defined in the OpenApi spec. - If the service account is
+        # provided, the service account should grant `iam.serviceAccounts.getOpenIdToken`
+        # permission to Vertex AI Extension Service Agent (https://cloud.google.com/
+        # vertex-ai/docs/general/access-control#service-agents).
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
       # A description of resources that to large degree are decided by Vertex AI, and
       # require only a modest additional configuration. Each Model supporting these
       # resources documents its specific guidelines.
@@ -3220,6 +3436,26 @@ module Google
           @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
           @index = args[:index] if args.key?(:index)
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+        end
+      end
+      
+      # Placeholder for all checkpoint related data. Any data needed to restore a
+      # request and more go/vertex-extension-query-operation
+      class GoogleCloudAiplatformV1beta1CheckPoint
+        include Google::Apis::Core::Hashable
+      
+        # Required. encoded checkpoint
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
         end
       end
       
@@ -6219,11 +6455,6 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig]
         attr_accessor :predict_request_response_logging_config
       
-        # Represents configuration for private service connect.
-        # Corresponds to the JSON property `privateServiceConnectConfig`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig]
-        attr_accessor :private_service_connect_config
-      
         # A map from a DeployedModel's ID to the percentage of this Endpoint's traffic
         # that should be forwarded to that DeployedModel. If a DeployedModel's ID is not
         # listed in this map, then it receives no traffic. The traffic percentage values
@@ -6256,7 +6487,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @predict_request_response_logging_config = args[:predict_request_response_logging_config] if args.key?(:predict_request_response_logging_config)
-          @private_service_connect_config = args[:private_service_connect_config] if args.key?(:private_service_connect_config)
           @traffic_split = args[:traffic_split] if args.key?(:traffic_split)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -6764,6 +6994,61 @@ module Google
         end
       end
       
+      # Request message for ExtensionExecutionService.ExecuteExtension.
+      class GoogleCloudAiplatformV1beta1ExecuteExtensionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The desired ID of the operation to be executed in this extension as
+        # defined in ExtensionOperation.operation_id.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # Optional. Request parameters that will be used for executing this operation.
+        # The struct should be in a form of map with param name as the key and actual
+        # param value as the value. E.g. If this operation requires a param "name" to be
+        # set to "abc". you can set this to something like `"name": "abc"`.
+        # Corresponds to the JSON property `operationParams`
+        # @return [Hash<String,Object>]
+        attr_accessor :operation_params
+      
+        # Auth configuration to run the extension.
+        # Corresponds to the JSON property `runtimeAuthConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AuthConfig]
+        attr_accessor :runtime_auth_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @operation_params = args[:operation_params] if args.key?(:operation_params)
+          @runtime_auth_config = args[:runtime_auth_config] if args.key?(:runtime_auth_config)
+        end
+      end
+      
+      # Response message for ExtensionExecutionService.ExecuteExtension.
+      class GoogleCloudAiplatformV1beta1ExecuteExtensionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Response content from the extension. The content should be conformant to the
+        # response.content schema in the extension's manifest/OpenAPI spec.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+        end
+      end
+      
       # Instance of a general execution.
       class GoogleCloudAiplatformV1beta1Execution
         include Google::Apis::Core::Hashable
@@ -6856,6 +7141,88 @@ module Google
           @schema_version = args[:schema_version] if args.key?(:schema_version)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Execution plan for a request.
+      class GoogleCloudAiplatformV1beta1ExecutionPlan
+        include Google::Apis::Core::Hashable
+      
+        # Required. Sequence of steps to execute a request.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExecutionPlanStep>]
+        attr_accessor :steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # Single step in query execution plan.
+      class GoogleCloudAiplatformV1beta1ExecutionPlanStep
+        include Google::Apis::Core::Hashable
+      
+        # Extension execution step.
+        # Corresponds to the JSON property `extensionExecution`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExecutionPlanStepExtensionExecution]
+        attr_accessor :extension_execution
+      
+        # Respond to user step.
+        # Corresponds to the JSON property `respondToUser`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExecutionPlanStepRespondToUser]
+        attr_accessor :respond_to_user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extension_execution = args[:extension_execution] if args.key?(:extension_execution)
+          @respond_to_user = args[:respond_to_user] if args.key?(:respond_to_user)
+        end
+      end
+      
+      # Extension execution step.
+      class GoogleCloudAiplatformV1beta1ExecutionPlanStepExtensionExecution
+        include Google::Apis::Core::Hashable
+      
+        # Required. extension resource name
+        # Corresponds to the JSON property `extension`
+        # @return [String]
+        attr_accessor :extension
+      
+        # Required. the operation id
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extension = args[:extension] if args.key?(:extension)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+        end
+      end
+      
+      # Respond to user step.
+      class GoogleCloudAiplatformV1beta1ExecutionPlanStepRespondToUser
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -7973,6 +8340,173 @@ module Google
         end
       end
       
+      # Extensions are tools for large language models to access external data, run
+      # computations, etc.
+      class GoogleCloudAiplatformV1beta1Extension
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this Extension was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The description of the Extension.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of the Extension. The name can be up to 128
+        # characters long and can consist of any UTF-8 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Used to perform consistent read-modify-write updates. If not set, a
+        # blind "overwrite" update happens.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. Supported operations.
+        # Corresponds to the JSON property `extensionOperations`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExtensionOperation>]
+        attr_accessor :extension_operations
+      
+        # Manifest spec of an Extension needed for runtime execution.
+        # Corresponds to the JSON property `manifest`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExtensionManifest]
+        attr_accessor :manifest
+      
+        # Identifier. The resource name of the Extension.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Examples to illustrate the usage of the extension as a tool.
+        # Corresponds to the JSON property `toolUseExamples`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolUseExample>]
+        attr_accessor :tool_use_examples
+      
+        # Output only. Timestamp when this Extension was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @extension_operations = args[:extension_operations] if args.key?(:extension_operations)
+          @manifest = args[:manifest] if args.key?(:manifest)
+          @name = args[:name] if args.key?(:name)
+          @tool_use_examples = args[:tool_use_examples] if args.key?(:tool_use_examples)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Manifest spec of an Extension needed for runtime execution.
+      class GoogleCloudAiplatformV1beta1ExtensionManifest
+        include Google::Apis::Core::Hashable
+      
+        # The API specification shown to the LLM.
+        # Corresponds to the JSON property `apiSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExtensionManifestApiSpec]
+        attr_accessor :api_spec
+      
+        # Auth configuration to run the extension.
+        # Corresponds to the JSON property `authConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AuthConfig]
+        attr_accessor :auth_config
+      
+        # Required. The natural language description shown to the LLM. It should
+        # describe the usage of the extension, and is essential for the LLM to perform
+        # reasoning.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Extension name shown to the LLM. The name can be up to 128
+        # characters long.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_spec = args[:api_spec] if args.key?(:api_spec)
+          @auth_config = args[:auth_config] if args.key?(:auth_config)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The API specification shown to the LLM.
+      class GoogleCloudAiplatformV1beta1ExtensionManifestApiSpec
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage URI pointing to the OpenAPI spec.
+        # Corresponds to the JSON property `openApiGcsUri`
+        # @return [String]
+        attr_accessor :open_api_gcs_uri
+      
+        # The API spec in Open API standard and YAML format.
+        # Corresponds to the JSON property `openApiYaml`
+        # @return [String]
+        attr_accessor :open_api_yaml
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @open_api_gcs_uri = args[:open_api_gcs_uri] if args.key?(:open_api_gcs_uri)
+          @open_api_yaml = args[:open_api_yaml] if args.key?(:open_api_yaml)
+        end
+      end
+      
+      # Operation of an extension.
+      class GoogleCloudAiplatformV1beta1ExtensionOperation
+        include Google::Apis::Core::Hashable
+      
+        # Structured representation of a function declaration as defined by the [OpenAPI
+        # 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this
+        # declaration are the function name and parameters. This FunctionDeclaration is
+        # a representation of a block of code that can be used as a `Tool` by the model
+        # and executed by the client.
+        # Corresponds to the JSON property `functionDeclaration`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionDeclaration]
+        attr_accessor :function_declaration
+      
+        # Operation ID that uniquely identifies the operations among the extension. See:
+        # "Operation Object" in https://swagger.io/specification/. This field is parsed
+        # from the OpenAPI spec. For HTTP extensions, if it does not exist in the spec,
+        # we will generate one from the HTTP method and path.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function_declaration = args[:function_declaration] if args.key?(:function_declaration)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+        end
+      end
+      
       # Feature Metadata information. For example, color is a feature that describes
       # an apple.
       class GoogleCloudAiplatformV1beta1Feature
@@ -9068,9 +9602,11 @@ module Google
         attr_accessor :brute_force_config
       
         # Optional. Column of crowding. This column contains crowding attribute which is
-        # a constraint on a neighbor list produced by nearest neighbor search requiring
-        # that no more than some value k' of the k neighbors returned have the same
-        # value of crowding_attribute.
+        # a constraint on a neighbor list produced by FeatureOnlineStoreService.
+        # SearchNearestEntities to diversify search results. If NearestNeighborQuery.
+        # per_crowding_attribute_neighbor_count is set to K in
+        # SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of
+        # the same crowding attribute are returned in the response.
         # Corresponds to the JSON property `crowdingColumn`
         # @return [String]
         attr_accessor :crowding_column
@@ -9498,6 +10034,11 @@ module Google
       class GoogleCloudAiplatformV1beta1FetchFeatureValuesResponse
         include Google::Apis::Core::Hashable
       
+        # Lookup key for a feature view.
+        # Corresponds to the JSON property `dataKey`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewDataKey]
+        attr_accessor :data_key
+      
         # Response structure in the format of key (feature name) and (feature) value
         # pair.
         # Corresponds to the JSON property `keyValues`
@@ -9515,6 +10056,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_key = args[:data_key] if args.key?(:data_key)
           @key_values = args[:key_values] if args.key?(:key_values)
           @proto_struct = args[:proto_struct] if args.key?(:proto_struct)
         end
@@ -9881,8 +10423,8 @@ module Google
         attr_accessor :description
       
         # Required. The name of the function to call. Must start with a letter or an
-        # underscore. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a
-        # maximum length of 64.
+        # underscore. Must be a-z, A-Z, 0-9, or contain underscores, dots and dashes,
+        # with a maximum length of 64.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -11941,6 +12483,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @executions = args[:executions] if args.key?(:executions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ExtensionRegistryService.ListExtensions
+      class GoogleCloudAiplatformV1beta1ListExtensionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Extension in the requested page.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Extension>]
+        attr_accessor :extensions
+      
+        # A token to retrieve the next page of results. Pass to ListExtensionsRequest.
+        # page_token to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extensions = args[:extensions] if args.key?(:extensions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -17861,6 +18429,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke]
         attr_accessor :deploy_gke
       
+        # Multiple setups to deploy the PublisherModel.
+        # Corresponds to the JSON property `multiDeployVertex`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployVertex]
+        attr_accessor :multi_deploy_vertex
+      
         # The regional resource name or the URI. Key is region, e.g., us-central1,
         # europe-west2, global, etc..
         # Corresponds to the JSON property `openEvaluationPipeline`
@@ -17927,6 +18500,7 @@ module Google
           @create_application = args[:create_application] if args.key?(:create_application)
           @deploy = args[:deploy] if args.key?(:deploy)
           @deploy_gke = args[:deploy_gke] if args.key?(:deploy_gke)
+          @multi_deploy_vertex = args[:multi_deploy_vertex] if args.key?(:multi_deploy_vertex)
           @open_evaluation_pipeline = args[:open_evaluation_pipeline] if args.key?(:open_evaluation_pipeline)
           @open_fine_tuning_pipeline = args[:open_fine_tuning_pipeline] if args.key?(:open_fine_tuning_pipeline)
           @open_fine_tuning_pipelines = args[:open_fine_tuning_pipelines] if args.key?(:open_fine_tuning_pipelines)
@@ -18033,6 +18607,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gke_yaml_configs = args[:gke_yaml_configs] if args.key?(:gke_yaml_configs)
+        end
+      end
+      
+      # Multiple setups to deploy the PublisherModel.
+      class GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployVertex
+        include Google::Apis::Core::Hashable
+      
+        # Optional. One click deployment configurations.
+        # Corresponds to the JSON property `multiDeployVertex`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeploy>]
+        attr_accessor :multi_deploy_vertex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multi_deploy_vertex = args[:multi_deploy_vertex] if args.key?(:multi_deploy_vertex)
         end
       end
       
@@ -18553,6 +19146,214 @@ module Google
         end
       end
       
+      # Request message for ExtensionExecutionService.QueryExtension.
+      class GoogleCloudAiplatformV1beta1QueryExtensionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The content of the current conversation with the model. For single-
+        # turn queries, this is a single instance. For multi-turn queries, this is a
+        # repeated field that contains conversation history + latest request.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content>]
+        attr_accessor :contents
+      
+        # User provided query message.
+        # Corresponds to the JSON property `query`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QueryRequestQuery]
+        attr_accessor :query
+      
+        # Optional. Experiment control on whether to use function call.
+        # Corresponds to the JSON property `useFunctionCall`
+        # @return [Boolean]
+        attr_accessor :use_function_call
+        alias_method :use_function_call?, :use_function_call
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @query = args[:query] if args.key?(:query)
+          @use_function_call = args[:use_function_call] if args.key?(:use_function_call)
+        end
+      end
+      
+      # Response message for ExtensionExecutionService.QueryExtension.
+      class GoogleCloudAiplatformV1beta1QueryExtensionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Failure message if any.
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
+        # Metadata for response
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QueryResponseResponseMetadata]
+        attr_accessor :metadata
+      
+        # 
+        # Corresponds to the JSON property `queryResponseMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadata]
+        attr_accessor :query_response_metadata
+      
+        # Response to the user's query.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
+        # Steps of extension or LLM interaction, can contain function call, function
+        # response, or text response. The last step contains the final response to the
+        # query.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content>]
+        attr_accessor :steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @query_response_metadata = args[:query_response_metadata] if args.key?(:query_response_metadata)
+          @response = args[:response] if args.key?(:response)
+          @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # User provided query message.
+      class GoogleCloudAiplatformV1beta1QueryRequestQuery
+        include Google::Apis::Core::Hashable
+      
+        # Required. The query from user.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # 
+      class GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # ReAgent execution steps.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadataReAgentSteps>]
+        attr_accessor :steps
+      
+        # Whether the reasoning agent used creativity (instead of extensions provided)
+        # to build the response.
+        # Corresponds to the JSON property `useCreativity`
+        # @return [Boolean]
+        attr_accessor :use_creativity
+        alias_method :use_creativity?, :use_creativity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @steps = args[:steps] if args.key?(:steps)
+          @use_creativity = args[:use_creativity] if args.key?(:use_creativity)
+        end
+      end
+      
+      # ReAgent execution steps.
+      class GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadataReAgentSteps
+        include Google::Apis::Core::Hashable
+      
+        # Error messages from the extension or during response parsing.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Planner's instruction to the extension.
+        # Corresponds to the JSON property `extensionInstruction`
+        # @return [String]
+        attr_accessor :extension_instruction
+      
+        # Planner's choice of extension to invoke.
+        # Corresponds to the JSON property `extensionInvoked`
+        # @return [String]
+        attr_accessor :extension_invoked
+      
+        # Response of the extension.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
+        # When set to False, either the extension fails to execute or the response
+        # cannot be summarized.
+        # Corresponds to the JSON property `success`
+        # @return [Boolean]
+        attr_accessor :success
+        alias_method :success?, :success
+      
+        # Planner's thought.
+        # Corresponds to the JSON property `thought`
+        # @return [String]
+        attr_accessor :thought
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @extension_instruction = args[:extension_instruction] if args.key?(:extension_instruction)
+          @extension_invoked = args[:extension_invoked] if args.key?(:extension_invoked)
+          @response = args[:response] if args.key?(:response)
+          @success = args[:success] if args.key?(:success)
+          @thought = args[:thought] if args.key?(:thought)
+        end
+      end
+      
+      # Metadata for response
+      class GoogleCloudAiplatformV1beta1QueryResponseResponseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Placeholder for all checkpoint related data. Any data needed to restore a
+        # request and more go/vertex-extension-query-operation
+        # Corresponds to the JSON property `checkpoint`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CheckPoint]
+        attr_accessor :checkpoint
+      
+        # Execution plan for a request.
+        # Corresponds to the JSON property `executionPlan`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExecutionPlan]
+        attr_accessor :execution_plan
+      
+        # To surface the v2 flow output.
+        # Corresponds to the JSON property `flowOutputs`
+        # @return [Hash<String,Object>]
+        attr_accessor :flow_outputs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @checkpoint = args[:checkpoint] if args.key?(:checkpoint)
+          @execution_plan = args[:execution_plan] if args.key?(:execution_plan)
+          @flow_outputs = args[:flow_outputs] if args.key?(:flow_outputs)
+        end
+      end
+      
       # Request message for PredictionService.RawPredict.
       class GoogleCloudAiplatformV1beta1RawPredictRequest
         include Google::Apis::Core::Hashable
@@ -18972,6 +19773,44 @@ module Google
         def update!(**args)
           @username = args[:username] if args.key?(:username)
           @view_count = args[:view_count] if args.key?(:view_count)
+        end
+      end
+      
+      # Details of operations that perform reboot PersistentResource.
+      class GoogleCloudAiplatformV1beta1RebootPersistentResourceOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        # Progress Message for Reboot LRO
+        # Corresponds to the JSON property `progressMessage`
+        # @return [String]
+        attr_accessor :progress_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+          @progress_message = args[:progress_message] if args.key?(:progress_message)
+        end
+      end
+      
+      # Request message for PersistentResourceService.RebootPersistentResource.
+      class GoogleCloudAiplatformV1beta1RebootPersistentResourceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -19457,6 +20296,12 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Optional. Specify if the threshold is used for probability or severity score.
+        # If not specified, the threshold is used for probability score.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
         # Required. The harm block threshold.
         # Corresponds to the JSON property `threshold`
         # @return [String]
@@ -19469,6 +20314,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @category = args[:category] if args.key?(:category)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @threshold = args[:threshold] if args.key?(:threshold)
         end
       end
@@ -19883,6 +20729,11 @@ module Google
       class GoogleCloudAiplatformV1beta1Schema
         include Google::Apis::Core::Hashable
       
+        # Optional. Default value of the data.
+        # Corresponds to the JSON property `default`
+        # @return [Object]
+        attr_accessor :default
+      
         # Optional. The description of the data.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -19901,8 +20752,9 @@ module Google
         # @return [Object]
         attr_accessor :example
       
-        # Optional. The format of the data. Supported formats: for NUMBER type: float,
-        # double for INTEGER type: int32, int64
+        # Optional. The format of the data. Supported formats: for NUMBER type: "float",
+        # "double" for INTEGER type: "int32", "int64" for STRING type: "email", "byte",
+        # etc
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
@@ -19914,13 +20766,60 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :items
       
+        # Optional. Maximum number of the elements for Type.ARRAY.
+        # Corresponds to the JSON property `maxItems`
+        # @return [Fixnum]
+        attr_accessor :max_items
+      
+        # Optional. Maximum length of the Type.STRING
+        # Corresponds to the JSON property `maxLength`
+        # @return [Fixnum]
+        attr_accessor :max_length
+      
+        # Optional. Maximum number of the properties for Type.OBJECT.
+        # Corresponds to the JSON property `maxProperties`
+        # @return [Fixnum]
+        attr_accessor :max_properties
+      
+        # Optional. Maximum value of the Type.INTEGER and Type.NUMBER
+        # Corresponds to the JSON property `maximum`
+        # @return [Float]
+        attr_accessor :maximum
+      
+        # Optional. Minimum number of the elements for Type.ARRAY.
+        # Corresponds to the JSON property `minItems`
+        # @return [Fixnum]
+        attr_accessor :min_items
+      
+        # Optional. SCHEMA FIELDS FOR TYPE STRING Minimum length of the Type.STRING
+        # Corresponds to the JSON property `minLength`
+        # @return [Fixnum]
+        attr_accessor :min_length
+      
+        # Optional. Minimum number of the properties for Type.OBJECT.
+        # Corresponds to the JSON property `minProperties`
+        # @return [Fixnum]
+        attr_accessor :min_properties
+      
+        # Optional. SCHEMA FIELDS FOR TYPE INTEGER and NUMBER Minimum value of the Type.
+        # INTEGER and Type.NUMBER
+        # Corresponds to the JSON property `minimum`
+        # @return [Float]
+        attr_accessor :minimum
+      
         # Optional. Indicates if the value may be null.
         # Corresponds to the JSON property `nullable`
         # @return [Boolean]
         attr_accessor :nullable
         alias_method :nullable?, :nullable
       
-        # Optional. Properties of Type.OBJECT.
+        # Optional. Pattern of the Type.STRING to restrict a string to a regular
+        # expression.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        # Optional. SCHEMA FIELDS FOR TYPE OBJECT Properties of Type.OBJECT.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema>]
         attr_accessor :properties
@@ -19929,6 +20828,11 @@ module Google
         # Corresponds to the JSON property `required`
         # @return [Array<String>]
         attr_accessor :required
+      
+        # Optional. The title of the Schema.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
       
         # Optional. The type of the data.
         # Corresponds to the JSON property `type`
@@ -19941,14 +20845,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default = args[:default] if args.key?(:default)
           @description = args[:description] if args.key?(:description)
           @enum = args[:enum] if args.key?(:enum)
           @example = args[:example] if args.key?(:example)
           @format = args[:format] if args.key?(:format)
           @items = args[:items] if args.key?(:items)
+          @max_items = args[:max_items] if args.key?(:max_items)
+          @max_length = args[:max_length] if args.key?(:max_length)
+          @max_properties = args[:max_properties] if args.key?(:max_properties)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @min_items = args[:min_items] if args.key?(:min_items)
+          @min_length = args[:min_length] if args.key?(:min_length)
+          @min_properties = args[:min_properties] if args.key?(:min_properties)
+          @minimum = args[:minimum] if args.key?(:minimum)
           @nullable = args[:nullable] if args.key?(:nullable)
+          @pattern = args[:pattern] if args.key?(:pattern)
           @properties = args[:properties] if args.key?(:properties)
           @required = args[:required] if args.key?(:required)
+          @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -26410,6 +27325,69 @@ module Google
         end
       end
       
+      # Request message for FeatureOnlineStoreService.StreamingFetchFeatureValues. For
+      # the entities requested, all features under the requested feature view will be
+      # returned.
+      class GoogleCloudAiplatformV1beta1StreamingFetchFeatureValuesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specify response data format. If not set, KeyValue format will be used.
+        # Corresponds to the JSON property `dataFormat`
+        # @return [String]
+        attr_accessor :data_format
+      
+        # 
+        # Corresponds to the JSON property `dataKeys`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewDataKey>]
+        attr_accessor :data_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_format = args[:data_format] if args.key?(:data_format)
+          @data_keys = args[:data_keys] if args.key?(:data_keys)
+        end
+      end
+      
+      # Response message for FeatureOnlineStoreService.StreamingFetchFeatureValues.
+      class GoogleCloudAiplatformV1beta1StreamingFetchFeatureValuesResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `data`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FetchFeatureValuesResponse>]
+        attr_accessor :data
+      
+        # 
+        # Corresponds to the JSON property `dataKeysWithError`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewDataKey>]
+        attr_accessor :data_keys_with_error
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @data_keys_with_error = args[:data_keys_with_error] if args.key?(:data_keys_with_error)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # Request message for PredictionService.StreamingPredict. The first message must
       # contain endpoint field and optionally input. The subsequent messages must
       # contain input.
@@ -28229,6 +29207,86 @@ module Google
         end
       end
       
+      # A single example of the tool usage.
+      class GoogleCloudAiplatformV1beta1ToolUseExample
+        include Google::Apis::Core::Hashable
+      
+        # Required. The display name for example.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifies one operation of the extension.
+        # Corresponds to the JSON property `extensionOperation`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolUseExampleExtensionOperation]
+        attr_accessor :extension_operation
+      
+        # Function name to call.
+        # Corresponds to the JSON property `functionName`
+        # @return [String]
+        attr_accessor :function_name
+      
+        # Required. Query that should be routed to this tool.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Request parameters used for executing this tool.
+        # Corresponds to the JSON property `requestParams`
+        # @return [Hash<String,Object>]
+        attr_accessor :request_params
+      
+        # Response parameters generated by this tool.
+        # Corresponds to the JSON property `responseParams`
+        # @return [Hash<String,Object>]
+        attr_accessor :response_params
+      
+        # Summary of the tool response to the user query.
+        # Corresponds to the JSON property `responseSummary`
+        # @return [String]
+        attr_accessor :response_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @extension_operation = args[:extension_operation] if args.key?(:extension_operation)
+          @function_name = args[:function_name] if args.key?(:function_name)
+          @query = args[:query] if args.key?(:query)
+          @request_params = args[:request_params] if args.key?(:request_params)
+          @response_params = args[:response_params] if args.key?(:response_params)
+          @response_summary = args[:response_summary] if args.key?(:response_summary)
+        end
+      end
+      
+      # Identifies one operation of the extension.
+      class GoogleCloudAiplatformV1beta1ToolUseExampleExtensionOperation
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the extension.
+        # Corresponds to the JSON property `extension`
+        # @return [String]
+        attr_accessor :extension
+      
+        # Required. Operation ID of the extension.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extension = args[:extension] if args.key?(:extension)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+        end
+      end
+      
       # CMLE training config. For every active learning labeling iteration, system
       # will train a machine learning model on CMLE. The trained model will be used by
       # data sampling algorithm to select DataItems.
@@ -29261,8 +30319,9 @@ module Google
       class GoogleCloudAiplatformV1beta1VertexAiSearch
         include Google::Apis::Core::Hashable
       
-        # Required. Fully-qualified Vertex AI Search's datastore resource ID. projects/<>
-        # /locations/<>/collections/<>/dataStores/<>
+        # Required. Fully-qualified Vertex AI Search's datastore resource ID. Format:
+        # projects/`project`/locations/`location`/collections/`collection`/dataStores/`
+        # dataStore`
         # Corresponds to the JSON property `datastore`
         # @return [String]
         attr_accessor :datastore
@@ -31511,7 +32570,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Index in the prediction output where the citation ends (exclusive). Must be >
-        # start_index and < len(output).
+        # start_index and <= len(output).
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
