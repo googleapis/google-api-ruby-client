@@ -702,7 +702,7 @@ module Google
         #   Required. The resource name of the repository in the format `projects/*/
         #   locations/*/connections/*/repositories/*`.
         # @param [Fixnum] page_size
-        #   Optional. Number of results to return in the list. Default to 100.
+        #   Optional. Number of results to return in the list. Default to 20.
         # @param [String] page_token
         #   Optional. Page start.
         # @param [String] ref_type
