@@ -3578,6 +3578,11 @@ module Google
       class GoogleCloudDatacatalogV1beta1TagTemplate
         include Google::Apis::Core::Hashable
       
+        # Output only. Transfer status of the TagTemplate
+        # Corresponds to the JSON property `dataplexTransferStatus`
+        # @return [String]
+        attr_accessor :dataplex_transfer_status
+      
         # The display name for this template. Defaults to an empty string.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -3608,6 +3613,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dataplex_transfer_status = args[:dataplex_transfer_status] if args.key?(:dataplex_transfer_status)
           @display_name = args[:display_name] if args.key?(:display_name)
           @fields = args[:fields] if args.key?(:fields)
           @name = args[:name] if args.key?(:name)
