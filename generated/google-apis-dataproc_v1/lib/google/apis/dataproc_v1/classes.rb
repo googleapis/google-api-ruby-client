@@ -58,6 +58,33 @@ module Google
         end
       end
       
+      # A request to analyze a batch workload.
+      class AnalyzeBatchRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A unique ID used to identify the request. If the service receives
+        # two AnalyzeBatchRequest (http://cloud/dataproc/docs/reference/rpc/google.cloud.
+        # dataproc.v1#google.cloud.dataproc.v1.AnalyzeBatchRequest)s with the same
+        # request_id, the second request is ignored and the Operation that corresponds
+        # to the first request created and stored in the backend is returned.
+        # Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/
+        # Universally_unique_identifier).The value must contain only letters (a-z, A-Z),
+        # numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        # characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # Metadata describing the Analyze operation.
       class AnalyzeOperationMetadata
         include Google::Apis::Core::Hashable
