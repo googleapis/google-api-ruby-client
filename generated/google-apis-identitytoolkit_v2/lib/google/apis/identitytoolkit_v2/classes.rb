@@ -1413,7 +1413,7 @@ module Google
         # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>]
         attr_accessor :managed_rules
       
-        # Output only. The reCAPTCHA keys.
+        # The reCAPTCHA keys.
         # Corresponds to the JSON property `recaptchaKeys`
         # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaKey>]
         attr_accessor :recaptcha_keys
