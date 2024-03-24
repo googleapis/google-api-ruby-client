@@ -261,8 +261,9 @@ module Google
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLoggingConfig] google_cloud_retail_v2alpha_logging_config_object
         # @param [String] update_mask
         #   Indicates which fields in the provided LoggingConfig to update. The following
-        #   are the only supported fields: * default_log_generation_rule *
-        #   per_service_log_generation_rules If not set, all supported fields are updated.
+        #   are the only supported fields: * LoggingConfig.default_log_generation_rule *
+        #   LoggingConfig.per_service_log_generation_rules If not set, all supported
+        #   fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
