@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeminiInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenerateEphemeralCertRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +461,12 @@ module Google
       end
       
       class ReplicaConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplicationCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -707,6 +719,7 @@ module Google
           property :replication_log_archiving_enabled, as: 'replicationLogArchivingEnabled'
           property :start_time, as: 'startTime'
           property :transaction_log_retention_days, as: 'transactionLogRetentionDays'
+          property :transactional_log_storage_state, as: 'transactionalLogStorageState'
         end
       end
       
@@ -860,6 +873,8 @@ module Google
           property :failover_replica, as: 'failoverReplica', class: Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica, decorator: Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica::Representation
       
           property :gce_zone, as: 'gceZone'
+          property :gemini_config, as: 'geminiConfig', class: Google::Apis::SqladminV1beta4::GeminiInstanceConfig, decorator: Google::Apis::SqladminV1beta4::GeminiInstanceConfig::Representation
+      
           property :instance_type, as: 'instanceType'
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1beta4::IpMapping, decorator: Google::Apis::SqladminV1beta4::IpMapping::Representation
       
@@ -880,6 +895,8 @@ module Google
           property :replica_configuration, as: 'replicaConfiguration', class: Google::Apis::SqladminV1beta4::ReplicaConfiguration, decorator: Google::Apis::SqladminV1beta4::ReplicaConfiguration::Representation
       
           collection :replica_names, as: 'replicaNames'
+          property :replication_cluster, as: 'replicationCluster', class: Google::Apis::SqladminV1beta4::ReplicationCluster, decorator: Google::Apis::SqladminV1beta4::ReplicationCluster::Representation
+      
           property :root_password, as: 'rootPassword'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduled_maintenance, as: 'scheduledMaintenance', class: Google::Apis::SqladminV1beta4::SqlScheduledMaintenance, decorator: Google::Apis::SqladminV1beta4::SqlScheduledMaintenance::Representation
@@ -1075,6 +1092,18 @@ module Google
           collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::Flag, decorator: Google::Apis::SqladminV1beta4::Flag::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class GeminiInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_query_enabled, as: 'activeQueryEnabled'
+          property :entitled, as: 'entitled'
+          property :flag_recommender_enabled, as: 'flagRecommenderEnabled'
+          property :google_vacuum_mgmt_enabled, as: 'googleVacuumMgmtEnabled'
+          property :index_advisor_enabled, as: 'indexAdvisorEnabled'
+          property :oom_session_cancel_enabled, as: 'oomSessionCancelEnabled'
         end
       end
       
@@ -1480,6 +1509,14 @@ module Google
         end
       end
       
+      class ReplicationCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dr_replica, as: 'drReplica'
+          property :failover_dr_replica_name, as: 'failoverDrReplicaName'
+        end
+      end
+      
       class Reschedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1622,6 +1659,7 @@ module Google
       class SqlInstancesStartExternalSyncRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :migration_type, as: 'migrationType'
           property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1beta4::MySqlSyncConfig, decorator: Google::Apis::SqladminV1beta4::MySqlSyncConfig::Representation
       
           property :skip_verification, as: 'skipVerification'
@@ -1633,6 +1671,7 @@ module Google
       class SqlInstancesVerifyExternalSyncSettingsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :migration_type, as: 'migrationType'
           property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1beta4::MySqlSyncConfig, decorator: Google::Apis::SqladminV1beta4::MySqlSyncConfig::Representation
       
           property :sync_mode, as: 'syncMode'
