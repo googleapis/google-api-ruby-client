@@ -4363,8 +4363,8 @@ module Google
         attr_accessor :force
         alias_method :force?, :force
       
-        # Optional. GCS object containing list of `resourceType`/`resourceId` lines,
-        # identifying resources to be reverted
+        # Optional. Cloud Storage object containing list of `resourceType`/`resourceId`
+        # lines, identifying resources to be reverted
         # Corresponds to the JSON property `inputGcsObject`
         # @return [String]
         attr_accessor :input_gcs_object
