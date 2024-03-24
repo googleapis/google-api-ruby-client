@@ -22,9 +22,11 @@ module Google
     module IamV1
       # Identity and Access Management (IAM) API
       #
-      # Manages identity and access control for Google Cloud Platform resources,
-      #  including the creation of service accounts, which you can use to authenticate
-      #  to Google and make API calls.
+      # Manages identity and access control for Google Cloud resources, including the
+      #  creation of service accounts, which you can use to authenticate to Google and
+      #  make API calls. Enabling this API also enables the IAM Service Account
+      #  Credentials API (iamcredentials.googleapis.com). However, disabling this API
+      #  doesn't disable the IAM Service Account Credentials API.
       #
       # @example
       #    require 'google/apis/iam_v1'
