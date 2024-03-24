@@ -826,6 +826,48 @@ module Google
         end
       end
       
+      # Execution statistics for the query.
+      class ExecutionStats
+        include Google::Apis::Core::Hashable
+      
+        # Debugging statistics from the execution of the query. Note that the debugging
+        # stats are subject to change as Firestore evolves. It could include: ` "
+        # indexes_entries_scanned": "1000", "documents_scanned": "20", "billing_details"
+        # : ` "documents_billable": "20", "index_entries_billable": "1000", "
+        # min_query_cost": "0" ` `
+        # Corresponds to the JSON property `debugStats`
+        # @return [Hash<String,Object>]
+        attr_accessor :debug_stats
+      
+        # Total time to execute the query in the backend.
+        # Corresponds to the JSON property `executionDuration`
+        # @return [String]
+        attr_accessor :execution_duration
+      
+        # Total billable read operations.
+        # Corresponds to the JSON property `readOperations`
+        # @return [Fixnum]
+        attr_accessor :read_operations
+      
+        # Total number of results returned, including documents, projections,
+        # aggregation results, keys.
+        # Corresponds to the JSON property `resultsReturned`
+        # @return [Fixnum]
+        attr_accessor :results_returned
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @debug_stats = args[:debug_stats] if args.key?(:debug_stats)
+          @execution_duration = args[:execution_duration] if args.key?(:execution_duration)
+          @read_operations = args[:read_operations] if args.key?(:read_operations)
+          @results_returned = args[:results_returned] if args.key?(:results_returned)
+        end
+      end
+      
       # A digest of all the documents that match a given target.
       class ExistenceFilter
         include Google::Apis::Core::Hashable
@@ -866,6 +908,54 @@ module Google
           @count = args[:count] if args.key?(:count)
           @target_id = args[:target_id] if args.key?(:target_id)
           @unchanged_names = args[:unchanged_names] if args.key?(:unchanged_names)
+        end
+      end
+      
+      # Explain metrics for the query.
+      class ExplainMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Execution statistics for the query.
+        # Corresponds to the JSON property `executionStats`
+        # @return [Google::Apis::FirestoreV1beta1::ExecutionStats]
+        attr_accessor :execution_stats
+      
+        # Planning phase information for the query.
+        # Corresponds to the JSON property `planSummary`
+        # @return [Google::Apis::FirestoreV1beta1::PlanSummary]
+        attr_accessor :plan_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_stats = args[:execution_stats] if args.key?(:execution_stats)
+          @plan_summary = args[:plan_summary] if args.key?(:plan_summary)
+        end
+      end
+      
+      # Explain options for the query.
+      class ExplainOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to execute this query. When false (the default), the query
+        # will be planned, returning only metrics from the planning stages. When true,
+        # the query will be planned and executed, returning the full query results along
+        # with both planning and execution stage metrics.
+        # Corresponds to the JSON property `analyze`
+        # @return [Boolean]
+        attr_accessor :analyze
+        alias_method :analyze?, :analyze
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analyze = args[:analyze] if args.key?(:analyze)
         end
       end
       
@@ -1903,6 +1993,27 @@ module Google
         end
       end
       
+      # Planning phase information for the query.
+      class PlanSummary
+        include Google::Apis::Core::Hashable
+      
+        # The indexes selected for the query. For example: [ `"query_scope": "Collection"
+        # , "properties": "(foo ASC, __name__ ASC)"`, `"query_scope": "Collection", "
+        # properties": "(bar ASC, __name__ ASC)"` ]
+        # Corresponds to the JSON property `indexesUsed`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :indexes_used
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @indexes_used = args[:indexes_used] if args.key?(:indexes_used)
+        end
+      end
+      
       # A precondition on a document, used for conditional operations.
       class Precondition
         include Google::Apis::Core::Hashable
@@ -2048,6 +2159,11 @@ module Google
       class RunAggregationQueryRequest
         include Google::Apis::Core::Hashable
       
+        # Explain options for the query.
+        # Corresponds to the JSON property `explainOptions`
+        # @return [Google::Apis::FirestoreV1beta1::ExplainOptions]
+        attr_accessor :explain_options
+      
         # Options for creating a new transaction.
         # Corresponds to the JSON property `newTransaction`
         # @return [Google::Apis::FirestoreV1beta1::TransactionOptions]
@@ -2078,6 +2194,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @explain_options = args[:explain_options] if args.key?(:explain_options)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
           @structured_aggregation_query = args[:structured_aggregation_query] if args.key?(:structured_aggregation_query)
@@ -2088,6 +2205,11 @@ module Google
       # The response for Firestore.RunAggregationQuery.
       class RunAggregationQueryResponse
         include Google::Apis::Core::Hashable
+      
+        # Explain metrics for the query.
+        # Corresponds to the JSON property `explainMetrics`
+        # @return [Google::Apis::FirestoreV1beta1::ExplainMetrics]
+        attr_accessor :explain_metrics
       
         # The time at which the aggregate result was computed. This is always
         # monotonically increasing; in this case, the previous AggregationResult in the
@@ -2118,6 +2240,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @explain_metrics = args[:explain_metrics] if args.key?(:explain_metrics)
           @read_time = args[:read_time] if args.key?(:read_time)
           @result = args[:result] if args.key?(:result)
           @transaction = args[:transaction] if args.key?(:transaction)
@@ -2127,6 +2250,11 @@ module Google
       # The request for Firestore.RunQuery.
       class RunQueryRequest
         include Google::Apis::Core::Hashable
+      
+        # Explain options for the query.
+        # Corresponds to the JSON property `explainOptions`
+        # @return [Google::Apis::FirestoreV1beta1::ExplainOptions]
+        attr_accessor :explain_options
       
         # Options for creating a new transaction.
         # Corresponds to the JSON property `newTransaction`
@@ -2159,6 +2287,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @explain_options = args[:explain_options] if args.key?(:explain_options)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
           @structured_query = args[:structured_query] if args.key?(:structured_query)
@@ -2181,6 +2310,11 @@ module Google
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
+      
+        # Explain metrics for the query.
+        # Corresponds to the JSON property `explainMetrics`
+        # @return [Google::Apis::FirestoreV1beta1::ExplainMetrics]
+        attr_accessor :explain_metrics
       
         # The time at which the document was read. This may be monotonically increasing;
         # in this case, the previous documents in the result stream are guaranteed not
@@ -2213,6 +2347,7 @@ module Google
         def update!(**args)
           @document = args[:document] if args.key?(:document)
           @done = args[:done] if args.key?(:done)
+          @explain_metrics = args[:explain_metrics] if args.key?(:explain_metrics)
           @read_time = args[:read_time] if args.key?(:read_time)
           @skipped_results = args[:skipped_results] if args.key?(:skipped_results)
           @transaction = args[:transaction] if args.key?(:transaction)
