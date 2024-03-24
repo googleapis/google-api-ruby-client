@@ -1580,14 +1580,14 @@ module Google
         #   regional-endpoints) to which to direct the request.
         # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
         # @param [String] dynamic_template_gcs_path
-        #   Path to dynamic template spec file on Cloud Storage. The file must be a Json
-        #   serialized DynamicTemplateFieSpec object.
+        #   Path to the dynamic template specification file on Cloud Storage. The file
+        #   must be a JSON serialized `DynamicTemplateFileSpec` object.
         # @param [String] dynamic_template_staging_location
         #   Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL,
         #   beginning with `gs://`.
         # @param [String] gcs_path
-        #   A Cloud Storage path to the template from which to create the job. Must be
-        #   valid Cloud Storage URL, beginning with 'gs://'.
+        #   A Cloud Storage path to the template to use to create the job. Must be valid
+        #   Cloud Storage URL, beginning with `gs://`.
         # @param [Boolean] validate_only
         #   If true, the request is validated but not actually executed. Defaults to false.
         # @param [String] fields
@@ -1776,14 +1776,14 @@ module Google
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
         # @param [String] dynamic_template_gcs_path
-        #   Path to dynamic template spec file on Cloud Storage. The file must be a Json
-        #   serialized DynamicTemplateFieSpec object.
+        #   Path to the dynamic template specification file on Cloud Storage. The file
+        #   must be a JSON serialized `DynamicTemplateFileSpec` object.
         # @param [String] dynamic_template_staging_location
         #   Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL,
         #   beginning with `gs://`.
         # @param [String] gcs_path
-        #   A Cloud Storage path to the template from which to create the job. Must be
-        #   valid Cloud Storage URL, beginning with 'gs://'.
+        #   A Cloud Storage path to the template to use to create the job. Must be valid
+        #   Cloud Storage URL, beginning with `gs://`.
         # @param [String] location
         #   The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
         #   regional-endpoints) to which to direct the request.
