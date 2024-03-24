@@ -298,13 +298,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an ad unit. This method can only be used by projects enabled for the [
-        # AdSense for Platforms](https://developers.google.com/adsense/platforms/)
-        # product. Note that ad units can only be created for ad clients with an "AFC"
-        # product code. For more info see the [AdClient resource](/adsense/management/
-        # reference/rest/v2/accounts.adclients). For now, this method can only be used
-        # to create `DISPLAY` ad units. See: https://support.google.com/adsense/answer/
-        # 9183566
+        # Creates an ad unit. This method can be called only by a restricted set of
+        # projects, which are usually owned by [AdSense for Platforms](https://
+        # developers.google.com/adsense/platforms/) publishers. Contact your account
+        # manager if you need to use this method. Note that ad units can only be created
+        # for ad clients with an "AFC" product code. For more info see the [AdClient
+        # resource](/adsense/management/reference/rest/v2/accounts.adclients). For now,
+        # this method can only be used to create `DISPLAY` ad units. See: https://
+        # support.google.com/adsense/answer/9183566
         # @param [String] parent
         #   Required. Ad client to create an ad unit under. Format: accounts/`account`/
         #   adclients/`adclient`
@@ -486,10 +487,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an ad unit. This method can only be used by projects enabled for the [
-        # AdSense for Platforms](https://developers.google.com/adsense/platforms/)
-        # product. For now, this method can only be used to update `DISPLAY` ad units.
-        # See: https://support.google.com/adsense/answer/9183566
+        # Updates an ad unit. This method can be called only by a restricted set of
+        # projects, which are usually owned by [AdSense for Platforms](https://
+        # developers.google.com/adsense/platforms/) publishers. Contact your account
+        # manager if you need to use this method. For now, this method can only be used
+        # to update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/
+        # 9183566
         # @param [String] name
         #   Output only. Resource name of the ad unit. Format: accounts/`account`/
         #   adclients/`adclient`/adunits/`adunit`
@@ -526,9 +529,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a custom channel. This method can only be used by projects enabled for
-        # the [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
-        # product.
+        # Creates a custom channel. This method can be called only by a restricted set
+        # of projects, which are usually owned by [AdSense for Platforms](https://
+        # developers.google.com/adsense/platforms/) publishers. Contact your account
+        # manager if you need to use this method.
         # @param [String] parent
         #   Required. The ad client to create a custom channel under. Format: accounts/`
         #   account`/adclients/`adclient`
@@ -562,9 +566,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a custom channel. This method can only be used by projects enabled for
-        # the [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
-        # product.
+        # Deletes a custom channel. This method can be called only by a restricted set
+        # of projects, which are usually owned by [AdSense for Platforms](https://
+        # developers.google.com/adsense/platforms/) publishers. Contact your account
+        # manager if you need to use this method.
         # @param [String] name
         #   Required. Name of the custom channel to delete. Format: accounts/`account`/
         #   adclients/`adclient`/customchannels/`customchannel`
@@ -710,9 +715,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a custom channel. This method can only be used by projects enabled for
-        # the [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
-        # product.
+        # Updates a custom channel. This method can be called only by a restricted set
+        # of projects, which are usually owned by [AdSense for Platforms](https://
+        # developers.google.com/adsense/platforms/) publishers. Contact your account
+        # manager if you need to use this method.
         # @param [String] name
         #   Output only. Resource name of the custom channel. Format: accounts/`account`/
         #   adclients/`adclient`/customchannels/`customchannel`
