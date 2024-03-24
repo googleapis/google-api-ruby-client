@@ -118,6 +118,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecutionStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExplainMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExplainOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Filter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlanSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Projection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +329,12 @@ module Google
       end
       
       class PropertyFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PropertyMask
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -564,6 +594,33 @@ module Google
         end
       end
       
+      class ExecutionStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :debug_stats, as: 'debugStats'
+          property :execution_duration, as: 'executionDuration'
+          property :read_operations, :numeric_string => true, as: 'readOperations'
+          property :results_returned, :numeric_string => true, as: 'resultsReturned'
+        end
+      end
+      
+      class ExplainMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_stats, as: 'executionStats', class: Google::Apis::DatastoreV1beta3::ExecutionStats, decorator: Google::Apis::DatastoreV1beta3::ExecutionStats::Representation
+      
+          property :plan_summary, as: 'planSummary', class: Google::Apis::DatastoreV1beta3::PlanSummary, decorator: Google::Apis::DatastoreV1beta3::PlanSummary::Representation
+      
+        end
+      end
+      
+      class ExplainOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analyze, as: 'analyze'
+        end
+      end
+      
       class Filter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -804,6 +861,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :keys, as: 'keys', class: Google::Apis::DatastoreV1beta3::Key, decorator: Google::Apis::DatastoreV1beta3::Key::Representation
       
+          property :property_mask, as: 'propertyMask', class: Google::Apis::DatastoreV1beta3::PropertyMask, decorator: Google::Apis::DatastoreV1beta3::PropertyMask::Representation
+      
           property :read_options, as: 'readOptions', class: Google::Apis::DatastoreV1beta3::ReadOptions, decorator: Google::Apis::DatastoreV1beta3::ReadOptions::Representation
       
         end
@@ -829,6 +888,8 @@ module Google
           property :delete, as: 'delete', class: Google::Apis::DatastoreV1beta3::Key, decorator: Google::Apis::DatastoreV1beta3::Key::Representation
       
           property :insert, as: 'insert', class: Google::Apis::DatastoreV1beta3::Entity, decorator: Google::Apis::DatastoreV1beta3::Entity::Representation
+      
+          property :property_mask, as: 'propertyMask', class: Google::Apis::DatastoreV1beta3::PropertyMask, decorator: Google::Apis::DatastoreV1beta3::PropertyMask::Representation
       
           property :update, as: 'update', class: Google::Apis::DatastoreV1beta3::Entity, decorator: Google::Apis::DatastoreV1beta3::Entity::Representation
       
@@ -867,6 +928,13 @@ module Google
         end
       end
       
+      class PlanSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :indexes_used, as: 'indexesUsed'
+        end
+      end
+      
       class Projection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -883,6 +951,13 @@ module Google
       
           property :value, as: 'value', class: Google::Apis::DatastoreV1beta3::Value, decorator: Google::Apis::DatastoreV1beta3::Value::Representation
       
+        end
+      end
+      
+      class PropertyMask
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :paths, as: 'paths'
         end
       end
       
@@ -993,6 +1068,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_query, as: 'aggregationQuery', class: Google::Apis::DatastoreV1beta3::AggregationQuery, decorator: Google::Apis::DatastoreV1beta3::AggregationQuery::Representation
       
+          property :explain_options, as: 'explainOptions', class: Google::Apis::DatastoreV1beta3::ExplainOptions, decorator: Google::Apis::DatastoreV1beta3::ExplainOptions::Representation
+      
           property :gql_query, as: 'gqlQuery', class: Google::Apis::DatastoreV1beta3::GqlQuery, decorator: Google::Apis::DatastoreV1beta3::GqlQuery::Representation
       
           property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1beta3::PartitionId, decorator: Google::Apis::DatastoreV1beta3::PartitionId::Representation
@@ -1007,6 +1084,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :batch, as: 'batch', class: Google::Apis::DatastoreV1beta3::AggregationResultBatch, decorator: Google::Apis::DatastoreV1beta3::AggregationResultBatch::Representation
       
+          property :explain_metrics, as: 'explainMetrics', class: Google::Apis::DatastoreV1beta3::ExplainMetrics, decorator: Google::Apis::DatastoreV1beta3::ExplainMetrics::Representation
+      
           property :query, as: 'query', class: Google::Apis::DatastoreV1beta3::AggregationQuery, decorator: Google::Apis::DatastoreV1beta3::AggregationQuery::Representation
       
         end
@@ -1015,9 +1094,13 @@ module Google
       class RunQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :explain_options, as: 'explainOptions', class: Google::Apis::DatastoreV1beta3::ExplainOptions, decorator: Google::Apis::DatastoreV1beta3::ExplainOptions::Representation
+      
           property :gql_query, as: 'gqlQuery', class: Google::Apis::DatastoreV1beta3::GqlQuery, decorator: Google::Apis::DatastoreV1beta3::GqlQuery::Representation
       
           property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1beta3::PartitionId, decorator: Google::Apis::DatastoreV1beta3::PartitionId::Representation
+      
+          property :property_mask, as: 'propertyMask', class: Google::Apis::DatastoreV1beta3::PropertyMask, decorator: Google::Apis::DatastoreV1beta3::PropertyMask::Representation
       
           property :query, as: 'query', class: Google::Apis::DatastoreV1beta3::Query, decorator: Google::Apis::DatastoreV1beta3::Query::Representation
       
@@ -1030,6 +1113,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :batch, as: 'batch', class: Google::Apis::DatastoreV1beta3::QueryResultBatch, decorator: Google::Apis::DatastoreV1beta3::QueryResultBatch::Representation
+      
+          property :explain_metrics, as: 'explainMetrics', class: Google::Apis::DatastoreV1beta3::ExplainMetrics, decorator: Google::Apis::DatastoreV1beta3::ExplainMetrics::Representation
       
           property :query, as: 'query', class: Google::Apis::DatastoreV1beta3::Query, decorator: Google::Apis::DatastoreV1beta3::Query::Representation
       
