@@ -1713,6 +1713,7 @@ module Google
       class GoogleCloudDatacatalogV1beta1TagTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataplex_transfer_status, as: 'dataplexTransferStatus'
           property :display_name, as: 'displayName'
           hash :fields, as: 'fields', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagTemplateField, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagTemplateField::Representation
       
