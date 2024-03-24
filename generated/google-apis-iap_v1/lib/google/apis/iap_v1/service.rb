@@ -706,13 +706,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Validates a given CEL expression conforms to IAP restrictions.
+        # Validates that a given CEL expression conforms to IAP restrictions.
         # @param [String] name
         #   Required. The resource name of the IAP protected resource.
         # @param [String] expression
-        #   Required. User input string expression. Should be of the form 'attributes.
+        #   Required. User input string expression. Should be of the form `attributes.
         #   saml_attributes.filter(attribute, attribute.name in ['`attribute_name`', '`
-        #   attribute_name`'])'
+        #   attribute_name`'])`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
