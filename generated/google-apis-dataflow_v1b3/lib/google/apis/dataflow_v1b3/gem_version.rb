@@ -16,13 +16,13 @@ module Google
   module Apis
     module DataflowV1b3
       # Version of the google-apis-dataflow_v1b3 gem
-      GEM_VERSION = "0.52.0"
+      GEM_VERSION = "0.53.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.14.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240310"
+      REVISION = "20240317"
     end
   end
 end

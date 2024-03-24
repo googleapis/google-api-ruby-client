@@ -824,7 +824,7 @@ module Google
       class CreateJobFromTemplateRequest
         include Google::Apis::Core::Hashable
       
-        # The environment values to set at runtime.
+        # The environment values to set at runtime. LINT.IfChange
         # Corresponds to the JSON property `environment`
         # @return [Google::Apis::DataflowV1b3::RuntimeEnvironment]
         attr_accessor :environment
@@ -2914,7 +2914,7 @@ module Google
       class LaunchTemplateParameters
         include Google::Apis::Core::Hashable
       
-        # The environment values to set at runtime.
+        # The environment values to set at runtime. LINT.IfChange
         # Corresponds to the JSON property `environment`
         # @return [Google::Apis::DataflowV1b3::RuntimeEnvironment]
         attr_accessor :environment
@@ -4411,7 +4411,7 @@ module Google
         end
       end
       
-      # The environment values to set at runtime.
+      # The environment values to set at runtime. LINT.IfChange
       class RuntimeEnvironment
         include Google::Apis::Core::Hashable
       
