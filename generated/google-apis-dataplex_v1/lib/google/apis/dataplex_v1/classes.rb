@@ -1544,63 +1544,6 @@ module Google
         end
       end
       
-      # The output of a DataDocumentation scan.
-      class GoogleCloudDataplexV1DataDocumentationResult
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The list of generated queries.
-        # Corresponds to the JSON property `queries`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultQuery>]
-        attr_accessor :queries
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @queries = args[:queries] if args.key?(:queries)
-        end
-      end
-      
-      # A query in data documentation
-      class GoogleCloudDataplexV1DataDocumentationResultQuery
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The description for the query.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Output only. The SQL query string which can be executed.
-        # Corresponds to the JSON property `sql`
-        # @return [String]
-        attr_accessor :sql
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @sql = args[:sql] if args.key?(:sql)
-        end
-      end
-      
-      # DataDocumentation scan related spec.
-      class GoogleCloudDataplexV1DataDocumentationSpec
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # DataProfileResult defines the output of DataProfileScan. Each field of the
       # table will have field type specific profile result.
       class GoogleCloudDataplexV1DataProfileResult
@@ -2956,16 +2899,6 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataSource]
         attr_accessor :data
       
-        # The output of a DataDocumentation scan.
-        # Corresponds to the JSON property `dataDocumentationResult`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResult]
-        attr_accessor :data_documentation_result
-      
-        # DataDocumentation scan related spec.
-        # Corresponds to the JSON property `dataDocumentationSpec`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationSpec]
-        attr_accessor :data_documentation_spec
-      
         # DataProfileResult defines the output of DataProfileScan. Each field of the
         # table will have field type specific profile result.
         # Corresponds to the JSON property `dataProfileResult`
@@ -3048,8 +2981,6 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data = args[:data] if args.key?(:data)
-          @data_documentation_result = args[:data_documentation_result] if args.key?(:data_documentation_result)
-          @data_documentation_spec = args[:data_documentation_spec] if args.key?(:data_documentation_spec)
           @data_profile_result = args[:data_profile_result] if args.key?(:data_profile_result)
           @data_profile_spec = args[:data_profile_spec] if args.key?(:data_profile_spec)
           @data_quality_result = args[:data_quality_result] if args.key?(:data_quality_result)
@@ -3416,16 +3347,6 @@ module Google
       class GoogleCloudDataplexV1DataScanJob
         include Google::Apis::Core::Hashable
       
-        # The output of a DataDocumentation scan.
-        # Corresponds to the JSON property `dataDocumentationResult`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResult]
-        attr_accessor :data_documentation_result
-      
-        # DataDocumentation scan related spec.
-        # Corresponds to the JSON property `dataDocumentationSpec`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationSpec]
-        attr_accessor :data_documentation_spec
-      
         # DataProfileResult defines the output of DataProfileScan. Each field of the
         # table will have field type specific profile result.
         # Corresponds to the JSON property `dataProfileResult`
@@ -3491,8 +3412,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data_documentation_result = args[:data_documentation_result] if args.key?(:data_documentation_result)
-          @data_documentation_spec = args[:data_documentation_spec] if args.key?(:data_documentation_spec)
           @data_profile_result = args[:data_profile_result] if args.key?(:data_profile_result)
           @data_profile_spec = args[:data_profile_spec] if args.key?(:data_profile_spec)
           @data_quality_result = args[:data_quality_result] if args.key?(:data_quality_result)
