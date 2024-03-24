@@ -930,7 +930,7 @@ module Google
         end
       end
       
-      # LINT.IfChange Defines policies to service maintenance events.
+      # Defines policies to service maintenance events.
       class MaintenancePolicy
         include Google::Apis::Core::Hashable
       
