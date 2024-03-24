@@ -22,6 +22,12 @@ module Google
   module Apis
     module IamV2beta
       
+      class CloudControl2SharedOperationsReconciliationOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudCommonOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -110,6 +116,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudControl2SharedOperationsReconciliationOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_resource, as: 'deleteResource'
+          property :exclusive_action, as: 'exclusiveAction'
+        end
       end
       
       class GoogleCloudCommonOperationMetadata
