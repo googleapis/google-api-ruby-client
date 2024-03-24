@@ -24,7 +24,7 @@ module Google
     # Allows developers to run automated tests for their mobile applications on
     # Google infrastructure.
     #
-    # @see https://developers.google.com/cloud-test-lab/
+    # @see https://firebase.google.com/docs/test-lab/
     module TestingV1
       # Version of the Cloud Testing API this client connects to.
       # This is NOT the gem version.

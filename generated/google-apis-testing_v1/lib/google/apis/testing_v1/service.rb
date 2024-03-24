@@ -31,7 +31,7 @@ module Google
       #    Testing = Google::Apis::TestingV1 # Alias the module
       #    service = Testing::TestingService.new
       #
-      # @see https://developers.google.com/cloud-test-lab/
+      # @see https://firebase.google.com/docs/test-lab/
       class TestingService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://testing.$UNIVERSE_DOMAIN$/"
 
