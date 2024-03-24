@@ -206,6 +206,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :transaction_log_retention_days
       
+        # Output only. This value contains the storage location of transactional logs
+        # for the database for point-in-time recovery.
+        # Corresponds to the JSON property `transactionalLogStorageState`
+        # @return [String]
+        attr_accessor :transactional_log_storage_state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -221,6 +227,7 @@ module Google
           @replication_log_archiving_enabled = args[:replication_log_archiving_enabled] if args.key?(:replication_log_archiving_enabled)
           @start_time = args[:start_time] if args.key?(:start_time)
           @transaction_log_retention_days = args[:transaction_log_retention_days] if args.key?(:transaction_log_retention_days)
+          @transactional_log_storage_state = args[:transactional_log_storage_state] if args.key?(:transactional_log_storage_state)
         end
       end
       
@@ -832,6 +839,11 @@ module Google
         # @return [String]
         attr_accessor :gce_zone
       
+        # Gemini configuration.
+        # Corresponds to the JSON property `geminiConfig`
+        # @return [Google::Apis::SqladminV1beta4::GeminiInstanceConfig]
+        attr_accessor :gemini_config
+      
         # The instance type.
         # Corresponds to the JSON property `instanceType`
         # @return [String]
@@ -916,6 +928,11 @@ module Google
         # Corresponds to the JSON property `replicaNames`
         # @return [Array<String>]
         attr_accessor :replica_names
+      
+        # Primary-DR replica pair
+        # Corresponds to the JSON property `replicationCluster`
+        # @return [Google::Apis::SqladminV1beta4::ReplicationCluster]
+        attr_accessor :replication_cluster
       
         # Initial root password. Use only on creation. You must set root passwords
         # before you can connect to PostgreSQL instances.
@@ -1002,6 +1019,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @failover_replica = args[:failover_replica] if args.key?(:failover_replica)
           @gce_zone = args[:gce_zone] if args.key?(:gce_zone)
+          @gemini_config = args[:gemini_config] if args.key?(:gemini_config)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
@@ -1018,6 +1036,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @replica_configuration = args[:replica_configuration] if args.key?(:replica_configuration)
           @replica_names = args[:replica_names] if args.key?(:replica_names)
+          @replication_cluster = args[:replication_cluster] if args.key?(:replication_cluster)
           @root_password = args[:root_password] if args.key?(:root_password)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scheduled_maintenance = args[:scheduled_maintenance] if args.key?(:scheduled_maintenance)
@@ -1719,6 +1738,61 @@ module Google
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Gemini configuration.
+      class GeminiInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether active query is enabled.
+        # Corresponds to the JSON property `activeQueryEnabled`
+        # @return [Boolean]
+        attr_accessor :active_query_enabled
+        alias_method :active_query_enabled?, :active_query_enabled
+      
+        # Output only. Whether Gemini is enabled.
+        # Corresponds to the JSON property `entitled`
+        # @return [Boolean]
+        attr_accessor :entitled
+        alias_method :entitled?, :entitled
+      
+        # Output only. Whether flag recommender is enabled.
+        # Corresponds to the JSON property `flagRecommenderEnabled`
+        # @return [Boolean]
+        attr_accessor :flag_recommender_enabled
+        alias_method :flag_recommender_enabled?, :flag_recommender_enabled
+      
+        # Output only. Whether vacuum management is enabled.
+        # Corresponds to the JSON property `googleVacuumMgmtEnabled`
+        # @return [Boolean]
+        attr_accessor :google_vacuum_mgmt_enabled
+        alias_method :google_vacuum_mgmt_enabled?, :google_vacuum_mgmt_enabled
+      
+        # Output only. Whether index advisor is enabled.
+        # Corresponds to the JSON property `indexAdvisorEnabled`
+        # @return [Boolean]
+        attr_accessor :index_advisor_enabled
+        alias_method :index_advisor_enabled?, :index_advisor_enabled
+      
+        # Output only. Whether oom session cancel is enabled.
+        # Corresponds to the JSON property `oomSessionCancelEnabled`
+        # @return [Boolean]
+        attr_accessor :oom_session_cancel_enabled
+        alias_method :oom_session_cancel_enabled?, :oom_session_cancel_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_query_enabled = args[:active_query_enabled] if args.key?(:active_query_enabled)
+          @entitled = args[:entitled] if args.key?(:entitled)
+          @flag_recommender_enabled = args[:flag_recommender_enabled] if args.key?(:flag_recommender_enabled)
+          @google_vacuum_mgmt_enabled = args[:google_vacuum_mgmt_enabled] if args.key?(:google_vacuum_mgmt_enabled)
+          @index_advisor_enabled = args[:index_advisor_enabled] if args.key?(:index_advisor_enabled)
+          @oom_session_cancel_enabled = args[:oom_session_cancel_enabled] if args.key?(:oom_session_cancel_enabled)
         end
       end
       
@@ -3202,6 +3276,37 @@ module Google
         end
       end
       
+      # Primary-DR replica pair
+      class ReplicationCluster
+        include Google::Apis::Core::Hashable
+      
+        # Output only. read-only field that indicates if the replica is a dr_replica;
+        # not set for a primary.
+        # Corresponds to the JSON property `drReplica`
+        # @return [Boolean]
+        attr_accessor :dr_replica
+        alias_method :dr_replica?, :dr_replica
+      
+        # Optional. If the instance is a primary instance, then this field identifies
+        # the disaster recovery (DR) replica. A DR replica is an optional configuration
+        # for Enterprise Plus edition instances. If the instance is a read replica, then
+        # the field is not set. Users can set this field to set a designated DR replica
+        # for a primary. Removing this field removes the DR replica.
+        # Corresponds to the JSON property `failoverDrReplicaName`
+        # @return [String]
+        attr_accessor :failover_dr_replica_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dr_replica = args[:dr_replica] if args.key?(:dr_replica)
+          @failover_dr_replica_name = args[:failover_dr_replica_name] if args.key?(:failover_dr_replica_name)
+        end
+      end
+      
       # 
       class Reschedule
         include Google::Apis::Core::Hashable
@@ -3404,7 +3509,10 @@ module Google
         # @return [String]
         attr_accessor :edition
       
-        # Optional. Configuration to enable Cloud SQL Vertex AI Integration
+        # Optional. When this parameter is set to true, Cloud SQL instances can connect
+        # to Vertex AI to pass requests for real-time predictions and insights to the AI.
+        # The default value is false. This applies only to Cloud SQL for PostgreSQL
+        # instances.
         # Corresponds to the JSON property `enableGoogleMlIntegration`
         # @return [Boolean]
         attr_accessor :enable_google_ml_integration
@@ -3728,6 +3836,12 @@ module Google
       class SqlInstancesStartExternalSyncRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. MigrationType decides if the migration is a physical file based
+        # migration or logical migration.
+        # Corresponds to the JSON property `migrationType`
+        # @return [String]
+        attr_accessor :migration_type
+      
         # MySQL-specific external server sync settings.
         # Corresponds to the JSON property `mysqlSyncConfig`
         # @return [Google::Apis::SqladminV1beta4::MySqlSyncConfig]
@@ -3756,6 +3870,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @migration_type = args[:migration_type] if args.key?(:migration_type)
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
           @skip_verification = args[:skip_verification] if args.key?(:skip_verification)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
@@ -3766,6 +3881,12 @@ module Google
       # 
       class SqlInstancesVerifyExternalSyncSettingsRequest
         include Google::Apis::Core::Hashable
+      
+        # Optional. MigrationType field decides if the migration is a physical file
+        # based migration or logical migration
+        # Corresponds to the JSON property `migrationType`
+        # @return [String]
+        attr_accessor :migration_type
       
         # MySQL-specific external server sync settings.
         # Corresponds to the JSON property `mysqlSyncConfig`
@@ -3801,6 +3922,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @migration_type = args[:migration_type] if args.key?(:migration_type)
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
           @sync_parallel_level = args[:sync_parallel_level] if args.key?(:sync_parallel_level)
