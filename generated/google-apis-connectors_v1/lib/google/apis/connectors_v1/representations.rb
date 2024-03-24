@@ -658,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchemaRefreshConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -997,6 +1003,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :auth_config_templates, as: 'authConfigTemplates', class: Google::Apis::ConnectorsV1::AuthConfigTemplate, decorator: Google::Apis::ConnectorsV1::AuthConfigTemplate::Representation
       
+          property :auth_override_enabled, as: 'authOverrideEnabled'
           collection :config_variable_templates, as: 'configVariableTemplates', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
       
           property :connector_infra_config, as: 'connectorInfraConfig', class: Google::Apis::ConnectorsV1::ConnectorInfraConfig, decorator: Google::Apis::ConnectorsV1::ConnectorInfraConfig::Representation
@@ -1016,6 +1023,8 @@ module Google
           property :role_grant, as: 'roleGrant', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
       
           collection :role_grants, as: 'roleGrants', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
+      
+          property :schema_refresh_config, as: 'schemaRefreshConfig', class: Google::Apis::ConnectorsV1::SchemaRefreshConfig, decorator: Google::Apis::ConnectorsV1::SchemaRefreshConfig::Representation
       
           property :ssl_config_template, as: 'sslConfigTemplate', class: Google::Apis::ConnectorsV1::SslConfigTemplate, decorator: Google::Apis::ConnectorsV1::SslConfigTemplate::Representation
       
@@ -2013,6 +2022,14 @@ module Google
           property :duration, as: 'duration'
           property :start_time, as: 'startTime', class: Google::Apis::ConnectorsV1::TimeOfDay, decorator: Google::Apis::ConnectorsV1::TimeOfDay::Representation
       
+        end
+      end
+      
+      class SchemaRefreshConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_action_display_names, as: 'useActionDisplayNames'
+          property :use_synchronous_schema_refresh, as: 'useSynchronousSchemaRefresh'
         end
       end
       
