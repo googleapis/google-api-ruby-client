@@ -3682,6 +3682,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkPlacement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkPlacementNetworkFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkPlacementsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkRoutingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -14650,6 +14680,80 @@ module Google
         end
       end
       
+      class NetworkPlacement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :features, as: 'features', class: Google::Apis::ComputeAlpha::NetworkPlacementNetworkFeatures, decorator: Google::Apis::ComputeAlpha::NetworkPlacementNetworkFeatures::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class NetworkPlacementNetworkFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_auto_mode_subnet, as: 'allowAutoModeSubnet'
+          property :allow_cloud_nat, as: 'allowCloudNat'
+          property :allow_cloud_router, as: 'allowCloudRouter'
+          property :allow_interconnect, as: 'allowInterconnect'
+          property :allow_load_balancing, as: 'allowLoadBalancing'
+          property :allow_multi_nic_in_same_network, as: 'allowMultiNicInSameNetwork'
+          property :allow_packet_mirroring, as: 'allowPacketMirroring'
+          property :allow_private_google_access, as: 'allowPrivateGoogleAccess'
+          property :allow_psc, as: 'allowPsc'
+          property :allow_same_network_unicast, as: 'allowSameNetworkUnicast'
+          property :allow_static_routes, as: 'allowStaticRoutes'
+          property :allow_vpc_peering, as: 'allowVpcPeering'
+          property :allow_vpn, as: 'allowVpn'
+          collection :allowed_subnet_purposes, as: 'allowedSubnetPurposes'
+          collection :allowed_subnet_stack_types, as: 'allowedSubnetStackTypes'
+          collection :interface_types, as: 'interfaceTypes'
+          property :multicast, as: 'multicast'
+          property :unicast, as: 'unicast'
+        end
+      end
+      
+      class NetworkPlacementsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::NetworkPlacement, decorator: Google::Apis::ComputeAlpha::NetworkPlacement::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::NetworkPlacementsListResponse::Warning, decorator: Google::Apis::ComputeAlpha::NetworkPlacementsListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::NetworkPlacementsListResponse::Warning::Datum, decorator: Google::Apis::ComputeAlpha::NetworkPlacementsListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class NetworkRoutingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16647,7 +16751,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
-          property :skip_inapplicable_instances, as: 'skipInapplicableInstances'
           property :skip_instances_on_validation_error, as: 'skipInstancesOnValidationError'
         end
       end
