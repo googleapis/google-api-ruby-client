@@ -1253,12 +1253,12 @@ module Google
         attr_accessor :actor
       
         # An abstract identifier that describes the environment or conditions under
-        # which the accessor is acting. Can be “*” if it applies to all environments.
+        # which the accessor is acting. Can be "*" if it applies to all environments.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
       
-        # The intent of data use. Can be “*” if it applies to all purposes.
+        # The intent of data use. Can be "*" if it applies to all purposes.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -2537,7 +2537,8 @@ module Google
         attr_accessor :cascade_origins
       
         # The resource name of this consent resource. Format: `projects/`projectId`/
-        # datasets/`datasetId`/fhirStores/`fhirStoreId`/fhir/`resourceType`/`id``.
+        # locations/`locationId`/datasets/`datasetId`/fhirStores/`fhirStoreId`/fhir/`
+        # resourceType`/`id``.
         # Corresponds to the JSON property `consentResource`
         # @return [String]
         attr_accessor :consent_resource
@@ -6903,9 +6904,9 @@ module Google
         attr_accessor :blob_storage_info
       
         # The resource whose storage info is returned. For example, to specify the
-        # resource path of a DICOM Instance: `projects/`projectid`/datasets/`datasetid`/
-        # dicomStores/`dicom_store_id`/dicomWeb/studi/`study_uid`/series/`series_uid`/
-        # instances/`instance_uid``
+        # resource path of a DICOM Instance: `projects/`projectID`/locations/`locationID`
+        # /datasets/`datasetID`/dicomStores/`dicom_store_id`/dicomWeb/studi/`study_uid`/
+        # series/`series_uid`/instances/`instance_uid``
         # Corresponds to the JSON property `referencedResource`
         # @return [String]
         attr_accessor :referenced_resource
