@@ -3216,14 +3216,15 @@ module Google
         # resources.
         # @param [String] resource
         #   Required. The path of the resource to update the blob storage settings in the
-        #   format of `projects/`projectID`/datasets/`datasetID`/dicomStores/`dicomStoreID`
-        #   /dicomWeb/studies/`studyUID``, `projects/`projectID`/datasets/`datasetID`/
-        #   dicomStores/`dicomStoreID`/dicomWeb/studies/`studyUID`/series/`seriesUID`/`,
-        #   or `projects/`projectID`/datasets/`datasetID`/dicomStores/`dicomStoreID`/
+        #   format of `projects/`projectID`/locations/`locationID`/datasets/`datasetID`/
+        #   dicomStores/`dicomStoreID`/dicomWeb/studies/`studyUID``, `projects/`projectID`/
+        #   locations/`locationID`/datasets/`datasetID`/dicomStores/`dicomStoreID`/
+        #   dicomWeb/studies/`studyUID`/series/`seriesUID`/`, or `projects/`projectID`/
+        #   locations/`locationID`/datasets/`datasetID`/dicomStores/`dicomStoreID`/
         #   dicomWeb/studies/`studyUID`/series/`seriesUID`/instances/`instanceUID``. If `
         #   filter_config` is specified, set the value of `resource` to the resource name
-        #   of a DICOM store in the format `projects/`projectID`/datasets/`datasetID`/
-        #   dicomStores/`dicomStoreID``.
+        #   of a DICOM store in the format `projects/`projectID`/locations/`locationID`/
+        #   datasets/`datasetID`/dicomStores/`dicomStoreID``.
         # @param [Google::Apis::HealthcareV1beta1::SetBlobStorageSettingsRequest] set_blob_storage_settings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3412,14 +3413,15 @@ module Google
         # resources.
         # @param [String] resource
         #   Required. The path of the resource to update the blob storage settings in the
-        #   format of `projects/`projectID`/datasets/`datasetID`/dicomStores/`dicomStoreID`
-        #   /dicomWeb/studies/`studyUID``, `projects/`projectID`/datasets/`datasetID`/
-        #   dicomStores/`dicomStoreID`/dicomWeb/studies/`studyUID`/series/`seriesUID`/`,
-        #   or `projects/`projectID`/datasets/`datasetID`/dicomStores/`dicomStoreID`/
+        #   format of `projects/`projectID`/locations/`locationID`/datasets/`datasetID`/
+        #   dicomStores/`dicomStoreID`/dicomWeb/studies/`studyUID``, `projects/`projectID`/
+        #   locations/`locationID`/datasets/`datasetID`/dicomStores/`dicomStoreID`/
+        #   dicomWeb/studies/`studyUID`/series/`seriesUID`/`, or `projects/`projectID`/
+        #   locations/`locationID`/datasets/`datasetID`/dicomStores/`dicomStoreID`/
         #   dicomWeb/studies/`studyUID`/series/`seriesUID`/instances/`instanceUID``. If `
         #   filter_config` is specified, set the value of `resource` to the resource name
-        #   of a DICOM store in the format `projects/`projectID`/datasets/`datasetID`/
-        #   dicomStores/`dicomStoreID``.
+        #   of a DICOM store in the format `projects/`projectID`/locations/`locationID`/
+        #   datasets/`datasetID`/dicomStores/`dicomStoreID``.
         # @param [Google::Apis::HealthcareV1beta1::SetBlobStorageSettingsRequest] set_blob_storage_settings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3485,9 +3487,9 @@ module Google
         # GetStorageInfo returns the storage info of the specified resource.
         # @param [String] resource
         #   Required. The path of the resource for which the storage info is requested (
-        #   for exaxmple for a DICOM Instance: `projects/`projectid`/datasets/`datasetid`/
-        #   dicomStores/`dicomStoreId`/dicomWeb/studies/`study_uid`/series/`series_uid`/
-        #   instances/`instance_uid``)
+        #   for exaxmple for a DICOM Instance: `projects/`projectID`/locations/`locationID`
+        #   /datasets/`datasetID`/dicomStores/`dicomStoreId`/dicomWeb/studies/`study_uid`/
+        #   series/`series_uid`/instances/`instance_uid``)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
