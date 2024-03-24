@@ -2717,6 +2717,11 @@ module Google
         # @return [Google::Apis::GkehubV1beta::IdentityServiceGoogleConfig]
         attr_accessor :google_config
       
+        # Configuration for the LDAP Auth flow.
+        # Corresponds to the JSON property `ldapConfig`
+        # @return [Google::Apis::GkehubV1beta::IdentityServiceLdapConfig]
+        attr_accessor :ldap_config
+      
         # Identifier for auth config.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2745,6 +2750,7 @@ module Google
         def update!(**args)
           @azuread_config = args[:azuread_config] if args.key?(:azuread_config)
           @google_config = args[:google_config] if args.key?(:google_config)
+          @ldap_config = args[:ldap_config] if args.key?(:ldap_config)
           @name = args[:name] if args.key?(:name)
           @oidc_config = args[:oidc_config] if args.key?(:oidc_config)
           @proxy = args[:proxy] if args.key?(:proxy)
@@ -2828,6 +2834,84 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable = args[:disable] if args.key?(:disable)
+        end
+      end
+      
+      # Contains the properties for locating and authenticating groups in the
+      # directory.
+      class IdentityServiceGroupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The location of the subtree in the LDAP directory to search for
+        # group entries.
+        # Corresponds to the JSON property `baseDn`
+        # @return [String]
+        attr_accessor :base_dn
+      
+        # Optional. Optional filter to be used when searching for groups a user belongs
+        # to. This can be used to explicitly match only certain groups in order to
+        # reduce the amount of groups returned for each user. This defaults to "(
+        # objectClass=Group)".
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. The identifying name of each group a user belongs to. For example,
+        # if this is set to "distinguishedName" then RBACs and other group expectations
+        # should be written as full DNs. This defaults to "distinguishedName".
+        # Corresponds to the JSON property `idAttribute`
+        # @return [String]
+        attr_accessor :id_attribute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_dn = args[:base_dn] if args.key?(:base_dn)
+          @filter = args[:filter] if args.key?(:filter)
+          @id_attribute = args[:id_attribute] if args.key?(:id_attribute)
+        end
+      end
+      
+      # Configuration for the LDAP Auth flow.
+      class IdentityServiceLdapConfig
+        include Google::Apis::Core::Hashable
+      
+        # Contains the properties for locating and authenticating groups in the
+        # directory.
+        # Corresponds to the JSON property `group`
+        # @return [Google::Apis::GkehubV1beta::IdentityServiceGroupConfig]
+        attr_accessor :group
+      
+        # Server settings for the external LDAP server.
+        # Corresponds to the JSON property `server`
+        # @return [Google::Apis::GkehubV1beta::IdentityServiceServerConfig]
+        attr_accessor :server
+      
+        # Contains the credentials of the service account which is authorized to perform
+        # the LDAP search in the directory. The credentials can be supplied by the
+        # combination of the DN and password or the client certificate.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [Google::Apis::GkehubV1beta::IdentityServiceServiceAccountConfig]
+        attr_accessor :service_account
+      
+        # Defines where users exist in the LDAP directory.
+        # Corresponds to the JSON property `user`
+        # @return [Google::Apis::GkehubV1beta::IdentityServiceUserConfig]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group = args[:group] if args.key?(:group)
+          @server = args[:server] if args.key?(:server)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @user = args[:user] if args.key?(:user)
         end
       end
       
@@ -3061,6 +3145,147 @@ module Google
         end
       end
       
+      # Server settings for the external LDAP server.
+      class IdentityServiceServerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Contains a Base64 encoded, PEM formatted certificate authority
+        # certificate for the LDAP server. This must be provided for the "ldaps" and "
+        # startTLS" connections.
+        # Corresponds to the JSON property `certificateAuthorityData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :certificate_authority_data
+      
+        # Optional. Defines the connection type to communicate with the LDAP server. If `
+        # starttls` or `ldaps` is specified, the certificate_authority_data should not
+        # be empty.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # Required. Defines the hostname or IP of the LDAP server. Port is optional and
+        # will default to 389, if unspecified. For example, "ldap.server.example" or "10.
+        # 10.10.10:389".
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_authority_data = args[:certificate_authority_data] if args.key?(:certificate_authority_data)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
+          @host = args[:host] if args.key?(:host)
+        end
+      end
+      
+      # Contains the credentials of the service account which is authorized to perform
+      # the LDAP search in the directory. The credentials can be supplied by the
+      # combination of the DN and password or the client certificate.
+      class IdentityServiceServiceAccountConfig
+        include Google::Apis::Core::Hashable
+      
+        # The structure holds the LDAP simple binding credential.
+        # Corresponds to the JSON property `simpleBindCredentials`
+        # @return [Google::Apis::GkehubV1beta::IdentityServiceSimpleBindCredentials]
+        attr_accessor :simple_bind_credentials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @simple_bind_credentials = args[:simple_bind_credentials] if args.key?(:simple_bind_credentials)
+        end
+      end
+      
+      # The structure holds the LDAP simple binding credential.
+      class IdentityServiceSimpleBindCredentials
+        include Google::Apis::Core::Hashable
+      
+        # Required. The distinguished name(DN) of the service account object/user.
+        # Corresponds to the JSON property `dn`
+        # @return [String]
+        attr_accessor :dn
+      
+        # Output only. The encrypted password of the service account object/user.
+        # Corresponds to the JSON property `encryptedPassword`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encrypted_password
+      
+        # Required. Input only. The password of the service account object/user.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dn = args[:dn] if args.key?(:dn)
+          @encrypted_password = args[:encrypted_password] if args.key?(:encrypted_password)
+          @password = args[:password] if args.key?(:password)
+        end
+      end
+      
+      # Defines where users exist in the LDAP directory.
+      class IdentityServiceUserConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The location of the subtree in the LDAP directory to search for user
+        # entries.
+        # Corresponds to the JSON property `baseDn`
+        # @return [String]
+        attr_accessor :base_dn
+      
+        # Optional. Filter to apply when searching for the user. This can be used to
+        # further restrict the user accounts which are allowed to login. This defaults
+        # to "(objectClass=User)".
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. Determines which attribute to use as the user's identity after they
+        # are authenticated. This is distinct from the loginAttribute field to allow
+        # users to login with a username, but then have their actual identifier be an
+        # email address or full Distinguished Name (DN). For example, setting
+        # loginAttribute to "sAMAccountName" and identifierAttribute to "
+        # userPrincipalName" would allow a user to login as "bsmith", but actual RBAC
+        # policies for the user would be written as "bsmith@example.com". Using "
+        # userPrincipalName" is recommended since this will be unique for each user.
+        # This defaults to "userPrincipalName".
+        # Corresponds to the JSON property `idAttribute`
+        # @return [String]
+        attr_accessor :id_attribute
+      
+        # Optional. The name of the attribute which matches against the input username.
+        # This is used to find the user in the LDAP database e.g. "(=)" and is combined
+        # with the optional filter field. This defaults to "userPrincipalName".
+        # Corresponds to the JSON property `loginAttribute`
+        # @return [String]
+        attr_accessor :login_attribute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_dn = args[:base_dn] if args.key?(:base_dn)
+          @filter = args[:filter] if args.key?(:filter)
+          @id_attribute = args[:id_attribute] if args.key?(:id_attribute)
+          @login_attribute = args[:login_attribute] if args.key?(:login_attribute)
+        end
+      end
+      
       # KubernetesMetadata provides informational metadata for Memberships
       # representing Kubernetes clusters.
       class KubernetesMetadata
@@ -3169,6 +3394,39 @@ module Google
           @membership_cr_manifest = args[:membership_cr_manifest] if args.key?(:membership_cr_manifest)
           @membership_resources = args[:membership_resources] if args.key?(:membership_resources)
           @resource_options = args[:resource_options] if args.key?(:resource_options)
+        end
+      end
+      
+      # List of Memberships bound to a Scope.
+      class ListBoundMembershipsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Memberships bound to the given Scope.
+        # Corresponds to the JSON property `memberships`
+        # @return [Array<Google::Apis::GkehubV1beta::Membership>]
+        attr_accessor :memberships
+      
+        # A token to request the next page of resources from the `ListBoundMemberships`
+        # method. The value of an empty string means that there are no more resources to
+        # return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of locations that could not be reached while fetching this list.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memberships = args[:memberships] if args.key?(:memberships)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3359,6 +3617,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # List of permitted Scopes.
+      class ListPermittedScopesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the `ListPermittedScopes`
+        # method. The value of an empty string means that there are no more resources to
+        # return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of permitted Scopes
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<Google::Apis::GkehubV1beta::Scope>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       
