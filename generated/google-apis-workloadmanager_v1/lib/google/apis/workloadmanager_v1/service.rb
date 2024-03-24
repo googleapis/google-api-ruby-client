@@ -178,6 +178,8 @@ module Google
         # Deletes a single Evaluation.
         # @param [String] name
         #   Required. Name of the resource
+        # @param [Boolean] force
+        #   Optional. Followed the best practice from https://aip.dev/135#cascading-delete
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -206,11 +208,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_evaluation(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_evaluation(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::WorkloadmanagerV1::Operation::Representation
           command.response_class = Google::Apis::WorkloadmanagerV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
