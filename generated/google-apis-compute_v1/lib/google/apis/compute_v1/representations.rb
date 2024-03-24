@@ -2098,6 +2098,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceSettingsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10502,6 +10514,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance, as: 'instance'
+        end
+      end
+      
+      class InstanceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::InstanceSettingsMetadata, decorator: Google::Apis::ComputeV1::InstanceSettingsMetadata::Representation
+      
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class InstanceSettingsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :items, as: 'items'
+          property :kind, as: 'kind'
         end
       end
       
