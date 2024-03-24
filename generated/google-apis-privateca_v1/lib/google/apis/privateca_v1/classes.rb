@@ -692,7 +692,7 @@ module Google
       class CertificateConfigKeyId
         include Google::Apis::Core::Hashable
       
-        # Optional. The value of this KeyId encoded in lowercase hexadecimal. This is
+        # Required. The value of this KeyId encoded in lowercase hexadecimal. This is
         # most likely the 160 bit SHA-1 hash of the public key.
         # Corresponds to the JSON property `keyId`
         # @return [String]
