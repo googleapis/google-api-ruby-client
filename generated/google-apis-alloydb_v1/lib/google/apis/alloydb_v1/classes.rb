@@ -22,6 +22,25 @@ module Google
   module Apis
     module AlloydbV1
       
+      # AuthorizedNetwork contains metadata for an authorized network.
+      class AuthorizedNetwork
+        include Google::Apis::Core::Hashable
+      
+        # CIDR range for one authorzied network of the instance.
+        # Corresponds to the JSON property `cidrRange`
+        # @return [String]
+        attr_accessor :cidr_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cidr_range = args[:cidr_range] if args.key?(:cidr_range)
+        end
+      end
+      
       # Message describing the user-specified automated backup policy. All fields in
       # the automated backup policy are optional. Defaults for each field are provided
       # if they are not set.
@@ -594,6 +613,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The public IP addresses for the Instance. This is available ONLY
+        # when enable_public_ip is set. This is the connection endpoint for an end-user
+        # application.
+        # Corresponds to the JSON property `publicIpAddress`
+        # @return [String]
+        attr_accessor :public_ip_address
+      
         def initialize(**args)
            update!(**args)
         end
@@ -603,6 +629,7 @@ module Google
           @instance_uid = args[:instance_uid] if args.key?(:instance_uid)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @name = args[:name] if args.key?(:name)
+          @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
         end
       end
       
@@ -1065,11 +1092,23 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Metadata related to instance level network configuration.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::AlloydbV1::InstanceNetworkConfig]
+        attr_accessor :network_config
+      
         # Output only. List of available read-only VMs in this instance, including the
         # standby for a PRIMARY instance.
         # Corresponds to the JSON property `nodes`
         # @return [Array<Google::Apis::AlloydbV1::Node>]
         attr_accessor :nodes
+      
+        # Output only. The public IP addresses for the Instance. This is available ONLY
+        # when enable_public_ip is set. This is the connection endpoint for an end-user
+        # application.
+        # Corresponds to the JSON property `publicIpAddress`
+        # @return [String]
+        attr_accessor :public_ip_address
       
         # QueryInsights Instance specific configuration.
         # Corresponds to the JSON property `queryInsightsConfig`
@@ -1140,7 +1179,9 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @machine_config = args[:machine_config] if args.key?(:machine_config)
           @name = args[:name] if args.key?(:name)
+          @network_config = args[:network_config] if args.key?(:network_config)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
           @read_pool_config = args[:read_pool_config] if args.key?(:read_pool_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -1149,6 +1190,32 @@ module Google
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @writable_node = args[:writable_node] if args.key?(:writable_node)
+        end
+      end
+      
+      # Metadata related to instance level network configuration.
+      class InstanceNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of external network authorized to access this instance.
+        # Corresponds to the JSON property `authorizedExternalNetworks`
+        # @return [Array<Google::Apis::AlloydbV1::AuthorizedNetwork>]
+        attr_accessor :authorized_external_networks
+      
+        # Optional. Enabling public ip for the instance.
+        # Corresponds to the JSON property `enablePublicIp`
+        # @return [Boolean]
+        attr_accessor :enable_public_ip
+        alias_method :enable_public_ip?, :enable_public_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_external_networks = args[:authorized_external_networks] if args.key?(:authorized_external_networks)
+          @enable_public_ip = args[:enable_public_ip] if args.key?(:enable_public_ip)
         end
       end
       

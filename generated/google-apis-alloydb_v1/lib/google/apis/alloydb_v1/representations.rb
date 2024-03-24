@@ -22,6 +22,12 @@ module Google
   module Apis
     module AlloydbV1
       
+      class AuthorizedNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutomatedBackupPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,12 @@ module Google
       end
       
       class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceNetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,6 +430,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthorizedNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cidr_range, as: 'cidrRange'
+        end
+      end
+      
       class AutomatedBackupPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -549,6 +568,7 @@ module Google
           property :instance_uid, as: 'instanceUid'
           property :ip_address, as: 'ipAddress'
           property :name, as: 'name'
+          property :public_ip_address, as: 'publicIpAddress'
         end
       end
       
@@ -668,8 +688,11 @@ module Google
           property :machine_config, as: 'machineConfig', class: Google::Apis::AlloydbV1::MachineConfig, decorator: Google::Apis::AlloydbV1::MachineConfig::Representation
       
           property :name, as: 'name'
+          property :network_config, as: 'networkConfig', class: Google::Apis::AlloydbV1::InstanceNetworkConfig, decorator: Google::Apis::AlloydbV1::InstanceNetworkConfig::Representation
+      
           collection :nodes, as: 'nodes', class: Google::Apis::AlloydbV1::Node, decorator: Google::Apis::AlloydbV1::Node::Representation
       
+          property :public_ip_address, as: 'publicIpAddress'
           property :query_insights_config, as: 'queryInsightsConfig', class: Google::Apis::AlloydbV1::QueryInsightsInstanceConfig, decorator: Google::Apis::AlloydbV1::QueryInsightsInstanceConfig::Representation
       
           property :read_pool_config, as: 'readPoolConfig', class: Google::Apis::AlloydbV1::ReadPoolConfig, decorator: Google::Apis::AlloydbV1::ReadPoolConfig::Representation
@@ -681,6 +704,15 @@ module Google
           property :update_time, as: 'updateTime'
           property :writable_node, as: 'writableNode', class: Google::Apis::AlloydbV1::Node, decorator: Google::Apis::AlloydbV1::Node::Representation
       
+        end
+      end
+      
+      class InstanceNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authorized_external_networks, as: 'authorizedExternalNetworks', class: Google::Apis::AlloydbV1::AuthorizedNetwork, decorator: Google::Apis::AlloydbV1::AuthorizedNetwork::Representation
+      
+          property :enable_public_ip, as: 'enablePublicIp'
         end
       end
       
