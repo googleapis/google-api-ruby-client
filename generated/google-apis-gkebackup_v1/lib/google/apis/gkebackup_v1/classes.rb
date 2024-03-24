@@ -96,7 +96,7 @@ module Google
       # Represents a request to perform a single point-in-time capture of some portion
       # of the state of a GKE cluster, the record of the backup operation itself, and
       # an anchor for the underlying artifacts that comprise the Backup (the config
-      # backup and VolumeBackups). Next id: 29
+      # backup and VolumeBackups).
       class Backup
         include Google::Apis::Core::Hashable
       
@@ -1453,7 +1453,7 @@ module Google
       end
       
       # Represents both a request to Restore some portion of a Backup into a target
-      # GKE cluster and a record of the restore operation itself. Next id: 20
+      # GKE cluster and a record of the restore operation itself.
       class Restore
         include Google::Apis::Core::Hashable
       
@@ -1525,7 +1525,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :resources_restored_count
       
-        # Configuration of a restore. Next id: 14
+        # Configuration of a restore.
         # Corresponds to the JSON property `restoreConfig`
         # @return [Google::Apis::GkebackupV1::RestoreConfig]
         attr_accessor :restore_config
@@ -1583,7 +1583,7 @@ module Google
         end
       end
       
-      # Configuration of a restore. Next id: 14
+      # Configuration of a restore.
       class RestoreConfig
         include Google::Apis::Core::Hashable
       
@@ -1690,7 +1690,7 @@ module Google
       end
       
       # The configuration of a potential series of Restore operations to be performed
-      # against Backups belong to a particular BackupPlan. Next id: 13
+      # against Backups belong to a particular BackupPlan.
       class RestorePlan
         include Google::Apis::Core::Hashable
       
@@ -1742,7 +1742,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Configuration of a restore. Next id: 14
+        # Configuration of a restore.
         # Corresponds to the JSON property `restoreConfig`
         # @return [Google::Apis::GkebackupV1::RestoreConfig]
         attr_accessor :restore_config
@@ -2114,7 +2114,7 @@ module Google
       
       # Represents the backup of a specific persistent volume as a component of a
       # Backup - both the record of the operation and a pointer to the underlying
-      # storage-specific artifacts. Next id: 14
+      # storage-specific artifacts.
       class VolumeBackup
         include Google::Apis::Core::Hashable
       
@@ -2219,8 +2219,7 @@ module Google
         end
       end
       
-      # Represents the operation of restoring a volume from a VolumeBackup. Next id:
-      # 13
+      # Represents the operation of restoring a volume from a VolumeBackup.
       class VolumeRestore
         include Google::Apis::Core::Hashable
       
