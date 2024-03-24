@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1AccessLoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1AccessRemove
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1767,6 +1773,14 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1AccessLoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :filter, as: 'filter'
+        end
+      end
+      
       class GoogleCloudApigeeV1AccessRemove
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2986,6 +3000,8 @@ module Google
       class GoogleCloudApigeeV1Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_logging_config, as: 'accessLoggingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AccessLoggingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AccessLoggingConfig::Representation
+      
           collection :consumer_accept_list, as: 'consumerAcceptList'
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :description, as: 'description'

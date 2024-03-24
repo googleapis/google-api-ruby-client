@@ -202,6 +202,40 @@ module Google
         end
       end
       
+      # Access logging configuration enables customers to ship the access logs from
+      # the tenant projects to their own project's cloud logging. The feature is at
+      # the instance level ad disabled by default. It can be enabled during
+      # CreateInstance or UpdateInstance.
+      class GoogleCloudApigeeV1AccessLoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Boolean flag that specifies whether the customer access log feature
+        # is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. Ship the access log entries that match the status_code defined in
+        # the filter. The status_code is the only expected/supported filter field. (Ex:
+        # status_code) The filter will parse it to the Common Expression Language
+        # semantics for expression evaluation to build the filter condition. (Ex: "
+        # filter": status_code >= 200 && status_code < 300 )
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
       # Remove action. For example, "Remove" : ` "name" : "target.name", "success" :
       # true `
       class GoogleCloudApigeeV1AccessRemove
@@ -5068,6 +5102,14 @@ module Google
       class GoogleCloudApigeeV1Instance
         include Google::Apis::Core::Hashable
       
+        # Access logging configuration enables customers to ship the access logs from
+        # the tenant projects to their own project's cloud logging. The feature is at
+        # the instance level ad disabled by default. It can be enabled during
+        # CreateInstance or UpdateInstance.
+        # Corresponds to the JSON property `accessLoggingConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AccessLoggingConfig]
+        attr_accessor :access_logging_config
+      
         # Optional. Customer accept list represents the list of projects (id/number) on
         # customer side that can privately connect to the service attachment. It is an
         # optional field which the customers can provide during the instance creation.
@@ -5172,6 +5214,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_logging_config = args[:access_logging_config] if args.key?(:access_logging_config)
           @consumer_accept_list = args[:consumer_accept_list] if args.key?(:consumer_accept_list)
           @created_at = args[:created_at] if args.key?(:created_at)
           @description = args[:description] if args.key?(:description)
