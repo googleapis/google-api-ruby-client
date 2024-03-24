@@ -539,6 +539,96 @@ module Google
         end
       end
       
+      # Execution statistics for the query.
+      class ExecutionStats
+        include Google::Apis::Core::Hashable
+      
+        # Debugging statistics from the execution of the query. Note that the debugging
+        # stats are subject to change as Firestore evolves. It could include: ` "
+        # indexes_entries_scanned": "1000", "documents_scanned": "20", "billing_details"
+        # : ` "documents_billable": "20", "index_entries_billable": "1000", "
+        # min_query_cost": "0" ` `
+        # Corresponds to the JSON property `debugStats`
+        # @return [Hash<String,Object>]
+        attr_accessor :debug_stats
+      
+        # Total time to execute the query in the backend.
+        # Corresponds to the JSON property `executionDuration`
+        # @return [String]
+        attr_accessor :execution_duration
+      
+        # Total billable read operations.
+        # Corresponds to the JSON property `readOperations`
+        # @return [Fixnum]
+        attr_accessor :read_operations
+      
+        # Total number of results returned, including documents, projections,
+        # aggregation results, keys.
+        # Corresponds to the JSON property `resultsReturned`
+        # @return [Fixnum]
+        attr_accessor :results_returned
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @debug_stats = args[:debug_stats] if args.key?(:debug_stats)
+          @execution_duration = args[:execution_duration] if args.key?(:execution_duration)
+          @read_operations = args[:read_operations] if args.key?(:read_operations)
+          @results_returned = args[:results_returned] if args.key?(:results_returned)
+        end
+      end
+      
+      # Explain metrics for the query.
+      class ExplainMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Execution statistics for the query.
+        # Corresponds to the JSON property `executionStats`
+        # @return [Google::Apis::DatastoreV1::ExecutionStats]
+        attr_accessor :execution_stats
+      
+        # Planning phase information for the query.
+        # Corresponds to the JSON property `planSummary`
+        # @return [Google::Apis::DatastoreV1::PlanSummary]
+        attr_accessor :plan_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_stats = args[:execution_stats] if args.key?(:execution_stats)
+          @plan_summary = args[:plan_summary] if args.key?(:plan_summary)
+        end
+      end
+      
+      # Explain options for the query.
+      class ExplainOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to execute this query. When false (the default), the query
+        # will be planned, returning only metrics from the planning stages. When true,
+        # the query will be planned and executed, returning the full query results along
+        # with both planning and execution stage metrics.
+        # Corresponds to the JSON property `analyze`
+        # @return [Boolean]
+        attr_accessor :analyze
+        alias_method :analyze?, :analyze
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analyze = args[:analyze] if args.key?(:analyze)
+        end
+      end
+      
       # A holder for any type of filter.
       class Filter
         include Google::Apis::Core::Hashable
@@ -1652,6 +1742,12 @@ module Google
         # @return [Array<Google::Apis::DatastoreV1::Key>]
         attr_accessor :keys
       
+        # The set of arbitrarily nested property paths used to restrict an operation to
+        # only a subset of properties in an entity.
+        # Corresponds to the JSON property `propertyMask`
+        # @return [Google::Apis::DatastoreV1::PropertyMask]
+        attr_accessor :property_mask
+      
         # The options shared by read requests.
         # Corresponds to the JSON property `readOptions`
         # @return [Google::Apis::DatastoreV1::ReadOptions]
@@ -1665,6 +1761,7 @@ module Google
         def update!(**args)
           @database_id = args[:database_id] if args.key?(:database_id)
           @keys = args[:keys] if args.key?(:keys)
+          @property_mask = args[:property_mask] if args.key?(:property_mask)
           @read_options = args[:read_options] if args.key?(:read_options)
         end
       end
@@ -1742,6 +1839,12 @@ module Google
         # @return [Google::Apis::DatastoreV1::Entity]
         attr_accessor :insert
       
+        # The set of arbitrarily nested property paths used to restrict an operation to
+        # only a subset of properties in an entity.
+        # Corresponds to the JSON property `propertyMask`
+        # @return [Google::Apis::DatastoreV1::PropertyMask]
+        attr_accessor :property_mask
+      
         # A Datastore data object. Must not exceed 1 MiB - 4 bytes.
         # Corresponds to the JSON property `update`
         # @return [Google::Apis::DatastoreV1::Entity]
@@ -1767,6 +1870,7 @@ module Google
           @base_version = args[:base_version] if args.key?(:base_version)
           @delete = args[:delete] if args.key?(:delete)
           @insert = args[:insert] if args.key?(:insert)
+          @property_mask = args[:property_mask] if args.key?(:property_mask)
           @update = args[:update] if args.key?(:update)
           @update_time = args[:update_time] if args.key?(:update_time)
           @upsert = args[:upsert] if args.key?(:upsert)
@@ -1906,6 +2010,27 @@ module Google
         end
       end
       
+      # Planning phase information for the query.
+      class PlanSummary
+        include Google::Apis::Core::Hashable
+      
+        # The indexes selected for the query. For example: [ `"query_scope": "Collection"
+        # , "properties": "(foo ASC, __name__ ASC)"`, `"query_scope": "Collection", "
+        # properties": "(bar ASC, __name__ ASC)"` ]
+        # Corresponds to the JSON property `indexesUsed`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :indexes_used
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @indexes_used = args[:indexes_used] if args.key?(:indexes_used)
+        end
+      end
+      
       # A representation of a property in a projection.
       class Projection
         include Google::Apis::Core::Hashable
@@ -1954,6 +2079,31 @@ module Google
           @op = args[:op] if args.key?(:op)
           @property = args[:property] if args.key?(:property)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The set of arbitrarily nested property paths used to restrict an operation to
+      # only a subset of properties in an entity.
+      class PropertyMask
+        include Google::Apis::Core::Hashable
+      
+        # The paths to the properties covered by this mask. A path is a list of property
+        # names separated by dots (`.`), for example `foo.bar` means the property `bar`
+        # inside the entity property `foo` inside the entity associated with this path.
+        # If a property name contains a dot `.` or a backslash `\`, then that name must
+        # be escaped. A path must not be empty, and may not reference a value inside an
+        # array value.
+        # Corresponds to the JSON property `paths`
+        # @return [Array<String>]
+        attr_accessor :paths
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @paths = args[:paths] if args.key?(:paths)
         end
       end
       
@@ -2339,6 +2489,11 @@ module Google
         # @return [String]
         attr_accessor :database_id
       
+        # Explain options for the query.
+        # Corresponds to the JSON property `explainOptions`
+        # @return [Google::Apis::DatastoreV1::ExplainOptions]
+        attr_accessor :explain_options
+      
         # A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
         # Corresponds to the JSON property `gqlQuery`
         # @return [Google::Apis::DatastoreV1::GqlQuery]
@@ -2371,6 +2526,7 @@ module Google
         def update!(**args)
           @aggregation_query = args[:aggregation_query] if args.key?(:aggregation_query)
           @database_id = args[:database_id] if args.key?(:database_id)
+          @explain_options = args[:explain_options] if args.key?(:explain_options)
           @gql_query = args[:gql_query] if args.key?(:gql_query)
           @partition_id = args[:partition_id] if args.key?(:partition_id)
           @read_options = args[:read_options] if args.key?(:read_options)
@@ -2385,6 +2541,11 @@ module Google
         # Corresponds to the JSON property `batch`
         # @return [Google::Apis::DatastoreV1::AggregationResultBatch]
         attr_accessor :batch
+      
+        # Explain metrics for the query.
+        # Corresponds to the JSON property `explainMetrics`
+        # @return [Google::Apis::DatastoreV1::ExplainMetrics]
+        attr_accessor :explain_metrics
       
         # Datastore query for running an aggregation over a Query.
         # Corresponds to the JSON property `query`
@@ -2406,6 +2567,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @batch = args[:batch] if args.key?(:batch)
+          @explain_metrics = args[:explain_metrics] if args.key?(:explain_metrics)
           @query = args[:query] if args.key?(:query)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
@@ -2420,6 +2582,11 @@ module Google
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
+      
+        # Explain options for the query.
+        # Corresponds to the JSON property `explainOptions`
+        # @return [Google::Apis::DatastoreV1::ExplainOptions]
+        attr_accessor :explain_options
       
         # A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
         # Corresponds to the JSON property `gqlQuery`
@@ -2440,6 +2607,12 @@ module Google
         # @return [Google::Apis::DatastoreV1::PartitionId]
         attr_accessor :partition_id
       
+        # The set of arbitrarily nested property paths used to restrict an operation to
+        # only a subset of properties in an entity.
+        # Corresponds to the JSON property `propertyMask`
+        # @return [Google::Apis::DatastoreV1::PropertyMask]
+        attr_accessor :property_mask
+      
         # A query for entities.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::DatastoreV1::Query]
@@ -2457,8 +2630,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @database_id = args[:database_id] if args.key?(:database_id)
+          @explain_options = args[:explain_options] if args.key?(:explain_options)
           @gql_query = args[:gql_query] if args.key?(:gql_query)
           @partition_id = args[:partition_id] if args.key?(:partition_id)
+          @property_mask = args[:property_mask] if args.key?(:property_mask)
           @query = args[:query] if args.key?(:query)
           @read_options = args[:read_options] if args.key?(:read_options)
         end
@@ -2472,6 +2647,11 @@ module Google
         # Corresponds to the JSON property `batch`
         # @return [Google::Apis::DatastoreV1::QueryResultBatch]
         attr_accessor :batch
+      
+        # Explain metrics for the query.
+        # Corresponds to the JSON property `explainMetrics`
+        # @return [Google::Apis::DatastoreV1::ExplainMetrics]
+        attr_accessor :explain_metrics
       
         # A query for entities.
         # Corresponds to the JSON property `query`
@@ -2493,6 +2673,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @batch = args[:batch] if args.key?(:batch)
+          @explain_metrics = args[:explain_metrics] if args.key?(:explain_metrics)
           @query = args[:query] if args.key?(:query)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
