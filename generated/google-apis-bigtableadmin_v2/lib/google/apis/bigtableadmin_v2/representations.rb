@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataBoostIsolationReadOnly
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataBoostReadLocalWrites
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DropRowRangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +275,54 @@ module Google
       end
       
       class GoogleBigtableAdminV2AuthorizedViewSubsetView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeAggregate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeAggregateSum
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeBytes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeBytesEncoding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeBytesEncodingRaw
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeInt64
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeInt64Encoding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -448,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StandardReadRemoteWrites
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -479,6 +545,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Type
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -541,6 +613,8 @@ module Google
       class AppProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_boost_isolation_read_only, as: 'dataBoostIsolationReadOnly', class: Google::Apis::BigtableadminV2::DataBoostIsolationReadOnly, decorator: Google::Apis::BigtableadminV2::DataBoostIsolationReadOnly::Representation
+      
           property :description, as: 'description'
           property :etag, as: 'etag'
           property :multi_cluster_routing_use_any, as: 'multiClusterRoutingUseAny', class: Google::Apis::BigtableadminV2::MultiClusterRoutingUseAny, decorator: Google::Apis::BigtableadminV2::MultiClusterRoutingUseAny::Representation
@@ -654,6 +728,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consistency_token, as: 'consistencyToken'
+          property :data_boost_read_local_writes, as: 'dataBoostReadLocalWrites', class: Google::Apis::BigtableadminV2::DataBoostReadLocalWrites, decorator: Google::Apis::BigtableadminV2::DataBoostReadLocalWrites::Representation
+      
+          property :standard_read_remote_writes, as: 'standardReadRemoteWrites', class: Google::Apis::BigtableadminV2::StandardReadRemoteWrites, decorator: Google::Apis::BigtableadminV2::StandardReadRemoteWrites::Representation
+      
         end
       end
       
@@ -712,6 +790,8 @@ module Google
           property :gc_rule, as: 'gcRule', class: Google::Apis::BigtableadminV2::GcRule, decorator: Google::Apis::BigtableadminV2::GcRule::Representation
       
           property :stats, as: 'stats', class: Google::Apis::BigtableadminV2::ColumnFamilyStats, decorator: Google::Apis::BigtableadminV2::ColumnFamilyStats::Representation
+      
+          property :value_type, as: 'valueType', class: Google::Apis::BigtableadminV2::Type, decorator: Google::Apis::BigtableadminV2::Type::Representation
       
         end
       end
@@ -830,6 +910,19 @@ module Google
         end
       end
       
+      class DataBoostIsolationReadOnly
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compute_billing_owner, as: 'computeBillingOwner'
+        end
+      end
+      
+      class DataBoostReadLocalWrites
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DropRowRangeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -925,6 +1018,70 @@ module Google
           hash :family_subsets, as: 'familySubsets', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2AuthorizedViewFamilySubsets, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2AuthorizedViewFamilySubsets::Representation
       
           collection :row_prefixes, as: 'rowPrefixes'
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeAggregate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_type, as: 'inputType', class: Google::Apis::BigtableadminV2::Type, decorator: Google::Apis::BigtableadminV2::Type::Representation
+      
+          property :state_type, as: 'stateType', class: Google::Apis::BigtableadminV2::Type, decorator: Google::Apis::BigtableadminV2::Type::Representation
+      
+          property :sum, as: 'sum', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeAggregateSum, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeAggregateSum::Representation
+      
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeAggregateSum
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeBytes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytesEncoding, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytesEncoding::Representation
+      
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeBytesEncoding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :raw, as: 'raw', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytesEncodingRaw, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytesEncodingRaw::Representation
+      
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeBytesEncodingRaw
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeInt64
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64Encoding, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64Encoding::Representation
+      
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeInt64Encoding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :big_endian_bytes, as: 'bigEndianBytes', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes::Representation
+      
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_type, as: 'bytesType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytes, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytes::Representation
+      
         end
       end
       
@@ -1217,6 +1374,12 @@ module Google
         end
       end
       
+      class StandardReadRemoteWrites
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1277,6 +1440,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class Type
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_type, as: 'aggregateType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeAggregate, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeAggregate::Representation
+      
+          property :bytes_type, as: 'bytesType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytes, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytes::Representation
+      
+          property :int64_type, as: 'int64Type', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64::Representation
+      
         end
       end
       
