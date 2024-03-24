@@ -953,6 +953,12 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV1::AuthConfigTemplate>]
         attr_accessor :auth_config_templates
       
+        # Output only. Flag to mark the dynamic auth override.
+        # Corresponds to the JSON property `authOverrideEnabled`
+        # @return [Boolean]
+        attr_accessor :auth_override_enabled
+        alias_method :auth_override_enabled?, :auth_override_enabled
+      
         # Output only. List of config variables needed to create a connection.
         # Corresponds to the JSON property `configVariableTemplates`
         # @return [Array<Google::Apis::ConnectorsV1::ConfigVariableTemplate>]
@@ -1030,6 +1036,11 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV1::RoleGrant>]
         attr_accessor :role_grants
       
+        # Config for connection schema refresh
+        # Corresponds to the JSON property `schemaRefreshConfig`
+        # @return [Google::Apis::ConnectorsV1::SchemaRefreshConfig]
+        attr_accessor :schema_refresh_config
+      
         # Ssl config details of a connector version
         # Corresponds to the JSON property `sslConfigTemplate`
         # @return [Google::Apis::ConnectorsV1::SslConfigTemplate]
@@ -1057,6 +1068,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auth_config_templates = args[:auth_config_templates] if args.key?(:auth_config_templates)
+          @auth_override_enabled = args[:auth_override_enabled] if args.key?(:auth_override_enabled)
           @config_variable_templates = args[:config_variable_templates] if args.key?(:config_variable_templates)
           @connector_infra_config = args[:connector_infra_config] if args.key?(:connector_infra_config)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -1070,6 +1082,7 @@ module Google
           @release_version = args[:release_version] if args.key?(:release_version)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
           @role_grants = args[:role_grants] if args.key?(:role_grants)
+          @schema_refresh_config = args[:schema_refresh_config] if args.key?(:schema_refresh_config)
           @ssl_config_template = args[:ssl_config_template] if args.key?(:ssl_config_template)
           @supported_runtime_features = args[:supported_runtime_features] if args.key?(:supported_runtime_features)
           @unsupported_connection_types = args[:unsupported_connection_types] if args.key?(:unsupported_connection_types)
@@ -3486,7 +3499,7 @@ module Google
         end
       end
       
-      # LINT.IfChange Defines policies to service maintenance events.
+      # Defines policies to service maintenance events.
       class MaintenancePolicy
         include Google::Apis::Core::Hashable
       
@@ -4730,6 +4743,33 @@ module Google
           @day = args[:day] if args.key?(:day)
           @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Config for connection schema refresh
+      class SchemaRefreshConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to use displayName for actions in UI.
+        # Corresponds to the JSON property `useActionDisplayNames`
+        # @return [Boolean]
+        attr_accessor :use_action_display_names
+        alias_method :use_action_display_names?, :use_action_display_names
+      
+        # Whether to use synchronous schema refresh.
+        # Corresponds to the JSON property `useSynchronousSchemaRefresh`
+        # @return [Boolean]
+        attr_accessor :use_synchronous_schema_refresh
+        alias_method :use_synchronous_schema_refresh?, :use_synchronous_schema_refresh
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_action_display_names = args[:use_action_display_names] if args.key?(:use_action_display_names)
+          @use_synchronous_schema_refresh = args[:use_synchronous_schema_refresh] if args.key?(:use_synchronous_schema_refresh)
         end
       end
       
