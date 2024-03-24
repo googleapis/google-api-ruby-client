@@ -1748,6 +1748,32 @@ module Google
         end
       end
       
+      # Operation metadata returned by the CLH during resource state reconciliation.
+      class ReconciliationOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # DEPRECATED. Use exclusive_action instead.
+        # Corresponds to the JSON property `deleteResource`
+        # @return [Boolean]
+        attr_accessor :delete_resource
+        alias_method :delete_resource?, :delete_resource
+      
+        # Excluisive action returned by the CLH.
+        # Corresponds to the JSON property `exclusiveAction`
+        # @return [String]
+        attr_accessor :exclusive_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delete_resource = args[:delete_resource] if args.key?(:delete_resource)
+          @exclusive_action = args[:exclusive_action] if args.key?(:exclusive_action)
+        end
+      end
+      
       # A role in the Identity and Access Management API.
       class Role
         include Google::Apis::Core::Hashable
@@ -1778,8 +1804,8 @@ module Google
         # The name of the role. When `Role` is used in `CreateRole`, the role name must
         # not be set. When `Role` is used in output and other input such as `UpdateRole`,
         # the role name is the complete path. For example, `roles/logging.viewer` for
-        # predefined roles, `organizations/`ORGANIZATION_ID`/roles/my-role` for
-        # organization-level custom roles, and `projects/`PROJECT_ID`/roles/my-role` for
+        # predefined roles, `organizations/`ORGANIZATION_ID`/roles/myRole` for
+        # organization-level custom roles, and `projects/`PROJECT_ID`/roles/myRole` for
         # project-level custom roles.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1818,18 +1844,18 @@ module Google
       class Saml
         include Google::Apis::Core::Hashable
       
-        # Required. SAML Identity provider configuration metadata xml doc. The xml
-        # document should comply with [SAML 2.0 specification](https://www.oasis-open.
-        # org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf).
-        # The max size of the acceptable xml document will be bounded to 128k characters.
-        # The metadata xml document should satisfy the following constraints: 1) Must
-        # contain an Identity Provider Entity ID. 2) Must contain at least one non-
-        # expired signing key certificate. 3) For each signing key: a) Valid from should
-        # be no more than 7 days from now. b) Valid to should be no more than 15 years
-        # in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml.
-        # When updating the provider's metadata xml, at lease one non-expired signing
-        # key must overlap with the existing metadata. This requirement is skipped if
-        # there are no non-expired signing keys present in the existing metadata
+        # Required. SAML identity provider (IdP) configuration metadata XML doc. The XML
+        # document must comply with the [SAML 2.0 specification](https://docs.oasis-open.
+        # org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The maximum size of an
+        # acceptable XML document is 128K characters. The SAML metadata XML document
+        # must satisfy the following constraints: * Must contain an IdP Entity ID. *
+        # Must contain at least one non-expired signing certificate. * For each signing
+        # certificate, the expiration must be: * From no more than 7 days in the future.
+        # * To no more than 15 years in the future. * Up to three IdP signing keys are
+        # allowed. When updating the provider's metadata XML, at least one non-expired
+        # signing key must overlap with the existing metadata. This requirement is
+        # skipped if there are no non-expired signing keys present in the existing
+        # metadata.
         # Corresponds to the JSON property `idpMetadataXml`
         # @return [String]
         attr_accessor :idp_metadata_xml
@@ -2579,8 +2605,8 @@ module Google
         # user's thumbnail photo. This is an optional field. When set, the image will be
         # visible as the user's profile picture. If not set, a generic user icon will be
         # displayed instead. This attribute cannot be referenced in IAM bindings. * `
-        # google.posix_username`: The linux username used by OS login. This is an
-        # optional field and the mapped posix username cannot exceed 32 characters, The
+        # google.posix_username`: The Linux username used by OS Login. This is an
+        # optional field and the mapped POSIX username cannot exceed 32 characters, The
         # key must match the regex "^a-zA-Z0-9._`0,31`$". This attribute cannot be
         # referenced in IAM bindings. You can also provide custom attributes by
         # specifying `attribute.`custom_attribute``, where `custom_attribute` is the
@@ -2894,6 +2920,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # An X.509-type identity provider represents a CA. It is trusted to assert a
+        # client identity if the client has a certificate that chains up to this CA.
+        # Corresponds to the JSON property `x509`
+        # @return [Google::Apis::IamV1::X509]
+        attr_accessor :x509
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2911,6 +2943,7 @@ module Google
           @oidc = args[:oidc] if args.key?(:oidc)
           @saml = args[:saml] if args.key?(:saml)
           @state = args[:state] if args.key?(:state)
+          @x509 = args[:x509] if args.key?(:x509)
         end
       end
       
@@ -2959,6 +2992,20 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @use = args[:use] if args.key?(:use)
+        end
+      end
+      
+      # An X.509-type identity provider represents a CA. It is trusted to assert a
+      # client identity if the client has a certificate that chains up to this CA.
+      class X509
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end

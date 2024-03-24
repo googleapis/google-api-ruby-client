@@ -334,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReconciliationOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Role
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +521,12 @@ module Google
       end
       
       class WorkloadIdentityPoolProviderKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class X509
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -980,6 +992,14 @@ module Google
         end
       end
       
+      class ReconciliationOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_resource, as: 'deleteResource'
+          property :exclusive_action, as: 'exclusiveAction'
+        end
+      end
+      
       class Role
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1251,6 +1271,8 @@ module Google
           property :saml, as: 'saml', class: Google::Apis::IamV1::Saml, decorator: Google::Apis::IamV1::Saml::Representation
       
           property :state, as: 'state'
+          property :x509, as: 'x509', class: Google::Apis::IamV1::X509, decorator: Google::Apis::IamV1::X509::Representation
+      
         end
       end
       
@@ -1263,6 +1285,12 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :use, as: 'use'
+        end
+      end
+      
+      class X509
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end
