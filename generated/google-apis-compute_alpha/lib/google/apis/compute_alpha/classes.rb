@@ -17832,10 +17832,9 @@ module Google
       class InstanceGroupManagerParams
         include Google::Apis::Core::Hashable
       
-        # Resource manager tags to be bound to the instance group manager. Tag keys and
-        # values have the same definition as resource manager tags. Keys must be in the
-        # format `tagKeys/123`, and values are in the format `tagValues/456`. The field
-        # is allowed for INSERT only.
+        # Resource manager tags to bind to the managed instance group. The tags are key-
+        # value pairs. Keys must be in the format tagKeys/123 and values in the format
+        # tagValues/456. For more information, see Manage tags for resources.
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Hash<String,String>]
         attr_accessor :resource_manager_tags
@@ -20935,7 +20934,7 @@ module Google
         attr_accessor :short_name
       
         # [Output Only] The type of the firewall policy. Can be one of HIERARCHY,
-        # NETWORK, NETWORK_REGIONAL.
+        # NETWORK, NETWORK_REGIONAL, SYSTEM_GLOBAL, SYSTEM_REGIONAL.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -29412,6 +29411,328 @@ module Google
         end
       end
       
+      # NetworkPlacement Represents a Google managed network placement resource.
+      class NetworkPlacement
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] Features supported by the network.
+        # Corresponds to the JSON property `features`
+        # @return [Google::Apis::ComputeAlpha::NetworkPlacementNetworkFeatures]
+        attr_accessor :features
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#networkPlacement for
+        # network placements.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] Name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output Only] Zone to which the network is restricted.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @features = args[:features] if args.key?(:features)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class NetworkPlacementNetworkFeatures
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether auto mode subnet creation is allowed.
+        # Corresponds to the JSON property `allowAutoModeSubnet`
+        # @return [String]
+        attr_accessor :allow_auto_mode_subnet
+      
+        # Specifies whether cloud NAT creation is allowed.
+        # Corresponds to the JSON property `allowCloudNat`
+        # @return [String]
+        attr_accessor :allow_cloud_nat
+      
+        # Specifies whether cloud router creation is allowed.
+        # Corresponds to the JSON property `allowCloudRouter`
+        # @return [String]
+        attr_accessor :allow_cloud_router
+      
+        # Specifies whether Cloud Interconnect creation is allowed.
+        # Corresponds to the JSON property `allowInterconnect`
+        # @return [String]
+        attr_accessor :allow_interconnect
+      
+        # Specifies whether cloud load balancing is allowed.
+        # Corresponds to the JSON property `allowLoadBalancing`
+        # @return [String]
+        attr_accessor :allow_load_balancing
+      
+        # Specifies whether multi-nic in the same network is allowed.
+        # Corresponds to the JSON property `allowMultiNicInSameNetwork`
+        # @return [String]
+        attr_accessor :allow_multi_nic_in_same_network
+      
+        # Specifies whether Packet Mirroring 1.0 is supported.
+        # Corresponds to the JSON property `allowPacketMirroring`
+        # @return [String]
+        attr_accessor :allow_packet_mirroring
+      
+        # Specifies whether private Google access is allowed.
+        # Corresponds to the JSON property `allowPrivateGoogleAccess`
+        # @return [String]
+        attr_accessor :allow_private_google_access
+      
+        # Specifies whether PSC creation is allowed.
+        # Corresponds to the JSON property `allowPsc`
+        # @return [String]
+        attr_accessor :allow_psc
+      
+        # Specifies whether unicast within the same network is allowed.
+        # Corresponds to the JSON property `allowSameNetworkUnicast`
+        # @return [String]
+        attr_accessor :allow_same_network_unicast
+      
+        # Specifies whether static route creation is allowed.
+        # Corresponds to the JSON property `allowStaticRoutes`
+        # @return [String]
+        attr_accessor :allow_static_routes
+      
+        # Specifies whether VPC peering is allowed.
+        # Corresponds to the JSON property `allowVpcPeering`
+        # @return [String]
+        attr_accessor :allow_vpc_peering
+      
+        # Specifies whether VPN creation is allowed.
+        # Corresponds to the JSON property `allowVpn`
+        # @return [String]
+        attr_accessor :allow_vpn
+      
+        # Specifies which subnetwork purposes are supported.
+        # Corresponds to the JSON property `allowedSubnetPurposes`
+        # @return [Array<String>]
+        attr_accessor :allowed_subnet_purposes
+      
+        # Specifies which subnetwork stack types are supported.
+        # Corresponds to the JSON property `allowedSubnetStackTypes`
+        # @return [Array<String>]
+        attr_accessor :allowed_subnet_stack_types
+      
+        # If set, limits the interface types that the network supports. If empty, all
+        # interface types are supported.
+        # Corresponds to the JSON property `interfaceTypes`
+        # @return [Array<String>]
+        attr_accessor :interface_types
+      
+        # Specifies which type of multicast is supported.
+        # Corresponds to the JSON property `multicast`
+        # @return [String]
+        attr_accessor :multicast
+      
+        # Specifies which type of unicast is supported.
+        # Corresponds to the JSON property `unicast`
+        # @return [String]
+        attr_accessor :unicast
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_auto_mode_subnet = args[:allow_auto_mode_subnet] if args.key?(:allow_auto_mode_subnet)
+          @allow_cloud_nat = args[:allow_cloud_nat] if args.key?(:allow_cloud_nat)
+          @allow_cloud_router = args[:allow_cloud_router] if args.key?(:allow_cloud_router)
+          @allow_interconnect = args[:allow_interconnect] if args.key?(:allow_interconnect)
+          @allow_load_balancing = args[:allow_load_balancing] if args.key?(:allow_load_balancing)
+          @allow_multi_nic_in_same_network = args[:allow_multi_nic_in_same_network] if args.key?(:allow_multi_nic_in_same_network)
+          @allow_packet_mirroring = args[:allow_packet_mirroring] if args.key?(:allow_packet_mirroring)
+          @allow_private_google_access = args[:allow_private_google_access] if args.key?(:allow_private_google_access)
+          @allow_psc = args[:allow_psc] if args.key?(:allow_psc)
+          @allow_same_network_unicast = args[:allow_same_network_unicast] if args.key?(:allow_same_network_unicast)
+          @allow_static_routes = args[:allow_static_routes] if args.key?(:allow_static_routes)
+          @allow_vpc_peering = args[:allow_vpc_peering] if args.key?(:allow_vpc_peering)
+          @allow_vpn = args[:allow_vpn] if args.key?(:allow_vpn)
+          @allowed_subnet_purposes = args[:allowed_subnet_purposes] if args.key?(:allowed_subnet_purposes)
+          @allowed_subnet_stack_types = args[:allowed_subnet_stack_types] if args.key?(:allowed_subnet_stack_types)
+          @interface_types = args[:interface_types] if args.key?(:interface_types)
+          @multicast = args[:multicast] if args.key?(:multicast)
+          @unicast = args[:unicast] if args.key?(:unicast)
+        end
+      end
+      
+      # Contains a list of network placements.
+      class NetworkPlacementsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of NetworkPlacement resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::NetworkPlacement>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#networkPlacementList for
+        # network placements.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources. end_interface:
+        # MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::NetworkPlacementsListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::NetworkPlacementsListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # A routing configuration attached to a network resource. The message includes
       # the list of routers associated with the network, and a flag indicating the
       # type of routing behavior to enforce network-wide.
@@ -37030,15 +37351,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :instances
       
-        # Skip instances which cannot be deleted (instances not belonging to this
-        # managed group, already being deleted or being abandoned). If `false`, fail
-        # whole flow, if such instance is passed. DEPRECATED: Use
-        # skip_instances_on_validation_error instead.
-        # Corresponds to the JSON property `skipInapplicableInstances`
-        # @return [Boolean]
-        attr_accessor :skip_inapplicable_instances
-        alias_method :skip_inapplicable_instances?, :skip_inapplicable_instances
-      
         # Specifies whether the request should proceed despite the inclusion of
         # instances that are not members of the group or that are already in the process
         # of being deleted or abandoned. If this field is set to `false` and such an
@@ -37058,7 +37370,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instances = args[:instances] if args.key?(:instances)
-          @skip_inapplicable_instances = args[:skip_inapplicable_instances] if args.key?(:skip_inapplicable_instances)
           @skip_instances_on_validation_error = args[:skip_instances_on_validation_error] if args.key?(:skip_instances_on_validation_error)
         end
       end
