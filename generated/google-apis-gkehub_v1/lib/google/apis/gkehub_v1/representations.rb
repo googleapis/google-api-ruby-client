@@ -478,6 +478,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityServiceGroupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceLdapConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IdentityServiceMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -502,6 +514,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityServiceServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceServiceAccountConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceSimpleBindCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceUserConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KubernetesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -509,6 +545,12 @@ module Google
       end
       
       class KubernetesResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBoundMembershipsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -545,6 +587,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListPermittedScopesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1619,6 +1667,8 @@ module Google
       
           property :google_config, as: 'googleConfig', class: Google::Apis::GkehubV1::IdentityServiceGoogleConfig, decorator: Google::Apis::GkehubV1::IdentityServiceGoogleConfig::Representation
       
+          property :ldap_config, as: 'ldapConfig', class: Google::Apis::GkehubV1::IdentityServiceLdapConfig, decorator: Google::Apis::GkehubV1::IdentityServiceLdapConfig::Representation
+      
           property :name, as: 'name'
           property :oidc_config, as: 'oidcConfig', class: Google::Apis::GkehubV1::IdentityServiceOidcConfig, decorator: Google::Apis::GkehubV1::IdentityServiceOidcConfig::Representation
       
@@ -1645,6 +1695,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable, as: 'disable'
+        end
+      end
+      
+      class IdentityServiceGroupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_dn, as: 'baseDn'
+          property :filter, as: 'filter'
+          property :id_attribute, as: 'idAttribute'
+        end
+      end
+      
+      class IdentityServiceLdapConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group', class: Google::Apis::GkehubV1::IdentityServiceGroupConfig, decorator: Google::Apis::GkehubV1::IdentityServiceGroupConfig::Representation
+      
+          property :server, as: 'server', class: Google::Apis::GkehubV1::IdentityServiceServerConfig, decorator: Google::Apis::GkehubV1::IdentityServiceServerConfig::Representation
+      
+          property :service_account, as: 'serviceAccount', class: Google::Apis::GkehubV1::IdentityServiceServiceAccountConfig, decorator: Google::Apis::GkehubV1::IdentityServiceServiceAccountConfig::Representation
+      
+          property :user, as: 'user', class: Google::Apis::GkehubV1::IdentityServiceUserConfig, decorator: Google::Apis::GkehubV1::IdentityServiceUserConfig::Representation
+      
         end
       end
       
@@ -1701,6 +1774,42 @@ module Google
         end
       end
       
+      class IdentityServiceServerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_authority_data, :base64 => true, as: 'certificateAuthorityData'
+          property :connection_type, as: 'connectionType'
+          property :host, as: 'host'
+        end
+      end
+      
+      class IdentityServiceServiceAccountConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :simple_bind_credentials, as: 'simpleBindCredentials', class: Google::Apis::GkehubV1::IdentityServiceSimpleBindCredentials, decorator: Google::Apis::GkehubV1::IdentityServiceSimpleBindCredentials::Representation
+      
+        end
+      end
+      
+      class IdentityServiceSimpleBindCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dn, as: 'dn'
+          property :encrypted_password, :base64 => true, as: 'encryptedPassword'
+          property :password, as: 'password'
+        end
+      end
+      
+      class IdentityServiceUserConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_dn, as: 'baseDn'
+          property :filter, as: 'filter'
+          property :id_attribute, as: 'idAttribute'
+          property :login_attribute, as: 'loginAttribute'
+        end
+      end
+      
       class KubernetesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1723,6 +1832,16 @@ module Google
       
           property :resource_options, as: 'resourceOptions', class: Google::Apis::GkehubV1::ResourceOptions, decorator: Google::Apis::GkehubV1::ResourceOptions::Representation
       
+        end
+      end
+      
+      class ListBoundMembershipsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :memberships, as: 'memberships', class: Google::Apis::GkehubV1::Membership, decorator: Google::Apis::GkehubV1::Membership::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1777,6 +1896,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::GkehubV1::Operation, decorator: Google::Apis::GkehubV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListPermittedScopesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :scopes, as: 'scopes', class: Google::Apis::GkehubV1::Scope, decorator: Google::Apis::GkehubV1::Scope::Representation
       
         end
       end
