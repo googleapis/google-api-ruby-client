@@ -248,6 +248,19 @@ module Google
         end
       end
       
+      # The request for ReservationService.FailoverReservation.
+      class FailoverReservationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The response for ReservationService.ListAssignments.
       class ListAssignmentsResponse
         include Google::Apis::Core::Hashable
@@ -436,6 +449,33 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The original primary location of the reservation which is set only
+        # during its creation and remains unchanged afterwards. It can be used by the
+        # customer to answer questions about disaster recovery billing. The field is
+        # output only for customers and should not be specified, however, the google.api.
+        # field_behavior is not set to OUTPUT_ONLY since these fields are set in
+        # rerouted requests sent across regions.
+        # Corresponds to the JSON property `originalPrimaryLocation`
+        # @return [String]
+        attr_accessor :original_primary_location
+      
+        # Optional. The primary location of the reservation. The field is only
+        # meaningful for reservation used for cross region disaster recovery. The field
+        # is output only for customers and should not be specified, however, the google.
+        # api.field_behavior is not set to OUTPUT_ONLY since these fields are set in
+        # rerouted requests sent across regions.
+        # Corresponds to the JSON property `primaryLocation`
+        # @return [String]
+        attr_accessor :primary_location
+      
+        # Optional. The secondary location of the reservation which is used for cross
+        # region disaster recovery purposes. Customer can set this in create/update
+        # reservation calls to create a failover reservation or convert a non-failover
+        # reservation to a failover reservation.
+        # Corresponds to the JSON property `secondaryLocation`
+        # @return [String]
+        attr_accessor :secondary_location
+      
         # Baseline slots available to this reservation. A slot is a unit of
         # computational power in BigQuery, and serves as the unit of parallelism.
         # Queries using this reservation might use more slots during runtime if
@@ -473,6 +513,9 @@ module Google
           @ignore_idle_slots = args[:ignore_idle_slots] if args.key?(:ignore_idle_slots)
           @multi_region_auxiliary = args[:multi_region_auxiliary] if args.key?(:multi_region_auxiliary)
           @name = args[:name] if args.key?(:name)
+          @original_primary_location = args[:original_primary_location] if args.key?(:original_primary_location)
+          @primary_location = args[:primary_location] if args.key?(:primary_location)
+          @secondary_location = args[:secondary_location] if args.key?(:secondary_location)
           @slot_capacity = args[:slot_capacity] if args.key?(:slot_capacity)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
