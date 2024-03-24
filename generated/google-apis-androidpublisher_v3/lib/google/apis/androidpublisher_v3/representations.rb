@@ -2665,6 +2665,7 @@ module Google
           property :purchase_token, as: 'purchaseToken'
           property :purchase_type, as: 'purchaseType'
           property :quantity, as: 'quantity'
+          property :refundable_quantity, as: 'refundableQuantity'
           property :region_code, as: 'regionCode'
         end
       end
@@ -3502,6 +3503,7 @@ module Google
           property :order_id, as: 'orderId'
           property :purchase_time_millis, :numeric_string => true, as: 'purchaseTimeMillis'
           property :purchase_token, as: 'purchaseToken'
+          property :voided_quantity, as: 'voidedQuantity'
           property :voided_reason, as: 'voidedReason'
           property :voided_source, as: 'voidedSource'
           property :voided_time_millis, :numeric_string => true, as: 'voidedTimeMillis'

@@ -1819,9 +1819,9 @@ module Google
         # @param [String] external_transaction_id
         #   Required. The id to use for the external transaction. Must be unique across
         #   all other transactions for the app. This value should be 1-63 characters and
-        #   valid characters are /a-z0-9_-/. Do not use this field to store any Personally
-        #   Identifiable Information (PII) such as emails. Attempting to store PII in this
-        #   field may result in requests being blocked.
+        #   valid characters are /a-zA-Z0-9_-/. Do not use this field to store any
+        #   Personally Identifiable Information (PII) such as emails. Attempting to store
+        #   PII in this field may result in requests being blocked.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4094,6 +4094,12 @@ module Google
         #   value is current time. Note: This filter is applied on the time at which the
         #   record is seen as voided by our systems and not the actual voided time
         #   returned in the response.
+        # @param [Boolean] include_quantity_based_partial_refund
+        #   Optional. Whether to include voided purchases of quantity-based partial
+        #   refunds, which are applicable only to multi-quantity purchases. If true,
+        #   additional voided purchases may be returned with voidedQuantity that indicates
+        #   the refund quantity of a quantity-based partial refund. The default value is
+        #   false.
         # @param [Fixnum] max_results
         #   Defines how many results the list operation should return. The default number
         #   depends on the resource collection.
@@ -4137,12 +4143,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_purchase_voidedpurchases(package_name, end_time: nil, max_results: nil, start_index: nil, start_time: nil, token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_purchase_voidedpurchases(package_name, end_time: nil, include_quantity_based_partial_refund: nil, max_results: nil, start_index: nil, start_time: nil, token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/purchases/voidedpurchases', options)
           command.response_representation = Google::Apis::AndroidpublisherV3::VoidedPurchasesListResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV3::VoidedPurchasesListResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.query['endTime'] = end_time unless end_time.nil?
+          command.query['includeQuantityBasedPartialRefund'] = include_quantity_based_partial_refund unless include_quantity_based_partial_refund.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['startIndex'] = start_index unless start_index.nil?
           command.query['startTime'] = start_time unless start_time.nil?
