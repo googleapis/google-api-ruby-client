@@ -4192,6 +4192,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
+        # The quantity eligible for refund, i.e. quantity that hasn't been refunded. The
+        # value reflects quantity-based partial refunds and full refunds.
+        # Corresponds to the JSON property `refundableQuantity`
+        # @return [Fixnum]
+        attr_accessor :refundable_quantity
+      
         # ISO 3166-1 alpha-2 billing region code of the user at the time the product was
         # granted.
         # Corresponds to the JSON property `regionCode`
@@ -4217,6 +4223,7 @@ module Google
           @purchase_token = args[:purchase_token] if args.key?(:purchase_token)
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
           @quantity = args[:quantity] if args.key?(:quantity)
+          @refundable_quantity = args[:refundable_quantity] if args.key?(:refundable_quantity)
           @region_code = args[:region_code] if args.key?(:region_code)
         end
       end
@@ -7080,6 +7087,13 @@ module Google
         # @return [String]
         attr_accessor :purchase_token
       
+        # The voided quantity as the result of a quantity-based partial refund. Voided
+        # purchases of quantity-based partial refunds may only be returned when
+        # includeQuantityBasedPartialRefund is set to true.
+        # Corresponds to the JSON property `voidedQuantity`
+        # @return [Fixnum]
+        attr_accessor :voided_quantity
+      
         # The reason why the purchase was voided, possible values are: 0. Other 1.
         # Remorse 2. Not_received 3. Defective 4. Accidental_purchase 5. Fraud 6.
         # Friendly_fraud 7. Chargeback
@@ -7109,6 +7123,7 @@ module Google
           @order_id = args[:order_id] if args.key?(:order_id)
           @purchase_time_millis = args[:purchase_time_millis] if args.key?(:purchase_time_millis)
           @purchase_token = args[:purchase_token] if args.key?(:purchase_token)
+          @voided_quantity = args[:voided_quantity] if args.key?(:voided_quantity)
           @voided_reason = args[:voided_reason] if args.key?(:voided_reason)
           @voided_source = args[:voided_source] if args.key?(:voided_source)
           @voided_time_millis = args[:voided_time_millis] if args.key?(:voided_time_millis)
