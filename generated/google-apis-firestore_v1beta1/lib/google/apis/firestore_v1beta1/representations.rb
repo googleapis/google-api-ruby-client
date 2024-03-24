@@ -178,7 +178,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecutionStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExistenceFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExplainMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExplainOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -365,6 +383,12 @@ module Google
       end
       
       class PartitionQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlanSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -739,6 +763,16 @@ module Google
         end
       end
       
+      class ExecutionStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :debug_stats, as: 'debugStats'
+          property :execution_duration, as: 'executionDuration'
+          property :read_operations, :numeric_string => true, as: 'readOperations'
+          property :results_returned, :numeric_string => true, as: 'resultsReturned'
+        end
+      end
+      
       class ExistenceFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -746,6 +780,23 @@ module Google
           property :target_id, as: 'targetId'
           property :unchanged_names, as: 'unchangedNames', class: Google::Apis::FirestoreV1beta1::BloomFilter, decorator: Google::Apis::FirestoreV1beta1::BloomFilter::Representation
       
+        end
+      end
+      
+      class ExplainMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_stats, as: 'executionStats', class: Google::Apis::FirestoreV1beta1::ExecutionStats, decorator: Google::Apis::FirestoreV1beta1::ExecutionStats::Representation
+      
+          property :plan_summary, as: 'planSummary', class: Google::Apis::FirestoreV1beta1::PlanSummary, decorator: Google::Apis::FirestoreV1beta1::PlanSummary::Representation
+      
+        end
+      end
+      
+      class ExplainOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analyze, as: 'analyze'
         end
       end
       
@@ -1054,6 +1105,13 @@ module Google
         end
       end
       
+      class PlanSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :indexes_used, as: 'indexesUsed'
+        end
+      end
+      
       class Precondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1103,6 +1161,8 @@ module Google
       class RunAggregationQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :explain_options, as: 'explainOptions', class: Google::Apis::FirestoreV1beta1::ExplainOptions, decorator: Google::Apis::FirestoreV1beta1::ExplainOptions::Representation
+      
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1beta1::TransactionOptions, decorator: Google::Apis::FirestoreV1beta1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
@@ -1115,6 +1175,8 @@ module Google
       class RunAggregationQueryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :explain_metrics, as: 'explainMetrics', class: Google::Apis::FirestoreV1beta1::ExplainMetrics, decorator: Google::Apis::FirestoreV1beta1::ExplainMetrics::Representation
+      
           property :read_time, as: 'readTime'
           property :result, as: 'result', class: Google::Apis::FirestoreV1beta1::AggregationResult, decorator: Google::Apis::FirestoreV1beta1::AggregationResult::Representation
       
@@ -1125,6 +1187,8 @@ module Google
       class RunQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :explain_options, as: 'explainOptions', class: Google::Apis::FirestoreV1beta1::ExplainOptions, decorator: Google::Apis::FirestoreV1beta1::ExplainOptions::Representation
+      
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1beta1::TransactionOptions, decorator: Google::Apis::FirestoreV1beta1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
@@ -1140,6 +1204,8 @@ module Google
           property :document, as: 'document', class: Google::Apis::FirestoreV1beta1::Document, decorator: Google::Apis::FirestoreV1beta1::Document::Representation
       
           property :done, as: 'done'
+          property :explain_metrics, as: 'explainMetrics', class: Google::Apis::FirestoreV1beta1::ExplainMetrics, decorator: Google::Apis::FirestoreV1beta1::ExplainMetrics::Representation
+      
           property :read_time, as: 'readTime'
           property :skipped_results, as: 'skippedResults'
           property :transaction, :base64 => true, as: 'transaction'
