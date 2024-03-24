@@ -544,6 +544,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityServiceGroupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceLdapConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IdentityServiceMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +575,30 @@ module Google
       end
       
       class IdentityServiceSamlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceServiceAccountConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceSimpleBindCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceUserConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1897,6 +1933,8 @@ module Google
       
           property :google_config, as: 'googleConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig::Representation
       
+          property :ldap_config, as: 'ldapConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceLdapConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceLdapConfig::Representation
+      
           property :name, as: 'name'
           property :oidc_config, as: 'oidcConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceOidcConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceOidcConfig::Representation
       
@@ -1923,6 +1961,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable, as: 'disable'
+        end
+      end
+      
+      class IdentityServiceGroupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_dn, as: 'baseDn'
+          property :filter, as: 'filter'
+          property :id_attribute, as: 'idAttribute'
+        end
+      end
+      
+      class IdentityServiceLdapConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group', class: Google::Apis::GkehubV1alpha::IdentityServiceGroupConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceGroupConfig::Representation
+      
+          property :server, as: 'server', class: Google::Apis::GkehubV1alpha::IdentityServiceServerConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceServerConfig::Representation
+      
+          property :service_account, as: 'serviceAccount', class: Google::Apis::GkehubV1alpha::IdentityServiceServiceAccountConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceServiceAccountConfig::Representation
+      
+          property :user, as: 'user', class: Google::Apis::GkehubV1alpha::IdentityServiceUserConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceUserConfig::Representation
+      
         end
       end
       
@@ -1976,6 +2037,42 @@ module Google
           property :identity_provider_sso_uri, as: 'identityProviderSsoUri'
           property :user_attribute, as: 'userAttribute'
           property :user_prefix, as: 'userPrefix'
+        end
+      end
+      
+      class IdentityServiceServerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_authority_data, :base64 => true, as: 'certificateAuthorityData'
+          property :connection_type, as: 'connectionType'
+          property :host, as: 'host'
+        end
+      end
+      
+      class IdentityServiceServiceAccountConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :simple_bind_credentials, as: 'simpleBindCredentials', class: Google::Apis::GkehubV1alpha::IdentityServiceSimpleBindCredentials, decorator: Google::Apis::GkehubV1alpha::IdentityServiceSimpleBindCredentials::Representation
+      
+        end
+      end
+      
+      class IdentityServiceSimpleBindCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dn, as: 'dn'
+          property :encrypted_password, :base64 => true, as: 'encryptedPassword'
+          property :password, as: 'password'
+        end
+      end
+      
+      class IdentityServiceUserConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_dn, as: 'baseDn'
+          property :filter, as: 'filter'
+          property :id_attribute, as: 'idAttribute'
+          property :login_attribute, as: 'loginAttribute'
         end
       end
       
