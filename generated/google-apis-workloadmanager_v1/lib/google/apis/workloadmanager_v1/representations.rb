@@ -563,9 +563,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :abap, as: 'abap'
+          property :app_instance_number, as: 'appInstanceNumber'
           property :application_type, as: 'applicationType'
+          property :ascs_instance_number, as: 'ascsInstanceNumber'
           property :ascs_uri, as: 'ascsUri'
-          property :instance_number, as: 'instanceNumber'
           property :kernel_version, as: 'kernelVersion'
           property :nfs_uri, as: 'nfsUri'
         end
@@ -574,6 +575,7 @@ module Google
       class SapDiscoveryComponentDatabaseProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_sid, as: 'databaseSid'
           property :database_type, as: 'databaseType'
           property :database_version, as: 'databaseVersion'
           property :instance_number, as: 'instanceNumber'
@@ -609,6 +611,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cluster_instances, as: 'clusterInstances'
+          property :instance_number, :numeric_string => true, as: 'instanceNumber'
           property :virtual_hostname, as: 'virtualHostname'
         end
       end

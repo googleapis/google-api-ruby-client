@@ -1035,20 +1035,25 @@ module Google
         attr_accessor :abap
         alias_method :abap?, :abap
       
+        # Optional. Instance number of the SAP application instance.
+        # Corresponds to the JSON property `appInstanceNumber`
+        # @return [String]
+        attr_accessor :app_instance_number
+      
         # Required. Type of the application. Netweaver, etc.
         # Corresponds to the JSON property `applicationType`
         # @return [String]
         attr_accessor :application_type
       
+        # Optional. Instance number of the ASCS instance.
+        # Corresponds to the JSON property `ascsInstanceNumber`
+        # @return [String]
+        attr_accessor :ascs_instance_number
+      
         # Optional. Resource URI of the recognized ASCS host of the application.
         # Corresponds to the JSON property `ascsUri`
         # @return [String]
         attr_accessor :ascs_uri
-      
-        # Optional. Instance number of the SAP instance.
-        # Corresponds to the JSON property `instanceNumber`
-        # @return [String]
-        attr_accessor :instance_number
       
         # Optional. Kernel version for Netweaver running in the system.
         # Corresponds to the JSON property `kernelVersion`
@@ -1068,9 +1073,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @abap = args[:abap] if args.key?(:abap)
+          @app_instance_number = args[:app_instance_number] if args.key?(:app_instance_number)
           @application_type = args[:application_type] if args.key?(:application_type)
+          @ascs_instance_number = args[:ascs_instance_number] if args.key?(:ascs_instance_number)
           @ascs_uri = args[:ascs_uri] if args.key?(:ascs_uri)
-          @instance_number = args[:instance_number] if args.key?(:instance_number)
           @kernel_version = args[:kernel_version] if args.key?(:kernel_version)
           @nfs_uri = args[:nfs_uri] if args.key?(:nfs_uri)
         end
@@ -1079,6 +1085,11 @@ module Google
       # A set of properties describing an SAP Database layer.
       class SapDiscoveryComponentDatabaseProperties
         include Google::Apis::Core::Hashable
+      
+        # Optional. SID of the system database.
+        # Corresponds to the JSON property `databaseSid`
+        # @return [String]
+        attr_accessor :database_sid
       
         # Required. Type of the database. HANA, DB2, etc.
         # Corresponds to the JSON property `databaseType`
@@ -1112,6 +1123,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_sid = args[:database_sid] if args.key?(:database_sid)
           @database_type = args[:database_type] if args.key?(:database_type)
           @database_version = args[:database_version] if args.key?(:database_version)
           @instance_number = args[:instance_number] if args.key?(:instance_number)
@@ -1217,6 +1229,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :cluster_instances
       
+        # Optional. The VM's instance number.
+        # Corresponds to the JSON property `instanceNumber`
+        # @return [Fixnum]
+        attr_accessor :instance_number
+      
         # Optional. A virtual hostname of the instance if it has one.
         # Corresponds to the JSON property `virtualHostname`
         # @return [String]
@@ -1229,6 +1246,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_instances = args[:cluster_instances] if args.key?(:cluster_instances)
+          @instance_number = args[:instance_number] if args.key?(:instance_number)
           @virtual_hostname = args[:virtual_hostname] if args.key?(:virtual_hostname)
         end
       end
