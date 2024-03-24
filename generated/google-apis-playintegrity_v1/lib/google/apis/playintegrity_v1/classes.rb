@@ -179,7 +179,7 @@ module Google
         end
       end
       
-      # Contains the device attestation information.
+      # Contains the device attestation information. Next tag: 4
       class DeviceIntegrity
         include Google::Apis::Core::Hashable
       
@@ -330,7 +330,7 @@ module Google
         # @return [Google::Apis::PlayintegrityV1::AppIntegrity]
         attr_accessor :app_integrity
       
-        # Contains the device attestation information.
+        # Contains the device attestation information. Next tag: 4
         # Corresponds to the JSON property `deviceIntegrity`
         # @return [Google::Apis::PlayintegrityV1::DeviceIntegrity]
         attr_accessor :device_integrity
