@@ -313,6 +313,13 @@ module Google
         # @return [String]
         attr_accessor :bucket
       
+        # Optional. User-provided format string specifying how to represent datetimes in
+        # Cloud Storage filenames. See the [datetime format guidance](https://cloud.
+        # google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+        # Corresponds to the JSON property `filenameDatetimeFormat`
+        # @return [String]
+        attr_accessor :filename_datetime_format
+      
         # Optional. User-provided prefix for Cloud Storage filename. See the [object
         # naming requirements](https://cloud.google.com/storage/docs/objects#naming).
         # Corresponds to the JSON property `filenamePrefix`
@@ -369,6 +376,7 @@ module Google
         def update!(**args)
           @avro_config = args[:avro_config] if args.key?(:avro_config)
           @bucket = args[:bucket] if args.key?(:bucket)
+          @filename_datetime_format = args[:filename_datetime_format] if args.key?(:filename_datetime_format)
           @filename_prefix = args[:filename_prefix] if args.key?(:filename_prefix)
           @filename_suffix = args[:filename_suffix] if args.key?(:filename_suffix)
           @max_bytes = args[:max_bytes] if args.key?(:max_bytes)
