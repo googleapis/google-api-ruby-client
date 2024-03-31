@@ -60,7 +60,7 @@ module Google
         # web-ui) and [Data Transfer Service](https://cloud.google.com/bigquery/docs/
         # working-with-transfers).
         # @param [String] name
-        #   The name of the project resource in the form: `projects/`project_id``
+        #   Required. The name of the project resource in the form: `projects/`project_id``
         # @param [Google::Apis::BigquerydatatransferV1::EnrollDataSourcesRequest] enroll_data_sources_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -208,7 +208,7 @@ module Google
         # web-ui) and [Data Transfer Service](https://cloud.google.com/bigquery/docs/
         # working-with-transfers).
         # @param [String] name
-        #   The name of the project resource in the form: `projects/`project_id``
+        #   Required. The name of the project resource in the form: `projects/`project_id``
         # @param [Google::Apis::BigquerydatatransferV1::EnrollDataSourcesRequest] enroll_data_sources_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -318,7 +318,7 @@ module Google
         # /console.cloud.google.com/bigquery). Data transfers configurations of
         # unenrolled data sources will not be scheduled.
         # @param [String] name
-        #   The name of the project resource in the form: `projects/`project_id``
+        #   Required. The name of the project resource in the form: `projects/`project_id``
         # @param [Google::Apis::BigquerydatatransferV1::UnenrollDataSourcesRequest] unenroll_data_sources_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -639,11 +639,11 @@ module Google
         # Updates a data transfer configuration. All fields must be set, even if they
         # are not updated.
         # @param [String] name
-        #   The resource name of the transfer config. Transfer config names have the form
-        #   either `projects/`project_id`/locations/`region`/transferConfigs/`config_id``
-        #   or `projects/`project_id`/transferConfigs/`config_id``, where `config_id` is
-        #   usually a UUID, even though it is not guaranteed or required. The name is
-        #   ignored when creating a transfer config.
+        #   Identifier. The resource name of the transfer config. Transfer config names
+        #   have the form either `projects/`project_id`/locations/`region`/transferConfigs/
+        #   `config_id`` or `projects/`project_id`/transferConfigs/`config_id``, where `
+        #   config_id` is usually a UUID, even though it is not guaranteed or required.
+        #   The name is ignored when creating a transfer config.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.
@@ -752,7 +752,7 @@ module Google
         # run_time is between start_time (inclusive) and end_time (exclusive), or for a
         # specific run_time.
         # @param [String] parent
-        #   Transfer configuration name in the form: `projects/`project_id`/
+        #   Required. Transfer configuration name in the form: `projects/`project_id`/
         #   transferConfigs/`config_id`` or `projects/`project_id`/locations/`location_id`/
         #   transferConfigs/`config_id``.
         # @param [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest] start_manual_transfer_runs_request_object
@@ -1123,11 +1123,11 @@ module Google
         # Updates a data transfer configuration. All fields must be set, even if they
         # are not updated.
         # @param [String] name
-        #   The resource name of the transfer config. Transfer config names have the form
-        #   either `projects/`project_id`/locations/`region`/transferConfigs/`config_id``
-        #   or `projects/`project_id`/transferConfigs/`config_id``, where `config_id` is
-        #   usually a UUID, even though it is not guaranteed or required. The name is
-        #   ignored when creating a transfer config.
+        #   Identifier. The resource name of the transfer config. Transfer config names
+        #   have the form either `projects/`project_id`/locations/`region`/transferConfigs/
+        #   `config_id`` or `projects/`project_id`/transferConfigs/`config_id``, where `
+        #   config_id` is usually a UUID, even though it is not guaranteed or required.
+        #   The name is ignored when creating a transfer config.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.
@@ -1236,7 +1236,7 @@ module Google
         # run_time is between start_time (inclusive) and end_time (exclusive), or for a
         # specific run_time.
         # @param [String] parent
-        #   Transfer configuration name in the form: `projects/`project_id`/
+        #   Required. Transfer configuration name in the form: `projects/`project_id`/
         #   transferConfigs/`config_id`` or `projects/`project_id`/locations/`location_id`/
         #   transferConfigs/`config_id``.
         # @param [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest] start_manual_transfer_runs_request_object
