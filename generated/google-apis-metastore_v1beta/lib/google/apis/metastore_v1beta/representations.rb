@@ -76,7 +76,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelMigrationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CdcConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudSqlConnectionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudSqlMigrationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompleteMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompleteMigrationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMigrationExecutionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +293,12 @@ module Google
       end
       
       class MetadataManagementActivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MigrationExecution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -358,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -464,9 +524,72 @@ module Google
         end
       end
       
+      class CancelMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CancelMigrationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :migration_execution, as: 'migrationExecution'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CdcConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :password, as: 'password'
+          property :reverse_proxy_subnet, as: 'reverseProxySubnet'
+          property :root_path, as: 'rootPath'
+          property :subnet_ip_range, as: 'subnetIpRange'
+          property :username, as: 'username'
+          property :vpc_network, as: 'vpcNetwork'
+        end
+      end
+      
+      class CloudSqlConnectionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hive_database_name, as: 'hiveDatabaseName'
+          property :instance_connection_name, as: 'instanceConnectionName'
+          property :ip_address, as: 'ipAddress'
+          property :nat_subnet, as: 'natSubnet'
+          property :password, as: 'password'
+          property :port, as: 'port'
+          property :proxy_subnet, as: 'proxySubnet'
+          property :username, as: 'username'
+        end
+      end
+      
+      class CloudSqlMigrationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cdc_config, as: 'cdcConfig', class: Google::Apis::MetastoreV1beta::CdcConfig, decorator: Google::Apis::MetastoreV1beta::CdcConfig::Representation
+      
+          property :cloud_sql_connection_config, as: 'cloudSqlConnectionConfig', class: Google::Apis::MetastoreV1beta::CloudSqlConnectionConfig, decorator: Google::Apis::MetastoreV1beta::CloudSqlConnectionConfig::Representation
+      
+        end
+      end
+      
+      class CompleteMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CompleteMigrationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :migration_execution, as: 'migrationExecution'
         end
       end
       
@@ -647,6 +770,16 @@ module Google
         end
       end
       
+      class ListMigrationExecutionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :migration_executions, as: 'migrationExecutions', class: Google::Apis::MetastoreV1beta::MigrationExecution, decorator: Google::Apis::MetastoreV1beta::MigrationExecution::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -737,6 +870,20 @@ module Google
       
           collection :restores, as: 'restores', class: Google::Apis::MetastoreV1beta::Restore, decorator: Google::Apis::MetastoreV1beta::Restore::Representation
       
+        end
+      end
+      
+      class MigrationExecution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_sql_migration_config, as: 'cloudSqlMigrationConfig', class: Google::Apis::MetastoreV1beta::CloudSqlMigrationConfig, decorator: Google::Apis::MetastoreV1beta::CloudSqlMigrationConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :phase, as: 'phase'
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
         end
       end
       
@@ -931,6 +1078,15 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::MetastoreV1beta::Policy, decorator: Google::Apis::MetastoreV1beta::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class StartMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :migration_execution, as: 'migrationExecution', class: Google::Apis::MetastoreV1beta::MigrationExecution, decorator: Google::Apis::MetastoreV1beta::MigrationExecution::Representation
+      
+          property :request_id, as: 'requestId'
         end
       end
       
