@@ -721,12 +721,19 @@ module Google
       class ReportResponse
         include Google::Apis::Core::Hashable
       
+        # The extension field to store serialized OTel responses. e.g.
+        # ExportLogsServiceResponse, ExportMetricsServiceResponse.
+        # Corresponds to the JSON property `extensions`
+        # @return [Hash<String,Object>]
+        attr_accessor :extensions
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @extensions = args[:extensions] if args.key?(:extensions)
         end
       end
       
