@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPolicyIssuesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSavedReportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,18 @@ module Google
       end
       
       class Payment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyTopic
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -427,6 +445,15 @@ module Google
         end
       end
       
+      class ListPolicyIssuesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :policy_issues, as: 'policyIssues', class: Google::Apis::AdsenseV2::PolicyIssue, decorator: Google::Apis::AdsenseV2::PolicyIssue::Representation
+      
+        end
+      end
+      
       class ListSavedReportsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -461,6 +488,36 @@ module Google
           property :date, as: 'date', class: Google::Apis::AdsenseV2::Date, decorator: Google::Apis::AdsenseV2::Date::Representation
       
           property :name, as: 'name'
+        end
+      end
+      
+      class PolicyIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          collection :ad_clients, as: 'adClients'
+          property :ad_request_count, :numeric_string => true, as: 'adRequestCount'
+          property :entity_type, as: 'entityType'
+          property :first_detected_date, as: 'firstDetectedDate', class: Google::Apis::AdsenseV2::Date, decorator: Google::Apis::AdsenseV2::Date::Representation
+      
+          property :last_detected_date, as: 'lastDetectedDate', class: Google::Apis::AdsenseV2::Date, decorator: Google::Apis::AdsenseV2::Date::Representation
+      
+          property :name, as: 'name'
+          collection :policy_topics, as: 'policyTopics', class: Google::Apis::AdsenseV2::PolicyTopic, decorator: Google::Apis::AdsenseV2::PolicyTopic::Representation
+      
+          property :site, as: 'site'
+          property :site_section, as: 'siteSection'
+          property :uri, as: 'uri'
+          property :warning_escalation_date, as: 'warningEscalationDate', class: Google::Apis::AdsenseV2::Date, decorator: Google::Apis::AdsenseV2::Date::Representation
+      
+        end
+      end
+      
+      class PolicyTopic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :must_fix, as: 'mustFix'
+          property :topic, as: 'topic'
         end
       end
       
