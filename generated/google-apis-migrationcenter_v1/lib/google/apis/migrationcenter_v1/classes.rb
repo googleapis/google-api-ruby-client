@@ -456,6 +456,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
+        # Optional. Frame collection type, if not specified the collection type will be
+        # based on the source type of the source the frame was reported on.
+        # Corresponds to the JSON property `collectionType`
+        # @return [String]
+        attr_accessor :collection_type
+      
         # Labels as key value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -490,6 +496,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @collection_type = args[:collection_type] if args.key?(:collection_type)
           @labels = args[:labels] if args.key?(:labels)
           @machine_details = args[:machine_details] if args.key?(:machine_details)
           @performance_samples = args[:performance_samples] if args.key?(:performance_samples)
@@ -1089,6 +1096,116 @@ module Google
           @day = args[:day] if args.key?(:day)
           @month = args[:month] if args.key?(:month)
           @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # Represents an installed Migration Center Discovery Client instance.
+      class DiscoveryClient
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the discovery client was first created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Free text description. Maximum length is 1000 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Free text display name. Maximum length is 63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Errors affecting client functionality.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::MigrationcenterV1::Status>]
+        attr_accessor :errors
+      
+        # Optional. Client expiration time in UTC. If specified, the backend will not
+        # accept new frames after this time.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. Last heartbeat time. Healthy clients are expected to send
+        # heartbeats regularly (normally every few minutes).
+        # Corresponds to the JSON property `heartbeatTime`
+        # @return [String]
+        attr_accessor :heartbeat_time
+      
+        # Optional. Labels as key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Identifier. Full name of this discovery client.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Service account used by the discovery client for various operation.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Output only. This field is intended for internal use.
+        # Corresponds to the JSON property `signalsEndpoint`
+        # @return [String]
+        attr_accessor :signals_endpoint
+      
+        # Required. Immutable. Full name of the source object associated with this
+        # discovery client.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. Current state of the discovery client.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. Input only. Client time-to-live. If specified, the backend will not
+        # accept new frames after this time. This field is input only. The derived
+        # expiration time is provided as output through the `expire_time` field.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        # Output only. Time when the discovery client was last updated. This value is
+        # not updated by heartbeats, to view the last heartbeat time please refer to the
+        # `heartbeat_time` field.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. Client version, as reported in recent heartbeat.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @errors = args[:errors] if args.key?(:errors)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @heartbeat_time = args[:heartbeat_time] if args.key?(:heartbeat_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @signals_endpoint = args[:signals_endpoint] if args.key?(:signals_endpoint)
+          @source = args[:source] if args.key?(:source)
+          @state = args[:state] if args.key?(:state)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -2147,6 +2264,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assets = args[:assets] if args.key?(:assets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for listing discovery clients.
+      class ListDiscoveryClientsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of discovery clients.
+        # Corresponds to the JSON property `discoveryClients`
+        # @return [Array<Google::Apis::MigrationcenterV1::DiscoveryClient>]
+        attr_accessor :discovery_clients
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovery_clients = args[:discovery_clients] if args.key?(:discovery_clients)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -4394,6 +4543,31 @@ module Google
         def update!(**args)
           @connections = args[:connections] if args.key?(:connections)
           @scan_time = args[:scan_time] if args.key?(:scan_time)
+        end
+      end
+      
+      # A request to send a discovery client heartbeat.
+      class SendDiscoveryClientHeartbeatRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Errors affecting client functionality.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::MigrationcenterV1::Status>]
+        attr_accessor :errors
+      
+        # Optional. Client application version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
