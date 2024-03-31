@@ -3971,7 +3971,7 @@ module Google
       end
       
       # Represents a persistent volume that will be mounted using NFS. This volume
-      # will be shared between all instances of the Service and data will not be
+      # will be shared between all instances of the resource and data will not be
       # deleted when the instance is shut down.
       class NfsVolumeSource
         include Google::Apis::Core::Hashable
@@ -5717,7 +5717,7 @@ module Google
         attr_accessor :name
       
         # Represents a persistent volume that will be mounted using NFS. This volume
-        # will be shared between all instances of the Service and data will not be
+        # will be shared between all instances of the resource and data will not be
         # deleted when the instance is shut down.
         # Corresponds to the JSON property `nfs`
         # @return [Google::Apis::RunV1::NfsVolumeSource]
