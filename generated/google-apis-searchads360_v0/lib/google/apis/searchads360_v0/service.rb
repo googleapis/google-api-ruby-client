@@ -209,9 +209,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all fields that match the search query. List of thrown errors: [
-        # AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]()
-        # [QueryError]() [QuotaError]() [RequestError]()
+        # Returns all fields that match the search [query](/search-ads/reporting/
+        # concepts/field-service#use_a_query_to_get_field_details). List of thrown
+        # errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [
+        # InternalError]() [QueryError]() [QuotaError]() [RequestError]()
         # @param [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchSearchAds360FieldsRequest] google_ads_searchads360_v0_services__search_search_ads360_fields_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

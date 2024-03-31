@@ -658,8 +658,8 @@ module Google
       class GoogleAdsSearchads360V0CommonMetrics
         include Google::Apis::Core::Hashable
       
-        # The percent of your ad impressions that are shown as the very first ad above
-        # the organic search results.
+        # Search absolute top impression share is the percentage of your Search ad
+        # impressions that are shown in the most prominent Search position.
         # Corresponds to the JSON property `absoluteTopImpressionPercentage`
         # @return [Float]
         attr_accessor :absolute_top_impression_percentage
@@ -1284,10 +1284,10 @@ module Google
         # @return [Float]
         attr_accessor :search_absolute_top_impression_share
       
-        # The number estimating how often your ad wasn't the very first ad above the
-        # organic search results due to a low budget. Note: Search budget lost absolute
-        # top impression share is reported in the range of 0 to 0.9. Any value above 0.9
-        # is reported as 0.9001.
+        # The number estimating how often your ad wasn't the very first ad among the top
+        # ads in the search results due to a low budget. Note: Search budget lost
+        # absolute top impression share is reported in the range of 0 to 0.9. Any value
+        # above 0.9 is reported as 0.9001.
         # Corresponds to the JSON property `searchBudgetLostAbsoluteTopImpressionShare`
         # @return [Float]
         attr_accessor :search_budget_lost_absolute_top_impression_share
@@ -1300,10 +1300,10 @@ module Google
         # @return [Float]
         attr_accessor :search_budget_lost_impression_share
       
-        # The number estimating how often your ad didn't show anywhere above the organic
-        # search results due to a low budget. Note: Search budget lost top impression
-        # share is reported in the range of 0 to 0.9. Any value above 0.9 is reported as
-        # 0.9001.
+        # The number estimating how often your ad didn't show adjacent to the top
+        # organic search results due to a low budget. Note: Search budget lost top
+        # impression share is reported in the range of 0 to 0.9. Any value above 0.9 is
+        # reported as 0.9001.
         # Corresponds to the JSON property `searchBudgetLostTopImpressionShare`
         # @return [Float]
         attr_accessor :search_budget_lost_top_impression_share
@@ -1334,8 +1334,8 @@ module Google
         # @return [Float]
         attr_accessor :search_impression_share
       
-        # The number estimating how often your ad wasn't the very first ad above the
-        # organic search results due to poor Ad Rank. Note: Search rank lost absolute
+        # The number estimating how often your ad wasn't the very first ad among the top
+        # ads in the search results due to poor Ad Rank. Note: Search rank lost absolute
         # top impression share is reported in the range of 0 to 0.9. Any value above 0.9
         # is reported as 0.9001.
         # Corresponds to the JSON property `searchRankLostAbsoluteTopImpressionShare`
@@ -1349,24 +1349,25 @@ module Google
         # @return [Float]
         attr_accessor :search_rank_lost_impression_share
       
-        # The number estimating how often your ad didn't show anywhere above the organic
-        # search results due to poor Ad Rank. Note: Search rank lost top impression
-        # share is reported in the range of 0 to 0.9. Any value above 0.9 is reported as
-        # 0.9001.
+        # The number estimating how often your ad didn't show adjacent to the top
+        # organic search results due to poor Ad Rank. Note: Search rank lost top
+        # impression share is reported in the range of 0 to 0.9. Any value above 0.9 is
+        # reported as 0.9001.
         # Corresponds to the JSON property `searchRankLostTopImpressionShare`
         # @return [Float]
         attr_accessor :search_rank_lost_top_impression_share
       
-        # The impressions you've received in the top location (anywhere above the
-        # organic search results) compared to the estimated number of impressions you
-        # were eligible to receive in the top location. Note: Search top impression
-        # share is reported in the range of 0.1 to 1. Any value below 0.1 is reported as
-        # 0.0999.
+        # The impressions you've received among the top ads compared to the estimated
+        # number of impressions you were eligible to receive among the top ads. Note:
+        # Search top impression share is reported in the range of 0.1 to 1. Any value
+        # below 0.1 is reported as 0.0999. Top ads are generally above the top organic
+        # results, although they may show below the top organic results on certain
+        # queries.
         # Corresponds to the JSON property `searchTopImpressionShare`
         # @return [Float]
         attr_accessor :search_top_impression_share
       
-        # The percent of your ad impressions that are shown anywhere above the organic
+        # The percent of your ad impressions that are shown adjacent to the top organic
         # search results.
         # Corresponds to the JSON property `topImpressionPercentage`
         # @return [Float]
@@ -4103,7 +4104,8 @@ module Google
         end
       end
       
-      # An ad group criterion.
+      # An ad group criterion. The ad_group_criterion report only returns criteria
+      # that were explicitly added to the ad group.
       class GoogleAdsSearchads360V0ResourcesAdGroupCriterion
         include Google::Apis::Core::Hashable
       
@@ -6628,7 +6630,9 @@ module Google
         end
       end
       
-      # A gender view.
+      # A gender view. The gender_view resource reflects the effective serving state,
+      # rather than what criteria were added. An ad group without gender criteria by
+      # default shows to all genders, so all genders appear in gender_view with stats.
       class GoogleAdsSearchads360V0ResourcesGenderView
         include Google::Apis::Core::Hashable
       
@@ -6907,7 +6911,8 @@ module Google
         end
       end
       
-      # A location view summarizes the performance of campaigns by Location criteria.
+      # A location view summarizes the performance of campaigns by a Location
+      # criterion.
       class GoogleAdsSearchads360V0ResourcesLocationView
         include Google::Apis::Core::Hashable
       
@@ -7538,7 +7543,8 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupBidModifier]
         attr_accessor :ad_group_bid_modifier
       
-        # An ad group criterion.
+        # An ad group criterion. The ad_group_criterion report only returns criteria
+        # that were explicitly added to the ad group.
         # Corresponds to the JSON property `adGroupCriterion`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterion]
         attr_accessor :ad_group_criterion
@@ -7720,7 +7726,9 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesDynamicSearchAdsSearchTermView]
         attr_accessor :dynamic_search_ads_search_term_view
       
-        # A gender view.
+        # A gender view. The gender_view resource reflects the effective serving state,
+        # rather than what criteria were added. An ad group without gender criteria by
+        # default shows to all genders, so all genders appear in gender_view with stats.
         # Corresponds to the JSON property `genderView`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesGenderView]
         attr_accessor :gender_view
@@ -7745,7 +7753,8 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLanguageConstant]
         attr_accessor :language_constant
       
-        # A location view summarizes the performance of campaigns by Location criteria.
+        # A location view summarizes the performance of campaigns by a Location
+        # criterion.
         # Corresponds to the JSON property `locationView`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLocationView]
         attr_accessor :location_view
