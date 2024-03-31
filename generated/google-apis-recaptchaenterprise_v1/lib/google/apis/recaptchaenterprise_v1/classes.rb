@@ -394,6 +394,11 @@ module Google
         attr_accessor :firewall_policy_evaluation
         alias_method :firewall_policy_evaluation?, :firewall_policy_evaluation
       
+        # Optional. The Fraud Prevention setting for this assessment.
+        # Corresponds to the JSON property `fraudPrevention`
+        # @return [String]
+        attr_accessor :fraud_prevention
+      
         # Optional. Deprecated: use `user_info.account_id` instead. Unique stable hashed
         # user identifier for the request. The identifier must be hashed using hmac-
         # sha256 with stable secret.
@@ -467,6 +472,7 @@ module Google
           @expected_action = args[:expected_action] if args.key?(:expected_action)
           @express = args[:express] if args.key?(:express)
           @firewall_policy_evaluation = args[:firewall_policy_evaluation] if args.key?(:firewall_policy_evaluation)
+          @fraud_prevention = args[:fraud_prevention] if args.key?(:fraud_prevention)
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @headers = args[:headers] if args.key?(:headers)
           @ja3 = args[:ja3] if args.key?(:ja3)
