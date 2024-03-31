@@ -481,6 +481,7 @@ module Google
           property :expected_action, as: 'expectedAction'
           property :express, as: 'express'
           property :firewall_policy_evaluation, as: 'firewallPolicyEvaluation'
+          property :fraud_prevention, as: 'fraudPrevention'
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           collection :headers, as: 'headers'
           property :ja3, as: 'ja3'
