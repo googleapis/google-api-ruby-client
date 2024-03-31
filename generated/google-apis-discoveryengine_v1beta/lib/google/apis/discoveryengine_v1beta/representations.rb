@@ -538,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaGroundingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaIdpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -545,6 +551,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -743,6 +761,36 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaBigQuerySource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBigtableOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBigtableSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaCloudSqlSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -994,7 +1042,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaFhirStoreSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaFirestoreSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaGroundingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1144,6 +1210,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaPauseEngineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1180,6 +1252,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaRankRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaRankResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaRankingRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaRecommendRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1211,6 +1301,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaReplyReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaResumeEngineRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1408,6 +1504,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1445,6 +1547,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaSiteVerificationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSpannerSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1505,6 +1613,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaTransactionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaTuneEngineMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaTuneEngineRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2353,6 +2473,13 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaGroundingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaIdpConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2366,6 +2493,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :workforce_pool_name, as: 'workforcePoolName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
+      
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
         end
       end
       
@@ -2594,6 +2739,7 @@ module Google
       
           collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
       
+          hash :metrics, as: 'metrics'
           property :model_status, as: 'modelStatus'
         end
       end
@@ -2665,6 +2811,59 @@ module Google
           property :gcs_staging_dir, as: 'gcsStagingDir'
           property :partition_date, as: 'partitionDate', class: Google::Apis::DiscoveryengineV1beta::GoogleTypeDate, decorator: Google::Apis::DiscoveryengineV1beta::GoogleTypeDate::Representation
       
+          property :project_id, as: 'projectId'
+          property :table_id, as: 'tableId'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBigtableOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :families, as: 'families', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily::Representation
+      
+          property :key_field_name, as: 'keyFieldName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding'
+          property :field_name, as: 'fieldName'
+          property :qualifier, :base64 => true, as: 'qualifier'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn::Representation
+      
+          property :encoding, as: 'encoding'
+          property :field_name, as: 'fieldName'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBigtableSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigtable_options, as: 'bigtableOptions', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigtableOptions, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigtableOptions::Representation
+      
+          property :instance_id, as: 'instanceId'
+          property :project_id, as: 'projectId'
+          property :table_id, as: 'tableId'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaCloudSqlSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
+          property :gcs_staging_dir, as: 'gcsStagingDir'
+          property :instance_id, as: 'instanceId'
+          property :offload, as: 'offload'
           property :project_id, as: 'projectId'
           property :table_id, as: 'tableId'
         end
@@ -3053,11 +3252,36 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaFhirStoreSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fhir_store, as: 'fhirStore'
+          property :gcs_staging_dir, as: 'gcsStagingDir'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaFirestoreSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection_id, as: 'collectionId'
+          property :database_id, as: 'databaseId'
+          property :gcs_staging_dir, as: 'gcsStagingDir'
+          property :project_id, as: 'projectId'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaGcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_schema, as: 'dataSchema'
           collection :input_uris, as: 'inputUris'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaGroundingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -3077,7 +3301,15 @@ module Google
           property :auto_generate_ids, as: 'autoGenerateIds'
           property :bigquery_source, as: 'bigquerySource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigQuerySource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigQuerySource::Representation
       
+          property :bigtable_source, as: 'bigtableSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigtableSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigtableSource::Representation
+      
+          property :cloud_sql_source, as: 'cloudSqlSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCloudSqlSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCloudSqlSource::Representation
+      
           property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportErrorConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportErrorConfig::Representation
+      
+          property :fhir_store_source, as: 'fhirStoreSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFhirStoreSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFhirStoreSource::Representation
+      
+          property :firestore_source, as: 'firestoreSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFirestoreSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFirestoreSource::Representation
       
           property :gcs_source, as: 'gcsSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource::Representation
       
@@ -3085,6 +3317,8 @@ module Google
           property :inline_source, as: 'inlineSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportDocumentsRequestInlineSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportDocumentsRequestInlineSource::Representation
       
           property :reconciliation_mode, as: 'reconciliationMode'
+          property :spanner_source, as: 'spannerSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSpannerSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSpannerSource::Representation
+      
         end
       end
       
@@ -3295,6 +3529,12 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaPauseEngineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3342,6 +3582,36 @@ module Google
           collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
       
           property :purge_count, :numeric_string => true, as: 'purgeCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaRankRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ignore_record_details_in_response, as: 'ignoreRecordDetailsInResponse'
+          property :model, as: 'model'
+          property :query, as: 'query'
+          collection :records, as: 'records', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankingRecord, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankingRecord::Representation
+      
+          property :top_n, as: 'topN'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaRankResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :records, as: 'records', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankingRecord, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankingRecord::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaRankingRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :id, as: 'id'
+          property :score, as: 'score'
+          property :title, as: 'title'
         end
       end
       
@@ -3404,6 +3674,12 @@ module Google
           property :end, as: 'end'
           property :start, as: 'start'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaResumeEngineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -3738,9 +4014,19 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :chunk_contents, as: 'chunkContents', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent::Representation
+      
           property :document, as: 'document'
           property :title, as: 'title'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :page_identifier, as: 'pageIdentifier'
         end
       end
       
@@ -3821,6 +4107,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :site_verification_state, as: 'siteVerificationState'
           property :verify_time, as: 'verifyTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSpannerSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
+          property :enable_data_boost, as: 'enableDataBoost'
+          property :instance_id, as: 'instanceId'
+          property :project_id, as: 'projectId'
+          property :table_id, as: 'tableId'
         end
       end
       
@@ -3909,6 +4206,7 @@ module Google
       
           collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
       
+          hash :metrics, as: 'metrics'
           property :model_status, as: 'modelStatus'
         end
       end
@@ -3922,6 +4220,19 @@ module Google
           property :tax, as: 'tax'
           property :transaction_id, as: 'transactionId'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaTuneEngineMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :engine, as: 'engine'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaTuneEngineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
