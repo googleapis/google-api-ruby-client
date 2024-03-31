@@ -922,6 +922,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceMeshCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceMeshControlPlaneManagement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2533,6 +2539,16 @@ module Google
         end
       end
       
+      class ServiceMeshCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :details, as: 'details'
+          property :documentation_link, as: 'documentationLink'
+          property :severity, as: 'severity'
+        end
+      end
+      
       class ServiceMeshControlPlaneManagement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2562,6 +2578,8 @@ module Google
       class ServiceMeshMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::GkehubV1beta::ServiceMeshCondition, decorator: Google::Apis::GkehubV1beta::ServiceMeshCondition::Representation
+      
           property :control_plane_management, as: 'controlPlaneManagement', class: Google::Apis::GkehubV1beta::ServiceMeshControlPlaneManagement, decorator: Google::Apis::GkehubV1beta::ServiceMeshControlPlaneManagement::Representation
       
           property :data_plane_management, as: 'dataPlaneManagement', class: Google::Apis::GkehubV1beta::ServiceMeshDataPlaneManagement, decorator: Google::Apis::GkehubV1beta::ServiceMeshDataPlaneManagement::Representation
