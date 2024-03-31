@@ -986,8 +986,8 @@ module Google
         #   use `*` to update all field paths. Currently supported field paths: - `text` -
         #   `attachment` - `cards` (Requires [app authentication](/chat/api/guides/auth/
         #   service-accounts).) - `cards_v2` (Requires [app authentication](/chat/api/
-        #   guides/auth/service-accounts).) - Developer Preview: `accessory_widgets` (
-        #   Requires [app authentication](/chat/api/guides/auth/service-accounts).)
+        #   guides/auth/service-accounts).) - `accessory_widgets` (Requires [app
+        #   authentication](/chat/api/guides/auth/service-accounts).)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1050,8 +1050,8 @@ module Google
         #   use `*` to update all field paths. Currently supported field paths: - `text` -
         #   `attachment` - `cards` (Requires [app authentication](/chat/api/guides/auth/
         #   service-accounts).) - `cards_v2` (Requires [app authentication](/chat/api/
-        #   guides/auth/service-accounts).) - Developer Preview: `accessory_widgets` (
-        #   Requires [app authentication](/chat/api/guides/auth/service-accounts).)
+        #   guides/auth/service-accounts).) - `accessory_widgets` (Requires [app
+        #   authentication](/chat/api/guides/auth/service-accounts).)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1246,6 +1246,111 @@ module Google
           command = make_simple_command(:get, 'v1/{+parent}/reactions', options)
           command.response_representation = Google::Apis::ChatV1::ListReactionsResponse::Representation
           command.response_class = Google::Apis::ChatV1::ListReactionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a SpaceEvent. You can request events from up to 28 days before the
+        # time of the request. The server will return the most recent version of the
+        # resource. For example, if a `google.workspace.chat.message.v1.created` event
+        # is requested and the message has since been deleted, the returned event will
+        # contain the deleted message resource in the payload. Requires [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users).
+        # @param [String] name
+        #   Required. The resource name of the event. Format: `spaces/`space`/spaceEvents/`
+        #   spaceEvent``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::SpaceEvent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::SpaceEvent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_space_space_event(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChatV1::SpaceEvent::Representation
+          command.response_class = Google::Apis::ChatV1::SpaceEvent
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists SpaceEvents in a space that the caller is a member of. You can request
+        # events from up to 28 days before the time of the request. The server will
+        # return the most recent version of the resources. For example, if a `google.
+        # workspace.chat.message.v1.created` event is requested and the message has
+        # since been deleted, the returned event will contain the deleted message
+        # resource in the payload. Requires [user authentication](https://developers.
+        # google.com/chat/api/guides/auth/users).
+        # @param [String] parent
+        #   Required. The resource name of the space from which to list events. Format: `
+        #   spaces/`space``.
+        # @param [String] filter
+        #   Required. A query filter. This method supports filtering by: `event_types`, `
+        #   start_time`, and `end_time`. `event_types`: You must specify at least one
+        #   event type in your query. `event_types` supports the has `:` operator. To
+        #   filter by multiple event types, use the `OR` operator. To see the list of
+        #   currently supported event types, see google.chat.v1.SpaceEvent.event_type `
+        #   start_time`: Exclusive timestamp from which to start listing space events. You
+        #   can list events that occurred up to 28 days ago. If unspecified, lists space
+        #   events from the 28 days ago up to end time. `end_time`: Inclusive timestamp up
+        #   to which space events are listed. Default value is the present. `start_time`
+        #   and `end_time` accept a timestamp in [RFC-3339](https://www.rfc-editor.org/rfc/
+        #   rfc3339) format and support the equals `=` comparison operator. To filter by
+        #   both `start_time` and `end_time`, use the `AND` operator. For example, the
+        #   following queries are valid: ``` start_time="2023-08-23T19:20:33+00:00" AND
+        #   end_time="2023-08-23T19:21:54+00:00" ``` ``` start_time="2023-08-23T19:20:33+
+        #   00:00" AND (event_types:"google.workspace.chat.space.v1.updated" OR
+        #   event_types:"google.workspace.chat.message.v1.created") ``` The following
+        #   queries are invalid: ``` start_time="2023-08-23T19:20:33+00:00" OR end_time="
+        #   2023-08-23T19:21:54+00:00" ``` ``` event_types:"google.workspace.chat.space.v1.
+        #   updated" AND event_types:"google.workspace.chat.message.v1.created" ```
+        #   Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of space events returned. The service may return
+        #   fewer than this value. Negative values return an `INVALID_ARGUMENT` error.
+        # @param [String] page_token
+        #   A page token, received from a previous list space events call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to list space events must match the call that provided the page token. Passing
+        #   different values to the other parameters might lead to unexpected results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::ListSpaceEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::ListSpaceEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_space_space_events(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/spaceEvents', options)
+          command.response_representation = Google::Apis::ChatV1::ListSpaceEventsResponse::Representation
+          command.response_class = Google::Apis::ChatV1::ListSpaceEventsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
