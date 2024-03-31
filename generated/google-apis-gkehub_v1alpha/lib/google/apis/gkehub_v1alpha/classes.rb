@@ -5898,6 +5898,44 @@ module Google
         end
       end
       
+      # Condition being reported.
+      class ServiceMeshCondition
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier of the condition which describes the condition recognizable
+        # to the user.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A short summary about the issue.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Links contains actionable information.
+        # Corresponds to the JSON property `documentationLink`
+        # @return [String]
+        attr_accessor :documentation_link
+      
+        # Severity level of the condition.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # Status of control plane management.
       class ServiceMeshControlPlaneManagement
         include Google::Apis::Core::Hashable
@@ -5906,6 +5944,11 @@ module Google
         # Corresponds to the JSON property `details`
         # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshStatusDetails>]
         attr_accessor :details
+      
+        # Output only. Implementation of managed control plane.
+        # Corresponds to the JSON property `implementation`
+        # @return [String]
+        attr_accessor :implementation
       
         # LifecycleState of control plane management.
         # Corresponds to the JSON property `state`
@@ -5919,6 +5962,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
+          @implementation = args[:implementation] if args.key?(:implementation)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -6011,6 +6055,11 @@ module Google
         # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage>]
         attr_accessor :analysis_messages
       
+        # Output only. List of condition reporting membership statues
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshCondition>]
+        attr_accessor :conditions
+      
         # The API version (i.e. Istio CRD version) for configuring service mesh in this
         # cluster. This version is influenced by the `default_channel` field.
         # Corresponds to the JSON property `configApiVersion`
@@ -6034,6 +6083,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analysis_messages = args[:analysis_messages] if args.key?(:analysis_messages)
+          @conditions = args[:conditions] if args.key?(:conditions)
           @config_api_version = args[:config_api_version] if args.key?(:config_api_version)
           @control_plane_management = args[:control_plane_management] if args.key?(:control_plane_management)
           @data_plane_management = args[:data_plane_management] if args.key?(:data_plane_management)

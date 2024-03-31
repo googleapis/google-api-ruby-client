@@ -994,6 +994,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceMeshCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceMeshControlPlaneManagement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2757,11 +2763,22 @@ module Google
         end
       end
       
+      class ServiceMeshCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :details, as: 'details'
+          property :documentation_link, as: 'documentationLink'
+          property :severity, as: 'severity'
+        end
+      end
+      
       class ServiceMeshControlPlaneManagement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :details, as: 'details', class: Google::Apis::GkehubV1alpha::ServiceMeshStatusDetails, decorator: Google::Apis::GkehubV1alpha::ServiceMeshStatusDetails::Representation
       
+          property :implementation, as: 'implementation'
           property :state, as: 'state'
         end
       end
@@ -2796,6 +2813,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :analysis_messages, as: 'analysisMessages', class: Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage, decorator: Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage::Representation
+      
+          collection :conditions, as: 'conditions', class: Google::Apis::GkehubV1alpha::ServiceMeshCondition, decorator: Google::Apis::GkehubV1alpha::ServiceMeshCondition::Representation
       
           property :config_api_version, as: 'configApiVersion'
           property :control_plane_management, as: 'controlPlaneManagement', class: Google::Apis::GkehubV1alpha::ServiceMeshControlPlaneManagement, decorator: Google::Apis::GkehubV1alpha::ServiceMeshControlPlaneManagement::Representation
