@@ -2280,6 +2280,16 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSetExpectation]
         attr_accessor :set_expectation
       
+        # Queries for rows returned by the provided SQL statement. If any rows are are
+        # returned, this rule fails.The SQL statement needs to use BigQuery standard SQL
+        # syntax, and must not contain any semicolons.$`data()` can be used to reference
+        # the rows being evaluated, i.e. the table after all additional filters (row
+        # filters, incremental data filters, sampling) are applied.Example: SELECT *
+        # FROM $`data()` WHERE price < 0
+        # Corresponds to the JSON property `sqlAssertion`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSqlAssertion]
+        attr_accessor :sql_assertion
+      
         # Evaluates whether the column aggregate statistic lies between a specified
         # range.
         # Corresponds to the JSON property `statisticRangeExpectation`
@@ -2321,6 +2331,7 @@ module Google
           @regex_expectation = args[:regex_expectation] if args.key?(:regex_expectation)
           @row_condition_expectation = args[:row_condition_expectation] if args.key?(:row_condition_expectation)
           @set_expectation = args[:set_expectation] if args.key?(:set_expectation)
+          @sql_assertion = args[:sql_assertion] if args.key?(:sql_assertion)
           @statistic_range_expectation = args[:statistic_range_expectation] if args.key?(:statistic_range_expectation)
           @table_condition_expectation = args[:table_condition_expectation] if args.key?(:table_condition_expectation)
           @threshold = args[:threshold] if args.key?(:threshold)
@@ -2409,6 +2420,12 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleResult
         include Google::Apis::Core::Hashable
       
+        # Output only. The number of rows returned by the sql statement in the
+        # SqlAssertion rule.This field is only valid for SqlAssertion rules.
+        # Corresponds to the JSON property `assertionRowCount`
+        # @return [Fixnum]
+        attr_accessor :assertion_row_count
+      
         # The number of rows a rule was evaluated against.This field is only valid for
         # row-level type rules.Evaluated count can be configured to either include all
         # rows (default) - with null rows automatically failing rule evaluation, or
@@ -2457,6 +2474,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assertion_row_count = args[:assertion_row_count] if args.key?(:assertion_row_count)
           @evaluated_count = args[:evaluated_count] if args.key?(:evaluated_count)
           @failing_rows_query = args[:failing_rows_query] if args.key?(:failing_rows_query)
           @null_count = args[:null_count] if args.key?(:null_count)
@@ -2504,6 +2522,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Queries for rows returned by the provided SQL statement. If any rows are are
+      # returned, this rule fails.The SQL statement needs to use BigQuery standard SQL
+      # syntax, and must not contain any semicolons.$`data()` can be used to reference
+      # the rows being evaluated, i.e. the table after all additional filters (row
+      # filters, incremental data filters, sampling) are applied.Example: SELECT *
+      # FROM $`data()` WHERE price < 0
+      class GoogleCloudDataplexV1DataQualityRuleSqlAssertion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The SQL statement.
+        # Corresponds to the JSON property `sqlStatement`
+        # @return [String]
+        attr_accessor :sql_statement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sql_statement = args[:sql_statement] if args.key?(:sql_statement)
         end
       end
       
