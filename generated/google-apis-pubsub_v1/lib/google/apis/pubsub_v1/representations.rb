@@ -406,6 +406,7 @@ module Google
           property :avro_config, as: 'avroConfig', class: Google::Apis::PubsubV1::AvroConfig, decorator: Google::Apis::PubsubV1::AvroConfig::Representation
       
           property :bucket, as: 'bucket'
+          property :filename_datetime_format, as: 'filenameDatetimeFormat'
           property :filename_prefix, as: 'filenamePrefix'
           property :filename_suffix, as: 'filenameSuffix'
           property :max_bytes, :numeric_string => true, as: 'maxBytes'
