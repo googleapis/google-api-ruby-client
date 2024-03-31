@@ -437,8 +437,10 @@ module Google
           collection :discovery_endpoints, as: 'discoveryEndpoints', class: Google::Apis::RedisV1::DiscoveryEndpoint, decorator: Google::Apis::RedisV1::DiscoveryEndpoint::Representation
       
           property :name, as: 'name'
+          property :node_type, as: 'nodeType'
           property :persistence_config, as: 'persistenceConfig', class: Google::Apis::RedisV1::ClusterPersistenceConfig, decorator: Google::Apis::RedisV1::ClusterPersistenceConfig::Representation
       
+          property :precise_size_gb, as: 'preciseSizeGb'
           collection :psc_configs, as: 'pscConfigs', class: Google::Apis::RedisV1::PscConfig, decorator: Google::Apis::RedisV1::PscConfig::Representation
       
           collection :psc_connections, as: 'pscConnections', class: Google::Apis::RedisV1::PscConnection, decorator: Google::Apis::RedisV1::PscConnection::Representation
