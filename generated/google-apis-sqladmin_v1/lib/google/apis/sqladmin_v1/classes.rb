@@ -1890,6 +1890,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Optional. Options for importing data from SQL statements.
+        # Corresponds to the JSON property `sqlImportOptions`
+        # @return [Google::Apis::SqladminV1::ImportContext::SqlImportOptions]
+        attr_accessor :sql_import_options
+      
         # Path to the import file in Cloud Storage, in the form `gs://bucketName/
         # fileName`. Compressed gzip files (.gz) are supported when `fileType` is `SQL`.
         # The instance must have write permissions to the bucket and read access to the
@@ -1910,6 +1915,7 @@ module Google
           @file_type = args[:file_type] if args.key?(:file_type)
           @import_user = args[:import_user] if args.key?(:import_user)
           @kind = args[:kind] if args.key?(:kind)
+          @sql_import_options = args[:sql_import_options] if args.key?(:sql_import_options)
           @uri = args[:uri] if args.key?(:uri)
         end
         
@@ -2066,6 +2072,32 @@ module Google
             @lines_terminated_by = args[:lines_terminated_by] if args.key?(:lines_terminated_by)
             @quote_character = args[:quote_character] if args.key?(:quote_character)
             @table = args[:table] if args.key?(:table)
+          end
+        end
+        
+        # Optional. Options for importing data from SQL statements.
+        class SqlImportOptions
+          include Google::Apis::Core::Hashable
+        
+          # Optional. Whether or not the import should be parallel.
+          # Corresponds to the JSON property `parallel`
+          # @return [Boolean]
+          attr_accessor :parallel
+          alias_method :parallel?, :parallel
+        
+          # Optional. The number of threads to use for parallel import.
+          # Corresponds to the JSON property `threads`
+          # @return [Fixnum]
+          attr_accessor :threads
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @parallel = args[:parallel] if args.key?(:parallel)
+            @threads = args[:threads] if args.key?(:threads)
           end
         end
       end
@@ -2481,31 +2513,31 @@ module Google
         # @return [Google::Apis::SqladminV1::PscConfig]
         attr_accessor :psc_config
       
-        # Use `ssl_mode` instead for MySQL and PostgreSQL. SQL Server uses this flag.
-        # Whether SSL/TLS connections over IP are enforced. If set to false, then allow
-        # both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the
-        # client certificate won't be verified. If set to true, then only allow
-        # connections encrypted with SSL/TLS and with valid client certificates. If you
-        # want to enforce SSL/TLS without enforcing the requirement for valid client
-        # certificates, then use the `ssl_mode` flag instead of the `require_ssl` flag.
+        # Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If
+        # set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/
+        # TLS connections, the client certificate won't be verified. If set to true,
+        # then only allow connections encrypted with SSL/TLS and with valid client
+        # certificates. If you want to enforce SSL/TLS without enforcing the requirement
+        # for valid client certificates, then use the `ssl_mode` flag instead of the `
+        # require_ssl` flag.
         # Corresponds to the JSON property `requireSsl`
         # @return [Boolean]
         attr_accessor :require_ssl
         alias_method :require_ssl?, :require_ssl
       
-        # Specify how SSL/TLS is enforced in database connections. MySQL and PostgreSQL
-        # use the `ssl_mode` flag. If you must use the `require_ssl` flag for backward
-        # compatibility, then only the following value pairs are valid: * `ssl_mode=
+        # Specify how SSL/TLS is enforced in database connections. If you must use the `
+        # require_ssl` flag for backward compatibility, then only the following value
+        # pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=
         # ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=
         # ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=
-        # TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` The value of `
-        # ssl_mode` gets priority over the value of `require_ssl`. For example, for the
-        # pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=
-        # ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=
-        # false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL
-        # databases respect `ssl_mode` in this case and accept only SSL connections. SQL
-        # Server uses the `require_ssl` flag. You can set the value for this flag to `
-        # true` or `false`.
+        # TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `
+        # ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=
+        # ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority
+        # over the value of `require_ssl`. For example, for the pair `ssl_mode=
+        # ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means
+        # only accept SSL connections, while the `require_ssl=false` means accept both
+        # non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode`
+        # in this case and accept only SSL connections.
         # Corresponds to the JSON property `sslMode`
         # @return [String]
         attr_accessor :ssl_mode

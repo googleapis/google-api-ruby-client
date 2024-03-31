@@ -270,6 +270,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+        
+        class SqlImportOptions
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1136,6 +1142,8 @@ module Google
           property :file_type, as: 'fileType'
           property :import_user, as: 'importUser'
           property :kind, as: 'kind'
+          property :sql_import_options, as: 'sqlImportOptions', class: Google::Apis::SqladminV1::ImportContext::SqlImportOptions, decorator: Google::Apis::SqladminV1::ImportContext::SqlImportOptions::Representation
+      
           property :uri, as: 'uri'
         end
         
@@ -1171,6 +1179,14 @@ module Google
             property :lines_terminated_by, as: 'linesTerminatedBy'
             property :quote_character, as: 'quoteCharacter'
             property :table, as: 'table'
+          end
+        end
+        
+        class SqlImportOptions
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :parallel, as: 'parallel'
+            property :threads, as: 'threads'
           end
         end
       end
