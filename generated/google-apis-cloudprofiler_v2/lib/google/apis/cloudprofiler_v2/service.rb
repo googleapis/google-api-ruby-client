@@ -138,12 +138,12 @@ module Google
         #   Required. The parent, which owns this collection of profiles. Format: projects/
         #   `user_project_id`
         # @param [Fixnum] page_size
-        #   The maximum number of items to return. Default page_size is 1000. Max limit is
-        #   1000.
+        #   Optional. The maximum number of items to return. Default page_size is 1000.
+        #   Max limit is 1000.
         # @param [String] page_token
-        #   The token to continue pagination and get profiles from a particular page. When
-        #   paginating, all other parameters provided to `ListProfiles` must match the
-        #   call that provided the page token.
+        #   Optional. The token to continue pagination and get profiles from a particular
+        #   page. When paginating, all other parameters provided to `ListProfiles` must
+        #   match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
