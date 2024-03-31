@@ -1020,10 +1020,20 @@ module Google
         # @return [String]
         attr_accessor :ios_vendor_id
       
+        # Obfuscated ID of the owner of the device
+        # Corresponds to the JSON property `ownerId`
+        # @return [String]
+        attr_accessor :owner_id
+      
         # The device resource ID.
         # Corresponds to the JSON property `resourceId`
         # @return [String]
         attr_accessor :resource_id
+      
+        # Action taken as result of the rule
+        # Corresponds to the JSON property `ruleAction`
+        # @return [String]
+        attr_accessor :rule_action
       
         # The serial number of the device.
         # Corresponds to the JSON property `serialNumber`
@@ -1041,7 +1051,9 @@ module Google
           @device_type = args[:device_type] if args.key?(:device_type)
           @email = args[:email] if args.key?(:email)
           @ios_vendor_id = args[:ios_vendor_id] if args.key?(:ios_vendor_id)
+          @owner_id = args[:owner_id] if args.key?(:owner_id)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @rule_action = args[:rule_action] if args.key?(:rule_action)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
         end
       end
