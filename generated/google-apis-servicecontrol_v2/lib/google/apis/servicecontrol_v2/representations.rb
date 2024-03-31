@@ -374,6 +374,7 @@ module Google
       class ReportResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :extensions, as: 'extensions'
         end
       end
       
