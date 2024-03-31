@@ -34,6 +34,12 @@ module Google
         # @return [String]
         attr_accessor :breakglass_justification
       
+        # The path to a binary authorization policy. Format: projects/`project`/
+        # platforms/cloudRun/`policy-name`
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
         # If True, indicates to use the default project's binary authorization policy.
         # If False, binary authorization will be disabled.
         # Corresponds to the JSON property `useDefault`
@@ -48,6 +54,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @breakglass_justification = args[:breakglass_justification] if args.key?(:breakglass_justification)
+          @policy = args[:policy] if args.key?(:policy)
           @use_default = args[:use_default] if args.key?(:use_default)
         end
       end
@@ -733,16 +740,88 @@ module Google
         end
       end
       
-      # Represents a GCS Bucket mounted as a volume.
+      # Request message for exporting Cloud Run image.
+      class GoogleCloudRunV2ExportImageRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The export destination url (the Artifact Registry repo).
+        # Corresponds to the JSON property `destinationRepo`
+        # @return [String]
+        attr_accessor :destination_repo
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_repo = args[:destination_repo] if args.key?(:destination_repo)
+        end
+      end
+      
+      # ExportImageResponse contains an operation Id to track the image export
+      # operation.
+      class GoogleCloudRunV2ExportImageResponse
+        include Google::Apis::Core::Hashable
+      
+        # An operation ID used to track the status of image exports tied to the original
+        # pod ID in the request.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+        end
+      end
+      
+      # ExportStatusResponse contains the status of image export operation, with the
+      # status of each image export job.
+      class GoogleCloudRunV2ExportStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of each image export job.
+        # Corresponds to the JSON property `imageExportStatuses`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ImageExportStatus>]
+        attr_accessor :image_export_statuses
+      
+        # The operation id.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # Output only. The state of the overall export operation.
+        # Corresponds to the JSON property `operationState`
+        # @return [String]
+        attr_accessor :operation_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_export_statuses = args[:image_export_statuses] if args.key?(:image_export_statuses)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @operation_state = args[:operation_state] if args.key?(:operation_state)
+        end
+      end
+      
+      # Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.
       class GoogleCloudRunV2GcsVolumeSource
         include Google::Apis::Core::Hashable
       
-        # GCS Bucket name
+        # Cloud Storage Bucket name.
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
       
-        # If true, mount the GCS bucket as read-only
+        # If true, the volume will be mounted as read only for all mounts.
         # Corresponds to the JSON property `readOnly`
         # @return [Boolean]
         attr_accessor :read_only
@@ -843,6 +922,44 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The status of an image export job.
+      class GoogleCloudRunV2ImageExportStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Has the image export job finished (regardless of successful or
+        # failure).
+        # Corresponds to the JSON property `exportJobState`
+        # @return [String]
+        attr_accessor :export_job_state
+      
+        # The exported image ID as it will appear in Artifact Registry.
+        # Corresponds to the JSON property `exportedImageDigest`
+        # @return [String]
+        attr_accessor :exported_image_digest
+      
+        # Wire-format for a Status object
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV2::UtilStatusProto]
+        attr_accessor :status
+      
+        # The image tag as it will appear in Artifact Registry.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @export_job_state = args[:export_job_state] if args.key?(:export_job_state)
+          @exported_image_digest = args[:exported_image_digest] if args.key?(:exported_image_digest)
+          @status = args[:status] if args.key?(:status)
+          @tag = args[:tag] if args.key?(:tag)
         end
       end
       
@@ -1183,6 +1300,25 @@ module Google
         end
       end
       
+      # Metadata represents the JSON encoded generated customer metadata.
+      class GoogleCloudRunV2Metadata
+        include Google::Apis::Core::Hashable
+      
+        # JSON encoded Google-generated Customer Metadata for a given resource/project.
+        # Corresponds to the JSON property `metadata`
+        # @return [String]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
       # Represents an NFS mount.
       class GoogleCloudRunV2NfsVolumeSource
         include Google::Apis::Core::Hashable
@@ -1192,7 +1328,7 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # If true, mount the NFS volume as read only
+        # If true, the volume will be mounted as read only for all mounts.
         # Corresponds to the JSON property `readOnly`
         # @return [Boolean]
         attr_accessor :read_only
@@ -2698,7 +2834,7 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2EmptyDirVolumeSource]
         attr_accessor :empty_dir
       
-        # Represents a GCS Bucket mounted as a volume.
+        # Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.
         # Corresponds to the JSON property `gcs`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2GcsVolumeSource]
         attr_accessor :gcs
@@ -5040,6 +5176,66 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # This is proto2's version of MessageSet.
+      class Proto2BridgeMessageSet
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Wire-format for a Status object
+      class UtilStatusProto
+        include Google::Apis::Core::Hashable
+      
+        # The canonical error code (see codes.proto) that most closely corresponds to
+        # this status. This may be missing, and in the common case of the generic space,
+        # it definitely will be.
+        # Corresponds to the JSON property `canonicalCode`
+        # @return [Fixnum]
+        attr_accessor :canonical_code
+      
+        # Numeric code drawn from the space specified below. Often, this is the
+        # canonical error space, and code is drawn from google3/util/task/codes.proto
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # Detail message
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # This is proto2's version of MessageSet.
+        # Corresponds to the JSON property `messageSet`
+        # @return [Google::Apis::RunV2::Proto2BridgeMessageSet]
+        attr_accessor :message_set
+      
+        # The following are usually only present when code != 0 Space to which this
+        # status belongs
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_code = args[:canonical_code] if args.key?(:canonical_code)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @message_set = args[:message_set] if args.key?(:message_set)
+          @space = args[:space] if args.key?(:space)
         end
       end
     end
