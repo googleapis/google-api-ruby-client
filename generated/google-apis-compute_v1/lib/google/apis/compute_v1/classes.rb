@@ -7923,12 +7923,13 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Additional structured details about this error. Keys should match /[a-zA-Z0-9-
-        # _]/ and be limited to 64 characters in length. When identifying the current
-        # value of an exceeded limit, the units should be contained in the key, not the
-        # value. For example, rather than `"instanceLimit": "100/request"`, should be
-        # returned as, `"instanceLimitPerRequest": "100"`, if the client exceeds the
-        # number of instances that can be created in a single (batch) request.
+        # Additional structured details about this error. Keys must match /a-z+/ but
+        # should ideally be lowerCamelCase. Also they must be limited to 64 characters
+        # in length. When identifying the current value of an exceeded limit, the units
+        # should be contained in the key, not the value. For example, rather than `"
+        # instanceLimit": "100/request"`, should be returned as, `"
+        # instanceLimitPerRequest": "100"`, if the client exceeds the number of
+        # instances that can be created in a single (batch) request.
         # Corresponds to the JSON property `metadatas`
         # @return [Hash<String,String>]
         attr_accessor :metadatas
@@ -15730,7 +15731,7 @@ module Google
         attr_accessor :has_stateful_config
         alias_method :has_stateful_config?, :has_stateful_config
       
-        # [Output Only] Status of per-instance configurations on the instance.
+        # [Output Only] Status of per-instance configurations on the instances.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Google::Apis::ComputeV1::InstanceGroupManagerStatusStatefulPerInstanceConfigs]
         attr_accessor :per_instance_configs
