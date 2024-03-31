@@ -1,5 +1,9 @@
 # Release history for google-apis-clouderrorreporting_v1beta1
 
+### v0.28.0 (2024-03-31)
+
+* Regenerated from discovery document revision 20240322
+
 ### v0.27.0 (2024-03-24)
 
 * Regenerated from discovery document revision 20240313
