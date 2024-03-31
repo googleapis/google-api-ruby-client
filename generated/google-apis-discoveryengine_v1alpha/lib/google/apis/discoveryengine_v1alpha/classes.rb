@@ -1823,10 +1823,178 @@ module Google
         end
       end
       
+      # The Bigtable Options object that contains information to support the import.
+      class GoogleCloudDiscoveryengineV1alphaBigtableOptions
+        include Google::Apis::Core::Hashable
+      
+        # The mapping from family names to an object that contains column families level
+        # information for the given column family. If a family is not present in this
+        # map it will be ignored.
+        # Corresponds to the JSON property `families`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumnFamily>]
+        attr_accessor :families
+      
+        # The field name used for saving row key value in the UCS document. The name has
+        # to match a-zA-Z0-9*
+        # Corresponds to the JSON property `keyFieldName`
+        # @return [String]
+        attr_accessor :key_field_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @families = args[:families] if args.key?(:families)
+          @key_field_name = args[:key_field_name] if args.key?(:key_field_name)
+        end
+      end
+      
+      # 
+      class GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumn
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The encoding mode of the values when the type is not STRING.
+        # Acceptable encoding values are: TEXT - indicates values are alphanumeric text
+        # strings. BINARY - indicates values are encoded using HBase Bytes.toBytes
+        # family of functions. This can be overridden for a specific column by listing
+        # that column in 'columns' and specifying an encoding for it.
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # The field name to use for this column in the UCS document. The name has to
+        # match a-zA-Z0-9* If not set, we will parse it from the qualifier bytes with
+        # best effort. However, field name collisions could happen, where parsing
+        # behavior is undefined.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Required. Qualifier of the column. If cannot decode with utf-8, store a base-
+        # 64 encoded string.
+        # Corresponds to the JSON property `qualifier`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :qualifier
+      
+        # Optional. The type of values in this column family. The values are expected to
+        # be encoded using HBase Bytes.toBytes function when the encoding value is set
+        # to BINARY.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @qualifier = args[:qualifier] if args.key?(:qualifier)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumnFamily
+        include Google::Apis::Core::Hashable
+      
+        # The list of objects that contains column level information for each column. If
+        # a column is not present in this list it will be ignored.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumn>]
+        attr_accessor :columns
+      
+        # Optional. The encoding mode of the values when the type is not STRING.
+        # Acceptable encoding values are: TEXT - indicates values are alphanumeric text
+        # strings. BINARY - indicates values are encoded using HBase Bytes.toBytes
+        # family of functions. This can be overridden for a specific column by listing
+        # that column in 'columns' and specifying an encoding for it.
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # The field name to use for this column family in the UCS document. The name has
+        # to match a-zA-Z0-9* If not set, we will parse it from the family name with
+        # best effort. However, due to difference naming pattern, there could be field
+        # name collisions, where parsing behavior is undefined.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Optional. The type of values in this column family. The values are expected to
+        # be encoded using HBase Bytes.toBytes function when the encoding value is set
+        # to BINARY.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The Cloud Bigtable source for importing data
+      class GoogleCloudDiscoveryengineV1alphaBigtableSource
+        include Google::Apis::Core::Hashable
+      
+        # The Bigtable Options object that contains information to support the import.
+        # Corresponds to the JSON property `bigtableOptions`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBigtableOptions]
+        attr_accessor :bigtable_options
+      
+        # Required. The instance ID of the Cloud Bigtable that needs to be exported.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # The project ID (can be project # or ID) that the Bigtable source is in with a
+        # length limit of 128 characters. If not specified, inherits the project ID from
+        # the parent request.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The table ID of the Cloud Bigtable that needs to be exported.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigtable_options = args[:bigtable_options] if args.key?(:bigtable_options)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
       # Chunk captures all raw metadata information of items to be recommended or
       # searched in the chunk mode.
       class GoogleCloudDiscoveryengineV1alphaChunk
         include Google::Apis::Core::Hashable
+      
+        # Metadata of the current chunk. This field is only populated on SearchService.
+        # Search API.
+        # Corresponds to the JSON property `chunkMetadata`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata]
+        attr_accessor :chunk_metadata
       
         # Content is a string from a document (parsed content).
         # Corresponds to the JSON property `content`
@@ -1858,17 +2026,54 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Page span of the chunk.
+        # Corresponds to the JSON property `pageSpan`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkPageSpan]
+        attr_accessor :page_span
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @chunk_metadata = args[:chunk_metadata] if args.key?(:chunk_metadata)
           @content = args[:content] if args.key?(:content)
           @derived_struct_data = args[:derived_struct_data] if args.key?(:derived_struct_data)
           @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @page_span = args[:page_span] if args.key?(:page_span)
+        end
+      end
+      
+      # Metadata of the current chunk. This field is only populated on SearchService.
+      # Search API.
+      class GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The next chunks of the current chunk. The number is controlled by
+        # SearchRequest.ContentSearchSpec.ChunkSpec.num_next_chunks. This field is only
+        # populated on SearchService.Search API.
+        # Corresponds to the JSON property `nextChunks`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunk>]
+        attr_accessor :next_chunks
+      
+        # The previous chunks of the current chunk. The number is controlled by
+        # SearchRequest.ContentSearchSpec.ChunkSpec.num_previous_chunks. This field is
+        # only populated on SearchService.Search API.
+        # Corresponds to the JSON property `previousChunks`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunk>]
+        attr_accessor :previous_chunks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_chunks = args[:next_chunks] if args.key?(:next_chunks)
+          @previous_chunks = args[:previous_chunks] if args.key?(:previous_chunks)
         end
       end
       
@@ -1895,6 +2100,91 @@ module Google
         def update!(**args)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Page span of the chunk.
+      class GoogleCloudDiscoveryengineV1alphaChunkPageSpan
+        include Google::Apis::Core::Hashable
+      
+        # The end page of the chunk.
+        # Corresponds to the JSON property `pageEnd`
+        # @return [Fixnum]
+        attr_accessor :page_end
+      
+        # The start page of the chunk.
+        # Corresponds to the JSON property `pageStart`
+        # @return [Fixnum]
+        attr_accessor :page_start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_end = args[:page_end] if args.key?(:page_end)
+          @page_start = args[:page_start] if args.key?(:page_start)
+        end
+      end
+      
+      # Cloud SQL source import data from.
+      class GoogleCloudDiscoveryengineV1alphaCloudSqlSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud SQL database to copy the data from with a length limit of
+        # 256 characters.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        # Optional. Intermediate Cloud Storage directory used for the import with a
+        # length limit of 2,000 characters. Can be specified if one wants to have the
+        # Cloud SQL export to a specific Cloud Storage directory. Please ensure that the
+        # Cloud SQL service account has the necessary GCS Storage Admin permissions to
+        # access the specified GCS directory.
+        # Corresponds to the JSON property `gcsStagingDir`
+        # @return [String]
+        attr_accessor :gcs_staging_dir
+      
+        # Required. The Cloud SQL instance to copy the data from with a length limit of
+        # 256 characters.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # Optional. Option for serverless export. Enabling this option will incur
+        # additional cost. More info: https://cloud.google.com/sql/pricing#serverless
+        # Corresponds to the JSON property `offload`
+        # @return [Boolean]
+        attr_accessor :offload
+        alias_method :offload?, :offload
+      
+        # Optional. The project ID (can be project # or ID) that the Cloud SQL source is
+        # in with a length limit of 128 characters. If not specified, inherits the
+        # project ID from the parent request.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The Cloud SQL table to copy the data from with a length limit of 256
+        # characters.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
+          @gcs_staging_dir = args[:gcs_staging_dir] if args.key?(:gcs_staging_dir)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @offload = args[:offload] if args.key?(:offload)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
         end
       end
       
@@ -3814,6 +4104,35 @@ module Google
         end
       end
       
+      # Cloud FhirStore source import data from.
+      class GoogleCloudDiscoveryengineV1alphaFhirStoreSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full resource name of the FHIR store to import data from, in the
+        # format of `projects/`project`/locations/`location`/datasets/`dataset`/
+        # fhirStores/`fhir_store``.
+        # Corresponds to the JSON property `fhirStore`
+        # @return [String]
+        attr_accessor :fhir_store
+      
+        # Intermediate Cloud Storage directory used for the import with a length limit
+        # of 2,000 characters. Can be specified if one wants to have the FhirStore
+        # export to a specific Cloud Storage directory.
+        # Corresponds to the JSON property `gcsStagingDir`
+        # @return [String]
+        attr_accessor :gcs_staging_dir
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
+          @gcs_staging_dir = args[:gcs_staging_dir] if args.key?(:gcs_staging_dir)
+        end
+      end
+      
       # Configurations for fields of a schema. For example, configuring a field is
       # indexable, or searchable.
       class GoogleCloudDiscoveryengineV1alphaFieldConfig
@@ -3931,6 +4250,51 @@ module Google
         end
       end
       
+      # Firestore source import data from.
+      class GoogleCloudDiscoveryengineV1alphaFirestoreSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Firestore collection to copy the data from with a length limit
+        # of 1500 characters.
+        # Corresponds to the JSON property `collectionId`
+        # @return [String]
+        attr_accessor :collection_id
+      
+        # Required. The Firestore database to copy the data from with a length limit of
+        # 256 characters.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        # Optional. Intermediate Cloud Storage directory used for the import with a
+        # length limit of 2,000 characters. Can be specified if one wants to have the
+        # Firestore export to a specific Cloud Storage directory. Please ensure that the
+        # Firestore service account has the necessary GCS Storage Admin permissions to
+        # access the specified GCS directory.
+        # Corresponds to the JSON property `gcsStagingDir`
+        # @return [String]
+        attr_accessor :gcs_staging_dir
+      
+        # Optional. The project ID (can be project # or ID) that the Cloud SQL source is
+        # in with a length limit of 128 characters. If not specified, inherits the
+        # project ID from the parent request.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection_id = args[:collection_id] if args.key?(:collection_id)
+          @database_id = args[:database_id] if args.key?(:database_id)
+          @gcs_staging_dir = args[:gcs_staging_dir] if args.key?(:gcs_staging_dir)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
       # Cloud Storage location for input content.
       class GoogleCloudDiscoveryengineV1alphaGcsSource
         include Google::Apis::Core::Hashable
@@ -3968,6 +4332,26 @@ module Google
         def update!(**args)
           @data_schema = args[:data_schema] if args.key?(:data_schema)
           @input_uris = args[:input_uris] if args.key?(:input_uris)
+        end
+      end
+      
+      # Grounding configuration.
+      class GoogleCloudDiscoveryengineV1alphaGroundingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the GroundingConfig, of the form `projects/`project`/
+        # locations/`location`/groundingConfig`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -4050,6 +4434,66 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the ImportCompletionSuggestions operation.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response of the CompletionService.ImportCompletionSuggestions method. If the
+      # long running operation is done, this message is returned by the google.
+      # longrunning.Operations.response field if the operation is successful.
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Count of CompletionSuggestions that failed to be imported.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of CompletionSuggestions successfully imported.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+        end
+      end
+      
       # Metadata related to the progress of the ImportDocuments operation. This is
       # returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
@@ -4098,10 +4542,11 @@ module Google
         # payload, where IDs may not be consistent during multiple imports. In which
         # case ReconciliationMode.FULL is highly recommended to avoid duplicate contents.
         # If unset or set to `false`, Document.ids have to be specified using id_field,
-        # otherwise, documents without IDs fail to be imported. Only set this field when
-        # using GcsSource or BigQuerySource, and when GcsSource.data_schema or
-        # BigQuerySource.data_schema is `custom` or `csv`. Otherwise, an
-        # INVALID_ARGUMENT error is thrown.
+        # otherwise, documents without IDs fail to be imported. Supported data sources: *
+        # GcsSource. GcsSource.data_schema must be `custom` or `csv`. Otherwise, an
+        # INVALID_ARGUMENT error is thrown. * BigQuerySource. BigQuerySource.data_schema
+        # must be `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error is thrown. *
+        # SpannerSource * CloudSqlSource * FirestoreSource * BigtableSource
         # Corresponds to the JSON property `autoGenerateIds`
         # @return [Boolean]
         attr_accessor :auto_generate_ids
@@ -4112,29 +4557,51 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBigQuerySource]
         attr_accessor :bigquery_source
       
+        # The Cloud Bigtable source for importing data
+        # Corresponds to the JSON property `bigtableSource`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBigtableSource]
+        attr_accessor :bigtable_source
+      
+        # Cloud SQL source import data from.
+        # Corresponds to the JSON property `cloudSqlSource`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCloudSqlSource]
+        attr_accessor :cloud_sql_source
+      
         # Configuration of destination for Import related errors.
         # Corresponds to the JSON property `errorConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportErrorConfig]
         attr_accessor :error_config
+      
+        # Cloud FhirStore source import data from.
+        # Corresponds to the JSON property `fhirStoreSource`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFhirStoreSource]
+        attr_accessor :fhir_store_source
+      
+        # Firestore source import data from.
+        # Corresponds to the JSON property `firestoreSource`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFirestoreSource]
+        attr_accessor :firestore_source
       
         # Cloud Storage location for input content.
         # Corresponds to the JSON property `gcsSource`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGcsSource]
         attr_accessor :gcs_source
       
-        # The field in the Cloud Storage and BigQuery sources that indicates the unique
-        # IDs of the documents. For GcsSource it is the key of the JSON field. For
-        # instance, `my_id` for JSON ``"my_id": "some_uuid"``. For BigQuerySource it is
-        # the column name of the BigQuery table where the unique ids are stored. The
-        # values of the JSON field or the BigQuery column are used as the Document.ids.
-        # The JSON field or the BigQuery column must be of string type, and the values
-        # must be set as valid strings conform to [RFC-1034](https://tools.ietf.org/html/
-        # rfc1034) with 1-63 characters. Otherwise, documents without valid IDs fail to
-        # be imported. Only set this field when using GcsSource or BigQuerySource, and
-        # when GcsSource.data_schema or BigQuerySource.data_schema is `custom`. And only
-        # set this field when auto_generate_ids is unset or set as `false`. Otherwise,
-        # an INVALID_ARGUMENT error is thrown. If it is unset, a default value `_id` is
-        # used when importing from the allowed data sources.
+        # The field indicates the ID field or column to be used as unique IDs of the
+        # documents. For GcsSource it is the key of the JSON field. For instance, `my_id`
+        # for JSON ``"my_id": "some_uuid"``. For others, it may be the column name of
+        # the table where the unique ids are stored. The values of the JSON field or the
+        # table column are used as the Document.ids. The JSON field or the table column
+        # must be of string type, and the values must be set as valid strings conform to
+        # [RFC-1034](https://tools.ietf.org/html/rfc1034) with 1-63 characters.
+        # Otherwise, documents without valid IDs fail to be imported. Only set this
+        # field when auto_generate_ids is unset or set as `false`. Otherwise, an
+        # INVALID_ARGUMENT error is thrown. If it is unset, a default value `_id` is
+        # used when importing from the allowed data sources. Supported data sources: *
+        # GcsSource. GcsSource.data_schema must be `custom` or `csv`. Otherwise, an
+        # INVALID_ARGUMENT error is thrown. * BigQuerySource. BigQuerySource.data_schema
+        # must be `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error is thrown. *
+        # SpannerSource * CloudSqlSource * FirestoreSource * BigtableSource
         # Corresponds to the JSON property `idField`
         # @return [String]
         attr_accessor :id_field
@@ -4150,6 +4617,11 @@ module Google
         # @return [String]
         attr_accessor :reconciliation_mode
       
+        # The Spanner source for importing data
+        # Corresponds to the JSON property `spannerSource`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSpannerSource]
+        attr_accessor :spanner_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4158,11 +4630,16 @@ module Google
         def update!(**args)
           @auto_generate_ids = args[:auto_generate_ids] if args.key?(:auto_generate_ids)
           @bigquery_source = args[:bigquery_source] if args.key?(:bigquery_source)
+          @bigtable_source = args[:bigtable_source] if args.key?(:bigtable_source)
+          @cloud_sql_source = args[:cloud_sql_source] if args.key?(:cloud_sql_source)
           @error_config = args[:error_config] if args.key?(:error_config)
+          @fhir_store_source = args[:fhir_store_source] if args.key?(:fhir_store_source)
+          @firestore_source = args[:firestore_source] if args.key?(:firestore_source)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @id_field = args[:id_field] if args.key?(:id_field)
           @inline_source = args[:inline_source] if args.key?(:inline_source)
           @reconciliation_mode = args[:reconciliation_mode] if args.key?(:reconciliation_mode)
+          @spanner_source = args[:spanner_source] if args.key?(:spanner_source)
         end
       end
       
@@ -5253,6 +5730,112 @@ module Google
         end
       end
       
+      # Request message for RankService.Rank method.
+      class GoogleCloudDiscoveryengineV1alphaRankRequest
+        include Google::Apis::Core::Hashable
+      
+        # If true, the response will contain only record ID and score. By default, it is
+        # false, the response will contain record details.
+        # Corresponds to the JSON property `ignoreRecordDetailsInResponse`
+        # @return [Boolean]
+        attr_accessor :ignore_record_details_in_response
+        alias_method :ignore_record_details_in_response?, :ignore_record_details_in_response
+      
+        # The identifier of the model to use. It is one of: * `semantic-ranker-512@
+        # latest`: Semantic ranking model with maxiumn input token size 512. It is set
+        # to `semantic-ranker-512@latest` by default if unspecified.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # The query to use.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Required. A list of records to rank.
+        # Corresponds to the JSON property `records`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRankingRecord>]
+        attr_accessor :records
+      
+        # The number of results to return. If this is unset or no bigger than zero,
+        # returns all results.
+        # Corresponds to the JSON property `topN`
+        # @return [Fixnum]
+        attr_accessor :top_n
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ignore_record_details_in_response = args[:ignore_record_details_in_response] if args.key?(:ignore_record_details_in_response)
+          @model = args[:model] if args.key?(:model)
+          @query = args[:query] if args.key?(:query)
+          @records = args[:records] if args.key?(:records)
+          @top_n = args[:top_n] if args.key?(:top_n)
+        end
+      end
+      
+      # Response message for RankService.Rank method.
+      class GoogleCloudDiscoveryengineV1alphaRankResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of records sorted by descending score.
+        # Corresponds to the JSON property `records`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRankingRecord>]
+        attr_accessor :records
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @records = args[:records] if args.key?(:records)
+        end
+      end
+      
+      # Record message for RankService.Rank method.
+      class GoogleCloudDiscoveryengineV1alphaRankingRecord
+        include Google::Apis::Core::Hashable
+      
+        # The content of the record. Empty by default. At least one of title or content
+        # should be set otherwise an INVALID_ARGUMENT error is thrown.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The unique ID to represent the record.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The score of this record based on the given query and selected model.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # The title of the record. Empty by default. At least one of title or content
+        # should be set otherwise an INVALID_ARGUMENT error is thrown.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @id = args[:id] if args.key?(:id)
+          @score = args[:score] if args.key?(:score)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # Request message for Recommend method.
       class GoogleCloudDiscoveryengineV1alphaRecommendRequest
         include Google::Apis::Core::Hashable
@@ -6047,6 +6630,13 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec
         include Google::Apis::Core::Hashable
       
+        # Specifies the chunk spec to be returned from the search response. Only
+        # available if the SearchRequest.ContentSearchSpec.search_result_mode is set to
+        # CHUNKS
+        # Corresponds to the JSON property `chunkSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecChunkSpec]
+        attr_accessor :chunk_spec
+      
         # A specification for configuring the extractive content in a search response.
         # Corresponds to the JSON property `extractiveContentSpec`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec]
@@ -6076,10 +6666,40 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunk_spec = args[:chunk_spec] if args.key?(:chunk_spec)
           @extractive_content_spec = args[:extractive_content_spec] if args.key?(:extractive_content_spec)
           @search_result_mode = args[:search_result_mode] if args.key?(:search_result_mode)
           @snippet_spec = args[:snippet_spec] if args.key?(:snippet_spec)
           @summary_spec = args[:summary_spec] if args.key?(:summary_spec)
+        end
+      end
+      
+      # Specifies the chunk spec to be returned from the search response. Only
+      # available if the SearchRequest.ContentSearchSpec.search_result_mode is set to
+      # CHUNKS
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecChunkSpec
+        include Google::Apis::Core::Hashable
+      
+        # The number of next chunks to be returned of the current chunk. The maximum
+        # allowed value is 3. If not specified, no next chunks will be returned.
+        # Corresponds to the JSON property `numNextChunks`
+        # @return [Fixnum]
+        attr_accessor :num_next_chunks
+      
+        # The number of previous chunks to be returned of the current chunk. The maximum
+        # allowed value is 3. If not specified, no previous chunks will be returned.
+        # Corresponds to the JSON property `numPreviousChunks`
+        # @return [Fixnum]
+        attr_accessor :num_previous_chunks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_next_chunks = args[:num_next_chunks] if args.key?(:num_next_chunks)
+          @num_previous_chunks = args[:num_previous_chunks] if args.key?(:num_previous_chunks)
         end
       end
       
@@ -7018,6 +7638,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReference
         include Google::Apis::Core::Hashable
       
+        # List of cited chunk contents derived from document content.
+        # Corresponds to the JSON property `chunkContents`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContent>]
+        attr_accessor :chunk_contents
+      
         # Required. Document.name of the document. Full resource name of the referenced
         # document, in the format `projects/*/locations/*/collections/*/dataStores/*/
         # branches/*/documents/*`.
@@ -7041,9 +7666,35 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunk_contents = args[:chunk_contents] if args.key?(:chunk_contents)
           @document = args[:document] if args.key?(:document)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Chunk content.
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContent
+        include Google::Apis::Core::Hashable
+      
+        # Chunk textual content.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Page identifier.
+        # Corresponds to the JSON property `pageIdentifier`
+        # @return [String]
+        attr_accessor :page_identifier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @page_identifier = args[:page_identifier] if args.key?(:page_identifier)
         end
       end
       
@@ -7419,6 +8070,53 @@ module Google
         end
       end
       
+      # The Spanner source for importing data
+      class GoogleCloudDiscoveryengineV1alphaSpannerSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The database ID of the source Spanner table.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        # Optional. Whether to apply data boost on Spanner export. Enabling this option
+        # will incur additional cost. More info: https://cloud.google.com/spanner/docs/
+        # databoost/databoost-overview#billing_and_quotas
+        # Corresponds to the JSON property `enableDataBoost`
+        # @return [Boolean]
+        attr_accessor :enable_data_boost
+        alias_method :enable_data_boost?, :enable_data_boost
+      
+        # Required. The instance ID of the source Spanner table.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # The project ID that the Spanner source is in with a length limit of 128
+        # characters. If not specified, inherits the project ID from the parent request.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The table name of the Spanner database that needs to be imported.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
+          @enable_data_boost = args[:enable_data_boost] if args.key?(:enable_data_boost)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
       # Suggestion deny list entry identifying the phrase to block from suggestions
       # and the applied operation for the phrase.
       class GoogleCloudDiscoveryengineV1alphaSuggestionDenyListEntry
@@ -7712,6 +8410,11 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus>]
         attr_accessor :error_samples
       
+        # The metrics of the trained model.
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Float>]
+        attr_accessor :metrics
+      
         # The trained model status. Possible values are: * **bad-data**: The training
         # data quality is bad. * **no-improvement**: Tuning didn't improve performance.
         # Won't deploy. * **in-progress**: Model training is in progress. * **ready**:
@@ -7728,6 +8431,7 @@ module Google
         def update!(**args)
           @error_config = args[:error_config] if args.key?(:error_config)
           @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @metrics = args[:metrics] if args.key?(:metrics)
           @model_status = args[:model_status] if args.key?(:model_status)
         end
       end
@@ -8289,6 +8993,12 @@ module Google
         attr_accessor :enable_safe_search
         alias_method :enable_safe_search?, :enable_safe_search
       
+        # Whether to enable search-as-you-type behavior for the search widget
+        # Corresponds to the JSON property `enableSearchAsYouType`
+        # @return [Boolean]
+        attr_accessor :enable_search_as_you_type
+        alias_method :enable_search_as_you_type?, :enable_search_as_you_type
+      
         # Turn on or off summary for each snippets result.
         # Corresponds to the JSON property `enableSnippetResultSummary`
         # @return [Boolean]
@@ -8385,6 +9095,7 @@ module Google
           @enable_quality_feedback = args[:enable_quality_feedback] if args.key?(:enable_quality_feedback)
           @enable_result_score = args[:enable_result_score] if args.key?(:enable_result_score)
           @enable_safe_search = args[:enable_safe_search] if args.key?(:enable_safe_search)
+          @enable_search_as_you_type = args[:enable_search_as_you_type] if args.key?(:enable_search_as_you_type)
           @enable_snippet_result_summary = args[:enable_snippet_result_summary] if args.key?(:enable_snippet_result_summary)
           @enable_summarization = args[:enable_summarization] if args.key?(:enable_summarization)
           @enable_web_app = args[:enable_web_app] if args.key?(:enable_web_app)
@@ -8424,8 +9135,8 @@ module Google
       
         # The name of the collection. It should be collection resource name. Format: `
         # projects/`project_number`/locations/`location`/collections/`collection_id``.
-        # For widget service usage, such look up widget config, returned name should be
-        # skipped.
+        # For APIs under WidgetService, such as LookUpWidgetConfig, the project number
+        # and location part is erased in this field.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -8462,8 +9173,9 @@ module Google
       
         # The name of the data store. It should be data store resource name Format: `
         # projects/`project_number`/locations/`location`/collections/`collection_id`/
-        # dataStores/`data_store_id``. For widget service usage, such look up widget
-        # config, returned name should be skipped.
+        # dataStores/`data_store_id``. For APIs under WidgetService, such as
+        # LookUpWidgetConfig, the project number and location part is erased in this
+        # field.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -8507,8 +9219,9 @@ module Google
       
         # The name of the data store. It should be data store resource name Format: `
         # projects/`project_number`/locations/`location`/collections/`collection_id`/
-        # dataStores/`data_store_id``. For widget service usage, such look up widget
-        # config, returned name should be skipped.
+        # dataStores/`data_store_id``. For APIs under WidgetService, such as
+        # LookUpWidgetConfig, the project number and location part is erased in this
+        # field.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -9485,6 +10198,26 @@ module Google
         end
       end
       
+      # Grounding configuration.
+      class GoogleCloudDiscoveryengineV1betaGroundingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the GroundingConfig, of the form `projects/`project`/
+        # locations/`location`/groundingConfig`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Metadata related to the progress of the ImportDocuments operation. This is
       # returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1betaImportDocumentsMetadata
@@ -10053,6 +10786,11 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus>]
         attr_accessor :error_samples
       
+        # The metrics of the trained model.
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Float>]
+        attr_accessor :metrics
+      
         # The trained model status. Possible values are: * **bad-data**: The training
         # data quality is bad. * **no-improvement**: Tuning didn't improve performance.
         # Won't deploy. * **in-progress**: Model training is in progress. * **ready**:
@@ -10069,7 +10807,29 @@ module Google
         def update!(**args)
           @error_config = args[:error_config] if args.key?(:error_config)
           @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @metrics = args[:metrics] if args.key?(:metrics)
           @model_status = args[:model_status] if args.key?(:model_status)
+        end
+      end
+      
+      # Metadata associated with a tune operation.
+      class GoogleCloudDiscoveryengineV1betaTuneEngineMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the engine that this tune applies to. Format: `
+        # projects/`project_number`/locations/`location_id`/collections/`collection_id`/
+        # engines/`engine_id``
+        # Corresponds to the JSON property `engine`
+        # @return [String]
+        attr_accessor :engine
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @engine = args[:engine] if args.key?(:engine)
         end
       end
       
