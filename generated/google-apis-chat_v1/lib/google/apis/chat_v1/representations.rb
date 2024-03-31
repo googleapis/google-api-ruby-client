@@ -22,6 +22,12 @@ module Google
   module Apis
     module ChatV1
       
+      class AccessoryWidget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ActionParameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -466,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSpaceEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSpacesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -490,7 +502,79 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MembershipBatchCreatedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipBatchDeletedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipBatchUpdatedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipCreatedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipDeletedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipUpdatedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Message
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageBatchCreatedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageBatchDeletedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageBatchUpdatedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageCreatedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageDeletedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageUpdatedEventData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -515,6 +599,30 @@ module Google
       end
       
       class Reaction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReactionBatchCreatedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReactionBatchDeletedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReactionCreatedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReactionDeletedEventData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -562,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpaceBatchUpdatedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpaceDataSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -569,6 +683,18 @@ module Google
       end
       
       class SpaceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpaceEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpaceUpdatedEventData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -650,6 +776,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessoryWidget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :button_list, as: 'buttonList', class: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList::Representation
+      
+        end
       end
       
       class ActionParameter
@@ -1459,6 +1593,15 @@ module Google
         end
       end
       
+      class ListSpaceEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :space_events, as: 'spaceEvents', class: Google::Apis::ChatV1::SpaceEvent, decorator: Google::Apis::ChatV1::SpaceEvent::Representation
+      
+        end
+      end
+      
       class ListSpacesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1497,9 +1640,59 @@ module Google
         end
       end
       
+      class MembershipBatchCreatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :memberships, as: 'memberships', class: Google::Apis::ChatV1::MembershipCreatedEventData, decorator: Google::Apis::ChatV1::MembershipCreatedEventData::Representation
+      
+        end
+      end
+      
+      class MembershipBatchDeletedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :memberships, as: 'memberships', class: Google::Apis::ChatV1::MembershipDeletedEventData, decorator: Google::Apis::ChatV1::MembershipDeletedEventData::Representation
+      
+        end
+      end
+      
+      class MembershipBatchUpdatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :memberships, as: 'memberships', class: Google::Apis::ChatV1::MembershipUpdatedEventData, decorator: Google::Apis::ChatV1::MembershipUpdatedEventData::Representation
+      
+        end
+      end
+      
+      class MembershipCreatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :membership, as: 'membership', class: Google::Apis::ChatV1::Membership, decorator: Google::Apis::ChatV1::Membership::Representation
+      
+        end
+      end
+      
+      class MembershipDeletedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :membership, as: 'membership', class: Google::Apis::ChatV1::Membership, decorator: Google::Apis::ChatV1::Membership::Representation
+      
+        end
+      end
+      
+      class MembershipUpdatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :membership, as: 'membership', class: Google::Apis::ChatV1::Membership, decorator: Google::Apis::ChatV1::Membership::Representation
+      
+        end
+      end
+      
       class Message
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accessory_widgets, as: 'accessoryWidgets', class: Google::Apis::ChatV1::AccessoryWidget, decorator: Google::Apis::ChatV1::AccessoryWidget::Representation
+      
           property :action_response, as: 'actionResponse', class: Google::Apis::ChatV1::ActionResponse, decorator: Google::Apis::ChatV1::ActionResponse::Representation
       
           collection :annotations, as: 'annotations', class: Google::Apis::ChatV1::Annotation, decorator: Google::Apis::ChatV1::Annotation::Representation
@@ -1543,6 +1736,54 @@ module Google
         end
       end
       
+      class MessageBatchCreatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :messages, as: 'messages', class: Google::Apis::ChatV1::MessageCreatedEventData, decorator: Google::Apis::ChatV1::MessageCreatedEventData::Representation
+      
+        end
+      end
+      
+      class MessageBatchDeletedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :messages, as: 'messages', class: Google::Apis::ChatV1::MessageDeletedEventData, decorator: Google::Apis::ChatV1::MessageDeletedEventData::Representation
+      
+        end
+      end
+      
+      class MessageBatchUpdatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :messages, as: 'messages', class: Google::Apis::ChatV1::MessageUpdatedEventData, decorator: Google::Apis::ChatV1::MessageUpdatedEventData::Representation
+      
+        end
+      end
+      
+      class MessageCreatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
+      
+        end
+      end
+      
+      class MessageDeletedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
+      
+        end
+      end
+      
+      class MessageUpdatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
+      
+        end
+      end
+      
       class OnClick
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1575,6 +1816,38 @@ module Google
       
           property :name, as: 'name'
           property :user, as: 'user', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
+      
+        end
+      end
+      
+      class ReactionBatchCreatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reactions, as: 'reactions', class: Google::Apis::ChatV1::ReactionCreatedEventData, decorator: Google::Apis::ChatV1::ReactionCreatedEventData::Representation
+      
+        end
+      end
+      
+      class ReactionBatchDeletedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reactions, as: 'reactions', class: Google::Apis::ChatV1::ReactionDeletedEventData, decorator: Google::Apis::ChatV1::ReactionDeletedEventData::Representation
+      
+        end
+      end
+      
+      class ReactionCreatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reaction, as: 'reaction', class: Google::Apis::ChatV1::Reaction, decorator: Google::Apis::ChatV1::Reaction::Representation
+      
+        end
+      end
+      
+      class ReactionDeletedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reaction, as: 'reaction', class: Google::Apis::ChatV1::Reaction, decorator: Google::Apis::ChatV1::Reaction::Representation
       
         end
       end
@@ -1656,6 +1929,14 @@ module Google
         end
       end
       
+      class SpaceBatchUpdatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :spaces, as: 'spaces', class: Google::Apis::ChatV1::SpaceUpdatedEventData, decorator: Google::Apis::ChatV1::SpaceUpdatedEventData::Representation
+      
+        end
+      end
+      
       class SpaceDataSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1668,6 +1949,59 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :guidelines, as: 'guidelines'
+        end
+      end
+      
+      class SpaceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_time, as: 'eventTime'
+          property :event_type, as: 'eventType'
+          property :membership_batch_created_event_data, as: 'membershipBatchCreatedEventData', class: Google::Apis::ChatV1::MembershipBatchCreatedEventData, decorator: Google::Apis::ChatV1::MembershipBatchCreatedEventData::Representation
+      
+          property :membership_batch_deleted_event_data, as: 'membershipBatchDeletedEventData', class: Google::Apis::ChatV1::MembershipBatchDeletedEventData, decorator: Google::Apis::ChatV1::MembershipBatchDeletedEventData::Representation
+      
+          property :membership_batch_updated_event_data, as: 'membershipBatchUpdatedEventData', class: Google::Apis::ChatV1::MembershipBatchUpdatedEventData, decorator: Google::Apis::ChatV1::MembershipBatchUpdatedEventData::Representation
+      
+          property :membership_created_event_data, as: 'membershipCreatedEventData', class: Google::Apis::ChatV1::MembershipCreatedEventData, decorator: Google::Apis::ChatV1::MembershipCreatedEventData::Representation
+      
+          property :membership_deleted_event_data, as: 'membershipDeletedEventData', class: Google::Apis::ChatV1::MembershipDeletedEventData, decorator: Google::Apis::ChatV1::MembershipDeletedEventData::Representation
+      
+          property :membership_updated_event_data, as: 'membershipUpdatedEventData', class: Google::Apis::ChatV1::MembershipUpdatedEventData, decorator: Google::Apis::ChatV1::MembershipUpdatedEventData::Representation
+      
+          property :message_batch_created_event_data, as: 'messageBatchCreatedEventData', class: Google::Apis::ChatV1::MessageBatchCreatedEventData, decorator: Google::Apis::ChatV1::MessageBatchCreatedEventData::Representation
+      
+          property :message_batch_deleted_event_data, as: 'messageBatchDeletedEventData', class: Google::Apis::ChatV1::MessageBatchDeletedEventData, decorator: Google::Apis::ChatV1::MessageBatchDeletedEventData::Representation
+      
+          property :message_batch_updated_event_data, as: 'messageBatchUpdatedEventData', class: Google::Apis::ChatV1::MessageBatchUpdatedEventData, decorator: Google::Apis::ChatV1::MessageBatchUpdatedEventData::Representation
+      
+          property :message_created_event_data, as: 'messageCreatedEventData', class: Google::Apis::ChatV1::MessageCreatedEventData, decorator: Google::Apis::ChatV1::MessageCreatedEventData::Representation
+      
+          property :message_deleted_event_data, as: 'messageDeletedEventData', class: Google::Apis::ChatV1::MessageDeletedEventData, decorator: Google::Apis::ChatV1::MessageDeletedEventData::Representation
+      
+          property :message_updated_event_data, as: 'messageUpdatedEventData', class: Google::Apis::ChatV1::MessageUpdatedEventData, decorator: Google::Apis::ChatV1::MessageUpdatedEventData::Representation
+      
+          property :name, as: 'name'
+          property :reaction_batch_created_event_data, as: 'reactionBatchCreatedEventData', class: Google::Apis::ChatV1::ReactionBatchCreatedEventData, decorator: Google::Apis::ChatV1::ReactionBatchCreatedEventData::Representation
+      
+          property :reaction_batch_deleted_event_data, as: 'reactionBatchDeletedEventData', class: Google::Apis::ChatV1::ReactionBatchDeletedEventData, decorator: Google::Apis::ChatV1::ReactionBatchDeletedEventData::Representation
+      
+          property :reaction_created_event_data, as: 'reactionCreatedEventData', class: Google::Apis::ChatV1::ReactionCreatedEventData, decorator: Google::Apis::ChatV1::ReactionCreatedEventData::Representation
+      
+          property :reaction_deleted_event_data, as: 'reactionDeletedEventData', class: Google::Apis::ChatV1::ReactionDeletedEventData, decorator: Google::Apis::ChatV1::ReactionDeletedEventData::Representation
+      
+          property :space_batch_updated_event_data, as: 'spaceBatchUpdatedEventData', class: Google::Apis::ChatV1::SpaceBatchUpdatedEventData, decorator: Google::Apis::ChatV1::SpaceBatchUpdatedEventData::Representation
+      
+          property :space_updated_event_data, as: 'spaceUpdatedEventData', class: Google::Apis::ChatV1::SpaceUpdatedEventData, decorator: Google::Apis::ChatV1::SpaceUpdatedEventData::Representation
+      
+        end
+      end
+      
+      class SpaceUpdatedEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space, as: 'space', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
+      
         end
       end
       

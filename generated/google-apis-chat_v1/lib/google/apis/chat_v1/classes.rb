@@ -22,6 +22,30 @@ module Google
   module Apis
     module ChatV1
       
+      # One or more interactive widgets that appear at the bottom of a message. For
+      # details, see [Add interactive widgets at the bottom of a message](https://
+      # developers.google.com/workspace/chat/create-messages#add-accessory-widgets).
+      class AccessoryWidget
+        include Google::Apis::Core::Hashable
+      
+        # A list of buttons layed out horizontally. For an example in Google Chat apps,
+        # see [Button list](https://developers.google.com/chat/ui/widgets/button-list). [
+        # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend):
+        # Corresponds to the JSON property `buttonList`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
+        attr_accessor :button_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @button_list = args[:button_list] if args.key?(:button_list)
+        end
+      end
+      
       # List of string parameters to supply when the action method is invoked. For
       # example, consider three snooze buttons: snooze now, snooze one day, snooze
       # next week. You might use `action method = snooze()`, passing the snooze type
@@ -2101,10 +2125,9 @@ module Google
         # A [Google Material Icon](https://fonts.google.com/icons), which includes over
         # 2500+ options. For example, to display a [checkbox icon](https://fonts.google.
         # com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%
-        # 40400%3BGRAD%400%3Bopsz%4048) with customized weight and grade, write ` "name":
-        # "check_box", "fill": true, "weight": 300, "grade": -25 ` Available for Chat
-        # apps and in [Developer Preview](https://developers.google.com/workspace/
-        # preview) for Google Workspace Add-ons.
+        # 40400%3BGRAD%400%3Bopsz%4048) with customized weight and grade, write the
+        # following: ``` ` "name": "check_box", "fill": true, "weight": 300, "grade": -
+        # 25 ` ``` [Google Chat apps](https://developers.google.com/workspace/chat):
         # Corresponds to the JSON property `materialIcon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1MaterialIcon]
         attr_accessor :material_icon
@@ -2236,15 +2259,15 @@ module Google
       # A [Google Material Icon](https://fonts.google.com/icons), which includes over
       # 2500+ options. For example, to display a [checkbox icon](https://fonts.google.
       # com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%
-      # 40400%3BGRAD%400%3Bopsz%4048) with customized weight and grade, write ` "name":
-      # "check_box", "fill": true, "weight": 300, "grade": -25 ` Available for Chat
-      # apps and in [Developer Preview](https://developers.google.com/workspace/
-      # preview) for Google Workspace Add-ons.
+      # 40400%3BGRAD%400%3Bopsz%4048) with customized weight and grade, write the
+      # following: ``` ` "name": "check_box", "fill": true, "weight": 300, "grade": -
+      # 25 ` ``` [Google Chat apps](https://developers.google.com/workspace/chat):
       class GoogleAppsCardV1MaterialIcon
         include Google::Apis::Core::Hashable
       
-        # Whether it renders a filled icon. Default value is false. See Customization in
-        # [Google Font Icon](https://fonts.google.com/icons) for details.
+        # Whether the icon renders as filled. Default value is false. To preview
+        # different icon settings, go to [Google Font Icons](https://fonts.google.com/
+        # icons) and adjust the settings under **Customize**.
         # Corresponds to the JSON property `fill`
         # @return [Boolean]
         attr_accessor :fill
@@ -2253,23 +2276,24 @@ module Google
         # Weight and grade affect a symbol’s thickness. Adjustments to grade are more
         # granular than adjustments to weight and have a small impact on the size of the
         # symbol. Choose from `-25, 0, 200`. If absent, default value is 0. If any other
-        # value is specified, a broken image icon is displayed. See Customization in [
-        # Google Font Icon](https://fonts.google.com/icons) for details.
+        # value is specified, the default value is used. To preview different icon
+        # settings, go to [Google Font Icons](https://fonts.google.com/icons) and adjust
+        # the settings under **Customize**.
         # Corresponds to the JSON property `grade`
         # @return [Fixnum]
         attr_accessor :grade
       
-        # The icon name defined in the [Google Material Icon Icon](https://fonts.google.
-        # com/icons) in snake_case. e.g. "check_box". Any invalid names are abandoned
-        # and replaced with empty string and results in the icon failing to render.
+        # The icon name defined in the [Google Material Icon](https://fonts.google.com/
+        # icons), for example, `check_box`. Any invalid names are abandoned and replaced
+        # with empty string and results in the icon failing to render.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # The stroke weight of the icon. Choose from `100, 200, 300, 400, 500, 600, 700`.
-        # If absent, default value is 400. If any other value is specified, a broken
-        # image icon is displayed. See Customization in [Google Font Icon](https://fonts.
-        # google.com/icons) for details.
+        # If absent, default value is 400. If any other value is specified, the default
+        # value is used. To preview different icon settings, go to [Google Font Icons](
+        # https://fonts.google.com/icons) and adjust the settings under **Customize**.
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight
@@ -2516,7 +2540,7 @@ module Google
         attr_accessor :multi_select_max_selected_items
       
         # For multiselect menus, the number of text characters that a user inputs before
-        # the Chat app queries autocomplete and displays suggested items in the menu. If
+        # the app queries autocomplete and displays suggested items in the menu. If
         # unspecified, defaults to 0 characters for static data sources and 3 characters
         # for external data sources.
         # Corresponds to the JSON property `multiSelectMinQueryLength`
@@ -3420,6 +3444,32 @@ module Google
         end
       end
       
+      # Response message for listing space events.
+      class ListSpaceEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token used to fetch more events. If this field is omitted, there
+        # are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Results are returned in chronological order (oldest event first).
+        # Corresponds to the JSON property `spaceEvents`
+        # @return [Array<Google::Apis::ChatV1::SpaceEvent>]
+        attr_accessor :space_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @space_events = args[:space_events] if args.key?(:space_events)
+        end
+      end
+      
       # 
       class ListSpacesResponse
         include Google::Apis::Core::Hashable
@@ -3552,9 +3602,143 @@ module Google
         end
       end
       
+      # Payload for batch new membership events where the `EventType` field is `google.
+      # workspace.chat.membership.v1.batchCreated`.
+      class MembershipBatchCreatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A list of created memberships.
+        # Corresponds to the JSON property `memberships`
+        # @return [Array<Google::Apis::ChatV1::MembershipCreatedEventData>]
+        attr_accessor :memberships
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memberships = args[:memberships] if args.key?(:memberships)
+        end
+      end
+      
+      # Payload for batch deleted membership events where the `EventType` field is `
+      # google.workspace.chat.membership.v1.batchDeleted`.
+      class MembershipBatchDeletedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A list of deleted memberships.
+        # Corresponds to the JSON property `memberships`
+        # @return [Array<Google::Apis::ChatV1::MembershipDeletedEventData>]
+        attr_accessor :memberships
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memberships = args[:memberships] if args.key?(:memberships)
+        end
+      end
+      
+      # Payload for batch updated membership events where the `EventType` field is `
+      # google.workspace.chat.membership.v1.batchUpdated`.
+      class MembershipBatchUpdatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A list of updated memberships.
+        # Corresponds to the JSON property `memberships`
+        # @return [Array<Google::Apis::ChatV1::MembershipUpdatedEventData>]
+        attr_accessor :memberships
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memberships = args[:memberships] if args.key?(:memberships)
+        end
+      end
+      
+      # Payload for new membership events where the `EventType` field is `google.
+      # workspace.chat.membership.v1.created`.
+      class MembershipCreatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # Represents a membership relation in Google Chat, such as whether a user or
+        # Chat app is invited to, part of, or absent from a space.
+        # Corresponds to the JSON property `membership`
+        # @return [Google::Apis::ChatV1::Membership]
+        attr_accessor :membership
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @membership = args[:membership] if args.key?(:membership)
+        end
+      end
+      
+      # Payload for deleted membership events where the `EventType` field is `google.
+      # workspace.chat.membership.v1.deleted`.
+      class MembershipDeletedEventData
+        include Google::Apis::Core::Hashable
+      
+        # Represents a membership relation in Google Chat, such as whether a user or
+        # Chat app is invited to, part of, or absent from a space.
+        # Corresponds to the JSON property `membership`
+        # @return [Google::Apis::ChatV1::Membership]
+        attr_accessor :membership
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @membership = args[:membership] if args.key?(:membership)
+        end
+      end
+      
+      # Payload for updated membership events where the `EventType` field is `google.
+      # workspace.chat.membership.v1.updated`.
+      class MembershipUpdatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # Represents a membership relation in Google Chat, such as whether a user or
+        # Chat app is invited to, part of, or absent from a space.
+        # Corresponds to the JSON property `membership`
+        # @return [Google::Apis::ChatV1::Membership]
+        attr_accessor :membership
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @membership = args[:membership] if args.key?(:membership)
+        end
+      end
+      
       # A message in a Google Chat space.
       class Message
         include Google::Apis::Core::Hashable
+      
+        # One or more interactive widgets that appear at the bottom of a message. You
+        # can add accessory widgets to messages that contain text, cards, or both text
+        # and cards. Not supported for messages that contain dialogs. For details, see [
+        # Add interactive widgets at the bottom of a message](https://developers.google.
+        # com/workspace/chat/create-messages#add-accessory-widgets). Creating a message
+        # with accessory widgets requires [app authentication] (https://developers.
+        # google.com/chat/api/guides/auth/service-accounts).
+        # Corresponds to the JSON property `accessoryWidgets`
+        # @return [Array<Google::Apis::ChatV1::AccessoryWidget>]
+        attr_accessor :accessory_widgets
       
         # Parameters that a Chat app can use to configure how its response is posted.
         # Corresponds to the JSON property `actionResponse`
@@ -3752,6 +3936,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accessory_widgets = args[:accessory_widgets] if args.key?(:accessory_widgets)
           @action_response = args[:action_response] if args.key?(:action_response)
           @annotations = args[:annotations] if args.key?(:annotations)
           @argument_text = args[:argument_text] if args.key?(:argument_text)
@@ -3777,6 +3962,126 @@ module Google
           @text = args[:text] if args.key?(:text)
           @thread = args[:thread] if args.key?(:thread)
           @thread_reply = args[:thread_reply] if args.key?(:thread_reply)
+        end
+      end
+      
+      # Payload for batch new message events where the `EventType` field is `google.
+      # workspace.chat.message.v1.batchCreated`.
+      class MessageBatchCreatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A list of created messages.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::ChatV1::MessageCreatedEventData>]
+        attr_accessor :messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @messages = args[:messages] if args.key?(:messages)
+        end
+      end
+      
+      # Payload for batch deleted message events where the `EventType` field is `
+      # google.workspace.chat.message.v1.batchDeleted`.
+      class MessageBatchDeletedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A list of deleted messages.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::ChatV1::MessageDeletedEventData>]
+        attr_accessor :messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @messages = args[:messages] if args.key?(:messages)
+        end
+      end
+      
+      # Payload for batch updated message events where the `EventType` field is `
+      # google.workspace.chat.message.v1.batchUpdated`.
+      class MessageBatchUpdatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A list of updated messages.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::ChatV1::MessageUpdatedEventData>]
+        attr_accessor :messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @messages = args[:messages] if args.key?(:messages)
+        end
+      end
+      
+      # Payload for new message events where the `EventType` field is `google.
+      # workspace.chat.message.v1.created`.
+      class MessageCreatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A message in a Google Chat space.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::ChatV1::Message]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Payload for deleted message events where the `EventType` field is `google.
+      # workspace.chat.message.v1.deleted`.
+      class MessageDeletedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A message in a Google Chat space.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::ChatV1::Message]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Payload for updated message events where the `EventType` field is `google.
+      # workspace.chat.message.v1.updated`.
+      class MessageUpdatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A message in a Google Chat space.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::ChatV1::Message]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -3884,6 +4189,86 @@ module Google
           @emoji = args[:emoji] if args.key?(:emoji)
           @name = args[:name] if args.key?(:name)
           @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Payload for batch new reaction events where the `EventType` field is `google.
+      # workspace.chat.reaction.v1.batchCreated`.
+      class ReactionBatchCreatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A list of created reactions.
+        # Corresponds to the JSON property `reactions`
+        # @return [Array<Google::Apis::ChatV1::ReactionCreatedEventData>]
+        attr_accessor :reactions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reactions = args[:reactions] if args.key?(:reactions)
+        end
+      end
+      
+      # Payload for batch deleted reaction events where the `EventType` field is `
+      # google.workspace.chat.reaction.v1.batchDeleted`.
+      class ReactionBatchDeletedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A list of deleted reactions.
+        # Corresponds to the JSON property `reactions`
+        # @return [Array<Google::Apis::ChatV1::ReactionDeletedEventData>]
+        attr_accessor :reactions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reactions = args[:reactions] if args.key?(:reactions)
+        end
+      end
+      
+      # Payload for new reaction events where the `EventType` field is `google.
+      # workspace.chat.reaction.v1.created`.
+      class ReactionCreatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A reaction to a message.
+        # Corresponds to the JSON property `reaction`
+        # @return [Google::Apis::ChatV1::Reaction]
+        attr_accessor :reaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reaction = args[:reaction] if args.key?(:reaction)
+        end
+      end
+      
+      # Payload for deleted reaction events where the `EventType` field is `google.
+      # workspace.chat.reaction.v1.deleted`.
+      class ReactionDeletedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A reaction to a message.
+        # Corresponds to the JSON property `reaction`
+        # @return [Google::Apis::ChatV1::Reaction]
+        attr_accessor :reaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reaction = args[:reaction] if args.key?(:reaction)
         end
       end
       
@@ -4123,11 +4508,11 @@ module Google
         # Immutable. Whether this space permits any Google Chat user as a member. Input
         # when creating a space in a Google Workspace organization. Omit this field when
         # creating spaces in the following conditions: * The authenticated user uses a
-        # Google Account. By default, the space permits any Google Chat user. * The
-        # space is used to [import data to Google Chat] (https://developers.google.com/
-        # chat/api/guides/import-data-overview). Import mode spaces must only permit
-        # members from the same Google Workspace organization. For existing spaces, this
-        # field is output only.
+        # consumer account (unmanaged user account). By default, a space created by a
+        # consumer account permits any Google Chat user. * The space is used to [import
+        # data to Google Chat] (https://developers.google.com/chat/api/guides/import-
+        # data-overview). Import mode spaces must only permit members from the same
+        # Google Workspace organization. For existing spaces, this field is output only.
         # Corresponds to the JSON property `externalUserAllowed`
         # @return [Boolean]
         attr_accessor :external_user_allowed
@@ -4207,6 +4592,26 @@ module Google
         end
       end
       
+      # Payload for batch updated space events where the `EventType` field is `google.
+      # workspace.chat.space.v1.batchUpdated`.
+      class SpaceBatchUpdatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A list of updated spaces.
+        # Corresponds to the JSON property `spaces`
+        # @return [Array<Google::Apis::ChatV1::SpaceUpdatedEventData>]
+        attr_accessor :spaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spaces = args[:spaces] if args.key?(:spaces)
+        end
+      end
+      
       # A data source that populates Google Chat spaces as selection items for a
       # multiselect menu. Only populates spaces that the user is a member of. [Google
       # Chat apps](https://developers.google.com/workspace/chat):
@@ -4255,6 +4660,199 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @guidelines = args[:guidelines] if args.key?(:guidelines)
+        end
+      end
+      
+      # An event that happens in a specific space.
+      class SpaceEvent
+        include Google::Apis::Core::Hashable
+      
+        # Time of the event.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Type of the space event. The following event types are supported: * New
+        # membership: `google.workspace.chat.membership.v1.created` * Deleted membership:
+        # `google.workspace.chat.membership.v1.deleted` * Updated membership: `google.
+        # workspace.chat.membership.v1.updated` * New message: `google.workspace.chat.
+        # message.v1.created` * Deleted message: `google.workspace.chat.message.v1.
+        # deleted` * Updated message: `google.workspace.chat.message.v1.updated` * New
+        # reaction: `google.workspace.chat.reaction.v1.created` * Deleted reaction: `
+        # google.workspace.chat.reaction.v1.deleted` * Updated space: `google.workspace.
+        # chat.space.v1.updated` Note that requesting or subscribing to the preceding
+        # event types automatically sets up the subscription or response to also return
+        # batched versions of the event type. For example, if you subscribe to `google.
+        # workspace.chat.membership.v1.created`, you also receive events for `google.
+        # workspace.chat.membership.v1.batchCreated`. For more details see https://
+        # developers.google.com/workspace/events/guides/events-chat#
+        # output_only_event_types.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Payload for batch new membership events where the `EventType` field is `google.
+        # workspace.chat.membership.v1.batchCreated`.
+        # Corresponds to the JSON property `membershipBatchCreatedEventData`
+        # @return [Google::Apis::ChatV1::MembershipBatchCreatedEventData]
+        attr_accessor :membership_batch_created_event_data
+      
+        # Payload for batch deleted membership events where the `EventType` field is `
+        # google.workspace.chat.membership.v1.batchDeleted`.
+        # Corresponds to the JSON property `membershipBatchDeletedEventData`
+        # @return [Google::Apis::ChatV1::MembershipBatchDeletedEventData]
+        attr_accessor :membership_batch_deleted_event_data
+      
+        # Payload for batch updated membership events where the `EventType` field is `
+        # google.workspace.chat.membership.v1.batchUpdated`.
+        # Corresponds to the JSON property `membershipBatchUpdatedEventData`
+        # @return [Google::Apis::ChatV1::MembershipBatchUpdatedEventData]
+        attr_accessor :membership_batch_updated_event_data
+      
+        # Payload for new membership events where the `EventType` field is `google.
+        # workspace.chat.membership.v1.created`.
+        # Corresponds to the JSON property `membershipCreatedEventData`
+        # @return [Google::Apis::ChatV1::MembershipCreatedEventData]
+        attr_accessor :membership_created_event_data
+      
+        # Payload for deleted membership events where the `EventType` field is `google.
+        # workspace.chat.membership.v1.deleted`.
+        # Corresponds to the JSON property `membershipDeletedEventData`
+        # @return [Google::Apis::ChatV1::MembershipDeletedEventData]
+        attr_accessor :membership_deleted_event_data
+      
+        # Payload for updated membership events where the `EventType` field is `google.
+        # workspace.chat.membership.v1.updated`.
+        # Corresponds to the JSON property `membershipUpdatedEventData`
+        # @return [Google::Apis::ChatV1::MembershipUpdatedEventData]
+        attr_accessor :membership_updated_event_data
+      
+        # Payload for batch new message events where the `EventType` field is `google.
+        # workspace.chat.message.v1.batchCreated`.
+        # Corresponds to the JSON property `messageBatchCreatedEventData`
+        # @return [Google::Apis::ChatV1::MessageBatchCreatedEventData]
+        attr_accessor :message_batch_created_event_data
+      
+        # Payload for batch deleted message events where the `EventType` field is `
+        # google.workspace.chat.message.v1.batchDeleted`.
+        # Corresponds to the JSON property `messageBatchDeletedEventData`
+        # @return [Google::Apis::ChatV1::MessageBatchDeletedEventData]
+        attr_accessor :message_batch_deleted_event_data
+      
+        # Payload for batch updated message events where the `EventType` field is `
+        # google.workspace.chat.message.v1.batchUpdated`.
+        # Corresponds to the JSON property `messageBatchUpdatedEventData`
+        # @return [Google::Apis::ChatV1::MessageBatchUpdatedEventData]
+        attr_accessor :message_batch_updated_event_data
+      
+        # Payload for new message events where the `EventType` field is `google.
+        # workspace.chat.message.v1.created`.
+        # Corresponds to the JSON property `messageCreatedEventData`
+        # @return [Google::Apis::ChatV1::MessageCreatedEventData]
+        attr_accessor :message_created_event_data
+      
+        # Payload for deleted message events where the `EventType` field is `google.
+        # workspace.chat.message.v1.deleted`.
+        # Corresponds to the JSON property `messageDeletedEventData`
+        # @return [Google::Apis::ChatV1::MessageDeletedEventData]
+        attr_accessor :message_deleted_event_data
+      
+        # Payload for updated message events where the `EventType` field is `google.
+        # workspace.chat.message.v1.updated`.
+        # Corresponds to the JSON property `messageUpdatedEventData`
+        # @return [Google::Apis::ChatV1::MessageUpdatedEventData]
+        attr_accessor :message_updated_event_data
+      
+        # The resource name of the space event. Format: `spaces/`space`/spaceEvents/`
+        # spaceEvent``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Payload for batch new reaction events where the `EventType` field is `google.
+        # workspace.chat.reaction.v1.batchCreated`.
+        # Corresponds to the JSON property `reactionBatchCreatedEventData`
+        # @return [Google::Apis::ChatV1::ReactionBatchCreatedEventData]
+        attr_accessor :reaction_batch_created_event_data
+      
+        # Payload for batch deleted reaction events where the `EventType` field is `
+        # google.workspace.chat.reaction.v1.batchDeleted`.
+        # Corresponds to the JSON property `reactionBatchDeletedEventData`
+        # @return [Google::Apis::ChatV1::ReactionBatchDeletedEventData]
+        attr_accessor :reaction_batch_deleted_event_data
+      
+        # Payload for new reaction events where the `EventType` field is `google.
+        # workspace.chat.reaction.v1.created`.
+        # Corresponds to the JSON property `reactionCreatedEventData`
+        # @return [Google::Apis::ChatV1::ReactionCreatedEventData]
+        attr_accessor :reaction_created_event_data
+      
+        # Payload for deleted reaction events where the `EventType` field is `google.
+        # workspace.chat.reaction.v1.deleted`.
+        # Corresponds to the JSON property `reactionDeletedEventData`
+        # @return [Google::Apis::ChatV1::ReactionDeletedEventData]
+        attr_accessor :reaction_deleted_event_data
+      
+        # Payload for batch updated space events where the `EventType` field is `google.
+        # workspace.chat.space.v1.batchUpdated`.
+        # Corresponds to the JSON property `spaceBatchUpdatedEventData`
+        # @return [Google::Apis::ChatV1::SpaceBatchUpdatedEventData]
+        attr_accessor :space_batch_updated_event_data
+      
+        # Payload for updated space events where the `EventType` field is `google.
+        # workspace.chat.space.v1.updated`.
+        # Corresponds to the JSON property `spaceUpdatedEventData`
+        # @return [Google::Apis::ChatV1::SpaceUpdatedEventData]
+        attr_accessor :space_updated_event_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @membership_batch_created_event_data = args[:membership_batch_created_event_data] if args.key?(:membership_batch_created_event_data)
+          @membership_batch_deleted_event_data = args[:membership_batch_deleted_event_data] if args.key?(:membership_batch_deleted_event_data)
+          @membership_batch_updated_event_data = args[:membership_batch_updated_event_data] if args.key?(:membership_batch_updated_event_data)
+          @membership_created_event_data = args[:membership_created_event_data] if args.key?(:membership_created_event_data)
+          @membership_deleted_event_data = args[:membership_deleted_event_data] if args.key?(:membership_deleted_event_data)
+          @membership_updated_event_data = args[:membership_updated_event_data] if args.key?(:membership_updated_event_data)
+          @message_batch_created_event_data = args[:message_batch_created_event_data] if args.key?(:message_batch_created_event_data)
+          @message_batch_deleted_event_data = args[:message_batch_deleted_event_data] if args.key?(:message_batch_deleted_event_data)
+          @message_batch_updated_event_data = args[:message_batch_updated_event_data] if args.key?(:message_batch_updated_event_data)
+          @message_created_event_data = args[:message_created_event_data] if args.key?(:message_created_event_data)
+          @message_deleted_event_data = args[:message_deleted_event_data] if args.key?(:message_deleted_event_data)
+          @message_updated_event_data = args[:message_updated_event_data] if args.key?(:message_updated_event_data)
+          @name = args[:name] if args.key?(:name)
+          @reaction_batch_created_event_data = args[:reaction_batch_created_event_data] if args.key?(:reaction_batch_created_event_data)
+          @reaction_batch_deleted_event_data = args[:reaction_batch_deleted_event_data] if args.key?(:reaction_batch_deleted_event_data)
+          @reaction_created_event_data = args[:reaction_created_event_data] if args.key?(:reaction_created_event_data)
+          @reaction_deleted_event_data = args[:reaction_deleted_event_data] if args.key?(:reaction_deleted_event_data)
+          @space_batch_updated_event_data = args[:space_batch_updated_event_data] if args.key?(:space_batch_updated_event_data)
+          @space_updated_event_data = args[:space_updated_event_data] if args.key?(:space_updated_event_data)
+        end
+      end
+      
+      # Payload for updated space events where the `EventType` field is `google.
+      # workspace.chat.space.v1.updated`.
+      class SpaceUpdatedEventData
+        include Google::Apis::Core::Hashable
+      
+        # A space in Google Chat. Spaces are conversations between two or more users or
+        # 1:1 messages between a user and a Chat app.
+        # Corresponds to the JSON property `space`
+        # @return [Google::Apis::ChatV1::Space]
+        attr_accessor :space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @space = args[:space] if args.key?(:space)
         end
       end
       
