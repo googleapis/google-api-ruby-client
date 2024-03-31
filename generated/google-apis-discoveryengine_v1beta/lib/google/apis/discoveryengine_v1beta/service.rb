@@ -2547,6 +2547,112 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Pauses the training of an existing engine. Only applicable if SolutionType is
+        # SOLUTION_TYPE_RECOMMENDATION.
+        # @param [String] name
+        #   Required. The name of the engine to pause. Format: `projects/`project_number`/
+        #   locations/`location_id`/collections/`collection_id`/engines/`engine_id``
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPauseEngineRequest] google_cloud_discoveryengine_v1beta_pause_engine_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngine] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngine]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def pause_project_location_collection_engine(name, google_cloud_discoveryengine_v1beta_pause_engine_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:pause', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPauseEngineRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_pause_engine_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngine::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngine
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resumes the training of an existing engine. Only applicable if SolutionType is
+        # SOLUTION_TYPE_RECOMMENDATION.
+        # @param [String] name
+        #   Required. The name of the engine to resume. Format: `projects/`project_number`/
+        #   locations/`location_id`/collections/`collection_id`/engines/`engine_id``
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaResumeEngineRequest] google_cloud_discoveryengine_v1beta_resume_engine_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngine] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngine]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resume_project_location_collection_engine(name, google_cloud_discoveryengine_v1beta_resume_engine_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:resume', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaResumeEngineRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_resume_engine_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngine::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngine
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Tunes an existing engine. Only applicable if SolutionType is
+        # SOLUTION_TYPE_RECOMMENDATION.
+        # @param [String] name
+        #   Required. The resource name of the engine to tune. Format: `projects/`
+        #   project_number`/locations/`location_id`/collections/`collection_id`/engines/`
+        #   engine_id``
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTuneEngineRequest] google_cloud_discoveryengine_v1beta_tune_engine_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def tune_project_location_collection_engine(name, google_cloud_discoveryengine_v1beta_tune_engine_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:tune', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTuneEngineRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_tune_engine_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Converses a conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
@@ -5083,6 +5189,40 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Ranks a list of text records based on the given input query.
+        # @param [String] ranking_config
+        #   Required. The resource name of the rank service config, such as `projects/`
+        #   project_num`/locations/`location_id`/rankingConfigs/default_ranking_config`.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankRequest] google_cloud_discoveryengine_v1beta_rank_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rank_project_location_ranking_config(ranking_config, google_cloud_discoveryengine_v1beta_rank_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+rankingConfig}:rank', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_rank_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankResponse
+          command.params['rankingConfig'] = ranking_config unless ranking_config.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
