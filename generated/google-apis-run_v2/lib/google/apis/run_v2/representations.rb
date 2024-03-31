@@ -100,6 +100,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2ExportImageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2ExportImageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2ExportStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2GcsVolumeSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +137,12 @@ module Google
       end
       
       class GoogleCloudRunV2HttpHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2ImageExportStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +179,12 @@ module Google
       end
       
       class GoogleCloudRunV2ListTasksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -592,10 +622,23 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Proto2BridgeMessageSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UtilStatusProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2BinaryAuthorization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :breakglass_justification, as: 'breakglassJustification'
+          property :policy, as: 'policy'
           property :use_default, as: 'useDefault'
         end
       end
@@ -754,6 +797,30 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2ExportImageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_repo, as: 'destinationRepo'
+        end
+      end
+      
+      class GoogleCloudRunV2ExportImageResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_id, as: 'operationId'
+        end
+      end
+      
+      class GoogleCloudRunV2ExportStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :image_export_statuses, as: 'imageExportStatuses', class: Google::Apis::RunV2::GoogleCloudRunV2ImageExportStatus, decorator: Google::Apis::RunV2::GoogleCloudRunV2ImageExportStatus::Representation
+      
+          property :operation_id, as: 'operationId'
+          property :operation_state, as: 'operationState'
+        end
+      end
+      
       class GoogleCloudRunV2GcsVolumeSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -785,6 +852,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudRunV2ImageExportStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_job_state, as: 'exportJobState'
+          property :exported_image_digest, as: 'exportedImageDigest'
+          property :status, as: 'status', class: Google::Apis::RunV2::UtilStatusProto, decorator: Google::Apis::RunV2::UtilStatusProto::Representation
+      
+          property :tag, as: 'tag'
         end
       end
       
@@ -865,6 +943,13 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :tasks, as: 'tasks', class: Google::Apis::RunV2::GoogleCloudRunV2Task, decorator: Google::Apis::RunV2::GoogleCloudRunV2Task::Representation
       
+        end
+      end
+      
+      class GoogleCloudRunV2Metadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata'
         end
       end
       
@@ -1757,6 +1842,24 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class Proto2BridgeMessageSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UtilStatusProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_code, as: 'canonicalCode'
+          property :code, as: 'code'
+          property :message, as: 'message'
+          property :message_set, as: 'messageSet', class: Google::Apis::RunV2::Proto2BridgeMessageSet, decorator: Google::Apis::RunV2::Proto2BridgeMessageSet::Representation
+      
+          property :space, as: 'space'
         end
       end
     end
