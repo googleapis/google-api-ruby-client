@@ -621,6 +621,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # Optional. Resource manager tags to be bound to this instance. Tag keys and
+        # values have the same definition as https://cloud.google.com/resource-manager/
+        # docs/tags/tags-overview Keys must be in the format `tagKeys/`tag_key_id``, and
+        # values are in the format `tagValues/456`.
+        # Corresponds to the JSON property `vmTags`
+        # @return [Hash<String,String>]
+        attr_accessor :vm_tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -641,6 +649,7 @@ module Google
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
+          @vm_tags = args[:vm_tags] if args.key?(:vm_tags)
         end
       end
       

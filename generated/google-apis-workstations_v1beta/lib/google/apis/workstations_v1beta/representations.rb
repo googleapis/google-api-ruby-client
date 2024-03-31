@@ -394,6 +394,7 @@ module Google
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig, decorator: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig::Representation
       
           collection :tags, as: 'tags'
+          hash :vm_tags, as: 'vmTags'
         end
       end
       
