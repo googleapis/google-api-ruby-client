@@ -432,6 +432,18 @@ module Google
         # @return [Google::Apis::GkebackupV1::RetentionPolicy]
         attr_accessor :retention_policy
       
+        # Output only. A number that represents the current risk level of this
+        # BackupPlan from RPO perspective with 1 being no risk and 5 being highest risk.
+        # Corresponds to the JSON property `rpoRiskLevel`
+        # @return [Fixnum]
+        attr_accessor :rpo_risk_level
+      
+        # Output only. Human-readable description of why the BackupPlan is in the
+        # current rpo_risk_level and action items if any.
+        # Corresponds to the JSON property `rpoRiskReason`
+        # @return [String]
+        attr_accessor :rpo_risk_reason
+      
         # Output only. State of the BackupPlan. This State field reflects the various
         # stages a BackupPlan can be in during the Create operation. It will be set to "
         # DEACTIVATED" if the BackupPlan is deactivated on an Update
@@ -473,6 +485,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @protected_pod_count = args[:protected_pod_count] if args.key?(:protected_pod_count)
           @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
+          @rpo_risk_level = args[:rpo_risk_level] if args.key?(:rpo_risk_level)
+          @rpo_risk_reason = args[:rpo_risk_reason] if args.key?(:rpo_risk_reason)
           @state = args[:state] if args.key?(:state)
           @state_reason = args[:state_reason] if args.key?(:state_reason)
           @uid = args[:uid] if args.key?(:uid)
@@ -681,6 +695,66 @@ module Google
         end
       end
       
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # Holds repeated DaysOfWeek values as a container.
+      class DayOfWeekList
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of days of week.
+        # Corresponds to the JSON property `daysOfWeek`
+        # @return [Array<String>]
+        attr_accessor :days_of_week
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @days_of_week = args[:days_of_week] if args.key?(:days_of_week)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -715,6 +789,66 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcp_kms_encryption_key = args[:gcp_kms_encryption_key] if args.key?(:gcp_kms_encryption_key)
+        end
+      end
+      
+      # Defines a time window during which no backup should happen. All time and date
+      # are in UTC.
+      class ExclusionWindow
+        include Google::Apis::Core::Hashable
+      
+        # The exclusion window occurs every day if set to "True". Specifying this field
+        # to "False" is an error.
+        # Corresponds to the JSON property `daily`
+        # @return [Boolean]
+        attr_accessor :daily
+        alias_method :daily?, :daily
+      
+        # Holds repeated DaysOfWeek values as a container.
+        # Corresponds to the JSON property `daysOfWeek`
+        # @return [Google::Apis::GkebackupV1::DayOfWeekList]
+        attr_accessor :days_of_week
+      
+        # Required. Specifies duration of the window. Restrictions for duration based on
+        # the recurrence type to allow some time for backup to happen: -
+        # single_occurrence_date: no restriction, but UI may warn about this when
+        # duration >= target RPO - daily window: duration < 24 hours - weekly window: -
+        # days of week includes all seven days of a week: duration < 24 hours - all
+        # other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `singleOccurrenceDate`
+        # @return [Google::Apis::GkebackupV1::Date]
+        attr_accessor :single_occurrence_date
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::GkebackupV1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @daily = args[:daily] if args.key?(:daily)
+          @days_of_week = args[:days_of_week] if args.key?(:days_of_week)
+          @duration = args[:duration] if args.key?(:duration)
+          @single_occurrence_date = args[:single_occurrence_date] if args.key?(:single_occurrence_date)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -769,6 +903,25 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Response message for GetBackupIndexDownloadUrl.
+      class GetBackupIndexDownloadUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `signedUrl`
+        # @return [String]
+        attr_accessor :signed_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signed_url = args[:signed_url] if args.key?(:signed_url)
         end
       end
       
@@ -1840,6 +1993,41 @@ module Google
         end
       end
       
+      # Defines RPO scheduling configuration for automatically creating Backups via
+      # this BackupPlan.
+      class RpoConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User specified time windows during which backup can NOT happen for
+        # this BackupPlan - backups should start and finish outside of any given
+        # exclusion window. Note: backup jobs will be scheduled to start and finish
+        # outside the duration of the window as much as possible, but running jobs will
+        # not get canceled when it runs into the window. All the time and date values in
+        # exclusion_windows entry in the API are in UTC. We only allow <=1 recurrence (
+        # daily or weekly) exclusion window for a BackupPlan while no restriction on
+        # number of single occurrence windows.
+        # Corresponds to the JSON property `exclusionWindows`
+        # @return [Array<Google::Apis::GkebackupV1::ExclusionWindow>]
+        attr_accessor :exclusion_windows
+      
+        # Required. Defines the target RPO for the BackupPlan in minutes, which means
+        # the target maximum data loss in time that is acceptable for this BackupPlan.
+        # This must be at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+        # Corresponds to the JSON property `targetRpoMinutes`
+        # @return [Fixnum]
+        attr_accessor :target_rpo_minutes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusion_windows = args[:exclusion_windows] if args.key?(:exclusion_windows)
+          @target_rpo_minutes = args[:target_rpo_minutes] if args.key?(:target_rpo_minutes)
+        end
+      end
+      
       # Defines scheduling parameters for automatically creating Backups via this
       # BackupPlan.
       class Schedule
@@ -1854,12 +2042,24 @@ module Google
         # @return [String]
         attr_accessor :cron_schedule
       
+        # Output only. Start time of next scheduled backup under this BackupPlan by
+        # either cron_schedule or rpo config.
+        # Corresponds to the JSON property `nextScheduledBackupTime`
+        # @return [String]
+        attr_accessor :next_scheduled_backup_time
+      
         # Optional. This flag denotes whether automatic Backup creation is paused for
         # this BackupPlan. Default: False
         # Corresponds to the JSON property `paused`
         # @return [Boolean]
         attr_accessor :paused
         alias_method :paused?, :paused
+      
+        # Defines RPO scheduling configuration for automatically creating Backups via
+        # this BackupPlan.
+        # Corresponds to the JSON property `rpoConfig`
+        # @return [Google::Apis::GkebackupV1::RpoConfig]
+        attr_accessor :rpo_config
       
         def initialize(**args)
            update!(**args)
@@ -1868,7 +2068,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cron_schedule = args[:cron_schedule] if args.key?(:cron_schedule)
+          @next_scheduled_backup_time = args[:next_scheduled_backup_time] if args.key?(:next_scheduled_backup_time)
           @paused = args[:paused] if args.key?(:paused)
+          @rpo_config = args[:rpo_config] if args.key?(:rpo_config)
         end
       end
       
@@ -2029,6 +2231,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+        # allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+        # allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
         end
       end
       

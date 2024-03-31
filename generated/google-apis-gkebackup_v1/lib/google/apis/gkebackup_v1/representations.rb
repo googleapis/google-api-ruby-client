@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DayOfWeekList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,7 +94,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExclusionWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetBackupIndexDownloadUrlResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RpoConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +281,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeOfDay
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -366,6 +402,8 @@ module Google
           property :protected_pod_count, as: 'protectedPodCount'
           property :retention_policy, as: 'retentionPolicy', class: Google::Apis::GkebackupV1::RetentionPolicy, decorator: Google::Apis::GkebackupV1::RetentionPolicy::Representation
       
+          property :rpo_risk_level, as: 'rpoRiskLevel'
+          property :rpo_risk_reason, as: 'rpoRiskReason'
           property :state, as: 'state'
           property :state_reason, as: 'stateReason'
           property :uid, as: 'uid'
@@ -406,6 +444,22 @@ module Google
         end
       end
       
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
+      class DayOfWeekList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :days_of_week, as: 'daysOfWeek'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -419,6 +473,20 @@ module Google
         end
       end
       
+      class ExclusionWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :daily, as: 'daily'
+          property :days_of_week, as: 'daysOfWeek', class: Google::Apis::GkebackupV1::DayOfWeekList, decorator: Google::Apis::GkebackupV1::DayOfWeekList::Representation
+      
+          property :duration, as: 'duration'
+          property :single_occurrence_date, as: 'singleOccurrenceDate', class: Google::Apis::GkebackupV1::Date, decorator: Google::Apis::GkebackupV1::Date::Representation
+      
+          property :start_time, as: 'startTime', class: Google::Apis::GkebackupV1::TimeOfDay, decorator: Google::Apis::GkebackupV1::TimeOfDay::Representation
+      
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -426,6 +494,13 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class GetBackupIndexDownloadUrlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signed_url, as: 'signedUrl'
         end
       end
       
@@ -683,11 +758,23 @@ module Google
         end
       end
       
+      class RpoConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclusion_windows, as: 'exclusionWindows', class: Google::Apis::GkebackupV1::ExclusionWindow, decorator: Google::Apis::GkebackupV1::ExclusionWindow::Representation
+      
+          property :target_rpo_minutes, as: 'targetRpoMinutes'
+        end
+      end
+      
       class Schedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cron_schedule, as: 'cronSchedule'
+          property :next_scheduled_backup_time, as: 'nextScheduledBackupTime'
           property :paused, as: 'paused'
+          property :rpo_config, as: 'rpoConfig', class: Google::Apis::GkebackupV1::RpoConfig, decorator: Google::Apis::GkebackupV1::RpoConfig::Representation
+      
         end
       end
       
@@ -723,6 +810,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
         end
       end
       
