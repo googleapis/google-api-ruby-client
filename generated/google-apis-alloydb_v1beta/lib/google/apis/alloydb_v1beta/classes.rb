@@ -468,6 +468,15 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # MaintenanceSchedule stores the maintenance schedule generated from the
+        # MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if
+        # MaintenanceWindow is set, and if there is no conflicting DenyPeriod. The
+        # schedule is cleared once the update takes place. This field cannot be manually
+        # changed; modify the MaintenanceUpdatePolicy instead.
+        # Corresponds to the JSON property `maintenanceSchedule`
+        # @return [Google::Apis::AlloydbV1beta::MaintenanceSchedule]
+        attr_accessor :maintenance_schedule
+      
         # MaintenanceUpdatePolicy defines the policy for system updates.
         # Corresponds to the JSON property `maintenanceUpdatePolicy`
         # @return [Google::Apis::AlloydbV1beta::MaintenanceUpdatePolicy]
@@ -579,6 +588,7 @@ module Google
           @gemini_config = args[:gemini_config] if args.key?(:gemini_config)
           @initial_user = args[:initial_user] if args.key?(:initial_user)
           @labels = args[:labels] if args.key?(:labels)
+          @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @maintenance_update_policy = args[:maintenance_update_policy] if args.key?(:maintenance_update_policy)
           @migration_source = args[:migration_source] if args.key?(:migration_source)
           @name = args[:name] if args.key?(:name)
@@ -1619,6 +1629,29 @@ module Google
         end
       end
       
+      # MaintenanceSchedule stores the maintenance schedule generated from the
+      # MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if
+      # MaintenanceWindow is set, and if there is no conflicting DenyPeriod. The
+      # schedule is cleared once the update takes place. This field cannot be manually
+      # changed; modify the MaintenanceUpdatePolicy instead.
+      class MaintenanceSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The scheduled start time for the maintenance.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # MaintenanceUpdatePolicy defines the policy for system updates.
       class MaintenanceUpdatePolicy
         include Google::Apis::Core::Hashable
@@ -2068,45 +2101,17 @@ module Google
       class PscInstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. List of consumer networks that are allowed to create PSC endpoints
-        # to service-attachments to this instance.
-        # Corresponds to the JSON property `allowedConsumerNetworks`
-        # @return [Array<String>]
-        attr_accessor :allowed_consumer_networks
-      
         # Optional. List of consumer projects that are allowed to create PSC endpoints
         # to service-attachments to this instance.
         # Corresponds to the JSON property `allowedConsumerProjects`
         # @return [Array<String>]
         attr_accessor :allowed_consumer_projects
       
-        # Optional. List of service attachments that this instance has created endpoints
-        # to connect with. Currently, only a single outgoing service attachment is
-        # supported per instance.
-        # Corresponds to the JSON property `outgoingServiceAttachmentLinks`
-        # @return [Array<String>]
-        attr_accessor :outgoing_service_attachment_links
-      
         # Output only. The DNS name of the instance for PSC connectivity. Name
         # convention: ...alloydb-psc.goog
         # Corresponds to the JSON property `pscDnsName`
         # @return [String]
         attr_accessor :psc_dns_name
-      
-        # Optional. Whether PSC connectivity is enabled for this instance. This is
-        # populated by referencing the value from the parent cluster.
-        # Corresponds to the JSON property `pscEnabled`
-        # @return [Boolean]
-        attr_accessor :psc_enabled
-        alias_method :psc_enabled?, :psc_enabled
-      
-        # Optional. Configurations for setting up PSC interfaces attached to the
-        # instance which are used for outbound connectivity. Only primary instances can
-        # have PSC interface attached. All the VMs created for the primary instance will
-        # share the same configurations. Currently we only support 0 or 1 PSC interface.
-        # Corresponds to the JSON property `pscInterfaceConfigs`
-        # @return [Array<Google::Apis::AlloydbV1beta::PscInterfaceConfig>]
-        attr_accessor :psc_interface_configs
       
         # Output only. The service attachment created when Private Service Connect (PSC)
         # is enabled for the instance. The name of the resource will be in the format of
@@ -2121,45 +2126,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allowed_consumer_networks = args[:allowed_consumer_networks] if args.key?(:allowed_consumer_networks)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
-          @outgoing_service_attachment_links = args[:outgoing_service_attachment_links] if args.key?(:outgoing_service_attachment_links)
           @psc_dns_name = args[:psc_dns_name] if args.key?(:psc_dns_name)
-          @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
-          @psc_interface_configs = args[:psc_interface_configs] if args.key?(:psc_interface_configs)
           @service_attachment_link = args[:service_attachment_link] if args.key?(:service_attachment_link)
-        end
-      end
-      
-      # Configuration for setting up a PSC interface. This information needs to be
-      # provided by the customer. PSC interfaces will be created and added to VMs via
-      # SLM (adding a network interface will require recreating the VM). For HA
-      # instances this will be done via LDTM.
-      class PscInterfaceConfig
-        include Google::Apis::Core::Hashable
-      
-        # A list of endpoints in the consumer VPC the interface might initiate outbound
-        # connections to. This list has to be provided when the PSC interface is created.
-        # Corresponds to the JSON property `consumerEndpointIps`
-        # @return [Array<String>]
-        attr_accessor :consumer_endpoint_ips
-      
-        # The NetworkAttachment resource created in the consumer VPC to which the PSC
-        # interface will be linked, in the form of: `projects/$`CONSUMER_PROJECT`/
-        # regions/$`REGION`/networkAttachments/$`NETWORK_ATTACHMENT_NAME``.
-        # NetworkAttachment has to be provided when the PSC interface is created.
-        # Corresponds to the JSON property `networkAttachment`
-        # @return [String]
-        attr_accessor :network_attachment
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @consumer_endpoint_ips = args[:consumer_endpoint_ips] if args.key?(:consumer_endpoint_ips)
-          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
         end
       end
       
