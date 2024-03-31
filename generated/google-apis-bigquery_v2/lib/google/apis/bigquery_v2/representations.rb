@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DifferentialPrivacyPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DimensionalityReductionMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -383,6 +389,18 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalCatalogDatasetOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalCatalogTableOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -634,6 +652,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JoinRestrictionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JsonOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -755,6 +779,12 @@ module Google
       end
       
       class ParquetOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionSkew
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -964,6 +994,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SerDeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SessionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -971,6 +1007,12 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SkewSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1031,6 +1073,12 @@ module Google
       end
       
       class StandardSqlTableType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1690,6 +1738,8 @@ module Google
           property :default_table_expiration_ms, :numeric_string => true, as: 'defaultTableExpirationMs'
           property :description, as: 'description'
           property :etag, as: 'etag'
+          property :external_catalog_dataset_options, as: 'externalCatalogDatasetOptions', class: Google::Apis::BigqueryV2::ExternalCatalogDatasetOptions, decorator: Google::Apis::BigqueryV2::ExternalCatalogDatasetOptions::Representation
+      
           property :external_dataset_reference, as: 'externalDatasetReference', class: Google::Apis::BigqueryV2::ExternalDatasetReference, decorator: Google::Apis::BigqueryV2::ExternalDatasetReference::Representation
       
           property :friendly_name, as: 'friendlyName'
@@ -1790,6 +1840,18 @@ module Google
       
           property :friendly_name, as: 'friendlyName'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class DifferentialPrivacyPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delta_budget, as: 'deltaBudget'
+          property :delta_per_query, as: 'deltaPerQuery'
+          property :epsilon_budget, as: 'epsilonBudget'
+          property :max_epsilon_per_query, as: 'maxEpsilonPerQuery'
+          property :max_groups_contributed, :numeric_string => true, as: 'maxGroupsContributed'
+          property :privacy_unit_column, as: 'privacyUnitColumn'
         end
       end
       
@@ -1948,6 +2010,24 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class ExternalCatalogDatasetOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_storage_location_uri, as: 'defaultStorageLocationUri'
+          hash :parameters, as: 'parameters'
+        end
+      end
+      
+      class ExternalCatalogTableOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_id, as: 'connectionId'
+          hash :parameters, as: 'parameters'
+          property :storage_descriptor, as: 'storageDescriptor', class: Google::Apis::BigqueryV2::StorageDescriptor, decorator: Google::Apis::BigqueryV2::StorageDescriptor::Representation
+      
         end
       end
       
@@ -2647,6 +2727,14 @@ module Google
         end
       end
       
+      class JoinRestrictionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :join_allowed_columns, as: 'joinAllowedColumns'
+          property :join_condition, as: 'joinCondition'
+        end
+      end
+      
       class JsonOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2865,6 +2953,14 @@ module Google
         end
       end
       
+      class PartitionSkew
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :skew_sources, as: 'skewSources', class: Google::Apis::BigqueryV2::SkewSource, decorator: Google::Apis::BigqueryV2::SkewSource::Representation
+      
+        end
+      end
+      
       class PartitionedColumn
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2917,6 +3013,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_threshold_policy, as: 'aggregationThresholdPolicy', class: Google::Apis::BigqueryV2::AggregationThresholdPolicy, decorator: Google::Apis::BigqueryV2::AggregationThresholdPolicy::Representation
+      
+          property :differential_privacy_policy, as: 'differentialPrivacyPolicy', class: Google::Apis::BigqueryV2::DifferentialPrivacyPolicy, decorator: Google::Apis::BigqueryV2::DifferentialPrivacyPolicy::Representation
+      
+          property :join_restriction_policy, as: 'joinRestrictionPolicy', class: Google::Apis::BigqueryV2::JoinRestrictionPolicy, decorator: Google::Apis::BigqueryV2::JoinRestrictionPolicy::Representation
       
         end
       end
@@ -3263,6 +3363,15 @@ module Google
         end
       end
       
+      class SerDeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          hash :parameters, as: 'parameters'
+          property :serialization_library, as: 'serializationLibrary'
+        end
+      end
+      
       class SessionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3276,6 +3385,13 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::BigqueryV2::Policy, decorator: Google::Apis::BigqueryV2::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class SkewSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stage_id, :numeric_string => true, as: 'stageId'
         end
       end
       
@@ -3343,6 +3459,8 @@ module Google
           collection :high_cardinality_joins, as: 'highCardinalityJoins', class: Google::Apis::BigqueryV2::HighCardinalityJoin, decorator: Google::Apis::BigqueryV2::HighCardinalityJoin::Representation
       
           property :insufficient_shuffle_quota, as: 'insufficientShuffleQuota'
+          property :partition_skew, as: 'partitionSkew', class: Google::Apis::BigqueryV2::PartitionSkew, decorator: Google::Apis::BigqueryV2::PartitionSkew::Representation
+      
           property :slot_contention, as: 'slotContention'
           property :stage_id, :numeric_string => true, as: 'stageId'
         end
@@ -3382,6 +3500,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :columns, as: 'columns', class: Google::Apis::BigqueryV2::StandardSqlField, decorator: Google::Apis::BigqueryV2::StandardSqlField::Representation
+      
+        end
+      end
+      
+      class StorageDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_format, as: 'inputFormat'
+          property :location_uri, as: 'locationUri'
+          property :output_format, as: 'outputFormat'
+          property :serde_info, as: 'serdeInfo', class: Google::Apis::BigqueryV2::SerDeInfo, decorator: Google::Apis::BigqueryV2::SerDeInfo::Representation
       
         end
       end
@@ -3428,6 +3557,8 @@ module Google
       
           property :etag, as: 'etag'
           property :expiration_time, :numeric_string => true, as: 'expirationTime'
+          property :external_catalog_table_options, as: 'externalCatalogTableOptions', class: Google::Apis::BigqueryV2::ExternalCatalogTableOptions, decorator: Google::Apis::BigqueryV2::ExternalCatalogTableOptions::Representation
+      
           property :external_data_configuration, as: 'externalDataConfiguration', class: Google::Apis::BigqueryV2::ExternalDataConfiguration, decorator: Google::Apis::BigqueryV2::ExternalDataConfiguration::Representation
       
           property :friendly_name, as: 'friendlyName'
