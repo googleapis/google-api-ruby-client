@@ -223,10 +223,21 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The type of a redis node in the cluster. NodeType determines the
+        # underlying machine-type of a redis node.
+        # Corresponds to the JSON property `nodeType`
+        # @return [String]
+        attr_accessor :node_type
+      
         # Configuration of the persistence functionality.
         # Corresponds to the JSON property `persistenceConfig`
         # @return [Google::Apis::RedisV1beta1::ClusterPersistenceConfig]
         attr_accessor :persistence_config
+      
+        # Output only. Precise value of redis memory size in GB for the entire cluster.
+        # Corresponds to the JSON property `preciseSizeGb`
+        # @return [Float]
+        attr_accessor :precise_size_gb
       
         # Required. Each PscConfig configures the consumer network where IPs will be
         # designated to the cluster for client access through Private Service Connect
@@ -294,7 +305,9 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @discovery_endpoints = args[:discovery_endpoints] if args.key?(:discovery_endpoints)
           @name = args[:name] if args.key?(:name)
+          @node_type = args[:node_type] if args.key?(:node_type)
           @persistence_config = args[:persistence_config] if args.key?(:persistence_config)
+          @precise_size_gb = args[:precise_size_gb] if args.key?(:precise_size_gb)
           @psc_configs = args[:psc_configs] if args.key?(:psc_configs)
           @psc_connections = args[:psc_connections] if args.key?(:psc_connections)
           @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
