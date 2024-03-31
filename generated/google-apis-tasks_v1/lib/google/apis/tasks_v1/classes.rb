@@ -74,7 +74,7 @@ module Google
         # @return [Array<Google::Apis::TasksV1::Task::Link>]
         attr_accessor :links
       
-        # Notes describing the task. Optional.
+        # Notes describing the task. Optional. Maximum length allowed: 8192 characters.
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
@@ -106,7 +106,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Title of the task.
+        # Title of the task. Maximum length allowed: 1024 characters.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -115,6 +115,12 @@ module Google
         # Corresponds to the JSON property `updated`
         # @return [String]
         attr_accessor :updated
+      
+        # An absolute link to the task in the Google Tasks Web UI. This field is read-
+        # only.
+        # Corresponds to the JSON property `webViewLink`
+        # @return [String]
+        attr_accessor :web_view_link
       
         def initialize(**args)
            update!(**args)
@@ -137,6 +143,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @title = args[:title] if args.key?(:title)
           @updated = args[:updated] if args.key?(:updated)
+          @web_view_link = args[:web_view_link] if args.key?(:web_view_link)
         end
         
         # 
@@ -196,7 +203,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Title of the task list.
+        # Title of the task list. Maximum length allowed: 1024 characters.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title

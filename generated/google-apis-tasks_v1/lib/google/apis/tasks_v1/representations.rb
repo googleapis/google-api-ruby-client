@@ -71,6 +71,7 @@ module Google
           property :status, as: 'status'
           property :title, as: 'title'
           property :updated, as: 'updated'
+          property :web_view_link, as: 'webViewLink'
         end
         
         class Link

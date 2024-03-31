@@ -109,7 +109,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new task list and adds it to the authenticated user's task lists.
+        # Creates a new task list and adds it to the authenticated user's task lists. A
+        # user can have up to 2000 lists at a time.
         # @param [Google::Apis::TasksV1::TaskList] task_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -139,7 +140,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all the authenticated user's task lists.
+        # Returns all the authenticated user's task lists. A user can have up to 2000
+        # lists at a time.
         # @param [Fixnum] max_results
         #   Maximum number of task lists returned on one page. Optional. The default is 20
         #   (max allowed: 100).
@@ -334,7 +336,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new task on the specified task list.
+        # Creates a new task on the specified task list. A user can have up to 20,000
+        # uncompleted tasks per list and up to 100,000 tasks in total at a time.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [Google::Apis::TasksV1::Task] task_object
@@ -375,7 +378,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all tasks in the specified task list.
+        # Returns all tasks in the specified task list. A user can have up to 20,000
+        # uncompleted tasks per list and up to 100,000 tasks in total at a time.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] completed_max
@@ -447,7 +451,8 @@ module Google
         
         # Moves the specified task to another position in the task list. This can
         # include putting it as a child task under a new parent and/or move it to a
-        # different position among its sibling tasks.
+        # different position among its sibling tasks. A user can have up to 2,000
+        # subtasks per task.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] task
