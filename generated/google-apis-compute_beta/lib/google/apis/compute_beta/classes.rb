@@ -8331,12 +8331,13 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Additional structured details about this error. Keys should match /[a-zA-Z0-9-
-        # _]/ and be limited to 64 characters in length. When identifying the current
-        # value of an exceeded limit, the units should be contained in the key, not the
-        # value. For example, rather than `"instanceLimit": "100/request"`, should be
-        # returned as, `"instanceLimitPerRequest": "100"`, if the client exceeds the
-        # number of instances that can be created in a single (batch) request.
+        # Additional structured details about this error. Keys must match /a-z+/ but
+        # should ideally be lowerCamelCase. Also they must be limited to 64 characters
+        # in length. When identifying the current value of an exceeded limit, the units
+        # should be contained in the key, not the value. For example, rather than `"
+        # instanceLimit": "100/request"`, should be returned as, `"
+        # instanceLimitPerRequest": "100"`, if the client exceeds the number of
+        # instances that can be created in a single (batch) request.
         # Corresponds to the JSON property `metadatas`
         # @return [Hash<String,String>]
         attr_accessor :metadatas
@@ -17234,7 +17235,7 @@ module Google
         attr_accessor :is_stateful
         alias_method :is_stateful?, :is_stateful
       
-        # [Output Only] Status of per-instance configurations on the instance.
+        # [Output Only] Status of per-instance configurations on the instances.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStatusStatefulPerInstanceConfigs]
         attr_accessor :per_instance_configs
@@ -37072,6 +37073,20 @@ module Google
         attr_accessor :enable_ipv6
         alias_method :enable_ipv6?, :enable_ipv6
       
+        # List of export policies applied to this peer, in the order they must be
+        # evaluated. The name must correspond to an existing policy that has
+        # ROUTE_POLICY_TYPE_EXPORT type.
+        # Corresponds to the JSON property `exportPolicies`
+        # @return [Array<String>]
+        attr_accessor :export_policies
+      
+        # List of import policies applied to this peer, in the order they must be
+        # evaluated. The name must correspond to an existing policy that has
+        # ROUTE_POLICY_TYPE_IMPORT type.
+        # Corresponds to the JSON property `importPolicies`
+        # @return [Array<String>]
+        attr_accessor :import_policies
+      
         # Name of the interface the BGP peer is associated with.
         # Corresponds to the JSON property `interfaceName`
         # @return [String]
@@ -37166,6 +37181,8 @@ module Google
           @enable = args[:enable] if args.key?(:enable)
           @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
+          @export_policies = args[:export_policies] if args.key?(:export_policies)
+          @import_policies = args[:import_policies] if args.key?(:import_policies)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv4_nexthop_address = args[:ipv4_nexthop_address] if args.key?(:ipv4_nexthop_address)
@@ -41119,10 +41136,10 @@ module Google
         # @return [String]
         attr_accessor :producer_forwarding_rule
       
-        # The number of consumer Network Connectivity Center spokes that connected
-        # Private Service Connect endpoints can be propagated to. This limit lets a
-        # service producer indirectly limit how many propagated Private Service Connect
-        # connections can be established to the producer's service attachment. If the
+        # The number of consumer spokes that connected Private Service Connect endpoints
+        # can be propagated to through Network Connectivity Center. This limit lets the
+        # service producer limit how many propagated Private Service Connect connections
+        # can be established to this service attachment from a single consumer. If the
         # connection preference of the service attachment is ACCEPT_MANUAL, the limit
         # applies to each project or network that is listed in the consumer accept list.
         # If the connection preference of the service attachment is ACCEPT_AUTOMATIC,
@@ -47024,6 +47041,25 @@ module Google
         # @return [String]
         attr_accessor :ssl_policy
       
+        # Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for
+        # this service. Early Data allows a TLS resumption handshake to include the
+        # initial application payload (a HTTP request) alongside the handshake, reducing
+        # the effective round trips to "zero". This applies to TLS 1.3 connections over
+        # TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application
+        # performance, especially on networks where interruptions may be common, such as
+        # on mobile. Requests with Early Data will have the "Early-Data" HTTP header set
+        # on the request, with a value of "1", to allow the backend to determine whether
+        # Early Data was included. Note: TLS Early Data may allow requests to be
+        # replayed, as the data is sent to the backend before the handshake has fully
+        # completed. Applications that allow idempotent HTTP methods to make non-
+        # idempotent changes, such as a GET request updating a database, should not
+        # accept Early Data on those requests, and reject requests with the "Early-Data:
+        # 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to
+        # remain RFC compliant. The default value is DISABLED.
+        # Corresponds to the JSON property `tlsEarlyData`
+        # @return [String]
+        attr_accessor :tls_early_data
+      
         # A fully-qualified or valid partial URL to the UrlMap resource that defines the
         # mapping from URL to the BackendService. For example, the following are all
         # valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/
@@ -47058,6 +47094,7 @@ module Google
           @server_tls_policy = args[:server_tls_policy] if args.key?(:server_tls_policy)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
           @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
+          @tls_early_data = args[:tls_early_data] if args.key?(:tls_early_data)
           @url_map = args[:url_map] if args.key?(:url_map)
         end
       end

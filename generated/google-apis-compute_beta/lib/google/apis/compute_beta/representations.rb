@@ -16034,6 +16034,8 @@ module Google
           property :enable, as: 'enable'
           property :enable_ipv4, as: 'enableIpv4'
           property :enable_ipv6, as: 'enableIpv6'
+          collection :export_policies, as: 'exportPolicies'
+          collection :import_policies, as: 'importPolicies'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
           property :ipv4_nexthop_address, as: 'ipv4NexthopAddress'
@@ -18453,6 +18455,7 @@ module Google
           property :server_tls_policy, as: 'serverTlsPolicy'
           collection :ssl_certificates, as: 'sslCertificates'
           property :ssl_policy, as: 'sslPolicy'
+          property :tls_early_data, as: 'tlsEarlyData'
           property :url_map, as: 'urlMap'
         end
       end
