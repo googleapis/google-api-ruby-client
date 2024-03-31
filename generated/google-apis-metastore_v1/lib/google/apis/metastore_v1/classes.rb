@@ -527,7 +527,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The fully qualified customer provided Cloud KMS key name to use for customer
-        # data encryption, in the following form:projects/`project_number`/locations/`
+        # data encryption, in the following format:projects/`project_number`/locations/`
         # location_id`/keyRings/`key_ring_id`/cryptoKeys/`crypto_key_id`.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
