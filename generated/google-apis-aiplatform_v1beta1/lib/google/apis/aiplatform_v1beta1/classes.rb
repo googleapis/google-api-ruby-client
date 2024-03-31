@@ -802,6 +802,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartBlob]
         attr_accessor :inline_data
       
+        # Metadata provides extra info for building the LM Root request.
+        # Corresponds to the JSON property `lmRootMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartLmRootMetadata]
+        attr_accessor :lm_root_metadata
+      
         # Text input.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -823,6 +828,7 @@ module Google
           @function_call = args[:function_call] if args.key?(:function_call)
           @function_response = args[:function_response] if args.key?(:function_response)
           @inline_data = args[:inline_data] if args.key?(:inline_data)
+          @lm_root_metadata = args[:lm_root_metadata] if args.key?(:lm_root_metadata)
           @text = args[:text] if args.key?(:text)
           @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
         end
@@ -908,6 +914,25 @@ module Google
         def update!(**args)
           @file_uri = args[:file_uri] if args.key?(:file_uri)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # Metadata provides extra info for building the LM Root request.
+      class CloudAiNlLlmProtoServicePartLmRootMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Chunk id that will be used when mapping the part to the LM Root's chunk.
+        # Corresponds to the JSON property `chunkId`
+        # @return [String]
+        attr_accessor :chunk_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_id = args[:chunk_id] if args.key?(:chunk_id)
         end
       end
       
@@ -3218,11 +3243,114 @@ module Google
         end
       end
       
-      # Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.
+      # Input for bleu metric.
+      class GoogleCloudAiplatformV1beta1BleuInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated bleu instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BleuInstance>]
+        attr_accessor :instances
+      
+        # Spec for bleu score metric - calculates the precision of n-grams in the
+        # prediction as compared to reference - returns a score ranging between 0 to 1.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BleuSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for bleu instance.
+      class GoogleCloudAiplatformV1beta1BleuInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Required. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Bleu metric value for an instance.
+      class GoogleCloudAiplatformV1beta1BleuMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Bleu score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for bleu metric.
+      class GoogleCloudAiplatformV1beta1BleuResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Bleu metric values.
+        # Corresponds to the JSON property `bleuMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BleuMetricValue>]
+        attr_accessor :bleu_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bleu_metric_values = args[:bleu_metric_values] if args.key?(:bleu_metric_values)
+        end
+      end
+      
+      # Spec for bleu score metric - calculates the precision of n-grams in the
+      # prediction as compared to reference - returns a score ranging between 0 to 1.
+      class GoogleCloudAiplatformV1beta1BleuSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Content blob. It's preferred to send as text directly rather than raw bytes.
       class GoogleCloudAiplatformV1beta1Blob
         include Google::Apis::Core::Hashable
       
-        # Required. Raw bytes for media formats.
+        # Required. Raw bytes.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -3439,26 +3567,6 @@ module Google
         end
       end
       
-      # Placeholder for all checkpoint related data. Any data needed to restore a
-      # request and more go/vertex-extension-query-operation
-      class GoogleCloudAiplatformV1beta1CheckPoint
-        include Google::Apis::Core::Hashable
-      
-        # Required. encoded checkpoint
-        # Corresponds to the JSON property `content`
-        # @return [String]
-        attr_accessor :content
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @content = args[:content] if args.key?(:content)
-        end
-      end
-      
       # This message will be placed in the metadata field of a google.longrunning.
       # Operation associated with a CheckTrialEarlyStoppingState request.
       class GoogleCloudAiplatformV1beta1CheckTrialEarlyStoppingStateMetatdata
@@ -3596,6 +3704,100 @@ module Google
         # Update properties of this object
         def update!(**args)
           @citations = args[:citations] if args.key?(:citations)
+        end
+      end
+      
+      # Input for coherence metric.
+      class GoogleCloudAiplatformV1beta1CoherenceInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for coherence instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CoherenceInstance]
+        attr_accessor :instance
+      
+        # Spec for coherence score metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CoherenceSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for coherence instance.
+      class GoogleCloudAiplatformV1beta1CoherenceInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prediction = args[:prediction] if args.key?(:prediction)
+        end
+      end
+      
+      # Spec for coherence result.
+      class GoogleCloudAiplatformV1beta1CoherenceResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for coherence score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for coherence score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Coherence score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for coherence score metric.
+      class GoogleCloudAiplatformV1beta1CoherenceSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -6300,6 +6502,19 @@ module Google
         end
       end
       
+      # The input content is encapsulated and uploaded in the request.
+      class GoogleCloudAiplatformV1beta1DirectUploadSource
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents the spec of disk options.
       class GoogleCloudAiplatformV1beta1DiskSpec
         include Google::Apis::Core::Hashable
@@ -6692,6 +6907,308 @@ module Google
         end
       end
       
+      # Request message for EvaluationService.EvaluateInstances.
+      class GoogleCloudAiplatformV1beta1EvaluateInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Input for bleu metric.
+        # Corresponds to the JSON property `bleuInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BleuInput]
+        attr_accessor :bleu_input
+      
+        # Input for coherence metric.
+        # Corresponds to the JSON property `coherenceInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CoherenceInput]
+        attr_accessor :coherence_input
+      
+        # Input for exact match metric.
+        # Corresponds to the JSON property `exactMatchInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExactMatchInput]
+        attr_accessor :exact_match_input
+      
+        # Input for fluency metric.
+        # Corresponds to the JSON property `fluencyInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FluencyInput]
+        attr_accessor :fluency_input
+      
+        # Input for fulfillment metric.
+        # Corresponds to the JSON property `fulfillmentInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FulfillmentInput]
+        attr_accessor :fulfillment_input
+      
+        # Input for groundedness metric.
+        # Corresponds to the JSON property `groundednessInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundednessInput]
+        attr_accessor :groundedness_input
+      
+        # Input for pairwise question answering quality metric.
+        # Corresponds to the JSON property `pairwiseQuestionAnsweringQualityInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PairwiseQuestionAnsweringQualityInput]
+        attr_accessor :pairwise_question_answering_quality_input
+      
+        # Input for pairwise summarization quality metric.
+        # Corresponds to the JSON property `pairwiseSummarizationQualityInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PairwiseSummarizationQualityInput]
+        attr_accessor :pairwise_summarization_quality_input
+      
+        # Input for question answering correctness metric.
+        # Corresponds to the JSON property `questionAnsweringCorrectnessInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessInput]
+        attr_accessor :question_answering_correctness_input
+      
+        # Input for question answering helpfulness metric.
+        # Corresponds to the JSON property `questionAnsweringHelpfulnessInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessInput]
+        attr_accessor :question_answering_helpfulness_input
+      
+        # Input for question answering quality metric.
+        # Corresponds to the JSON property `questionAnsweringQualityInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringQualityInput]
+        attr_accessor :question_answering_quality_input
+      
+        # Input for question answering relevance metric.
+        # Corresponds to the JSON property `questionAnsweringRelevanceInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceInput]
+        attr_accessor :question_answering_relevance_input
+      
+        # Input for rag context recall metric.
+        # Corresponds to the JSON property `ragContextRecallInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagContextRecallInput]
+        attr_accessor :rag_context_recall_input
+      
+        # Input for response recall metric.
+        # Corresponds to the JSON property `responseRecallInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ResponseRecallInput]
+        attr_accessor :response_recall_input
+      
+        # Input for rouge metric.
+        # Corresponds to the JSON property `rougeInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RougeInput]
+        attr_accessor :rouge_input
+      
+        # Input for safety metric.
+        # Corresponds to the JSON property `safetyInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyInput]
+        attr_accessor :safety_input
+      
+        # Input for summarization helpfulness metric.
+        # Corresponds to the JSON property `summarizationHelpfulnessInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationHelpfulnessInput]
+        attr_accessor :summarization_helpfulness_input
+      
+        # Input for summarization quality metric.
+        # Corresponds to the JSON property `summarizationQualityInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationQualityInput]
+        attr_accessor :summarization_quality_input
+      
+        # Input for summarization verbosity metric.
+        # Corresponds to the JSON property `summarizationVerbosityInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationVerbosityInput]
+        attr_accessor :summarization_verbosity_input
+      
+        # Input for tool call valid metric.
+        # Corresponds to the JSON property `toolCallValidInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCallValidInput]
+        attr_accessor :tool_call_valid_input
+      
+        # Input for tool name match metric.
+        # Corresponds to the JSON property `toolNameMatchInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolNameMatchInput]
+        attr_accessor :tool_name_match_input
+      
+        # Input for tool parameter key match metric.
+        # Corresponds to the JSON property `toolParameterKeyMatchInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKeyMatchInput]
+        attr_accessor :tool_parameter_key_match_input
+      
+        # Input for tool parameter key value match metric.
+        # Corresponds to the JSON property `toolParameterKvMatchInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKvMatchInput]
+        attr_accessor :tool_parameter_kv_match_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bleu_input = args[:bleu_input] if args.key?(:bleu_input)
+          @coherence_input = args[:coherence_input] if args.key?(:coherence_input)
+          @exact_match_input = args[:exact_match_input] if args.key?(:exact_match_input)
+          @fluency_input = args[:fluency_input] if args.key?(:fluency_input)
+          @fulfillment_input = args[:fulfillment_input] if args.key?(:fulfillment_input)
+          @groundedness_input = args[:groundedness_input] if args.key?(:groundedness_input)
+          @pairwise_question_answering_quality_input = args[:pairwise_question_answering_quality_input] if args.key?(:pairwise_question_answering_quality_input)
+          @pairwise_summarization_quality_input = args[:pairwise_summarization_quality_input] if args.key?(:pairwise_summarization_quality_input)
+          @question_answering_correctness_input = args[:question_answering_correctness_input] if args.key?(:question_answering_correctness_input)
+          @question_answering_helpfulness_input = args[:question_answering_helpfulness_input] if args.key?(:question_answering_helpfulness_input)
+          @question_answering_quality_input = args[:question_answering_quality_input] if args.key?(:question_answering_quality_input)
+          @question_answering_relevance_input = args[:question_answering_relevance_input] if args.key?(:question_answering_relevance_input)
+          @rag_context_recall_input = args[:rag_context_recall_input] if args.key?(:rag_context_recall_input)
+          @response_recall_input = args[:response_recall_input] if args.key?(:response_recall_input)
+          @rouge_input = args[:rouge_input] if args.key?(:rouge_input)
+          @safety_input = args[:safety_input] if args.key?(:safety_input)
+          @summarization_helpfulness_input = args[:summarization_helpfulness_input] if args.key?(:summarization_helpfulness_input)
+          @summarization_quality_input = args[:summarization_quality_input] if args.key?(:summarization_quality_input)
+          @summarization_verbosity_input = args[:summarization_verbosity_input] if args.key?(:summarization_verbosity_input)
+          @tool_call_valid_input = args[:tool_call_valid_input] if args.key?(:tool_call_valid_input)
+          @tool_name_match_input = args[:tool_name_match_input] if args.key?(:tool_name_match_input)
+          @tool_parameter_key_match_input = args[:tool_parameter_key_match_input] if args.key?(:tool_parameter_key_match_input)
+          @tool_parameter_kv_match_input = args[:tool_parameter_kv_match_input] if args.key?(:tool_parameter_kv_match_input)
+        end
+      end
+      
+      # Response message for EvaluationService.EvaluateInstances.
+      class GoogleCloudAiplatformV1beta1EvaluateInstancesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Results for bleu metric.
+        # Corresponds to the JSON property `bleuResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BleuResults]
+        attr_accessor :bleu_results
+      
+        # Spec for coherence result.
+        # Corresponds to the JSON property `coherenceResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CoherenceResult]
+        attr_accessor :coherence_result
+      
+        # Results for exact match metric.
+        # Corresponds to the JSON property `exactMatchResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExactMatchResults]
+        attr_accessor :exact_match_results
+      
+        # Spec for fluency result.
+        # Corresponds to the JSON property `fluencyResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FluencyResult]
+        attr_accessor :fluency_result
+      
+        # Spec for fulfillment result.
+        # Corresponds to the JSON property `fulfillmentResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FulfillmentResult]
+        attr_accessor :fulfillment_result
+      
+        # Spec for groundedness result.
+        # Corresponds to the JSON property `groundednessResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundednessResult]
+        attr_accessor :groundedness_result
+      
+        # Spec for pairwise question answering quality result.
+        # Corresponds to the JSON property `pairwiseQuestionAnsweringQualityResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PairwiseQuestionAnsweringQualityResult]
+        attr_accessor :pairwise_question_answering_quality_result
+      
+        # Spec for pairwise summarization quality result.
+        # Corresponds to the JSON property `pairwiseSummarizationQualityResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PairwiseSummarizationQualityResult]
+        attr_accessor :pairwise_summarization_quality_result
+      
+        # Spec for question answering correctness result.
+        # Corresponds to the JSON property `questionAnsweringCorrectnessResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessResult]
+        attr_accessor :question_answering_correctness_result
+      
+        # Spec for question answering helpfulness result.
+        # Corresponds to the JSON property `questionAnsweringHelpfulnessResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessResult]
+        attr_accessor :question_answering_helpfulness_result
+      
+        # Spec for question answering quality result.
+        # Corresponds to the JSON property `questionAnsweringQualityResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringQualityResult]
+        attr_accessor :question_answering_quality_result
+      
+        # Spec for question answering relevance result.
+        # Corresponds to the JSON property `questionAnsweringRelevanceResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceResult]
+        attr_accessor :question_answering_relevance_result
+      
+        # Spec for rag context recall result.
+        # Corresponds to the JSON property `ragContextRecallResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagContextRecallResult]
+        attr_accessor :rag_context_recall_result
+      
+        # Spec for response recall result.
+        # Corresponds to the JSON property `responseRecallResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ResponseRecallResult]
+        attr_accessor :response_recall_result
+      
+        # Results for rouge metric.
+        # Corresponds to the JSON property `rougeResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RougeResults]
+        attr_accessor :rouge_results
+      
+        # Spec for safety result.
+        # Corresponds to the JSON property `safetyResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyResult]
+        attr_accessor :safety_result
+      
+        # Spec for summarization helpfulness result.
+        # Corresponds to the JSON property `summarizationHelpfulnessResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationHelpfulnessResult]
+        attr_accessor :summarization_helpfulness_result
+      
+        # Spec for summarization quality result.
+        # Corresponds to the JSON property `summarizationQualityResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationQualityResult]
+        attr_accessor :summarization_quality_result
+      
+        # Spec for summarization verbosity result.
+        # Corresponds to the JSON property `summarizationVerbosityResult`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationVerbosityResult]
+        attr_accessor :summarization_verbosity_result
+      
+        # Results for tool call valid metric.
+        # Corresponds to the JSON property `toolCallValidResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCallValidResults]
+        attr_accessor :tool_call_valid_results
+      
+        # Results for tool name match metric.
+        # Corresponds to the JSON property `toolNameMatchResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolNameMatchResults]
+        attr_accessor :tool_name_match_results
+      
+        # Results for tool parameter key match metric.
+        # Corresponds to the JSON property `toolParameterKeyMatchResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKeyMatchResults]
+        attr_accessor :tool_parameter_key_match_results
+      
+        # Results for tool parameter key value match metric.
+        # Corresponds to the JSON property `toolParameterKvMatchResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKvMatchResults]
+        attr_accessor :tool_parameter_kv_match_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bleu_results = args[:bleu_results] if args.key?(:bleu_results)
+          @coherence_result = args[:coherence_result] if args.key?(:coherence_result)
+          @exact_match_results = args[:exact_match_results] if args.key?(:exact_match_results)
+          @fluency_result = args[:fluency_result] if args.key?(:fluency_result)
+          @fulfillment_result = args[:fulfillment_result] if args.key?(:fulfillment_result)
+          @groundedness_result = args[:groundedness_result] if args.key?(:groundedness_result)
+          @pairwise_question_answering_quality_result = args[:pairwise_question_answering_quality_result] if args.key?(:pairwise_question_answering_quality_result)
+          @pairwise_summarization_quality_result = args[:pairwise_summarization_quality_result] if args.key?(:pairwise_summarization_quality_result)
+          @question_answering_correctness_result = args[:question_answering_correctness_result] if args.key?(:question_answering_correctness_result)
+          @question_answering_helpfulness_result = args[:question_answering_helpfulness_result] if args.key?(:question_answering_helpfulness_result)
+          @question_answering_quality_result = args[:question_answering_quality_result] if args.key?(:question_answering_quality_result)
+          @question_answering_relevance_result = args[:question_answering_relevance_result] if args.key?(:question_answering_relevance_result)
+          @rag_context_recall_result = args[:rag_context_recall_result] if args.key?(:rag_context_recall_result)
+          @response_recall_result = args[:response_recall_result] if args.key?(:response_recall_result)
+          @rouge_results = args[:rouge_results] if args.key?(:rouge_results)
+          @safety_result = args[:safety_result] if args.key?(:safety_result)
+          @summarization_helpfulness_result = args[:summarization_helpfulness_result] if args.key?(:summarization_helpfulness_result)
+          @summarization_quality_result = args[:summarization_quality_result] if args.key?(:summarization_quality_result)
+          @summarization_verbosity_result = args[:summarization_verbosity_result] if args.key?(:summarization_verbosity_result)
+          @tool_call_valid_results = args[:tool_call_valid_results] if args.key?(:tool_call_valid_results)
+          @tool_name_match_results = args[:tool_name_match_results] if args.key?(:tool_name_match_results)
+          @tool_parameter_key_match_results = args[:tool_parameter_key_match_results] if args.key?(:tool_parameter_key_match_results)
+          @tool_parameter_kv_match_results = args[:tool_parameter_kv_match_results] if args.key?(:tool_parameter_kv_match_results)
+        end
+      end
+      
       # True positive, false positive, or false negative. EvaluatedAnnotation is only
       # available under ModelEvaluationSlice with slice of `annotationSpec` dimension.
       class GoogleCloudAiplatformV1beta1EvaluatedAnnotation
@@ -6843,6 +7360,109 @@ module Google
           @execution = args[:execution] if args.key?(:execution)
           @labels = args[:labels] if args.key?(:labels)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Input for exact match metric.
+      class GoogleCloudAiplatformV1beta1ExactMatchInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated exact match instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExactMatchInstance>]
+        attr_accessor :instances
+      
+        # Spec for exact match metric - returns 1 if prediction and reference exactly
+        # matches, otherwise 0.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExactMatchSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for exact match instance.
+      class GoogleCloudAiplatformV1beta1ExactMatchInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Required. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Exact match metric value for an instance.
+      class GoogleCloudAiplatformV1beta1ExactMatchMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Exact match score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for exact match metric.
+      class GoogleCloudAiplatformV1beta1ExactMatchResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Exact match metric values.
+        # Corresponds to the JSON property `exactMatchMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExactMatchMetricValue>]
+        attr_accessor :exact_match_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exact_match_metric_values = args[:exact_match_metric_values] if args.key?(:exact_match_metric_values)
+        end
+      end
+      
+      # Spec for exact match metric - returns 1 if prediction and reference exactly
+      # matches, otherwise 0.
+      class GoogleCloudAiplatformV1beta1ExactMatchSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -7141,88 +7761,6 @@ module Google
           @schema_version = args[:schema_version] if args.key?(:schema_version)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Execution plan for a request.
-      class GoogleCloudAiplatformV1beta1ExecutionPlan
-        include Google::Apis::Core::Hashable
-      
-        # Required. Sequence of steps to execute a request.
-        # Corresponds to the JSON property `steps`
-        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExecutionPlanStep>]
-        attr_accessor :steps
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @steps = args[:steps] if args.key?(:steps)
-        end
-      end
-      
-      # Single step in query execution plan.
-      class GoogleCloudAiplatformV1beta1ExecutionPlanStep
-        include Google::Apis::Core::Hashable
-      
-        # Extension execution step.
-        # Corresponds to the JSON property `extensionExecution`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExecutionPlanStepExtensionExecution]
-        attr_accessor :extension_execution
-      
-        # Respond to user step.
-        # Corresponds to the JSON property `respondToUser`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExecutionPlanStepRespondToUser]
-        attr_accessor :respond_to_user
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @extension_execution = args[:extension_execution] if args.key?(:extension_execution)
-          @respond_to_user = args[:respond_to_user] if args.key?(:respond_to_user)
-        end
-      end
-      
-      # Extension execution step.
-      class GoogleCloudAiplatformV1beta1ExecutionPlanStepExtensionExecution
-        include Google::Apis::Core::Hashable
-      
-        # Required. extension resource name
-        # Corresponds to the JSON property `extension`
-        # @return [String]
-        attr_accessor :extension
-      
-        # Required. the operation id
-        # Corresponds to the JSON property `operationId`
-        # @return [String]
-        attr_accessor :operation_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @extension = args[:extension] if args.key?(:extension)
-          @operation_id = args[:operation_id] if args.key?(:operation_id)
-        end
-      end
-      
-      # Respond to user step.
-      class GoogleCloudAiplatformV1beta1ExecutionPlanStepRespondToUser
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -8816,13 +9354,14 @@ module Google
         attr_accessor :create_time
       
         # The dedicated serving endpoint for this FeatureOnlineStore. Only need to set
-        # when you choose Optimized storage type or enable EmbeddingManagement. Will use
-        # public endpoint by default. Note, for EmbeddingManagement use case, only [
-        # DedicatedServingEndpoint.public_endpoint_domain_name] is available now.
+        # when you choose Optimized storage type. Public endpoint is provisioned by
+        # default.
         # Corresponds to the JSON property `dedicatedServingEndpoint`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint]
         attr_accessor :dedicated_serving_endpoint
       
+        # Deprecated: This sub message is no longer needed anymore and embedding
+        # management is automatically enabled when specifying Optimized storage type.
         # Contains settings for embedding management.
         # Corresponds to the JSON property `embeddingManagement`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement]
@@ -8944,9 +9483,8 @@ module Google
       end
       
       # The dedicated serving endpoint for this FeatureOnlineStore. Only need to set
-      # when you choose Optimized storage type or enable EmbeddingManagement. Will use
-      # public endpoint by default. Note, for EmbeddingManagement use case, only [
-      # DedicatedServingEndpoint.public_endpoint_domain_name] is available now.
+      # when you choose Optimized storage type. Public endpoint is provisioned by
+      # default.
       class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint
         include Google::Apis::Core::Hashable
       
@@ -8979,6 +9517,8 @@ module Google
         end
       end
       
+      # Deprecated: This sub message is no longer needed anymore and embedding
+      # management is automatically enabled when specifying Optimized storage type.
       # Contains settings for embedding management.
       class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement
         include Google::Apis::Core::Hashable
@@ -9291,6 +9831,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource]
         attr_accessor :feature_registry_source
       
+        # Configuration for vector indexing.
+        # Corresponds to the JSON property `indexConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewIndexConfig]
+        attr_accessor :index_config
+      
         # Optional. The labels with user-defined metadata to organize your FeatureViews.
         # Label keys and values can be no longer than 64 characters (Unicode codepoints),
         # can only contain lowercase letters, numeric characters, underscores and
@@ -9351,6 +9896,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @etag = args[:etag] if args.key?(:etag)
           @feature_registry_source = args[:feature_registry_source] if args.key?(:feature_registry_source)
+          @index_config = args[:index_config] if args.key?(:index_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
@@ -9480,6 +10026,100 @@ module Google
         def update!(**args)
           @feature_group_id = args[:feature_group_id] if args.key?(:feature_group_id)
           @feature_ids = args[:feature_ids] if args.key?(:feature_ids)
+        end
+      end
+      
+      # Configuration for vector indexing.
+      class GoogleCloudAiplatformV1beta1FeatureViewIndexConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration options for using brute force search.
+        # Corresponds to the JSON property `bruteForceConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig]
+        attr_accessor :brute_force_config
+      
+        # Optional. Column of crowding. This column contains crowding attribute which is
+        # a constraint on a neighbor list produced by FeatureOnlineStoreService.
+        # SearchNearestEntities to diversify search results. If NearestNeighborQuery.
+        # per_crowding_attribute_neighbor_count is set to K in
+        # SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of
+        # the same crowding attribute are returned in the response.
+        # Corresponds to the JSON property `crowdingColumn`
+        # @return [String]
+        attr_accessor :crowding_column
+      
+        # Optional. The distance measure used in nearest neighbor search.
+        # Corresponds to the JSON property `distanceMeasureType`
+        # @return [String]
+        attr_accessor :distance_measure_type
+      
+        # Optional. Column of embedding. This column contains the source data to create
+        # index for vector search. embedding_column must be set when using vector search.
+        # Corresponds to the JSON property `embeddingColumn`
+        # @return [String]
+        attr_accessor :embedding_column
+      
+        # Optional. The number of dimensions of the input embedding.
+        # Corresponds to the JSON property `embeddingDimension`
+        # @return [Fixnum]
+        attr_accessor :embedding_dimension
+      
+        # Optional. Columns of features that're used to filter vector search results.
+        # Corresponds to the JSON property `filterColumns`
+        # @return [Array<String>]
+        attr_accessor :filter_columns
+      
+        # Configuration options for the tree-AH algorithm.
+        # Corresponds to the JSON property `treeAhConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAhConfig]
+        attr_accessor :tree_ah_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brute_force_config = args[:brute_force_config] if args.key?(:brute_force_config)
+          @crowding_column = args[:crowding_column] if args.key?(:crowding_column)
+          @distance_measure_type = args[:distance_measure_type] if args.key?(:distance_measure_type)
+          @embedding_column = args[:embedding_column] if args.key?(:embedding_column)
+          @embedding_dimension = args[:embedding_dimension] if args.key?(:embedding_dimension)
+          @filter_columns = args[:filter_columns] if args.key?(:filter_columns)
+          @tree_ah_config = args[:tree_ah_config] if args.key?(:tree_ah_config)
+        end
+      end
+      
+      # Configuration options for using brute force search.
+      class GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Configuration options for the tree-AH algorithm.
+      class GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAhConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of embeddings on each leaf node. The default value is 1000 if
+        # not set.
+        # Corresponds to the JSON property `leafNodeEmbeddingCount`
+        # @return [Fixnum]
+        attr_accessor :leaf_node_embedding_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @leaf_node_embedding_count = args[:leaf_node_embedding_count] if args.key?(:leaf_node_embedding_count)
         end
       end
       
@@ -10344,6 +10984,100 @@ module Google
         end
       end
       
+      # Input for fluency metric.
+      class GoogleCloudAiplatformV1beta1FluencyInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for fluency instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FluencyInstance]
+        attr_accessor :instance
+      
+        # Spec for fluency score metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FluencySpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for fluency instance.
+      class GoogleCloudAiplatformV1beta1FluencyInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prediction = args[:prediction] if args.key?(:prediction)
+        end
+      end
+      
+      # Spec for fluency result.
+      class GoogleCloudAiplatformV1beta1FluencyResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for fluency score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for fluency score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Fluency score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for fluency score metric.
+      class GoogleCloudAiplatformV1beta1FluencySpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Assigns the input data to training, validation, and test sets as per the given
       # fractions. Any of `training_fraction`, `validation_fraction` and `
       # test_fraction` may optionally be provided, they must sum to up to 1. If the
@@ -10380,6 +11114,106 @@ module Google
         end
       end
       
+      # Input for fulfillment metric.
+      class GoogleCloudAiplatformV1beta1FulfillmentInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for fulfillment instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FulfillmentInstance]
+        attr_accessor :instance
+      
+        # Spec for fulfillment metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FulfillmentSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for fulfillment instance.
+      class GoogleCloudAiplatformV1beta1FulfillmentInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Inference instruction prompt to compare prediction with.
+        # Corresponds to the JSON property `instruction`
+        # @return [String]
+        attr_accessor :instruction
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instruction = args[:instruction] if args.key?(:instruction)
+          @prediction = args[:prediction] if args.key?(:prediction)
+        end
+      end
+      
+      # Spec for fulfillment result.
+      class GoogleCloudAiplatformV1beta1FulfillmentResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for fulfillment score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for fulfillment score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Fulfillment score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for fulfillment metric.
+      class GoogleCloudAiplatformV1beta1FulfillmentSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # A predicted [FunctionCall] returned from the model that contains a string
       # representing the [FunctionDeclaration.name] and a structured JSON object
       # containing the parameters and their values.
@@ -10405,6 +11239,33 @@ module Google
         def update!(**args)
           @args = args[:args] if args.key?(:args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Function calling config.
+      class GoogleCloudAiplatformV1beta1FunctionCallingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Function names to call. Only set when the Mode is ANY. Function
+        # names should match [FunctionDeclaration.name]. With mode set to ANY, model
+        # will predict a function call from the set of function names provided.
+        # Corresponds to the JSON property `allowedFunctionNames`
+        # @return [Array<String>]
+        attr_accessor :allowed_function_names
+      
+        # Optional. Function calling mode.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_function_names = args[:allowed_function_names] if args.key?(:allowed_function_names)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
@@ -10436,6 +11297,13 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :parameters
       
+        # Schema is used to define the format of input/output data. Represents a select
+        # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
+        # schema). More fields may be added in the future as needed.
+        # Corresponds to the JSON property `response`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema]
+        attr_accessor :response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10445,6 +11313,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -10601,6 +11470,19 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetySetting>]
         attr_accessor :safety_settings
       
+        # The base structured datatype containing multi-part content of a message. A `
+        # Content` includes a `role` field designating the producer of the `Content` and
+        # a `parts` field containing multi-part data that contains the content of the
+        # message turn.
+        # Corresponds to the JSON property `systemInstruction`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content]
+        attr_accessor :system_instruction
+      
+        # Tool config. This config is shared for all tools provided in the request.
+        # Corresponds to the JSON property `toolConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolConfig]
+        attr_accessor :tool_config
+      
         # Optional. A list of `Tools` the model may use to generate the next response. A
         # `Tool` is a piece of code that enables the system to interact with external
         # systems to perform an action, or set of actions, outside of knowledge and
@@ -10618,6 +11500,8 @@ module Google
           @contents = args[:contents] if args.key?(:contents)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
+          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
+          @tool_config = args[:tool_config] if args.key?(:tool_config)
           @tools = args[:tools] if args.key?(:tools)
         end
       end
@@ -10724,10 +11608,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :candidate_count
       
+        # Optional. Frequency penalties.
+        # Corresponds to the JSON property `frequencyPenalty`
+        # @return [Float]
+        attr_accessor :frequency_penalty
+      
         # Optional. The maximum number of output tokens to generate per message.
         # Corresponds to the JSON property `maxOutputTokens`
         # @return [Fixnum]
         attr_accessor :max_output_tokens
+      
+        # Optional. Positive penalties.
+        # Corresponds to the JSON property `presencePenalty`
+        # @return [Float]
+        attr_accessor :presence_penalty
       
         # Optional. Stop sequences.
         # Corresponds to the JSON property `stopSequences`
@@ -10756,7 +11650,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @candidate_count = args[:candidate_count] if args.key?(:candidate_count)
+          @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
+          @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
           @top_k = args[:top_k] if args.key?(:top_k)
@@ -10818,6 +11714,50 @@ module Google
         end
       end
       
+      # The Google Drive location for the input content.
+      class GoogleCloudAiplatformV1beta1GoogleDriveSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Google Drive resource IDs.
+        # Corresponds to the JSON property `resourceIds`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleDriveSourceResourceId>]
+        attr_accessor :resource_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_ids = args[:resource_ids] if args.key?(:resource_ids)
+        end
+      end
+      
+      # The type and ID of the Google Drive resource.
+      class GoogleCloudAiplatformV1beta1GoogleDriveSourceResourceId
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the Google Drive resource.
+        # Corresponds to the JSON property `resourceId`
+        # @return [String]
+        attr_accessor :resource_id
+      
+        # Required. The type of the Google Drive resource.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
       # Tool to retrieve public web data for grounding, powered by Google.
       class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         include Google::Apis::Core::Hashable
@@ -10840,6 +11780,107 @@ module Google
         end
       end
       
+      # Input for groundedness metric.
+      class GoogleCloudAiplatformV1beta1GroundednessInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for groundedness instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundednessInstance]
+        attr_accessor :instance
+      
+        # Spec for groundedness metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundednessSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for groundedness instance.
+      class GoogleCloudAiplatformV1beta1GroundednessInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Background information provided in context used to compare against
+        # the prediction.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @prediction = args[:prediction] if args.key?(:prediction)
+        end
+      end
+      
+      # Spec for groundedness result.
+      class GoogleCloudAiplatformV1beta1GroundednessResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for groundedness score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for groundedness score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Groundedness score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for groundedness metric.
+      class GoogleCloudAiplatformV1beta1GroundednessSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Grounding attribution.
       class GoogleCloudAiplatformV1beta1GroundingAttribution
         include Google::Apis::Core::Hashable
@@ -10849,6 +11890,11 @@ module Google
         # Corresponds to the JSON property `confidenceScore`
         # @return [Float]
         attr_accessor :confidence_score
+      
+        # Attribution from context retrieved by the retrieval tools.
+        # Corresponds to the JSON property `retrievedContext`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext]
+        attr_accessor :retrieved_context
       
         # Segment of the content.
         # Corresponds to the JSON property `segment`
@@ -10867,8 +11913,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
+          @retrieved_context = args[:retrieved_context] if args.key?(:retrieved_context)
           @segment = args[:segment] if args.key?(:segment)
           @web = args[:web] if args.key?(:web)
+        end
+      end
+      
+      # Attribution from context retrieved by the retrieval tools.
+      class GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Title of the attribution.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Output only. URI reference of the attribution.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -10906,6 +11978,11 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundingAttribution>]
         attr_accessor :grounding_attributions
       
+        # Optional. Queries executed by the retrieval tools.
+        # Corresponds to the JSON property `retrievalQueries`
+        # @return [Array<String>]
+        attr_accessor :retrieval_queries
+      
         # Optional. Web search queries for the following-up web search.
         # Corresponds to the JSON property `webSearchQueries`
         # @return [Array<String>]
@@ -10918,6 +11995,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @grounding_attributions = args[:grounding_attributions] if args.key?(:grounding_attributions)
+          @retrieval_queries = args[:retrieval_queries] if args.key?(:retrieval_queries)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
         end
       end
@@ -11425,6 +12503,56 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_evaluation = args[:model_evaluation] if args.key?(:model_evaluation)
+        end
+      end
+      
+      # Config for importing RagFiles.
+      class GoogleCloudAiplatformV1beta1ImportRagFilesConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud Storage location for the input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsSource]
+        attr_accessor :gcs_source
+      
+        # The Google Drive location for the input content.
+        # Corresponds to the JSON property `googleDriveSource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleDriveSource]
+        attr_accessor :google_drive_source
+      
+        # Specifies the size and overlap of chunks for RagFiles.
+        # Corresponds to the JSON property `ragFileChunkingConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileChunkingConfig]
+        attr_accessor :rag_file_chunking_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @google_drive_source = args[:google_drive_source] if args.key?(:google_drive_source)
+          @rag_file_chunking_config = args[:rag_file_chunking_config] if args.key?(:rag_file_chunking_config)
+        end
+      end
+      
+      # Request message for VertexRagDataService.ImportRagFiles.
+      class GoogleCloudAiplatformV1beta1ImportRagFilesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Config for importing RagFiles.
+        # Corresponds to the JSON property `importRagFilesConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImportRagFilesConfig]
+        attr_accessor :import_rag_files_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @import_rag_files_config = args[:import_rag_files_config] if args.key?(:import_rag_files_config)
         end
       end
       
@@ -13149,6 +14277,84 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @publisher_models = args[:publisher_models] if args.key?(:publisher_models)
+        end
+      end
+      
+      # Response message for VertexRagDataService.ListRagCorpora.
+      class GoogleCloudAiplatformV1beta1ListRagCorporaResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass to ListRagCorporaRequest.
+        # page_token to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of RagCorpora in the requested page.
+        # Corresponds to the JSON property `ragCorpora`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpus>]
+        attr_accessor :rag_corpora
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rag_corpora = args[:rag_corpora] if args.key?(:rag_corpora)
+        end
+      end
+      
+      # Response message for VertexRagDataService.ListRagFiles.
+      class GoogleCloudAiplatformV1beta1ListRagFilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass to ListRagFilesRequest.
+        # page_token to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of RagFiles in the requested page.
+        # Corresponds to the JSON property `ragFiles`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFile>]
+        attr_accessor :rag_files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rag_files = args[:rag_files] if args.key?(:rag_files)
+        end
+      end
+      
+      # Response message for ReasoningEngineService.ListReasoningEngines
+      class GoogleCloudAiplatformV1beta1ListReasoningEnginesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass to
+        # ListReasoningEnginesRequest.page_token to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of ReasoningEngines in the requested page.
+        # Corresponds to the JSON property `reasoningEngines`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngine>]
+        attr_accessor :reasoning_engines
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reasoning_engines = args[:reasoning_engines] if args.key?(:reasoning_engines)
         end
       end
       
@@ -17129,6 +18335,258 @@ module Google
         end
       end
       
+      # Input for pairwise question answering quality metric.
+      class GoogleCloudAiplatformV1beta1PairwiseQuestionAnsweringQualityInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for pairwise question answering quality instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PairwiseQuestionAnsweringQualityInstance]
+        attr_accessor :instance
+      
+        # Spec for pairwise question answering quality score metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PairwiseQuestionAnsweringQualitySpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for pairwise question answering quality instance.
+      class GoogleCloudAiplatformV1beta1PairwiseQuestionAnsweringQualityInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the baseline model.
+        # Corresponds to the JSON property `baselinePrediction`
+        # @return [String]
+        attr_accessor :baseline_prediction
+      
+        # Optional. Text to answer the question.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Required. Question Answering prompt for LLM.
+        # Corresponds to the JSON property `instruction`
+        # @return [String]
+        attr_accessor :instruction
+      
+        # Required. Output of the candidate model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Optional. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @baseline_prediction = args[:baseline_prediction] if args.key?(:baseline_prediction)
+          @context = args[:context] if args.key?(:context)
+          @instruction = args[:instruction] if args.key?(:instruction)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Spec for pairwise question answering quality result.
+      class GoogleCloudAiplatformV1beta1PairwiseQuestionAnsweringQualityResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for question answering quality score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for question answering quality score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Pairwise question answering prediction choice.
+        # Corresponds to the JSON property `pairwiseChoice`
+        # @return [String]
+        attr_accessor :pairwise_choice
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @pairwise_choice = args[:pairwise_choice] if args.key?(:pairwise_choice)
+        end
+      end
+      
+      # Spec for pairwise question answering quality score metric.
+      class GoogleCloudAiplatformV1beta1PairwiseQuestionAnsweringQualitySpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use instance.reference to compute question answering
+        # quality.
+        # Corresponds to the JSON property `useReference`
+        # @return [Boolean]
+        attr_accessor :use_reference
+        alias_method :use_reference?, :use_reference
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_reference = args[:use_reference] if args.key?(:use_reference)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Input for pairwise summarization quality metric.
+      class GoogleCloudAiplatformV1beta1PairwiseSummarizationQualityInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for pairwise summarization quality instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PairwiseSummarizationQualityInstance]
+        attr_accessor :instance
+      
+        # Spec for pairwise summarization quality score metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PairwiseSummarizationQualitySpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for pairwise summarization quality instance.
+      class GoogleCloudAiplatformV1beta1PairwiseSummarizationQualityInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the baseline model.
+        # Corresponds to the JSON property `baselinePrediction`
+        # @return [String]
+        attr_accessor :baseline_prediction
+      
+        # Required. Text to be summarized.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Required. Summarization prompt for LLM.
+        # Corresponds to the JSON property `instruction`
+        # @return [String]
+        attr_accessor :instruction
+      
+        # Required. Output of the candidate model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Optional. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @baseline_prediction = args[:baseline_prediction] if args.key?(:baseline_prediction)
+          @context = args[:context] if args.key?(:context)
+          @instruction = args[:instruction] if args.key?(:instruction)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Spec for pairwise summarization quality result.
+      class GoogleCloudAiplatformV1beta1PairwiseSummarizationQualityResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for summarization quality score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for summarization quality score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Pairwise summarization prediction choice.
+        # Corresponds to the JSON property `pairwiseChoice`
+        # @return [String]
+        attr_accessor :pairwise_choice
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @pairwise_choice = args[:pairwise_choice] if args.key?(:pairwise_choice)
+        end
+      end
+      
+      # Spec for pairwise summarization quality score metric.
+      class GoogleCloudAiplatformV1beta1PairwiseSummarizationQualitySpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use instance.reference to compute pairwise summarization
+        # quality.
+        # Corresponds to the JSON property `useReference`
+        # @return [Boolean]
+        attr_accessor :use_reference
+        alias_method :use_reference?, :use_reference
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_reference = args[:use_reference] if args.key?(:use_reference)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # A datatype containing media that is part of a multi-part `Content` message. A `
       # Part` consists of data which has an associated datatype. A `Part` can only
       # contain one of the accepted types in `Part.data`. A `Part` must have a fixed
@@ -17157,7 +18615,7 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionResponse]
         attr_accessor :function_response
       
-        # Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.
+        # Content blob. It's preferred to send as text directly rather than raw bytes.
         # Corresponds to the JSON property `inlineData`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Blob]
         attr_accessor :inline_data
@@ -19157,17 +20615,6 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content>]
         attr_accessor :contents
       
-        # User provided query message.
-        # Corresponds to the JSON property `query`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QueryRequestQuery]
-        attr_accessor :query
-      
-        # Optional. Experiment control on whether to use function call.
-        # Corresponds to the JSON property `useFunctionCall`
-        # @return [Boolean]
-        attr_accessor :use_function_call
-        alias_method :use_function_call?, :use_function_call
-      
         def initialize(**args)
            update!(**args)
         end
@@ -19175,8 +20622,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contents = args[:contents] if args.key?(:contents)
-          @query = args[:query] if args.key?(:query)
-          @use_function_call = args[:use_function_call] if args.key?(:use_function_call)
         end
       end
       
@@ -19188,21 +20633,6 @@ module Google
         # Corresponds to the JSON property `failureMessage`
         # @return [String]
         attr_accessor :failure_message
-      
-        # Metadata for response
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QueryResponseResponseMetadata]
-        attr_accessor :metadata
-      
-        # 
-        # Corresponds to the JSON property `queryResponseMetadata`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadata]
-        attr_accessor :query_response_metadata
-      
-        # Response to the user's query.
-        # Corresponds to the JSON property `response`
-        # @return [String]
-        attr_accessor :response
       
         # Steps of extension or LLM interaction, can contain function call, function
         # response, or text response. The last step contains the final response to the
@@ -19218,129 +20648,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @failure_message = args[:failure_message] if args.key?(:failure_message)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @query_response_metadata = args[:query_response_metadata] if args.key?(:query_response_metadata)
-          @response = args[:response] if args.key?(:response)
           @steps = args[:steps] if args.key?(:steps)
         end
       end
       
-      # User provided query message.
-      class GoogleCloudAiplatformV1beta1QueryRequestQuery
+      # Request message for ReasoningEngineExecutionService.Query.
+      class GoogleCloudAiplatformV1beta1QueryReasoningEngineRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The query from user.
-        # Corresponds to the JSON property `query`
-        # @return [String]
-        attr_accessor :query
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @query = args[:query] if args.key?(:query)
-        end
-      end
-      
-      # 
-      class GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadata
-        include Google::Apis::Core::Hashable
-      
-        # ReAgent execution steps.
-        # Corresponds to the JSON property `steps`
-        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadataReAgentSteps>]
-        attr_accessor :steps
-      
-        # Whether the reasoning agent used creativity (instead of extensions provided)
-        # to build the response.
-        # Corresponds to the JSON property `useCreativity`
-        # @return [Boolean]
-        attr_accessor :use_creativity
-        alias_method :use_creativity?, :use_creativity
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @steps = args[:steps] if args.key?(:steps)
-          @use_creativity = args[:use_creativity] if args.key?(:use_creativity)
-        end
-      end
-      
-      # ReAgent execution steps.
-      class GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadataReAgentSteps
-        include Google::Apis::Core::Hashable
-      
-        # Error messages from the extension or during response parsing.
-        # Corresponds to the JSON property `error`
-        # @return [String]
-        attr_accessor :error
-      
-        # Planner's instruction to the extension.
-        # Corresponds to the JSON property `extensionInstruction`
-        # @return [String]
-        attr_accessor :extension_instruction
-      
-        # Planner's choice of extension to invoke.
-        # Corresponds to the JSON property `extensionInvoked`
-        # @return [String]
-        attr_accessor :extension_invoked
-      
-        # Response of the extension.
-        # Corresponds to the JSON property `response`
-        # @return [String]
-        attr_accessor :response
-      
-        # When set to False, either the extension fails to execute or the response
-        # cannot be summarized.
-        # Corresponds to the JSON property `success`
-        # @return [Boolean]
-        attr_accessor :success
-        alias_method :success?, :success
-      
-        # Planner's thought.
-        # Corresponds to the JSON property `thought`
-        # @return [String]
-        attr_accessor :thought
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error = args[:error] if args.key?(:error)
-          @extension_instruction = args[:extension_instruction] if args.key?(:extension_instruction)
-          @extension_invoked = args[:extension_invoked] if args.key?(:extension_invoked)
-          @response = args[:response] if args.key?(:response)
-          @success = args[:success] if args.key?(:success)
-          @thought = args[:thought] if args.key?(:thought)
-        end
-      end
-      
-      # Metadata for response
-      class GoogleCloudAiplatformV1beta1QueryResponseResponseMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Placeholder for all checkpoint related data. Any data needed to restore a
-        # request and more go/vertex-extension-query-operation
-        # Corresponds to the JSON property `checkpoint`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CheckPoint]
-        attr_accessor :checkpoint
-      
-        # Execution plan for a request.
-        # Corresponds to the JSON property `executionPlan`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExecutionPlan]
-        attr_accessor :execution_plan
-      
-        # To surface the v2 flow output.
-        # Corresponds to the JSON property `flowOutputs`
+        # Optional. Input content provided by users in JSON object format. Examples
+        # include text query, function calling parameters, media bytes, etc.
+        # Corresponds to the JSON property `input`
         # @return [Hash<String,Object>]
-        attr_accessor :flow_outputs
+        attr_accessor :input
       
         def initialize(**args)
            update!(**args)
@@ -19348,9 +20668,826 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @checkpoint = args[:checkpoint] if args.key?(:checkpoint)
-          @execution_plan = args[:execution_plan] if args.key?(:execution_plan)
-          @flow_outputs = args[:flow_outputs] if args.key?(:flow_outputs)
+          @input = args[:input] if args.key?(:input)
+        end
+      end
+      
+      # Response message for ReasoningEngineExecutionService.Query
+      class GoogleCloudAiplatformV1beta1QueryReasoningEngineResponse
+        include Google::Apis::Core::Hashable
+      
+        # Response provided by users in JSON object format.
+        # Corresponds to the JSON property `output`
+        # @return [Object]
+        attr_accessor :output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output = args[:output] if args.key?(:output)
+        end
+      end
+      
+      # Input for question answering correctness metric.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for question answering correctness instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessInstance]
+        attr_accessor :instance
+      
+        # Spec for question answering correctness metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for question answering correctness instance.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessInstance
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Text provided as context to answer the question.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Required. The question asked and other instruction in the inference prompt.
+        # Corresponds to the JSON property `instruction`
+        # @return [String]
+        attr_accessor :instruction
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Optional. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @instruction = args[:instruction] if args.key?(:instruction)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Spec for question answering correctness result.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for question answering correctness score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for question answering correctness score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Question Answering Correctness score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for question answering correctness metric.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use instance.reference to compute question answering
+        # correctness.
+        # Corresponds to the JSON property `useReference`
+        # @return [Boolean]
+        attr_accessor :use_reference
+        alias_method :use_reference?, :use_reference
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_reference = args[:use_reference] if args.key?(:use_reference)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Input for question answering helpfulness metric.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for question answering helpfulness instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessInstance]
+        attr_accessor :instance
+      
+        # Spec for question answering helpfulness metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for question answering helpfulness instance.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessInstance
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Text provided as context to answer the question.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Required. The question asked and other instruction in the inference prompt.
+        # Corresponds to the JSON property `instruction`
+        # @return [String]
+        attr_accessor :instruction
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Optional. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @instruction = args[:instruction] if args.key?(:instruction)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Spec for question answering helpfulness result.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for question answering helpfulness score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for question answering helpfulness score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Question Answering Helpfulness score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for question answering helpfulness metric.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use instance.reference to compute question answering
+        # helpfulness.
+        # Corresponds to the JSON property `useReference`
+        # @return [Boolean]
+        attr_accessor :use_reference
+        alias_method :use_reference?, :use_reference
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_reference = args[:use_reference] if args.key?(:use_reference)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Input for question answering quality metric.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringQualityInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for question answering quality instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringQualityInstance]
+        attr_accessor :instance
+      
+        # Spec for question answering quality score metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringQualitySpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for question answering quality instance.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringQualityInstance
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Text to answer the question.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Required. Question Answering prompt for LLM.
+        # Corresponds to the JSON property `instruction`
+        # @return [String]
+        attr_accessor :instruction
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Optional. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @instruction = args[:instruction] if args.key?(:instruction)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Spec for question answering quality result.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringQualityResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for question answering quality score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for question answering quality score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Question Answering Quality score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for question answering quality score metric.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringQualitySpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use instance.reference to compute question answering
+        # quality.
+        # Corresponds to the JSON property `useReference`
+        # @return [Boolean]
+        attr_accessor :use_reference
+        alias_method :use_reference?, :use_reference
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_reference = args[:use_reference] if args.key?(:use_reference)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Input for question answering relevance metric.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for question answering relevance instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceInstance]
+        attr_accessor :instance
+      
+        # Spec for question answering relevance metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for question answering relevance instance.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceInstance
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Text provided as context to answer the question.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Required. The question asked and other instruction in the inference prompt.
+        # Corresponds to the JSON property `instruction`
+        # @return [String]
+        attr_accessor :instruction
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Optional. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @instruction = args[:instruction] if args.key?(:instruction)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Spec for question answering relevance result.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for question answering relevance score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for question answering relevance score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Question Answering Relevance score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for question answering relevance metric.
+      class GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use instance.reference to compute question answering
+        # relevance.
+        # Corresponds to the JSON property `useReference`
+        # @return [Boolean]
+        attr_accessor :use_reference
+        alias_method :use_reference?, :use_reference
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_reference = args[:use_reference] if args.key?(:use_reference)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Input for rag context recall metric.
+      class GoogleCloudAiplatformV1beta1RagContextRecallInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for rag context recall instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagContextRecallInstance]
+        attr_accessor :instance
+      
+        # Spec for rag context recall metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagContextRecallSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for rag context recall instance.
+      class GoogleCloudAiplatformV1beta1RagContextRecallInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Retrieved facts from RAG pipeline as context to be evaluated.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Required. Ground truth used to compare against the context.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Spec for rag context recall result.
+      class GoogleCloudAiplatformV1beta1RagContextRecallResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for rag context recall score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for rag context recall score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. RagContextRecall score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for rag context recall metric.
+      class GoogleCloudAiplatformV1beta1RagContextRecallSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Relevant contexts for one query.
+      class GoogleCloudAiplatformV1beta1RagContexts
+        include Google::Apis::Core::Hashable
+      
+        # All its contexts.
+        # Corresponds to the JSON property `contexts`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagContextsContext>]
+        attr_accessor :contexts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contexts = args[:contexts] if args.key?(:contexts)
+        end
+      end
+      
+      # A context of the query.
+      class GoogleCloudAiplatformV1beta1RagContextsContext
+        include Google::Apis::Core::Hashable
+      
+        # The distance between the query vector and the context text vector.
+        # Corresponds to the JSON property `distance`
+        # @return [Float]
+        attr_accessor :distance
+      
+        # For vertex RagStore, if the file is imported from Cloud Storage or Google
+        # Drive, source_uri will be original file URI in Cloud Storage or Google Drive;
+        # if file is uploaded, source_uri will be file display name.
+        # Corresponds to the JSON property `sourceUri`
+        # @return [String]
+        attr_accessor :source_uri
+      
+        # The text chunk.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distance = args[:distance] if args.key?(:distance)
+          @source_uri = args[:source_uri] if args.key?(:source_uri)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A RagCorpus is a RagFile container and a project can have multiple RagCorpora.
+      class GoogleCloudAiplatformV1beta1RagCorpus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this RagCorpus was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The description of the RagCorpus.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of the RagCorpus. The name can be up to 128
+        # characters long and can consist of any UTF-8 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The resource name of the RagCorpus.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when this RagCorpus was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A RagFile contains user data for chunking, embedding and indexing.
+      class GoogleCloudAiplatformV1beta1RagFile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this RagFile was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The description of the RagFile.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The input content is encapsulated and uploaded in the request.
+        # Corresponds to the JSON property `directUploadSource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DirectUploadSource]
+        attr_accessor :direct_upload_source
+      
+        # Required. The display name of the RagFile. The name can be up to 128
+        # characters long and can consist of any UTF-8 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The Google Cloud Storage location for the input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsSource]
+        attr_accessor :gcs_source
+      
+        # The Google Drive location for the input content.
+        # Corresponds to the JSON property `googleDriveSource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleDriveSource]
+        attr_accessor :google_drive_source
+      
+        # Output only. The resource name of the RagFile.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The type of the RagFile.
+        # Corresponds to the JSON property `ragFileType`
+        # @return [String]
+        attr_accessor :rag_file_type
+      
+        # Output only. The size of the RagFile in bytes.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        # Output only. Timestamp when this RagFile was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @direct_upload_source = args[:direct_upload_source] if args.key?(:direct_upload_source)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @google_drive_source = args[:google_drive_source] if args.key?(:google_drive_source)
+          @name = args[:name] if args.key?(:name)
+          @rag_file_type = args[:rag_file_type] if args.key?(:rag_file_type)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Specifies the size and overlap of chunks for RagFiles.
+      class GoogleCloudAiplatformV1beta1RagFileChunkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The overlap between chunks.
+        # Corresponds to the JSON property `chunkOverlap`
+        # @return [Fixnum]
+        attr_accessor :chunk_overlap
+      
+        # The size of the chunks.
+        # Corresponds to the JSON property `chunkSize`
+        # @return [Fixnum]
+        attr_accessor :chunk_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_overlap = args[:chunk_overlap] if args.key?(:chunk_overlap)
+          @chunk_size = args[:chunk_size] if args.key?(:chunk_size)
+        end
+      end
+      
+      # A query to retrieve relevant contexts.
+      class GoogleCloudAiplatformV1beta1RagQuery
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of contexts to retrieve.
+        # Corresponds to the JSON property `similarityTopK`
+        # @return [Fixnum]
+        attr_accessor :similarity_top_k
+      
+        # Optional. The query in text format to get relevant contexts.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @similarity_top_k = args[:similarity_top_k] if args.key?(:similarity_top_k)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -19776,6 +21913,126 @@ module Google
         end
       end
       
+      # ReasoningEngine provides a customizable runtime for models to determine which
+      # actions to take and in which order.
+      class GoogleCloudAiplatformV1beta1ReasoningEngine
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this ReasoningEngine was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The description of the ReasoningEngine.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of the ReasoningEngine.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Used to perform consistent read-modify-write updates. If not set, a
+        # blind "overwrite" update happens.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The resource name of the ReasoningEngine.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ReasoningEngine configurations
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpec]
+        attr_accessor :spec
+      
+        # Output only. Timestamp when this ReasoningEngine was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @spec = args[:spec] if args.key?(:spec)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # ReasoningEngine configurations
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Declarations for object class methods.
+        # Corresponds to the JSON property `classMethods`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :class_methods
+      
+        # User provided package spec like pickled object and package requirements.
+        # Corresponds to the JSON property `packageSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec]
+        attr_accessor :package_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @class_methods = args[:class_methods] if args.key?(:class_methods)
+          @package_spec = args[:package_spec] if args.key?(:package_spec)
+        end
+      end
+      
+      # User provided package spec like pickled object and package requirements.
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+        # Corresponds to the JSON property `dependencyFilesGcsUri`
+        # @return [String]
+        attr_accessor :dependency_files_gcs_uri
+      
+        # Optional. The Cloud Storage URI of the pickled python object.
+        # Corresponds to the JSON property `pickleObjectGcsUri`
+        # @return [String]
+        attr_accessor :pickle_object_gcs_uri
+      
+        # Optional. The Python version. Currently support 3.8, 3.9, 3.10, 3.11. If not
+        # specified, default value is 3.10.
+        # Corresponds to the JSON property `pythonVersion`
+        # @return [String]
+        attr_accessor :python_version
+      
+        # Optional. The Cloud Storage URI of the `requirements.txt` file
+        # Corresponds to the JSON property `requirementsGcsUri`
+        # @return [String]
+        attr_accessor :requirements_gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dependency_files_gcs_uri = args[:dependency_files_gcs_uri] if args.key?(:dependency_files_gcs_uri)
+          @pickle_object_gcs_uri = args[:pickle_object_gcs_uri] if args.key?(:pickle_object_gcs_uri)
+          @python_version = args[:python_version] if args.key?(:python_version)
+          @requirements_gcs_uri = args[:requirements_gcs_uri] if args.key?(:requirements_gcs_uri)
+        end
+      end
+      
       # Details of operations that perform reboot PersistentResource.
       class GoogleCloudAiplatformV1beta1RebootPersistentResourceOperationMetadata
         include Google::Apis::Core::Hashable
@@ -20152,6 +22409,106 @@ module Google
         end
       end
       
+      # Input for response recall metric.
+      class GoogleCloudAiplatformV1beta1ResponseRecallInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for response recall instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ResponseRecallInstance]
+        attr_accessor :instance
+      
+        # Spec for response recall metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ResponseRecallSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for response recall instance.
+      class GoogleCloudAiplatformV1beta1ResponseRecallInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Required. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Spec for response recall result.
+      class GoogleCloudAiplatformV1beta1ResponseRecallResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for fulfillment score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for response recall score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. ResponseRecall score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for response recall metric.
+      class GoogleCloudAiplatformV1beta1ResponseRecallSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Runtime operation information for DatasetService.RestoreDatasetVersion.
       class GoogleCloudAiplatformV1beta1RestoreDatasetVersionOperationMetadata
         include Google::Apis::Core::Hashable
@@ -20225,6 +22582,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VertexAiSearch]
         attr_accessor :vertex_ai_search
       
+        # Retrieve from Vertex RAG Store for grounding.
+        # Corresponds to the JSON property `vertexRagStore`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VertexRagStore]
+        attr_accessor :vertex_rag_store
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20233,6 +22595,240 @@ module Google
         def update!(**args)
           @disable_attribution = args[:disable_attribution] if args.key?(:disable_attribution)
           @vertex_ai_search = args[:vertex_ai_search] if args.key?(:vertex_ai_search)
+          @vertex_rag_store = args[:vertex_rag_store] if args.key?(:vertex_rag_store)
+        end
+      end
+      
+      # Request message for VertexRagService.RetrieveContexts.
+      class GoogleCloudAiplatformV1beta1RetrieveContextsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A query to retrieve relevant contexts.
+        # Corresponds to the JSON property `query`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagQuery]
+        attr_accessor :query
+      
+        # The data source for Vertex RagStore.
+        # Corresponds to the JSON property `vertexRagStore`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveContextsRequestVertexRagStore]
+        attr_accessor :vertex_rag_store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query = args[:query] if args.key?(:query)
+          @vertex_rag_store = args[:vertex_rag_store] if args.key?(:vertex_rag_store)
+        end
+      end
+      
+      # The data source for Vertex RagStore.
+      class GoogleCloudAiplatformV1beta1RetrieveContextsRequestVertexRagStore
+        include Google::Apis::Core::Hashable
+      
+        # Required. RagCorpora resource name. Format: `projects/`project`/locations/`
+        # location`/ragCorpora/`rag_corpus`` Currently only one corpus is allowed. In
+        # the future we may open up multiple corpora support. However, they should be
+        # from the same project and location.
+        # Corresponds to the JSON property `ragCorpora`
+        # @return [Array<String>]
+        attr_accessor :rag_corpora
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rag_corpora = args[:rag_corpora] if args.key?(:rag_corpora)
+        end
+      end
+      
+      # Response message for VertexRagService.RetrieveContexts.
+      class GoogleCloudAiplatformV1beta1RetrieveContextsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Relevant contexts for one query.
+        # Corresponds to the JSON property `contexts`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagContexts]
+        attr_accessor :contexts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contexts = args[:contexts] if args.key?(:contexts)
+        end
+      end
+      
+      # Input for rouge metric.
+      class GoogleCloudAiplatformV1beta1RougeInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated rouge instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RougeInstance>]
+        attr_accessor :instances
+      
+        # Spec for rouge score metric - calculates the recall of n-grams in prediction
+        # as compared to reference - returns a score ranging between 0 and 1.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RougeSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for rouge instance.
+      class GoogleCloudAiplatformV1beta1RougeInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Required. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Rouge metric value for an instance.
+      class GoogleCloudAiplatformV1beta1RougeMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Rouge score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for rouge metric.
+      class GoogleCloudAiplatformV1beta1RougeResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Rouge metric values.
+        # Corresponds to the JSON property `rougeMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RougeMetricValue>]
+        attr_accessor :rouge_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rouge_metric_values = args[:rouge_metric_values] if args.key?(:rouge_metric_values)
+        end
+      end
+      
+      # Spec for rouge score metric - calculates the recall of n-grams in prediction
+      # as compared to reference - returns a score ranging between 0 and 1.
+      class GoogleCloudAiplatformV1beta1RougeSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Supported rouge types are rougen[1-9], rougeL and rougeLsum.
+        # Corresponds to the JSON property `rougeType`
+        # @return [String]
+        attr_accessor :rouge_type
+      
+        # Optional. Whether to split summaries while using rougeLsum.
+        # Corresponds to the JSON property `splitSummaries`
+        # @return [Boolean]
+        attr_accessor :split_summaries
+        alias_method :split_summaries?, :split_summaries
+      
+        # Optional. Whether to use stemmer to compute rouge score.
+        # Corresponds to the JSON property `useStemmer`
+        # @return [Boolean]
+        attr_accessor :use_stemmer
+        alias_method :use_stemmer?, :use_stemmer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rouge_type = args[:rouge_type] if args.key?(:rouge_type)
+          @split_summaries = args[:split_summaries] if args.key?(:split_summaries)
+          @use_stemmer = args[:use_stemmer] if args.key?(:use_stemmer)
+        end
+      end
+      
+      # Input for safety metric.
+      class GoogleCloudAiplatformV1beta1SafetyInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for safety instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyInstance]
+        attr_accessor :instance
+      
+        # Spec for safety metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetySpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for safety instance.
+      class GoogleCloudAiplatformV1beta1SafetyInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prediction = args[:prediction] if args.key?(:prediction)
         end
       end
       
@@ -20287,6 +22883,37 @@ module Google
         end
       end
       
+      # Spec for safety result.
+      class GoogleCloudAiplatformV1beta1SafetyResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for safety score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for safety score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Safety score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
       # Safety settings.
       class GoogleCloudAiplatformV1beta1SafetySetting
         include Google::Apis::Core::Hashable
@@ -20316,6 +22943,25 @@ module Google
           @category = args[:category] if args.key?(:category)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
           @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
+      # Spec for safety metric.
+      class GoogleCloudAiplatformV1beta1SafetySpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -28418,6 +31064,364 @@ module Google
         end
       end
       
+      # Input for summarization helpfulness metric.
+      class GoogleCloudAiplatformV1beta1SummarizationHelpfulnessInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for summarization helpfulness instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationHelpfulnessInstance]
+        attr_accessor :instance
+      
+        # Spec for summarization helpfulness score metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationHelpfulnessSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for summarization helpfulness instance.
+      class GoogleCloudAiplatformV1beta1SummarizationHelpfulnessInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Text to be summarized.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Optional. Summarization prompt for LLM.
+        # Corresponds to the JSON property `instruction`
+        # @return [String]
+        attr_accessor :instruction
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Optional. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @instruction = args[:instruction] if args.key?(:instruction)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Spec for summarization helpfulness result.
+      class GoogleCloudAiplatformV1beta1SummarizationHelpfulnessResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for summarization helpfulness score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for summarization helpfulness score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Summarization Helpfulness score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for summarization helpfulness score metric.
+      class GoogleCloudAiplatformV1beta1SummarizationHelpfulnessSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use instance.reference to compute summarization
+        # helpfulness.
+        # Corresponds to the JSON property `useReference`
+        # @return [Boolean]
+        attr_accessor :use_reference
+        alias_method :use_reference?, :use_reference
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_reference = args[:use_reference] if args.key?(:use_reference)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Input for summarization quality metric.
+      class GoogleCloudAiplatformV1beta1SummarizationQualityInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for summarization quality instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationQualityInstance]
+        attr_accessor :instance
+      
+        # Spec for summarization quality score metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationQualitySpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for summarization quality instance.
+      class GoogleCloudAiplatformV1beta1SummarizationQualityInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Text to be summarized.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Required. Summarization prompt for LLM.
+        # Corresponds to the JSON property `instruction`
+        # @return [String]
+        attr_accessor :instruction
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Optional. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @instruction = args[:instruction] if args.key?(:instruction)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Spec for summarization quality result.
+      class GoogleCloudAiplatformV1beta1SummarizationQualityResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for summarization quality score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for summarization quality score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Summarization Quality score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for summarization quality score metric.
+      class GoogleCloudAiplatformV1beta1SummarizationQualitySpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use instance.reference to compute summarization quality.
+        # Corresponds to the JSON property `useReference`
+        # @return [Boolean]
+        attr_accessor :use_reference
+        alias_method :use_reference?, :use_reference
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_reference = args[:use_reference] if args.key?(:use_reference)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Input for summarization verbosity metric.
+      class GoogleCloudAiplatformV1beta1SummarizationVerbosityInput
+        include Google::Apis::Core::Hashable
+      
+        # Spec for summarization verbosity instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationVerbosityInstance]
+        attr_accessor :instance
+      
+        # Spec for summarization verbosity score metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SummarizationVerbositySpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for summarization verbosity instance.
+      class GoogleCloudAiplatformV1beta1SummarizationVerbosityInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Text to be summarized.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Optional. Summarization prompt for LLM.
+        # Corresponds to the JSON property `instruction`
+        # @return [String]
+        attr_accessor :instruction
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Optional. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @instruction = args[:instruction] if args.key?(:instruction)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Spec for summarization verbosity result.
+      class GoogleCloudAiplatformV1beta1SummarizationVerbosityResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Confidence for summarization verbosity score.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Output only. Explanation for summarization verbosity score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Summarization Verbosity score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for summarization verbosity score metric.
+      class GoogleCloudAiplatformV1beta1SummarizationVerbositySpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use instance.reference to compute summarization verbosity.
+        # Corresponds to the JSON property `useReference`
+        # @return [Boolean]
+        attr_accessor :use_reference
+        alias_method :use_reference?, :use_reference
+      
+        # Optional. Which version to use for evaluation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_reference = args[:use_reference] if args.key?(:use_reference)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Request message for FeatureOnlineStoreAdminService.SyncFeatureView.
       class GoogleCloudAiplatformV1beta1SyncFeatureViewRequest
         include Google::Apis::Core::Hashable
@@ -29204,6 +32208,436 @@ module Google
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
           @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
           @retrieval = args[:retrieval] if args.key?(:retrieval)
+        end
+      end
+      
+      # Input for tool call valid metric.
+      class GoogleCloudAiplatformV1beta1ToolCallValidInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated tool call valid instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCallValidInstance>]
+        attr_accessor :instances
+      
+        # Spec for tool call valid metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCallValidSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for tool call valid instance.
+      class GoogleCloudAiplatformV1beta1ToolCallValidInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Required. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Tool call valid metric value for an instance.
+      class GoogleCloudAiplatformV1beta1ToolCallValidMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Tool call valid score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for tool call valid metric.
+      class GoogleCloudAiplatformV1beta1ToolCallValidResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Tool call valid metric values.
+        # Corresponds to the JSON property `toolCallValidMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCallValidMetricValue>]
+        attr_accessor :tool_call_valid_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_call_valid_metric_values = args[:tool_call_valid_metric_values] if args.key?(:tool_call_valid_metric_values)
+        end
+      end
+      
+      # Spec for tool call valid metric.
+      class GoogleCloudAiplatformV1beta1ToolCallValidSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Tool config. This config is shared for all tools provided in the request.
+      class GoogleCloudAiplatformV1beta1ToolConfig
+        include Google::Apis::Core::Hashable
+      
+        # Function calling config.
+        # Corresponds to the JSON property `functionCallingConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionCallingConfig]
+        attr_accessor :function_calling_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function_calling_config = args[:function_calling_config] if args.key?(:function_calling_config)
+        end
+      end
+      
+      # Input for tool name match metric.
+      class GoogleCloudAiplatformV1beta1ToolNameMatchInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated tool name match instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolNameMatchInstance>]
+        attr_accessor :instances
+      
+        # Spec for tool name match metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolNameMatchSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for tool name match instance.
+      class GoogleCloudAiplatformV1beta1ToolNameMatchInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Required. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Tool name match metric value for an instance.
+      class GoogleCloudAiplatformV1beta1ToolNameMatchMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Tool name match score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for tool name match metric.
+      class GoogleCloudAiplatformV1beta1ToolNameMatchResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Tool name match metric values.
+        # Corresponds to the JSON property `toolNameMatchMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolNameMatchMetricValue>]
+        attr_accessor :tool_name_match_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_name_match_metric_values = args[:tool_name_match_metric_values] if args.key?(:tool_name_match_metric_values)
+        end
+      end
+      
+      # Spec for tool name match metric.
+      class GoogleCloudAiplatformV1beta1ToolNameMatchSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Input for tool parameter key value match metric.
+      class GoogleCloudAiplatformV1beta1ToolParameterKvMatchInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated tool parameter key value match instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKvMatchInstance>]
+        attr_accessor :instances
+      
+        # Spec for tool parameter key value match metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKvMatchSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for tool parameter key value match instance.
+      class GoogleCloudAiplatformV1beta1ToolParameterKvMatchInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Required. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Tool parameter key value match metric value for an instance.
+      class GoogleCloudAiplatformV1beta1ToolParameterKvMatchMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Tool parameter key value match score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for tool parameter key value match metric.
+      class GoogleCloudAiplatformV1beta1ToolParameterKvMatchResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Tool parameter key value match metric values.
+        # Corresponds to the JSON property `toolParameterKvMatchMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKvMatchMetricValue>]
+        attr_accessor :tool_parameter_kv_match_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_parameter_kv_match_metric_values = args[:tool_parameter_kv_match_metric_values] if args.key?(:tool_parameter_kv_match_metric_values)
+        end
+      end
+      
+      # Spec for tool parameter key value match metric.
+      class GoogleCloudAiplatformV1beta1ToolParameterKvMatchSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use STRCIT string match on parameter values.
+        # Corresponds to the JSON property `useStrictStringMatch`
+        # @return [Boolean]
+        attr_accessor :use_strict_string_match
+        alias_method :use_strict_string_match?, :use_strict_string_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_strict_string_match = args[:use_strict_string_match] if args.key?(:use_strict_string_match)
+        end
+      end
+      
+      # Input for tool parameter key match metric.
+      class GoogleCloudAiplatformV1beta1ToolParameterKeyMatchInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated tool parameter key match instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKeyMatchInstance>]
+        attr_accessor :instances
+      
+        # Spec for tool parameter key match metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKeyMatchSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for tool parameter key match instance.
+      class GoogleCloudAiplatformV1beta1ToolParameterKeyMatchInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output of the evaluated model.
+        # Corresponds to the JSON property `prediction`
+        # @return [String]
+        attr_accessor :prediction
+      
+        # Required. Ground truth used to compare against the prediction.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prediction = args[:prediction] if args.key?(:prediction)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Tool parameter key match metric value for an instance.
+      class GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Tool parameter key match score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for tool parameter key match metric.
+      class GoogleCloudAiplatformV1beta1ToolParameterKeyMatchResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Tool parameter key match metric values.
+        # Corresponds to the JSON property `toolParameterKeyMatchMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValue>]
+        attr_accessor :tool_parameter_key_match_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_parameter_key_match_metric_values = args[:tool_parameter_key_match_metric_values] if args.key?(:tool_parameter_key_match_metric_values)
+        end
+      end
+      
+      # Spec for tool parameter key match metric.
+      class GoogleCloudAiplatformV1beta1ToolParameterKeyMatchSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -30205,6 +33639,80 @@ module Google
         end
       end
       
+      # Config for uploading RagFile.
+      class GoogleCloudAiplatformV1beta1UploadRagFileConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the size and overlap of chunks for RagFiles.
+        # Corresponds to the JSON property `ragFileChunkingConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileChunkingConfig]
+        attr_accessor :rag_file_chunking_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rag_file_chunking_config = args[:rag_file_chunking_config] if args.key?(:rag_file_chunking_config)
+        end
+      end
+      
+      # Request message for VertexRagDataService.UploadRagFile.
+      class GoogleCloudAiplatformV1beta1UploadRagFileRequest
+        include Google::Apis::Core::Hashable
+      
+        # A RagFile contains user data for chunking, embedding and indexing.
+        # Corresponds to the JSON property `ragFile`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFile]
+        attr_accessor :rag_file
+      
+        # Config for uploading RagFile.
+        # Corresponds to the JSON property `uploadRagFileConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UploadRagFileConfig]
+        attr_accessor :upload_rag_file_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rag_file = args[:rag_file] if args.key?(:rag_file)
+          @upload_rag_file_config = args[:upload_rag_file_config] if args.key?(:upload_rag_file_config)
+        end
+      end
+      
+      # Response message for VertexRagDataService.UploadRagFile.
+      class GoogleCloudAiplatformV1beta1UploadRagFileResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # A RagFile contains user data for chunking, embedding and indexing.
+        # Corresponds to the JSON property `ragFile`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFile]
+        attr_accessor :rag_file
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @rag_file = args[:rag_file] if args.key?(:rag_file)
+        end
+      end
+      
       # Request message for IndexService.UpsertDatapoints
       class GoogleCloudAiplatformV1beta1UpsertDatapointsRequest
         include Google::Apis::Core::Hashable
@@ -30333,6 +33841,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
+        end
+      end
+      
+      # Retrieve from Vertex RAG Store for grounding.
+      class GoogleCloudAiplatformV1beta1VertexRagStore
+        include Google::Apis::Core::Hashable
+      
+        # Required. Vertex RAG Store corpus resource name: projects/`project`/locations/`
+        # location`/ragCorpora/`ragCorpus` Currently only one corpus is allowed. In the
+        # future we may open up multiple corpora support. However, they should be from
+        # the same project and location.
+        # Corresponds to the JSON property `ragCorpora`
+        # @return [Array<String>]
+        attr_accessor :rag_corpora
+      
+        # Optional. Number of top k results to return from the selected corpora.
+        # Corresponds to the JSON property `similarityTopK`
+        # @return [Fixnum]
+        attr_accessor :similarity_top_k
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rag_corpora = args[:rag_corpora] if args.key?(:rag_corpora)
+          @similarity_top_k = args[:similarity_top_k] if args.key?(:similarity_top_k)
         end
       end
       
@@ -32639,6 +36175,12 @@ module Google
         attr_accessor :grail_text_harm_type
       
         # 
+        # Corresponds to the JSON property `imageChild`
+        # @return [Boolean]
+        attr_accessor :image_child
+        alias_method :image_child?, :image_child
+      
+        # 
         # Corresponds to the JSON property `imageCsam`
         # @return [Boolean]
         attr_accessor :image_csam
@@ -32686,6 +36228,12 @@ module Google
         attr_accessor :threshold
       
         # 
+        # Corresponds to the JSON property `videoFrameChild`
+        # @return [Boolean]
+        attr_accessor :video_frame_child
+        alias_method :video_frame_child?, :video_frame_child
+      
+        # 
         # Corresponds to the JSON property `videoFrameCsam`
         # @return [Boolean]
         attr_accessor :video_frame_csam
@@ -32720,6 +36268,7 @@ module Google
           @fringe = args[:fringe] if args.key?(:fringe)
           @grail_image_harm_type = args[:grail_image_harm_type] if args.key?(:grail_image_harm_type)
           @grail_text_harm_type = args[:grail_text_harm_type] if args.key?(:grail_text_harm_type)
+          @image_child = args[:image_child] if args.key?(:image_child)
           @image_csam = args[:image_csam] if args.key?(:image_csam)
           @image_pedo = args[:image_pedo] if args.key?(:image_pedo)
           @image_porn = args[:image_porn] if args.key?(:image_porn)
@@ -32728,6 +36277,7 @@ module Google
           @safetycat = args[:safetycat] if args.key?(:safetycat)
           @spii = args[:spii] if args.key?(:spii)
           @threshold = args[:threshold] if args.key?(:threshold)
+          @video_frame_child = args[:video_frame_child] if args.key?(:video_frame_child)
           @video_frame_csam = args[:video_frame_csam] if args.key?(:video_frame_csam)
           @video_frame_pedo = args[:video_frame_pedo] if args.key?(:video_frame_pedo)
           @video_frame_porn = args[:video_frame_porn] if args.key?(:video_frame_porn)
@@ -33145,6 +36695,18 @@ module Google
         # @return [String]
         attr_accessor :model_id
       
+        # If true, the model was selected as a fallback, since no model met requirements.
+        # Corresponds to the JSON property `pickedAsFallback`
+        # @return [Boolean]
+        attr_accessor :picked_as_fallback
+        alias_method :picked_as_fallback?, :picked_as_fallback
+      
+        # If true, the model was selected since it met the requriements.
+        # Corresponds to the JSON property `selected`
+        # @return [Boolean]
+        attr_accessor :selected
+        alias_method :selected?, :selected
+      
         def initialize(**args)
            update!(**args)
         end
@@ -33153,6 +36715,8 @@ module Google
         def update!(**args)
           @computed_input_token_length = args[:computed_input_token_length] if args.key?(:computed_input_token_length)
           @model_id = args[:model_id] if args.key?(:model_id)
+          @picked_as_fallback = args[:picked_as_fallback] if args.key?(:picked_as_fallback)
+          @selected = args[:selected] if args.key?(:selected)
         end
       end
       
