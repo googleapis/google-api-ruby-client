@@ -515,6 +515,263 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new discovery client.
+        # @param [String] parent
+        #   Required. Parent resource.
+        # @param [Google::Apis::MigrationcenterV1::DiscoveryClient] discovery_client_object
+        # @param [String] discovery_client_id
+        #   Required. User specified ID for the discovery client. It will become the last
+        #   component of the discovery client name. The ID must be unique within the
+        #   project, is restricted to lower-cased letters and has a maximum length of 63
+        #   characters. The ID must match the regular expression: `[a-z]([a-z0-9-]`0,61`[a-
+        #   z0-9])?`.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MigrationcenterV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MigrationcenterV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_discovery_client(parent, discovery_client_object = nil, discovery_client_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/discoveryClients', options)
+          command.request_representation = Google::Apis::MigrationcenterV1::DiscoveryClient::Representation
+          command.request_object = discovery_client_object
+          command.response_representation = Google::Apis::MigrationcenterV1::Operation::Representation
+          command.response_class = Google::Apis::MigrationcenterV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['discoveryClientId'] = discovery_client_id unless discovery_client_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a discovery client.
+        # @param [String] name
+        #   Required. The discovery client name.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MigrationcenterV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MigrationcenterV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_discovery_client(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MigrationcenterV1::Operation::Representation
+          command.response_class = Google::Apis::MigrationcenterV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a discovery client.
+        # @param [String] name
+        #   Required. The discovery client name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MigrationcenterV1::DiscoveryClient] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MigrationcenterV1::DiscoveryClient]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_discovery_client(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MigrationcenterV1::DiscoveryClient::Representation
+          command.response_class = Google::Apis::MigrationcenterV1::DiscoveryClient
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the discovery clients in a given project and location.
+        # @param [String] parent
+        #   Required. Parent resource.
+        # @param [String] filter
+        #   Optional. Filter expression to filter results by.
+        # @param [String] order_by
+        #   Optional. Field to sort by.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. The server may return fewer
+        #   items than requested. If unspecified, the server will pick an appropriate
+        #   default value.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListDiscoveryClients` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListDiscoveryClients` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MigrationcenterV1::ListDiscoveryClientsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MigrationcenterV1::ListDiscoveryClientsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_discovery_clients(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/discoveryClients', options)
+          command.response_representation = Google::Apis::MigrationcenterV1::ListDiscoveryClientsResponse::Representation
+          command.response_class = Google::Apis::MigrationcenterV1::ListDiscoveryClientsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a discovery client.
+        # @param [String] name
+        #   Output only. Identifier. Full name of this discovery client.
+        # @param [Google::Apis::MigrationcenterV1::DiscoveryClient] discovery_client_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Update mask is used to specify the fields to be overwritten in the `
+        #   DiscoveryClient` resource by the update. The values specified in the `
+        #   update_mask` field are relative to the resource, not the full request. A field
+        #   will be overwritten if it is in the mask. A single * value in the mask lets
+        #   you to overwrite all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MigrationcenterV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MigrationcenterV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_discovery_client(name, discovery_client_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::MigrationcenterV1::DiscoveryClient::Representation
+          command.request_object = discovery_client_object
+          command.response_representation = Google::Apis::MigrationcenterV1::Operation::Representation
+          command.response_class = Google::Apis::MigrationcenterV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sends a discovery client heartbeat. Healthy clients are expected to send
+        # heartbeats regularly (normally every few minutes).
+        # @param [String] name
+        #   Required. The discovery client name.
+        # @param [Google::Apis::MigrationcenterV1::SendDiscoveryClientHeartbeatRequest] send_discovery_client_heartbeat_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MigrationcenterV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MigrationcenterV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def send_project_location_discovery_client_heartbeat(name, send_discovery_client_heartbeat_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:sendHeartbeat', options)
+          command.request_representation = Google::Apis::MigrationcenterV1::SendDiscoveryClientHeartbeatRequest::Representation
+          command.request_object = send_discovery_client_heartbeat_request_object
+          command.response_representation = Google::Apis::MigrationcenterV1::Operation::Representation
+          command.response_class = Google::Apis::MigrationcenterV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Adds assets to a group.
         # @param [String] group
         #   Required. Group reference.
