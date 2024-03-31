@@ -106,6 +106,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectorConfigurationNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectorConfigurationPrivateServiceConnect
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectorConfigurationSecret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +340,8 @@ module Google
           property :connector_id, as: 'connectorId'
           property :endpoint, as: 'endpoint', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationEndpoint, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationEndpoint::Representation
       
+          property :network, as: 'network', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationNetwork, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationNetwork::Representation
+      
         end
       end
       
@@ -343,6 +357,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host_port, as: 'hostPort'
+        end
+      end
+      
+      class ConnectorConfigurationNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_service_connect, as: 'privateServiceConnect', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationPrivateServiceConnect, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationPrivateServiceConnect::Representation
+      
+        end
+      end
+      
+      class ConnectorConfigurationPrivateServiceConnect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_attachment, as: 'networkAttachment'
         end
       end
       

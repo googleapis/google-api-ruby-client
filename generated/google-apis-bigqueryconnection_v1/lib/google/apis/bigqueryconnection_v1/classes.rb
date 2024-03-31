@@ -589,6 +589,11 @@ module Google
         # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationEndpoint]
         attr_accessor :endpoint
       
+        # Network related configuration.
+        # Corresponds to the JSON property `network`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationNetwork]
+        attr_accessor :network
+      
         def initialize(**args)
            update!(**args)
         end
@@ -598,6 +603,7 @@ module Google
           @authentication = args[:authentication] if args.key?(:authentication)
           @connector_id = args[:connector_id] if args.key?(:connector_id)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @network = args[:network] if args.key?(:network)
         end
       end
       
@@ -638,6 +644,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @host_port = args[:host_port] if args.key?(:host_port)
+        end
+      end
+      
+      # Network related configuration.
+      class ConnectorConfigurationNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Private Service Connect configuration.
+        # Corresponds to the JSON property `privateServiceConnect`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationPrivateServiceConnect]
+        attr_accessor :private_service_connect
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_service_connect = args[:private_service_connect] if args.key?(:private_service_connect)
+        end
+      end
+      
+      # Private Service Connect configuration.
+      class ConnectorConfigurationPrivateServiceConnect
+        include Google::Apis::Core::Hashable
+      
+        # Required. Network Attachment name in the format of `projects/`project`/regions/
+        # `region`/networkAttachments/`networkattachment``.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
         end
       end
       
