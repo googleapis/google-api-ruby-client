@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataQualityRuleSqlAssertion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1803,6 +1809,8 @@ module Google
       
           property :set_expectation, as: 'setExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSetExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSetExpectation::Representation
       
+          property :sql_assertion, as: 'sqlAssertion', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSqlAssertion, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSqlAssertion::Representation
+      
           property :statistic_range_expectation, as: 'statisticRangeExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation::Representation
       
           property :table_condition_expectation, as: 'tableConditionExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation::Representation
@@ -1839,6 +1847,7 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assertion_row_count, :numeric_string => true, as: 'assertionRowCount'
           property :evaluated_count, :numeric_string => true, as: 'evaluatedCount'
           property :failing_rows_query, as: 'failingRowsQuery'
           property :null_count, :numeric_string => true, as: 'nullCount'
@@ -1861,6 +1870,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleSqlAssertion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_statement, as: 'sqlStatement'
         end
       end
       
