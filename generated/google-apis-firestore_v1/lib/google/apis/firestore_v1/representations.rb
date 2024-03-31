@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FindNearest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1Backup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -992,6 +998,18 @@ module Google
         end
       end
       
+      class FindNearest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distance_measure, as: 'distanceMeasure'
+          property :limit, as: 'limit'
+          property :query_vector, as: 'queryVector', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
+      
+          property :vector_field, as: 'vectorField', class: Google::Apis::FirestoreV1::FieldReference, decorator: Google::Apis::FirestoreV1::FieldReference::Representation
+      
+        end
+      end
+      
       class GoogleFirestoreAdminV1Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1628,6 +1646,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_at, as: 'endAt', class: Google::Apis::FirestoreV1::Cursor, decorator: Google::Apis::FirestoreV1::Cursor::Representation
+      
+          property :find_nearest, as: 'findNearest', class: Google::Apis::FirestoreV1::FindNearest, decorator: Google::Apis::FirestoreV1::FindNearest::Representation
       
           collection :from, as: 'from', class: Google::Apis::FirestoreV1::CollectionSelector, decorator: Google::Apis::FirestoreV1::CollectionSelector::Representation
       
