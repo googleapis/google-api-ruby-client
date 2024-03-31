@@ -379,12 +379,13 @@ module Google
       
         # Optional. Criticality level. Can contain only lowercase letters, numeric
         # characters, underscores, and dashes. Can have a maximum length of 63
-        # characters.
+        # characters. Deprecated: Please refer to type instead.
         # Corresponds to the JSON property `level`
         # @return [String]
         attr_accessor :level
       
         # Optional. Indicates mission-critical Application, Service, or Workload.
+        # Deprecated: Please refer to type instead.
         # Corresponds to the JSON property `missionCritical`
         # @return [Boolean]
         attr_accessor :mission_critical
@@ -524,7 +525,7 @@ module Google
       
         # Optional. Environment name. Can contain only lowercase letters, numeric
         # characters, underscores, and dashes. Can have a maximum length of 63
-        # characters.
+        # characters. Deprecated: Please refer to type instead.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
