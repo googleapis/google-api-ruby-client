@@ -802,6 +802,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartBlob]
         attr_accessor :inline_data
       
+        # Metadata provides extra info for building the LM Root request.
+        # Corresponds to the JSON property `lmRootMetadata`
+        # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartLmRootMetadata]
+        attr_accessor :lm_root_metadata
+      
         # Text input.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -823,6 +828,7 @@ module Google
           @function_call = args[:function_call] if args.key?(:function_call)
           @function_response = args[:function_response] if args.key?(:function_response)
           @inline_data = args[:inline_data] if args.key?(:inline_data)
+          @lm_root_metadata = args[:lm_root_metadata] if args.key?(:lm_root_metadata)
           @text = args[:text] if args.key?(:text)
           @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
         end
@@ -908,6 +914,25 @@ module Google
         def update!(**args)
           @file_uri = args[:file_uri] if args.key?(:file_uri)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # Metadata provides extra info for building the LM Root request.
+      class CloudAiNlLlmProtoServicePartLmRootMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Chunk id that will be used when mapping the part to the LM Root's chunk.
+        # Corresponds to the JSON property `chunkId`
+        # @return [String]
+        attr_accessor :chunk_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_id = args[:chunk_id] if args.key?(:chunk_id)
         end
       end
       
@@ -2941,11 +2966,11 @@ module Google
         end
       end
       
-      # Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.
+      # Content blob. It's preferred to send as text directly rather than raw bytes.
       class GoogleCloudAiplatformV1Blob
         include Google::Apis::Core::Hashable
       
-        # Required. Raw bytes for media formats.
+        # Required. Raw bytes.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -5667,6 +5692,13 @@ module Google
         attr_accessor :disable_container_logging
         alias_method :disable_container_logging?, :disable_container_logging
       
+        # If true, deploy the model without explainable feature, regardless the
+        # existence of Model.explanation_spec or explanation_spec.
+        # Corresponds to the JSON property `disableExplanations`
+        # @return [Boolean]
+        attr_accessor :disable_explanations
+        alias_method :disable_explanations?, :disable_explanations
+      
         # The display name of the DeployedModel. If not provided upon creation, the
         # Model's display_name is used.
         # Corresponds to the JSON property `displayName`
@@ -5744,6 +5776,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @dedicated_resources = args[:dedicated_resources] if args.key?(:dedicated_resources)
           @disable_container_logging = args[:disable_container_logging] if args.key?(:disable_container_logging)
+          @disable_explanations = args[:disable_explanations] if args.key?(:disable_explanations)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_access_logging = args[:enable_access_logging] if args.key?(:enable_access_logging)
           @explanation_spec = args[:explanation_spec] if args.key?(:explanation_spec)
@@ -8194,6 +8227,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The dedicated serving endpoint for this FeatureOnlineStore. Only need to set
+        # when you choose Optimized storage type. Public endpoint is provisioned by
+        # default.
+        # Corresponds to the JSON property `dedicatedServingEndpoint`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint]
+        attr_accessor :dedicated_serving_endpoint
+      
         # Optional. Used to perform consistent read-modify-write updates. If not set, a
         # blind "overwrite" update happens.
         # Corresponds to the JSON property `etag`
@@ -8218,6 +8258,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optimized storage type
+        # Corresponds to the JSON property `optimized`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureOnlineStoreOptimized]
+        attr_accessor :optimized
+      
         # Output only. State of the featureOnlineStore.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -8236,9 +8281,11 @@ module Google
         def update!(**args)
           @bigtable = args[:bigtable] if args.key?(:bigtable)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dedicated_serving_endpoint = args[:dedicated_serving_endpoint] if args.key?(:dedicated_serving_endpoint)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @optimized = args[:optimized] if args.key?(:optimized)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -8298,6 +8345,41 @@ module Google
           @cpu_utilization_target = args[:cpu_utilization_target] if args.key?(:cpu_utilization_target)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+        end
+      end
+      
+      # The dedicated serving endpoint for this FeatureOnlineStore. Only need to set
+      # when you choose Optimized storage type. Public endpoint is provisioned by
+      # default.
+      class GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Output only. This field will be populated with the domain name to use for this
+        # FeatureOnlineStore
+        # Corresponds to the JSON property `publicEndpointDomainName`
+        # @return [String]
+        attr_accessor :public_endpoint_domain_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_endpoint_domain_name = args[:public_endpoint_domain_name] if args.key?(:public_endpoint_domain_name)
+        end
+      end
+      
+      # Optimized storage type
+      class GoogleCloudAiplatformV1FeatureOnlineStoreOptimized
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -8578,6 +8660,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource]
         attr_accessor :feature_registry_source
       
+        # Configuration for vector indexing.
+        # Corresponds to the JSON property `indexConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewIndexConfig]
+        attr_accessor :index_config
+      
         # Optional. The labels with user-defined metadata to organize your FeatureViews.
         # Label keys and values can be no longer than 64 characters (Unicode codepoints),
         # can only contain lowercase letters, numeric characters, underscores and
@@ -8617,6 +8704,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @etag = args[:etag] if args.key?(:etag)
           @feature_registry_source = args[:feature_registry_source] if args.key?(:feature_registry_source)
+          @index_config = args[:index_config] if args.key?(:index_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @sync_config = args[:sync_config] if args.key?(:sync_config)
@@ -8743,6 +8831,100 @@ module Google
         def update!(**args)
           @feature_group_id = args[:feature_group_id] if args.key?(:feature_group_id)
           @feature_ids = args[:feature_ids] if args.key?(:feature_ids)
+        end
+      end
+      
+      # Configuration for vector indexing.
+      class GoogleCloudAiplatformV1FeatureViewIndexConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration options for using brute force search.
+        # Corresponds to the JSON property `bruteForceConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfig]
+        attr_accessor :brute_force_config
+      
+        # Optional. Column of crowding. This column contains crowding attribute which is
+        # a constraint on a neighbor list produced by FeatureOnlineStoreService.
+        # SearchNearestEntities to diversify search results. If NearestNeighborQuery.
+        # per_crowding_attribute_neighbor_count is set to K in
+        # SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of
+        # the same crowding attribute are returned in the response.
+        # Corresponds to the JSON property `crowdingColumn`
+        # @return [String]
+        attr_accessor :crowding_column
+      
+        # Optional. The distance measure used in nearest neighbor search.
+        # Corresponds to the JSON property `distanceMeasureType`
+        # @return [String]
+        attr_accessor :distance_measure_type
+      
+        # Optional. Column of embedding. This column contains the source data to create
+        # index for vector search. embedding_column must be set when using vector search.
+        # Corresponds to the JSON property `embeddingColumn`
+        # @return [String]
+        attr_accessor :embedding_column
+      
+        # Optional. The number of dimensions of the input embedding.
+        # Corresponds to the JSON property `embeddingDimension`
+        # @return [Fixnum]
+        attr_accessor :embedding_dimension
+      
+        # Optional. Columns of features that're used to filter vector search results.
+        # Corresponds to the JSON property `filterColumns`
+        # @return [Array<String>]
+        attr_accessor :filter_columns
+      
+        # Configuration options for the tree-AH algorithm.
+        # Corresponds to the JSON property `treeAhConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAhConfig]
+        attr_accessor :tree_ah_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brute_force_config = args[:brute_force_config] if args.key?(:brute_force_config)
+          @crowding_column = args[:crowding_column] if args.key?(:crowding_column)
+          @distance_measure_type = args[:distance_measure_type] if args.key?(:distance_measure_type)
+          @embedding_column = args[:embedding_column] if args.key?(:embedding_column)
+          @embedding_dimension = args[:embedding_dimension] if args.key?(:embedding_dimension)
+          @filter_columns = args[:filter_columns] if args.key?(:filter_columns)
+          @tree_ah_config = args[:tree_ah_config] if args.key?(:tree_ah_config)
+        end
+      end
+      
+      # Configuration options for using brute force search.
+      class GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Configuration options for the tree-AH algorithm.
+      class GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAhConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of embeddings on each leaf node. The default value is 1000 if
+        # not set.
+        # Corresponds to the JSON property `leafNodeEmbeddingCount`
+        # @return [Fixnum]
+        attr_accessor :leaf_node_embedding_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @leaf_node_embedding_count = args[:leaf_node_embedding_count] if args.key?(:leaf_node_embedding_count)
         end
       end
       
@@ -9682,6 +9864,14 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySetting>]
         attr_accessor :safety_settings
       
+        # The base structured datatype containing multi-part content of a message. A `
+        # Content` includes a `role` field designating the producer of the `Content` and
+        # a `parts` field containing multi-part data that contains the content of the
+        # message turn.
+        # Corresponds to the JSON property `systemInstruction`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
+        attr_accessor :system_instruction
+      
         # Optional. A list of `Tools` the model may use to generate the next response. A
         # `Tool` is a piece of code that enables the system to interact with external
         # systems to perform an action, or set of actions, outside of knowledge and
@@ -9699,6 +9889,7 @@ module Google
           @contents = args[:contents] if args.key?(:contents)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
+          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
           @tools = args[:tools] if args.key?(:tools)
         end
       end
@@ -9805,10 +9996,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :candidate_count
       
+        # Optional. Frequency penalties.
+        # Corresponds to the JSON property `frequencyPenalty`
+        # @return [Float]
+        attr_accessor :frequency_penalty
+      
         # Optional. The maximum number of output tokens to generate per message.
         # Corresponds to the JSON property `maxOutputTokens`
         # @return [Fixnum]
         attr_accessor :max_output_tokens
+      
+        # Optional. Positive penalties.
+        # Corresponds to the JSON property `presencePenalty`
+        # @return [Float]
+        attr_accessor :presence_penalty
       
         # Optional. Stop sequences.
         # Corresponds to the JSON property `stopSequences`
@@ -9837,7 +10038,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @candidate_count = args[:candidate_count] if args.key?(:candidate_count)
+          @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
+          @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
           @top_k = args[:top_k] if args.key?(:top_k)
@@ -9987,6 +10190,11 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttribution>]
         attr_accessor :grounding_attributions
       
+        # Optional. Queries executed by the retrieval tools.
+        # Corresponds to the JSON property `retrievalQueries`
+        # @return [Array<String>]
+        attr_accessor :retrieval_queries
+      
         # Optional. Web search queries for the following-up web search.
         # Corresponds to the JSON property `webSearchQueries`
         # @return [Array<String>]
@@ -9999,6 +10207,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @grounding_attributions = args[:grounding_attributions] if args.key?(:grounding_attributions)
+          @retrieval_queries = args[:retrieval_queries] if args.key?(:retrieval_queries)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
         end
       end
@@ -16157,7 +16366,7 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionResponse]
         attr_accessor :function_response
       
-        # Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.
+        # Content blob. It's preferred to send as text directly rather than raw bytes.
         # Corresponds to the JSON property `inlineData`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Blob]
         attr_accessor :inline_data
@@ -31127,6 +31336,12 @@ module Google
         attr_accessor :grail_text_harm_type
       
         # 
+        # Corresponds to the JSON property `imageChild`
+        # @return [Boolean]
+        attr_accessor :image_child
+        alias_method :image_child?, :image_child
+      
+        # 
         # Corresponds to the JSON property `imageCsam`
         # @return [Boolean]
         attr_accessor :image_csam
@@ -31174,6 +31389,12 @@ module Google
         attr_accessor :threshold
       
         # 
+        # Corresponds to the JSON property `videoFrameChild`
+        # @return [Boolean]
+        attr_accessor :video_frame_child
+        alias_method :video_frame_child?, :video_frame_child
+      
+        # 
         # Corresponds to the JSON property `videoFrameCsam`
         # @return [Boolean]
         attr_accessor :video_frame_csam
@@ -31208,6 +31429,7 @@ module Google
           @fringe = args[:fringe] if args.key?(:fringe)
           @grail_image_harm_type = args[:grail_image_harm_type] if args.key?(:grail_image_harm_type)
           @grail_text_harm_type = args[:grail_text_harm_type] if args.key?(:grail_text_harm_type)
+          @image_child = args[:image_child] if args.key?(:image_child)
           @image_csam = args[:image_csam] if args.key?(:image_csam)
           @image_pedo = args[:image_pedo] if args.key?(:image_pedo)
           @image_porn = args[:image_porn] if args.key?(:image_porn)
@@ -31216,6 +31438,7 @@ module Google
           @safetycat = args[:safetycat] if args.key?(:safetycat)
           @spii = args[:spii] if args.key?(:spii)
           @threshold = args[:threshold] if args.key?(:threshold)
+          @video_frame_child = args[:video_frame_child] if args.key?(:video_frame_child)
           @video_frame_csam = args[:video_frame_csam] if args.key?(:video_frame_csam)
           @video_frame_pedo = args[:video_frame_pedo] if args.key?(:video_frame_pedo)
           @video_frame_porn = args[:video_frame_porn] if args.key?(:video_frame_porn)
@@ -31633,6 +31856,18 @@ module Google
         # @return [String]
         attr_accessor :model_id
       
+        # If true, the model was selected as a fallback, since no model met requirements.
+        # Corresponds to the JSON property `pickedAsFallback`
+        # @return [Boolean]
+        attr_accessor :picked_as_fallback
+        alias_method :picked_as_fallback?, :picked_as_fallback
+      
+        # If true, the model was selected since it met the requriements.
+        # Corresponds to the JSON property `selected`
+        # @return [Boolean]
+        attr_accessor :selected
+        alias_method :selected?, :selected
+      
         def initialize(**args)
            update!(**args)
         end
@@ -31641,6 +31876,8 @@ module Google
         def update!(**args)
           @computed_input_token_length = args[:computed_input_token_length] if args.key?(:computed_input_token_length)
           @model_id = args[:model_id] if args.key?(:model_id)
+          @picked_as_fallback = args[:picked_as_fallback] if args.key?(:picked_as_fallback)
+          @selected = args[:selected] if args.key?(:selected)
         end
       end
       
