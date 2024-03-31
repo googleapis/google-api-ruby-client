@@ -2630,7 +2630,7 @@ module Google
         # @return [Google::Apis::DataformV1beta1::InvocationConfig]
         attr_accessor :invocation_config
       
-        # Output only. The workflow config's name.
+        # Identifier. The workflow config's name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
