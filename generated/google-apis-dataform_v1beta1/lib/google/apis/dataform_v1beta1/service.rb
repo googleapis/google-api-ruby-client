@@ -1254,7 +1254,7 @@ module Google
         
         # Updates a single WorkflowConfig.
         # @param [String] name
-        #   Output only. The workflow config's name.
+        #   Identifier. The workflow config's name.
         # @param [Google::Apis::DataformV1beta1::WorkflowConfig] workflow_config_object
         # @param [String] update_mask
         #   Optional. Specifies the fields to be updated in the workflow config. If left
