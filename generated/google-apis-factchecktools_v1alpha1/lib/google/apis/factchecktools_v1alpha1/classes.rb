@@ -355,6 +355,51 @@ module Google
         end
       end
       
+      # Response from searching fact-checked claims by image.
+      class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next pagination token in the Search response. It should be used as the `
+        # page_token` for the following request. An empty value means no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of claims and all of their associated information.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # A claim and its associated information.
+      class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult
+        include Google::Apis::Core::Hashable
+      
+        # Information about the claim.
+        # Corresponds to the JSON property `claim`
+        # @return [Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1Claim]
+        attr_accessor :claim
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @claim = args[:claim] if args.key?(:claim)
+        end
+      end
+      
       # Response from searching fact-checked claims.
       class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
         include Google::Apis::Core::Hashable

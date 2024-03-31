@@ -51,6 +51,61 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Search through fact-checked claims using an image as the query.
+        # @param [String] image_uri
+        #   Required. The URI of the source image. This must be a publicly-accessible
+        #   image HTTP/HTTPS URL. When fetching images from HTTP/HTTPS URLs, Google cannot
+        #   guarantee that the request will be completed. Your request may fail if the
+        #   specified host denies the request (e.g. due to request throttling or DOS
+        #   prevention), or if Google throttles requests to the site for abuse prevention.
+        #   You should not depend on externally-hosted images for production applications.
+        # @param [String] language_code
+        #   Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". Can be used
+        #   to restrict results by language, though we do not currently consider the
+        #   region.
+        # @param [Fixnum] offset
+        #   Optional. An integer that specifies the current offset (that is, starting
+        #   result location) in search results. This field is only considered if `
+        #   page_token` is unset. For example, 0 means to return results starting from the
+        #   first matching result, and 10 means to return from the 11th result.
+        # @param [Fixnum] page_size
+        #   Optional. The pagination size. We will return up to that many results.
+        #   Defaults to 10 if not set.
+        # @param [String] page_token
+        #   Optional. The pagination token. You may provide the `next_page_token` returned
+        #   from a previous List request, if any, in order to get the next page. All other
+        #   fields must have the same values as in the previous request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def image_claim_search(image_uri: nil, language_code: nil, offset: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/claims:imageSearch', options)
+          command.response_representation = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse::Representation
+          command.response_class = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
+          command.query['imageUri'] = image_uri unless image_uri.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['offset'] = offset unless offset.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Search through fact-checked claims.
         # @param [String] language_code
         #   The BCP-47 language code, such as "en-US" or "sr-Latn". Can be used to

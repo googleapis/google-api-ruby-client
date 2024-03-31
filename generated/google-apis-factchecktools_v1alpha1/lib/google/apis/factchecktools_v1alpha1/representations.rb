@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -169,6 +181,23 @@ module Google
           property :page_url, as: 'pageUrl'
           property :publish_date, as: 'publishDate'
           property :version_id, as: 'versionId'
+        end
+      end
+      
+      class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :results, as: 'results', class: Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult, decorator: Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult::Representation
+      
+        end
+      end
+      
+      class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :claim, as: 'claim', class: Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1Claim, decorator: Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1Claim::Representation
+      
         end
       end
       
