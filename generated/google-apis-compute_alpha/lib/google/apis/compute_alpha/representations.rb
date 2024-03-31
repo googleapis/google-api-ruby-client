@@ -8464,6 +8464,8 @@ module Google
           property :description, as: 'description'
           property :edge_security_policy, as: 'edgeSecurityPolicy'
           property :enable_cdn, as: 'enableCDN'
+          property :external_managed_migration_state, as: 'externalManagedMigrationState'
+          property :external_managed_migration_testing_percentage, as: 'externalManagedMigrationTestingPercentage'
           property :failover_policy, as: 'failoverPolicy', class: Google::Apis::ComputeAlpha::BackendServiceFailoverPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceFailoverPolicy::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -9937,6 +9939,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeAlpha::FirewallPolicyRule, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRule::Representation
+      
           property :parent, as: 'parent'
           property :region, as: 'region'
           property :rule_tuple_count, as: 'ruleTupleCount'
@@ -10073,6 +10077,8 @@ module Google
           property :base_forwarding_rule, as: 'baseForwardingRule'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :external_managed_backend_bucket_migration_state, as: 'externalManagedBackendBucketMigrationState'
+          property :external_managed_backend_bucket_migration_testing_percentage, as: 'externalManagedBackendBucketMigrationTestingPercentage'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :ip_collection, as: 'ipCollection'

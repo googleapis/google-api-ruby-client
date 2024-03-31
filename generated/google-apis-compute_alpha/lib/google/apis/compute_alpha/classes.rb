@@ -3667,6 +3667,30 @@ module Google
         attr_accessor :enable_cdn
         alias_method :enable_cdn?, :enable_cdn
       
+        # Specifies the canary migration state. Possible values are PREPARE, TEST, and
+        # FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state
+        # must be changed to PREPARE. The state must be changed to FINALIZE before the
+        # loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST
+        # state can be used to migrate traffic by percentage using
+        # externalManagedMigrationTestingPercentage. Rolling back a migration requires
+        # the states to be set in reverse order. So changing the scheme from
+        # EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the
+        # same time. Optionally, the TEST state can be used to migrate some traffic back
+        # to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+        # Corresponds to the JSON property `externalManagedMigrationState`
+        # @return [String]
+        attr_accessor :external_managed_migration_state
+      
+        # Determines the fraction of requests that should be processed by the Global
+        # external Application Load Balancer. The value of this field must be in the
+        # range [0, 100]. Session affinity options will slightly affect this routing
+        # behavior, for more details, see: Session Affinity. This value is only used if
+        # the loadBalancingScheme in the BackendService is set to EXTERNAL when using
+        # the classic Application Load Balancer.
+        # Corresponds to the JSON property `externalManagedMigrationTestingPercentage`
+        # @return [Float]
+        attr_accessor :external_managed_migration_testing_percentage
+      
         # For load balancers that have configurable failover: [Internal passthrough
         # Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/
         # failover-overview) and [external passthrough Network Load Balancers](https://
@@ -3969,6 +3993,8 @@ module Google
           @description = args[:description] if args.key?(:description)
           @edge_security_policy = args[:edge_security_policy] if args.key?(:edge_security_policy)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
+          @external_managed_migration_state = args[:external_managed_migration_state] if args.key?(:external_managed_migration_state)
+          @external_managed_migration_testing_percentage = args[:external_managed_migration_testing_percentage] if args.key?(:external_managed_migration_testing_percentage)
           @failover_policy = args[:failover_policy] if args.key?(:failover_policy)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @ha_policy = args[:ha_policy] if args.key?(:ha_policy)
@@ -8963,12 +8989,13 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Additional structured details about this error. Keys should match /[a-zA-Z0-9-
-        # _]/ and be limited to 64 characters in length. When identifying the current
-        # value of an exceeded limit, the units should be contained in the key, not the
-        # value. For example, rather than `"instanceLimit": "100/request"`, should be
-        # returned as, `"instanceLimitPerRequest": "100"`, if the client exceeds the
-        # number of instances that can be created in a single (batch) request.
+        # Additional structured details about this error. Keys must match /a-z+/ but
+        # should ideally be lowerCamelCase. Also they must be limited to 64 characters
+        # in length. When identifying the current value of an exceeded limit, the units
+        # should be contained in the key, not the value. For example, rather than `"
+        # instanceLimit": "100/request"`, should be returned as, `"
+        # instanceLimitPerRequest": "100"`, if the client exceeds the number of
+        # instances that can be created in a single (batch) request.
         # Corresponds to the JSON property `metadatas`
         # @return [Hash<String,String>]
         attr_accessor :metadatas
@@ -10006,6 +10033,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A list of packet mirroring rules that belong to this policy.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
         # [Output Only] The parent of the firewall policy. This field is not applicable
         # to network firewall policies.
         # Corresponds to the JSON property `parent`
@@ -10082,6 +10114,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @parent = args[:parent] if args.key?(:parent)
           @region = args[:region] if args.key?(:region)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
@@ -10705,6 +10738,30 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Specifies the canary migration state for the backend buckets attached to this
+        # forwarding rule. Possible values are PREPARE, TEST, and FINALIZE. To begin the
+        # migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
+        # PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme
+        # can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to
+        # migrate traffic to backend buckets attached to this forwarding rule by
+        # percentage using externalManagedBackendBucketMigrationTestingPercentage.
+        # Rolling back a migration requires the states to be set in reverse order. So
+        # changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be
+        # set to FINALIZE at the same time. Optionally, the TEST state can be used to
+        # migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all
+        # traffic back to EXTERNAL.
+        # Corresponds to the JSON property `externalManagedBackendBucketMigrationState`
+        # @return [String]
+        attr_accessor :external_managed_backend_bucket_migration_state
+      
+        # Determines the fraction of requests to backend buckets that should be
+        # processed by the Global external Application Load Balancer. The value of this
+        # field must be in the range [0, 100]. This value is only used if the
+        # loadBalancingScheme is set to EXTERNAL (when using the Classic ALB).
+        # Corresponds to the JSON property `externalManagedBackendBucketMigrationTestingPercentage`
+        # @return [Float]
+        attr_accessor :external_managed_backend_bucket_migration_testing_percentage
+      
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a ForwardingRule. Include the fingerprint in patch request to ensure
@@ -10981,6 +11038,8 @@ module Google
           @base_forwarding_rule = args[:base_forwarding_rule] if args.key?(:base_forwarding_rule)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @external_managed_backend_bucket_migration_state = args[:external_managed_backend_bucket_migration_state] if args.key?(:external_managed_backend_bucket_migration_state)
+          @external_managed_backend_bucket_migration_testing_percentage = args[:external_managed_backend_bucket_migration_testing_percentage] if args.key?(:external_managed_backend_bucket_migration_testing_percentage)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
@@ -18490,7 +18549,7 @@ module Google
         attr_accessor :is_stateful
         alias_method :is_stateful?, :is_stateful
       
-        # [Output Only] Status of per-instance configurations on the instance.
+        # [Output Only] Status of per-instance configurations on the instances.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStatefulPerInstanceConfigs]
         attr_accessor :per_instance_configs
@@ -45620,10 +45679,10 @@ module Google
         # @return [String]
         attr_accessor :producer_forwarding_rule
       
-        # The number of consumer Network Connectivity Center spokes that connected
-        # Private Service Connect endpoints can be propagated to. This limit lets a
-        # service producer indirectly limit how many propagated Private Service Connect
-        # connections can be established to the producer's service attachment. If the
+        # The number of consumer spokes that connected Private Service Connect endpoints
+        # can be propagated to through Network Connectivity Center. This limit lets the
+        # service producer limit how many propagated Private Service Connect connections
+        # can be established to this service attachment from a single consumer. If the
         # connection preference of the service attachment is ACCEPT_MANUAL, the limit
         # applies to each project or network that is listed in the consumer accept list.
         # If the connection preference of the service attachment is ACCEPT_AUTOMATIC,
