@@ -5244,6 +5244,44 @@ module Google
         end
       end
       
+      # Condition being reported.
+      class ServiceMeshCondition
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier of the condition which describes the condition recognizable
+        # to the user.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A short summary about the issue.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Links contains actionable information.
+        # Corresponds to the JSON property `documentationLink`
+        # @return [String]
+        attr_accessor :documentation_link
+      
+        # Severity level of the condition.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # Status of control plane management.
       class ServiceMeshControlPlaneManagement
         include Google::Apis::Core::Hashable
@@ -5325,6 +5363,11 @@ module Google
       class ServiceMeshMembershipState
         include Google::Apis::Core::Hashable
       
+        # Output only. List of condition reporting membership statues
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::GkehubV1::ServiceMeshCondition>]
+        attr_accessor :conditions
+      
         # Status of control plane management.
         # Corresponds to the JSON property `controlPlaneManagement`
         # @return [Google::Apis::GkehubV1::ServiceMeshControlPlaneManagement]
@@ -5341,6 +5384,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
           @control_plane_management = args[:control_plane_management] if args.key?(:control_plane_management)
           @data_plane_management = args[:data_plane_management] if args.key?(:data_plane_management)
         end
