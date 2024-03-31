@@ -1097,6 +1097,44 @@ module Google
         end
       end
       
+      # Nearest Neighbors search config.
+      class FindNearest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Distance Measure to use, required.
+        # Corresponds to the JSON property `distanceMeasure`
+        # @return [String]
+        attr_accessor :distance_measure
+      
+        # Required. The number of nearest neighbors to return. Must be a positive
+        # integer of no more than 1000.
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        # A message that can hold any of the supported value types.
+        # Corresponds to the JSON property `queryVector`
+        # @return [Google::Apis::FirestoreV1beta1::Value]
+        attr_accessor :query_vector
+      
+        # A reference to a field in a document, ex: `stats.operations`.
+        # Corresponds to the JSON property `vectorField`
+        # @return [Google::Apis::FirestoreV1beta1::FieldReference]
+        attr_accessor :vector_field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distance_measure = args[:distance_measure] if args.key?(:distance_measure)
+          @limit = args[:limit] if args.key?(:limit)
+          @query_vector = args[:query_vector] if args.key?(:query_vector)
+          @vector_field = args[:vector_field] if args.key?(:vector_field)
+        end
+      end
+      
       # Metadata related to the create database operation.
       class GoogleFirestoreAdminV1CreateDatabaseMetadata
         include Google::Apis::Core::Hashable
@@ -2431,6 +2469,11 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::Cursor]
         attr_accessor :end_at
       
+        # Nearest Neighbors search config.
+        # Corresponds to the JSON property `findNearest`
+        # @return [Google::Apis::FirestoreV1beta1::FindNearest]
+        attr_accessor :find_nearest
+      
         # The collections to query.
         # Corresponds to the JSON property `from`
         # @return [Array<Google::Apis::FirestoreV1beta1::CollectionSelector>]
@@ -2489,6 +2532,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_at = args[:end_at] if args.key?(:end_at)
+          @find_nearest = args[:find_nearest] if args.key?(:find_nearest)
           @from = args[:from] if args.key?(:from)
           @limit = args[:limit] if args.key?(:limit)
           @offset = args[:offset] if args.key?(:offset)
