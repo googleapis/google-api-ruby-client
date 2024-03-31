@@ -781,7 +781,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the metadate for a shared drive.
+        # Updates the metadata for a shared drive.
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [Google::Apis::DriveV3::Drive] drive_object
