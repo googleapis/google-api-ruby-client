@@ -690,6 +690,77 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Cancels the ongoing Managed Migration process.
+        # @param [String] service
+        #   Required. The relative resource name of the metastore service to cancel the
+        #   ongoing migration to, in the following format:projects/`project_id`/locations/`
+        #   location_id`/services/`service_id`.
+        # @param [Google::Apis::MetastoreV1beta::CancelMigrationRequest] cancel_migration_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_service_migration(service, cancel_migration_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+service}:cancelMigration', options)
+          command.request_representation = Google::Apis::MetastoreV1beta::CancelMigrationRequest::Representation
+          command.request_object = cancel_migration_request_object
+          command.response_representation = Google::Apis::MetastoreV1beta::Operation::Representation
+          command.response_class = Google::Apis::MetastoreV1beta::Operation
+          command.params['service'] = service unless service.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Completes the managed migration process. The Dataproc Metastore service will
+        # switch to using its own backend database after successful migration.
+        # @param [String] service
+        #   Required. The relative resource name of the metastore service to complete the
+        #   migration to, in the following format:projects/`project_id`/locations/`
+        #   location_id`/services/`service_id`.
+        # @param [Google::Apis::MetastoreV1beta::CompleteMigrationRequest] complete_migration_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_service_migration(service, complete_migration_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+service}:completeMigration', options)
+          command.request_representation = Google::Apis::MetastoreV1beta::CompleteMigrationRequest::Representation
+          command.request_object = complete_migration_request_object
+          command.response_representation = Google::Apis::MetastoreV1beta::Operation::Representation
+          command.response_class = Google::Apis::MetastoreV1beta::Operation
+          command.params['service'] = service unless service.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a metastore service in a project and location.
         # @param [String] parent
         #   Required. The relative resource name of the location in which to create a
@@ -1171,6 +1242,41 @@ module Google
           command.response_representation = Google::Apis::MetastoreV1beta::Policy::Representation
           command.response_class = Google::Apis::MetastoreV1beta::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts the Managed Migration process.
+        # @param [String] service
+        #   Required. The relative resource name of the metastore service to start
+        #   migrating to, in the following format:projects/`project_id`/locations/`
+        #   location_id`/services/`service_id`.
+        # @param [Google::Apis::MetastoreV1beta::StartMigrationRequest] start_migration_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_service_migration(service, start_migration_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+service}:startMigration', options)
+          command.request_representation = Google::Apis::MetastoreV1beta::StartMigrationRequest::Representation
+          command.request_object = start_migration_request_object
+          command.response_representation = Google::Apis::MetastoreV1beta::Operation::Representation
+          command.response_class = Google::Apis::MetastoreV1beta::Operation
+          command.params['service'] = service unless service.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1936,6 +2042,133 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single migration execution.
+        # @param [String] name
+        #   Required. The relative resource name of the migrationExecution to delete, in
+        #   the following form:projects/`project_number`/locations/`location_id`/services/`
+        #   service_id`/migrationExecutions/`migration_execution_id`.
+        # @param [String] request_id
+        #   Optional. A request ID. Specify a unique request ID to allow the server to
+        #   ignore the request if it has completed. The server will ignore subsequent
+        #   requests that provide a duplicate request ID for at least 60 minutes after the
+        #   first request.For example, if an initial request times out, followed by
+        #   another request with the same request ID, the server ignores the second
+        #   request to prevent the creation of duplicate commitments.The request ID must
+        #   be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#
+        #   Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_service_migration_execution(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MetastoreV1beta::Operation::Representation
+          command.response_class = Google::Apis::MetastoreV1beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single migration execution.
+        # @param [String] name
+        #   Required. The relative resource name of the migration execution to retrieve,
+        #   in the following form:projects/`project_number`/locations/`location_id`/
+        #   services/`service_id`/migrationExecutions/`migration_execution_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1beta::MigrationExecution] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1beta::MigrationExecution]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_service_migration_execution(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MetastoreV1beta::MigrationExecution::Representation
+          command.response_class = Google::Apis::MetastoreV1beta::MigrationExecution
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists migration executions on a service.
+        # @param [String] parent
+        #   Required. The relative resource name of the service whose migration executions
+        #   to list, in the following form:projects/`project_number`/locations/`
+        #   location_id`/services/`service_id`/migrationExecutions.
+        # @param [String] filter
+        #   Optional. The filter to apply to list results.
+        # @param [String] order_by
+        #   Optional. Specify the ordering of results as described in Sorting Order (https:
+        #   //cloud.google.com/apis/design/design_patterns#sorting_order). If not
+        #   specified, the results will be sorted in the default order.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of migration executions to return. The response
+        #   may contain less than the maximum number. If unspecified, no more than 500
+        #   migration executions are returned. The maximum value is 1000; values above
+        #   1000 are changed to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous DataprocMetastore.
+        #   ListMigrationExecutions call. Provide this token to retrieve the subsequent
+        #   page.To retrieve the first page, supply an empty page token.When paginating,
+        #   other parameters provided to DataprocMetastore.ListMigrationExecutions must
+        #   match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1beta::ListMigrationExecutionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1beta::ListMigrationExecutionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_service_migration_executions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/migrationExecutions', options)
+          command.response_representation = Google::Apis::MetastoreV1beta::ListMigrationExecutionsResponse::Representation
+          command.response_class = Google::Apis::MetastoreV1beta::ListMigrationExecutionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
