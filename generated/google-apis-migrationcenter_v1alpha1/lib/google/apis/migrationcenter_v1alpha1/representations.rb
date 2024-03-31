@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiscoveryClient
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,6 +467,12 @@ module Google
       end
       
       class ListAssetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDiscoveryClientsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -844,6 +856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SendDiscoveryClientHeartbeatRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Settings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1123,6 +1141,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes'
+          property :collection_type, as: 'collectionType'
           hash :labels, as: 'labels'
           collection :performance_samples, as: 'performanceSamples', class: Google::Apis::MigrationcenterV1alpha1::PerformanceSample, decorator: Google::Apis::MigrationcenterV1alpha1::PerformanceSample::Representation
       
@@ -1348,6 +1367,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :software_family, as: 'softwareFamily'
           property :software_name, as: 'softwareName'
+        end
+      end
+      
+      class DiscoveryClient
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :errors, as: 'errors', class: Google::Apis::MigrationcenterV1alpha1::Status, decorator: Google::Apis::MigrationcenterV1alpha1::Status::Representation
+      
+          property :expire_time, as: 'expireTime'
+          property :heartbeat_time, as: 'heartbeatTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :service_account, as: 'serviceAccount'
+          property :signals_endpoint, as: 'signalsEndpoint'
+          property :source, as: 'source'
+          property :state, as: 'state'
+          property :ttl, as: 'ttl'
+          property :update_time, as: 'updateTime'
+          property :version, as: 'version'
         end
       end
       
@@ -1701,6 +1742,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assets, as: 'assets', class: Google::Apis::MigrationcenterV1alpha1::Asset, decorator: Google::Apis::MigrationcenterV1alpha1::Asset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListDiscoveryClientsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :discovery_clients, as: 'discoveryClients', class: Google::Apis::MigrationcenterV1alpha1::DiscoveryClient, decorator: Google::Apis::MigrationcenterV1alpha1::DiscoveryClient::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -2360,6 +2411,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :mode, as: 'mode'
+        end
+      end
+      
+      class SendDiscoveryClientHeartbeatRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::MigrationcenterV1alpha1::Status, decorator: Google::Apis::MigrationcenterV1alpha1::Status::Representation
+      
+          property :version, as: 'version'
         end
       end
       
