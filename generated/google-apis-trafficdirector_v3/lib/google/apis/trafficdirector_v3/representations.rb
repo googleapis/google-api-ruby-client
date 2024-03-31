@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TypedExtensionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateFailureState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -706,6 +712,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contains, as: 'contains'
+          property :custom, as: 'custom', class: Google::Apis::TrafficdirectorV3::TypedExtensionConfig, decorator: Google::Apis::TrafficdirectorV3::TypedExtensionConfig::Representation
+      
           property :exact, as: 'exact'
           property :ignore_case, as: 'ignoreCase'
           property :prefix, as: 'prefix'
@@ -722,6 +730,14 @@ module Google
       
           property :value, as: 'value', class: Google::Apis::TrafficdirectorV3::ValueMatcher, decorator: Google::Apis::TrafficdirectorV3::ValueMatcher::Representation
       
+        end
+      end
+      
+      class TypedExtensionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          hash :typed_config, as: 'typedConfig'
         end
       end
       

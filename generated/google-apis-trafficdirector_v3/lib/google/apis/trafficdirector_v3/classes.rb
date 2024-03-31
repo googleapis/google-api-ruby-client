@@ -1057,7 +1057,7 @@ module Google
       class NodeMatcher
         include Google::Apis::Core::Hashable
       
-        # Specifies the way to match a string. [#next-free-field: 8]
+        # Specifies the way to match a string. [#next-free-field: 9]
         # Corresponds to the JSON property `nodeId`
         # @return [Google::Apis::TrafficdirectorV3::StringMatcher]
         attr_accessor :node_id
@@ -1533,7 +1533,7 @@ module Google
         end
       end
       
-      # Specifies the way to match a string. [#next-free-field: 8]
+      # Specifies the way to match a string. [#next-free-field: 9]
       class StringMatcher
         include Google::Apis::Core::Hashable
       
@@ -1543,6 +1543,11 @@ module Google
         # Corresponds to the JSON property `contains`
         # @return [String]
         attr_accessor :contains
+      
+        # Message type for extension configuration.
+        # Corresponds to the JSON property `custom`
+        # @return [Google::Apis::TrafficdirectorV3::TypedExtensionConfig]
+        attr_accessor :custom
       
         # The input string must match exactly the string specified here. Examples: * ``
         # abc`` only matches the value ``abc``.
@@ -1585,6 +1590,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contains = args[:contains] if args.key?(:contains)
+          @custom = args[:custom] if args.key?(:custom)
           @exact = args[:exact] if args.key?(:exact)
           @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
           @prefix = args[:prefix] if args.key?(:prefix)
@@ -1629,6 +1635,36 @@ module Google
         def update!(**args)
           @path = args[:path] if args.key?(:path)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Message type for extension configuration.
+      class TypedExtensionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of an extension. This is not used to select the extension, instead it
+        # serves the role of an opaque identifier.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The typed config for the extension. The type URL will be used to identify the
+        # extension. In the case that the type URL is *xds.type.v3.TypedStruct* (or, for
+        # historical reasons, *udpa.type.v1.TypedStruct*), the inner type URL of *
+        # TypedStruct* will be utilized. See the :ref:`extension configuration overview `
+        # for further details.
+        # Corresponds to the JSON property `typedConfig`
+        # @return [Hash<String,Object>]
+        attr_accessor :typed_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @typed_config = args[:typed_config] if args.key?(:typed_config)
         end
       end
       
@@ -1711,7 +1747,7 @@ module Google
         attr_accessor :present_match
         alias_method :present_match?, :present_match
       
-        # Specifies the way to match a string. [#next-free-field: 8]
+        # Specifies the way to match a string. [#next-free-field: 9]
         # Corresponds to the JSON property `stringMatch`
         # @return [Google::Apis::TrafficdirectorV3::StringMatcher]
         attr_accessor :string_match
