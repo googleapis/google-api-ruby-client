@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaintenanceSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaintenanceUpdatePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,12 +299,6 @@ module Google
       end
       
       class PscInstanceConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PscInterfaceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -611,6 +611,8 @@ module Google
           property :initial_user, as: 'initialUser', class: Google::Apis::AlloydbV1alpha::UserPassword, decorator: Google::Apis::AlloydbV1alpha::UserPassword::Representation
       
           hash :labels, as: 'labels'
+          property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::AlloydbV1alpha::MaintenanceSchedule, decorator: Google::Apis::AlloydbV1alpha::MaintenanceSchedule::Representation
+      
           property :maintenance_update_policy, as: 'maintenanceUpdatePolicy', class: Google::Apis::AlloydbV1alpha::MaintenanceUpdatePolicy, decorator: Google::Apis::AlloydbV1alpha::MaintenanceUpdatePolicy::Representation
       
           property :migration_source, as: 'migrationSource', class: Google::Apis::AlloydbV1alpha::MigrationSource, decorator: Google::Apis::AlloydbV1alpha::MigrationSource::Representation
@@ -909,6 +911,13 @@ module Google
         end
       end
       
+      class MaintenanceSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class MaintenanceUpdatePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1020,22 +1029,9 @@ module Google
       class PscInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :allowed_consumer_networks, as: 'allowedConsumerNetworks'
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
-          collection :outgoing_service_attachment_links, as: 'outgoingServiceAttachmentLinks'
           property :psc_dns_name, as: 'pscDnsName'
-          property :psc_enabled, as: 'pscEnabled'
-          collection :psc_interface_configs, as: 'pscInterfaceConfigs', class: Google::Apis::AlloydbV1alpha::PscInterfaceConfig, decorator: Google::Apis::AlloydbV1alpha::PscInterfaceConfig::Representation
-      
           property :service_attachment_link, as: 'serviceAttachmentLink'
-        end
-      end
-      
-      class PscInterfaceConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :consumer_endpoint_ips, as: 'consumerEndpointIps'
-          property :network_attachment, as: 'networkAttachment'
         end
       end
       
