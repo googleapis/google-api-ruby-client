@@ -1789,6 +1789,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Options defining open source compatible datasets living in the BigQuery
+        # catalog. Contains metadata of open source database, schema or namespace
+        # represented by the current dataset.
+        # Corresponds to the JSON property `externalCatalogDatasetOptions`
+        # @return [Google::Apis::BigqueryV2::ExternalCatalogDatasetOptions]
+        attr_accessor :external_catalog_dataset_options
+      
         # Configures the access a dataset defined in an external metadata storage.
         # Corresponds to the JSON property `externalDatasetReference`
         # @return [Google::Apis::BigqueryV2::ExternalDatasetReference]
@@ -1908,6 +1915,7 @@ module Google
           @default_table_expiration_ms = args[:default_table_expiration_ms] if args.key?(:default_table_expiration_ms)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
+          @external_catalog_dataset_options = args[:external_catalog_dataset_options] if args.key?(:external_catalog_dataset_options)
           @external_dataset_reference = args[:external_dataset_reference] if args.key?(:external_dataset_reference)
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @id = args[:id] if args.key?(:id)
@@ -2245,6 +2253,86 @@ module Google
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # Represents privacy policy associated with "differential privacy" method.
+      class DifferentialPrivacyPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The total delta budget for all queries against the privacy-protected
+        # view. Each subscriber query against this view charges the amount of delta that
+        # is pre-defined by the contributor through the privacy policy delta_per_query
+        # field. If there is sufficient budget, then the subscriber query attempts to
+        # complete. It might still fail due to other reasons, in which case the charge
+        # is refunded. If there is insufficient budget the query is rejected. There
+        # might be multiple charge attempts if a single query references multiple views.
+        # In this case there must be sufficient budget for all charges or the query is
+        # rejected and charges are refunded in best effort. The budget does not have a
+        # refresh policy and can only be updated via ALTER VIEW or circumvented by
+        # creating a new view that can be queried with a fresh budget.
+        # Corresponds to the JSON property `deltaBudget`
+        # @return [Float]
+        attr_accessor :delta_budget
+      
+        # Optional. The delta value that is used per query. Delta represents the
+        # probability that any row will fail to be epsilon differentially private.
+        # Indicates the risk associated with exposing aggregate rows in the result of a
+        # query.
+        # Corresponds to the JSON property `deltaPerQuery`
+        # @return [Float]
+        attr_accessor :delta_per_query
+      
+        # Optional. The total epsilon budget for all queries against the privacy-
+        # protected view. Each subscriber query against this view charges the amount of
+        # epsilon they request in their query. If there is sufficient budget, then the
+        # subscriber query attempts to complete. It might still fail due to other
+        # reasons, in which case the charge is refunded. If there is insufficient budget
+        # the query is rejected. There might be multiple charge attempts if a single
+        # query references multiple views. In this case there must be sufficient budget
+        # for all charges or the query is rejected and charges are refunded in best
+        # effort. The budget does not have a refresh policy and can only be updated via
+        # ALTER VIEW or circumvented by creating a new view that can be queried with a
+        # fresh budget.
+        # Corresponds to the JSON property `epsilonBudget`
+        # @return [Float]
+        attr_accessor :epsilon_budget
+      
+        # Optional. The maximum epsilon value that a query can consume. If the
+        # subscriber specifies epsilon as a parameter in a SELECT query, it must be less
+        # than or equal to this value. The epsilon parameter controls the amount of
+        # noise that is added to the groups — a higher epsilon means less noise.
+        # Corresponds to the JSON property `maxEpsilonPerQuery`
+        # @return [Float]
+        attr_accessor :max_epsilon_per_query
+      
+        # Optional. The maximum groups contributed value that is used per query.
+        # Represents the maximum number of groups to which each protected entity can
+        # contribute. Changing this value does not improve or worsen privacy. The best
+        # value for accuracy and utility depends on the query and data.
+        # Corresponds to the JSON property `maxGroupsContributed`
+        # @return [Fixnum]
+        attr_accessor :max_groups_contributed
+      
+        # Optional. The privacy unit column associated with this policy. Differential
+        # privacy policies can only have one privacy unit column per data source object (
+        # table, view).
+        # Corresponds to the JSON property `privacyUnitColumn`
+        # @return [String]
+        attr_accessor :privacy_unit_column
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delta_budget = args[:delta_budget] if args.key?(:delta_budget)
+          @delta_per_query = args[:delta_per_query] if args.key?(:delta_per_query)
+          @epsilon_budget = args[:epsilon_budget] if args.key?(:epsilon_budget)
+          @max_epsilon_per_query = args[:max_epsilon_per_query] if args.key?(:max_epsilon_per_query)
+          @max_groups_contributed = args[:max_groups_contributed] if args.key?(:max_groups_contributed)
+          @privacy_unit_column = args[:privacy_unit_column] if args.key?(:privacy_unit_column)
         end
       end
       
@@ -2843,6 +2931,73 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Options defining open source compatible datasets living in the BigQuery
+      # catalog. Contains metadata of open source database, schema or namespace
+      # represented by the current dataset.
+      class ExternalCatalogDatasetOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The storage location URI for all tables in the dataset. Equivalent
+        # to hive metastore's database locationUri. Maximum length of 1024 characters.
+        # Corresponds to the JSON property `defaultStorageLocationUri`
+        # @return [String]
+        attr_accessor :default_storage_location_uri
+      
+        # Optional. A map of key value pairs defining the parameters and properties of
+        # the open source schema. Maximum size of 2Mib.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,String>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_storage_location_uri = args[:default_storage_location_uri] if args.key?(:default_storage_location_uri)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Metadata about open source compatible table. The fields contained in these
+      # options correspond to hive metastore's table level properties.
+      class ExternalCatalogTableOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The connection specifying the credentials to be used to read
+        # external storage, such as Azure Blob, Cloud Storage, or S3. The connection is
+        # needed to read the open source table from BigQuery Engine. The connection_id
+        # can have the form `..` or `projects//locations//connections/`.
+        # Corresponds to the JSON property `connectionId`
+        # @return [String]
+        attr_accessor :connection_id
+      
+        # Optional. A map of key value pairs defining the parameters and properties of
+        # the open source table. Corresponds with hive meta store table parameters.
+        # Maximum size of 4Mib.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,String>]
+        attr_accessor :parameters
+      
+        # Contains information about how a table's data is stored and accessed by open
+        # source query engines.
+        # Corresponds to the JSON property `storageDescriptor`
+        # @return [Google::Apis::BigqueryV2::StorageDescriptor]
+        attr_accessor :storage_descriptor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_id = args[:connection_id] if args.key?(:connection_id)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @storage_descriptor = args[:storage_descriptor] if args.key?(:storage_descriptor)
         end
       end
       
@@ -5829,6 +5984,36 @@ module Google
         end
       end
       
+      # Represents privacy policy associated with "join restrictions". Join
+      # restriction gives data providers the ability to enforce joins on the '
+      # join_allowed_columns' when data is queried from a privacy protected view.
+      class JoinRestrictionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The only columns that joins are allowed on. This field is must be
+        # specified for join_conditions JOIN_ANY and JOIN_ALL and it cannot be set for
+        # JOIN_BLOCKED.
+        # Corresponds to the JSON property `joinAllowedColumns`
+        # @return [Array<String>]
+        attr_accessor :join_allowed_columns
+      
+        # Optional. Specifies if a join is required or not on queries for the view.
+        # Default is JOIN_CONDITION_UNSPECIFIED.
+        # Corresponds to the JSON property `joinCondition`
+        # @return [String]
+        attr_accessor :join_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @join_allowed_columns = args[:join_allowed_columns] if args.key?(:join_allowed_columns)
+          @join_condition = args[:join_condition] if args.key?(:join_condition)
+        end
+      end
+      
       # Json Options for load and make external tables.
       class JsonOptions
         include Google::Apis::Core::Hashable
@@ -6595,6 +6780,25 @@ module Google
         end
       end
       
+      # Partition skew detailed information.
+      class PartitionSkew
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Source stages which produce skewed data.
+        # Corresponds to the JSON property `skewSources`
+        # @return [Array<Google::Apis::BigqueryV2::SkewSource>]
+        attr_accessor :skew_sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @skew_sources = args[:skew_sources] if args.key?(:skew_sources)
+        end
+      end
+      
       # The partitioning column information.
       class PartitionedColumn
         include Google::Apis::Core::Hashable
@@ -6815,6 +7019,18 @@ module Google
         # @return [Google::Apis::BigqueryV2::AggregationThresholdPolicy]
         attr_accessor :aggregation_threshold_policy
       
+        # Represents privacy policy associated with "differential privacy" method.
+        # Corresponds to the JSON property `differentialPrivacyPolicy`
+        # @return [Google::Apis::BigqueryV2::DifferentialPrivacyPolicy]
+        attr_accessor :differential_privacy_policy
+      
+        # Represents privacy policy associated with "join restrictions". Join
+        # restriction gives data providers the ability to enforce joins on the '
+        # join_allowed_columns' when data is queried from a privacy protected view.
+        # Corresponds to the JSON property `joinRestrictionPolicy`
+        # @return [Google::Apis::BigqueryV2::JoinRestrictionPolicy]
+        attr_accessor :join_restriction_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6822,6 +7038,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aggregation_threshold_policy = args[:aggregation_threshold_policy] if args.key?(:aggregation_threshold_policy)
+          @differential_privacy_policy = args[:differential_privacy_policy] if args.key?(:differential_privacy_policy)
+          @join_restriction_policy = args[:join_restriction_policy] if args.key?(:join_restriction_policy)
         end
       end
       
@@ -8203,6 +8421,41 @@ module Google
         end
       end
       
+      # Serializer and deserializer information.
+      class SerDeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the SerDe. The maximum length is 256 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Key-value pairs that define the initialization parameters for the
+        # serialization library. Maximum size 10 Kib.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,String>]
+        attr_accessor :parameters
+      
+        # Required. Specifies a fully-qualified class name of the serialization library
+        # that is responsible for the translation of data between table representation
+        # and the underlying low-level input and output format structures. The maximum
+        # length is 256 characters.
+        # Corresponds to the JSON property `serializationLibrary`
+        # @return [String]
+        attr_accessor :serialization_library
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @serialization_library = args[:serialization_library] if args.key?(:serialization_library)
+        end
+      end
+      
       # [Preview] Information related to sessions.
       class SessionInfo
         include Google::Apis::Core::Hashable
@@ -8272,6 +8525,25 @@ module Google
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Details about source stages which produce skewed data.
+      class SkewSource
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Stage id of the skew source stage.
+        # Corresponds to the JSON property `stageId`
+        # @return [Fixnum]
+        attr_accessor :stage_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage_id = args[:stage_id] if args.key?(:stage_id)
         end
       end
       
@@ -8528,6 +8800,11 @@ module Google
         attr_accessor :insufficient_shuffle_quota
         alias_method :insufficient_shuffle_quota?, :insufficient_shuffle_quota
       
+        # Partition skew detailed information.
+        # Corresponds to the JSON property `partitionSkew`
+        # @return [Google::Apis::BigqueryV2::PartitionSkew]
+        attr_accessor :partition_skew
+      
         # Output only. True if the stage has a slot contention issue.
         # Corresponds to the JSON property `slotContention`
         # @return [Boolean]
@@ -8548,6 +8825,7 @@ module Google
           @bi_engine_reasons = args[:bi_engine_reasons] if args.key?(:bi_engine_reasons)
           @high_cardinality_joins = args[:high_cardinality_joins] if args.key?(:high_cardinality_joins)
           @insufficient_shuffle_quota = args[:insufficient_shuffle_quota] if args.key?(:insufficient_shuffle_quota)
+          @partition_skew = args[:partition_skew] if args.key?(:partition_skew)
           @slot_contention = args[:slot_contention] if args.key?(:slot_contention)
           @stage_id = args[:stage_id] if args.key?(:stage_id)
         end
@@ -8671,6 +8949,50 @@ module Google
         # Update properties of this object
         def update!(**args)
           @columns = args[:columns] if args.key?(:columns)
+        end
+      end
+      
+      # Contains information about how a table's data is stored and accessed by open
+      # source query engines.
+      class StorageDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the fully qualified class name of the InputFormat (e.g. "
+        # org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128
+        # characters.
+        # Corresponds to the JSON property `inputFormat`
+        # @return [String]
+        attr_accessor :input_format
+      
+        # Optional. The physical location of the table (e.g. 'gs://spark-dataproc-data/
+        # pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The
+        # maximum length is 2056 bytes.
+        # Corresponds to the JSON property `locationUri`
+        # @return [String]
+        attr_accessor :location_uri
+      
+        # Optional. Specifies the fully qualified class name of the OutputFormat (e.g. "
+        # org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128
+        # characters.
+        # Corresponds to the JSON property `outputFormat`
+        # @return [String]
+        attr_accessor :output_format
+      
+        # Serializer and deserializer information.
+        # Corresponds to the JSON property `serdeInfo`
+        # @return [Google::Apis::BigqueryV2::SerDeInfo]
+        attr_accessor :serde_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_format = args[:input_format] if args.key?(:input_format)
+          @location_uri = args[:location_uri] if args.key?(:location_uri)
+          @output_format = args[:output_format] if args.key?(:output_format)
+          @serde_info = args[:serde_info] if args.key?(:serde_info)
         end
       end
       
@@ -8820,6 +9142,12 @@ module Google
         # Corresponds to the JSON property `expirationTime`
         # @return [Fixnum]
         attr_accessor :expiration_time
+      
+        # Metadata about open source compatible table. The fields contained in these
+        # options correspond to hive metastore's table level properties.
+        # Corresponds to the JSON property `externalCatalogTableOptions`
+        # @return [Google::Apis::BigqueryV2::ExternalCatalogTableOptions]
+        attr_accessor :external_catalog_table_options
       
         # Optional. Describes the data format, location, and other properties of a table
         # stored outside of BigQuery. By defining these properties, the data source can
@@ -9069,6 +9397,7 @@ module Google
           @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
           @etag = args[:etag] if args.key?(:etag)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+          @external_catalog_table_options = args[:external_catalog_table_options] if args.key?(:external_catalog_table_options)
           @external_data_configuration = args[:external_data_configuration] if args.key?(:external_data_configuration)
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @id = args[:id] if args.key?(:id)
@@ -10778,8 +11107,8 @@ module Google
       class UndeleteDatasetRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The exact time when the dataset was deleted. If not specified, it
-        # will undelete the most recently deleted version.
+        # Optional. The exact time when the dataset was deleted. If not specified, the
+        # most recently deleted version is undeleted.
         # Corresponds to the JSON property `deletionTime`
         # @return [String]
         attr_accessor :deletion_time
