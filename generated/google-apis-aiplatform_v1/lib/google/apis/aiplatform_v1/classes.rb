@@ -744,6 +744,11 @@ module Google
       class CloudAiNlLlmProtoServiceMessageMetadata
         include Google::Apis::Core::Hashable
       
+        # Factuality-related debug metadata.
+        # Corresponds to the JSON property `factualityDebugMetadata`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootPerRequestProcessorDebugMetadataFactualityDebugMetadata]
+        attr_accessor :factuality_debug_metadata
+      
         # LINT.IfChange This metadata contains additional information required for
         # debugging.
         # Corresponds to the JSON property `inputFilterInfo`
@@ -767,6 +772,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @factuality_debug_metadata = args[:factuality_debug_metadata] if args.key?(:factuality_debug_metadata)
           @input_filter_info = args[:input_filter_info] if args.key?(:input_filter_info)
           @model_routing_decision = args[:model_routing_decision] if args.key?(:model_routing_decision)
           @output_filter_info = args[:output_filter_info] if args.key?(:output_filter_info)
@@ -1030,6 +1036,12 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal>]
         attr_accessor :rai_signals
       
+        # Translation request info during RAI for debugging purpose. Each
+        # TranslationRequestInfo corresponds to a request sent to the translation server.
+        # Corresponds to the JSON property `translationRequestInfos`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootTranslationRequestInfo>]
+        attr_accessor :translation_request_infos
+      
         # Whether the text triggered the blocklist.
         # Corresponds to the JSON property `triggeredBlocklist`
         # @return [Boolean]
@@ -1063,6 +1075,7 @@ module Google
           @filtered = args[:filtered] if args.key?(:filtered)
           @language_filter_result = args[:language_filter_result] if args.key?(:language_filter_result)
           @rai_signals = args[:rai_signals] if args.key?(:rai_signals)
+          @translation_request_infos = args[:translation_request_infos] if args.key?(:translation_request_infos)
           @triggered_blocklist = args[:triggered_blocklist] if args.key?(:triggered_blocklist)
           @triggered_recitation = args[:triggered_recitation] if args.key?(:triggered_recitation)
           @triggered_safety_filter = args[:triggered_safety_filter] if args.key?(:triggered_safety_filter)
@@ -3115,6 +3128,19 @@ module Google
       
       # Request message for PipelineService.CancelTrainingPipeline.
       class GoogleCloudAiplatformV1CancelTrainingPipelineRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for GenAiTuningService.CancelTuningJob.
+      class GoogleCloudAiplatformV1CancelTuningJobRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -9502,7 +9528,7 @@ module Google
         end
       end
       
-      # LINT.IfChange The request message for MatchService.FindNeighbors.
+      # The request message for MatchService.FindNeighbors.
       class GoogleCloudAiplatformV1FindNeighborsRequest
         include Google::Apis::Core::Hashable
       
@@ -10011,6 +10037,15 @@ module Google
         # @return [Float]
         attr_accessor :presence_penalty
       
+        # Optional. Output response mimetype of the generated candidate text. Supported
+        # mimetype: `text/plain`: (default) Text output. `application/json`: JSON
+        # response in the candidates. The model needs to be prompted to output the
+        # appropriate response type, otherwise the behavior is undefined. This is a
+        # preview feature.
+        # Corresponds to the JSON property `responseMimeType`
+        # @return [String]
+        attr_accessor :response_mime_type
+      
         # Optional. Stop sequences.
         # Corresponds to the JSON property `stopSequences`
         # @return [Array<String>]
@@ -10041,6 +10076,7 @@ module Google
           @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
+          @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
           @top_k = args[:top_k] if args.key?(:top_k)
@@ -10190,11 +10226,6 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttribution>]
         attr_accessor :grounding_attributions
       
-        # Optional. Queries executed by the retrieval tools.
-        # Corresponds to the JSON property `retrievalQueries`
-        # @return [Array<String>]
-        attr_accessor :retrieval_queries
-      
         # Optional. Web search queries for the following-up web search.
         # Corresponds to the JSON property `webSearchQueries`
         # @return [Array<String>]
@@ -10207,7 +10238,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @grounding_attributions = args[:grounding_attributions] if args.key?(:grounding_attributions)
-          @retrieval_queries = args[:retrieval_queries] if args.key?(:retrieval_queries)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
         end
       end
@@ -12604,6 +12634,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @trials = args[:trials] if args.key?(:trials)
+        end
+      end
+      
+      # Response message for GenAiTuningService.ListTuningJobs
+      class GoogleCloudAiplatformV1ListTuningJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass to ListTuningJobsRequest.
+        # page_token to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of TuningJobs in the requested page.
+        # Corresponds to the JSON property `tuningJobs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob>]
+        attr_accessor :tuning_jobs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @tuning_jobs = args[:tuning_jobs] if args.key?(:tuning_jobs)
         end
       end
       
@@ -17625,11 +17681,6 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke]
         attr_accessor :deploy_gke
       
-        # Multiple setups to deploy the PublisherModel.
-        # Corresponds to the JSON property `multiDeployVertex`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex]
-        attr_accessor :multi_deploy_vertex
-      
         # The regional resource name or the URI. Key is region, e.g., us-central1,
         # europe-west2, global, etc..
         # Corresponds to the JSON property `openEvaluationPipeline`
@@ -17696,7 +17747,6 @@ module Google
           @create_application = args[:create_application] if args.key?(:create_application)
           @deploy = args[:deploy] if args.key?(:deploy)
           @deploy_gke = args[:deploy_gke] if args.key?(:deploy_gke)
-          @multi_deploy_vertex = args[:multi_deploy_vertex] if args.key?(:multi_deploy_vertex)
           @open_evaluation_pipeline = args[:open_evaluation_pipeline] if args.key?(:open_evaluation_pipeline)
           @open_fine_tuning_pipeline = args[:open_fine_tuning_pipeline] if args.key?(:open_fine_tuning_pipeline)
           @open_fine_tuning_pipelines = args[:open_fine_tuning_pipelines] if args.key?(:open_fine_tuning_pipelines)
@@ -17803,25 +17853,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gke_yaml_configs = args[:gke_yaml_configs] if args.key?(:gke_yaml_configs)
-        end
-      end
-      
-      # Multiple setups to deploy the PublisherModel.
-      class GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex
-        include Google::Apis::Core::Hashable
-      
-        # Optional. One click deployment configurations.
-        # Corresponds to the JSON property `multiDeployVertex`
-        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeploy>]
-        attr_accessor :multi_deploy_vertex
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @multi_deploy_vertex = args[:multi_deploy_vertex] if args.key?(:multi_deploy_vertex)
         end
       end
       
@@ -18350,73 +18381,18 @@ module Google
         end
       end
       
-      # Configuration for the Ray metrics.
-      class GoogleCloudAiplatformV1RayMetricSpec
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Flag to disable the Ray metrics collection.
-        # Corresponds to the JSON property `disabled`
-        # @return [Boolean]
-        attr_accessor :disabled
-        alias_method :disabled?, :disabled
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @disabled = args[:disabled] if args.key?(:disabled)
-        end
-      end
-      
       # Configuration information for the Ray cluster. For experimental launch, Ray
       # cluster creation and Persistent cluster creation are 1:1 mapping: We will
       # provision all the nodes within the Persistent cluster as Ray nodes.
       class GoogleCloudAiplatformV1RaySpec
         include Google::Apis::Core::Hashable
       
-        # Optional. This will be used to indicate which resource pool will serve as the
-        # Ray head node(the first node within that pool). Will use the machine from the
-        # first workerpool as the head node by default if this field isn't set.
-        # Corresponds to the JSON property `headNodeResourcePoolId`
-        # @return [String]
-        attr_accessor :head_node_resource_pool_id
-      
-        # Optional. Default image for user to choose a preferred ML framework (for
-        # example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt images](
-        # https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either
-        # this or the resource_pool_images is required. Use this field if you need all
-        # the resource pools to have the same Ray image. Otherwise, use the `@code
-        # resource_pool_images` field.
-        # Corresponds to the JSON property `imageUri`
-        # @return [String]
-        attr_accessor :image_uri
-      
-        # Configuration for the Ray metrics.
-        # Corresponds to the JSON property `rayMetricSpec`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RayMetricSpec]
-        attr_accessor :ray_metric_spec
-      
-        # Optional. Required if image_uri isn't set. A map of resource_pool_id to
-        # prebuild Ray image if user need to use different images for different head/
-        # worker pools. This map needs to cover all the resource pool ids. Example: ` "
-        # ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "
-        # ray_worker_node_pool2": "another worker image" `
-        # Corresponds to the JSON property `resourcePoolImages`
-        # @return [Hash<String,String>]
-        attr_accessor :resource_pool_images
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @head_node_resource_pool_id = args[:head_node_resource_pool_id] if args.key?(:head_node_resource_pool_id)
-          @image_uri = args[:image_uri] if args.key?(:image_uri)
-          @ray_metric_spec = args[:ray_metric_spec] if args.key?(:ray_metric_spec)
-          @resource_pool_images = args[:resource_pool_images] if args.key?(:resource_pool_images)
         end
       end
       
@@ -18924,29 +18900,12 @@ module Google
       class GoogleCloudAiplatformV1ResourceRuntime
         include Google::Apis::Core::Hashable
       
-        # Output only. URIs for user to connect to the Cluster. Example: ` "
-        # RAY_HEAD_NODE_INTERNAL_IP": "head-node-IP:10001" "RAY_DASHBOARD_URI": "ray-
-        # dashboard-address:8888" `
-        # Corresponds to the JSON property `accessUris`
-        # @return [Hash<String,String>]
-        attr_accessor :access_uris
-      
-        # Output only. The resource name of NotebookRuntimeTemplate for the RoV
-        # Persistent Cluster The NotebokRuntimeTemplate is created in the same VPC (if
-        # set), and with the same Ray and Python version as the Persistent Cluster.
-        # Example: "projects/1000/locations/us-central1/notebookRuntimeTemplates/abc123"
-        # Corresponds to the JSON property `notebookRuntimeTemplate`
-        # @return [String]
-        attr_accessor :notebook_runtime_template
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @access_uris = args[:access_uris] if args.key?(:access_uris)
-          @notebook_runtime_template = args[:notebook_runtime_template] if args.key?(:notebook_runtime_template)
         end
       end
       
@@ -20582,6 +20541,107 @@ module Google
           @iou_score = args[:iou_score] if args.key?(:iou_score)
           @precision = args[:precision] if args.key?(:precision)
           @recall = args[:recall] if args.key?(:recall)
+        end
+      end
+      
+      # Metrics for general pairwise text generation evaluation results.
+      class GoogleCloudAiplatformV1SchemaModelevaluationMetricsPairwiseTextGenerationEvaluationMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Fraction of cases where the autorater agreed with the human raters.
+        # Corresponds to the JSON property `accuracy`
+        # @return [Float]
+        attr_accessor :accuracy
+      
+        # Percentage of time the autorater decided the baseline model had the better
+        # response.
+        # Corresponds to the JSON property `baselineModelWinRate`
+        # @return [Float]
+        attr_accessor :baseline_model_win_rate
+      
+        # A measurement of agreement between the autorater and human raters that takes
+        # the likelihood of random agreement into account.
+        # Corresponds to the JSON property `cohensKappa`
+        # @return [Float]
+        attr_accessor :cohens_kappa
+      
+        # Harmonic mean of precision and recall.
+        # Corresponds to the JSON property `f1Score`
+        # @return [Float]
+        attr_accessor :f1_score
+      
+        # Number of examples where the autorater chose the baseline model, but humans
+        # preferred the model.
+        # Corresponds to the JSON property `falseNegativeCount`
+        # @return [Fixnum]
+        attr_accessor :false_negative_count
+      
+        # Number of examples where the autorater chose the model, but humans preferred
+        # the baseline model.
+        # Corresponds to the JSON property `falsePositiveCount`
+        # @return [Fixnum]
+        attr_accessor :false_positive_count
+      
+        # Percentage of time humans decided the baseline model had the better response.
+        # Corresponds to the JSON property `humanPreferenceBaselineModelWinRate`
+        # @return [Float]
+        attr_accessor :human_preference_baseline_model_win_rate
+      
+        # Percentage of time humans decided the model had the better response.
+        # Corresponds to the JSON property `humanPreferenceModelWinRate`
+        # @return [Float]
+        attr_accessor :human_preference_model_win_rate
+      
+        # Percentage of time the autorater decided the model had the better response.
+        # Corresponds to the JSON property `modelWinRate`
+        # @return [Float]
+        attr_accessor :model_win_rate
+      
+        # Fraction of cases where the autorater and humans thought the model had a
+        # better response out of all cases where the autorater thought the model had a
+        # better response. True positive divided by all positive.
+        # Corresponds to the JSON property `precision`
+        # @return [Float]
+        attr_accessor :precision
+      
+        # Fraction of cases where the autorater and humans thought the model had a
+        # better response out of all cases where the humans thought the model had a
+        # better response.
+        # Corresponds to the JSON property `recall`
+        # @return [Float]
+        attr_accessor :recall
+      
+        # Number of examples where both the autorater and humans decided that the model
+        # had the worse response.
+        # Corresponds to the JSON property `trueNegativeCount`
+        # @return [Fixnum]
+        attr_accessor :true_negative_count
+      
+        # Number of examples where both the autorater and humans decided that the model
+        # had the better response.
+        # Corresponds to the JSON property `truePositiveCount`
+        # @return [Fixnum]
+        attr_accessor :true_positive_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accuracy = args[:accuracy] if args.key?(:accuracy)
+          @baseline_model_win_rate = args[:baseline_model_win_rate] if args.key?(:baseline_model_win_rate)
+          @cohens_kappa = args[:cohens_kappa] if args.key?(:cohens_kappa)
+          @f1_score = args[:f1_score] if args.key?(:f1_score)
+          @false_negative_count = args[:false_negative_count] if args.key?(:false_negative_count)
+          @false_positive_count = args[:false_positive_count] if args.key?(:false_positive_count)
+          @human_preference_baseline_model_win_rate = args[:human_preference_baseline_model_win_rate] if args.key?(:human_preference_baseline_model_win_rate)
+          @human_preference_model_win_rate = args[:human_preference_model_win_rate] if args.key?(:human_preference_model_win_rate)
+          @model_win_rate = args[:model_win_rate] if args.key?(:model_win_rate)
+          @precision = args[:precision] if args.key?(:precision)
+          @recall = args[:recall] if args.key?(:recall)
+          @true_negative_count = args[:true_negative_count] if args.key?(:true_negative_count)
+          @true_positive_count = args[:true_positive_count] if args.key?(:true_positive_count)
         end
       end
       
@@ -26069,13 +26129,13 @@ module Google
         attr_accessor :enable_custom_service_account
         alias_method :enable_custom_service_account?, :enable_custom_service_account
       
-        # Optional. Default service account that this PersistentResource's workloads run
-        # as. The workloads include: * Any runtime specified via `ResourceRuntimeSpec`
-        # on creation time, for example, Ray. * Jobs submitted to PersistentResource, if
-        # no other service account specified in the job specs. Only works when custom
-        # service account is enabled and users have the `iam.serviceAccounts.actAs`
-        # permission on this service account. Required if any containers are specified
-        # in `ResourceRuntimeSpec`.
+        # Optional. Required when all below conditions are met * `
+        # enable_custom_service_account` is true; * any runtime is specified via `
+        # ResourceRuntimeSpec` on creation time, for example, Ray The users must have `
+        # iam.serviceAccounts.actAs` permission on this service account and then the
+        # specified runtime containers will run as it. Do not set this field if you want
+        # to submit jobs using custom service account to this PersistentResource after
+        # creation, but only specify the `service_account` inside the job.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -27282,6 +27342,222 @@ module Google
         end
       end
       
+      # Hyperparameters for SFT.
+      class GoogleCloudAiplatformV1SupervisedHyperParameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Adapter size for tuning.
+        # Corresponds to the JSON property `adapterSize`
+        # @return [String]
+        attr_accessor :adapter_size
+      
+        # Optional. Number of training epoches for this tuning job.
+        # Corresponds to the JSON property `epochCount`
+        # @return [Fixnum]
+        attr_accessor :epoch_count
+      
+        # Optional. Learning rate multiplier for tuning.
+        # Corresponds to the JSON property `learningRateMultiplier`
+        # @return [Float]
+        attr_accessor :learning_rate_multiplier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adapter_size = args[:adapter_size] if args.key?(:adapter_size)
+          @epoch_count = args[:epoch_count] if args.key?(:epoch_count)
+          @learning_rate_multiplier = args[:learning_rate_multiplier] if args.key?(:learning_rate_multiplier)
+        end
+      end
+      
+      # Tuning data statistics for Supervised Tuning.
+      class GoogleCloudAiplatformV1SupervisedTuningDataStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Number of billable characters in the tuning dataset.
+        # Corresponds to the JSON property `totalBillableCharacterCount`
+        # @return [Fixnum]
+        attr_accessor :total_billable_character_count
+      
+        # Output only. Number of tuning characters in the tuning dataset.
+        # Corresponds to the JSON property `totalTuningCharacterCount`
+        # @return [Fixnum]
+        attr_accessor :total_tuning_character_count
+      
+        # Output only. Number of examples in the tuning dataset.
+        # Corresponds to the JSON property `tuningDatasetExampleCount`
+        # @return [Fixnum]
+        attr_accessor :tuning_dataset_example_count
+      
+        # Output only. Number of tuning steps for this Tuning Job.
+        # Corresponds to the JSON property `tuningStepCount`
+        # @return [Fixnum]
+        attr_accessor :tuning_step_count
+      
+        # Output only. Sample user messages in the training dataset uri.
+        # Corresponds to the JSON property `userDatasetExamples`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
+        attr_accessor :user_dataset_examples
+      
+        # Dataset distribution for Supervised Tuning.
+        # Corresponds to the JSON property `userInputTokenDistribution`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution]
+        attr_accessor :user_input_token_distribution
+      
+        # Dataset distribution for Supervised Tuning.
+        # Corresponds to the JSON property `userMessagePerExampleDistribution`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution]
+        attr_accessor :user_message_per_example_distribution
+      
+        # Dataset distribution for Supervised Tuning.
+        # Corresponds to the JSON property `userOutputTokenDistribution`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution]
+        attr_accessor :user_output_token_distribution
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_billable_character_count = args[:total_billable_character_count] if args.key?(:total_billable_character_count)
+          @total_tuning_character_count = args[:total_tuning_character_count] if args.key?(:total_tuning_character_count)
+          @tuning_dataset_example_count = args[:tuning_dataset_example_count] if args.key?(:tuning_dataset_example_count)
+          @tuning_step_count = args[:tuning_step_count] if args.key?(:tuning_step_count)
+          @user_dataset_examples = args[:user_dataset_examples] if args.key?(:user_dataset_examples)
+          @user_input_token_distribution = args[:user_input_token_distribution] if args.key?(:user_input_token_distribution)
+          @user_message_per_example_distribution = args[:user_message_per_example_distribution] if args.key?(:user_message_per_example_distribution)
+          @user_output_token_distribution = args[:user_output_token_distribution] if args.key?(:user_output_token_distribution)
+        end
+      end
+      
+      # Dataset distribution for Supervised Tuning.
+      class GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Defines the histogram bucket.
+        # Corresponds to the JSON property `buckets`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket>]
+        attr_accessor :buckets
+      
+        # Output only. The maximum of the population values.
+        # Corresponds to the JSON property `max`
+        # @return [Float]
+        attr_accessor :max
+      
+        # Output only. The arithmetic mean of the values in the population.
+        # Corresponds to the JSON property `mean`
+        # @return [Float]
+        attr_accessor :mean
+      
+        # Output only. The median of the values in the population.
+        # Corresponds to the JSON property `median`
+        # @return [Float]
+        attr_accessor :median
+      
+        # Output only. The minimum of the population values.
+        # Corresponds to the JSON property `min`
+        # @return [Float]
+        attr_accessor :min
+      
+        # Output only. The 5th percentile of the values in the population.
+        # Corresponds to the JSON property `p5`
+        # @return [Float]
+        attr_accessor :p5
+      
+        # Output only. The 95th percentile of the values in the population.
+        # Corresponds to the JSON property `p95`
+        # @return [Float]
+        attr_accessor :p95
+      
+        # Output only. Sum of a given population of values.
+        # Corresponds to the JSON property `sum`
+        # @return [Fixnum]
+        attr_accessor :sum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buckets = args[:buckets] if args.key?(:buckets)
+          @max = args[:max] if args.key?(:max)
+          @mean = args[:mean] if args.key?(:mean)
+          @median = args[:median] if args.key?(:median)
+          @min = args[:min] if args.key?(:min)
+          @p5 = args[:p5] if args.key?(:p5)
+          @p95 = args[:p95] if args.key?(:p95)
+          @sum = args[:sum] if args.key?(:sum)
+        end
+      end
+      
+      # Dataset bucket used to create a histogram for the distribution given a
+      # population of values.
+      class GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Number of values in the bucket.
+        # Corresponds to the JSON property `count`
+        # @return [Float]
+        attr_accessor :count
+      
+        # Output only. Left bound of the bucket.
+        # Corresponds to the JSON property `left`
+        # @return [Float]
+        attr_accessor :left
+      
+        # Output only. Right bound of the bucket.
+        # Corresponds to the JSON property `right`
+        # @return [Float]
+        attr_accessor :right
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @left = args[:left] if args.key?(:left)
+          @right = args[:right] if args.key?(:right)
+        end
+      end
+      
+      # Tuning Spec for Supervised Tuning.
+      class GoogleCloudAiplatformV1SupervisedTuningSpec
+        include Google::Apis::Core::Hashable
+      
+        # Hyperparameters for SFT.
+        # Corresponds to the JSON property `hyperParameters`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedHyperParameters]
+        attr_accessor :hyper_parameters
+      
+        # Required. Cloud Storage path to file containing training dataset for tuning.
+        # Corresponds to the JSON property `trainingDatasetUri`
+        # @return [String]
+        attr_accessor :training_dataset_uri
+      
+        # Optional. Cloud Storage path to file containing validation dataset for tuning.
+        # Corresponds to the JSON property `validationDatasetUri`
+        # @return [String]
+        attr_accessor :validation_dataset_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hyper_parameters = args[:hyper_parameters] if args.key?(:hyper_parameters)
+          @training_dataset_uri = args[:training_dataset_uri] if args.key?(:training_dataset_uri)
+          @validation_dataset_uri = args[:validation_dataset_uri] if args.key?(:validation_dataset_uri)
+        end
+      end
+      
       # Request message for FeatureOnlineStoreAdminService.SyncFeatureView.
       class GoogleCloudAiplatformV1SyncFeatureViewRequest
         include Google::Apis::Core::Hashable
@@ -28404,6 +28680,172 @@ module Google
         def update!(**args)
           @parameter_id = args[:parameter_id] if args.key?(:parameter_id)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The Model Registry Model and Online Prediction Endpoint assiociated with this
+      # TuningJob.
+      class GoogleCloudAiplatformV1TunedModel
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A resource name of an Endpoint. Format: `projects/`project`/
+        # locations/`location`/endpoints/`endpoint``.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Output only. The resource name of the TunedModel. Format: `projects/`project`/
+        # locations/`location`/models/`model``.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
+      # The tuning data statistic values for TuningJob.
+      class GoogleCloudAiplatformV1TuningDataStats
+        include Google::Apis::Core::Hashable
+      
+        # Tuning data statistics for Supervised Tuning.
+        # Corresponds to the JSON property `supervisedTuningDataStats`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedTuningDataStats]
+        attr_accessor :supervised_tuning_data_stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @supervised_tuning_data_stats = args[:supervised_tuning_data_stats] if args.key?(:supervised_tuning_data_stats)
+        end
+      end
+      
+      # Represents a TuningJob that runs with Google owned models.
+      class GoogleCloudAiplatformV1TuningJob
+        include Google::Apis::Core::Hashable
+      
+        # Model name for tuning, e.g., "gemini-1.0-pro-002".
+        # Corresponds to the JSON property `baseModel`
+        # @return [String]
+        attr_accessor :base_model
+      
+        # Output only. Time when the TuningJob was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The description of the TuningJob.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Time when the TuningJob entered any of the following JobStates: `
+        # JOB_STATE_SUCCEEDED`, `JOB_STATE_FAILED`, `JOB_STATE_CANCELLED`, `
+        # JOB_STATE_EXPIRED`.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AiplatformV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Output only. The Experiment associated with this TuningJob.
+        # Corresponds to the JSON property `experiment`
+        # @return [String]
+        attr_accessor :experiment
+      
+        # Optional. The labels with user-defined metadata to organize TuningJob and
+        # generated resources such as Model and Endpoint. Label keys and values can be
+        # no longer than 64 characters (Unicode codepoints), can only contain lowercase
+        # letters, numeric characters, underscores and dashes. International characters
+        # are allowed. See https://goo.gl/xmQnxf for more information and examples of
+        # labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Identifier. Resource name of a TuningJob. Format: `projects/`
+        # project`/locations/`location`/tuningJobs/`tuning_job``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Time when the TuningJob for the first time entered the `
+        # JOB_STATE_RUNNING` state.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The detailed state of the job.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Tuning Spec for Supervised Tuning.
+        # Corresponds to the JSON property `supervisedTuningSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedTuningSpec]
+        attr_accessor :supervised_tuning_spec
+      
+        # The Model Registry Model and Online Prediction Endpoint assiociated with this
+        # TuningJob.
+        # Corresponds to the JSON property `tunedModel`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TunedModel]
+        attr_accessor :tuned_model
+      
+        # Optional. The display name of the TunedModel. The name can be up to 128
+        # characters long and can consist of any UTF-8 characters.
+        # Corresponds to the JSON property `tunedModelDisplayName`
+        # @return [String]
+        attr_accessor :tuned_model_display_name
+      
+        # The tuning data statistic values for TuningJob.
+        # Corresponds to the JSON property `tuningDataStats`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningDataStats]
+        attr_accessor :tuning_data_stats
+      
+        # Output only. Time when the TuningJob was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_model = args[:base_model] if args.key?(:base_model)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @error = args[:error] if args.key?(:error)
+          @experiment = args[:experiment] if args.key?(:experiment)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @supervised_tuning_spec = args[:supervised_tuning_spec] if args.key?(:supervised_tuning_spec)
+          @tuned_model = args[:tuned_model] if args.key?(:tuned_model)
+          @tuned_model_display_name = args[:tuned_model_display_name] if args.key?(:tuned_model_display_name)
+          @tuning_data_stats = args[:tuning_data_stats] if args.key?(:tuning_data_stats)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -31632,6 +32074,33 @@ module Google
         end
       end
       
+      # 
+      class LearningGenaiRootPerRequestProcessorDebugMetadataFactualityDebugMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Latency spent on fact retrievals. There might be multiple retrievals from
+        # different fact providers.
+        # Corresponds to the JSON property `factRetrievalMillisecondsByProvider`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :fact_retrieval_milliseconds_by_provider
+      
+        # Latency spent on prompt2query. The procedure generates a search-friendly query
+        # given the original prompt.
+        # Corresponds to the JSON property `prompt2queryMilliseconds`
+        # @return [Fixnum]
+        attr_accessor :prompt2query_milliseconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fact_retrieval_milliseconds_by_provider = args[:fact_retrieval_milliseconds_by_provider] if args.key?(:fact_retrieval_milliseconds_by_provider)
+          @prompt2query_milliseconds = args[:prompt2query_milliseconds] if args.key?(:prompt2query_milliseconds)
+        end
+      end
+      
       # This is per harm.
       class LearningGenaiRootRaiOutput
         include Google::Apis::Core::Hashable
@@ -32314,6 +32783,35 @@ module Google
           @allowed = args[:allowed] if args.key?(:allowed)
           @label = args[:label] if args.key?(:label)
           @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Each TranslationRequestInfo corresponds to a request sent to the translation
+      # server.
+      class LearningGenaiRootTranslationRequestInfo
+        include Google::Apis::Core::Hashable
+      
+        # The ISO-639 language code of source text in the initial request, detected
+        # automatically, if no source language was passed within the initial request. If
+        # the source language was passed, auto-detection of the language does not occur
+        # and this field is empty.
+        # Corresponds to the JSON property `detectedLanguageCodes`
+        # @return [Array<String>]
+        attr_accessor :detected_language_codes
+      
+        # The sum of the size of all the contents in the request.
+        # Corresponds to the JSON property `totalContentSize`
+        # @return [Fixnum]
+        attr_accessor :total_content_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_language_codes = args[:detected_language_codes] if args.key?(:detected_language_codes)
+          @total_content_size = args[:total_content_size] if args.key?(:total_content_size)
         end
       end
       
