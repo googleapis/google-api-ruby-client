@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2AllOtherDatabaseResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2AllText
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +190,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2CloudSqlDiscoveryTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2CloudSqlIamCredential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2CloudSqlProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2CloudStorageFileSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2Connection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2Container
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +275,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2ContentLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2CreateConnectionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,6 +406,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2DatabaseResourceCollection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DatabaseResourceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DatabaseResourceRegex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DatabaseResourceRegexes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2DatastoreKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -485,6 +545,24 @@ module Google
       end
       
       class GooglePrivacyDlpV2DiscoveryBigQueryFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryCloudSqlConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryCloudSqlFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -934,6 +1012,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ListConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1294,6 +1378,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2SchemaModifiedCadence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2SearchConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2SecretManagerCredential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2SelectedInfoTypes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1492,6 +1594,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2UpdateConnectionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1611,6 +1719,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2AllOtherBigQueryTables
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GooglePrivacyDlpV2AllOtherDatabaseResources
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1840,6 +1954,39 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2CloudSqlDiscoveryTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conditions, as: 'conditions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudSqlConditions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudSqlConditions::Representation
+      
+          property :disabled, as: 'disabled', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled::Representation
+      
+          property :filter, as: 'filter', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudSqlFilter, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudSqlFilter::Representation
+      
+          property :generation_cadence, as: 'generationCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2CloudSqlIamCredential
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GooglePrivacyDlpV2CloudSqlProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_sql_iam, as: 'cloudSqlIam', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlIamCredential, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlIamCredential::Representation
+      
+          property :connection_name, as: 'connectionName'
+          property :database_engine, as: 'databaseEngine'
+          property :max_connections, as: 'maxConnections'
+          property :username_password, as: 'usernamePassword', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SecretManagerCredential, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SecretManagerCredential::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2CloudStorageFileSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1935,6 +2082,18 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2Connection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_sql, as: 'cloudSql', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlProperties, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlProperties::Representation
+      
+          collection :errors, as: 'errors', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Error, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Error::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class GooglePrivacyDlpV2Container
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1972,6 +2131,14 @@ module Google
           property :metadata_location, as: 'metadataLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2MetadataLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2MetadataLocation::Representation
       
           property :record_location, as: 'recordLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2RecordLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2RecordLocation::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2CreateConnectionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection, as: 'connection', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Connection, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Connection::Representation
       
         end
       end
@@ -2191,6 +2358,40 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2DatabaseResourceCollection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_regexes, as: 'includeRegexes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DatabaseResourceRegexes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DatabaseResourceRegexes::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DatabaseResourceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class GooglePrivacyDlpV2DatabaseResourceRegex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_regex, as: 'databaseRegex'
+          property :database_resource_name_regex, as: 'databaseResourceNameRegex'
+          property :instance_regex, as: 'instanceRegex'
+          property :project_id_regex, as: 'projectIdRegex'
+        end
+      end
+      
+      class GooglePrivacyDlpV2DatabaseResourceRegexes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :patterns, as: 'patterns', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DatabaseResourceRegex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DatabaseResourceRegex::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2DatastoreKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2403,6 +2604,35 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2DiscoveryCloudSqlConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :database_engines, as: 'databaseEngines'
+          collection :types, as: 'types'
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryCloudSqlFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection, as: 'collection', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DatabaseResourceCollection, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DatabaseResourceCollection::Representation
+      
+          property :database_resource_reference, as: 'databaseResourceReference', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DatabaseResourceReference, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DatabaseResourceReference::Representation
+      
+          property :others, as: 'others', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherDatabaseResources, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherDatabaseResources::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :refresh_frequency, as: 'refreshFrequency'
+          property :schema_modified_cadence, as: 'schemaModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SchemaModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SchemaModifiedCadence::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2DiscoveryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2462,6 +2692,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :big_query_target, as: 'bigQueryTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryDiscoveryTarget::Representation
+      
+          property :cloud_sql_target, as: 'cloudSqlTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlDiscoveryTarget::Representation
       
         end
       end
@@ -3166,6 +3398,15 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2ListConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connections, as: 'connections', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Connection, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Connection::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3749,6 +3990,31 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2SchemaModifiedCadence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frequency, as: 'frequency'
+          collection :types, as: 'types'
+        end
+      end
+      
+      class GooglePrivacyDlpV2SearchConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connections, as: 'connections', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Connection, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Connection::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GooglePrivacyDlpV2SecretManagerCredential
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password_secret_version_name, as: 'passwordSecretVersionName'
+          property :username, as: 'username'
+        end
+      end
+      
       class GooglePrivacyDlpV2SelectedInfoTypes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4098,6 +4364,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, :base64 => true, as: 'key'
+        end
+      end
+      
+      class GooglePrivacyDlpV2UpdateConnectionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection, as: 'connection', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Connection, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Connection::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
