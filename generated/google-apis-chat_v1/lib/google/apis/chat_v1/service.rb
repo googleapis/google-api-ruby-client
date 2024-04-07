@@ -1255,15 +1255,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a SpaceEvent. You can request events from up to 28 days before the
-        # time of the request. The server will return the most recent version of the
-        # resource. For example, if a `google.workspace.chat.message.v1.created` event
-        # is requested and the message has since been deleted, the returned event will
-        # contain the deleted message resource in the payload. Requires [user
-        # authentication](https://developers.google.com/chat/api/guides/auth/users).
+        # Returns an event from a Google Chat space. The [event payload](https://
+        # developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#
+        # SpaceEvent.FIELDS.oneof_payload) contains the most recent version of the
+        # resource that changed. For example, if you request an event about a new
+        # message but the message was later updated, the server returns the updated `
+        # Message` resource in the event payload. Requires [user authentication](https://
+        # developers.google.com/chat/api/guides/auth/users). To get an event, the
+        # authenticated user must be a member of the space. For an example, see [Get
+        # details about an event from a Google Chat space](https://developers.google.com/
+        # workspace/chat/get-space-event).
         # @param [String] name
-        #   Required. The resource name of the event. Format: `spaces/`space`/spaceEvents/`
-        #   spaceEvent``
+        #   Required. The resource name of the space event. Format: `spaces/`space`/
+        #   spaceEvents/`spaceEvent``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1291,28 +1295,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists SpaceEvents in a space that the caller is a member of. You can request
-        # events from up to 28 days before the time of the request. The server will
-        # return the most recent version of the resources. For example, if a `google.
-        # workspace.chat.message.v1.created` event is requested and the message has
-        # since been deleted, the returned event will contain the deleted message
-        # resource in the payload. Requires [user authentication](https://developers.
-        # google.com/chat/api/guides/auth/users).
+        # Lists events from a Google Chat space. For each event, the [payload](https://
+        # developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#
+        # SpaceEvent.FIELDS.oneof_payload) contains the most recent version of the Chat
+        # resource. For example, if you list events about new space members, the server
+        # returns `Membership` resources that contain the latest membership details. If
+        # new members were removed during the requested period, the event payload
+        # contains an empty `Membership` resource. Requires [user authentication](https:/
+        # /developers.google.com/chat/api/guides/auth/users). To list events, the
+        # authenticated user must be a member of the space. For an example, see [List
+        # events from a Google Chat space](https://developers.google.com/workspace/chat/
+        # list-space-events).
         # @param [String] parent
-        #   Required. The resource name of the space from which to list events. Format: `
-        #   spaces/`space``.
+        #   Required. Resource name of the [Google Chat space](https://developers.google.
+        #   com/workspace/chat/api/reference/rest/v1/spaces) where the events occurred.
+        #   Format: `spaces/`space``.
         # @param [String] filter
-        #   Required. A query filter. This method supports filtering by: `event_types`, `
-        #   start_time`, and `end_time`. `event_types`: You must specify at least one
-        #   event type in your query. `event_types` supports the has `:` operator. To
-        #   filter by multiple event types, use the `OR` operator. To see the list of
-        #   currently supported event types, see google.chat.v1.SpaceEvent.event_type `
-        #   start_time`: Exclusive timestamp from which to start listing space events. You
-        #   can list events that occurred up to 28 days ago. If unspecified, lists space
-        #   events from the 28 days ago up to end time. `end_time`: Inclusive timestamp up
-        #   to which space events are listed. Default value is the present. `start_time`
-        #   and `end_time` accept a timestamp in [RFC-3339](https://www.rfc-editor.org/rfc/
-        #   rfc3339) format and support the equals `=` comparison operator. To filter by
+        #   Required. A query filter. You must specify at least one event type (`
+        #   event_type`) using the has `:` operator. To filter by multiple event types,
+        #   use the `OR` operator. Omit batch event types in your filter. The request
+        #   automatically returns any related batch events. For example, if you filter by
+        #   new reactions (`google.workspace.chat.reaction.v1.created`), the server also
+        #   returns batch new reactions events (`google.workspace.chat.reaction.v1.
+        #   batchCreated`). For a list of supported event types, see the [`SpaceEvents`
+        #   reference documentation](https://developers.google.com/workspace/chat/api/
+        #   reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.event_type). Optionally,
+        #   you can also filter by start time (`start_time`) and end time (`end_time`): *
+        #   `start_time`: Exclusive timestamp from which to start listing space events.
+        #   You can list events that occurred up to 28 days ago. If unspecified, lists
+        #   space events from the past 28 days. * `end_time`: Inclusive timestamp until
+        #   which space events are listed. If unspecified, lists events up to the time of
+        #   the request. To specify a start or end time, use the equals `=` operator and
+        #   format in [RFC-3339](https://www.rfc-editor.org/rfc/rfc3339). To filter by
         #   both `start_time` and `end_time`, use the `AND` operator. For example, the
         #   following queries are valid: ``` start_time="2023-08-23T19:20:33+00:00" AND
         #   end_time="2023-08-23T19:21:54+00:00" ``` ``` start_time="2023-08-23T19:20:33+
@@ -1323,8 +1337,9 @@ module Google
         #   updated" AND event_types:"google.workspace.chat.message.v1.created" ```
         #   Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of space events returned. The service may return
-        #   fewer than this value. Negative values return an `INVALID_ARGUMENT` error.
+        #   Optional. The maximum number of space events returned. The service might
+        #   return fewer than this value. Negative values return an `INVALID_ARGUMENT`
+        #   error.
         # @param [String] page_token
         #   A page token, received from a previous list space events call. Provide this to
         #   retrieve the subsequent page. When paginating, all other parameters provided
