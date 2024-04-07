@@ -268,6 +268,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1betaKeyEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaKeyEventDefaultValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1betaListAccountSummariesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +323,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaListKeyEventsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -583,6 +601,7 @@ module Google
           property :create_time, as: 'createTime'
           property :deleted, as: 'deleted'
           property :display_name, as: 'displayName'
+          property :gmp_organization, as: 'gmpOrganization'
           property :name, as: 'name'
           property :region_code, as: 'regionCode'
           property :update_time, as: 'updateTime'
@@ -804,6 +823,28 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1betaKeyEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :counting_method, as: 'countingMethod'
+          property :create_time, as: 'createTime'
+          property :custom, as: 'custom'
+          property :default_value, as: 'defaultValue', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEventDefaultValue, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEventDefaultValue::Representation
+      
+          property :deletable, as: 'deletable'
+          property :event_name, as: 'eventName'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaKeyEventDefaultValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :numeric_value, as: 'numericValue'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1betaListAccountSummariesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -871,6 +912,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :google_ads_links, as: 'googleAdsLinks', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaGoogleAdsLink, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaGoogleAdsLink::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaListKeyEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :key_events, as: 'keyEvents', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
