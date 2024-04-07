@@ -1552,6 +1552,7 @@ module Google
           property :dump_flags, as: 'dumpFlags', class: Google::Apis::DatamigrationV1::DumpFlags, decorator: Google::Apis::DatamigrationV1::DumpFlags::Representation
       
           property :dump_path, as: 'dumpPath'
+          property :dump_type, as: 'dumpType'
           property :duration, as: 'duration'
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::DatamigrationV1::Status, decorator: Google::Apis::DatamigrationV1::Status::Representation
@@ -1775,6 +1776,7 @@ module Google
       class ResumeMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :skip_validation, as: 'skipValidation'
         end
       end
       
