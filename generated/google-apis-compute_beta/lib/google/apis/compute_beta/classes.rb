@@ -31136,8 +31136,9 @@ module Google
         # header transformations, before forwarding the request to the selected backend.
         # If defaultRouteAction specifies any weightedBackendServices, defaultService
         # must not be set. Conversely if defaultService is set, defaultRouteAction
-        # cannot contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. URL maps for classic Application Load
+        # cannot contain any weightedBackendServices. If defaultRouteAction is specified,
+        # don't set defaultUrlRedirect. If defaultRouteAction.weightedBackendServices
+        # is specified, don't set defaultService. URL maps for classic Application Load
         # Balancers only support the urlRewrite action within a path matcher's
         # defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
@@ -31154,11 +31155,11 @@ module Google
         # before sending the request to the backend. However, if defaultService is
         # specified, defaultRouteAction cannot contain any weightedBackendServices.
         # Conversely, if defaultRouteAction specifies any weightedBackendServices,
-        # defaultService must not be specified. Only one of defaultService,
-        # defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set.
-        # Authorization requires one or more of the following Google IAM permissions on
-        # the specified resource default_service: - compute.backendBuckets.use - compute.
-        # backendServices.use
+        # defaultService must not be specified. If defaultService is specified, then set
+        # either defaultUrlRedirect or defaultRouteAction.weightedBackendService. Don't
+        # set both. Authorization requires one or more of the following Google IAM
+        # permissions on the specified resource default_service: - compute.
+        # backendBuckets.use - compute.backendServices.use
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -49818,9 +49819,9 @@ module Google
         # sending the request to the backend. However, if defaultService is specified,
         # defaultRouteAction cannot contain any weightedBackendServices. Conversely, if
         # routeAction specifies any weightedBackendServices, service must not be
-        # specified. Only one of defaultService, defaultUrlRedirect , or
-        # defaultRouteAction.weightedBackendService must be set. defaultService has no
-        # effect when the URL map is bound to a target gRPC proxy that has the
+        # specified. If defaultService is specified, then set either defaultUrlRedirect ,
+        # or defaultRouteAction.weightedBackendService Don't set both. defaultService
+        # has no effect when the URL map is bound to a target gRPC proxy that has the
         # validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
