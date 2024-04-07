@@ -627,6 +627,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. The URI for a Google Marketing Platform organization resource.
+        # Only set when this account is connected to a GMP organization. Format:
+        # marketingplatformadmin.googleapis.com/organizations/`org_id`
+        # Corresponds to the JSON property `gmpOrganization`
+        # @return [String]
+        attr_accessor :gmp_organization
+      
         # Output only. Resource name of this account. Format: accounts/`account` Example:
         # "accounts/100"
         # Corresponds to the JSON property `name`
@@ -652,6 +659,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @deleted = args[:deleted] if args.key?(:deleted)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @gmp_organization = args[:gmp_organization] if args.key?(:gmp_organization)
           @name = args[:name] if args.key?(:name)
           @region_code = args[:region_code] if args.key?(:region_code)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -3782,6 +3790,100 @@ module Google
         end
       end
       
+      # A key event in a Google Analytics property.
+      class GoogleAnalyticsAdminV1alphaKeyEvent
+        include Google::Apis::Core::Hashable
+      
+        # Required. The method by which Key Events will be counted across multiple
+        # events within a session.
+        # Corresponds to the JSON property `countingMethod`
+        # @return [String]
+        attr_accessor :counting_method
+      
+        # Output only. Time when this key event was created in the property.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. If set to true, this key event refers to a custom event. If set
+        # to false, this key event refers to a default event in GA. Default events
+        # typically have special meaning in GA. Default events are usually created for
+        # you by the GA system, but in some cases can be created by property admins.
+        # Custom events count towards the maximum number of custom key events that may
+        # be created per property.
+        # Corresponds to the JSON property `custom`
+        # @return [Boolean]
+        attr_accessor :custom
+        alias_method :custom?, :custom
+      
+        # Defines a default value/currency for a key event.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaKeyEventDefaultValue]
+        attr_accessor :default_value
+      
+        # Output only. If set to true, this event can be deleted.
+        # Corresponds to the JSON property `deletable`
+        # @return [Boolean]
+        attr_accessor :deletable
+        alias_method :deletable?, :deletable
+      
+        # Immutable. The event name for this key event. Examples: 'click', 'purchase'
+        # Corresponds to the JSON property `eventName`
+        # @return [String]
+        attr_accessor :event_name
+      
+        # Output only. Resource name of this key event. Format: properties/`property`/
+        # keyEvents/`key_event`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @counting_method = args[:counting_method] if args.key?(:counting_method)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @custom = args[:custom] if args.key?(:custom)
+          @default_value = args[:default_value] if args.key?(:default_value)
+          @deletable = args[:deletable] if args.key?(:deletable)
+          @event_name = args[:event_name] if args.key?(:event_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Defines a default value/currency for a key event.
+      class GoogleAnalyticsAdminV1alphaKeyEventDefaultValue
+        include Google::Apis::Core::Hashable
+      
+        # Required. When an occurrence of this Key Event (specified by event_name) has
+        # no set currency this currency will be applied as the default. Must be in ISO
+        # 4217 currency code format. See https://en.wikipedia.org/wiki/ISO_4217 for more
+        # information.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Required. This will be used to populate the "value" parameter for all
+        # occurrences of this Key Event (specified by event_name) where that parameter
+        # is unset.
+        # Corresponds to the JSON property `numericValue`
+        # @return [Float]
+        attr_accessor :numeric_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @numeric_value = args[:numeric_value] if args.key?(:numeric_value)
+        end
+      end
+      
       # Status information for a link proposal.
       class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails
         include Google::Apis::Core::Hashable
@@ -4322,6 +4424,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @google_ads_links = args[:google_ads_links] if args.key?(:google_ads_links)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListKeyEvents RPC.
+      class GoogleAnalyticsAdminV1alphaListKeyEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested Key Events
+        # Corresponds to the JSON property `keyEvents`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaKeyEvent>]
+        attr_accessor :key_events
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_events = args[:key_events] if args.key?(:key_events)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
