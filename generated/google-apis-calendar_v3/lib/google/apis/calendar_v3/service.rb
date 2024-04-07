@@ -1280,8 +1280,7 @@ module Google
         #   Deprecated and ignored.
         # @param [Array<String>, String] event_types
         #   Event types to return. Optional. This parameter can be repeated multiple times
-        #   to return events of different types. The default is ["default", "focusTime", "
-        #   outOfOffice"].
+        #   to return events of different types. If unset, returns all event types.
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.
@@ -1683,8 +1682,7 @@ module Google
         #   Deprecated and ignored.
         # @param [Array<String>, String] event_types
         #   Event types to return. Optional. This parameter can be repeated multiple times
-        #   to return events of different types. The default is ["default", "focusTime", "
-        #   outOfOffice"].
+        #   to return events of different types. If unset, returns all event types.
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.
