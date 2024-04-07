@@ -355,19 +355,18 @@ module Google
         end
       end
       
-      # Case comments are the main way Google Support communicates with a user who has
-      # opened a case. When a user responds to Google Support, the user's responses
-      # also appear as comments.
+      # A comment associated with a support case. Case comments are the primary way
+      # for Google Support to communicate with a user who has opened a case. When a
+      # user responds to Google Support, the user's responses also appear as comments.
       class Comment
         include Google::Apis::Core::Hashable
       
-        # The full comment body. Maximum of 12800 characters. This can contain rich text
-        # syntax.
+        # The full comment body. Maximum of 12800 characters.
         # Corresponds to the JSON property `body`
         # @return [String]
         attr_accessor :body
       
-        # Output only. The time when this comment was created.
+        # Output only. The time when the comment was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -379,13 +378,13 @@ module Google
         # @return [Google::Apis::CloudsupportV2beta::Actor]
         attr_accessor :creator
       
-        # Output only. The resource name for the comment.
+        # Output only. Identifier. The resource name of the comment.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. DEPRECATED. An automatically generated plain text version of body
-        # with all rich text syntax stripped.
+        # Output only. DEPRECATED. DO NOT USE. A duplicate of the `body` field. This
+        # field is only present for legacy reasons.
         # Corresponds to the JSON property `plainTextBody`
         # @return [String]
         attr_accessor :plain_text_body
