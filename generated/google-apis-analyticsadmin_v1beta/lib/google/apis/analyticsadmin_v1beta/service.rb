@@ -1879,6 +1879,182 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Creates a Key Event.
+        # @param [String] parent
+        #   Required. The resource name of the parent property where this Key Event will
+        #   be created. Format: properties/123
+        # @param [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent] google_analytics_admin_v1beta_key_event_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_property_key_event(parent, google_analytics_admin_v1beta_key_event_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/keyEvents', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent::Representation
+          command.request_object = google_analytics_admin_v1beta_key_event_object
+          command.response_representation = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Key Event.
+        # @param [String] name
+        #   Required. The resource name of the Key Event to delete. Format: properties/`
+        #   property`/keyEvents/`key_event` Example: "properties/123/keyEvents/456"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1beta::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_property_key_event(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1beta::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1beta::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a single Key Event.
+        # @param [String] name
+        #   Required. The resource name of the Key Event to retrieve. Format: properties/`
+        #   property`/keyEvents/`key_event` Example: "properties/123/keyEvents/456"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_key_event(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of Key Events in the specified parent property. Returns an
+        # empty list if no Key Events are found.
+        # @param [String] parent
+        #   Required. The resource name of the parent property. Example: 'properties/123'
+        # @param [Fixnum] page_size
+        #   The maximum number of resources to return. If unspecified, at most 50
+        #   resources will be returned. The maximum value is 200; (higher values will be
+        #   coerced to the maximum)
+        # @param [String] page_token
+        #   A page token, received from a previous `ListKeyEvents` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to `ListKeyEvents` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaListKeyEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaListKeyEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_property_key_events(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/keyEvents', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaListKeyEventsResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaListKeyEventsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Key Event.
+        # @param [String] name
+        #   Output only. Resource name of this key event. Format: properties/`property`/
+        #   keyEvents/`key_event`
+        # @param [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent] google_analytics_admin_v1beta_key_event_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_property_key_event(name, google_analytics_admin_v1beta_key_event_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent::Representation
+          command.request_object = google_analytics_admin_v1beta_key_event_object
+          command.response_representation = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaKeyEvent
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
