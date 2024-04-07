@@ -885,6 +885,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :promotions
       
+        # Optional. The timestamp when the user transaction was made with the Partner.
+        # Specify for the case of "bundle with choice", and it must be before the
+        # provision_time (when the user makes a selection).
+        # Corresponds to the JSON property `purchaseTime`
+        # @return [String]
+        attr_accessor :purchase_time
+      
         # Output only. The place where partners should redirect the end-user to after
         # creation. This field might also be populated when creation failed. However,
         # Partners should always prepare a default URL to redirect the user in case this
@@ -944,6 +951,7 @@ module Google
           @products = args[:products] if args.key?(:products)
           @promotion_specs = args[:promotion_specs] if args.key?(:promotion_specs)
           @promotions = args[:promotions] if args.key?(:promotions)
+          @purchase_time = args[:purchase_time] if args.key?(:purchase_time)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
           @renewal_time = args[:renewal_time] if args.key?(:renewal_time)
           @service_location = args[:service_location] if args.key?(:service_location)
@@ -1009,10 +1017,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :line_item_index
       
-        # Optional. The promotions applied on the line item. It can be: - a free trial
-        # promotion, which overrides the subscription-level free trial promotion. - an
-        # introductory pricing promotion. When used as input in Create or Provision API,
-        # specify its resource name only.
+        # Optional. The promotions applied on the line item. It can be: - an
+        # introductory pricing promotion. - a free trial promotion. This feature is not
+        # enabled. If used, the request will be rejected. When used as input in Create
+        # or Provision API, specify its resource name only.
         # Corresponds to the JSON property `lineItemPromotionSpecs`
         # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>]
         attr_accessor :line_item_promotion_specs
