@@ -1282,6 +1282,90 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocument
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageFooter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayout
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3DocumentEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1823,6 +1907,18 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4197,7 +4293,11 @@ module Google
       class GoogleCloudDocumentaiV1beta3Document
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunked_document, as: 'chunkedDocument', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocument, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocument::Representation
+      
           property :content, :base64 => true, as: 'content'
+          property :document_layout, as: 'documentLayout', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayout, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayout::Representation
+      
           collection :entities, as: 'entities', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntity, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntity::Representation
       
           collection :entity_relations, as: 'entityRelations', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityRelation, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityRelation::Representation
@@ -4217,6 +4317,141 @@ module Google
           collection :text_styles, as: 'textStyles', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentStyle, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentStyle::Representation
       
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocument
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :chunks, as: 'chunks', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk_id, as: 'chunkId'
+          property :content, as: 'content'
+          collection :page_footers, as: 'pageFooters', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageFooter, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageFooter::Representation
+      
+          collection :page_headers, as: 'pageHeaders', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageHeader, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageHeader::Representation
+      
+          property :page_span, as: 'pageSpan', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageFooter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_span, as: 'pageSpan', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan::Representation
+      
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_span, as: 'pageSpan', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan::Representation
+      
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_end, as: 'pageEnd'
+          property :page_start, as: 'pageStart'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayout
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blocks, as: 'blocks', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_id, as: 'blockId'
+          property :list_block, as: 'listBlock', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock::Representation
+      
+          property :page_span, as: 'pageSpan', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan::Representation
+      
+          property :table_block, as: 'tableBlock', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock::Representation
+      
+          property :text_block, as: 'textBlock', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :list_entries, as: 'listEntries', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blocks, as: 'blocks', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_end, as: 'pageEnd'
+          property :page_start, as: 'pageStart'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :body_rows, as: 'bodyRows', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow::Representation
+      
+          property :caption, as: 'caption'
+          collection :header_rows, as: 'headerRows', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blocks, as: 'blocks', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock::Representation
+      
+          property :col_span, as: 'colSpan'
+          property :row_span, as: 'rowSpan'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cells, as: 'cells', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blocks, as: 'blocks', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock::Representation
+      
+          property :text, as: 'text'
+          property :type, as: 'type'
         end
       end
       
@@ -5174,6 +5409,8 @@ module Google
           property :from_start, as: 'fromStart'
           property :individual_page_selector, as: 'individualPageSelector', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector::Representation
       
+          property :layout_config, as: 'layoutConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfig::Representation
+      
           property :ocr_config, as: 'ocrConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfig::Representation
       
           property :schema_override, as: 'schemaOverride', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema::Representation
@@ -5185,6 +5422,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :pages, as: 'pages'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunking_config, as: 'chunkingConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :breakpoint_percentile_threshold, as: 'breakpointPercentileThreshold'
+          property :chunk_size, as: 'chunkSize'
+          property :include_ancestor_headings, as: 'includeAncestorHeadings'
+          property :semantic_chunking_group_size, as: 'semanticChunkingGroupSize'
         end
       end
       
