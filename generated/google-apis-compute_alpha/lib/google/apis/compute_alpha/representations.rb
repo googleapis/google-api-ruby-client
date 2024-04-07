@@ -2728,6 +2728,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectApplicationAwareInterconnect
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectApplicationAwareInterconnectBandwidthPercentage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectApplicationAwareInterconnectStrictPriorityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12855,6 +12879,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_enabled, as: 'adminEnabled'
+          property :application_aware_interconnect, as: 'applicationAwareInterconnect', class: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnect, decorator: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnect::Representation
+      
           collection :available_features, as: 'availableFeatures'
           collection :circuit_infos, as: 'circuitInfos', class: Google::Apis::ComputeAlpha::InterconnectCircuitInfo, decorator: Google::Apis::ComputeAlpha::InterconnectCircuitInfo::Representation
       
@@ -12888,6 +12914,40 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :state, as: 'state'
+        end
+      end
+      
+      class InterconnectApplicationAwareInterconnect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bandwidth_percentage_policy, as: 'bandwidthPercentagePolicy', class: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy, decorator: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy::Representation
+      
+          property :enabled, as: 'enabled'
+          property :profile_description, as: 'profileDescription'
+          property :strict_priority_policy, as: 'strictPriorityPolicy', class: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectStrictPriorityPolicy, decorator: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectStrictPriorityPolicy::Representation
+      
+        end
+      end
+      
+      class InterconnectApplicationAwareInterconnectBandwidthPercentage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentage, as: 'percentage'
+          property :traffic_class, as: 'trafficClass'
+        end
+      end
+      
+      class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bandwidth_percentages, as: 'bandwidthPercentages', class: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentage, decorator: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentage::Representation
+      
+        end
+      end
+      
+      class InterconnectApplicationAwareInterconnectStrictPriorityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -16988,6 +17048,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::FirewallPolicyRule, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRule::Representation
       
           property :type, as: 'type'
