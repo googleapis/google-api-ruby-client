@@ -1466,6 +1466,11 @@ module Google
         # @return [Google::Apis::DomainsV1alpha2::ContactSettings]
         attr_accessor :pending_contact_settings
       
+        # Output only. Current domain management provider.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
         # Output only. The reason the domain registration failed. Only set for domains
         # in REGISTRATION_FAILED state.
         # Corresponds to the JSON property `registerFailureReason`
@@ -1507,6 +1512,7 @@ module Google
           @management_settings = args[:management_settings] if args.key?(:management_settings)
           @name = args[:name] if args.key?(:name)
           @pending_contact_settings = args[:pending_contact_settings] if args.key?(:pending_contact_settings)
+          @provider = args[:provider] if args.key?(:provider)
           @register_failure_reason = args[:register_failure_reason] if args.key?(:register_failure_reason)
           @state = args[:state] if args.key?(:state)
           @supported_privacy = args[:supported_privacy] if args.key?(:supported_privacy)

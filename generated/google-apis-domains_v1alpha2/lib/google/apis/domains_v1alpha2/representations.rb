@@ -597,6 +597,7 @@ module Google
           property :name, as: 'name'
           property :pending_contact_settings, as: 'pendingContactSettings', class: Google::Apis::DomainsV1alpha2::ContactSettings, decorator: Google::Apis::DomainsV1alpha2::ContactSettings::Representation
       
+          property :provider, as: 'provider'
           property :register_failure_reason, as: 'registerFailureReason'
           property :state, as: 'state'
           collection :supported_privacy, as: 'supportedPrivacy'
