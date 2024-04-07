@@ -21937,6 +21937,12 @@ module Google
         attr_accessor :admin_enabled
         alias_method :admin_enabled?, :admin_enabled
       
+        # Configuration information for enabling Application Aware Interconnect (AAI) on
+        # this Cloud Interconnect connection between Google and your on-premises router.
+        # Corresponds to the JSON property `applicationAwareInterconnect`
+        # @return [Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnect]
+        attr_accessor :application_aware_interconnect
+      
         # [Output only] List of features available for this Interconnect connection,
         # which can take one of the following values: - MACSEC If present then the
         # Interconnect connection is provisioned on MACsec capable hardware ports. If
@@ -22158,6 +22164,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
+          @application_aware_interconnect = args[:application_aware_interconnect] if args.key?(:application_aware_interconnect)
           @available_features = args[:available_features] if args.key?(:available_features)
           @circuit_infos = args[:circuit_infos] if args.key?(:circuit_infos)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -22188,6 +22195,106 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Configuration information for enabling Application Aware Interconnect (AAI) on
+      # this Cloud Interconnect connection between Google and your on-premises router.
+      class InterconnectApplicationAwareInterconnect
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bandwidthPercentagePolicy`
+        # @return [Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy]
+        attr_accessor :bandwidth_percentage_policy
+      
+        # Enable or disable the AAI feature on this interconnect.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # A description for the AAI profile on this interconnect.
+        # Corresponds to the JSON property `profileDescription`
+        # @return [String]
+        attr_accessor :profile_description
+      
+        # Specify configuration for StrictPriorityPolicy.
+        # Corresponds to the JSON property `strictPriorityPolicy`
+        # @return [Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectStrictPriorityPolicy]
+        attr_accessor :strict_priority_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bandwidth_percentage_policy = args[:bandwidth_percentage_policy] if args.key?(:bandwidth_percentage_policy)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @profile_description = args[:profile_description] if args.key?(:profile_description)
+          @strict_priority_policy = args[:strict_priority_policy] if args.key?(:strict_priority_policy)
+        end
+      end
+      
+      # Specify bandwidth percentages (0-100) for various traffic classes in
+      # BandwidthPercentagePolicy. The sum of all percentages must equal 100. It is
+      # valid to specify percentages for some classes and not for others. The others
+      # will be implicitly marked as 0.
+      class InterconnectApplicationAwareInterconnectBandwidthPercentage
+        include Google::Apis::Core::Hashable
+      
+        # Bandwidth percentage for a specific traffic class.
+        # Corresponds to the JSON property `percentage`
+        # @return [Fixnum]
+        attr_accessor :percentage
+      
+        # TrafficClass whose bandwidth percentage is being specified.
+        # Corresponds to the JSON property `trafficClass`
+        # @return [String]
+        attr_accessor :traffic_class
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentage = args[:percentage] if args.key?(:percentage)
+          @traffic_class = args[:traffic_class] if args.key?(:traffic_class)
+        end
+      end
+      
+      # 
+      class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specify bandwidth percentages for various traffic classes for queuing type
+        # Bandwidth Percent.
+        # Corresponds to the JSON property `bandwidthPercentages`
+        # @return [Array<Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentage>]
+        attr_accessor :bandwidth_percentages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bandwidth_percentages = args[:bandwidth_percentages] if args.key?(:bandwidth_percentages)
+        end
+      end
+      
+      # Specify configuration for StrictPriorityPolicy.
+      class InterconnectApplicationAwareInterconnectStrictPriorityPolicy
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -33906,8 +34013,9 @@ module Google
         # header transformations, before forwarding the request to the selected backend.
         # If defaultRouteAction specifies any weightedBackendServices, defaultService
         # must not be set. Conversely if defaultService is set, defaultRouteAction
-        # cannot contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. URL maps for classic Application Load
+        # cannot contain any weightedBackendServices. If defaultRouteAction is specified,
+        # don't set defaultUrlRedirect. If defaultRouteAction.weightedBackendServices
+        # is specified, don't set defaultService. URL maps for classic Application Load
         # Balancers only support the urlRewrite action within a path matcher's
         # defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
@@ -33924,11 +34032,11 @@ module Google
         # before sending the request to the backend. However, if defaultService is
         # specified, defaultRouteAction cannot contain any weightedBackendServices.
         # Conversely, if defaultRouteAction specifies any weightedBackendServices,
-        # defaultService must not be specified. Only one of defaultService,
-        # defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set.
-        # Authorization requires one or more of the following Google IAM permissions on
-        # the specified resource default_service: - compute.backendBuckets.use - compute.
-        # backendServices.use
+        # defaultService must not be specified. If defaultService is specified, then set
+        # either defaultUrlRedirect or defaultRouteAction.weightedBackendService. Don't
+        # set both. Authorization requires one or more of the following Google IAM
+        # permissions on the specified resource default_service: - compute.
+        # backendBuckets.use - compute.backendServices.use
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -38186,6 +38294,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output only] Priority of firewall policy association. Not applicable for type=
+        # HIERARCHY.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
         # The rules that apply to the network.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRule>]
@@ -38205,6 +38319,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @type = args[:type] if args.key?(:type)
         end
@@ -55217,9 +55332,9 @@ module Google
         # sending the request to the backend. However, if defaultService is specified,
         # defaultRouteAction cannot contain any weightedBackendServices. Conversely, if
         # routeAction specifies any weightedBackendServices, service must not be
-        # specified. Only one of defaultService, defaultUrlRedirect , or
-        # defaultRouteAction.weightedBackendService must be set. defaultService has no
-        # effect when the URL map is bound to a target gRPC proxy that has the
+        # specified. If defaultService is specified, then set either defaultUrlRedirect ,
+        # or defaultRouteAction.weightedBackendService Don't set both. defaultService
+        # has no effect when the URL map is bound to a target gRPC proxy that has the
         # validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
