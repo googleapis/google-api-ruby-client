@@ -89,9 +89,6 @@ module Google
       # Move a copy of the photos and videos you posted on Maps.
       AUTH_DATAPORTABILITY_MAPS_PHOTOS_VIDEOS = 'https://www.googleapis.com/auth/dataportability.maps.photos_videos'
 
-      # Move a copy of feedback you gave after completing trips using Maps directions.
-      AUTH_DATAPORTABILITY_MAPS_POST_TRIP_FEEDBACK = 'https://www.googleapis.com/auth/dataportability.maps.post_trip_feedback'
-
       # Move a copy of the questions and answers you posted on Maps.
       AUTH_DATAPORTABILITY_MAPS_QUESTIONS_ANSWERS = 'https://www.googleapis.com/auth/dataportability.maps.questions_answers'
 
