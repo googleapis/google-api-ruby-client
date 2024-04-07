@@ -1,0 +1,7 @@
+{
+    "api_id": "solar:v1",
+    "name_pretty": "Solar API",
+    "distribution_name": "google-apis-solar_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
