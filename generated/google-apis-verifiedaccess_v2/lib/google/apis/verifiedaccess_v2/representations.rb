@@ -97,6 +97,7 @@ module Google
           property :os_version, as: 'osVersion'
           property :password_protection_warning_trigger, as: 'passwordProtectionWarningTrigger'
           collection :profile_affiliation_ids, as: 'profileAffiliationIds'
+          property :profile_enrollment_domain, as: 'profileEnrollmentDomain'
           property :realtime_url_check_mode, as: 'realtimeUrlCheckMode'
           property :safe_browsing_protection_level, as: 'safeBrowsingProtectionLevel'
           property :screen_lock_secured, as: 'screenLockSecured'
