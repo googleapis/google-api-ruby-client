@@ -225,6 +225,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Enable training multi-lingual models for this agent. These models
+        # will be trained on all the languages supported by the agent.
+        # Corresponds to the JSON property `enableMultiLanguageTraining`
+        # @return [Boolean]
+        attr_accessor :enable_multi_language_training
+        alias_method :enable_multi_language_training?, :enable_multi_language_training
+      
         # Indicates if automatic spell correction is enabled in detect intent requests.
         # Corresponds to the JSON property `enableSpellCorrection`
         # @return [Boolean]
@@ -314,6 +321,7 @@ module Google
           @default_language_code = args[:default_language_code] if args.key?(:default_language_code)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_multi_language_training = args[:enable_multi_language_training] if args.key?(:enable_multi_language_training)
           @enable_spell_correction = args[:enable_spell_correction] if args.key?(:enable_spell_correction)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
           @gen_app_builder_settings = args[:gen_app_builder_settings] if args.key?(:gen_app_builder_settings)
@@ -2939,6 +2947,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3KnowledgeConnectorSettings]
         attr_accessor :knowledge_connector_settings
       
+        # Settings for multi-lingual agents.
+        # Corresponds to the JSON property `multiLanguageSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowMultiLanguageSettings]
+        attr_accessor :multi_language_settings
+      
         # The unique identifier of the flow. Format: `projects//locations//agents//flows/
         # `.
         # Corresponds to the JSON property `name`
@@ -2984,6 +2997,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
           @knowledge_connector_settings = args[:knowledge_connector_settings] if args.key?(:knowledge_connector_settings)
+          @multi_language_settings = args[:multi_language_settings] if args.key?(:multi_language_settings)
           @name = args[:name] if args.key?(:name)
           @nlu_settings = args[:nlu_settings] if args.key?(:nlu_settings)
           @transition_route_groups = args[:transition_route_groups] if args.key?(:transition_route_groups)
@@ -3010,6 +3024,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @global_import_strategy = args[:global_import_strategy] if args.key?(:global_import_strategy)
+        end
+      end
+      
+      # Settings for multi-lingual agents.
+      class GoogleCloudDialogflowCxV3FlowMultiLanguageSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Enable multi-language detection for this flow. This can be set only
+        # if agent level multi language setting is enabled.
+        # Corresponds to the JSON property `enableMultiLanguageDetection`
+        # @return [Boolean]
+        attr_accessor :enable_multi_language_detection
+        alias_method :enable_multi_language_detection?, :enable_multi_language_detection
+      
+        # Optional. Agent will respond in the detected language if the detected language
+        # code is in the supported resolved languages for this flow. This will be used
+        # only if multi-language training is enabled in the agent and multi-language
+        # detection is enabled in the flow. The supported languages must be a subset of
+        # the languages supported by the agent.
+        # Corresponds to the JSON property `supportedResponseLanguageCodes`
+        # @return [Array<String>]
+        attr_accessor :supported_response_language_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_multi_language_detection = args[:enable_multi_language_detection] if args.key?(:enable_multi_language_detection)
+          @supported_response_language_codes = args[:supported_response_language_codes] if args.key?(:supported_response_language_codes)
         end
       end
       
