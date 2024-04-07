@@ -2751,6 +2751,7 @@ module Google
           collection :facet_control_ids, as: 'facetControlIds'
           collection :filter_control_ids, as: 'filterControlIds'
           collection :ignore_control_ids, as: 'ignoreControlIds'
+          property :ignore_recs_denylist, as: 'ignoreRecsDenylist'
           property :model_id, as: 'modelId'
           property :name, as: 'name'
           collection :oneway_synonyms_control_ids, as: 'onewaySynonymsControlIds'
