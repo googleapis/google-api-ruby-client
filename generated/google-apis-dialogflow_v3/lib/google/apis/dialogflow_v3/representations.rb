@@ -520,6 +520,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3FlowMultiLanguageSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3FlowValidationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3200,6 +3206,7 @@ module Google
           property :default_language_code, as: 'defaultLanguageCode'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :enable_multi_language_training, as: 'enableMultiLanguageTraining'
           property :enable_spell_correction, as: 'enableSpellCorrection'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
           property :gen_app_builder_settings, as: 'genAppBuilderSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings::Representation
@@ -3957,6 +3964,8 @@ module Google
       
           property :knowledge_connector_settings, as: 'knowledgeConnectorSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3KnowledgeConnectorSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3KnowledgeConnectorSettings::Representation
       
+          property :multi_language_settings, as: 'multiLanguageSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowMultiLanguageSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowMultiLanguageSettings::Representation
+      
           property :name, as: 'name'
           property :nlu_settings, as: 'nluSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3NluSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3NluSettings::Representation
       
@@ -3970,6 +3979,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :global_import_strategy, as: 'globalImportStrategy'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3FlowMultiLanguageSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_multi_language_detection, as: 'enableMultiLanguageDetection'
+          collection :supported_response_language_codes, as: 'supportedResponseLanguageCodes'
         end
       end
       
