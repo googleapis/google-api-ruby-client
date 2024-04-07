@@ -3602,12 +3602,12 @@ module Google
         end
       end
       
-      # Payload for batch new membership events where the `EventType` field is `google.
-      # workspace.chat.membership.v1.batchCreated`.
+      # Event payload for multiple new memberships. Event type: `google.workspace.chat.
+      # membership.v1.batchCreated`
       class MembershipBatchCreatedEventData
         include Google::Apis::Core::Hashable
       
-        # A list of created memberships.
+        # A list of new memberships.
         # Corresponds to the JSON property `memberships`
         # @return [Array<Google::Apis::ChatV1::MembershipCreatedEventData>]
         attr_accessor :memberships
@@ -3622,8 +3622,8 @@ module Google
         end
       end
       
-      # Payload for batch deleted membership events where the `EventType` field is `
-      # google.workspace.chat.membership.v1.batchDeleted`.
+      # Event payload for multiple deleted memberships. Event type: `google.workspace.
+      # chat.membership.v1.batchDeleted`
       class MembershipBatchDeletedEventData
         include Google::Apis::Core::Hashable
       
@@ -3642,8 +3642,8 @@ module Google
         end
       end
       
-      # Payload for batch updated membership events where the `EventType` field is `
-      # google.workspace.chat.membership.v1.batchUpdated`.
+      # Event payload for multiple updated memberships. Event type: `google.workspace.
+      # chat.membership.v1.batchUpdated`
       class MembershipBatchUpdatedEventData
         include Google::Apis::Core::Hashable
       
@@ -3662,8 +3662,8 @@ module Google
         end
       end
       
-      # Payload for new membership events where the `EventType` field is `google.
-      # workspace.chat.membership.v1.created`.
+      # Event payload for a new membership. Event type: `google.workspace.chat.
+      # membership.v1.created`.
       class MembershipCreatedEventData
         include Google::Apis::Core::Hashable
       
@@ -3683,8 +3683,8 @@ module Google
         end
       end
       
-      # Payload for deleted membership events where the `EventType` field is `google.
-      # workspace.chat.membership.v1.deleted`.
+      # Event payload for a deleted membership. Event type: `google.workspace.chat.
+      # membership.v1.deleted`
       class MembershipDeletedEventData
         include Google::Apis::Core::Hashable
       
@@ -3704,8 +3704,8 @@ module Google
         end
       end
       
-      # Payload for updated membership events where the `EventType` field is `google.
-      # workspace.chat.membership.v1.updated`.
+      # Event payload for an updated membership. Event type: `google.workspace.chat.
+      # membership.v1.updated`
       class MembershipUpdatedEventData
         include Google::Apis::Core::Hashable
       
@@ -3965,12 +3965,12 @@ module Google
         end
       end
       
-      # Payload for batch new message events where the `EventType` field is `google.
-      # workspace.chat.message.v1.batchCreated`.
+      # Event payload for multiple new messages. Event type: `google.workspace.chat.
+      # message.v1.batchCreated`
       class MessageBatchCreatedEventData
         include Google::Apis::Core::Hashable
       
-        # A list of created messages.
+        # A list of new messages.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::ChatV1::MessageCreatedEventData>]
         attr_accessor :messages
@@ -3985,8 +3985,8 @@ module Google
         end
       end
       
-      # Payload for batch deleted message events where the `EventType` field is `
-      # google.workspace.chat.message.v1.batchDeleted`.
+      # Event payload for multiple deleted messages. Event type: `google.workspace.
+      # chat.message.v1.batchDeleted`
       class MessageBatchDeletedEventData
         include Google::Apis::Core::Hashable
       
@@ -4005,8 +4005,8 @@ module Google
         end
       end
       
-      # Payload for batch updated message events where the `EventType` field is `
-      # google.workspace.chat.message.v1.batchUpdated`.
+      # Event payload for multiple updated messages. Event type: `google.workspace.
+      # chat.message.v1.batchUpdated`
       class MessageBatchUpdatedEventData
         include Google::Apis::Core::Hashable
       
@@ -4025,8 +4025,8 @@ module Google
         end
       end
       
-      # Payload for new message events where the `EventType` field is `google.
-      # workspace.chat.message.v1.created`.
+      # Event payload for a new message. Event type: `google.workspace.chat.message.v1.
+      # created`
       class MessageCreatedEventData
         include Google::Apis::Core::Hashable
       
@@ -4045,8 +4045,8 @@ module Google
         end
       end
       
-      # Payload for deleted message events where the `EventType` field is `google.
-      # workspace.chat.message.v1.deleted`.
+      # Event payload for a deleted message. Event type: `google.workspace.chat.
+      # message.v1.deleted`
       class MessageDeletedEventData
         include Google::Apis::Core::Hashable
       
@@ -4065,8 +4065,8 @@ module Google
         end
       end
       
-      # Payload for updated message events where the `EventType` field is `google.
-      # workspace.chat.message.v1.updated`.
+      # Event payload for an updated message. Event type: `google.workspace.chat.
+      # message.v1.updated`
       class MessageUpdatedEventData
         include Google::Apis::Core::Hashable
       
@@ -4192,12 +4192,12 @@ module Google
         end
       end
       
-      # Payload for batch new reaction events where the `EventType` field is `google.
-      # workspace.chat.reaction.v1.batchCreated`.
+      # Event payload for multiple new reactions. Event type: `google.workspace.chat.
+      # reaction.v1.batchCreated`
       class ReactionBatchCreatedEventData
         include Google::Apis::Core::Hashable
       
-        # A list of created reactions.
+        # A list of new reactions.
         # Corresponds to the JSON property `reactions`
         # @return [Array<Google::Apis::ChatV1::ReactionCreatedEventData>]
         attr_accessor :reactions
@@ -4212,8 +4212,8 @@ module Google
         end
       end
       
-      # Payload for batch deleted reaction events where the `EventType` field is `
-      # google.workspace.chat.reaction.v1.batchDeleted`.
+      # Event payload for multiple deleted reactions. Event type: `google.workspace.
+      # chat.reaction.v1.batchDeleted`
       class ReactionBatchDeletedEventData
         include Google::Apis::Core::Hashable
       
@@ -4232,8 +4232,8 @@ module Google
         end
       end
       
-      # Payload for new reaction events where the `EventType` field is `google.
-      # workspace.chat.reaction.v1.created`.
+      # Event payload for a new reaction. Event type: `google.workspace.chat.reaction.
+      # v1.created`
       class ReactionCreatedEventData
         include Google::Apis::Core::Hashable
       
@@ -4252,8 +4252,8 @@ module Google
         end
       end
       
-      # Payload for deleted reaction events where the `EventType` field is `google.
-      # workspace.chat.reaction.v1.deleted`.
+      # Event payload for a deleted reaction. Type: `google.workspace.chat.reaction.v1.
+      # deleted`
       class ReactionDeletedEventData
         include Google::Apis::Core::Hashable
       
@@ -4592,8 +4592,8 @@ module Google
         end
       end
       
-      # Payload for batch updated space events where the `EventType` field is `google.
-      # workspace.chat.space.v1.batchUpdated`.
+      # Event payload for multiple updates to a space. Event type: `google.workspace.
+      # chat.space.v1.batchUpdated`
       class SpaceBatchUpdatedEventData
         include Google::Apis::Core::Hashable
       
@@ -4663,144 +4663,159 @@ module Google
         end
       end
       
-      # An event that happens in a specific space.
+      # An event that represents a change or activity in a Google Chat space. To learn
+      # more, see [Work with events from Google Chat](https://developers.google.com/
+      # workspace/chat/events-overview).
       class SpaceEvent
         include Google::Apis::Core::Hashable
       
-        # Time of the event.
+        # Time when the event occurred.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
       
-        # Type of the space event. The following event types are supported: * New
-        # membership: `google.workspace.chat.membership.v1.created` * Deleted membership:
-        # `google.workspace.chat.membership.v1.deleted` * Updated membership: `google.
-        # workspace.chat.membership.v1.updated` * New message: `google.workspace.chat.
-        # message.v1.created` * Deleted message: `google.workspace.chat.message.v1.
-        # deleted` * Updated message: `google.workspace.chat.message.v1.updated` * New
-        # reaction: `google.workspace.chat.reaction.v1.created` * Deleted reaction: `
-        # google.workspace.chat.reaction.v1.deleted` * Updated space: `google.workspace.
-        # chat.space.v1.updated` Note that requesting or subscribing to the preceding
-        # event types automatically sets up the subscription or response to also return
-        # batched versions of the event type. For example, if you subscribe to `google.
-        # workspace.chat.membership.v1.created`, you also receive events for `google.
-        # workspace.chat.membership.v1.batchCreated`. For more details see https://
-        # developers.google.com/workspace/events/guides/events-chat#
-        # output_only_event_types.
+        # Type of space event. Each event type has a batch version, which represents
+        # multiple instances of the event type that occur in a short period of time. For
+        # `spaceEvents.list()` requests, omit batch event types in your query filter. By
+        # default, the server returns both event type and its batch version. Supported
+        # event types for [messages](https://developers.google.com/workspace/chat/api/
+        # reference/rest/v1/spaces.messages): * New message: `google.workspace.chat.
+        # message.v1.created` * Updated message: `google.workspace.chat.message.v1.
+        # updated` * Deleted message: `google.workspace.chat.message.v1.deleted` *
+        # Multiple new messages: `google.workspace.chat.message.v1.batchCreated` *
+        # Multiple updated messages: `google.workspace.chat.message.v1.batchUpdated` *
+        # Multiple deleted messages: `google.workspace.chat.message.v1.batchDeleted`
+        # Supported event types for [memberships](https://developers.google.com/
+        # workspace/chat/api/reference/rest/v1/spaces.members): * New membership: `
+        # google.workspace.chat.membership.v1.created` * Updated membership: `google.
+        # workspace.chat.membership.v1.updated` * Deleted membership: `google.workspace.
+        # chat.membership.v1.deleted` * Multiple new memberships: `google.workspace.chat.
+        # membership.v1.batchCreated` * Multiple updated memberships: `google.workspace.
+        # chat.membership.v1.batchUpdated` * Multiple deleted memberships: `google.
+        # workspace.chat.membership.v1.batchDeleted` Supported event types for [
+        # reactions](https://developers.google.com/workspace/chat/api/reference/rest/v1/
+        # spaces.messages.reactions): * New reaction: `google.workspace.chat.reaction.v1.
+        # created` * Deleted reaction: `google.workspace.chat.reaction.v1.deleted` *
+        # Multiple new reactions: `google.workspace.chat.reaction.v1.batchCreated` *
+        # Multiple deleted reactions: `google.workspace.chat.reaction.v1.batchDeleted`
+        # Supported event types about the [space](https://developers.google.com/
+        # workspace/chat/api/reference/rest/v1/spaces): * Updated space: `google.
+        # workspace.chat.space.v1.updated` * Multiple space updates: `google.workspace.
+        # chat.space.v1.batchUpdated`
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
       
-        # Payload for batch new membership events where the `EventType` field is `google.
-        # workspace.chat.membership.v1.batchCreated`.
+        # Event payload for multiple new memberships. Event type: `google.workspace.chat.
+        # membership.v1.batchCreated`
         # Corresponds to the JSON property `membershipBatchCreatedEventData`
         # @return [Google::Apis::ChatV1::MembershipBatchCreatedEventData]
         attr_accessor :membership_batch_created_event_data
       
-        # Payload for batch deleted membership events where the `EventType` field is `
-        # google.workspace.chat.membership.v1.batchDeleted`.
+        # Event payload for multiple deleted memberships. Event type: `google.workspace.
+        # chat.membership.v1.batchDeleted`
         # Corresponds to the JSON property `membershipBatchDeletedEventData`
         # @return [Google::Apis::ChatV1::MembershipBatchDeletedEventData]
         attr_accessor :membership_batch_deleted_event_data
       
-        # Payload for batch updated membership events where the `EventType` field is `
-        # google.workspace.chat.membership.v1.batchUpdated`.
+        # Event payload for multiple updated memberships. Event type: `google.workspace.
+        # chat.membership.v1.batchUpdated`
         # Corresponds to the JSON property `membershipBatchUpdatedEventData`
         # @return [Google::Apis::ChatV1::MembershipBatchUpdatedEventData]
         attr_accessor :membership_batch_updated_event_data
       
-        # Payload for new membership events where the `EventType` field is `google.
-        # workspace.chat.membership.v1.created`.
+        # Event payload for a new membership. Event type: `google.workspace.chat.
+        # membership.v1.created`.
         # Corresponds to the JSON property `membershipCreatedEventData`
         # @return [Google::Apis::ChatV1::MembershipCreatedEventData]
         attr_accessor :membership_created_event_data
       
-        # Payload for deleted membership events where the `EventType` field is `google.
-        # workspace.chat.membership.v1.deleted`.
+        # Event payload for a deleted membership. Event type: `google.workspace.chat.
+        # membership.v1.deleted`
         # Corresponds to the JSON property `membershipDeletedEventData`
         # @return [Google::Apis::ChatV1::MembershipDeletedEventData]
         attr_accessor :membership_deleted_event_data
       
-        # Payload for updated membership events where the `EventType` field is `google.
-        # workspace.chat.membership.v1.updated`.
+        # Event payload for an updated membership. Event type: `google.workspace.chat.
+        # membership.v1.updated`
         # Corresponds to the JSON property `membershipUpdatedEventData`
         # @return [Google::Apis::ChatV1::MembershipUpdatedEventData]
         attr_accessor :membership_updated_event_data
       
-        # Payload for batch new message events where the `EventType` field is `google.
-        # workspace.chat.message.v1.batchCreated`.
+        # Event payload for multiple new messages. Event type: `google.workspace.chat.
+        # message.v1.batchCreated`
         # Corresponds to the JSON property `messageBatchCreatedEventData`
         # @return [Google::Apis::ChatV1::MessageBatchCreatedEventData]
         attr_accessor :message_batch_created_event_data
       
-        # Payload for batch deleted message events where the `EventType` field is `
-        # google.workspace.chat.message.v1.batchDeleted`.
+        # Event payload for multiple deleted messages. Event type: `google.workspace.
+        # chat.message.v1.batchDeleted`
         # Corresponds to the JSON property `messageBatchDeletedEventData`
         # @return [Google::Apis::ChatV1::MessageBatchDeletedEventData]
         attr_accessor :message_batch_deleted_event_data
       
-        # Payload for batch updated message events where the `EventType` field is `
-        # google.workspace.chat.message.v1.batchUpdated`.
+        # Event payload for multiple updated messages. Event type: `google.workspace.
+        # chat.message.v1.batchUpdated`
         # Corresponds to the JSON property `messageBatchUpdatedEventData`
         # @return [Google::Apis::ChatV1::MessageBatchUpdatedEventData]
         attr_accessor :message_batch_updated_event_data
       
-        # Payload for new message events where the `EventType` field is `google.
-        # workspace.chat.message.v1.created`.
+        # Event payload for a new message. Event type: `google.workspace.chat.message.v1.
+        # created`
         # Corresponds to the JSON property `messageCreatedEventData`
         # @return [Google::Apis::ChatV1::MessageCreatedEventData]
         attr_accessor :message_created_event_data
       
-        # Payload for deleted message events where the `EventType` field is `google.
-        # workspace.chat.message.v1.deleted`.
+        # Event payload for a deleted message. Event type: `google.workspace.chat.
+        # message.v1.deleted`
         # Corresponds to the JSON property `messageDeletedEventData`
         # @return [Google::Apis::ChatV1::MessageDeletedEventData]
         attr_accessor :message_deleted_event_data
       
-        # Payload for updated message events where the `EventType` field is `google.
-        # workspace.chat.message.v1.updated`.
+        # Event payload for an updated message. Event type: `google.workspace.chat.
+        # message.v1.updated`
         # Corresponds to the JSON property `messageUpdatedEventData`
         # @return [Google::Apis::ChatV1::MessageUpdatedEventData]
         attr_accessor :message_updated_event_data
       
-        # The resource name of the space event. Format: `spaces/`space`/spaceEvents/`
+        # Resource name of the space event. Format: `spaces/`space`/spaceEvents/`
         # spaceEvent``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Payload for batch new reaction events where the `EventType` field is `google.
-        # workspace.chat.reaction.v1.batchCreated`.
+        # Event payload for multiple new reactions. Event type: `google.workspace.chat.
+        # reaction.v1.batchCreated`
         # Corresponds to the JSON property `reactionBatchCreatedEventData`
         # @return [Google::Apis::ChatV1::ReactionBatchCreatedEventData]
         attr_accessor :reaction_batch_created_event_data
       
-        # Payload for batch deleted reaction events where the `EventType` field is `
-        # google.workspace.chat.reaction.v1.batchDeleted`.
+        # Event payload for multiple deleted reactions. Event type: `google.workspace.
+        # chat.reaction.v1.batchDeleted`
         # Corresponds to the JSON property `reactionBatchDeletedEventData`
         # @return [Google::Apis::ChatV1::ReactionBatchDeletedEventData]
         attr_accessor :reaction_batch_deleted_event_data
       
-        # Payload for new reaction events where the `EventType` field is `google.
-        # workspace.chat.reaction.v1.created`.
+        # Event payload for a new reaction. Event type: `google.workspace.chat.reaction.
+        # v1.created`
         # Corresponds to the JSON property `reactionCreatedEventData`
         # @return [Google::Apis::ChatV1::ReactionCreatedEventData]
         attr_accessor :reaction_created_event_data
       
-        # Payload for deleted reaction events where the `EventType` field is `google.
-        # workspace.chat.reaction.v1.deleted`.
+        # Event payload for a deleted reaction. Type: `google.workspace.chat.reaction.v1.
+        # deleted`
         # Corresponds to the JSON property `reactionDeletedEventData`
         # @return [Google::Apis::ChatV1::ReactionDeletedEventData]
         attr_accessor :reaction_deleted_event_data
       
-        # Payload for batch updated space events where the `EventType` field is `google.
-        # workspace.chat.space.v1.batchUpdated`.
+        # Event payload for multiple updates to a space. Event type: `google.workspace.
+        # chat.space.v1.batchUpdated`
         # Corresponds to the JSON property `spaceBatchUpdatedEventData`
         # @return [Google::Apis::ChatV1::SpaceBatchUpdatedEventData]
         attr_accessor :space_batch_updated_event_data
       
-        # Payload for updated space events where the `EventType` field is `google.
-        # workspace.chat.space.v1.updated`.
+        # Event payload for an updated space. Event type: `google.workspace.chat.space.
+        # v1.updated`
         # Corresponds to the JSON property `spaceUpdatedEventData`
         # @return [Google::Apis::ChatV1::SpaceUpdatedEventData]
         attr_accessor :space_updated_event_data
@@ -4835,8 +4850,8 @@ module Google
         end
       end
       
-      # Payload for updated space events where the `EventType` field is `google.
-      # workspace.chat.space.v1.updated`.
+      # Event payload for an updated space. Event type: `google.workspace.chat.space.
+      # v1.updated`
       class SpaceUpdatedEventData
         include Google::Apis::Core::Hashable
       
