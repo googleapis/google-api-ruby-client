@@ -18773,6 +18773,154 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Cancels a TuningJob. Starts asynchronous cancellation on the TuningJob. The
+        # server makes a best effort to cancel the job, but success is not guaranteed.
+        # Clients can use GenAiTuningService.GetTuningJob or other methods to check
+        # whether the cancellation succeeded or whether the job completed despite
+        # cancellation. On successful cancellation, the TuningJob is not deleted;
+        # instead it becomes a job with a TuningJob.error value with a google.rpc.Status.
+        # code of 1, corresponding to `Code.CANCELLED`, and TuningJob.state is set to `
+        # CANCELLED`.
+        # @param [String] name
+        #   Required. The name of the TuningJob to cancel. Format: `projects/`project`/
+        #   locations/`location`/tuningJobs/`tuning_job``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CancelTuningJobRequest] google_cloud_aiplatform_v1_cancel_tuning_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_project_location_tuning_job(name, google_cloud_aiplatform_v1_cancel_tuning_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CancelTuningJobRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_cancel_tuning_job_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a TuningJob. A created TuningJob right away will be attempted to be
+        # run.
+        # @param [String] parent
+        #   Required. The resource name of the Location to create the TuningJob in. Format:
+        #   `projects/`project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob] google_cloud_aiplatform_v1_tuning_job_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_tuning_job(parent, google_cloud_aiplatform_v1_tuning_job_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/tuningJobs', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob::Representation
+          command.request_object = google_cloud_aiplatform_v1_tuning_job_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a TuningJob.
+        # @param [String] name
+        #   Required. The name of the TuningJob resource. Format: `projects/`project`/
+        #   locations/`location`/tuningJobs/`tuning_job``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_tuning_job(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists TuningJobs in a Location.
+        # @param [String] parent
+        #   Required. The resource name of the Location to list the TuningJobs from.
+        #   Format: `projects/`project`/locations/`location``
+        # @param [String] filter
+        #   Optional. The standard list filter.
+        # @param [Fixnum] page_size
+        #   Optional. The standard list page size.
+        # @param [String] page_token
+        #   Optional. The standard list page token. Typically obtained via ListTuningJob.
+        #   next_page_token of the previous GenAiTuningService.ListTuningJob][] call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListTuningJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListTuningJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_tuning_jobs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/tuningJobs', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListTuningJobsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListTuningJobsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
