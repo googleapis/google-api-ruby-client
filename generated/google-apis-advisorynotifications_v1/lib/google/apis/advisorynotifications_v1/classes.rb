@@ -262,7 +262,8 @@ module Google
         attr_accessor :etag
       
         # Identifier. The resource name of the settings to retrieve. Format:
-        # organizations/`organization`/locations/`location`/settings.
+        # organizations/`organization`/locations/`location`/settings or projects/`
+        # projects`/locations/`location`/settings.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
