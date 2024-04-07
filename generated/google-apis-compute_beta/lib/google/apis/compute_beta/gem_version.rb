@@ -16,13 +16,13 @@ module Google
   module Apis
     module ComputeBeta
       # Version of the google-apis-compute_beta gem
-      GEM_VERSION = "0.97.0"
+      GEM_VERSION = "0.98.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.14.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240324"
+      REVISION = "20240326"
     end
   end
 end
