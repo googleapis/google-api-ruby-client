@@ -502,6 +502,7 @@ module Google
           collection :promotion_specs, as: 'promotionSpecs', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec::Representation
       
           collection :promotions, as: 'promotions'
+          property :purchase_time, as: 'purchaseTime'
           property :redirect_uri, as: 'redirectUri'
           property :renewal_time, as: 'renewalTime'
           property :service_location, as: 'serviceLocation', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Location, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Location::Representation
