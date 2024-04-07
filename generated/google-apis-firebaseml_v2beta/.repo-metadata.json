@@ -1,0 +1,7 @@
+{
+    "api_id": "firebaseml:v2beta",
+    "name_pretty": "Firebase ML API",
+    "distribution_name": "google-apis-firebaseml_v2beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
