@@ -2858,6 +2858,12 @@ module Google
         # @return [String]
         attr_accessor :dump_path
       
+        # Optional. The type of the data dump. Supported for MySQL to CloudSQL for MySQL
+        # migrations only.
+        # Corresponds to the JSON property `dumpType`
+        # @return [String]
+        attr_accessor :dump_type
+      
         # Output only. The duration of the migration job (in seconds). A duration in
         # seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         # Corresponds to the JSON property `duration`
@@ -2982,6 +2988,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @dump_flags = args[:dump_flags] if args.key?(:dump_flags)
           @dump_path = args[:dump_path] if args.key?(:dump_path)
+          @dump_type = args[:dump_type] if args.key?(:dump_type)
           @duration = args[:duration] if args.key?(:duration)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
@@ -3819,12 +3826,20 @@ module Google
       class ResumeMigrationJobRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Resume the migration job without running prior configuration
+        # verification. Defaults to `false`.
+        # Corresponds to the JSON property `skipValidation`
+        # @return [Boolean]
+        attr_accessor :skip_validation
+        alias_method :skip_validation?, :skip_validation
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @skip_validation = args[:skip_validation] if args.key?(:skip_validation)
         end
       end
       
