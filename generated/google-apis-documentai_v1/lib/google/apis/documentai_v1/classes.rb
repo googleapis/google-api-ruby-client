@@ -5031,14 +5031,14 @@ module Google
         # @return [String]
         attr_accessor :model_type
       
-        # The resource name of the processor version. Format: `projects/`project`/
-        # locations/`location`/processors/`processor`/processorVersions/`
+        # Identifier. The resource name of the processor version. Format: `projects/`
+        # project`/locations/`location`/processors/`processor`/processorVersions/`
         # processor_version``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The state of the processor version.
+        # Output only. The state of the processor version.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
