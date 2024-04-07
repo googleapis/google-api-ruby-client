@@ -7958,6 +7958,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :ignore_control_ids
       
+        # When the flag is enabled, the products in the denylist will not be filtered
+        # out in the recommendation filtering results.
+        # Corresponds to the JSON property `ignoreRecsDenylist`
+        # @return [Boolean]
+        attr_accessor :ignore_recs_denylist
+        alias_method :ignore_recs_denylist?, :ignore_recs_denylist
+      
         # The id of the model in the same Catalog to use at serving time. Currently only
         # RecommendationModels are supported: https://cloud.google.com/retail/
         # recommendations-ai/docs/create-models Can be changed but only to a compatible
@@ -8044,6 +8051,7 @@ module Google
           @facet_control_ids = args[:facet_control_ids] if args.key?(:facet_control_ids)
           @filter_control_ids = args[:filter_control_ids] if args.key?(:filter_control_ids)
           @ignore_control_ids = args[:ignore_control_ids] if args.key?(:ignore_control_ids)
+          @ignore_recs_denylist = args[:ignore_recs_denylist] if args.key?(:ignore_recs_denylist)
           @model_id = args[:model_id] if args.key?(:model_id)
           @name = args[:name] if args.key?(:name)
           @oneway_synonyms_control_ids = args[:oneway_synonyms_control_ids] if args.key?(:oneway_synonyms_control_ids)
