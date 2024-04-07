@@ -195,6 +195,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :profile_affiliation_ids
       
+        # Enrollment domain of the customer which is currently managing the profile.
+        # Corresponds to the JSON property `profileEnrollmentDomain`
+        # @return [String]
+        attr_accessor :profile_enrollment_domain
+      
         # Whether Enterprise-grade (i.e. custom) unsafe URL scanning is enabled or not.
         # This setting may be controlled by an enterprise policy: https://
         # chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode
@@ -291,6 +296,7 @@ module Google
           @os_version = args[:os_version] if args.key?(:os_version)
           @password_protection_warning_trigger = args[:password_protection_warning_trigger] if args.key?(:password_protection_warning_trigger)
           @profile_affiliation_ids = args[:profile_affiliation_ids] if args.key?(:profile_affiliation_ids)
+          @profile_enrollment_domain = args[:profile_enrollment_domain] if args.key?(:profile_enrollment_domain)
           @realtime_url_check_mode = args[:realtime_url_check_mode] if args.key?(:realtime_url_check_mode)
           @safe_browsing_protection_level = args[:safe_browsing_protection_level] if args.key?(:safe_browsing_protection_level)
           @screen_lock_secured = args[:screen_lock_secured] if args.key?(:screen_lock_secured)
