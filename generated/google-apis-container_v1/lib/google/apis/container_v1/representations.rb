@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertificateAuthorityDomainConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckAutopilotCompatibilityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +209,12 @@ module Google
       end
       
       class ConsumptionMeteringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContainerdConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcpSecretManagerCertificateConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GpuDriverInstallationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +383,12 @@ module Google
       end
       
       class HttpLoadBalancing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HugepagesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -701,6 +725,12 @@ module Google
       end
       
       class PrivateClusterMasterGlobalAccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateRegistryAccessConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1232,6 +1262,15 @@ module Google
         end
       end
       
+      class CertificateAuthorityDomainConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fqdns, as: 'fqdns'
+          property :gcp_secret_manager_certificate_config, as: 'gcpSecretManagerCertificateConfig', class: Google::Apis::ContainerV1::GcpSecretManagerCertificateConfig, decorator: Google::Apis::ContainerV1::GcpSecretManagerCertificateConfig::Representation
+      
+        end
+      end
+      
       class CheckAutopilotCompatibilityResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1410,6 +1449,8 @@ module Google
       
           property :desired_cluster_autoscaling, as: 'desiredClusterAutoscaling', class: Google::Apis::ContainerV1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1::ClusterAutoscaling::Representation
       
+          property :desired_containerd_config, as: 'desiredContainerdConfig', class: Google::Apis::ContainerV1::ContainerdConfig, decorator: Google::Apis::ContainerV1::ContainerdConfig::Representation
+      
           property :desired_cost_management_config, as: 'desiredCostManagementConfig', class: Google::Apis::ContainerV1::CostManagementConfig, decorator: Google::Apis::ContainerV1::CostManagementConfig::Representation
       
           property :desired_database_encryption, as: 'desiredDatabaseEncryption', class: Google::Apis::ContainerV1::DatabaseEncryption, decorator: Google::Apis::ContainerV1::DatabaseEncryption::Representation
@@ -1530,6 +1571,14 @@ module Google
         end
       end
       
+      class ContainerdConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_registry_access_config, as: 'privateRegistryAccessConfig', class: Google::Apis::ContainerV1::PrivateRegistryAccessConfig, decorator: Google::Apis::ContainerV1::PrivateRegistryAccessConfig::Representation
+      
+        end
+      end
+      
       class CostManagementConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1563,6 +1612,7 @@ module Google
       class DnsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :additive_vpc_scope_dns_domain, as: 'additiveVpcScopeDnsDomain'
           property :cluster_dns, as: 'clusterDns'
           property :cluster_dns_domain, as: 'clusterDnsDomain'
           property :cluster_dns_scope, as: 'clusterDnsScope'
@@ -1643,6 +1693,13 @@ module Google
           property :membership, as: 'membership'
           property :pre_registered, as: 'preRegistered'
           property :project, as: 'project'
+        end
+      end
+      
+      class GcpSecretManagerCertificateConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :secret_uri, as: 'secretUri'
         end
       end
       
@@ -1751,6 +1808,14 @@ module Google
         end
       end
       
+      class HugepagesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hugepage_size1g, as: 'hugepageSize1g'
+          property :hugepage_size2m, as: 'hugepageSize2m'
+        end
+      end
+      
       class IlbSubsettingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1840,6 +1905,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cgroup_mode, as: 'cgroupMode'
+          property :hugepages, as: 'hugepages', class: Google::Apis::ContainerV1::HugepagesConfig, decorator: Google::Apis::ContainerV1::HugepagesConfig::Representation
+      
           hash :sysctls, as: 'sysctls'
         end
       end
@@ -2083,6 +2150,8 @@ module Google
           property :boot_disk_kms_key, as: 'bootDiskKmsKey'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
       
+          property :containerd_config, as: 'containerdConfig', class: Google::Apis::ContainerV1::ContainerdConfig, decorator: Google::Apis::ContainerV1::ContainerdConfig::Representation
+      
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :enable_confidential_storage, as: 'enableConfidentialStorage'
@@ -2141,6 +2210,8 @@ module Google
       class NodeConfigDefaults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :containerd_config, as: 'containerdConfig', class: Google::Apis::ContainerV1::ContainerdConfig, decorator: Google::Apis::ContainerV1::ContainerdConfig::Representation
+      
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1::GcfsConfig, decorator: Google::Apis::ContainerV1::GcfsConfig::Representation
       
           property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1::NodePoolLoggingConfig::Representation
@@ -2385,6 +2456,15 @@ module Google
       class PrivateClusterMasterGlobalAccessConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class PrivateRegistryAccessConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :certificate_authority_domain_config, as: 'certificateAuthorityDomainConfig', class: Google::Apis::ContainerV1::CertificateAuthorityDomainConfig, decorator: Google::Apis::ContainerV1::CertificateAuthorityDomainConfig::Representation
+      
           property :enabled, as: 'enabled'
         end
       end
@@ -2814,8 +2894,12 @@ module Google
       class UpdateNodePoolRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::ContainerV1::AcceleratorConfig, decorator: Google::Apis::ContainerV1::AcceleratorConfig::Representation
+      
           property :cluster_id, as: 'clusterId'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
+      
+          property :containerd_config, as: 'containerdConfig', class: Google::Apis::ContainerV1::ContainerdConfig, decorator: Google::Apis::ContainerV1::ContainerdConfig::Representation
       
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
