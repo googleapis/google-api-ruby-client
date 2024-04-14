@@ -118,12 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GroundingAttribution
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GroundingMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,12 +148,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RetrievedContext
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SafetyRating
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,12 +161,6 @@ module Google
       end
       
       class Schema
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Segment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,12 +197,6 @@ module Google
       end
       
       class VideoMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Web
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -397,24 +373,9 @@ module Google
         end
       end
       
-      class GroundingAttribution
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence_score, as: 'confidenceScore'
-          property :retrieved_context, as: 'retrievedContext', class: Google::Apis::FirebasemlV2beta::RetrievedContext, decorator: Google::Apis::FirebasemlV2beta::RetrievedContext::Representation
-      
-          property :segment, as: 'segment', class: Google::Apis::FirebasemlV2beta::Segment, decorator: Google::Apis::FirebasemlV2beta::Segment::Representation
-      
-          property :web, as: 'web', class: Google::Apis::FirebasemlV2beta::Web, decorator: Google::Apis::FirebasemlV2beta::Web::Representation
-      
-        end
-      end
-      
       class GroundingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :grounding_attributions, as: 'groundingAttributions', class: Google::Apis::FirebasemlV2beta::GroundingAttribution, decorator: Google::Apis::FirebasemlV2beta::GroundingAttribution::Representation
-      
           collection :retrieval_queries, as: 'retrievalQueries'
           collection :web_search_queries, as: 'webSearchQueries'
         end
@@ -463,14 +424,6 @@ module Google
       
           property :vertex_rag_store, as: 'vertexRagStore', class: Google::Apis::FirebasemlV2beta::VertexRagStore, decorator: Google::Apis::FirebasemlV2beta::VertexRagStore::Representation
       
-        end
-      end
-      
-      class RetrievedContext
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          property :uri, as: 'uri'
         end
       end
       
@@ -523,15 +476,6 @@ module Google
         end
       end
       
-      class Segment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_index, as: 'endIndex'
-          property :part_index, as: 'partIndex'
-          property :start_index, as: 'startIndex'
-        end
-      end
-      
       class Tool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -580,14 +524,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_offset, as: 'endOffset'
           property :start_offset, as: 'startOffset'
-        end
-      end
-      
-      class Web
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          property :uri, as: 'uri'
         end
       end
     end
