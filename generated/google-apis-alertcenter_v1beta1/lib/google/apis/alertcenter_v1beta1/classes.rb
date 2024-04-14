@@ -1015,6 +1015,11 @@ module Google
         # @return [String]
         attr_accessor :email
       
+        # ID of the rule that triggered the alert
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Required for iOS, empty for others.
         # Corresponds to the JSON property `iosVendorId`
         # @return [String]
@@ -1050,6 +1055,7 @@ module Google
           @device_model = args[:device_model] if args.key?(:device_model)
           @device_type = args[:device_type] if args.key?(:device_type)
           @email = args[:email] if args.key?(:email)
+          @id = args[:id] if args.key?(:id)
           @ios_vendor_id = args[:ios_vendor_id] if args.key?(:ios_vendor_id)
           @owner_id = args[:owner_id] if args.key?(:owner_id)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
