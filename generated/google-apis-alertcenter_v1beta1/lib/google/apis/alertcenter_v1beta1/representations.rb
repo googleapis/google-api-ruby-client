@@ -715,6 +715,7 @@ module Google
           property :device_model, as: 'deviceModel'
           property :device_type, as: 'deviceType'
           property :email, as: 'email'
+          property :id, as: 'id'
           property :ios_vendor_id, as: 'iosVendorId'
           property :owner_id, as: 'ownerId'
           property :resource_id, as: 'resourceId'
