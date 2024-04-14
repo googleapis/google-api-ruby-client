@@ -1186,6 +1186,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetingRuleScopeAnySubscriptionInApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetingRuleScopeThisSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetingUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3225,7 +3237,23 @@ module Google
       class TargetingRuleScope
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :any_subscription_in_app, as: 'anySubscriptionInApp', class: Google::Apis::AndroidpublisherV3::TargetingRuleScopeAnySubscriptionInApp, decorator: Google::Apis::AndroidpublisherV3::TargetingRuleScopeAnySubscriptionInApp::Representation
+      
           property :specific_subscription_in_app, as: 'specificSubscriptionInApp'
+          property :this_subscription, as: 'thisSubscription', class: Google::Apis::AndroidpublisherV3::TargetingRuleScopeThisSubscription, decorator: Google::Apis::AndroidpublisherV3::TargetingRuleScopeThisSubscription::Representation
+      
+        end
+      end
+      
+      class TargetingRuleScopeAnySubscriptionInApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class TargetingRuleScopeThisSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
