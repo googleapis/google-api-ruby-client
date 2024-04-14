@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Organization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetPropertyServiceLevelRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -74,6 +80,14 @@ module Google
           collection :analytics_account_links, as: 'analyticsAccountLinks', class: Google::Apis::MarketingplatformadminV1alpha::AnalyticsAccountLink, decorator: Google::Apis::MarketingplatformadminV1alpha::AnalyticsAccountLink::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Organization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
         end
       end
       
