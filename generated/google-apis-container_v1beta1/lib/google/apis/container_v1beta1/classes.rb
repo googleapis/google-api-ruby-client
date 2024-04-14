@@ -860,6 +860,34 @@ module Google
         end
       end
       
+      # CertificateAuthorityDomainConfig configures one or more fully qualified domain
+      # names (FQDN) to a specific certificate.
+      class CertificateAuthorityDomainConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of fully qualified domain names (FQDN). Specifying port is supported.
+        # Wilcards are NOT supported. Examples: - my.customdomain.com - 10.0.1.2:5000
+        # Corresponds to the JSON property `fqdns`
+        # @return [Array<String>]
+        attr_accessor :fqdns
+      
+        # GCPSecretManagerCertificateConfig configures a secret from [Google Secret
+        # Manager](https://cloud.google.com/secret-manager).
+        # Corresponds to the JSON property `gcpSecretManagerCertificateConfig`
+        # @return [Google::Apis::ContainerV1beta1::GcpSecretManagerCertificateConfig]
+        attr_accessor :gcp_secret_manager_certificate_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fqdns = args[:fqdns] if args.key?(:fqdns)
+          @gcp_secret_manager_certificate_config = args[:gcp_secret_manager_certificate_config] if args.key?(:gcp_secret_manager_certificate_config)
+        end
+      end
+      
       # CheckAutopilotCompatibilityResponse has a list of compatibility issues.
       class CheckAutopilotCompatibilityResponse
         include Google::Apis::Core::Hashable
@@ -1000,6 +1028,12 @@ module Google
         # Corresponds to the JSON property `clusterTelemetry`
         # @return [Google::Apis::ContainerV1beta1::ClusterTelemetry]
         attr_accessor :cluster_telemetry
+      
+        # CompliancePostureConfig defines the settings needed to enable/disable features
+        # for the Compliance Posture.
+        # Corresponds to the JSON property `compliancePostureConfig`
+        # @return [Google::Apis::ContainerV1beta1::CompliancePostureConfig]
+        attr_accessor :compliance_posture_config
       
         # Which conditions caused the current cluster state.
         # Corresponds to the JSON property `conditions`
@@ -1472,6 +1506,7 @@ module Google
           @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @cluster_telemetry = args[:cluster_telemetry] if args.key?(:cluster_telemetry)
+          @compliance_posture_config = args[:compliance_posture_config] if args.key?(:compliance_posture_config)
           @conditions = args[:conditions] if args.key?(:conditions)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @cost_management_config = args[:cost_management_config] if args.key?(:cost_management_config)
@@ -1677,6 +1712,11 @@ module Google
         # Corresponds to the JSON property `desiredClusterTelemetry`
         # @return [Google::Apis::ContainerV1beta1::ClusterTelemetry]
         attr_accessor :desired_cluster_telemetry
+      
+        # ContainerdConfig contains configuration to customize containerd.
+        # Corresponds to the JSON property `desiredContainerdConfig`
+        # @return [Google::Apis::ContainerV1beta1::ContainerdConfig]
+        attr_accessor :desired_containerd_config
       
         # Configuration for fine-grained cost management feature.
         # Corresponds to the JSON property `desiredCostManagementConfig`
@@ -2017,6 +2057,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Configuration options for private clusters.
+        # Corresponds to the JSON property `privateClusterConfig`
+        # @return [Google::Apis::ContainerV1beta1::PrivateClusterConfig]
+        attr_accessor :private_cluster_config
+      
         # AdditionalPodRangesConfig is the configuration for additional pod secondary
         # ranges supporting the ClusterUpdate message.
         # Corresponds to the JSON property `removedAdditionalPodRangesConfig`
@@ -2036,6 +2081,7 @@ module Google
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_cluster_telemetry = args[:desired_cluster_telemetry] if args.key?(:desired_cluster_telemetry)
+          @desired_containerd_config = args[:desired_containerd_config] if args.key?(:desired_containerd_config)
           @desired_cost_management_config = args[:desired_cost_management_config] if args.key?(:desired_cost_management_config)
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
@@ -2091,6 +2137,7 @@ module Google
           @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
           @enable_k8s_beta_apis = args[:enable_k8s_beta_apis] if args.key?(:enable_k8s_beta_apis)
           @etag = args[:etag] if args.key?(:etag)
+          @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @removed_additional_pod_ranges_config = args[:removed_additional_pod_ranges_config] if args.key?(:removed_additional_pod_ranges_config)
         end
       end
@@ -2149,6 +2196,51 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # CompliancePostureConfig defines the settings needed to enable/disable features
+      # for the Compliance Posture.
+      class CompliancePostureConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of enabled compliance standards.
+        # Corresponds to the JSON property `complianceStandards`
+        # @return [Array<Google::Apis::ContainerV1beta1::ComplianceStandard>]
+        attr_accessor :compliance_standards
+      
+        # Defines the enablement mode for Compliance Posture.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compliance_standards = args[:compliance_standards] if args.key?(:compliance_standards)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # Defines the details of a compliance standard.
+      class ComplianceStandard
+        include Google::Apis::Core::Hashable
+      
+        # Name of the compliance standard.
+        # Corresponds to the JSON property `standard`
+        # @return [String]
+        attr_accessor :standard
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @standard = args[:standard] if args.key?(:standard)
         end
       end
       
@@ -2211,6 +2303,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # ContainerdConfig contains configuration to customize containerd.
+      class ContainerdConfig
+        include Google::Apis::Core::Hashable
+      
+        # PrivateRegistryAccessConfig contains access configuration for private
+        # container registries.
+        # Corresponds to the JSON property `privateRegistryAccessConfig`
+        # @return [Google::Apis::ContainerV1beta1::PrivateRegistryAccessConfig]
+        attr_accessor :private_registry_access_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_registry_access_config = args[:private_registry_access_config] if args.key?(:private_registry_access_config)
         end
       end
       
@@ -2334,6 +2446,11 @@ module Google
       class DnsConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The domain used in Additive VPC scope.
+        # Corresponds to the JSON property `additiveVpcScopeDnsDomain`
+        # @return [String]
+        attr_accessor :additive_vpc_scope_dns_domain
+      
         # cluster_dns indicates which in-cluster DNS provider should be used.
         # Corresponds to the JSON property `clusterDns`
         # @return [String]
@@ -2355,6 +2472,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additive_vpc_scope_dns_domain = args[:additive_vpc_scope_dns_domain] if args.key?(:additive_vpc_scope_dns_domain)
           @cluster_dns = args[:cluster_dns] if args.key?(:cluster_dns)
           @cluster_dns_domain = args[:cluster_dns_domain] if args.key?(:cluster_dns_domain)
           @cluster_dns_scope = args[:cluster_dns_scope] if args.key?(:cluster_dns_scope)
@@ -2688,6 +2806,27 @@ module Google
           @membership = args[:membership] if args.key?(:membership)
           @pre_registered = args[:pre_registered] if args.key?(:pre_registered)
           @project = args[:project] if args.key?(:project)
+        end
+      end
+      
+      # GCPSecretManagerCertificateConfig configures a secret from [Google Secret
+      # Manager](https://cloud.google.com/secret-manager).
+      class GcpSecretManagerCertificateConfig
+        include Google::Apis::Core::Hashable
+      
+        # Secret URI, in the form "projects/$PROJECT_ID/secrets/$SECRET_NAME/versions/$
+        # VERSION". Version can be fixed (e.g. "2") or "latest"
+        # Corresponds to the JSON property `secretUri`
+        # @return [String]
+        attr_accessor :secret_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @secret_uri = args[:secret_uri] if args.key?(:secret_uri)
         end
       end
       
@@ -3042,6 +3181,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
+      # Hugepages amount in both 2m and 1g size
+      class HugepagesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Amount of 1G hugepages
+        # Corresponds to the JSON property `hugepageSize1g`
+        # @return [Fixnum]
+        attr_accessor :hugepage_size1g
+      
+        # Optional. Amount of 2M hugepages
+        # Corresponds to the JSON property `hugepageSize2m`
+        # @return [Fixnum]
+        attr_accessor :hugepage_size2m
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hugepage_size1g = args[:hugepage_size1g] if args.key?(:hugepage_size1g)
+          @hugepage_size2m = args[:hugepage_size2m] if args.key?(:hugepage_size2m)
         end
       end
       
@@ -3488,6 +3652,11 @@ module Google
         # @return [String]
         attr_accessor :cgroup_mode
       
+        # Hugepages amount in both 2m and 1g size
+        # Corresponds to the JSON property `hugepages`
+        # @return [Google::Apis::ContainerV1beta1::HugepagesConfig]
+        attr_accessor :hugepages
+      
         # The Linux kernel parameters to be applied to the nodes and all pods running on
         # the nodes. The following parameters are supported. net.core.busy_poll net.core.
         # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default
@@ -3504,6 +3673,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cgroup_mode = args[:cgroup_mode] if args.key?(:cgroup_mode)
+          @hugepages = args[:hugepages] if args.key?(:hugepages)
           @sysctls = args[:sysctls] if args.key?(:sysctls)
         end
       end
@@ -4383,6 +4553,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ConfidentialNodes]
         attr_accessor :confidential_nodes
       
+        # ContainerdConfig contains configuration to customize containerd.
+        # Corresponds to the JSON property `containerdConfig`
+        # @return [Google::Apis::ContainerV1beta1::ContainerdConfig]
+        attr_accessor :containerd_config
+      
         # Size of the disk attached to each node, specified in GB. The smallest allowed
         # disk size is 10GB. If unspecified, the default disk size is 100GB.
         # Corresponds to the JSON property `diskSizeGb`
@@ -4645,6 +4820,7 @@ module Google
           @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
+          @containerd_config = args[:containerd_config] if args.key?(:containerd_config)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @enable_confidential_storage = args[:enable_confidential_storage] if args.key?(:enable_confidential_storage)
@@ -4688,6 +4864,11 @@ module Google
       class NodeConfigDefaults
         include Google::Apis::Core::Hashable
       
+        # ContainerdConfig contains configuration to customize containerd.
+        # Corresponds to the JSON property `containerdConfig`
+        # @return [Google::Apis::ContainerV1beta1::ContainerdConfig]
+        attr_accessor :containerd_config
+      
         # GcfsConfig contains configurations of Google Container File System.
         # Corresponds to the JSON property `gcfsConfig`
         # @return [Google::Apis::ContainerV1beta1::GcfsConfig]
@@ -4710,6 +4891,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @containerd_config = args[:containerd_config] if args.key?(:containerd_config)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @host_maintenance_policy = args[:host_maintenance_policy] if args.key?(:host_maintenance_policy)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
@@ -5771,6 +5953,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # PrivateRegistryAccessConfig contains access configuration for private
+      # container registries.
+      class PrivateRegistryAccessConfig
+        include Google::Apis::Core::Hashable
+      
+        # Private registry access configuration.
+        # Corresponds to the JSON property `certificateAuthorityDomainConfig`
+        # @return [Array<Google::Apis::ContainerV1beta1::CertificateAuthorityDomainConfig>]
+        attr_accessor :certificate_authority_domain_config
+      
+        # Private registry access is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_authority_domain_config = args[:certificate_authority_domain_config] if args.key?(:certificate_authority_domain_config)
           @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
@@ -7551,6 +7760,12 @@ module Google
       class UpdateNodePoolRequest
         include Google::Apis::Core::Hashable
       
+        # A list of hardware accelerators to be attached to each node. See https://cloud.
+        # google.com/compute/docs/gpus for more information about support for GPUs.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::ContainerV1beta1::AcceleratorConfig>]
+        attr_accessor :accelerators
+      
         # Required. Deprecated. The name of the cluster to upgrade. This field has been
         # deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
@@ -7562,6 +7777,11 @@ module Google
         # Corresponds to the JSON property `confidentialNodes`
         # @return [Google::Apis::ContainerV1beta1::ConfidentialNodes]
         attr_accessor :confidential_nodes
+      
+        # ContainerdConfig contains configuration to customize containerd.
+        # Corresponds to the JSON property `containerdConfig`
+        # @return [Google::Apis::ContainerV1beta1::ContainerdConfig]
+        attr_accessor :containerd_config
       
         # Optional. The desired disk size for nodes in the node pool. Initiates an
         # upgrade operation that migrates the nodes in the node pool to the specified
@@ -7772,8 +7992,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
+          @containerd_config = args[:containerd_config] if args.key?(:containerd_config)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @etag = args[:etag] if args.key?(:etag)
