@@ -1,0 +1,7 @@
+{
+    "api_id": "addressvalidation:v1",
+    "name_pretty": "Address Validation API",
+    "distribution_name": "google-apis-addressvalidation_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
