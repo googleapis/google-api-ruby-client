@@ -3196,18 +3196,18 @@ module Google
         end
       end
       
-      # ProjectFeatureSettings represents the features settings for the VM Manager.
-      # The project features settings can be set for a project.
+      # ProjectFeatureSettings represents the VM Manager feature settings in a project.
+      # For more information, see Enable full VM Manager functionality.
       class ProjectFeatureSettings
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. Name of the config, e.g. projects/12345/locations/global/
-        # projectFeatureSettings
+        # Required. Immutable. Name specifies the URL for the ProjectFeatureSettings
+        # resource: projects/project_id/locations/global/projectFeatureSettings.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Currently set PatchAndConfigFeatureSet for name.
+        # Set PatchAndConfigFeatureSet for the project.
         # Corresponds to the JSON property `patchAndConfigFeatureSet`
         # @return [String]
         attr_accessor :patch_and_config_feature_set

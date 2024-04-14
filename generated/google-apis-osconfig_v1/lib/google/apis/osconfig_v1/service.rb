@@ -52,10 +52,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # GetProjectFeatureSettings returns the feature settings for a project
+        # GetProjectFeatureSettings returns the VM Manager feature settings for a
+        # project.
         # @param [String] name
-        #   Required. Name of the billing config. "projects//locations/global/
-        #   projectFeatureSettings"
+        #   Required. Name specifies the URL for the ProjectFeatureSettings resource:
+        #   projects/project_id/locations/global/projectFeatureSettings.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -83,10 +84,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # UpdateProjectFeatureSettings sets the feature settings for a project.
+        # UpdateProjectFeatureSettings sets the VM Manager features for a project.
         # @param [String] name
-        #   Required. Immutable. Name of the config, e.g. projects/12345/locations/global/
-        #   projectFeatureSettings
+        #   Required. Immutable. Name specifies the URL for the ProjectFeatureSettings
+        #   resource: projects/project_id/locations/global/projectFeatureSettings.
         # @param [Google::Apis::OsconfigV1::ProjectFeatureSettings] project_feature_settings_object
         # @param [String] update_mask
         #   Optional. Field mask that controls which fields of the ProjectFeatureSettings
