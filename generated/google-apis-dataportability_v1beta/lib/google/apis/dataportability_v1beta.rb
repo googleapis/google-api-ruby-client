@@ -32,9 +32,6 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1beta'
 
-      # Move a copy of the Google Alerts subscriptions you created.
-      AUTH_DATAPORTABILITY_ALERTS_SUBSCRIPTIONS = 'https://www.googleapis.com/auth/dataportability.alerts.subscriptions'
-
       # Move a copy of messages between you and the businesses you have conversations with across Google services.
       AUTH_DATAPORTABILITY_BUSINESSMESSAGING_CONVERSATIONS = 'https://www.googleapis.com/auth/dataportability.businessmessaging.conversations'
 
