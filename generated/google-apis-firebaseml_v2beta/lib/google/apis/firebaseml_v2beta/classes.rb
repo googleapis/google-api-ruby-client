@@ -632,52 +632,9 @@ module Google
         end
       end
       
-      # Grounding attribution.
-      class GroundingAttribution
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Output only. Confidence score of the attribution. Ranges from 0 to 1.
-        # 1 is the most confident.
-        # Corresponds to the JSON property `confidenceScore`
-        # @return [Float]
-        attr_accessor :confidence_score
-      
-        # Attribution from context retrieved by the retrieval tools.
-        # Corresponds to the JSON property `retrievedContext`
-        # @return [Google::Apis::FirebasemlV2beta::RetrievedContext]
-        attr_accessor :retrieved_context
-      
-        # Segment of the content.
-        # Corresponds to the JSON property `segment`
-        # @return [Google::Apis::FirebasemlV2beta::Segment]
-        attr_accessor :segment
-      
-        # Attribution from the web.
-        # Corresponds to the JSON property `web`
-        # @return [Google::Apis::FirebasemlV2beta::Web]
-        attr_accessor :web
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
-          @retrieved_context = args[:retrieved_context] if args.key?(:retrieved_context)
-          @segment = args[:segment] if args.key?(:segment)
-          @web = args[:web] if args.key?(:web)
-        end
-      end
-      
       # Metadata returned to client when grounding is enabled.
       class GroundingMetadata
         include Google::Apis::Core::Hashable
-      
-        # Optional. List of grounding attributions.
-        # Corresponds to the JSON property `groundingAttributions`
-        # @return [Array<Google::Apis::FirebasemlV2beta::GroundingAttribution>]
-        attr_accessor :grounding_attributions
       
         # Optional. Queries executed by the retrieval tools.
         # Corresponds to the JSON property `retrievalQueries`
@@ -695,7 +652,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @grounding_attributions = args[:grounding_attributions] if args.key?(:grounding_attributions)
           @retrieval_queries = args[:retrieval_queries] if args.key?(:retrieval_queries)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
         end
@@ -848,31 +804,6 @@ module Google
           @disable_attribution = args[:disable_attribution] if args.key?(:disable_attribution)
           @vertex_ai_search = args[:vertex_ai_search] if args.key?(:vertex_ai_search)
           @vertex_rag_store = args[:vertex_rag_store] if args.key?(:vertex_rag_store)
-        end
-      end
-      
-      # Attribution from context retrieved by the retrieval tools.
-      class RetrievedContext
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Title of the attribution.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # Output only. URI reference of the attribution.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @title = args[:title] if args.key?(:title)
-          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1104,39 +1035,6 @@ module Google
         end
       end
       
-      # Segment of the content.
-      class Segment
-        include Google::Apis::Core::Hashable
-      
-        # Output only. End index in the given Part, measured in bytes. Offset from the
-        # start of the Part, exclusive, starting at zero.
-        # Corresponds to the JSON property `endIndex`
-        # @return [Fixnum]
-        attr_accessor :end_index
-      
-        # Output only. The index of a Part object within its parent Content object.
-        # Corresponds to the JSON property `partIndex`
-        # @return [Fixnum]
-        attr_accessor :part_index
-      
-        # Output only. Start index in the given Part, measured in bytes. Offset from the
-        # start of the Part, inclusive, starting at zero.
-        # Corresponds to the JSON property `startIndex`
-        # @return [Fixnum]
-        attr_accessor :start_index
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_index = args[:end_index] if args.key?(:end_index)
-          @part_index = args[:part_index] if args.key?(:part_index)
-          @start_index = args[:start_index] if args.key?(:start_index)
-        end
-      end
-      
       # Tool details that the model may use to generate response. A `Tool` is a piece
       # of code that enables the system to interact with external systems to perform
       # an action, or set of actions, outside of knowledge and scope of the model. A
@@ -1299,31 +1197,6 @@ module Google
         def update!(**args)
           @end_offset = args[:end_offset] if args.key?(:end_offset)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
-        end
-      end
-      
-      # Attribution from the web.
-      class Web
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Title of the attribution.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # Output only. URI reference of the attribution.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @title = args[:title] if args.key?(:title)
-          @uri = args[:uri] if args.key?(:uri)
         end
       end
     end
