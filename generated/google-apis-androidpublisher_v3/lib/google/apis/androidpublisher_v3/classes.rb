@@ -4181,8 +4181,8 @@ module Google
         # The type of purchase of the inapp product. This field is only set if this
         # purchase was not made using the standard in-app billing flow. Possible values
         # are: 0. Test (i.e. purchased from a license testing account) 1. Promo (i.e.
-        # purchased using a promo code) 2. Rewarded (i.e. from watching a video ad
-        # instead of paying)
+        # purchased using a promo code). Does not include Play Points purchases. 2.
+        # Rewarded (i.e. from watching a video ad instead of paying)
         # Corresponds to the JSON property `purchaseType`
         # @return [Fixnum]
         attr_accessor :purchase_type
@@ -6140,11 +6140,23 @@ module Google
       class TargetingRuleScope
         include Google::Apis::Core::Hashable
       
+        # Represents the targeting rule scope corresponding to any subscription in the
+        # parent app.
+        # Corresponds to the JSON property `anySubscriptionInApp`
+        # @return [Google::Apis::AndroidpublisherV3::TargetingRuleScopeAnySubscriptionInApp]
+        attr_accessor :any_subscription_in_app
+      
         # The scope of the current targeting rule is the subscription with the specified
         # subscription ID. Must be a subscription within the same parent app.
         # Corresponds to the JSON property `specificSubscriptionInApp`
         # @return [String]
         attr_accessor :specific_subscription_in_app
+      
+        # Represents the targeting rule scope corresponding to the subscriptions in
+        # which this offer is defined.
+        # Corresponds to the JSON property `thisSubscription`
+        # @return [Google::Apis::AndroidpublisherV3::TargetingRuleScopeThisSubscription]
+        attr_accessor :this_subscription
       
         def initialize(**args)
            update!(**args)
@@ -6152,7 +6164,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @any_subscription_in_app = args[:any_subscription_in_app] if args.key?(:any_subscription_in_app)
           @specific_subscription_in_app = args[:specific_subscription_in_app] if args.key?(:specific_subscription_in_app)
+          @this_subscription = args[:this_subscription] if args.key?(:this_subscription)
+        end
+      end
+      
+      # Represents the targeting rule scope corresponding to any subscription in the
+      # parent app.
+      class TargetingRuleScopeAnySubscriptionInApp
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Represents the targeting rule scope corresponding to the subscriptions in
+      # which this offer is defined.
+      class TargetingRuleScopeThisSubscription
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
