@@ -109,6 +109,32 @@ module Google
         end
       end
       
+      # A resource message representing a Google Marketing Platform organization.
+      class Organization
+        include Google::Apis::Core::Hashable
+      
+        # The human-readable name for the organization.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of the GMP organization. Format: organizations/`
+        # org_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Request message for SetPropertyServiceLevel RPC.
       class SetPropertyServiceLevelRequest
         include Google::Apis::Core::Hashable
