@@ -2358,7 +2358,9 @@ module Google
         # @return [String]
         attr_accessor :event_id
       
-        # 
+        # Phase indicates when in the container event propagation this event is being
+        # communicated. Events are sent before and after the per-resource events are
+        # propagated. required
         # Corresponds to the JSON property `phase`
         # @return [String]
         attr_accessor :phase
