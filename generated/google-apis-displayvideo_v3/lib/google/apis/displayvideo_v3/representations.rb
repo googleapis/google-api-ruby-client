@@ -4161,6 +4161,7 @@ module Google
       class Kpi
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :kpi_algorithm_id, :numeric_string => true, as: 'kpiAlgorithmId'
           property :kpi_amount_micros, :numeric_string => true, as: 'kpiAmountMicros'
           property :kpi_percentage_micros, :numeric_string => true, as: 'kpiPercentageMicros'
           property :kpi_string, as: 'kpiString'
