@@ -1714,6 +1714,11 @@ module Google
         # @return [Google::Apis::CloudbuildV2::PipelineSpec]
         attr_accessor :pipeline_spec
       
+        # Output only. Inline pipelineSpec yaml string, used by workflow run requests.
+        # Corresponds to the JSON property `pipelineSpecYaml`
+        # @return [String]
+        attr_accessor :pipeline_spec_yaml
+      
         # Provenance configuration.
         # Corresponds to the JSON property `provenance`
         # @return [Google::Apis::CloudbuildV2::Provenance]
@@ -1814,6 +1819,7 @@ module Google
           @pipeline_ref = args[:pipeline_ref] if args.key?(:pipeline_ref)
           @pipeline_run_status = args[:pipeline_run_status] if args.key?(:pipeline_run_status)
           @pipeline_spec = args[:pipeline_spec] if args.key?(:pipeline_spec)
+          @pipeline_spec_yaml = args[:pipeline_spec_yaml] if args.key?(:pipeline_spec_yaml)
           @provenance = args[:provenance] if args.key?(:provenance)
           @record = args[:record] if args.key?(:record)
           @resolved_pipeline_spec = args[:resolved_pipeline_spec] if args.key?(:resolved_pipeline_spec)
