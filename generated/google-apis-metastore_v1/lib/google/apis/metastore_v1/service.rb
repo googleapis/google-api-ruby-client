@@ -1032,7 +1032,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Query DPMS metadata.
+        # Query Dataproc Metastore metadata.
         # @param [String] service
         #   Required. The relative resource name of the metastore service to query
         #   metadata, in the following format:projects/`project_id`/locations/`location_id`
