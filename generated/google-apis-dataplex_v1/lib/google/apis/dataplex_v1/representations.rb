@@ -2844,14 +2844,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataplex_entry, as: 'dataplexEntry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
       
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          property :entry, as: 'entry'
-          property :entry_type, as: 'entryType'
-          property :fully_qualified_name, as: 'fullyQualifiedName'
           property :linked_resource, as: 'linkedResource'
-          property :modify_time, as: 'modifyTime'
-          property :relative_resource, as: 'relativeResource'
           property :snippets, as: 'snippets', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1SearchEntriesResultSnippets, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1SearchEntriesResultSnippets::Representation
       
         end

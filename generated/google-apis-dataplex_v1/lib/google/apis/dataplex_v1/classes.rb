@@ -3950,9 +3950,10 @@ module Google
       class GoogleCloudDataplexV1Entry
         include Google::Apis::Core::Hashable
       
-        # Optional. The Aspects attached to the Entry. The key is either the resource
-        # name of the aspect type (if the aspect is attached directly to the entry) or "
-        # aspectType@path" if the aspect is attached to an entry's path.
+        # Optional. The Aspects attached to the Entry. The format for the key can be one
+        # of the following: 1. `projectId`.`locationId`.`aspectTypeId` (if the aspect is
+        # attached directly to the entry) 2. `projectId`.`locationId`.`aspectTypeId`@`
+        # path` (if the aspect is attached to an entry's path)
         # Corresponds to the JSON property `aspects`
         # @return [Hash<String,Google::Apis::DataplexV1::GoogleCloudDataplexV1Aspect>]
         attr_accessor :aspects
@@ -6009,45 +6010,10 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry]
         attr_accessor :dataplex_entry
       
-        # Entry description.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Display name.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Resource name of the entry.
-        # Corresponds to the JSON property `entry`
-        # @return [String]
-        attr_accessor :entry
-      
-        # The entry type.
-        # Corresponds to the JSON property `entryType`
-        # @return [String]
-        attr_accessor :entry_type
-      
-        # Fully qualified name.
-        # Corresponds to the JSON property `fullyQualifiedName`
-        # @return [String]
-        attr_accessor :fully_qualified_name
-      
         # Linked resource name.
         # Corresponds to the JSON property `linkedResource`
         # @return [String]
         attr_accessor :linked_resource
-      
-        # The last modification timestamp.
-        # Corresponds to the JSON property `modifyTime`
-        # @return [String]
-        attr_accessor :modify_time
-      
-        # Relative resource name.
-        # Corresponds to the JSON property `relativeResource`
-        # @return [String]
-        attr_accessor :relative_resource
       
         # Snippets for the entry, contains HTML-style highlighting for matched tokens,
         # will be used in UI.
@@ -6062,14 +6028,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataplex_entry = args[:dataplex_entry] if args.key?(:dataplex_entry)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @entry = args[:entry] if args.key?(:entry)
-          @entry_type = args[:entry_type] if args.key?(:entry_type)
-          @fully_qualified_name = args[:fully_qualified_name] if args.key?(:fully_qualified_name)
           @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
-          @modify_time = args[:modify_time] if args.key?(:modify_time)
-          @relative_resource = args[:relative_resource] if args.key?(:relative_resource)
           @snippets = args[:snippets] if args.key?(:snippets)
         end
       end
