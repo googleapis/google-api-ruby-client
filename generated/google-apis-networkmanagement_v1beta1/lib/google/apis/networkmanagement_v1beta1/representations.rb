@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListVpcFlowLogsConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LoadBalancerBackend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -340,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcFlowLogsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnGatewayInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -441,7 +453,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :location, as: 'location'
-          property :service_name, as: 'serviceName'
           property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
         end
@@ -673,6 +684,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetworkmanagementV1beta1::Operation, decorator: Google::Apis::NetworkmanagementV1beta1::Operation::Representation
+      
+        end
+      end
+      
+      class ListVpcFlowLogsConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :vpc_flow_logs_configs, as: 'vpcFlowLogsConfigs', class: Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig, decorator: Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig::Representation
       
         end
       end
@@ -982,6 +1003,26 @@ module Google
           property :display_name, as: 'displayName'
           property :location, as: 'location'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class VpcFlowLogsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_interval, as: 'aggregationInterval'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :filter_expr, as: 'filterExpr'
+          property :flow_sampling, as: 'flowSampling'
+          property :interconnect_attachment, as: 'interconnectAttachment'
+          property :metadata, as: 'metadata'
+          collection :metadata_fields, as: 'metadataFields'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :state, as: 'state'
+          property :subnet, as: 'subnet'
+          property :update_time, as: 'updateTime'
+          property :vpn_tunnel, as: 'vpnTunnel'
         end
       end
       
