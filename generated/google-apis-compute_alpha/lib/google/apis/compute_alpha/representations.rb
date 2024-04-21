@@ -574,6 +574,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceNetworkPassThroughLbTrafficPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8512,6 +8524,8 @@ module Google
           hash :metadatas, as: 'metadatas'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_pass_through_lb_traffic_policy, as: 'networkPassThroughLbTrafficPolicy', class: Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicy::Representation
+      
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeAlpha::OutlierDetection, decorator: Google::Apis::ComputeAlpha::OutlierDetection::Representation
       
           property :port, as: 'port'
@@ -8776,6 +8790,22 @@ module Google
           collection :optional_fields, as: 'optionalFields'
           property :optional_mode, as: 'optionalMode'
           property :sample_rate, as: 'sampleRate'
+        end
+      end
+      
+      class BackendServiceNetworkPassThroughLbTrafficPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zonal_affinity, as: 'zonalAffinity', class: Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity, decorator: Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity::Representation
+      
+        end
+      end
+      
+      class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spillover, as: 'spillover'
+          property :spillover_ratio, as: 'spilloverRatio'
         end
       end
       
@@ -12615,6 +12645,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::FirewallPolicyRule, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRule::Representation
       
           property :short_name, as: 'shortName'
@@ -12922,7 +12953,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bandwidth_percentage_policy, as: 'bandwidthPercentagePolicy', class: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy, decorator: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy::Representation
       
-          property :enabled, as: 'enabled'
           property :profile_description, as: 'profileDescription'
           property :strict_priority_policy, as: 'strictPriorityPolicy', class: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectStrictPriorityPolicy, decorator: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectStrictPriorityPolicy::Representation
       
@@ -14378,6 +14408,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client_destination_port, as: 'clientDestinationPort'
           property :client_port, as: 'clientPort'
           property :fqdn, as: 'fqdn'
           property :instance, as: 'instance'
@@ -14860,6 +14891,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::FirewallPolicyRule, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRule::Representation
       
           property :short_name, as: 'shortName'
@@ -17360,11 +17392,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain_count, as: 'availabilityDomainCount'
           property :collocation, as: 'collocation'
-          property :locality, as: 'locality'
           property :max_distance, as: 'maxDistance'
           property :scope, as: 'scope'
           property :slice_count, as: 'sliceCount'
-          property :style, as: 'style'
           property :tpu_topology, as: 'tpuTopology'
           property :vm_count, as: 'vmCount'
         end

@@ -3667,16 +3667,17 @@ module Google
         attr_accessor :enable_cdn
         alias_method :enable_cdn?, :enable_cdn
       
-        # Specifies the canary migration state. Possible values are PREPARE, TEST, and
-        # FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state
-        # must be changed to PREPARE. The state must be changed to FINALIZE before the
-        # loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST
-        # state can be used to migrate traffic by percentage using
-        # externalManagedMigrationTestingPercentage. Rolling back a migration requires
-        # the states to be set in reverse order. So changing the scheme from
-        # EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the
-        # same time. Optionally, the TEST state can be used to migrate some traffic back
-        # to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+        # Specifies the canary migration state. Possible values are PREPARE,
+        # TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC. To begin the migration from EXTERNAL
+        # to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be
+        # changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be changed to
+        # EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to
+        # migrate traffic by percentage using externalManagedMigrationTestingPercentage.
+        # Rolling back a migration requires the states to be set in reverse order. So
+        # changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be
+        # set to TEST_ALL_TRAFFIC at the same time. Optionally, the TEST_BY_PERCENTAGE
+        # state can be used to migrate some traffic back to EXTERNAL or PREPARE can be
+        # used to migrate all traffic back to EXTERNAL.
         # Corresponds to the JSON property `externalManagedMigrationState`
         # @return [String]
         attr_accessor :external_managed_migration_state
@@ -3684,9 +3685,10 @@ module Google
         # Determines the fraction of requests that should be processed by the Global
         # external Application Load Balancer. The value of this field must be in the
         # range [0, 100]. Session affinity options will slightly affect this routing
-        # behavior, for more details, see: Session Affinity. This value is only used if
-        # the loadBalancingScheme in the BackendService is set to EXTERNAL when using
-        # the classic Application Load Balancer.
+        # behavior, for more details, see: Session Affinity. This value can only be set
+        # if the loadBalancingScheme in the BackendService is set to EXTERNAL (when
+        # using the classic Application Load Balancer) and the migration state is
+        # TEST_BY_PERCENTAGE.
         # Corresponds to the JSON property `externalManagedMigrationTestingPercentage`
         # @return [Float]
         attr_accessor :external_managed_migration_testing_percentage
@@ -3853,6 +3855,12 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Configures traffic steering properties of internal passthrough Network Load
+        # Balancers.
+        # Corresponds to the JSON property `networkPassThroughLbTrafficPolicy`
+        # @return [Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicy]
+        attr_accessor :network_pass_through_lb_traffic_policy
+      
         # Settings controlling the eviction of unhealthy hosts from the load balancing
         # pool for the backend service.
         # Corresponds to the JSON property `outlierDetection`
@@ -4011,6 +4019,7 @@ module Google
           @metadatas = args[:metadatas] if args.key?(:metadatas)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_pass_through_lb_traffic_policy = args[:network_pass_through_lb_traffic_policy] if args.key?(:network_pass_through_lb_traffic_policy)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
@@ -5040,6 +5049,68 @@ module Google
           @optional_fields = args[:optional_fields] if args.key?(:optional_fields)
           @optional_mode = args[:optional_mode] if args.key?(:optional_mode)
           @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
+        end
+      end
+      
+      # 
+      class BackendServiceNetworkPassThroughLbTrafficPolicy
+        include Google::Apis::Core::Hashable
+      
+        # When configured, new connections are load balanced across healthy backend
+        # endpoints in the local zone.
+        # Corresponds to the JSON property `zonalAffinity`
+        # @return [Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity]
+        attr_accessor :zonal_affinity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zonal_affinity = args[:zonal_affinity] if args.key?(:zonal_affinity)
+        end
+      end
+      
+      # 
+      class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity
+        include Google::Apis::Core::Hashable
+      
+        # This field indicates whether zonal affinity is enabled or not. The possible
+        # values are: - ZONAL_AFFINITY_DISABLED: Default Value. Zonal Affinity is
+        # disabled. The load balancer distributes new connections to all healthy backend
+        # endpoints across all zones. - ZONAL_AFFINITY_STAY_WITHIN_ZONE: Zonal Affinity
+        # is enabled. The load balancer distributes new connections to all healthy
+        # backend endpoints in the local zone only. If there are no healthy backend
+        # endpoints in the local zone, the load balancer distributes new connections to
+        # all backend endpoints in the local zone. - ZONAL_AFFINITY_SPILL_CROSS_ZONE:
+        # Zonal Affinity is enabled. The load balancer distributes new connections to
+        # all healthy backend endpoints in the local zone only. If there aren't enough
+        # healthy backend endpoints in the local zone, the load balancer distributes new
+        # connections to all healthy backend endpoints across all zones.
+        # Corresponds to the JSON property `spillover`
+        # @return [String]
+        attr_accessor :spillover
+      
+        # The value of the field must be in [0, 1]. When the ratio of the count of
+        # healthy backend endpoints in a zone to the count of backend endpoints in that
+        # same zone is equal to or above this threshold, the load balancer distributes
+        # new connections to all healthy endpoints in the local zone only. When the
+        # ratio of the count of healthy backend endpoints in a zone to the count of
+        # backend endpoints in that same zone is below this threshold, the load balancer
+        # distributes all new connections to all healthy endpoints across all zones.
+        # Corresponds to the JSON property `spilloverRatio`
+        # @return [Float]
+        attr_accessor :spillover_ratio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spillover = args[:spillover] if args.key?(:spillover)
+          @spillover_ratio = args[:spillover_ratio] if args.key?(:spillover_ratio)
         end
       end
       
@@ -10739,25 +10810,28 @@ module Google
         attr_accessor :description
       
         # Specifies the canary migration state for the backend buckets attached to this
-        # forwarding rule. Possible values are PREPARE, TEST, and FINALIZE. To begin the
-        # migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
-        # PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme
-        # can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to
+        # forwarding rule. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
+        # TEST_ALL_TRAFFIC. To begin the migration from EXTERNAL to EXTERNAL_MANAGED,
+        # the state must be changed to PREPARE. The state must be changed to
+        # TEST_ALL_TRAFFIC before the loadBalancingScheme can be changed to
+        # EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to
         # migrate traffic to backend buckets attached to this forwarding rule by
         # percentage using externalManagedBackendBucketMigrationTestingPercentage.
         # Rolling back a migration requires the states to be set in reverse order. So
         # changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be
-        # set to FINALIZE at the same time. Optionally, the TEST state can be used to
-        # migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all
-        # traffic back to EXTERNAL.
+        # set to TEST_ALL_TRAFFIC at the same time. Optionally, the TEST_BY_PERCENTAGE
+        # state can be used to migrate some traffic back to EXTERNAL or PREPARE can be
+        # used to migrate all traffic back to EXTERNAL.
         # Corresponds to the JSON property `externalManagedBackendBucketMigrationState`
         # @return [String]
         attr_accessor :external_managed_backend_bucket_migration_state
       
         # Determines the fraction of requests to backend buckets that should be
-        # processed by the Global external Application Load Balancer. The value of this
-        # field must be in the range [0, 100]. This value is only used if the
-        # loadBalancingScheme is set to EXTERNAL (when using the Classic ALB).
+        # processed by the global external Application Load Balancer. The value of this
+        # field must be in the range [0, 100]. This value can only be set if the
+        # loadBalancingScheme in the BackendService is set to EXTERNAL (when using the
+        # classic Application Load Balancer) and the migration state is
+        # TEST_BY_PERCENTAGE.
         # Corresponds to the JSON property `externalManagedBackendBucketMigrationTestingPercentage`
         # @return [Float]
         attr_accessor :external_managed_backend_bucket_migration_testing_percentage
@@ -20982,6 +21056,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output only] Priority of firewall policy association. Not applicable for type=
+        # HIERARCHY.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
         # The rules that apply to the network.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRule>]
@@ -21006,6 +21086,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
@@ -22208,12 +22289,6 @@ module Google
         # @return [Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy]
         attr_accessor :bandwidth_percentage_policy
       
-        # Enable or disable the AAI feature on this interconnect.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
         # A description for the AAI profile on this interconnect.
         # Corresponds to the JSON property `profileDescription`
         # @return [String]
@@ -22231,7 +22306,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bandwidth_percentage_policy = args[:bandwidth_percentage_policy] if args.key?(:bandwidth_percentage_policy)
-          @enabled = args[:enabled] if args.key?(:enabled)
           @profile_description = args[:profile_description] if args.key?(:profile_description)
           @strict_priority_policy = args[:strict_priority_policy] if args.key?(:strict_priority_policy)
         end
@@ -28007,6 +28081,12 @@ module Google
         attr_accessor :annotations
       
         # Represents the port number to which PSC consumer sends packets. Only valid for
+        # network endpoint groups created with GCE_VM_IP_PORTMAP endpoint type.
+        # Corresponds to the JSON property `clientDestinationPort`
+        # @return [Fixnum]
+        attr_accessor :client_destination_port
+      
+        # Represents the port number to which PSC consumer sends packets. Only valid for
         # network endpoint groups created with CLIENT_PORT_PER_ENDPOINT mapping mode.
         # Corresponds to the JSON property `clientPort`
         # @return [Fixnum]
@@ -28068,6 +28148,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client_destination_port = args[:client_destination_port] if args.key?(:client_destination_port)
           @client_port = args[:client_port] if args.key?(:client_port)
           @fqdn = args[:fqdn] if args.key?(:fqdn)
           @instance = args[:instance] if args.key?(:instance)
@@ -28172,7 +28253,7 @@ module Google
       
         # Type of network endpoints in this network endpoint group. Can be one of
         # GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT,
-        # INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+        # INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT, GCE_VM_IP_PORTMAP.
         # Corresponds to the JSON property `networkEndpointType`
         # @return [String]
         attr_accessor :network_endpoint_type
@@ -30056,6 +30137,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output only] Priority of firewall policy association. Not applicable for type=
+        # HIERARCHY.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
         # The rules that apply to the network.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRule>]
@@ -30079,6 +30166,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
@@ -33592,8 +33680,7 @@ module Google
         # ingress) or destination (egress) IP in the IP header. If no ranges are
         # specified, all IPv4 traffic that matches the specified IPProtocols is mirrored.
         # If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is
-        # mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note:
-        # Support for IPv6 traffic is in preview.
+        # mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0".
         # Corresponds to the JSON property `cidrRanges`
         # @return [Array<String>]
         attr_accessor :cidr_ranges
@@ -39210,7 +39297,7 @@ module Google
         attr_accessor :disk_consistency_group_policy
       
         # A GroupPlacementPolicy specifies resource placement configuration. It
-        # specifies the failure bucket separation as well as network locality
+        # specifies the failure bucket separation
         # Corresponds to the JSON property `groupPlacementPolicy`
         # @return [Google::Apis::ComputeAlpha::ResourcePolicyGroupPlacementPolicy]
         attr_accessor :group_placement_policy
@@ -39485,7 +39572,7 @@ module Google
       end
       
       # A GroupPlacementPolicy specifies resource placement configuration. It
-      # specifies the failure bucket separation as well as network locality
+      # specifies the failure bucket separation
       class ResourcePolicyGroupPlacementPolicy
         include Google::Apis::Core::Hashable
       
@@ -39501,11 +39588,6 @@ module Google
         # @return [String]
         attr_accessor :collocation
       
-        # Specifies network locality
-        # Corresponds to the JSON property `locality`
-        # @return [String]
-        attr_accessor :locality
-      
         # Specifies the number of max logical switches.
         # Corresponds to the JSON property `maxDistance`
         # @return [Fixnum]
@@ -39520,11 +39602,6 @@ module Google
         # Corresponds to the JSON property `sliceCount`
         # @return [Fixnum]
         attr_accessor :slice_count
-      
-        # Specifies instances to hosts placement relationship
-        # Corresponds to the JSON property `style`
-        # @return [String]
-        attr_accessor :style
       
         # Specifies the shape of the TPU slice
         # Corresponds to the JSON property `tpuTopology`
@@ -39546,11 +39623,9 @@ module Google
         def update!(**args)
           @availability_domain_count = args[:availability_domain_count] if args.key?(:availability_domain_count)
           @collocation = args[:collocation] if args.key?(:collocation)
-          @locality = args[:locality] if args.key?(:locality)
           @max_distance = args[:max_distance] if args.key?(:max_distance)
           @scope = args[:scope] if args.key?(:scope)
           @slice_count = args[:slice_count] if args.key?(:slice_count)
-          @style = args[:style] if args.key?(:style)
           @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
           @vm_count = args[:vm_count] if args.key?(:vm_count)
         end
@@ -45712,13 +45787,21 @@ module Google
         # @return [String]
         attr_accessor :connection_preference
       
-        # Projects that are allowed to connect to this service attachment.
+        # Specifies which consumer projects or networks are allowed to connect to the
+        # service attachment. Each project or network has a connection limit. A given
+        # service attachment can manage connections at either the project or network
+        # level. Therefore, both the accept and reject lists for a given service
+        # attachment must contain either only projects or only networks.
         # Corresponds to the JSON property `consumerAcceptLists`
         # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentConsumerProjectLimit>]
         attr_accessor :consumer_accept_lists
       
-        # Projects that are not allowed to connect to this service attachment. The
-        # project can be specified using its id or number.
+        # Specifies a list of projects or networks that are not allowed to connect to
+        # this service attachment. The project can be specified using its project ID or
+        # project number and the network can be specified using its URL. A given service
+        # attachment can manage connections at either the project or network level.
+        # Therefore, both the reject and accept lists for a given service attachment
+        # must contain either only projects or only networks.
         # Corresponds to the JSON property `consumerRejectLists`
         # @return [Array<String>]
         attr_accessor :consumer_reject_lists
