@@ -168,6 +168,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. If set, this field contains the list of DSP specific seat ids set
+        # by media planners that are eligible to transact on this deal. The seat ID is
+        # in the calling DSP's namespace.
+        # Corresponds to the JSON property `eligibleSeatIds`
+        # @return [Array<String>]
+        attr_accessor :eligible_seat_ids
+      
         # Immutable. The unique identifier for the auction package. Format: `buyers/`
         # accountId`/auctionPackages/`auctionPackageId`` The auction_package_id part of
         # name is sent in the BidRequest to all RTB bidders and is returned as deal_id
@@ -176,11 +183,26 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The list of clients of the current buyer that are subscribed to
-        # the AuctionPackage. Format: `buyers/`buyerAccountId`/clients/`clientAccountId``
+        # Output only. The list of buyers that are subscribed to the AuctionPackage.
+        # This field is only populated when calling as a bidder. Format: `buyers/`
+        # buyerAccountId``
+        # Corresponds to the JSON property `subscribedBuyers`
+        # @return [Array<String>]
+        attr_accessor :subscribed_buyers
+      
+        # Output only. When calling as a buyer, the list of clients of the current buyer
+        # that are subscribed to the AuctionPackage. When calling as a bidder, the list
+        # of clients that are subscribed to the AuctionPackage owned by the bidder or
+        # its buyers. Format: `buyers/`buyerAccountId`/clients/`clientAccountId``
         # Corresponds to the JSON property `subscribedClients`
         # @return [Array<String>]
         attr_accessor :subscribed_clients
+      
+        # Output only. The list of media planners that are subscribed to the
+        # AuctionPackage. This field is only populated when calling as a bidder.
+        # Corresponds to the JSON property `subscribedMediaPlanners`
+        # @return [Array<Google::Apis::AuthorizedbuyersmarketplaceV1::MediaPlanner>]
+        attr_accessor :subscribed_media_planners
       
         # Output only. Time the auction package was last updated. This value is only
         # increased when this auction package is updated but never when a buyer
@@ -199,8 +221,11 @@ module Google
           @creator = args[:creator] if args.key?(:creator)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @eligible_seat_ids = args[:eligible_seat_ids] if args.key?(:eligible_seat_ids)
           @name = args[:name] if args.key?(:name)
+          @subscribed_buyers = args[:subscribed_buyers] if args.key?(:subscribed_buyers)
           @subscribed_clients = args[:subscribed_clients] if args.key?(:subscribed_clients)
+          @subscribed_media_planners = args[:subscribed_media_planners] if args.key?(:subscribed_media_planners)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

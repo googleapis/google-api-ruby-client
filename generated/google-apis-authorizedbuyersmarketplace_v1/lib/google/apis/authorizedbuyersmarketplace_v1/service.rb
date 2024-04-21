@@ -52,6 +52,56 @@ module Google
           @batch_path = 'batch'
         end
         
+        # List the auction packages. Buyers can use the URL path "/v1/buyers/`accountId`/
+        # auctionPackages" to list auction packages for the current buyer and its
+        # clients. Bidders can use the URL path "/v1/bidders/`accountId`/auctionPackages"
+        # to list auction packages for the bidder, its media planners, its buyers, and
+        # all their clients.
+        # @param [String] parent
+        #   Required. Name of the parent buyer that can access the auction package. Format:
+        #   `buyers/`accountId``. When used with a bidder account, the auction packages
+        #   that the bidder, its media planners, its buyers and clients are subscribed to
+        #   will be listed, in the format `bidders/`accountId``.
+        # @param [String] filter
+        #   Optional. Optional query string using the [Cloud API list filtering syntax](/
+        #   authorized-buyers/apis/guides/list-filters). Only supported when parent is
+        #   bidder. Supported columns for filtering are: * displayName * createTime *
+        #   updateTime * eligibleSeatIds
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer results than requested. Max
+        #   allowed page size is 500.
+        # @param [String] page_token
+        #   The page token as returned. ListAuctionPackagesResponse.nextPageToken
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AuthorizedbuyersmarketplaceV1::ListAuctionPackagesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::ListAuctionPackagesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_bidder_auction_packages(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/auctionPackages', options)
+          command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1::ListAuctionPackagesResponse::Representation
+          command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1::ListAuctionPackagesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists finalized deals. Use the URL path "/v1/buyers/`accountId`/finalizedDeals"
         # to list finalized deals for the current buyer and its clients. Bidders can
         # use the URL path "/v1/bidders/`accountId`/finalizedDeals" to list finalized
@@ -143,10 +193,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the auction packages subscribed by a buyer and its clients.
+        # List the auction packages. Buyers can use the URL path "/v1/buyers/`accountId`/
+        # auctionPackages" to list auction packages for the current buyer and its
+        # clients. Bidders can use the URL path "/v1/bidders/`accountId`/auctionPackages"
+        # to list auction packages for the bidder, its media planners, its buyers, and
+        # all their clients.
         # @param [String] parent
         #   Required. Name of the parent buyer that can access the auction package. Format:
-        #   `buyers/`accountId``
+        #   `buyers/`accountId``. When used with a bidder account, the auction packages
+        #   that the bidder, its media planners, its buyers and clients are subscribed to
+        #   will be listed, in the format `bidders/`accountId``.
+        # @param [String] filter
+        #   Optional. Optional query string using the [Cloud API list filtering syntax](/
+        #   authorized-buyers/apis/guides/list-filters). Only supported when parent is
+        #   bidder. Supported columns for filtering are: * displayName * createTime *
+        #   updateTime * eligibleSeatIds
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested. Max
         #   allowed page size is 500.
@@ -169,11 +230,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_buyer_auction_packages(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_buyer_auction_packages(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/auctionPackages', options)
           command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1::ListAuctionPackagesResponse::Representation
           command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1::ListAuctionPackagesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
