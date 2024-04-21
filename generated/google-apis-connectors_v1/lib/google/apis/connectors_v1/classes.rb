@@ -242,6 +242,25 @@ module Google
         end
       end
       
+      # Billing config for the connection.
+      class BillingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Billing category for the connector.
+        # Corresponds to the JSON property `billingCategory`
+        # @return [String]
+        attr_accessor :billing_category
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_category = args[:billing_category] if args.key?(:billing_category)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -524,6 +543,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::AuthConfig]
         attr_accessor :auth_config
       
+        # Billing config for the connection.
+        # Corresponds to the JSON property `billingConfig`
+        # @return [Google::Apis::ConnectorsV1::BillingConfig]
+        attr_accessor :billing_config
+      
         # Optional. Configuration for configuring the connection with an external system.
         # Corresponds to the JSON property `configVariables`
         # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
@@ -680,6 +704,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
+          @billing_config = args[:billing_config] if args.key?(:billing_config)
           @config_variables = args[:config_variables] if args.key?(:config_variables)
           @connection_revision = args[:connection_revision] if args.key?(:connection_revision)
           @connector_version = args[:connector_version] if args.key?(:connector_version)
@@ -1178,10 +1203,15 @@ module Google
       class CustomConnector
         include Google::Apis::Core::Hashable
       
-        # Optional. Active connector versions.
+        # Output only. Active connector versions.
         # Corresponds to the JSON property `activeConnectorVersions`
         # @return [Array<String>]
         attr_accessor :active_connector_versions
+      
+        # Output only. All connector versions.
+        # Corresponds to the JSON property `allConnectorVersions`
+        # @return [Array<String>]
+        attr_accessor :all_connector_versions
       
         # Output only. Created time.
         # Corresponds to the JSON property `createTime`
@@ -1233,6 +1263,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @active_connector_versions = args[:active_connector_versions] if args.key?(:active_connector_versions)
+          @all_connector_versions = args[:all_connector_versions] if args.key?(:all_connector_versions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_connector_type = args[:custom_connector_type] if args.key?(:custom_connector_type)
           @description = args[:description] if args.key?(:description)
@@ -4701,6 +4732,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::JsonSchema]
         attr_accessor :json_schema
       
+        # List of operations supported by this entity
+        # Corresponds to the JSON property `operations`
+        # @return [Array<String>]
+        attr_accessor :operations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4710,6 +4746,7 @@ module Google
           @entity = args[:entity] if args.key?(:entity)
           @fields = args[:fields] if args.key?(:fields)
           @json_schema = args[:json_schema] if args.key?(:json_schema)
+          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
@@ -4770,6 +4807,69 @@ module Google
         def update!(**args)
           @use_action_display_names = args[:use_action_display_names] if args.key?(:use_action_display_names)
           @use_synchronous_schema_refresh = args[:use_synchronous_schema_refresh] if args.key?(:use_synchronous_schema_refresh)
+        end
+      end
+      
+      # SearchConnectionInstance represents an instance of connector with specific
+      # fields
+      class SearchConnectionInstance
+        include Google::Apis::Core::Hashable
+      
+        # Schema of a runtime action.
+        # Corresponds to the JSON property `actionSchema`
+        # @return [Google::Apis::ConnectorsV1::RuntimeActionSchema]
+        attr_accessor :action_schema
+      
+        # Connection represents an instance of connector.
+        # Corresponds to the JSON property `connection`
+        # @return [Google::Apis::ConnectorsV1::Connection]
+        attr_accessor :connection
+      
+        # Schema of a runtime entity.
+        # Corresponds to the JSON property `entitySchema`
+        # @return [Google::Apis::ConnectorsV1::RuntimeEntitySchema]
+        attr_accessor :entity_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_schema = args[:action_schema] if args.key?(:action_schema)
+          @connection = args[:connection] if args.key?(:connection)
+          @entity_schema = args[:entity_schema] if args.key?(:entity_schema)
+        end
+      end
+      
+      # Response message for Connectors.SearchConnections.
+      class SearchConnectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of connectors.
+        # Corresponds to the JSON property `connections`
+        # @return [Array<Google::Apis::ConnectorsV1::SearchConnectionInstance>]
+        attr_accessor :connections
+      
+        # Optional. page_token
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connections = args[:connections] if args.key?(:connections)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
