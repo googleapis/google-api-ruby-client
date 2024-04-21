@@ -450,12 +450,28 @@ module Google
       class DisableServiceAccountKeyRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Usable by internal google services only. An extended_status_message
+        # can be used to include additional information about the key, such as its
+        # private key data being exposed on a public repository like GitHub.
+        # Corresponds to the JSON property `extendedStatusMessage`
+        # @return [String]
+        attr_accessor :extended_status_message
+      
+        # Optional. Describes the reason this key is being disabled. If unspecified, the
+        # default value of SERVICE_ACCOUNT_KEY_DISABLE_REASON_USER_INITIATED will be
+        # used.
+        # Corresponds to the JSON property `serviceAccountKeyDisableReason`
+        # @return [String]
+        attr_accessor :service_account_key_disable_reason
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @extended_status_message = args[:extended_status_message] if args.key?(:extended_status_message)
+          @service_account_key_disable_reason = args[:service_account_key_disable_reason] if args.key?(:service_account_key_disable_reason)
         end
       end
       
@@ -568,6 +584,33 @@ module Google
         end
       end
       
+      # Extended status can store additional metadata. For example, for keys disabled
+      # due to their private key data being expoesed we may include a message with
+      # more information about the exposure.
+      class ExtendedStatus
+        include Google::Apis::Core::Hashable
+      
+        # The key for this extended status.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The value for the extended status.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Request message for `GetIamPolicy` method.
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -615,6 +658,80 @@ module Google
         end
       end
       
+      # Represents the OAuth 2.0 client credential configuration for retrieving
+      # additional user attributes that are not present in the initial authentication
+      # credentials from the identity provider, e.g. groups. See https://datatracker.
+      # ietf.org/doc/html/rfc6749#section-4.4 for more details on client credentials
+      # grant flow.
+      class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client
+        include Google::Apis::Core::Hashable
+      
+        # Required. Represents the IdP and type of claims that should be fetched.
+        # Corresponds to the JSON property `attributesType`
+        # @return [String]
+        attr_accessor :attributes_type
+      
+        # Required. The OAuth 2.0 client ID for retrieving extra attributes from the
+        # identity provider. Required to get the Access Token using client credentials
+        # grant flow.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Representation of a client secret configured for the OIDC provider.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret]
+        attr_accessor :client_secret
+      
+        # Required. The OIDC identity provider's issuer URI. Must be a valid URI using
+        # the `https` scheme. Required to get the OIDC discovery document.
+        # Corresponds to the JSON property `issuerUri`
+        # @return [String]
+        attr_accessor :issuer_uri
+      
+        # Represents the parameters to control which claims are fetched from an IdP.
+        # Corresponds to the JSON property `queryParameters`
+        # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters]
+        attr_accessor :query_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes_type = args[:attributes_type] if args.key?(:attributes_type)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
+          @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
+        end
+      end
+      
+      # Represents the parameters to control which claims are fetched from an IdP.
+      class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The filter used to request specific records from IdP. In case of
+        # attributes type as AZURE_AD_GROUPS_MAIL, it represents the filter used to
+        # request specific groups for users from IdP. By default all the groups
+        # associated with the user are fetched. The groups that are used should be mail
+        # enabled and security enabled. See https://learn.microsoft.com/en-us/graph/
+        # search-query-parameter for more details.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
       # Represents an OpenId Connect 1.0 identity provider.
       class GoogleIamAdminV1WorkforcePoolProviderOidc
         include Google::Apis::Core::Hashable
@@ -630,7 +747,7 @@ module Google
         # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret]
         attr_accessor :client_secret
       
-        # Required. The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+        # Required. The OIDC issuer URI. Must be a valid URI using the `https` scheme.
         # Corresponds to the JSON property `issuerUri`
         # @return [String]
         attr_accessor :issuer_uri
@@ -945,6 +1062,51 @@ module Google
         end
       end
       
+      # Response message for ListOauthClientCredentials.
+      class ListOauthClientCredentialsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of oauth client credentials.
+        # Corresponds to the JSON property `oauthClientCredentials`
+        # @return [Array<Google::Apis::IamV1::OauthClientCredential>]
+        attr_accessor :oauth_client_credentials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_client_credentials = args[:oauth_client_credentials] if args.key?(:oauth_client_credentials)
+        end
+      end
+      
+      # Response message for ListOauthClients.
+      class ListOauthClientsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A token, which can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of oauth clients.
+        # Corresponds to the JSON property `oauthClients`
+        # @return [Array<Google::Apis::IamV1::OauthClient>]
+        attr_accessor :oauth_clients
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @oauth_clients = args[:oauth_clients] if args.key?(:oauth_clients)
+        end
+      end
+      
       # The response containing the roles defined under a resource.
       class ListRolesResponse
         include Google::Apis::Core::Hashable
@@ -1172,6 +1334,143 @@ module Google
         end
       end
       
+      # Represents an oauth client. Used to access Google Cloud resources on behave of
+      # a user by using OAuth2 Protocol to obtain an access token from Google Cloud
+      # Platform.
+      class OauthClient
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of OAuth grant type is allowed for the oauth client.
+        # Corresponds to the JSON property `allowedGrantTypes`
+        # @return [Array<String>]
+        attr_accessor :allowed_grant_types
+      
+        # Required. The list of redirect uris that is allowed to redirect back when
+        # authorization process is completed.
+        # Corresponds to the JSON property `allowedRedirectUris`
+        # @return [Array<String>]
+        attr_accessor :allowed_redirect_uris
+      
+        # Required. The list of scopes that the oauth client is allowed to request
+        # during OAuth flows. The following scopes are supported: * `https://www.
+        # googleapis.com/auth/cloud-platform`: See, edit, configure, and delete your
+        # Google Cloud data and see the email address for your Google Account. * `openid`
+        # : Associate you with your personal info on Google Cloud. * `email`: See your
+        # Google Cloud Account email address.
+        # Corresponds to the JSON property `allowedScopes`
+        # @return [Array<String>]
+        attr_accessor :allowed_scopes
+      
+        # Output only. The system-generated oauth client id.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Immutable. The type of oauth client. either public or private.
+        # Corresponds to the JSON property `clientType`
+        # @return [String]
+        attr_accessor :client_type
+      
+        # Optional. A user-specified description of the oauth client. Cannot exceed 256
+        # characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Whether the oauth client is disabled. You cannot use a disabled
+        # oauth client for login.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Optional. A user-specified display name of the oauth client. Cannot exceed 32
+        # characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Time after which the oauth client will be permanently purged and
+        # cannot be recovered.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Immutable. The resource name of the oauth client. Format:`projects/`project`/
+        # locations/`location`/oauthClients/`oauth_client``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the oauth client.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_grant_types = args[:allowed_grant_types] if args.key?(:allowed_grant_types)
+          @allowed_redirect_uris = args[:allowed_redirect_uris] if args.key?(:allowed_redirect_uris)
+          @allowed_scopes = args[:allowed_scopes] if args.key?(:allowed_scopes)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_type = args[:client_type] if args.key?(:client_type)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Represents an oauth client credential. Used to authenticate an oauth client
+      # while accessing Google Cloud resources on behalf of a user by using OAuth2
+      # Protocol.
+      class OauthClientCredential
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The system-generated oauth client secret.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Optional. Whether the oauth client credential is disabled. You cannot use a
+        # disabled oauth client credential for OAuth.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Optional. A user-specified display name of the oauth client credential Cannot
+        # exceed 32 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Immutable. The resource name of the oauth client credential. Format: `projects/
+        # `project`/locations/`location`/oauthClients/`oauth_client`/credentials/`
+        # credential``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Represents an OpenId Connect 1.0 identity provider.
       class Oidc
         include Google::Apis::Core::Hashable
@@ -1335,6 +1634,46 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # The service account key patch request.
+      class PatchServiceAccountKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents a service account key. A service account has two sets of key-pairs:
+        # user-managed, and system-managed. User-managed key-pairs can be created and
+        # deleted by users. Users are responsible for rotating these keys periodically
+        # to ensure security of their service accounts. Users retain the private key of
+        # these key-pairs, and Google retains ONLY the public key. System-managed keys
+        # are automatically rotated by Google, and are used for signing for a maximum of
+        # two weeks. The rotation process is probabilistic, and usage of the new key
+        # will gradually ramp up and down over the key's lifetime. If you cache the
+        # public key set for a service account, we recommend that you update the cache
+        # every 15 minutes. User-managed keys can be added and removed at any time, so
+        # it is important to update the cache frequently. For Google-managed keys,
+        # Google will publish a key at least 6 hours before it is first used for signing
+        # and will keep publishing it for at least 6 hours after it was last used for
+        # signing. Public keys for all service accounts are also published at the OAuth2
+        # Service Account API.
+        # Corresponds to the JSON property `serviceAccountKey`
+        # @return [Google::Apis::IamV1::ServiceAccountKey]
+        attr_accessor :service_account_key
+      
+        # Required. The update mask to apply to the service account key. Only the
+        # following fields are eligible for patching: - contact - description
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account_key = args[:service_account_key] if args.key?(:service_account_key)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -1978,11 +2317,41 @@ module Google
       class ServiceAccountKey
         include Google::Apis::Core::Hashable
       
+        # Optional. A user provided email address as the point of contact for this
+        # service account key. Must be an email address. Limit 64 characters.
+        # Corresponds to the JSON property `contact`
+        # @return [String]
+        attr_accessor :contact
+      
+        # Output only. The cloud identity that created this service account key.
+        # Populated automatically when the key is created and not editable by the user.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
+        # Optional. A user provided description of this service account key.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # optional. If the key is disabled, it may have a DisableReason describing why
+        # it was disabled.
+        # Corresponds to the JSON property `disableReason`
+        # @return [String]
+        attr_accessor :disable_reason
+      
         # The key status.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
+      
+        # Extended Status provides permanent information about a service account key.
+        # For example, if this key was detected as exposed or compromised, that
+        # information will remain for the lifetime of the key in the extended_status.
+        # Corresponds to the JSON property `extendedStatus`
+        # @return [Array<Google::Apis::IamV1::ExtendedStatus>]
+        attr_accessor :extended_status
       
         # Specifies the algorithm (and possibly key size) for the key.
         # Corresponds to the JSON property `keyAlgorithm`
@@ -2047,7 +2416,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contact = args[:contact] if args.key?(:contact)
+          @creator = args[:creator] if args.key?(:creator)
+          @description = args[:description] if args.key?(:description)
+          @disable_reason = args[:disable_reason] if args.key?(:disable_reason)
           @disabled = args[:disabled] if args.key?(:disabled)
+          @extended_status = args[:extended_status] if args.key?(:extended_status)
           @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
           @key_origin = args[:key_origin] if args.key?(:key_origin)
           @key_type = args[:key_type] if args.key?(:key_type)
@@ -2314,6 +2688,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Request message for UndeleteOauthClient.
+      class UndeleteOauthClientRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2657,6 +3044,15 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Represents the OAuth 2.0 client credential configuration for retrieving
+        # additional user attributes that are not present in the initial authentication
+        # credentials from the identity provider, e.g. groups. See https://datatracker.
+        # ietf.org/doc/html/rfc6749#section-4.4 for more details on client credentials
+        # grant flow.
+        # Corresponds to the JSON property `extraAttributesOauth2Client`
+        # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client]
+        attr_accessor :extra_attributes_oauth2_client
+      
         # Output only. The resource name of the provider. Format: `locations/`location`/
         # workforcePools/`workforce_pool_id`/providers/`provider_id``
         # Corresponds to the JSON property `name`
@@ -2690,6 +3086,7 @@ module Google
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @extra_attributes_oauth2_client = args[:extra_attributes_oauth2_client] if args.key?(:extra_attributes_oauth2_client)
           @name = args[:name] if args.key?(:name)
           @oidc = args[:oidc] if args.key?(:oidc)
           @saml = args[:saml] if args.key?(:saml)
@@ -2920,12 +3317,6 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # An X.509-type identity provider represents a CA. It is trusted to assert a
-        # client identity if the client has a certificate that chains up to this CA.
-        # Corresponds to the JSON property `x509`
-        # @return [Google::Apis::IamV1::X509]
-        attr_accessor :x509
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2943,7 +3334,6 @@ module Google
           @oidc = args[:oidc] if args.key?(:oidc)
           @saml = args[:saml] if args.key?(:saml)
           @state = args[:state] if args.key?(:state)
-          @x509 = args[:x509] if args.key?(:x509)
         end
       end
       
@@ -2992,20 +3382,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @use = args[:use] if args.key?(:use)
-        end
-      end
-      
-      # An X.509-type identity provider represents a CA. It is trusted to assert a
-      # client identity if the client has a certificate that chains up to this CA.
-      class X509
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
     end

@@ -383,8 +383,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the caller's permissions on the WorkforcePool. If the pool does not
-        # exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
+        # Returns the caller's permissions on the WorkforcePool. If the pool doesn't
+        # exist, this call returns an empty set of permissions. It doesn't return a `
+        # NOT_FOUND` error.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See [
         #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
@@ -526,7 +527,7 @@ module Google
         end
         
         # Deletes a WorkforcePoolProvider. Deleting a provider does not revoke
-        # credentials that have already been\ issued; they continue to grant access. You
+        # credentials that have already been issued; they continue to grant access. You
         # can undelete a provider for 30 days. After 30 days, deletion is permanent. You
         # cannot update deleted providers. However, you can view and list them.
         # @param [String] name
@@ -947,16 +948,20 @@ module Google
         
         # Deletes a WorkforcePoolSubject. Subject must not already be in a deleted state.
         # A WorkforcePoolSubject is automatically created the first time an external
-        # credential is exchanged for a Google Cloud credential with a mapped `google.
-        # subject` attribute. There is no path to manually create WorkforcePoolSubjects.
-        # Once deleted, the WorkforcePoolSubject may not be used for 30 days. After 30
-        # days, the WorkforcePoolSubject will be deleted forever and can be reused in
-        # token exchanges with Google Cloud STS. This will automatically create a new
-        # WorkforcePoolSubject that is independent of the previously deleted
-        # WorkforcePoolSubject with the same google.subject value.
+        # credential is exchanged for a Google Cloud credential using a mapped `google.
+        # subject` attribute. There is no endpoint to manually create a
+        # WorkforcePoolSubject. For 30 days after a WorkforcePoolSubject is deleted,
+        # using the same `google.subject` attribute in token exchanges with Google Cloud
+        # STS fails. Call UndeleteWorkforcePoolSubject to undelete a
+        # WorkforcePoolSubject that has been deleted, within within 30 days of deleting
+        # it. After 30 days, the WorkforcePoolSubject is permanently deleted. At this
+        # point, a token exchange with Google Cloud STS that uses the same mapped `
+        # google.subject` attribute automatically creates a new WorkforcePoolSubject
+        # that is unrelated to the previously deleted WorkforcePoolSubject but has the
+        # same `google.subject` value.
         # @param [String] name
         #   Required. The resource name of the WorkforcePoolSubject. Special characters,
-        #   like '/' and ':', must be escaped, because all URLs need to conform to the "
+        #   like `/` and `:`, must be escaped, because all URLs need to conform to the "
         #   When to Escape and Unescape" section of [RFC3986](https://www.ietf.org/rfc/
         #   rfc2396.txt). Format: `locations/`location`/workforcePools/`workforce_pool_id`/
         #   subjects/`subject_id``
@@ -991,7 +996,7 @@ module Google
         # ago.
         # @param [String] name
         #   Required. The resource name of the WorkforcePoolSubject. Special characters,
-        #   like '/' and ':', must be escaped, because all URLs need to conform to the "
+        #   like `/` and `:`, must be escaped, because all URLs need to conform to the "
         #   When to Escape and Unescape" section of [RFC3986](https://www.ietf.org/rfc/
         #   rfc2396.txt). Format: `locations/`location`/workforcePools/`workforce_pool_id`/
         #   subjects/`subject_id``
@@ -1403,6 +1408,403 @@ module Google
           command.request_object = query_testable_permissions_request_object
           command.response_representation = Google::Apis::IamV1::QueryTestablePermissionsResponse::Representation
           command.response_class = Google::Apis::IamV1::QueryTestablePermissionsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new OauthClient. You cannot reuse the name of a deleted oauth client
+        # until 30 days after deletion.
+        # @param [String] parent
+        #   Required. The parent resource to create the oauth client in. The only
+        #   supported location is `global`.
+        # @param [Google::Apis::IamV1::OauthClient] oauth_client_object
+        # @param [String] oauth_client_id
+        #   Required. The ID to use for the oauth client, which becomes the final
+        #   component of the resource name. This value should be a string of 6 to 63
+        #   lowercase letters, digits, or hyphens. It must start with a letter, and cannot
+        #   have a trailing hyphen. The prefix `gcp-` is reserved for use by Google, and
+        #   may not be specified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::OauthClient] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::OauthClient]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_oauth_client(parent, oauth_client_object = nil, oauth_client_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/oauthClients', options)
+          command.request_representation = Google::Apis::IamV1::OauthClient::Representation
+          command.request_object = oauth_client_object
+          command.response_representation = Google::Apis::IamV1::OauthClient::Representation
+          command.response_class = Google::Apis::IamV1::OauthClient
+          command.params['parent'] = parent unless parent.nil?
+          command.query['oauthClientId'] = oauth_client_id unless oauth_client_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a OauthClient. You cannot use a deleted oauth client. However,
+        # deletion does not revoke access tokens that have already been issued; they
+        # continue to grant access. Deletion does revoke refresh tokens that have
+        # already been issued; They cannot be used to renew an access token. If the
+        # oauth client is undeleted, and the refresh tokens are not expired, they are
+        # valid for token exchange again. You can undelete an oauth client for 30 days.
+        # After 30 days, deletion is permanent. You cannot update deleted oauth clients.
+        # However, you can view and list them.
+        # @param [String] name
+        #   Required. The name of the oauth client to delete. Format: `projects/`project`/
+        #   locations/`location`/oauthClients/`oauth_client``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::OauthClient] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::OauthClient]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_oauth_client(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::OauthClient::Representation
+          command.response_class = Google::Apis::IamV1::OauthClient
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an individual OauthClient.
+        # @param [String] name
+        #   Required. The name of the oauth client to retrieve. Format: `projects/`project`
+        #   /locations/`location`/oauthClients/`oauth_client``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::OauthClient] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::OauthClient]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_oauth_client(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::OauthClient::Representation
+          command.response_class = Google::Apis::IamV1::OauthClient
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all non-deleted OauthClientss in a project. If `show_deleted` is set to `
+        # true`, then deleted oauth clients are also listed.
+        # @param [String] parent
+        #   Required. The parent to list oauth clients for.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of oauth clients to return. If unspecified, at
+        #   most 50 oauth clients will be returned. The maximum value is 100; values above
+        #   100 are truncated to 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListOauthClients` call.
+        #   Provide this to retrieve the subsequent page.
+        # @param [Boolean] show_deleted
+        #   Optional. Whether to return soft-deleted oauth clients.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ListOauthClientsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ListOauthClientsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_oauth_clients(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/oauthClients', options)
+          command.response_representation = Google::Apis::IamV1::ListOauthClientsResponse::Representation
+          command.response_class = Google::Apis::IamV1::ListOauthClientsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing OauthClient.
+        # @param [String] name
+        #   Immutable. The resource name of the oauth client. Format:`projects/`project`/
+        #   locations/`location`/oauthClients/`oauth_client``.
+        # @param [Google::Apis::IamV1::OauthClient] oauth_client_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::OauthClient] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::OauthClient]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_oauth_client(name, oauth_client_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::IamV1::OauthClient::Representation
+          command.request_object = oauth_client_object
+          command.response_representation = Google::Apis::IamV1::OauthClient::Representation
+          command.response_class = Google::Apis::IamV1::OauthClient
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes a OauthClient, as long as it was deleted fewer than 30 days ago.
+        # @param [String] name
+        #   Required. The name of the oauth client to undelete. Format: `projects/`project`
+        #   /locations/`location`/oauthClients/`oauth_client``.
+        # @param [Google::Apis::IamV1::UndeleteOauthClientRequest] undelete_oauth_client_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::OauthClient] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::OauthClient]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_oauth_client(name, undelete_oauth_client_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::IamV1::UndeleteOauthClientRequest::Representation
+          command.request_object = undelete_oauth_client_request_object
+          command.response_representation = Google::Apis::IamV1::OauthClient::Representation
+          command.response_class = Google::Apis::IamV1::OauthClient
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new OauthClientCredential.
+        # @param [String] parent
+        #   Required. The parent resource to create the oauth client Credential in.
+        # @param [Google::Apis::IamV1::OauthClientCredential] oauth_client_credential_object
+        # @param [String] oauth_client_credential_id
+        #   Required. The ID to use for the oauth client credential, which becomes the
+        #   final component of the resource name. This value should be 4-32 characters,
+        #   and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for
+        #   use by Google, and may not be specified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::OauthClientCredential] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::OauthClientCredential]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_oauth_client_credential(parent, oauth_client_credential_object = nil, oauth_client_credential_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/credentials', options)
+          command.request_representation = Google::Apis::IamV1::OauthClientCredential::Representation
+          command.request_object = oauth_client_credential_object
+          command.response_representation = Google::Apis::IamV1::OauthClientCredential::Representation
+          command.response_class = Google::Apis::IamV1::OauthClientCredential
+          command.params['parent'] = parent unless parent.nil?
+          command.query['oauthClientCredentialId'] = oauth_client_credential_id unless oauth_client_credential_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a OauthClientCredential. Before deleting an oauth client credential,
+        # it should first be disabled.
+        # @param [String] name
+        #   Required. The name of the oauth client credential to delete. Format: `projects/
+        #   `project`/locations/`location`/oauthClients/`oauth_client`/credentials/`
+        #   credential``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_oauth_client_credential(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::Empty::Representation
+          command.response_class = Google::Apis::IamV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an individual OauthClientCredential.
+        # @param [String] name
+        #   Required. The name of the oauth client credential to retrieve. Format: `
+        #   projects/`project`/locations/`location`/oauthClients/`oauth_client`/
+        #   credentials/`credential``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::OauthClientCredential] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::OauthClientCredential]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_oauth_client_credential(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::OauthClientCredential::Representation
+          command.response_class = Google::Apis::IamV1::OauthClientCredential
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all OauthClientCredentialss in a OauthClient.
+        # @param [String] parent
+        #   Required. The parent to list oauth client credentials for.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ListOauthClientCredentialsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ListOauthClientCredentialsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_oauth_client_credentials(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/credentials', options)
+          command.response_representation = Google::Apis::IamV1::ListOauthClientCredentialsResponse::Representation
+          command.response_class = Google::Apis::IamV1::ListOauthClientCredentialsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing OauthClientCredential.
+        # @param [String] name
+        #   Immutable. The resource name of the oauth client credential. Format: `projects/
+        #   `project`/locations/`location`/oauthClients/`oauth_client`/credentials/`
+        #   credential``
+        # @param [Google::Apis::IamV1::OauthClientCredential] oauth_client_credential_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::OauthClientCredential] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::OauthClientCredential]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_oauth_client_credential(name, oauth_client_credential_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::IamV1::OauthClientCredential::Representation
+          command.request_object = oauth_client_credential_object
+          command.response_representation = Google::Apis::IamV1::OauthClientCredential::Representation
+          command.response_class = Google::Apis::IamV1::OauthClientCredential
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3397,6 +3799,40 @@ module Google
           command.response_class = Google::Apis::IamV1::ListServiceAccountKeysResponse
           command.params['name'] = name unless name.nil?
           command.query['keyTypes'] = key_types unless key_types.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patches a ServiceAccountKey.
+        # @param [String] name
+        #   The resource name of the service account key in the following format `projects/
+        #   `PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``.
+        # @param [Google::Apis::IamV1::PatchServiceAccountKeyRequest] patch_service_account_key_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ServiceAccountKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ServiceAccountKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_service_account_key(name, patch_service_account_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:patch', options)
+          command.request_representation = Google::Apis::IamV1::PatchServiceAccountKeyRequest::Representation
+          command.request_object = patch_service_account_key_request_object
+          command.response_representation = Google::Apis::IamV1::ServiceAccountKey::Representation
+          command.response_class = Google::Apis::IamV1::ServiceAccountKey
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
