@@ -892,6 +892,7 @@ module Google
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :start_execution_token, as: 'startExecutionToken'
           property :template, as: 'template', class: Google::Apis::RunV2::GoogleCloudRunV2ExecutionTemplate, decorator: Google::Apis::RunV2::GoogleCloudRunV2ExecutionTemplate::Representation
       
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
