@@ -1530,8 +1530,8 @@ module Google
       end
       
       # Encapsulates a stock keeping unit (SKU) visible to a billing account. A SKU
-      # distinctly identifies a resource that you can purchase, such as `Nvidia Tesla
-      # K80 GPU attached to Spot Preemptible VMs running in Warsaw`.
+      # distinctly identifies a resource that you can purchase. For a list of
+      # available SKUs, see [SKUs](https://cloud.google.com/skus).
       class GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku
         include Google::Apis::Core::Hashable
       
