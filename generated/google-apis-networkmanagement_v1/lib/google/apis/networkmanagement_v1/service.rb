@@ -340,8 +340,7 @@ module Google
         # permissions to the network configurations of listed projects), then the
         # reachability result returns a value of UNKNOWN. If the endpoint specifications
         # in `ConnectivityTest` are incomplete, the reachability result returns a value
-        # of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for for more
-        # details.
+        # of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for more details.
         # @param [String] name
         #   Required. Unique name of the resource using the form: `projects/`project_id`/
         #   locations/global/connectivityTests/`test_id``
