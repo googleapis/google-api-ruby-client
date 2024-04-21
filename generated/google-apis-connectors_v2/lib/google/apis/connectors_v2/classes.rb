@@ -334,6 +334,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # 
+        # Corresponds to the JSON property `operations`
+        # @return [Array<String>]
+        attr_accessor :operations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -343,6 +348,7 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @json_schema = args[:json_schema] if args.key?(:json_schema)
           @name = args[:name] if args.key?(:name)
+          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
