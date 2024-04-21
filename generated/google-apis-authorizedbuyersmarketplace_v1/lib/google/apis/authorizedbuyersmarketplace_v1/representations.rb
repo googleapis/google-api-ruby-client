@@ -462,8 +462,12 @@ module Google
           property :creator, as: 'creator'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          collection :eligible_seat_ids, as: 'eligibleSeatIds'
           property :name, as: 'name'
+          collection :subscribed_buyers, as: 'subscribedBuyers'
           collection :subscribed_clients, as: 'subscribedClients'
+          collection :subscribed_media_planners, as: 'subscribedMediaPlanners', class: Google::Apis::AuthorizedbuyersmarketplaceV1::MediaPlanner, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::MediaPlanner::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
