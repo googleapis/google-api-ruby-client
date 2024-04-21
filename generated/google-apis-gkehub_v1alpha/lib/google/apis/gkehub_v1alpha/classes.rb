@@ -6055,7 +6055,7 @@ module Google
         # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage>]
         attr_accessor :analysis_messages
       
-        # Output only. List of condition reporting membership statues
+        # Output only. List of conditions reported for this membership.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshCondition>]
         attr_accessor :conditions
