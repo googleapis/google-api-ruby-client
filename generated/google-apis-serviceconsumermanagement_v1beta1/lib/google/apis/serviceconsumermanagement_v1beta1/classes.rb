@@ -1908,7 +1908,9 @@ module Google
         attr_accessor :long_running
       
         # The fully qualified name of the method, for which the options below apply.
-        # This is used to find the method to apply the options.
+        # This is used to find the method to apply the options. Example: publishing:
+        # method_settings: - selector: google.storage.control.v2.StorageControl.
+        # CreateFolder # method settings for CreateFolder...
         # Corresponds to the JSON property `selector`
         # @return [String]
         attr_accessor :selector
@@ -3936,6 +3938,11 @@ module Google
         # @return [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy]
         attr_accessor :producer_quota_policy
       
+        # [Output only] Rollout information of a quota.
+        # Corresponds to the JSON property `rolloutInfo`
+        # @return [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1RolloutInfo]
+        attr_accessor :rollout_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3949,6 +3956,7 @@ module Google
           @effective_limit = args[:effective_limit] if args.key?(:effective_limit)
           @producer_override = args[:producer_override] if args.key?(:producer_override)
           @producer_quota_policy = args[:producer_quota_policy] if args.key?(:producer_quota_policy)
+          @rollout_info = args[:rollout_info] if args.key?(:rollout_info)
         end
       end
       
@@ -4034,6 +4042,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # [Output only] Rollout information of a quota.
+      class V1Beta1RolloutInfo
+        include Google::Apis::Core::Hashable
+      
+        # Whether there is an ongoing rollout for the default limit or not.
+        # Corresponds to the JSON property `defaultLimitOngoingRollout`
+        # @return [Boolean]
+        attr_accessor :default_limit_ongoing_rollout
+        alias_method :default_limit_ongoing_rollout?, :default_limit_ongoing_rollout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_limit_ongoing_rollout = args[:default_limit_ongoing_rollout] if args.key?(:default_limit_ongoing_rollout)
         end
       end
       

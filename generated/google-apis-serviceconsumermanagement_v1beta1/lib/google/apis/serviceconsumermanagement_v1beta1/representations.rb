@@ -526,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class V1Beta1RolloutInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class V1Beta1ServiceIdentity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1486,6 +1492,8 @@ module Google
       
           property :producer_quota_policy, as: 'producerQuotaPolicy', class: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy, decorator: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy::Representation
       
+          property :rollout_info, as: 'rolloutInfo', class: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1RolloutInfo, decorator: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1RolloutInfo::Representation
+      
         end
       end
       
@@ -1504,6 +1512,13 @@ module Google
       class V1Beta1RefreshConsumerResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class V1Beta1RolloutInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_limit_ongoing_rollout, as: 'defaultLimitOngoingRollout'
         end
       end
       
