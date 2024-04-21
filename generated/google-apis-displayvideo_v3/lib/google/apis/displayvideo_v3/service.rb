@@ -3964,7 +3964,7 @@ module Google
         #   Required. Identifies the type of this assigned targeting option. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
-        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
         # @param [Google::Apis::DisplayvideoV3::AssignedTargetingOption] assigned_targeting_option_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4003,7 +4003,7 @@ module Google
         #   Required. Identifies the type of this assigned targeting option. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
-        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
         # @param [String] assigned_targeting_option_id
         #   Required. The ID of the assigned targeting option to delete.
         # @param [String] fields
