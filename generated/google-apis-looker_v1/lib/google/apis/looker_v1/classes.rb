@@ -593,7 +593,7 @@ module Google
         end
       end
       
-      # A Looker instance.
+      # A Looker instance. LINT.IfChange
       class Instance
         include Google::Apis::Core::Hashable
       
