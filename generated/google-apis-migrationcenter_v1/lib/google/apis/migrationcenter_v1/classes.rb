@@ -75,7 +75,8 @@ module Google
         # @return [Array<Google::Apis::MigrationcenterV1::Aggregation>]
         attr_accessor :aggregations
       
-        # The aggregation will be performed on assets that match the provided filter.
+        # Optional. The aggregation will be performed on assets that match the provided
+        # filter.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -2878,13 +2879,16 @@ module Google
         end
       end
       
-      # A Compute Engine machine series.
+      # A machine series, for a target product (e.g. Compute Engine, Google Cloud
+      # VMware Engine).
       class MachineSeries
         include Google::Apis::Core::Hashable
       
-        # Code to identify a Compute Engine machine series. Consult https://cloud.google.
-        # com/compute/docs/machine-resource#machine_type_comparison for more details on
-        # the available series.
+        # Code to identify a machine series. Consult this for more details on the
+        # available series for Compute Engine: https://cloud.google.com/compute/docs/
+        # machine-resource#machine_type_comparison Consult this for more details on the
+        # available series for Google Cloud VMware Engine: https://cloud.google.com/
+        # vmware-engine/pricing
         # Corresponds to the JSON property `code`
         # @return [String]
         attr_accessor :code
@@ -4176,7 +4180,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :allocated_asset_count
       
-        # A Compute Engine machine series.
+        # A machine series, for a target product (e.g. Compute Engine, Google Cloud
+        # VMware Engine).
         # Corresponds to the JSON property `machineSeries`
         # @return [Google::Apis::MigrationcenterV1::MachineSeries]
         attr_accessor :machine_series
