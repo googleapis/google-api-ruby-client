@@ -598,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAgentAuthentication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceLevelIndicator
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1179,6 +1185,8 @@ module Google
       
           property :port, as: 'port'
           property :request_method, as: 'requestMethod'
+          property :service_agent_authentication, as: 'serviceAgentAuthentication', class: Google::Apis::MonitoringV3::ServiceAgentAuthentication, decorator: Google::Apis::MonitoringV3::ServiceAgentAuthentication::Representation
+      
           property :use_ssl, as: 'useSsl'
           property :validate_ssl, as: 'validateSsl'
         end
@@ -1719,6 +1727,13 @@ module Google
           property :telemetry, as: 'telemetry', class: Google::Apis::MonitoringV3::Telemetry, decorator: Google::Apis::MonitoringV3::Telemetry::Representation
       
           hash :user_labels, as: 'userLabels'
+        end
+      end
+      
+      class ServiceAgentAuthentication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
