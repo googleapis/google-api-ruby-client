@@ -3145,8 +3145,11 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1EgressFrom
         include Google::Apis::Core::Hashable
       
-        # A list of identities that are allowed access through this [EgressPolicy], in
-        # the format of `user:`email_id`` or `serviceAccount:`email_id``.
+        # A list of identities that are allowed access through [EgressPolicy].
+        # Identities can be an individual user, service account, Google group, or third-
+        # party identity. The `v1` identities that have the prefix `user`, `group`, `
+        # serviceAccount`, `principal`, and `principalSet` in https://cloud.google.com/
+        # iam/docs/principal-identifiers#v1 are supported.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -3268,11 +3271,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of external resources that are allowed to be accessed. Only AWS and
-        # Azure resources are supported. For Amazon S3, the supported format is s3://
-        # BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.
-        # core.windows.net/CONTAINER_NAME. A request matches if it contains an external
-        # resource in this list (Example: s3://bucket/path). Currently '*' is not
-        # allowed.
+        # Azure resources are supported. For Amazon S3, the supported formats are s3://
+        # BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME. For Azure Storage, the
+        # supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A
+        # request matches if it contains an external resource in this list (Example: s3:/
+        # /bucket/path). Currently '*' is not allowed.
         # Corresponds to the JSON property `externalResources`
         # @return [Array<String>]
         attr_accessor :external_resources
@@ -3312,8 +3315,11 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1IngressFrom
         include Google::Apis::Core::Hashable
       
-        # A list of identities that are allowed access through this ingress policy, in
-        # the format of `user:`email_id`` or `serviceAccount:`email_id``.
+        # A list of identities that are allowed access through [IngressPolicy].
+        # Identities can be an individual user, service account, Google group, or third-
+        # party identity. The `v1` identities that have the prefix `user`, `group`, `
+        # serviceAccount`, `principal`, and `principalSet` in https://cloud.google.com/
+        # iam/docs/principal-identifiers#v1 are supported.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -5367,9 +5373,10 @@ module Google
         # manager/docs/tags/tags-overview#inheritance). To search against the `
         # effective_tags`: * Use a field query. Example: - `effectiveTagKeys:"123456789/
         # env*"` - `effectiveTagKeys="123456789/env"` - `effectiveTagKeys:"env"` - `
-        # effectiveTagValues:"env"` - `effectiveTagValues:"env/prod"` - `
-        # effectiveTagValues:"123456789/env/prod*"` - `effectiveTagValues="123456789/env/
-        # prod"` - `effectiveTagValueIds="tagValues/456"`
+        # effectiveTagKeyIds="tagKeys/123"` - `effectiveTagValues:"env"` - `
+        # effectiveTagValues:"env/prod"` - `effectiveTagValues:"123456789/env/prod*"` - `
+        # effectiveTagValues="123456789/env/prod"` - `effectiveTagValueIds="tagValues/
+        # 456"`
         # Corresponds to the JSON property `effectiveTags`
         # @return [Array<Google::Apis::CloudassetV1::EffectiveTagDetails>]
         attr_accessor :effective_tags
@@ -5546,9 +5553,10 @@ module Google
       
         # The tags directly attached to this resource. To search against the `tags`: *
         # Use a field query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/
-        # env"` - `tagKeys:"env"` - `tagValues:"env"` - `tagValues:"env/prod"` - `
-        # tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` - `
-        # tagValueIds="tagValues/456"` * Use a free text query. Example: - `env/prod`
+        # env"` - `tagKeys:"env"` - `tagKeyIds="tagKeys/123"` - `tagValues:"env"` - `
+        # tagValues:"env/prod"` - `tagValues:"123456789/env/prod*"` - `tagValues="
+        # 123456789/env/prod"` - `tagValueIds="tagValues/456"` * Use a free text query.
+        # Example: - `env/prod`
         # Corresponds to the JSON property `tags`
         # @return [Array<Google::Apis::CloudassetV1::Tag>]
         attr_accessor :tags
@@ -5947,6 +5955,11 @@ module Google
         # @return [String]
         attr_accessor :tag_key
       
+        # TagKey ID, in the format of tagKeys/`TAG_KEY_ID`.
+        # Corresponds to the JSON property `tagKeyId`
+        # @return [String]
+        attr_accessor :tag_key_id
+      
         # TagValue namespaced name, in the format of `ORG_ID`/`TAG_KEY_SHORT_NAME`/`
         # TAG_VALUE_SHORT_NAME`.
         # Corresponds to the JSON property `tagValue`
@@ -5965,6 +5978,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tag_key = args[:tag_key] if args.key?(:tag_key)
+          @tag_key_id = args[:tag_key_id] if args.key?(:tag_key_id)
           @tag_value = args[:tag_value] if args.key?(:tag_value)
           @tag_value_id = args[:tag_value_id] if args.key?(:tag_value_id)
         end

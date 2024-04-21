@@ -2222,6 +2222,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :tag_key, as: 'tagKey'
+          property :tag_key_id, as: 'tagKeyId'
           property :tag_value, as: 'tagValue'
           property :tag_value_id, as: 'tagValueId'
         end
