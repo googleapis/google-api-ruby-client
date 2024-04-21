@@ -182,6 +182,10 @@ module Google
         #   Controls whether to include or exclude results from the site named in the `
         #   siteSearch` parameter. Acceptable values are: * `"e"`: exclude * `"i"`:
         #   include
+        # @param [Fixnum] snippet_length
+        #   Optional. Maximum length of snippet text, in characters, to be returned with
+        #   results. Note: this feature is limited to specific engines. * Valid values are
+        #   integers between 161 and 1000, inclusive.
         # @param [String] sort
         #   The sort expression to apply to the results. The sort parameter specifies that
         #   the results be sorted according to the specified expression i.e. sort by date.
@@ -211,7 +215,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_cses(c2coff: nil, cr: nil, cx: nil, date_restrict: nil, exact_terms: nil, exclude_terms: nil, file_type: nil, filter: nil, gl: nil, googlehost: nil, high_range: nil, hl: nil, hq: nil, img_color_type: nil, img_dominant_color: nil, img_size: nil, img_type: nil, link_site: nil, low_range: nil, lr: nil, num: nil, or_terms: nil, q: nil, related_site: nil, rights: nil, safe: nil, search_type: nil, site_search: nil, site_search_filter: nil, sort: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_cses(c2coff: nil, cr: nil, cx: nil, date_restrict: nil, exact_terms: nil, exclude_terms: nil, file_type: nil, filter: nil, gl: nil, googlehost: nil, high_range: nil, hl: nil, hq: nil, img_color_type: nil, img_dominant_color: nil, img_size: nil, img_type: nil, link_site: nil, low_range: nil, lr: nil, num: nil, or_terms: nil, q: nil, related_site: nil, rights: nil, safe: nil, search_type: nil, site_search: nil, site_search_filter: nil, snippet_length: nil, sort: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'customsearch/v1', options)
           command.response_representation = Google::Apis::CustomsearchV1::Search::Representation
           command.response_class = Google::Apis::CustomsearchV1::Search
@@ -244,6 +248,7 @@ module Google
           command.query['searchType'] = search_type unless search_type.nil?
           command.query['siteSearch'] = site_search unless site_search.nil?
           command.query['siteSearchFilter'] = site_search_filter unless site_search_filter.nil?
+          command.query['snippetLength'] = snippet_length unless snippet_length.nil?
           command.query['sort'] = sort unless sort.nil?
           command.query['start'] = start unless start.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -382,6 +387,10 @@ module Google
         #   Controls whether to include or exclude results from the site named in the `
         #   siteSearch` parameter. Acceptable values are: * `"e"`: exclude * `"i"`:
         #   include
+        # @param [Fixnum] snippet_length
+        #   Optional. Maximum length of snippet text, in characters, to be returned with
+        #   results. Note: this feature is limited to specific engines. * Valid values are
+        #   integers between 161 and 1000, inclusive.
         # @param [String] sort
         #   The sort expression to apply to the results. The sort parameter specifies that
         #   the results be sorted according to the specified expression i.e. sort by date.
@@ -411,7 +420,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_cse_siterestricts(c2coff: nil, cr: nil, cx: nil, date_restrict: nil, exact_terms: nil, exclude_terms: nil, file_type: nil, filter: nil, gl: nil, googlehost: nil, high_range: nil, hl: nil, hq: nil, img_color_type: nil, img_dominant_color: nil, img_size: nil, img_type: nil, link_site: nil, low_range: nil, lr: nil, num: nil, or_terms: nil, q: nil, related_site: nil, rights: nil, safe: nil, search_type: nil, site_search: nil, site_search_filter: nil, sort: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_cse_siterestricts(c2coff: nil, cr: nil, cx: nil, date_restrict: nil, exact_terms: nil, exclude_terms: nil, file_type: nil, filter: nil, gl: nil, googlehost: nil, high_range: nil, hl: nil, hq: nil, img_color_type: nil, img_dominant_color: nil, img_size: nil, img_type: nil, link_site: nil, low_range: nil, lr: nil, num: nil, or_terms: nil, q: nil, related_site: nil, rights: nil, safe: nil, search_type: nil, site_search: nil, site_search_filter: nil, snippet_length: nil, sort: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'customsearch/v1/siterestrict', options)
           command.response_representation = Google::Apis::CustomsearchV1::Search::Representation
           command.response_class = Google::Apis::CustomsearchV1::Search
@@ -444,6 +453,7 @@ module Google
           command.query['searchType'] = search_type unless search_type.nil?
           command.query['siteSearch'] = site_search unless site_search.nil?
           command.query['siteSearchFilter'] = site_search_filter unless site_search_filter.nil?
+          command.query['snippetLength'] = snippet_length unless snippet_length.nil?
           command.query['sort'] = sort unless sort.nil?
           command.query['start'] = start unless start.nil?
           command.query['fields'] = fields unless fields.nil?
