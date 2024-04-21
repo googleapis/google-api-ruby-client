@@ -2074,6 +2074,37 @@ module Google
         end
       end
       
+      # Represents the language information of the request.
+      class GoogleCloudDialogflowCxV3LanguageInfo
+        include Google::Apis::Core::Hashable
+      
+        # The confidence score of the detected language between 0 and 1.
+        # Corresponds to the JSON property `confidenceScore`
+        # @return [Float]
+        attr_accessor :confidence_score
+      
+        # The language code specified in the original request.
+        # Corresponds to the JSON property `inputLanguageCode`
+        # @return [String]
+        attr_accessor :input_language_code
+      
+        # The language code detected for this request based on the user conversation.
+        # Corresponds to the JSON property `resolvedLanguageCode`
+        # @return [String]
+        attr_accessor :resolved_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
+          @input_language_code = args[:input_language_code] if args.key?(:input_language_code)
+          @resolved_language_code = args[:resolved_language_code] if args.key?(:resolved_language_code)
+        end
+      end
+      
       # A Dialogflow CX conversation (session) can be described and visualized as a
       # state machine. The states of a CX session are represented by pages. For each
       # flow, you define many pages, where your combined pages can handle a complete
@@ -3525,6 +3556,11 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Represents the language information of the request.
+        # Corresponds to the JSON property `languageInfo`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3LanguageInfo]
+        attr_accessor :language_info
+      
         # The list of rich message responses to present to the user. Webhook can choose
         # to append or replace this list in WebhookResponse.fulfillment_response;
         # Corresponds to the JSON property `messages`
@@ -3586,6 +3622,7 @@ module Google
           @fulfillment_info = args[:fulfillment_info] if args.key?(:fulfillment_info)
           @intent_info = args[:intent_info] if args.key?(:intent_info)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @language_info = args[:language_info] if args.key?(:language_info)
           @messages = args[:messages] if args.key?(:messages)
           @page_info = args[:page_info] if args.key?(:page_info)
           @payload = args[:payload] if args.key?(:payload)
@@ -4800,6 +4837,365 @@ module Google
         end
       end
       
+      # Represents a conversation.
+      class GoogleCloudDialogflowCxV3beta1Conversation
+        include Google::Apis::Core::Hashable
+      
+        # Duration of the conversation.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Represents an environment for an agent. You can create multiple versions of
+        # your agent and publish them to separate environments. When you edit an agent,
+        # you are editing the draft agent. At any point, you can save the draft agent as
+        # an agent version, which is an immutable snapshot of your agent. When you save
+        # the draft agent, it is published to the default environment. When you create
+        # agent versions, you can publish them to custom environments. You can create a
+        # variety of custom environments for testing, development, production, etc.
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Environment]
+        attr_accessor :environment
+      
+        # Flow versions used in the conversation.
+        # Corresponds to the JSON property `flowVersions`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :flow_versions
+      
+        # All the Flow the conversation has went through. Only `name` and `display_name`
+        # are filled in this message.
+        # Corresponds to the JSON property `flows`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Flow>]
+        attr_accessor :flows
+      
+        # All the matched Intent in the conversation. Only `name` and `display_name` are
+        # filled in this message.
+        # Corresponds to the JSON property `intents`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Intent>]
+        attr_accessor :intents
+      
+        # Interactions of the conversation. Only populated for `GetConversation` and
+        # empty for `ListConversations`.
+        # Corresponds to the JSON property `interactions`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationInteraction>]
+        attr_accessor :interactions
+      
+        # The language of the conversation, which is the language of the first request
+        # in the conversation.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Represents metrics for the conversation.
+        # Corresponds to the JSON property `metrics`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationMetrics]
+        attr_accessor :metrics
+      
+        # Identifier. The identifier of the conversation. If conversation ID is reused,
+        # interactions happened later than 48 hours of the conversation's create time
+        # will be ignored. Format: `projects//locations//agents//conversations/`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # All the Page the conversation has went through. Only `name` and `display_name`
+        # are filled in this message.
+        # Corresponds to the JSON property `pages`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page>]
+        attr_accessor :pages
+      
+        # Start time of the conversation, which is the time of the first request of the
+        # conversation.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The type of the conversation.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @environment = args[:environment] if args.key?(:environment)
+          @flow_versions = args[:flow_versions] if args.key?(:flow_versions)
+          @flows = args[:flows] if args.key?(:flows)
+          @intents = args[:intents] if args.key?(:intents)
+          @interactions = args[:interactions] if args.key?(:interactions)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+          @pages = args[:pages] if args.key?(:pages)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents an interaction between an end user and a Dialogflow CX agent using
+      # V3 (Streaming)DetectIntent API, or an interaction between an end user and a
+      # Dialogflow CX agent using V2 (Streaming)AnalyzeContent API.
+      class GoogleCloudDialogflowCxV3beta1ConversationInteraction
+        include Google::Apis::Core::Hashable
+      
+        # The time that the interaction was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Information collected for DF CX agents in case NLU predicted an intent that
+        # was filtered out as being inactive which may indicate a missing transition and/
+        # or absent functionality.
+        # Corresponds to the JSON property `missingTransition`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationInteractionMissingTransition]
+        attr_accessor :missing_transition
+      
+        # The partial responses of the interaction. Empty if there is no partial
+        # response in the interaction. See the partial response documentation.
+        # Corresponds to the JSON property `partialResponses`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentResponse>]
+        attr_accessor :partial_responses
+      
+        # The request to detect user's intent.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentRequest]
+        attr_accessor :request
+      
+        # The input text or the transcript of the input audio in the request.
+        # Corresponds to the JSON property `requestUtterances`
+        # @return [String]
+        attr_accessor :request_utterances
+      
+        # The message returned from the DetectIntent method.
+        # Corresponds to the JSON property `response`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentResponse]
+        attr_accessor :response
+      
+        # The output text or the transcript of the output audio in the responses. If
+        # multiple output messages are returned, they will be concatenated into one.
+        # Corresponds to the JSON property `responseUtterances`
+        # @return [String]
+        attr_accessor :response_utterances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @missing_transition = args[:missing_transition] if args.key?(:missing_transition)
+          @partial_responses = args[:partial_responses] if args.key?(:partial_responses)
+          @request = args[:request] if args.key?(:request)
+          @request_utterances = args[:request_utterances] if args.key?(:request_utterances)
+          @response = args[:response] if args.key?(:response)
+          @response_utterances = args[:response_utterances] if args.key?(:response_utterances)
+        end
+      end
+      
+      # Information collected for DF CX agents in case NLU predicted an intent that
+      # was filtered out as being inactive which may indicate a missing transition and/
+      # or absent functionality.
+      class GoogleCloudDialogflowCxV3beta1ConversationInteractionMissingTransition
+        include Google::Apis::Core::Hashable
+      
+        # Name of the intent that could have triggered.
+        # Corresponds to the JSON property `intentDisplayName`
+        # @return [String]
+        attr_accessor :intent_display_name
+      
+        # Score of the above intent. The higher it is the more likely a transition was
+        # missed on a given page.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_display_name = args[:intent_display_name] if args.key?(:intent_display_name)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Represents metrics for the conversation.
+      class GoogleCloudDialogflowCxV3beta1ConversationMetrics
+        include Google::Apis::Core::Hashable
+      
+        # The average confidence all of the Match in the conversation. Values range from
+        # 0.0 (completely uncertain) to 1.0 (completely certain).
+        # Corresponds to the JSON property `averageMatchConfidence`
+        # @return [Float]
+        attr_accessor :average_match_confidence
+      
+        # A signal that indicates the interaction with the Dialogflow agent has ended.
+        # If any response has the ResponseMessage.end_interaction signal, this is set to
+        # true.
+        # Corresponds to the JSON property `hasEndInteraction`
+        # @return [Boolean]
+        attr_accessor :has_end_interaction
+        alias_method :has_end_interaction?, :has_end_interaction
+      
+        # Hands off conversation to a human agent. If any response has the
+        # ResponseMessage.live_agent_handoffsignal, this is set to true.
+        # Corresponds to the JSON property `hasLiveAgentHandoff`
+        # @return [Boolean]
+        attr_accessor :has_live_agent_handoff
+        alias_method :has_live_agent_handoff?, :has_live_agent_handoff
+      
+        # Duration of all the input's audio in the conversation.
+        # Corresponds to the JSON property `inputAudioDuration`
+        # @return [String]
+        attr_accessor :input_audio_duration
+      
+        # The number of interactions in the conversation.
+        # Corresponds to the JSON property `interactionCount`
+        # @return [Fixnum]
+        attr_accessor :interaction_count
+      
+        # Count by Match.MatchType of the matches in the conversation.
+        # Corresponds to the JSON property `matchTypeCount`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationMetricsMatchTypeCount]
+        attr_accessor :match_type_count
+      
+        # Maximum latency of the Webhook calls in the conversation.
+        # Corresponds to the JSON property `maxWebhookLatency`
+        # @return [String]
+        attr_accessor :max_webhook_latency
+      
+        # Duration of all the output's audio in the conversation.
+        # Corresponds to the JSON property `outputAudioDuration`
+        # @return [String]
+        attr_accessor :output_audio_duration
+      
+        # Count by types of QueryInput of the requests in the conversation.
+        # Corresponds to the JSON property `queryInputCount`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationMetricsQueryInputCount]
+        attr_accessor :query_input_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_match_confidence = args[:average_match_confidence] if args.key?(:average_match_confidence)
+          @has_end_interaction = args[:has_end_interaction] if args.key?(:has_end_interaction)
+          @has_live_agent_handoff = args[:has_live_agent_handoff] if args.key?(:has_live_agent_handoff)
+          @input_audio_duration = args[:input_audio_duration] if args.key?(:input_audio_duration)
+          @interaction_count = args[:interaction_count] if args.key?(:interaction_count)
+          @match_type_count = args[:match_type_count] if args.key?(:match_type_count)
+          @max_webhook_latency = args[:max_webhook_latency] if args.key?(:max_webhook_latency)
+          @output_audio_duration = args[:output_audio_duration] if args.key?(:output_audio_duration)
+          @query_input_count = args[:query_input_count] if args.key?(:query_input_count)
+        end
+      end
+      
+      # Count by Match.MatchType of the matches in the conversation.
+      class GoogleCloudDialogflowCxV3beta1ConversationMetricsMatchTypeCount
+        include Google::Apis::Core::Hashable
+      
+        # The number of matches with type Match.MatchType.DIRECT_INTENT.
+        # Corresponds to the JSON property `directIntentCount`
+        # @return [Fixnum]
+        attr_accessor :direct_intent_count
+      
+        # The number of matches with type Match.MatchType.EVENT.
+        # Corresponds to the JSON property `eventCount`
+        # @return [Fixnum]
+        attr_accessor :event_count
+      
+        # The number of matches with type Match.MatchType.INTENT.
+        # Corresponds to the JSON property `intentCount`
+        # @return [Fixnum]
+        attr_accessor :intent_count
+      
+        # The number of matches with type Match.MatchType.NO_INPUT.
+        # Corresponds to the JSON property `noInputCount`
+        # @return [Fixnum]
+        attr_accessor :no_input_count
+      
+        # The number of matches with type Match.MatchType.NO_MATCH.
+        # Corresponds to the JSON property `noMatchCount`
+        # @return [Fixnum]
+        attr_accessor :no_match_count
+      
+        # The number of matches with type Match.MatchType.PARAMETER_FILLING.
+        # Corresponds to the JSON property `parameterFillingCount`
+        # @return [Fixnum]
+        attr_accessor :parameter_filling_count
+      
+        # The number of matches with type Match.MatchType.MATCH_TYPE_UNSPECIFIED.
+        # Corresponds to the JSON property `unspecifiedCount`
+        # @return [Fixnum]
+        attr_accessor :unspecified_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @direct_intent_count = args[:direct_intent_count] if args.key?(:direct_intent_count)
+          @event_count = args[:event_count] if args.key?(:event_count)
+          @intent_count = args[:intent_count] if args.key?(:intent_count)
+          @no_input_count = args[:no_input_count] if args.key?(:no_input_count)
+          @no_match_count = args[:no_match_count] if args.key?(:no_match_count)
+          @parameter_filling_count = args[:parameter_filling_count] if args.key?(:parameter_filling_count)
+          @unspecified_count = args[:unspecified_count] if args.key?(:unspecified_count)
+        end
+      end
+      
+      # Count by types of QueryInput of the requests in the conversation.
+      class GoogleCloudDialogflowCxV3beta1ConversationMetricsQueryInputCount
+        include Google::Apis::Core::Hashable
+      
+        # The number of AudioInput in the conversation.
+        # Corresponds to the JSON property `audioCount`
+        # @return [Fixnum]
+        attr_accessor :audio_count
+      
+        # The number of DtmfInput in the conversation.
+        # Corresponds to the JSON property `dtmfCount`
+        # @return [Fixnum]
+        attr_accessor :dtmf_count
+      
+        # The number of EventInput in the conversation.
+        # Corresponds to the JSON property `eventCount`
+        # @return [Fixnum]
+        attr_accessor :event_count
+      
+        # The number of IntentInput in the conversation.
+        # Corresponds to the JSON property `intentCount`
+        # @return [Fixnum]
+        attr_accessor :intent_count
+      
+        # The number of TextInput in the conversation.
+        # Corresponds to the JSON property `textCount`
+        # @return [Fixnum]
+        attr_accessor :text_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_count = args[:audio_count] if args.key?(:audio_count)
+          @dtmf_count = args[:dtmf_count] if args.key?(:dtmf_count)
+          @event_count = args[:event_count] if args.key?(:event_count)
+          @intent_count = args[:intent_count] if args.key?(:intent_count)
+          @text_count = args[:text_count] if args.key?(:text_count)
+        end
+      end
+      
       # This message is used to hold all the Conversation Signals data, which will be
       # converted to JSON and exported to BigQuery.
       class GoogleCloudDialogflowCxV3beta1ConversationSignals
@@ -5488,6 +5884,20 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryParameters]
         attr_accessor :query_params
       
+        # Required. The name of the session this query is sent to. Format: `projects//
+        # locations//agents//sessions/` or `projects//locations//agents//environments//
+        # sessions/`. If `Environment ID` is not specified, we assume default 'draft'
+        # environment. It's up to the API caller to choose an appropriate `Session ID`.
+        # It can be a random number or some type of session identifiers (preferably
+        # hashed). The length of the `Session ID` must not exceed 36 characters. For
+        # more information, see the [sessions guide](https://cloud.google.com/dialogflow/
+        # cx/docs/concept/session). Note: Always use agent versions for production
+        # traffic. See [Versions and environments](https://cloud.google.com/dialogflow/
+        # cx/docs/concept/version).
+        # Corresponds to the JSON property `session`
+        # @return [String]
+        attr_accessor :session
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5497,6 +5907,7 @@ module Google
           @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
           @query_input = args[:query_input] if args.key?(:query_input)
           @query_params = args[:query_params] if args.key?(:query_params)
+          @session = args[:session] if args.key?(:session)
         end
       end
       
@@ -8451,6 +8862,37 @@ module Google
         end
       end
       
+      # Represents the language information of the request.
+      class GoogleCloudDialogflowCxV3beta1LanguageInfo
+        include Google::Apis::Core::Hashable
+      
+        # The confidence score of the detected language between 0 and 1.
+        # Corresponds to the JSON property `confidenceScore`
+        # @return [Float]
+        attr_accessor :confidence_score
+      
+        # The language code specified in the original request.
+        # Corresponds to the JSON property `inputLanguageCode`
+        # @return [String]
+        attr_accessor :input_language_code
+      
+        # The language code detected for this request based on the user conversation.
+        # Corresponds to the JSON property `resolvedLanguageCode`
+        # @return [String]
+        attr_accessor :resolved_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
+          @input_language_code = args[:input_language_code] if args.key?(:input_language_code)
+          @resolved_language_code = args[:resolved_language_code] if args.key?(:resolved_language_code)
+        end
+      end
+      
       # The response message for Agents.ListAgents.
       class GoogleCloudDialogflowCxV3beta1ListAgentsResponse
         include Google::Apis::Core::Hashable
@@ -8528,6 +8970,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @continuous_test_results = args[:continuous_test_results] if args.key?(:continuous_test_results)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Conversations.ListConversations.
+      class GoogleCloudDialogflowCxV3beta1ListConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of conversations. There will be a maximum number of items returned
+        # based on the page_size field. The returned conversations will be sorted by
+        # start_time in descending order (newest conversation first).
+        # Corresponds to the JSON property `conversations`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Conversation>]
+        attr_accessor :conversations
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversations = args[:conversations] if args.key?(:conversations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -12284,6 +12754,11 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Represents the language information of the request.
+        # Corresponds to the JSON property `languageInfo`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LanguageInfo]
+        attr_accessor :language_info
+      
         # The list of rich message responses to present to the user. Webhook can choose
         # to append or replace this list in WebhookResponse.fulfillment_response;
         # Corresponds to the JSON property `messages`
@@ -12345,6 +12820,7 @@ module Google
           @fulfillment_info = args[:fulfillment_info] if args.key?(:fulfillment_info)
           @intent_info = args[:intent_info] if args.key?(:intent_info)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @language_info = args[:language_info] if args.key?(:language_info)
           @messages = args[:messages] if args.key?(:messages)
           @page_info = args[:page_info] if args.key?(:page_info)
           @payload = args[:payload] if args.key?(:payload)
