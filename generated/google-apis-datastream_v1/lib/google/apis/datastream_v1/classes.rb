@@ -22,6 +22,20 @@ module Google
   module Apis
     module DatastreamV1
       
+      # AppendOnly mode defines that all changes to a table will be written to the
+      # destination table.
+      class AppendOnly
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # AVRO file format configuration.
       class AvroFileFormat
         include Google::Apis::Core::Hashable
@@ -133,6 +147,12 @@ module Google
       class BigQueryDestinationConfig
         include Google::Apis::Core::Hashable
       
+        # AppendOnly mode defines that all changes to a table will be written to the
+        # destination table.
+        # Corresponds to the JSON property `appendOnly`
+        # @return [Google::Apis::DatastreamV1::AppendOnly]
+        attr_accessor :append_only
+      
         # The guaranteed data freshness (in seconds) when querying tables created by the
         # stream. Editing this field will only affect new tables created in the future,
         # but existing tables will not be impacted. Lower values mean that queries will
@@ -140,6 +160,12 @@ module Google
         # Corresponds to the JSON property `dataFreshness`
         # @return [String]
         attr_accessor :data_freshness
+      
+        # Merge mode defines that all changes to a table will be merged at the
+        # destination table.
+        # Corresponds to the JSON property `merge`
+        # @return [Google::Apis::DatastreamV1::Merge]
+        attr_accessor :merge
       
         # A single target dataset to which all data will be streamed.
         # Corresponds to the JSON property `singleTargetDataset`
@@ -158,7 +184,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @append_only = args[:append_only] if args.key?(:append_only)
           @data_freshness = args[:data_freshness] if args.key?(:data_freshness)
+          @merge = args[:merge] if args.key?(:merge)
           @single_target_dataset = args[:single_target_dataset] if args.key?(:single_target_dataset)
           @source_hierarchy_datasets = args[:source_hierarchy_datasets] if args.key?(:source_hierarchy_datasets)
         end
@@ -985,6 +1013,20 @@ module Google
         # Update properties of this object
         def update!(**args)
           @source_object_identifier = args[:source_object_identifier] if args.key?(:source_object_identifier)
+        end
+      end
+      
+      # Merge mode defines that all changes to a table will be merged at the
+      # destination table.
+      class Merge
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

@@ -22,6 +22,12 @@ module Google
   module Apis
     module DatastreamV1
       
+      class AppendOnly
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AvroFileFormat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +203,12 @@ module Google
       end
       
       class LookupStreamObjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Merge
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,6 +562,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppendOnly
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AvroFileFormat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -591,7 +609,11 @@ module Google
       class BigQueryDestinationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :append_only, as: 'appendOnly', class: Google::Apis::DatastreamV1::AppendOnly, decorator: Google::Apis::DatastreamV1::AppendOnly::Representation
+      
           property :data_freshness, as: 'dataFreshness'
+          property :merge, as: 'merge', class: Google::Apis::DatastreamV1::Merge, decorator: Google::Apis::DatastreamV1::Merge::Representation
+      
           property :single_target_dataset, as: 'singleTargetDataset', class: Google::Apis::DatastreamV1::SingleTargetDataset, decorator: Google::Apis::DatastreamV1::SingleTargetDataset::Representation
       
           property :source_hierarchy_datasets, as: 'sourceHierarchyDatasets', class: Google::Apis::DatastreamV1::SourceHierarchyDatasets, decorator: Google::Apis::DatastreamV1::SourceHierarchyDatasets::Representation
@@ -855,6 +877,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :source_object_identifier, as: 'sourceObjectIdentifier', class: Google::Apis::DatastreamV1::SourceObjectIdentifier, decorator: Google::Apis::DatastreamV1::SourceObjectIdentifier::Representation
       
+        end
+      end
+      
+      class Merge
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
