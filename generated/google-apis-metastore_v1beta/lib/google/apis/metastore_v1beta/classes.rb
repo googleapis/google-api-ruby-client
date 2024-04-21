@@ -173,6 +173,38 @@ module Google
         end
       end
       
+      # Represents the autoscaling configuration of a metastore service.
+      class AutoscalingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether or not autoscaling is enabled for this service.
+        # Corresponds to the JSON property `autoscalingEnabled`
+        # @return [Boolean]
+        attr_accessor :autoscaling_enabled
+        alias_method :autoscaling_enabled?, :autoscaling_enabled
+      
+        # Output only. The scaling factor of a service with autoscaling enabled.
+        # Corresponds to the JSON property `autoscalingFactor`
+        # @return [Float]
+        attr_accessor :autoscaling_factor
+      
+        # Represents the autoscaling limit configuration of a metastore service.
+        # Corresponds to the JSON property `limitConfig`
+        # @return [Google::Apis::MetastoreV1beta::LimitConfig]
+        attr_accessor :limit_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autoscaling_enabled = args[:autoscaling_enabled] if args.key?(:autoscaling_enabled)
+          @autoscaling_factor = args[:autoscaling_factor] if args.key?(:autoscaling_factor)
+          @limit_config = args[:limit_config] if args.key?(:limit_config)
+        end
+      end
+      
       # Configuration information for the auxiliary service versions.
       class AuxiliaryVersionConfig
         include Google::Apis::Core::Hashable
@@ -587,7 +619,7 @@ module Google
       end
       
       # Configuration information for migrating from self-managed hive metastore on
-      # GCP using Cloud SQL as the backend database to DPMS.
+      # Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.
       class CloudSqlMigrationConfig
         include Google::Apis::Core::Hashable
       
@@ -1176,6 +1208,31 @@ module Google
         end
       end
       
+      # Represents the autoscaling limit configuration of a metastore service.
+      class LimitConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The highest scaling factor that the service should be autoscaled to.
+        # Corresponds to the JSON property `maxScalingFactor`
+        # @return [Float]
+        attr_accessor :max_scaling_factor
+      
+        # Optional. The lowest scaling factor that the service should be autoscaled to.
+        # Corresponds to the JSON property `minScalingFactor`
+        # @return [Float]
+        attr_accessor :min_scaling_factor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_scaling_factor = args[:max_scaling_factor] if args.key?(:max_scaling_factor)
+          @min_scaling_factor = args[:min_scaling_factor] if args.key?(:min_scaling_factor)
+        end
+      end
+      
       # Response message for DataprocMetastore.ListBackups.
       class ListBackupsResponse
         include Google::Apis::Core::Hashable
@@ -1647,7 +1704,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Configuration information for migrating from self-managed hive metastore on
-        # GCP using Cloud SQL as the backend database to DPMS.
+        # Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.
         # Corresponds to the JSON property `cloudSqlMigrationConfig`
         # @return [Google::Apis::MetastoreV1beta::CloudSqlMigrationConfig]
         attr_accessor :cloud_sql_migration_config
@@ -2204,6 +2261,11 @@ module Google
       class ScalingConfig
         include Google::Apis::Core::Hashable
       
+        # Represents the autoscaling configuration of a metastore service.
+        # Corresponds to the JSON property `autoscalingConfig`
+        # @return [Google::Apis::MetastoreV1beta::AutoscalingConfig]
+        attr_accessor :autoscaling_config
+      
         # An enum of readable instance sizes, with each instance size mapping to a float
         # value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
         # Corresponds to the JSON property `instanceSize`
@@ -2222,6 +2284,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
           @instance_size = args[:instance_size] if args.key?(:instance_size)
           @scaling_factor = args[:scaling_factor] if args.key?(:scaling_factor)
         end
