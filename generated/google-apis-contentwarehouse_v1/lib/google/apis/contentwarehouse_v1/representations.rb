@@ -3172,12 +3172,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ClassifierPornSiteViolenceStats
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CloudAiPlatformTenantresourceCloudSqlInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8092,6 +8086,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KnowledgeAnswersIntentQueryEntityCardSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KnowledgeAnswersIntentQueryFreetextAnnotationSignals
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10715,6 +10715,12 @@ module Google
       end
       
       class PhotosHdrMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PhotosHdrMetadataBaseFormat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -15359,6 +15365,12 @@ module Google
       end
       
       class WwwMetaTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WwwResultInfoMinimalAestheticsAdjusterInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -21038,18 +21050,24 @@ module Google
           property :fulfillable_dominant_media, as: 'fulfillableDominantMedia'
           property :generated_by_legacy_aqua_domain, as: 'generatedByLegacyAquaDomain'
           property :has_answer_group, as: 'hasAnswerGroup'
+          property :has_intent_update, as: 'hasIntentUpdate'
           property :in_query_max_effective_arg_span_length, as: 'inQueryMaxEffectiveArgSpanLength'
           property :intent_name, as: 'intentName'
           property :intent_name_auis_score, as: 'intentNameAuisScore'
           property :intent_name_auis_score_exp, as: 'intentNameAuisScoreExp'
           property :intent_type, as: 'intentType'
           property :is_aqua_media_intent, as: 'isAquaMediaIntent'
+          property :is_communication_opa_raw_target_intent, as: 'isCommunicationOpaRawTargetIntent'
           property :is_dummy_intent, as: 'isDummyIntent'
           property :is_fully_grounded, as: 'isFullyGrounded'
           property :is_high_confidence_podcast_intent, as: 'isHighConfidencePodcastIntent'
           property :is_intent_from_orbit, as: 'isIntentFromOrbit'
           property :is_media_control_intent, as: 'isMediaControlIntent'
+          property :is_media_intent, as: 'isMediaIntent'
+          property :is_nsp_descoped_intent, as: 'isNspDescopedIntent'
+          property :is_nsp_enabled_intent, as: 'isNspEnabledIntent'
           property :is_nsp_intent, as: 'isNspIntent'
+          property :is_nsp_target_intent, as: 'isNspTargetIntent'
           property :is_play_generic_music, as: 'isPlayGenericMusic'
           property :is_podcast_generic_intent, as: 'isPodcastGenericIntent'
           property :is_podcast_intent, as: 'isPodcastIntent'
@@ -21740,8 +21758,6 @@ module Google
           collection :versionedscore, as: 'versionedscore', class: Google::Apis::ContentwarehouseV1::ClassifierPornSiteDataVersionedScore, decorator: Google::Apis::ContentwarehouseV1::ClassifierPornSiteDataVersionedScore::Representation
       
           property :violence_score, as: 'violenceScore'
-          property :violence_stats, as: 'violenceStats', class: Google::Apis::ContentwarehouseV1::ClassifierPornSiteViolenceStats, decorator: Google::Apis::ContentwarehouseV1::ClassifierPornSiteViolenceStats::Representation
-      
         end
       end
       
@@ -21752,16 +21768,6 @@ module Google
           collection :site_rule, as: 'siteRule'
           property :version, as: 'version'
           property :verticals4_score, as: 'verticals4Score'
-        end
-      end
-      
-      class ClassifierPornSiteViolenceStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :mean_final_violence_score, as: 'meanFinalViolenceScore'
-          property :number_of_images, :numeric_string => true, as: 'numberOfImages'
-          property :number_of_videos, :numeric_string => true, as: 'numberOfVideos'
-          property :video_violence_score, as: 'videoViolenceScore'
         end
       end
       
@@ -22184,6 +22190,7 @@ module Google
           property :experimental_qstar_delta_signal, as: 'experimentalQstarDeltaSignal'
           property :experimental_qstar_signal, as: 'experimentalQstarSignal'
           property :experimental_qstar_site_signal, as: 'experimentalQstarSiteSignal'
+          property :experimental_web_health_signal, as: 'experimentalWebHealthSignal'
           property :low_quality, as: 'lowQuality'
           property :nav_demotion, as: 'navDemotion'
           property :nsr_confidence, as: 'nsrConfidence'
@@ -23705,7 +23712,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :diffuse_color, as: 'diffuseColor', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoAppearanceMaterialRgbColor, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoAppearanceMaterialRgbColor::Representation
       
-          property :is_null, as: 'isNull'
           property :is_smooth, as: 'isSmooth'
           property :name, as: 'name'
           property :shininess, as: 'shininess'
@@ -29009,11 +29015,14 @@ module Google
       
           property :document_build_time_msec, as: 'documentBuildTimeMsec'
           property :dropped_log_entry_count, as: 'droppedLogEntryCount'
+          property :fetch_deadline_msec, as: 'fetchDeadlineMsec'
           property :image_encoding_time_msec, as: 'imageEncodingTimeMsec'
           property :image_scaling_time_msec, as: 'imageScalingTimeMsec'
+          property :javascript_deadline_msec, as: 'javascriptDeadlineMsec'
           property :layout_time_msec, as: 'layoutTimeMsec'
           property :paint_time_msec, as: 'paintTimeMsec'
           property :render_cost_mgcu, as: 'renderCostMgcu'
+          property :render_deadline_msec, as: 'renderDeadlineMsec'
           property :render_engine, as: 'renderEngine'
           property :render_running_time_msec, as: 'renderRunningTimeMsec'
           property :render_server_baseline_cl, :numeric_string => true, as: 'renderServerBaselineCl'
@@ -30764,6 +30773,8 @@ module Google
       
           property :creator, as: 'creator', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :creatorjoins_embedded_ugc_annotation, as: 'creatorjoinsEmbeddedUgcAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :datacommons_datacommons_triples_signal, as: 'datacommonsDatacommonsTriplesSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :date_annotation_tags, as: 'dateAnnotationTags', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -30788,6 +30799,8 @@ module Google
       
           property :extracted_book_info, as: 'extractedBookInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :fast_data_propagation_test_signal_content, as: 'fastDataPropagationTestSignalContent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :fatcat_compact_doc_classification, as: 'fatcatCompactDocClassification', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :fatcat_site_verticals_annotation, as: 'fatcatSiteVerticalsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -30801,6 +30814,8 @@ module Google
           property :foundation_splinter_signal, as: 'foundationSplinterSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :freshbox_freshbox_article_annotation, as: 'freshboxFreshboxArticleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :geo_cars_vehicle_details_page_annotation, as: 'geoCarsVehicleDetailsPageAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :geo_point_annotations, as: 'geoPointAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -30928,6 +30943,8 @@ module Google
       
           property :indexing_centerpiece_centerpiece_checksums, as: 'indexingCenterpieceCenterpieceChecksums', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :indexing_centerpiece_centerpiece_unified_annotations, as: 'indexingCenterpieceCenterpieceUnifiedAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :indexing_centerpiece_component_learning_source, as: 'indexingCenterpieceComponentLearningSource', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :indexing_centerpiece_section_title_annotations, as: 'indexingCenterpieceSectionTitleAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -30957,6 +30974,8 @@ module Google
           property :indexing_docskeleton_repeated_pattern_repeated_pattern_annotation, as: 'indexingDocskeletonRepeatedPatternRepeatedPatternAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :indexing_dups_localized_localized_cluster, as: 'indexingDupsLocalizedLocalizedCluster', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_dups_near_dups_result, as: 'indexingDupsNearDupsResult', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :indexing_fresh_scheduler_fresh_scheduler_double_instant_extension, as: 'indexingFreshSchedulerFreshSchedulerDoubleInstantExtension', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -31032,6 +31051,8 @@ module Google
       
           property :indexing_selection_image_image_selection_attachment, as: 'indexingSelectionImageImageSelectionAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :indexing_selection_index_composition_experiment_extension, as: 'indexingSelectionIndexCompositionExperimentExtension', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :indexing_selection_language_extension, as: 'indexingSelectionLanguageExtension', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :indexing_selection_prior_scorer_parameter_set, as: 'indexingSelectionPriorScorerParameterSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -31041,6 +31062,8 @@ module Google
           property :indexing_selection_proto_base_promotion_info, as: 'indexingSelectionProtoBasePromotionInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :indexing_selection_tensor_flow_extension, as: 'indexingSelectionTensorFlowExtension', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_service_firsttimes_crawl_firsttimes_signals, as: 'indexingServiceFirsttimesCrawlFirsttimesSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :indexing_signal_aggregator_url_pattern_signals, as: 'indexingSignalAggregatorUrlPatternSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -31114,6 +31137,294 @@ module Google
       
           property :knowledge_mining_shopping_twd_model_versions, as: 'knowledgeMiningShoppingTwdModelVersions', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :knowledge_mum_consumer_news_annotation, as: 'knowledgeMumConsumerNewsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_accusatory_title_annotation, as: 'knowledgeMumDcuAccusatoryTitleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_amusing_annotation, as: 'knowledgeMumDcuAmusingAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_base_curiosity_annotation, as: 'knowledgeMumDcuBaseCuriosityAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_base_curiosity_v2_annotation, as: 'knowledgeMumDcuBaseCuriosityV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_base_curiosity_v3_annotation, as: 'knowledgeMumDcuBaseCuriosityV3Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_beginner_annotation, as: 'knowledgeMumDcuBeginnerAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_beginner_title_annotation, as: 'knowledgeMumDcuBeginnerTitleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_boring_annotation, as: 'knowledgeMumDcuBoringAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_boring_video_annotation, as: 'knowledgeMumDcuBoringVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_boring_video_candidate_annotation, as: 'knowledgeMumDcuBoringVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_broad_title_annotation, as: 'knowledgeMumDcuBroadTitleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_broadly_consumable_annotation, as: 'knowledgeMumDcuBroadlyConsumableAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_clickbait_plus_annotation, as: 'knowledgeMumDcuClickbaitPlusAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_clickbait_plus_candidate_annotation, as: 'knowledgeMumDcuClickbaitPlusCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_commercial_news_annotation, as: 'knowledgeMumDcuCommercialNewsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_commercial_video_annotation, as: 'knowledgeMumDcuCommercialVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_commercial_video_candidate_annotation, as: 'knowledgeMumDcuCommercialVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_commercial_video_v2_annotation, as: 'knowledgeMumDcuCommercialVideoV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_commercial_video_v2_candidate_annotation, as: 'knowledgeMumDcuCommercialVideoV2CandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_complex_annotation, as: 'knowledgeMumDcuComplexAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_cool_project_video_annotation, as: 'knowledgeMumDcuCoolProjectVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_cool_project_video_candidate_annotation, as: 'knowledgeMumDcuCoolProjectVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_cool_project_video_v2_annotation, as: 'knowledgeMumDcuCoolProjectVideoV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_cool_project_video_v2_candidate_annotation, as: 'knowledgeMumDcuCoolProjectVideoV2CandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_creative_video_annotation, as: 'knowledgeMumDcuCreativeVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_creative_video_candidate_annotation, as: 'knowledgeMumDcuCreativeVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_cute_short_video_annotation, as: 'knowledgeMumDcuCuteShortVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_cute_short_video_candidate_annotation, as: 'knowledgeMumDcuCuteShortVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_depressing_title_annotation, as: 'knowledgeMumDcuDepressingTitleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_dietary_annotation, as: 'knowledgeMumDcuDietaryAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_disaster_annotation, as: 'knowledgeMumDcuDisasterAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_disaster_v2_annotation, as: 'knowledgeMumDcuDisasterV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_discriminatory_annotation, as: 'knowledgeMumDcuDiscriminatoryAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_disgusting_annotation, as: 'knowledgeMumDcuDisgustingAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_disgusting_v2_annotation, as: 'knowledgeMumDcuDisgustingV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_dismiss_ratio_user_behavior_annotation, as: 'knowledgeMumDcuDismissRatioUserBehaviorAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_distance_sensitive_annotation, as: 'knowledgeMumDcuDistanceSensitiveAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_diy_project_video_annotation, as: 'knowledgeMumDcuDiyProjectVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_diy_project_video_candidate_annotation, as: 'knowledgeMumDcuDiyProjectVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_dqs_annotation, as: 'knowledgeMumDcuDqsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_dramatic_title_annotation, as: 'knowledgeMumDcuDramaticTitleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_dry_facts_annotation, as: 'knowledgeMumDcuDryFactsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_easy_read_annotation, as: 'knowledgeMumDcuEasyReadAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_educational_video_annotation, as: 'knowledgeMumDcuEducationalVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_educational_video_candidate_annotation, as: 'knowledgeMumDcuEducationalVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_engaging_video_annotation, as: 'knowledgeMumDcuEngagingVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_engaging_video_candidate_annotation, as: 'knowledgeMumDcuEngagingVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_engaging_video_v2_annotation, as: 'knowledgeMumDcuEngagingVideoV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_engaging_video_v2_candidate_annotation, as: 'knowledgeMumDcuEngagingVideoV2CandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_engaging_video_v3_annotation, as: 'knowledgeMumDcuEngagingVideoV3Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_engaging_video_v3_candidate_annotation, as: 'knowledgeMumDcuEngagingVideoV3CandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_engagingness_annotation, as: 'knowledgeMumDcuEngagingnessAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_engagingness_le_annotation, as: 'knowledgeMumDcuEngagingnessLeAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_engagingness_mm_annotation, as: 'knowledgeMumDcuEngagingnessMmAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_enjoyable_muted_video_annotation, as: 'knowledgeMumDcuEnjoyableMutedVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_enjoyable_muted_video_candidate_annotation, as: 'knowledgeMumDcuEnjoyableMutedVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_entertaining_video_annotation, as: 'knowledgeMumDcuEntertainingVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_entertaining_video_candidate_annotation, as: 'knowledgeMumDcuEntertainingVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_factual_annotation, as: 'knowledgeMumDcuFactualAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_flavor_annotation, as: 'knowledgeMumDcuFlavorAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_flavor_mm_annotation, as: 'knowledgeMumDcuFlavorMmAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_flavor_mm_candidate_annotation, as: 'knowledgeMumDcuFlavorMmCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_flavor_mm_v2_candidate_annotation, as: 'knowledgeMumDcuFlavorMmV2CandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_fun_facts_annotation, as: 'knowledgeMumDcuFunFactsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_fun_video_annotation, as: 'knowledgeMumDcuFunVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_fun_video_candidate_annotation, as: 'knowledgeMumDcuFunVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_funny_short_video_annotation, as: 'knowledgeMumDcuFunnyShortVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_funny_short_video_candidate_annotation, as: 'knowledgeMumDcuFunnyShortVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_gameplay_video_annotation, as: 'knowledgeMumDcuGameplayVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_gameplay_video_candidate_annotation, as: 'knowledgeMumDcuGameplayVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_good_commercial_annotation, as: 'knowledgeMumDcuGoodCommercialAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_gossip_news_annotation, as: 'knowledgeMumDcuGossipNewsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_heart_ratio_user_behavior_annotation, as: 'knowledgeMumDcuHeartRatioUserBehaviorAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_how_to_video_annotation, as: 'knowledgeMumDcuHowToVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_how_to_video_candidate_annotation, as: 'knowledgeMumDcuHowToVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_inspired_query_rate_annotation, as: 'knowledgeMumDcuInspiredQueryRateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_inspiring_annotation, as: 'knowledgeMumDcuInspiringAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_inspiring_title_annotation, as: 'knowledgeMumDcuInspiringTitleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_inspiring_user_behavior_annotation, as: 'knowledgeMumDcuInspiringUserBehaviorAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_inspiring_v2_annotation, as: 'knowledgeMumDcuInspiringV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_intelligent_annotation, as: 'knowledgeMumDcuIntelligentAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_interview_video_annotation, as: 'knowledgeMumDcuInterviewVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_interview_video_candidate_annotation, as: 'knowledgeMumDcuInterviewVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_lecture_video_annotation, as: 'knowledgeMumDcuLectureVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_lecture_video_candidate_annotation, as: 'knowledgeMumDcuLectureVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_lifehack_video_annotation, as: 'knowledgeMumDcuLifehackVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_lifehack_video_candidate_annotation, as: 'knowledgeMumDcuLifehackVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_lifestyle_annotation, as: 'knowledgeMumDcuLifestyleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_listicle_title_annotation, as: 'knowledgeMumDcuListicleTitleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_mayhem_news_annotation, as: 'knowledgeMumDcuMayhemNewsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_media_video_annotation, as: 'knowledgeMumDcuMediaVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_media_video_candidate_annotation, as: 'knowledgeMumDcuMediaVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_negative_tone_annotation, as: 'knowledgeMumDcuNegativeToneAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_news_video_annotation, as: 'knowledgeMumDcuNewsVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_news_video_candidate_annotation, as: 'knowledgeMumDcuNewsVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_newsy_title_annotation, as: 'knowledgeMumDcuNewsyTitleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_opinion_pieces_annotation, as: 'knowledgeMumDcuOpinionPiecesAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_personal_narrative_annotation, as: 'knowledgeMumDcuPersonalNarrativeAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_practical_annotation, as: 'knowledgeMumDcuPracticalAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_practical_video_annotation, as: 'knowledgeMumDcuPracticalVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_practical_video_candidate_annotation, as: 'knowledgeMumDcuPracticalVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_predicted_traffic_ratio_annotation, as: 'knowledgeMumDcuPredictedTrafficRatioAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_product_review_video_annotation, as: 'knowledgeMumDcuProductReviewVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_product_review_video_candidate_annotation, as: 'knowledgeMumDcuProductReviewVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_profanity_annotation, as: 'knowledgeMumDcuProfanityAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_profanity_v2_annotation, as: 'knowledgeMumDcuProfanityV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_racy_annotation, as: 'knowledgeMumDcuRacyAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_racy_v2_annotation, as: 'knowledgeMumDcuRacyV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_real_life_tips_annotation, as: 'knowledgeMumDcuRealLifeTipsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_remote_relevance_annotation, as: 'knowledgeMumDcuRemoteRelevanceAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_reviews_annotation, as: 'knowledgeMumDcuReviewsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_sensational_clickbait_annotation, as: 'knowledgeMumDcuSensationalClickbaitAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_sensational_clickbait_v2_annotation, as: 'knowledgeMumDcuSensationalClickbaitV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_sensational_clickbait_v3_annotation, as: 'knowledgeMumDcuSensationalClickbaitV3Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_sexual_user_behavior_annotation, as: 'knowledgeMumDcuSexualUserBehaviorAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_share_ratio_user_behavior_annotation, as: 'knowledgeMumDcuShareRatioUserBehaviorAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_staleness_annotation, as: 'knowledgeMumDcuStalenessAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_story_annotation, as: 'knowledgeMumDcuStoryAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_storytelling_video_annotation, as: 'knowledgeMumDcuStorytellingVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_storytelling_video_candidate_annotation, as: 'knowledgeMumDcuStorytellingVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_thought_provoking_annotation, as: 'knowledgeMumDcuThoughtProvokingAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_thought_provoking_v2_annotation, as: 'knowledgeMumDcuThoughtProvokingV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_time_sensitive_annotation, as: 'knowledgeMumDcuTimeSensitiveAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_timeless_annotation, as: 'knowledgeMumDcuTimelessAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_timeless_video_annotation, as: 'knowledgeMumDcuTimelessVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_timeless_video_candidate_annotation, as: 'knowledgeMumDcuTimelessVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_trailer_video_annotation, as: 'knowledgeMumDcuTrailerVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_trailer_video_candidate_annotation, as: 'knowledgeMumDcuTrailerVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_useful_user_behavior_annotation, as: 'knowledgeMumDcuUsefulUserBehaviorAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_useful_video_annotation, as: 'knowledgeMumDcuUsefulVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_useful_video_candidate_annotation, as: 'knowledgeMumDcuUsefulVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_video_flavor_annotation, as: 'knowledgeMumDcuVideoFlavorAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_violence_annotation, as: 'knowledgeMumDcuViolenceAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_violence_v2_annotation, as: 'knowledgeMumDcuViolenceV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_violent_or_disgusting_user_behavior_annotation, as: 'knowledgeMumDcuViolentOrDisgustingUserBehaviorAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_visually_engaging_annotation, as: 'knowledgeMumDcuVisuallyEngagingAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_visually_engaging_v2_annotation, as: 'knowledgeMumDcuVisuallyEngagingV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_vlog_video_annotation, as: 'knowledgeMumDcuVlogVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_vlog_video_candidate_annotation, as: 'knowledgeMumDcuVlogVideoCandidateAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_well_written_annotation, as: 'knowledgeMumDcuWellWrittenAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_withholding_info_annotation, as: 'knowledgeMumDcuWithholdingInfoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_withholding_info_v2_annotation, as: 'knowledgeMumDcuWithholdingInfoV2Annotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_dcu_worthy_headline_news_annotation, as: 'knowledgeMumDcuWorthyHeadlineNewsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :knowledge_mum_story_teaser_annotation, as: 'knowledgeMumStoryTeaserAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :knowledge_mum_storytime_stamp_engagement_annotation, as: 'knowledgeMumStorytimeStampEngagementAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -31144,11 +31455,15 @@ module Google
       
           property :modern_format_content, as: 'modernFormatContent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :multiverse_hub_spokes_signal, as: 'multiverseHubSpokesSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :nav_boost_document, as: 'navBoostDocument', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :navboost, as: 'navboost', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :news_annotations_content_annotations, as: 'newsAnnotationsContentAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_corpus_differentiated_content_annotation, as: 'newsCorpusDifferentiatedContentAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :news_corpus_hub_page_annotations, as: 'newsCorpusHubPageAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -31310,6 +31625,8 @@ module Google
       
           property :quality_chard_predicted_xlq, as: 'qualityChardPredictedXlq', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :quality_chard_predicted_xlq_severe_hoax, as: 'qualityChardPredictedXlqSevereHoax', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :quality_contra_selected_attributions, as: 'qualityContraSelectedAttributions', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :quality_copia_firefly_site_info, as: 'qualityCopiaFireflySiteInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -31334,6 +31651,12 @@ module Google
       
           property :quality_explore_queryable_feed_topic_feed_scoring_signals, as: 'qualityExploreQueryableFeedTopicFeedScoringSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :quality_flavors_flavor_set, as: 'qualityFlavorsFlavorSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_forumranking_ugc_page_quality_document_annotation, as: 'qualityForumrankingUgcPageQualityDocumentAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_freshness_abacus_instant_nav_boost_document_anon, as: 'qualityFreshnessAbacusInstantNavBoostDocumentAnon', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :quality_freshness_abacus_instant_negative_clicks_info, as: 'qualityFreshnessAbacusInstantNegativeClicksInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :quality_fringe_fringe_query_prior, as: 'qualityFringeFringeQueryPrior', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -31353,6 +31676,12 @@ module Google
           property :quality_improv_improv_anchors, as: 'qualityImprovImprovAnchors', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :quality_lisztomania_document, as: 'qualityLisztomaniaDocument', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_modern_proto_ucp_doc_info, as: 'qualityModernProtoUcpDocInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_modern_proto_ucp_serving_data, as: 'qualityModernProtoUcpServingData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_natural_pearls_natural_pearls_document_annotation, as: 'qualityNaturalPearlsNaturalPearlsDocumentAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :quality_navboost_craps_craps_data, as: 'qualityNavboostCrapsCrapsData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -31396,9 +31725,13 @@ module Google
       
           property :quality_peoplesearch_namedetector_name_occurrence_annotations, as: 'qualityPeoplesearchNamedetectorNameOccurrenceAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :quality_peoplesearch_namedetector_navboost_name_annotations, as: 'qualityPeoplesearchNamedetectorNavboostNameAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :quality_popfeeds_chrome_background_annotation, as: 'qualityPopfeedsChromeBackgroundAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :quality_popfeeds_hub_data_annotations, as: 'qualityPopfeedsHubDataAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_popfeeds_topic_stats_topic_score_annotation, as: 'qualityPopfeedsTopicStatsTopicScoreAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :quality_popfeeds_url_prediction_annotations, as: 'qualityPopfeedsUrlPredictionAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -31445,6 +31778,8 @@ module Google
           property :quality_searchoversite_annotator_structured_results_annotation, as: 'qualitySearchoversiteAnnotatorStructuredResultsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :quality_sherlock_knex_annotation, as: 'qualitySherlockKnexAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_shopping_dtc_domains_signal, as: 'qualityShoppingDtcDomainsSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :quality_shopping_product_review, as: 'qualityShoppingProductReview', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -31562,6 +31897,8 @@ module Google
       
           property :repository_updater_index_selection_attachment, as: 'repositoryUpdaterIndexSelectionAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :repository_webref_author_extraction_annotation, as: 'repositoryWebrefAuthorExtractionAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :repository_webref_entity_join, as: 'repositoryWebrefEntityJoin', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :repository_webref_experimental_webref_entities_attachment, as: 'repositoryWebrefExperimentalWebrefEntitiesAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -31573,6 +31910,8 @@ module Google
           property :repository_webref_page_classification_anchor_signals_set, as: 'repositoryWebrefPageClassificationAnchorSignalsSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :repository_webref_page_classification_signals_set, as: 'repositoryWebrefPageClassificationSignalsSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_pianno_document_intent, as: 'repositoryWebrefPiannoDocumentIntent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :repository_webref_pianno_document_intents, as: 'repositoryWebrefPiannoDocumentIntents', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -31724,6 +32063,8 @@ module Google
       
           property :travel_assistant_travel_doc_classification, as: 'travelAssistantTravelDocClassification', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :trawler_effective_robots_content, as: 'trawlerEffectiveRobotsContent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :ucp_signal, as: 'ucpSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :udr_converter_document_shopping_data, as: 'udrConverterDocumentShoppingData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -31765,6 +32106,8 @@ module Google
           property :video_crawl_youtube_embed_signal, as: 'videoCrawlYoutubeEmbedSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :video_scoring_signal, as: 'videoScoringSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :video_shopping_video_shopping_annotation, as: 'videoShoppingVideoShoppingAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :video_web_gallery, as: 'videoWebGallery', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -32875,6 +33218,8 @@ module Google
       
           collection :deprecated_freebase_type, as: 'deprecatedFreebaseType'
           collection :deprecated_supporting_mid, as: 'deprecatedSupportingMid'
+          property :entity_card_signals, as: 'entityCardSignals', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryEntityCardSignals, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryEntityCardSignals::Representation
+      
           property :entity_number, as: 'entityNumber'
           collection :entity_relationship, as: 'entityRelationship', class: Google::Apis::ContentwarehouseV1::NlpSemanticParsingQRefAnnotationEntityRelationship, decorator: Google::Apis::ContentwarehouseV1::NlpSemanticParsingQRefAnnotationEntityRelationship::Representation
       
@@ -33087,6 +33432,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_annotation_data, as: 'additionalAnnotationData'
+        end
+      end
+      
+      class KnowledgeAnswersIntentQueryEntityCardSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent_collection_id, as: 'parentCollectionId'
         end
       end
       
@@ -38798,8 +39150,17 @@ module Google
       class PhotosHdrMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_format, as: 'baseFormat', class: Google::Apis::ContentwarehouseV1::PhotosHdrMetadataBaseFormat, decorator: Google::Apis::ContentwarehouseV1::PhotosHdrMetadataBaseFormat::Representation
+      
           property :gainmap, as: 'gainmap', class: Google::Apis::ContentwarehouseV1::PhotosHdrMetadataGainmap, decorator: Google::Apis::ContentwarehouseV1::PhotosHdrMetadataGainmap::Representation
       
+        end
+      end
+      
+      class PhotosHdrMetadataBaseFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hdr_color_space, as: 'hdrColorSpace'
         end
       end
       
@@ -39894,6 +40255,7 @@ module Google
           property :encoded_predicted_xlq_score_and_confidence, as: 'encodedPredictedXlqScoreAndConfidence'
           property :encoded_proximity_score, as: 'encodedProximityScore'
           property :encoded_pseudorater_pxlq_score, as: 'encodedPseudoraterPxlqScore'
+          property :politics_page_gov_site, as: 'politicsPageGovSite'
           collection :sensitive_entities_indices, as: 'sensitiveEntitiesIndices'
           collection :sensitive_entities_mids, as: 'sensitiveEntitiesMids'
         end
@@ -40188,7 +40550,6 @@ module Google
           property :site_link_in, as: 'siteLinkIn'
           property :site_link_out, as: 'siteLinkOut'
           property :site_pr, as: 'sitePr'
-          property :site_quality_stddev, as: 'siteQualityStddev'
           collection :site_quality_stddevs, as: 'siteQualityStddevs', class: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal, decorator: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal::Representation
       
           property :small_personal_site, as: 'smallPersonalSite'
@@ -40275,7 +40636,6 @@ module Google
           collection :subchunk_data, as: 'subchunkData', class: Google::Apis::ContentwarehouseV1::QualityNsrPqDataSubchunkData, decorator: Google::Apis::ContentwarehouseV1::QualityNsrPqDataSubchunkData::Representation
       
           property :tofu, as: 'tofu'
-          property :unversioned_rhubarb, as: 'unversionedRhubarb'
           property :url_autopilot_score, as: 'urlAutopilotScore'
           property :vlq, as: 'vlq'
         end
@@ -41494,6 +41854,7 @@ module Google
           property :image_data, as: 'imageData', class: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalImageData, decorator: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalImageData::Representation
       
           property :in_app_purchase, as: 'inAppPurchase'
+          property :is_battlestar_title, as: 'isBattlestarTitle'
           property :is_default_lang_locale, as: 'isDefaultLangLocale'
           property :lang_locale, as: 'langLocale'
           property :last_updated, as: 'lastUpdated'
@@ -43069,7 +43430,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :idf, as: 'idf'
-          property :plural_prob, as: 'pluralProb'
         end
       end
       
@@ -49076,10 +49436,25 @@ module Google
         end
       end
       
+      class WwwResultInfoMinimalAestheticsAdjusterInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost, as: 'boost'
+          property :deep_tag_collage_boost, as: 'deepTagCollageBoost'
+          property :deep_tag_collage_score, as: 'deepTagCollageScore'
+          property :eq_boost, as: 'eqBoost'
+          property :eq_expansion_organic_boost, as: 'eqExpansionOrganicBoost'
+          property :eq_expansion_star, as: 'eqExpansionStar'
+          property :tq_boost, as: 'tqBoost'
+        end
+      end
+      
       class WwwResultInfoSubImageDocInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_safesearch_signals, as: 'additionalSafesearchSignals'
+          property :aesthetics_adjuster_info, as: 'aestheticsAdjusterInfo', class: Google::Apis::ContentwarehouseV1::WwwResultInfoMinimalAestheticsAdjusterInfo, decorator: Google::Apis::ContentwarehouseV1::WwwResultInfoMinimalAestheticsAdjusterInfo::Representation
+      
           property :best_thumbnail_type, as: 'bestThumbnailType'
           property :crops, as: 'crops'
           property :deep_crop_bytes, :base64 => true, as: 'deepCropBytes'
@@ -49095,6 +49470,7 @@ module Google
           property :height50k, as: 'height50k'
           property :human_model_score, as: 'humanModelScore'
           property :image_url, as: 'imageUrl'
+          property :ocr_tokens_count, as: 'ocrTokensCount'
           property :pamir_normalized_score, as: 'pamirNormalizedScore'
           property :porn_signals, as: 'pornSignals'
           property :safe_for_universal, as: 'safeForUniversal'
