@@ -217,7 +217,7 @@ module Google
         # @return [String]
         attr_accessor :last_refresh_time
       
-        # Name of the insight.
+        # Identifier. Name of the insight.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -807,7 +807,7 @@ module Google
         # @return [String]
         attr_accessor :last_refresh_time
       
-        # Name of recommendation.
+        # Identifier. Name of recommendation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
