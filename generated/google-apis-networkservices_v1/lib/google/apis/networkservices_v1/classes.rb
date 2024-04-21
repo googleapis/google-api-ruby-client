@@ -3640,7 +3640,7 @@ module Google
         # against all wildcard domains, i.e. `www.example.com` will be first matched
         # against `www.example.com`, then `*.example.com`, then `*.com.` Partial
         # wildcards are not supported, and values like *w.example.com are invalid. At
-        # least one of sni_host and alpn is required. Up to 5 sni hosts across all
+        # least one of sni_host and alpn is required. Up to 100 sni hosts across all
         # matches can be set.
         # Corresponds to the JSON property `sniHost`
         # @return [Array<String>]
