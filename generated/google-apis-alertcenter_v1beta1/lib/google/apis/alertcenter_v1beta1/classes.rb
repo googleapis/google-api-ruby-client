@@ -1745,6 +1745,22 @@ module Google
       class ResourceInfo
         include Google::Apis::Core::Hashable
       
+        # Chat attachment ID.
+        # Corresponds to the JSON property `chatAttachmentId`
+        # @return [String]
+        attr_accessor :chat_attachment_id
+      
+        # Chat message ID.
+        # Corresponds to the JSON property `chatMessageId`
+        # @return [String]
+        attr_accessor :chat_message_id
+      
+        # Id to identify a device. For example, for Android devices, this is the "
+        # Android Device Id" and for Chrome OS devices, it's the "Device Virtual Id".
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
         # Drive file ID.
         # Corresponds to the JSON property `documentId`
         # @return [String]
@@ -1761,6 +1777,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chat_attachment_id = args[:chat_attachment_id] if args.key?(:chat_attachment_id)
+          @chat_message_id = args[:chat_message_id] if args.key?(:chat_message_id)
+          @device_id = args[:device_id] if args.key?(:device_id)
           @document_id = args[:document_id] if args.key?(:document_id)
           @resource_title = args[:resource_title] if args.key?(:resource_title)
         end
@@ -1800,6 +1819,11 @@ module Google
         # Corresponds to the JSON property `dataSource`
         # @return [String]
         attr_accessor :data_source
+      
+        # Event associated with this alert after applying the rule.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
       
         # List of matches that were found in the resource content.
         # Corresponds to the JSON property `matchInfo`
@@ -1858,6 +1882,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_source = args[:data_source] if args.key?(:data_source)
+          @event_type = args[:event_type] if args.key?(:event_type)
           @match_info = args[:match_info] if args.key?(:match_info)
           @recipients = args[:recipients] if args.key?(:recipients)
           @resource_info = args[:resource_info] if args.key?(:resource_info)
