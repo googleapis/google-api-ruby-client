@@ -979,11 +979,11 @@ module Google
         attr_accessor :labels
       
         # Optional. The maximum lifetime allowed for issued Certificates that use this
-        # template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime
-        # the minimum of the two durations will be the maximum lifetime for issued
-        # Certificates. Note that if the issuing CertificateAuthority expires before a
-        # Certificate's requested maximum_lifetime, the effective lifetime will be
-        # explicitly truncated to match it.
+        # template. If the issuing CaPool resource's IssuancePolicy specifies a
+        # maximum_lifetime the minimum of the two durations will be the maximum lifetime
+        # for issued Certificates. Note that if the issuing CertificateAuthority expires
+        # before a Certificate's requested maximum_lifetime, the effective lifetime will
+        # be explicitly truncated to match it.
         # Corresponds to the JSON property `maximumLifetime`
         # @return [String]
         attr_accessor :maximum_lifetime
@@ -1036,7 +1036,7 @@ module Google
       
         # Optional. This field allows this CA to be disabled even if it's being depended
         # on by another resource. However, doing so may result in unintended and
-        # unrecoverable effects on any dependent resource(s) since the CA will no longer
+        # unrecoverable effects on any dependent resources since the CA will no longer
         # be able to issue certificates.
         # Corresponds to the JSON property `ignoreDependentResources`
         # @return [Boolean]
@@ -1281,7 +1281,7 @@ module Google
       class FetchCaCertsResponse
         include Google::Apis::Core::Hashable
       
-        # The PEM encoded CA certificate chains of all Certificate Authorities in this
+        # The PEM encoded CA certificate chains of all certificate authorities in this
         # CaPool in the ENABLED, DISABLED, or STAGED states.
         # Corresponds to the JSON property `caCerts`
         # @return [Array<Google::Apis::PrivatecaV1::CertChain>]
@@ -1375,9 +1375,9 @@ module Google
         attr_accessor :identity_constraints
       
         # Optional. The maximum lifetime allowed for issued Certificates. Note that if
-        # the issuing CertificateAuthority expires before a Certificate's requested
-        # maximum_lifetime, the effective lifetime will be explicitly truncated to match
-        # it.
+        # the issuing CertificateAuthority expires before a Certificate resource's
+        # requested maximum_lifetime, the effective lifetime will be explicitly
+        # truncated to match it.
         # Corresponds to the JSON property `maximumLifetime`
         # @return [String]
         attr_accessor :maximum_lifetime
@@ -2184,9 +2184,9 @@ module Google
       class PublishingOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies the encoding format of each CertificateAuthority's CA
-        # certificate and CRLs. If this is omitted, CA certificates and CRLs will be
-        # published in PEM.
+        # Optional. Specifies the encoding format of each CertificateAuthority resource'
+        # s CA certificate and CRLs. If this is omitted, CA certificates and CRLs will
+        # be published in PEM.
         # Corresponds to the JSON property `encodingFormat`
         # @return [String]
         attr_accessor :encoding_format
