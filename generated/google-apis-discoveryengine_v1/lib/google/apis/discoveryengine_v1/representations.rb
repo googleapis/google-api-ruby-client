@@ -1168,18 +1168,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1217,6 +1205,24 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaImportUserEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProjectServiceTerms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1625,6 +1631,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaTuneEngineMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaTuneEngineResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3514,6 +3526,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaFieldConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :advanced_site_search_data_sources, as: 'advancedSiteSearchDataSources'
           property :completable_option, as: 'completableOption'
           property :dynamic_facetable_option, as: 'dynamicFacetableOption'
           property :field_path, as: 'fieldPath'
@@ -3539,24 +3552,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :workforce_pool_name, as: 'workforcePoolName'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
-      
-          property :failure_count, :numeric_string => true, as: 'failureCount'
-          property :success_count, :numeric_string => true, as: 'successCount'
         end
       end
       
@@ -3625,6 +3620,34 @@ module Google
       
           property :joined_events_count, :numeric_string => true, as: 'joinedEventsCount'
           property :unjoined_events_count, :numeric_string => true, as: 'unjoinedEventsCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :provision_completion_time, as: 'provisionCompletionTime'
+          hash :service_terms_map, as: 'serviceTermsMap', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaProjectServiceTerms, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaProjectServiceTerms::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProjectServiceTerms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accept_time, as: 'acceptTime'
+          property :decline_time, as: 'declineTime'
+          property :id, as: 'id'
+          property :state, as: 'state'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -4249,6 +4272,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :engine, as: 'engine'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaTuneEngineResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
