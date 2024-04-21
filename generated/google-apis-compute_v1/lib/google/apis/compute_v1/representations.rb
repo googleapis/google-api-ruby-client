@@ -3906,6 +3906,18 @@ module Google
       
       class Region
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class QuotaStatusWarning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -13886,12 +13898,32 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :quota_status_warning, as: 'quotaStatusWarning', class: Google::Apis::ComputeV1::Region::QuotaStatusWarning, decorator: Google::Apis::ComputeV1::Region::QuotaStatusWarning::Representation
+      
           collection :quotas, as: 'quotas', class: Google::Apis::ComputeV1::Quota, decorator: Google::Apis::ComputeV1::Quota::Representation
       
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :supports_pzs, as: 'supportsPzs'
           collection :zones, as: 'zones'
+        end
+        
+        class QuotaStatusWarning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::Region::QuotaStatusWarning::Datum, decorator: Google::Apis::ComputeV1::Region::QuotaStatusWarning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
