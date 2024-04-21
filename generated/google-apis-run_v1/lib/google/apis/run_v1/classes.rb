@@ -3365,6 +3365,20 @@ module Google
       class JobSpec
         include Google::Apis::Core::Hashable
       
+        # A unique string used as a suffix for creating a new execution. The Job will
+        # become ready when the execution is successfully completed. The sum of job name
+        # and token length must be fewer than 63 characters.
+        # Corresponds to the JSON property `runExecutionToken`
+        # @return [String]
+        attr_accessor :run_execution_token
+      
+        # A unique string used as a suffix for creating a new execution. The Job will
+        # become ready when the execution is successfully started. The sum of job name
+        # and token length must be fewer than 63 characters.
+        # Corresponds to the JSON property `startExecutionToken`
+        # @return [String]
+        attr_accessor :start_execution_token
+      
         # ExecutionTemplateSpec describes the metadata and spec an Execution should have
         # when created from a job.
         # Corresponds to the JSON property `template`
@@ -3377,6 +3391,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @run_execution_token = args[:run_execution_token] if args.key?(:run_execution_token)
+          @start_execution_token = args[:start_execution_token] if args.key?(:start_execution_token)
           @template = args[:template] if args.key?(:template)
         end
       end
