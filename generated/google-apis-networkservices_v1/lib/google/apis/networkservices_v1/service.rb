@@ -1634,7 +1634,7 @@ module Google
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
-        #   Required. Used to specify the fields to be overwritten in the `
+        #   Optional. Used to specify the fields to be overwritten in the `
         #   LbRouteExtension` resource by the update. The fields specified in the
         #   update_mask are relative to the resource, not the full request. A field is
         #   overwritten if it is in the mask. If the user does not specify a mask, then
@@ -1858,7 +1858,7 @@ module Google
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
-        #   Required. Used to specify the fields to be overwritten in the `
+        #   Optional. Used to specify the fields to be overwritten in the `
         #   LbTrafficExtension` resource by the update. The fields specified in the
         #   update_mask are relative to the resource, not the full request. A field is
         #   overwritten if it is in the mask. If the user does not specify a mask, then
