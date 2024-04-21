@@ -741,8 +741,8 @@ module Google
       class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig
         include Google::Apis::Core::Hashable
       
-        # Apply additional enhanced OCR processing to a list of document elements.
-        # Supported values: * `table`: advanced table parsing model.
+        # [DEPRECATED] This field is deprecated. To use the additional enhanced document
+        # elements processing, please switch to `layout_parsing_config`.
         # Corresponds to the JSON property `enhancedDocumentElements`
         # @return [Array<String>]
         attr_accessor :enhanced_document_elements
@@ -917,8 +917,8 @@ module Google
         # projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are
         # one-time consumed by and passed to Dialogflow service. It means they cannot be
         # retrieved using EngineService.GetEngine or EngineService.ListEngines API after
-        # engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual
-        # agent association after Engine is created.
+        # engine creation. Use ChatEngineMetadata.dialogflow_agent for actual agent
+        # association after Engine is created.
         # Corresponds to the JSON property `dialogflowAgentToLink`
         # @return [String]
         attr_accessor :dialogflow_agent_to_link
@@ -1031,7 +1031,7 @@ module Google
         attr_accessor :search_add_ons
       
         # The search feature tier of this engine. Different tiers might have different
-        # pricing. To learn more, please check the pricing documentation. Defaults to
+        # pricing. To learn more, check the pricing documentation. Defaults to
         # SearchTier.SEARCH_TIER_STANDARD if not specified.
         # Corresponds to the JSON property `searchTier`
         # @return [String]
@@ -1691,8 +1691,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Immutable. Fully qualified name `project/*/locations/global/collections/`
-        # collection`/engines/`engine`/sessions/*/answers/*`
+        # Immutable. Fully qualified name `projects/`project`/locations/global/
+        # collections/`collection`/engines/`engine`/sessions/*/answers/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2754,8 +2754,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig
         include Google::Apis::Core::Hashable
       
-        # Apply additional enhanced OCR processing to a list of document elements.
-        # Supported values: * `table`: advanced table parsing model.
+        # [DEPRECATED] This field is deprecated. To use the additional enhanced document
+        # elements processing, please switch to `layout_parsing_config`.
         # Corresponds to the JSON property `enhancedDocumentElements`
         # @return [Array<String>]
         attr_accessor :enhanced_document_elements
@@ -2948,8 +2948,8 @@ module Google
         # projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are
         # one-time consumed by and passed to Dialogflow service. It means they cannot be
         # retrieved using EngineService.GetEngine or EngineService.ListEngines API after
-        # engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual
-        # agent association after Engine is created.
+        # engine creation. Use ChatEngineMetadata.dialogflow_agent for actual agent
+        # association after Engine is created.
         # Corresponds to the JSON property `dialogflowAgentToLink`
         # @return [String]
         attr_accessor :dialogflow_agent_to_link
@@ -3184,7 +3184,7 @@ module Google
         attr_accessor :search_add_ons
       
         # The search feature tier of this engine. Different tiers might have different
-        # pricing. To learn more, please check the pricing documentation. Defaults to
+        # pricing. To learn more, check the pricing documentation. Defaults to
         # SearchTier.SEARCH_TIER_STANDARD if not specified.
         # Corresponds to the JSON property `searchTier`
         # @return [String]
@@ -3265,6 +3265,15 @@ module Google
       # indexable, or searchable.
       class GoogleCloudDiscoveryengineV1alphaFieldConfig
         include Google::Apis::Core::Hashable
+      
+        # If this field is set, only the corresponding source will be indexed for this
+        # field. Otherwise, the values from different sources are merged. Assuming a
+        # page with `` in meta tag, and `` in page map: if this enum is set to METATAGS,
+        # we will only index ``; if this enum is not set, we will merge them and index ``
+        # .
+        # Corresponds to the JSON property `advancedSiteSearchDataSources`
+        # @return [Array<String>]
+        attr_accessor :advanced_site_search_data_sources
       
         # If completable_option is COMPLETABLE_ENABLED, field values are directly used
         # and returned as suggestions for Autocomplete in CompletionService.
@@ -3366,6 +3375,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_site_search_data_sources = args[:advanced_site_search_data_sources] if args.key?(:advanced_site_search_data_sources)
           @completable_option = args[:completable_option] if args.key?(:completable_option)
           @dynamic_facetable_option = args[:dynamic_facetable_option] if args.key?(:dynamic_facetable_option)
           @field_path = args[:field_path] if args.key?(:field_path)
@@ -3419,66 +3429,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @workforce_pool_name = args[:workforce_pool_name] if args.key?(:workforce_pool_name)
-        end
-      end
-      
-      # Metadata related to the progress of the ImportCompletionSuggestions operation.
-      # This will be returned by the google.longrunning.Operation.metadata field.
-      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Operation create time.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Operation last update time. If the operation is done, this is also the finish
-        # time.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Response of the CompletionService.ImportCompletionSuggestions method. If the
-      # long running operation is done, this message is returned by the google.
-      # longrunning.Operations.response field if the operation is successful.
-      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A sample of errors encountered while processing the request.
-        # Corresponds to the JSON property `errorSamples`
-        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
-        attr_accessor :error_samples
-      
-        # Count of CompletionSuggestions that failed to be imported.
-        # Corresponds to the JSON property `failureCount`
-        # @return [Fixnum]
-        attr_accessor :failure_count
-      
-        # Count of CompletionSuggestions successfully imported.
-        # Corresponds to the JSON property `successCount`
-        # @return [Fixnum]
-        attr_accessor :success_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_samples = args[:error_samples] if args.key?(:error_samples)
-          @failure_count = args[:failure_count] if args.key?(:failure_count)
-          @success_count = args[:success_count] if args.key?(:success_count)
         end
       end
       
@@ -3709,6 +3659,108 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @joined_events_count = args[:joined_events_count] if args.key?(:joined_events_count)
           @unjoined_events_count = args[:unjoined_events_count] if args.key?(:unjoined_events_count)
+        end
+      end
+      
+      # Metadata and configurations for a Google Cloud project in the service.
+      class GoogleCloudDiscoveryengineV1alphaProject
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when this project is created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Full resource name of the project, for example `projects/`
+        # project_number``. Note that when making requests, project number and project
+        # id are both acceptable, but the server will always respond in project number.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when this project is successfully provisioned.
+        # Empty value means this project is still provisioning and is not ready for use.
+        # Corresponds to the JSON property `provisionCompletionTime`
+        # @return [String]
+        attr_accessor :provision_completion_time
+      
+        # Output only. A map of terms of services. The key is the `id` of ServiceTerms.
+        # Corresponds to the JSON property `serviceTermsMap`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectServiceTerms>]
+        attr_accessor :service_terms_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @provision_completion_time = args[:provision_completion_time] if args.key?(:provision_completion_time)
+          @service_terms_map = args[:service_terms_map] if args.key?(:service_terms_map)
+        end
+      end
+      
+      # Metadata about the terms of service.
+      class GoogleCloudDiscoveryengineV1alphaProjectServiceTerms
+        include Google::Apis::Core::Hashable
+      
+        # The last time when the project agreed to the terms of service.
+        # Corresponds to the JSON property `acceptTime`
+        # @return [String]
+        attr_accessor :accept_time
+      
+        # The last time when the project declined or revoked the agreement to terms of
+        # service.
+        # Corresponds to the JSON property `declineTime`
+        # @return [String]
+        attr_accessor :decline_time
+      
+        # The unique identifier of this terms of service. Available terms: * `
+        # GA_DATA_USE_TERMS`: [Terms for data use](https://cloud.google.com/retail/data-
+        # use-terms). When using this as `id`, the acceptable version to provide is `
+        # 2022-11-23`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Whether the project has accepted/rejected the service terms or it is still
+        # pending.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The version string of the terms of service. For acceptable values, see the
+        # comments for id above.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accept_time = args[:accept_time] if args.key?(:accept_time)
+          @decline_time = args[:decline_time] if args.key?(:decline_time)
+          @id = args[:id] if args.key?(:id)
+          @state = args[:state] if args.key?(:state)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Metadata associated with a project provision operation.
+      class GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -4109,8 +4161,8 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Immutable. Fully qualified name `project/*/locations/global/collections/`
-        # collection`/engines/`engine`/sessions/*`
+        # Immutable. Fully qualified name `projects/`project`/locations/global/
+        # collections/`collection`/engines/`engine`/sessions/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4505,8 +4557,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Immutable. Fully qualified name `project/*/locations/global/collections/`
-        # collection`/engines/`engine`/sessions/*/answers/*`
+        # Immutable. Fully qualified name `projects/`project`/locations/global/
+        # collections/`collection`/engines/`engine`/sessions/*/answers/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4845,7 +4897,7 @@ module Google
         attr_accessor :disable
         alias_method :disable?, :disable
       
-        # Max rephrase steps. The max number is 10 steps. If not set or set to < 1, it
+        # Max rephrase steps. The max number is 5 steps. If not set or set to < 1, it
         # will be set to 1 by default.
         # Corresponds to the JSON property `maxRephraseSteps`
         # @return [Fixnum]
@@ -5183,6 +5235,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswer]
         attr_accessor :answer
       
+        # A global unique ID used for logging.
+        # Corresponds to the JSON property `answerQueryToken`
+        # @return [String]
+        attr_accessor :answer_query_token
+      
         # External session proto definition.
         # Corresponds to the JSON property `session`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSession]
@@ -5195,6 +5252,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @answer = args[:answer] if args.key?(:answer)
+          @answer_query_token = args[:answer_query_token] if args.key?(:answer_query_token)
           @session = args[:session] if args.key?(:session)
         end
       end
@@ -6004,7 +6062,7 @@ module Google
         attr_accessor :end_pos
       
         # Position indicating the start of the claim in the answer candidate, measured
-        # in bytes/unicode.
+        # in bytes.
         # Corresponds to the JSON property `startPos`
         # @return [Fixnum]
         attr_accessor :start_pos
@@ -6057,7 +6115,7 @@ module Google
       
         # Intermediate Cloud Storage directory used for the import with a length limit
         # of 2,000 characters. Can be specified if one wants to have the Cloud SQL
-        # export to a specific Cloud Storage directory. Please ensure that the Cloud SQL
+        # export to a specific Cloud Storage directory. Ensure that the Cloud SQL
         # service account has the necessary Cloud Storage Admin permissions to access
         # the specified Cloud Storage directory.
         # Corresponds to the JSON property `gcsStagingDir`
@@ -6201,9 +6259,9 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaConversationMessage>]
         attr_accessor :messages
       
-        # Immutable. Fully qualified name `project/*/locations/global/collections/`
-        # collection`/dataStore/*/conversations/*` or `project/*/locations/global/
-        # collections/`collection`/engines/*/conversations/*`.
+        # Immutable. Fully qualified name `projects/`project`/locations/global/
+        # collections/`collection`/dataStore/*/conversations/*` or `projects/`project`/
+        # locations/global/collections/`collection`/engines/*/conversations/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7083,8 +7141,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig
         include Google::Apis::Core::Hashable
       
-        # Apply additional enhanced OCR processing to a list of document elements.
-        # Supported values: * `table`: advanced table parsing model.
+        # [DEPRECATED] This field is deprecated. To use the additional enhanced document
+        # elements processing, please switch to `layout_parsing_config`.
         # Corresponds to the JSON property `enhancedDocumentElements`
         # @return [Array<String>]
         attr_accessor :enhanced_document_elements
@@ -7310,8 +7368,8 @@ module Google
         # projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are
         # one-time consumed by and passed to Dialogflow service. It means they cannot be
         # retrieved using EngineService.GetEngine or EngineService.ListEngines API after
-        # engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual
-        # agent association after Engine is created.
+        # engine creation. Use ChatEngineMetadata.dialogflow_agent for actual agent
+        # association after Engine is created.
         # Corresponds to the JSON property `dialogflowAgentToLink`
         # @return [String]
         attr_accessor :dialogflow_agent_to_link
@@ -7424,7 +7482,7 @@ module Google
         attr_accessor :search_add_ons
       
         # The search feature tier of this engine. Different tiers might have different
-        # pricing. To learn more, please check the pricing documentation. Defaults to
+        # pricing. To learn more, check the pricing documentation. Defaults to
         # SearchTier.SEARCH_TIER_STANDARD if not specified.
         # Corresponds to the JSON property `searchTier`
         # @return [String]
@@ -7555,7 +7613,7 @@ module Google
       
         # Intermediate Cloud Storage directory used for the import with a length limit
         # of 2,000 characters. Can be specified if one wants to have the Firestore
-        # export to a specific Cloud Storage directory. Please ensure that the Firestore
+        # export to a specific Cloud Storage directory. Ensure that the Firestore
         # service account has the necessary Cloud Storage Admin permissions to access
         # the specified Cloud Storage directory.
         # Corresponds to the JSON property `gcsStagingDir`
@@ -8399,12 +8457,12 @@ module Google
       
         # The most specific category associated with a category page. To represent full
         # path of category, use '>' sign to separate different hierarchies. If '>' is
-        # part of the category name, please replace it with other character(s). Category
-        # pages include special pages such as sales or promotions. For instance, a
-        # special sale page may have the category hierarchy: `"pageCategory" : "Sales >
-        # 2017 Black Friday Deals"`. Required for `view-category-page` events. Other
-        # event types should not set this field. Otherwise, an `INVALID_ARGUMENT` error
-        # is returned.
+        # part of the category name, replace it with other character(s). Category pages
+        # include special pages such as sales or promotions. For instance, a special
+        # sale page may have the category hierarchy: `"pageCategory" : "Sales > 2017
+        # Black Friday Deals"`. Required for `view-category-page` events. Other event
+        # types should not set this field. Otherwise, an `INVALID_ARGUMENT` error is
+        # returned.
         # Corresponds to the JSON property `pageCategory`
         # @return [String]
         attr_accessor :page_category
@@ -8715,7 +8773,7 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # Required. A list of records to rank. At most 100 records to rank.
+        # Required. A list of records to rank. At most 200 records to rank.
         # Corresponds to the JSON property `records`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankingRecord>]
         attr_accessor :records
@@ -9587,8 +9645,8 @@ module Google
       
         # Specifies whether to return the confidence score from the extractive segments
         # in each search result. This feature is available only for new or allowlisted
-        # data stores. To allowlist your data store, please contact your Customer
-        # Engineer. The default value is `false`.
+        # data stores. To allowlist your data store, contact your Customer Engineer. The
+        # default value is `false`.
         # Corresponds to the JSON property `returnExtractiveSegmentScore`
         # @return [Boolean]
         attr_accessor :return_extractive_segment_score
@@ -9707,13 +9765,15 @@ module Google
       
         # The number of top results to generate the summary from. If the number of
         # results returned is less than `summaryResultCount`, the summary is generated
-        # from all of the results. At most 10 results can be used to generate a summary.
+        # from all of the results. At most 10 results for documents mode, or 50 for
+        # chunks mode, can be used to generate a summary. The chunks mode is used when
+        # SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS.
         # Corresponds to the JSON property `summaryResultCount`
         # @return [Fixnum]
         attr_accessor :summary_result_count
       
         # If true, answer will be generated from most relevant chunks from top search
-        # results. This feature will improve summary quality. Please note that with this
+        # results. This feature will improve summary quality. Note that with this
         # feature enabled, not all top search results will be referenced and included in
         # the reference list, so the citation source index only points to the search
         # results listed in the reference list.
@@ -10857,8 +10917,8 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Immutable. Fully qualified name `project/*/locations/global/collections/`
-        # collection`/engines/`engine`/sessions/*`
+        # Immutable. Fully qualified name `projects/`project`/locations/global/
+        # collections/`collection`/engines/`engine`/sessions/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -11420,6 +11480,19 @@ module Google
       # Request to manually start a tuning process now (instead of waiting for the
       # periodically scheduled tuning to happen).
       class GoogleCloudDiscoveryengineV1betaTuneEngineRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response associated with a tune operation.
+      class GoogleCloudDiscoveryengineV1betaTuneEngineResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
