@@ -163,7 +163,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A content string and a MIME type that describes the content string's format.
+        # Documentation that is included in the notifications and incidents pertaining
+        # to this policy.
         # Corresponds to the JSON property `documentation`
         # @return [Google::Apis::MonitoringV3::Documentation]
         attr_accessor :documentation
@@ -1211,7 +1212,8 @@ module Google
         end
       end
       
-      # A content string and a MIME type that describes the content string's format.
+      # Documentation that is included in the notifications and incidents pertaining
+      # to this policy.
       class Documentation
         include Google::Apis::Core::Hashable
       
@@ -1925,6 +1927,13 @@ module Google
         # @return [String]
         attr_accessor :request_method
       
+        # Contains information needed for generating an OpenID Connect token (https://
+        # developers.google.com/identity/protocols/OpenIDConnect). The OIDC token will
+        # be generated for the Monitoring service agent service account.
+        # Corresponds to the JSON property `serviceAgentAuthentication`
+        # @return [Google::Apis::MonitoringV3::ServiceAgentAuthentication]
+        attr_accessor :service_agent_authentication
+      
         # If true, use HTTPS instead of HTTP to run the check.
         # Corresponds to the JSON property `useSsl`
         # @return [Boolean]
@@ -1956,6 +1965,7 @@ module Google
           @ping_config = args[:ping_config] if args.key?(:ping_config)
           @port = args[:port] if args.key?(:port)
           @request_method = args[:request_method] if args.key?(:request_method)
+          @service_agent_authentication = args[:service_agent_authentication] if args.key?(:service_agent_authentication)
           @use_ssl = args[:use_ssl] if args.key?(:use_ssl)
           @validate_ssl = args[:validate_ssl] if args.key?(:validate_ssl)
         end
@@ -4181,6 +4191,27 @@ module Google
           @name = args[:name] if args.key?(:name)
           @telemetry = args[:telemetry] if args.key?(:telemetry)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
+      # Contains information needed for generating an OpenID Connect token (https://
+      # developers.google.com/identity/protocols/OpenIDConnect). The OIDC token will
+      # be generated for the Monitoring service agent service account.
+      class ServiceAgentAuthentication
+        include Google::Apis::Core::Hashable
+      
+        # Type of authentication.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
