@@ -474,6 +474,13 @@ module Google
         # @return [String]
         attr_accessor :permission
       
+        # The type of the permission that was checked. For data access audit logs this
+        # corresponds with the permission type that must be enabled in the project/
+        # folder/organization IAM policy in order for the log to be written.
+        # Corresponds to the JSON property `permissionType`
+        # @return [String]
+        attr_accessor :permission_type
+      
         # The resource being accessed, as a REST-style or cloud resource string. For
         # example: bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID or
         # projects/PROJECTID/datasets/DATASETID
@@ -496,6 +503,7 @@ module Google
         def update!(**args)
           @granted = args[:granted] if args.key?(:granted)
           @permission = args[:permission] if args.key?(:permission)
+          @permission_type = args[:permission_type] if args.key?(:permission_type)
           @resource = args[:resource] if args.key?(:resource)
           @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
         end
