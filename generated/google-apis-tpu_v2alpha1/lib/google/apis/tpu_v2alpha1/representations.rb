@@ -795,6 +795,7 @@ module Google
           property :name, as: 'name'
           property :standard, as: 'standard', class: Google::Apis::TpuV2alpha1::Standard, decorator: Google::Apis::TpuV2alpha1::Standard::Representation
       
+          property :state, as: 'state'
         end
       end
       
