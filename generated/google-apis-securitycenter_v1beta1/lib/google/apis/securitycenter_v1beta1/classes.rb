@@ -186,6 +186,31 @@ module Google
         end
       end
       
+      # Information about [Google Cloud Armor Adaptive Protection](https://cloud.
+      # google.com/armor/docs/cloud-armor-overview#google-cloud-armor-adaptive-
+      # protection).
+      class AdaptiveProtection
+        include Google::Apis::Core::Hashable
+      
+        # A score of 0 means that there is low confidence that the detected event is an
+        # actual attack. A score of 1 means that there is high confidence that the
+        # detected event is an attack. See the [Adaptive Protection documentation](https:
+        # //cloud.google.com/armor/docs/adaptive-protection-overview#configure-alert-
+        # tuning) for further explanation.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+        end
+      end
+      
       # Represents an application associated with a finding.
       class Application
         include Google::Apis::Core::Hashable
@@ -296,6 +321,37 @@ module Google
         def update!(**args)
           @inclusion_mode = args[:inclusion_mode] if args.key?(:inclusion_mode)
           @project_ids = args[:project_ids] if args.key?(:project_ids)
+        end
+      end
+      
+      # Information about DDoS attack volume and classification.
+      class Attack
+        include Google::Apis::Core::Hashable
+      
+        # Type of attack, for example, ‘SYN-flood’, ‘NTP-udp’, or ‘CHARGEN-udp’.
+        # Corresponds to the JSON property `classification`
+        # @return [String]
+        attr_accessor :classification
+      
+        # Total BPS (bytes per second) volume of attack.
+        # Corresponds to the JSON property `volumeBps`
+        # @return [Fixnum]
+        attr_accessor :volume_bps
+      
+        # Total PPS (packets per second) volume of attack.
+        # Corresponds to the JSON property `volumePps`
+        # @return [Fixnum]
+        attr_accessor :volume_pps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classification = args[:classification] if args.key?(:classification)
+          @volume_bps = args[:volume_bps] if args.key?(:volume_bps)
+          @volume_pps = args[:volume_pps] if args.key?(:volume_pps)
         end
       end
       
@@ -430,6 +486,120 @@ module Google
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
+      # An AWS account that is a member of an organization.
+      class AwsAccount
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier (ID) of the account, containing exactly 12 digits.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The friendly name of this account.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # AWS metadata associated with the resource, only applicable if the finding's
+      # cloud provider is Amazon Web Services.
+      class AwsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # An AWS account that is a member of an organization.
+        # Corresponds to the JSON property `account`
+        # @return [Google::Apis::SecuritycenterV1beta1::AwsAccount]
+        attr_accessor :account
+      
+        # An organization is a collection of accounts that are centrally managed
+        # together using consolidated billing, organized hierarchically with
+        # organizational units (OUs), and controlled with policies.
+        # Corresponds to the JSON property `organization`
+        # @return [Google::Apis::SecuritycenterV1beta1::AwsOrganization]
+        attr_accessor :organization
+      
+        # A list of AWS organizational units associated with the resource, ordered from
+        # lowest level (closest to the account) to highest level.
+        # Corresponds to the JSON property `organizationalUnits`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::AwsOrganizationalUnit>]
+        attr_accessor :organizational_units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account = args[:account] if args.key?(:account)
+          @organization = args[:organization] if args.key?(:organization)
+          @organizational_units = args[:organizational_units] if args.key?(:organizational_units)
+        end
+      end
+      
+      # An organization is a collection of accounts that are centrally managed
+      # together using consolidated billing, organized hierarchically with
+      # organizational units (OUs), and controlled with policies.
+      class AwsOrganization
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier (ID) for the organization. The regex pattern for an
+        # organization ID string requires "o-" followed by from 10 to 32 lowercase
+        # letters or digits.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # An Organizational Unit (OU) is a container of AWS accounts within a root of an
+      # organization. Policies that are attached to an OU apply to all accounts
+      # contained in that OU and in any child OUs.
+      class AwsOrganizationalUnit
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier (ID) associated with this OU. The regex pattern for an
+        # organizational unit ID string requires "ou-" followed by from 4 to 32
+        # lowercase letters or digits (the ID of the root that contains the OU). This
+        # string is followed by a second "-" dash and from 8 to 32 additional lowercase
+        # letters or digits. For example, "ou-ab12-cd34ef56".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The friendly name of the OU.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -644,6 +814,61 @@ module Google
         end
       end
       
+      # Fields related to Google Cloud Armor findings.
+      class CloudArmor
+        include Google::Apis::Core::Hashable
+      
+        # Information about [Google Cloud Armor Adaptive Protection](https://cloud.
+        # google.com/armor/docs/cloud-armor-overview#google-cloud-armor-adaptive-
+        # protection).
+        # Corresponds to the JSON property `adaptiveProtection`
+        # @return [Google::Apis::SecuritycenterV1beta1::AdaptiveProtection]
+        attr_accessor :adaptive_protection
+      
+        # Information about DDoS attack volume and classification.
+        # Corresponds to the JSON property `attack`
+        # @return [Google::Apis::SecuritycenterV1beta1::Attack]
+        attr_accessor :attack
+      
+        # Duration of attack from the start until the current moment (updated every 5
+        # minutes).
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Information about the requests relevant to the finding.
+        # Corresponds to the JSON property `requests`
+        # @return [Google::Apis::SecuritycenterV1beta1::Requests]
+        attr_accessor :requests
+      
+        # Information about the [Google Cloud Armor security policy](https://cloud.
+        # google.com/armor/docs/security-policy-overview) relevant to the finding.
+        # Corresponds to the JSON property `securityPolicy`
+        # @return [Google::Apis::SecuritycenterV1beta1::SecurityPolicy]
+        attr_accessor :security_policy
+      
+        # Distinguish between volumetric & protocol DDoS attack and application layer
+        # attacks. For example, “L3_4” for Layer 3 and Layer 4 DDoS attacks, or “L_7”
+        # for Layer 7 DDoS attacks.
+        # Corresponds to the JSON property `threatVector`
+        # @return [String]
+        attr_accessor :threat_vector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adaptive_protection = args[:adaptive_protection] if args.key?(:adaptive_protection)
+          @attack = args[:attack] if args.key?(:attack)
+          @duration = args[:duration] if args.key?(:duration)
+          @requests = args[:requests] if args.key?(:requests)
+          @security_policy = args[:security_policy] if args.key?(:security_policy)
+          @threat_vector = args[:threat_vector] if args.key?(:threat_vector)
+        end
+      end
+      
       # The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated
       # with the finding.
       class CloudDlpDataProfile
@@ -796,6 +1021,11 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # The cloud provider for the compliance snapshot.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
         # The compliance standard (ie CIS).
         # Corresponds to the JSON property `complianceStandard`
         # @return [String]
@@ -821,12 +1051,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The CRM resource display name that is closest to the snapshot the Findings
-        # belong to.
-        # Corresponds to the JSON property `projectDisplayName`
-        # @return [String]
-        attr_accessor :project_display_name
-      
         # The snapshot time of the snapshot.
         # Corresponds to the JSON property `snapshotTime`
         # @return [String]
@@ -839,12 +1063,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @category = args[:category] if args.key?(:category)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @compliance_standard = args[:compliance_standard] if args.key?(:compliance_standard)
           @compliance_version = args[:compliance_version] if args.key?(:compliance_version)
           @count = args[:count] if args.key?(:count)
           @leaf_container_resource = args[:leaf_container_resource] if args.key?(:leaf_container_resource)
           @name = args[:name] if args.key?(:name)
-          @project_display_name = args[:project_display_name] if args.key?(:project_display_name)
           @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
         end
       end
@@ -1499,6 +1723,11 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Fields related to Google Cloud Armor findings.
+        # Corresponds to the JSON property `cloudArmor`
+        # @return [Google::Apis::SecuritycenterV1beta1::CloudArmor]
+        attr_accessor :cloud_armor
+      
         # The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated
         # with the finding.
         # Corresponds to the JSON property `cloudDlpDataProfile`
@@ -1680,6 +1909,13 @@ module Google
         # @return [String]
         attr_accessor :next_steps
       
+        # Represents a Jupyter notebook IPYNB file, such as a [Colab Enterprise notebook]
+        # (https://cloud.google.com/colab/docs/introduction) file, that is associated
+        # with a finding.
+        # Corresponds to the JSON property `notebook`
+        # @return [Google::Apis::SecuritycenterV1beta1::Notebook]
+        attr_accessor :notebook
+      
         # Contains information about the org policies associated with the finding.
         # Corresponds to the JSON property `orgPolicies`
         # @return [Array<Google::Apis::SecuritycenterV1beta1::OrgPolicy>]
@@ -1765,6 +2001,7 @@ module Google
           @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
+          @cloud_armor = args[:cloud_armor] if args.key?(:cloud_armor)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
           @cloud_dlp_inspection = args[:cloud_dlp_inspection] if args.key?(:cloud_dlp_inspection)
           @compliances = args[:compliances] if args.key?(:compliances)
@@ -1793,6 +2030,7 @@ module Google
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
           @next_steps = args[:next_steps] if args.key?(:next_steps)
+          @notebook = args[:notebook] if args.key?(:notebook)
           @org_policies = args[:org_policies] if args.key?(:org_policies)
           @parent = args[:parent] if args.key?(:parent)
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
@@ -1830,6 +2068,58 @@ module Google
         def update!(**args)
           @resource_folder = args[:resource_folder] if args.key?(:resource_folder)
           @resource_folder_display_name = args[:resource_folder_display_name] if args.key?(:resource_folder_display_name)
+        end
+      end
+      
+      # GCP metadata associated with the resource, only applicable if the finding's
+      # cloud provider is Google Cloud Platform.
+      class GcpMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Contains a Folder message for each folder in the assets ancestry.
+        # The first folder is the deepest nested folder, and the last folder is the
+        # folder directly under the Organization.
+        # Corresponds to the JSON property `folders`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Folder>]
+        attr_accessor :folders
+      
+        # The name of the organization that the resource belongs to.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
+        # The full resource name of resource's parent.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # The human readable name of resource's parent.
+        # Corresponds to the JSON property `parentDisplayName`
+        # @return [String]
+        attr_accessor :parent_display_name
+      
+        # The full resource name of project that the resource belongs to.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # The project ID that the resource belongs to.
+        # Corresponds to the JSON property `projectDisplayName`
+        # @return [String]
+        attr_accessor :project_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folders = args[:folders] if args.key?(:folders)
+          @organization = args[:organization] if args.key?(:organization)
+          @parent = args[:parent] if args.key?(:parent)
+          @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
+          @project = args[:project] if args.key?(:project)
+          @project_display_name = args[:project_display_name] if args.key?(:project_display_name)
         end
       end
       
@@ -2421,6 +2711,17 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         include Google::Apis::Core::Hashable
       
+        # AWS metadata associated with the resource, only applicable if the finding's
+        # cloud provider is Amazon Web Services.
+        # Corresponds to the JSON property `awsMetadata`
+        # @return [Google::Apis::SecuritycenterV1beta1::AwsMetadata]
+        attr_accessor :aws_metadata
+      
+        # Indicates which cloud provider the resource resides in.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
         # The human readable name of the resource.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -2433,11 +2734,22 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta1::Folder>]
         attr_accessor :folders
       
+        # The region or location of the service (if applicable).
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # The full resource name of the resource. See: https://cloud.google.com/apis/
         # design/resource_names#full_resource_name
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Indicates which organization or tenant in the cloud provider the finding
+        # applies to.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
       
         # The full resource name of resource's parent.
         # Corresponds to the JSON property `parent`
@@ -2459,6 +2771,30 @@ module Google
         # @return [String]
         attr_accessor :project_display_name
       
+        # Represents the path of resources leading up to the resource this finding is
+        # about.
+        # Corresponds to the JSON property `resourcePath`
+        # @return [Google::Apis::SecuritycenterV1beta1::ResourcePath]
+        attr_accessor :resource_path
+      
+        # A string representation of the resource path. For GCP, it has the format of:
+        # organizations/`organization_id`/folders/`folder_id`/folders/`folder_id`/
+        # projects/`project_id` where there can be any number of folders. For AWS, it
+        # has the format of: org/`organization_id`/ou/`organizational_unit_id`/ou/`
+        # organizational_unit_id`/account/`account_id` where there can be any number of
+        # organizational units. For Azure, it has the format of: mg/`management_group_id`
+        # /mg/`management_group_id`/subscription/`subscription_id`/rg/`
+        # resource_group_name` where there can be any number of management groups.
+        # Corresponds to the JSON property `resourcePathString`
+        # @return [String]
+        attr_accessor :resource_path_string
+      
+        # The parent service or product from which the resource is provided, for example,
+        # GKE or SNS.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
         # The full resource type of the resource.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2470,13 +2806,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @display_name = args[:display_name] if args.key?(:display_name)
           @folders = args[:folders] if args.key?(:folders)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @organization = args[:organization] if args.key?(:organization)
           @parent = args[:parent] if args.key?(:parent)
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @project = args[:project] if args.key?(:project)
           @project_display_name = args[:project_display_name] if args.key?(:project_display_name)
+          @resource_path = args[:resource_path] if args.key?(:resource_path)
+          @resource_path_string = args[:resource_path_string] if args.key?(:resource_path_string)
+          @service = args[:service] if args.key?(:service)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -2504,6 +2847,11 @@ module Google
       # to resource values. Used in Attack path simulations.
       class GoogleCloudSecuritycenterV1ResourceValueConfig
         include Google::Apis::Core::Hashable
+      
+        # Cloud provider this configuration applies to
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
       
         # Output only. Timestamp this resource value config was created.
         # Corresponds to the JSON property `createTime`
@@ -2573,6 +2921,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
@@ -3335,6 +3684,31 @@ module Google
         end
       end
       
+      # Information about [Google Cloud Armor Adaptive Protection](https://cloud.
+      # google.com/armor/docs/cloud-armor-overview#google-cloud-armor-adaptive-
+      # protection).
+      class GoogleCloudSecuritycenterV2AdaptiveProtection
+        include Google::Apis::Core::Hashable
+      
+        # A score of 0 means that there is low confidence that the detected event is an
+        # actual attack. A score of 1 means that there is high confidence that the
+        # detected event is an attack. See the [Adaptive Protection documentation](https:
+        # //cloud.google.com/armor/docs/adaptive-protection-overview#configure-alert-
+        # tuning) for further explanation.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+        end
+      end
+      
       # Represents an application associated with a finding.
       class GoogleCloudSecuritycenterV2Application
         include Google::Apis::Core::Hashable
@@ -3359,6 +3733,37 @@ module Google
         def update!(**args)
           @base_uri = args[:base_uri] if args.key?(:base_uri)
           @full_uri = args[:full_uri] if args.key?(:full_uri)
+        end
+      end
+      
+      # Information about DDoS attack volume and classification.
+      class GoogleCloudSecuritycenterV2Attack
+        include Google::Apis::Core::Hashable
+      
+        # Type of attack, for example, ‘SYN-flood’, ‘NTP-udp’, or ‘CHARGEN-udp’.
+        # Corresponds to the JSON property `classification`
+        # @return [String]
+        attr_accessor :classification
+      
+        # Total BPS (bytes per second) volume of attack.
+        # Corresponds to the JSON property `volumeBps`
+        # @return [Fixnum]
+        attr_accessor :volume_bps
+      
+        # Total PPS (packets per second) volume of attack.
+        # Corresponds to the JSON property `volumePps`
+        # @return [Fixnum]
+        attr_accessor :volume_pps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classification = args[:classification] if args.key?(:classification)
+          @volume_bps = args[:volume_bps] if args.key?(:volume_bps)
+          @volume_pps = args[:volume_pps] if args.key?(:volume_pps)
         end
       end
       
@@ -3422,6 +3827,120 @@ module Google
           @latest_calculation_time = args[:latest_calculation_time] if args.key?(:latest_calculation_time)
           @score = args[:score] if args.key?(:score)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # An AWS account that is a member of an organization.
+      class GoogleCloudSecuritycenterV2AwsAccount
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier (ID) of the account, containing exactly 12 digits.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The friendly name of this account.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # AWS metadata associated with the resource, only applicable if the finding's
+      # cloud provider is Amazon Web Services.
+      class GoogleCloudSecuritycenterV2AwsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # An AWS account that is a member of an organization.
+        # Corresponds to the JSON property `account`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AwsAccount]
+        attr_accessor :account
+      
+        # An organization is a collection of accounts that are centrally managed
+        # together using consolidated billing, organized hierarchically with
+        # organizational units (OUs), and controlled with policies.
+        # Corresponds to the JSON property `organization`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AwsOrganization]
+        attr_accessor :organization
+      
+        # A list of AWS organizational units associated with the resource, ordered from
+        # lowest level (closest to the account) to highest level.
+        # Corresponds to the JSON property `organizationalUnits`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AwsOrganizationalUnit>]
+        attr_accessor :organizational_units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account = args[:account] if args.key?(:account)
+          @organization = args[:organization] if args.key?(:organization)
+          @organizational_units = args[:organizational_units] if args.key?(:organizational_units)
+        end
+      end
+      
+      # An organization is a collection of accounts that are centrally managed
+      # together using consolidated billing, organized hierarchically with
+      # organizational units (OUs), and controlled with policies.
+      class GoogleCloudSecuritycenterV2AwsOrganization
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier (ID) for the organization. The regex pattern for an
+        # organization ID string requires "o-" followed by from 10 to 32 lowercase
+        # letters or digits.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # An Organizational Unit (OU) is a container of AWS accounts within a root of an
+      # organization. Policies that are attached to an OU apply to all accounts
+      # contained in that OU and in any child OUs.
+      class GoogleCloudSecuritycenterV2AwsOrganizationalUnit
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier (ID) associated with this OU. The regex pattern for an
+        # organizational unit ID string requires "ou-" followed by from 4 to 32
+        # lowercase letters or digits (the ID of the root that contains the OU). This
+        # string is followed by a second "-" dash and from 8 to 32 additional lowercase
+        # letters or digits. For example, "ou-ab12-cd34ef56".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The friendly name of the OU.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -3654,6 +4173,61 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Fields related to Google Cloud Armor findings.
+      class GoogleCloudSecuritycenterV2CloudArmor
+        include Google::Apis::Core::Hashable
+      
+        # Information about [Google Cloud Armor Adaptive Protection](https://cloud.
+        # google.com/armor/docs/cloud-armor-overview#google-cloud-armor-adaptive-
+        # protection).
+        # Corresponds to the JSON property `adaptiveProtection`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AdaptiveProtection]
+        attr_accessor :adaptive_protection
+      
+        # Information about DDoS attack volume and classification.
+        # Corresponds to the JSON property `attack`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Attack]
+        attr_accessor :attack
+      
+        # Duration of attack from the start until the current moment (updated every 5
+        # minutes).
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Information about the requests relevant to the finding.
+        # Corresponds to the JSON property `requests`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Requests]
+        attr_accessor :requests
+      
+        # Information about the [Google Cloud Armor security policy](https://cloud.
+        # google.com/armor/docs/security-policy-overview) relevant to the finding.
+        # Corresponds to the JSON property `securityPolicy`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SecurityPolicy]
+        attr_accessor :security_policy
+      
+        # Distinguish between volumetric & protocol DDoS attack and application layer
+        # attacks. For example, “L3_4” for Layer 3 and Layer 4 DDoS attacks, or “L_7”
+        # for Layer 7 DDoS attacks.
+        # Corresponds to the JSON property `threatVector`
+        # @return [String]
+        attr_accessor :threat_vector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adaptive_protection = args[:adaptive_protection] if args.key?(:adaptive_protection)
+          @attack = args[:attack] if args.key?(:attack)
+          @duration = args[:duration] if args.key?(:duration)
+          @requests = args[:requests] if args.key?(:requests)
+          @security_policy = args[:security_policy] if args.key?(:security_policy)
+          @threat_vector = args[:threat_vector] if args.key?(:threat_vector)
         end
       end
       
@@ -4473,6 +5047,11 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Fields related to Google Cloud Armor findings.
+        # Corresponds to the JSON property `cloudArmor`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudArmor]
+        attr_accessor :cloud_armor
+      
         # The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated
         # with the finding.
         # Corresponds to the JSON property `cloudDlpDataProfile`
@@ -4659,6 +5238,13 @@ module Google
         # @return [String]
         attr_accessor :next_steps
       
+        # Represents a Jupyter notebook IPYNB file, such as a [Colab Enterprise notebook]
+        # (https://cloud.google.com/colab/docs/introduction) file, that is associated
+        # with a finding.
+        # Corresponds to the JSON property `notebook`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Notebook]
+        attr_accessor :notebook
+      
         # Contains information about the org policies associated with the finding.
         # Corresponds to the JSON property `orgPolicies`
         # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2OrgPolicy>]
@@ -4749,6 +5335,7 @@ module Google
           @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
+          @cloud_armor = args[:cloud_armor] if args.key?(:cloud_armor)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
           @cloud_dlp_inspection = args[:cloud_dlp_inspection] if args.key?(:cloud_dlp_inspection)
           @compliances = args[:compliances] if args.key?(:compliances)
@@ -4777,6 +5364,7 @@ module Google
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
           @next_steps = args[:next_steps] if args.key?(:next_steps)
+          @notebook = args[:notebook] if args.key?(:notebook)
           @org_policies = args[:org_policies] if args.key?(:org_policies)
           @parent = args[:parent] if args.key?(:parent)
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
@@ -4788,6 +5376,32 @@ module Google
           @source_properties = args[:source_properties] if args.key?(:source_properties)
           @state = args[:state] if args.key?(:state)
           @vulnerability = args[:vulnerability] if args.key?(:vulnerability)
+        end
+      end
+      
+      # Message that contains the resource name and display name of a folder resource.
+      class GoogleCloudSecuritycenterV2Folder
+        include Google::Apis::Core::Hashable
+      
+        # Full resource name of this folder. See: https://cloud.google.com/apis/design/
+        # resource_names#full_resource_name
+        # Corresponds to the JSON property `resourceFolder`
+        # @return [String]
+        attr_accessor :resource_folder
+      
+        # The user defined display name for this folder.
+        # Corresponds to the JSON property `resourceFolderDisplayName`
+        # @return [String]
+        attr_accessor :resource_folder_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_folder = args[:resource_folder] if args.key?(:resource_folder)
+          @resource_folder_display_name = args[:resource_folder_display_name] if args.key?(:resource_folder_display_name)
         end
       end
       
@@ -5297,6 +5911,45 @@ module Google
         end
       end
       
+      # Represents a Jupyter notebook IPYNB file, such as a [Colab Enterprise notebook]
+      # (https://cloud.google.com/colab/docs/introduction) file, that is associated
+      # with a finding.
+      class GoogleCloudSecuritycenterV2Notebook
+        include Google::Apis::Core::Hashable
+      
+        # The user ID of the latest author to modify the notebook.
+        # Corresponds to the JSON property `lastAuthor`
+        # @return [String]
+        attr_accessor :last_author
+      
+        # The name of the notebook.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The most recent time the notebook was updated.
+        # Corresponds to the JSON property `notebookUpdateTime`
+        # @return [String]
+        attr_accessor :notebook_update_time
+      
+        # The source notebook service, for example, "Colab Enterprise".
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_author = args[:last_author] if args.key?(:last_author)
+          @name = args[:name] if args.key?(:name)
+          @notebook_update_time = args[:notebook_update_time] if args.key?(:notebook_update_time)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
       # Cloud SCC's Notification
       class GoogleCloudSecuritycenterV2NotificationMessage
         include Google::Apis::Core::Hashable
@@ -5643,20 +6296,104 @@ module Google
         end
       end
       
+      # Information about the requests relevant to the finding.
+      class GoogleCloudSecuritycenterV2Requests
+        include Google::Apis::Core::Hashable
+      
+        # Allowed RPS (requests per second) over the long term.
+        # Corresponds to the JSON property `longTermAllowed`
+        # @return [Fixnum]
+        attr_accessor :long_term_allowed
+      
+        # Denied RPS (requests per second) over the long term.
+        # Corresponds to the JSON property `longTermDenied`
+        # @return [Fixnum]
+        attr_accessor :long_term_denied
+      
+        # For 'Increasing deny ratio', the ratio is the denied traffic divided by the
+        # allowed traffic. For 'Allowed traffic spike', the ratio is the allowed traffic
+        # in the short term divided by allowed traffic in the long term.
+        # Corresponds to the JSON property `ratio`
+        # @return [Float]
+        attr_accessor :ratio
+      
+        # Allowed RPS (requests per second) in the short term.
+        # Corresponds to the JSON property `shortTermAllowed`
+        # @return [Fixnum]
+        attr_accessor :short_term_allowed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @long_term_allowed = args[:long_term_allowed] if args.key?(:long_term_allowed)
+          @long_term_denied = args[:long_term_denied] if args.key?(:long_term_denied)
+          @ratio = args[:ratio] if args.key?(:ratio)
+          @short_term_allowed = args[:short_term_allowed] if args.key?(:short_term_allowed)
+        end
+      end
+      
       # Information related to the Google Cloud resource.
       class GoogleCloudSecuritycenterV2Resource
         include Google::Apis::Core::Hashable
+      
+        # AWS metadata associated with the resource, only applicable if the finding's
+        # cloud provider is Amazon Web Services.
+        # Corresponds to the JSON property `awsMetadata`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AwsMetadata]
+        attr_accessor :aws_metadata
+      
+        # Indicates which cloud provider the finding is from.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
       
         # The human readable name of the resource.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
+        # GCP metadata associated with the resource, only applicable if the finding's
+        # cloud provider is Google Cloud Platform.
+        # Corresponds to the JSON property `gcpMetadata`
+        # @return [Google::Apis::SecuritycenterV1beta1::GcpMetadata]
+        attr_accessor :gcp_metadata
+      
+        # The region or location of the service (if applicable).
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # The full resource name of the resource. See: https://cloud.google.com/apis/
         # design/resource_names#full_resource_name
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Represents the path of resources leading up to the resource this finding is
+        # about.
+        # Corresponds to the JSON property `resourcePath`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ResourcePath]
+        attr_accessor :resource_path
+      
+        # A string representation of the resource path. For GCP, it has the format of:
+        # organizations/`organization_id`/folders/`folder_id`/folders/`folder_id`/
+        # projects/`project_id` where there can be any number of folders. For AWS, it
+        # has the format of: org/`organization_id`/ou/`organizational_unit_id`/ou/`
+        # organizational_unit_id`/account/`account_id` where there can be any number of
+        # organizational units. For Azure, it has the format of: mg/`management_group_id`
+        # /mg/`management_group_id`/subscription/`subscription_id`/rg/`
+        # resource_group_name` where there can be any number of management groups.
+        # Corresponds to the JSON property `resourcePathString`
+        # @return [String]
+        attr_accessor :resource_path_string
+      
+        # The service or resource provider associated with the resource.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
       
         # The full resource type of the resource.
         # Corresponds to the JSON property `type`
@@ -5669,9 +6406,69 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @gcp_metadata = args[:gcp_metadata] if args.key?(:gcp_metadata)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @resource_path = args[:resource_path] if args.key?(:resource_path)
+          @resource_path_string = args[:resource_path_string] if args.key?(:resource_path_string)
+          @service = args[:service] if args.key?(:service)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents the path of resources leading up to the resource this finding is
+      # about.
+      class GoogleCloudSecuritycenterV2ResourcePath
+        include Google::Apis::Core::Hashable
+      
+        # The list of nodes that make the up resource path, ordered from lowest level to
+        # highest level.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ResourcePathNode>]
+        attr_accessor :nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nodes = args[:nodes] if args.key?(:nodes)
+        end
+      end
+      
+      # A node within the resource path. Each node represents a resource within the
+      # resource hierarchy.
+      class GoogleCloudSecuritycenterV2ResourcePathNode
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the resource this node represents.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The ID of the resource this node represents.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The type of resource this node represents.
+        # Corresponds to the JSON property `nodeType`
+        # @return [String]
+        attr_accessor :node_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @node_type = args[:node_type] if args.key?(:node_type)
         end
       end
       
@@ -5679,6 +6476,11 @@ module Google
       # to resource values. Used in Attack path simulations.
       class GoogleCloudSecuritycenterV2ResourceValueConfig
         include Google::Apis::Core::Hashable
+      
+        # Cloud provider this configuration applies to
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
       
         # Output only. Timestamp this resource value config was created.
         # Corresponds to the JSON property `createTime`
@@ -5749,6 +6551,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
@@ -5833,17 +6636,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The canonical name of the marks. The following list shows some examples: + `
-        # organizations/`organization_id`/assets/`asset_id`/securityMarks" + `
+        # organizations/`organization_id`/assets/`asset_id`/securityMarks` + `
         # organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
-        # securityMarks" + `organizations/`organization_id`/sources/`source_id`/
-        # locations/`location`/findings/`finding_id`/securityMarks" + `folders/`
-        # folder_id`/assets/`asset_id`/securityMarks" + `folders/`folder_id`/sources/`
-        # source_id`/findings/`finding_id`/securityMarks" + `folders/`folder_id`/sources/
-        # `source_id`/locations/`location`/findings/`finding_id`/securityMarks" + `
-        # projects/`project_number`/assets/`asset_id`/securityMarks" + `projects/`
-        # project_number`/sources/`source_id`/findings/`finding_id`/securityMarks" + `
+        # securityMarks` + `organizations/`organization_id`/sources/`source_id`/
+        # locations/`location`/findings/`finding_id`/securityMarks` + `folders/`
+        # folder_id`/assets/`asset_id`/securityMarks` + `folders/`folder_id`/sources/`
+        # source_id`/findings/`finding_id`/securityMarks` + `folders/`folder_id`/sources/
+        # `source_id`/locations/`location`/findings/`finding_id`/securityMarks` + `
+        # projects/`project_number`/assets/`asset_id`/securityMarks` + `projects/`
+        # project_number`/sources/`source_id`/findings/`finding_id`/securityMarks` + `
         # projects/`project_number`/sources/`source_id`/locations/`location`/findings/`
-        # finding_id`/securityMarks"
+        # finding_id`/securityMarks`
         # Corresponds to the JSON property `canonicalName`
         # @return [String]
         attr_accessor :canonical_name
@@ -5876,6 +6679,42 @@ module Google
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @marks = args[:marks] if args.key?(:marks)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Information about the [Google Cloud Armor security policy](https://cloud.
+      # google.com/armor/docs/security-policy-overview) relevant to the finding.
+      class GoogleCloudSecuritycenterV2SecurityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Google Cloud Armor security policy, for example, "my-security-
+        # policy".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Whether or not the associated rule or policy is in preview mode.
+        # Corresponds to the JSON property `preview`
+        # @return [Boolean]
+        attr_accessor :preview
+        alias_method :preview?, :preview
+      
+        # The type of Google Cloud Armor security policy for example, ‘backend security
+        # policy’, ‘edge security policy’, ‘network edge security policy’, or ‘always-on
+        # DDoS protection’.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @preview = args[:preview] if args.key?(:preview)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -6950,6 +7789,45 @@ module Google
         end
       end
       
+      # Represents a Jupyter notebook IPYNB file, such as a [Colab Enterprise notebook]
+      # (https://cloud.google.com/colab/docs/introduction) file, that is associated
+      # with a finding.
+      class Notebook
+        include Google::Apis::Core::Hashable
+      
+        # The user ID of the latest author to modify the notebook.
+        # Corresponds to the JSON property `lastAuthor`
+        # @return [String]
+        attr_accessor :last_author
+      
+        # The name of the notebook.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The most recent time the notebook was updated.
+        # Corresponds to the JSON property `notebookUpdateTime`
+        # @return [String]
+        attr_accessor :notebook_update_time
+      
+        # The source notebook service, for example, "Colab Enterprise".
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_author = args[:last_author] if args.key?(:last_author)
+          @name = args[:name] if args.key?(:name)
+          @notebook_update_time = args[:notebook_update_time] if args.key?(:notebook_update_time)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
       # Kubernetes object related to the finding, uniquely identified by GKNN. Used if
       # the object Kind is not one of Pod, Node, NodePool, Binding, or AccessReview.
       class Object
@@ -7455,6 +8333,98 @@ module Google
         end
       end
       
+      # Information about the requests relevant to the finding.
+      class Requests
+        include Google::Apis::Core::Hashable
+      
+        # Allowed RPS (requests per second) over the long term.
+        # Corresponds to the JSON property `longTermAllowed`
+        # @return [Fixnum]
+        attr_accessor :long_term_allowed
+      
+        # Denied RPS (requests per second) over the long term.
+        # Corresponds to the JSON property `longTermDenied`
+        # @return [Fixnum]
+        attr_accessor :long_term_denied
+      
+        # For 'Increasing deny ratio', the ratio is the denied traffic divided by the
+        # allowed traffic. For 'Allowed traffic spike', the ratio is the allowed traffic
+        # in the short term divided by allowed traffic in the long term.
+        # Corresponds to the JSON property `ratio`
+        # @return [Float]
+        attr_accessor :ratio
+      
+        # Allowed RPS (requests per second) in the short term.
+        # Corresponds to the JSON property `shortTermAllowed`
+        # @return [Fixnum]
+        attr_accessor :short_term_allowed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @long_term_allowed = args[:long_term_allowed] if args.key?(:long_term_allowed)
+          @long_term_denied = args[:long_term_denied] if args.key?(:long_term_denied)
+          @ratio = args[:ratio] if args.key?(:ratio)
+          @short_term_allowed = args[:short_term_allowed] if args.key?(:short_term_allowed)
+        end
+      end
+      
+      # Represents the path of resources leading up to the resource this finding is
+      # about.
+      class ResourcePath
+        include Google::Apis::Core::Hashable
+      
+        # The list of nodes that make the up resource path, ordered from lowest level to
+        # highest level.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::ResourcePathNode>]
+        attr_accessor :nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nodes = args[:nodes] if args.key?(:nodes)
+        end
+      end
+      
+      # A node within the resource path. Each node represents a resource within the
+      # resource hierarchy.
+      class ResourcePathNode
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the resource this node represents.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The ID of the resource this node represents.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The type of resource this node represents.
+        # Corresponds to the JSON property `nodeType`
+        # @return [String]
+        attr_accessor :node_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @node_type = args[:node_type] if args.key?(:node_type)
+        end
+      end
+      
       # Kubernetes Role or ClusterRole.
       class Role
         include Google::Apis::Core::Hashable
@@ -7625,6 +8595,42 @@ module Google
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @marks = args[:marks] if args.key?(:marks)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Information about the [Google Cloud Armor security policy](https://cloud.
+      # google.com/armor/docs/security-policy-overview) relevant to the finding.
+      class SecurityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Google Cloud Armor security policy, for example, "my-security-
+        # policy".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Whether or not the associated rule or policy is in preview mode.
+        # Corresponds to the JSON property `preview`
+        # @return [Boolean]
+        attr_accessor :preview
+        alias_method :preview?, :preview
+      
+        # The type of Google Cloud Armor security policy for example, ‘backend security
+        # policy’, ‘edge security policy’, ‘network edge security policy’, or ‘always-on
+        # DDoS protection’.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @preview = args[:preview] if args.key?(:preview)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -8043,6 +9049,63 @@ module Google
           @fixed_package = args[:fixed_package] if args.key?(:fixed_package)
           @offending_package = args[:offending_package] if args.key?(:offending_package)
           @security_bulletin = args[:security_bulletin] if args.key?(:security_bulletin)
+        end
+      end
+      
+      # Vulnerability count by severity.
+      class VulnerabilityCountBySeverity
+        include Google::Apis::Core::Hashable
+      
+        # Key is the Severity enum.
+        # Corresponds to the JSON property `severityToFindingCount`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :severity_to_finding_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @severity_to_finding_count = args[:severity_to_finding_count] if args.key?(:severity_to_finding_count)
+        end
+      end
+      
+      # Result containing the properties and count of a VulnerabilitySnapshot request.
+      class VulnerabilitySnapshot
+        include Google::Apis::Core::Hashable
+      
+        # The cloud provider for the vulnerability snapshot.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
+        # Vulnerability count by severity.
+        # Corresponds to the JSON property `findingCount`
+        # @return [Google::Apis::SecuritycenterV1beta1::VulnerabilityCountBySeverity]
+        attr_accessor :finding_count
+      
+        # Identifier. The vulnerability snapshot name. Format: //locations//
+        # vulnerabilitySnapshots/
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time that the snapshot was taken.
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
+          @finding_count = args[:finding_count] if args.key?(:finding_count)
+          @name = args[:name] if args.key?(:name)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
         end
       end
       
