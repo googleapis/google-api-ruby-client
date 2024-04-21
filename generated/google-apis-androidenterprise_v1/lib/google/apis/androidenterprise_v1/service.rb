@@ -394,7 +394,7 @@ module Google
         
         # Returns a unique token to access an embeddable UI. To generate a web UI, pass
         # the generated token into the managed Google Play javascript API. Each token
-        # may only be used to start one UI session. See the javascript API documentation
+        # may only be used to start one UI session. See the JavaScript API documentation
         # for further information.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
