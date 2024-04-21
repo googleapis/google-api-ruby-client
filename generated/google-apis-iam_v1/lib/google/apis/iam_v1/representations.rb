@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExtendedStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,18 @@ module Google
       end
       
       class GetPolicyOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +214,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOauthClientCredentialsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOauthClientsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRolesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OauthClient
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OauthClientCredential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Oidc
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +305,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PatchServiceAccountKeyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteOauthClientRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UndeleteRoleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,12 +575,6 @@ module Google
       end
       
       class WorkloadIdentityPoolProviderKey
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class X509
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -638,6 +686,8 @@ module Google
       class DisableServiceAccountKeyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :extended_status_message, as: 'extendedStatusMessage'
+          property :service_account_key_disable_reason, as: 'serviceAccountKeyDisableReason'
         end
       end
       
@@ -675,6 +725,14 @@ module Google
         end
       end
       
+      class ExtendedStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -687,6 +745,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :requested_policy_version, as: 'requestedPolicyVersion'
+        end
+      end
+      
+      class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes_type, as: 'attributesType'
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret::Representation
+      
+          property :issuer_uri, as: 'issuerUri'
+          property :query_parameters, as: 'queryParameters', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters::Representation
+      
+        end
+      end
+      
+      class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
         end
       end
       
@@ -775,6 +853,23 @@ module Google
         end
       end
       
+      class ListOauthClientCredentialsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :oauth_client_credentials, as: 'oauthClientCredentials', class: Google::Apis::IamV1::OauthClientCredential, decorator: Google::Apis::IamV1::OauthClientCredential::Representation
+      
+        end
+      end
+      
+      class ListOauthClientsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :oauth_clients, as: 'oauthClients', class: Google::Apis::IamV1::OauthClient, decorator: Google::Apis::IamV1::OauthClient::Representation
+      
+        end
+      end
+      
       class ListRolesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -855,6 +950,33 @@ module Google
         end
       end
       
+      class OauthClient
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_grant_types, as: 'allowedGrantTypes'
+          collection :allowed_redirect_uris, as: 'allowedRedirectUris'
+          collection :allowed_scopes, as: 'allowedScopes'
+          property :client_id, as: 'clientId'
+          property :client_type, as: 'clientType'
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :display_name, as: 'displayName'
+          property :expire_time, as: 'expireTime'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
+      class OauthClientCredential
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_secret, as: 'clientSecret'
+          property :disabled, as: 'disabled'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
       class Oidc
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -886,6 +1008,15 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PatchServiceAccountKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account_key, as: 'serviceAccountKey', class: Google::Apis::IamV1::ServiceAccountKey, decorator: Google::Apis::IamV1::ServiceAccountKey::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -1038,7 +1169,13 @@ module Google
       class ServiceAccountKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact, as: 'contact'
+          property :creator, as: 'creator'
+          property :description, as: 'description'
+          property :disable_reason, as: 'disableReason'
           property :disabled, as: 'disabled'
+          collection :extended_status, as: 'extendedStatus', class: Google::Apis::IamV1::ExtendedStatus, decorator: Google::Apis::IamV1::ExtendedStatus::Representation
+      
           property :key_algorithm, as: 'keyAlgorithm'
           property :key_origin, as: 'keyOrigin'
           property :key_type, as: 'keyType'
@@ -1117,6 +1254,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class UndeleteOauthClientRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1215,6 +1358,8 @@ module Google
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :expire_time, as: 'expireTime'
+          property :extra_attributes_oauth2_client, as: 'extraAttributesOauth2Client', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client::Representation
+      
           property :name, as: 'name'
           property :oidc, as: 'oidc', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidc, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidc::Representation
       
@@ -1271,8 +1416,6 @@ module Google
           property :saml, as: 'saml', class: Google::Apis::IamV1::Saml, decorator: Google::Apis::IamV1::Saml::Representation
       
           property :state, as: 'state'
-          property :x509, as: 'x509', class: Google::Apis::IamV1::X509, decorator: Google::Apis::IamV1::X509::Representation
-      
         end
       end
       
@@ -1285,12 +1428,6 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :use, as: 'use'
-        end
-      end
-      
-      class X509
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end
