@@ -1415,6 +1415,11 @@ module Google
         # @return [Google::Apis::TpuV2alpha1::Standard]
         attr_accessor :standard
       
+        # Output only. The state of the Reservation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1423,6 +1428,7 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @standard = args[:standard] if args.key?(:standard)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
