@@ -26,7 +26,7 @@ module Google
       class GoogleCloudRunV2BinaryAuthorization
         include Google::Apis::Core::Hashable
       
-        # If present, indicates to use Breakglass using this justification. If
+        # Optional. If present, indicates to use Breakglass using this justification. If
         # use_default is False, then it must be empty. For more information on
         # breakglass, see https://cloud.google.com/binary-authorization/docs/using-
         # breakglass
@@ -34,14 +34,14 @@ module Google
         # @return [String]
         attr_accessor :breakglass_justification
       
-        # The path to a binary authorization policy. Format: projects/`project`/
-        # platforms/cloudRun/`policy-name`
+        # Optional. The path to a binary authorization policy. Format: projects/`project`
+        # /platforms/cloudRun/`policy-name`
         # Corresponds to the JSON property `policy`
         # @return [String]
         attr_accessor :policy
       
-        # If True, indicates to use the default project's binary authorization policy.
-        # If False, binary authorization will be disabled.
+        # Optional. If True, indicates to use the default project's binary authorization
+        # policy. If False, binary authorization will be disabled.
         # Corresponds to the JSON property `useDefault`
         # @return [Boolean]
         attr_accessor :use_default
@@ -115,7 +115,7 @@ module Google
       class GoogleCloudRunV2Condition
         include Google::Apis::Core::Hashable
       
-        # A reason for the execution condition.
+        # Output only. A reason for the execution condition.
         # Corresponds to the JSON property `executionReason`
         # @return [String]
         attr_accessor :execution_reason
@@ -130,12 +130,12 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # A common (service-level) reason for this condition.
+        # Output only. A common (service-level) reason for this condition.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
       
-        # A reason for the revision condition.
+        # Output only. A reason for the revision condition.
         # Corresponds to the JSON property `revisionReason`
         # @return [String]
         attr_accessor :revision_reason
@@ -842,16 +842,17 @@ module Google
       class GoogleCloudRunV2GrpcAction
         include Google::Apis::Core::Hashable
       
-        # Port number of the gRPC service. Number must be in the range 1 to 65535. If
-        # not specified, defaults to the exposed port of the container, which is the
-        # value of container.ports[0].containerPort.
+        # Optional. Port number of the gRPC service. Number must be in the range 1 to
+        # 65535. If not specified, defaults to the exposed port of the container, which
+        # is the value of container.ports[0].containerPort.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
       
-        # Service is the name of the service to place in the gRPC HealthCheckRequest (
-        # see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this
-        # is not specified, the default behavior is defined by gRPC.
+        # Optional. Service is the name of the service to place in the gRPC
+        # HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-
+        # checking.md ). If this is not specified, the default behavior is defined by
+        # gRPC.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -871,19 +872,19 @@ module Google
       class GoogleCloudRunV2HttpGetAction
         include Google::Apis::Core::Hashable
       
-        # Custom headers to set in the request. HTTP allows repeated headers.
+        # Optional. Custom headers to set in the request. HTTP allows repeated headers.
         # Corresponds to the JSON property `httpHeaders`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2HttpHeader>]
         attr_accessor :http_headers
       
-        # Path to access on the HTTP server. Defaults to '/'.
+        # Optional. Path to access on the HTTP server. Defaults to '/'.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
       
-        # Port number to access on the container. Must be in the range 1 to 65535. If
-        # not specified, defaults to the exposed port of the container, which is the
-        # value of container.ports[0].containerPort.
+        # Optional. Port number to access on the container. Must be in the range 1 to
+        # 65535. If not specified, defaults to the exposed port of the container, which
+        # is the value of container.ports[0].containerPort.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -909,7 +910,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The header field value
+        # Optional. The header field value
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -1114,6 +1115,13 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # A unique string used as a suffix creating a new execution. The Job will become
+        # ready when the execution is successfully started. The sum of job name and
+        # token length must be fewer than 63 characters.
+        # Corresponds to the JSON property `startExecutionToken`
+        # @return [String]
+        attr_accessor :start_execution_token
+      
         # ExecutionTemplate describes the data an execution should have when created
         # from a template.
         # Corresponds to the JSON property `template`
@@ -1163,6 +1171,7 @@ module Google
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @start_execution_token = args[:start_execution_token] if args.key?(:start_execution_token)
           @template = args[:template] if args.key?(:template)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
           @uid = args[:uid] if args.key?(:uid)
@@ -1355,25 +1364,25 @@ module Google
       class GoogleCloudRunV2NetworkInterface
         include Google::Apis::Core::Hashable
       
-        # The VPC network that the Cloud Run resource will be able to send traffic to.
-        # At least one of network or subnetwork must be specified. If both network and
-        # subnetwork are specified, the given VPC subnetwork must belong to the given
-        # VPC network. If network is not specified, it will be looked up from the
-        # subnetwork.
+        # Optional. The VPC network that the Cloud Run resource will be able to send
+        # traffic to. At least one of network or subnetwork must be specified. If both
+        # network and subnetwork are specified, the given VPC subnetwork must belong to
+        # the given VPC network. If network is not specified, it will be looked up from
+        # the subnetwork.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # The VPC subnetwork that the Cloud Run resource will get IPs from. At least one
-        # of network or subnetwork must be specified. If both network and subnetwork are
-        # specified, the given VPC subnetwork must belong to the given VPC network. If
-        # subnetwork is not specified, the subnetwork with the same name with the
-        # network will be used.
+        # Optional. The VPC subnetwork that the Cloud Run resource will get IPs from. At
+        # least one of network or subnetwork must be specified. If both network and
+        # subnetwork are specified, the given VPC subnetwork must belong to the given
+        # VPC network. If subnetwork is not specified, the subnetwork with the same name
+        # with the network will be used.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
       
-        # Network tags applied to this Cloud Run resource.
+        # Optional. Network tags applied to this Cloud Run resource.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -1429,8 +1438,8 @@ module Google
       class GoogleCloudRunV2Probe
         include Google::Apis::Core::Hashable
       
-        # Minimum consecutive failures for the probe to be considered failed after
-        # having succeeded. Defaults to 3. Minimum value is 1.
+        # Optional. Minimum consecutive failures for the probe to be considered failed
+        # after having succeeded. Defaults to 3. Minimum value is 1.
         # Corresponds to the JSON property `failureThreshold`
         # @return [Fixnum]
         attr_accessor :failure_threshold
@@ -1445,16 +1454,16 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2HttpGetAction]
         attr_accessor :http_get
       
-        # Number of seconds after the container has started before the probe is
-        # initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for
+        # Optional. Number of seconds after the container has started before the probe
+        # is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for
         # liveness probe is 3600. Maximum value for startup probe is 240.
         # Corresponds to the JSON property `initialDelaySeconds`
         # @return [Fixnum]
         attr_accessor :initial_delay_seconds
       
-        # How often (in seconds) to perform the probe. Default to 10 seconds. Minimum
-        # value is 1. Maximum value for liveness probe is 3600. Maximum value for
-        # startup probe is 240. Must be greater or equal than timeout_seconds.
+        # Optional. How often (in seconds) to perform the probe. Default to 10 seconds.
+        # Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value
+        # for startup probe is 240. Must be greater or equal than timeout_seconds.
         # Corresponds to the JSON property `periodSeconds`
         # @return [Fixnum]
         attr_accessor :period_seconds
@@ -1464,8 +1473,9 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2TcpSocketAction]
         attr_accessor :tcp_socket
       
-        # Number of seconds after which the probe times out. Defaults to 1 second.
-        # Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+        # Optional. Number of seconds after which the probe times out. Defaults to 1
+        # second. Minimum value is 1. Maximum value is 3600. Must be smaller than
+        # period_seconds.
         # Corresponds to the JSON property `timeoutSeconds`
         # @return [Fixnum]
         attr_accessor :timeout_seconds
@@ -1759,12 +1769,12 @@ module Google
       class GoogleCloudRunV2RevisionScaling
         include Google::Apis::Core::Hashable
       
-        # Maximum number of serving instances that this resource should have.
+        # Optional. Maximum number of serving instances that this resource should have.
         # Corresponds to the JSON property `maxInstanceCount`
         # @return [Fixnum]
         attr_accessor :max_instance_count
       
-        # Minimum number of serving instances that this resource should have.
+        # Optional. Minimum number of serving instances that this resource should have.
         # Corresponds to the JSON property `minInstanceCount`
         # @return [Fixnum]
         attr_accessor :min_instance_count
@@ -1804,10 +1814,10 @@ module Google
       class GoogleCloudRunV2RevisionTemplate
         include Google::Apis::Core::Hashable
       
-        # Unstructured key value map that may be set by external tools to store and
-        # arbitrary metadata. They are not queryable and should be preserved when
-        # modifying objects. Cloud Run API v2 does not support annotations with `run.
-        # googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `
+        # Optional. Unstructured key value map that may be set by external tools to
+        # store and arbitrary metadata. They are not queryable and should be preserved
+        # when modifying objects. Cloud Run API v2 does not support annotations with `
+        # run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `
         # autoscaling.knative.dev` namespaces, and they will be rejected. All system
         # annotations in v1 now have a corresponding field in v2 RevisionTemplate. This
         # field follows Kubernetes annotations' namespacing, limits, and rules.
@@ -1828,7 +1838,7 @@ module Google
         # @return [String]
         attr_accessor :encryption_key
       
-        # The sandbox environment to host this Revision.
+        # Optional. The sandbox environment to host this Revision.
         # Corresponds to the JSON property `executionEnvironment`
         # @return [String]
         attr_accessor :execution_environment
@@ -1839,26 +1849,27 @@ module Google
         attr_accessor :health_check_disabled
         alias_method :health_check_disabled?, :health_check_disabled
       
-        # Unstructured key value map that can be used to organize and categorize objects.
-        # User-provided labels are shared with Google's billing system, so they can be
-        # used to filter, or break down billing charges by team, component, environment,
-        # state, etc. For more information, visit https://cloud.google.com/resource-
-        # manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/
-        # configuring/labels. Cloud Run API v2 does not support labels with `run.
-        # googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `
-        # autoscaling.knative.dev` namespaces, and they will be rejected. All system
-        # labels in v1 now have a corresponding field in v2 RevisionTemplate.
+        # Optional. Unstructured key value map that can be used to organize and
+        # categorize objects. User-provided labels are shared with Google's billing
+        # system, so they can be used to filter, or break down billing charges by team,
+        # component, environment, state, etc. For more information, visit https://cloud.
+        # google.com/resource-manager/docs/creating-managing-labels or https://cloud.
+        # google.com/run/docs/configuring/labels. Cloud Run API v2 does not support
+        # labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`
+        # , or `autoscaling.knative.dev` namespaces, and they will be rejected. All
+        # system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Sets the maximum number of requests that each serving instance can receive.
+        # Optional. Sets the maximum number of requests that each serving instance can
+        # receive.
         # Corresponds to the JSON property `maxInstanceRequestConcurrency`
         # @return [Fixnum]
         attr_accessor :max_instance_request_concurrency
       
-        # The unique name for the revision. If this field is omitted, it will be
-        # automatically generated based on the Service name.
+        # Optional. The unique name for the revision. If this field is omitted, it will
+        # be automatically generated based on the Service name.
         # Corresponds to the JSON property `revision`
         # @return [String]
         attr_accessor :revision
@@ -1868,10 +1879,10 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling]
         attr_accessor :scaling
       
-        # Email address of the IAM service account associated with the revision of the
-        # service. The service account represents the identity of the running revision,
-        # and determines what permissions the revision has. If not provided, the
-        # revision will use the project's default service account.
+        # Optional. Email address of the IAM service account associated with the
+        # revision of the service. The service account represents the identity of the
+        # running revision, and determines what permissions the revision has. If not
+        # provided, the revision will use the project's default service account.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -1882,12 +1893,12 @@ module Google
         attr_accessor :session_affinity
         alias_method :session_affinity?, :session_affinity
       
-        # Max allowed time for an instance to respond to a request.
+        # Optional. Max allowed time for an instance to respond to a request.
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
       
-        # A list of Volumes to make available to containers.
+        # Optional. A list of Volumes to make available to containers.
         # Corresponds to the JSON property `volumes`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
         attr_accessor :volumes
@@ -2131,8 +2142,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :generation
       
-        # Provides the ingress settings for this Service. On output, returns the
-        # currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no
+        # Optional. Provides the ingress settings for this Service. On output, returns
+        # the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no
         # revision is active.
         # Corresponds to the JSON property `ingress`
         # @return [String]
@@ -2169,13 +2180,13 @@ module Google
         # @return [String]
         attr_accessor :latest_ready_revision
       
-        # The launch stage as defined by [Google Cloud Platform Launch Stages](https://
-        # cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and
-        # `GA`. If no value is specified, GA is assumed. Set the launch stage to a
-        # preview stage on input to allow use of preview features in that stage. On read
-        # (or output), describes whether the resource uses preview features. For example,
-        # if ALPHA is provided as input, but only BETA and GA-level features are used,
-        # this field will be BETA on output.
+        # Optional. The launch stage as defined by [Google Cloud Platform Launch Stages](
+        # https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `
+        # BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage
+        # to a preview stage on input to allow use of preview features in that stage. On
+        # read (or output), describes whether the resource uses preview features. For
+        # example, if ALPHA is provided as input, but only BETA and GA-level features
+        # are used, this field will be BETA on output.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
         attr_accessor :launch_stage
@@ -2242,9 +2253,9 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
         attr_accessor :terminal_condition
       
-        # Specifies how to distribute traffic over a collection of Revisions belonging
-        # to the Service. If traffic is empty or not provided, defaults to 100% traffic
-        # to the latest `Ready` Revision.
+        # Optional. Specifies how to distribute traffic over a collection of Revisions
+        # belonging to the Service. If traffic is empty or not provided, defaults to 100%
+        # traffic to the latest `Ready` Revision.
         # Corresponds to the JSON property `traffic`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2TrafficTarget>]
         attr_accessor :traffic
@@ -2318,9 +2329,9 @@ module Google
       class GoogleCloudRunV2ServiceScaling
         include Google::Apis::Core::Hashable
       
-        # total min instances for the service. This number of instances is divided among
-        # all revisions with specified traffic based on the percent of traffic they are
-        # receiving. (BETA)
+        # Optional. total min instances for the service. This number of instances is
+        # divided among all revisions with specified traffic based on the percent of
+        # traffic they are receiving. (BETA)
         # Corresponds to the JSON property `minInstanceCount`
         # @return [Fixnum]
         attr_accessor :min_instance_count
@@ -2339,9 +2350,9 @@ module Google
       class GoogleCloudRunV2TcpSocketAction
         include Google::Apis::Core::Hashable
       
-        # Port number to access on the container. Must be in the range 1 to 65535. If
-        # not specified, defaults to the exposed port of the container, which is the
-        # value of container.ports[0].containerPort.
+        # Optional. Port number to access on the container. Must be in the range 1 to
+        # 65535. If not specified, defaults to the exposed port of the container, which
+        # is the value of container.ports[0].containerPort.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -2636,7 +2647,7 @@ module Google
         # @return [String]
         attr_accessor :encryption_key
       
-        # The execution environment being used to host this Task.
+        # Optional. The execution environment being used to host this Task.
         # Corresponds to the JSON property `executionEnvironment`
         # @return [String]
         attr_accessor :execution_environment
@@ -2647,23 +2658,23 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_retries
       
-        # Email address of the IAM service account associated with the Task of a Job.
-        # The service account represents the identity of the running task, and
+        # Optional. Email address of the IAM service account associated with the Task of
+        # a Job. The service account represents the identity of the running task, and
         # determines what permissions the task has. If not provided, the task will use
         # the project's default service account.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
       
-        # Max allowed time duration the Task may be active before the system will
-        # actively try to mark it failed and kill associated containers. This applies
-        # per attempt of a task, meaning each retry can run for the full timeout.
+        # Optional. Max allowed time duration the Task may be active before the system
+        # will actively try to mark it failed and kill associated containers. This
+        # applies per attempt of a task, meaning each retry can run for the full timeout.
         # Defaults to 600 seconds.
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
       
-        # A list of Volumes to make available to containers.
+        # Optional. A list of Volumes to make available to containers.
         # Corresponds to the JSON property `volumes`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
         attr_accessor :volumes
@@ -2913,14 +2924,14 @@ module Google
         # @return [String]
         attr_accessor :connector
       
-        # Traffic VPC egress settings. If not provided, it defaults to
+        # Optional. Traffic VPC egress settings. If not provided, it defaults to
         # PRIVATE_RANGES_ONLY.
         # Corresponds to the JSON property `egress`
         # @return [String]
         attr_accessor :egress
       
-        # Direct VPC egress settings. Currently only single network interface is
-        # supported.
+        # Optional. Direct VPC egress settings. Currently only single network interface
+        # is supported.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2NetworkInterface>]
         attr_accessor :network_interfaces

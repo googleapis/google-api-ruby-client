@@ -363,9 +363,9 @@ module Google
         #   location`/jobs/`job`
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Job] google_cloud_run_v2_job_object
         # @param [Boolean] allow_missing
-        #   If set to true, and if the Job does not exist, it will create a new one.
-        #   Caller must have both create and update permissions for this call if this is
-        #   set to true.
+        #   Optional. If set to true, and if the Job does not exist, it will create a new
+        #   one. Caller must have both create and update permissions for this call if this
+        #   is set to true.
         # @param [Boolean] validate_only
         #   Indicates that the request should be validated and default values populated,
         #   without persisting the request or updating any resources.
@@ -1127,9 +1127,9 @@ module Google
         #   location`/services/`service_id`
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Service] google_cloud_run_v2_service_object
         # @param [Boolean] allow_missing
-        #   If set to true, and if the Service does not exist, it will create a new one.
-        #   The caller must have 'run.services.create' permissions if this is set to true
-        #   and the Service does not exist.
+        #   Optional. If set to true, and if the Service does not exist, it will create a
+        #   new one. The caller must have 'run.services.create' permissions if this is set
+        #   to true and the Service does not exist.
         # @param [String] update_mask
         #   Optional. The list of fields to be updated.
         # @param [Boolean] validate_only
