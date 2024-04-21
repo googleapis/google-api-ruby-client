@@ -302,15 +302,15 @@ module Google
         # /providers/"`, `"key": "host", "value": "sts.amazonaws.com"` . ], "method": "
         # POST", "url": "https://sts.amazonaws.com?Action=GetCallerIdentity&Version=2011-
         # 06-15" ` ``` If the token is a SAML 2.0 assertion, it must use the format
-        # defined in [the SAML 2.0 spec](https://www.oasis-open.org/committees/download.
-        # php/56776/sstc-saml-core-errata-2.0-wd-07.pdf), and the `subject_token_type`
-        # must be `urn:ietf:params:oauth:token-type:saml2`. See [Verification of
-        # external credentials](https://cloud.google.com/iam/docs/using-workload-
-        # identity-federation#verification_of_external_credentials) for details on how
-        # SAML 2.0 assertions are validated during token exchanges. You can also use a
-        # Google-issued OAuth 2.0 access token with this field to obtain an access token
-        # with new security attributes applied, such as a Credential Access Boundary. In
-        # this case, set `subject_token_type` to `urn:ietf:params:oauth:token-type:
+        # defined in [the SAML 2.0 spec](https://docs.oasis-open.org/security/saml/Post2.
+        # 0/sstc-saml-tech-overview-2.0-cd-02.pdf), and the `subject_token_type` must be
+        # `urn:ietf:params:oauth:token-type:saml2`. See [Verification of external
+        # credentials](https://cloud.google.com/iam/docs/using-workload-identity-
+        # federation#verification_of_external_credentials) for details on how SAML 2.0
+        # assertions are validated during token exchanges. You can also use a Google-
+        # issued OAuth 2.0 access token with this field to obtain an access token with
+        # new security attributes applied, such as a Credential Access Boundary. In this
+        # case, set `subject_token_type` to `urn:ietf:params:oauth:token-type:
         # access_token`. If an access token already contains security attributes, you
         # cannot apply additional security attributes.
         # Corresponds to the JSON property `subjectToken`
