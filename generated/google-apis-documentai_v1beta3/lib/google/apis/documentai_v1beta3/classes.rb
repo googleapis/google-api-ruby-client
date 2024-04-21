@@ -3275,25 +3275,25 @@ module Google
         # @return [Float]
         attr_accessor :pixel_font_size
       
-        # Whether the text is in small caps.
+        # Whether the text is in small caps. This feature is not supported yet.
         # Corresponds to the JSON property `smallcaps`
         # @return [Boolean]
         attr_accessor :smallcaps
         alias_method :smallcaps?, :smallcaps
       
-        # Whether the text is strikethrough.
+        # Whether the text is strikethrough. This feature is not supported yet.
         # Corresponds to the JSON property `strikeout`
         # @return [Boolean]
         attr_accessor :strikeout
         alias_method :strikeout?, :strikeout
       
-        # Whether the text is a subscript.
+        # Whether the text is a subscript. This feature is not supported yet.
         # Corresponds to the JSON property `subscript`
         # @return [Boolean]
         attr_accessor :subscript
         alias_method :subscript?, :subscript
       
-        # Whether the text is a superscript.
+        # Whether the text is a superscript. This feature is not supported yet.
         # Corresponds to the JSON property `superscript`
         # @return [Boolean]
         attr_accessor :superscript
@@ -5424,25 +5424,25 @@ module Google
         # @return [Float]
         attr_accessor :pixel_font_size
       
-        # Whether the text is in small caps.
+        # Whether the text is in small caps. This feature is not supported yet.
         # Corresponds to the JSON property `smallcaps`
         # @return [Boolean]
         attr_accessor :smallcaps
         alias_method :smallcaps?, :smallcaps
       
-        # Whether the text is strikethrough.
+        # Whether the text is strikethrough. This feature is not supported yet.
         # Corresponds to the JSON property `strikeout`
         # @return [Boolean]
         attr_accessor :strikeout
         alias_method :strikeout?, :strikeout
       
-        # Whether the text is a subscript.
+        # Whether the text is a subscript. This feature is not supported yet.
         # Corresponds to the JSON property `subscript`
         # @return [Boolean]
         attr_accessor :subscript
         alias_method :subscript?, :subscript
       
-        # Whether the text is a superscript.
+        # Whether the text is a superscript. This feature is not supported yet.
         # Corresponds to the JSON property `superscript`
         # @return [Boolean]
         attr_accessor :superscript
@@ -8831,25 +8831,25 @@ module Google
         # @return [Float]
         attr_accessor :pixel_font_size
       
-        # Whether the text is in small caps.
+        # Whether the text is in small caps. This feature is not supported yet.
         # Corresponds to the JSON property `smallcaps`
         # @return [Boolean]
         attr_accessor :smallcaps
         alias_method :smallcaps?, :smallcaps
       
-        # Whether the text is strikethrough.
+        # Whether the text is strikethrough. This feature is not supported yet.
         # Corresponds to the JSON property `strikeout`
         # @return [Boolean]
         attr_accessor :strikeout
         alias_method :strikeout?, :strikeout
       
-        # Whether the text is a subscript.
+        # Whether the text is a subscript. This feature is not supported yet.
         # Corresponds to the JSON property `subscript`
         # @return [Boolean]
         attr_accessor :subscript
         alias_method :subscript?, :subscript
       
-        # Whether the text is a superscript.
+        # Whether the text is a superscript. This feature is not supported yet.
         # Corresponds to the JSON property `superscript`
         # @return [Boolean]
         attr_accessor :superscript
