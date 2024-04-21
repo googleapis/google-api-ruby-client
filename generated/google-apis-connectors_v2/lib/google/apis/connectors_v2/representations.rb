@@ -379,6 +379,7 @@ module Google
           property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
           property :name, as: 'name'
+          collection :operations, as: 'operations'
         end
       end
       
