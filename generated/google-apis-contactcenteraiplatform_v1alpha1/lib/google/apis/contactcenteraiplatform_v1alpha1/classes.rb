@@ -60,7 +60,7 @@ module Google
         end
       end
       
-      # Message describing ContactCenter object Next ID: 20
+      # Message describing ContactCenter object Next ID: 22
       class ContactCenter
         include Google::Apis::Core::Hashable
       
@@ -92,6 +92,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # First Channel to receive the updates. Meant to dev/test instances
+        # Corresponds to the JSON property `early`
+        # @return [Google::Apis::ContactcenteraiplatformV1alpha1::Early]
+        attr_accessor :early
+      
         # Message storing the instance configuration.
         # Corresponds to the JSON property `instanceConfig`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::InstanceConfig]
@@ -111,6 +116,12 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Instances in this Channel will receive updates after all instances in `Early`
+        # were updated + 2 days.
+        # Corresponds to the JSON property `normal`
+        # @return [Google::Apis::ContactcenteraiplatformV1alpha1::Normal]
+        attr_accessor :normal
       
         # Output only. A list of UJET components that should be privately accessed. This
         # field is set by reading settings from the data plane. For more information
@@ -157,10 +168,12 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @customer_domain_prefix = args[:customer_domain_prefix] if args.key?(:customer_domain_prefix)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @early = args[:early] if args.key?(:early)
           @instance_config = args[:instance_config] if args.key?(:instance_config)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @normal = args[:normal] if args.key?(:normal)
           @private_components = args[:private_components] if args.key?(:private_components)
           @saml_params = args[:saml_params] if args.key?(:saml_params)
           @state = args[:state] if args.key?(:state)
@@ -200,6 +213,19 @@ module Google
           @contact_center_count_limit = args[:contact_center_count_limit] if args.key?(:contact_center_count_limit)
           @contact_center_count_sum = args[:contact_center_count_sum] if args.key?(:contact_center_count_sum)
           @quotas = args[:quotas] if args.key?(:quotas)
+        end
+      end
+      
+      # First Channel to receive the updates. Meant to dev/test instances
+      class Early
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -425,6 +451,20 @@ module Google
         end
       end
       
+      # Instances in this Channel will receive updates after all instances in `Early`
+      # were updated + 2 days.
+      class Normal
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -496,7 +536,7 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # Message describing ContactCenter object Next ID: 20
+        # Message describing ContactCenter object Next ID: 22
         # Corresponds to the JSON property `contactCenter`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::ContactCenter]
         attr_accessor :contact_center

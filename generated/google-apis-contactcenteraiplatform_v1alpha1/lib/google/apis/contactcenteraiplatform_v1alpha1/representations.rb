@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Early
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +89,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Normal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -147,11 +159,15 @@ module Google
           property :create_time, as: 'createTime'
           property :customer_domain_prefix, as: 'customerDomainPrefix'
           property :display_name, as: 'displayName'
+          property :early, as: 'early', class: Google::Apis::ContactcenteraiplatformV1alpha1::Early, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Early::Representation
+      
           property :instance_config, as: 'instanceConfig', class: Google::Apis::ContactcenteraiplatformV1alpha1::InstanceConfig, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::InstanceConfig::Representation
       
           property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :normal, as: 'normal', class: Google::Apis::ContactcenteraiplatformV1alpha1::Normal, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Normal::Representation
+      
           collection :private_components, as: 'privateComponents'
           property :saml_params, as: 'samlParams', class: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams::Representation
       
@@ -170,6 +186,12 @@ module Google
           property :contact_center_count_sum, as: 'contactCenterCountSum'
           collection :quotas, as: 'quotas', class: Google::Apis::ContactcenteraiplatformV1alpha1::Quota, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Quota::Representation
       
+        end
+      end
+      
+      class Early
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -235,6 +257,12 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class Normal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
