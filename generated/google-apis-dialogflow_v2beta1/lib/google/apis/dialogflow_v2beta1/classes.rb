@@ -2074,6 +2074,37 @@ module Google
         end
       end
       
+      # Represents the language information of the request.
+      class GoogleCloudDialogflowCxV3LanguageInfo
+        include Google::Apis::Core::Hashable
+      
+        # The confidence score of the detected language between 0 and 1.
+        # Corresponds to the JSON property `confidenceScore`
+        # @return [Float]
+        attr_accessor :confidence_score
+      
+        # The language code specified in the original request.
+        # Corresponds to the JSON property `inputLanguageCode`
+        # @return [String]
+        attr_accessor :input_language_code
+      
+        # The language code detected for this request based on the user conversation.
+        # Corresponds to the JSON property `resolvedLanguageCode`
+        # @return [String]
+        attr_accessor :resolved_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
+          @input_language_code = args[:input_language_code] if args.key?(:input_language_code)
+          @resolved_language_code = args[:resolved_language_code] if args.key?(:resolved_language_code)
+        end
+      end
+      
       # A Dialogflow CX conversation (session) can be described and visualized as a
       # state machine. The states of a CX session are represented by pages. For each
       # flow, you define many pages, where your combined pages can handle a complete
@@ -3525,6 +3556,11 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Represents the language information of the request.
+        # Corresponds to the JSON property `languageInfo`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3LanguageInfo]
+        attr_accessor :language_info
+      
         # The list of rich message responses to present to the user. Webhook can choose
         # to append or replace this list in WebhookResponse.fulfillment_response;
         # Corresponds to the JSON property `messages`
@@ -3586,6 +3622,7 @@ module Google
           @fulfillment_info = args[:fulfillment_info] if args.key?(:fulfillment_info)
           @intent_info = args[:intent_info] if args.key?(:intent_info)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @language_info = args[:language_info] if args.key?(:language_info)
           @messages = args[:messages] if args.key?(:messages)
           @page_info = args[:page_info] if args.key?(:page_info)
           @payload = args[:payload] if args.key?(:payload)
@@ -5871,6 +5908,37 @@ module Google
         end
       end
       
+      # Represents the language information of the request.
+      class GoogleCloudDialogflowCxV3beta1LanguageInfo
+        include Google::Apis::Core::Hashable
+      
+        # The confidence score of the detected language between 0 and 1.
+        # Corresponds to the JSON property `confidenceScore`
+        # @return [Float]
+        attr_accessor :confidence_score
+      
+        # The language code specified in the original request.
+        # Corresponds to the JSON property `inputLanguageCode`
+        # @return [String]
+        attr_accessor :input_language_code
+      
+        # The language code detected for this request based on the user conversation.
+        # Corresponds to the JSON property `resolvedLanguageCode`
+        # @return [String]
+        attr_accessor :resolved_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
+          @input_language_code = args[:input_language_code] if args.key?(:input_language_code)
+          @resolved_language_code = args[:resolved_language_code] if args.key?(:resolved_language_code)
+        end
+      end
+      
       # A Dialogflow CX conversation (session) can be described and visualized as a
       # state machine. The states of a CX session are represented by pages. For each
       # flow, you define many pages, where your combined pages can handle a complete
@@ -7316,6 +7384,11 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Represents the language information of the request.
+        # Corresponds to the JSON property `languageInfo`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1LanguageInfo]
+        attr_accessor :language_info
+      
         # The list of rich message responses to present to the user. Webhook can choose
         # to append or replace this list in WebhookResponse.fulfillment_response;
         # Corresponds to the JSON property `messages`
@@ -7377,6 +7450,7 @@ module Google
           @fulfillment_info = args[:fulfillment_info] if args.key?(:fulfillment_info)
           @intent_info = args[:intent_info] if args.key?(:intent_info)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @language_info = args[:language_info] if args.key?(:language_info)
           @messages = args[:messages] if args.key?(:messages)
           @page_info = args[:page_info] if args.key?(:page_info)
           @payload = args[:payload] if args.key?(:payload)
