@@ -2017,10 +2017,13 @@ module Google
           property :api_level, as: 'apiLevel'
           property :brand, as: 'brand'
           property :enterprise, as: 'enterprise'
+          property :imei, as: 'imei'
           property :management_mode, as: 'managementMode'
+          property :meid, as: 'meid'
           property :model, as: 'model'
           property :name, as: 'name'
           property :ownership, as: 'ownership'
+          property :serial_number, as: 'serialNumber'
         end
       end
       
