@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestrictedExportPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RevokeSubscriptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -289,6 +295,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset, as: 'dataset'
+          property :restricted_export_policy, as: 'restrictedExportPolicy', class: Google::Apis::AnalyticshubV1::RestrictedExportPolicy, decorator: Google::Apis::AnalyticshubV1::RestrictedExportPolicy::Representation
+      
           collection :selected_resources, as: 'selectedResources', class: Google::Apis::AnalyticshubV1::SelectedResource, decorator: Google::Apis::AnalyticshubV1::SelectedResource::Representation
       
         end
@@ -527,6 +535,15 @@ module Google
       end
       
       class RestrictedExportConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :restrict_direct_table_access, as: 'restrictDirectTableAccess'
+          property :restrict_query_result, as: 'restrictQueryResult'
+        end
+      end
+      
+      class RestrictedExportPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'

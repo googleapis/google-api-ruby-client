@@ -108,6 +108,11 @@ module Google
         # @return [String]
         attr_accessor :dataset
       
+        # Restricted export policy used to configure restricted export on linked dataset.
+        # Corresponds to the JSON property `restrictedExportPolicy`
+        # @return [Google::Apis::AnalyticshubV1::RestrictedExportPolicy]
+        attr_accessor :restricted_export_policy
+      
         # Optional. Resources in this dataset that are selectively shared. If this field
         # is empty, then the entire dataset (all resources) are shared. This field is
         # only valid for data clean room exchanges.
@@ -122,6 +127,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataset = args[:dataset] if args.key?(:dataset)
+          @restricted_export_policy = args[:restricted_export_policy] if args.key?(:restricted_export_policy)
           @selected_resources = args[:selected_resources] if args.key?(:selected_resources)
         end
       end
@@ -1114,6 +1120,42 @@ module Google
         alias_method :enabled?, :enabled
       
         # Output only. If true, restrict direct table access(read api/tabledata.list) on
+        # linked table.
+        # Corresponds to the JSON property `restrictDirectTableAccess`
+        # @return [Boolean]
+        attr_accessor :restrict_direct_table_access
+        alias_method :restrict_direct_table_access?, :restrict_direct_table_access
+      
+        # Optional. If true, restrict export of query result derived from restricted
+        # linked dataset table.
+        # Corresponds to the JSON property `restrictQueryResult`
+        # @return [Boolean]
+        attr_accessor :restrict_query_result
+        alias_method :restrict_query_result?, :restrict_query_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @restrict_direct_table_access = args[:restrict_direct_table_access] if args.key?(:restrict_direct_table_access)
+          @restrict_query_result = args[:restrict_query_result] if args.key?(:restrict_query_result)
+        end
+      end
+      
+      # Restricted export policy used to configure restricted export on linked dataset.
+      class RestrictedExportPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, enable restricted export.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. If true, restrict direct table access (read api/tabledata.list) on
         # linked table.
         # Corresponds to the JSON property `restrictDirectTableAccess`
         # @return [Boolean]
