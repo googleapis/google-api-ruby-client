@@ -192,6 +192,110 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a Project. Returns NOT_FOUND when the project is not yet created.
+        # @param [String] name
+        #   Required. Full resource name of a Project, such as `projects/`
+        #   project_id_or_number``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProject] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProject]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProject::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProject
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Provisions the project resource. During the process, related systems will get
+        # prepared and initialized. Caller must read the [Terms for data use](https://
+        # cloud.google.com/retail/data-use-terms), and optionally specify in request to
+        # provide consent to that service terms.
+        # @param [String] name
+        #   Required. Full resource name of a Project, such as `projects/`
+        #   project_id_or_number``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProvisionProjectRequest] google_cloud_discoveryengine_v1alpha_provision_project_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def provision_project(name, google_cloud_discoveryengine_v1alpha_provision_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:provision', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProvisionProjectRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_provision_project_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates service terms for this project. This method can be used to
+        # retroactively accept the latest terms. Terms available for update: * [Terms
+        # for data use](https://cloud.google.com/retail/data-use-terms)
+        # @param [String] project
+        #   Required. Full resource name of a Project, such as `projects/`
+        #   project_id_or_number``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaReportConsentChangeRequest] google_cloud_discoveryengine_v1alpha_report_consent_change_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProject] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProject]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def report_project_consent_change(project, google_cloud_discoveryengine_v1alpha_report_consent_change_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+project}:reportConsentChange', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaReportConsentChangeRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_report_consent_change_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProject::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProject
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Estimates the data size to be used by a customer.
         # @param [String] location
         #   Required. Full resource name of the location, such as `projects/`project`/
@@ -1439,9 +1543,9 @@ module Google
         # Updates a Conversation. Conversation action type cannot be changed. If the
         # Conversation to update does not exist, a NOT_FOUND error is returned.
         # @param [String] name
-        #   Immutable. Fully qualified name `project/*/locations/global/collections/`
-        #   collection`/dataStore/*/conversations/*` or `project/*/locations/global/
-        #   collections/`collection`/engines/*/conversations/*`.
+        #   Immutable. Fully qualified name `projects/`project`/locations/global/
+        #   collections/`collection`/dataStore/*/conversations/*` or `projects/`project`/
+        #   locations/global/collections/`collection`/engines/*/conversations/*`.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation] google_cloud_discoveryengine_v1alpha_conversation_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Conversation to update. The following
@@ -2258,8 +2362,8 @@ module Google
         # Updates a Session. Session action type cannot be changed. If the Session to
         # update does not exist, a NOT_FOUND error is returned.
         # @param [String] name
-        #   Immutable. Fully qualified name `project/*/locations/global/collections/`
-        #   collection`/engines/`engine`/sessions/*`
+        #   Immutable. Fully qualified name `projects/`project`/locations/global/
+        #   collections/`collection`/engines/`engine`/sessions/*`
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession] google_cloud_discoveryengine_v1alpha_session_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Session to update. The following are
@@ -3068,8 +3172,12 @@ module Google
         
         # Writes a single user event.
         # @param [String] parent
-        #   Required. The parent DataStore resource name, such as `projects/`project`/
-        #   locations/`location`/collections/`collection`/dataStores/`data_store``.
+        #   Required. The parent resource name. If the write user event action is applied
+        #   in DataStore level, the format is: `projects/`project`/locations/`location`/
+        #   collections/`collection`/dataStores/`data_store``. If the write user event
+        #   action is applied in Location level, for example, the event with Document
+        #   across multiple DataStore, the format is: `projects/`project`/locations/`
+        #   location``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserEvent] google_cloud_discoveryengine_v1alpha_user_event_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3583,9 +3691,9 @@ module Google
         # Updates a Conversation. Conversation action type cannot be changed. If the
         # Conversation to update does not exist, a NOT_FOUND error is returned.
         # @param [String] name
-        #   Immutable. Fully qualified name `project/*/locations/global/collections/`
-        #   collection`/dataStore/*/conversations/*` or `project/*/locations/global/
-        #   collections/`collection`/engines/*/conversations/*`.
+        #   Immutable. Fully qualified name `projects/`project`/locations/global/
+        #   collections/`collection`/dataStore/*/conversations/*` or `projects/`project`/
+        #   locations/global/collections/`collection`/engines/*/conversations/*`.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation] google_cloud_discoveryengine_v1alpha_conversation_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Conversation to update. The following
@@ -4073,8 +4181,8 @@ module Google
         # Updates a Session. Session action type cannot be changed. If the Session to
         # update does not exist, a NOT_FOUND error is returned.
         # @param [String] name
-        #   Immutable. Fully qualified name `project/*/locations/global/collections/`
-        #   collection`/engines/`engine`/sessions/*`
+        #   Immutable. Fully qualified name `projects/`project`/locations/global/
+        #   collections/`collection`/engines/`engine`/sessions/*`
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession] google_cloud_discoveryengine_v1alpha_session_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Session to update. The following are
@@ -5251,9 +5359,9 @@ module Google
         # Updates a Conversation. Conversation action type cannot be changed. If the
         # Conversation to update does not exist, a NOT_FOUND error is returned.
         # @param [String] name
-        #   Immutable. Fully qualified name `project/*/locations/global/collections/`
-        #   collection`/dataStore/*/conversations/*` or `project/*/locations/global/
-        #   collections/`collection`/engines/*/conversations/*`.
+        #   Immutable. Fully qualified name `projects/`project`/locations/global/
+        #   collections/`collection`/dataStore/*/conversations/*` or `projects/`project`/
+        #   locations/global/collections/`collection`/engines/*/conversations/*`.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation] google_cloud_discoveryengine_v1alpha_conversation_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Conversation to update. The following
@@ -5999,8 +6107,8 @@ module Google
         # Updates a Session. Session action type cannot be changed. If the Session to
         # update does not exist, a NOT_FOUND error is returned.
         # @param [String] name
-        #   Immutable. Fully qualified name `project/*/locations/global/collections/`
-        #   collection`/engines/`engine`/sessions/*`
+        #   Immutable. Fully qualified name `projects/`project`/locations/global/
+        #   collections/`collection`/engines/`engine`/sessions/*`
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession] google_cloud_discoveryengine_v1alpha_session_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Session to update. The following are
@@ -6586,8 +6694,12 @@ module Google
         
         # Writes a single user event.
         # @param [String] parent
-        #   Required. The parent DataStore resource name, such as `projects/`project`/
-        #   locations/`location`/collections/`collection`/dataStores/`data_store``.
+        #   Required. The parent resource name. If the write user event action is applied
+        #   in DataStore level, the format is: `projects/`project`/locations/`location`/
+        #   collections/`collection`/dataStores/`data_store``. If the write user event
+        #   action is applied in Location level, for example, the event with Document
+        #   across multiple DataStore, the format is: `projects/`project`/locations/`
+        #   location``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserEvent] google_cloud_discoveryengine_v1alpha_user_event_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6783,6 +6895,75 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRankResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRankResponse
           command.params['rankingConfig'] = ranking_config unless ranking_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_sample_query_set_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Writes a single user event.
+        # @param [String] parent
+        #   Required. The parent resource name. If the write user event action is applied
+        #   in DataStore level, the format is: `projects/`project`/locations/`location`/
+        #   collections/`collection`/dataStores/`data_store``. If the write user event
+        #   action is applied in Location level, for example, the event with Document
+        #   across multiple DataStore, the format is: `projects/`project`/locations/`
+        #   location``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserEvent] google_cloud_discoveryengine_v1alpha_user_event_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserEvent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserEvent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def write_project_location_user_event(parent, google_cloud_discoveryengine_v1alpha_user_event_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/userEvents:write', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserEvent::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_user_event_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserEvent::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserEvent
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
