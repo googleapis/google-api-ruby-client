@@ -414,6 +414,12 @@ module Google
       class ManagementServer
         include Google::Apis::Core::Hashable
       
+        # Output only. The hostname or ip address of the exposed AGM endpoints, used by
+        # BAs to connect to BA proxy.
+        # Corresponds to the JSON property `baProxyUri`
+        # @return [Array<String>]
+        attr_accessor :ba_proxy_uri
+      
         # Output only. The time when the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -493,6 +499,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ba_proxy_uri = args[:ba_proxy_uri] if args.key?(:ba_proxy_uri)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
