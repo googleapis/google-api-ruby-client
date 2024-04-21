@@ -617,12 +617,14 @@ module Google
         # workspace/chat/authenticate-authorize-chat-user).
         # @param [String] name
         #   Required. Resource name of the membership to retrieve. To get the app's own
-        #   membership, you can optionally use `spaces/`space`/members/app`. Format: `
-        #   spaces/`space`/members/`member`` or `spaces/`space`/members/app` When [
-        #   authenticated as a user](https://developers.google.com/workspace/chat/
-        #   authenticate-authorize-chat-user), you can use the user's email as an alias
-        #   for ``member``. For example, `spaces/`space`/members/example@gmail.com` where `
-        #   example@gmail.com` is the email of the Google Chat user.
+        #   membership [by using user authentication](https://developers.google.com/
+        #   workspace/chat/authenticate-authorize-chat-user), you can optionally use `
+        #   spaces/`space`/members/app`. Format: `spaces/`space`/members/`member`` or `
+        #   spaces/`space`/members/app` When [authenticated as a user](https://developers.
+        #   google.com/workspace/chat/authenticate-authorize-chat-user), you can use the
+        #   user's email as an alias for ``member``. For example, `spaces/`space`/members/
+        #   example@gmail.com` where `example@gmail.com` is the email of the Google Chat
+        #   user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -660,7 +662,7 @@ module Google
         # in spaces that the authenticated user has access to. Requires [authentication](
         # https://developers.google.com/workspace/chat/authenticate-authorize). Supports
         # [app authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-app) and [user authentication](hhttps://developers.google.com/
+        # authorize-chat-app) and [user authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize-chat-user).
         # @param [String] parent
         #   Required. The resource name of the space for which to fetch a membership list.
@@ -727,6 +729,45 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['showGroups'] = show_groups unless show_groups.nil?
           command.query['showInvited'] = show_invited unless show_invited.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a membership. Requires [user authentication](https://developers.google.
+        # com/workspace/chat/authenticate-authorize-chat-user).
+        # @param [String] name
+        #   Resource name of the membership, assigned by the server. Format: `spaces/`
+        #   space`/members/`member``
+        # @param [Google::Apis::ChatV1::Membership] membership_object
+        # @param [String] update_mask
+        #   Required. The field paths to update. Separate multiple values with commas or
+        #   use `*` to update all field paths. Currently supported field paths: - `role`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Membership] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Membership]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_space_member(name, membership_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ChatV1::Membership::Representation
+          command.request_object = membership_object
+          command.response_representation = Google::Apis::ChatV1::Membership::Representation
+          command.response_class = Google::Apis::ChatV1::Membership
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1128,7 +1169,7 @@ module Google
         end
         
         # Creates a reaction and adds it to a message. Only unicode emojis are supported.
-        # For an example, see [Add a reaction to a reaction](https://developers.google.
+        # For an example, see [Add a reaction to a message](https://developers.google.
         # com/workspace/chat/create-reactions). Requires [user authentication](https://
         # developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         # @param [String] parent
@@ -1270,11 +1311,11 @@ module Google
         # SpaceEvent.FIELDS.oneof_payload) contains the most recent version of the
         # resource that changed. For example, if you request an event about a new
         # message but the message was later updated, the server returns the updated `
-        # Message` resource in the event payload. Requires [user authentication](hhttps:/
-        # /developers.google.com/workspace/chat/authenticate-authorize-chat-user). To
-        # get an event, the authenticated user must be a member of the space. For an
-        # example, see [Get details about an event from a Google Chat space](https://
-        # developers.google.com/workspace/chat/get-space-event).
+        # Message` resource in the event payload. Requires [user authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user). To get
+        # an event, the authenticated user must be a member of the space. For an example,
+        # see [Get details about an event from a Google Chat space](https://developers.
+        # google.com/workspace/chat/get-space-event).
         # @param [String] name
         #   Required. The resource name of the space event. Format: `spaces/`space`/
         #   spaceEvents/`spaceEvent``
