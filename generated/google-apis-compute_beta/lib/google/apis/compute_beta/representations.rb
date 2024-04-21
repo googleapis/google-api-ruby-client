@@ -4182,6 +4182,18 @@ module Google
       
       class Region
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class QuotaStatusWarning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -13127,6 +13139,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client_destination_port, as: 'clientDestinationPort'
           property :client_port, as: 'clientPort'
           property :fqdn, as: 'fqdn'
           property :instance, as: 'instance'
@@ -14887,12 +14900,32 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :quota_status_warning, as: 'quotaStatusWarning', class: Google::Apis::ComputeBeta::Region::QuotaStatusWarning, decorator: Google::Apis::ComputeBeta::Region::QuotaStatusWarning::Representation
+      
           collection :quotas, as: 'quotas', class: Google::Apis::ComputeBeta::Quota, decorator: Google::Apis::ComputeBeta::Quota::Representation
       
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :supports_pzs, as: 'supportsPzs'
           collection :zones, as: 'zones'
+        end
+        
+        class QuotaStatusWarning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::Region::QuotaStatusWarning::Datum, decorator: Google::Apis::ComputeBeta::Region::QuotaStatusWarning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
