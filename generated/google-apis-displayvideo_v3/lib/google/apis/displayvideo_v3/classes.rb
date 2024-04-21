@@ -2132,7 +2132,8 @@ module Google
         # The assigned targeting options to create in batch, specified as a list of `
         # CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
-        # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+        # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
+        # TARGETING_TYPE_KEYWORD`
         # Corresponds to the JSON property `createRequests`
         # @return [Array<Google::Apis::DisplayvideoV3::CreateAssignedTargetingOptionsRequest>]
         attr_accessor :create_requests
@@ -2140,7 +2141,8 @@ module Google
         # The assigned targeting options to delete in batch, specified as a list of `
         # DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
-        # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+        # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
+        # TARGETING_TYPE_KEYWORD`
         # Corresponds to the JSON property `deleteRequests`
         # @return [Array<Google::Apis::DisplayvideoV3::DeleteAssignedTargetingOptionsRequest>]
         attr_accessor :delete_requests
@@ -7951,6 +7953,13 @@ module Google
       class Kpi
         include Google::Apis::Core::Hashable
       
+        # Optional. Custom Bidding Algorithm ID associated with
+        # KPI_CUSTOM_IMPRESSION_VALUE_OVER_COST. This field is ignored if the proper KPI
+        # is not selected.
+        # Corresponds to the JSON property `kpiAlgorithmId`
+        # @return [Fixnum]
+        attr_accessor :kpi_algorithm_id
+      
         # The goal amount, in micros of the advertiser's currency. Applicable when
         # kpi_type is one of: * `KPI_TYPE_CPM` * `KPI_TYPE_CPC` * `KPI_TYPE_CPA` * `
         # KPI_TYPE_CPIAVC` * `KPI_TYPE_VCPM` For example: 1500000 represents 1.5
@@ -7985,6 +7994,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @kpi_algorithm_id = args[:kpi_algorithm_id] if args.key?(:kpi_algorithm_id)
           @kpi_amount_micros = args[:kpi_amount_micros] if args.key?(:kpi_amount_micros)
           @kpi_percentage_micros = args[:kpi_percentage_micros] if args.key?(:kpi_percentage_micros)
           @kpi_string = args[:kpi_string] if args.key?(:kpi_string)
