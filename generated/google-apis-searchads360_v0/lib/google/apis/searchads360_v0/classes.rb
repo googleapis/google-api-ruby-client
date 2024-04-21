@@ -3106,6 +3106,166 @@ module Google
         end
       end
       
+      # An automated bidding strategy to help get the most conversion value for your
+      # campaigns while spending your budget.
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversionValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The target return on ad spend (ROAS) option. If set, the bid
+        # strategy will maximize revenue while averaging the target return on ad spend.
+        # If the target ROAS is high, the bid strategy may not be able to spend the full
+        # budget. If the target ROAS is not set, the bid strategy will aim to achieve
+        # the highest possible ROAS for the budget.
+        # Corresponds to the JSON property `targetRoas`
+        # @return [Float]
+        attr_accessor :target_roas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_roas = args[:target_roas] if args.key?(:target_roas)
+        end
+      end
+      
+      # An automated bidding strategy to help get the most conversions for your
+      # campaigns while spending your budget.
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversions
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The target cost per acquisition (CPA) option. This is the average
+        # amount that you would like to spend per acquisition.
+        # Corresponds to the JSON property `targetCpa`
+        # @return [Fixnum]
+        attr_accessor :target_cpa
+      
+        # Output only. The target cost per acquisition (CPA) option. This is the average
+        # amount that you would like to spend per acquisition.
+        # Corresponds to the JSON property `targetCpaMicros`
+        # @return [Fixnum]
+        attr_accessor :target_cpa_micros
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_cpa = args[:target_cpa] if args.key?(:target_cpa)
+          @target_cpa_micros = args[:target_cpa_micros] if args.key?(:target_cpa_micros)
+        end
+      end
+      
+      # An automated bid strategy that sets bids to help get as many conversions as
+      # possible at the target cost-per-acquisition (CPA) you set.
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetCpa
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Average CPA target. This target should be greater than or equal
+        # to minimum billable unit based on the currency for the account.
+        # Corresponds to the JSON property `targetCpaMicros`
+        # @return [Fixnum]
+        attr_accessor :target_cpa_micros
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_cpa_micros = args[:target_cpa_micros] if args.key?(:target_cpa_micros)
+        end
+      end
+      
+      # An automated bidding strategy that sets bids so that a certain percentage of
+      # search ads are shown at the top of the first page (or other targeted location).
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetImpressionShare
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The highest CPC bid the automated bidding system is permitted to
+        # specify. This is a required field entered by the advertiser that sets the
+        # ceiling and specified in local micros.
+        # Corresponds to the JSON property `cpcBidCeilingMicros`
+        # @return [Fixnum]
+        attr_accessor :cpc_bid_ceiling_micros
+      
+        # Output only. The targeted location on the search results page.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The chosen fraction of ads to be shown in the targeted location in micros. For
+        # example, 1% equals 10,000.
+        # Corresponds to the JSON property `locationFractionMicros`
+        # @return [Fixnum]
+        attr_accessor :location_fraction_micros
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpc_bid_ceiling_micros = args[:cpc_bid_ceiling_micros] if args.key?(:cpc_bid_ceiling_micros)
+          @location = args[:location] if args.key?(:location)
+          @location_fraction_micros = args[:location_fraction_micros] if args.key?(:location_fraction_micros)
+        end
+      end
+      
+      # An automated bidding strategy that helps you maximize revenue while averaging
+      # a specific target return on ad spend (ROAS).
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetRoas
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The chosen revenue (based on conversion data) per unit of spend.
+        # Corresponds to the JSON property `targetRoas`
+        # @return [Float]
+        attr_accessor :target_roas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_roas = args[:target_roas] if args.key?(:target_roas)
+        end
+      end
+      
+      # An automated bid strategy that sets your bids to help get as many clicks as
+      # possible within your budget.
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetSpend
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Maximum bid limit that can be set by the bid strategy. The limit
+        # applies to all keywords managed by the strategy.
+        # Corresponds to the JSON property `cpcBidCeilingMicros`
+        # @return [Fixnum]
+        attr_accessor :cpc_bid_ceiling_micros
+      
+        # Output only. The spend target under which to maximize clicks. A TargetSpend
+        # bidder will attempt to spend the smaller of this value or the natural
+        # throttling spend amount. If not specified, the budget is used as the spend
+        # target. This field is deprecated and should no longer be used. See https://ads-
+        # developers.googleblog.com/2020/05/reminder-about-sunset-creation-of.html for
+        # details.
+        # Corresponds to the JSON property `targetSpendMicros`
+        # @return [Fixnum]
+        attr_accessor :target_spend_micros
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpc_bid_ceiling_micros = args[:cpc_bid_ceiling_micros] if args.key?(:cpc_bid_ceiling_micros)
+          @target_spend_micros = args[:target_spend_micros] if args.key?(:target_spend_micros)
+        end
+      end
+      
       # Estimates for criterion bids at various positions.
       class GoogleAdsSearchads360V0ResourcesAdGroupCriterionPositionEstimates
         include Google::Apis::Core::Hashable
@@ -3648,6 +3808,103 @@ module Google
         def update!(**args)
           @level = args[:level] if args.key?(:level)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents a view of BiddingStrategies owned by and shared with the customer.
+      # In contrast to BiddingStrategy, this resource includes strategies owned by
+      # managers of the customer and shared with this customer - in addition to
+      # strategies owned by this customer. This resource does not provide metrics and
+      # only exposes a limited subset of the BiddingStrategy attributes.
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ID of the bidding strategy.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # An automated bidding strategy to help get the most conversion value for your
+        # campaigns while spending your budget.
+        # Corresponds to the JSON property `maximizeConversionValue`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversionValue]
+        attr_accessor :maximize_conversion_value
+      
+        # An automated bidding strategy to help get the most conversions for your
+        # campaigns while spending your budget.
+        # Corresponds to the JSON property `maximizeConversions`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversions]
+        attr_accessor :maximize_conversions
+      
+        # Output only. The name of the bidding strategy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The ID of the Customer which owns the bidding strategy.
+        # Corresponds to the JSON property `ownerCustomerId`
+        # @return [Fixnum]
+        attr_accessor :owner_customer_id
+      
+        # Output only. descriptive_name of the Customer which owns the bidding strategy.
+        # Corresponds to the JSON property `ownerDescriptiveName`
+        # @return [String]
+        attr_accessor :owner_descriptive_name
+      
+        # Output only. The resource name of the accessible bidding strategy.
+        # AccessibleBiddingStrategy resource names have the form: `customers/`
+        # customer_id`/accessibleBiddingStrategies/`bidding_strategy_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # An automated bid strategy that sets bids to help get as many conversions as
+        # possible at the target cost-per-acquisition (CPA) you set.
+        # Corresponds to the JSON property `targetCpa`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetCpa]
+        attr_accessor :target_cpa
+      
+        # An automated bidding strategy that sets bids so that a certain percentage of
+        # search ads are shown at the top of the first page (or other targeted location).
+        # Corresponds to the JSON property `targetImpressionShare`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetImpressionShare]
+        attr_accessor :target_impression_share
+      
+        # An automated bidding strategy that helps you maximize revenue while averaging
+        # a specific target return on ad spend (ROAS).
+        # Corresponds to the JSON property `targetRoas`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetRoas]
+        attr_accessor :target_roas
+      
+        # An automated bid strategy that sets your bids to help get as many clicks as
+        # possible within your budget.
+        # Corresponds to the JSON property `targetSpend`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetSpend]
+        attr_accessor :target_spend
+      
+        # Output only. The type of the bidding strategy.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @maximize_conversion_value = args[:maximize_conversion_value] if args.key?(:maximize_conversion_value)
+          @maximize_conversions = args[:maximize_conversions] if args.key?(:maximize_conversions)
+          @name = args[:name] if args.key?(:name)
+          @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
+          @owner_descriptive_name = args[:owner_descriptive_name] if args.key?(:owner_descriptive_name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @target_cpa = args[:target_cpa] if args.key?(:target_cpa)
+          @target_impression_share = args[:target_impression_share] if args.key?(:target_impression_share)
+          @target_roas = args[:target_roas] if args.key?(:target_roas)
+          @target_spend = args[:target_spend] if args.key?(:target_spend)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -5052,6 +5309,18 @@ module Google
       class GoogleAdsSearchads360V0ResourcesCampaign
         include Google::Apis::Core::Hashable
       
+        # Output only. Resource name of AccessibleBiddingStrategy, a read-only view of
+        # the unrestricted attributes of the attached portfolio bidding strategy
+        # identified by 'bidding_strategy'. Empty, if the campaign does not use a
+        # portfolio strategy. Unrestricted strategy attributes are available to all
+        # customers with whom the strategy is shared and are read from the
+        # AccessibleBiddingStrategy resource. In contrast, restricted attributes are
+        # only available to the owner customer of the strategy and their managers.
+        # Restricted attributes can only be read from the BiddingStrategy resource.
+        # Corresponds to the JSON property `accessibleBiddingStrategy`
+        # @return [String]
+        attr_accessor :accessible_bidding_strategy
+      
         # The ad serving optimization status of the campaign.
         # Corresponds to the JSON property `adServingOptimizationStatus`
         # @return [String]
@@ -5326,6 +5595,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accessible_bidding_strategy = args[:accessible_bidding_strategy] if args.key?(:accessible_bidding_strategy)
           @ad_serving_optimization_status = args[:ad_serving_optimization_status] if args.key?(:ad_serving_optimization_status)
           @advertising_channel_sub_type = args[:advertising_channel_sub_type] if args.key?(:advertising_channel_sub_type)
           @advertising_channel_type = args[:advertising_channel_type] if args.key?(:advertising_channel_type)
@@ -7505,6 +7775,15 @@ module Google
       class GoogleAdsSearchads360V0ServicesSearchAds360Row
         include Google::Apis::Core::Hashable
       
+        # Represents a view of BiddingStrategies owned by and shared with the customer.
+        # In contrast to BiddingStrategy, this resource includes strategies owned by
+        # managers of the customer and shared with this customer - in addition to
+        # strategies owned by this customer. This resource does not provide metrics and
+        # only exposes a limited subset of the BiddingStrategy attributes.
+        # Corresponds to the JSON property `accessibleBiddingStrategy`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategy]
+        attr_accessor :accessible_bidding_strategy
+      
         # An ad group.
         # Corresponds to the JSON property `adGroup`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroup]
@@ -7809,6 +8088,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accessible_bidding_strategy = args[:accessible_bidding_strategy] if args.key?(:accessible_bidding_strategy)
           @ad_group = args[:ad_group] if args.key?(:ad_group)
           @ad_group_ad = args[:ad_group_ad] if args.key?(:ad_group_ad)
           @ad_group_ad_label = args[:ad_group_ad_label] if args.key?(:ad_group_ad_label)
