@@ -245,6 +245,7 @@ module Google
       class ManagementServer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ba_proxy_uri, as: 'baProxyUri'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :etag, as: 'etag'
