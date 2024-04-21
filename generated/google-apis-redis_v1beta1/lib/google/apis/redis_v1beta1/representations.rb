@@ -434,6 +434,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authorization_mode, as: 'authorizationMode'
           property :create_time, as: 'createTime'
+          property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           collection :discovery_endpoints, as: 'discoveryEndpoints', class: Google::Apis::RedisV1beta1::DiscoveryEndpoint, decorator: Google::Apis::RedisV1beta1::DiscoveryEndpoint::Representation
       
           property :name, as: 'name'

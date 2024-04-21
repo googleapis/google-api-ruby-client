@@ -210,6 +210,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. The delete operation will fail when the value is set to true.
+        # Corresponds to the JSON property `deletionProtectionEnabled`
+        # @return [Boolean]
+        attr_accessor :deletion_protection_enabled
+        alias_method :deletion_protection_enabled?, :deletion_protection_enabled
+      
         # Output only. Endpoints created on each given network, for Redis clients to
         # connect to the cluster. Currently only one discovery endpoint is supported.
         # Corresponds to the JSON property `discoveryEndpoints`
@@ -303,6 +309,7 @@ module Google
         def update!(**args)
           @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @discovery_endpoints = args[:discovery_endpoints] if args.key?(:discovery_endpoints)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
