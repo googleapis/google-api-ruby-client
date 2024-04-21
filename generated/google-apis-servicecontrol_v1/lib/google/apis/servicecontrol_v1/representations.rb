@@ -465,6 +465,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :granted, as: 'granted'
           property :permission, as: 'permission'
+          property :permission_type, as: 'permissionType'
           property :resource, as: 'resource'
           property :resource_attributes, as: 'resourceAttributes', class: Google::Apis::ServicecontrolV1::Resource, decorator: Google::Apis::ServicecontrolV1::Resource::Representation
       
