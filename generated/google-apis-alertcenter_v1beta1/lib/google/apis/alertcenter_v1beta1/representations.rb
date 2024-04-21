@@ -933,6 +933,9 @@ module Google
       class ResourceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chat_attachment_id, as: 'chatAttachmentId'
+          property :chat_message_id, as: 'chatMessageId'
+          property :device_id, as: 'deviceId'
           property :document_id, as: 'documentId'
           property :resource_title, as: 'resourceTitle'
         end
@@ -950,6 +953,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_source, as: 'dataSource'
+          property :event_type, as: 'eventType'
           collection :match_info, as: 'matchInfo', class: Google::Apis::AlertcenterV1beta1::MatchInfo, decorator: Google::Apis::AlertcenterV1beta1::MatchInfo::Representation
       
           collection :recipients, as: 'recipients'
