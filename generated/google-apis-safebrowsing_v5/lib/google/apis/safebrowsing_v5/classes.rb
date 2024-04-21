@@ -89,11 +89,11 @@ module Google
       # The response returned after searching threat hashes. If nothing is found, the
       # server will return an OK status (HTTP status code 200) with the `full_hashes`
       # field empty, rather than returning a NOT_FOUND status (HTTP status code 404). *
-      # *What's new in V5**: There is a separation between FullHash and FullHashDetail.
-      # In the case when a hash represents a site having multiple threats (e.g. both
-      # MALWARE and SOCIAL_ENGINEERING), the full hash does not need to be sent twice
-      # as in V4. Furthermore, the cache duration has been simplified into a single `
-      # cache_duration` field.
+      # *What's new in V5**: There is a separation between `FullHash` and `
+      # FullHashDetail`. In the case when a hash represents a site having multiple
+      # threats (e.g. both MALWARE and SOCIAL_ENGINEERING), the full hash does not
+      # need to be sent twice as in V4. Furthermore, the cache duration has been
+      # simplified into a single `cache_duration` field.
       class GoogleSecuritySafebrowsingV5SearchHashesResponse
         include Google::Apis::Core::Hashable
       
