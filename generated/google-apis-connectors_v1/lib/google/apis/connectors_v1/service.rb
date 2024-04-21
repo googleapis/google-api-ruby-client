@@ -558,6 +558,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns Top matching Connections for a given query.
+        # @param [String] name
+        #   Required. Parent resource of the Connection, of the form: `projects/*/
+        #   locations/*/connections`
+        # @param [Fixnum] page_size
+        #   Optional. The number of top matching connectors to return
+        # @param [String] page_token
+        #   Optional. page_token
+        # @param [String] query
+        #   Required. The query against which the search needs to be done.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::SearchConnectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::SearchConnectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_connections(name, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:search', options)
+          command.response_representation = Google::Apis::ConnectorsV1::SearchConnectionsResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::SearchConnectionsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
