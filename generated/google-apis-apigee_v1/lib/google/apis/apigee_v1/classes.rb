@@ -658,9 +658,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Optional. Location of the image used for the catalog item in the catalog. For
-        # portal files, this can have the format `/files/`filename``. Max length is 2,
-        # 083 characters.
+        # Optional. Location of the image used for the catalog item in the catalog. This
+        # can be either an image with an external URL or a file path for [image files
+        # stored in the portal](/apigee/docs/api-platform/publish/portal/portal-files"),
+        # for example, `/files/book-tree.jpg`. When specifying the URL of an external
+        # image, the image won't be uploaded to your assets; additionally, loading the
+        # image in the integrated portal will be subject to its availability, which may
+        # be blocked or restricted by [content security policies](/apigee/docs/api-
+        # platform/publish/portal/csp). Max length of file path is 2,083 characters.
         # Corresponds to the JSON property `imageUrl`
         # @return [String]
         attr_accessor :image_url
@@ -2000,6 +2005,148 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attribute = args[:attribute] if args.key?(:attribute)
+        end
+      end
+      
+      # Request for BatchComputeSecurityAssessmentResults.
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
+        include Google::Apis::Core::Hashable
+      
+        # An array of resource messages.
+        # Corresponds to the JSON property `include`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray]
+        attr_accessor :include
+      
+        # Message for include_all option.
+        # Corresponds to the JSON property `includeAllResources`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll]
+        attr_accessor :include_all_resources
+      
+        # Optional. The maximum number of results to return. The service may return
+        # fewer than this value. If unspecified, at most 50 results will be returned.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Optional. A page token, received from a previous `
+        # BatchComputeSecurityAssessmentResults` call. Provide this to retrieve the
+        # subsequent page.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Required. Name of the profile that is used for computation.
+        # Corresponds to the JSON property `profile`
+        # @return [String]
+        attr_accessor :profile
+      
+        # Required. Scope of the resources for the computation. For Apigee, the
+        # environment is the scope of the resources.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include = args[:include] if args.key?(:include)
+          @include_all_resources = args[:include_all_resources] if args.key?(:include_all_resources)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @profile = args[:profile] if args.key?(:profile)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Message for include_all option.
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # An array of resource messages.
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray
+        include Google::Apis::Core::Hashable
+      
+        # Required. The array of resources. For Apigee, the proxies are resources.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Resource for which we are computing security assessment.
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of this resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Type of this resource.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Response for BatchComputeSecurityAssessmentResults.
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The time of the assessment api call.
+        # Corresponds to the JSON property `assessmentTime`
+        # @return [String]
+        attr_accessor :assessment_time
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is blank, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Default sort order is by resource name in alphabetic order.
+        # Corresponds to the JSON property `securityAssessmentResults`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResult>]
+        attr_accessor :security_assessment_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assessment_time = args[:assessment_time] if args.key?(:assessment_time)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_assessment_results = args[:security_assessment_results] if args.key?(:security_assessment_results)
         end
       end
       
@@ -5129,9 +5276,10 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Customer Managed Encryption Key (CMEK) used for disk and volume encryption.
-        # Required for Apigee paid subscriptions only. Use the following format: `
-        # projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+        # Customer Managed Encryption Key (CMEK) used for disk and volume encryption. If
+        # not specified, a Google-Managed encryption key will be used. Use the following
+        # format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)
+        # `
         # Corresponds to the JSON property `diskEncryptionKeyName`
         # @return [String]
         attr_accessor :disk_encryption_key_name
@@ -6913,19 +7061,17 @@ module Google
         # @return [String]
         attr_accessor :analytics_region
       
-        # Cloud KMS key name used for encrypting API consumer data. Required for US/EU
-        # regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](
-        # #BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed
-        # encryption key will be used. Format: `projects/*/locations/*/keyRings/*/
-        # cryptoKeys/*`
+        # Cloud KMS key name used for encrypting API consumer data. If not specified or [
+        # BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key
+        # will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         # Corresponds to the JSON property `apiConsumerDataEncryptionKeyName`
         # @return [String]
         attr_accessor :api_consumer_data_encryption_key_name
       
-        # This field is needed only for customers with control plane in US or EU. Apigee
-        # stores some control plane data only in single region. This field determines
-        # which single region Apigee should use. For example: "us-west1" when control
-        # plane is in US or "europe-west2" when control plane is in EU.
+        # This field is needed only for customers using non-default data residency
+        # regions. Apigee stores some control plane data only in single region. This
+        # field determines which single region Apigee should use. For example: "us-west1"
+        # when control plane is in US or "europe-west2" when control plane is in EU.
         # Corresponds to the JSON property `apiConsumerDataLocation`
         # @return [String]
         attr_accessor :api_consumer_data_location
@@ -6972,9 +7118,10 @@ module Google
         attr_accessor :ca_certificate
       
         # Cloud KMS key name used for encrypting control plane data that is stored in a
-        # multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`.
-        # When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption
-        # key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        # multi region. Only used for the data residency region "US" or "EU". If not
+        # specified or [BillingType](#BillingType) is `EVALUATION`, a Google-Managed
+        # encryption key will be used. Format: `projects/*/locations/*/keyRings/*/
+        # cryptoKeys/*`
         # Corresponds to the JSON property `controlPlaneEncryptionKeyName`
         # @return [String]
         attr_accessor :control_plane_encryption_key_name
@@ -7055,10 +7202,9 @@ module Google
       
         # Cloud KMS key name used for encrypting the data that is stored and replicated
         # across runtime instances. Update is not allowed after the organization is
-        # created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not
-        # specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed
-        # encryption key will be used. For example: "projects/foo/locations/us/keyRings/
-        # bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
+        # created. If not specified or [RuntimeType](#RuntimeType) is `TRIAL`, a Google-
+        # Managed encryption key will be used. For example: "projects/foo/locations/us/
+        # keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
         # Corresponds to the JSON property `runtimeDatabaseEncryptionKeyName`
         # @return [String]
         attr_accessor :runtime_database_encryption_key_name
@@ -9478,6 +9624,221 @@ module Google
         end
       end
       
+      # The security assessment result for one resource.
+      class GoogleCloudApigeeV1SecurityAssessmentResult
+        include Google::Apis::Core::Hashable
+      
+        # The time of the assessment of this resource. This could lag behind `
+        # assessment_time` due to caching within the backend.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ApigeeV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Resource for which we are computing security assessment.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResource]
+        attr_accessor :resource
+      
+        # The result of the assessment.
+        # Corresponds to the JSON property `scoringResult`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResult]
+        attr_accessor :scoring_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @error = args[:error] if args.key?(:error)
+          @resource = args[:resource] if args.key?(:resource)
+          @scoring_result = args[:scoring_result] if args.key?(:scoring_result)
+        end
+      end
+      
+      # Resource for which we are computing security assessment.
+      class GoogleCloudApigeeV1SecurityAssessmentResultResource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of this resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The revision id for the resource. In case of Apigee, this is proxy revision id.
+        # Corresponds to the JSON property `resourceRevisionId`
+        # @return [String]
+        attr_accessor :resource_revision_id
+      
+        # Required. Type of this resource.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @resource_revision_id = args[:resource_revision_id] if args.key?(:resource_revision_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The result of the assessment.
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResult
+        include Google::Apis::Core::Hashable
+      
+        # The recommendations of the assessment. The key is the "name" of the assessment
+        # (not display_name), and the value are the recommendations.
+        # Corresponds to the JSON property `assessmentRecommendations`
+        # @return [Hash<String,Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation>]
+        attr_accessor :assessment_recommendations
+      
+        # The time when resource data was last fetched for this resource. This time may
+        # be different than when the resource was actually updated due to lag in data
+        # collection.
+        # Corresponds to the JSON property `dataUpdateTime`
+        # @return [String]
+        attr_accessor :data_update_time
+      
+        # The number of failed assessments grouped by its weight. Keys are one of the
+        # following: "MAJOR", "MODERATE", "MINOR".
+        # Corresponds to the JSON property `failedAssessmentPerWeight`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :failed_assessment_per_weight
+      
+        # The security score of the assessment.
+        # Corresponds to the JSON property `score`
+        # @return [Fixnum]
+        attr_accessor :score
+      
+        # The severity of the assessment.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assessment_recommendations = args[:assessment_recommendations] if args.key?(:assessment_recommendations)
+          @data_update_time = args[:data_update_time] if args.key?(:data_update_time)
+          @failed_assessment_per_weight = args[:failed_assessment_per_weight] if args.key?(:failed_assessment_per_weight)
+          @score = args[:score] if args.key?(:score)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # The message format of a recommendation from the assessment.
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the assessment.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The recommended steps of the assessment.
+        # Corresponds to the JSON property `recommendations`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation>]
+        attr_accessor :recommendations
+      
+        # Score impact indicates the impact on the overall score if the assessment were
+        # to pass.
+        # Corresponds to the JSON property `scoreImpact`
+        # @return [Fixnum]
+        attr_accessor :score_impact
+      
+        # Verdict indicates the assessment result.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        # The weight of the assessment which was set in the profile.
+        # Corresponds to the JSON property `weight`
+        # @return [String]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @recommendations = args[:recommendations] if args.key?(:recommendations)
+          @score_impact = args[:score_impact] if args.key?(:score_impact)
+          @verdict = args[:verdict] if args.key?(:verdict)
+          @weight = args[:weight] if args.key?(:weight)
+        end
+      end
+      
+      # The format of the assessment recommendation.
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation
+        include Google::Apis::Core::Hashable
+      
+        # The description of the recommendation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The format for a link in the recommendation.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink]
+        attr_accessor :link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @link = args[:link] if args.key?(:link)
+        end
+      end
+      
+      # The format for a link in the recommendation.
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink
+        include Google::Apis::Core::Hashable
+      
+        # The text of the url. (ie: "Learn more")
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # The link itself.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Represents an SecurityIncident resource.
       class GoogleCloudApigeeV1SecurityIncident
         include Google::Apis::Core::Hashable
@@ -10698,6 +11059,12 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # TLS is strictly enforced.
+        # Corresponds to the JSON property `enforce`
+        # @return [Boolean]
+        attr_accessor :enforce
+        alias_method :enforce?, :enforce
+      
         # If true, Edge ignores TLS certificate errors. Valid when configuring TLS for
         # target servers and target endpoints, and when configuring virtual hosts that
         # use 2-way TLS. When used with a target endpoint/target server, if the backend
@@ -10740,6 +11107,7 @@ module Google
           @client_auth_enabled = args[:client_auth_enabled] if args.key?(:client_auth_enabled)
           @common_name = args[:common_name] if args.key?(:common_name)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @enforce = args[:enforce] if args.key?(:enforce)
           @ignore_validation_errors = args[:ignore_validation_errors] if args.key?(:ignore_validation_errors)
           @key_alias = args[:key_alias] if args.key?(:key_alias)
           @key_store = args[:key_store] if args.key?(:key_store)
@@ -10802,6 +11170,12 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # Flag that enforces TLS settings
+        # Corresponds to the JSON property `enforce`
+        # @return [Boolean]
+        attr_accessor :enforce
+        alias_method :enforce?, :enforce
+      
         # Flag that specifies whether to ignore TLS certificate validation errors. Set
         # to `true` to ignore errors.
         # Corresponds to the JSON property `ignoreValidationErrors`
@@ -10843,6 +11217,7 @@ module Google
           @client_auth_enabled = args[:client_auth_enabled] if args.key?(:client_auth_enabled)
           @common_name = args[:common_name] if args.key?(:common_name)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @enforce = args[:enforce] if args.key?(:enforce)
           @ignore_validation_errors = args[:ignore_validation_errors] if args.key?(:ignore_validation_errors)
           @key_alias = args[:key_alias] if args.key?(:key_alias)
           @key_alias_reference = args[:key_alias_reference] if args.key?(:key_alias_reference)

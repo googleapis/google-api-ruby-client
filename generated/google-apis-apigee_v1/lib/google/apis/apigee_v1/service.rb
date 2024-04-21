@@ -10724,6 +10724,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Compute RAV2 security scores for a set of resources.
+        # @param [String] name
+        #   Required. Name of the organization for which the score needs to be computed in
+        #   the following format: `organizations/`org`/securityAssessmentResults`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest] google_cloud_apigee_v1_batch_compute_security_assessment_results_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_organization_security_assessment_result_compute(name, google_cloud_apigee_v1_batch_compute_security_assessment_results_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:batchCompute', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest::Representation
+          command.request_object = google_cloud_apigee_v1_batch_compute_security_assessment_results_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # CreateSecurityProfile create a new custom security profile.
         # @param [String] parent
         #   Required. Name of organization. Format: organizations/`org`

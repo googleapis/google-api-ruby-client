@@ -250,6 +250,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1414,6 +1444,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1SecurityAssessmentResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1SecurityIncident
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2190,6 +2256,52 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :attribute, as: 'attribute', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include, as: 'include', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray::Representation
+      
+          property :include_all_resources, as: 'includeAllResources', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll::Representation
+      
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :profile, as: 'profile'
+          property :scope, as: 'scope'
+        end
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assessment_time, as: 'assessmentTime'
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_assessment_results, as: 'securityAssessmentResults', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResult, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResult::Representation
       
         end
       end
@@ -4234,6 +4346,69 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1SecurityAssessmentResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :error, as: 'error', class: Google::Apis::ApigeeV1::GoogleRpcStatus, decorator: Google::Apis::ApigeeV1::GoogleRpcStatus::Representation
+      
+          property :resource, as: 'resource', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResource, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResource::Representation
+      
+          property :scoring_result, as: 'scoringResult', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResult, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :resource_revision_id, as: 'resourceRevisionId'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :assessment_recommendations, as: 'assessmentRecommendations', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation::Representation
+      
+          property :data_update_time, as: 'dataUpdateTime'
+          hash :failed_assessment_per_weight, as: 'failedAssessmentPerWeight'
+          property :score, as: 'score'
+          property :severity, as: 'severity'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          collection :recommendations, as: 'recommendations', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation::Representation
+      
+          property :score_impact, as: 'scoreImpact'
+          property :verdict, as: 'verdict'
+          property :weight, as: 'weight'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :link, as: 'link', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleCloudApigeeV1SecurityIncident
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4543,6 +4718,7 @@ module Google
           property :common_name, as: 'commonName', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfoCommonName, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfoCommonName::Representation
       
           property :enabled, as: 'enabled'
+          property :enforce, as: 'enforce'
           property :ignore_validation_errors, as: 'ignoreValidationErrors'
           property :key_alias, as: 'keyAlias'
           property :key_store, as: 'keyStore'
@@ -4567,6 +4743,7 @@ module Google
           property :common_name, as: 'commonName', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1CommonNameConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1CommonNameConfig::Representation
       
           property :enabled, as: 'enabled'
+          property :enforce, as: 'enforce'
           property :ignore_validation_errors, as: 'ignoreValidationErrors'
           property :key_alias, as: 'keyAlias'
           property :key_alias_reference, as: 'keyAliasReference', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyAliasReference, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyAliasReference::Representation
