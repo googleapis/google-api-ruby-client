@@ -22,7 +22,7 @@ module Google
   module Apis
     module StoragetransferV1
       
-      # Represents an On-Premises Agent pool.
+      # Represents an agent pool.
       class AgentPool
         include Google::Apis::Core::Hashable
       
@@ -781,7 +781,9 @@ module Google
         attr_accessor :temporary_hold
       
         # Specifies how each object's `timeCreated` metadata is preserved for transfers.
-        # If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+        # If unspecified, the default behavior is the same as TIME_CREATED_SKIP. This
+        # behavior is supported for transfers to GCS buckets from GCS, S3, Azure, S3
+        # Compatible, and Azure sources.
         # Corresponds to the JSON property `timeCreated`
         # @return [String]
         attr_accessor :time_created
