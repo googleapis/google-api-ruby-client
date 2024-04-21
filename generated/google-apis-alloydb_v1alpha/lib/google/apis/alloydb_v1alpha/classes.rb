@@ -792,55 +792,6 @@ module Google
         end
       end
       
-      # DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not
-      # be scheduled to start within this deny period. The start_date must be less
-      # than the end_date.
-      class DenyMaintenancePeriod
-        include Google::Apis::Core::Hashable
-      
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values. * A month
-        # and day, with a zero year (for example, an anniversary). * A year on its own,
-        # with a zero month and a zero day. * A year and month, with a zero day (for
-        # example, a credit card expiration date). Related types: * google.type.
-        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
-        # Corresponds to the JSON property `endDate`
-        # @return [Google::Apis::AlloydbV1alpha::GoogleTypeDate]
-        attr_accessor :end_date
-      
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values. * A month
-        # and day, with a zero year (for example, an anniversary). * A year on its own,
-        # with a zero month and a zero day. * A year and month, with a zero day (for
-        # example, a credit card expiration date). Related types: * google.type.
-        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
-        # Corresponds to the JSON property `startDate`
-        # @return [Google::Apis::AlloydbV1alpha::GoogleTypeDate]
-        attr_accessor :start_date
-      
-        # Represents a time of day. The date and time zone are either not significant or
-        # are specified elsewhere. An API may choose to allow leap seconds. Related
-        # types are google.type.Date and `google.protobuf.Timestamp`.
-        # Corresponds to the JSON property `time`
-        # @return [Google::Apis::AlloydbV1alpha::GoogleTypeTimeOfDay]
-        attr_accessor :time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_date = args[:end_date] if args.key?(:end_date)
-          @start_date = args[:start_date] if args.key?(:start_date)
-          @time = args[:time] if args.key?(:time)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1058,47 +1009,6 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Represents a whole or partial calendar date, such as a birthday. The time of
-      # day and time zone are either specified elsewhere or are insignificant. The
-      # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values. * A month
-      # and day, with a zero year (for example, an anniversary). * A year on its own,
-      # with a zero month and a zero day. * A year and month, with a zero day (for
-      # example, a credit card expiration date). Related types: * google.type.
-      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
-      class GoogleTypeDate
-        include Google::Apis::Core::Hashable
-      
-        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
-        # specify a year by itself or a year and month where the day isn't significant.
-        # Corresponds to the JSON property `day`
-        # @return [Fixnum]
-        attr_accessor :day
-      
-        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
-        # and day.
-        # Corresponds to the JSON property `month`
-        # @return [Fixnum]
-        attr_accessor :month
-      
-        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
-        # year.
-        # Corresponds to the JSON property `year`
-        # @return [Fixnum]
-        attr_accessor :year
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @day = args[:day] if args.key?(:day)
-          @month = args[:month] if args.key?(:month)
-          @year = args[:year] if args.key?(:year)
         end
       end
       
@@ -1690,11 +1600,6 @@ module Google
       class MaintenanceUpdatePolicy
         include Google::Apis::Core::Hashable
       
-        # Periods to deny maintenance. Currently limited to 1.
-        # Corresponds to the JSON property `denyMaintenancePeriods`
-        # @return [Array<Google::Apis::AlloydbV1alpha::DenyMaintenancePeriod>]
-        attr_accessor :deny_maintenance_periods
-      
         # Preferred windows to perform maintenance. Currently limited to 1.
         # Corresponds to the JSON property `maintenanceWindows`
         # @return [Array<Google::Apis::AlloydbV1alpha::MaintenanceWindow>]
@@ -1706,7 +1611,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @deny_maintenance_periods = args[:deny_maintenance_periods] if args.key?(:deny_maintenance_periods)
           @maintenance_windows = args[:maintenance_windows] if args.key?(:maintenance_windows)
         end
       end
