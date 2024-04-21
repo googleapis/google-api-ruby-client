@@ -24198,7 +24198,7 @@ module Google
       
         # Type of network endpoints in this network endpoint group. Can be one of
         # GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT,
-        # INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+        # INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT, GCE_VM_IP_PORTMAP.
         # Corresponds to the JSON property `networkEndpointType`
         # @return [String]
         attr_accessor :network_endpoint_type
@@ -28646,8 +28646,7 @@ module Google
         # ingress) or destination (egress) IP in the IP header. If no ranges are
         # specified, all IPv4 traffic that matches the specified IPProtocols is mirrored.
         # If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is
-        # mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note:
-        # Support for IPv6 traffic is in preview.
+        # mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0".
         # Corresponds to the JSON property `cidrRanges`
         # @return [Array<String>]
         attr_accessor :cidr_ranges
@@ -30689,6 +30688,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] Warning of fetching the `quotas` field for this region. This
+        # field is populated only if fetching of the `quotas` field fails.
+        # Corresponds to the JSON property `quotaStatusWarning`
+        # @return [Google::Apis::ComputeV1::Region::QuotaStatusWarning]
+        attr_accessor :quota_status_warning
+      
         # [Output Only] Quotas assigned to this region.
         # Corresponds to the JSON property `quotas`
         # @return [Array<Google::Apis::ComputeV1::Quota>]
@@ -30728,11 +30733,77 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @quota_status_warning = args[:quota_status_warning] if args.key?(:quota_status_warning)
           @quotas = args[:quotas] if args.key?(:quotas)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
           @zones = args[:zones] if args.key?(:zones)
+        end
+        
+        # [Output Only] Warning of fetching the `quotas` field for this region. This
+        # field is populated only if fetching of the `quotas` field fails.
+        class QuotaStatusWarning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::Region::QuotaStatusWarning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -32988,7 +33059,7 @@ module Google
         attr_accessor :disk_consistency_group_policy
       
         # A GroupPlacementPolicy specifies resource placement configuration. It
-        # specifies the failure bucket separation as well as network locality
+        # specifies the failure bucket separation
         # Corresponds to the JSON property `groupPlacementPolicy`
         # @return [Google::Apis::ComputeV1::ResourcePolicyGroupPlacementPolicy]
         attr_accessor :group_placement_policy
@@ -33251,7 +33322,7 @@ module Google
       end
       
       # A GroupPlacementPolicy specifies resource placement configuration. It
-      # specifies the failure bucket separation as well as network locality
+      # specifies the failure bucket separation
       class ResourcePolicyGroupPlacementPolicy
         include Google::Apis::Core::Hashable
       
@@ -37853,13 +37924,21 @@ module Google
         # @return [String]
         attr_accessor :connection_preference
       
-        # Projects that are allowed to connect to this service attachment.
+        # Specifies which consumer projects or networks are allowed to connect to the
+        # service attachment. Each project or network has a connection limit. A given
+        # service attachment can manage connections at either the project or network
+        # level. Therefore, both the accept and reject lists for a given service
+        # attachment must contain either only projects or only networks.
         # Corresponds to the JSON property `consumerAcceptLists`
         # @return [Array<Google::Apis::ComputeV1::ServiceAttachmentConsumerProjectLimit>]
         attr_accessor :consumer_accept_lists
       
-        # Projects that are not allowed to connect to this service attachment. The
-        # project can be specified using its id or number.
+        # Specifies a list of projects or networks that are not allowed to connect to
+        # this service attachment. The project can be specified using its project ID or
+        # project number and the network can be specified using its URL. A given service
+        # attachment can manage connections at either the project or network level.
+        # Therefore, both the reject and accept lists for a given service attachment
+        # must contain either only projects or only networks.
         # Corresponds to the JSON property `consumerRejectLists`
         # @return [Array<String>]
         attr_accessor :consumer_reject_lists
