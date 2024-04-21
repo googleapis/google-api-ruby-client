@@ -898,8 +898,8 @@ module Google
         #   in the format: ``` projects/`project_number`/apps/`app_id`/appAttestConfig ```
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig] google_firebase_appcheck_v1beta_app_attest_config_object
         # @param [String] update_mask
-        #   Required. A comma-separated list of names of fields in the AppAttestConfig
-        #   Gets to update. Example: `token_ttl`.
+        #   Required. A comma-separated list of names of fields in the AppAttestConfig to
+        #   update. Example: `token_ttl`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1202,7 +1202,7 @@ module Google
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaDeviceCheckConfig] google_firebase_appcheck_v1beta_device_check_config_object
         # @param [String] update_mask
         #   Required. A comma-separated list of names of fields in the DeviceCheckConfig
-        #   Gets to update. Example: `key_id,private_key`.
+        #   to update. Example: `key_id,private_key`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1312,7 +1312,7 @@ module Google
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaPlayIntegrityConfig] google_firebase_appcheck_v1beta_play_integrity_config_object
         # @param [String] update_mask
         #   Required. A comma-separated list of names of fields in the PlayIntegrityConfig
-        #   Gets to update. Example: `token_ttl`.
+        #   to update. Example: `token_ttl`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1757,8 +1757,8 @@ module Google
         #   the format: ``` projects/`project_number`/apps/`app_id`/safetyNetConfig ```
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig] google_firebase_appcheck_v1beta_safety_net_config_object
         # @param [String] update_mask
-        #   Required. A comma-separated list of names of fields in the SafetyNetConfig
-        #   Gets to update. Example: `token_ttl`.
+        #   Required. A comma-separated list of names of fields in the SafetyNetConfig to
+        #   update. Example: `token_ttl`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1952,10 +1952,9 @@ module Google
         
         # Atomically updates the specified ResourcePolicy configurations.
         # @param [String] parent
-        #   Required. The parent project name and the service, in the format ``` projects/`
-        #   project_number`/services/`service_id` ``` The parent collection in the `name`
-        #   field of any resource being updated must match this field, or the entire batch
-        #   fails.
+        #   Required. The parent service name, in the format ``` projects/`project_number`/
+        #   services/`service_id` ``` The parent collection in the `name` field of any
+        #   resource being updated must match this field, or the entire batch fails.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest] google_firebase_appcheck_v1beta_batch_update_resource_policies_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2027,12 +2026,15 @@ module Google
         # @param [String] name
         #   Required. The relative resource name of the ResourcePolicy to delete, in the
         #   format: ``` projects/`project_number`/services/`service_id`/resourcePolicies/`
-        #   resource_name` ```
+        #   resource_policy_id` ```
         # @param [String] etag
         #   The checksum to be validated against the current ResourcePolicy, to ensure the
-        #   client has an up-to-date value before proceeding. The user can obtain this
-        #   from the ResourcePolicy object that they last received. This etag is strongly
-        #   validated.
+        #   client has an up-to-date value before proceeding. This checksum is computed by
+        #   the server based on the values of fields in the ResourcePolicy object, and can
+        #   be obtained from the ResourcePolicy object received from the last
+        #   CreateResourcePolicy, GetResourcePolicy, ListResourcePolicies,
+        #   UpdateResourcePolicy, or BatchUpdateResourcePolicies call. This etag is
+        #   strongly validated as defined by RFC 7232.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2098,9 +2100,11 @@ module Google
         
         # Lists all ResourcePolicy configurations for the specified project and service.
         # @param [String] parent
-        #   Required. The relative resource name of the parent project and service for
-        #   which to list each associated ResourcePolicy, in the format: ``` projects/`
-        #   project_number`/services/`service_name` ```
+        #   Required. The relative resource name of the parent service for which to list
+        #   each associated ResourcePolicy, in the format: ``` projects/`project_number`/
+        #   services/`service_id` ``` Note that the `service_id` element must be a
+        #   supported service ID. Currently, the following service IDs are supported: * `
+        #   oauth2.googleapis.com` (Google Identity for iOS)
         # @param [String] filter
         #   Optional. Filters the results by the specified rule. For the exact syntax of
         #   this field, please consult the [AIP-160](https://google.aip.dev/160) standard.
@@ -2112,16 +2116,16 @@ module Google
         #   ENFORCED AND target_resource = "//oauth2.googleapis.com/projects/12345/
         #   oauthClients/"`
         # @param [Fixnum] page_size
-        #   The maximum number of ResourcePolicys to return in the response. Only
-        #   explicitly configured policies are returned. The server may return fewer than
-        #   this at its own discretion. If no value is specified (or too large a value is
-        #   specified), the server will impose its own limit.
+        #   The maximum number of ResourcePolicy objects to return in the response. The
+        #   server may return fewer than this at its own discretion. If no value is
+        #   specified (or too large a value is specified), the server will impose its own
+        #   limit.
         # @param [String] page_token
         #   Token returned from a previous call to ListResourcePolicies indicating where
-        #   in the set of ResourcePolicys to resume listing. Provide this to retrieve the
-        #   subsequent page. When paginating, all other parameters provided to
-        #   ListResourcePolicies must match the call that provided the page token; if they
-        #   do not match, the result is undefined.
+        #   in the set of ResourcePolicy objects to resume listing. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to ListResourcePolicies must match the call that provided the page token; if
+        #   they do not match, the result is undefined.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

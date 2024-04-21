@@ -261,8 +261,8 @@ module Google
       class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The request messages specifying the ResourcePolicys to update. A
-        # maximum of 100 objects can be updated in a batch.
+        # Required. The request messages specifying the ResourcePolicy objects to update.
+        # A maximum of 100 objects can be updated in a batch.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>]
         attr_accessor :requests
@@ -927,7 +927,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The ResourcePolicys retrieved.
+        # The ResourcePolicy objects retrieved.
         # Corresponds to the JSON property `resourcePolicies`
         # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy>]
         attr_accessor :resource_policies
@@ -1230,16 +1230,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The App Check enforcement mode for this resource. This will override
-        # the EnforcementMode setting on the service. For new resources that you are
-        # creating, you should consider setting an override and enable enforcement on
-        # the resource immediately, if there are no outdated clients that can use it.
+        # the EnforcementMode setting on the parent service.
         # Corresponds to the JSON property `enforcementMode`
         # @return [String]
         attr_accessor :enforcement_mode
       
         # This checksum is computed by the server based on the value of other fields,
         # and may be sent on update and delete requests to ensure the client has an up-
-        # to-date value before proceeding. This etag is strongly validated.
+        # to-date value before proceeding. This etag is strongly validated as defined by
+        # RFC 7232.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1256,15 +1255,17 @@ module Google
       
         # Required. Service specific name of the resource object to which this policy
         # applies, in the format: * `//oauth2.googleapis.com/projects/`project`/
-        # oauthClients/`oauth_client_id`` (Google Identity for iOS) NOTE that the
+        # oauthClients/`oauth_client_id`` (Google Identity for iOS) Note that the
         # resource must belong to the service specified in the `name` and be from the
-        # same project as this policy, but it may or may not exist at the time of
-        # creation of the policy.
+        # same project as this policy, but the resource is allowed to be missing at the
+        # time of creation of this policy; in that case, we make a best-effort attempt
+        # at respecting this policy, but it may not have any effect until the resource
+        # is fully created.
         # Corresponds to the JSON property `targetResource`
         # @return [String]
         attr_accessor :target_resource
       
-        # Output only. Timestamp when this service configuration object was most
+        # Output only. Timestamp when this resource policy configuration object was most
         # recently updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
