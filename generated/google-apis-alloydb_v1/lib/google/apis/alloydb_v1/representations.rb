@@ -202,6 +202,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaintenanceUpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MigrationSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +251,18 @@ module Google
       end
       
       class PromoteClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PscInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -542,6 +566,8 @@ module Google
           property :initial_user, as: 'initialUser', class: Google::Apis::AlloydbV1::UserPassword, decorator: Google::Apis::AlloydbV1::UserPassword::Representation
       
           hash :labels, as: 'labels'
+          property :maintenance_update_policy, as: 'maintenanceUpdatePolicy', class: Google::Apis::AlloydbV1::MaintenanceUpdatePolicy, decorator: Google::Apis::AlloydbV1::MaintenanceUpdatePolicy::Representation
+      
           property :migration_source, as: 'migrationSource', class: Google::Apis::AlloydbV1::MigrationSource, decorator: Google::Apis::AlloydbV1::MigrationSource::Representation
       
           property :name, as: 'name'
@@ -549,6 +575,8 @@ module Google
           property :network_config, as: 'networkConfig', class: Google::Apis::AlloydbV1::NetworkConfig, decorator: Google::Apis::AlloydbV1::NetworkConfig::Representation
       
           property :primary_config, as: 'primaryConfig', class: Google::Apis::AlloydbV1::PrimaryConfig, decorator: Google::Apis::AlloydbV1::PrimaryConfig::Representation
+      
+          property :psc_config, as: 'pscConfig', class: Google::Apis::AlloydbV1::PscConfig, decorator: Google::Apis::AlloydbV1::PscConfig::Representation
       
           property :reconciling, as: 'reconciling'
           property :satisfies_pzs, as: 'satisfiesPzs'
@@ -692,6 +720,8 @@ module Google
       
           collection :nodes, as: 'nodes', class: Google::Apis::AlloydbV1::Node, decorator: Google::Apis::AlloydbV1::Node::Representation
       
+          property :psc_instance_config, as: 'pscInstanceConfig', class: Google::Apis::AlloydbV1::PscInstanceConfig, decorator: Google::Apis::AlloydbV1::PscInstanceConfig::Representation
+      
           property :public_ip_address, as: 'publicIpAddress'
           property :query_insights_config, as: 'queryInsightsConfig', class: Google::Apis::AlloydbV1::QueryInsightsInstanceConfig, decorator: Google::Apis::AlloydbV1::QueryInsightsInstanceConfig::Representation
       
@@ -789,6 +819,23 @@ module Google
         end
       end
       
+      class MaintenanceUpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :maintenance_windows, as: 'maintenanceWindows', class: Google::Apis::AlloydbV1::MaintenanceWindow, decorator: Google::Apis::AlloydbV1::MaintenanceWindow::Representation
+      
+        end
+      end
+      
+      class MaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :start_time, as: 'startTime', class: Google::Apis::AlloydbV1::GoogleTypeTimeOfDay, decorator: Google::Apis::AlloydbV1::GoogleTypeTimeOfDay::Representation
+      
+        end
+      end
+      
       class MigrationSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -854,6 +901,22 @@ module Google
           property :etag, as: 'etag'
           property :request_id, as: 'requestId'
           property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class PscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :psc_enabled, as: 'pscEnabled'
+        end
+      end
+      
+      class PscInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
+          property :psc_dns_name, as: 'pscDnsName'
+          property :service_attachment_link, as: 'serviceAttachmentLink'
         end
       end
       

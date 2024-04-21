@@ -475,6 +475,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # MaintenanceUpdatePolicy defines the policy for system updates.
+        # Corresponds to the JSON property `maintenanceUpdatePolicy`
+        # @return [Google::Apis::AlloydbV1::MaintenanceUpdatePolicy]
+        attr_accessor :maintenance_update_policy
+      
         # Subset of the source instance configuration that is available when reading the
         # cluster resource.
         # Corresponds to the JSON property `migrationSource`
@@ -510,6 +515,11 @@ module Google
         # Corresponds to the JSON property `primaryConfig`
         # @return [Google::Apis::AlloydbV1::PrimaryConfig]
         attr_accessor :primary_config
+      
+        # PscConfig contains PSC related configuration at a cluster level.
+        # Corresponds to the JSON property `pscConfig`
+        # @return [Google::Apis::AlloydbV1::PscConfig]
+        attr_accessor :psc_config
       
         # Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to
         # true if the current state of Cluster does not match the user's intended state,
@@ -575,11 +585,13 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @initial_user = args[:initial_user] if args.key?(:initial_user)
           @labels = args[:labels] if args.key?(:labels)
+          @maintenance_update_policy = args[:maintenance_update_policy] if args.key?(:maintenance_update_policy)
           @migration_source = args[:migration_source] if args.key?(:migration_source)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_config = args[:network_config] if args.key?(:network_config)
           @primary_config = args[:primary_config] if args.key?(:primary_config)
+          @psc_config = args[:psc_config] if args.key?(:psc_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secondary_config = args[:secondary_config] if args.key?(:secondary_config)
@@ -1103,6 +1115,11 @@ module Google
         # @return [Array<Google::Apis::AlloydbV1::Node>]
         attr_accessor :nodes
       
+        # PscInstanceConfig contains PSC related configuration at an instance level.
+        # Corresponds to the JSON property `pscInstanceConfig`
+        # @return [Google::Apis::AlloydbV1::PscInstanceConfig]
+        attr_accessor :psc_instance_config
+      
         # Output only. The public IP addresses for the Instance. This is available ONLY
         # when enable_public_ip is set. This is the connection endpoint for an end-user
         # application.
@@ -1181,6 +1198,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @psc_instance_config = args[:psc_instance_config] if args.key?(:psc_instance_config)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
           @read_pool_config = args[:read_pool_config] if args.key?(:read_pool_config)
@@ -1434,6 +1452,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+        end
+      end
+      
+      # MaintenanceUpdatePolicy defines the policy for system updates.
+      class MaintenanceUpdatePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Preferred windows to perform maintenance. Currently limited to 1.
+        # Corresponds to the JSON property `maintenanceWindows`
+        # @return [Array<Google::Apis::AlloydbV1::MaintenanceWindow>]
+        attr_accessor :maintenance_windows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_windows = args[:maintenance_windows] if args.key?(:maintenance_windows)
+        end
+      end
+      
+      # MaintenanceWindow specifies a preferred day and time for maintenance.
+      class MaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::AlloydbV1::GoogleTypeTimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -1729,6 +1793,62 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @request_id = args[:request_id] if args.key?(:request_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # PscConfig contains PSC related configuration at a cluster level.
+      class PscConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Create an instance that allows connections from Private Service
+        # Connect endpoints to the instance.
+        # Corresponds to the JSON property `pscEnabled`
+        # @return [Boolean]
+        attr_accessor :psc_enabled
+        alias_method :psc_enabled?, :psc_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
+        end
+      end
+      
+      # PscInstanceConfig contains PSC related configuration at an instance level.
+      class PscInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of consumer projects that are allowed to create PSC endpoints
+        # to service-attachments to this instance.
+        # Corresponds to the JSON property `allowedConsumerProjects`
+        # @return [Array<String>]
+        attr_accessor :allowed_consumer_projects
+      
+        # Output only. The DNS name of the instance for PSC connectivity. Name
+        # convention: ...alloydb-psc.goog
+        # Corresponds to the JSON property `pscDnsName`
+        # @return [String]
+        attr_accessor :psc_dns_name
+      
+        # Output only. The service attachment created when Private Service Connect (PSC)
+        # is enabled for the instance. The name of the resource will be in the format of
+        # `projects//regions//serviceAttachments/`
+        # Corresponds to the JSON property `serviceAttachmentLink`
+        # @return [String]
+        attr_accessor :service_attachment_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
+          @psc_dns_name = args[:psc_dns_name] if args.key?(:psc_dns_name)
+          @service_attachment_link = args[:service_attachment_link] if args.key?(:service_attachment_link)
         end
       end
       
