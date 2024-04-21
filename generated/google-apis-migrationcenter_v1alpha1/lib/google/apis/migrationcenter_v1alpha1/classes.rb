@@ -75,7 +75,8 @@ module Google
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::Aggregation>]
         attr_accessor :aggregations
       
-        # The aggregation will be performed on assets that match the provided filter.
+        # Optional. The aggregation will be performed on assets that match the provided
+        # filter.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -401,6 +402,16 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The details of a database deployment asset.
+        # Corresponds to the JSON property `databaseDeploymentDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabaseDeploymentDetails]
+        attr_accessor :database_deployment_details
+      
+        # Details of a logical database.
+        # Corresponds to the JSON property `databaseDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabaseDetails]
+        attr_accessor :database_details
+      
         # Optional. Indicates if the asset is hidden.
         # Corresponds to the JSON property `hidden`
         # @return [Boolean]
@@ -442,6 +453,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :sources
       
+        # Output only. Server generated human readable name of the asset.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
         # Output only. The timestamp when the asset was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -461,6 +477,8 @@ module Google
           @assigned_groups = args[:assigned_groups] if args.key?(:assigned_groups)
           @attributes = args[:attributes] if args.key?(:attributes)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @database_deployment_details = args[:database_deployment_details] if args.key?(:database_deployment_details)
+          @database_details = args[:database_details] if args.key?(:database_details)
           @hidden = args[:hidden] if args.key?(:hidden)
           @hide_reason = args[:hide_reason] if args.key?(:hide_reason)
           @hide_time = args[:hide_time] if args.key?(:hide_time)
@@ -469,6 +487,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @performance_data = args[:performance_data] if args.key?(:performance_data)
           @sources = args[:sources] if args.key?(:sources)
+          @title = args[:title] if args.key?(:title)
           @update_time = args[:update_time] if args.key?(:update_time)
           @virtual_machine_details = args[:virtual_machine_details] if args.key?(:virtual_machine_details)
         end
@@ -488,6 +507,16 @@ module Google
         # Corresponds to the JSON property `collectionType`
         # @return [String]
         attr_accessor :collection_type
+      
+        # The details of a database deployment asset.
+        # Corresponds to the JSON property `databaseDeploymentDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabaseDeploymentDetails]
+        attr_accessor :database_deployment_details
+      
+        # Details of a logical database.
+        # Corresponds to the JSON property `databaseDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabaseDetails]
+        attr_accessor :database_details
       
         # Labels as key value pairs.
         # Corresponds to the JSON property `labels`
@@ -524,6 +553,8 @@ module Google
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
           @collection_type = args[:collection_type] if args.key?(:collection_type)
+          @database_deployment_details = args[:database_deployment_details] if args.key?(:database_deployment_details)
+          @database_details = args[:database_details] if args.key?(:database_details)
           @labels = args[:labels] if args.key?(:labels)
           @performance_samples = args[:performance_samples] if args.key?(:performance_samples)
           @report_time = args[:report_time] if args.key?(:report_time)
@@ -754,6 +785,222 @@ module Google
         end
       end
       
+      # Cloud database migration target.
+      class CloudDatabaseMigrationTarget
+        include Google::Apis::Core::Hashable
+      
+        # Cloud SQL for MySQL database shape.
+        # Corresponds to the JSON property `cloudSqlForMysqlShape`
+        # @return [Google::Apis::MigrationcenterV1alpha1::CloudSqlForMySqlShape]
+        attr_accessor :cloud_sql_for_mysql_shape
+      
+        # Cloud SQL for Postgres database shape.
+        # Corresponds to the JSON property `cloudSqlForPostgresqlShape`
+        # @return [Google::Apis::MigrationcenterV1alpha1::CloudSqlForPostgreSqlShape]
+        attr_accessor :cloud_sql_for_postgresql_shape
+      
+        # Cloud SQL for SQL Server database shape.
+        # Corresponds to the JSON property `cloudSqlShape`
+        # @return [Google::Apis::MigrationcenterV1alpha1::CloudSqlForSqlServerShape]
+        attr_accessor :cloud_sql_shape
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_sql_for_mysql_shape = args[:cloud_sql_for_mysql_shape] if args.key?(:cloud_sql_for_mysql_shape)
+          @cloud_sql_for_postgresql_shape = args[:cloud_sql_for_postgresql_shape] if args.key?(:cloud_sql_for_postgresql_shape)
+          @cloud_sql_shape = args[:cloud_sql_shape] if args.key?(:cloud_sql_shape)
+        end
+      end
+      
+      # Cloud SQL for MySQL database shape.
+      class CloudSqlForMySqlShape
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Predicted backup storage size in GiB.
+        # Corresponds to the JSON property `backupStorageGb`
+        # @return [Fixnum]
+        attr_accessor :backup_storage_gb
+      
+        # Output only. Cloud SQL edition.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
+        # Output only. Predicted Network Out traffic GiB per month.
+        # Corresponds to the JSON property `egressGbPerMonth`
+        # @return [Fixnum]
+        attr_accessor :egress_gb_per_month
+      
+        # Output only. Number of logical cores.
+        # Corresponds to the JSON property `logicalCoreCount`
+        # @return [Fixnum]
+        attr_accessor :logical_core_count
+      
+        # Output only. Predicted amount of memory in MiB.
+        # Corresponds to the JSON property `memoryMb`
+        # @return [Fixnum]
+        attr_accessor :memory_mb
+      
+        # Compute Engine storage option descriptor.
+        # Corresponds to the JSON property `storage`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor]
+        attr_accessor :storage
+      
+        # Output only. MySQL version to be used on the Cloud SQL for MySQL instance.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        # Output only. Cloud SQL zone availability.
+        # Corresponds to the JSON property `zoneAvailability`
+        # @return [String]
+        attr_accessor :zone_availability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_storage_gb = args[:backup_storage_gb] if args.key?(:backup_storage_gb)
+          @edition = args[:edition] if args.key?(:edition)
+          @egress_gb_per_month = args[:egress_gb_per_month] if args.key?(:egress_gb_per_month)
+          @logical_core_count = args[:logical_core_count] if args.key?(:logical_core_count)
+          @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
+          @storage = args[:storage] if args.key?(:storage)
+          @version = args[:version] if args.key?(:version)
+          @zone_availability = args[:zone_availability] if args.key?(:zone_availability)
+        end
+      end
+      
+      # Cloud SQL for Postgres database shape.
+      class CloudSqlForPostgreSqlShape
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Predicted backup storage size in GiB.
+        # Corresponds to the JSON property `backupStorageGb`
+        # @return [Fixnum]
+        attr_accessor :backup_storage_gb
+      
+        # Output only. Cloud SQL edition.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
+        # Output only. Predicted Network Out traffic GiB per month.
+        # Corresponds to the JSON property `egressGbPerMonth`
+        # @return [Fixnum]
+        attr_accessor :egress_gb_per_month
+      
+        # Output only. Number of logical cores.
+        # Corresponds to the JSON property `logicalCoreCount`
+        # @return [Fixnum]
+        attr_accessor :logical_core_count
+      
+        # Output only. Predicted amount of memory in MiB.
+        # Corresponds to the JSON property `memoryMb`
+        # @return [Fixnum]
+        attr_accessor :memory_mb
+      
+        # Compute Engine storage option descriptor.
+        # Corresponds to the JSON property `storage`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor]
+        attr_accessor :storage
+      
+        # Output only. PostgreSql version to be used on the Cloud SQL for PostgreSql
+        # instance.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        # Output only. Cloud SQL zone availability.
+        # Corresponds to the JSON property `zoneAvailability`
+        # @return [String]
+        attr_accessor :zone_availability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_storage_gb = args[:backup_storage_gb] if args.key?(:backup_storage_gb)
+          @edition = args[:edition] if args.key?(:edition)
+          @egress_gb_per_month = args[:egress_gb_per_month] if args.key?(:egress_gb_per_month)
+          @logical_core_count = args[:logical_core_count] if args.key?(:logical_core_count)
+          @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
+          @storage = args[:storage] if args.key?(:storage)
+          @version = args[:version] if args.key?(:version)
+          @zone_availability = args[:zone_availability] if args.key?(:zone_availability)
+        end
+      end
+      
+      # Cloud SQL for SQL Server database shape.
+      class CloudSqlForSqlServerShape
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Predicted backup storage size in GiB.
+        # Corresponds to the JSON property `backupStorageGb`
+        # @return [Fixnum]
+        attr_accessor :backup_storage_gb
+      
+        # Output only. Cloud SQL edition.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
+        # Output only. Predicted Network Out traffic GiB per month.
+        # Corresponds to the JSON property `egressGbPerMonth`
+        # @return [Fixnum]
+        attr_accessor :egress_gb_per_month
+      
+        # Output only. Number of logical cores.
+        # Corresponds to the JSON property `logicalCoreCount`
+        # @return [Fixnum]
+        attr_accessor :logical_core_count
+      
+        # Output only. Predicted amount of memory in MiB.
+        # Corresponds to the JSON property `memoryMb`
+        # @return [Fixnum]
+        attr_accessor :memory_mb
+      
+        # Compute Engine storage option descriptor.
+        # Corresponds to the JSON property `storage`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor]
+        attr_accessor :storage
+      
+        # Output only. Microsoft SQL Server version to be used on the Cloud SQL for SQL
+        # server instance.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        # Output only. Cloud SQL zone availability.
+        # Corresponds to the JSON property `zoneAvailability`
+        # @return [String]
+        attr_accessor :zone_availability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_storage_gb = args[:backup_storage_gb] if args.key?(:backup_storage_gb)
+          @edition = args[:edition] if args.key?(:edition)
+          @egress_gb_per_month = args[:egress_gb_per_month] if args.key?(:egress_gb_per_month)
+          @logical_core_count = args[:logical_core_count] if args.key?(:logical_core_count)
+          @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
+          @storage = args[:storage] if args.key?(:storage)
+          @version = args[:version] if args.key?(:version)
+          @zone_availability = args[:zone_availability] if args.key?(:zone_availability)
+        end
+      end
+      
       # Compute engine migration target.
       class ComputeEngineMigrationTarget
         include Google::Apis::Core::Hashable
@@ -813,32 +1060,32 @@ module Google
       class ComputeEngineShapeDescriptor
         include Google::Apis::Core::Hashable
       
-        # Number of logical cores.
+        # Output only. Number of logical cores.
         # Corresponds to the JSON property `logicalCoreCount`
         # @return [Fixnum]
         attr_accessor :logical_core_count
       
-        # Compute Engine machine type.
+        # Output only. Compute Engine machine type.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
       
-        # Memory in mebibytes.
+        # Output only. Memory in mebibytes.
         # Corresponds to the JSON property `memoryMb`
         # @return [Fixnum]
         attr_accessor :memory_mb
       
-        # Number of physical cores.
+        # Output only. Number of physical cores.
         # Corresponds to the JSON property `physicalCoreCount`
         # @return [Fixnum]
         attr_accessor :physical_core_count
       
-        # Compute Engine machine series.
+        # Output only. Compute Engine machine series.
         # Corresponds to the JSON property `series`
         # @return [String]
         attr_accessor :series
       
-        # Compute Engine storage. Never empty.
+        # Output only. Compute Engine storage. Never empty.
         # Corresponds to the JSON property `storage`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor>]
         attr_accessor :storage
@@ -994,6 +1241,16 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats]
         attr_accessor :iops
       
+        # Statistical aggregation of samples for a single resource usage.
+        # Corresponds to the JSON property `readIops`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats]
+        attr_accessor :read_iops
+      
+        # Statistical aggregation of samples for a single resource usage.
+        # Corresponds to the JSON property `writeIops`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats]
+        attr_accessor :write_iops
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1001,6 +1258,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @iops = args[:iops] if args.key?(:iops)
+          @read_iops = args[:read_iops] if args.key?(:read_iops)
+          @write_iops = args[:write_iops] if args.key?(:write_iops)
         end
       end
       
@@ -1082,6 +1341,493 @@ module Google
           @median = args[:median] if args.key?(:median)
           @nintey_fifth_percentile = args[:nintey_fifth_percentile] if args.key?(:nintey_fifth_percentile)
           @peak = args[:peak] if args.key?(:peak)
+        end
+      end
+      
+      # The details of a database deployment asset.
+      class DatabaseDeploymentDetails
+        include Google::Apis::Core::Hashable
+      
+        # Aggregated stats for the database deployment.
+        # Corresponds to the JSON property `aggregatedStats`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabaseDeploymentDetailsAggregatedStats]
+        attr_accessor :aggregated_stats
+      
+        # The database deployment edition.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
+        # The database deployment generated ID.
+        # Corresponds to the JSON property `generatedId`
+        # @return [String]
+        attr_accessor :generated_id
+      
+        # A manual unique ID set by the user.
+        # Corresponds to the JSON property `manualUniqueId`
+        # @return [String]
+        attr_accessor :manual_unique_id
+      
+        # Specific details for a Mysql database deployment.
+        # Corresponds to the JSON property `mysql`
+        # @return [Google::Apis::MigrationcenterV1alpha1::MysqlDatabaseDeployment]
+        attr_accessor :mysql
+      
+        # Specific details for a PostgreSQL database deployment.
+        # Corresponds to the JSON property `postgresql`
+        # @return [Google::Apis::MigrationcenterV1alpha1::PostgreSqlDatabaseDeployment]
+        attr_accessor :postgresql
+      
+        # Specific details for a Microsoft SQL Server database deployment.
+        # Corresponds to the JSON property `sqlServer`
+        # @return [Google::Apis::MigrationcenterV1alpha1::SqlServerDatabaseDeployment]
+        attr_accessor :sql_server
+      
+        # Details of database deployment's topology.
+        # Corresponds to the JSON property `topology`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabaseDeploymentTopology]
+        attr_accessor :topology
+      
+        # The database deployment version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregated_stats = args[:aggregated_stats] if args.key?(:aggregated_stats)
+          @edition = args[:edition] if args.key?(:edition)
+          @generated_id = args[:generated_id] if args.key?(:generated_id)
+          @manual_unique_id = args[:manual_unique_id] if args.key?(:manual_unique_id)
+          @mysql = args[:mysql] if args.key?(:mysql)
+          @postgresql = args[:postgresql] if args.key?(:postgresql)
+          @sql_server = args[:sql_server] if args.key?(:sql_server)
+          @topology = args[:topology] if args.key?(:topology)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Aggregated stats for the database deployment.
+      class DatabaseDeploymentDetailsAggregatedStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of databases in the deployment.
+        # Corresponds to the JSON property `databaseCount`
+        # @return [Fixnum]
+        attr_accessor :database_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_count = args[:database_count] if args.key?(:database_count)
+        end
+      end
+      
+      # Details of database deployment's topology.
+      class DatabaseDeploymentTopology
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of total cores.
+        # Corresponds to the JSON property `coreCount`
+        # @return [Fixnum]
+        attr_accessor :core_count
+      
+        # Optional. Number of total cores limited by db deployment.
+        # Corresponds to the JSON property `coreLimit`
+        # @return [Fixnum]
+        attr_accessor :core_limit
+      
+        # Optional. Disk allocated in bytes.
+        # Corresponds to the JSON property `diskAllocatedBytes`
+        # @return [Fixnum]
+        attr_accessor :disk_allocated_bytes
+      
+        # Optional. Disk used in bytes.
+        # Corresponds to the JSON property `diskUsedBytes`
+        # @return [Fixnum]
+        attr_accessor :disk_used_bytes
+      
+        # Optional. List of database instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::DatabaseInstance>]
+        attr_accessor :instances
+      
+        # Optional. Total memory in bytes.
+        # Corresponds to the JSON property `memoryBytes`
+        # @return [Fixnum]
+        attr_accessor :memory_bytes
+      
+        # Optional. Total memory in bytes limited by db deployment.
+        # Corresponds to the JSON property `memoryLimitBytes`
+        # @return [Fixnum]
+        attr_accessor :memory_limit_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @core_count = args[:core_count] if args.key?(:core_count)
+          @core_limit = args[:core_limit] if args.key?(:core_limit)
+          @disk_allocated_bytes = args[:disk_allocated_bytes] if args.key?(:disk_allocated_bytes)
+          @disk_used_bytes = args[:disk_used_bytes] if args.key?(:disk_used_bytes)
+          @instances = args[:instances] if args.key?(:instances)
+          @memory_bytes = args[:memory_bytes] if args.key?(:memory_bytes)
+          @memory_limit_bytes = args[:memory_limit_bytes] if args.key?(:memory_limit_bytes)
+        end
+      end
+      
+      # Details of a logical database.
+      class DatabaseDetails
+        include Google::Apis::Core::Hashable
+      
+        # The allocated storage for the database in bytes.
+        # Corresponds to the JSON property `allocatedStorageBytes`
+        # @return [Fixnum]
+        attr_accessor :allocated_storage_bytes
+      
+        # The name of the database.
+        # Corresponds to the JSON property `databaseName`
+        # @return [String]
+        attr_accessor :database_name
+      
+        # The identifiers of the parent database deployment.
+        # Corresponds to the JSON property `parentDatabaseDeployment`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabaseDetailsParentDatabaseDeployment]
+        attr_accessor :parent_database_deployment
+      
+        # The database schemas.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::DatabaseSchema>]
+        attr_accessor :schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_storage_bytes = args[:allocated_storage_bytes] if args.key?(:allocated_storage_bytes)
+          @database_name = args[:database_name] if args.key?(:database_name)
+          @parent_database_deployment = args[:parent_database_deployment] if args.key?(:parent_database_deployment)
+          @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
+      # The identifiers of the parent database deployment.
+      class DatabaseDetailsParentDatabaseDeployment
+        include Google::Apis::Core::Hashable
+      
+        # The parent database deployment generated ID.
+        # Corresponds to the JSON property `generatedId`
+        # @return [String]
+        attr_accessor :generated_id
+      
+        # The parent database deployment optional manual unique ID set by the user.
+        # Corresponds to the JSON property `manualUniqueId`
+        # @return [String]
+        attr_accessor :manual_unique_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generated_id = args[:generated_id] if args.key?(:generated_id)
+          @manual_unique_id = args[:manual_unique_id] if args.key?(:manual_unique_id)
+        end
+      end
+      
+      # Details of a database instance.
+      class DatabaseInstance
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The instance's hosts.
+        # Corresponds to the JSON property `hosts`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::DatabaseInstanceHost>]
+        attr_accessor :hosts
+      
+        # The instance's name.
+        # Corresponds to the JSON property `instanceName`
+        # @return [String]
+        attr_accessor :instance_name
+      
+        # The instance role in the database engine.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hosts = args[:hosts] if args.key?(:hosts)
+          @instance_name = args[:instance_name] if args.key?(:instance_name)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Details of a host of a database instance.
+      class DatabaseInstanceHost
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The host name of the host.
+        # Corresponds to the JSON property `hostName`
+        # @return [String]
+        attr_accessor :host_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_name = args[:host_name] if args.key?(:host_name)
+        end
+      end
+      
+      # Details of a group of database objects.
+      class DatabaseObjects
+        include Google::Apis::Core::Hashable
+      
+        # The category of the objects.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # The number of objects.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @count = args[:count] if args.key?(:count)
+        end
+      end
+      
+      # DatabasePreferences enables you to create sets of preferences for your
+      # migrated databases.
+      class DatabasePreferences
+        include Google::Apis::Core::Hashable
+      
+        # Preferences for SQL Server on Cloud SQL.
+        # Corresponds to the JSON property `mssqlToCloudSqlForSqlServerPreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabasePreferencesCloudSqlSqlServer]
+        attr_accessor :mssql_to_cloud_sql_for_sql_server_preferences
+      
+        # Preferences for MySQL on Cloud SQL.
+        # Corresponds to the JSON property `mysqlToCloudSqlForMysqlPreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabasePreferencesCloudSqlMySql]
+        attr_accessor :mysql_to_cloud_sql_for_mysql_preferences
+      
+        # Preferences for PostgreSQL on Cloud SQL.
+        # Corresponds to the JSON property `postgresqlToCloudSqlForPostgresqlPreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabasePreferencesCloudSqlPostgreSql]
+        attr_accessor :postgresql_to_cloud_sql_for_postgresql_preferences
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mssql_to_cloud_sql_for_sql_server_preferences = args[:mssql_to_cloud_sql_for_sql_server_preferences] if args.key?(:mssql_to_cloud_sql_for_sql_server_preferences)
+          @mysql_to_cloud_sql_for_mysql_preferences = args[:mysql_to_cloud_sql_for_mysql_preferences] if args.key?(:mysql_to_cloud_sql_for_mysql_preferences)
+          @postgresql_to_cloud_sql_for_postgresql_preferences = args[:postgresql_to_cloud_sql_for_postgresql_preferences] if args.key?(:postgresql_to_cloud_sql_for_postgresql_preferences)
+        end
+      end
+      
+      # Preferences common to Cloud SQL databases.
+      class DatabasePreferencesCloudSqlCommon
+        include Google::Apis::Core::Hashable
+      
+        # Preferences for database backups.
+        # Corresponds to the JSON property `backup`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabasePreferencesCloudSqlCommonBackup]
+        attr_accessor :backup
+      
+        # Optional. Commitment plan to consider when calculating costs. Only regular
+        # CUDs (not flexible) are currently available.
+        # Corresponds to the JSON property `commitmentPlan`
+        # @return [String]
+        attr_accessor :commitment_plan
+      
+        # Optional. Cloud SQL edition. For SQL Server, only Enterprise is available.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
+        # Optional. Persistent disk type to use. If unspecified, a disk type is
+        # recommended based on available usage data. For SQL Server, only SSD is
+        # available. For MySQL and PostgreSQL, only STANDARD (HDD) and SSD types are
+        # available.
+        # Corresponds to the JSON property `persistentDiskType`
+        # @return [String]
+        attr_accessor :persistent_disk_type
+      
+        # Optional. Sizing optimization strategy of the database. Currently supported
+        # for Cloud SQL are just two values: SIZING_OPTIMIZATION_STRATEGY_MODERATE and
+        # SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE.
+        # SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED will behave like
+        # SIZING_OPTIMIZATION_STRATEGY_MODERATE.
+        # Corresponds to the JSON property `sizingOptimizationStrategy`
+        # @return [String]
+        attr_accessor :sizing_optimization_strategy
+      
+        # Optional. Preferred zone availability.
+        # Corresponds to the JSON property `zoneAvailability`
+        # @return [String]
+        attr_accessor :zone_availability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @commitment_plan = args[:commitment_plan] if args.key?(:commitment_plan)
+          @edition = args[:edition] if args.key?(:edition)
+          @persistent_disk_type = args[:persistent_disk_type] if args.key?(:persistent_disk_type)
+          @sizing_optimization_strategy = args[:sizing_optimization_strategy] if args.key?(:sizing_optimization_strategy)
+          @zone_availability = args[:zone_availability] if args.key?(:zone_availability)
+        end
+      end
+      
+      # Preferences for database backups.
+      class DatabasePreferencesCloudSqlCommonBackup
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Mode of automated backups.
+        # Corresponds to the JSON property `backupMode`
+        # @return [String]
+        attr_accessor :backup_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_mode = args[:backup_mode] if args.key?(:backup_mode)
+        end
+      end
+      
+      # Preferences for MySQL on Cloud SQL.
+      class DatabasePreferencesCloudSqlMySql
+        include Google::Apis::Core::Hashable
+      
+        # Preferences common to Cloud SQL databases.
+        # Corresponds to the JSON property `common`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabasePreferencesCloudSqlCommon]
+        attr_accessor :common
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common = args[:common] if args.key?(:common)
+        end
+      end
+      
+      # Preferences for PostgreSQL on Cloud SQL.
+      class DatabasePreferencesCloudSqlPostgreSql
+        include Google::Apis::Core::Hashable
+      
+        # Preferences common to Cloud SQL databases.
+        # Corresponds to the JSON property `common`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabasePreferencesCloudSqlCommon]
+        attr_accessor :common
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common = args[:common] if args.key?(:common)
+        end
+      end
+      
+      # Preferences for SQL Server on Cloud SQL.
+      class DatabasePreferencesCloudSqlSqlServer
+        include Google::Apis::Core::Hashable
+      
+        # Preferences common to Cloud SQL databases.
+        # Corresponds to the JSON property `common`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabasePreferencesCloudSqlCommon]
+        attr_accessor :common
+      
+        # Optional. Preferences for multithreading support.
+        # Corresponds to the JSON property `multithreading`
+        # @return [String]
+        attr_accessor :multithreading
+      
+        # Optional. Edition of Microsoft SQL version that is used on a Cloud SQL for SQL
+        # server instance.
+        # Corresponds to the JSON property `versionType`
+        # @return [String]
+        attr_accessor :version_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common = args[:common] if args.key?(:common)
+          @multithreading = args[:multithreading] if args.key?(:multithreading)
+          @version_type = args[:version_type] if args.key?(:version_type)
+        end
+      end
+      
+      # Details of a database schema.
+      class DatabaseSchema
+        include Google::Apis::Core::Hashable
+      
+        # List of details of objects by category.
+        # Corresponds to the JSON property `objects`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::DatabaseObjects>]
+        attr_accessor :objects
+      
+        # The name of the schema.
+        # Corresponds to the JSON property `schemaName`
+        # @return [String]
+        attr_accessor :schema_name
+      
+        # The total size of tables in bytes.
+        # Corresponds to the JSON property `tablesSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :tables_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @objects = args[:objects] if args.key?(:objects)
+          @schema_name = args[:schema_name] if args.key?(:schema_name)
+          @tables_size_bytes = args[:tables_size_bytes] if args.key?(:tables_size_bytes)
         end
       end
       
@@ -1521,6 +2267,16 @@ module Google
         # @return [Float]
         attr_accessor :average_iops
       
+        # Average read IOPS sampled over a short window. Must be non-negative.
+        # Corresponds to the JSON property `averageReadIops`
+        # @return [Float]
+        attr_accessor :average_read_iops
+      
+        # Average write IOPS sampled over a short window. Must be non-negative.
+        # Corresponds to the JSON property `averageWriteIops`
+        # @return [Float]
+        attr_accessor :average_write_iops
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1528,6 +2284,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @average_iops = args[:average_iops] if args.key?(:average_iops)
+          @average_read_iops = args[:average_read_iops] if args.key?(:average_read_iops)
+          @average_write_iops = args[:average_write_iops] if args.key?(:average_write_iops)
         end
       end
       
@@ -2351,10 +3109,30 @@ module Google
       class ImportRowError
         include Google::Apis::Core::Hashable
       
+        # Error details for an archive file.
+        # Corresponds to the JSON property `archiveError`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ImportRowErrorArchiveErrorDetails]
+        attr_accessor :archive_error
+      
+        # The asset title.
+        # Corresponds to the JSON property `assetTitle`
+        # @return [String]
+        attr_accessor :asset_title
+      
+        # Error details for a CSV file.
+        # Corresponds to the JSON property `csvError`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ImportRowErrorCsvErrorDetails]
+        attr_accessor :csv_error
+      
         # The list of errors detected in the row.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::ImportError>]
         attr_accessor :errors
+      
+        # Error details for a JSON file.
+        # Corresponds to the JSON property `jsonError`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ImportRowErrorJsonErrorDetails]
+        attr_accessor :json_error
       
         # The row number where the error was detected.
         # Corresponds to the JSON property `rowNumber`
@@ -2371,16 +3149,108 @@ module Google
         # @return [String]
         attr_accessor :vm_uuid
       
+        # Error details for an XLSX file.
+        # Corresponds to the JSON property `xlsxError`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ImportRowErrorXlsxErrorDetails]
+        attr_accessor :xlsx_error
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @archive_error = args[:archive_error] if args.key?(:archive_error)
+          @asset_title = args[:asset_title] if args.key?(:asset_title)
+          @csv_error = args[:csv_error] if args.key?(:csv_error)
           @errors = args[:errors] if args.key?(:errors)
+          @json_error = args[:json_error] if args.key?(:json_error)
           @row_number = args[:row_number] if args.key?(:row_number)
           @vm_name = args[:vm_name] if args.key?(:vm_name)
           @vm_uuid = args[:vm_uuid] if args.key?(:vm_uuid)
+          @xlsx_error = args[:xlsx_error] if args.key?(:xlsx_error)
+        end
+      end
+      
+      # Error details for an archive file.
+      class ImportRowErrorArchiveErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # Error details for a CSV file.
+        # Corresponds to the JSON property `csvError`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ImportRowErrorCsvErrorDetails]
+        attr_accessor :csv_error
+      
+        # The file path inside the archive where the error was detected.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csv_error = args[:csv_error] if args.key?(:csv_error)
+          @file_path = args[:file_path] if args.key?(:file_path)
+        end
+      end
+      
+      # Error details for a CSV file.
+      class ImportRowErrorCsvErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # The row number where the error was detected.
+        # Corresponds to the JSON property `rowNumber`
+        # @return [Fixnum]
+        attr_accessor :row_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @row_number = args[:row_number] if args.key?(:row_number)
+        end
+      end
+      
+      # Error details for a JSON file.
+      class ImportRowErrorJsonErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Error details for an XLSX file.
+      class ImportRowErrorXlsxErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # The row number where the error was detected.
+        # Corresponds to the JSON property `rowNumber`
+        # @return [Fixnum]
+        attr_accessor :row_number
+      
+        # The name of the sheet where the error was detected.
+        # Corresponds to the JSON property `sheet`
+        # @return [String]
+        attr_accessor :sheet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @row_number = args[:row_number] if args.key?(:row_number)
+          @sheet = args[:sheet] if args.key?(:sheet)
         end
       end
       
@@ -2462,6 +3332,78 @@ module Google
         def update!(**args)
           @insights = args[:insights] if args.key?(:insights)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # An issue associated with a migration.
+      class Issue
+        include Google::Apis::Core::Hashable
+      
+        # Details about a compatibility issue.
+        # Corresponds to the JSON property `compatibilityIssue`
+        # @return [Google::Apis::MigrationcenterV1alpha1::IssueCompatibilityIssue]
+        attr_accessor :compatibility_issue
+      
+        # Output only. English description of the issue.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Unique identifier for this issue type.
+        # Corresponds to the JSON property `issueCode`
+        # @return [String]
+        attr_accessor :issue_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compatibility_issue = args[:compatibility_issue] if args.key?(:compatibility_issue)
+          @description = args[:description] if args.key?(:description)
+          @issue_code = args[:issue_code] if args.key?(:issue_code)
+        end
+      end
+      
+      # Details about a compatibility issue.
+      class IssueCompatibilityIssue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the object associated with this compatibility issue
+        # relative to the relevant asset. Does not represent a fully qualified resource
+        # name and is not intended for programmatic use.
+        # Corresponds to the JSON property `associatedObject`
+        # @return [String]
+        attr_accessor :associated_object
+      
+        # Output only. Type of object associated with this migration compatibility issue.
+        # Corresponds to the JSON property `associatedObjectType`
+        # @return [String]
+        attr_accessor :associated_object_type
+      
+        # Output only. A string representation of actual value associated with this
+        # issue. Some values may contain aggregated information, such as a flag name and
+        # the actual value assigned to it.
+        # Corresponds to the JSON property `associatedValue`
+        # @return [String]
+        attr_accessor :associated_value
+      
+        # Output only. Category of this compatibility issue.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associated_object = args[:associated_object] if args.key?(:associated_object)
+          @associated_object_type = args[:associated_object_type] if args.key?(:associated_object_type)
+          @associated_value = args[:associated_value] if args.key?(:associated_value)
+          @category = args[:category] if args.key?(:category)
         end
       end
       
@@ -2896,13 +3838,16 @@ module Google
         end
       end
       
-      # A Compute Engine machine series.
+      # A machine series, for a target product (e.g. Compute Engine, Google Cloud
+      # VMware Engine).
       class MachineSeries
         include Google::Apis::Core::Hashable
       
-        # Code to identify a Compute Engine machine series. Consult https://cloud.google.
-        # com/compute/docs/machine-resource#machine_type_comparison for more details on
-        # the available series.
+        # Code to identify a machine series. Consult this for more details on the
+        # available series for Compute Engine: https://cloud.google.com/compute/docs/
+        # machine-resource#machine_type_comparison Consult this for more details on the
+        # available series for Google Cloud VMware Engine: https://cloud.google.com/
+        # vmware-engine/pricing
         # Corresponds to the JSON property `code`
         # @return [String]
         attr_accessor :code
@@ -2940,6 +3885,11 @@ module Google
       class MigrationInsight
         include Google::Apis::Core::Hashable
       
+        # Cloud database migration target.
+        # Corresponds to the JSON property `cloudDatabaseTarget`
+        # @return [Google::Apis::MigrationcenterV1alpha1::CloudDatabaseMigrationTarget]
+        attr_accessor :cloud_database_target
+      
         # Compute engine sole tenant migration target.
         # Corresponds to the JSON property `computeEngineSoleTenantTarget`
         # @return [Google::Apis::MigrationcenterV1alpha1::ComputeEngineSoleTenantMigrationTarget]
@@ -2960,6 +3910,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::GoogleKubernetesEngineMigrationTarget]
         attr_accessor :gke_target
       
+        # Output only. Issues associated with this migration.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::Issue>]
+        attr_accessor :issues
+      
         # VMWare engine migration target.
         # Corresponds to the JSON property `vmwareEngineTarget`
         # @return [Google::Apis::MigrationcenterV1alpha1::VmwareEngineMigrationTarget]
@@ -2971,10 +3926,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_database_target = args[:cloud_database_target] if args.key?(:cloud_database_target)
           @compute_engine_sole_tenant_target = args[:compute_engine_sole_tenant_target] if args.key?(:compute_engine_sole_tenant_target)
           @compute_engine_target = args[:compute_engine_target] if args.key?(:compute_engine_target)
           @fit = args[:fit] if args.key?(:fit)
           @gke_target = args[:gke_target] if args.key?(:gke_target)
+          @issues = args[:issues] if args.key?(:issues)
           @vmware_engine_target = args[:vmware_engine_target] if args.key?(:vmware_engine_target)
         end
       end
@@ -3012,6 +3969,57 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # Specific details for a Mysql database deployment.
+      class MysqlDatabaseDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of Mysql plugins.
+        # Corresponds to the JSON property `plugins`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::MysqlPlugin>]
+        attr_accessor :plugins
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plugins = args[:plugins] if args.key?(:plugins)
+        end
+      end
+      
+      # Mysql plugin.
+      class MysqlPlugin
+        include Google::Apis::Core::Hashable
+      
+        # Required. The plugin is active.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Required. The plugin name.
+        # Corresponds to the JSON property `plugin`
+        # @return [String]
+        attr_accessor :plugin
+      
+        # Required. The plugin version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @plugin = args[:plugin] if args.key?(:plugin)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3588,6 +4596,19 @@ module Google
         end
       end
       
+      # Specific details for a PostgreSQL database deployment.
+      class PostgreSqlDatabaseDeployment
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The preferences that apply to all assets in a given context.
       class PreferenceSet
         include Google::Apis::Core::Hashable
@@ -3596,6 +4617,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # DatabasePreferences enables you to create sets of preferences for your
+        # migrated databases.
+        # Corresponds to the JSON property `databasePreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabasePreferences]
+        attr_accessor :database_preferences
       
         # A description of the preference set.
         # Corresponds to the JSON property `description`
@@ -3611,6 +4638,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # The user preferences relating to target regions.
+        # Corresponds to the JSON property `regionPreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::RegionPreferences]
+        attr_accessor :region_preferences
       
         # Output only. The timestamp when the preference set was last updated.
         # Corresponds to the JSON property `updateTime`
@@ -3632,9 +4664,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @database_preferences = args[:database_preferences] if args.key?(:database_preferences)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @region_preferences = args[:region_preferences] if args.key?(:region_preferences)
           @update_time = args[:update_time] if args.key?(:update_time)
           @virtual_machine_preferences = args[:virtual_machine_preferences] if args.key?(:virtual_machine_preferences)
         end
@@ -3864,10 +4898,20 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStats]
         attr_accessor :all_assets_stats
       
+        # Aggregate statistics for a collection of assets.
+        # Corresponds to the JSON property `databaseStats`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStats]
+        attr_accessor :database_stats
+      
         # Findings for each Group included in this report.
         # Corresponds to the JSON property `groupFindings`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportSummaryGroupFinding>]
         attr_accessor :group_findings
+      
+        # Aggregate statistics for a collection of assets.
+        # Corresponds to the JSON property `virtualMachineStats`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStats]
+        attr_accessor :virtual_machine_stats
       
         def initialize(**args)
            update!(**args)
@@ -3876,7 +4920,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @all_assets_stats = args[:all_assets_stats] if args.key?(:all_assets_stats)
+          @database_stats = args[:database_stats] if args.key?(:database_stats)
           @group_findings = args[:group_findings] if args.key?(:group_findings)
+          @virtual_machine_stats = args[:virtual_machine_stats] if args.key?(:virtual_machine_stats)
         end
       end
       
@@ -3894,6 +4940,11 @@ module Google
         # Corresponds to the JSON property `coreCountHistogram`
         # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData]
         attr_accessor :core_count_histogram
+      
+        # Describes a collection of data points rendered as a Chart.
+        # Corresponds to the JSON property `databaseTypes`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData]
+        attr_accessor :database_types
       
         # A Histogram Chart shows a distribution of values into buckets, showing a count
         # of values which fall into a bucket.
@@ -3962,6 +5013,7 @@ module Google
         def update!(**args)
           @asset_age = args[:asset_age] if args.key?(:asset_age)
           @core_count_histogram = args[:core_count_histogram] if args.key?(:core_count_histogram)
+          @database_types = args[:database_types] if args.key?(:database_types)
           @memory_bytes_histogram = args[:memory_bytes_histogram] if args.key?(:memory_bytes_histogram)
           @memory_utilization = args[:memory_utilization] if args.key?(:memory_utilization)
           @memory_utilization_chart = args[:memory_utilization_chart] if args.key?(:memory_utilization_chart)
@@ -4021,6 +5073,33 @@ module Google
         end
       end
       
+      # DatabaseFinding contains an aggregate costs and shapes for a single database
+      # type.
+      class ReportSummaryDatabaseFinding
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Number of database assets which were successfully assigned in
+        # this finding.
+        # Corresponds to the JSON property `allocatedAssetCount`
+        # @return [Fixnum]
+        attr_accessor :allocated_asset_count
+      
+        # Output only. Number of database assets in this finding.
+        # Corresponds to the JSON property `totalAssets`
+        # @return [Fixnum]
+        attr_accessor :total_assets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_asset_count = args[:allocated_asset_count] if args.key?(:allocated_asset_count)
+          @total_assets = args[:total_assets] if args.key?(:total_assets)
+        end
+      end
+      
       # Summary Findings for a specific Group.
       class ReportSummaryGroupFinding
         include Google::Apis::Core::Hashable
@@ -4029,6 +5108,17 @@ module Google
         # Corresponds to the JSON property `assetAggregateStats`
         # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStats]
         attr_accessor :asset_aggregate_stats
+      
+        # Output only. Asset type for the group finding.
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        # Output only. Source asset database type for the group finding. Only present
+        # for databases.
+        # Corresponds to the JSON property `databaseType`
+        # @return [String]
+        attr_accessor :database_type
       
         # Description for this group finding.
         # Corresponds to the JSON property `description`
@@ -4039,6 +5129,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Output only. Full name of the group.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
       
         # This field is deprecated, do not rely on it having a value.
         # Corresponds to the JSON property `overlappingAssetCount`
@@ -4057,8 +5152,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @asset_aggregate_stats = args[:asset_aggregate_stats] if args.key?(:asset_aggregate_stats)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
+          @database_type = args[:database_type] if args.key?(:database_type)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @group = args[:group] if args.key?(:group)
           @overlapping_asset_count = args[:overlapping_asset_count] if args.key?(:overlapping_asset_count)
           @preference_set_findings = args[:preference_set_findings] if args.key?(:preference_set_findings)
         end
@@ -4067,6 +5165,12 @@ module Google
       # Summary Findings for a specific Group/PreferenceSet combination.
       class ReportSummaryGroupPreferenceSetFinding
         include Google::Apis::Core::Hashable
+      
+        # DatabaseFinding contains an aggregate costs and shapes for a single database
+        # type.
+        # Corresponds to the JSON property `databaseFinding`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryDatabaseFinding]
+        attr_accessor :database_finding
       
         # Description for the Preference Set.
         # Corresponds to the JSON property `description`
@@ -4097,6 +5201,16 @@ module Google
         attr_accessor :monthly_cost_compute
       
         # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `monthlyCostDatabaseBackup`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Money]
+        attr_accessor :monthly_cost_database_backup
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `monthlyCostDatabaseLicensing`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Money]
+        attr_accessor :monthly_cost_database_licensing
+      
+        # Represents an amount of money with its currency type.
         # Corresponds to the JSON property `monthlyCostNetworkEgress`
         # @return [Google::Apis::MigrationcenterV1alpha1::Money]
         attr_accessor :monthly_cost_network_egress
@@ -4120,6 +5234,11 @@ module Google
         # Corresponds to the JSON property `monthlyCostTotal`
         # @return [Google::Apis::MigrationcenterV1alpha1::Money]
         attr_accessor :monthly_cost_total
+      
+        # The preferences that apply to all assets in a given context.
+        # Corresponds to the JSON property `preferenceSet`
+        # @return [Google::Apis::MigrationcenterV1alpha1::PreferenceSet]
+        attr_accessor :preference_set
       
         # Target region for this Preference Set
         # Corresponds to the JSON property `preferredRegion`
@@ -4152,16 +5271,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_finding = args[:database_finding] if args.key?(:database_finding)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @machine_finding = args[:machine_finding] if args.key?(:machine_finding)
           @machine_preferences = args[:machine_preferences] if args.key?(:machine_preferences)
           @monthly_cost_compute = args[:monthly_cost_compute] if args.key?(:monthly_cost_compute)
+          @monthly_cost_database_backup = args[:monthly_cost_database_backup] if args.key?(:monthly_cost_database_backup)
+          @monthly_cost_database_licensing = args[:monthly_cost_database_licensing] if args.key?(:monthly_cost_database_licensing)
           @monthly_cost_network_egress = args[:monthly_cost_network_egress] if args.key?(:monthly_cost_network_egress)
           @monthly_cost_os_license = args[:monthly_cost_os_license] if args.key?(:monthly_cost_os_license)
           @monthly_cost_other = args[:monthly_cost_other] if args.key?(:monthly_cost_other)
           @monthly_cost_storage = args[:monthly_cost_storage] if args.key?(:monthly_cost_storage)
           @monthly_cost_total = args[:monthly_cost_total] if args.key?(:monthly_cost_total)
+          @preference_set = args[:preference_set] if args.key?(:preference_set)
           @preferred_region = args[:preferred_region] if args.key?(:preferred_region)
           @pricing_track = args[:pricing_track] if args.key?(:pricing_track)
           @sole_tenant_finding = args[:sole_tenant_finding] if args.key?(:sole_tenant_finding)
@@ -4274,7 +5397,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :allocated_asset_count
       
-        # A Compute Engine machine series.
+        # A machine series, for a target product (e.g. Compute Engine, Google Cloud
+        # VMware Engine).
         # Corresponds to the JSON property `machineSeries`
         # @return [Google::Apis::MigrationcenterV1alpha1::MachineSeries]
         attr_accessor :machine_series
@@ -4912,6 +6036,121 @@ module Google
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Specific details for a Microsoft SQL Server database deployment.
+      class SqlServerDatabaseDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of SQL Server features.
+        # Corresponds to the JSON property `features`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::SqlServerFeature>]
+        attr_accessor :features
+      
+        # Optional. List of SQL Server server flags.
+        # Corresponds to the JSON property `serverFlags`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::SqlServerServerFlag>]
+        attr_accessor :server_flags
+      
+        # Optional. List of SQL Server trace flags.
+        # Corresponds to the JSON property `traceFlags`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::SqlServerTraceFlag>]
+        attr_accessor :trace_flags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @features = args[:features] if args.key?(:features)
+          @server_flags = args[:server_flags] if args.key?(:server_flags)
+          @trace_flags = args[:trace_flags] if args.key?(:trace_flags)
+        end
+      end
+      
+      # SQL Server feature details.
+      class SqlServerFeature
+        include Google::Apis::Core::Hashable
+      
+        # Required. Field enabled is set when a feature is used on the source deployment.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Required. The feature name.
+        # Corresponds to the JSON property `featureName`
+        # @return [String]
+        attr_accessor :feature_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @feature_name = args[:feature_name] if args.key?(:feature_name)
+        end
+      end
+      
+      # SQL Server server flag details.
+      class SqlServerServerFlag
+        include Google::Apis::Core::Hashable
+      
+        # Required. The server flag name.
+        # Corresponds to the JSON property `serverFlagName`
+        # @return [String]
+        attr_accessor :server_flag_name
+      
+        # Required. The server flag value set by the user.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        # Required. The server flag actual value. If `value_in_use` is different from `
+        # value` it means that either the configuration change was not applied or it is
+        # an expected behavior. See SQL Server documentation for more details.
+        # Corresponds to the JSON property `valueInUse`
+        # @return [String]
+        attr_accessor :value_in_use
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @server_flag_name = args[:server_flag_name] if args.key?(:server_flag_name)
+          @value = args[:value] if args.key?(:value)
+          @value_in_use = args[:value_in_use] if args.key?(:value_in_use)
+        end
+      end
+      
+      # SQL Server trace flag details.
+      class SqlServerTraceFlag
+        include Google::Apis::Core::Hashable
+      
+        # Required. The trace flag scope.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Required. The trace flag name.
+        # Corresponds to the JSON property `traceFlagName`
+        # @return [String]
+        attr_accessor :trace_flag_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+          @trace_flag_name = args[:trace_flag_name] if args.key?(:trace_flag_name)
         end
       end
       
