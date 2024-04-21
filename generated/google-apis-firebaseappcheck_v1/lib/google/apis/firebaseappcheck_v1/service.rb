@@ -595,8 +595,8 @@ module Google
         #   in the format: ``` projects/`project_number`/apps/`app_id`/appAttestConfig ```
         # @param [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1AppAttestConfig] google_firebase_appcheck_v1_app_attest_config_object
         # @param [String] update_mask
-        #   Required. A comma-separated list of names of fields in the AppAttestConfig
-        #   Gets to update. Example: `token_ttl`.
+        #   Required. A comma-separated list of names of fields in the AppAttestConfig to
+        #   update. Example: `token_ttl`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -899,7 +899,7 @@ module Google
         # @param [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1DeviceCheckConfig] google_firebase_appcheck_v1_device_check_config_object
         # @param [String] update_mask
         #   Required. A comma-separated list of names of fields in the DeviceCheckConfig
-        #   Gets to update. Example: `key_id,private_key`.
+        #   to update. Example: `key_id,private_key`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1009,7 +1009,7 @@ module Google
         # @param [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1PlayIntegrityConfig] google_firebase_appcheck_v1_play_integrity_config_object
         # @param [String] update_mask
         #   Required. A comma-separated list of names of fields in the PlayIntegrityConfig
-        #   Gets to update. Example: `token_ttl`.
+        #   to update. Example: `token_ttl`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1342,8 +1342,8 @@ module Google
         #   the format: ``` projects/`project_number`/apps/`app_id`/safetyNetConfig ```
         # @param [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig] google_firebase_appcheck_v1_safety_net_config_object
         # @param [String] update_mask
-        #   Required. A comma-separated list of names of fields in the SafetyNetConfig
-        #   Gets to update. Example: `token_ttl`.
+        #   Required. A comma-separated list of names of fields in the SafetyNetConfig to
+        #   update. Example: `token_ttl`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
