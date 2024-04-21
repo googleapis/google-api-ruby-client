@@ -784,6 +784,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OtherRecurringProduct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OtherRegionsBasePlanConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -797,6 +803,12 @@ module Google
       end
       
       class OtherRegionsSubscriptionOfferPhaseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OtherRegionsSubscriptionOfferPhaseFreePriceOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -887,6 +899,12 @@ module Google
       end
       
       class RegionalSubscriptionOfferPhaseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalSubscriptionOfferPhaseFreePriceOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2574,6 +2592,12 @@ module Google
         end
       end
       
+      class OtherRecurringProduct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class OtherRegionsBasePlanConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2597,9 +2621,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :absolute_discounts, as: 'absoluteDiscounts', class: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices, decorator: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices::Representation
       
+          property :free, as: 'free', class: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhaseFreePriceOverride, decorator: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhaseFreePriceOverride::Representation
+      
           property :other_regions_prices, as: 'otherRegionsPrices', class: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices, decorator: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices::Representation
       
           property :relative_discount, as: 'relativeDiscount'
+        end
+      end
+      
+      class OtherRegionsSubscriptionOfferPhaseFreePriceOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2697,6 +2729,8 @@ module Google
           property :external_transaction_token, as: 'externalTransactionToken'
           property :initial_external_transaction_id, as: 'initialExternalTransactionId'
           property :migrated_transaction_program, as: 'migratedTransactionProgram'
+          property :other_recurring_product, as: 'otherRecurringProduct', class: Google::Apis::AndroidpublisherV3::OtherRecurringProduct, decorator: Google::Apis::AndroidpublisherV3::OtherRecurringProduct::Representation
+      
         end
       end
       
@@ -2743,10 +2777,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :absolute_discount, as: 'absoluteDiscount', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
       
+          property :free, as: 'free', class: Google::Apis::AndroidpublisherV3::RegionalSubscriptionOfferPhaseFreePriceOverride, decorator: Google::Apis::AndroidpublisherV3::RegionalSubscriptionOfferPhaseFreePriceOverride::Representation
+      
           property :price, as: 'price', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
       
           property :region_code, as: 'regionCode'
           property :relative_discount, as: 'relativeDiscount'
+        end
+      end
+      
+      class RegionalSubscriptionOfferPhaseFreePriceOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

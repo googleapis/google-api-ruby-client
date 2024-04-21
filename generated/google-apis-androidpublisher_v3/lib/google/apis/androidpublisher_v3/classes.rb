@@ -3791,8 +3791,7 @@ module Google
         end
       end
       
-      # Represents a custom tag specified for one-time products, purchase options,
-      # base plans and offers.
+      # Represents a custom tag specified for base plans and subscription offers.
       class OfferTag
         include Google::Apis::Core::Hashable
       
@@ -3829,6 +3828,20 @@ module Google
         # Update properties of this object
         def update!(**args)
           @external_transaction_token = args[:external_transaction_token] if args.key?(:external_transaction_token)
+        end
+      end
+      
+      # Details of a recurring external transaction product which doesn't belong to
+      # any other more specific category.
+      class OtherRecurringProduct
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3897,6 +3910,12 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices]
         attr_accessor :absolute_discounts
       
+        # Represents the free price override configuration for any new locations Play
+        # may launch for a single offer phase.
+        # Corresponds to the JSON property `free`
+        # @return [Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhaseFreePriceOverride]
+        attr_accessor :free
+      
         # Pricing information for any new locations Play may launch in.
         # Corresponds to the JSON property `otherRegionsPrices`
         # @return [Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices]
@@ -3922,8 +3941,23 @@ module Google
         # Update properties of this object
         def update!(**args)
           @absolute_discounts = args[:absolute_discounts] if args.key?(:absolute_discounts)
+          @free = args[:free] if args.key?(:free)
           @other_regions_prices = args[:other_regions_prices] if args.key?(:other_regions_prices)
           @relative_discount = args[:relative_discount] if args.key?(:relative_discount)
+        end
+      end
+      
+      # Represents the free price override configuration for any new locations Play
+      # may launch for a single offer phase.
+      class OtherRegionsSubscriptionOfferPhaseFreePriceOverride
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -4280,6 +4314,12 @@ module Google
         # @return [String]
         attr_accessor :migrated_transaction_program
       
+        # Details of a recurring external transaction product which doesn't belong to
+        # any other more specific category.
+        # Corresponds to the JSON property `otherRecurringProduct`
+        # @return [Google::Apis::AndroidpublisherV3::OtherRecurringProduct]
+        attr_accessor :other_recurring_product
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4290,6 +4330,7 @@ module Google
           @external_transaction_token = args[:external_transaction_token] if args.key?(:external_transaction_token)
           @initial_external_transaction_id = args[:initial_external_transaction_id] if args.key?(:initial_external_transaction_id)
           @migrated_transaction_program = args[:migrated_transaction_program] if args.key?(:migrated_transaction_program)
+          @other_recurring_product = args[:other_recurring_product] if args.key?(:other_recurring_product)
         end
       end
       
@@ -4438,6 +4479,12 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::Money]
         attr_accessor :absolute_discount
       
+        # Represents the free price override configuration for a single phase of a
+        # subscription offer
+        # Corresponds to the JSON property `free`
+        # @return [Google::Apis::AndroidpublisherV3::RegionalSubscriptionOfferPhaseFreePriceOverride]
+        attr_accessor :free
+      
         # Represents an amount of money with its currency type.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::AndroidpublisherV3::Money]
@@ -4467,9 +4514,24 @@ module Google
         # Update properties of this object
         def update!(**args)
           @absolute_discount = args[:absolute_discount] if args.key?(:absolute_discount)
+          @free = args[:free] if args.key?(:free)
           @price = args[:price] if args.key?(:price)
           @region_code = args[:region_code] if args.key?(:region_code)
           @relative_discount = args[:relative_discount] if args.key?(:relative_discount)
+        end
+      end
+      
+      # Represents the free price override configuration for a single phase of a
+      # subscription offer
+      class RegionalSubscriptionOfferPhaseFreePriceOverride
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
