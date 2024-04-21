@@ -222,8 +222,7 @@ module Google
       class Attachment
         include Google::Apis::Core::Hashable
       
-        # A reference to the attachment data. This field is used with the media API to
-        # download the attachment data.
+        # A reference to the attachment data.
         # Corresponds to the JSON property `attachmentDataRef`
         # @return [Google::Apis::ChatV1::AttachmentDataRef]
         attr_accessor :attachment_data_ref
@@ -285,7 +284,7 @@ module Google
         end
       end
       
-      # 
+      # A reference to the attachment data.
       class AttachmentDataRef
         include Google::Apis::Core::Hashable
       
@@ -729,7 +728,7 @@ module Google
         end
       end
       
-      # 
+      # Response message for completing the import process for a space.
       class CompleteImportSpaceResponse
         include Google::Apis::Core::Hashable
       
@@ -1171,9 +1170,9 @@ module Google
       class GoogleAppsCardV1Action
         include Google::Apis::Core::Hashable
       
-        # A custom function to invoke when the containing element is clicked or othrwise
-        # activated. For example usage, see [Read form data](https://developers.google.
-        # com/workspace/chat/read-form-data).
+        # A custom function to invoke when the containing element is clicked or
+        # otherwise activated. For example usage, see [Read form data](https://
+        # developers.google.com/workspace/chat/read-form-data).
         # Corresponds to the JSON property `function`
         # @return [String]
         attr_accessor :function
@@ -3407,7 +3406,7 @@ module Google
         end
       end
       
-      # 
+      # Response to list memberships of the space.
       class ListMembershipsResponse
         include Google::Apis::Core::Hashable
       
@@ -3433,7 +3432,7 @@ module Google
         end
       end
       
-      # 
+      # Response message for listing messages.
       class ListMessagesResponse
         include Google::Apis::Core::Hashable
       
@@ -3459,7 +3458,7 @@ module Google
         end
       end
       
-      # 
+      # Response to a list reactions request.
       class ListReactionsResponse
         include Google::Apis::Core::Hashable
       
@@ -3511,7 +3510,7 @@ module Google
         end
       end
       
-      # 
+      # The response for a list spaces request.
       class ListSpacesResponse
         include Google::Apis::Core::Hashable
       
@@ -3616,8 +3615,8 @@ module Google
         attr_accessor :name
       
         # Optional. User's role within a Chat space, which determines their permitted
-        # actions in the space. [Developer Preview](https://developers.google.com/
-        # workspace/preview): This field can only be used as input in `UpdateMembership`.
+        # actions in the space. This field can only be used as input in `
+        # UpdateMembership`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -4398,7 +4397,7 @@ module Google
         end
       end
       
-      # 
+      # Request to create a space and add specified users to it.
       class SetUpSpaceRequest
         include Google::Apis::Core::Hashable
       
@@ -4554,9 +4553,12 @@ module Google
         # creating spaces in the following conditions: * The authenticated user uses a
         # consumer account (unmanaged user account). By default, a space created by a
         # consumer account permits any Google Chat user. * The space is used to [import
-        # data to Google Chat] (https://developers.google.com/workspace/chat/import-data)
-        # . Import mode spaces must only permit members from the same Google Workspace
-        # organization. For existing spaces, this field is output only.
+        # data to Google Chat] (https://developers.google.com/chat/api/guides/import-
+        # data-overview) because import mode spaces must only permit members from the
+        # same Google Workspace organization. However, as part of the [Google Workspace
+        # Developer Preview Program](https://developers.google.com/workspace/preview),
+        # import mode spaces can permit any Google Chat user so this field can then be
+        # set for import mode spaces. For existing spaces, this field is output only.
         # Corresponds to the JSON property `externalUserAllowed`
         # @return [Boolean]
         attr_accessor :external_user_allowed
@@ -5142,7 +5144,7 @@ module Google
         end
       end
       
-      # 
+      # Request to upload an attachment.
       class UploadAttachmentRequest
         include Google::Apis::Core::Hashable
       
@@ -5161,11 +5163,11 @@ module Google
         end
       end
       
-      # 
+      # Response of uploading an attachment.
       class UploadAttachmentResponse
         include Google::Apis::Core::Hashable
       
-        # Reference to the uploaded attachment.
+        # A reference to the attachment data.
         # Corresponds to the JSON property `attachmentDataRef`
         # @return [Google::Apis::ChatV1::AttachmentDataRef]
         attr_accessor :attachment_data_ref
