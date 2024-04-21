@@ -88,12 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DenyMaintenancePeriod
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,12 +131,6 @@ module Google
       end
       
       class GoogleCloudLocationLocation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleTypeDate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -665,18 +653,6 @@ module Google
         end
       end
       
-      class DenyMaintenancePeriod
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_date, as: 'endDate', class: Google::Apis::AlloydbV1beta::GoogleTypeDate, decorator: Google::Apis::AlloydbV1beta::GoogleTypeDate::Representation
-      
-          property :start_date, as: 'startDate', class: Google::Apis::AlloydbV1beta::GoogleTypeDate, decorator: Google::Apis::AlloydbV1beta::GoogleTypeDate::Representation
-      
-          property :time, as: 'time', class: Google::Apis::AlloydbV1beta::GoogleTypeTimeOfDay, decorator: Google::Apis::AlloydbV1beta::GoogleTypeTimeOfDay::Representation
-      
-        end
-      end
-      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -737,15 +713,6 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
-        end
-      end
-      
-      class GoogleTypeDate
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :day, as: 'day'
-          property :month, as: 'month'
-          property :year, as: 'year'
         end
       end
       
@@ -906,8 +873,6 @@ module Google
       class MaintenanceUpdatePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :deny_maintenance_periods, as: 'denyMaintenancePeriods', class: Google::Apis::AlloydbV1beta::DenyMaintenancePeriod, decorator: Google::Apis::AlloydbV1beta::DenyMaintenancePeriod::Representation
-      
           collection :maintenance_windows, as: 'maintenanceWindows', class: Google::Apis::AlloydbV1beta::MaintenanceWindow, decorator: Google::Apis::AlloydbV1beta::MaintenanceWindow::Representation
       
         end
