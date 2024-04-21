@@ -394,6 +394,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversionValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetCpa
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetImpressionShare
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetRoas
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetSpend
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesAdGroupCriterionPositionEstimates
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -509,6 +545,12 @@ module Google
       end
       
       class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1627,6 +1669,52 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversionValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_roas, as: 'targetRoas'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_cpa, :numeric_string => true, as: 'targetCpa'
+          property :target_cpa_micros, :numeric_string => true, as: 'targetCpaMicros'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetCpa
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_cpa_micros, :numeric_string => true, as: 'targetCpaMicros'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetImpressionShare
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpc_bid_ceiling_micros, :numeric_string => true, as: 'cpcBidCeilingMicros'
+          property :location, as: 'location'
+          property :location_fraction_micros, :numeric_string => true, as: 'locationFractionMicros'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetRoas
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_roas, as: 'targetRoas'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetSpend
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpc_bid_ceiling_micros, :numeric_string => true, as: 'cpcBidCeilingMicros'
+          property :target_spend_micros, :numeric_string => true, as: 'targetSpendMicros'
+        end
+      end
+      
       class GoogleAdsSearchads360V0ResourcesAdGroupCriterionPositionEstimates
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1784,6 +1872,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :level, as: 'level'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          property :maximize_conversion_value, as: 'maximizeConversionValue', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversionValue, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversionValue::Representation
+      
+          property :maximize_conversions, as: 'maximizeConversions', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversions, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversions::Representation
+      
+          property :name, as: 'name'
+          property :owner_customer_id, :numeric_string => true, as: 'ownerCustomerId'
+          property :owner_descriptive_name, as: 'ownerDescriptiveName'
+          property :resource_name, as: 'resourceName'
+          property :target_cpa, as: 'targetCpa', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetCpa, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetCpa::Representation
+      
+          property :target_impression_share, as: 'targetImpressionShare', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetImpressionShare, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetImpressionShare::Representation
+      
+          property :target_roas, as: 'targetRoas', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetRoas, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetRoas::Representation
+      
+          property :target_spend, as: 'targetSpend', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetSpend, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetSpend::Representation
+      
+          property :type, as: 'type'
         end
       end
       
@@ -2127,6 +2239,7 @@ module Google
       class GoogleAdsSearchads360V0ResourcesCampaign
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accessible_bidding_strategy, as: 'accessibleBiddingStrategy'
           property :ad_serving_optimization_status, as: 'adServingOptimizationStatus'
           property :advertising_channel_sub_type, as: 'advertisingChannelSubType'
           property :advertising_channel_type, as: 'advertisingChannelType'
@@ -2699,6 +2812,8 @@ module Google
       class GoogleAdsSearchads360V0ServicesSearchAds360Row
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accessible_bidding_strategy, as: 'accessibleBiddingStrategy', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategy, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategy::Representation
+      
           property :ad_group, as: 'adGroup', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroup, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroup::Representation
       
           property :ad_group_ad, as: 'adGroupAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAd, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAd::Representation
