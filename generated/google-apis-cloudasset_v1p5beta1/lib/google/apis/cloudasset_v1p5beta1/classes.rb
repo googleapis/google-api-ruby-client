@@ -1361,8 +1361,11 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1EgressFrom
         include Google::Apis::Core::Hashable
       
-        # A list of identities that are allowed access through this [EgressPolicy], in
-        # the format of `user:`email_id`` or `serviceAccount:`email_id``.
+        # A list of identities that are allowed access through [EgressPolicy].
+        # Identities can be an individual user, service account, Google group, or third-
+        # party identity. The `v1` identities that have the prefix `user`, `group`, `
+        # serviceAccount`, `principal`, and `principalSet` in https://cloud.google.com/
+        # iam/docs/principal-identifiers#v1 are supported.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -1484,11 +1487,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of external resources that are allowed to be accessed. Only AWS and
-        # Azure resources are supported. For Amazon S3, the supported format is s3://
-        # BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.
-        # core.windows.net/CONTAINER_NAME. A request matches if it contains an external
-        # resource in this list (Example: s3://bucket/path). Currently '*' is not
-        # allowed.
+        # Azure resources are supported. For Amazon S3, the supported formats are s3://
+        # BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME. For Azure Storage, the
+        # supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A
+        # request matches if it contains an external resource in this list (Example: s3:/
+        # /bucket/path). Currently '*' is not allowed.
         # Corresponds to the JSON property `externalResources`
         # @return [Array<String>]
         attr_accessor :external_resources
@@ -1528,8 +1531,11 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1IngressFrom
         include Google::Apis::Core::Hashable
       
-        # A list of identities that are allowed access through this ingress policy, in
-        # the format of `user:`email_id`` or `serviceAccount:`email_id``.
+        # A list of identities that are allowed access through [IngressPolicy].
+        # Identities can be an individual user, service account, Google group, or third-
+        # party identity. The `v1` identities that have the prefix `user`, `group`, `
+        # serviceAccount`, `principal`, and `principalSet` in https://cloud.google.com/
+        # iam/docs/principal-identifiers#v1 are supported.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
