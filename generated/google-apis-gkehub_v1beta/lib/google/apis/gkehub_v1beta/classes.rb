@@ -5622,7 +5622,7 @@ module Google
       class ServiceMeshMembershipState
         include Google::Apis::Core::Hashable
       
-        # Output only. List of condition reporting membership statues
+        # Output only. List of conditions reported for this membership.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::GkehubV1beta::ServiceMeshCondition>]
         attr_accessor :conditions
