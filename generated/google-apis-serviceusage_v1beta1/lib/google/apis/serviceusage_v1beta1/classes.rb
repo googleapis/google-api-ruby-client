@@ -3476,7 +3476,9 @@ module Google
         attr_accessor :long_running
       
         # The fully qualified name of the method, for which the options below apply.
-        # This is used to find the method to apply the options.
+        # This is used to find the method to apply the options. Example: publishing:
+        # method_settings: - selector: google.storage.control.v2.StorageControl.
+        # CreateFolder # method settings for CreateFolder...
         # Corresponds to the JSON property `selector`
         # @return [String]
         attr_accessor :selector
