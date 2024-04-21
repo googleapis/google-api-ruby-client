@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuxiliaryVersionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,12 @@ module Google
       end
       
       class LatestBackup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LimitConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -482,6 +494,16 @@ module Google
         end
       end
       
+      class AutoscalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_enabled, as: 'autoscalingEnabled'
+          property :autoscaling_factor, as: 'autoscalingFactor'
+          property :limit_config, as: 'limitConfig', class: Google::Apis::MetastoreV1alpha::LimitConfig, decorator: Google::Apis::MetastoreV1alpha::LimitConfig::Representation
+      
+        end
+      end
+      
       class AuxiliaryVersionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -728,6 +750,14 @@ module Google
           property :duration, as: 'duration'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+        end
+      end
+      
+      class LimitConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_scaling_factor, as: 'maxScalingFactor'
+          property :min_scaling_factor, as: 'minScalingFactor'
         end
       end
       
@@ -1009,6 +1039,8 @@ module Google
       class ScalingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_config, as: 'autoscalingConfig', class: Google::Apis::MetastoreV1alpha::AutoscalingConfig, decorator: Google::Apis::MetastoreV1alpha::AutoscalingConfig::Representation
+      
           property :instance_size, as: 'instanceSize'
           property :scaling_factor, as: 'scalingFactor'
         end
