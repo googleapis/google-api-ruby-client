@@ -442,12 +442,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1372,22 +1366,13 @@ module Google
         end
       end
       
-      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :egress_ip_addresses, as: 'egressIpAddresses'
-          property :region, as: 'region'
-        end
-      end
-      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          collection :external_ips, as: 'externalIps'
           property :name, as: 'name'
-          collection :region_configs, as: 'regionConfigs', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig::Representation
-      
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end

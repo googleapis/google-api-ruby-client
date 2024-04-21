@@ -2786,33 +2786,6 @@ module Google
         end
       end
       
-      # Message contains the configuration for each supported region for the
-      # securityGateway instance.
-      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig
-        include Google::Apis::Core::Hashable
-      
-        # Output only. External IP addresses that will be used for establishing
-        # connection to the egress endpoints.
-        # Corresponds to the JSON property `egressIpAddresses`
-        # @return [Array<String>]
-        attr_accessor :egress_ip_addresses
-      
-        # Required. The region where the egress connectivity is required.
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @egress_ip_addresses = args[:egress_ip_addresses] if args.key?(:egress_ip_addresses)
-          @region = args[:region] if args.key?(:region)
-        end
-      end
-      
       # Information about a BeyoncCorp SecurityGateway resource.
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway
         include Google::Apis::Core::Hashable
@@ -2828,15 +2801,16 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. IP addresses that will be used for establishing connection to the
+        # endpoints.
+        # Corresponds to the JSON property `externalIps`
+        # @return [Array<String>]
+        attr_accessor :external_ips
+      
         # Identifier. Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # Optional. List of regions where the egress connectivity is required.
-        # Corresponds to the JSON property `regionConfigs`
-        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig>]
-        attr_accessor :region_configs
       
         # Output only. The operational state of the SecurityGateway.
         # Corresponds to the JSON property `state`
@@ -2856,8 +2830,8 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @external_ips = args[:external_ips] if args.key?(:external_ips)
           @name = args[:name] if args.key?(:name)
-          @region_configs = args[:region_configs] if args.key?(:region_configs)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
