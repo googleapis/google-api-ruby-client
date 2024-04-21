@@ -952,6 +952,7 @@ module Google
           property :pipeline_run_status, as: 'pipelineRunStatus'
           property :pipeline_spec, as: 'pipelineSpec', class: Google::Apis::CloudbuildV2::PipelineSpec, decorator: Google::Apis::CloudbuildV2::PipelineSpec::Representation
       
+          property :pipeline_spec_yaml, as: 'pipelineSpecYaml'
           property :provenance, as: 'provenance', class: Google::Apis::CloudbuildV2::Provenance, decorator: Google::Apis::CloudbuildV2::Provenance::Representation
       
           property :record, as: 'record'
