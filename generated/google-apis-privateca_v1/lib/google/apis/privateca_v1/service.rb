@@ -183,7 +183,7 @@ module Google
         # @param [Boolean] ignore_dependent_resources
         #   Optional. This field allows this pool to be deleted even if it's being
         #   depended on by another resource. However, doing so may result in unintended
-        #   and unrecoverable effects on any dependent resource(s) since the pool will no
+        #   and unrecoverable effects on any dependent resources since the pool will no
         #   longer be able to issue certificates.
         # @param [String] request_id
         #   Optional. An ID to identify requests. Specify a unique request ID so that if
@@ -226,7 +226,7 @@ module Google
         end
         
         # FetchCaCerts returns the current trust anchor for the CaPool. This will
-        # include CA certificate chains for all Certificate Authorities in the ENABLED,
+        # include CA certificate chains for all certificate authorities in the ENABLED,
         # DISABLED, or STAGED states.
         # @param [String] ca_pool
         #   Required. The resource name for the CaPool in the format `projects/*/locations/
@@ -603,9 +603,9 @@ module Google
         #   Optional. This field allows the CA to be deleted even if the CA has active
         #   certs. Active certs include both unrevoked and unexpired certs.
         # @param [Boolean] ignore_dependent_resources
-        #   Optional. This field allows this ca to be deleted even if it's being depended
+        #   Optional. This field allows this CA to be deleted even if it's being depended
         #   on by another resource. However, doing so may result in unintended and
-        #   unrecoverable effects on any dependent resource(s) since the CA will no longer
+        #   unrecoverable effects on any dependent resources since the CA will no longer
         #   be able to issue certificates.
         # @param [String] request_id
         #   Optional. An ID to identify requests. Specify a unique request ID so that if
