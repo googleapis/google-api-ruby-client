@@ -1645,6 +1645,8 @@ module Google
       class JobSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :run_execution_token, as: 'runExecutionToken'
+          property :start_execution_token, as: 'startExecutionToken'
           property :template, as: 'template', class: Google::Apis::RunV1::ExecutionTemplateSpec, decorator: Google::Apis::RunV1::ExecutionTemplateSpec::Representation
       
         end
