@@ -3444,7 +3444,8 @@ module Google
       
       # A token to initiate the migration of a device from being managed by a third-
       # party DPC to being managed by Android Management API. A migration token is
-      # valid only for a single device.
+      # valid only for a single device. See the guide (https://developers.google.com/
+      # android/management/dpc-migration) for more details.
       class MigrationToken
         include Google::Apis::Core::Hashable
       
@@ -4993,10 +4994,20 @@ module Google
         # @return [String]
         attr_accessor :enterprise
       
+        # IMEI number of the GSM device. For example, A1000031212.
+        # Corresponds to the JSON property `imei`
+        # @return [String]
+        attr_accessor :imei
+      
         # The management mode of the device or profile.
         # Corresponds to the JSON property `managementMode`
         # @return [String]
         attr_accessor :management_mode
+      
+        # MEID number of the CDMA device. For example, A00000292788E1.
+        # Corresponds to the JSON property `meid`
+        # @return [String]
+        attr_accessor :meid
       
         # The model of the device. For example, Asus Nexus 7.
         # Corresponds to the JSON property `model`
@@ -5013,6 +5024,11 @@ module Google
         # @return [String]
         attr_accessor :ownership
       
+        # The device serial number.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [String]
+        attr_accessor :serial_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5022,10 +5038,13 @@ module Google
           @api_level = args[:api_level] if args.key?(:api_level)
           @brand = args[:brand] if args.key?(:brand)
           @enterprise = args[:enterprise] if args.key?(:enterprise)
+          @imei = args[:imei] if args.key?(:imei)
           @management_mode = args[:management_mode] if args.key?(:management_mode)
+          @meid = args[:meid] if args.key?(:meid)
           @model = args[:model] if args.key?(:model)
           @name = args[:name] if args.key?(:name)
           @ownership = args[:ownership] if args.key?(:ownership)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
         end
       end
       
