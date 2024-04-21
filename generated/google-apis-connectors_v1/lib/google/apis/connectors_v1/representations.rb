@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BillingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -664,6 +670,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchConnectionInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -843,6 +861,13 @@ module Google
         end
       end
       
+      class BillingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_category, as: 'billingCategory'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -901,6 +926,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
+      
+          property :billing_config, as: 'billingConfig', class: Google::Apis::ConnectorsV1::BillingConfig, decorator: Google::Apis::ConnectorsV1::BillingConfig::Representation
       
           collection :config_variables, as: 'configVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
@@ -1063,6 +1090,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :active_connector_versions, as: 'activeConnectorVersions'
+          collection :all_connector_versions, as: 'allConnectorVersions'
           property :create_time, as: 'createTime'
           property :custom_connector_type, as: 'customConnectorType'
           property :description, as: 'description'
@@ -2012,6 +2040,7 @@ module Google
       
           property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
       
+          collection :operations, as: 'operations'
         end
       end
       
@@ -2030,6 +2059,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :use_action_display_names, as: 'useActionDisplayNames'
           property :use_synchronous_schema_refresh, as: 'useSynchronousSchemaRefresh'
+        end
+      end
+      
+      class SearchConnectionInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_schema, as: 'actionSchema', class: Google::Apis::ConnectorsV1::RuntimeActionSchema, decorator: Google::Apis::ConnectorsV1::RuntimeActionSchema::Representation
+      
+          property :connection, as: 'connection', class: Google::Apis::ConnectorsV1::Connection, decorator: Google::Apis::ConnectorsV1::Connection::Representation
+      
+          property :entity_schema, as: 'entitySchema', class: Google::Apis::ConnectorsV1::RuntimeEntitySchema, decorator: Google::Apis::ConnectorsV1::RuntimeEntitySchema::Representation
+      
+        end
+      end
+      
+      class SearchConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connections, as: 'connections', class: Google::Apis::ConnectorsV1::SearchConnectionInstance, decorator: Google::Apis::ConnectorsV1::SearchConnectionInstance::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
