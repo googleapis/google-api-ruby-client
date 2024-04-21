@@ -6568,6 +6568,13 @@ module Google
       class TemplateMetadata
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates the default streaming mode for a streaming template. Only
+        # valid if both supports_at_least_once and supports_exactly_once are true.
+        # Possible values: UNSPECIFIED, EXACTLY_ONCE and AT_LEAST_ONCE
+        # Corresponds to the JSON property `defaultStreamingMode`
+        # @return [String]
+        attr_accessor :default_streaming_mode
+      
         # Optional. A description of the template.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -6607,6 +6614,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_streaming_mode = args[:default_streaming_mode] if args.key?(:default_streaming_mode)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)

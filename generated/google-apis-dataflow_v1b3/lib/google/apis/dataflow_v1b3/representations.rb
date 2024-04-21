@@ -2897,6 +2897,7 @@ module Google
       class TemplateMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_streaming_mode, as: 'defaultStreamingMode'
           property :description, as: 'description'
           property :name, as: 'name'
           collection :parameters, as: 'parameters', class: Google::Apis::DataflowV1b3::ParameterMetadata, decorator: Google::Apis::DataflowV1b3::ParameterMetadata::Representation
