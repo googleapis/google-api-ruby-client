@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3LanguageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3Page
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1031,6 +1037,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1LanguageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3727,6 +3739,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3LanguageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_score, as: 'confidenceScore'
+          property :input_language_code, as: 'inputLanguageCode'
+          property :resolved_language_code, as: 'resolvedLanguageCode'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3Page
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4106,6 +4127,8 @@ module Google
           property :intent_info, as: 'intentInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo::Representation
       
           property :language_code, as: 'languageCode'
+          property :language_info, as: 'languageInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3LanguageInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3LanguageInfo::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
           property :page_info, as: 'pageInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3PageInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3PageInfo::Representation
@@ -4768,6 +4791,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1LanguageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_score, as: 'confidenceScore'
+          property :input_language_code, as: 'inputLanguageCode'
+          property :resolved_language_code, as: 'resolvedLanguageCode'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1Page
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5146,6 +5178,8 @@ module Google
           property :intent_info, as: 'intentInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo::Representation
       
           property :language_code, as: 'languageCode'
+          property :language_info, as: 'languageInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1LanguageInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1LanguageInfo::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
           property :page_info, as: 'pageInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1PageInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1PageInfo::Representation
