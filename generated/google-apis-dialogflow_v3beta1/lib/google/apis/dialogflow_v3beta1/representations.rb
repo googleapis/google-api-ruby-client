@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3LanguageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3Page
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -815,6 +821,42 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ContinuousTestResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1Conversation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationInteraction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationInteractionMissingTransition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationMetricsMatchTypeCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationMetricsQueryInputCount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1432,6 +1474,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1LanguageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ListAgentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1445,6 +1493,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ListConversationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3733,6 +3787,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3LanguageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_score, as: 'confidenceScore'
+          property :input_language_code, as: 'inputLanguageCode'
+          property :resolved_language_code, as: 'resolvedLanguageCode'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3Page
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4112,6 +4175,8 @@ module Google
           property :intent_info, as: 'intentInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo::Representation
       
           property :language_code, as: 'languageCode'
+          property :language_info, as: 'languageInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3LanguageInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3LanguageInfo::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
           property :page_info, as: 'pageInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3PageInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3PageInfo::Representation
@@ -4463,6 +4528,96 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1Conversation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :environment, as: 'environment', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Environment, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Environment::Representation
+      
+          hash :flow_versions, as: 'flowVersions'
+          collection :flows, as: 'flows', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Flow, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Flow::Representation
+      
+          collection :intents, as: 'intents', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Intent, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Intent::Representation
+      
+          collection :interactions, as: 'interactions', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationInteraction, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationInteraction::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :metrics, as: 'metrics', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationMetrics, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationMetrics::Representation
+      
+          property :name, as: 'name'
+          collection :pages, as: 'pages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page::Representation
+      
+          property :start_time, as: 'startTime'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationInteraction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :missing_transition, as: 'missingTransition', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationInteractionMissingTransition, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationInteractionMissingTransition::Representation
+      
+          collection :partial_responses, as: 'partialResponses', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentResponse, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentResponse::Representation
+      
+          property :request, as: 'request', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentRequest, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentRequest::Representation
+      
+          property :request_utterances, as: 'requestUtterances'
+          property :response, as: 'response', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentResponse, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentResponse::Representation
+      
+          property :response_utterances, as: 'responseUtterances'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationInteractionMissingTransition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intent_display_name, as: 'intentDisplayName'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_match_confidence, as: 'averageMatchConfidence'
+          property :has_end_interaction, as: 'hasEndInteraction'
+          property :has_live_agent_handoff, as: 'hasLiveAgentHandoff'
+          property :input_audio_duration, as: 'inputAudioDuration'
+          property :interaction_count, as: 'interactionCount'
+          property :match_type_count, as: 'matchTypeCount', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationMetricsMatchTypeCount, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationMetricsMatchTypeCount::Representation
+      
+          property :max_webhook_latency, as: 'maxWebhookLatency'
+          property :output_audio_duration, as: 'outputAudioDuration'
+          property :query_input_count, as: 'queryInputCount', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationMetricsQueryInputCount, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationMetricsQueryInputCount::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationMetricsMatchTypeCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :direct_intent_count, as: 'directIntentCount'
+          property :event_count, as: 'eventCount'
+          property :intent_count, as: 'intentCount'
+          property :no_input_count, as: 'noInputCount'
+          property :no_match_count, as: 'noMatchCount'
+          property :parameter_filling_count, as: 'parameterFillingCount'
+          property :unspecified_count, as: 'unspecifiedCount'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationMetricsQueryInputCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_count, as: 'audioCount'
+          property :dtmf_count, as: 'dtmfCount'
+          property :event_count, as: 'eventCount'
+          property :intent_count, as: 'intentCount'
+          property :text_count, as: 'textCount'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ConversationSignals
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4676,6 +4831,7 @@ module Google
       
           property :query_params, as: 'queryParams', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryParameters, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryParameters::Representation
       
+          property :session, as: 'session'
         end
       end
       
@@ -5465,6 +5621,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1LanguageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_score, as: 'confidenceScore'
+          property :input_language_code, as: 'inputLanguageCode'
+          property :resolved_language_code, as: 'resolvedLanguageCode'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ListAgentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5487,6 +5652,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :continuous_test_results, as: 'continuousTestResults', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ContinuousTestResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ContinuousTestResult::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ListConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversations, as: 'conversations', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Conversation, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Conversation::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -6496,6 +6670,8 @@ module Google
           property :intent_info, as: 'intentInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo::Representation
       
           property :language_code, as: 'languageCode'
+          property :language_info, as: 'languageInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LanguageInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LanguageInfo::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
           property :page_info, as: 'pageInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PageInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PageInfo::Representation
