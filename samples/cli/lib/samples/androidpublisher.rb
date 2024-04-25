@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/androidpublisher_v2'
+require 'google/apis/androidpublisher_v3'
 require 'base_cli'
 
 
@@ -23,7 +23,7 @@ module Samples
   #
   #     $ ./google-api-samples androidpublisher upload --apk-path /path/to/com.spiffygame.apk --package-name com.spiffygame
   class Androidpublisher < BaseCli
-    Androidpublisher = Google::Apis::AndroidpublisherV2
+    Androidpublisher = Google::Apis::AndroidpublisherV3
 
     desc 'upload', 'Upload an apk to Google Play'
     method_option :apk_path, type: :string

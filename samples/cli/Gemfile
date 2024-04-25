@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'google-apis-adsense_v1_4', '~> 0.1'
 gem 'google-apis-analytics_v3', '~> 0.1'
-gem 'google-apis-androidpublisher_v2', '~> 0.1'
+gem 'google-apis-androidpublisher_v3', '~> 0.1'
 gem 'google-apis-bigquery_v2', '~> 0.1'
 gem 'google-apis-calendar_v3', '~> 0.1'
 gem 'google-apis-drive_v3', '~> 0.1'
