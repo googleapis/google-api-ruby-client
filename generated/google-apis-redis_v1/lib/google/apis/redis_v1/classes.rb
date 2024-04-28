@@ -53,6 +53,13 @@ module Google
         # @return [String]
         attr_accessor :availability_type
       
+        # Checks for resources that are configured to have redundancy, and ongoing
+        # replication across regions
+        # Corresponds to the JSON property `crossRegionReplicaConfigured`
+        # @return [Boolean]
+        attr_accessor :cross_region_replica_configured
+        alias_method :cross_region_replica_configured?, :cross_region_replica_configured
+      
         # 
         # Corresponds to the JSON property `externalReplicaConfigured`
         # @return [Boolean]
@@ -72,6 +79,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability_type = args[:availability_type] if args.key?(:availability_type)
+          @cross_region_replica_configured = args[:cross_region_replica_configured] if args.key?(:cross_region_replica_configured)
           @external_replica_configured = args[:external_replica_configured] if args.key?(:external_replica_configured)
           @promotable_replica_configured = args[:promotable_replica_configured] if args.key?(:promotable_replica_configured)
         end
