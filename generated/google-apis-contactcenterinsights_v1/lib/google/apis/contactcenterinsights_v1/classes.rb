@@ -313,6 +313,11 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>]
         attr_accessor :sentiments
       
+        # Conversation-level silence data.
+        # Corresponds to the JSON property `silence`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationLevelSilence]
+        attr_accessor :silence
+      
         def initialize(**args)
            update!(**args)
         end
@@ -325,6 +330,7 @@ module Google
           @issue_model_result = args[:issue_model_result] if args.key?(:issue_model_result)
           @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
           @sentiments = args[:sentiments] if args.key?(:sentiments)
+          @silence = args[:silence] if args.key?(:silence)
         end
       end
       
@@ -1216,6 +1222,31 @@ module Google
         def update!(**args)
           @channel_tag = args[:channel_tag] if args.key?(:channel_tag)
           @sentiment_data = args[:sentiment_data] if args.key?(:sentiment_data)
+        end
+      end
+      
+      # Conversation-level silence data.
+      class GoogleCloudContactcenterinsightsV1ConversationLevelSilence
+        include Google::Apis::Core::Hashable
+      
+        # Amount of time calculated to be in silence.
+        # Corresponds to the JSON property `silenceDuration`
+        # @return [String]
+        attr_accessor :silence_duration
+      
+        # Percentage of the total conversation spent in silence.
+        # Corresponds to the JSON property `silencePercentage`
+        # @return [Float]
+        attr_accessor :silence_percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @silence_duration = args[:silence_duration] if args.key?(:silence_duration)
+          @silence_percentage = args[:silence_percentage] if args.key?(:silence_percentage)
         end
       end
       
@@ -4551,6 +4582,11 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment>]
         attr_accessor :sentiments
       
+        # Conversation-level silence data.
+        # Corresponds to the JSON property `silence`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence]
+        attr_accessor :silence
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4563,6 +4599,7 @@ module Google
           @issue_model_result = args[:issue_model_result] if args.key?(:issue_model_result)
           @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
           @sentiments = args[:sentiments] if args.key?(:sentiments)
+          @silence = args[:silence] if args.key?(:silence)
         end
       end
       
@@ -5316,6 +5353,31 @@ module Google
         def update!(**args)
           @channel_tag = args[:channel_tag] if args.key?(:channel_tag)
           @sentiment_data = args[:sentiment_data] if args.key?(:sentiment_data)
+        end
+      end
+      
+      # Conversation-level silence data.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence
+        include Google::Apis::Core::Hashable
+      
+        # Amount of time calculated to be in silence.
+        # Corresponds to the JSON property `silenceDuration`
+        # @return [String]
+        attr_accessor :silence_duration
+      
+        # Percentage of the total conversation spent in silence.
+        # Corresponds to the JSON property `silencePercentage`
+        # @return [Float]
+        attr_accessor :silence_percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @silence_duration = args[:silence_duration] if args.key?(:silence_duration)
+          @silence_percentage = args[:silence_percentage] if args.key?(:silence_percentage)
         end
       end
       
