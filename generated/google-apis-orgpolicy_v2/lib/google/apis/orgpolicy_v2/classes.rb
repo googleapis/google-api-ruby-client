@@ -77,12 +77,6 @@ module Google
         # @return [String]
         attr_accessor :constraint_default
       
-        # A Google defined custom constraint. This represents a subset of fields missing
-        # from Constraint proto that are required to describe CustomConstraint
-        # Corresponds to the JSON property `customConstraint`
-        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint]
-        attr_accessor :custom_constraint
-      
         # Detailed description of what this constraint controls as well as how and where
         # it is enforced. Mutable.
         # Corresponds to the JSON property `description`
@@ -93,6 +87,12 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # A Google managed constraint. This represents a subset of fields missing from
+        # Constraint proto that are required to describe CustomConstraint
+        # Corresponds to the JSON property `googleManagedConstraint`
+        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint]
+        attr_accessor :google_managed_constraint
       
         # A constraint that allows or disallows a list of string values, which are
         # configured by an Organization Policy administrator with a policy.
@@ -123,9 +123,9 @@ module Google
         def update!(**args)
           @boolean_constraint = args[:boolean_constraint] if args.key?(:boolean_constraint)
           @constraint_default = args[:constraint_default] if args.key?(:constraint_default)
-          @custom_constraint = args[:custom_constraint] if args.key?(:custom_constraint)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @google_managed_constraint = args[:google_managed_constraint] if args.key?(:google_managed_constraint)
           @list_constraint = args[:list_constraint] if args.key?(:list_constraint)
           @name = args[:name] if args.key?(:name)
           @supports_dry_run = args[:supports_dry_run] if args.key?(:supports_dry_run)
@@ -147,9 +147,9 @@ module Google
         end
       end
       
-      # A Google defined custom constraint. This represents a subset of fields missing
-      # from Constraint proto that are required to describe CustomConstraint
-      class GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint
+      # A Google managed constraint. This represents a subset of fields missing from
+      # Constraint proto that are required to describe CustomConstraint
+      class GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint
         include Google::Apis::Core::Hashable
       
         # Allow or deny type.
