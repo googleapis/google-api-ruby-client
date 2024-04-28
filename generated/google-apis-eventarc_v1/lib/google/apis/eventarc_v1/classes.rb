@@ -241,6 +241,13 @@ module Google
         # @return [String]
         attr_accessor :pubsub_topic
       
+        # Output only. Whether or not this Channel satisfies the requirements of
+        # physical zone separation
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The state of a Channel.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -269,6 +276,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @provider = args[:provider] if args.key?(:provider)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1498,6 +1506,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether or not this Trigger satisfies the requirements of
+        # physical zone separation
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Optional. The IAM service account email associated with the trigger. The
         # service account represents the identity of the trigger. The `iam.
         # serviceAccounts.actAs` permission must be granted on the service account to
@@ -1540,6 +1555,7 @@ module Google
           @event_filters = args[:event_filters] if args.key?(:event_filters)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @transport = args[:transport] if args.key?(:transport)
           @uid = args[:uid] if args.key?(:uid)
