@@ -1564,7 +1564,12 @@ module Google
         # @return [String]
         attr_accessor :field_delimiter
       
-        # [Optional] A custom string that will represent a NULL value in CSV import data.
+        # Optional. Specifies a string that represents a null value in a CSV file. For
+        # example, if you specify "\N", BigQuery interprets "\N" as a null value when
+        # querying a CSV file. The default value is the empty string. If you set this
+        # property to a custom value, BigQuery throws an error if an empty string is
+        # present for all data types except for STRING and BYTE. For STRING and BYTE
+        # columns, BigQuery interprets the empty string as an empty value.
         # Corresponds to the JSON property `nullMarker`
         # @return [String]
         attr_accessor :null_marker
@@ -1862,6 +1867,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_time_travel_hours
       
+        # Optional. Output only. Restriction config for all tables and dataset. If set,
+        # restrict certain accesses on the dataset and all its tables based on the
+        # config. See [Data egress](/bigquery/docs/analytics-hub-introduction#
+        # data_egress) for more details.
+        # Corresponds to the JSON property `restrictions`
+        # @return [Google::Apis::BigqueryV2::RestrictionConfig]
+        attr_accessor :restrictions
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -1893,8 +1906,7 @@ module Google
         # Output only. Same as `type` in `ListFormatDataset`. The type of the dataset,
         # one of: * DEFAULT - only accessible by owner and authorized accounts, * PUBLIC
         # - accessible by everyone, * LINKED - linked dataset, * EXTERNAL - dataset with
-        # definition in external metadata catalog. -- *BIGLAKE_METASTORE - dataset that
-        # references a database created in BigLakeMetastore service. --
+        # definition in external metadata catalog.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1927,6 +1939,7 @@ module Google
           @linked_dataset_source = args[:linked_dataset_source] if args.key?(:linked_dataset_source)
           @location = args[:location] if args.key?(:location)
           @max_time_travel_hours = args[:max_time_travel_hours] if args.key?(:max_time_travel_hours)
+          @restrictions = args[:restrictions] if args.key?(:restrictions)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -2275,6 +2288,15 @@ module Google
         # @return [Float]
         attr_accessor :delta_budget
       
+        # Output only. The delta budget remaining. If budget is exhausted, no more
+        # queries are allowed. Note that the budget for queries that are in progress is
+        # deducted before the query executes. If the query fails or is cancelled then
+        # the budget is refunded. In this case the amount of budget remaining can
+        # increase.
+        # Corresponds to the JSON property `deltaBudgetRemaining`
+        # @return [Float]
+        attr_accessor :delta_budget_remaining
+      
         # Optional. The delta value that is used per query. Delta represents the
         # probability that any row will fail to be epsilon differentially private.
         # Indicates the risk associated with exposing aggregate rows in the result of a
@@ -2297,6 +2319,15 @@ module Google
         # Corresponds to the JSON property `epsilonBudget`
         # @return [Float]
         attr_accessor :epsilon_budget
+      
+        # Output only. The epsilon budget remaining. If budget is exhausted, no more
+        # queries are allowed. Note that the budget for queries that are in progress is
+        # deducted before the query executes. If the query fails or is cancelled then
+        # the budget is refunded. In this case the amount of budget remaining can
+        # increase.
+        # Corresponds to the JSON property `epsilonBudgetRemaining`
+        # @return [Float]
+        attr_accessor :epsilon_budget_remaining
       
         # Optional. The maximum epsilon value that a query can consume. If the
         # subscriber specifies epsilon as a parameter in a SELECT query, it must be less
@@ -2328,8 +2359,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @delta_budget = args[:delta_budget] if args.key?(:delta_budget)
+          @delta_budget_remaining = args[:delta_budget_remaining] if args.key?(:delta_budget_remaining)
           @delta_per_query = args[:delta_per_query] if args.key?(:delta_per_query)
           @epsilon_budget = args[:epsilon_budget] if args.key?(:epsilon_budget)
+          @epsilon_budget_remaining = args[:epsilon_budget_remaining] if args.key?(:epsilon_budget_remaining)
           @max_epsilon_per_query = args[:max_epsilon_per_query] if args.key?(:max_epsilon_per_query)
           @max_groups_contributed = args[:max_groups_contributed] if args.key?(:max_groups_contributed)
           @privacy_unit_column = args[:privacy_unit_column] if args.key?(:privacy_unit_column)
@@ -3308,6 +3341,26 @@ module Google
           @categorical_value = args[:categorical_value] if args.key?(:categorical_value)
           @feature_column = args[:feature_column] if args.key?(:feature_column)
           @numerical_value = args[:numerical_value] if args.key?(:numerical_value)
+        end
+      end
+      
+      # Metadata about the foreign data type definition such as the system in which
+      # the type is defined.
+      class ForeignTypeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the system which defines the foreign data type.
+        # Corresponds to the JSON property `typeSystem`
+        # @return [String]
+        attr_accessor :type_system
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type_system = args[:type_system] if args.key?(:type_system)
         end
       end
       
@@ -4415,15 +4468,15 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ConnectionProperty>]
         attr_accessor :connection_properties
       
-        # Optional. [Experimental] Configures the load job to only copy files to the
-        # destination BigLake managed table with an external storage_uri, without
-        # reading file content and writing them to new files. Copying files only is
-        # supported when: * source_uris are in the same external storage system as the
-        # destination table but they do not overlap with storage_uri of the destination
-        # table. * source_format is the same file format as the destination table. *
-        # destination_table is an existing BigLake managed table. Its schema does not
-        # have default value expression. It schema does not have type parameters other
-        # than precision and scale. * No options other than the above are specified.
+        # Optional. [Experimental] Configures the load job to copy files directly to the
+        # destination BigLake managed table, bypassing file content reading and
+        # rewriting. Copying files only is supported when all the following are true: * `
+        # source_uris` are located in the same Cloud Storage location as the destination
+        # table's `storage_uri` location. * `source_format` is `PARQUET`. * `
+        # destination_table` is an existing BigLake managed table. The table's schema
+        # does not have flexible column names. The table's columns do not have type
+        # parameters other than precision and scale. * No options other than the above
+        # are specified.
         # Corresponds to the JSON property `copyFilesOnly`
         # @return [Boolean]
         attr_accessor :copy_files_only
@@ -5408,7 +5461,8 @@ module Google
         class ReservationUsage
           include Google::Apis::Core::Hashable
         
-          # Reservation name or "unreserved" for on-demand resources usage.
+          # Reservation name or "unreserved" for on-demand resource usage and multi-
+          # statement queries.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
@@ -5812,7 +5866,8 @@ module Google
         class ReservationUsage
           include Google::Apis::Core::Hashable
         
-          # Reservation name or "unreserved" for on-demand resources usage.
+          # Reservation name or "unreserved" for on-demand resource usage and multi-
+          # statement queries.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
@@ -6277,8 +6332,8 @@ module Google
       class MaterializedViewDefinition
         include Google::Apis::Core::Hashable
       
-        # Optional. This option declares authors intention to construct a materialized
-        # view that will not be refreshed incrementally.
+        # Optional. This option declares the intention to construct a materialized view
+        # that isn't refreshed incrementally.
         # Corresponds to the JSON property `allowNonIncrementalDefinition`
         # @return [Boolean]
         attr_accessor :allow_non_incremental_definition
@@ -6769,6 +6824,11 @@ module Google
         attr_accessor :enum_as_string
         alias_method :enum_as_string?, :enum_as_string
       
+        # Optional. Will indicate how to represent a parquet map if present.
+        # Corresponds to the JSON property `mapTargetType`
+        # @return [String]
+        attr_accessor :map_target_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6777,6 +6837,7 @@ module Google
         def update!(**args)
           @enable_list_inference = args[:enable_list_inference] if args.key?(:enable_list_inference)
           @enum_as_string = args[:enum_as_string] if args.key?(:enum_as_string)
+          @map_target_type = args[:map_target_type] if args.key?(:map_target_type)
         end
       end
       
@@ -7953,6 +8014,25 @@ module Google
           @remote_model_version = args[:remote_model_version] if args.key?(:remote_model_version)
           @remote_service_type = args[:remote_service_type] if args.key?(:remote_service_type)
           @speech_recognizer = args[:speech_recognizer] if args.key?(:speech_recognizer)
+        end
+      end
+      
+      # 
+      class RestrictionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Specifies the type of dataset/table restriction.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -9321,6 +9401,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :resource_tags
       
+        # Optional. Output only. Restriction config for table. If set, restrict certain
+        # accesses on the table based on the config. See [Data egress](/bigquery/docs/
+        # analytics-hub-introduction#data_egress) for more details.
+        # Corresponds to the JSON property `restrictions`
+        # @return [Google::Apis::BigqueryV2::RestrictionConfig]
+        attr_accessor :restrictions
+      
         # Schema of a table
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::BigqueryV2::TableSchema]
@@ -9426,6 +9513,7 @@ module Google
           @replicas = args[:replicas] if args.key?(:replicas)
           @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @resource_tags = args[:resource_tags] if args.key?(:resource_tags)
+          @restrictions = args[:restrictions] if args.key?(:restrictions)
           @schema = args[:schema] if args.key?(:schema)
           @self_link = args[:self_link] if args.key?(:self_link)
           @snapshot_definition = args[:snapshot_definition] if args.key?(:snapshot_definition)
@@ -9809,6 +9897,12 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::TableFieldSchema>]
         attr_accessor :fields
       
+        # Optional. Definition of the foreign data type. Only valid for top-level schema
+        # fields (not nested fields). If the type is FOREIGN, this field is required.
+        # Corresponds to the JSON property `foreignTypeDefinition`
+        # @return [String]
+        attr_accessor :foreign_type_definition
+      
         # Optional. Maximum length of values of this field for STRINGS or BYTES. If
         # max_length is not specified, no maximum length constraint is imposed on this
         # field. If type = "STRING", then max_length represents the maximum UTF-8 length
@@ -9894,6 +9988,7 @@ module Google
           @default_value_expression = args[:default_value_expression] if args.key?(:default_value_expression)
           @description = args[:description] if args.key?(:description)
           @fields = args[:fields] if args.key?(:fields)
+          @foreign_type_definition = args[:foreign_type_definition] if args.key?(:foreign_type_definition)
           @max_length = args[:max_length] if args.key?(:max_length)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
@@ -10281,6 +10376,12 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::TableFieldSchema>]
         attr_accessor :fields
       
+        # Metadata about the foreign data type definition such as the system in which
+        # the type is defined.
+        # Corresponds to the JSON property `foreignTypeInfo`
+        # @return [Google::Apis::BigqueryV2::ForeignTypeInfo]
+        attr_accessor :foreign_type_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10288,6 +10389,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
+          @foreign_type_info = args[:foreign_type_info] if args.key?(:foreign_type_info)
         end
       end
       
