@@ -4684,6 +4684,38 @@ module Google
         end
       end
       
+      # Cloud Build V2 Repository containing Skaffold Configs.
+      class SkaffoldGcbRepoSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Relative path from the repository root to the Skaffold Config file.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Optional. Branch or tag to use when cloning the repository.
+        # Corresponds to the JSON property `ref`
+        # @return [String]
+        attr_accessor :ref
+      
+        # Required. Name of the Cloud Build V2 Repository. Format is projects/`project`/
+        # locations/`location`/connections/`connection`/repositories/`repository`.
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @ref = args[:ref] if args.key?(:ref)
+          @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
       # Cloud Storage bucket containing Skaffold Config modules.
       class SkaffoldGcsSource
         include Google::Apis::Core::Hashable
@@ -4720,7 +4752,7 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Optional. Git ref the package should be cloned from.
+        # Optional. Git branch or tag to use when cloning the repository.
         # Corresponds to the JSON property `ref`
         # @return [String]
         attr_accessor :ref
@@ -4756,6 +4788,11 @@ module Google
         # @return [Google::Apis::ClouddeployV1::SkaffoldGitSource]
         attr_accessor :git
       
+        # Cloud Build V2 Repository containing Skaffold Configs.
+        # Corresponds to the JSON property `googleCloudBuildRepo`
+        # @return [Google::Apis::ClouddeployV1::SkaffoldGcbRepoSource]
+        attr_accessor :google_cloud_build_repo
+      
         # Cloud Storage bucket containing Skaffold Config modules.
         # Corresponds to the JSON property `googleCloudStorage`
         # @return [Google::Apis::ClouddeployV1::SkaffoldGcsSource]
@@ -4769,6 +4806,7 @@ module Google
         def update!(**args)
           @configs = args[:configs] if args.key?(:configs)
           @git = args[:git] if args.key?(:git)
+          @google_cloud_build_repo = args[:google_cloud_build_repo] if args.key?(:google_cloud_build_repo)
           @google_cloud_storage = args[:google_cloud_storage] if args.key?(:google_cloud_storage)
         end
       end

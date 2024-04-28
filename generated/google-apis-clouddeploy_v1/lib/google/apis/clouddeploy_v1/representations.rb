@@ -754,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SkaffoldGcbRepoSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SkaffoldGcsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2144,6 +2150,15 @@ module Google
         end
       end
       
+      class SkaffoldGcbRepoSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :ref, as: 'ref'
+          property :repository, as: 'repository'
+        end
+      end
+      
       class SkaffoldGcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2166,6 +2181,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :configs, as: 'configs'
           property :git, as: 'git', class: Google::Apis::ClouddeployV1::SkaffoldGitSource, decorator: Google::Apis::ClouddeployV1::SkaffoldGitSource::Representation
+      
+          property :google_cloud_build_repo, as: 'googleCloudBuildRepo', class: Google::Apis::ClouddeployV1::SkaffoldGcbRepoSource, decorator: Google::Apis::ClouddeployV1::SkaffoldGcbRepoSource::Representation
       
           property :google_cloud_storage, as: 'googleCloudStorage', class: Google::Apis::ClouddeployV1::SkaffoldGcsSource, decorator: Google::Apis::ClouddeployV1::SkaffoldGcsSource::Representation
       
