@@ -9218,6 +9218,7 @@ module Google
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
+          property :ip_collection, as: 'ipCollection'
           property :ip_version, as: 'ipVersion'
           property :is_mirroring_collector, as: 'isMirroringCollector'
           property :kind, as: 'kind'
@@ -14734,6 +14735,7 @@ module Google
       class PublicDelegatedPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocatable_prefix_length, as: 'allocatablePrefixLength'
           property :byoip_api_version, as: 'byoipApiVersion'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -14742,6 +14744,7 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :is_live_migration, as: 'isLiveMigration'
           property :kind, as: 'kind'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :parent_prefix, as: 'parentPrefix'
           collection :public_delegated_sub_prefixs, as: 'publicDelegatedSubPrefixs', class: Google::Apis::ComputeBeta::PublicDelegatedPrefixPublicDelegatedSubPrefix, decorator: Google::Apis::ComputeBeta::PublicDelegatedPrefixPublicDelegatedSubPrefix::Representation
@@ -14820,10 +14823,12 @@ module Google
       class PublicDelegatedPrefixPublicDelegatedSubPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocatable_prefix_length, as: 'allocatablePrefixLength'
           property :delegatee_project, as: 'delegateeProject'
           property :description, as: 'description'
           property :ip_cidr_range, as: 'ipCidrRange'
           property :is_address, as: 'isAddress'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :region, as: 'region'
           property :status, as: 'status'
