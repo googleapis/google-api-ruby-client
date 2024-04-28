@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RagResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Retrieval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +167,12 @@ module Google
       end
       
       class Schema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchEntryPoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -377,6 +389,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :retrieval_queries, as: 'retrievalQueries'
+          property :search_entry_point, as: 'searchEntryPoint', class: Google::Apis::FirebasemlV2beta::SearchEntryPoint, decorator: Google::Apis::FirebasemlV2beta::SearchEntryPoint::Representation
+      
           collection :web_search_queries, as: 'webSearchQueries'
         end
       end
@@ -413,6 +427,14 @@ module Google
           property :block_reason_message, as: 'blockReasonMessage'
           collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::FirebasemlV2beta::SafetyRating, decorator: Google::Apis::FirebasemlV2beta::SafetyRating::Representation
       
+        end
+      end
+      
+      class RagResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rag_corpus, as: 'ragCorpus'
+          collection :rag_file_ids, as: 'ragFileIds'
         end
       end
       
@@ -476,6 +498,14 @@ module Google
         end
       end
       
+      class SearchEntryPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rendered_content, as: 'renderedContent'
+          property :sdk_blob, :base64 => true, as: 'sdkBlob'
+        end
+      end
+      
       class Tool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -514,6 +544,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :rag_corpora, as: 'ragCorpora'
+          collection :rag_resources, as: 'ragResources', class: Google::Apis::FirebasemlV2beta::RagResource, decorator: Google::Apis::FirebasemlV2beta::RagResource::Representation
+      
           property :similarity_top_k, as: 'similarityTopK'
           property :vector_distance_threshold, as: 'vectorDistanceThreshold'
         end
