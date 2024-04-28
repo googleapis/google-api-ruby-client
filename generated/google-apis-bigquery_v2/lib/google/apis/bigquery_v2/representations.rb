@@ -430,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ForeignTypeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -929,6 +935,12 @@ module Google
       end
       
       class RemoteModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestrictionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1754,6 +1766,8 @@ module Google
       
           property :location, as: 'location'
           property :max_time_travel_hours, :numeric_string => true, as: 'maxTimeTravelHours'
+          property :restrictions, as: 'restrictions', class: Google::Apis::BigqueryV2::RestrictionConfig, decorator: Google::Apis::BigqueryV2::RestrictionConfig::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
@@ -1847,8 +1861,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delta_budget, as: 'deltaBudget'
+          property :delta_budget_remaining, as: 'deltaBudgetRemaining'
           property :delta_per_query, as: 'deltaPerQuery'
           property :epsilon_budget, as: 'epsilonBudget'
+          property :epsilon_budget_remaining, as: 'epsilonBudgetRemaining'
           property :max_epsilon_per_query, as: 'maxEpsilonPerQuery'
           property :max_groups_contributed, :numeric_string => true, as: 'maxGroupsContributed'
           property :privacy_unit_column, as: 'privacyUnitColumn'
@@ -2092,6 +2108,13 @@ module Google
       
           property :feature_column, as: 'featureColumn'
           property :numerical_value, as: 'numericalValue'
+        end
+      end
+      
+      class ForeignTypeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type_system, as: 'typeSystem'
         end
       end
       
@@ -2950,6 +2973,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_list_inference, as: 'enableListInference'
           property :enum_as_string, as: 'enumAsString'
+          property :map_target_type, as: 'mapTargetType'
         end
       end
       
@@ -3244,6 +3268,13 @@ module Google
           property :remote_model_version, as: 'remoteModelVersion'
           property :remote_service_type, as: 'remoteServiceType'
           property :speech_recognizer, as: 'speechRecognizer'
+        end
+      end
+      
+      class RestrictionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
@@ -3594,6 +3625,8 @@ module Google
       
           property :require_partition_filter, as: 'requirePartitionFilter'
           hash :resource_tags, as: 'resourceTags'
+          property :restrictions, as: 'restrictions', class: Google::Apis::BigqueryV2::RestrictionConfig, decorator: Google::Apis::BigqueryV2::RestrictionConfig::Representation
+      
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :self_link, as: 'selfLink'
@@ -3728,6 +3761,7 @@ module Google
           property :description, as: 'description'
           collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::TableFieldSchema, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Representation
       
+          property :foreign_type_definition, as: 'foreignTypeDefinition'
           property :max_length, :numeric_string => true, as: 'maxLength'
           property :mode, as: 'mode'
           property :name, as: 'name'
@@ -3853,6 +3887,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::TableFieldSchema, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Representation
+      
+          property :foreign_type_info, as: 'foreignTypeInfo', class: Google::Apis::BigqueryV2::ForeignTypeInfo, decorator: Google::Apis::BigqueryV2::ForeignTypeInfo::Representation
       
         end
       end

@@ -169,7 +169,7 @@ module Google
         #   An expression for filtering the results of the request by label. The syntax is
         #   \"labels.<name>[:<value>]\". Multiple filters can be ANDed together by
         #   connecting with a space. Example: \"labels.department:receiving labels.active\"
-        #   . See [Filtering datasets using labels](/bigquery/docs/labeling-datasets#
+        #   . See [Filtering datasets using labels](/bigquery/docs/filtering-labels#
         #   filtering_datasets_using_labels) for details.
         # @param [Fixnum] max_results
         #   The maximum number of results to return in a single response page. Leverage
