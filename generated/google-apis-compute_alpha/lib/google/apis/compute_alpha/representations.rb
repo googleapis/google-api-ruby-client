@@ -12909,6 +12909,7 @@ module Google
       class Interconnect
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aai_enabled, as: 'aaiEnabled'
           property :admin_enabled, as: 'adminEnabled'
           property :application_aware_interconnect, as: 'applicationAwareInterconnect', class: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnect, decorator: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnect::Representation
       
