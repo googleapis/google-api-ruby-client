@@ -1015,6 +1015,7 @@ module Google
           property :filter_expr, as: 'filterExpr'
           property :flow_sampling, as: 'flowSampling'
           property :interconnect_attachment, as: 'interconnectAttachment'
+          hash :labels, as: 'labels'
           property :metadata, as: 'metadata'
           collection :metadata_fields, as: 'metadataFields'
           property :name, as: 'name'

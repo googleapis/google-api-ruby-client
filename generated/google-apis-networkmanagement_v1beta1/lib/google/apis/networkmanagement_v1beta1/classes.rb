@@ -504,7 +504,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Unique name of the resource using the form: `projects/`project_id`/
+        # Identifier. Unique name of the resource using the form: `projects/`project_id`/
         # locations/global/connectivityTests/`test``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2690,6 +2690,11 @@ module Google
         # @return [String]
         attr_accessor :interconnect_attachment
       
+        # Optional. Resource labels to represent user-provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Optional. Configures whether all, none or a subset of metadata fields should
         # be added to the reported VPC flow logs. Default value is INCLUDE_ALL_METADATA.
         # Corresponds to the JSON property `metadata`
@@ -2748,6 +2753,7 @@ module Google
           @filter_expr = args[:filter_expr] if args.key?(:filter_expr)
           @flow_sampling = args[:flow_sampling] if args.key?(:flow_sampling)
           @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
+          @labels = args[:labels] if args.key?(:labels)
           @metadata = args[:metadata] if args.key?(:metadata)
           @metadata_fields = args[:metadata_fields] if args.key?(:metadata_fields)
           @name = args[:name] if args.key?(:name)
