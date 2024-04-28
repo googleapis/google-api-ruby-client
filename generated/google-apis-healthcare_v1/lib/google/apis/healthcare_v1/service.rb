@@ -3833,7 +3833,8 @@ module Google
         # Updates the configuration of the specified FHIR store.
         # @param [String] name
         #   Output only. Identifier. Resource name of the FHIR store, of the form `
-        #   projects/`project_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
+        #   projects/`project_id`/locations/`location`/datasets/`dataset_id`/fhirStores/`
+        #   fhir_store_id``.
         # @param [Google::Apis::HealthcareV1::FhirStore] fhir_store_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
