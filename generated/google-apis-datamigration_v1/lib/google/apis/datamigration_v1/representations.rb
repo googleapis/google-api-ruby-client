@@ -1384,6 +1384,7 @@ module Google
           hash :custom_features, as: 'customFeatures'
           property :name, as: 'name'
           collection :table_columns, as: 'tableColumns'
+          collection :table_columns_descending, as: 'tableColumnsDescending'
           property :type, as: 'type'
           property :unique, as: 'unique'
         end
