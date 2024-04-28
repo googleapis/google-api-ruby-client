@@ -1720,24 +1720,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1GoogleSearchRetrieval
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1GroundingAttribution
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1GroundingAttributionWeb
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1GroundingMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4282,12 +4264,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1Segment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1ServiceAccountSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5116,6 +5092,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LearningGenaiRootCodeyGenerationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LearningGenaiRootCodeyOutput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5123,6 +5105,30 @@ module Google
       end
       
       class LearningGenaiRootCodeyTruncatorMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LearningGenaiRootControlDecodingConfigThreshold
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LearningGenaiRootControlDecodingRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LearningGenaiRootControlDecodingRecordPolicyScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LearningGenaiRootControlDecodingRecords
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5426,6 +5432,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :generated_samples, as: 'generatedSamples', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionMedia, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionMedia::Representation
       
+          property :rai_error_message, as: 'raiErrorMessage'
           property :rai_media_filtered_count, as: 'raiMediaFilteredCount'
           collection :rai_media_filtered_reasons, as: 'raiMediaFilteredReasons'
           property :rai_text_filtered_reason, as: 'raiTextFilteredReason', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionFilteredText, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionFilteredText::Representation
@@ -7176,6 +7183,8 @@ module Google
           property :network, as: 'network'
           property :predict_request_response_logging_config, as: 'predictRequestResponseLoggingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig::Representation
       
+          property :private_service_connect_config, as: 'privateServiceConnectConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrivateServiceConnectConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrivateServiceConnectConfig::Representation
+      
           hash :traffic_split, as: 'trafficSplit'
           property :update_time, as: 'updateTime'
         end
@@ -8244,37 +8253,9 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1GoogleSearchRetrieval
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :disable_attribution, as: 'disableAttribution'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1GroundingAttribution
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence_score, as: 'confidenceScore'
-          property :segment, as: 'segment', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Segment, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Segment::Representation
-      
-          property :web, as: 'web', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttributionWeb, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttributionWeb::Representation
-      
-        end
-      end
-      
-      class GoogleCloudAiplatformV1GroundingAttributionWeb
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          property :uri, as: 'uri'
-        end
-      end
-      
       class GoogleCloudAiplatformV1GroundingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :grounding_attributions, as: 'groundingAttributions', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttribution, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttribution::Representation
-      
           collection :web_search_queries, as: 'webSearchQueries'
         end
       end
@@ -12601,15 +12582,6 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1Segment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_index, as: 'endIndex'
-          property :part_index, as: 'partIndex'
-          property :start_index, as: 'startIndex'
-        end
-      end
-      
       class GoogleCloudAiplatformV1ServiceAccountSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13192,8 +13164,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration::Representation
-      
-          property :google_search_retrieval, as: 'googleSearchRetrieval', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleSearchRetrieval, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleSearchRetrieval::Representation
       
           property :retrieval, as: 'retrieval', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Retrieval, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Retrieval::Representation
       
@@ -14019,12 +13989,22 @@ module Google
         end
       end
       
+      class LearningGenaiRootCodeyGenerationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output, as: 'output'
+          property :post_inference_step, as: 'postInferenceStep'
+        end
+      end
+      
       class LearningGenaiRootCodeyOutput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :codey_chat_metadata, as: 'codeyChatMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootCodeyChatMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootCodeyChatMetadata::Representation
       
           property :codey_completion_metadata, as: 'codeyCompletionMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootCodeyCompletionMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootCodeyCompletionMetadata::Representation
+      
+          property :codey_generation_metadata, as: 'codeyGenerationMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootCodeyGenerationMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootCodeyGenerationMetadata::Representation
       
         end
       end
@@ -14034,6 +14014,42 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cutoff_index, as: 'cutoffIndex'
           property :truncated_text, as: 'truncatedText'
+        end
+      end
+      
+      class LearningGenaiRootControlDecodingConfigThreshold
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+          property :score_max, as: 'scoreMax'
+        end
+      end
+      
+      class LearningGenaiRootControlDecodingRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prefixes, as: 'prefixes'
+          collection :scores, as: 'scores', class: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecordPolicyScore, decorator: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecordPolicyScore::Representation
+      
+          property :suffiexes, as: 'suffiexes'
+          collection :thresholds, as: 'thresholds', class: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingConfigThreshold, decorator: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingConfigThreshold::Representation
+      
+        end
+      end
+      
+      class LearningGenaiRootControlDecodingRecordPolicyScore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+          property :score, as: 'score'
+        end
+      end
+      
+      class LearningGenaiRootControlDecodingRecords
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :records, as: 'records', class: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecord, decorator: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecord::Representation
+      
         end
       end
       
@@ -14073,6 +14089,8 @@ module Google
           property :rai_result, as: 'raiResult', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiResult, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiResult::Representation
       
           property :rai_signal, as: 'raiSignal', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal::Representation
+      
+          property :records, as: 'records', class: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecords, decorator: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecords::Representation
       
           property :stream_recitation_result, as: 'streamRecitationResult', class: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoStreamRecitationResult, decorator: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoStreamRecitationResult::Representation
       
