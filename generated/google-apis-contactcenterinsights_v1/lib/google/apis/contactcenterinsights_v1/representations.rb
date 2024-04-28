@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ConversationLevelSilence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1ConversationParticipant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -916,6 +922,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1515,6 +1527,8 @@ module Google
       
           collection :sentiments, as: 'sentiments', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationLevelSentiment, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationLevelSentiment::Representation
       
+          property :silence, as: 'silence', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationLevelSilence, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationLevelSilence::Representation
+      
         end
       end
       
@@ -1762,6 +1776,14 @@ module Google
           property :channel_tag, as: 'channelTag'
           property :sentiment_data, as: 'sentimentData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SentimentData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SentimentData::Representation
       
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationLevelSilence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :silence_duration, as: 'silenceDuration'
+          property :silence_percentage, as: 'silencePercentage'
         end
       end
       
@@ -2784,6 +2806,8 @@ module Google
       
           collection :sentiments, as: 'sentiments', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment::Representation
       
+          property :silence, as: 'silence', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence::Representation
+      
         end
       end
       
@@ -2990,6 +3014,14 @@ module Google
           property :channel_tag, as: 'channelTag'
           property :sentiment_data, as: 'sentimentData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SentimentData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SentimentData::Representation
       
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :silence_duration, as: 'silenceDuration'
+          property :silence_percentage, as: 'silencePercentage'
         end
       end
       
