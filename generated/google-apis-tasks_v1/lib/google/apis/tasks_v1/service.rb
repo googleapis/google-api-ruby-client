@@ -337,7 +337,7 @@ module Google
         end
         
         # Creates a new task on the specified task list. A user can have up to 20,000
-        # uncompleted tasks per list and up to 100,000 tasks in total at a time.
+        # non-hidden tasks per list and up to 100,000 tasks in total at a time.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [Google::Apis::TasksV1::Task] task_object
@@ -378,8 +378,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all tasks in the specified task list. A user can have up to 20,000
-        # uncompleted tasks per list and up to 100,000 tasks in total at a time.
+        # Returns all tasks in the specified task list. A user can have up to 20,000 non-
+        # hidden tasks per list and up to 100,000 tasks in total at a time.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] completed_max
