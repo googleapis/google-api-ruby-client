@@ -597,8 +597,8 @@ module Google
       # placeholders which will be replaced with the appropriate values: %LINK% - The
       # link to use to redeem the send OOB code. %EMAIL% - The email where the email
       # is being sent. %NEW_EMAIL% - The new email being set for the account (when
-      # applicable). %APP_NAME% - The GCP project's display name. %DISPLAY_NAME% - The
-      # user's display name.
+      # applicable). %APP_NAME% - The Google Cloud project's display name. %
+      # DISPLAY_NAME% - The user's display name.
       class GoogleCloudIdentitytoolkitAdminV2EmailTemplate
         include Google::Apis::Core::Hashable
       
@@ -1531,8 +1531,8 @@ module Google
         # placeholders which will be replaced with the appropriate values: %LINK% - The
         # link to use to redeem the send OOB code. %EMAIL% - The email where the email
         # is being sent. %NEW_EMAIL% - The new email being set for the account (when
-        # applicable). %APP_NAME% - The GCP project's display name. %DISPLAY_NAME% - The
-        # user's display name.
+        # applicable). %APP_NAME% - The Google Cloud project's display name. %
+        # DISPLAY_NAME% - The user's display name.
         # Corresponds to the JSON property `changeEmailTemplate`
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailTemplate]
         attr_accessor :change_email_template
@@ -1547,8 +1547,8 @@ module Google
         # placeholders which will be replaced with the appropriate values: %LINK% - The
         # link to use to redeem the send OOB code. %EMAIL% - The email where the email
         # is being sent. %NEW_EMAIL% - The new email being set for the account (when
-        # applicable). %APP_NAME% - The GCP project's display name. %DISPLAY_NAME% - The
-        # user's display name.
+        # applicable). %APP_NAME% - The Google Cloud project's display name. %
+        # DISPLAY_NAME% - The user's display name.
         # Corresponds to the JSON property `legacyResetPasswordTemplate`
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailTemplate]
         attr_accessor :legacy_reset_password_template
@@ -1562,8 +1562,8 @@ module Google
         # placeholders which will be replaced with the appropriate values: %LINK% - The
         # link to use to redeem the send OOB code. %EMAIL% - The email where the email
         # is being sent. %NEW_EMAIL% - The new email being set for the account (when
-        # applicable). %APP_NAME% - The GCP project's display name. %DISPLAY_NAME% - The
-        # user's display name.
+        # applicable). %APP_NAME% - The Google Cloud project's display name. %
+        # DISPLAY_NAME% - The user's display name.
         # Corresponds to the JSON property `resetPasswordTemplate`
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailTemplate]
         attr_accessor :reset_password_template
@@ -1572,8 +1572,8 @@ module Google
         # placeholders which will be replaced with the appropriate values: %LINK% - The
         # link to use to redeem the send OOB code. %EMAIL% - The email where the email
         # is being sent. %NEW_EMAIL% - The new email being set for the account (when
-        # applicable). %APP_NAME% - The GCP project's display name. %DISPLAY_NAME% - The
-        # user's display name.
+        # applicable). %APP_NAME% - The Google Cloud project's display name. %
+        # DISPLAY_NAME% - The user's display name.
         # Corresponds to the JSON property `revertSecondFactorAdditionTemplate`
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailTemplate]
         attr_accessor :revert_second_factor_addition_template
@@ -1587,8 +1587,8 @@ module Google
         # placeholders which will be replaced with the appropriate values: %LINK% - The
         # link to use to redeem the send OOB code. %EMAIL% - The email where the email
         # is being sent. %NEW_EMAIL% - The new email being set for the account (when
-        # applicable). %APP_NAME% - The GCP project's display name. %DISPLAY_NAME% - The
-        # user's display name.
+        # applicable). %APP_NAME% - The Google Cloud project's display name. %
+        # DISPLAY_NAME% - The user's display name.
         # Corresponds to the JSON property `verifyEmailTemplate`
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailTemplate]
         attr_accessor :verify_email_template
