@@ -1003,6 +1003,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_type, as: 'availabilityType'
+          property :cross_region_replica_configured, as: 'crossRegionReplicaConfigured'
           property :external_replica_configured, as: 'externalReplicaConfigured'
           property :promotable_replica_configured, as: 'promotableReplicaConfigured'
         end
