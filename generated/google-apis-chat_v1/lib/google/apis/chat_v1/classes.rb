@@ -752,7 +752,7 @@ module Google
       class CustomEmoji
         include Google::Apis::Core::Hashable
       
-        # Unique key for the custom emoji resource.
+        # Output only. Unique key for the custom emoji resource.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -884,8 +884,9 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # For `CARD_CLICKED` interaction events, whether the user interacted with a [
-        # dialog](https://developers.google.com/workspace/chat/dialogs).
+        # For `CARD_CLICKED` and `MESSAGE` interaction events, whether the user is
+        # interacting with or about to interact with a [dialog](https://developers.
+        # google.com/workspace/chat/dialogs).
         # Corresponds to the JSON property `isDialogEvent`
         # @return [Boolean]
         attr_accessor :is_dialog_event
@@ -4896,6 +4897,34 @@ module Google
         end
       end
       
+      # A user's read state within a space, used to identify read and unread messages.
+      class SpaceReadState
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The time when the user's space read state was updated. Usually this
+        # corresponds with either the timestamp of the last read message, or a timestamp
+        # specified by the user to mark the last read position in a space.
+        # Corresponds to the JSON property `lastReadTime`
+        # @return [String]
+        attr_accessor :last_read_time
+      
+        # Resource name of the space read state. Format: `users/`user`/spaces/`space`/
+        # spaceReadState`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_read_time = args[:last_read_time] if args.key?(:last_read_time)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Event payload for an updated space. Event type: `google.workspace.chat.space.
       # v1.updated`
       class SpaceUpdatedEventData
@@ -5058,6 +5087,33 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @thread_key = args[:thread_key] if args.key?(:thread_key)
+        end
+      end
+      
+      # A user's read state within a thread, used to identify read and unread messages.
+      class ThreadReadState
+        include Google::Apis::Core::Hashable
+      
+        # The time when the user's thread read state was updated. Usually this
+        # corresponds with the timestamp of the last read message in a thread.
+        # Corresponds to the JSON property `lastReadTime`
+        # @return [String]
+        attr_accessor :last_read_time
+      
+        # Resource name of the thread read state. Format: `users/`user`/spaces/`space`/
+        # threads/`thread`/threadReadState`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_read_time = args[:last_read_time] if args.key?(:last_read_time)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

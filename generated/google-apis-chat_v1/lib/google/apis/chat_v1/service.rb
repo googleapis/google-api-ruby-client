@@ -773,9 +773,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a message in a Google Chat space. For an example, see [Send a message](
-        # https://developers.google.com/workspace/chat/create-messages). Calling this
-        # method requires [authentication](https://developers.google.com/workspace/chat/
+        # Creates a message in a Google Chat space. The maximum message size, including
+        # text and cards, is 32,000 bytes. For an example, see [Send a message](https://
+        # developers.google.com/workspace/chat/create-messages). Calling this method
+        # requires [authentication](https://developers.google.com/workspace/chat/
         # authenticate-authorize) and supports the following authentication types: - For
         # text messages, user authentication or app authentication are supported. - For
         # card messages, only app authentication is supported. (Only Chat apps can
@@ -1421,6 +1422,129 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns details about a user's read state within a space, used to identify
+        # read and unread messages. Requires [user authentication](https://developers.
+        # google.com/workspace/chat/authenticate-authorize-chat-user).
+        # @param [String] name
+        #   Required. Resource name of the space read state to retrieve. Only supports
+        #   getting read state for the calling user. To refer to the calling user, set one
+        #   of the following: - The `me` alias. For example, `users/me/spaces/`space`/
+        #   spaceReadState`. - Their Workspace email address. For example, `users/user@
+        #   example.com/spaces/`space`/spaceReadState`. - Their user id. For example, `
+        #   users/123456789/spaces/`space`/spaceReadState`. Format: users/`user`/spaces/`
+        #   space`/spaceReadState
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::SpaceReadState] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::SpaceReadState]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_space_space_read_state(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChatV1::SpaceReadState::Representation
+          command.response_class = Google::Apis::ChatV1::SpaceReadState
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a user's read state within a space, used to identify read and unread
+        # messages. Requires [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user).
+        # @param [String] name
+        #   Resource name of the space read state. Format: `users/`user`/spaces/`space`/
+        #   spaceReadState`
+        # @param [Google::Apis::ChatV1::SpaceReadState] space_read_state_object
+        # @param [String] update_mask
+        #   Required. The field paths to update. Currently supported field paths: - `
+        #   last_read_time` When the `last_read_time` is before the latest message create
+        #   time, the space appears as unread in the UI. To mark the space as read, set `
+        #   last_read_time` to any value later (larger) than the latest message create
+        #   time. The `last_read_time` is coerced to match the latest message create time.
+        #   Note that the space read state only affects the read state of messages that
+        #   are visible in the space's top-level conversation. Replies in threads are
+        #   unaffected by this timestamp, and instead rely on the thread read state.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::SpaceReadState] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::SpaceReadState]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_user_space_space_read_state(name, space_read_state_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ChatV1::SpaceReadState::Representation
+          command.request_object = space_read_state_object
+          command.response_representation = Google::Apis::ChatV1::SpaceReadState::Representation
+          command.response_class = Google::Apis::ChatV1::SpaceReadState
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns details about a user's read state within a thread, used to identify
+        # read and unread messages. Requires [user authentication](https://developers.
+        # google.com/workspace/chat/authenticate-authorize-chat-user).
+        # @param [String] name
+        #   Required. Resource name of the thread read state to retrieve. Only supports
+        #   getting read state for the calling user. To refer to the calling user, set one
+        #   of the following: - The `me` alias. For example, `users/me/spaces/`space`/
+        #   threads/`thread`/threadReadState`. - Their Workspace email address. For
+        #   example, `users/user@example.com/spaces/`space`/threads/`thread`/
+        #   threadReadState`. - Their user id. For example, `users/123456789/spaces/`space`
+        #   /threads/`thread`/threadReadState`. Format: users/`user`/spaces/`space`/
+        #   threads/`thread`/threadReadState
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::ThreadReadState] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::ThreadReadState]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_space_thread_thread_read_state(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChatV1::ThreadReadState::Representation
+          command.response_class = Google::Apis::ChatV1::ThreadReadState
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

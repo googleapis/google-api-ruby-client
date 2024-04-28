@@ -694,6 +694,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpaceReadState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpaceUpdatedEventData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -725,6 +731,12 @@ module Google
       end
       
       class Thread
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ThreadReadState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1997,6 +2009,14 @@ module Google
         end
       end
       
+      class SpaceReadState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_read_time, as: 'lastReadTime'
+          property :name, as: 'name'
+        end
+      end
+      
       class SpaceUpdatedEventData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2042,6 +2062,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :thread_key, as: 'threadKey'
+        end
+      end
+      
+      class ThreadReadState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_read_time, as: 'lastReadTime'
+          property :name, as: 'name'
         end
       end
       
