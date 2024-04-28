@@ -347,8 +347,8 @@ module Google
         end
         
         # Creates a backup schedule on a database. At most two backup schedules can be
-        # configured on a database, one daily backup schedule with retention up to 7
-        # days and one weekly backup schedule with retention up to 14 weeks.
+        # configured on a database, one daily backup schedule and one weekly backup
+        # schedule.
         # @param [String] parent
         #   Required. The parent database. Format `projects/`project`/databases/`database``
         # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule] google_firestore_admin_v1_backup_schedule_object
@@ -554,7 +554,7 @@ module Google
         #   The filter to apply to list results. Currently, FirestoreAdmin.ListFields only
         #   supports listing fields that have been explicitly overridden. To issue this
         #   query, call FirestoreAdmin.ListFields with a filter that includes `indexConfig.
-        #   usesAncestorConfig:false` .
+        #   usesAncestorConfig:false` or `ttlConfig:*`.
         # @param [Fixnum] page_size
         #   The number of results to return.
         # @param [String] page_token
