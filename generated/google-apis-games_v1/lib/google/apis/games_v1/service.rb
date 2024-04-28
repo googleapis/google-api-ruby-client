@@ -827,6 +827,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieve the last Recall token from all developer games that is associated
+        # with the PGS Player principal encoded in the provided recall session id. The
+        # API is only available for users that have active PGS Player profile.
+        # @param [String] session_id
+        #   Required. Opaque server-generated string that encodes all the necessary
+        #   information to identify the PGS player / Google user and application.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GamesV1::RetrieveDeveloperGamesLastPlayerTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GamesV1::RetrieveDeveloperGamesLastPlayerTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def last_recall_token_from_all_developer_games(session_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'games/v1/recall/developerGamesLastPlayerToken/{sessionId}', options)
+          command.response_representation = Google::Apis::GamesV1::RetrieveDeveloperGamesLastPlayerTokenResponse::Representation
+          command.response_class = Google::Apis::GamesV1::RetrieveDeveloperGamesLastPlayerTokenResponse
+          command.params['sessionId'] = session_id unless session_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Associate the PGS Player principal encoded in the provided recall session id
         # with an in-game account
         # @param [Google::Apis::GamesV1::LinkPersonaRequest] link_persona_request_object
