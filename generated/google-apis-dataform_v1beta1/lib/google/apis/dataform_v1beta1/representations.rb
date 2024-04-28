@@ -310,6 +310,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Notebook
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotebookAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotebookRuntimeOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -550,6 +568,7 @@ module Google
       class BigQueryAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_id, as: 'jobId'
           property :sql_script, as: 'sqlScript'
         end
       end
@@ -577,6 +596,8 @@ module Google
           property :database_suffix, as: 'databaseSuffix'
           property :default_database, as: 'defaultDatabase'
           property :default_location, as: 'defaultLocation'
+          property :default_notebook_runtime_options, as: 'defaultNotebookRuntimeOptions', class: Google::Apis::DataformV1beta1::NotebookRuntimeOptions, decorator: Google::Apis::DataformV1beta1::NotebookRuntimeOptions::Representation
+      
           property :default_schema, as: 'defaultSchema'
           property :schema_suffix, as: 'schemaSuffix'
           property :table_prefix, as: 'tablePrefix'
@@ -679,6 +700,8 @@ module Google
           property :declaration, as: 'declaration', class: Google::Apis::DataformV1beta1::Declaration, decorator: Google::Apis::DataformV1beta1::Declaration::Representation
       
           property :file_path, as: 'filePath'
+          property :notebook, as: 'notebook', class: Google::Apis::DataformV1beta1::Notebook, decorator: Google::Apis::DataformV1beta1::Notebook::Representation
+      
           property :operations, as: 'operations', class: Google::Apis::DataformV1beta1::Operations, decorator: Google::Apis::DataformV1beta1::Operations::Representation
       
           property :relation, as: 'relation', class: Google::Apis::DataformV1beta1::Relation, decorator: Google::Apis::DataformV1beta1::Relation::Representation
@@ -971,6 +994,32 @@ module Google
       class MoveFileResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Notebook
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, as: 'contents'
+          collection :dependency_targets, as: 'dependencyTargets', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
+      
+          property :disabled, as: 'disabled'
+          collection :tags, as: 'tags'
+        end
+      end
+      
+      class NotebookAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, as: 'contents'
+          property :job_id, as: 'jobId'
+        end
+      end
+      
+      class NotebookRuntimeOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_output_bucket, as: 'gcsOutputBucket'
         end
       end
       
@@ -1298,6 +1347,8 @@ module Google
       
           property :failure_reason, as: 'failureReason'
           property :invocation_timing, as: 'invocationTiming', class: Google::Apis::DataformV1beta1::Interval, decorator: Google::Apis::DataformV1beta1::Interval::Representation
+      
+          property :notebook_action, as: 'notebookAction', class: Google::Apis::DataformV1beta1::NotebookAction, decorator: Google::Apis::DataformV1beta1::NotebookAction::Representation
       
           property :state, as: 'state'
           property :target, as: 'target', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation

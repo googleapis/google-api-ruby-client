@@ -851,6 +851,10 @@ module Google
         #   format `projects/*/locations/*/repositories/*`.
         # @param [String] filter
         #   Optional. Filter for the returned list.
+        # @param [String] order_by
+        #   Optional. This field only supports ordering by `name` and `create_time`. If
+        #   unspecified, the server will choose the ordering. If specified, the default
+        #   order is ascending for the `name` field.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of compilation results to return. The server may
         #   return fewer items than requested. If unspecified, the server will pick an
@@ -877,12 +881,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_repository_compilation_results(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_repository_compilation_results(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/compilationResults', options)
           command.response_representation = Google::Apis::DataformV1beta1::ListCompilationResultsResponse::Representation
           command.response_class = Google::Apis::DataformV1beta1::ListCompilationResultsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
