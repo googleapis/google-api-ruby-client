@@ -242,7 +242,7 @@ module Google
       class Attack
         include Google::Apis::Core::Hashable
       
-        # Type of attack, for example, ‘SYN-flood’, ‘NTP-udp’, or ‘CHARGEN-udp’.
+        # Type of attack, for example, 'SYN-flood', 'NTP-udp', or 'CHARGEN-udp'.
         # Corresponds to the JSON property `classification`
         # @return [String]
         attr_accessor :classification
@@ -577,7 +577,7 @@ module Google
         attr_accessor :security_policy
       
         # Distinguish between volumetric & protocol DDoS attack and application layer
-        # attacks. For example, “L3_4” for Layer 3 and Layer 4 DDoS attacks, or “L_7”
+        # attacks. For example, "L3_4" for Layer 3 and Layer 4 DDoS attacks, or "L_7"
         # for Layer 7 DDoS attacks.
         # Corresponds to the JSON property `threatVector`
         # @return [String]
@@ -2594,13 +2594,13 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::ResourcePath]
         attr_accessor :resource_path
       
-        # A string representation of the resource path. For GCP, it has the format of:
-        # organizations/`organization_id`/folders/`folder_id`/folders/`folder_id`/
-        # projects/`project_id` where there can be any number of folders. For AWS, it
-        # has the format of: org/`organization_id`/ou/`organizational_unit_id`/ou/`
-        # organizational_unit_id`/account/`account_id` where there can be any number of
-        # organizational units. For Azure, it has the format of: mg/`management_group_id`
-        # /mg/`management_group_id`/subscription/`subscription_id`/rg/`
+        # A string representation of the resource path. For Google Cloud, it has the
+        # format of organizations/`organization_id`/folders/`folder_id`/folders/`
+        # folder_id`/projects/`project_id` where there can be any number of folders. For
+        # AWS, it has the format of org/`organization_id`/ou/`organizational_unit_id`/ou/
+        # `organizational_unit_id`/account/`account_id` where there can be any number of
+        # organizational units. For Azure, it has the format of mg/`management_group_id`/
+        # mg/`management_group_id`/subscription/`subscription_id`/rg/`
         # resource_group_name` where there can be any number of management groups.
         # Corresponds to the JSON property `resourcePathString`
         # @return [String]
@@ -3424,7 +3424,7 @@ module Google
       class GoogleCloudSecuritycenterV2Attack
         include Google::Apis::Core::Hashable
       
-        # Type of attack, for example, ‘SYN-flood’, ‘NTP-udp’, or ‘CHARGEN-udp’.
+        # Type of attack, for example, 'SYN-flood', 'NTP-udp', or 'CHARGEN-udp'.
         # Corresponds to the JSON property `classification`
         # @return [String]
         attr_accessor :classification
@@ -3894,7 +3894,7 @@ module Google
         attr_accessor :security_policy
       
         # Distinguish between volumetric & protocol DDoS attack and application layer
-        # attacks. For example, “L3_4” for Layer 3 and Layer 4 DDoS attacks, or “L_7”
+        # attacks. For example, "L3_4" for Layer 3 and Layer 4 DDoS attacks, or "L_7"
         # for Layer 7 DDoS attacks.
         # Corresponds to the JSON property `threatVector`
         # @return [String]
@@ -6062,13 +6062,13 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourcePath]
         attr_accessor :resource_path
       
-        # A string representation of the resource path. For GCP, it has the format of:
-        # organizations/`organization_id`/folders/`folder_id`/folders/`folder_id`/
-        # projects/`project_id` where there can be any number of folders. For AWS, it
-        # has the format of: org/`organization_id`/ou/`organizational_unit_id`/ou/`
-        # organizational_unit_id`/account/`account_id` where there can be any number of
-        # organizational units. For Azure, it has the format of: mg/`management_group_id`
-        # /mg/`management_group_id`/subscription/`subscription_id`/rg/`
+        # A string representation of the resource path. For Google Cloud, it has the
+        # format of organizations/`organization_id`/folders/`folder_id`/folders/`
+        # folder_id`/projects/`project_id` where there can be any number of folders. For
+        # AWS, it has the format of org/`organization_id`/ou/`organizational_unit_id`/ou/
+        # `organizational_unit_id`/account/`account_id` where there can be any number of
+        # organizational units. For Azure, it has the format of mg/`management_group_id`/
+        # mg/`management_group_id`/subscription/`subscription_id`/rg/`
         # resource_group_name` where there can be any number of management groups.
         # Corresponds to the JSON property `resourcePathString`
         # @return [String]
@@ -6383,9 +6383,9 @@ module Google
         attr_accessor :preview
         alias_method :preview?, :preview
       
-        # The type of Google Cloud Armor security policy for example, ‘backend security
-        # policy’, ‘edge security policy’, ‘network edge security policy’, or ‘always-on
-        # DDoS protection’.
+        # The type of Google Cloud Armor security policy for example, 'backend security
+        # policy', 'edge security policy', 'network edge security policy', or 'always-on
+        # DDoS protection'.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -7784,9 +7784,9 @@ module Google
         attr_accessor :preview
         alias_method :preview?, :preview
       
-        # The type of Google Cloud Armor security policy for example, ‘backend security
-        # policy’, ‘edge security policy’, ‘network edge security policy’, or ‘always-on
-        # DDoS protection’.
+        # The type of Google Cloud Armor security policy for example, 'backend security
+        # policy', 'edge security policy', 'network edge security policy', or 'always-on
+        # DDoS protection'.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
