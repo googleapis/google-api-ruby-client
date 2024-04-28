@@ -2512,6 +2512,26 @@ module Google
         end
       end
       
+      # Recall token data returned from for the RetrieveDeveloperGamesLastPlayerToken
+      # RPC
+      class RetrieveDeveloperGamesLastPlayerTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # Recall token data returned from RetrievePlayerTokens RPC
+        # Corresponds to the JSON property `token`
+        # @return [Google::Apis::GamesV1::RecallToken]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
       # Response for the RetrievePlayerTokens RPC
       class RetrievePlayerTokensResponse
         include Google::Apis::Core::Hashable

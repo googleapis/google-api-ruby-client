@@ -394,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RetrieveDeveloperGamesLastPlayerTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RetrievePlayerTokensResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1127,6 +1133,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :unlinked, as: 'unlinked'
+        end
+      end
+      
+      class RetrieveDeveloperGamesLastPlayerTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token, as: 'token', class: Google::Apis::GamesV1::RecallToken, decorator: Google::Apis::GamesV1::RecallToken::Representation
+      
         end
       end
       
