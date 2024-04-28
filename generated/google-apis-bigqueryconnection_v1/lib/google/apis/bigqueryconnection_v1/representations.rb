@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectorConfigurationAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectorConfigurationAuthentication
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,6 +341,8 @@ module Google
       class ConnectorConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset, as: 'asset', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationAsset, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationAsset::Representation
+      
           property :authentication, as: 'authentication', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationAuthentication, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationAuthentication::Representation
       
           property :connector_id, as: 'connectorId'
@@ -342,6 +350,14 @@ module Google
       
           property :network, as: 'network', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationNetwork, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationNetwork::Representation
       
+        end
+      end
+      
+      class ConnectorConfigurationAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :google_cloud_resource, as: 'googleCloudResource'
         end
       end
       

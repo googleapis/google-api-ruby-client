@@ -573,6 +573,12 @@ module Google
       class ConnectorConfiguration
         include Google::Apis::Core::Hashable
       
+        # Data Asset - a resource within instance of the system, reachable under
+        # specified endpoint. For example a database name in a SQL DB.
+        # Corresponds to the JSON property `asset`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationAsset]
+        attr_accessor :asset
+      
         # Client authentication.
         # Corresponds to the JSON property `authentication`
         # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationAuthentication]
@@ -600,10 +606,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @asset = args[:asset] if args.key?(:asset)
           @authentication = args[:authentication] if args.key?(:authentication)
           @connector_id = args[:connector_id] if args.key?(:connector_id)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @network = args[:network] if args.key?(:network)
+        end
+      end
+      
+      # Data Asset - a resource within instance of the system, reachable under
+      # specified endpoint. For example a database name in a SQL DB.
+      class ConnectorConfigurationAsset
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the database.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Full Google Cloud resource name - https://cloud.google.com/apis/design/
+        # resource_names#full_resource_name. Example: `//library.googleapis.com/shelves/
+        # shelf1/books/book2`
+        # Corresponds to the JSON property `googleCloudResource`
+        # @return [String]
+        attr_accessor :google_cloud_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @google_cloud_resource = args[:google_cloud_resource] if args.key?(:google_cloud_resource)
         end
       end
       
