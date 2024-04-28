@@ -1224,8 +1224,8 @@ module Google
       end
       
       # App Check enforcement policy for a specific resource of a Firebase service
-      # supported by App Check. Note that this policy will override the Service level
-      # enforcement mode configuration.
+      # supported by App Check. Note that this policy will override the service-level
+      # configuration.
       class GoogleFirebaseAppcheckV1betaResourcePolicy
         include Google::Apis::Core::Hashable
       
@@ -1243,18 +1243,18 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Required. The relative name of the resource configuration object, in the
-        # format: ``` projects/`project_number`/services/`service_id`/resourcePolicies/`
+        # Required. The relative name of the resource policy object, in the format: ```
+        # projects/`project_number`/services/`service_id`/resourcePolicies/`
         # resource_policy_id` ``` Note that the `service_id` element must be a supported
         # service ID. Currently, the following service IDs are supported: * `oauth2.
         # googleapis.com` (Google Identity for iOS) `resource_policy_id` is a system-
-        # generated UID used as the resource ID for the policy.
+        # generated UID.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Required. Service specific name of the resource object to which this policy
-        # applies, in the format: * `//oauth2.googleapis.com/projects/`project`/
+        # applies, in the format: * `//oauth2.googleapis.com/projects/`project_number`/
         # oauthClients/`oauth_client_id`` (Google Identity for iOS) Note that the
         # resource must belong to the service specified in the `name` and be from the
         # same project as this policy, but the resource is allowed to be missing at the
@@ -1372,8 +1372,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # App Check enforcement policy for a specific resource of a Firebase service
-        # supported by App Check. Note that this policy will override the Service level
-        # enforcement mode configuration.
+        # supported by App Check. Note that this policy will override the service-level
+        # configuration.
         # Corresponds to the JSON property `resourcePolicy`
         # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy]
         attr_accessor :resource_policy

@@ -1987,7 +1987,7 @@ module Google
         
         # Creates the specified ResourcePolicy configuration.
         # @param [String] parent
-        #   Required. The relative resource name of the parent service in which the
+        #   Required. The relative resource name of the parent Service in which the
         #   specified ResourcePolicy will be created, in the format: ``` projects/`
         #   project_number`/services/`service_id` ``` Note that the `service_id` element
         #   must be a supported service ID. Currently, the following service IDs are
@@ -2069,8 +2069,7 @@ module Google
         #   format: ``` projects/`project_number`/services/`service_id`/resourcePolicies/`
         #   resource_policy_id` ``` Note that the `service_id` element must be a supported
         #   service ID. Currently, the following service IDs are supported: * `oauth2.
-        #   googleapis.com` (Google Identity for iOS) `resource_policy_id` is a system-
-        #   generated UID used as the resource ID for the policy.
+        #   googleapis.com` (Google Identity for iOS)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2100,7 +2099,7 @@ module Google
         
         # Lists all ResourcePolicy configurations for the specified project and service.
         # @param [String] parent
-        #   Required. The relative resource name of the parent service for which to list
+        #   Required. The relative resource name of the parent Service for which to list
         #   each associated ResourcePolicy, in the format: ``` projects/`project_number`/
         #   services/`service_id` ``` Note that the `service_id` element must be a
         #   supported service ID. Currently, the following service IDs are supported: * `
@@ -2158,12 +2157,12 @@ module Google
         
         # Updates the specified ResourcePolicy configuration.
         # @param [String] name
-        #   Required. The relative name of the resource configuration object, in the
-        #   format: ``` projects/`project_number`/services/`service_id`/resourcePolicies/`
+        #   Required. The relative name of the resource policy object, in the format: ```
+        #   projects/`project_number`/services/`service_id`/resourcePolicies/`
         #   resource_policy_id` ``` Note that the `service_id` element must be a supported
         #   service ID. Currently, the following service IDs are supported: * `oauth2.
         #   googleapis.com` (Google Identity for iOS) `resource_policy_id` is a system-
-        #   generated UID used as the resource ID for the policy.
+        #   generated UID.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy] google_firebase_appcheck_v1beta_resource_policy_object
         # @param [String] update_mask
         #   Required. A comma-separated list of names of fields in the ResourcePolicy to
