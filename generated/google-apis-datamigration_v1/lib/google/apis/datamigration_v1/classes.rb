@@ -2233,6 +2233,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :table_columns
       
+        # For each table_column, mark whether it's sorting order is ascending (false) or
+        # descending (true). If no value is defined, assume all columns are sorted in
+        # ascending order. Otherwise, the number of items must match that of
+        # table_columns with each value specifying the direction of the matched column
+        # by its index.
+        # Corresponds to the JSON property `tableColumnsDescending`
+        # @return [Array<Boolean>]
+        attr_accessor :table_columns_descending
+      
         # Type of index, for example B-TREE.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2253,6 +2262,7 @@ module Google
           @custom_features = args[:custom_features] if args.key?(:custom_features)
           @name = args[:name] if args.key?(:name)
           @table_columns = args[:table_columns] if args.key?(:table_columns)
+          @table_columns_descending = args[:table_columns_descending] if args.key?(:table_columns_descending)
           @type = args[:type] if args.key?(:type)
           @unique = args[:unique] if args.key?(:unique)
         end
