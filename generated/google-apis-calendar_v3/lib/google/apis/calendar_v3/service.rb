@@ -1081,7 +1081,10 @@ module Google
         end
         
         # Imports an event. This operation is used to add a private copy of an existing
-        # event to a calendar.
+        # event to a calendar. Only events with an eventType of default may be imported.
+        # Deprecated behavior: If a non-default event is imported, its type will be
+        # changed to default and any event-type-specific properties it may have will be
+        # dropped.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
         #   method. If you want to access the primary calendar of the currently logged in
