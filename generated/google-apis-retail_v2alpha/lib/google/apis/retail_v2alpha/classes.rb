@@ -1678,6 +1678,191 @@ module Google
         end
       end
       
+      # A data branch that stores Products.
+      class GoogleCloudRetailV2alphaBranch
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Human readable name of the branch to display in the UI.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Indicates whether this branch is set as the default branch of its
+        # parent catalog.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
+        # Output only. Timestamp of last import through ProductService.ImportProducts.
+        # Empty value means no import has been made to this branch.
+        # Corresponds to the JSON property `lastProductImportTime`
+        # @return [String]
+        attr_accessor :last_product_import_time
+      
+        # Immutable. Full resource name of the branch, such as `projects/*/locations/
+        # global/catalogs/default_catalog/branches/branch_id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Statistics for number of products in the branch, provided for
+        # different scopes. This field is not populated in BranchView.BASIC view.
+        # Corresponds to the JSON property `productCountStats`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchProductCountStatistic>]
+        attr_accessor :product_count_stats
+      
+        # Output only. The number of products in different groups that this branch has.
+        # The key is a group representing a set of products, and the value is the number
+        # of products in that group. Note: keys in this map may change over time.
+        # Possible keys: * "primary-in-stock", products have Product.Type.PRIMARY type
+        # and Product.Availability.IN_STOCK availability. * "primary-out-of-stock",
+        # products have Product.Type.PRIMARY type and Product.Availability.OUT_OF_STOCK
+        # availability. * "primary-preorder", products have Product.Type.PRIMARY type
+        # and Product.Availability.PREORDER availability. * "primary-backorder",
+        # products have Product.Type.PRIMARY type and Product.Availability.BACKORDER
+        # availability. * "variant-in-stock", products have Product.Type.VARIANT type
+        # and Product.Availability.IN_STOCK availability. * "variant-out-of-stock",
+        # products have Product.Type.VARIANT type and Product.Availability.OUT_OF_STOCK
+        # availability. * "variant-preorder", products have Product.Type.VARIANT type
+        # and Product.Availability.PREORDER availability. * "variant-backorder",
+        # products have Product.Type.VARIANT type and Product.Availability.BACKORDER
+        # availability. * "price-discounted", products have [Product.price_info.price] <
+        # [Product.price_info.original_price]. This field is not populated in BranchView.
+        # BASIC view.
+        # Corresponds to the JSON property `productCounts`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :product_counts
+      
+        # Output only. The quality metrics measured among products of this branch. See
+        # QualityMetric.requirement_key for supported metrics. Metrics could be missing
+        # if failed to retrieve. This field is not populated in BranchView.BASIC view.
+        # Corresponds to the JSON property `qualityMetrics`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchQualityMetric>]
+        attr_accessor :quality_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @is_default = args[:is_default] if args.key?(:is_default)
+          @last_product_import_time = args[:last_product_import_time] if args.key?(:last_product_import_time)
+          @name = args[:name] if args.key?(:name)
+          @product_count_stats = args[:product_count_stats] if args.key?(:product_count_stats)
+          @product_counts = args[:product_counts] if args.key?(:product_counts)
+          @quality_metrics = args[:quality_metrics] if args.key?(:quality_metrics)
+        end
+      end
+      
+      # A statistic about the number of products in a branch.
+      class GoogleCloudRetailV2alphaBranchProductCountStatistic
+        include Google::Apis::Core::Hashable
+      
+        # The number of products in scope broken down into different groups. The key is
+        # a group representing a set of products, and the value is the number of
+        # products in that group. Note: keys in this map may change over time. Possible
+        # keys: * "primary-in-stock", products have Product.Type.PRIMARY type and
+        # Product.Availability.IN_STOCK availability. * "primary-out-of-stock", products
+        # have Product.Type.PRIMARY type and Product.Availability.OUT_OF_STOCK
+        # availability. * "primary-preorder", products have Product.Type.PRIMARY type
+        # and Product.Availability.PREORDER availability. * "primary-backorder",
+        # products have Product.Type.PRIMARY type and Product.Availability.BACKORDER
+        # availability. * "variant-in-stock", products have Product.Type.VARIANT type
+        # and Product.Availability.IN_STOCK availability. * "variant-out-of-stock",
+        # products have Product.Type.VARIANT type and Product.Availability.OUT_OF_STOCK
+        # availability. * "variant-preorder", products have Product.Type.VARIANT type
+        # and Product.Availability.PREORDER availability. * "variant-backorder",
+        # products have Product.Type.VARIANT type and Product.Availability.BACKORDER
+        # availability. * "price-discounted", products have [Product.price_info.price] <
+        # [Product.price_info.original_price].
+        # Corresponds to the JSON property `counts`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :counts
+      
+        # [ProductCountScope] of the [counts].
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @counts = args[:counts] if args.key?(:counts)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Metric measured on a group of Products against a certain quality requirement.
+      # Contains the number of products that pass the check and the number of products
+      # that don't.
+      class GoogleCloudRetailV2alphaBranchQualityMetric
+        include Google::Apis::Core::Hashable
+      
+        # Number of products passing the quality requirement check. We only check
+        # searchable products.
+        # Corresponds to the JSON property `qualifiedProductCount`
+        # @return [Fixnum]
+        attr_accessor :qualified_product_count
+      
+        # The key that represents a quality requirement rule. Supported keys: * "has-
+        # valid-uri": product has a valid and accessible uri. * "available-expire-time-
+        # conformance": Product.available_time is early than "now", and Product.
+        # expire_time is greater than "now". * "has-searchable-attributes": product has
+        # at least one attribute set to searchable. * "has-description": product has non-
+        # empty description. * "has-at-least-bigram-title": Product title has at least
+        # two words. A comprehensive title helps to improve search quality. * "variant-
+        # has-image": the variant products has at least one image. You may ignore this
+        # metric if all your products are at primary level. * "variant-has-price-info":
+        # the variant products has price_info set. You may ignore this metric if all
+        # your products are at primary level. * "has-publish-time": product has non-
+        # empty publish_time.
+        # Corresponds to the JSON property `requirementKey`
+        # @return [String]
+        attr_accessor :requirement_key
+      
+        # Value from 0 to 100 representing the suggested percentage of products that
+        # meet the quality requirements to get good search and recommendation
+        # performance. 100 * (qualified_product_count) / (qualified_product_count +
+        # unqualified_product_count) should be greater or equal to this suggestion.
+        # Corresponds to the JSON property `suggestedQualityPercentThreshold`
+        # @return [Float]
+        attr_accessor :suggested_quality_percent_threshold
+      
+        # Number of products failing the quality requirement check. We only check
+        # searchable products.
+        # Corresponds to the JSON property `unqualifiedProductCount`
+        # @return [Fixnum]
+        attr_accessor :unqualified_product_count
+      
+        # A list of a maximum of 100 sample products that do not qualify for this
+        # requirement. This field is only populated in the response to BranchService.
+        # GetBranch API, and is always empty for BranchService.ListBranches. Only the
+        # following fields are set in the Product. * Product.name * Product.id * Product.
+        # title
+        # Corresponds to the JSON property `unqualifiedSampleProducts`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProduct>]
+        attr_accessor :unqualified_sample_products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qualified_product_count = args[:qualified_product_count] if args.key?(:qualified_product_count)
+          @requirement_key = args[:requirement_key] if args.key?(:requirement_key)
+          @suggested_quality_percent_threshold = args[:suggested_quality_percent_threshold] if args.key?(:suggested_quality_percent_threshold)
+          @unqualified_product_count = args[:unqualified_product_count] if args.key?(:unqualified_product_count)
+          @unqualified_sample_products = args[:unqualified_sample_products] if args.key?(:unqualified_sample_products)
+        end
+      end
+      
       # The catalog configuration.
       class GoogleCloudRetailV2alphaCatalog
         include Google::Apis::Core::Hashable
@@ -3409,6 +3594,25 @@ module Google
           @exclusive_minimum = args[:exclusive_minimum] if args.key?(:exclusive_minimum)
           @maximum = args[:maximum] if args.key?(:maximum)
           @minimum = args[:minimum] if args.key?(:minimum)
+        end
+      end
+      
+      # Response for BranchService.ListBranches method.
+      class GoogleCloudRetailV2alphaListBranchesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Branches.
+        # Corresponds to the JSON property `branches`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranch>]
+        attr_accessor :branches
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branches = args[:branches] if args.key?(:branches)
         end
       end
       
