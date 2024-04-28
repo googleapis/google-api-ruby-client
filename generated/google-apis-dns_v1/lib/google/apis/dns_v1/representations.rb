@@ -901,7 +901,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :geo, as: 'geo', class: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy::Representation
       
-          property :health_check, as: 'healthCheck'
           property :kind, as: 'kind'
           property :primary_backup, as: 'primaryBackup', class: Google::Apis::DnsV1::RrSetRoutingPolicyPrimaryBackupPolicy, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyPrimaryBackupPolicy::Representation
       
@@ -935,7 +934,6 @@ module Google
       class RrSetRoutingPolicyHealthCheckTargets
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :external_endpoints, as: 'externalEndpoints'
           collection :internal_load_balancers, as: 'internalLoadBalancers', class: Google::Apis::DnsV1::RrSetRoutingPolicyLoadBalancerTarget, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyLoadBalancerTarget::Representation
       
         end
