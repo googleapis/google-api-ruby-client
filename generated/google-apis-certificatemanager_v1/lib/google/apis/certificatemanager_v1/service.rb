@@ -232,7 +232,7 @@ module Google
         # @param [String] order_by
         #   A list of Certificate Config field names used to specify the order of the
         #   returned results. The default sorting order is ascending. To specify
-        #   descending order for a field, add a suffix " desc".
+        #   descending order for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
         #   Maximum number of certificate configs to return per call.
         # @param [String] page_token
@@ -381,7 +381,7 @@ module Google
         # @param [String] order_by
         #   A list of Certificate Map field names used to specify the order of the
         #   returned results. The default sorting order is ascending. To specify
-        #   descending order for a field, add a suffix " desc".
+        #   descending order for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
         #   Maximum number of certificate maps to return per call.
         # @param [String] page_token
@@ -567,7 +567,7 @@ module Google
         # @param [String] order_by
         #   A list of Certificate Map Entry field names used to specify the order of the
         #   returned results. The default sorting order is ascending. To specify
-        #   descending order for a field, add a suffix " desc".
+        #   descending order for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
         #   Maximum number of certificate map entries to return. The service may return
         #   fewer than this value. If unspecified, at most 50 certificate map entries will
@@ -756,7 +756,7 @@ module Google
         # @param [String] order_by
         #   A list of Certificate field names used to specify the order of the returned
         #   results. The default sorting order is ascending. To specify descending order
-        #   for a field, add a suffix " desc".
+        #   for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
         #   Maximum number of certificates to return per call.
         # @param [String] page_token
@@ -941,7 +941,7 @@ module Google
         # @param [String] order_by
         #   A list of Dns Authorization field names used to specify the order of the
         #   returned results. The default sorting order is ascending. To specify
-        #   descending order for a field, add a suffix " desc".
+        #   descending order for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
         #   Maximum number of dns authorizations to return per call.
         # @param [String] page_token
@@ -1276,7 +1276,7 @@ module Google
         # @param [String] order_by
         #   A list of TrustConfig field names used to specify the order of the returned
         #   results. The default sorting order is ascending. To specify descending order
-        #   for a field, add a suffix " desc".
+        #   for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
         #   Maximum number of TrustConfigs to return per call.
         # @param [String] page_token

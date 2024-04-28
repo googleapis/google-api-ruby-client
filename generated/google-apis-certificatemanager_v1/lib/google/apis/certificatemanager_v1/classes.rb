@@ -1207,7 +1207,7 @@ module Google
       
         # Optional. A certificate matching an allowlisted certificate is always
         # considered valid as long as the certificate is parseable, proof of private key
-        # possession is established, and constraints on the certificate’s SAN field are
+        # possession is established, and constraints on the certificate's SAN field are
         # met.
         # Corresponds to the JSON property `allowlistedCertificates`
         # @return [Array<Google::Apis::CertificatemanagerV1::AllowlistedCertificate>]
