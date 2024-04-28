@@ -1460,7 +1460,6 @@ module Google
       end
       
       # This reservation type allows to pre allocate specific instance configuration.
-      # Next ID: 6
       class AllocationSpecificSkuReservation
         include Google::Apis::Core::Hashable
       
@@ -22009,6 +22008,13 @@ module Google
       class Interconnect
         include Google::Apis::Core::Hashable
       
+        # Enable or disable the Application Aware Interconnect(AAI) feature on this
+        # interconnect.
+        # Corresponds to the JSON property `aaiEnabled`
+        # @return [Boolean]
+        attr_accessor :aai_enabled
+        alias_method :aai_enabled?, :aai_enabled
+      
         # Administrative status of the interconnect. When this is set to true, the
         # Interconnect is functional and can carry traffic. When set to false, no
         # packets can be carried over the interconnect and no BGP routes are exchanged
@@ -22244,6 +22250,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aai_enabled = args[:aai_enabled] if args.key?(:aai_enabled)
           @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
           @application_aware_interconnect = args[:application_aware_interconnect] if args.key?(:application_aware_interconnect)
           @available_features = args[:available_features] if args.key?(:available_features)
@@ -29658,7 +29665,7 @@ module Google
         end
       end
       
-      # NetworkPlacement Represents a Google managed network placement resource.
+      # NetworkPlacement represents a Google managed network placement resource.
       class NetworkPlacement
         include Google::Apis::Core::Hashable
       
@@ -33455,7 +33462,7 @@ module Google
         # @return [String]
         attr_accessor :enable
       
-        # Filter for mirrored traffic. If unspecified, all traffic is mirrored.
+        # Filter for mirrored traffic. If unspecified, all IPv4 traffic is mirrored.
         # Corresponds to the JSON property `filter`
         # @return [Google::Apis::ComputeAlpha::PacketMirroringFilter]
         attr_accessor :filter
@@ -33676,7 +33683,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :ip_protocols
       
-        # One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (
+        # One or more IPv4 or IPv6 CIDR ranges that apply as filters on the source (
         # ingress) or destination (egress) IP in the IP header. If no ranges are
         # specified, all IPv4 traffic that matches the specified IPProtocols is mirrored.
         # If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is
@@ -38684,7 +38691,6 @@ module Google
         attr_accessor :share_settings
       
         # This reservation type allows to pre allocate specific instance configuration.
-        # Next ID: 6
         # Corresponds to the JSON property `specificReservation`
         # @return [Google::Apis::ComputeAlpha::AllocationSpecificSkuReservation]
         attr_accessor :specific_reservation
@@ -41335,7 +41341,8 @@ module Google
         attr_accessor :enable_ipv4
         alias_method :enable_ipv4?, :enable_ipv4
       
-        # Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        # Enable IPv6 traffic over BGP Peer. It is enabled by default if the
+        # peerIpAddress is version 6.
         # Corresponds to the JSON property `enableIpv6`
         # @return [Boolean]
         attr_accessor :enable_ipv6
@@ -41343,14 +41350,16 @@ module Google
       
         # List of export policies applied to this peer, in the order they must be
         # evaluated. The name must correspond to an existing policy that has
-        # ROUTE_POLICY_TYPE_EXPORT type.
+        # ROUTE_POLICY_TYPE_EXPORT type. Note that Route Policies are currently
+        # available in preview. Please use Beta API to use Route Policies.
         # Corresponds to the JSON property `exportPolicies`
         # @return [Array<String>]
         attr_accessor :export_policies
       
         # List of import policies applied to this peer, in the order they must be
         # evaluated. The name must correspond to an existing policy that has
-        # ROUTE_POLICY_TYPE_IMPORT type.
+        # ROUTE_POLICY_TYPE_IMPORT type. Note that Route Policies are currently
+        # available in preview. Please use Beta API to use Route Policies.
         # Corresponds to the JSON property `importPolicies`
         # @return [Array<String>]
         attr_accessor :import_policies
@@ -41360,8 +41369,7 @@ module Google
         # @return [String]
         attr_accessor :interface_name
       
-        # IP address of the interface inside Google Cloud Platform. Only IPv4 is
-        # supported.
+        # IP address of the interface inside Google Cloud Platform.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -41409,8 +41417,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :peer_asn
       
-        # IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is
-        # supported.
+        # IP address of the BGP interface outside Google Cloud Platform.
         # Corresponds to the JSON property `peerIpAddress`
         # @return [String]
         attr_accessor :peer_ip_address
@@ -41576,10 +41583,15 @@ module Google
       class RouterInterface
         include Google::Apis::Core::Hashable
       
-        # IP address and range of the interface. The IP range must be in the RFC3927
-        # link-local IP address space. The value must be a CIDR-formatted string, for
-        # example: 169.254.0.1/30. NOTE: Do not truncate the address as it represents
-        # the IP address of the interface.
+        # IP address and range of the interface. - For Internet Protocol version 4 (IPv4)
+        # , the IP range must be in the RFC3927 link-local IP address space. The value
+        # must be a CIDR-formatted string, for example, 169.254.0.1/30. Note: Do not
+        # truncate the IP address, as it represents the IP address of the interface. -
+        # For Internet Protocol version 6 (IPv6), the value must be a unique local
+        # address (ULA) range from fdff:1::/64 with a mask length of 126 or less. This
+        # value should be a CIDR-formatted string, for example, fc00:0:1:1::1/112.
+        # Within the router's VPC, this IPv6 prefix will be reserved exclusively for
+        # this connection and cannot be used for any other purpose.
         # Corresponds to the JSON property `ipRange`
         # @return [String]
         attr_accessor :ip_range
@@ -42215,7 +42227,8 @@ module Google
         attr_accessor :enable_ipv4
         alias_method :enable_ipv4?, :enable_ipv4
       
-        # Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        # Enable IPv6 traffic over BGP Peer. It is enabled by default if the
+        # peerIpAddress is version 6.
         # Corresponds to the JSON property `enableIpv6`
         # @return [Boolean]
         attr_accessor :enable_ipv6
@@ -52303,7 +52316,7 @@ module Google
       
         # URLs to networkservices.HttpFilter resources enabled for xDS clients using
         # this configuration. For example, https://networkservices.googleapis.com/beta/
-        # projects/project/locations/ locationhttpFilters/httpFilter Only filters that
+        # projects/project/locations/ location/httpFilters/httpFilter Only filters that
         # handle outbound connection and stream events may be specified. These filters
         # work in conjunction with a default set of HTTP filters that may already be
         # configured by Traffic Director. Traffic Director will determine the final
