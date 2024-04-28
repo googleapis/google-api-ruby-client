@@ -75,15 +75,14 @@ module Google
       class AppAccessRiskVerdict
         include Google::Apis::Core::Hashable
       
-        # Required. App access risk verdict related to apps that are not installed by
-        # Google Play, and are not preloaded on the system image by the device
-        # manufacturer.
+        # App access risk verdict related to apps that are not installed by Google Play,
+        # and are not preloaded on the system image by the device manufacturer.
         # Corresponds to the JSON property `otherApps`
         # @return [String]
         attr_accessor :other_apps
       
-        # Required. App access risk verdict related to apps that are not installed by
-        # the Google Play Store, and are not preloaded on the system image by the device
+        # App access risk verdict related to apps that are not installed by the Google
+        # Play Store, and are not preloaded on the system image by the device
         # manufacturer.
         # Corresponds to the JSON property `playOrSystemApps`
         # @return [String]
