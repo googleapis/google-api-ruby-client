@@ -637,7 +637,10 @@ module Google
       # A Document has changed. May be the result of multiple writes, including
       # deletes, that ultimately resulted in a new value for the Document. Multiple
       # DocumentChange messages may be returned for the same logical change, if
-      # multiple targets are affected.
+      # multiple targets are affected. For PipelineQueryTargets, `document` will be in
+      # the new pipeline format, For a Listen stream with both QueryTargets and
+      # PipelineQueryTargets present, if a document matches both types of queries,
+      # then a separate DocumentChange messages will be sent out one for each set.
       class DocumentChange
         include Google::Apis::Core::Hashable
       
@@ -1101,7 +1104,7 @@ module Google
       class FindNearest
         include Google::Apis::Core::Hashable
       
-        # Required. The Distance Measure to use, required.
+        # Required. The distance measure to use, required.
         # Corresponds to the JSON property `distanceMeasure`
         # @return [String]
         attr_accessor :distance_measure
@@ -1839,7 +1842,10 @@ module Google
         # A Document has changed. May be the result of multiple writes, including
         # deletes, that ultimately resulted in a new value for the Document. Multiple
         # DocumentChange messages may be returned for the same logical change, if
-        # multiple targets are affected.
+        # multiple targets are affected. For PipelineQueryTargets, `document` will be in
+        # the new pipeline format, For a Listen stream with both QueryTargets and
+        # PipelineQueryTargets present, if a document matches both types of queries,
+        # then a separate DocumentChange messages will be sent out one for each set.
         # Corresponds to the JSON property `documentChange`
         # @return [Google::Apis::FirestoreV1beta1::DocumentChange]
         attr_accessor :document_change
