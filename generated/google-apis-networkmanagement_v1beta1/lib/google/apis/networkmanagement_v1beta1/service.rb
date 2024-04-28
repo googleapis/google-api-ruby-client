@@ -342,7 +342,7 @@ module Google
         # in `ConnectivityTest` are incomplete, the reachability result returns a value
         # of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for more details.
         # @param [String] name
-        #   Required. Unique name of the resource using the form: `projects/`project_id`/
+        #   Identifier. Unique name of the resource using the form: `projects/`project_id`/
         #   locations/global/connectivityTests/`test``
         # @param [Google::Apis::NetworkmanagementV1beta1::ConnectivityTest] connectivity_test_object
         # @param [String] update_mask
