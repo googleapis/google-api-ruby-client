@@ -134,6 +134,7 @@ module Google
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'
           property :prefer_no_broad_approval_requests, as: 'preferNoBroadApprovalRequests'
           property :preferred_request_expiration_days, as: 'preferredRequestExpirationDays'
+          property :require_customer_visible_justification, as: 'requireCustomerVisibleJustification'
         end
       end
       
