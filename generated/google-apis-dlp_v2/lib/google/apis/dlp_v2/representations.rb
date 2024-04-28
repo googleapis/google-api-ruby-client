@@ -3950,6 +3950,7 @@ module Google
       
           collection :info_type_stats, as: 'infoTypeStats', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeStats, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeStats::Representation
       
+          property :num_rows_processed, :numeric_string => true, as: 'numRowsProcessed'
           property :processed_bytes, :numeric_string => true, as: 'processedBytes'
           property :total_estimated_bytes, :numeric_string => true, as: 'totalEstimatedBytes'
         end
