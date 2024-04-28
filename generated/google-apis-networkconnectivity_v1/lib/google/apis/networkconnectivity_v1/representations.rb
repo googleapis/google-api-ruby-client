@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRegionalEndpointsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRouteTablesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +293,12 @@ module Google
       end
       
       class PscConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -466,6 +478,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_global_access, as: 'disableGlobalAccess'
           property :network, as: 'network'
+          property :producer_instance_id, as: 'producerInstanceId'
           property :project, as: 'project'
           property :state, as: 'state'
         end
@@ -483,6 +496,7 @@ module Google
           property :gce_operation, as: 'gceOperation'
           property :ip, as: 'ip'
           property :network, as: 'network'
+          property :producer_instance_id, as: 'producerInstanceId'
           property :project, as: 'project'
           property :psc_connection_id, as: 'pscConnectionId'
           property :selected_subnetwork, as: 'selectedSubnetwork'
@@ -714,6 +728,16 @@ module Google
         end
       end
       
+      class ListRegionalEndpointsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :regional_endpoints, as: 'regionalEndpoints', class: Google::Apis::NetworkconnectivityV1::RegionalEndpoint, decorator: Google::Apis::NetworkconnectivityV1::RegionalEndpoint::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListRouteTablesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -886,9 +910,28 @@ module Google
       
           property :error_type, as: 'errorType'
           property :gce_operation, as: 'gceOperation'
+          property :producer_instance_id, as: 'producerInstanceId'
           property :psc_connection_id, as: 'pscConnectionId'
           property :selected_subnetwork, as: 'selectedSubnetwork'
           property :state, as: 'state'
+        end
+      end
+      
+      class RegionalEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_type, as: 'accessType'
+          property :address, as: 'address'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :ip_address, as: 'ipAddress'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :psc_forwarding_rule, as: 'pscForwardingRule'
+          property :subnetwork, as: 'subnetwork'
+          property :target_google_api, as: 'targetGoogleApi'
+          property :update_time, as: 'updateTime'
         end
       end
       
