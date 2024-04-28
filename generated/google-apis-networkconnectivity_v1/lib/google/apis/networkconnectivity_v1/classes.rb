@@ -271,6 +271,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Immutable. An immutable identifier for the producer instance.
+        # Corresponds to the JSON property `producerInstanceId`
+        # @return [String]
+        attr_accessor :producer_instance_id
+      
         # The consumer project where PSC connections are allowed to be created in.
         # Corresponds to the JSON property `project`
         # @return [String]
@@ -290,6 +295,7 @@ module Google
         def update!(**args)
           @disable_global_access = args[:disable_global_access] if args.key?(:disable_global_access)
           @network = args[:network] if args.key?(:network)
+          @producer_instance_id = args[:producer_instance_id] if args.key?(:producer_instance_id)
           @project = args[:project] if args.key?(:project)
           @state = args[:state] if args.key?(:state)
         end
@@ -352,6 +358,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Immutable. An immutable identifier for the producer instance.
+        # Corresponds to the JSON property `producerInstanceId`
+        # @return [String]
+        attr_accessor :producer_instance_id
+      
         # The consumer project whose PSC forwarding rule is connected to the service
         # attachments in this service connection map.
         # Corresponds to the JSON property `project`
@@ -393,6 +404,7 @@ module Google
           @gce_operation = args[:gce_operation] if args.key?(:gce_operation)
           @ip = args[:ip] if args.key?(:ip)
           @network = args[:network] if args.key?(:network)
+          @producer_instance_id = args[:producer_instance_id] if args.key?(:producer_instance_id)
           @project = args[:project] if args.key?(:project)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @selected_subnetwork = args[:selected_subnetwork] if args.key?(:selected_subnetwork)
@@ -633,12 +645,13 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Additional structured details about this error. Keys should match /[a-zA-Z0-9-
-        # _]/ and be limited to 64 characters in length. When identifying the current
-        # value of an exceeded limit, the units should be contained in the key, not the
-        # value. For example, rather than `"instanceLimit": "100/request"`, should be
-        # returned as, `"instanceLimitPerRequest": "100"`, if the client exceeds the
-        # number of instances that can be created in a single (batch) request.
+        # Additional structured details about this error. Keys must match /a-z+/ but
+        # should ideally be lowerCamelCase. Also they must be limited to 64 characters
+        # in length. When identifying the current value of an exceeded limit, the units
+        # should be contained in the key, not the value. For example, rather than `"
+        # instanceLimit": "100/request"`, should be returned as, `"
+        # instanceLimitPerRequest": "100"`, if the client exceeds the number of
+        # instances that can be created in a single (batch) request.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
@@ -910,9 +923,9 @@ module Google
       
         # The URL or resource ID of the network in which to reserve the internal range.
         # The network cannot be deleted if there are any reserved internal ranges
-        # referring to it. Legacy networks are not supported. This can only be specified
-        # for a global internal address. Example: - URL: /compute/v1/projects/`project`/
-        # global/networks/`resourceId` - ID: network123
+        # referring to it. Legacy networks are not supported. For example: https://www.
+        # googleapis.com/compute/v1/projects/`project`/locations/global/networks/`
+        # network` projects/`project`/locations/global/networks/`network` `network`
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1311,6 +1324,38 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @policy_based_routes = args[:policy_based_routes] if args.key?(:policy_based_routes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for ListRegionalEndpoints.
+      class ListRegionalEndpointsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next pagination token in the List response. It should be used as
+        # page_token for the following request. An empty value means no more result.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Regional endpoints to be returned.
+        # Corresponds to the JSON property `regionalEndpoints`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::RegionalEndpoint>]
+        attr_accessor :regional_endpoints
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @regional_endpoints = args[:regional_endpoints] if args.key?(:regional_endpoints)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -1997,6 +2042,11 @@ module Google
         # @return [String]
         attr_accessor :gce_operation
       
+        # Immutable. An immutable identifier for the producer instance.
+        # Corresponds to the JSON property `producerInstanceId`
+        # @return [String]
+        attr_accessor :producer_instance_id
+      
         # The PSC connection id of the PSC forwarding rule.
         # Corresponds to the JSON property `pscConnectionId`
         # @return [String]
@@ -2026,9 +2076,107 @@ module Google
           @error_info = args[:error_info] if args.key?(:error_info)
           @error_type = args[:error_type] if args.key?(:error_type)
           @gce_operation = args[:gce_operation] if args.key?(:gce_operation)
+          @producer_instance_id = args[:producer_instance_id] if args.key?(:producer_instance_id)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @selected_subnetwork = args[:selected_subnetwork] if args.key?(:selected_subnetwork)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The RegionalEndpoint resource.
+      class RegionalEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Required. The access type of this regional endpoint. This field is reflected
+        # in the PSC Forwarding Rule configuration to enable global access.
+        # Corresponds to the JSON property `accessType`
+        # @return [String]
+        attr_accessor :access_type
+      
+        # Optional. The IP Address of the Regional Endpoint. When no address is provided,
+        # an IP from the subnetwork is allocated. Use one of the following formats: *
+        # IPv4 address as in `10.0.0.1` * Address resource URI as in `projects/`project`/
+        # regions/`region`/addresses/`address_name``
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Output only. Time when the RegionalEndpoint was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The literal IP address of the PSC Forwarding Rule created on
+        # behalf of the customer. This field is deprecated. Use address instead.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The name of a RegionalEndpoint. Format: `projects/`project`/
+        # locations/`location`/regionalEndpoints/`regional_endpoint``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The name of the VPC network for this private regional endpoint. Format: `
+        # projects/`project`/global/networks/`network``
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. The resource reference of the PSC Forwarding Rule created on
+        # behalf of the customer. Format: `//compute.googleapis.com/projects/`project`/
+        # regions/`region`/forwardingRules/`forwarding_rule_name``
+        # Corresponds to the JSON property `pscForwardingRule`
+        # @return [String]
+        attr_accessor :psc_forwarding_rule
+      
+        # The name of the subnetwork from which the IP address will be allocated. Format:
+        # `projects/`project`/regions/`region`/subnetworks/`subnetwork``
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # Required. The service endpoint this private regional endpoint connects to.
+        # Format: ``apiname`.`region`.p.rep.googleapis.com` Example: "cloudkms.us-
+        # central1.p.rep.googleapis.com".
+        # Corresponds to the JSON property `targetGoogleApi`
+        # @return [String]
+        attr_accessor :target_google_api
+      
+        # Output only. Time when the RegionalEndpoint was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_type = args[:access_type] if args.key?(:access_type)
+          @address = args[:address] if args.key?(:address)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @psc_forwarding_rule = args[:psc_forwarding_rule] if args.key?(:psc_forwarding_rule)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @target_google_api = args[:target_google_api] if args.key?(:target_google_api)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
