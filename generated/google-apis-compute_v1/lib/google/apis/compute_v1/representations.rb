@@ -3310,6 +3310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeGroupsPerformMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeGroupsScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -8668,6 +8674,7 @@ module Google
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
+          property :ip_collection, as: 'ipCollection'
           property :ip_version, as: 'ipVersion'
           property :is_mirroring_collector, as: 'isMirroringCollector'
           property :kind, as: 'kind'
@@ -12603,6 +12610,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :location_hint, as: 'locationHint'
+          property :maintenance_interval, as: 'maintenanceInterval'
           property :maintenance_policy, as: 'maintenancePolicy'
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComputeV1::NodeGroupMaintenanceWindow, decorator: Google::Apis::ComputeV1::NodeGroupMaintenanceWindow::Representation
       
@@ -12722,6 +12730,8 @@ module Google
           property :status, as: 'status'
           property :total_resources, as: 'totalResources', class: Google::Apis::ComputeV1::InstanceConsumptionInfo, decorator: Google::Apis::ComputeV1::InstanceConsumptionInfo::Representation
       
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeV1::UpcomingMaintenance, decorator: Google::Apis::ComputeV1::UpcomingMaintenance::Representation
+      
         end
       end
       
@@ -12768,6 +12778,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NodeGroupsPerformMaintenanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodes, as: 'nodes'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -13732,6 +13750,7 @@ module Google
       class PublicDelegatedPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocatable_prefix_length, as: 'allocatablePrefixLength'
           property :byoip_api_version, as: 'byoipApiVersion'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -13740,6 +13759,7 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :is_live_migration, as: 'isLiveMigration'
           property :kind, as: 'kind'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :parent_prefix, as: 'parentPrefix'
           collection :public_delegated_sub_prefixs, as: 'publicDelegatedSubPrefixs', class: Google::Apis::ComputeV1::PublicDelegatedPrefixPublicDelegatedSubPrefix, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefixPublicDelegatedSubPrefix::Representation
@@ -13818,10 +13838,12 @@ module Google
       class PublicDelegatedPrefixPublicDelegatedSubPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocatable_prefix_length, as: 'allocatablePrefixLength'
           property :delegatee_project, as: 'delegateeProject'
           property :description, as: 'description'
           property :ip_cidr_range, as: 'ipCidrRange'
           property :is_address, as: 'isAddress'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :region, as: 'region'
           property :status, as: 'status'
@@ -14944,6 +14966,7 @@ module Google
           collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeV1::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeV1::RouterAdvertisedIpRange::Representation
       
           property :asn, as: 'asn'
+          property :identifier_range, as: 'identifierRange'
           property :keepalive_interval, as: 'keepaliveInterval'
         end
       end
@@ -14962,15 +14985,20 @@ module Google
       
           property :custom_learned_route_priority, as: 'customLearnedRoutePriority'
           property :enable, as: 'enable'
+          property :enable_ipv4, as: 'enableIpv4'
           property :enable_ipv6, as: 'enableIpv6'
+          collection :export_policies, as: 'exportPolicies'
+          collection :import_policies, as: 'importPolicies'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
+          property :ipv4_nexthop_address, as: 'ipv4NexthopAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :management_type, as: 'managementType'
           property :md5_authentication_key_name, as: 'md5AuthenticationKeyName'
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :peer_ipv4_nexthop_address, as: 'peerIpv4NexthopAddress'
           property :peer_ipv6_nexthop_address, as: 'peerIpv6NexthopAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
         end
@@ -14997,6 +15025,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_range, as: 'ipRange'
+          property :ip_version, as: 'ipVersion'
           property :linked_interconnect_attachment, as: 'linkedInterconnectAttachment'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :management_type, as: 'managementType'
@@ -15136,14 +15165,17 @@ module Google
       
           property :bfd_status, as: 'bfdStatus', class: Google::Apis::ComputeV1::BfdStatus, decorator: Google::Apis::ComputeV1::BfdStatus::Representation
       
+          property :enable_ipv4, as: 'enableIpv4'
           property :enable_ipv6, as: 'enableIpv6'
           property :ip_address, as: 'ipAddress'
+          property :ipv4_nexthop_address, as: 'ipv4NexthopAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :md5_auth_enabled, as: 'md5AuthEnabled'
           property :name, as: 'name'
           property :num_learned_routes, as: 'numLearnedRoutes'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :peer_ipv4_nexthop_address, as: 'peerIpv4NexthopAddress'
           property :peer_ipv6_nexthop_address, as: 'peerIpv6NexthopAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
           property :state, as: 'state'

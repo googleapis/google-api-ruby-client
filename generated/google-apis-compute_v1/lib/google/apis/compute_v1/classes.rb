@@ -1401,7 +1401,6 @@ module Google
       end
       
       # This reservation type allows to pre allocate specific instance configuration.
-      # Next ID: 6
       class AllocationSpecificSkuReservation
         include Google::Apis::Core::Hashable
       
@@ -9636,6 +9635,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP in
+        # EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode. Use one of the following formats
+        # to specify a sub-PDP when creating an IPv6 NetLB forwarding rule using BYOIP:
+        # Full resource URL, as in https://www.googleapis.com/compute/v1/projects/
+        # project_id/regions/region /publicDelegatedPrefixes/sub-pdp-name Partial URL,
+        # as in: - projects/project_id/regions/region/publicDelegatedPrefixes/sub-pdp-
+        # name - regions/region/publicDelegatedPrefixes/sub-pdp-name
+        # Corresponds to the JSON property `ipCollection`
+        # @return [String]
+        attr_accessor :ip_collection
+      
         # The IP Version that will be used by this forwarding rule. Valid options are
         # IPV4 or IPV6.
         # Corresponds to the JSON property `ipVersion`
@@ -9880,6 +9890,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
+          @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
           @ip_version = args[:ip_version] if args.key?(:ip_version)
           @is_mirroring_collector = args[:is_mirroring_collector] if args.key?(:is_mirroring_collector)
           @kind = args[:kind] if args.key?(:kind)
@@ -25591,6 +25602,12 @@ module Google
         # @return [String]
         attr_accessor :location_hint
       
+        # Specifies the frequency of planned maintenance events. The accepted values are:
+        # `AS_NEEDED` and `RECURRENT`.
+        # Corresponds to the JSON property `maintenanceInterval`
+        # @return [String]
+        attr_accessor :maintenance_interval
+      
         # Specifies how to handle instances when a node in the group undergoes
         # maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or
         # MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information,
@@ -25660,6 +25677,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
+          @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @name = args[:name] if args.key?(:name)
@@ -26048,6 +26066,11 @@ module Google
         # @return [Google::Apis::ComputeV1::InstanceConsumptionInfo]
         attr_accessor :total_resources
       
+        # Upcoming Maintenance notification information.
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::ComputeV1::UpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -26067,6 +26090,7 @@ module Google
           @server_id = args[:server_id] if args.key?(:server_id)
           @status = args[:status] if args.key?(:status)
           @total_resources = args[:total_resources] if args.key?(:total_resources)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
       
@@ -26223,6 +26247,31 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class NodeGroupsPerformMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # [Required] List of nodes affected by the call.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<String>]
+        attr_accessor :nodes
+      
+        # The start time of the schedule. The timestamp is an RFC3339 string.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nodes = args[:nodes] if args.key?(:nodes)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -28427,7 +28476,7 @@ module Google
         # @return [String]
         attr_accessor :enable
       
-        # Filter for mirrored traffic. If unspecified, all traffic is mirrored.
+        # Filter for mirrored traffic. If unspecified, all IPv4 traffic is mirrored.
         # Corresponds to the JSON property `filter`
         # @return [Google::Apis::ComputeV1::PacketMirroringFilter]
         attr_accessor :filter
@@ -28642,7 +28691,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :ip_protocols
       
-        # One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (
+        # One or more IPv4 or IPv6 CIDR ranges that apply as filters on the source (
         # ingress) or destination (egress) IP in the IP header. If no ranges are
         # specified, all IPv4 traffic that matches the specified IPProtocols is mirrored.
         # If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is
@@ -30012,6 +30061,13 @@ module Google
       class PublicDelegatedPrefix
         include Google::Apis::Core::Hashable
       
+        # The allocatable prefix length supported by this public delegated prefix. This
+        # field is optional and cannot be set for prefixes in DELEGATION mode. It cannot
+        # be set for IPv4 prefixes either, and it always defaults to 32.
+        # Corresponds to the JSON property `allocatablePrefixLength`
+        # @return [Fixnum]
+        attr_accessor :allocatable_prefix_length
+      
         # [Output Only] The version of BYOIP API.
         # Corresponds to the JSON property `byoipApiVersion`
         # @return [String]
@@ -30062,6 +30118,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # The public delegated prefix mode for IPv6 only.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -30114,6 +30175,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocatable_prefix_length = args[:allocatable_prefix_length] if args.key?(:allocatable_prefix_length)
           @byoip_api_version = args[:byoip_api_version] if args.key?(:byoip_api_version)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -30122,6 +30184,7 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @is_live_migration = args[:is_live_migration] if args.key?(:is_live_migration)
           @kind = args[:kind] if args.key?(:kind)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @parent_prefix = args[:parent_prefix] if args.key?(:parent_prefix)
           @public_delegated_sub_prefixs = args[:public_delegated_sub_prefixs] if args.key?(:public_delegated_sub_prefixs)
@@ -30378,6 +30441,11 @@ module Google
       class PublicDelegatedPrefixPublicDelegatedSubPrefix
         include Google::Apis::Core::Hashable
       
+        # The allocatable prefix length supported by this PublicDelegatedSubPrefix.
+        # Corresponds to the JSON property `allocatablePrefixLength`
+        # @return [Fixnum]
+        attr_accessor :allocatable_prefix_length
+      
         # Name of the project scoping this PublicDelegatedSubPrefix.
         # Corresponds to the JSON property `delegateeProject`
         # @return [String]
@@ -30402,6 +30470,11 @@ module Google
         attr_accessor :is_address
         alias_method :is_address?, :is_address
       
+        # The PublicDelegatedSubPrefix mode for IPv6 only.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # The name of the sub public delegated prefix.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -30424,10 +30497,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocatable_prefix_length = args[:allocatable_prefix_length] if args.key?(:allocatable_prefix_length)
           @delegatee_project = args[:delegatee_project] if args.key?(:delegatee_project)
           @description = args[:description] if args.key?(:description)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @is_address = args[:is_address] if args.key?(:is_address)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @status = args[:status] if args.key?(:status)
@@ -32449,7 +32524,6 @@ module Google
         attr_accessor :share_settings
       
         # This reservation type allows to pre allocate specific instance configuration.
-        # Next ID: 6
         # Corresponds to the JSON property `specificReservation`
         # @return [Google::Apis::ComputeV1::AllocationSpecificSkuReservation]
         attr_accessor :specific_reservation
@@ -34531,6 +34605,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :asn
       
+        # Explicitly specifies a range of valid BGP Identifiers for this Router. It is
+        # provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /
+        # 30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4
+        # BGP session ranges. Other vendors commonly call this "router ID".
+        # Corresponds to the JSON property `identifierRange`
+        # @return [String]
+        attr_accessor :identifier_range
+      
         # The interval in seconds between BGP keepalive messages that are sent to the
         # peer. Hold time is three times the interval at which keepalive messages are
         # sent, and the hold time is the maximum number of seconds allowed to elapse
@@ -34552,6 +34634,7 @@ module Google
           @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
           @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @asn = args[:asn] if args.key?(:asn)
+          @identifier_range = args[:identifier_range] if args.key?(:identifier_range)
           @keepalive_interval = args[:keepalive_interval] if args.key?(:keepalive_interval)
         end
       end
@@ -34619,22 +34702,50 @@ module Google
         # @return [String]
         attr_accessor :enable
       
-        # Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        # Enable IPv4 traffic over BGP Peer. It is enabled by default if the
+        # peerIpAddress is version 4.
+        # Corresponds to the JSON property `enableIpv4`
+        # @return [Boolean]
+        attr_accessor :enable_ipv4
+        alias_method :enable_ipv4?, :enable_ipv4
+      
+        # Enable IPv6 traffic over BGP Peer. It is enabled by default if the
+        # peerIpAddress is version 6.
         # Corresponds to the JSON property `enableIpv6`
         # @return [Boolean]
         attr_accessor :enable_ipv6
         alias_method :enable_ipv6?, :enable_ipv6
+      
+        # List of export policies applied to this peer, in the order they must be
+        # evaluated. The name must correspond to an existing policy that has
+        # ROUTE_POLICY_TYPE_EXPORT type. Note that Route Policies are currently
+        # available in preview. Please use Beta API to use Route Policies.
+        # Corresponds to the JSON property `exportPolicies`
+        # @return [Array<String>]
+        attr_accessor :export_policies
+      
+        # List of import policies applied to this peer, in the order they must be
+        # evaluated. The name must correspond to an existing policy that has
+        # ROUTE_POLICY_TYPE_IMPORT type. Note that Route Policies are currently
+        # available in preview. Please use Beta API to use Route Policies.
+        # Corresponds to the JSON property `importPolicies`
+        # @return [Array<String>]
+        attr_accessor :import_policies
       
         # Name of the interface the BGP peer is associated with.
         # Corresponds to the JSON property `interfaceName`
         # @return [String]
         attr_accessor :interface_name
       
-        # IP address of the interface inside Google Cloud Platform. Only IPv4 is
-        # supported.
+        # IP address of the interface inside Google Cloud Platform.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # IPv4 address of the interface inside Google Cloud Platform.
+        # Corresponds to the JSON property `ipv4NexthopAddress`
+        # @return [String]
+        attr_accessor :ipv4_nexthop_address
       
         # IPv6 address of the interface inside Google Cloud Platform.
         # Corresponds to the JSON property `ipv6NexthopAddress`
@@ -34674,11 +34785,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :peer_asn
       
-        # IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is
-        # supported.
+        # IP address of the BGP interface outside Google Cloud Platform.
         # Corresponds to the JSON property `peerIpAddress`
         # @return [String]
         attr_accessor :peer_ip_address
+      
+        # IPv4 address of the BGP interface outside Google Cloud Platform.
+        # Corresponds to the JSON property `peerIpv4NexthopAddress`
+        # @return [String]
+        attr_accessor :peer_ipv4_nexthop_address
       
         # IPv6 address of the BGP interface outside Google Cloud Platform.
         # Corresponds to the JSON property `peerIpv6NexthopAddress`
@@ -34707,15 +34822,20 @@ module Google
           @custom_learned_ip_ranges = args[:custom_learned_ip_ranges] if args.key?(:custom_learned_ip_ranges)
           @custom_learned_route_priority = args[:custom_learned_route_priority] if args.key?(:custom_learned_route_priority)
           @enable = args[:enable] if args.key?(:enable)
+          @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
+          @export_policies = args[:export_policies] if args.key?(:export_policies)
+          @import_policies = args[:import_policies] if args.key?(:import_policies)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv4_nexthop_address = args[:ipv4_nexthop_address] if args.key?(:ipv4_nexthop_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @management_type = args[:management_type] if args.key?(:management_type)
           @md5_authentication_key_name = args[:md5_authentication_key_name] if args.key?(:md5_authentication_key_name)
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @peer_ipv4_nexthop_address = args[:peer_ipv4_nexthop_address] if args.key?(:peer_ipv4_nexthop_address)
           @peer_ipv6_nexthop_address = args[:peer_ipv6_nexthop_address] if args.key?(:peer_ipv6_nexthop_address)
           @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
         end
@@ -34797,13 +34917,23 @@ module Google
       class RouterInterface
         include Google::Apis::Core::Hashable
       
-        # IP address and range of the interface. The IP range must be in the RFC3927
-        # link-local IP address space. The value must be a CIDR-formatted string, for
-        # example: 169.254.0.1/30. NOTE: Do not truncate the address as it represents
-        # the IP address of the interface.
+        # IP address and range of the interface. - For Internet Protocol version 4 (IPv4)
+        # , the IP range must be in the RFC3927 link-local IP address space. The value
+        # must be a CIDR-formatted string, for example, 169.254.0.1/30. Note: Do not
+        # truncate the IP address, as it represents the IP address of the interface. -
+        # For Internet Protocol version 6 (IPv6), the value must be a unique local
+        # address (ULA) range from fdff:1::/64 with a mask length of 126 or less. This
+        # value should be a CIDR-formatted string, for example, fc00:0:1:1::1/112.
+        # Within the router's VPC, this IPv6 prefix will be reserved exclusively for
+        # this connection and cannot be used for any other purpose.
         # Corresponds to the JSON property `ipRange`
         # @return [String]
         attr_accessor :ip_range
+      
+        # IP version of this interface.
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
       
         # URI of the linked Interconnect attachment. It must be in the same region as
         # the router. Each interface can have one linked resource, which can be a VPN
@@ -34875,6 +35005,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_range = args[:ip_range] if args.key?(:ip_range)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @linked_interconnect_attachment = args[:linked_interconnect_attachment] if args.key?(:linked_interconnect_attachment)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @management_type = args[:management_type] if args.key?(:management_type)
@@ -35423,7 +35554,15 @@ module Google
         # @return [Google::Apis::ComputeV1::BfdStatus]
         attr_accessor :bfd_status
       
-        # Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        # Enable IPv4 traffic over BGP Peer. It is enabled by default if the
+        # peerIpAddress is version 4.
+        # Corresponds to the JSON property `enableIpv4`
+        # @return [Boolean]
+        attr_accessor :enable_ipv4
+        alias_method :enable_ipv4?, :enable_ipv4
+      
+        # Enable IPv6 traffic over BGP Peer. It is enabled by default if the
+        # peerIpAddress is version 6.
         # Corresponds to the JSON property `enableIpv6`
         # @return [Boolean]
         attr_accessor :enable_ipv6
@@ -35433,6 +35572,11 @@ module Google
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # IPv4 address of the local BGP interface.
+        # Corresponds to the JSON property `ipv4NexthopAddress`
+        # @return [String]
+        attr_accessor :ipv4_nexthop_address
       
         # IPv6 address of the local BGP interface.
         # Corresponds to the JSON property `ipv6NexthopAddress`
@@ -35464,6 +35608,11 @@ module Google
         # Corresponds to the JSON property `peerIpAddress`
         # @return [String]
         attr_accessor :peer_ip_address
+      
+        # IPv4 address of the remote BGP interface.
+        # Corresponds to the JSON property `peerIpv4NexthopAddress`
+        # @return [String]
+        attr_accessor :peer_ipv4_nexthop_address
       
         # IPv6 address of the remote BGP interface.
         # Corresponds to the JSON property `peerIpv6NexthopAddress`
@@ -35512,14 +35661,17 @@ module Google
         def update!(**args)
           @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
           @bfd_status = args[:bfd_status] if args.key?(:bfd_status)
+          @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv4_nexthop_address = args[:ipv4_nexthop_address] if args.key?(:ipv4_nexthop_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @md5_auth_enabled = args[:md5_auth_enabled] if args.key?(:md5_auth_enabled)
           @name = args[:name] if args.key?(:name)
           @num_learned_routes = args[:num_learned_routes] if args.key?(:num_learned_routes)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @peer_ipv4_nexthop_address = args[:peer_ipv4_nexthop_address] if args.key?(:peer_ipv4_nexthop_address)
           @peer_ipv6_nexthop_address = args[:peer_ipv6_nexthop_address] if args.key?(:peer_ipv6_nexthop_address)
           @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
           @state = args[:state] if args.key?(:state)
