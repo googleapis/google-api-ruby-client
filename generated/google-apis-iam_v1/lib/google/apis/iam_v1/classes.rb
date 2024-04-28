@@ -168,8 +168,8 @@ module Google
       class AuditableService
         include Google::Apis::Core::Hashable
       
-        # Public name of the service. For example, the service name for Cloud IAM is '
-        # iam.googleapis.com'.
+        # Public name of the service. For example, the service name for IAM is 'iam.
+        # googleapis.com'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -714,10 +714,10 @@ module Google
       
         # Optional. The filter used to request specific records from IdP. In case of
         # attributes type as AZURE_AD_GROUPS_MAIL, it represents the filter used to
-        # request specific groups for users from IdP. By default all the groups
-        # associated with the user are fetched. The groups that are used should be mail
-        # enabled and security enabled. See https://learn.microsoft.com/en-us/graph/
-        # search-query-parameter for more details.
+        # request specific groups for users from IdP. By default, all of the groups
+        # associated with the user are fetched. The groups should be mail enabled and
+        # security enabled. See https://learn.microsoft.com/en-us/graph/search-query-
+        # parameter for more details.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -943,7 +943,7 @@ module Google
         end
       end
       
-      # The request to lint a Cloud IAM policy object.
+      # The request to lint an IAM policy object.
       class LintPolicyRequest
         include Google::Apis::Core::Hashable
       
@@ -967,10 +967,10 @@ module Google
         attr_accessor :condition
       
         # The full resource name of the policy this lint request is about. The name
-        # follows the Google Cloud format for full resource names. For example, a Cloud
-        # project with ID `my-project` will be named `//cloudresourcemanager.googleapis.
-        # com/projects/my-project`. The resource name is not used to read a policy from
-        # IAM. Only the data in the request object is linted.
+        # follows the Google Cloud format for full resource names. For example, a Google
+        # Cloud project with ID `my-project` will be named `//cloudresourcemanager.
+        # googleapis.com/projects/my-project`. The resource name is not used to read a
+        # policy from IAM. Only the data in the request object is linted.
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
