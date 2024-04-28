@@ -2640,6 +2640,12 @@ module Google
       class GoogleCloudDataplexV1DataQualityScanRuleResult
         include Google::Apis::Core::Hashable
       
+        # The number of rows returned by the sql statement in the SqlAssertion rule.
+        # This field is only valid for SqlAssertion rules.
+        # Corresponds to the JSON property `assertionRowCount`
+        # @return [Fixnum]
+        attr_accessor :assertion_row_count
+      
         # The column which this rule is evaluated against.
         # Corresponds to the JSON property `column`
         # @return [String]
@@ -2708,6 +2714,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assertion_row_count = args[:assertion_row_count] if args.key?(:assertion_row_count)
           @column = args[:column] if args.key?(:column)
           @data_source = args[:data_source] if args.key?(:data_source)
           @evaluated_row_count = args[:evaluated_row_count] if args.key?(:evaluated_row_count)
