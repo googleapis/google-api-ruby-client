@@ -9476,6 +9476,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :api_products
       
+        # Optional. A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/
+        # wiki/Autonomous_system_(Internet) This uses int64 instead of uint32 because of
+        # https://linter.aip.dev/141/forbidden-types.
+        # Corresponds to the JSON property `asns`
+        # @return [Array<Fixnum>]
+        attr_accessor :asns
+      
         # Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor,
         # Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced
         # Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Clouds,
@@ -9500,6 +9507,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :ip_address_ranges
       
+        # Optional. A list of countries/region codes to act on, e.g. US. This follows
+        # https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
+        # Corresponds to the JSON property `regionCodes`
+        # @return [Array<String>]
+        attr_accessor :region_codes
+      
         # Optional. A list of user agents to deny. We look for exact matches. Limit 50
         # per action.
         # Corresponds to the JSON property `userAgents`
@@ -9515,10 +9528,12 @@ module Google
           @access_tokens = args[:access_tokens] if args.key?(:access_tokens)
           @api_keys = args[:api_keys] if args.key?(:api_keys)
           @api_products = args[:api_products] if args.key?(:api_products)
+          @asns = args[:asns] if args.key?(:asns)
           @bot_reasons = args[:bot_reasons] if args.key?(:bot_reasons)
           @developer_apps = args[:developer_apps] if args.key?(:developer_apps)
           @developers = args[:developers] if args.key?(:developers)
           @ip_address_ranges = args[:ip_address_ranges] if args.key?(:ip_address_ranges)
+          @region_codes = args[:region_codes] if args.key?(:region_codes)
           @user_agents = args[:user_agents] if args.key?(:user_agents)
         end
       end
