@@ -1981,13 +1981,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The list of preferred EV connector types. A place that does not
-        # support any of the listed connector types are filter out.
+        # support any of the listed connector types is filtered out.
         # Corresponds to the JSON property `connectorTypes`
         # @return [Array<String>]
         attr_accessor :connector_types
       
-        # Optional. Filtering places by minimum charging rate. Any places with charging
-        # a rate less than the minimum charging rate are filtered out.
+        # Optional. Minimum required charging rate in kilowatts. A place with a charging
+        # rate less than the specified rate is filtered out.
         # Corresponds to the JSON property `minimumChargingRateKw`
         # @return [Float]
         attr_accessor :minimum_charging_rate_kw
