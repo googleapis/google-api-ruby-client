@@ -641,6 +641,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :retrieval_queries
       
+        # Google search entry point.
+        # Corresponds to the JSON property `searchEntryPoint`
+        # @return [Google::Apis::FirebasemlV2beta::SearchEntryPoint]
+        attr_accessor :search_entry_point
+      
         # Optional. Web search queries for the following-up web search.
         # Corresponds to the JSON property `webSearchQueries`
         # @return [Array<String>]
@@ -653,6 +658,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @retrieval_queries = args[:retrieval_queries] if args.key?(:retrieval_queries)
+          @search_entry_point = args[:search_entry_point] if args.key?(:search_entry_point)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
         end
       end
@@ -769,6 +775,33 @@ module Google
           @block_reason = args[:block_reason] if args.key?(:block_reason)
           @block_reason_message = args[:block_reason_message] if args.key?(:block_reason_message)
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+        end
+      end
+      
+      # The definition of the Rag resource.
+      class RagResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. RagCorpora resource name. Format: `projects/`project`/locations/`
+        # location`/ragCorpora/`rag_corpus``
+        # Corresponds to the JSON property `ragCorpus`
+        # @return [String]
+        attr_accessor :rag_corpus
+      
+        # Optional. rag_file_id. The files should be in the same rag_corpus set in
+        # rag_corpus field.
+        # Corresponds to the JSON property `ragFileIds`
+        # @return [Array<String>]
+        attr_accessor :rag_file_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rag_corpus = args[:rag_corpus] if args.key?(:rag_corpus)
+          @rag_file_ids = args[:rag_file_ids] if args.key?(:rag_file_ids)
         end
       end
       
@@ -1035,6 +1068,33 @@ module Google
         end
       end
       
+      # Google search entry point.
+      class SearchEntryPoint
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Web content snippet that can be embedded in a web page or an app
+        # webview.
+        # Corresponds to the JSON property `renderedContent`
+        # @return [String]
+        attr_accessor :rendered_content
+      
+        # Optional. Base64 encoded JSON representing array of tuple.
+        # Corresponds to the JSON property `sdkBlob`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sdk_blob
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rendered_content = args[:rendered_content] if args.key?(:rendered_content)
+          @sdk_blob = args[:sdk_blob] if args.key?(:sdk_blob)
+        end
+      end
+      
       # Tool details that the model may use to generate response. A `Tool` is a piece
       # of code that enables the system to interact with external systems to perform
       # an action, or set of actions, outside of knowledge and scope of the model. A
@@ -1145,13 +1205,17 @@ module Google
       class VertexRagStore
         include Google::Apis::Core::Hashable
       
-        # Required. Vertex RAG Store corpus resource name: `projects/`project`/locations/
-        # `location`/ragCorpora/`ragCorpus`` Currently only one corpus is allowed. In
-        # the future we may open up multiple corpora support. However, they should be
-        # from the same project and location.
+        # Optional. Deprecated. Please use rag_resources instead.
         # Corresponds to the JSON property `ragCorpora`
         # @return [Array<String>]
         attr_accessor :rag_corpora
+      
+        # Optional. The representation of the rag source. It can be used to specify
+        # corpus only or ragfiles. Currently only support one corpus or multiple files
+        # from one corpus. In the future we may open up multiple corpora support.
+        # Corresponds to the JSON property `ragResources`
+        # @return [Array<Google::Apis::FirebasemlV2beta::RagResource>]
+        attr_accessor :rag_resources
       
         # Optional. Number of top k results to return from the selected corpora.
         # Corresponds to the JSON property `similarityTopK`
@@ -1170,6 +1234,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rag_corpora = args[:rag_corpora] if args.key?(:rag_corpora)
+          @rag_resources = args[:rag_resources] if args.key?(:rag_resources)
           @similarity_top_k = args[:similarity_top_k] if args.key?(:similarity_top_k)
           @vector_distance_threshold = args[:vector_distance_threshold] if args.key?(:vector_distance_threshold)
         end
