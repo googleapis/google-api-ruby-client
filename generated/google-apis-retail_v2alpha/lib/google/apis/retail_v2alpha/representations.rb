@@ -382,6 +382,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaBranch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaBranchProductCountStatistic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaBranchQualityMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaCatalog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -659,6 +677,12 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaListBranchesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2033,6 +2057,41 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaBranch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :is_default, as: 'isDefault'
+          property :last_product_import_time, as: 'lastProductImportTime'
+          property :name, as: 'name'
+          collection :product_count_stats, as: 'productCountStats', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchProductCountStatistic, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchProductCountStatistic::Representation
+      
+          hash :product_counts, as: 'productCounts'
+          collection :quality_metrics, as: 'qualityMetrics', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchQualityMetric, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchQualityMetric::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaBranchProductCountStatistic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :counts, as: 'counts'
+          property :scope, as: 'scope'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaBranchQualityMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :qualified_product_count, as: 'qualifiedProductCount'
+          property :requirement_key, as: 'requirementKey'
+          property :suggested_quality_percent_threshold, as: 'suggestedQualityPercentThreshold'
+          property :unqualified_product_count, as: 'unqualifiedProductCount'
+          collection :unqualified_sample_products, as: 'unqualifiedSampleProducts', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProduct, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProduct::Representation
+      
+        end
+      end
+      
       class GoogleCloudRetailV2alphaCatalog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2493,6 +2552,14 @@ module Google
           property :exclusive_minimum, as: 'exclusiveMinimum'
           property :maximum, as: 'maximum'
           property :minimum, as: 'minimum'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaListBranchesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :branches, as: 'branches', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranch, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranch::Representation
+      
         end
       end
       
