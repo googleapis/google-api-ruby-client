@@ -28,14 +28,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Data Boost is a serverless compute capability that lets you run high-
-        # throughput read jobs on your Bigtable data, without impacting the performance
-        # of the clusters that handle your application traffic. Currently, Data Boost
-        # exclusively supports read-only use-cases with single-cluster routing. Data
-        # Boost reads are only guaranteed to see the results of writes that were written
-        # at least 30 minutes ago. This means newly written values may not become
-        # visible for up to 30m, and also means that old values may remain visible for
-        # up to 30m after being deleted or overwritten. To mitigate the staleness of the
-        # data, users may either wait 30m, or use CheckConsistency.
+        # throughput read jobs and queries on your Bigtable data, without impacting the
+        # performance of the clusters that handle your application traffic. Data Boost
+        # supports read-only use cases with single-cluster routing.
         # Corresponds to the JSON property `dataBoostIsolationReadOnly`
         # @return [Google::Apis::BigtableadminV2::DataBoostIsolationReadOnly]
         attr_accessor :data_boost_isolation_read_only
@@ -177,7 +172,7 @@ module Google
         end
       end
       
-      # Placeholder for admin API work while we work out the internals.
+      # An Authorized View of a Cloud Bigtable Table.
       class AuthorizedView
         include Google::Apis::Core::Hashable
       
@@ -963,7 +958,7 @@ module Google
       class CreateAuthorizedViewRequest
         include Google::Apis::Core::Hashable
       
-        # Placeholder for admin API work while we work out the internals.
+        # An Authorized View of a Cloud Bigtable Table.
         # Corresponds to the JSON property `authorizedView`
         # @return [Google::Apis::BigtableadminV2::AuthorizedView]
         attr_accessor :authorized_view
@@ -1224,14 +1219,9 @@ module Google
       end
       
       # Data Boost is a serverless compute capability that lets you run high-
-      # throughput read jobs on your Bigtable data, without impacting the performance
-      # of the clusters that handle your application traffic. Currently, Data Boost
-      # exclusively supports read-only use-cases with single-cluster routing. Data
-      # Boost reads are only guaranteed to see the results of writes that were written
-      # at least 30 minutes ago. This means newly written values may not become
-      # visible for up to 30m, and also means that old values may remain visible for
-      # up to 30m after being deleted or overwritten. To mitigate the staleness of the
-      # data, users may either wait 30m, or use CheckConsistency.
+      # throughput read jobs and queries on your Bigtable data, without impacting the
+      # performance of the clusters that handle your application traffic. Data Boost
+      # supports read-only use cases with single-cluster routing.
       class DataBoostIsolationReadOnly
         include Google::Apis::Core::Hashable
       
@@ -3331,7 +3321,7 @@ module Google
       class UpdateAuthorizedViewRequest
         include Google::Apis::Core::Hashable
       
-        # Placeholder for admin API work while we work out the internals.
+        # An Authorized View of a Cloud Bigtable Table.
         # Corresponds to the JSON property `authorizedView`
         # @return [Google::Apis::BigtableadminV2::AuthorizedView]
         attr_accessor :authorized_view
