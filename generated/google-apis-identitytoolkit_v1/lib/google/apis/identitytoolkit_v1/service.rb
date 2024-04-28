@@ -245,7 +245,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sends a SMS verification code for phone number sign-in. An [API key](https://
+        # Sends a SMS verification code for phone number sign-in. To localize the text
+        # of the SMS sent to the user, set the HTTP header `X-Firebase-Locale` to the
+        # language code that corresponds with the user's locale. An [API key](https://
         # cloud.google.com/docs/authentication/api-keys) is required in the request in
         # order to identify the Google Cloud project.
         # @param [Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest] google_cloud_identitytoolkit_v1_send_verification_code_request_object
@@ -465,7 +467,9 @@ module Google
         # Completes a phone number authentication attempt. If a user already exists with
         # the given phone number, an ID token is minted for that user. Otherwise, a new
         # user is created and associated with the phone number. This method may also be
-        # used to link a phone number to an existing user. An [API key](https://cloud.
+        # used to link a phone number to an existing user. To localize the text of the
+        # SMS sent to the user, set the HTTP header `X-Firebase-Locale` to the language
+        # code that corresponds with the user's locale. An [API key](https://cloud.
         # google.com/docs/authentication/api-keys) is required in the request in order
         # to identify the Google Cloud project.
         # @param [Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest] google_cloud_identitytoolkit_v1_sign_in_with_phone_number_request_object

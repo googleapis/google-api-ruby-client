@@ -2730,8 +2730,8 @@ module Google
       
         # Whether or not there is an existing Identity Platform user account with the
         # same email address as the current account signed in at the IdP, and the
-        # account's email addresss is not verified at the IdP. The user will need to
-        # sign in to the existing Identity Platform account and then link the current
+        # account's email address is not verified at the IdP. The user will need to sign
+        # in to the existing Identity Platform account and then link the current
         # credential from the IdP to it. Only present if the "One account per email
         # address" setting is enabled.
         # Corresponds to the JSON property `needConfirmation`
