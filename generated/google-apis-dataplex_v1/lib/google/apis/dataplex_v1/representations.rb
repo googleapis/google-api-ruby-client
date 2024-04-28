@@ -1907,6 +1907,7 @@ module Google
       class GoogleCloudDataplexV1DataQualityScanRuleResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assertion_row_count, :numeric_string => true, as: 'assertionRowCount'
           property :column, as: 'column'
           property :data_source, as: 'dataSource'
           property :evaluated_row_count, :numeric_string => true, as: 'evaluatedRowCount'
