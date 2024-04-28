@@ -1,5 +1,9 @@
 # Release history for google-apis-sheets_v4
 
+### v0.30.0 (2024-04-28)
+
+* Regenerated from discovery document revision 20240416
+
 ### v0.29.0 (2024-03-24)
 
 * Regenerated from discovery document revision 20240312
