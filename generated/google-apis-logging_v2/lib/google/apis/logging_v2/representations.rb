@@ -22,6 +22,18 @@ module Google
   module Apis
     module LoggingV2
       
+      class AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryDataset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,6 +41,12 @@ module Google
       end
       
       class BigQueryOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -113,6 +131,24 @@ module Google
       end
       
       class Exponential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetPolicyOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -364,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RecentQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +419,12 @@ module Google
       end
       
       class SavedQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -430,6 +478,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UndeleteBucketRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -454,6 +514,23 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::LoggingV2::AuditLogConfig, decorator: Google::Apis::LoggingV2::AuditLogConfig::Representation
+      
+          property :service, as: 'service'
+        end
+      end
+      
+      class AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
+        end
+      end
+      
       class BigQueryDataset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -466,6 +543,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :use_partitioned_tables, as: 'usePartitionedTables'
           property :uses_timestamp_column_partitioning, as: 'usesTimestampColumnPartitioning'
+        end
+      end
+      
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::LoggingV2::Expr, decorator: Google::Apis::LoggingV2::Expr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
         end
       end
       
@@ -599,6 +686,31 @@ module Google
           property :growth_factor, as: 'growthFactor'
           property :num_finite_buckets, as: 'numFiniteBuckets'
           property :scale, as: 'scale'
+        end
+      end
+      
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :options, as: 'options', class: Google::Apis::LoggingV2::GetPolicyOptions, decorator: Google::Apis::LoggingV2::GetPolicyOptions::Representation
+      
+        end
+      end
+      
+      class GetPolicyOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requested_policy_version, as: 'requestedPolicyVersion'
         end
       end
       
@@ -1072,6 +1184,18 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::LoggingV2::AuditConfig, decorator: Google::Apis::LoggingV2::AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::LoggingV2::Binding, decorator: Google::Apis::LoggingV2::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
+        end
+      end
+      
       class RecentQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1139,6 +1263,15 @@ module Google
       
           property :update_time, as: 'updateTime'
           property :visibility, as: 'visibility'
+        end
+      end
+      
+      class SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::LoggingV2::Policy, decorator: Google::Apis::LoggingV2::Policy::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -1213,6 +1346,20 @@ module Google
       
           collection :suppression_info, as: 'suppressionInfo', class: Google::Apis::LoggingV2::SuppressionInfo, decorator: Google::Apis::LoggingV2::SuppressionInfo::Representation
       
+        end
+      end
+      
+      class TestIamPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
       
