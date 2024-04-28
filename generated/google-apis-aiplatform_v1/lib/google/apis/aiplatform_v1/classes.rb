@@ -87,6 +87,11 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::CloudAiLargeModelsVisionMedia>]
         attr_accessor :generated_samples
       
+        # Returns rai error message for filtered videos.
+        # Corresponds to the JSON property `raiErrorMessage`
+        # @return [String]
+        attr_accessor :rai_error_message
+      
         # Returns if any videos were filtered due to RAI policies.
         # Corresponds to the JSON property `raiMediaFilteredCount`
         # @return [Fixnum]
@@ -109,6 +114,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @generated_samples = args[:generated_samples] if args.key?(:generated_samples)
+          @rai_error_message = args[:rai_error_message] if args.key?(:rai_error_message)
           @rai_media_filtered_count = args[:rai_media_filtered_count] if args.key?(:rai_media_filtered_count)
           @rai_media_filtered_reasons = args[:rai_media_filtered_reasons] if args.key?(:rai_media_filtered_reasons)
           @rai_text_filtered_reason = args[:rai_text_filtered_reason] if args.key?(:rai_text_filtered_reason)
@@ -6154,6 +6160,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig]
         attr_accessor :predict_request_response_logging_config
       
+        # Represents configuration for private service connect.
+        # Corresponds to the JSON property `privateServiceConnectConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrivateServiceConnectConfig]
+        attr_accessor :private_service_connect_config
+      
         # A map from a DeployedModel's ID to the percentage of this Endpoint's traffic
         # that should be forwarded to that DeployedModel. If a DeployedModel's ID is not
         # listed in this map, then it receives no traffic. The traffic percentage values
@@ -6186,6 +6197,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @predict_request_response_logging_config = args[:predict_request_response_logging_config] if args.key?(:predict_request_response_logging_config)
+          @private_service_connect_config = args[:private_service_connect_config] if args.key?(:private_service_connect_config)
           @traffic_split = args[:traffic_split] if args.key?(:traffic_split)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -10038,7 +10050,7 @@ module Google
         attr_accessor :presence_penalty
       
         # Optional. Output response mimetype of the generated candidate text. Supported
-        # mimetype: `text/plain`: (default) Text output. `application/json`: JSON
+        # mimetype: - `text/plain`: (default) Text output. - `application/json`: JSON
         # response in the candidates. The model needs to be prompted to output the
         # appropriate response type, otherwise the behavior is undefined. This is a
         # preview feature.
@@ -10138,93 +10150,9 @@ module Google
         end
       end
       
-      # Tool to retrieve public web data for grounding, powered by Google.
-      class GoogleCloudAiplatformV1GoogleSearchRetrieval
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Disable using the result from this tool in detecting grounding
-        # attribution. This does not affect how the result is given to the model for
-        # generation.
-        # Corresponds to the JSON property `disableAttribution`
-        # @return [Boolean]
-        attr_accessor :disable_attribution
-        alias_method :disable_attribution?, :disable_attribution
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @disable_attribution = args[:disable_attribution] if args.key?(:disable_attribution)
-        end
-      end
-      
-      # Grounding attribution.
-      class GoogleCloudAiplatformV1GroundingAttribution
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Output only. Confidence score of the attribution. Ranges from 0 to 1.
-        # 1 is the most confident.
-        # Corresponds to the JSON property `confidenceScore`
-        # @return [Float]
-        attr_accessor :confidence_score
-      
-        # Segment of the content.
-        # Corresponds to the JSON property `segment`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Segment]
-        attr_accessor :segment
-      
-        # Attribution from the web.
-        # Corresponds to the JSON property `web`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttributionWeb]
-        attr_accessor :web
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
-          @segment = args[:segment] if args.key?(:segment)
-          @web = args[:web] if args.key?(:web)
-        end
-      end
-      
-      # Attribution from the web.
-      class GoogleCloudAiplatformV1GroundingAttributionWeb
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Title of the attribution.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # Output only. URI reference of the attribution.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @title = args[:title] if args.key?(:title)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
       # Metadata returned to client when grounding is enabled.
       class GoogleCloudAiplatformV1GroundingMetadata
         include Google::Apis::Core::Hashable
-      
-        # Optional. List of grounding attributions.
-        # Corresponds to the JSON property `groundingAttributions`
-        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingAttribution>]
-        attr_accessor :grounding_attributions
       
         # Optional. Web search queries for the following-up web search.
         # Corresponds to the JSON property `webSearchQueries`
@@ -10237,7 +10165,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @grounding_attributions = args[:grounding_attributions] if args.key?(:grounding_attributions)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
         end
       end
@@ -26083,39 +26010,6 @@ module Google
         end
       end
       
-      # Segment of the content.
-      class GoogleCloudAiplatformV1Segment
-        include Google::Apis::Core::Hashable
-      
-        # Output only. End index in the given Part, measured in bytes. Offset from the
-        # start of the Part, exclusive, starting at zero.
-        # Corresponds to the JSON property `endIndex`
-        # @return [Fixnum]
-        attr_accessor :end_index
-      
-        # Output only. The index of a Part object within its parent Content object.
-        # Corresponds to the JSON property `partIndex`
-        # @return [Fixnum]
-        attr_accessor :part_index
-      
-        # Output only. Start index in the given Part, measured in bytes. Offset from the
-        # start of the Part, inclusive, starting at zero.
-        # Corresponds to the JSON property `startIndex`
-        # @return [Fixnum]
-        attr_accessor :start_index
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_index = args[:end_index] if args.key?(:end_index)
-          @part_index = args[:part_index] if args.key?(:part_index)
-          @start_index = args[:start_index] if args.key?(:start_index)
-        end
-      end
-      
       # Configuration for the use of custom service account to run the workloads.
       class GoogleCloudAiplatformV1ServiceAccountSpec
         include Google::Apis::Core::Hashable
@@ -28325,11 +28219,6 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration>]
         attr_accessor :function_declarations
       
-        # Tool to retrieve public web data for grounding, powered by Google.
-        # Corresponds to the JSON property `googleSearchRetrieval`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleSearchRetrieval]
-        attr_accessor :google_search_retrieval
-      
         # Defines a retrieval tool that model can call to access external knowledge.
         # Corresponds to the JSON property `retrieval`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Retrieval]
@@ -28342,7 +28231,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
-          @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
           @retrieval = args[:retrieval] if args.key?(:retrieval)
         end
       end
@@ -29526,9 +29414,9 @@ module Google
       class GoogleCloudAiplatformV1VertexAiSearch
         include Google::Apis::Core::Hashable
       
-        # Required. Fully-qualified Vertex AI Search's datastore resource ID. Format:
+        # Required. Fully-qualified Vertex AI Search's datastore resource ID. Format: `
         # projects/`project`/locations/`location`/collections/`collection`/dataStores/`
-        # dataStore`
+        # dataStore``
         # Corresponds to the JSON property `datastore`
         # @return [String]
         attr_accessor :datastore
@@ -31474,6 +31362,31 @@ module Google
         end
       end
       
+      # Stores all metadata relating to GenerateCode.
+      class LearningGenaiRootCodeyGenerationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Last state of the sample before getting dropped/returned.
+        # Corresponds to the JSON property `output`
+        # @return [String]
+        attr_accessor :output
+      
+        # Last Codey postprocessing step for this sample before getting dropped/returned.
+        # Corresponds to the JSON property `postInferenceStep`
+        # @return [String]
+        attr_accessor :post_inference_step
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output = args[:output] if args.key?(:output)
+          @post_inference_step = args[:post_inference_step] if args.key?(:post_inference_step)
+        end
+      end
+      
       # Top-level wrapper used to store all things codey-related.
       class LearningGenaiRootCodeyOutput
         include Google::Apis::Core::Hashable
@@ -31488,6 +31401,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::LearningGenaiRootCodeyCompletionMetadata]
         attr_accessor :codey_completion_metadata
       
+        # Stores all metadata relating to GenerateCode.
+        # Corresponds to the JSON property `codeyGenerationMetadata`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootCodeyGenerationMetadata]
+        attr_accessor :codey_generation_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -31496,6 +31414,7 @@ module Google
         def update!(**args)
           @codey_chat_metadata = args[:codey_chat_metadata] if args.key?(:codey_chat_metadata)
           @codey_completion_metadata = args[:codey_completion_metadata] if args.key?(:codey_completion_metadata)
+          @codey_generation_metadata = args[:codey_generation_metadata] if args.key?(:codey_generation_metadata)
         end
       end
       
@@ -31521,6 +31440,113 @@ module Google
         def update!(**args)
           @cutoff_index = args[:cutoff_index] if args.key?(:cutoff_index)
           @truncated_text = args[:truncated_text] if args.key?(:truncated_text)
+        end
+      end
+      
+      # Score threshold for a category.
+      class LearningGenaiRootControlDecodingConfigThreshold
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        # 
+        # Corresponds to the JSON property `scoreMax`
+        # @return [Float]
+        attr_accessor :score_max
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @score_max = args[:score_max] if args.key?(:score_max)
+        end
+      end
+      
+      # Holds one control decoding record.
+      class LearningGenaiRootControlDecodingRecord
+        include Google::Apis::Core::Hashable
+      
+        # Prefixes feeded into scorer.
+        # Corresponds to the JSON property `prefixes`
+        # @return [String]
+        attr_accessor :prefixes
+      
+        # Per policy scores returned from Scorer. Expect to have the same number of
+        # scores as in `thresholds`.
+        # Corresponds to the JSON property `scores`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecordPolicyScore>]
+        attr_accessor :scores
+      
+        # Suffixes feeded into scorer.
+        # Corresponds to the JSON property `suffiexes`
+        # @return [String]
+        attr_accessor :suffiexes
+      
+        # Per policy thresholds from user config.
+        # Corresponds to the JSON property `thresholds`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingConfigThreshold>]
+        attr_accessor :thresholds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prefixes = args[:prefixes] if args.key?(:prefixes)
+          @scores = args[:scores] if args.key?(:scores)
+          @suffiexes = args[:suffiexes] if args.key?(:suffiexes)
+          @thresholds = args[:thresholds] if args.key?(:thresholds)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootControlDecodingRecordPolicyScore
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        # 
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootControlDecodingRecords
+        include Google::Apis::Core::Hashable
+      
+        # One ControlDecodingRecord record maps to one rewind.
+        # Corresponds to the JSON property `records`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecord>]
+        attr_accessor :records
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @records = args[:records] if args.key?(:records)
         end
       end
       
@@ -31638,6 +31664,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal]
         attr_accessor :rai_signal
       
+        # Number of rewinds by controlled decoding.
+        # Corresponds to the JSON property `records`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecords]
+        attr_accessor :records
+      
         # The recitation result for one stream input
         # Corresponds to the JSON property `streamRecitationResult`
         # @return [Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoStreamRecitationResult]
@@ -31666,6 +31697,7 @@ module Google
           @rai_output = args[:rai_output] if args.key?(:rai_output)
           @rai_result = args[:rai_result] if args.key?(:rai_result)
           @rai_signal = args[:rai_signal] if args.key?(:rai_signal)
+          @records = args[:records] if args.key?(:records)
           @stream_recitation_result = args[:stream_recitation_result] if args.key?(:stream_recitation_result)
           @takedown_result = args[:takedown_result] if args.key?(:takedown_result)
           @toxicity_result = args[:toxicity_result] if args.key?(:toxicity_result)
