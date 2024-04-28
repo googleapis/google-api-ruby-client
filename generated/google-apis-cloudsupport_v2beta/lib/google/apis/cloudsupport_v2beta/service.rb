@@ -72,6 +72,8 @@ module Google
         # @param [String] page_token
         #   A token identifying the page of results to return. If unspecified, the first
         #   page is retrieved.
+        # @param [String] product_product_line
+        #   The product line of the Product.
         # @param [String] query
         #   An expression used to filter case classifications. If it's an empty string,
         #   then no filtering happens. Otherwise, case classifications will be returned
@@ -93,12 +95,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_case_classifications(page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_case_classifications(page_size: nil, page_token: nil, product_product_line: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/caseClassifications:search', options)
           command.response_representation = Google::Apis::CloudsupportV2beta::SearchCaseClassificationsResponse::Representation
           command.response_class = Google::Apis::CloudsupportV2beta::SearchCaseClassificationsResponse
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['product.productLine'] = product_product_line unless product_product_line.nil?
           command.query['query'] = query unless query.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -313,6 +316,9 @@ module Google
         # @param [String] page_token
         #   A token identifying the page of results to return. If unspecified, the first
         #   page is retrieved.
+        # @param [String] product_line
+        #   The product line to request cases for. If unspecified, only Google Cloud cases
+        #   will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -330,7 +336,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_cases(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_cases(parent, filter: nil, page_size: nil, page_token: nil, product_line: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/{+parent}/cases', options)
           command.response_representation = Google::Apis::CloudsupportV2beta::ListCasesResponse::Representation
           command.response_class = Google::Apis::CloudsupportV2beta::ListCasesResponse
@@ -338,6 +344,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['productLine'] = product_line unless product_line.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
