@@ -543,8 +543,9 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # The name of the voice. If not set, the service will choose a voice based on
-        # the other parameters such as language_code and gender.
+        # The name of the voice. If both the name and the gender are not set, the
+        # service will choose a voice based on the other parameters such as
+        # language_code.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
