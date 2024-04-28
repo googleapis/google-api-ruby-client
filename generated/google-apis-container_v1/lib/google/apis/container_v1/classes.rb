@@ -284,6 +284,12 @@ module Google
       class AdvancedMachineFeatures
         include Google::Apis::Core::Hashable
       
+        # Whether or not to enable nested virtualization (defaults to false).
+        # Corresponds to the JSON property `enableNestedVirtualization`
+        # @return [Boolean]
+        attr_accessor :enable_nested_virtualization
+        alias_method :enable_nested_virtualization?, :enable_nested_virtualization
+      
         # The number of threads per physical core. To disable simultaneous
         # multithreading (SMT) set this to 1. If unset, the maximum number of threads
         # supported per core by the underlying processor is assumed.
@@ -297,6 +303,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
         end
       end
@@ -3791,7 +3798,8 @@ module Google
         # @return [Google::Apis::ContainerV1::GatewayApiConfig]
         attr_accessor :gateway_api_config
       
-        # Specify the details of in-transit encryption.
+        # Specify the details of in-transit encryption. Now named inter-node transparent
+        # encryption.
         # Corresponds to the JSON property `inTransitEncryptionConfig`
         # @return [String]
         attr_accessor :in_transit_encryption_config
