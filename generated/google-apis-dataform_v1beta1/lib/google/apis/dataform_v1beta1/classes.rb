@@ -78,6 +78,12 @@ module Google
       class BigQueryAction
         include Google::Apis::Core::Hashable
       
+        # Output only. The ID of the BigQuery job that executed the SQL in sql_script.
+        # Only set once the job has started to run.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
         # Output only. The generated BigQuery SQL script that will be executed.
         # Corresponds to the JSON property `sqlScript`
         # @return [String]
@@ -89,6 +95,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @job_id = args[:job_id] if args.key?(:job_id)
           @sql_script = args[:sql_script] if args.key?(:sql_script)
         end
       end
@@ -234,6 +241,11 @@ module Google
         # @return [String]
         attr_accessor :default_location
       
+        # 
+        # Corresponds to the JSON property `defaultNotebookRuntimeOptions`
+        # @return [Google::Apis::DataformV1beta1::NotebookRuntimeOptions]
+        attr_accessor :default_notebook_runtime_options
+      
         # Optional. The default schema (BigQuery dataset ID).
         # Corresponds to the JSON property `defaultSchema`
         # @return [String]
@@ -266,6 +278,7 @@ module Google
           @database_suffix = args[:database_suffix] if args.key?(:database_suffix)
           @default_database = args[:default_database] if args.key?(:default_database)
           @default_location = args[:default_location] if args.key?(:default_location)
+          @default_notebook_runtime_options = args[:default_notebook_runtime_options] if args.key?(:default_notebook_runtime_options)
           @default_schema = args[:default_schema] if args.key?(:default_schema)
           @schema_suffix = args[:schema_suffix] if args.key?(:schema_suffix)
           @table_prefix = args[:table_prefix] if args.key?(:table_prefix)
@@ -590,6 +603,11 @@ module Google
         # @return [String]
         attr_accessor :file_path
       
+        # The notebook executed by this action.
+        # Corresponds to the JSON property `notebook`
+        # @return [Google::Apis::DataformV1beta1::Notebook]
+        attr_accessor :notebook
+      
         # Represents a list of arbitrary database operations.
         # Corresponds to the JSON property `operations`
         # @return [Google::Apis::DataformV1beta1::Operations]
@@ -616,6 +634,7 @@ module Google
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
           @declaration = args[:declaration] if args.key?(:declaration)
           @file_path = args[:file_path] if args.key?(:file_path)
+          @notebook = args[:notebook] if args.key?(:notebook)
           @operations = args[:operations] if args.key?(:operations)
           @relation = args[:relation] if args.key?(:relation)
           @target = args[:target] if args.key?(:target)
@@ -1528,6 +1547,90 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class Notebook
+        include Google::Apis::Core::Hashable
+      
+        # The contents of the notebook.
+        # Corresponds to the JSON property `contents`
+        # @return [String]
+        attr_accessor :contents
+      
+        # A list of actions that this action depends on.
+        # Corresponds to the JSON property `dependencyTargets`
+        # @return [Array<Google::Apis::DataformV1beta1::Target>]
+        attr_accessor :dependency_targets
+      
+        # Whether this action is disabled (i.e. should not be run).
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Arbitrary, user-defined tags on this action.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @dependency_targets = args[:dependency_targets] if args.key?(:dependency_targets)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Represents a workflow action that will run against a Notebook runtime.
+      class NotebookAction
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The code contents of a Notebook to be run.
+        # Corresponds to the JSON property `contents`
+        # @return [String]
+        attr_accessor :contents
+      
+        # Output only. The ID of the Vertex job that executed the notebook in contents
+        # and also the ID used for the outputs created in GCS buckets. Only set once the
+        # job has started to run.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @job_id = args[:job_id] if args.key?(:job_id)
+        end
+      end
+      
+      # 
+      class NotebookRuntimeOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The GCS location to upload the result to. Format: `gs://bucket-name`.
+        # Corresponds to the JSON property `gcsOutputBucket`
+        # @return [String]
+        attr_accessor :gcs_output_bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_output_bucket = args[:gcs_output_bucket] if args.key?(:gcs_output_bucket)
         end
       end
       
@@ -2762,6 +2865,11 @@ module Google
         # @return [Google::Apis::DataformV1beta1::Interval]
         attr_accessor :invocation_timing
       
+        # Represents a workflow action that will run against a Notebook runtime.
+        # Corresponds to the JSON property `notebookAction`
+        # @return [Google::Apis::DataformV1beta1::NotebookAction]
+        attr_accessor :notebook_action
+      
         # Output only. This action's current state.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2783,6 +2891,7 @@ module Google
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
           @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
           @invocation_timing = args[:invocation_timing] if args.key?(:invocation_timing)
+          @notebook_action = args[:notebook_action] if args.key?(:notebook_action)
           @state = args[:state] if args.key?(:state)
           @target = args[:target] if args.key?(:target)
         end
