@@ -7637,6 +7637,12 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeStats>]
         attr_accessor :info_type_stats
       
+        # Number of rows scanned post sampling and time filtering (Applicable for row
+        # based stores such as BigQuery).
+        # Corresponds to the JSON property `numRowsProcessed`
+        # @return [Fixnum]
+        attr_accessor :num_rows_processed
+      
         # Total size in bytes that were processed.
         # Corresponds to the JSON property `processedBytes`
         # @return [Fixnum]
@@ -7655,6 +7661,7 @@ module Google
         def update!(**args)
           @hybrid_stats = args[:hybrid_stats] if args.key?(:hybrid_stats)
           @info_type_stats = args[:info_type_stats] if args.key?(:info_type_stats)
+          @num_rows_processed = args[:num_rows_processed] if args.key?(:num_rows_processed)
           @processed_bytes = args[:processed_bytes] if args.key?(:processed_bytes)
           @total_estimated_bytes = args[:total_estimated_bytes] if args.key?(:total_estimated_bytes)
         end
