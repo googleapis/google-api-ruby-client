@@ -574,6 +574,46 @@ module Google
         end
       end
       
+      # GenericArtifact represents a generic artifact
+      class GenericArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the Generic module is created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Resource name of the generic artifact. project, location, repository,
+        # package_id and version_id create a unique generic artifact. i.e. "projects/
+        # test-project/locations/us-west4/repositories/test-repo/ genericArtifacts/
+        # package_id:version_id"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time when the Generic module is updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # The version of the generic artifact.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # GoModule represents a Go module.
       class GoModule
         include Google::Apis::Core::Hashable
@@ -2504,6 +2544,92 @@ module Google
         # Update properties of this object
         def update!(**args)
           @apt_artifacts = args[:apt_artifacts] if args.key?(:apt_artifacts)
+        end
+      end
+      
+      # The response to upload a generic artifact.
+      class UploadGenericArtifactMediaResponse
+        include Google::Apis::Core::Hashable
+      
+        # This resource represents a long-running operation that is the result of a
+        # network API call.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::ArtifactregistryV1::Operation]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # The operation metadata for uploading generic artifacts.
+      class UploadGenericArtifactMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request to upload a generic artifact. The created GenericArtifact will
+      # have the resource name `parent`/genericArtifacts/package_id:version_id. The
+      # created file will have the resource name `parent`/files/package_id:version_id:
+      # filename.
+      class UploadGenericArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        # The name of the file of the generic artifact to be uploaded. E.g. "example-
+        # file.zip" The filename should only include letters, numbers, and url safe
+        # characters, i.e. [a-zA-Z0-9-_.~@].
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        # Deprecated. Use package_id, version_id and filename instead. The resource name
+        # of the generic artifact. E.g. "projects/math/locations/us/repositories/
+        # operations/genericArtifacts/addition/1.0.0/add.py"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The ID of the package of the generic artifact. If the package does not exist,
+        # a new package will be created. E.g. "pkg-1" The package_id must start with a
+        # letter, end with a letter or number, only contain letters, numbers, hyphens
+        # and periods i.e. [a-z0-9-.], and cannot exceed 256 characters.
+        # Corresponds to the JSON property `packageId`
+        # @return [String]
+        attr_accessor :package_id
+      
+        # The ID of the version of the generic artifact. If the version does not exist,
+        # a new version will be created. E.g."1.0.0" The version_id must start and end
+        # with a letter or number, can only contain lowercase letters, numbers, hyphens
+        # and periods, i.e. [a-z0-9-.] and cannot exceed a total of 128 characters.
+        # While "latest" is a well-known name for the latest version of a package, it is
+        # not yet supported and is reserved for future use. Creating a version called "
+        # latest" is not allowed.
+        # Corresponds to the JSON property `versionId`
+        # @return [String]
+        attr_accessor :version_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filename = args[:filename] if args.key?(:filename)
+          @name = args[:name] if args.key?(:name)
+          @package_id = args[:package_id] if args.key?(:package_id)
+          @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
       
