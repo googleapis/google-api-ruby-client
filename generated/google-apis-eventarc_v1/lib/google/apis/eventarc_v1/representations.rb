@@ -274,6 +274,7 @@ module Google
           property :name, as: 'name'
           property :provider, as: 'provider'
           property :pubsub_topic, as: 'pubsubTopic'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -590,6 +591,7 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
           property :transport, as: 'transport', class: Google::Apis::EventarcV1::Transport, decorator: Google::Apis::EventarcV1::Transport::Representation
       
