@@ -504,7 +504,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Unique name of the resource using the form: `projects/`project_id`/
+        # Identifier. Unique name of the resource using the form: `projects/`project_id`/
         # locations/global/connectivityTests/`test_id``
         # Corresponds to the JSON property `name`
         # @return [String]
