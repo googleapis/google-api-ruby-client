@@ -141,6 +141,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :preferred_request_expiration_days
       
+        # Optional. A setting to require approval request justifications to be customer
+        # visible.
+        # Corresponds to the JSON property `requireCustomerVisibleJustification`
+        # @return [Boolean]
+        attr_accessor :require_customer_visible_justification
+        alias_method :require_customer_visible_justification?, :require_customer_visible_justification
+      
         def initialize(**args)
            update!(**args)
         end
@@ -157,6 +164,7 @@ module Google
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
           @prefer_no_broad_approval_requests = args[:prefer_no_broad_approval_requests] if args.key?(:prefer_no_broad_approval_requests)
           @preferred_request_expiration_days = args[:preferred_request_expiration_days] if args.key?(:preferred_request_expiration_days)
+          @require_customer_visible_justification = args[:require_customer_visible_justification] if args.key?(:require_customer_visible_justification)
         end
       end
       
