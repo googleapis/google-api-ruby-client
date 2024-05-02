@@ -667,6 +667,10 @@ module Google
       # 
       class RestMethod
         include Google::Apis::Core::Hashable
+
+        # The `apiVersion` for this method, or empty if not present.
+        # @return [String]
+        attr_accessor :api_version
       
         # Description of this method.
         # Corresponds to the JSON property `description`
@@ -763,7 +767,7 @@ module Google
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
@@ -782,6 +786,7 @@ module Google
           @supports_media_upload = args[:supports_media_upload] if args.key?(:supports_media_upload)
           @supports_subscription = args[:supports_subscription] if args.key?(:supports_subscription)
           @use_media_download_service = args[:use_media_download_service] if args.key?(:use_media_download_service)
+          @api_version = args.key?(:api_version) ? args[:api_version] : ""
         end
         
         # Media upload parameters.

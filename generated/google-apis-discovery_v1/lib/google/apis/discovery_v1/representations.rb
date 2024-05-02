@@ -310,6 +310,7 @@ module Google
       class RestMethod
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
           property :description, as: 'description'
           property :etag_required, as: 'etagRequired'
           property :flat_path, as: 'flatPath'

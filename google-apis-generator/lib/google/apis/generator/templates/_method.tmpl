@@ -1,4 +1,3 @@
-
 # <%= block_comment(api_method.description, 0, 1) %>
 <% for param in api_method.required_parameters -%>
 # @param [<% if param.repeated? %>Array<<%= param.generated_type %>>, <% end %><%= param.generated_type %>] <%= param.generated_name %>
@@ -102,6 +101,9 @@ def <%= api_method.generated_name %>(<% for param in api_method.required_paramet
 <% end -%>
 <% for param in api.parameters.values.reject {|p| p.name == 'key'} -%>
   command.query['<%= param.name %>'] = <%= param.generated_name %> unless <%= param.generated_name %>.nil?
+<% end -%>
+<% unless api_method.api_version.empty? -%>
+  command.set_api_version_header "<%= api_method.api_version %>"
 <% end -%>
   execute_or_queue_command(command, &block)
 end
