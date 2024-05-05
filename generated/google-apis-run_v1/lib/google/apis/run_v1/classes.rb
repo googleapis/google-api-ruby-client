@@ -1649,6 +1649,11 @@ module Google
         # @return [String]
         attr_accessor :finish_time
       
+        # GitConfig is a configuration for git operations.
+        # Corresponds to the JSON property `gitConfig`
+        # @return [Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitConfig]
+        attr_accessor :git_config
+      
         # Output only. Unique identifier of the build.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -1796,6 +1801,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @failure_info = args[:failure_info] if args.key?(:failure_info)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @git_config = args[:git_config] if args.key?(:git_config)
           @id = args[:id] if args.key?(:id)
           @images = args[:images] if args.key?(:images)
           @log_url = args[:log_url] if args.key?(:log_url)
@@ -2244,6 +2250,39 @@ module Google
         end
       end
       
+      # This config defines the location of a source through Developer Connect.
+      class GoogleDevtoolsCloudbuildV1DeveloperConnectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Directory, relative to the source root, in which to run the build.
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
+        # Required. The Developer Connect Git repository link, formatted as `projects/*/
+        # locations/*/connections/*/gitRepositoryLink/*`.
+        # Corresponds to the JSON property `gitRepositoryLink`
+        # @return [String]
+        attr_accessor :git_repository_link
+      
+        # Required. The revision to fetch from the Git repository such as a branch, a
+        # tag, a commit SHA, or any Git ref.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dir = args[:dir] if args.key?(:dir)
+          @git_repository_link = args[:git_repository_link] if args.key?(:git_repository_link)
+          @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
       # A fatal problem encountered during the execution of the build.
       class GoogleDevtoolsCloudbuildV1FailureInfo
         include Google::Apis::Core::Hashable
@@ -2286,6 +2325,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # GitConfig is a configuration for git operations.
+      class GoogleDevtoolsCloudbuildV1GitConfig
+        include Google::Apis::Core::Hashable
+      
+        # HttpConfig is a configuration for HTTP related git operations.
+        # Corresponds to the JSON property `http`
+        # @return [Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1HttpConfig]
+        attr_accessor :http
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http = args[:http] if args.key?(:http)
         end
       end
       
@@ -2352,6 +2410,26 @@ module Google
         def update!(**args)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # HttpConfig is a configuration for HTTP related git operations.
+      class GoogleDevtoolsCloudbuildV1HttpConfig
+        include Google::Apis::Core::Hashable
+      
+        # SecretVersion resource of the HTTP proxy URL. The proxy URL should be in
+        # format protocol://@]proxyhost[:port].
+        # Corresponds to the JSON property `proxySecretVersionName`
+        # @return [String]
+        attr_accessor :proxy_secret_version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @proxy_secret_version_name = args[:proxy_secret_version_name] if args.key?(:proxy_secret_version_name)
         end
       end
       
@@ -2750,6 +2828,11 @@ module Google
         # @return [Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ConnectedRepository]
         attr_accessor :connected_repository
       
+        # This config defines the location of a source through Developer Connect.
+        # Corresponds to the JSON property `developerConnectConfig`
+        # @return [Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1DeveloperConnectConfig]
+        attr_accessor :developer_connect_config
+      
         # Location of the source in any accessible Git repository.
         # Corresponds to the JSON property `gitSource`
         # @return [Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSource]
@@ -2779,6 +2862,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connected_repository = args[:connected_repository] if args.key?(:connected_repository)
+          @developer_connect_config = args[:developer_connect_config] if args.key?(:developer_connect_config)
           @git_source = args[:git_source] if args.key?(:git_source)
           @repo_source = args[:repo_source] if args.key?(:repo_source)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
@@ -4561,6 +4645,12 @@ module Google
         # @return [Array<Google::Apis::RunV1::LocalObjectReference>]
         attr_accessor :image_pull_secrets
       
+        # Optional. The Node Selector configuration. Map of selector key to a value
+        # which matches a node.
+        # Corresponds to the JSON property `nodeSelector`
+        # @return [Hash<String,String>]
+        attr_accessor :node_selector
+      
         # Email address of the IAM service account associated with the revision of the
         # service. The service account represents the identity of the running revision,
         # and determines what permissions the revision has. If not provided, the
@@ -4591,6 +4681,7 @@ module Google
           @containers = args[:containers] if args.key?(:containers)
           @enable_service_links = args[:enable_service_links] if args.key?(:enable_service_links)
           @image_pull_secrets = args[:image_pull_secrets] if args.key?(:image_pull_secrets)
+          @node_selector = args[:node_selector] if args.key?(:node_selector)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
           @volumes = args[:volumes] if args.key?(:volumes)
