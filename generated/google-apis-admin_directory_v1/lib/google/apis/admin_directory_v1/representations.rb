@@ -1010,6 +1010,7 @@ module Google
           property :annotated_location, as: 'annotatedLocation'
           property :annotated_user, as: 'annotatedUser'
           property :auto_update_expiration, :numeric_string => true, as: 'autoUpdateExpiration'
+          property :auto_update_through, as: 'autoUpdateThrough'
           collection :backlight_info, as: 'backlightInfo', class: Google::Apis::AdminDirectoryV1::BacklightInfo, decorator: Google::Apis::AdminDirectoryV1::BacklightInfo::Representation
       
           property :boot_mode, as: 'bootMode'
@@ -1028,6 +1029,9 @@ module Google
           property :etag, as: 'etag'
           property :ethernet_mac_address, as: 'ethernetMacAddress'
           property :ethernet_mac_address0, as: 'ethernetMacAddress0'
+          property :extended_support_eligible, as: 'extendedSupportEligible'
+          property :extended_support_enabled, as: 'extendedSupportEnabled'
+          property :extended_support_start, as: 'extendedSupportStart'
           property :firmware_version, as: 'firmwareVersion'
           property :first_enrollment_time, as: 'firstEnrollmentTime'
           property :kind, as: 'kind'
