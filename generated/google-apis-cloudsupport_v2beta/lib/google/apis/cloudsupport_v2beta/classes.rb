@@ -729,6 +729,63 @@ module Google
         end
       end
       
+      # An email associated with a support case.
+      class EmailMessage
+        include Google::Apis::Core::Hashable
+      
+        # An Actor represents an entity that performed an action. For example, an actor
+        # could be a user who posted a comment on a support case, a user who uploaded an
+        # attachment, or a service account that created a support case.
+        # Corresponds to the JSON property `actor`
+        # @return [Google::Apis::CloudsupportV2beta::Actor]
+        attr_accessor :actor
+      
+        # Stores text attached to a support object.
+        # Corresponds to the JSON property `bodyContent`
+        # @return [Google::Apis::CloudsupportV2beta::TextContent]
+        attr_accessor :body_content
+      
+        # Output only. Email addresses CCed on the email.
+        # Corresponds to the JSON property `ccEmailAddresses`
+        # @return [Array<String>]
+        attr_accessor :cc_email_addresses
+      
+        # Output only. Time when this email message object was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. Resource name for the email message.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Email addresses the email was sent to.
+        # Corresponds to the JSON property `recipientEmailAddresses`
+        # @return [Array<String>]
+        attr_accessor :recipient_email_addresses
+      
+        # Output only. Subject of the email.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actor = args[:actor] if args.key?(:actor)
+          @body_content = args[:body_content] if args.key?(:body_content)
+          @cc_email_addresses = args[:cc_email_addresses] if args.key?(:cc_email_addresses)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @recipient_email_addresses = args[:recipient_email_addresses] if args.key?(:recipient_email_addresses)
+          @subject = args[:subject] if args.key?(:subject)
+        end
+      end
+      
       # The request message for the EscalateCase endpoint.
       class EscalateCaseRequest
         include Google::Apis::Core::Hashable
@@ -771,6 +828,59 @@ module Google
         def update!(**args)
           @justification = args[:justification] if args.key?(:justification)
           @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # A feed item associated with a support case.
+      class FeedItem
+        include Google::Apis::Core::Hashable
+      
+        # An Attachment contains metadata about a file that was uploaded to a case - it
+        # is NOT a file itself. That being said, the name of an Attachment object can be
+        # used to download its accompanying file through the `media.download` endpoint.
+        # While attachments can be uploaded in the console at the same time as a comment,
+        # they're associated on a "case" level, not a "comment" level.
+        # Corresponds to the JSON property `attachment`
+        # @return [Google::Apis::CloudsupportV2beta::Attachment]
+        attr_accessor :attachment
+      
+        # A comment associated with a support case. Case comments are the primary way
+        # for Google Support to communicate with a user who has opened a case. When a
+        # user responds to Google Support, the user's responses also appear as comments.
+        # Corresponds to the JSON property `comment`
+        # @return [Google::Apis::CloudsupportV2beta::Comment]
+        attr_accessor :comment
+      
+        # An Attachment contains metadata about a file that was uploaded to a case - it
+        # is NOT a file itself. That being said, the name of an Attachment object can be
+        # used to download its accompanying file through the `media.download` endpoint.
+        # While attachments can be uploaded in the console at the same time as a comment,
+        # they're associated on a "case" level, not a "comment" level.
+        # Corresponds to the JSON property `deletedAttachment`
+        # @return [Google::Apis::CloudsupportV2beta::Attachment]
+        attr_accessor :deleted_attachment
+      
+        # An email associated with a support case.
+        # Corresponds to the JSON property `emailMessage`
+        # @return [Google::Apis::CloudsupportV2beta::EmailMessage]
+        attr_accessor :email_message
+      
+        # Output only. Time corresponding to the event of this item.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment = args[:attachment] if args.key?(:attachment)
+          @comment = args[:comment] if args.key?(:comment)
+          @deleted_attachment = args[:deleted_attachment] if args.key?(:deleted_attachment)
+          @email_message = args[:email_message] if args.key?(:email_message)
+          @event_time = args[:event_time] if args.key?(:event_time)
         end
       end
       
@@ -1161,6 +1271,52 @@ module Google
         def update!(**args)
           @cases = args[:cases] if args.key?(:cases)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for the ShowFeed endpoint.
+      class ShowFeedResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of feed items associated with the given Case.
+        # Corresponds to the JSON property `feedItems`
+        # @return [Array<Google::Apis::CloudsupportV2beta::FeedItem>]
+        attr_accessor :feed_items
+      
+        # A token to retrieve the next page of results. This should be set in the `
+        # page_token` field of subsequent `ShowFeedRequests`. If unspecified, there are
+        # no more results to retrieve.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feed_items = args[:feed_items] if args.key?(:feed_items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Stores text attached to a support object.
+      class TextContent
+        include Google::Apis::Core::Hashable
+      
+        # Content in this field should be rendered and interpreted as-is.
+        # Corresponds to the JSON property `plainText`
+        # @return [String]
+        attr_accessor :plain_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plain_text = args[:plain_text] if args.key?(:plain_text)
         end
       end
       
