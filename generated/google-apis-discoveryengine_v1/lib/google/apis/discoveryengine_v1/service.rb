@@ -342,7 +342,7 @@ module Google
         #   permission to list DataStores under this location, regardless of whether or
         #   not this data store exists, a PERMISSION_DENIED error is returned.
         # @param [String] filter
-        #   Filter by solution type. For example: filter = 'solution_type:
+        #   Filter by solution type . For example: filter = 'solution_type:
         #   SOLUTION_TYPE_SEARCH'
         # @param [Fixnum] page_size
         #   Maximum number of DataStores to return. If unspecified, defaults to 10. The
@@ -3075,7 +3075,7 @@ module Google
         #   permission to list DataStores under this location, regardless of whether or
         #   not this data store exists, a PERMISSION_DENIED error is returned.
         # @param [String] filter
-        #   Filter by solution type. For example: filter = 'solution_type:
+        #   Filter by solution type . For example: filter = 'solution_type:
         #   SOLUTION_TYPE_SEARCH'
         # @param [Fixnum] page_size
         #   Maximum number of DataStores to return. If unspecified, defaults to 10. The
