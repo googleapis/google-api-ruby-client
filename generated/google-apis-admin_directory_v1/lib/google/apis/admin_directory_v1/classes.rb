@@ -980,10 +980,16 @@ module Google
         attr_accessor :annotated_user
       
         # (Read-only) The timestamp after which the device will stop receiving Chrome
-        # updates or support
+        # updates or support. Please use "autoUpdateThrough" instead.
         # Corresponds to the JSON property `autoUpdateExpiration`
         # @return [Fixnum]
         attr_accessor :auto_update_expiration
+      
+        # Output only. The timestamp after which the device will stop receiving Chrome
+        # updates or support.
+        # Corresponds to the JSON property `autoUpdateThrough`
+        # @return [String]
+        attr_accessor :auto_update_through
       
         # Output only. Contains backlight information for the device.
         # Corresponds to the JSON property `backlightInfo`
@@ -1062,6 +1068,24 @@ module Google
         # Corresponds to the JSON property `ethernetMacAddress0`
         # @return [String]
         attr_accessor :ethernet_mac_address0
+      
+        # Output only. Whether or not the device requires the extended support opt in.
+        # Corresponds to the JSON property `extendedSupportEligible`
+        # @return [Boolean]
+        attr_accessor :extended_support_eligible
+        alias_method :extended_support_eligible?, :extended_support_eligible
+      
+        # Output only. Whether extended support policy is enabled on the device.
+        # Corresponds to the JSON property `extendedSupportEnabled`
+        # @return [Boolean]
+        attr_accessor :extended_support_enabled
+        alias_method :extended_support_enabled?, :extended_support_enabled
+      
+        # Output only. Date of the device when extended support policy for automatic
+        # updates starts.
+        # Corresponds to the JSON property `extendedSupportStart`
+        # @return [String]
+        attr_accessor :extended_support_start
       
         # The Chrome device's firmware version.
         # Corresponds to the JSON property `firmwareVersion`
@@ -1241,6 +1265,7 @@ module Google
           @annotated_location = args[:annotated_location] if args.key?(:annotated_location)
           @annotated_user = args[:annotated_user] if args.key?(:annotated_user)
           @auto_update_expiration = args[:auto_update_expiration] if args.key?(:auto_update_expiration)
+          @auto_update_through = args[:auto_update_through] if args.key?(:auto_update_through)
           @backlight_info = args[:backlight_info] if args.key?(:backlight_info)
           @boot_mode = args[:boot_mode] if args.key?(:boot_mode)
           @cpu_info = args[:cpu_info] if args.key?(:cpu_info)
@@ -1254,6 +1279,9 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @ethernet_mac_address = args[:ethernet_mac_address] if args.key?(:ethernet_mac_address)
           @ethernet_mac_address0 = args[:ethernet_mac_address0] if args.key?(:ethernet_mac_address0)
+          @extended_support_eligible = args[:extended_support_eligible] if args.key?(:extended_support_eligible)
+          @extended_support_enabled = args[:extended_support_enabled] if args.key?(:extended_support_enabled)
+          @extended_support_start = args[:extended_support_start] if args.key?(:extended_support_start)
           @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
           @first_enrollment_time = args[:first_enrollment_time] if args.key?(:first_enrollment_time)
           @kind = args[:kind] if args.key?(:kind)
