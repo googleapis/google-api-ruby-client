@@ -52,6 +52,109 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Returns the AutokeyConfig for a folder.
+        # @param [String] name
+        #   Required. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
+        #   autokeyConfig`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::AutokeyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::AutokeyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_autokey_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::AutokeyConfig::Representation
+          command.response_class = Google::Apis::CloudkmsV1::AutokeyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.
+        # autokeyConfigs.update` permission on the parent folder and `cloudkms.
+        # cryptoKeys.setIamPolicy` permission on the provided key project. An empty key
+        # project may be provided to clear the configuration.
+        # @param [String] name
+        #   Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
+        #   autokeyConfig`.
+        # @param [Google::Apis::CloudkmsV1::AutokeyConfig] autokey_config_object
+        # @param [String] update_mask
+        #   Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::AutokeyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::AutokeyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_folder_autokey_config(name, autokey_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudkmsV1::AutokeyConfig::Representation
+          command.request_object = autokey_config_object
+          command.response_representation = Google::Apis::CloudkmsV1::AutokeyConfig::Representation
+          command.response_class = Google::Apis::CloudkmsV1::AutokeyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the effective Cloud KMS Autokey configuration for a given project.
+        # @param [String] parent
+        #   Required. Name of the resource project to the show effective Cloud KMS Autokey
+        #   configuration for. This may be helpful for interrogating the effect of nested
+        #   folder configurations on a given resource project.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ShowEffectiveAutokeyConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ShowEffectiveAutokeyConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def show_project_effective_autokey_config(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}:showEffectiveAutokeyConfig', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ShowEffectiveAutokeyConfigResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ShowEffectiveAutokeyConfigResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generate random bytes using the Cloud KMS randomness source in the provided
         # location.
         # @param [String] location
@@ -655,6 +758,113 @@ module Google
           command.response_representation = Google::Apis::CloudkmsV1::VerifyConnectivityResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::VerifyConnectivityResponse
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new KeyHandle, triggering the provisioning of a new CryptoKey for
+        # CMEK use with the given resource type in the configured key project and the
+        # same location. GetOperation should be used to resolve the resulting long-
+        # running operation and get the resulting KeyHandle and CryptoKey.
+        # @param [String] parent
+        #   Required. Name of the resource project and location to create the KeyHandle in,
+        #   e.g. `projects/`PROJECT_ID`/locations/`LOCATION``.
+        # @param [Google::Apis::CloudkmsV1::KeyHandle] key_handle_object
+        # @param [String] key_handle_id
+        #   Optional. Id of the KeyHandle. Must be unique to the resource project and
+        #   location. If not provided by the caller, a new UUID is used.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_key_handle(parent, key_handle_object = nil, key_handle_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/keyHandles', options)
+          command.request_representation = Google::Apis::CloudkmsV1::KeyHandle::Representation
+          command.request_object = key_handle_object
+          command.response_representation = Google::Apis::CloudkmsV1::Operation::Representation
+          command.response_class = Google::Apis::CloudkmsV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['keyHandleId'] = key_handle_id unless key_handle_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the KeyHandle.
+        # @param [String] name
+        #   Required. Name of the KeyHandle resource, e.g. `projects/`PROJECT_ID`/
+        #   locations/`LOCATION`/keyHandles/`KEY_HANDLE_ID``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::KeyHandle] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::KeyHandle]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_key_handle(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::KeyHandle::Representation
+          command.response_class = Google::Apis::CloudkmsV1::KeyHandle
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists KeyHandles.
+        # @param [String] parent
+        #   Required. Name of the resource project and location from which to list
+        #   KeyHandles, e.g. `projects/`PROJECT_ID`/locations/`LOCATION``.
+        # @param [String] filter
+        #   Optional. Filter to apply when listing KeyHandles, e.g. `
+        #   resource_type_selector="`SERVICE`.googleapis.com/`TYPE`"`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ListKeyHandlesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ListKeyHandlesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_key_handles(parent, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/keyHandles', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ListKeyHandlesResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ListKeyHandlesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2035,6 +2245,37 @@ module Google
           command.response_representation = Google::Apis::CloudkmsV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::Operation::Representation
+          command.response_class = Google::Apis::CloudkmsV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
