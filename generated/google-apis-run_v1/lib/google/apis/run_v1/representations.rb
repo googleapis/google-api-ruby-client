@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1DeveloperConnectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1FailureInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1GitConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1GitSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +317,12 @@ module Google
       end
       
       class GoogleDevtoolsCloudbuildV1Hash
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1HttpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1205,6 +1223,8 @@ module Google
           property :failure_info, as: 'failureInfo', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FailureInfo, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FailureInfo::Representation
       
           property :finish_time, as: 'finishTime'
+          property :git_config, as: 'gitConfig', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitConfig, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitConfig::Representation
+      
           property :id, as: 'id'
           collection :images, as: 'images'
           property :log_url, as: 'logUrl'
@@ -1326,6 +1346,15 @@ module Google
         end
       end
       
+      class GoogleDevtoolsCloudbuildV1DeveloperConnectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dir, as: 'dir'
+          property :git_repository_link, as: 'gitRepositoryLink'
+          property :revision, as: 'revision'
+        end
+      end
+      
       class GoogleDevtoolsCloudbuildV1FailureInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1338,6 +1367,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Hash, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Hash::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1GitConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http, as: 'http', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1HttpConfig, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1HttpConfig::Representation
       
         end
       end
@@ -1356,6 +1393,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
           property :value, :base64 => true, as: 'value'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1HttpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :proxy_secret_version_name, as: 'proxySecretVersionName'
         end
       end
       
@@ -1465,6 +1509,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connected_repository, as: 'connectedRepository', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ConnectedRepository, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1ConnectedRepository::Representation
+      
+          property :developer_connect_config, as: 'developerConnectConfig', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1DeveloperConnectConfig, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1DeveloperConnectConfig::Representation
       
           property :git_source, as: 'gitSource', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSource, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSource::Representation
       
@@ -1946,6 +1992,7 @@ module Google
           property :enable_service_links, as: 'enableServiceLinks'
           collection :image_pull_secrets, as: 'imagePullSecrets', class: Google::Apis::RunV1::LocalObjectReference, decorator: Google::Apis::RunV1::LocalObjectReference::Representation
       
+          hash :node_selector, as: 'nodeSelector'
           property :service_account_name, as: 'serviceAccountName'
           property :timeout_seconds, as: 'timeoutSeconds'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
