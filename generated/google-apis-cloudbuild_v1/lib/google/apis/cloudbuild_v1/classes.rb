@@ -735,6 +735,11 @@ module Google
         # @return [String]
         attr_accessor :finish_time
       
+        # GitConfig is a configuration for git operations.
+        # Corresponds to the JSON property `gitConfig`
+        # @return [Google::Apis::CloudbuildV1::GitConfig]
+        attr_accessor :git_config
+      
         # Output only. Unique identifier of the build.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -882,6 +887,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @failure_info = args[:failure_info] if args.key?(:failure_info)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @git_config = args[:git_config] if args.key?(:git_config)
           @id = args[:id] if args.key?(:id)
           @images = args[:images] if args.key?(:images)
           @log_url = args[:log_url] if args.key?(:log_url)
@@ -1940,6 +1946,39 @@ module Google
         end
       end
       
+      # This config defines the location of a source through Developer Connect.
+      class DeveloperConnectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Directory, relative to the source root, in which to run the build.
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
+        # Required. The Developer Connect Git repository link, formatted as `projects/*/
+        # locations/*/connections/*/gitRepositoryLink/*`.
+        # Corresponds to the JSON property `gitRepositoryLink`
+        # @return [String]
+        attr_accessor :git_repository_link
+      
+        # Required. The revision to fetch from the Git repository such as a branch, a
+        # tag, a commit SHA, or any Git ref.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dir = args[:dir] if args.key?(:dir)
+          @git_repository_link = args[:git_repository_link] if args.key?(:git_repository_link)
+          @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1998,6 +2037,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # GitConfig is a configuration for git operations.
+      class GitConfig
+        include Google::Apis::Core::Hashable
+      
+        # HttpConfig is a configuration for HTTP related git operations.
+        # Corresponds to the JSON property `http`
+        # @return [Google::Apis::CloudbuildV1::HttpConfig]
+        attr_accessor :http
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http = args[:http] if args.key?(:http)
         end
       end
       
@@ -2717,6 +2775,26 @@ module Google
           @content_type = args[:content_type] if args.key?(:content_type)
           @data = args[:data] if args.key?(:data)
           @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
+      # HttpConfig is a configuration for HTTP related git operations.
+      class HttpConfig
+        include Google::Apis::Core::Hashable
+      
+        # SecretVersion resource of the HTTP proxy URL. The proxy URL should be in
+        # format protocol://@]proxyhost[:port].
+        # Corresponds to the JSON property `proxySecretVersionName`
+        # @return [String]
+        attr_accessor :proxy_secret_version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @proxy_secret_version_name = args[:proxy_secret_version_name] if args.key?(:proxy_secret_version_name)
         end
       end
       
@@ -3830,6 +3908,11 @@ module Google
         # @return [Google::Apis::CloudbuildV1::ConnectedRepository]
         attr_accessor :connected_repository
       
+        # This config defines the location of a source through Developer Connect.
+        # Corresponds to the JSON property `developerConnectConfig`
+        # @return [Google::Apis::CloudbuildV1::DeveloperConnectConfig]
+        attr_accessor :developer_connect_config
+      
         # Location of the source in any accessible Git repository.
         # Corresponds to the JSON property `gitSource`
         # @return [Google::Apis::CloudbuildV1::GitSource]
@@ -3859,6 +3942,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connected_repository = args[:connected_repository] if args.key?(:connected_repository)
+          @developer_connect_config = args[:developer_connect_config] if args.key?(:developer_connect_config)
           @git_source = args[:git_source] if args.key?(:git_source)
           @repo_source = args[:repo_source] if args.key?(:repo_source)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
