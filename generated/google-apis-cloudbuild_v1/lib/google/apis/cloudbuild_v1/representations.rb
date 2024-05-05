@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeveloperConnectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +275,12 @@ module Google
       end
       
       class FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GitConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -359,6 +371,12 @@ module Google
       end
       
       class HttpBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -869,6 +887,8 @@ module Google
           property :failure_info, as: 'failureInfo', class: Google::Apis::CloudbuildV1::FailureInfo, decorator: Google::Apis::CloudbuildV1::FailureInfo::Representation
       
           property :finish_time, as: 'finishTime'
+          property :git_config, as: 'gitConfig', class: Google::Apis::CloudbuildV1::GitConfig, decorator: Google::Apis::CloudbuildV1::GitConfig::Representation
+      
           property :id, as: 'id'
           collection :images, as: 'images'
           property :log_url, as: 'logUrl'
@@ -1147,6 +1167,15 @@ module Google
         end
       end
       
+      class DeveloperConnectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dir, as: 'dir'
+          property :git_repository_link, as: 'gitRepositoryLink'
+          property :revision, as: 'revision'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1165,6 +1194,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::CloudbuildV1::HashProp, decorator: Google::Apis::CloudbuildV1::HashProp::Representation
+      
+        end
+      end
+      
+      class GitConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http, as: 'http', class: Google::Apis::CloudbuildV1::HttpConfig, decorator: Google::Apis::CloudbuildV1::HttpConfig::Representation
       
         end
       end
@@ -1342,6 +1379,13 @@ module Google
           property :content_type, as: 'contentType'
           property :data, :base64 => true, as: 'data'
           collection :extensions, as: 'extensions'
+        end
+      end
+      
+      class HttpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :proxy_secret_version_name, as: 'proxySecretVersionName'
         end
       end
       
@@ -1663,6 +1707,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connected_repository, as: 'connectedRepository', class: Google::Apis::CloudbuildV1::ConnectedRepository, decorator: Google::Apis::CloudbuildV1::ConnectedRepository::Representation
+      
+          property :developer_connect_config, as: 'developerConnectConfig', class: Google::Apis::CloudbuildV1::DeveloperConnectConfig, decorator: Google::Apis::CloudbuildV1::DeveloperConnectConfig::Representation
       
           property :git_source, as: 'gitSource', class: Google::Apis::CloudbuildV1::GitSource, decorator: Google::Apis::CloudbuildV1::GitSource::Representation
       
