@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Application
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -385,6 +391,14 @@ module Google
         end
       end
       
+      class Application
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :name, as: 'name'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -550,6 +564,8 @@ module Google
           collection :dry_run_access_levels, as: 'dryRunAccessLevels'
           property :group_key, as: 'groupKey'
           property :name, as: 'name'
+          collection :restricted_client_applications, as: 'restrictedClientApplications', class: Google::Apis::AccesscontextmanagerV1::Application, decorator: Google::Apis::AccesscontextmanagerV1::Application::Representation
+      
         end
       end
       
