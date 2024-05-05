@@ -789,6 +789,12 @@ module Google
         # @return [Array<Google::Apis::OndemandscanningV1beta1::NonCompliantFile>]
         attr_accessor :non_compliant_files
       
+        # Describes the CIS benchmark version that is applicable to a given OS and os
+        # version.
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::OndemandscanningV1beta1::ComplianceVersion]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -797,6 +803,42 @@ module Google
         def update!(**args)
           @non_compliance_reason = args[:non_compliance_reason] if args.key?(:non_compliance_reason)
           @non_compliant_files = args[:non_compliant_files] if args.key?(:non_compliant_files)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Describes the CIS benchmark version that is applicable to a given OS and os
+      # version.
+      class ComplianceVersion
+        include Google::Apis::Core::Hashable
+      
+        # The name of the document that defines this benchmark, e.g. "CIS Container-
+        # Optimized OS".
+        # Corresponds to the JSON property `benchmarkDocument`
+        # @return [String]
+        attr_accessor :benchmark_document
+      
+        # The CPE URI (https://cpe.mitre.org/specification/) this benchmark is
+        # applicable to.
+        # Corresponds to the JSON property `cpeUri`
+        # @return [String]
+        attr_accessor :cpe_uri
+      
+        # The version of the benchmark. This is set to the version of the OS-specific
+        # CIS document the benchmark is defined in.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @benchmark_document = args[:benchmark_document] if args.key?(:benchmark_document)
+          @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
