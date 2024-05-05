@@ -538,6 +538,7 @@ module Google
       class DashboardFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_to_new_widgets, as: 'applyToNewWidgets'
           property :filter_type, as: 'filterType'
           property :label_key, as: 'labelKey'
           property :string_value, as: 'stringValue'

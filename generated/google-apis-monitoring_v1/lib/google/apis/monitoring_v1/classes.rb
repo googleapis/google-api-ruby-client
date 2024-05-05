@@ -445,6 +445,12 @@ module Google
       class DashboardFilter
         include Google::Apis::Core::Hashable
       
+        # Whether to apply this filter to new widgets by default
+        # Corresponds to the JSON property `applyToNewWidgets`
+        # @return [Boolean]
+        attr_accessor :apply_to_new_widgets
+        alias_method :apply_to_new_widgets?, :apply_to_new_widgets
+      
         # The specified filter type
         # Corresponds to the JSON property `filterType`
         # @return [String]
@@ -473,6 +479,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @apply_to_new_widgets = args[:apply_to_new_widgets] if args.key?(:apply_to_new_widgets)
           @filter_type = args[:filter_type] if args.key?(:filter_type)
           @label_key = args[:label_key] if args.key?(:label_key)
           @string_value = args[:string_value] if args.key?(:string_value)
