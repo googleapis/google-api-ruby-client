@@ -1927,9 +1927,10 @@ module Google
         # @return [String]
         attr_accessor :request_method
       
-        # Contains information needed for generating an OpenID Connect token (https://
-        # developers.google.com/identity/protocols/OpenIDConnect). The OIDC token will
-        # be generated for the Monitoring service agent service account.
+        # Contains information needed for generating either an OpenID Connect token (
+        # https://developers.google.com/identity/protocols/OpenIDConnect) or OAuth token
+        # (https://developers.google.com/identity/protocols/oauth2). The token will be
+        # generated for the Monitoring service agent service account.
         # Corresponds to the JSON property `serviceAgentAuthentication`
         # @return [Google::Apis::MonitoringV3::ServiceAgentAuthentication]
         attr_accessor :service_agent_authentication
@@ -4194,9 +4195,10 @@ module Google
         end
       end
       
-      # Contains information needed for generating an OpenID Connect token (https://
-      # developers.google.com/identity/protocols/OpenIDConnect). The OIDC token will
-      # be generated for the Monitoring service agent service account.
+      # Contains information needed for generating either an OpenID Connect token (
+      # https://developers.google.com/identity/protocols/OpenIDConnect) or OAuth token
+      # (https://developers.google.com/identity/protocols/oauth2). The token will be
+      # generated for the Monitoring service agent service account.
       class ServiceAgentAuthentication
         include Google::Apis::Core::Hashable
       
