@@ -22,12 +22,6 @@ module Google
   module Apis
     module DoubleclickbidmanagerV2
       
-      class ChannelGrouping
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DataRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,18 +29,6 @@ module Google
       end
       
       class Date
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DisjunctiveMatchStatement
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EventFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -77,24 +59,6 @@ module Google
       end
       
       class Parameters
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PathFilter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PathQueryOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PathQueryOptionsFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,26 +106,10 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Rule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RunQueryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ChannelGrouping
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fallback_name, as: 'fallbackName'
-          property :name, as: 'name'
-          collection :rules, as: 'rules', class: Google::Apis::DoubleclickbidmanagerV2::Rule, decorator: Google::Apis::DoubleclickbidmanagerV2::Rule::Representation
-      
-        end
       end
       
       class DataRange
@@ -181,22 +129,6 @@ module Google
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
-        end
-      end
-      
-      class DisjunctiveMatchStatement
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :event_filters, as: 'eventFilters', class: Google::Apis::DoubleclickbidmanagerV2::EventFilter, decorator: Google::Apis::DoubleclickbidmanagerV2::EventFilter::Representation
-      
-        end
-      end
-      
-      class EventFilter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dimension_filter, as: 'dimensionFilter', class: Google::Apis::DoubleclickbidmanagerV2::PathQueryOptionsFilter, decorator: Google::Apis::DoubleclickbidmanagerV2::PathQueryOptionsFilter::Representation
-      
         end
       end
       
@@ -230,8 +162,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :include_only_targeted_user_lists, as: 'includeOnlyTargetedUserLists'
-          property :path_query_options, as: 'pathQueryOptions', class: Google::Apis::DoubleclickbidmanagerV2::PathQueryOptions, decorator: Google::Apis::DoubleclickbidmanagerV2::PathQueryOptions::Representation
-      
         end
       end
       
@@ -245,34 +175,6 @@ module Google
           property :options, as: 'options', class: Google::Apis::DoubleclickbidmanagerV2::Options, decorator: Google::Apis::DoubleclickbidmanagerV2::Options::Representation
       
           property :type, as: 'type'
-        end
-      end
-      
-      class PathFilter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :event_filters, as: 'eventFilters', class: Google::Apis::DoubleclickbidmanagerV2::EventFilter, decorator: Google::Apis::DoubleclickbidmanagerV2::EventFilter::Representation
-      
-          property :path_match_position, as: 'pathMatchPosition'
-        end
-      end
-      
-      class PathQueryOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :channel_grouping, as: 'channelGrouping', class: Google::Apis::DoubleclickbidmanagerV2::ChannelGrouping, decorator: Google::Apis::DoubleclickbidmanagerV2::ChannelGrouping::Representation
-      
-          collection :path_filters, as: 'pathFilters', class: Google::Apis::DoubleclickbidmanagerV2::PathFilter, decorator: Google::Apis::DoubleclickbidmanagerV2::PathFilter::Representation
-      
-        end
-      end
-      
-      class PathQueryOptionsFilter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :filter, as: 'filter'
-          property :match, as: 'match'
-          collection :values, as: 'values'
         end
       end
       
@@ -352,15 +254,6 @@ module Google
           property :finish_time, as: 'finishTime'
           property :format, as: 'format'
           property :state, as: 'state'
-        end
-      end
-      
-      class Rule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :disjunctive_match_statements, as: 'disjunctiveMatchStatements', class: Google::Apis::DoubleclickbidmanagerV2::DisjunctiveMatchStatement, decorator: Google::Apis::DoubleclickbidmanagerV2::DisjunctiveMatchStatement::Representation
-      
-          property :name, as: 'name'
         end
       end
       
