@@ -264,8 +264,8 @@ module Google
         # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1InsightTypeGenerationConfig]
         attr_accessor :insight_type_generation_config
       
-        # Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]
-        # /insightTypes/[INSIGHT_TYPE_ID]/config
+        # Identifier. Name of insight type config. Eg, projects/[PROJECT_NUMBER]/
+        # locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -821,8 +821,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/
-        # recommenders/[RECOMMENDER_ID]/config
+        # Identifier. Name of recommender config. Eg, projects/[PROJECT_NUMBER]/
+        # locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
