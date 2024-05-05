@@ -81,6 +81,12 @@ module Google
         # @return [Google::Apis::IapV1::GcipSettings]
         attr_accessor :gcip_settings
       
+        # Optional. Identity sources that IAP can use to authenticate the end user. Only
+        # one identity source can be configured.
+        # Corresponds to the JSON property `identitySources`
+        # @return [Array<String>]
+        attr_accessor :identity_sources
+      
         # Configuration for OAuth login&consent flow behavior as well as for OAuth
         # Credentials.
         # Corresponds to the JSON property `oauthSettings`
@@ -101,6 +107,13 @@ module Google
         # @return [Google::Apis::IapV1::ReauthSettings]
         attr_accessor :reauth_settings
       
+        # WorkforceIdentitySettings allows customers to configure workforce pools and
+        # OAuth 2.0 settings to gate their applications using a third-party IdP with
+        # access control.
+        # Corresponds to the JSON property `workforceIdentitySettings`
+        # @return [Google::Apis::IapV1::WorkforceIdentitySettings]
+        attr_accessor :workforce_identity_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -110,9 +123,11 @@ module Google
           @allowed_domains_settings = args[:allowed_domains_settings] if args.key?(:allowed_domains_settings)
           @cors_settings = args[:cors_settings] if args.key?(:cors_settings)
           @gcip_settings = args[:gcip_settings] if args.key?(:gcip_settings)
+          @identity_sources = args[:identity_sources] if args.key?(:identity_sources)
           @oauth_settings = args[:oauth_settings] if args.key?(:oauth_settings)
           @policy_delegation_settings = args[:policy_delegation_settings] if args.key?(:policy_delegation_settings)
           @reauth_settings = args[:reauth_settings] if args.key?(:reauth_settings)
+          @workforce_identity_settings = args[:workforce_identity_settings] if args.key?(:workforce_identity_settings)
         end
       end
       
@@ -704,6 +719,40 @@ module Google
         end
       end
       
+      # The OAuth 2.0 Settings
+      class OAuth2
+        include Google::Apis::Core::Hashable
+      
+        # The OAuth 2.0 client ID registered in the workforce identity federation OAuth
+        # 2.0 Server.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Input only. The OAuth 2.0 client secret created while registering the client
+        # ID.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Output only. SHA256 hash value for the client secret. This field is returned
+        # by IAP when the settings are retrieved.
+        # Corresponds to the JSON property `clientSecretSha256`
+        # @return [String]
+        attr_accessor :client_secret_sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @client_secret_sha256 = args[:client_secret_sha256] if args.key?(:client_secret_sha256)
+        end
+      end
+      
       # Configuration for OAuth login&consent flow behavior as well as for OAuth
       # Credentials.
       class OAuthSettings
@@ -1171,6 +1220,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # WorkforceIdentitySettings allows customers to configure workforce pools and
+      # OAuth 2.0 settings to gate their applications using a third-party IdP with
+      # access control.
+      class WorkforceIdentitySettings
+        include Google::Apis::Core::Hashable
+      
+        # The OAuth 2.0 Settings
+        # Corresponds to the JSON property `oauth2`
+        # @return [Google::Apis::IapV1::OAuth2]
+        attr_accessor :oauth2
+      
+        # The workforce pool resources. Only one workforce pool is accepted.
+        # Corresponds to the JSON property `workforcePools`
+        # @return [Array<String>]
+        attr_accessor :workforce_pools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth2 = args[:oauth2] if args.key?(:oauth2)
+          @workforce_pools = args[:workforce_pools] if args.key?(:workforce_pools)
         end
       end
     end
