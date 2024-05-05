@@ -1399,6 +1399,25 @@ module Google
         end
       end
       
+      # Hardware constraints configuration.
+      class GoogleCloudRunV2NodeSelector
+        include Google::Apis::Core::Hashable
+      
+        # Required. GPU accelerator type to attach to an instance.
+        # Corresponds to the JSON property `accelerator`
+        # @return [String]
+        attr_accessor :accelerator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator = args[:accelerator] if args.key?(:accelerator)
+        end
+      end
+      
       # RunJob Overrides that contains Execution fields to be overridden.
       class GoogleCloudRunV2Overrides
         include Google::Apis::Core::Hashable
@@ -1649,6 +1668,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Hardware constraints configuration.
+        # Corresponds to the JSON property `nodeSelector`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2NodeSelector]
+        attr_accessor :node_selector
+      
         # Output only. The generation of this Revision currently serving traffic. See
         # comments in `reconciling` for additional information on reconciliation process
         # in Cloud Run.
@@ -1749,6 +1773,7 @@ module Google
           @log_uri = args[:log_uri] if args.key?(:log_uri)
           @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @name = args[:name] if args.key?(:name)
+          @node_selector = args[:node_selector] if args.key?(:node_selector)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -1868,6 +1893,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_instance_request_concurrency
       
+        # Hardware constraints configuration.
+        # Corresponds to the JSON property `nodeSelector`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2NodeSelector]
+        attr_accessor :node_selector
+      
         # Optional. The unique name for the revision. If this field is omitted, it will
         # be automatically generated based on the Service name.
         # Corresponds to the JSON property `revision`
@@ -1922,6 +1952,7 @@ module Google
           @health_check_disabled = args[:health_check_disabled] if args.key?(:health_check_disabled)
           @labels = args[:labels] if args.key?(:labels)
           @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
+          @node_selector = args[:node_selector] if args.key?(:node_selector)
           @revision = args[:revision] if args.key?(:revision)
           @scaling = args[:scaling] if args.key?(:scaling)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -3165,6 +3196,11 @@ module Google
         # @return [String]
         attr_accessor :finish_time
       
+        # GitConfig is a configuration for git operations.
+        # Corresponds to the JSON property `gitConfig`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GitConfig]
+        attr_accessor :git_config
+      
         # Output only. Unique identifier of the build.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -3312,6 +3348,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @failure_info = args[:failure_info] if args.key?(:failure_info)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @git_config = args[:git_config] if args.key?(:git_config)
           @id = args[:id] if args.key?(:id)
           @images = args[:images] if args.key?(:images)
           @log_url = args[:log_url] if args.key?(:log_url)
@@ -3760,6 +3797,39 @@ module Google
         end
       end
       
+      # This config defines the location of a source through Developer Connect.
+      class GoogleDevtoolsCloudbuildV1DeveloperConnectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Directory, relative to the source root, in which to run the build.
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
+        # Required. The Developer Connect Git repository link, formatted as `projects/*/
+        # locations/*/connections/*/gitRepositoryLink/*`.
+        # Corresponds to the JSON property `gitRepositoryLink`
+        # @return [String]
+        attr_accessor :git_repository_link
+      
+        # Required. The revision to fetch from the Git repository such as a branch, a
+        # tag, a commit SHA, or any Git ref.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dir = args[:dir] if args.key?(:dir)
+          @git_repository_link = args[:git_repository_link] if args.key?(:git_repository_link)
+          @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
       # A fatal problem encountered during the execution of the build.
       class GoogleDevtoolsCloudbuildV1FailureInfo
         include Google::Apis::Core::Hashable
@@ -3802,6 +3872,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # GitConfig is a configuration for git operations.
+      class GoogleDevtoolsCloudbuildV1GitConfig
+        include Google::Apis::Core::Hashable
+      
+        # HttpConfig is a configuration for HTTP related git operations.
+        # Corresponds to the JSON property `http`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1HttpConfig]
+        attr_accessor :http
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http = args[:http] if args.key?(:http)
         end
       end
       
@@ -3868,6 +3957,26 @@ module Google
         def update!(**args)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # HttpConfig is a configuration for HTTP related git operations.
+      class GoogleDevtoolsCloudbuildV1HttpConfig
+        include Google::Apis::Core::Hashable
+      
+        # SecretVersion resource of the HTTP proxy URL. The proxy URL should be in
+        # format protocol://@]proxyhost[:port].
+        # Corresponds to the JSON property `proxySecretVersionName`
+        # @return [String]
+        attr_accessor :proxy_secret_version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @proxy_secret_version_name = args[:proxy_secret_version_name] if args.key?(:proxy_secret_version_name)
         end
       end
       
@@ -4266,6 +4375,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1ConnectedRepository]
         attr_accessor :connected_repository
       
+        # This config defines the location of a source through Developer Connect.
+        # Corresponds to the JSON property `developerConnectConfig`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1DeveloperConnectConfig]
+        attr_accessor :developer_connect_config
+      
         # Location of the source in any accessible Git repository.
         # Corresponds to the JSON property `gitSource`
         # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GitSource]
@@ -4295,6 +4409,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connected_repository = args[:connected_repository] if args.key?(:connected_repository)
+          @developer_connect_config = args[:developer_connect_config] if args.key?(:developer_connect_config)
           @git_source = args[:git_source] if args.key?(:git_source)
           @repo_source = args[:repo_source] if args.key?(:repo_source)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
