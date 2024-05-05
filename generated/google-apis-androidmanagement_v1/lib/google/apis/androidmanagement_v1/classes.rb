@@ -1790,6 +1790,13 @@ module Google
         # @return [String]
         attr_accessor :wifi_direct_settings
       
+        # Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this
+        # does not affect which networks can be configured on the device. Supported on
+        # company-owned devices running Android 13 and above.
+        # Corresponds to the JSON property `wifiSsidPolicy`
+        # @return [Google::Apis::AndroidmanagementV1::WifiSsidPolicy]
+        attr_accessor :wifi_ssid_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1800,6 +1807,7 @@ module Google
           @tethering_settings = args[:tethering_settings] if args.key?(:tethering_settings)
           @usb_data_access = args[:usb_data_access] if args.key?(:usb_data_access)
           @wifi_direct_settings = args[:wifi_direct_settings] if args.key?(:wifi_direct_settings)
+          @wifi_ssid_policy = args[:wifi_ssid_policy] if args.key?(:wifi_ssid_policy)
         end
       end
       
@@ -4692,7 +4700,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :stay_on_plugged_modes
       
-        # Configuration for managing system updates
+        # Configuration for managing system updatesNote: Google Play system updates (
+        # https://source.android.com/docs/core/ota/modular-system) (also called Mainline
+        # updates) are automatically downloaded but require a device reboot to be
+        # installed. Refer to the mainline section in Manage system updates (https://
+        # developer.android.com/work/dpc/system-updates#mainline) for further details.
         # Corresponds to the JSON property `systemUpdate`
         # @return [Google::Apis::AndroidmanagementV1::SystemUpdate]
         attr_accessor :system_update
@@ -5635,7 +5647,11 @@ module Google
         end
       end
       
-      # Configuration for managing system updates
+      # Configuration for managing system updatesNote: Google Play system updates (
+      # https://source.android.com/docs/core/ota/modular-system) (also called Mainline
+      # updates) are automatically downloaded but require a device reboot to be
+      # installed. Refer to the mainline section in Manage system updates (https://
+      # developer.android.com/work/dpc/system-updates#mainline) for further details.
       class SystemUpdate
         include Google::Apis::Core::Hashable
       
@@ -6219,6 +6235,57 @@ module Google
           @parent_frame_url = args[:parent_frame_url] if args.key?(:parent_frame_url)
           @permissions = args[:permissions] if args.key?(:permissions)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents a Wi-Fi SSID.
+      class WifiSsid
+        include Google::Apis::Core::Hashable
+      
+        # Required. Wi-Fi SSID represented as a string.
+        # Corresponds to the JSON property `wifiSsid`
+        # @return [String]
+        attr_accessor :wifi_ssid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wifi_ssid = args[:wifi_ssid] if args.key?(:wifi_ssid)
+        end
+      end
+      
+      # Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this
+      # does not affect which networks can be configured on the device. Supported on
+      # company-owned devices running Android 13 and above.
+      class WifiSsidPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Type of the Wi-Fi SSID policy to be applied.
+        # Corresponds to the JSON property `wifiSsidPolicyType`
+        # @return [String]
+        attr_accessor :wifi_ssid_policy_type
+      
+        # Optional. List of Wi-Fi SSIDs that should be applied in the policy. This field
+        # must be non-empty when WifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST. If
+        # this is set to a non-empty list, then a nonComplianceDetail detail with
+        # API_LEVEL is reported if the Android version is less than 13 and a
+        # nonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned
+        # devices.
+        # Corresponds to the JSON property `wifiSsids`
+        # @return [Array<Google::Apis::AndroidmanagementV1::WifiSsid>]
+        attr_accessor :wifi_ssids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wifi_ssid_policy_type = args[:wifi_ssid_policy_type] if args.key?(:wifi_ssid_policy_type)
+          @wifi_ssids = args[:wifi_ssids] if args.key?(:wifi_ssids)
         end
       end
       
