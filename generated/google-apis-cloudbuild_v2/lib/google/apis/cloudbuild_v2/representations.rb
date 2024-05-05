@@ -406,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StepRef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StepTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1193,6 +1199,10 @@ module Google
       
           property :image, as: 'image'
           property :name, as: 'name'
+          collection :params, as: 'params', class: Google::Apis::CloudbuildV2::Param, decorator: Google::Apis::CloudbuildV2::Param::Representation
+      
+          property :ref, as: 'ref', class: Google::Apis::CloudbuildV2::StepRef, decorator: Google::Apis::CloudbuildV2::StepRef::Representation
+      
           property :script, as: 'script'
           property :security_context, as: 'securityContext', class: Google::Apis::CloudbuildV2::SecurityContext, decorator: Google::Apis::CloudbuildV2::SecurityContext::Representation
       
@@ -1200,6 +1210,16 @@ module Google
           collection :volume_mounts, as: 'volumeMounts', class: Google::Apis::CloudbuildV2::VolumeMount, decorator: Google::Apis::CloudbuildV2::VolumeMount::Representation
       
           property :working_dir, as: 'workingDir'
+        end
+      end
+      
+      class StepRef
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :params, as: 'params', class: Google::Apis::CloudbuildV2::Param, decorator: Google::Apis::CloudbuildV2::Param::Representation
+      
+          property :resolver, as: 'resolver'
         end
       end
       
@@ -1231,6 +1251,8 @@ module Google
           hash :properties, as: 'properties', class: Google::Apis::CloudbuildV2::PropertySpec, decorator: Google::Apis::CloudbuildV2::PropertySpec::Representation
       
           property :type, as: 'type'
+          property :value, as: 'value', class: Google::Apis::CloudbuildV2::ParamValue, decorator: Google::Apis::CloudbuildV2::ParamValue::Representation
+      
         end
       end
       

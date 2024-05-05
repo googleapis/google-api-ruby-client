@@ -2700,6 +2700,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Optional parameters passed to the StepAction.
+        # Corresponds to the JSON property `params`
+        # @return [Array<Google::Apis::CloudbuildV2::Param>]
+        attr_accessor :params
+      
+        # A reference to a remote Step, i.e. a StepAction.
+        # Corresponds to the JSON property `ref`
+        # @return [Google::Apis::CloudbuildV2::StepRef]
+        attr_accessor :ref
+      
         # The contents of an executable file to execute.
         # Corresponds to the JSON property `script`
         # @return [String]
@@ -2736,11 +2746,44 @@ module Google
           @env = args[:env] if args.key?(:env)
           @image = args[:image] if args.key?(:image)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
+          @ref = args[:ref] if args.key?(:ref)
           @script = args[:script] if args.key?(:script)
           @security_context = args[:security_context] if args.key?(:security_context)
           @timeout = args[:timeout] if args.key?(:timeout)
           @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
           @working_dir = args[:working_dir] if args.key?(:working_dir)
+        end
+      end
+      
+      # A reference to a remote Step, i.e. a StepAction.
+      class StepRef
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the step.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Parameters used to control the resolution.
+        # Corresponds to the JSON property `params`
+        # @return [Array<Google::Apis::CloudbuildV2::Param>]
+        attr_accessor :params
+      
+        # Optional. Type of the resolver.
+        # Corresponds to the JSON property `resolver`
+        # @return [String]
+        attr_accessor :resolver
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
+          @resolver = args[:resolver] if args.key?(:resolver)
         end
       end
       
@@ -2830,6 +2873,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Parameter value.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::CloudbuildV2::ParamValue]
+        attr_accessor :value
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2840,6 +2888,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @properties = args[:properties] if args.key?(:properties)
           @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
