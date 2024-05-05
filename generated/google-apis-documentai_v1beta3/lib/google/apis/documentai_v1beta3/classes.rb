@@ -7178,6 +7178,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan]
         attr_accessor :page_span
       
+        # DO NOT USE. List of all parsed documents layout source blocks used to generate
+        # the chunk.
+        # Corresponds to the JSON property `sourceBlockIds`
+        # @return [Array<String>]
+        attr_accessor :source_block_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7189,6 +7195,7 @@ module Google
           @page_footers = args[:page_footers] if args.key?(:page_footers)
           @page_headers = args[:page_headers] if args.key?(:page_headers)
           @page_span = args[:page_span] if args.key?(:page_span)
+          @source_block_ids = args[:source_block_ids] if args.key?(:source_block_ids)
         end
       end
       

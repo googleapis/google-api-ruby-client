@@ -4339,6 +4339,7 @@ module Google
       
           property :page_span, as: 'pageSpan', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan::Representation
       
+          collection :source_block_ids, as: 'sourceBlockIds'
         end
       end
       
