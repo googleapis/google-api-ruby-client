@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OAuth2
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OAuthSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkforceIdentitySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessDeniedPageSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -226,11 +238,14 @@ module Google
       
           property :gcip_settings, as: 'gcipSettings', class: Google::Apis::IapV1::GcipSettings, decorator: Google::Apis::IapV1::GcipSettings::Representation
       
+          collection :identity_sources, as: 'identitySources'
           property :oauth_settings, as: 'oauthSettings', class: Google::Apis::IapV1::OAuthSettings, decorator: Google::Apis::IapV1::OAuthSettings::Representation
       
           property :policy_delegation_settings, as: 'policyDelegationSettings', class: Google::Apis::IapV1::PolicyDelegationSettings, decorator: Google::Apis::IapV1::PolicyDelegationSettings::Representation
       
           property :reauth_settings, as: 'reauthSettings', class: Google::Apis::IapV1::ReauthSettings, decorator: Google::Apis::IapV1::ReauthSettings::Representation
+      
+          property :workforce_identity_settings, as: 'workforceIdentitySettings', class: Google::Apis::IapV1::WorkforceIdentitySettings, decorator: Google::Apis::IapV1::WorkforceIdentitySettings::Representation
       
         end
       end
@@ -384,6 +399,15 @@ module Google
         end
       end
       
+      class OAuth2
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :client_secret_sha256, as: 'clientSecretSha256'
+        end
+      end
+      
       class OAuthSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -483,6 +507,15 @@ module Google
       class ValidateIapAttributeExpressionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class WorkforceIdentitySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth2, as: 'oauth2', class: Google::Apis::IapV1::OAuth2, decorator: Google::Apis::IapV1::OAuth2::Representation
+      
+          collection :workforce_pools, as: 'workforcePools'
         end
       end
     end
