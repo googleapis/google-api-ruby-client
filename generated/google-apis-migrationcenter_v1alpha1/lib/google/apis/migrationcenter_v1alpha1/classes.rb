@@ -1551,11 +1551,6 @@ module Google
       class DatabaseInstance
         include Google::Apis::Core::Hashable
       
-        # Optional. The instance's hosts.
-        # Corresponds to the JSON property `hosts`
-        # @return [Array<Google::Apis::MigrationcenterV1alpha1::DatabaseInstanceHost>]
-        attr_accessor :hosts
-      
         # The instance's name.
         # Corresponds to the JSON property `instanceName`
         # @return [String]
@@ -1572,28 +1567,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @hosts = args[:hosts] if args.key?(:hosts)
           @instance_name = args[:instance_name] if args.key?(:instance_name)
           @role = args[:role] if args.key?(:role)
-        end
-      end
-      
-      # Details of a host of a database instance.
-      class DatabaseInstanceHost
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The host name of the host.
-        # Corresponds to the JSON property `hostName`
-        # @return [String]
-        attr_accessor :host_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @host_name = args[:host_name] if args.key?(:host_name)
         end
       end
       
@@ -3972,27 +3947,8 @@ module Google
         end
       end
       
-      # Specific details for a Mysql database deployment.
-      class MysqlDatabaseDeployment
-        include Google::Apis::Core::Hashable
-      
-        # Optional. List of Mysql plugins.
-        # Corresponds to the JSON property `plugins`
-        # @return [Array<Google::Apis::MigrationcenterV1alpha1::MysqlPlugin>]
-        attr_accessor :plugins
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @plugins = args[:plugins] if args.key?(:plugins)
-        end
-      end
-      
-      # Mysql plugin.
-      class MysqlPlugin
+      # MySql plugin.
+      class MySqlPlugin
         include Google::Apis::Core::Hashable
       
         # Required. The plugin is active.
@@ -4020,6 +3976,25 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @plugin = args[:plugin] if args.key?(:plugin)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Specific details for a Mysql database deployment.
+      class MysqlDatabaseDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of MySql plugins.
+        # Corresponds to the JSON property `plugins`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::MySqlPlugin>]
+        attr_accessor :plugins
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plugins = args[:plugins] if args.key?(:plugins)
         end
       end
       
