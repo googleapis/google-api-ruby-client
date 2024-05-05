@@ -9689,7 +9689,7 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IndexDatapoint]
         attr_accessor :datapoint
       
-        # The distance between the neighbor and the query vector.
+        # The distance between the neighbor and the dense embedding query.
         # Corresponds to the JSON property `distance`
         # @return [Float]
         attr_accessor :distance
@@ -10154,6 +10154,11 @@ module Google
       class GoogleCloudAiplatformV1GroundingMetadata
         include Google::Apis::Core::Hashable
       
+        # Google search entry point.
+        # Corresponds to the JSON property `searchEntryPoint`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SearchEntryPoint]
+        attr_accessor :search_entry_point
+      
         # Optional. Web search queries for the following-up web search.
         # Corresponds to the JSON property `webSearchQueries`
         # @return [Array<String>]
@@ -10165,6 +10170,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @search_entry_point = args[:search_entry_point] if args.key?(:search_entry_point)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
         end
       end
@@ -10786,8 +10792,8 @@ module Google
         # @return [String]
         attr_accessor :datapoint_id
       
-        # Required. Feature embedding vector. An array of numbers with the length of [
-        # NearestNeighborSearchConfig.dimensions].
+        # Required. Feature embedding vector for dense index. An array of numbers with
+        # the length of [NearestNeighborSearchConfig.dimensions].
         # Corresponds to the JSON property `featureVector`
         # @return [Array<Float>]
         attr_accessor :feature_vector
@@ -11087,7 +11093,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :shards_count
       
-        # Output only. The number of vectors in the Index.
+        # Output only. The number of dense vectors in the Index.
         # Corresponds to the JSON property `vectorsCount`
         # @return [Fixnum]
         attr_accessor :vectors_count
@@ -17610,6 +17616,12 @@ module Google
       
         # The regional resource name or the URI. Key is region, e.g., us-central1,
         # europe-west2, global, etc..
+        # Corresponds to the JSON property `fineTune`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences]
+        attr_accessor :fine_tune
+      
+        # The regional resource name or the URI. Key is region, e.g., us-central1,
+        # europe-west2, global, etc..
         # Corresponds to the JSON property `openEvaluationPipeline`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences]
         attr_accessor :open_evaluation_pipeline
@@ -17674,6 +17686,7 @@ module Google
           @create_application = args[:create_application] if args.key?(:create_application)
           @deploy = args[:deploy] if args.key?(:deploy)
           @deploy_gke = args[:deploy_gke] if args.key?(:deploy_gke)
+          @fine_tune = args[:fine_tune] if args.key?(:fine_tune)
           @open_evaluation_pipeline = args[:open_evaluation_pipeline] if args.key?(:open_evaluation_pipeline)
           @open_fine_tuning_pipeline = args[:open_fine_tuning_pipeline] if args.key?(:open_fine_tuning_pipeline)
           @open_fine_tuning_pipelines = args[:open_fine_tuning_pipelines] if args.key?(:open_fine_tuning_pipelines)
@@ -17719,6 +17732,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DedicatedResources]
         attr_accessor :dedicated_resources
       
+        # Optional. The name of the deploy task (e.g., "text to image generation").
+        # Corresponds to the JSON property `deployTaskName`
+        # @return [String]
+        attr_accessor :deploy_task_name
+      
         # Contains information about the Large Model.
         # Corresponds to the JSON property `largeModelReference`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1LargeModelReference]
@@ -17756,6 +17774,7 @@ module Google
           @automatic_resources = args[:automatic_resources] if args.key?(:automatic_resources)
           @container_spec = args[:container_spec] if args.key?(:container_spec)
           @dedicated_resources = args[:dedicated_resources] if args.key?(:dedicated_resources)
+          @deploy_task_name = args[:deploy_task_name] if args.key?(:deploy_task_name)
           @large_model_reference = args[:large_model_reference] if args.key?(:large_model_reference)
           @model_display_name = args[:model_display_name] if args.key?(:model_display_name)
           @public_artifact_uri = args[:public_artifact_uri] if args.key?(:public_artifact_uri)
@@ -22481,6 +22500,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :stop_sequences
       
+        # The Google Cloud Storage URI that stores the system instruction, starting with
+        # gs://.
+        # Corresponds to the JSON property `systemInstructionGcsUri`
+        # @return [String]
+        attr_accessor :system_instruction_gcs_uri
+      
         # Temperature value used for sampling set when the dataset was saved. This value
         # is used to tune the degree of randomness.
         # Corresponds to the JSON property `temperature`
@@ -22518,6 +22543,7 @@ module Google
           @note = args[:note] if args.key?(:note)
           @prompt_type = args[:prompt_type] if args.key?(:prompt_type)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
+          @system_instruction_gcs_uri = args[:system_instruction_gcs_uri] if args.key?(:system_instruction_gcs_uri)
           @temperature = args[:temperature] if args.key?(:temperature)
           @text = args[:text] if args.key?(:text)
           @top_k = args[:top_k] if args.key?(:top_k)
@@ -25748,6 +25774,33 @@ module Google
         def update!(**args)
           @data_item_views = args[:data_item_views] if args.key?(:data_item_views)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Google search entry point.
+      class GoogleCloudAiplatformV1SearchEntryPoint
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Web content snippet that can be embedded in a web page or an app
+        # webview.
+        # Corresponds to the JSON property `renderedContent`
+        # @return [String]
+        attr_accessor :rendered_content
+      
+        # Optional. Base64 encoded JSON representing array of tuple.
+        # Corresponds to the JSON property `sdkBlob`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sdk_blob
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rendered_content = args[:rendered_content] if args.key?(:rendered_content)
+          @sdk_blob = args[:sdk_blob] if args.key?(:sdk_blob)
         end
       end
       
@@ -30752,7 +30805,8 @@ module Google
       class LanguageLabsAidaTrustRecitationProtoSegmentResult
         include Google::Apis::Core::Hashable
       
-        # The dataset the segment came from.
+        # The dataset the segment came from. Datasets change often as model evolves.
+        # Treat this field as informational only and avoid depending on it directly.
         # Corresponds to the JSON property `attributionDataset`
         # @return [String]
         attr_accessor :attribution_dataset
@@ -30794,6 +30848,12 @@ module Google
         # @return [String]
         attr_accessor :segment_recitation_action
       
+        # The category of the source dataset where the segment came from. This is more
+        # stable than Dataset.
+        # Corresponds to the JSON property `sourceCategory`
+        # @return [String]
+        attr_accessor :source_category
+      
         # The segment boundary start (inclusive) and end index (exclusive) in the given
         # text. In the streaming RPC, the indexes always start from the beginning of the
         # first text in the entire stream. The indexes are measured in UTF-16 code units.
@@ -30814,6 +30874,7 @@ module Google
           @end_index = args[:end_index] if args.key?(:end_index)
           @raw_text = args[:raw_text] if args.key?(:raw_text)
           @segment_recitation_action = args[:segment_recitation_action] if args.key?(:segment_recitation_action)
+          @source_category = args[:source_category] if args.key?(:source_category)
           @start_index = args[:start_index] if args.key?(:start_index)
         end
       end
@@ -31107,7 +31168,8 @@ module Google
       class LearningGenaiRecitationSegmentResult
         include Google::Apis::Core::Hashable
       
-        # The dataset the segment came from.
+        # The dataset the segment came from. Datasets change often as model evolves.
+        # Treat this field as informational only and avoid depending on it directly.
         # Corresponds to the JSON property `attributionDataset`
         # @return [String]
         attr_accessor :attribution_dataset
@@ -31149,6 +31211,12 @@ module Google
         # @return [String]
         attr_accessor :segment_recitation_action
       
+        # The category of the source dataset where the segment came from. This is more
+        # stable than Dataset.
+        # Corresponds to the JSON property `sourceCategory`
+        # @return [String]
+        attr_accessor :source_category
+      
         # The segment boundary start (inclusive) and end index (exclusive) in the given
         # text. In the streaming RPC, the indexes always start from the beginning of the
         # first text in the entire stream. The indexes are measured in UTF-16 code units.
@@ -31169,6 +31237,7 @@ module Google
           @end_index = args[:end_index] if args.key?(:end_index)
           @raw_text = args[:raw_text] if args.key?(:raw_text)
           @segment_recitation_action = args[:segment_recitation_action] if args.key?(:segment_recitation_action)
+          @source_category = args[:source_category] if args.key?(:source_category)
           @start_index = args[:start_index] if args.key?(:start_index)
         end
       end
@@ -32967,8 +33036,9 @@ module Google
         attr_accessor :stream_terminated
         alias_method :stream_terminated?, :stream_terminated
       
-        # NOT YET IMPLEMENTED. Aggregated number of total tokens decoded so far. For
-        # streaming, this is sum of all the tokens decoded so far i.e. aggregated count.
+        # Total tokens decoded so far per response_candidate. For streaming: Count of
+        # all the tokens decoded so far (aggregated count). For unary: Count of all the
+        # tokens decoded per response_candidate.
         # Corresponds to the JSON property `totalDecodedTokenCount`
         # @return [Fixnum]
         attr_accessor :total_decoded_token_count

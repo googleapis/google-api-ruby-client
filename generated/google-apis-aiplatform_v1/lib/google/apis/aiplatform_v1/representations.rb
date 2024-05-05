@@ -4216,6 +4216,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1SearchEntryPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1SearchFeaturesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8256,6 +8262,8 @@ module Google
       class GoogleCloudAiplatformV1GroundingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :search_entry_point, as: 'searchEntryPoint', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SearchEntryPoint, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SearchEntryPoint::Representation
+      
           collection :web_search_queries, as: 'webSearchQueries'
         end
       end
@@ -10287,6 +10295,8 @@ module Google
       
           property :deploy_gke, as: 'deployGke', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke::Representation
       
+          property :fine_tune, as: 'fineTune', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::Representation
+      
           property :open_evaluation_pipeline, as: 'openEvaluationPipeline', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::Representation
       
           property :open_fine_tuning_pipeline, as: 'openFineTuningPipeline', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::Representation
@@ -10320,6 +10330,7 @@ module Google
       
           property :dedicated_resources, as: 'dedicatedResources', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DedicatedResources, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DedicatedResources::Representation
       
+          property :deploy_task_name, as: 'deployTaskName'
           property :large_model_reference, as: 'largeModelReference', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1LargeModelReference, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1LargeModelReference::Representation
       
           property :model_display_name, as: 'modelDisplayName'
@@ -11640,6 +11651,7 @@ module Google
           property :note, as: 'note'
           property :prompt_type, as: 'promptType'
           collection :stop_sequences, as: 'stopSequences'
+          property :system_instruction_gcs_uri, as: 'systemInstructionGcsUri'
           property :temperature, as: 'temperature'
           property :text, as: 'text'
           property :top_k, :numeric_string => true, as: 'topK'
@@ -12504,6 +12516,14 @@ module Google
           collection :data_item_views, as: 'dataItemViews', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DataItemView, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DataItemView::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SearchEntryPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rendered_content, as: 'renderedContent'
+          property :sdk_blob, :base64 => true, as: 'sdkBlob'
         end
       end
       
@@ -13845,6 +13865,7 @@ module Google
           property :end_index, as: 'endIndex'
           property :raw_text, as: 'rawText'
           property :segment_recitation_action, as: 'segmentRecitationAction'
+          property :source_category, as: 'sourceCategory'
           property :start_index, as: 'startIndex'
         end
       end
@@ -13918,6 +13939,7 @@ module Google
           property :end_index, as: 'endIndex'
           property :raw_text, as: 'rawText'
           property :segment_recitation_action, as: 'segmentRecitationAction'
+          property :source_category, as: 'sourceCategory'
           property :start_index, as: 'startIndex'
         end
       end

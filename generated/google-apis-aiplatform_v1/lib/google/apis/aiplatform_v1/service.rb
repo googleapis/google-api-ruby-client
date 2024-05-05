@@ -3953,7 +3953,7 @@ module Google
         # Creates a new FeatureGroup in a given project and location.
         # @param [String] parent
         #   Required. The resource name of the Location to create FeatureGroups. Format: `
-        #   projects/`project`/locations/`location`'`
+        #   projects/`project`/locations/`location``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureGroup] google_cloud_aiplatform_v1_feature_group_object
         # @param [String] feature_group_id
         #   Required. The ID to use for this FeatureGroup, which will become the final
