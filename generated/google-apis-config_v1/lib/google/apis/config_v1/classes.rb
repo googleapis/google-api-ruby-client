@@ -266,7 +266,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Arbitrary key-value metadata storage e.g. to help client tools
-        # identifiy deployments during automation. See https://google.aip.dev/148#
+        # identify deployments during automation. See https://google.aip.dev/148#
         # annotations for details on format and size limitations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
@@ -1218,6 +1218,13 @@ module Google
       class Preview
         include Google::Apis::Core::Hashable
       
+        # Optional. Arbitrary key-value metadata storage e.g. to help client tools
+        # identifiy preview during automation. See https://google.aip.dev/148#
+        # annotations for details on format and size limitations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # Optional. User-defined location of Cloud Build logs, artifacts, and in Google
         # Cloud Storage. Format: `gs://`bucket`/`folder`` A default bucket will be
         # bootstrapped if the field is not set or empty Default Bucket Format: `gs://--
@@ -1320,6 +1327,17 @@ module Google
         # @return [Array<Google::Apis::ConfigV1::TerraformError>]
         attr_accessor :tf_errors
       
+        # Output only. The current Terraform version set on the preview. It is in the
+        # format of "Major.Minor.Patch", for example, "1.3.10".
+        # Corresponds to the JSON property `tfVersion`
+        # @return [String]
+        attr_accessor :tf_version
+      
+        # Optional. The user-specified Terraform version constraint. Example: "=1.3.10".
+        # Corresponds to the JSON property `tfVersionConstraint`
+        # @return [String]
+        attr_accessor :tf_version_constraint
+      
         # Optional. The user-specified Worker Pool resource in which the Cloud Build job
         # will execute. Format projects/`project`/locations/`location`/workerPools/`
         # workerPoolId` If this field is unspecified, the default Cloud Build worker
@@ -1335,6 +1353,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @artifacts_gcs_bucket = args[:artifacts_gcs_bucket] if args.key?(:artifacts_gcs_bucket)
           @build = args[:build] if args.key?(:build)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -1351,6 +1370,8 @@ module Google
           @state = args[:state] if args.key?(:state)
           @terraform_blueprint = args[:terraform_blueprint] if args.key?(:terraform_blueprint)
           @tf_errors = args[:tf_errors] if args.key?(:tf_errors)
+          @tf_version = args[:tf_version] if args.key?(:tf_version)
+          @tf_version_constraint = args[:tf_version_constraint] if args.key?(:tf_version_constraint)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
         end
       end

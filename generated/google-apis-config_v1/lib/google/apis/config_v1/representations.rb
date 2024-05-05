@@ -603,6 +603,7 @@ module Google
       class Preview
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :artifacts_gcs_bucket, as: 'artifactsGcsBucket'
           property :build, as: 'build'
           property :create_time, as: 'createTime'
@@ -623,6 +624,8 @@ module Google
       
           collection :tf_errors, as: 'tfErrors', class: Google::Apis::ConfigV1::TerraformError, decorator: Google::Apis::ConfigV1::TerraformError::Representation
       
+          property :tf_version, as: 'tfVersion'
+          property :tf_version_constraint, as: 'tfVersionConstraint'
           property :worker_pool, as: 'workerPool'
         end
       end
