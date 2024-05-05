@@ -380,6 +380,11 @@ module Google
         # @return [String]
         attr_accessor :token
       
+        # Output only. Timestamp when this debug token was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -389,6 +394,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @token = args[:token] if args.key?(:token)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
