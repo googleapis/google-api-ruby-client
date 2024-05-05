@@ -207,7 +207,7 @@ module Google
         attr_accessor :transaction_log_retention_days
       
         # Output only. This value contains the storage location of transactional logs
-        # for the database for point-in-time recovery.
+        # used to perform point-in-time recovery (PITR) for the database.
         # Corresponds to the JSON property `transactionalLogStorageState`
         # @return [String]
         attr_accessor :transactional_log_storage_state
@@ -839,7 +839,7 @@ module Google
         # @return [String]
         attr_accessor :gce_zone
       
-        # Gemini configuration.
+        # Gemini instance configuration.
         # Corresponds to the JSON property `geminiConfig`
         # @return [Google::Apis::SqladminV1::GeminiInstanceConfig]
         attr_accessor :gemini_config
@@ -929,7 +929,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :replica_names
       
-        # Primary-DR replica pair
+        # A primary instance and disaster recovery (DR) replica pair. A DR replica is a
+        # cross-region replica that you designate for failover in the event that the
+        # primary instance experiences regional failure. Only applicable to MySQL.
         # Corresponds to the JSON property `replicationCluster`
         # @return [Google::Apis::SqladminV1::ReplicationCluster]
         attr_accessor :replication_cluster
@@ -1741,41 +1743,41 @@ module Google
         end
       end
       
-      # Gemini configuration.
+      # Gemini instance configuration.
       class GeminiInstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. Whether active query is enabled.
+        # Output only. Whether the active query is enabled.
         # Corresponds to the JSON property `activeQueryEnabled`
         # @return [Boolean]
         attr_accessor :active_query_enabled
         alias_method :active_query_enabled?, :active_query_enabled
       
-        # Output only. Whether gemini is enabled.
+        # Output only. Whether Gemini is enabled.
         # Corresponds to the JSON property `entitled`
         # @return [Boolean]
         attr_accessor :entitled
         alias_method :entitled?, :entitled
       
-        # Output only. Whether flag recommender is enabled.
+        # Output only. Whether the flag recommender is enabled.
         # Corresponds to the JSON property `flagRecommenderEnabled`
         # @return [Boolean]
         attr_accessor :flag_recommender_enabled
         alias_method :flag_recommender_enabled?, :flag_recommender_enabled
       
-        # Output only. Whether vacuum management is enabled.
+        # Output only. Whether the vacuum management is enabled.
         # Corresponds to the JSON property `googleVacuumMgmtEnabled`
         # @return [Boolean]
         attr_accessor :google_vacuum_mgmt_enabled
         alias_method :google_vacuum_mgmt_enabled?, :google_vacuum_mgmt_enabled
       
-        # Output only. Whether index advisor is enabled.
+        # Output only. Whether the index advisor is enabled.
         # Corresponds to the JSON property `indexAdvisorEnabled`
         # @return [Boolean]
         attr_accessor :index_advisor_enabled
         alias_method :index_advisor_enabled?, :index_advisor_enabled
       
-        # Output only. Whether oom session cancel is enabled.
+        # Output only. Whether canceling the out-of-memory (OOM) session is enabled.
         # Corresponds to the JSON property `oomSessionCancelEnabled`
         # @return [Boolean]
         attr_accessor :oom_session_cancel_enabled
@@ -2532,12 +2534,12 @@ module Google
         # ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=
         # TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `
         # ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=
-        # ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority
+        # ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` has priority
         # over the value of `require_ssl`. For example, for the pair `ssl_mode=
-        # ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means
-        # only accept SSL connections, while the `require_ssl=false` means accept both
-        # non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode`
-        # in this case and accept only SSL connections.
+        # ENCRYPTED_ONLY` and `require_ssl=false`, `ssl_mode=ENCRYPTED_ONLY` means
+        # accept only SSL connections, while `require_ssl=false` means accept both non-
+        # SSL and SSL connections. In this case, MySQL and PostgreSQL databases respect `
+        # ssl_mode` and accepts only SSL connections.
         # Corresponds to the JSON property `sslMode`
         # @return [String]
         attr_accessor :ssl_mode
@@ -3306,12 +3308,14 @@ module Google
         end
       end
       
-      # Primary-DR replica pair
+      # A primary instance and disaster recovery (DR) replica pair. A DR replica is a
+      # cross-region replica that you designate for failover in the event that the
+      # primary instance experiences regional failure. Only applicable to MySQL.
       class ReplicationCluster
         include Google::Apis::Core::Hashable
       
-        # Output only. read-only field that indicates if the replica is a dr_replica;
-        # not set for a primary.
+        # Output only. Read-only field that indicates whether the replica is a DR
+        # replica. This field is not set if the instance is a primary instance.
         # Corresponds to the JSON property `drReplica`
         # @return [Boolean]
         attr_accessor :dr_replica
@@ -3320,8 +3324,9 @@ module Google
         # Optional. If the instance is a primary instance, then this field identifies
         # the disaster recovery (DR) replica. A DR replica is an optional configuration
         # for Enterprise Plus edition instances. If the instance is a read replica, then
-        # the field is not set. Users can set this field to set a designated DR replica
-        # for a primary. Removing this field removes the DR replica.
+        # the field is not set. Set this field to a replica name to designate a DR
+        # replica for a primary instance. Remove the replica name to remove the DR
+        # replica designation.
         # Corresponds to the JSON property `failoverDrReplicaName`
         # @return [String]
         attr_accessor :failover_dr_replica_name
@@ -3866,8 +3871,9 @@ module Google
       class SqlInstancesStartExternalSyncRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. MigrationType decides if the migration is a physical file based
-        # migration or logical migration.
+        # Optional. MigrationType configures the migration to use physical files or
+        # logical dump files. If not set, then the logical dump file configuration is
+        # used. Valid values are `LOGICAL` or `PHYSICAL`. Only applicable to MySQL.
         # Corresponds to the JSON property `migrationType`
         # @return [String]
         attr_accessor :migration_type
@@ -3912,8 +3918,9 @@ module Google
       class SqlInstancesVerifyExternalSyncSettingsRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. MigrationType decides if the migration is a physical file based
-        # migration or logical migration
+        # Optional. MigrationType configures the migration to use physical files or
+        # logical dump files. If not set, then the logical dump file configuration is
+        # used. Valid values are `LOGICAL` or `PHYSICAL`. Only applicable to MySQL.
         # Corresponds to the JSON property `migrationType`
         # @return [String]
         attr_accessor :migration_type
@@ -3928,8 +3935,7 @@ module Google
         # @return [String]
         attr_accessor :sync_mode
       
-        # Optional. Parallel level for initial data sync. Currently only applicable for
-        # PostgreSQL.
+        # Optional. Parallel level for initial data sync. Only applicable for PostgreSQL.
         # Corresponds to the JSON property `syncParallelLevel`
         # @return [String]
         attr_accessor :sync_parallel_level
