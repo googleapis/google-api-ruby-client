@@ -205,9 +205,9 @@ module Google
       class AnthosCluster
         include Google::Apis::Core::Hashable
       
-        # Membership of the GKE Hub-registered cluster to which to apply the Skaffold
-        # configuration. Format is `projects/`project`/locations/`location`/memberships/`
-        # membership_name``.
+        # Optional. Membership of the GKE Hub-registered cluster to which to apply the
+        # Skaffold configuration. Format is `projects/`project`/locations/`location`/
+        # memberships/`membership_name``.
         # Corresponds to the JSON property `membership`
         # @return [String]
         attr_accessor :membership
@@ -2031,8 +2031,8 @@ module Google
       class GkeCluster
         include Google::Apis::Core::Hashable
       
-        # Information specifying a GKE Cluster. Format is `projects/`project_id`/
-        # locations/`location_id`/clusters/`cluster_id``.
+        # Optional. Information specifying a GKE Cluster. Format is `projects/`
+        # project_id`/locations/`location_id`/clusters/`cluster_id``.
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
