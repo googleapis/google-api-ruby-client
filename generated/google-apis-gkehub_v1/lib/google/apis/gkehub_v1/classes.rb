@@ -2720,6 +2720,26 @@ module Google
         end
       end
       
+      # Holds non-protocol-related configuration options.
+      class IdentityServiceIdentityServiceOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Determines the lifespan of STS tokens issued by Anthos Identity
+        # Service.
+        # Corresponds to the JSON property `sessionDuration`
+        # @return [String]
+        attr_accessor :session_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session_duration = args[:session_duration] if args.key?(:session_duration)
+        end
+      end
+      
       # Configuration for the LDAP Auth flow.
       class IdentityServiceLdapConfig
         include Google::Apis::Core::Hashable
@@ -2769,6 +2789,11 @@ module Google
         # @return [Array<Google::Apis::GkehubV1::IdentityServiceAuthMethod>]
         attr_accessor :auth_methods
       
+        # Holds non-protocol-related configuration options.
+        # Corresponds to the JSON property `identityServiceOptions`
+        # @return [Google::Apis::GkehubV1::IdentityServiceIdentityServiceOptions]
+        attr_accessor :identity_service_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2776,6 +2801,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auth_methods = args[:auth_methods] if args.key?(:auth_methods)
+          @identity_service_options = args[:identity_service_options] if args.key?(:identity_service_options)
         end
       end
       
@@ -5291,6 +5317,11 @@ module Google
         # @return [Array<Google::Apis::GkehubV1::ServiceMeshStatusDetails>]
         attr_accessor :details
       
+        # Output only. Implementation of managed control plane.
+        # Corresponds to the JSON property `implementation`
+        # @return [String]
+        attr_accessor :implementation
+      
         # LifecycleState of control plane management.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -5303,6 +5334,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
+          @implementation = args[:implementation] if args.key?(:implementation)
           @state = args[:state] if args.key?(:state)
         end
       end
