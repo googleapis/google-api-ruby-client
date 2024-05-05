@@ -51,147 +51,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets the Widget Config using the uuid.
-        # @param [String] location
-        #   Required. The location resource where lookup widget will be performed. Format:
-        #   `locations/`location``
-        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigRequest] google_cloud_discoveryengine_v1alpha_lookup_widget_config_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def lookup_location_widget_config(location, google_cloud_discoveryengine_v1alpha_lookup_widget_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+location}/lookupWidgetConfig', options)
-          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigRequest::Representation
-          command.request_object = google_cloud_discoveryengine_v1alpha_lookup_widget_config_request_object
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigResponse::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigResponse
-          command.params['location'] = location unless location.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Performs a user input completion with keyword suggestion. Similar to the
-        # CompletionService.CompleteQuery method, but a widget version that allows
-        # CompleteQuery without API Key. It supports CompleteQuery with or without JWT
-        # token.
-        # @param [String] location
-        #   Required. The location resource where widget complete query will be performed.
-        #   Format: `locations/`location``
-        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryRequest] google_cloud_discoveryengine_v1alpha_widget_complete_query_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def widget_location_complete_query(location, google_cloud_discoveryengine_v1alpha_widget_complete_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+location}/widgetCompleteQuery', options)
-          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryRequest::Representation
-          command.request_object = google_cloud_discoveryengine_v1alpha_widget_complete_query_request_object
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryResponse::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryResponse
-          command.params['location'] = location unless location.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Converse a conversation with Widget.
-        # @param [String] location
-        #   Required. The location resource where widget converse conversation will be
-        #   performed. Format: `locations/`location``
-        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationRequest] google_cloud_discoveryengine_v1alpha_widget_converse_conversation_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def widget_location_converse_conversation(location, google_cloud_discoveryengine_v1alpha_widget_converse_conversation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+location}/widgetConverseConversation', options)
-          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationRequest::Representation
-          command.request_object = google_cloud_discoveryengine_v1alpha_widget_converse_conversation_request_object
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationResponse::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationResponse
-          command.params['location'] = location unless location.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Performs a search. Similar to the SearchService.Search method, but a widget
-        # version that allows search without API Key. It supports search with or without
-        # JWT token.
-        # @param [String] location
-        #   Required. The location resource where widget search will be performed. Format:
-        #   `locations/`location``
-        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetSearchRequest] google_cloud_discoveryengine_v1alpha_widget_search_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetSearchResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetSearchResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def widget_location_search(location, google_cloud_discoveryengine_v1alpha_widget_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+location}/widgetSearch', options)
-          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetSearchRequest::Representation
-          command.request_object = google_cloud_discoveryengine_v1alpha_widget_search_request_object
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetSearchResponse::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetSearchResponse
-          command.params['location'] = location unless location.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets a Project. Returns NOT_FOUND when the project is not yet created.
         # @param [String] name
         #   Required. Full resource name of a Project, such as `projects/`
@@ -722,7 +581,7 @@ module Google
         #   permission to list DataStores under this location, regardless of whether or
         #   not this data store exists, a PERMISSION_DENIED error is returned.
         # @param [String] filter
-        #   Filter by solution type. For example: filter = 'solution_type:
+        #   Filter by solution type . For example: filter = 'solution_type:
         #   SOLUTION_TYPE_SEARCH'
         # @param [Fixnum] page_size
         #   Maximum number of DataStores to return. If unspecified, defaults to 10. The
@@ -1576,6 +1435,38 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a list of all the custom models.
+        # @param [String] data_store
+        #   Required. The resource name of the parent Data Store, such as `projects/*/
+        #   locations/global/collections/default_collection/dataStores/default_data_store`.
+        #   This field is used to identify the data store where to fetch the models from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_collection_data_store_custom_models(data_store, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+dataStore}/customModels', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse
+          command.params['dataStore'] = data_store unless data_store.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4573,7 +4464,7 @@ module Google
         #   permission to list DataStores under this location, regardless of whether or
         #   not this data store exists, a PERMISSION_DENIED error is returned.
         # @param [String] filter
-        #   Filter by solution type. For example: filter = 'solution_type:
+        #   Filter by solution type . For example: filter = 'solution_type:
         #   SOLUTION_TYPE_SEARCH'
         # @param [Fixnum] page_size
         #   Maximum number of DataStores to return. If unspecified, defaults to 10. The
