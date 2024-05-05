@@ -115,7 +115,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_boundary, as: 'accessBoundary', class: Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundary, decorator: Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundary::Representation
       
-          collection :audiences, as: 'audiences'
           property :user_project, as: 'userProject'
         end
       end
@@ -166,7 +165,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_boundary, as: 'accessBoundary', class: Google::Apis::StsV1beta::GoogleIdentityStsV1betaAccessBoundary, decorator: Google::Apis::StsV1beta::GoogleIdentityStsV1betaAccessBoundary::Representation
       
-          collection :audiences, as: 'audiences'
           property :user_project, as: 'userProject'
         end
       end
