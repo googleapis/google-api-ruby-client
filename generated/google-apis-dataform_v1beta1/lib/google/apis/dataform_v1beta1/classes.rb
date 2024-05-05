@@ -439,6 +439,25 @@ module Google
         end
       end
       
+      # `CommitRepositoryChanges` response message.
+      class CommitRepositoryChangesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The commit SHA of the current commit.
+        # Corresponds to the JSON property `commitSha`
+        # @return [String]
+        attr_accessor :commit_sha
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
+        end
+      end
+      
       # `CommitWorkspaceChanges` request message.
       class CommitWorkspaceChangesRequest
         include Google::Apis::Core::Hashable
@@ -524,6 +543,11 @@ module Google
         # @return [Array<Google::Apis::DataformV1beta1::CompilationError>]
         attr_accessor :compilation_errors
       
+        # Describes encryption state of a resource.
+        # Corresponds to the JSON property `dataEncryptionState`
+        # @return [Google::Apis::DataformV1beta1::DataEncryptionState]
+        attr_accessor :data_encryption_state
+      
         # Output only. The version of `@dataform/core` that was used for compilation.
         # Corresponds to the JSON property `dataformCoreVersion`
         # @return [String]
@@ -567,6 +591,7 @@ module Google
         def update!(**args)
           @code_compilation_config = args[:code_compilation_config] if args.key?(:code_compilation_config)
           @compilation_errors = args[:compilation_errors] if args.key?(:compilation_errors)
+          @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @dataform_core_version = args[:dataform_core_version] if args.key?(:dataform_core_version)
           @git_commitish = args[:git_commitish] if args.key?(:git_commitish)
           @name = args[:name] if args.key?(:name)
@@ -657,6 +682,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @token_status = args[:token_status] if args.key?(:token_status)
+        end
+      end
+      
+      # Describes encryption state of a resource.
+      class DataEncryptionState
+        include Google::Apis::Core::Hashable
+      
+        # The KMS key version name with which data of a resource is encrypted.
+        # Corresponds to the JSON property `kmsKeyVersionName`
+        # @return [String]
+        attr_accessor :kms_key_version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
         end
       end
       
@@ -2281,6 +2325,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Describes encryption state of a resource.
+        # Corresponds to the JSON property `dataEncryptionState`
+        # @return [Google::Apis::DataformV1beta1::DataEncryptionState]
+        attr_accessor :data_encryption_state
+      
         # Optional. The repository's user-friendly name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -2290,6 +2339,15 @@ module Google
         # Corresponds to the JSON property `gitRemoteSettings`
         # @return [Google::Apis::DataformV1beta1::GitRemoteSettings]
         attr_accessor :git_remote_settings
+      
+        # Optional. The reference to a KMS encryption key. If provided, it will be used
+        # to encrypt user data in the repository and all child resources. It is not
+        # possible to add or update the encryption key after the repository is created.
+        # Example: `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/
+        # cryptoKeys/[key]`
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
       
         # Optional. Repository user labels.
         # Corresponds to the JSON property `labels`
@@ -2342,8 +2400,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @display_name = args[:display_name] if args.key?(:display_name)
           @git_remote_settings = args[:git_remote_settings] if args.key?(:git_remote_settings)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @npmrc_environment_variables_secret_version = args[:npmrc_environment_variables_secret_version] if args.key?(:npmrc_environment_variables_secret_version)
@@ -2784,6 +2844,11 @@ module Google
         # @return [String]
         attr_accessor :compilation_result
       
+        # Describes encryption state of a resource.
+        # Corresponds to the JSON property `dataEncryptionState`
+        # @return [Google::Apis::DataformV1beta1::DataEncryptionState]
+        attr_accessor :data_encryption_state
+      
         # Includes various configuration options for a workflow invocation. If both `
         # included_targets` and `included_tags` are unset, all actions will be included.
         # Corresponds to the JSON property `invocationConfig`
@@ -2828,6 +2893,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @compilation_result = args[:compilation_result] if args.key?(:compilation_result)
+          @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @invocation_config = args[:invocation_config] if args.key?(:invocation_config)
           @invocation_timing = args[:invocation_timing] if args.key?(:invocation_timing)
           @name = args[:name] if args.key?(:name)
@@ -2901,6 +2967,11 @@ module Google
       class Workspace
         include Google::Apis::Core::Hashable
       
+        # Describes encryption state of a resource.
+        # Corresponds to the JSON property `dataEncryptionState`
+        # @return [Google::Apis::DataformV1beta1::DataEncryptionState]
+        attr_accessor :data_encryption_state
+      
         # Identifier. The workspace's name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2912,6 +2983,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @name = args[:name] if args.key?(:name)
         end
       end

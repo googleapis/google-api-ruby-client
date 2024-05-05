@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommitRepositoryChangesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CommitWorkspaceChangesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,12 @@ module Google
       end
       
       class ComputeRepositoryAccessTokenStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataEncryptionState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -653,6 +665,13 @@ module Google
         end
       end
       
+      class CommitRepositoryChangesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_sha, as: 'commitSha'
+        end
+      end
+      
       class CommitWorkspaceChangesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -680,6 +699,8 @@ module Google
           property :code_compilation_config, as: 'codeCompilationConfig', class: Google::Apis::DataformV1beta1::CodeCompilationConfig, decorator: Google::Apis::DataformV1beta1::CodeCompilationConfig::Representation
       
           collection :compilation_errors, as: 'compilationErrors', class: Google::Apis::DataformV1beta1::CompilationError, decorator: Google::Apis::DataformV1beta1::CompilationError::Representation
+      
+          property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
       
           property :dataform_core_version, as: 'dataformCoreVersion'
           property :git_commitish, as: 'gitCommitish'
@@ -715,6 +736,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :token_status, as: 'tokenStatus'
+        end
+      end
+      
+      class DataEncryptionState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_version_name, as: 'kmsKeyVersionName'
         end
       end
       
@@ -1193,9 +1221,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
+      
           property :display_name, as: 'displayName'
           property :git_remote_settings, as: 'gitRemoteSettings', class: Google::Apis::DataformV1beta1::GitRemoteSettings, decorator: Google::Apis::DataformV1beta1::GitRemoteSettings::Representation
       
+          property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :npmrc_environment_variables_secret_version, as: 'npmrcEnvironmentVariablesSecretVersion'
@@ -1327,6 +1358,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compilation_result, as: 'compilationResult'
+          property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
+      
           property :invocation_config, as: 'invocationConfig', class: Google::Apis::DataformV1beta1::InvocationConfig, decorator: Google::Apis::DataformV1beta1::InvocationConfig::Representation
       
           property :invocation_timing, as: 'invocationTiming', class: Google::Apis::DataformV1beta1::Interval, decorator: Google::Apis::DataformV1beta1::Interval::Representation
@@ -1359,6 +1392,8 @@ module Google
       class Workspace
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
+      
           property :name, as: 'name'
         end
       end
