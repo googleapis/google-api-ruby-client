@@ -291,7 +291,7 @@ module Google
         #   this is left blank, `asc` is used Note that an empty `order_by` string results
         #   in default order, which is order by `name` in ascending order.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return.
+        #   Optional. The maximum number of items to return. The default value is 100.
         # @param [String] page_token
         #   Optional. The next_page_token value returned from a previous List request, if
         #   any.
@@ -597,7 +597,7 @@ module Google
         #   this is left blank, `asc` is used Note that an empty `order_by` string results
         #   in default order, which is order by `name` in ascending order.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return.
+        #   Optional. The maximum number of items to return. The default value is 100.
         # @param [String] page_token
         #   Optional. The next_page_token value returned from a previous List request, if
         #   any.
@@ -907,7 +907,7 @@ module Google
         #   empty `order_by` string results in default order, which is order by `name` in
         #   ascending order.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return.
+        #   Optional. The maximum number of items to return. The default value is 100.
         # @param [String] page_token
         #   Optional. The next_page_token value returned from a previous List request, if
         #   any.
