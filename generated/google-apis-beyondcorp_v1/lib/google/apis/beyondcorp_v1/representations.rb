@@ -388,6 +388,8 @@ module Google
           property :host_type, as: 'hostType'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :type, as: 'type'
           property :uid, as: 'uid'
@@ -465,6 +467,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :type, as: 'type'
           property :uid, as: 'uid'
