@@ -802,6 +802,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WifiSsid
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WifiSsidPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WipeAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1235,6 +1247,8 @@ module Google
           property :tethering_settings, as: 'tetheringSettings'
           property :usb_data_access, as: 'usbDataAccess'
           property :wifi_direct_settings, as: 'wifiDirectSettings'
+          property :wifi_ssid_policy, as: 'wifiSsidPolicy', class: Google::Apis::AndroidmanagementV1::WifiSsidPolicy, decorator: Google::Apis::AndroidmanagementV1::WifiSsidPolicy::Representation
+      
         end
       end
       
@@ -2342,6 +2356,22 @@ module Google
           property :parent_frame_url, as: 'parentFrameUrl'
           collection :permissions, as: 'permissions'
           property :value, as: 'value'
+        end
+      end
+      
+      class WifiSsid
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :wifi_ssid, as: 'wifiSsid'
+        end
+      end
+      
+      class WifiSsidPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :wifi_ssid_policy_type, as: 'wifiSsidPolicyType'
+          collection :wifi_ssids, as: 'wifiSsids', class: Google::Apis::AndroidmanagementV1::WifiSsid, decorator: Google::Apis::AndroidmanagementV1::WifiSsid::Representation
+      
         end
       end
       
