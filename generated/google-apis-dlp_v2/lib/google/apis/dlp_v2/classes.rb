@@ -4621,7 +4621,7 @@ module Google
       end
       
       # Classification of infoTypes to organize them according to geographic location,
-      # industry, and data type. NEXT_ID: 47
+      # industry, and data type. NEXT_ID: 48
       class GooglePrivacyDlpV2InfoTypeCategory
         include Google::Apis::Core::Hashable
       
