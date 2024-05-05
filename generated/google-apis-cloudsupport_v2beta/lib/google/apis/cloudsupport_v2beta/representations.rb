@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EmailMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EscalateCaseRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +131,12 @@ module Google
       end
       
       class Escalation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeedItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -173,6 +185,18 @@ module Google
       end
       
       class SearchCasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShowFeedResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TextContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -365,6 +389,21 @@ module Google
         end
       end
       
+      class EmailMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actor, as: 'actor', class: Google::Apis::CloudsupportV2beta::Actor, decorator: Google::Apis::CloudsupportV2beta::Actor::Representation
+      
+          property :body_content, as: 'bodyContent', class: Google::Apis::CloudsupportV2beta::TextContent, decorator: Google::Apis::CloudsupportV2beta::TextContent::Representation
+      
+          collection :cc_email_addresses, as: 'ccEmailAddresses'
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          collection :recipient_email_addresses, as: 'recipientEmailAddresses'
+          property :subject, as: 'subject'
+        end
+      end
+      
       class EscalateCaseRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -378,6 +417,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :justification, as: 'justification'
           property :reason, as: 'reason'
+        end
+      end
+      
+      class FeedItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment, as: 'attachment', class: Google::Apis::CloudsupportV2beta::Attachment, decorator: Google::Apis::CloudsupportV2beta::Attachment::Representation
+      
+          property :comment, as: 'comment', class: Google::Apis::CloudsupportV2beta::Comment, decorator: Google::Apis::CloudsupportV2beta::Comment::Representation
+      
+          property :deleted_attachment, as: 'deletedAttachment', class: Google::Apis::CloudsupportV2beta::Attachment, decorator: Google::Apis::CloudsupportV2beta::Attachment::Representation
+      
+          property :email_message, as: 'emailMessage', class: Google::Apis::CloudsupportV2beta::EmailMessage, decorator: Google::Apis::CloudsupportV2beta::EmailMessage::Representation
+      
+          property :event_time, as: 'eventTime'
         end
       end
       
@@ -485,6 +539,22 @@ module Google
           collection :cases, as: 'cases', class: Google::Apis::CloudsupportV2beta::Case, decorator: Google::Apis::CloudsupportV2beta::Case::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ShowFeedResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :feed_items, as: 'feedItems', class: Google::Apis::CloudsupportV2beta::FeedItem, decorator: Google::Apis::CloudsupportV2beta::FeedItem::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class TextContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :plain_text, as: 'plainText'
         end
       end
       
