@@ -3232,7 +3232,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1NotebookExecutionJobCustomEnvironmentSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1NotebookExecutionJobDataformRepositorySource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1NotebookExecutionJobDirectNotebookSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5081,6 +5093,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1SearchDataItemsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1SearchEntryPoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9962,6 +9980,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :retrieval_queries, as: 'retrievalQueries'
+          property :search_entry_point, as: 'searchEntryPoint', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SearchEntryPoint, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SearchEntryPoint::Representation
+      
           collection :web_search_queries, as: 'webSearchQueries'
         end
       end
@@ -11607,7 +11627,6 @@ module Google
       
           collection :ground_truth_fields, as: 'groundTruthFields', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringSchemaFieldSchema, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringSchemaFieldSchema::Representation
       
-          property :instance_type, as: 'instanceType'
           collection :prediction_fields, as: 'predictionFields', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringSchemaFieldSchema, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringSchemaFieldSchema::Representation
       
         end
@@ -12009,7 +12028,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom_environment_spec, as: 'customEnvironmentSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookExecutionJobCustomEnvironmentSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookExecutionJobCustomEnvironmentSpec::Representation
+      
           property :dataform_repository_source, as: 'dataformRepositorySource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookExecutionJobDataformRepositorySource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookExecutionJobDataformRepositorySource::Representation
+      
+          property :direct_notebook_source, as: 'directNotebookSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookExecutionJobDirectNotebookSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookExecutionJobDirectNotebookSource::Representation
       
           property :display_name, as: 'displayName'
           property :execution_timeout, as: 'executionTimeout'
@@ -12028,11 +12051,30 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1NotebookExecutionJobCustomEnvironmentSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_spec, as: 'machineSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec::Representation
+      
+          property :network_spec, as: 'networkSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NetworkSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NetworkSpec::Representation
+      
+          property :persistent_disk_spec, as: 'persistentDiskSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PersistentDiskSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PersistentDiskSpec::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1NotebookExecutionJobDataformRepositorySource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :commit_sha, as: 'commitSha'
           property :dataform_repository_resource_name, as: 'dataformRepositoryResourceName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1NotebookExecutionJobDirectNotebookSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
         end
       end
       
@@ -12537,6 +12579,8 @@ module Google
       
           property :deploy_gke, as: 'deployGke', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke::Representation
       
+          property :fine_tune, as: 'fineTune', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences::Representation
+      
           property :open_evaluation_pipeline, as: 'openEvaluationPipeline', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences::Representation
       
           property :open_fine_tuning_pipeline, as: 'openFineTuningPipeline', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences::Representation
@@ -12570,6 +12614,7 @@ module Google
       
           property :dedicated_resources, as: 'dedicatedResources', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DedicatedResources, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DedicatedResources::Representation
       
+          property :deploy_task_name, as: 'deployTaskName'
           property :large_model_reference, as: 'largeModelReference', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1LargeModelReference, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1LargeModelReference::Representation
       
           property :model_display_name, as: 'modelDisplayName'
@@ -15096,6 +15141,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1SearchEntryPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rendered_content, as: 'renderedContent'
+          property :sdk_blob, :base64 => true, as: 'sdkBlob'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1SearchFeaturesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16776,6 +16829,7 @@ module Google
           property :end_index, as: 'endIndex'
           property :raw_text, as: 'rawText'
           property :segment_recitation_action, as: 'segmentRecitationAction'
+          property :source_category, as: 'sourceCategory'
           property :start_index, as: 'startIndex'
         end
       end
@@ -16849,6 +16903,7 @@ module Google
           property :end_index, as: 'endIndex'
           property :raw_text, as: 'rawText'
           property :segment_recitation_action, as: 'segmentRecitationAction'
+          property :source_category, as: 'sourceCategory'
           property :start_index, as: 'startIndex'
         end
       end
