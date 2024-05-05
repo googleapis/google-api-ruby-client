@@ -90,8 +90,8 @@ module Google
         # Updates an InsightTypeConfig change. This will create a new revision of the
         # config.
         # @param [String] name
-        #   Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]
-        #   /insightTypes/[INSIGHT_TYPE_ID]/config
+        #   Identifier. Name of insight type config. Eg, projects/[PROJECT_NUMBER]/
+        #   locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
         # @param [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1InsightTypeConfig] google_cloud_recommender_v1_insight_type_config_object
         # @param [String] update_mask
         #   The list of fields to be updated.
@@ -297,8 +297,8 @@ module Google
         
         # Updates a Recommender Config. This will create a new revision of the config.
         # @param [String] name
-        #   Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/
-        #   recommenders/[RECOMMENDER_ID]/config
+        #   Identifier. Name of recommender config. Eg, projects/[PROJECT_NUMBER]/
+        #   locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
         # @param [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1RecommenderConfig] google_cloud_recommender_v1_recommender_config_object
         # @param [String] update_mask
         #   The list of fields to be updated.
@@ -997,8 +997,8 @@ module Google
         # Updates an InsightTypeConfig change. This will create a new revision of the
         # config.
         # @param [String] name
-        #   Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]
-        #   /insightTypes/[INSIGHT_TYPE_ID]/config
+        #   Identifier. Name of insight type config. Eg, projects/[PROJECT_NUMBER]/
+        #   locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
         # @param [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1InsightTypeConfig] google_cloud_recommender_v1_insight_type_config_object
         # @param [String] update_mask
         #   The list of fields to be updated.
@@ -1204,8 +1204,8 @@ module Google
         
         # Updates a Recommender Config. This will create a new revision of the config.
         # @param [String] name
-        #   Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/
-        #   recommenders/[RECOMMENDER_ID]/config
+        #   Identifier. Name of recommender config. Eg, projects/[PROJECT_NUMBER]/
+        #   locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
         # @param [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1RecommenderConfig] google_cloud_recommender_v1_recommender_config_object
         # @param [String] update_mask
         #   The list of fields to be updated.
@@ -1528,8 +1528,8 @@ module Google
         # Updates an InsightTypeConfig change. This will create a new revision of the
         # config.
         # @param [String] name
-        #   Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]
-        #   /insightTypes/[INSIGHT_TYPE_ID]/config
+        #   Identifier. Name of insight type config. Eg, projects/[PROJECT_NUMBER]/
+        #   locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
         # @param [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1InsightTypeConfig] google_cloud_recommender_v1_insight_type_config_object
         # @param [String] update_mask
         #   The list of fields to be updated.
@@ -1735,8 +1735,8 @@ module Google
         
         # Updates a Recommender Config. This will create a new revision of the config.
         # @param [String] name
-        #   Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/
-        #   recommenders/[RECOMMENDER_ID]/config
+        #   Identifier. Name of recommender config. Eg, projects/[PROJECT_NUMBER]/
+        #   locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
         # @param [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1RecommenderConfig] google_cloud_recommender_v1_recommender_config_object
         # @param [String] update_mask
         #   The list of fields to be updated.
