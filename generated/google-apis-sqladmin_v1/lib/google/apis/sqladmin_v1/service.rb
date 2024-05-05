@@ -1056,16 +1056,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Promotes the read replica instance to be a stand-alone Cloud SQL instance.
-        # Using this operation might cause your instance to restart.
+        # Promotes the read replica instance to be an independent Cloud SQL primary
+        # instance. Using this operation might cause your instance to restart.
         # @param [String] project
         #   ID of the project that contains the read replica.
         # @param [String] instance
         #   Cloud SQL read replica instance name.
         # @param [Boolean] failover
-        #   Set to true if the promote operation should attempt to re-add the original
-        #   primary as a replica when it comes back online. Otherwise, if this value is
-        #   false or not set, the original primary will be a standalone instance.
+        #   Set to true to invoke a replica failover to the designated DR replica. As part
+        #   of replica failover, the promote operation attempts to add the original
+        #   primary instance as a replica of the promoted DR replica when the original
+        #   primary instance comes back online. If set to false or not specified, then the
+        #   original primary instance becomes an independent Cloud SQL primary instance.
+        #   Only applicable to MySQL.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1373,7 +1376,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Switches over from the primary instance to the replica instance.
+        # Switches over from the primary instance to the designated DR replica instance.
         # @param [String] project
         #   ID of the project that contains the replica.
         # @param [String] instance
