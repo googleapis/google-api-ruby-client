@@ -1660,6 +1660,68 @@ module Google
         end
       end
       
+      # Report v2 extension proto for passing the resource metadata associated with a
+      # resource create/update/delete/undelete event from ESF to Chemist.
+      # ResourceEvent proto should be serialized into the ReportRequest.operations.
+      # extensions.
+      class V2ResourceEvent
+        include Google::Apis::Core::Hashable
+      
+        # The destinations field determines which backend services should handle the
+        # event. This should be specified as a comma-delimited string.
+        # Corresponds to the JSON property `destinations`
+        # @return [String]
+        attr_accessor :destinations
+      
+        # This message defines core attributes for a resource. A resource is an
+        # addressable (named) entity provided by the destination service. For example, a
+        # file stored on a network storage service.
+        # Corresponds to the JSON property `parent`
+        # @return [Google::Apis::ServicecontrolV2::Resource]
+        attr_accessor :parent
+      
+        # The api path the resource event was created in. This should match the source
+        # of the `payload` field. For direct integrations with Chemist, this should
+        # generally be the RESPONSE. go/resource-event-pipeline-type
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # The payload contains metadata associated with the resource event. A
+        # ResourceEventPayloadStatus is provided instead if the original payload cannot
+        # be returned due to a limitation (e.g. size limit).
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # This message defines core attributes for a resource. A resource is an
+        # addressable (named) entity provided by the destination service. For example, a
+        # file stored on a network storage service.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::ServicecontrolV2::Resource]
+        attr_accessor :resource
+      
+        # The resource event type determines how the backend service should process the
+        # event.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @parent = args[:parent] if args.key?(:parent)
+          @path = args[:path] if args.key?(:path)
+          @payload = args[:payload] if args.key?(:payload)
+          @resource = args[:resource] if args.key?(:resource)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Provides information about the Policy violation info for this request.
       class ViolationInfo
         include Google::Apis::Core::Hashable
