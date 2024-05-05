@@ -176,6 +176,31 @@ module Google
         end
       end
       
+      # An application that accesses Google Cloud APIs.
+      class Application
+        include Google::Apis::Core::Hashable
+      
+        # The OAuth client ID of the application.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # The name of the application. Example: "Cloud Console"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -953,6 +978,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. A list of applications that are subject to this binding's
+        # restrictions. If the list is empty, the binding restrictions will universally
+        # apply to all applications.
+        # Corresponds to the JSON property `restrictedClientApplications`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::Application>]
+        attr_accessor :restricted_client_applications
+      
         def initialize(**args)
            update!(**args)
         end
@@ -963,6 +995,7 @@ module Google
           @dry_run_access_levels = args[:dry_run_access_levels] if args.key?(:dry_run_access_levels)
           @group_key = args[:group_key] if args.key?(:group_key)
           @name = args[:name] if args.key?(:name)
+          @restricted_client_applications = args[:restricted_client_applications] if args.key?(:restricted_client_applications)
         end
       end
       
