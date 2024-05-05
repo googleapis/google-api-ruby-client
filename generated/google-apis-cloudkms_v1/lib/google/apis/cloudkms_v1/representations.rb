@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutokeyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KeyHandle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KeyOperationAttestation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +221,12 @@ module Google
       end
       
       class ListImportJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListKeyHandlesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -257,6 +275,12 @@ module Google
       end
       
       class MacVerifyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -311,6 +335,18 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShowEffectiveAutokeyConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -401,6 +437,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class AutokeyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_project, as: 'keyProject'
+          property :name, as: 'name'
         end
       end
       
@@ -630,6 +674,15 @@ module Google
         end
       end
       
+      class KeyHandle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+          property :name, as: 'name'
+          property :resource_type_selector, as: 'resourceTypeSelector'
+        end
+      end
+      
       class KeyOperationAttestation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -685,6 +738,14 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class ListKeyHandlesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :key_handles, as: 'keyHandles', class: Google::Apis::CloudkmsV1::KeyHandle, decorator: Google::Apis::CloudkmsV1::KeyHandle::Representation
+      
         end
       end
       
@@ -764,6 +825,18 @@ module Google
           property :verified_data_crc32c, as: 'verifiedDataCrc32c'
           property :verified_mac_crc32c, as: 'verifiedMacCrc32c'
           property :verified_success_integrity, as: 'verifiedSuccessIntegrity'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::CloudkmsV1::Status, decorator: Google::Apis::CloudkmsV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       
@@ -866,6 +939,22 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::CloudkmsV1::Policy, decorator: Google::Apis::CloudkmsV1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class ShowEffectiveAutokeyConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_project, as: 'keyProject'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       

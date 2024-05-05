@@ -319,6 +319,38 @@ module Google
         end
       end
       
+      # Cloud KMS Autokey configuration for a folder.
+      class AutokeyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the key project, e.g. `projects/`PROJECT_ID`` or `projects/`
+        # PROJECT_NUMBER``, where Cloud KMS Autokey will provision new CryptoKeys. On
+        # UpdateAutokeyConfig, the caller will require `cloudkms.cryptoKeys.setIamPolicy`
+        # permission on this key project. Once configured, for Cloud KMS Autokey to
+        # function properly, this key project must have the Cloud KMS API activated and
+        # the Cloud KMS Service Agent for this key project must be granted the `cloudkms.
+        # admin` role (or pertinent permissions).
+        # Corresponds to the JSON property `keyProject`
+        # @return [String]
+        attr_accessor :key_project
+      
+        # Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
+        # autokeyConfig`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_project = args[:key_project] if args.key?(:key_project)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -1494,6 +1526,43 @@ module Google
         end
       end
       
+      # Resource-oriented representation of a request to Cloud KMS Autokey and the
+      # resulting provisioning of a CryptoKey.
+      class KeyHandle
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of a CryptoKey that has been provisioned for Customer
+        # Managed Encryption Key (CMEK) use in the KeyHandle's project and location for
+        # the requested resource type.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Output only. Identifier. Name of the [KeyHandle] resource, e.g. `projects/`
+        # PROJECT_ID`/locations/`LOCATION`/keyHandles/`KEY_HANDLE_ID``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Indicates the resource type that the resulting CryptoKey is meant to
+        # protect, e.g. ``SERVICE`.googleapis.com/`TYPE``. See documentation for
+        # supported resource types.
+        # Corresponds to the JSON property `resourceTypeSelector`
+        # @return [String]
+        attr_accessor :resource_type_selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @name = args[:name] if args.key?(:name)
+          @resource_type_selector = args[:resource_type_selector] if args.key?(:resource_type_selector)
+        end
+      end
+      
       # Contains an HSM-generated attestation about a key operation. For more
       # information, see [Verifying attestations] (https://cloud.google.com/kms/docs/
       # attest-key).
@@ -1682,6 +1751,25 @@ module Google
           @import_jobs = args[:import_jobs] if args.key?(:import_jobs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response message for Autokey.ListKeyHandles.
+      class ListKeyHandlesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Resulting KeyHandles.
+        # Corresponds to the JSON property `keyHandles`
+        # @return [Array<Google::Apis::CloudkmsV1::KeyHandle>]
+        attr_accessor :key_handles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_handles = args[:key_handles] if args.key?(:key_handles)
         end
       end
       
@@ -2041,6 +2129,68 @@ module Google
           @verified_data_crc32c = args[:verified_data_crc32c] if args.key?(:verified_data_crc32c)
           @verified_mac_crc32c = args[:verified_mac_crc32c] if args.key?(:verified_mac_crc32c)
           @verified_success_integrity = args[:verified_success_integrity] if args.key?(:verified_success_integrity)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::CloudkmsV1::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -2691,6 +2841,64 @@ module Google
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Response message for ShowEffectiveAutokeyConfig.
+      class ShowEffectiveAutokeyConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Name of the key project configured in the resource project's folder ancestry.
+        # Corresponds to the JSON property `keyProject`
+        # @return [String]
+        attr_accessor :key_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_project = args[:key_project] if args.key?(:key_project)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
