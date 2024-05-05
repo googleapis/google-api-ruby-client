@@ -117,6 +117,19 @@ module Google
         end
       end
       
+      # Message requesting to perform disable hyperthreading operation on a server.
+      class DisableHyperthreadingRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Message for disabling the interactive serial console on an instance.
       class DisableInteractiveSerialConsoleRequest
         include Google::Apis::Core::Hashable
@@ -148,6 +161,19 @@ module Google
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
       # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message requesting to perform enable hyperthreading operation on a server.
+      class EnableHyperthreadingRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1931,6 +1957,41 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bandwidth_gbps = args[:bandwidth_gbps] if args.key?(:bandwidth_gbps)
+        end
+      end
+      
+      # Message requesting to perform reimage operation on a server.
+      class ReimageInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the KMS crypto key version used to encrypt the initial
+        # passwords. The key has to have ASYMMETRIC_DECRYPT purpose. Format is `projects/
+        # `project`/locations/`location`/keyRings/`keyring`/cryptoKeys/`key`/
+        # cryptoKeyVersions/`version``.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
+        # Required. The OS image code of the image which will be used in the reimage
+        # operation.
+        # Corresponds to the JSON property `osImage`
+        # @return [String]
+        attr_accessor :os_image
+      
+        # Optional. List of SSH Keys used during reimaging an instance.
+        # Corresponds to the JSON property `sshKeys`
+        # @return [Array<String>]
+        attr_accessor :ssh_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
+          @os_image = args[:os_image] if args.key?(:os_image)
+          @ssh_keys = args[:ssh_keys] if args.key?(:ssh_keys)
         end
       end
       

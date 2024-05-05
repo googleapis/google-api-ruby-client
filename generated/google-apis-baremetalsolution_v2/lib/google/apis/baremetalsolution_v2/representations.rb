@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableHyperthreadingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DisableInteractiveSerialConsoleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +53,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableHyperthreadingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReimageInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RenameInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -452,6 +470,12 @@ module Google
         end
       end
       
+      class DisableHyperthreadingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DisableInteractiveSerialConsoleRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -465,6 +489,12 @@ module Google
       end
       
       class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnableHyperthreadingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -926,6 +956,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bandwidth_gbps, as: 'bandwidthGbps'
+        end
+      end
+      
+      class ReimageInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_version, as: 'kmsKeyVersion'
+          property :os_image, as: 'osImage'
+          collection :ssh_keys, as: 'sshKeys'
         end
       end
       
