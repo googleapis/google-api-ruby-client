@@ -1960,8 +1960,8 @@ module Google
         # @param [String] page_token
         #   Optional. The value of `next_page_token` returned by a previous call.
         # @param [String] view
-        #   Optional. The resource_view to be applied to the returned views' fields.
-        #   Default to NAME_ONLY.
+        #   Optional. The resource_view to be applied to the returned AuthorizedViews'
+        #   fields. Default to NAME_ONLY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
