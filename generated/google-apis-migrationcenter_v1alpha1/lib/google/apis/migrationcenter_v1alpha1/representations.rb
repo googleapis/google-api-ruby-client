@@ -304,12 +304,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DatabaseInstanceHost
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DatabaseObjects
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -724,13 +718,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MysqlDatabaseDeployment
+      class MySqlPlugin
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MysqlPlugin
+      class MysqlDatabaseDeployment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1669,17 +1663,8 @@ module Google
       class DatabaseInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :hosts, as: 'hosts', class: Google::Apis::MigrationcenterV1alpha1::DatabaseInstanceHost, decorator: Google::Apis::MigrationcenterV1alpha1::DatabaseInstanceHost::Representation
-      
           property :instance_name, as: 'instanceName'
           property :role, as: 'role'
-        end
-      end
-      
-      class DatabaseInstanceHost
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :host_name, as: 'hostName'
         end
       end
       
@@ -2401,20 +2386,20 @@ module Google
         end
       end
       
-      class MysqlDatabaseDeployment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :plugins, as: 'plugins', class: Google::Apis::MigrationcenterV1alpha1::MysqlPlugin, decorator: Google::Apis::MigrationcenterV1alpha1::MysqlPlugin::Representation
-      
-        end
-      end
-      
-      class MysqlPlugin
+      class MySqlPlugin
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :plugin, as: 'plugin'
           property :version, as: 'version'
+        end
+      end
+      
+      class MysqlDatabaseDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :plugins, as: 'plugins', class: Google::Apis::MigrationcenterV1alpha1::MySqlPlugin, decorator: Google::Apis::MigrationcenterV1alpha1::MySqlPlugin::Representation
+      
         end
       end
       
