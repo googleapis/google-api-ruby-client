@@ -550,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityServiceIdentityServiceOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IdentityServiceLdapConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1979,6 +1985,13 @@ module Google
         end
       end
       
+      class IdentityServiceIdentityServiceOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session_duration, as: 'sessionDuration'
+        end
+      end
+      
       class IdentityServiceLdapConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1997,6 +2010,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :auth_methods, as: 'authMethods', class: Google::Apis::GkehubV1alpha::IdentityServiceAuthMethod, decorator: Google::Apis::GkehubV1alpha::IdentityServiceAuthMethod::Representation
+      
+          property :identity_service_options, as: 'identityServiceOptions', class: Google::Apis::GkehubV1alpha::IdentityServiceIdentityServiceOptions, decorator: Google::Apis::GkehubV1alpha::IdentityServiceIdentityServiceOptions::Representation
       
         end
       end
