@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudcontrolspartner:v1",
+    "name_pretty": "Cloud Controls Partner API",
+    "distribution_name": "google-apis-cloudcontrolspartner_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
