@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComplianceVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DsseAttestationOccurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -793,6 +799,17 @@ module Google
           property :non_compliance_reason, as: 'nonComplianceReason'
           collection :non_compliant_files, as: 'nonCompliantFiles', class: Google::Apis::OndemandscanningV1::NonCompliantFile, decorator: Google::Apis::OndemandscanningV1::NonCompliantFile::Representation
       
+          property :version, as: 'version', class: Google::Apis::OndemandscanningV1::ComplianceVersion, decorator: Google::Apis::OndemandscanningV1::ComplianceVersion::Representation
+      
+        end
+      end
+      
+      class ComplianceVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :benchmark_document, as: 'benchmarkDocument'
+          property :cpe_uri, as: 'cpeUri'
+          property :version, as: 'version'
         end
       end
       
