@@ -3406,9 +3406,9 @@ module Google
       
         # The order in which documents are returned. Documents can be ordered by a field
         # in an Document object. Leave it unset if ordered by relevance. `order_by`
-        # expression is case-sensitive. For more information on ordering, see [Ordering](
-        # https://cloud.google.com/retail/docs/filter-and-order#order) If this field is
-        # unrecognizable, an `INVALID_ARGUMENT` is returned.
+        # expression is case-sensitive. For more information on ordering for retail
+        # search, see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#
+        # order) If this field is unrecognizable, an `INVALID_ARGUMENT` is returned.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
@@ -4684,6 +4684,11 @@ module Google
         # @return [String]
         attr_accessor :provided_uri_pattern
       
+        # Output only. Root domain of the provided_uri_pattern.
+        # Corresponds to the JSON property `rootDomainUri`
+        # @return [String]
+        attr_accessor :root_domain_uri
+      
         # Verification information for target sites in advanced site search.
         # Corresponds to the JSON property `siteVerificationInfo`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SiteVerificationInfo]
@@ -4712,6 +4717,7 @@ module Google
           @indexing_status = args[:indexing_status] if args.key?(:indexing_status)
           @name = args[:name] if args.key?(:name)
           @provided_uri_pattern = args[:provided_uri_pattern] if args.key?(:provided_uri_pattern)
+          @root_domain_uri = args[:root_domain_uri] if args.key?(:root_domain_uri)
           @site_verification_info = args[:site_verification_info] if args.key?(:site_verification_info)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -5843,6 +5849,58 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata that describes a custom tuned model.
+      class GoogleCloudDiscoveryengineV1alphaCustomTuningModel
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp the Model was created at.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The display name of the model.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).
+        # Corresponds to the JSON property `modelState`
+        # @return [String]
+        attr_accessor :model_state
+      
+        # 
+        # Corresponds to the JSON property `modelVersion`
+        # @return [Fixnum]
+        attr_accessor :model_version
+      
+        # Required. The fully qualified resource name of the model. Format: `projects/`
+        # project_number`/locations/`location`/collections/`collection`/dataStores/`
+        # data_store`/customTuningModels/`custom_tuning_model`` model must be an alpha-
+        # numerical string with limit of 40 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Timestamp the model training was initiated.
+        # Corresponds to the JSON property `trainingStartTime`
+        # @return [String]
+        attr_accessor :training_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @model_state = args[:model_state] if args.key?(:model_state)
+          @model_version = args[:model_version] if args.key?(:model_version)
+          @name = args[:name] if args.key?(:name)
+          @training_start_time = args[:training_start_time] if args.key?(:training_start_time)
         end
       end
       
@@ -7153,6 +7211,25 @@ module Google
         end
       end
       
+      # Response message for SearchTuningService.ListCustomModels method.
+      class GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of custom tuning models.
+        # Corresponds to the JSON property `models`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCustomTuningModel>]
+        attr_accessor :models
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @models = args[:models] if args.key?(:models)
+        end
+      end
+      
       # Metadata and configurations for a Google Cloud project in the service.
       class GoogleCloudDiscoveryengineV1alphaProject
         include Google::Apis::Core::Hashable
@@ -7787,6 +7864,11 @@ module Google
         # @return [String]
         attr_accessor :provided_uri_pattern
       
+        # Output only. Root domain of the provided_uri_pattern.
+        # Corresponds to the JSON property `rootDomainUri`
+        # @return [String]
+        attr_accessor :root_domain_uri
+      
         # Verification information for target sites in advanced site search.
         # Corresponds to the JSON property `siteVerificationInfo`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo]
@@ -7815,6 +7897,7 @@ module Google
           @indexing_status = args[:indexing_status] if args.key?(:indexing_status)
           @name = args[:name] if args.key?(:name)
           @provided_uri_pattern = args[:provided_uri_pattern] if args.key?(:provided_uri_pattern)
+          @root_domain_uri = args[:root_domain_uri] if args.key?(:root_domain_uri)
           @site_verification_info = args[:site_verification_info] if args.key?(:site_verification_info)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -7907,6 +7990,11 @@ module Google
         # @return [Hash<String,Float>]
         attr_accessor :metrics
       
+        # Fully qualified name of the CustomTuningModel.
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
         # The trained model status. Possible values are: * **bad-data**: The training
         # data quality is bad. * **no-improvement**: Tuning didn't improve performance.
         # Won't deploy. * **in-progress**: Model training job creation is in progress. *
@@ -7926,6 +8014,7 @@ module Google
           @error_config = args[:error_config] if args.key?(:error_config)
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @metrics = args[:metrics] if args.key?(:metrics)
+          @model_name = args[:model_name] if args.key?(:model_name)
           @model_status = args[:model_status] if args.key?(:model_status)
         end
       end
@@ -8171,6 +8260,58 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata that describes a custom tuned model.
+      class GoogleCloudDiscoveryengineV1betaCustomTuningModel
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp the Model was created at.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The display name of the model.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).
+        # Corresponds to the JSON property `modelState`
+        # @return [String]
+        attr_accessor :model_state
+      
+        # 
+        # Corresponds to the JSON property `modelVersion`
+        # @return [Fixnum]
+        attr_accessor :model_version
+      
+        # Required. The fully qualified resource name of the model. Format: `projects/`
+        # project_number`/locations/`location`/collections/`collection`/dataStores/`
+        # data_store`/customTuningModels/`custom_tuning_model`` model must be an alpha-
+        # numerical string with limit of 40 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Timestamp the model training was initiated.
+        # Corresponds to the JSON property `trainingStartTime`
+        # @return [String]
+        attr_accessor :training_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @model_state = args[:model_state] if args.key?(:model_state)
+          @model_version = args[:model_version] if args.key?(:model_version)
+          @name = args[:name] if args.key?(:name)
+          @training_start_time = args[:training_start_time] if args.key?(:training_start_time)
         end
       end
       
@@ -9020,6 +9161,25 @@ module Google
         end
       end
       
+      # Response message for SearchTuningService.ListCustomModels method.
+      class GoogleCloudDiscoveryengineV1betaListCustomModelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of custom tuning models.
+        # Corresponds to the JSON property `models`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaCustomTuningModel>]
+        attr_accessor :models
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @models = args[:models] if args.key?(:models)
+        end
+      end
+      
       # Metadata related to the progress of the PurgeDocuments operation. This will be
       # returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata
@@ -9249,6 +9409,11 @@ module Google
         # @return [String]
         attr_accessor :provided_uri_pattern
       
+        # Output only. Root domain of the provided_uri_pattern.
+        # Corresponds to the JSON property `rootDomainUri`
+        # @return [String]
+        attr_accessor :root_domain_uri
+      
         # Verification information for target sites in advanced site search.
         # Corresponds to the JSON property `siteVerificationInfo`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSiteVerificationInfo]
@@ -9277,6 +9442,7 @@ module Google
           @indexing_status = args[:indexing_status] if args.key?(:indexing_status)
           @name = args[:name] if args.key?(:name)
           @provided_uri_pattern = args[:provided_uri_pattern] if args.key?(:provided_uri_pattern)
+          @root_domain_uri = args[:root_domain_uri] if args.key?(:root_domain_uri)
           @site_verification_info = args[:site_verification_info] if args.key?(:site_verification_info)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -9369,6 +9535,11 @@ module Google
         # @return [Hash<String,Float>]
         attr_accessor :metrics
       
+        # Fully qualified name of the CustomTuningModel.
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
         # The trained model status. Possible values are: * **bad-data**: The training
         # data quality is bad. * **no-improvement**: Tuning didn't improve performance.
         # Won't deploy. * **in-progress**: Model training job creation is in progress. *
@@ -9388,6 +9559,7 @@ module Google
           @error_config = args[:error_config] if args.key?(:error_config)
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @metrics = args[:metrics] if args.key?(:metrics)
+          @model_name = args[:model_name] if args.key?(:model_name)
           @model_status = args[:model_status] if args.key?(:model_status)
         end
       end

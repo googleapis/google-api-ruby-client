@@ -982,6 +982,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaCustomTuningModel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDataStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1210,6 +1216,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaProject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1408,6 +1420,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaCustomTuningModel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaDataStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1559,6 +1577,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaImportUserEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaListCustomModelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2937,6 +2961,7 @@ module Google
           property :indexing_status, as: 'indexingStatus'
           property :name, as: 'name'
           property :provided_uri_pattern, as: 'providedUriPattern'
+          property :root_domain_uri, as: 'rootDomainUri'
           property :site_verification_info, as: 'siteVerificationInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SiteVerificationInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SiteVerificationInfo::Representation
       
           property :type, as: 'type'
@@ -3261,6 +3286,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaCustomTuningModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :model_state, as: 'modelState'
+          property :model_version, :numeric_string => true, as: 'modelVersion'
+          property :name, as: 'name'
+          property :training_start_time, as: 'trainingStartTime'
         end
       end
       
@@ -3623,6 +3660,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :models, as: 'models', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCustomTuningModel, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCustomTuningModel::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaProject
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3802,6 +3847,7 @@ module Google
           property :indexing_status, as: 'indexingStatus'
           property :name, as: 'name'
           property :provided_uri_pattern, as: 'providedUriPattern'
+          property :root_domain_uri, as: 'rootDomainUri'
           property :site_verification_info, as: 'siteVerificationInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo::Representation
       
           property :type, as: 'type'
@@ -3840,6 +3886,7 @@ module Google
           collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
       
           hash :metrics, as: 'metrics'
+          property :model_name, as: 'modelName'
           property :model_status, as: 'modelStatus'
         end
       end
@@ -3918,6 +3965,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaCustomTuningModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :model_state, as: 'modelState'
+          property :model_version, :numeric_string => true, as: 'modelVersion'
+          property :name, as: 'name'
+          property :training_start_time, as: 'trainingStartTime'
         end
       end
       
@@ -4163,6 +4222,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaListCustomModelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :models, as: 'models', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaCustomTuningModel, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaCustomTuningModel::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4226,6 +4293,7 @@ module Google
           property :indexing_status, as: 'indexingStatus'
           property :name, as: 'name'
           property :provided_uri_pattern, as: 'providedUriPattern'
+          property :root_domain_uri, as: 'rootDomainUri'
           property :site_verification_info, as: 'siteVerificationInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSiteVerificationInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSiteVerificationInfo::Representation
       
           property :type, as: 'type'
@@ -4264,6 +4332,7 @@ module Google
           collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
       
           hash :metrics, as: 'metrics'
+          property :model_name, as: 'modelName'
           property :model_status, as: 'modelStatus'
         end
       end
