@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -640,6 +646,8 @@ module Google
           property :host_type, as: 'hostType'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :type, as: 'type'
           property :uid, as: 'uid'
@@ -847,6 +855,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :type, as: 'type'
           property :uid, as: 'uid'
@@ -1332,6 +1342,13 @@ module Google
         end
       end
       
+      class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_cancellation_time, as: 'effectiveCancellationTime'
+        end
+      end
+      
       class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1345,6 +1362,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_renew_enabled, as: 'autoRenewEnabled'
+          property :billing_account, as: 'billingAccount'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :name, as: 'name'

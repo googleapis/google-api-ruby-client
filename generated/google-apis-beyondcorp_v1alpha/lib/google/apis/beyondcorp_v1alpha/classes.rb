@@ -86,6 +86,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The current state of the AppGateway.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -123,6 +135,8 @@ module Google
           @host_type = args[:host_type] if args.key?(:host_type)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
@@ -920,6 +934,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The current state of the AppConnection.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -953,6 +979,8 @@ module Google
           @gateway = args[:gateway] if args.key?(:gateway)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
@@ -2656,6 +2684,25 @@ module Google
         end
       end
       
+      # Response message for BeyondCorp.CancelSubscription
+      class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Time when the cancellation will become effective
+        # Corresponds to the JSON property `effectiveCancellationTime`
+        # @return [String]
+        attr_accessor :effective_cancellation_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_cancellation_time = args[:effective_cancellation_time] if args.key?(:effective_cancellation_time)
+        end
+      end
+      
       # Response message for BeyondCorp.ListSubscriptions.
       class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse
         include Google::Apis::Core::Hashable
@@ -2694,6 +2741,12 @@ module Google
         # @return [Boolean]
         attr_accessor :auto_renew_enabled
         alias_method :auto_renew_enabled?, :auto_renew_enabled
+      
+        # Optional. Name of the billing account in the format. e.g. billingAccounts/
+        # 123456-123456-123456 Required if Subscription is of Paid type.
+        # Corresponds to the JSON property `billingAccount`
+        # @return [String]
+        attr_accessor :billing_account
       
         # Output only. Create time of the subscription.
         # Corresponds to the JSON property `createTime`
@@ -2743,6 +2796,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_renew_enabled = args[:auto_renew_enabled] if args.key?(:auto_renew_enabled)
+          @billing_account = args[:billing_account] if args.key?(:billing_account)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @name = args[:name] if args.key?(:name)
