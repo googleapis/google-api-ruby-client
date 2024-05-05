@@ -1105,6 +1105,7 @@ module Google
           property :display_name, as: 'displayName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :type, as: 'type'
