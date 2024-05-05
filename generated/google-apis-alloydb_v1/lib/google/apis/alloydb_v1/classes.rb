@@ -475,6 +475,15 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # MaintenanceSchedule stores the maintenance schedule generated from the
+        # MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if
+        # MaintenanceWindow is set, and if there is no conflicting DenyPeriod. The
+        # schedule is cleared once the update takes place. This field cannot be manually
+        # changed; modify the MaintenanceUpdatePolicy instead.
+        # Corresponds to the JSON property `maintenanceSchedule`
+        # @return [Google::Apis::AlloydbV1::MaintenanceSchedule]
+        attr_accessor :maintenance_schedule
+      
         # MaintenanceUpdatePolicy defines the policy for system updates.
         # Corresponds to the JSON property `maintenanceUpdatePolicy`
         # @return [Google::Apis::AlloydbV1::MaintenanceUpdatePolicy]
@@ -585,6 +594,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @initial_user = args[:initial_user] if args.key?(:initial_user)
           @labels = args[:labels] if args.key?(:labels)
+          @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @maintenance_update_policy = args[:maintenance_update_policy] if args.key?(:maintenance_update_policy)
           @migration_source = args[:migration_source] if args.key?(:migration_source)
           @name = args[:name] if args.key?(:name)
@@ -1452,6 +1462,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+        end
+      end
+      
+      # MaintenanceSchedule stores the maintenance schedule generated from the
+      # MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if
+      # MaintenanceWindow is set, and if there is no conflicting DenyPeriod. The
+      # schedule is cleared once the update takes place. This field cannot be manually
+      # changed; modify the MaintenanceUpdatePolicy instead.
+      class MaintenanceSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The scheduled start time for the maintenance.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
