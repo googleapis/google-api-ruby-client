@@ -561,6 +561,8 @@ module Google
           property :lifetime, as: 'lifetime'
           property :name, as: 'name'
           collection :pem_ca_certificates, as: 'pemCaCertificates'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :subordinate_config, as: 'subordinateConfig', class: Google::Apis::PrivatecaV1::SubordinateConfig, decorator: Google::Apis::PrivatecaV1::SubordinateConfig::Representation
       

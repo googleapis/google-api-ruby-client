@@ -594,6 +594,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :pem_ca_certificates
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The State for this CertificateAuthority.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -639,6 +651,8 @@ module Google
           @lifetime = args[:lifetime] if args.key?(:lifetime)
           @name = args[:name] if args.key?(:name)
           @pem_ca_certificates = args[:pem_ca_certificates] if args.key?(:pem_ca_certificates)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @subordinate_config = args[:subordinate_config] if args.key?(:subordinate_config)
           @tier = args[:tier] if args.key?(:tier)
