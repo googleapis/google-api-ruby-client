@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class V2ResourceEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ViolationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -571,6 +577,20 @@ module Google
           property :file, as: 'file'
           property :function, as: 'function'
           property :line, :numeric_string => true, as: 'line'
+        end
+      end
+      
+      class V2ResourceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destinations, as: 'destinations'
+          property :parent, as: 'parent', class: Google::Apis::ServicecontrolV2::Resource, decorator: Google::Apis::ServicecontrolV2::Resource::Representation
+      
+          property :path, as: 'path'
+          hash :payload, as: 'payload'
+          property :resource, as: 'resource', class: Google::Apis::ServicecontrolV2::Resource, decorator: Google::Apis::ServicecontrolV2::Resource::Representation
+      
+          property :type, as: 'type'
         end
       end
       
