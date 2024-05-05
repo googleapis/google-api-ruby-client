@@ -940,6 +940,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StreamingOperationalLimits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StreamingScalingReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2782,11 +2788,27 @@ module Google
           property :commit_stream_chunk_size_bytes, :numeric_string => true, as: 'commitStreamChunkSizeBytes'
           property :get_data_stream_chunk_size_bytes, :numeric_string => true, as: 'getDataStreamChunkSizeBytes'
           property :max_work_item_commit_bytes, :numeric_string => true, as: 'maxWorkItemCommitBytes'
+          property :operational_limits, as: 'operationalLimits', class: Google::Apis::DataflowV1b3::StreamingOperationalLimits, decorator: Google::Apis::DataflowV1b3::StreamingOperationalLimits::Representation
+      
           collection :streaming_computation_configs, as: 'streamingComputationConfigs', class: Google::Apis::DataflowV1b3::StreamingComputationConfig, decorator: Google::Apis::DataflowV1b3::StreamingComputationConfig::Representation
       
           hash :user_step_to_state_family_name_map, as: 'userStepToStateFamilyNameMap'
           property :windmill_service_endpoint, as: 'windmillServiceEndpoint'
           property :windmill_service_port, :numeric_string => true, as: 'windmillServicePort'
+        end
+      end
+      
+      class StreamingOperationalLimits
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_bag_element_bytes, :numeric_string => true, as: 'maxBagElementBytes'
+          property :max_global_data_bytes, :numeric_string => true, as: 'maxGlobalDataBytes'
+          property :max_key_bytes, :numeric_string => true, as: 'maxKeyBytes'
+          property :max_production_output_bytes, :numeric_string => true, as: 'maxProductionOutputBytes'
+          property :max_sorted_list_element_bytes, :numeric_string => true, as: 'maxSortedListElementBytes'
+          property :max_source_state_bytes, :numeric_string => true, as: 'maxSourceStateBytes'
+          property :max_tag_bytes, :numeric_string => true, as: 'maxTagBytes'
+          property :max_value_bytes, :numeric_string => true, as: 'maxValueBytes'
         end
       end
       

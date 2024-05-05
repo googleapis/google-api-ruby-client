@@ -1415,9 +1415,9 @@ module Google
         # @return [String]
         attr_accessor :service_kms_key_name
       
-        # The list of service options to enable. This field should be used for service
-        # related experiments only. These experiments, when graduating to GA, should be
-        # replaced by dedicated fields or become default (i.e. always on).
+        # Optional. The list of service options to enable. This field should be used for
+        # service related experiments only. These experiments, when graduating to GA,
+        # should be replaced by dedicated fields or become default (i.e. always on).
         # Corresponds to the JSON property `serviceOptions`
         # @return [Array<String>]
         attr_accessor :service_options
@@ -2366,12 +2366,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # The user-specified Dataflow job name. Only one active job with a given name
-        # can exist in a project within one region at any given time. Jobs in different
-        # regions can have the same name. If a caller attempts to create a job with the
-        # same name as an active job that already exists, the attempt returns the
-        # existing job. The name must match the regular expression `[a-z]([-a-z0-9]`0,
-        # 1022`[a-z0-9])?`
+        # Optional. The user-specified Dataflow job name. Only one active job with a
+        # given name can exist in a project within one region at any given time. Jobs in
+        # different regions can have the same name. If a caller attempts to create a job
+        # with the same name as an active job that already exists, the attempt returns
+        # the existing job. The name must match the regular expression `[a-z]([-a-z0-9]`
+        # 0,1022`[a-z0-9])?`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2475,7 +2475,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :transform_name_mapping
       
-        # The type of Dataflow job.
+        # Optional. The type of Dataflow job.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -6109,6 +6109,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_work_item_commit_bytes
       
+        # Operational limits imposed on streaming jobs by the backend.
+        # Corresponds to the JSON property `operationalLimits`
+        # @return [Google::Apis::DataflowV1b3::StreamingOperationalLimits]
+        attr_accessor :operational_limits
+      
         # Set of computation configuration information.
         # Corresponds to the JSON property `streamingComputationConfigs`
         # @return [Array<Google::Apis::DataflowV1b3::StreamingComputationConfig>]
@@ -6141,10 +6146,72 @@ module Google
           @commit_stream_chunk_size_bytes = args[:commit_stream_chunk_size_bytes] if args.key?(:commit_stream_chunk_size_bytes)
           @get_data_stream_chunk_size_bytes = args[:get_data_stream_chunk_size_bytes] if args.key?(:get_data_stream_chunk_size_bytes)
           @max_work_item_commit_bytes = args[:max_work_item_commit_bytes] if args.key?(:max_work_item_commit_bytes)
+          @operational_limits = args[:operational_limits] if args.key?(:operational_limits)
           @streaming_computation_configs = args[:streaming_computation_configs] if args.key?(:streaming_computation_configs)
           @user_step_to_state_family_name_map = args[:user_step_to_state_family_name_map] if args.key?(:user_step_to_state_family_name_map)
           @windmill_service_endpoint = args[:windmill_service_endpoint] if args.key?(:windmill_service_endpoint)
           @windmill_service_port = args[:windmill_service_port] if args.key?(:windmill_service_port)
+        end
+      end
+      
+      # Operational limits imposed on streaming jobs by the backend.
+      class StreamingOperationalLimits
+        include Google::Apis::Core::Hashable
+      
+        # The maximum size for an element in bag state.
+        # Corresponds to the JSON property `maxBagElementBytes`
+        # @return [Fixnum]
+        attr_accessor :max_bag_element_bytes
+      
+        # The maximum size for an element in global data.
+        # Corresponds to the JSON property `maxGlobalDataBytes`
+        # @return [Fixnum]
+        attr_accessor :max_global_data_bytes
+      
+        # The maximum size allowed for a key.
+        # Corresponds to the JSON property `maxKeyBytes`
+        # @return [Fixnum]
+        attr_accessor :max_key_bytes
+      
+        # The maximum size for a single output element.
+        # Corresponds to the JSON property `maxProductionOutputBytes`
+        # @return [Fixnum]
+        attr_accessor :max_production_output_bytes
+      
+        # The maximum size for an element in sorted list state.
+        # Corresponds to the JSON property `maxSortedListElementBytes`
+        # @return [Fixnum]
+        attr_accessor :max_sorted_list_element_bytes
+      
+        # The maximum size for a source state update.
+        # Corresponds to the JSON property `maxSourceStateBytes`
+        # @return [Fixnum]
+        attr_accessor :max_source_state_bytes
+      
+        # The maximum size for a state tag.
+        # Corresponds to the JSON property `maxTagBytes`
+        # @return [Fixnum]
+        attr_accessor :max_tag_bytes
+      
+        # The maximum size for a value state field.
+        # Corresponds to the JSON property `maxValueBytes`
+        # @return [Fixnum]
+        attr_accessor :max_value_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_bag_element_bytes = args[:max_bag_element_bytes] if args.key?(:max_bag_element_bytes)
+          @max_global_data_bytes = args[:max_global_data_bytes] if args.key?(:max_global_data_bytes)
+          @max_key_bytes = args[:max_key_bytes] if args.key?(:max_key_bytes)
+          @max_production_output_bytes = args[:max_production_output_bytes] if args.key?(:max_production_output_bytes)
+          @max_sorted_list_element_bytes = args[:max_sorted_list_element_bytes] if args.key?(:max_sorted_list_element_bytes)
+          @max_source_state_bytes = args[:max_source_state_bytes] if args.key?(:max_source_state_bytes)
+          @max_tag_bytes = args[:max_tag_bytes] if args.key?(:max_tag_bytes)
+          @max_value_bytes = args[:max_value_bytes] if args.key?(:max_value_bytes)
         end
       end
       
