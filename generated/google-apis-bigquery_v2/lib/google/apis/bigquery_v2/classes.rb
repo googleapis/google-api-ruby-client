@@ -10318,8 +10318,9 @@ module Google
         # @return [Google::Apis::BigqueryV2::ErrorProto]
         attr_accessor :replication_error
       
-        # Required. Specifies the interval at which the source table is polled for
-        # updates.
+        # Optional. Specifies the interval at which the source table is polled for
+        # updates. It's Optional. If not specified, default replication interval would
+        # be applied.
         # Corresponds to the JSON property `replicationIntervalMs`
         # @return [Fixnum]
         attr_accessor :replication_interval_ms
