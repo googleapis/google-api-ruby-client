@@ -2354,6 +2354,89 @@ module Google
         end
       end
       
+      # Cancels one or multiple refreshes of data source objects in the spreadsheet by
+      # the specified references.
+      class CancelDataSourceRefreshRequest
+        include Google::Apis::Core::Hashable
+      
+        # Reference to a DataSource. If specified, cancels all associated data source
+        # object refreshes for this data source.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [String]
+        attr_accessor :data_source_id
+      
+        # Cancels all existing data source object refreshes for all data sources in the
+        # spreadsheet.
+        # Corresponds to the JSON property `isAll`
+        # @return [Boolean]
+        attr_accessor :is_all
+        alias_method :is_all?, :is_all
+      
+        # A list of references to data source objects.
+        # Corresponds to the JSON property `references`
+        # @return [Google::Apis::SheetsV4::DataSourceObjectReferences]
+        attr_accessor :references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+          @is_all = args[:is_all] if args.key?(:is_all)
+          @references = args[:references] if args.key?(:references)
+        end
+      end
+      
+      # The response from cancelling one or multiple data source object refreshes.
+      class CancelDataSourceRefreshResponse
+        include Google::Apis::Core::Hashable
+      
+        # The cancellation statuses of refreshes of all data source objects specified in
+        # the request. If is_all is specified, the field contains only those in failure
+        # status. Refreshing and canceling refresh the same data source object is also
+        # not allowed in the same `batchUpdate`.
+        # Corresponds to the JSON property `statuses`
+        # @return [Array<Google::Apis::SheetsV4::CancelDataSourceRefreshStatus>]
+        attr_accessor :statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @statuses = args[:statuses] if args.key?(:statuses)
+        end
+      end
+      
+      # The status of cancelling a single data source object refresh.
+      class CancelDataSourceRefreshStatus
+        include Google::Apis::Core::Hashable
+      
+        # Reference to a data source object.
+        # Corresponds to the JSON property `reference`
+        # @return [Google::Apis::SheetsV4::DataSourceObjectReference]
+        attr_accessor :reference
+      
+        # The status of a refresh cancellation. You can send cancel request to
+        # explicitly cancel one or multiple data source object refreshes.
+        # Corresponds to the JSON property `refreshCancellationStatus`
+        # @return [Google::Apis::SheetsV4::RefreshCancellationStatus]
+        attr_accessor :refresh_cancellation_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference = args[:reference] if args.key?(:reference)
+          @refresh_cancellation_status = args[:refresh_cancellation_status] if args.key?(:refresh_cancellation_status)
+        end
+      end
+      
       # A candlestick chart.
       class CandlestickChartSpec
         include Google::Apis::Core::Hashable
@@ -7716,6 +7799,32 @@ module Google
         end
       end
       
+      # The status of a refresh cancellation. You can send cancel request to
+      # explicitly cancel one or multiple data source object refreshes.
+      class RefreshCancellationStatus
+        include Google::Apis::Core::Hashable
+      
+        # The error code.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # The state of a call to cancel a refresh in Sheets.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # The execution status of refreshing one data source object.
       class RefreshDataSourceObjectExecutionStatus
         include Google::Apis::Core::Hashable
@@ -7962,6 +8071,12 @@ module Google
         # Corresponds to the JSON property `autoResizeDimensions`
         # @return [Google::Apis::SheetsV4::AutoResizeDimensionsRequest]
         attr_accessor :auto_resize_dimensions
+      
+        # Cancels one or multiple refreshes of data source objects in the spreadsheet by
+        # the specified references.
+        # Corresponds to the JSON property `cancelDataSourceRefresh`
+        # @return [Google::Apis::SheetsV4::CancelDataSourceRefreshRequest]
+        attr_accessor :cancel_data_source_refresh
       
         # Clears the basic filter, if any exists on the sheet.
         # Corresponds to the JSON property `clearBasicFilter`
@@ -8284,6 +8399,7 @@ module Google
           @append_dimension = args[:append_dimension] if args.key?(:append_dimension)
           @auto_fill = args[:auto_fill] if args.key?(:auto_fill)
           @auto_resize_dimensions = args[:auto_resize_dimensions] if args.key?(:auto_resize_dimensions)
+          @cancel_data_source_refresh = args[:cancel_data_source_refresh] if args.key?(:cancel_data_source_refresh)
           @clear_basic_filter = args[:clear_basic_filter] if args.key?(:clear_basic_filter)
           @copy_paste = args[:copy_paste] if args.key?(:copy_paste)
           @create_developer_metadata = args[:create_developer_metadata] if args.key?(:create_developer_metadata)
@@ -8387,6 +8503,11 @@ module Google
         # @return [Google::Apis::SheetsV4::AddSlicerResponse]
         attr_accessor :add_slicer
       
+        # The response from cancelling one or multiple data source object refreshes.
+        # Corresponds to the JSON property `cancelDataSourceRefresh`
+        # @return [Google::Apis::SheetsV4::CancelDataSourceRefreshResponse]
+        attr_accessor :cancel_data_source_refresh
+      
         # The response from creating developer metadata.
         # Corresponds to the JSON property `createDeveloperMetadata`
         # @return [Google::Apis::SheetsV4::CreateDeveloperMetadataResponse]
@@ -8472,6 +8593,7 @@ module Google
           @add_protected_range = args[:add_protected_range] if args.key?(:add_protected_range)
           @add_sheet = args[:add_sheet] if args.key?(:add_sheet)
           @add_slicer = args[:add_slicer] if args.key?(:add_slicer)
+          @cancel_data_source_refresh = args[:cancel_data_source_refresh] if args.key?(:cancel_data_source_refresh)
           @create_developer_metadata = args[:create_developer_metadata] if args.key?(:create_developer_metadata)
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
           @delete_developer_metadata = args[:delete_developer_metadata] if args.key?(:delete_developer_metadata)

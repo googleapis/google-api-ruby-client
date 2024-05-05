@@ -346,6 +346,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelDataSourceRefreshRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelDataSourceRefreshResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelDataSourceRefreshStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CandlestickChartSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1109,6 +1127,12 @@ module Google
       end
       
       class RandomizeRangeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefreshCancellationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2072,6 +2096,34 @@ module Google
       
           property :legend_position, as: 'legendPosition'
           property :series, as: 'series', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+        end
+      end
+      
+      class CancelDataSourceRefreshRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, as: 'dataSourceId'
+          property :is_all, as: 'isAll'
+          property :references, as: 'references', class: Google::Apis::SheetsV4::DataSourceObjectReferences, decorator: Google::Apis::SheetsV4::DataSourceObjectReferences::Representation
+      
+        end
+      end
+      
+      class CancelDataSourceRefreshResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :statuses, as: 'statuses', class: Google::Apis::SheetsV4::CancelDataSourceRefreshStatus, decorator: Google::Apis::SheetsV4::CancelDataSourceRefreshStatus::Representation
+      
+        end
+      end
+      
+      class CancelDataSourceRefreshStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reference, as: 'reference', class: Google::Apis::SheetsV4::DataSourceObjectReference, decorator: Google::Apis::SheetsV4::DataSourceObjectReference::Representation
+      
+          property :refresh_cancellation_status, as: 'refreshCancellationStatus', class: Google::Apis::SheetsV4::RefreshCancellationStatus, decorator: Google::Apis::SheetsV4::RefreshCancellationStatus::Representation
       
         end
       end
@@ -3449,6 +3501,14 @@ module Google
         end
       end
       
+      class RefreshCancellationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, as: 'errorCode'
+          property :state, as: 'state'
+        end
+      end
+      
       class RefreshDataSourceObjectExecutionStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3519,6 +3579,8 @@ module Google
           property :auto_fill, as: 'autoFill', class: Google::Apis::SheetsV4::AutoFillRequest, decorator: Google::Apis::SheetsV4::AutoFillRequest::Representation
       
           property :auto_resize_dimensions, as: 'autoResizeDimensions', class: Google::Apis::SheetsV4::AutoResizeDimensionsRequest, decorator: Google::Apis::SheetsV4::AutoResizeDimensionsRequest::Representation
+      
+          property :cancel_data_source_refresh, as: 'cancelDataSourceRefresh', class: Google::Apis::SheetsV4::CancelDataSourceRefreshRequest, decorator: Google::Apis::SheetsV4::CancelDataSourceRefreshRequest::Representation
       
           property :clear_basic_filter, as: 'clearBasicFilter', class: Google::Apis::SheetsV4::ClearBasicFilterRequest, decorator: Google::Apis::SheetsV4::ClearBasicFilterRequest::Representation
       
@@ -3645,6 +3707,8 @@ module Google
           property :add_sheet, as: 'addSheet', class: Google::Apis::SheetsV4::AddSheetResponse, decorator: Google::Apis::SheetsV4::AddSheetResponse::Representation
       
           property :add_slicer, as: 'addSlicer', class: Google::Apis::SheetsV4::AddSlicerResponse, decorator: Google::Apis::SheetsV4::AddSlicerResponse::Representation
+      
+          property :cancel_data_source_refresh, as: 'cancelDataSourceRefresh', class: Google::Apis::SheetsV4::CancelDataSourceRefreshResponse, decorator: Google::Apis::SheetsV4::CancelDataSourceRefreshResponse::Representation
       
           property :create_developer_metadata, as: 'createDeveloperMetadata', class: Google::Apis::SheetsV4::CreateDeveloperMetadataResponse, decorator: Google::Apis::SheetsV4::CreateDeveloperMetadataResponse::Representation
       
