@@ -331,6 +331,7 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :token, as: 'token'
+          property :update_time, as: 'updateTime'
         end
       end
       
