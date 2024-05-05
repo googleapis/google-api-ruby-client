@@ -3220,7 +3220,7 @@ module Google
         end
       end
       
-      # Generic Object Next ID: 121
+      # Generic Object
       class GenericObject
         include Google::Apis::Core::Hashable
       
@@ -3409,7 +3409,7 @@ module Google
       class GenericObjectAddMessageResponse
         include Google::Apis::Core::Hashable
       
-        # Generic Object Next ID: 121
+        # Generic Object
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::WalletobjectsV1::GenericObject]
         attr_accessor :resource
