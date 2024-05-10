@@ -22,12 +22,6 @@ module Google
   module Apis
     module AiplatformV1
       
-      class CloudAiLargeModelsVisionEmbedVideoResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CloudAiLargeModelsVisionFilteredText
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,12 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudAiLargeModelsVisionMediaGenerateContentResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CloudAiLargeModelsVisionNamedBoundingBox
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,24 +64,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudAiLargeModelsVisionReasonVideoResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiLargeModelsVisionReasonVideoResponseTextResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiLargeModelsVisionRelativeTemporalPartition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CloudAiLargeModelsVisionSemanticFilterResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,138 +71,6 @@ module Google
       end
       
       class CloudAiLargeModelsVisionVideo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceCandidate
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceCitation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceCitationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceContent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceFact
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceFunctionCall
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceFunctionResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceGenerateMultiModalResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceMessageMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServicePart
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServicePartBlob
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServicePartDocumentMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServicePartFileData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServicePartLmRootMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServicePartVideoMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServicePromptFeedback
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceRaiResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceRaiSignal
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceSafetyRating
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiNlLlmProtoServiceUsageMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1624,6 +1462,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1FindNeighborsRequestQueryRrf
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1FindNeighborsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1817,6 +1661,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1IndexDatapointRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1IndexDatapointSparseEmbedding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4996,433 +4846,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IntelligenceCloudAutomlXpsMetricEntry
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class IntelligenceCloudAutomlXpsMetricEntryLabel
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class IntelligenceCloudAutomlXpsReportingMetrics
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LanguageLabsAidaTrustRecitationProtoDocAttribution
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LanguageLabsAidaTrustRecitationProtoRecitationResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LanguageLabsAidaTrustRecitationProtoSegmentResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LanguageLabsAidaTrustRecitationProtoStreamRecitationResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRecitationDocAttribution
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRecitationRecitationResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRecitationSegmentResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootCalculationType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootClassifierOutput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootClassifierOutputSummary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootClassifierState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootCodeyChatMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootCodeyCheckpoint
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootCodeyCompletionMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootCodeyGenerationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootCodeyOutput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootCodeyTruncatorMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootControlDecodingConfigThreshold
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootControlDecodingRecord
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootControlDecodingRecordPolicyScore
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootControlDecodingRecords
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootDataProviderOutput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootFilterMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootFilterMetadataFilterDebugInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootGroundingMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootGroundingMetadataCitation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootHarm
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootHarmGrailImageHarmType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootHarmGrailTextHarmType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootHarmSafetyCatCategories
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootHarmSpiiFilter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootInternalMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootLanguageFilterResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootMetricOutput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootPerRequestProcessorDebugMetadataFactualityDebugMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootRaiOutput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootRegexTakedownResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootRequestResponseTakedownResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootRoutingDecision
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootRoutingDecisionMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootRoutingDecisionMetadataScoreBased
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootRoutingDecisionMetadataTokenLengthBased
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelInputTokenMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelMaxTokenMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootRuleOutput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootScore
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootScoreBasedRoutingConfigRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootScoredSimilarityTakedownPhrase
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootScoredToken
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootSimilarityTakedownPhrase
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootSimilarityTakedownResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootTakedownResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootThresholdType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootTokensAndLogProbPerDecodingStep
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootTokensAndLogProbPerDecodingStepTopCandidates
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootToxicityResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootToxicitySignal
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningGenaiRootTranslationRequestInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningServingLlmMessageMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NlpSaftLangIdLocalesResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NlpSaftLangIdLocalesResultLocale
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NlpSaftLangIdResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NlpSaftLanguageSpan
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NlpSaftLanguageSpanSequence
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Proto2BridgeMessageSet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UtilStatusProto
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAiLargeModelsVisionEmbedVideoResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :video_embeddings, as: 'videoEmbeddings'
-        end
-      end
-      
       class CloudAiLargeModelsVisionFilteredText
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5479,14 +4902,6 @@ module Google
         end
       end
       
-      class CloudAiLargeModelsVisionMediaGenerateContentResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :response, as: 'response', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceGenerateMultiModalResponse, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceGenerateMultiModalResponse::Representation
-      
-        end
-      end
-      
       class CloudAiLargeModelsVisionNamedBoundingBox
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5508,31 +4923,6 @@ module Google
         end
       end
       
-      class CloudAiLargeModelsVisionReasonVideoResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :responses, as: 'responses', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionReasonVideoResponseTextResponse, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionReasonVideoResponseTextResponse::Representation
-      
-        end
-      end
-      
-      class CloudAiLargeModelsVisionReasonVideoResponseTextResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :relative_temporal_partition, as: 'relativeTemporalPartition', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionRelativeTemporalPartition, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionRelativeTemporalPartition::Representation
-      
-          property :text, as: 'text'
-        end
-      end
-      
-      class CloudAiLargeModelsVisionRelativeTemporalPartition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_offset, as: 'endOffset'
-          property :start_offset, as: 'startOffset'
-        end
-      end
-      
       class CloudAiLargeModelsVisionSemanticFilterResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5547,259 +4937,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
           property :video, :base64 => true, as: 'video'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceCandidate
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :citation_metadata, as: 'citationMetadata', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceCitationMetadata, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceCitationMetadata::Representation
-      
-          property :content, as: 'content', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceContent, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceContent::Representation
-      
-          property :finish_message, as: 'finishMessage'
-          property :finish_reason, as: 'finishReason'
-          property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata::Representation
-      
-          property :index, as: 'index'
-          collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceSafetyRating, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceSafetyRating::Representation
-      
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceCitation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_index, as: 'endIndex'
-          property :license, as: 'license'
-          property :publication_date, as: 'publicationDate', class: Google::Apis::AiplatformV1::GoogleTypeDate, decorator: Google::Apis::AiplatformV1::GoogleTypeDate::Representation
-      
-          property :start_index, as: 'startIndex'
-          property :title, as: 'title'
-          property :uri, as: 'uri'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceCitationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :citations, as: 'citations', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceCitation, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceCitation::Representation
-      
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceContent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :parts, as: 'parts', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePart, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePart::Representation
-      
-          property :role, as: 'role'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceFact
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :query, as: 'query'
-          property :summary, as: 'summary'
-          property :title, as: 'title'
-          property :url, as: 'url'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceFunctionCall
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :args, as: 'args'
-          property :name, as: 'name'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceFunctionResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          hash :response, as: 'response'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceGenerateMultiModalResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :candidates, as: 'candidates', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceCandidate, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceCandidate::Representation
-      
-          property :debug_metadata, as: 'debugMetadata', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceMessageMetadata, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceMessageMetadata::Representation
-      
-          collection :facts, as: 'facts', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceFact, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceFact::Representation
-      
-          property :prompt_feedback, as: 'promptFeedback', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePromptFeedback, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePromptFeedback::Representation
-      
-          property :reporting_metrics, as: 'reportingMetrics', class: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsReportingMetrics, decorator: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsReportingMetrics::Representation
-      
-          property :usage_metadata, as: 'usageMetadata', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceUsageMetadata, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceUsageMetadata::Representation
-      
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceMessageMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :factuality_debug_metadata, as: 'factualityDebugMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootPerRequestProcessorDebugMetadataFactualityDebugMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootPerRequestProcessorDebugMetadataFactualityDebugMetadata::Representation
-      
-          property :input_filter_info, as: 'inputFilterInfo', class: Google::Apis::AiplatformV1::LearningServingLlmMessageMetadata, decorator: Google::Apis::AiplatformV1::LearningServingLlmMessageMetadata::Representation
-      
-          property :model_routing_decision, as: 'modelRoutingDecision', class: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecision, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecision::Representation
-      
-          collection :output_filter_info, as: 'outputFilterInfo', class: Google::Apis::AiplatformV1::LearningServingLlmMessageMetadata, decorator: Google::Apis::AiplatformV1::LearningServingLlmMessageMetadata::Representation
-      
-        end
-      end
-      
-      class CloudAiNlLlmProtoServicePart
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :document_metadata, as: 'documentMetadata', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartDocumentMetadata, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartDocumentMetadata::Representation
-      
-          property :file_data, as: 'fileData', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartFileData, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartFileData::Representation
-      
-          property :function_call, as: 'functionCall', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceFunctionCall, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceFunctionCall::Representation
-      
-          property :function_response, as: 'functionResponse', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceFunctionResponse, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceFunctionResponse::Representation
-      
-          property :inline_data, as: 'inlineData', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartBlob, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartBlob::Representation
-      
-          property :lm_root_metadata, as: 'lmRootMetadata', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartLmRootMetadata, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartLmRootMetadata::Representation
-      
-          property :text, as: 'text'
-          property :video_metadata, as: 'videoMetadata', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartVideoMetadata, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartVideoMetadata::Representation
-      
-        end
-      end
-      
-      class CloudAiNlLlmProtoServicePartBlob
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :data, :base64 => true, as: 'data'
-          property :mime_type, as: 'mimeType'
-          property :original_file_data, as: 'originalFileData', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartFileData, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartFileData::Representation
-      
-        end
-      end
-      
-      class CloudAiNlLlmProtoServicePartDocumentMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :original_document_blob, as: 'originalDocumentBlob', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartBlob, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartBlob::Representation
-      
-          property :page_number, as: 'pageNumber'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServicePartFileData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :file_uri, as: 'fileUri'
-          property :mime_type, as: 'mimeType'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServicePartLmRootMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :chunk_id, as: 'chunkId'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServicePartVideoMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_offset, as: 'endOffset'
-          property :start_offset, as: 'startOffset'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServicePromptFeedback
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :block_reason, as: 'blockReason'
-          property :block_reason_message, as: 'blockReasonMessage'
-          collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceSafetyRating, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceSafetyRating::Representation
-      
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceRaiResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :aida_recitation_result, as: 'aidaRecitationResult', class: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoRecitationResult, decorator: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoRecitationResult::Representation
-      
-          property :blocked, as: 'blocked'
-          collection :error_codes, as: 'errorCodes'
-          property :filtered, as: 'filtered'
-          property :language_filter_result, as: 'languageFilterResult', class: Google::Apis::AiplatformV1::LearningGenaiRootLanguageFilterResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRootLanguageFilterResult::Representation
-      
-          collection :rai_signals, as: 'raiSignals', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal::Representation
-      
-          collection :translation_request_infos, as: 'translationRequestInfos', class: Google::Apis::AiplatformV1::LearningGenaiRootTranslationRequestInfo, decorator: Google::Apis::AiplatformV1::LearningGenaiRootTranslationRequestInfo::Representation
-      
-          property :triggered_blocklist, as: 'triggeredBlocklist'
-          property :triggered_recitation, as: 'triggeredRecitation'
-          property :triggered_safety_filter, as: 'triggeredSafetyFilter'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceRaiSignal
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :flagged, as: 'flagged'
-          collection :influential_terms, as: 'influentialTerms', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm::Representation
-      
-          property :rai_category, as: 'raiCategory'
-          property :score, as: 'score'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :begin_offset, as: 'beginOffset'
-          property :confidence, as: 'confidence'
-          property :source, as: 'source'
-          property :term, as: 'term'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceSafetyRating
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :blocked, as: 'blocked'
-          property :category, as: 'category'
-          collection :influential_terms, as: 'influentialTerms', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm::Representation
-      
-          property :probability, as: 'probability'
-          property :probability_score, as: 'probabilityScore'
-          property :severity, as: 'severity'
-          property :severity_score, as: 'severityScore'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :begin_offset, as: 'beginOffset'
-          property :confidence, as: 'confidence'
-          property :source, as: 'source'
-          property :term, as: 'term'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServiceUsageMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :candidates_token_count, as: 'candidatesTokenCount'
-          property :prompt_token_count, as: 'promptTokenCount'
-          property :total_token_count, as: 'totalTokenCount'
         end
       end
       
@@ -6855,6 +5992,7 @@ module Google
           property :metadata, as: 'metadata'
           property :metadata_artifact, as: 'metadataArtifact'
           property :metadata_schema_uri, as: 'metadataSchemaUri'
+          property :model_reference, as: 'modelReference'
           property :name, as: 'name'
           collection :saved_queries, as: 'savedQueries', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SavedQuery, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SavedQuery::Representation
       
@@ -6870,6 +6008,7 @@ module Google
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
           property :metadata, as: 'metadata'
+          property :model_reference, as: 'modelReference'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
         end
@@ -8102,6 +7241,15 @@ module Google
           property :fraction_leaf_nodes_to_search_override, as: 'fractionLeafNodesToSearchOverride'
           property :neighbor_count, as: 'neighborCount'
           property :per_crowding_attribute_neighbor_count, as: 'perCrowdingAttributeNeighborCount'
+          property :rrf, as: 'rrf', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FindNeighborsRequestQueryRrf, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FindNeighborsRequestQueryRrf::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FindNeighborsRequestQueryRrf
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alpha, as: 'alpha'
         end
       end
       
@@ -8128,6 +7276,7 @@ module Google
           property :datapoint, as: 'datapoint', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IndexDatapoint, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IndexDatapoint::Representation
       
           property :distance, as: 'distance'
+          property :sparse_distance, as: 'sparseDistance'
         end
       end
       
@@ -8235,6 +7384,7 @@ module Google
           property :max_output_tokens, as: 'maxOutputTokens'
           property :presence_penalty, as: 'presencePenalty'
           property :response_mime_type, as: 'responseMimeType'
+          property :response_style, as: 'responseStyle'
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
           property :top_k, as: 'topK'
@@ -8428,6 +7578,8 @@ module Google
       
           collection :restricts, as: 'restricts', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IndexDatapointRestriction, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IndexDatapointRestriction::Representation
       
+          property :sparse_embedding, as: 'sparseEmbedding', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IndexDatapointSparseEmbedding, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IndexDatapointSparseEmbedding::Representation
+      
         end
       end
       
@@ -8455,6 +7607,14 @@ module Google
           collection :allow_list, as: 'allowList'
           collection :deny_list, as: 'denyList'
           property :namespace, as: 'namespace'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1IndexDatapointSparseEmbedding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions'
+          collection :values, as: 'values'
         end
       end
       
@@ -8495,6 +7655,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :shards_count, as: 'shardsCount'
+          property :sparse_vectors_count, :numeric_string => true, as: 'sparseVectorsCount'
           property :vectors_count, :numeric_string => true, as: 'vectorsCount'
         end
       end
@@ -9811,10 +8972,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :invalid_record_count, :numeric_string => true, as: 'invalidRecordCount'
+          property :invalid_sparse_record_count, :numeric_string => true, as: 'invalidSparseRecordCount'
           collection :partial_errors, as: 'partialErrors', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadataRecordError, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadataRecordError::Representation
       
           property :source_gcs_uri, as: 'sourceGcsUri'
           property :valid_record_count, :numeric_string => true, as: 'validRecordCount'
+          property :valid_sparse_record_count, :numeric_string => true, as: 'validSparseRecordCount'
         end
       end
       
@@ -9918,6 +9081,8 @@ module Google
       
           property :runtime_state, as: 'runtimeState'
           property :runtime_user, as: 'runtimeUser'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
           property :update_time, as: 'updateTime'
           property :version, as: 'version'
@@ -13284,6 +12449,8 @@ module Google
           property :base_model, as: 'baseModel'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec::Representation
+      
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::AiplatformV1::GoogleRpcStatus, decorator: Google::Apis::AiplatformV1::GoogleRpcStatus::Representation
       
@@ -13775,798 +12942,6 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
-        end
-      end
-      
-      class IntelligenceCloudAutomlXpsMetricEntry
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :argentum_metric_id, as: 'argentumMetricId'
-          property :double_value, as: 'doubleValue'
-          property :int64_value, :numeric_string => true, as: 'int64Value'
-          property :metric_name, as: 'metricName'
-          collection :system_labels, as: 'systemLabels', class: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntryLabel, decorator: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntryLabel::Representation
-      
-        end
-      end
-      
-      class IntelligenceCloudAutomlXpsMetricEntryLabel
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :label_name, as: 'labelName'
-          property :label_value, as: 'labelValue'
-        end
-      end
-      
-      class IntelligenceCloudAutomlXpsReportingMetrics
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :effective_training_duration, as: 'effectiveTrainingDuration'
-          collection :metric_entries, as: 'metricEntries', class: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntry, decorator: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntry::Representation
-      
-        end
-      end
-      
-      class LanguageLabsAidaTrustRecitationProtoDocAttribution
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :amarna_id, as: 'amarnaId'
-          property :arxiv_id, as: 'arxivId'
-          property :author, as: 'author'
-          property :bibkey, as: 'bibkey'
-          property :biorxiv_id, as: 'biorxivId'
-          property :book_title, as: 'bookTitle'
-          property :book_volume_id, :numeric_string => true, as: 'bookVolumeId'
-          property :category, as: 'category'
-          property :conversation_id, as: 'conversationId'
-          property :dataset, as: 'dataset'
-          property :filepath, as: 'filepath'
-          property :gemini_id, as: 'geminiId'
-          property :gnews_article_title, as: 'gnewsArticleTitle'
-          property :goodall_example_id, as: 'goodallExampleId'
-          property :is_opt_out, as: 'isOptOut'
-          property :is_prompt, as: 'isPrompt'
-          property :lamda_example_id, as: 'lamdaExampleId'
-          property :license, as: 'license'
-          property :meena_conversation_id, as: 'meenaConversationId'
-          property :natural_language_code, as: 'naturalLanguageCode'
-          property :no_attribution, as: 'noAttribution'
-          property :podcast_utterance_id, as: 'podcastUtteranceId'
-          property :publication_date, as: 'publicationDate', class: Google::Apis::AiplatformV1::GoogleTypeDate, decorator: Google::Apis::AiplatformV1::GoogleTypeDate::Representation
-      
-          property :quality_score_experiment_only, as: 'qualityScoreExperimentOnly'
-          property :repo, as: 'repo'
-          property :url, as: 'url'
-          property :volume_id, as: 'volumeId'
-          property :wikipedia_article_title, as: 'wikipediaArticleTitle'
-          property :youtube_video_id, as: 'youtubeVideoId'
-        end
-      end
-      
-      class LanguageLabsAidaTrustRecitationProtoRecitationResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :dynamic_segment_results, as: 'dynamicSegmentResults', class: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult, decorator: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult::Representation
-      
-          property :recitation_action, as: 'recitationAction'
-          collection :training_segment_results, as: 'trainingSegmentResults', class: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult, decorator: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult::Representation
-      
-        end
-      end
-      
-      class LanguageLabsAidaTrustRecitationProtoSegmentResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :attribution_dataset, as: 'attributionDataset'
-          property :display_attribution_message, as: 'displayAttributionMessage'
-          property :doc_attribution, as: 'docAttribution', class: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoDocAttribution, decorator: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoDocAttribution::Representation
-      
-          property :doc_occurrences, as: 'docOccurrences'
-          property :end_index, as: 'endIndex'
-          property :raw_text, as: 'rawText'
-          property :segment_recitation_action, as: 'segmentRecitationAction'
-          property :source_category, as: 'sourceCategory'
-          property :start_index, as: 'startIndex'
-        end
-      end
-      
-      class LanguageLabsAidaTrustRecitationProtoStreamRecitationResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :dynamic_segment_results, as: 'dynamicSegmentResults', class: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult, decorator: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult::Representation
-      
-          property :fully_checked_text_index, as: 'fullyCheckedTextIndex'
-          property :recitation_action, as: 'recitationAction'
-          collection :training_segment_results, as: 'trainingSegmentResults', class: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult, decorator: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRecitationDocAttribution
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :amarna_id, as: 'amarnaId'
-          property :arxiv_id, as: 'arxivId'
-          property :author, as: 'author'
-          property :bibkey, as: 'bibkey'
-          property :biorxiv_id, as: 'biorxivId'
-          property :book_title, as: 'bookTitle'
-          property :book_volume_id, :numeric_string => true, as: 'bookVolumeId'
-          property :conversation_id, as: 'conversationId'
-          property :dataset, as: 'dataset'
-          property :filepath, as: 'filepath'
-          property :gemini_id, as: 'geminiId'
-          property :gnews_article_title, as: 'gnewsArticleTitle'
-          property :goodall_example_id, as: 'goodallExampleId'
-          property :is_opt_out, as: 'isOptOut'
-          property :is_prompt, as: 'isPrompt'
-          property :lamda_example_id, as: 'lamdaExampleId'
-          property :license, as: 'license'
-          property :meena_conversation_id, as: 'meenaConversationId'
-          property :natural_language_code, as: 'naturalLanguageCode'
-          property :no_attribution, as: 'noAttribution'
-          property :podcast_utterance_id, as: 'podcastUtteranceId'
-          property :publication_date, as: 'publicationDate', class: Google::Apis::AiplatformV1::GoogleTypeDate, decorator: Google::Apis::AiplatformV1::GoogleTypeDate::Representation
-      
-          property :quality_score_experiment_only, as: 'qualityScoreExperimentOnly'
-          property :repo, as: 'repo'
-          property :url, as: 'url'
-          property :volume_id, as: 'volumeId'
-          property :wikipedia_article_title, as: 'wikipediaArticleTitle'
-          property :youtube_video_id, as: 'youtubeVideoId'
-        end
-      end
-      
-      class LearningGenaiRecitationRecitationResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :dynamic_segment_results, as: 'dynamicSegmentResults', class: Google::Apis::AiplatformV1::LearningGenaiRecitationSegmentResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRecitationSegmentResult::Representation
-      
-          property :recitation_action, as: 'recitationAction'
-          collection :training_segment_results, as: 'trainingSegmentResults', class: Google::Apis::AiplatformV1::LearningGenaiRecitationSegmentResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRecitationSegmentResult::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRecitationSegmentResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :attribution_dataset, as: 'attributionDataset'
-          property :display_attribution_message, as: 'displayAttributionMessage'
-          property :doc_attribution, as: 'docAttribution', class: Google::Apis::AiplatformV1::LearningGenaiRecitationDocAttribution, decorator: Google::Apis::AiplatformV1::LearningGenaiRecitationDocAttribution::Representation
-      
-          property :doc_occurrences, as: 'docOccurrences'
-          property :end_index, as: 'endIndex'
-          property :raw_text, as: 'rawText'
-          property :segment_recitation_action, as: 'segmentRecitationAction'
-          property :source_category, as: 'sourceCategory'
-          property :start_index, as: 'startIndex'
-        end
-      end
-      
-      class LearningGenaiRootCalculationType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :score_type, as: 'scoreType'
-          property :weights, as: 'weights'
-        end
-      end
-      
-      class LearningGenaiRootClassifierOutput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :rule_output, as: 'ruleOutput', class: Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput::Representation
-      
-          collection :rule_outputs, as: 'ruleOutputs', class: Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput::Representation
-      
-          property :state, as: 'state', class: Google::Apis::AiplatformV1::LearningGenaiRootClassifierState, decorator: Google::Apis::AiplatformV1::LearningGenaiRootClassifierState::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootClassifierOutputSummary
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :metrics, as: 'metrics', class: Google::Apis::AiplatformV1::LearningGenaiRootMetricOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootMetricOutput::Representation
-      
-          property :rule_output, as: 'ruleOutput', class: Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput::Representation
-      
-          collection :rule_outputs, as: 'ruleOutputs', class: Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootClassifierState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :data_provider_output, as: 'dataProviderOutput', class: Google::Apis::AiplatformV1::LearningGenaiRootDataProviderOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootDataProviderOutput::Representation
-      
-          collection :metric_output, as: 'metricOutput', class: Google::Apis::AiplatformV1::LearningGenaiRootMetricOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootMetricOutput::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootCodeyChatMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code_language, as: 'codeLanguage'
-        end
-      end
-      
-      class LearningGenaiRootCodeyCheckpoint
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :codey_truncator_metadata, as: 'codeyTruncatorMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootCodeyTruncatorMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootCodeyTruncatorMetadata::Representation
-      
-          property :current_sample, as: 'currentSample'
-          property :post_inference_step, as: 'postInferenceStep'
-        end
-      end
-      
-      class LearningGenaiRootCodeyCompletionMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :checkpoints, as: 'checkpoints', class: Google::Apis::AiplatformV1::LearningGenaiRootCodeyCheckpoint, decorator: Google::Apis::AiplatformV1::LearningGenaiRootCodeyCheckpoint::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootCodeyGenerationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :output, as: 'output'
-          property :post_inference_step, as: 'postInferenceStep'
-        end
-      end
-      
-      class LearningGenaiRootCodeyOutput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :codey_chat_metadata, as: 'codeyChatMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootCodeyChatMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootCodeyChatMetadata::Representation
-      
-          property :codey_completion_metadata, as: 'codeyCompletionMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootCodeyCompletionMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootCodeyCompletionMetadata::Representation
-      
-          property :codey_generation_metadata, as: 'codeyGenerationMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootCodeyGenerationMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootCodeyGenerationMetadata::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootCodeyTruncatorMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cutoff_index, as: 'cutoffIndex'
-          property :truncated_text, as: 'truncatedText'
-        end
-      end
-      
-      class LearningGenaiRootControlDecodingConfigThreshold
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy, as: 'policy'
-          property :score_max, as: 'scoreMax'
-        end
-      end
-      
-      class LearningGenaiRootControlDecodingRecord
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :prefixes, as: 'prefixes'
-          collection :scores, as: 'scores', class: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecordPolicyScore, decorator: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecordPolicyScore::Representation
-      
-          property :suffiexes, as: 'suffiexes'
-          collection :thresholds, as: 'thresholds', class: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingConfigThreshold, decorator: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingConfigThreshold::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootControlDecodingRecordPolicyScore
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy, as: 'policy'
-          property :score, as: 'score'
-        end
-      end
-      
-      class LearningGenaiRootControlDecodingRecords
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :records, as: 'records', class: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecord, decorator: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecord::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootDataProviderOutput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :status, as: 'status', class: Google::Apis::AiplatformV1::UtilStatusProto, decorator: Google::Apis::AiplatformV1::UtilStatusProto::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootFilterMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :debug_info, as: 'debugInfo', class: Google::Apis::AiplatformV1::LearningGenaiRootFilterMetadataFilterDebugInfo, decorator: Google::Apis::AiplatformV1::LearningGenaiRootFilterMetadataFilterDebugInfo::Representation
-      
-          property :fallback, as: 'fallback'
-          property :info, as: 'info'
-          property :name, as: 'name'
-          property :reason, as: 'reason'
-          property :text, as: 'text'
-        end
-      end
-      
-      class LearningGenaiRootFilterMetadataFilterDebugInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :classifier_output, as: 'classifierOutput', class: Google::Apis::AiplatformV1::LearningGenaiRootClassifierOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootClassifierOutput::Representation
-      
-          property :default_metadata, as: 'defaultMetadata'
-          property :language_filter_result, as: 'languageFilterResult', class: Google::Apis::AiplatformV1::LearningGenaiRootLanguageFilterResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRootLanguageFilterResult::Representation
-      
-          property :rai_output, as: 'raiOutput', class: Google::Apis::AiplatformV1::LearningGenaiRootRaiOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRaiOutput::Representation
-      
-          property :rai_result, as: 'raiResult', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiResult, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiResult::Representation
-      
-          property :rai_signal, as: 'raiSignal', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal::Representation
-      
-          property :records, as: 'records', class: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecords, decorator: Google::Apis::AiplatformV1::LearningGenaiRootControlDecodingRecords::Representation
-      
-          property :stream_recitation_result, as: 'streamRecitationResult', class: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoStreamRecitationResult, decorator: Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoStreamRecitationResult::Representation
-      
-          property :takedown_result, as: 'takedownResult', class: Google::Apis::AiplatformV1::LearningGenaiRootTakedownResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRootTakedownResult::Representation
-      
-          property :toxicity_result, as: 'toxicityResult', class: Google::Apis::AiplatformV1::LearningGenaiRootToxicityResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRootToxicityResult::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootGroundingMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :citations, as: 'citations', class: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadataCitation, decorator: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadataCitation::Representation
-      
-          property :grounding_cancelled, as: 'groundingCancelled'
-          collection :search_queries, as: 'searchQueries'
-        end
-      end
-      
-      class LearningGenaiRootGroundingMetadataCitation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_index, as: 'endIndex'
-          property :fact_index, as: 'factIndex'
-          property :score, as: 'score'
-          property :start_index, as: 'startIndex'
-        end
-      end
-      
-      class LearningGenaiRootHarm
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :contextual_dangerous, as: 'contextualDangerous'
-          property :csam, as: 'csam'
-          property :fringe, as: 'fringe'
-          property :grail_image_harm_type, as: 'grailImageHarmType', class: Google::Apis::AiplatformV1::LearningGenaiRootHarmGrailImageHarmType, decorator: Google::Apis::AiplatformV1::LearningGenaiRootHarmGrailImageHarmType::Representation
-      
-          property :grail_text_harm_type, as: 'grailTextHarmType', class: Google::Apis::AiplatformV1::LearningGenaiRootHarmGrailTextHarmType, decorator: Google::Apis::AiplatformV1::LearningGenaiRootHarmGrailTextHarmType::Representation
-      
-          property :image_child, as: 'imageChild'
-          property :image_csam, as: 'imageCsam'
-          property :image_pedo, as: 'imagePedo'
-          property :image_porn, as: 'imagePorn'
-          property :image_violence, as: 'imageViolence'
-          property :pqc, as: 'pqc'
-          property :safetycat, as: 'safetycat', class: Google::Apis::AiplatformV1::LearningGenaiRootHarmSafetyCatCategories, decorator: Google::Apis::AiplatformV1::LearningGenaiRootHarmSafetyCatCategories::Representation
-      
-          property :spii, as: 'spii', class: Google::Apis::AiplatformV1::LearningGenaiRootHarmSpiiFilter, decorator: Google::Apis::AiplatformV1::LearningGenaiRootHarmSpiiFilter::Representation
-      
-          property :threshold, as: 'threshold'
-          property :video_frame_child, as: 'videoFrameChild'
-          property :video_frame_csam, as: 'videoFrameCsam'
-          property :video_frame_pedo, as: 'videoFramePedo'
-          property :video_frame_porn, as: 'videoFramePorn'
-          property :video_frame_violence, as: 'videoFrameViolence'
-        end
-      end
-      
-      class LearningGenaiRootHarmGrailImageHarmType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :image_harm_type, as: 'imageHarmType'
-        end
-      end
-      
-      class LearningGenaiRootHarmGrailTextHarmType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :harm_type, as: 'harmType'
-        end
-      end
-      
-      class LearningGenaiRootHarmSafetyCatCategories
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :categories, as: 'categories'
-        end
-      end
-      
-      class LearningGenaiRootHarmSpiiFilter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :us_bank_routing_micr, as: 'usBankRoutingMicr'
-          property :us_employer_identification_number, as: 'usEmployerIdentificationNumber'
-          property :us_social_security_number, as: 'usSocialSecurityNumber'
-        end
-      end
-      
-      class LearningGenaiRootInternalMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :scored_tokens, as: 'scoredTokens', class: Google::Apis::AiplatformV1::LearningGenaiRootScoredToken, decorator: Google::Apis::AiplatformV1::LearningGenaiRootScoredToken::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootLanguageFilterResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allowed, as: 'allowed'
-          property :detected_language, as: 'detectedLanguage'
-          property :detected_language_probability, as: 'detectedLanguageProbability'
-        end
-      end
-      
-      class LearningGenaiRootMetricOutput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :debug, as: 'debug'
-          property :name, as: 'name'
-          property :numeric_value, as: 'numericValue'
-          property :status, as: 'status', class: Google::Apis::AiplatformV1::UtilStatusProto, decorator: Google::Apis::AiplatformV1::UtilStatusProto::Representation
-      
-          property :string_value, as: 'stringValue'
-        end
-      end
-      
-      class LearningGenaiRootPerRequestProcessorDebugMetadataFactualityDebugMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :fact_retrieval_milliseconds_by_provider, as: 'factRetrievalMillisecondsByProvider'
-          property :prompt2query_milliseconds, :numeric_string => true, as: 'prompt2queryMilliseconds'
-        end
-      end
-      
-      class LearningGenaiRootRaiOutput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allowed, as: 'allowed'
-          property :harm, as: 'harm', class: Google::Apis::AiplatformV1::LearningGenaiRootHarm, decorator: Google::Apis::AiplatformV1::LearningGenaiRootHarm::Representation
-      
-          property :name, as: 'name'
-          property :score, as: 'score'
-        end
-      end
-      
-      class LearningGenaiRootRegexTakedownResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allowed, as: 'allowed'
-          property :takedown_regex, as: 'takedownRegex'
-        end
-      end
-      
-      class LearningGenaiRootRequestResponseTakedownResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allowed, as: 'allowed'
-          property :request_takedown_regex, as: 'requestTakedownRegex'
-          property :response_takedown_regex, as: 'responseTakedownRegex'
-        end
-      end
-      
-      class LearningGenaiRootRoutingDecision
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metadata, as: 'metadata', class: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadata::Representation
-      
-          property :model_config_id, as: 'modelConfigId'
-        end
-      end
-      
-      class LearningGenaiRootRoutingDecisionMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :score_based_routing_metadata, as: 'scoreBasedRoutingMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataScoreBased, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataScoreBased::Representation
-      
-          property :token_length_based_routing_metadata, as: 'tokenLengthBasedRoutingMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataTokenLengthBased, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataTokenLengthBased::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootRoutingDecisionMetadataScoreBased
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :matched_rule, as: 'matchedRule', class: Google::Apis::AiplatformV1::LearningGenaiRootScoreBasedRoutingConfigRule, decorator: Google::Apis::AiplatformV1::LearningGenaiRootScoreBasedRoutingConfigRule::Representation
-      
-          property :score, as: 'score', class: Google::Apis::AiplatformV1::LearningGenaiRootScore, decorator: Google::Apis::AiplatformV1::LearningGenaiRootScore::Representation
-      
-          property :used_default_fallback, as: 'usedDefaultFallback'
-        end
-      end
-      
-      class LearningGenaiRootRoutingDecisionMetadataTokenLengthBased
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :model_input_token_metadata, as: 'modelInputTokenMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelInputTokenMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelInputTokenMetadata::Representation
-      
-          collection :model_max_token_metadata, as: 'modelMaxTokenMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelMaxTokenMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelMaxTokenMetadata::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelInputTokenMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :computed_input_token_length, as: 'computedInputTokenLength'
-          property :model_id, as: 'modelId'
-          property :picked_as_fallback, as: 'pickedAsFallback'
-          property :selected, as: 'selected'
-        end
-      end
-      
-      class LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelMaxTokenMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_num_input_tokens, as: 'maxNumInputTokens'
-          property :max_num_output_tokens, as: 'maxNumOutputTokens'
-          property :model_id, as: 'modelId'
-        end
-      end
-      
-      class LearningGenaiRootRuleOutput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :decision, as: 'decision'
-          property :name, as: 'name'
-        end
-      end
-      
-      class LearningGenaiRootScore
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :calculation_type, as: 'calculationType', class: Google::Apis::AiplatformV1::LearningGenaiRootCalculationType, decorator: Google::Apis::AiplatformV1::LearningGenaiRootCalculationType::Representation
-      
-          property :internal_metadata, as: 'internalMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootInternalMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootInternalMetadata::Representation
-      
-          property :threshold_type, as: 'thresholdType', class: Google::Apis::AiplatformV1::LearningGenaiRootThresholdType, decorator: Google::Apis::AiplatformV1::LearningGenaiRootThresholdType::Representation
-      
-          property :tokens_and_logprob_per_decoding_step, as: 'tokensAndLogprobPerDecodingStep', class: Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStep, decorator: Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStep::Representation
-      
-          property :value, as: 'value'
-        end
-      end
-      
-      class LearningGenaiRootScoreBasedRoutingConfigRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :equal_or_greater_than, as: 'equalOrGreaterThan', class: Google::Apis::AiplatformV1::LearningGenaiRootScore, decorator: Google::Apis::AiplatformV1::LearningGenaiRootScore::Representation
-      
-          property :less_than, as: 'lessThan', class: Google::Apis::AiplatformV1::LearningGenaiRootScore, decorator: Google::Apis::AiplatformV1::LearningGenaiRootScore::Representation
-      
-          property :model_config_id, as: 'modelConfigId'
-        end
-      end
-      
-      class LearningGenaiRootScoredSimilarityTakedownPhrase
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :phrase, as: 'phrase', class: Google::Apis::AiplatformV1::LearningGenaiRootSimilarityTakedownPhrase, decorator: Google::Apis::AiplatformV1::LearningGenaiRootSimilarityTakedownPhrase::Representation
-      
-          property :similarity_score, as: 'similarityScore'
-        end
-      end
-      
-      class LearningGenaiRootScoredToken
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_token_score, as: 'endTokenScore'
-          property :score, as: 'score'
-          property :token, as: 'token'
-        end
-      end
-      
-      class LearningGenaiRootSimilarityTakedownPhrase
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :blocked_phrase, as: 'blockedPhrase'
-        end
-      end
-      
-      class LearningGenaiRootSimilarityTakedownResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allowed, as: 'allowed'
-          collection :scored_phrases, as: 'scoredPhrases', class: Google::Apis::AiplatformV1::LearningGenaiRootScoredSimilarityTakedownPhrase, decorator: Google::Apis::AiplatformV1::LearningGenaiRootScoredSimilarityTakedownPhrase::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootTakedownResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allowed, as: 'allowed'
-          property :regex_takedown_result, as: 'regexTakedownResult', class: Google::Apis::AiplatformV1::LearningGenaiRootRegexTakedownResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRegexTakedownResult::Representation
-      
-          property :request_response_takedown_result, as: 'requestResponseTakedownResult', class: Google::Apis::AiplatformV1::LearningGenaiRootRequestResponseTakedownResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRequestResponseTakedownResult::Representation
-      
-          property :similarity_takedown_result, as: 'similarityTakedownResult', class: Google::Apis::AiplatformV1::LearningGenaiRootSimilarityTakedownResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRootSimilarityTakedownResult::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootThresholdType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :score_type, as: 'scoreType'
-          property :threshold, as: 'threshold'
-        end
-      end
-      
-      class LearningGenaiRootTokensAndLogProbPerDecodingStep
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :chosen_candidates, as: 'chosenCandidates', class: Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate, decorator: Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate::Representation
-      
-          collection :top_candidates, as: 'topCandidates', class: Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStepTopCandidates, decorator: Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStepTopCandidates::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_probability, as: 'logProbability'
-          property :token, as: 'token'
-        end
-      end
-      
-      class LearningGenaiRootTokensAndLogProbPerDecodingStepTopCandidates
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :candidates, as: 'candidates', class: Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate, decorator: Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootToxicityResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :signals, as: 'signals', class: Google::Apis::AiplatformV1::LearningGenaiRootToxicitySignal, decorator: Google::Apis::AiplatformV1::LearningGenaiRootToxicitySignal::Representation
-      
-        end
-      end
-      
-      class LearningGenaiRootToxicitySignal
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allowed, as: 'allowed'
-          property :label, as: 'label'
-          property :score, as: 'score'
-        end
-      end
-      
-      class LearningGenaiRootTranslationRequestInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :detected_language_codes, as: 'detectedLanguageCodes'
-          property :total_content_size, :numeric_string => true, as: 'totalContentSize'
-        end
-      end
-      
-      class LearningServingLlmMessageMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :classifier_summary, as: 'classifierSummary', class: Google::Apis::AiplatformV1::LearningGenaiRootClassifierOutputSummary, decorator: Google::Apis::AiplatformV1::LearningGenaiRootClassifierOutputSummary::Representation
-      
-          property :codey_output, as: 'codeyOutput', class: Google::Apis::AiplatformV1::LearningGenaiRootCodeyOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootCodeyOutput::Representation
-      
-          property :current_stream_text_length, as: 'currentStreamTextLength'
-          property :deleted, as: 'deleted'
-          collection :filter_meta, as: 'filterMeta', class: Google::Apis::AiplatformV1::LearningGenaiRootFilterMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootFilterMetadata::Representation
-      
-          property :final_message_score, as: 'finalMessageScore', class: Google::Apis::AiplatformV1::LearningGenaiRootScore, decorator: Google::Apis::AiplatformV1::LearningGenaiRootScore::Representation
-      
-          property :finish_reason, as: 'finishReason'
-          property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata::Representation
-      
-          property :is_code, as: 'isCode'
-          property :is_fallback, as: 'isFallback'
-          property :langid_result, as: 'langidResult', class: Google::Apis::AiplatformV1::NlpSaftLangIdResult, decorator: Google::Apis::AiplatformV1::NlpSaftLangIdResult::Representation
-      
-          property :language, as: 'language'
-          property :lm_prefix, as: 'lmPrefix'
-          property :original_text, as: 'originalText'
-          property :per_stream_decoded_token_count, as: 'perStreamDecodedTokenCount'
-          collection :rai_outputs, as: 'raiOutputs', class: Google::Apis::AiplatformV1::LearningGenaiRootRaiOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRaiOutput::Representation
-      
-          property :recitation_result, as: 'recitationResult', class: Google::Apis::AiplatformV1::LearningGenaiRecitationRecitationResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRecitationRecitationResult::Representation
-      
-          property :return_token_count, as: 'returnTokenCount'
-          collection :scores, as: 'scores', class: Google::Apis::AiplatformV1::LearningGenaiRootScore, decorator: Google::Apis::AiplatformV1::LearningGenaiRootScore::Representation
-      
-          property :stream_terminated, as: 'streamTerminated'
-          property :total_decoded_token_count, as: 'totalDecodedTokenCount'
-          collection :translated_user_prompts, as: 'translatedUserPrompts'
-          property :vertex_rai_result, as: 'vertexRaiResult', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiResult, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiResult::Representation
-      
-        end
-      end
-      
-      class NlpSaftLangIdLocalesResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :predictions, as: 'predictions', class: Google::Apis::AiplatformV1::NlpSaftLangIdLocalesResultLocale, decorator: Google::Apis::AiplatformV1::NlpSaftLangIdLocalesResultLocale::Representation
-      
-        end
-      end
-      
-      class NlpSaftLangIdLocalesResultLocale
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :language_code, as: 'languageCode'
-        end
-      end
-      
-      class NlpSaftLangIdResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :model_version, as: 'modelVersion'
-          collection :predictions, as: 'predictions', class: Google::Apis::AiplatformV1::NlpSaftLanguageSpan, decorator: Google::Apis::AiplatformV1::NlpSaftLanguageSpan::Representation
-      
-          collection :span_predictions, as: 'spanPredictions', class: Google::Apis::AiplatformV1::NlpSaftLanguageSpanSequence, decorator: Google::Apis::AiplatformV1::NlpSaftLanguageSpanSequence::Representation
-      
-        end
-      end
-      
-      class NlpSaftLanguageSpan
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end, as: 'end'
-          property :language_code, as: 'languageCode'
-          property :locales, as: 'locales', class: Google::Apis::AiplatformV1::NlpSaftLangIdLocalesResult, decorator: Google::Apis::AiplatformV1::NlpSaftLangIdLocalesResult::Representation
-      
-          property :probability, as: 'probability'
-          property :start, as: 'start'
-        end
-      end
-      
-      class NlpSaftLanguageSpanSequence
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :language_spans, as: 'languageSpans', class: Google::Apis::AiplatformV1::NlpSaftLanguageSpan, decorator: Google::Apis::AiplatformV1::NlpSaftLanguageSpan::Representation
-      
-          property :probability, as: 'probability'
-        end
-      end
-      
-      class Proto2BridgeMessageSet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class UtilStatusProto
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :canonical_code, as: 'canonicalCode'
-          property :code, as: 'code'
-          property :message, as: 'message'
-          property :message_set, as: 'messageSet', class: Google::Apis::AiplatformV1::Proto2BridgeMessageSet, decorator: Google::Apis::AiplatformV1::Proto2BridgeMessageSet::Representation
-      
-          property :space, as: 'space'
         end
       end
     end
