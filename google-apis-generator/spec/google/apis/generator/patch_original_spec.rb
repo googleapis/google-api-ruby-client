@@ -14,6 +14,6 @@ RSpec.describe 'Google::Apis::Generator with DiscoveryV1 patch' do
 
   it 'should not modify RestMethod if `api_version` is already defined' do
     require 'google/apis/generator'
-    expect(Google::Apis::Generator::Discovery::RestMethod.method_defined? :update_discovery!).to eql(false)
+    expect(defined? Google::Apis::Generator::Discovery::RestMethod.new.update_discovery!).to be_falsy
   end
 end
