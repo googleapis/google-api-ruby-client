@@ -2,7 +2,7 @@ require 'google/apis/discovery_v1'
 
 # Extend the DiscoveryV1 API classes with additional fields for code generation,
 # supporting features which are not present in the schema itself.
-unless Google::Apis::DiscoveryV1::RestMethod.respond_to? :api_version
+unless Google::Apis::DiscoveryV1::RestMethod.method_defined? :api_version
   module Google
     module Apis
       module DiscoveryV1
