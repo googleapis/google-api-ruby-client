@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'google/apis/discovery_v1'
 
 module Google
   module Apis
