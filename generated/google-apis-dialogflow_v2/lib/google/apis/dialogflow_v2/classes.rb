@@ -81,10 +81,20 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # Endpoint timeout setting for matching dtmf input to regex.
+        # Corresponds to the JSON property `endpointingTimeoutDuration`
+        # @return [String]
+        attr_accessor :endpointing_timeout_duration
+      
         # The digit that terminates a DTMF digit sequence.
         # Corresponds to the JSON property `finishDigit`
         # @return [String]
         attr_accessor :finish_digit
+      
+        # Interdigit timeout setting for matching dtmf input to regex.
+        # Corresponds to the JSON property `interdigitTimeoutDuration`
+        # @return [String]
+        attr_accessor :interdigit_timeout_duration
       
         # Max length of DTMF digits.
         # Corresponds to the JSON property `maxDigits`
@@ -98,7 +108,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @endpointing_timeout_duration = args[:endpointing_timeout_duration] if args.key?(:endpointing_timeout_duration)
           @finish_digit = args[:finish_digit] if args.key?(:finish_digit)
+          @interdigit_timeout_duration = args[:interdigit_timeout_duration] if args.key?(:interdigit_timeout_duration)
           @max_digits = args[:max_digits] if args.key?(:max_digits)
         end
       end
@@ -3915,10 +3927,20 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # Endpoint timeout setting for matching dtmf input to regex.
+        # Corresponds to the JSON property `endpointingTimeoutDuration`
+        # @return [String]
+        attr_accessor :endpointing_timeout_duration
+      
         # The digit that terminates a DTMF digit sequence.
         # Corresponds to the JSON property `finishDigit`
         # @return [String]
         attr_accessor :finish_digit
+      
+        # Interdigit timeout setting for matching dtmf input to regex.
+        # Corresponds to the JSON property `interdigitTimeoutDuration`
+        # @return [String]
+        attr_accessor :interdigit_timeout_duration
       
         # Max length of DTMF digits.
         # Corresponds to the JSON property `maxDigits`
@@ -3932,7 +3954,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @endpointing_timeout_duration = args[:endpointing_timeout_duration] if args.key?(:endpointing_timeout_duration)
           @finish_digit = args[:finish_digit] if args.key?(:finish_digit)
+          @interdigit_timeout_duration = args[:interdigit_timeout_duration] if args.key?(:interdigit_timeout_duration)
           @max_digits = args[:max_digits] if args.key?(:max_digits)
         end
       end
