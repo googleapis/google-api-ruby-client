@@ -1256,7 +1256,8 @@ module Google
         end
       end
       
-      # Information specific to a subscription in canceled state.
+      # Information specific to a subscription in the SUBSCRIPTION_STATE_CANCELED or
+      # SUBSCRIPTION_STATE_EXPIRED state.
       class CanceledStateContext
         include Google::Apis::Core::Hashable
       
@@ -5846,7 +5847,8 @@ module Google
         # @return [String]
         attr_accessor :acknowledgement_state
       
-        # Information specific to a subscription in canceled state.
+        # Information specific to a subscription in the SUBSCRIPTION_STATE_CANCELED or
+        # SUBSCRIPTION_STATE_EXPIRED state.
         # Corresponds to the JSON property `canceledStateContext`
         # @return [Google::Apis::AndroidpublisherV3::CanceledStateContext]
         attr_accessor :canceled_state_context
