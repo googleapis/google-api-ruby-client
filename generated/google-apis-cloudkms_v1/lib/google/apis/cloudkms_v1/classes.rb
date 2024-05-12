@@ -324,12 +324,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Name of the key project, e.g. `projects/`PROJECT_ID`` or `projects/`
-        # PROJECT_NUMBER``, where Cloud KMS Autokey will provision new CryptoKeys. On
-        # UpdateAutokeyConfig, the caller will require `cloudkms.cryptoKeys.setIamPolicy`
-        # permission on this key project. Once configured, for Cloud KMS Autokey to
-        # function properly, this key project must have the Cloud KMS API activated and
-        # the Cloud KMS Service Agent for this key project must be granted the `cloudkms.
-        # admin` role (or pertinent permissions).
+        # PROJECT_NUMBER``, where Cloud KMS Autokey will provision a new CryptoKey when
+        # a KeyHandle is created. On UpdateAutokeyConfig, the caller will require `
+        # cloudkms.cryptoKeys.setIamPolicy` permission on this key project. Once
+        # configured, for Cloud KMS Autokey to function properly, this key project must
+        # have the Cloud KMS API activated and the Cloud KMS Service Agent for this key
+        # project must be granted the `cloudkms.admin` role (or pertinent permissions).
+        # A request with an empty key project field will clear the configuration.
         # Corresponds to the JSON property `keyProject`
         # @return [String]
         attr_accessor :key_project
@@ -1532,13 +1533,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Name of a CryptoKey that has been provisioned for Customer
-        # Managed Encryption Key (CMEK) use in the KeyHandle's project and location for
-        # the requested resource type.
+        # Managed Encryption Key (CMEK) use in the KeyHandle project and location for
+        # the requested resource type. The CryptoKey project will reflect the value
+        # configured in the AutokeyConfig on the resource project's ancestor folder at
+        # the time of the KeyHandle creation. If more than one ancestor folder has a
+        # configured AutokeyConfig, the nearest of these configurations is used.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
       
-        # Output only. Identifier. Name of the [KeyHandle] resource, e.g. `projects/`
+        # Output only. Identifier. Name of the KeyHandle resource, e.g. `projects/`
         # PROJECT_ID`/locations/`LOCATION`/keyHandles/`KEY_HANDLE_ID``.
         # Corresponds to the JSON property `name`
         # @return [String]
