@@ -23,7 +23,7 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = ">= 2.7"
   gem.add_runtime_dependency "activesupport", ">= 5.0"
   gem.add_runtime_dependency "gems", "~> 1.2"
-  gem.add_runtime_dependency "google-apis-core", ">= 0.14.0", "< 2.a"
+  gem.add_runtime_dependency "google-apis-core", ">= 0.15.0", "< 2.a"
   gem.add_runtime_dependency "google-apis-discovery_v1", "~> 0.14"
   gem.add_runtime_dependency "thor", ">= 0.20", "< 2.a"
 end
