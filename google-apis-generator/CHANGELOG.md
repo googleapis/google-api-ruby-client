@@ -1,5 +1,12 @@
 # Release History
 
+### 0.15.0 (2024-05-13)
+
+#### Features
+
+* Introduce api_version to discovery clients ([#18969](https://github.com/googleapis/google-api-ruby-client/issues/18969)) 
+* Update generated clients to depend on google-apis-core 0.15.0 ([#18985](https://github.com/googleapis/google-api-ruby-client/issues/18985)) 
+
 ### 0.14.0 (2024-02-23)
 
 #### Features
