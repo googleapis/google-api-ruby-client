@@ -528,6 +528,16 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     command.execute(client)
   end
 
+  it 'should set X-Goog-Api-Version headers when requested' do
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.set_api_version_header "v1_20240502"
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Api version))
+    result = command.execute(client)
+    expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+      .with { |req| req.headers['X-Goog-Api-Version'] == 'v1_20240502' }).to have_been_made
+    expect(result).to eql "Api version"
+  end
+
   describe "#safe_pretty_representation" do
     let(:command) do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')

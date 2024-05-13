@@ -348,6 +348,12 @@ module Google
           [:post, :put].include?(method) && body.nil?
         end
 
+        # Set the API version header for the service if not empty.
+        # @return [void]
+        def set_api_version_header api_version
+          self.header['X-Goog-Api-Version'] = api_version unless api_version.empty?
+        end
+
         private
 
         UNSAFE_CLASS_NAMES = [
