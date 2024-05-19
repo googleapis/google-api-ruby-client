@@ -1591,6 +1591,8 @@ module Google
           hash :resource_labels, as: 'resourceLabels'
           property :resource_usage_export_config, as: 'resourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :secret_manager_config, as: 'secretManagerConfig', class: Google::Apis::ContainerV1beta1::SecretManagerConfig, decorator: Google::Apis::ContainerV1beta1::SecretManagerConfig::Representation
       
           property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::ContainerV1beta1::SecurityPostureConfig, decorator: Google::Apis::ContainerV1beta1::SecurityPostureConfig::Representation
@@ -1709,6 +1711,10 @@ module Google
       
           property :desired_monitoring_service, as: 'desiredMonitoringService'
           property :desired_network_performance_config, as: 'desiredNetworkPerformanceConfig', class: Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig, decorator: Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig::Representation
+      
+          property :desired_node_kubelet_config, as: 'desiredNodeKubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
+      
+          property :desired_node_pool_auto_config_kubelet_config, as: 'desiredNodePoolAutoConfigKubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
       
           property :desired_node_pool_auto_config_network_tags, as: 'desiredNodePoolAutoConfigNetworkTags', class: Google::Apis::ContainerV1beta1::NetworkTags, decorator: Google::Apis::ContainerV1beta1::NetworkTags::Representation
       
@@ -2534,6 +2540,8 @@ module Google
       
           property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig::Representation
       
+          property :node_kubelet_config, as: 'nodeKubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
+      
         end
       end
       
@@ -2626,6 +2634,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :network_tags, as: 'networkTags', class: Google::Apis::ContainerV1beta1::NetworkTags, decorator: Google::Apis::ContainerV1beta1::NetworkTags::Representation
+      
+          property :node_kubelet_config, as: 'nodeKubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
       
           property :resource_manager_tags, as: 'resourceManagerTags', class: Google::Apis::ContainerV1beta1::ResourceManagerTags, decorator: Google::Apis::ContainerV1beta1::ResourceManagerTags::Representation
       

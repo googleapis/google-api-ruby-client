@@ -1412,6 +1412,18 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ResourceUsageExportConfig]
         attr_accessor :resource_usage_export_config
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # SecretManagerConfig is config for secret manager enablement.
         # Corresponds to the JSON property `secretManagerConfig`
         # @return [Google::Apis::ContainerV1beta1::SecretManagerConfig]
@@ -1570,6 +1582,8 @@ module Google
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secret_manager_config = args[:secret_manager_config] if args.key?(:secret_manager_config)
           @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -1906,6 +1920,16 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig]
         attr_accessor :desired_network_performance_config
       
+        # Node kubelet configs.
+        # Corresponds to the JSON property `desiredNodeKubeletConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodeKubeletConfig]
+        attr_accessor :desired_node_kubelet_config
+      
+        # Node kubelet configs.
+        # Corresponds to the JSON property `desiredNodePoolAutoConfigKubeletConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodeKubeletConfig]
+        attr_accessor :desired_node_pool_auto_config_kubelet_config
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
         # docs/reference/rest/v1/NodeConfig)).
@@ -2119,6 +2143,8 @@ module Google
           @desired_monitoring_config = args[:desired_monitoring_config] if args.key?(:desired_monitoring_config)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
           @desired_network_performance_config = args[:desired_network_performance_config] if args.key?(:desired_network_performance_config)
+          @desired_node_kubelet_config = args[:desired_node_kubelet_config] if args.key?(:desired_node_kubelet_config)
+          @desired_node_pool_auto_config_kubelet_config = args[:desired_node_pool_auto_config_kubelet_config] if args.key?(:desired_node_pool_auto_config_kubelet_config)
           @desired_node_pool_auto_config_network_tags = args[:desired_node_pool_auto_config_network_tags] if args.key?(:desired_node_pool_auto_config_network_tags)
           @desired_node_pool_auto_config_resource_manager_tags = args[:desired_node_pool_auto_config_resource_manager_tags] if args.key?(:desired_node_pool_auto_config_resource_manager_tags)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
@@ -4893,6 +4919,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodePoolLoggingConfig]
         attr_accessor :logging_config
       
+        # Node kubelet configs.
+        # Corresponds to the JSON property `nodeKubeletConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodeKubeletConfig]
+        attr_accessor :node_kubelet_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4903,6 +4934,7 @@ module Google
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @host_maintenance_policy = args[:host_maintenance_policy] if args.key?(:host_maintenance_policy)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @node_kubelet_config = args[:node_kubelet_config] if args.key?(:node_kubelet_config)
         end
       end
       
@@ -5320,6 +5352,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NetworkTags]
         attr_accessor :network_tags
       
+        # Node kubelet configs.
+        # Corresponds to the JSON property `nodeKubeletConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodeKubeletConfig]
+        attr_accessor :node_kubelet_config
+      
         # A map of resource manager tag keys and values to be attached to the nodes for
         # managing Compute Engine firewalls using Network Firewall Policies. Tags must
         # be according to specifications in https://cloud.google.com/vpc/docs/tags-
@@ -5336,6 +5373,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
+          @node_kubelet_config = args[:node_kubelet_config] if args.key?(:node_kubelet_config)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
