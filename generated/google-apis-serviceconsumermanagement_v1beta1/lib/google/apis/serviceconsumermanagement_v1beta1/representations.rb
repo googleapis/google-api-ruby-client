@@ -1418,6 +1418,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :force, as: 'force'
+          property :force_justification, as: 'forceJustification'
           collection :force_only, as: 'forceOnly'
           property :inline_source, as: 'inlineSource', class: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1OverrideInlineSource, decorator: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1OverrideInlineSource::Representation
       
