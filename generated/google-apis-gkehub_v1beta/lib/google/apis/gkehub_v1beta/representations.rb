@@ -2006,6 +2006,7 @@ module Google
           collection :membership_bindings, as: 'membershipBindings', class: Google::Apis::GkehubV1beta::MembershipBinding, decorator: Google::Apis::GkehubV1beta::MembershipBinding::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -2015,6 +2016,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :rbacrolebindings, as: 'rbacrolebindings', class: Google::Apis::GkehubV1beta::RbacRoleBinding, decorator: Google::Apis::GkehubV1beta::RbacRoleBinding::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
