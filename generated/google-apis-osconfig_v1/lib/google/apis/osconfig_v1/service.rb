@@ -402,6 +402,10 @@ module Google
         #   following restrictions: * Must contain only lowercase letters, numbers, and
         #   hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must
         #   end with a number or a letter. * Must be unique within the project.
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is only idempotent if a
+        #   `request_id` is provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -419,7 +423,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_os_policy_assignment(parent, os_policy_assignment_object = nil, os_policy_assignment_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_os_policy_assignment(parent, os_policy_assignment_object = nil, os_policy_assignment_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/osPolicyAssignments', options)
           command.request_representation = Google::Apis::OsconfigV1::OsPolicyAssignment::Representation
           command.request_object = os_policy_assignment_object
@@ -427,6 +431,7 @@ module Google
           command.response_class = Google::Apis::OsconfigV1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['osPolicyAssignmentId'] = os_policy_assignment_id unless os_policy_assignment_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -442,6 +447,10 @@ module Google
         # operations/cancel).
         # @param [String] name
         #   Required. The name of the OS policy assignment to be deleted
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is only idempotent if a
+        #   `request_id` is provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -459,11 +468,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_os_policy_assignment(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_os_policy_assignment(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::OsconfigV1::Operation::Representation
           command.response_class = Google::Apis::OsconfigV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -590,6 +600,13 @@ module Google
         #   osPolicyAssignments/`os_policy_assignment_id`` This field is ignored when you
         #   create an OS policy assignment.
         # @param [Google::Apis::OsconfigV1::OsPolicyAssignment] os_policy_assignment_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the OS policy assignment is not found, a new OS
+        #   policy assignment will be created. In this situation, `update_mask` is ignored.
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is only idempotent if a
+        #   `request_id` is provided.
         # @param [String] update_mask
         #   Optional. Field mask that controls which fields of the assignment should be
         #   updated.
@@ -610,13 +627,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_os_policy_assignment(name, os_policy_assignment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_os_policy_assignment(name, os_policy_assignment_object = nil, allow_missing: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::OsconfigV1::OsPolicyAssignment::Representation
           command.request_object = os_policy_assignment_object
           command.response_representation = Google::Apis::OsconfigV1::Operation::Representation
           command.response_class = Google::Apis::OsconfigV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
