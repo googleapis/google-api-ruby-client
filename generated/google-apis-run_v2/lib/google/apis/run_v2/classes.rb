@@ -3875,6 +3875,40 @@ module Google
         end
       end
       
+      # Represents a storage location in Cloud Storage
+      class GoogleDevtoolsCloudbuildV1GcsLocation
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage bucket. See https://cloud.google.com/storage/docs/naming#
+        # requirements
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Cloud Storage generation for the object. If the generation is omitted, the
+        # latest generation will be used.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Cloud Storage object. See https://cloud.google.com/storage/docs/naming#
+        # objectnames
+        # Corresponds to the JSON property `object`
+        # @return [String]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @generation = args[:generation] if args.key?(:generation)
+          @object = args[:object] if args.key?(:object)
+        end
+      end
+      
       # GitConfig is a configuration for git operations.
       class GoogleDevtoolsCloudbuildV1GitConfig
         include Google::Apis::Core::Hashable
@@ -3970,6 +4004,11 @@ module Google
         # @return [String]
         attr_accessor :proxy_secret_version_name
       
+        # Represents a storage location in Cloud Storage
+        # Corresponds to the JSON property `proxySslCaInfo`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GcsLocation]
+        attr_accessor :proxy_ssl_ca_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3977,6 +4016,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @proxy_secret_version_name = args[:proxy_secret_version_name] if args.key?(:proxy_secret_version_name)
+          @proxy_ssl_ca_info = args[:proxy_ssl_ca_info] if args.key?(:proxy_ssl_ca_info)
         end
       end
       
@@ -4233,7 +4273,8 @@ module Google
         # List of build step outputs, produced by builder images, in the order
         # corresponding to build step indices. [Cloud Builders](https://cloud.google.com/
         # cloud-build/docs/cloud-builders) can produce this output by writing to `$
-        # BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
+        # BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$
+        # BUILDER_OUTPUT` variable is read-only and can't be substituted.
         # Corresponds to the JSON property `buildStepOutputs`
         # @return [Array<String>]
         attr_accessor :build_step_outputs
