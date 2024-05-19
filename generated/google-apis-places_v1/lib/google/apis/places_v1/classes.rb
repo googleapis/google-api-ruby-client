@@ -545,6 +545,230 @@ module Google
         end
       end
       
+      # A block of content that can be served individually.
+      class GoogleMapsPlacesV1ContentBlock
+        include Google::Apis::Core::Hashable
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :content
+      
+        # Experimental: See https://developers.google.com/maps/documentation/places/web-
+        # service/experimental/places-generative for more details. Reference that the
+        # generative content is related to.
+        # Corresponds to the JSON property `references`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1References]
+        attr_accessor :references
+      
+        # The topic of the content, for example "overview" or "restaurant".
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @references = args[:references] if args.key?(:references)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # Experimental: See https://developers.google.com/maps/documentation/places/web-
+      # service/experimental/places-generative for more details. Content that is
+      # contextual to the place query.
+      class GoogleMapsPlacesV1ContextualContent
+        include Google::Apis::Core::Hashable
+      
+        # Experimental: See https://developers.google.com/maps/documentation/places/web-
+        # service/experimental/places-generative for more details. Justifications for
+        # the place.
+        # Corresponds to the JSON property `justifications`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustification>]
+        attr_accessor :justifications
+      
+        # Information (including references) about photos of this place, contexual to
+        # the place query.
+        # Corresponds to the JSON property `photos`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Photo>]
+        attr_accessor :photos
+      
+        # List of reviews about this place, contexual to the place query.
+        # Corresponds to the JSON property `reviews`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Review>]
+        attr_accessor :reviews
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @justifications = args[:justifications] if args.key?(:justifications)
+          @photos = args[:photos] if args.key?(:photos)
+          @reviews = args[:reviews] if args.key?(:reviews)
+        end
+      end
+      
+      # Experimental: See https://developers.google.com/maps/documentation/places/web-
+      # service/experimental/places-generative for more details. Justifications for
+      # the place. Justifications answers the question of why a place could interest
+      # an end user.
+      class GoogleMapsPlacesV1ContextualContentJustification
+        include Google::Apis::Core::Hashable
+      
+        # Experimental: See https://developers.google.com/maps/documentation/places/web-
+        # service/experimental/places-generative for more details.
+        # BusinessAvailabilityAttributes justifications. This shows some attributes a
+        # business has that could interest an end user.
+        # Corresponds to the JSON property `businessAvailabilityAttributesJustification`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification]
+        attr_accessor :business_availability_attributes_justification
+      
+        # Experimental: See https://developers.google.com/maps/documentation/places/web-
+        # service/experimental/places-generative for more details. User review
+        # justifications. This highlights a section of the user review that would
+        # interest an end user. For instance, if the search query is "firewood pizza",
+        # the review justification highlights the text relevant to the search query.
+        # Corresponds to the JSON property `reviewJustification`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustificationReviewJustification]
+        attr_accessor :review_justification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_availability_attributes_justification = args[:business_availability_attributes_justification] if args.key?(:business_availability_attributes_justification)
+          @review_justification = args[:review_justification] if args.key?(:review_justification)
+        end
+      end
+      
+      # Experimental: See https://developers.google.com/maps/documentation/places/web-
+      # service/experimental/places-generative for more details.
+      # BusinessAvailabilityAttributes justifications. This shows some attributes a
+      # business has that could interest an end user.
+      class GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification
+        include Google::Apis::Core::Hashable
+      
+        # If a place provides delivery.
+        # Corresponds to the JSON property `delivery`
+        # @return [Boolean]
+        attr_accessor :delivery
+        alias_method :delivery?, :delivery
+      
+        # If a place provides dine-in.
+        # Corresponds to the JSON property `dineIn`
+        # @return [Boolean]
+        attr_accessor :dine_in
+        alias_method :dine_in?, :dine_in
+      
+        # If a place provides takeout.
+        # Corresponds to the JSON property `takeout`
+        # @return [Boolean]
+        attr_accessor :takeout
+        alias_method :takeout?, :takeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delivery = args[:delivery] if args.key?(:delivery)
+          @dine_in = args[:dine_in] if args.key?(:dine_in)
+          @takeout = args[:takeout] if args.key?(:takeout)
+        end
+      end
+      
+      # Experimental: See https://developers.google.com/maps/documentation/places/web-
+      # service/experimental/places-generative for more details. User review
+      # justifications. This highlights a section of the user review that would
+      # interest an end user. For instance, if the search query is "firewood pizza",
+      # the review justification highlights the text relevant to the search query.
+      class GoogleMapsPlacesV1ContextualContentJustificationReviewJustification
+        include Google::Apis::Core::Hashable
+      
+        # The text highlighted by the justification. This is a subset of the review
+        # itself. The exact word to highlight is marked by the HighlightedTextRange.
+        # There could be several words in the text being highlighted.
+        # Corresponds to the JSON property `highlightedText`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText]
+        attr_accessor :highlighted_text
+      
+        # Information about a review of a place.
+        # Corresponds to the JSON property `review`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1Review]
+        attr_accessor :review
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @highlighted_text = args[:highlighted_text] if args.key?(:highlighted_text)
+          @review = args[:review] if args.key?(:review)
+        end
+      end
+      
+      # The text highlighted by the justification. This is a subset of the review
+      # itself. The exact word to highlight is marked by the HighlightedTextRange.
+      # There could be several words in the text being highlighted.
+      class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText
+        include Google::Apis::Core::Hashable
+      
+        # The list of the ranges of the highlighted text.
+        # Corresponds to the JSON property `highlightedTextRanges`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange>]
+        attr_accessor :highlighted_text_ranges
+      
+        # 
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @highlighted_text_ranges = args[:highlighted_text_ranges] if args.key?(:highlighted_text_ranges)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # The range of highlighted text.
+      class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # 
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @start_index = args[:start_index] if args.key?(:start_index)
+        end
+      end
+      
       # Information about the EV Charge Station hosted in Place. Terminology follows
       # https://afdc.energy.gov/fuels/electricity_infrastructure.html One port could
       # charge one car at a time. One port has one or more connectors. One station has
@@ -781,6 +1005,13 @@ module Google
         attr_accessor :allows_dogs
         alias_method :allows_dogs?, :allows_dogs
       
+        # Experimental: See https://developers.google.com/maps/documentation/places/web-
+        # service/experimental/places-generative for more details. AI-generated summary
+        # of the area that the place is in.
+        # Corresponds to the JSON property `areaSummary`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAreaSummary]
+        attr_accessor :area_summary
+      
         # A set of data provider that must be shown with this result.
         # Corresponds to the JSON property `attributions`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution>]
@@ -854,6 +1085,13 @@ module Google
         # Corresponds to the JSON property `fuelOptions`
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1FuelOptions]
         attr_accessor :fuel_options
+      
+        # Experimental: See https://developers.google.com/maps/documentation/places/web-
+        # service/experimental/places-generative for more details. AI-generated summary
+        # of the place.
+        # Corresponds to the JSON property `generativeSummary`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceGenerativeSummary]
+        attr_accessor :generative_summary
       
         # Place is good for children.
         # Corresponds to the JSON property `goodForChildren`
@@ -1149,6 +1387,7 @@ module Google
           @address_components = args[:address_components] if args.key?(:address_components)
           @adr_format_address = args[:adr_format_address] if args.key?(:adr_format_address)
           @allows_dogs = args[:allows_dogs] if args.key?(:allows_dogs)
+          @area_summary = args[:area_summary] if args.key?(:area_summary)
           @attributions = args[:attributions] if args.key?(:attributions)
           @business_status = args[:business_status] if args.key?(:business_status)
           @curbside_pickup = args[:curbside_pickup] if args.key?(:curbside_pickup)
@@ -1161,6 +1400,7 @@ module Google
           @ev_charge_options = args[:ev_charge_options] if args.key?(:ev_charge_options)
           @formatted_address = args[:formatted_address] if args.key?(:formatted_address)
           @fuel_options = args[:fuel_options] if args.key?(:fuel_options)
+          @generative_summary = args[:generative_summary] if args.key?(:generative_summary)
           @good_for_children = args[:good_for_children] if args.key?(:good_for_children)
           @good_for_groups = args[:good_for_groups] if args.key?(:good_for_groups)
           @good_for_watching_sports = args[:good_for_watching_sports] if args.key?(:good_for_watching_sports)
@@ -1292,6 +1532,28 @@ module Google
         end
       end
       
+      # Experimental: See https://developers.google.com/maps/documentation/places/web-
+      # service/experimental/places-generative for more details. AI-generated summary
+      # of the area that the place is in.
+      class GoogleMapsPlacesV1PlaceAreaSummary
+        include Google::Apis::Core::Hashable
+      
+        # Content blocks that compose the area summary. Each block has a separate topic
+        # about the area.
+        # Corresponds to the JSON property `contentBlocks`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock>]
+        attr_accessor :content_blocks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_blocks = args[:content_blocks] if args.key?(:content_blocks)
+        end
+      end
+      
       # Information about data providers of this place.
       class GoogleMapsPlacesV1PlaceAttribution
         include Google::Apis::Core::Hashable
@@ -1314,6 +1576,41 @@ module Google
         def update!(**args)
           @provider = args[:provider] if args.key?(:provider)
           @provider_uri = args[:provider_uri] if args.key?(:provider_uri)
+        end
+      end
+      
+      # Experimental: See https://developers.google.com/maps/documentation/places/web-
+      # service/experimental/places-generative for more details. AI-generated summary
+      # of the place.
+      class GoogleMapsPlacesV1PlaceGenerativeSummary
+        include Google::Apis::Core::Hashable
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `description`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :description
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `overview`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :overview
+      
+        # Experimental: See https://developers.google.com/maps/documentation/places/web-
+        # service/experimental/places-generative for more details. Reference that the
+        # generative content is related to.
+        # Corresponds to the JSON property `references`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1References]
+        attr_accessor :references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @overview = args[:overview] if args.key?(:overview)
+          @references = args[:references] if args.key?(:references)
         end
       end
       
@@ -1639,6 +1936,34 @@ module Google
         end
       end
       
+      # Experimental: See https://developers.google.com/maps/documentation/places/web-
+      # service/experimental/places-generative for more details. Reference that the
+      # generative content is related to.
+      class GoogleMapsPlacesV1References
+        include Google::Apis::Core::Hashable
+      
+        # The list of resource names of the referenced places. This name can be used in
+        # other APIs that accept Place resource names.
+        # Corresponds to the JSON property `places`
+        # @return [Array<String>]
+        attr_accessor :places
+      
+        # Reviews that serve as references.
+        # Corresponds to the JSON property `reviews`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Review>]
+        attr_accessor :reviews
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @places = args[:places] if args.key?(:places)
+          @reviews = args[:reviews] if args.key?(:reviews)
+        end
+      end
+      
       # Information about a review of a place.
       class GoogleMapsPlacesV1Review
         include Google::Apis::Core::Hashable
@@ -1896,10 +2221,14 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocationRestriction]
         attr_accessor :location_restriction
       
-        # Maximum number of results to return. It must be between 1 and 20, inclusively.
-        # The default is 20. If the number is unset, it falls back to the upper limit.
-        # If the number is set to negative or exceeds the upper limit, an
-        # INVALID_ARGUMENT error is returned.
+        # Deprecated: Use `page_size` instead. The maximum number of results per page
+        # that can be returned. If the number of available results is larger than `
+        # max_result_count`, a `next_page_token` is returned which can be passed to `
+        # page_token` to get the next page of results in subsequent requests. If 0 or no
+        # value is provided, a default of 20 is used. The maximum value is 20; values
+        # above 20 will be coerced to 20. Negative values will return an
+        # INVALID_ARGUMENT error. If both `max_result_count` and `page_size` are
+        # specified, `max_result_count` will be ignored.
         # Corresponds to the JSON property `maxResultCount`
         # @return [Fixnum]
         attr_accessor :max_result_count
@@ -1919,6 +2248,26 @@ module Google
         # @return [Boolean]
         attr_accessor :open_now
         alias_method :open_now?, :open_now
+      
+        # Optional. The maximum number of results per page that can be returned. If the
+        # number of available results is larger than `page_size`, a `next_page_token` is
+        # returned which can be passed to `page_token` to get the next page of results
+        # in subsequent requests. If 0 or no value is provided, a default of 20 is used.
+        # The maximum value is 20; values above 20 will be set to 20. Negative values
+        # will return an INVALID_ARGUMENT error. If both `max_result_count` and `
+        # page_size` are specified, `max_result_count` will be ignored.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Optional. A page token, received from a previous TextSearch call. Provide this
+        # to retrieve the subsequent page. When paginating, all parameters other than `
+        # page_token`, `page_size`, and `max_result_count` provided to TextSearch must
+        # match the initial call that provided the page token. Otherwise an
+        # INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
       
         # Used to restrict the search to places that are marked as certain price levels.
         # Users can choose any combinations of price levels. Default to select all price
@@ -1968,6 +2317,8 @@ module Google
           @max_result_count = args[:max_result_count] if args.key?(:max_result_count)
           @min_rating = args[:min_rating] if args.key?(:min_rating)
           @open_now = args[:open_now] if args.key?(:open_now)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
           @price_levels = args[:price_levels] if args.key?(:price_levels)
           @rank_preference = args[:rank_preference] if args.key?(:rank_preference)
           @region_code = args[:region_code] if args.key?(:region_code)
@@ -2083,6 +2434,24 @@ module Google
       class GoogleMapsPlacesV1SearchTextResponse
         include Google::Apis::Core::Hashable
       
+        # Experimental: See https://developers.google.com/maps/documentation/places/web-
+        # service/experimental/places-generative for more details. A list of contextual
+        # contents where each entry associates to the corresponding place in the same
+        # index in the places field. The contents that are relevant to the `text_query`
+        # in the request are preferred. If the contextual content is not available for
+        # one of the places, it will return non-contextual content. It will be empty
+        # only when the content is unavailable for this place. This list should have as
+        # many entries as the list of places if requested.
+        # Corresponds to the JSON property `contextualContents`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContent>]
+        attr_accessor :contextual_contents
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted or empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         # A list of places that meet the user's text search criteria.
         # Corresponds to the JSON property `places`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Place>]
@@ -2094,6 +2463,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contextual_contents = args[:contextual_contents] if args.key?(:contextual_contents)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @places = args[:places] if args.key?(:places)
         end
       end
