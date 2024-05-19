@@ -225,8 +225,9 @@ module Google
         # @return [String]
         attr_accessor :options
       
-        # Required. An identifier for the type of requested security token. Must be `urn:
-        # ietf:params:oauth:token-type:access_token`.
+        # Required. An identifier for the type of requested security token. Can be `urn:
+        # ietf:params:oauth:token-type:access_token` or `urn:ietf:params:oauth:token-
+        # type:access_boundary_intermediate_token`.
         # Corresponds to the JSON property `requestedTokenType`
         # @return [String]
         attr_accessor :requested_token_type
