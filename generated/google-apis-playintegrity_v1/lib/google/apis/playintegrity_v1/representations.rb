@@ -113,6 +113,7 @@ module Google
       class AppAccessRiskVerdict
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apps_detected, as: 'appsDetected'
           property :other_apps, as: 'otherApps'
           property :play_or_system_apps, as: 'playOrSystemApps'
         end

@@ -75,15 +75,21 @@ module Google
       class AppAccessRiskVerdict
         include Google::Apis::Core::Hashable
       
-        # App access risk verdict related to apps that are not installed by Google Play,
-        # and are not preloaded on the system image by the device manufacturer.
+        # List of detected app types signalled for App Access Risk.
+        # Corresponds to the JSON property `appsDetected`
+        # @return [Array<String>]
+        attr_accessor :apps_detected
+      
+        # Deprecated: this field will be removed, please use apps_detected instead. App
+        # access risk verdict related to apps that are not installed by Google Play, and
+        # are not preloaded on the system image by the device manufacturer.
         # Corresponds to the JSON property `otherApps`
         # @return [String]
         attr_accessor :other_apps
       
-        # App access risk verdict related to apps that are not installed by the Google
-        # Play Store, and are not preloaded on the system image by the device
-        # manufacturer.
+        # Deprecated: this field will be removed, please use apps_detected instead. App
+        # access risk verdict related to apps that are not installed by the Google Play
+        # Store, and are not preloaded on the system image by the device manufacturer.
         # Corresponds to the JSON property `playOrSystemApps`
         # @return [String]
         attr_accessor :play_or_system_apps
@@ -94,6 +100,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @apps_detected = args[:apps_detected] if args.key?(:apps_detected)
           @other_apps = args[:other_apps] if args.key?(:other_apps)
           @play_or_system_apps = args[:play_or_system_apps] if args.key?(:play_or_system_apps)
         end
