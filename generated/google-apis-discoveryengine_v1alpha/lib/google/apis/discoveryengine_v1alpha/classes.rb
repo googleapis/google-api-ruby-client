@@ -3331,6 +3331,13 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkPageSpan]
         attr_accessor :page_span
       
+        # Represents the relevance score based on similarity. Higher score represents
+        # the chunk relevance. The score is in range [0.0, 1.0]. Only populated on
+        # SearchService.SearchResponse
+        # Corresponds to the JSON property `relevanceScore`
+        # @return [Float]
+        attr_accessor :relevance_score
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3344,6 +3351,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @page_span = args[:page_span] if args.key?(:page_span)
+          @relevance_score = args[:relevance_score] if args.key?(:relevance_score)
         end
       end
       
@@ -12030,6 +12038,19 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The request message for Operations.CancelOperation.
+      class GoogleLongrunningCancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
