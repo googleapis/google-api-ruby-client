@@ -926,7 +926,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the policy issues for the specified account.
+        # Lists all the policy issues where the specified account is involved, both
+        # directly and through any AFP child accounts.
         # @param [String] parent
         #   Required. The account for which policy issues are being retrieved. Format:
         #   accounts/`account`
