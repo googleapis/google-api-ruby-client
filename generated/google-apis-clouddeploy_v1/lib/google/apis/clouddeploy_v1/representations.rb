@@ -1416,6 +1416,7 @@ module Google
       
           property :service_account, as: 'serviceAccount'
           collection :usages, as: 'usages'
+          property :verbose, as: 'verbose'
           property :worker_pool, as: 'workerPool'
         end
       end

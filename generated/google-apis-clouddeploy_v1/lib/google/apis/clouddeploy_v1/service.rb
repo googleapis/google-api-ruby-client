@@ -393,7 +393,8 @@ module Google
         # Updates a single CustomTargetType.
         # @param [String] name
         #   Optional. Name of the `CustomTargetType`. Format is `projects/`project`/
-        #   locations/`location`/customTargetTypes/a-z`0,62``.
+        #   locations/`location`/customTargetTypes/`customTargetType``. The `
+        #   customTargetType` component must match `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`
         # @param [Google::Apis::ClouddeployV1::CustomTargetType] custom_target_type_object
         # @param [Boolean] allow_missing
         #   Optional. If set to true, updating a `CustomTargetType` that does not exist
@@ -730,7 +731,8 @@ module Google
         # Updates the parameters of a single DeliveryPipeline.
         # @param [String] name
         #   Optional. Name of the `DeliveryPipeline`. Format is `projects/`project`/
-        #   locations/`location`/deliveryPipelines/a-z`0,62``.
+        #   locations/`location`/deliveryPipelines/`deliveryPipeline``. The `
+        #   deliveryPipeline` component must match `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`
         # @param [Google::Apis::ClouddeployV1::DeliveryPipeline] delivery_pipeline_object
         # @param [Boolean] allow_missing
         #   Optional. If set to true, updating a `DeliveryPipeline` that does not exist
@@ -2249,7 +2251,8 @@ module Google
         # Updates the parameters of a single Target.
         # @param [String] name
         #   Optional. Name of the `Target`. Format is `projects/`project`/locations/`
-        #   location`/targets/a-z`0,62``.
+        #   location`/targets/`target``. The `target` component must match `[a-z]([a-z0-9-]
+        #   `0,61`[a-z0-9])?`
         # @param [Google::Apis::ClouddeployV1::Target] target_object
         # @param [Boolean] allow_missing
         #   Optional. If set to true, updating a `Target` that does not exist will result
