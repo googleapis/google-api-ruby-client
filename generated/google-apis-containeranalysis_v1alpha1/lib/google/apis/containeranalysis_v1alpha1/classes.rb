@@ -1142,6 +1142,12 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::NonCompliantFile>]
         attr_accessor :non_compliant_files
       
+        # Describes the CIS benchmark version that is applicable to a given OS and os
+        # version.
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ComplianceVersion]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1150,6 +1156,7 @@ module Google
         def update!(**args)
           @non_compliance_reason = args[:non_compliance_reason] if args.key?(:non_compliance_reason)
           @non_compliant_files = args[:non_compliant_files] if args.key?(:non_compliant_files)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1512,6 +1519,11 @@ module Google
         # @return [String]
         attr_accessor :finish_time
       
+        # GitConfig is a configuration for git operations.
+        # Corresponds to the JSON property `gitConfig`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig]
+        attr_accessor :git_config
+      
         # Output only. Unique identifier of the build.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -1659,6 +1671,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @failure_info = args[:failure_info] if args.key?(:failure_info)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @git_config = args[:git_config] if args.key?(:git_config)
           @id = args[:id] if args.key?(:id)
           @images = args[:images] if args.key?(:images)
           @log_url = args[:log_url] if args.key?(:log_url)
@@ -2150,6 +2163,39 @@ module Google
         end
       end
       
+      # This config defines the location of a source through Developer Connect.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1DeveloperConnectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Directory, relative to the source root, in which to run the build.
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
+        # Required. The Developer Connect Git repository link, formatted as `projects/*/
+        # locations/*/connections/*/gitRepositoryLink/*`.
+        # Corresponds to the JSON property `gitRepositoryLink`
+        # @return [String]
+        attr_accessor :git_repository_link
+      
+        # Required. The revision to fetch from the Git repository such as a branch, a
+        # tag, a commit SHA, or any Git ref.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dir = args[:dir] if args.key?(:dir)
+          @git_repository_link = args[:git_repository_link] if args.key?(:git_repository_link)
+          @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
       # Container message for hashes of byte content of files, used in
       # SourceProvenance messages to verify integrity of source input to the build.
       class ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes
@@ -2167,6 +2213,85 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # Represents a storage location in Cloud Storage
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GcsLocation
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage bucket. See https://cloud.google.com/storage/docs/naming#
+        # requirements
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Cloud Storage generation for the object. If the generation is omitted, the
+        # latest generation will be used.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Cloud Storage object. See https://cloud.google.com/storage/docs/naming#
+        # objectnames
+        # Corresponds to the JSON property `object`
+        # @return [String]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @generation = args[:generation] if args.key?(:generation)
+          @object = args[:object] if args.key?(:object)
+        end
+      end
+      
+      # GitConfig is a configuration for git operations.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig
+        include Google::Apis::Core::Hashable
+      
+        # HttpConfig is a configuration for HTTP related git operations.
+        # Corresponds to the JSON property `http`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig]
+        attr_accessor :http
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http = args[:http] if args.key?(:http)
+        end
+      end
+      
+      # HttpConfig is a configuration for HTTP related git operations.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig
+        include Google::Apis::Core::Hashable
+      
+        # SecretVersion resource of the HTTP proxy URL. The proxy URL should be in
+        # format protocol://@]proxyhost[:port].
+        # Corresponds to the JSON property `proxySecretVersionName`
+        # @return [String]
+        attr_accessor :proxy_secret_version_name
+      
+        # Represents a storage location in Cloud Storage
+        # Corresponds to the JSON property `proxySslCaInfo`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1GcsLocation]
+        attr_accessor :proxy_ssl_ca_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @proxy_secret_version_name = args[:proxy_secret_version_name] if args.key?(:proxy_secret_version_name)
+          @proxy_ssl_ca_info = args[:proxy_ssl_ca_info] if args.key?(:proxy_ssl_ca_info)
         end
       end
       
@@ -2359,7 +2484,8 @@ module Google
         # List of build step outputs, produced by builder images, in the order
         # corresponding to build step indices. [Cloud Builders](https://cloud.google.com/
         # cloud-build/docs/cloud-builders) can produce this output by writing to `$
-        # BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
+        # BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$
+        # BUILDER_OUTPUT` variable is read-only and can't be substituted.
         # Corresponds to the JSON property `buildStepOutputs`
         # @return [Array<String>]
         attr_accessor :build_step_outputs
@@ -2501,6 +2627,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository]
         attr_accessor :connected_repository
       
+        # This config defines the location of a source through Developer Connect.
+        # Corresponds to the JSON property `developerConnectConfig`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1DeveloperConnectConfig]
+        attr_accessor :developer_connect_config
+      
         # Location of the source in any accessible Git repository.
         # Corresponds to the JSON property `gitSource`
         # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource]
@@ -2530,6 +2661,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connected_repository = args[:connected_repository] if args.key?(:connected_repository)
+          @developer_connect_config = args[:developer_connect_config] if args.key?(:developer_connect_config)
           @git_source = args[:git_source] if args.key?(:git_source)
           @repo_source = args[:repo_source] if args.key?(:repo_source)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
