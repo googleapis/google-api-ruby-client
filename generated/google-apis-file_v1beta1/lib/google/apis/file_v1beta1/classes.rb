@@ -859,6 +859,11 @@ module Google
         # @return [String]
         attr_accessor :protocol
       
+        # Replication specifications.
+        # Corresponds to the JSON property `replication`
+        # @return [Google::Apis::FileV1beta1::Replication]
+        attr_accessor :replication
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -913,6 +918,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
           @protocol = args[:protocol] if args.key?(:protocol)
+          @replication = args[:replication] if args.key?(:replication)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
@@ -1518,6 +1524,70 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Replica configuration for the instance.
+      class ReplicaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp of the latest replication snapshot taken on the
+        # active instance and is already replicated safely.
+        # Corresponds to the JSON property `lastActiveSyncTime`
+        # @return [String]
+        attr_accessor :last_active_sync_time
+      
+        # The peer instance.
+        # Corresponds to the JSON property `peerInstance`
+        # @return [String]
+        attr_accessor :peer_instance
+      
+        # Output only. The replica state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Additional information about the replication state, if available.
+        # Corresponds to the JSON property `stateReasons`
+        # @return [Array<String>]
+        attr_accessor :state_reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_active_sync_time = args[:last_active_sync_time] if args.key?(:last_active_sync_time)
+          @peer_instance = args[:peer_instance] if args.key?(:peer_instance)
+          @state = args[:state] if args.key?(:state)
+          @state_reasons = args[:state_reasons] if args.key?(:state_reasons)
+        end
+      end
+      
+      # Replication specifications.
+      class Replication
+        include Google::Apis::Core::Hashable
+      
+        # Replicas configuration on the instance. For now, only a single replica config
+        # is supported.
+        # Corresponds to the JSON property `replicas`
+        # @return [Array<Google::Apis::FileV1beta1::ReplicaConfig>]
+        attr_accessor :replicas
+      
+        # Output only. The replication role.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @replicas = args[:replicas] if args.key?(:replicas)
+          @role = args[:role] if args.key?(:role)
         end
       end
       
