@@ -74,6 +74,9 @@ module Google
         #   types, e.g. `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across
         #   all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `
         #   MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
+        # @param [Boolean] enable_attribute_suggestions
+        #   If true, attribute suggestions are enabled and provided in response. This
+        #   field is only available for "cloud-retail" dataset.
         # @param [String] entity
         #   The entity for customers who run multiple entities, domains, sites, or regions,
         #   for example, `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`,
@@ -118,13 +121,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def complete_project_location_catalog_query(catalog, dataset: nil, device_type: nil, entity: nil, language_codes: nil, max_suggestions: nil, query: nil, visitor_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def complete_project_location_catalog_query(catalog, dataset: nil, device_type: nil, enable_attribute_suggestions: nil, entity: nil, language_codes: nil, max_suggestions: nil, query: nil, visitor_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+catalog}:completeQuery', options)
           command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2CompleteQueryResponse::Representation
           command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2CompleteQueryResponse
           command.params['catalog'] = catalog unless catalog.nil?
           command.query['dataset'] = dataset unless dataset.nil?
           command.query['deviceType'] = device_type unless device_type.nil?
+          command.query['enableAttributeSuggestions'] = enable_attribute_suggestions unless enable_attribute_suggestions.nil?
           command.query['entity'] = entity unless entity.nil?
           command.query['languageCodes'] = language_codes unless language_codes.nil?
           command.query['maxSuggestions'] = max_suggestions unless max_suggestions.nil?
