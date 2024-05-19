@@ -368,6 +368,11 @@ module Google
       class Dashboard
         include Google::Apis::Core::Hashable
       
+        # Dashboard-level configuration for annotations
+        # Corresponds to the JSON property `annotations`
+        # @return [Google::Apis::MonitoringV1::DashboardAnnotations]
+        attr_accessor :annotations
+      
         # A simplified layout that divides the available space into vertical columns and
         # arranges a set of widgets vertically in each column.
         # Corresponds to the JSON property `columnLayout`
@@ -429,6 +434,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @column_layout = args[:column_layout] if args.key?(:column_layout)
           @dashboard_filters = args[:dashboard_filters] if args.key?(:dashboard_filters)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -438,6 +444,36 @@ module Google
           @mosaic_layout = args[:mosaic_layout] if args.key?(:mosaic_layout)
           @name = args[:name] if args.key?(:name)
           @row_layout = args[:row_layout] if args.key?(:row_layout)
+        end
+      end
+      
+      # Dashboard-level configuration for annotations
+      class DashboardAnnotations
+        include Google::Apis::Core::Hashable
+      
+        # Dashboard level defaults for names of logging resources to search for events.
+        # Currently only projects are supported. Each individual EventAnnotation may
+        # have its own overrides. If both this field and the per annotation field is
+        # empty, then the scoping project is used. Limit: 50 projects. For example: “
+        # projects/some-project-id”
+        # Corresponds to the JSON property `defaultResourceNames`
+        # @return [Array<String>]
+        attr_accessor :default_resource_names
+      
+        # List of annotation configurations for this dashboard. Each entry specifies one
+        # event type.
+        # Corresponds to the JSON property `eventAnnotations`
+        # @return [Array<Google::Apis::MonitoringV1::EventAnnotation>]
+        attr_accessor :event_annotations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_resource_names = args[:default_resource_names] if args.key?(:default_resource_names)
+          @event_annotations = args[:event_annotations] if args.key?(:event_annotations)
         end
       end
       
@@ -714,6 +750,55 @@ module Google
           @project_names = args[:project_names] if args.key?(:project_names)
           @services = args[:services] if args.key?(:services)
           @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
+      # Annotation configuration for one event type on a dashboard
+      class EventAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Solely for UI display. Should not be used programmatically.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether or not to show the events on the dashboard by default
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The type of event to display.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # string filtering the events - event dependant. Example values: "resource.
+        # labels.pod_name = 'pod-1'" "protoPayload.authenticationInfo.principalEmail='
+        # user@example.com'"
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Per annotation level override for the names of logging resources to search for
+        # events. Currently only projects are supported. If both this field and the per
+        # annotation field is empty, it will default to the host project. Limit: 50
+        # projects. For example: “projects/another-project-id”
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @filter = args[:filter] if args.key?(:filter)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
         end
       end
       

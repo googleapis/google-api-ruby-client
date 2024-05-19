@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DashboardAnnotations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DashboardFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +125,12 @@ module Google
       end
       
       class ErrorReportingPanel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -518,6 +530,8 @@ module Google
       class Dashboard
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotations, as: 'annotations', class: Google::Apis::MonitoringV1::DashboardAnnotations, decorator: Google::Apis::MonitoringV1::DashboardAnnotations::Representation
+      
           property :column_layout, as: 'columnLayout', class: Google::Apis::MonitoringV1::ColumnLayout, decorator: Google::Apis::MonitoringV1::ColumnLayout::Representation
       
           collection :dashboard_filters, as: 'dashboardFilters', class: Google::Apis::MonitoringV1::DashboardFilter, decorator: Google::Apis::MonitoringV1::DashboardFilter::Representation
@@ -531,6 +545,15 @@ module Google
       
           property :name, as: 'name'
           property :row_layout, as: 'rowLayout', class: Google::Apis::MonitoringV1::RowLayout, decorator: Google::Apis::MonitoringV1::RowLayout::Representation
+      
+        end
+      end
+      
+      class DashboardAnnotations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :default_resource_names, as: 'defaultResourceNames'
+          collection :event_annotations, as: 'eventAnnotations', class: Google::Apis::MonitoringV1::EventAnnotation, decorator: Google::Apis::MonitoringV1::EventAnnotation::Representation
       
         end
       end
@@ -597,6 +620,17 @@ module Google
           collection :project_names, as: 'projectNames'
           collection :services, as: 'services'
           collection :versions, as: 'versions'
+        end
+      end
+      
+      class EventAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :enabled, as: 'enabled'
+          property :event_type, as: 'eventType'
+          property :filter, as: 'filter'
+          collection :resource_names, as: 'resourceNames'
         end
       end
       
