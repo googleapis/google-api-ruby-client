@@ -1049,6 +1049,7 @@ module Google
           property :metric_descriptor, as: 'metricDescriptor', class: Google::Apis::LoggingV2::MetricDescriptor, decorator: Google::Apis::LoggingV2::MetricDescriptor::Representation
       
           property :name, as: 'name'
+          property :resource_name, as: 'resourceName'
           property :update_time, as: 'updateTime'
           property :value_extractor, as: 'valueExtractor'
           property :version, as: 'version'

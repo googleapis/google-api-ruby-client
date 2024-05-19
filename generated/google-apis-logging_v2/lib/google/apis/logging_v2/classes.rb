@@ -2351,6 +2351,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The resource name of the metric: "projects/[PROJECT_ID]/metrics/[
+        # METRIC_ID]"
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
         # Output only. The last update timestamp of the metric.This field may not be
         # present for older metrics.
         # Corresponds to the JSON property `updateTime`
@@ -2395,6 +2401,7 @@ module Google
           @label_extractors = args[:label_extractors] if args.key?(:label_extractors)
           @metric_descriptor = args[:metric_descriptor] if args.key?(:metric_descriptor)
           @name = args[:name] if args.key?(:name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @value_extractor = args[:value_extractor] if args.key?(:value_extractor)
           @version = args[:version] if args.key?(:version)
