@@ -272,7 +272,7 @@ module Google
         end
       end
       
-      # Request to generate an AdMob mediation report.
+      # Request to generate an AdMob Mediation report.
       class GenerateMediationReportRequest
         include Google::Apis::Core::Hashable
       
@@ -303,7 +303,7 @@ module Google
         end
       end
       
-      # The streaming response for the AdMob mediation report where the first response
+      # The streaming response for the AdMob Mediation report where the first response
       # contains the report header, then a stream of row responses, and finally a
       # footer as the last response message. For example: [` "header": ` "date_range":
       # ` "start_date": `"year": 2018, "month": 9, "day": 1`, "end_date": `"year":
