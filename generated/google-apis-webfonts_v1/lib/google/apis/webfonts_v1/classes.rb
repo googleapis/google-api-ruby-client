@@ -67,6 +67,11 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # The color format(s) available for this family.
+        # Corresponds to the JSON property `colorCapabilities`
+        # @return [Array<String>]
+        attr_accessor :color_capabilities
+      
         # The name of the font.
         # Corresponds to the JSON property `family`
         # @return [String]
@@ -117,6 +122,7 @@ module Google
         def update!(**args)
           @axes = args[:axes] if args.key?(:axes)
           @category = args[:category] if args.key?(:category)
+          @color_capabilities = args[:color_capabilities] if args.key?(:color_capabilities)
           @family = args[:family] if args.key?(:family)
           @files = args[:files] if args.key?(:files)
           @kind = args[:kind] if args.key?(:kind)

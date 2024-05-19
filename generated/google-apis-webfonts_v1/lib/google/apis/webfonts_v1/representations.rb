@@ -55,6 +55,7 @@ module Google
           collection :axes, as: 'axes', class: Google::Apis::WebfontsV1::Axis, decorator: Google::Apis::WebfontsV1::Axis::Representation
       
           property :category, as: 'category'
+          collection :color_capabilities, as: 'colorCapabilities'
           property :family, as: 'family'
           hash :files, as: 'files'
           property :kind, as: 'kind'
