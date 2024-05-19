@@ -68,7 +68,7 @@ module Google
       
         # Output only. Name of the `ChildRollout`. Format is `projects/`project`/
         # locations/`location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/
-        # rollouts/a-z`0,62``.
+        # rollouts/`rollout``.
         # Corresponds to the JSON property `rollout`
         # @return [String]
         attr_accessor :rollout
@@ -169,7 +169,7 @@ module Google
         attr_accessor :condition
       
         # Required. ID of the rule. This id must be unique in the `Automation` resource
-        # to which this rule belongs. The format is `a-z`0,62``.
+        # to which this rule belongs. The format is `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -504,7 +504,7 @@ module Google
       class AutomationRolloutMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. The IDs of the AutomationRuns initiated by an advance rollout
+        # Output only. The names of the AutomationRuns initiated by an advance rollout
         # rule.
         # Corresponds to the JSON property `advanceAutomationRuns`
         # @return [Array<String>]
@@ -515,12 +515,13 @@ module Google
         # @return [String]
         attr_accessor :current_repair_automation_run
       
-        # Output only. The ID of the AutomationRun initiated by a promote release rule.
+        # Output only. The name of the AutomationRun initiated by a promote release rule.
         # Corresponds to the JSON property `promoteAutomationRun`
         # @return [String]
         attr_accessor :promote_automation_run
       
-        # Output only. The IDs of the AutomationRuns initiated by a repair rollout rule.
+        # Output only. The names of the AutomationRuns initiated by a repair rollout
+        # rule.
         # Corresponds to the JSON property `repairAutomationRuns`
         # @return [Array<String>]
         attr_accessor :repair_automation_runs
@@ -1239,7 +1240,7 @@ module Google
       
         # Output only. Name of the `ChildRollout`. Format is `projects/`project`/
         # locations/`location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/
-        # rollouts/a-z`0,62``.
+        # rollouts/`rollout``.
         # Corresponds to the JSON property `rollout`
         # @return [String]
         attr_accessor :rollout
@@ -1427,7 +1428,8 @@ module Google
         attr_accessor :labels
       
         # Optional. Name of the `CustomTargetType`. Format is `projects/`project`/
-        # locations/`location`/customTargetTypes/a-z`0,62``.
+        # locations/`location`/customTargetTypes/`customTargetType``. The `
+        # customTargetType` component must match `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1577,7 +1579,8 @@ module Google
         attr_accessor :labels
       
         # Optional. Name of the `DeliveryPipeline`. Format is `projects/`project`/
-        # locations/`location`/deliveryPipelines/a-z`0,62``.
+        # locations/`location`/deliveryPipelines/`deliveryPipeline``. The `
+        # deliveryPipeline` component must match `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1902,6 +1905,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :usages
       
+        # Optional. If true, additional logging will be enabled when running builds in
+        # this execution environment.
+        # Corresponds to the JSON property `verbose`
+        # @return [Boolean]
+        attr_accessor :verbose
+        alias_method :verbose?, :verbose
+      
         # Optional. The resource name of the `WorkerPool`, with the format `projects/`
         # project`/locations/`location`/workerPools/`worker_pool``. If this optional
         # field is unspecified, the default Cloud Build pool will be used.
@@ -1921,6 +1931,7 @@ module Google
           @private_pool = args[:private_pool] if args.key?(:private_pool)
           @service_account = args[:service_account] if args.key?(:service_account)
           @usages = args[:usages] if args.key?(:usages)
+          @verbose = args[:verbose] if args.key?(:verbose)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
         end
       end
@@ -3439,7 +3450,7 @@ module Google
         attr_accessor :destination_target_id
       
         # Required. ID of the rule. This id must be unique in the `Automation` resource
-        # to which this rule belongs. The format is `a-z`0,62``.
+        # to which this rule belongs. The format is `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -3538,7 +3549,8 @@ module Google
         attr_accessor :labels
       
         # Optional. Name of the `Release`. Format is `projects/`project`/locations/`
-        # location`/deliveryPipelines/`deliveryPipeline`/releases/a-z`0,62``.
+        # location`/deliveryPipelines/`deliveryPipeline`/releases/`release``. The `
+        # release` component must match `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3904,7 +3916,7 @@ module Google
         attr_accessor :condition
       
         # Required. ID of the rule. This id must be unique in the `Automation` resource
-        # to which this rule belongs. The format is `a-z`0,62``.
+        # to which this rule belongs. The format is `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4283,7 +4295,7 @@ module Google
       
         # Output only. Name of the `ControllerRollout`. Format is `projects/`project`/
         # locations/`location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/
-        # rollouts/a-z`0,62``.
+        # rollouts/`rollout``.
         # Corresponds to the JSON property `controllerRollout`
         # @return [String]
         attr_accessor :controller_rollout
@@ -4355,8 +4367,8 @@ module Google
         attr_accessor :metadata
       
         # Optional. Name of the `Rollout`. Format is `projects/`project`/locations/`
-        # location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/rollouts/a-z`
-        # 0,62``.
+        # location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/rollouts/`
+        # rollout``. The `rollout` component must match `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5109,7 +5121,8 @@ module Google
         attr_accessor :multi_target
       
         # Optional. Name of the `Target`. Format is `projects/`project`/locations/`
-        # location`/targets/a-z`0,62``.
+        # location`/targets/`target``. The `target` component must match `[a-z]([a-z0-9-]
+        # `0,61`[a-z0-9])?`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
