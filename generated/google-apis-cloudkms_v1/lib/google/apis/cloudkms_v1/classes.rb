@@ -1542,8 +1542,8 @@ module Google
         # @return [String]
         attr_accessor :kms_key
       
-        # Output only. Identifier. Name of the KeyHandle resource, e.g. `projects/`
-        # PROJECT_ID`/locations/`LOCATION`/keyHandles/`KEY_HANDLE_ID``.
+        # Identifier. Name of the KeyHandle resource, e.g. `projects/`PROJECT_ID`/
+        # locations/`LOCATION`/keyHandles/`KEY_HANDLE_ID``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
