@@ -80,7 +80,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_upload_size
       
-        # The user's storage quota limits and usage. All fields are measured in bytes.
+        # The user's storage quota limits and usage. For users that are part of an
+        # organization with pooled storage, information about the limit and usage across
+        # all services is for the organization, rather than the individual user. All
+        # fields are measured in bytes.
         # Corresponds to the JSON property `storageQuota`
         # @return [Google::Apis::DriveV3::About::StorageQuota]
         attr_accessor :storage_quota
@@ -147,17 +150,24 @@ module Google
           end
         end
         
-        # The user's storage quota limits and usage. All fields are measured in bytes.
+        # The user's storage quota limits and usage. For users that are part of an
+        # organization with pooled storage, information about the limit and usage across
+        # all services is for the organization, rather than the individual user. All
+        # fields are measured in bytes.
         class StorageQuota
           include Google::Apis::Core::Hashable
         
           # The usage limit, if applicable. This will not be present if the user has
-          # unlimited storage.
+          # unlimited storage. For users that are part of an organization with pooled
+          # storage, this is the limit for the organization, rather than the individual
+          # user.
           # Corresponds to the JSON property `limit`
           # @return [Fixnum]
           attr_accessor :limit
         
-          # The total usage across all services.
+          # The total usage across all services. For users that are part of an
+          # organization with pooled storage, this is the usage across all services for
+          # the organization, rather than the individual user.
           # Corresponds to the JSON property `usage`
           # @return [Fixnum]
           attr_accessor :usage
