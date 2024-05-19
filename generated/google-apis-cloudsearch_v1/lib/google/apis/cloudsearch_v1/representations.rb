@@ -1090,6 +1090,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RewrittenQueries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RewrittenQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SafeHtmlProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3264,6 +3276,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :importance, as: 'importance'
+        end
+      end
+      
+      class RewrittenQueries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rewritten_queries, as: 'rewrittenQueries', class: Google::Apis::CloudsearchV1::RewrittenQuery, decorator: Google::Apis::CloudsearchV1::RewrittenQuery::Representation
+      
+          property :selected_query_index, as: 'selectedQueryIndex'
+        end
+      end
+      
+      class RewrittenQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rewritten_query, as: 'rewrittenQuery'
+          property :score, as: 'score'
+          property :sort_by, as: 'sortBy'
         end
       end
       
