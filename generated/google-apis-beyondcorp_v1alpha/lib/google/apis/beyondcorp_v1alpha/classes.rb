@@ -2729,6 +2729,19 @@ module Google
         end
       end
       
+      # Response message for BeyondCorp.RestartSubscription
+      class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaRestartSubscriptionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A BeyondCorp Subscription resource represents BeyondCorp Enterprise
       # Subscription. BeyondCorp Enterprise Subscription enables BeyondCorp Enterprise
       # permium features for an organization.
