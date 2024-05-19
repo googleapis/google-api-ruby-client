@@ -1530,6 +1530,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dr_replica, as: 'drReplica'
           property :failover_dr_replica_name, as: 'failoverDrReplicaName'
+          property :psa_write_endpoint, as: 'psaWriteEndpoint'
         end
       end
       
