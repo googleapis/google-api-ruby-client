@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReplicaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Replication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +443,8 @@ module Google
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1::NetworkConfig, decorator: Google::Apis::FileV1::NetworkConfig::Representation
       
+          property :replication, as: 'replication', class: Google::Apis::FileV1::Replication, decorator: Google::Apis::FileV1::Replication::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
@@ -566,6 +580,25 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class ReplicaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_active_sync_time, as: 'lastActiveSyncTime'
+          property :peer_instance, as: 'peerInstance'
+          property :state, as: 'state'
+          collection :state_reasons, as: 'stateReasons'
+        end
+      end
+      
+      class Replication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :replicas, as: 'replicas', class: Google::Apis::FileV1::ReplicaConfig, decorator: Google::Apis::FileV1::ReplicaConfig::Representation
+      
+          property :role, as: 'role'
         end
       end
       
