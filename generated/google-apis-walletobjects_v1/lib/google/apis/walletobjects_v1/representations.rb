@@ -1291,6 +1291,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_multiple_users_per_object, as: 'allowMultipleUsersPerObject'
+          property :app_link_data, as: 'appLinkData', class: Google::Apis::WalletobjectsV1::AppLinkData, decorator: Google::Apis::WalletobjectsV1::AppLinkData::Representation
+      
           property :callback_options, as: 'callbackOptions', class: Google::Apis::WalletobjectsV1::CallbackOptions, decorator: Google::Apis::WalletobjectsV1::CallbackOptions::Representation
       
           property :class_template_info, as: 'classTemplateInfo', class: Google::Apis::WalletobjectsV1::ClassTemplateInfo, decorator: Google::Apis::WalletobjectsV1::ClassTemplateInfo::Representation
@@ -1516,6 +1518,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_multiple_users_per_object, as: 'allowMultipleUsersPerObject'
+          property :app_link_data, as: 'appLinkData', class: Google::Apis::WalletobjectsV1::AppLinkData, decorator: Google::Apis::WalletobjectsV1::AppLinkData::Representation
+      
           property :boarding_and_seating_policy, as: 'boardingAndSeatingPolicy', class: Google::Apis::WalletobjectsV1::BoardingAndSeatingPolicy, decorator: Google::Apis::WalletobjectsV1::BoardingAndSeatingPolicy::Representation
       
           property :callback_options, as: 'callbackOptions', class: Google::Apis::WalletobjectsV1::CallbackOptions, decorator: Google::Apis::WalletobjectsV1::CallbackOptions::Representation
@@ -1688,6 +1692,8 @@ module Google
       class GenericClass
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_link_data, as: 'appLinkData', class: Google::Apis::WalletobjectsV1::AppLinkData, decorator: Google::Apis::WalletobjectsV1::AppLinkData::Representation
+      
           property :callback_options, as: 'callbackOptions', class: Google::Apis::WalletobjectsV1::CallbackOptions, decorator: Google::Apis::WalletobjectsV1::CallbackOptions::Representation
       
           property :class_template_info, as: 'classTemplateInfo', class: Google::Apis::WalletobjectsV1::ClassTemplateInfo, decorator: Google::Apis::WalletobjectsV1::ClassTemplateInfo::Representation
@@ -1796,6 +1802,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_barcode_redemption, as: 'allowBarcodeRedemption'
           property :allow_multiple_users_per_object, as: 'allowMultipleUsersPerObject'
+          property :app_link_data, as: 'appLinkData', class: Google::Apis::WalletobjectsV1::AppLinkData, decorator: Google::Apis::WalletobjectsV1::AppLinkData::Representation
+      
           property :callback_options, as: 'callbackOptions', class: Google::Apis::WalletobjectsV1::CallbackOptions, decorator: Google::Apis::WalletobjectsV1::CallbackOptions::Representation
       
           property :card_number_label, as: 'cardNumberLabel'
@@ -2113,6 +2121,8 @@ module Google
           property :account_id_label, as: 'accountIdLabel'
           property :account_name_label, as: 'accountNameLabel'
           property :allow_multiple_users_per_object, as: 'allowMultipleUsersPerObject'
+          property :app_link_data, as: 'appLinkData', class: Google::Apis::WalletobjectsV1::AppLinkData, decorator: Google::Apis::WalletobjectsV1::AppLinkData::Representation
+      
           property :callback_options, as: 'callbackOptions', class: Google::Apis::WalletobjectsV1::CallbackOptions, decorator: Google::Apis::WalletobjectsV1::CallbackOptions::Representation
       
           property :class_template_info, as: 'classTemplateInfo', class: Google::Apis::WalletobjectsV1::ClassTemplateInfo, decorator: Google::Apis::WalletobjectsV1::ClassTemplateInfo::Representation
@@ -2414,6 +2424,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_multiple_users_per_object, as: 'allowMultipleUsersPerObject'
+          property :app_link_data, as: 'appLinkData', class: Google::Apis::WalletobjectsV1::AppLinkData, decorator: Google::Apis::WalletobjectsV1::AppLinkData::Representation
+      
           property :callback_options, as: 'callbackOptions', class: Google::Apis::WalletobjectsV1::CallbackOptions, decorator: Google::Apis::WalletobjectsV1::CallbackOptions::Representation
       
           property :class_template_info, as: 'classTemplateInfo', class: Google::Apis::WalletobjectsV1::ClassTemplateInfo, decorator: Google::Apis::WalletobjectsV1::ClassTemplateInfo::Representation
@@ -2835,6 +2847,8 @@ module Google
           property :activation_options, as: 'activationOptions', class: Google::Apis::WalletobjectsV1::ActivationOptions, decorator: Google::Apis::WalletobjectsV1::ActivationOptions::Representation
       
           property :allow_multiple_users_per_object, as: 'allowMultipleUsersPerObject'
+          property :app_link_data, as: 'appLinkData', class: Google::Apis::WalletobjectsV1::AppLinkData, decorator: Google::Apis::WalletobjectsV1::AppLinkData::Representation
+      
           property :callback_options, as: 'callbackOptions', class: Google::Apis::WalletobjectsV1::CallbackOptions, decorator: Google::Apis::WalletobjectsV1::CallbackOptions::Representation
       
           property :class_template_info, as: 'classTemplateInfo', class: Google::Apis::WalletobjectsV1::ClassTemplateInfo, decorator: Google::Apis::WalletobjectsV1::ClassTemplateInfo::Representation
