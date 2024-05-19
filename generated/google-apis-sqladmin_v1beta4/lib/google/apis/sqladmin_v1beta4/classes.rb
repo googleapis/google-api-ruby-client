@@ -942,7 +942,8 @@ module Google
         # @return [String]
         attr_accessor :root_password
       
-        # The status indicating if instance satisfiesPzs. Reserved for future use.
+        # This status indicates whether the instance satisfies PZS. The status is
+        # reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -3332,6 +3333,17 @@ module Google
         # @return [String]
         attr_accessor :failover_dr_replica_name
       
+        # Output only. If set, it indicates this instance has a private service access (
+        # PSA) dns endpoint that is pointing to the primary instance of the cluster. If
+        # this instance is the primary, the dns should be pointing to this instance.
+        # After Switchover or Replica failover, this DNS endpoint points to the promoted
+        # instance. This is a read-only field, returned to the user as information. This
+        # field can exist even if a standalone instance does not yet have a replica, or
+        # had a DR replica that was deleted.
+        # Corresponds to the JSON property `psaWriteEndpoint`
+        # @return [String]
+        attr_accessor :psa_write_endpoint
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3340,6 +3352,7 @@ module Google
         def update!(**args)
           @dr_replica = args[:dr_replica] if args.key?(:dr_replica)
           @failover_dr_replica_name = args[:failover_dr_replica_name] if args.key?(:failover_dr_replica_name)
+          @psa_write_endpoint = args[:psa_write_endpoint] if args.key?(:psa_write_endpoint)
         end
       end
       
