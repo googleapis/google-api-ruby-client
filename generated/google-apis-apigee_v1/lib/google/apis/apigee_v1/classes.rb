@@ -9501,6 +9501,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :developers
       
+        # Optional. Act only on particular HTTP methods. E.g. A read-only API can block
+        # POST/PUT/DELETE methods. Accepted values are: GET, HEAD, POST, PUT, DELETE,
+        # CONNECT, OPTIONS, TRACE and PATCH.
+        # Corresponds to the JSON property `httpMethods`
+        # @return [Array<String>]
+        attr_accessor :http_methods
+      
         # Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited
         # to 100 per action.
         # Corresponds to the JSON property `ipAddressRanges`
@@ -9532,6 +9539,7 @@ module Google
           @bot_reasons = args[:bot_reasons] if args.key?(:bot_reasons)
           @developer_apps = args[:developer_apps] if args.key?(:developer_apps)
           @developers = args[:developers] if args.key?(:developers)
+          @http_methods = args[:http_methods] if args.key?(:http_methods)
           @ip_address_ranges = args[:ip_address_ranges] if args.key?(:ip_address_ranges)
           @region_codes = args[:region_codes] if args.key?(:region_codes)
           @user_agents = args[:user_agents] if args.key?(:user_agents)
