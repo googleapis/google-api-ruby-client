@@ -2851,6 +2851,56 @@ module Google
         end
       end
       
+      # Request to export the history of resources.
+      class ExportResourcesHistoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # If provided, only resources versions updated after this time are exported. The
+        # time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-
+        # 07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified
+        # to the second and include a time zone.
+        # Corresponds to the JSON property `_since`
+        # @return [String]
+        attr_accessor :_since
+      
+        # String of comma-delimited FHIR resource types. If provided, only resources of
+        # the specified resource type(s) are exported.
+        # Corresponds to the JSON property `_type`
+        # @return [String]
+        attr_accessor :_type
+      
+        # The configuration for exporting to BigQuery.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        # The configuration for exporting to Cloud Storage.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination]
+        attr_accessor :gcs_destination
+      
+        # If provided and non-zero, places a limit on the number of resource versions
+        # that are returned for a given resource. For example, if the limit is `100` and
+        # a resource has over 100 versions, only the 100 most recent versions will be
+        # returned. Must be positive.
+        # Corresponds to the JSON property `maxResourceVersions`
+        # @return [Fixnum]
+        attr_accessor :max_resource_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @_since = args[:_since] if args.key?(:_since)
+          @_type = args[:_type] if args.key?(:_type)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @max_resource_versions = args[:max_resource_versions] if args.key?(:max_resource_versions)
+        end
+      end
+      
       # Request to export resources.
       class ExportResourcesRequest
         include Google::Apis::Core::Hashable
@@ -4690,6 +4740,41 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request to import the history of resources.
+      class ImportResourcesHistoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # The content structure in the source location. If not specified, the server
+        # treats the input source files as BUNDLE.
+        # Corresponds to the JSON property `contentStructure`
+        # @return [String]
+        attr_accessor :content_structure
+      
+        # Specifies the configuration for importing data from Cloud Storage.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsSource]
+        attr_accessor :gcs_source
+      
+        # The maximum number of errors before the server cancels the operation. If not
+        # specified or set to 0, defaults to 100. -1 means no maximum, the server tries
+        # to process all input. Since the server executes the operation in parallel, it
+        # might not stop the operation after exactly this number of errors occur.
+        # Corresponds to the JSON property `maxErrorCount`
+        # @return [Fixnum]
+        attr_accessor :max_error_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_structure = args[:content_structure] if args.key?(:content_structure)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @max_error_count = args[:max_error_count] if args.key?(:max_error_count)
         end
       end
       
