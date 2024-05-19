@@ -366,6 +366,18 @@ module Google
       class Workflow
         include Google::Apis::Core::Hashable
       
+        # Output only. A list of all KMS crypto keys used to encrypt or decrpt the data
+        # associated with the workflow.
+        # Corresponds to the JSON property `allKmsKeys`
+        # @return [Array<String>]
+        attr_accessor :all_kms_keys
+      
+        # Output only. A list of all KMS crypto keys versions used to encrypt or decrpt
+        # the data associated with the workflow.
+        # Corresponds to the JSON property `allKmsKeysVersions`
+        # @return [Array<String>]
+        attr_accessor :all_kms_keys_versions
+      
         # Optional. Describes the level of platform logging to apply to calls and call
         # responses during executions of this workflow. If both the workflow and the
         # execution specify a logging level, the execution level takes precedence.
@@ -388,6 +400,14 @@ module Google
         # Corresponds to the JSON property `cryptoKeyName`
         # @return [String]
         attr_accessor :crypto_key_name
+      
+        # Output only. The resource name of a KMS crypto key version used to encrypt or
+        # decrypt the data associated with the workflow. Format: projects/`project`/
+        # locations/`location`/keyRings/`keyRing`/cryptoKeys/`cryptoKey`/
+        # cryptoKeyVersions/`cryptoKeyVersion`
+        # Corresponds to the JSON property `cryptoKeyVersion`
+        # @return [String]
+        attr_accessor :crypto_key_version
       
         # Description of the workflow provided by the user. Must be at most 1000 Unicode
         # characters long. This is a workflow-wide field and is not tied to a specific
@@ -473,9 +493,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_kms_keys = args[:all_kms_keys] if args.key?(:all_kms_keys)
+          @all_kms_keys_versions = args[:all_kms_keys_versions] if args.key?(:all_kms_keys_versions)
           @call_log_level = args[:call_log_level] if args.key?(:call_log_level)
           @create_time = args[:create_time] if args.key?(:create_time)
           @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
+          @crypto_key_version = args[:crypto_key_version] if args.key?(:crypto_key_version)
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
