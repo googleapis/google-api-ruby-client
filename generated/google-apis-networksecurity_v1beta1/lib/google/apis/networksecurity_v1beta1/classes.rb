@@ -92,6 +92,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. List of supported purposes of the Address Group.
+        # Corresponds to the JSON property `purpose`
+        # @return [Array<String>]
+        attr_accessor :purpose
+      
         # Output only. Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -119,6 +124,7 @@ module Google
           @items = args[:items] if args.key?(:items)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @purpose = args[:purpose] if args.key?(:purpose)
           @self_link = args[:self_link] if args.key?(:self_link)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1930,7 +1936,7 @@ module Google
       end
       
       # SecurityProfile is a resource that defines the behavior for one of many
-      # ProfileTypes. Next ID: 9
+      # ProfileTypes. Next ID: 10
       class SecurityProfile
         include Google::Apis::Core::Hashable
       
@@ -1997,7 +2003,7 @@ module Google
       end
       
       # SecurityProfileGroup is a resource that defines the behavior for various
-      # ProfileTypes. Next ID: 8
+      # ProfileTypes. Next ID: 9
       class SecurityProfileGroup
         include Google::Apis::Core::Hashable
       
