@@ -256,12 +256,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthorizationLoggingOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Autoscaler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,6 +491,12 @@ module Google
       end
       
       class BackendServiceHaPolicyLeaderNetworkEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceHttpCookie
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8152,13 +8152,6 @@ module Google
         end
       end
       
-      class AuthorizationLoggingOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :permission_type, as: 'permissionType'
-        end
-      end
-      
       class Autoscaler
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8540,6 +8533,8 @@ module Google
           collection :service_bindings, as: 'serviceBindings'
           property :service_lb_policy, as: 'serviceLbPolicy'
           property :session_affinity, as: 'sessionAffinity'
+          property :strong_session_affinity_cookie, as: 'strongSessionAffinityCookie', class: Google::Apis::ComputeAlpha::BackendServiceHttpCookie, decorator: Google::Apis::ComputeAlpha::BackendServiceHttpCookie::Representation
+      
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeAlpha::Subsetting, decorator: Google::Apis::ComputeAlpha::Subsetting::Representation
       
           property :timeout_sec, as: 'timeoutSec'
@@ -8669,6 +8664,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance, as: 'instance'
+        end
+      end
+      
+      class BackendServiceHttpCookie
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :path, as: 'path'
+          property :ttl, as: 'ttl', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
         end
       end
       
@@ -13737,8 +13742,6 @@ module Google
       class LogConfigCloudAuditOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization_logging_options, as: 'authorizationLoggingOptions', class: Google::Apis::ComputeAlpha::AuthorizationLoggingOptions, decorator: Google::Apis::ComputeAlpha::AuthorizationLoggingOptions::Representation
-      
           property :log_name, as: 'logName'
         end
       end
@@ -18337,6 +18340,7 @@ module Google
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
           property :termination_time, as: 'terminationTime'
+          property :windows_license_optimization_mode, as: 'windowsLicenseOptimizationMode'
         end
       end
       
@@ -18490,6 +18494,7 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :short_name, as: 'shortName'
           property :type, as: 'type'
           collection :user_defined_fields, as: 'userDefinedFields', class: Google::Apis::ComputeAlpha::SecurityPolicyUserDefinedField, decorator: Google::Apis::ComputeAlpha::SecurityPolicyUserDefinedField::Representation
       
@@ -18574,8 +18579,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attachment_id, as: 'attachmentId'
           property :display_name, as: 'displayName'
+          collection :excluded_folders, as: 'excludedFolders'
+          collection :excluded_projects, as: 'excludedProjects'
           property :name, as: 'name'
           property :security_policy_id, as: 'securityPolicyId'
+          property :short_name, as: 'shortName'
         end
       end
       
