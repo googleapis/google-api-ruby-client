@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoAccept
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -463,6 +469,13 @@ module Google
         end
       end
       
+      class AutoAccept
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_accept_projects, as: 'autoAcceptProjects'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -579,10 +592,13 @@ module Google
       class Group
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_accept, as: 'autoAccept', class: Google::Apis::NetworkconnectivityV1::AutoAccept, decorator: Google::Apis::NetworkconnectivityV1::AutoAccept::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :route_table, as: 'routeTable'
           property :state, as: 'state'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -594,8 +610,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :export_psc, as: 'exportPsc'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :policy_mode, as: 'policyMode'
+          property :preset_topology, as: 'presetTopology'
           collection :route_tables, as: 'routeTables'
           collection :routing_vpcs, as: 'routingVpcs', class: Google::Apis::NetworkconnectivityV1::RoutingVpc, decorator: Google::Apis::NetworkconnectivityV1::RoutingVpc::Representation
       
