@@ -307,6 +307,7 @@ module Google
           property :bucket_name, as: 'bucketName'
           property :cloudfront_domain, as: 'cloudfrontDomain'
           property :credentials_secret, as: 'credentialsSecret'
+          property :managed_private_network, as: 'managedPrivateNetwork'
           property :path, as: 'path'
           property :role_arn, as: 'roleArn'
         end

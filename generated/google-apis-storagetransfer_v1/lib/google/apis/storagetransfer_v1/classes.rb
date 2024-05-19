@@ -174,6 +174,13 @@ module Google
         # @return [String]
         attr_accessor :credentials_secret
       
+        # Egress bytes over a Google-managed private network. This network is shared
+        # between other users of Storage Transfer Service.
+        # Corresponds to the JSON property `managedPrivateNetwork`
+        # @return [Boolean]
+        attr_accessor :managed_private_network
+        alias_method :managed_private_network?, :managed_private_network
+      
         # Root path to transfer objects. Must be an empty string or full path name that
         # ends with a '/'. This field is treated as an object prefix. As such, it should
         # generally not begin with a '/'.
@@ -201,6 +208,7 @@ module Google
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
           @cloudfront_domain = args[:cloudfront_domain] if args.key?(:cloudfront_domain)
           @credentials_secret = args[:credentials_secret] if args.key?(:credentials_secret)
+          @managed_private_network = args[:managed_private_network] if args.key?(:managed_private_network)
           @path = args[:path] if args.key?(:path)
           @role_arn = args[:role_arn] if args.key?(:role_arn)
         end
@@ -683,33 +691,28 @@ module Google
         end
       end
       
-      # Specifies the logging behavior for transfer operations. For cloud-to-cloud
-      # transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://
-      # cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For
-      # transfers to or from a POSIX file system, logs are stored in the Cloud Storage
-      # bucket that is the source or sink of the transfer. See [Managing Transfer for
-      # on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-
-      # prem-jobs#viewing-logs) for details.
+      # Specifies the logging behavior for transfer operations. Logs can be sent to
+      # Cloud Logging for all transfer types. See [Read transfer logs](https://cloud.
+      # google.com/storage-transfer/docs/read-transfer-logs) for details.
       class LoggingConfig
         include Google::Apis::Core::Hashable
       
-        # For transfers with a PosixFilesystem source, this option enables the Cloud
-        # Storage transfer logs for this transfer.
+        # For PosixFilesystem transfers, enables [file system transfer logs](https://
+        # cloud.google.com/storage-transfer/docs/on-prem-transfer-log-format) instead of,
+        # or in addition to, Cloud Logging. This option ignores [LoggableAction] and [
+        # LoggableActionState]. If these are set, Cloud Logging will also be enabled for
+        # this transfer.
         # Corresponds to the JSON property `enableOnpremGcsTransferLogs`
         # @return [Boolean]
         attr_accessor :enable_onprem_gcs_transfer_logs
         alias_method :enable_onprem_gcs_transfer_logs?, :enable_onprem_gcs_transfer_logs
       
-        # States in which `log_actions` are logged. If empty, no logs are generated. Not
-        # supported for transfers with PosixFilesystem data sources; use
-        # enable_onprem_gcs_transfer_logs instead.
+        # States in which `log_actions` are logged. If empty, no logs are generated.
         # Corresponds to the JSON property `logActionStates`
         # @return [Array<String>]
         attr_accessor :log_action_states
       
-        # Specifies the actions to be logged. If empty, no logs are generated. Not
-        # supported for transfers with PosixFilesystem data sources; use
-        # enable_onprem_gcs_transfer_logs instead.
+        # Specifies the actions to be logged. If empty, no logs are generated.
         # Corresponds to the JSON property `logActions`
         # @return [Array<String>]
         attr_accessor :log_actions
@@ -1511,13 +1514,9 @@ module Google
         # @return [String]
         attr_accessor :latest_operation_name
       
-        # Specifies the logging behavior for transfer operations. For cloud-to-cloud
-        # transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://
-        # cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For
-        # transfers to or from a POSIX file system, logs are stored in the Cloud Storage
-        # bucket that is the source or sink of the transfer. See [Managing Transfer for
-        # on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-
-        # prem-jobs#viewing-logs) for details.
+        # Specifies the logging behavior for transfer operations. Logs can be sent to
+        # Cloud Logging for all transfer types. See [Read transfer logs](https://cloud.
+        # google.com/storage-transfer/docs/read-transfer-logs) for details.
         # Corresponds to the JSON property `loggingConfig`
         # @return [Google::Apis::StoragetransferV1::LoggingConfig]
         attr_accessor :logging_config
@@ -1644,13 +1643,9 @@ module Google
         # @return [Array<Google::Apis::StoragetransferV1::ErrorSummary>]
         attr_accessor :error_breakdowns
       
-        # Specifies the logging behavior for transfer operations. For cloud-to-cloud
-        # transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://
-        # cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For
-        # transfers to or from a POSIX file system, logs are stored in the Cloud Storage
-        # bucket that is the source or sink of the transfer. See [Managing Transfer for
-        # on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-
-        # prem-jobs#viewing-logs) for details.
+        # Specifies the logging behavior for transfer operations. Logs can be sent to
+        # Cloud Logging for all transfer types. See [Read transfer logs](https://cloud.
+        # google.com/storage-transfer/docs/read-transfer-logs) for details.
         # Corresponds to the JSON property `loggingConfig`
         # @return [Google::Apis::StoragetransferV1::LoggingConfig]
         attr_accessor :logging_config
