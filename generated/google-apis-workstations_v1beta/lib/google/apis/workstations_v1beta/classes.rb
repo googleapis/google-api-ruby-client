@@ -1309,6 +1309,32 @@ module Google
         end
       end
       
+      # A PortsConfig defines a range of ports. Both first and last are inclusive. To
+      # specify a single port, both first and last should be same.
+      class PortRange
+        include Google::Apis::Core::Hashable
+      
+        # Required. Starting port number for the current range of ports.
+        # Corresponds to the JSON property `first`
+        # @return [Fixnum]
+        attr_accessor :first
+      
+        # Required. Ending port number for the current range of ports.
+        # Corresponds to the JSON property `last`
+        # @return [Fixnum]
+        attr_accessor :last
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first = args[:first] if args.key?(:first)
+          @last = args[:last] if args.key?(:last)
+        end
+      end
+      
       # Configuration options for private workstation clusters.
       class PrivateClusterConfig
         include Google::Apis::Core::Hashable
@@ -1835,6 +1861,12 @@ module Google
       class WorkstationConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Single or Range of ports externally accessible in the workstation.
+        # If not specified defaults to ports 22, 80 and ports 1024-65535.
+        # Corresponds to the JSON property `allowedPorts`
+        # @return [Array<Google::Apis::WorkstationsV1beta::PortRange>]
+        attr_accessor :allowed_ports
+      
         # Optional. Client-specified annotations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
@@ -2004,6 +2036,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_ports = args[:allowed_ports] if args.key?(:allowed_ports)
           @annotations = args[:annotations] if args.key?(:annotations)
           @conditions = args[:conditions] if args.key?(:conditions)
           @container = args[:container] if args.key?(:container)
