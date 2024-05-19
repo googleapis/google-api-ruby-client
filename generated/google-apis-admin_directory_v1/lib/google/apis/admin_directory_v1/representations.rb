@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FanInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Feature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1014,6 +1020,7 @@ module Google
           collection :backlight_info, as: 'backlightInfo', class: Google::Apis::AdminDirectoryV1::BacklightInfo, decorator: Google::Apis::AdminDirectoryV1::BacklightInfo::Representation
       
           property :boot_mode, as: 'bootMode'
+          property :chrome_os_type, as: 'chromeOsType'
           collection :cpu_info, as: 'cpuInfo', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo::Representation
       
           collection :cpu_status_reports, as: 'cpuStatusReports', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport::Representation
@@ -1032,6 +1039,8 @@ module Google
           property :extended_support_eligible, as: 'extendedSupportEligible'
           property :extended_support_enabled, as: 'extendedSupportEnabled'
           property :extended_support_start, as: 'extendedSupportStart'
+          collection :fan_info, as: 'fanInfo', class: Google::Apis::AdminDirectoryV1::FanInfo, decorator: Google::Apis::AdminDirectoryV1::FanInfo::Representation
+      
           property :firmware_version, as: 'firmwareVersion'
           property :first_enrollment_time, as: 'firstEnrollmentTime'
           property :kind, as: 'kind'
@@ -1380,6 +1389,13 @@ module Google
           property :printer, as: 'printer', class: Google::Apis::AdminDirectoryV1::Printer, decorator: Google::Apis::AdminDirectoryV1::Printer::Representation
       
           property :printer_id, as: 'printerId'
+        end
+      end
+      
+      class FanInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speed_rpm, as: 'speedRpm'
         end
       end
       

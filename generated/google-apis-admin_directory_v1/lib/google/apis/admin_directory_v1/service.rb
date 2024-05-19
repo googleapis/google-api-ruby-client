@@ -279,7 +279,7 @@ module Google
         #   Return devices from all child orgunits, as well as the specified org unit. If
         #   this is set to true, 'orgUnitPath' must be provided.
         # @param [Fixnum] max_results
-        #   Maximum number of results to return.
+        #   Maximum number of results to return, value should not exceed 300.
         # @param [String] order_by
         #   Device property to use for sorting results.
         # @param [String] org_unit_path
@@ -290,7 +290,8 @@ module Google
         #   results. The follow-on request's `pageToken` query parameter is the `
         #   nextPageToken` from your previous response.
         # @param [String] projection
-        #   Restrict information returned to a set of selected fields.
+        #   Determines whether the response contains the full list of properties or only a
+        #   subset.
         # @param [String] query
         #   Search string in the format given at https://developers.google.com/admin-sdk/
         #   directory/v1/list-query-operators
@@ -381,7 +382,8 @@ module Google
         #   method.
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device_object
         # @param [String] projection
-        #   Restrict information returned to a set of selected fields.
+        #   Determines whether the response contains the full list of properties or only a
+        #   subset.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -426,7 +428,8 @@ module Google
         #   method.
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device_object
         # @param [String] projection
-        #   Restrict information returned to a set of selected fields.
+        #   Determines whether the response contains the full list of properties or only a
+        #   subset.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
