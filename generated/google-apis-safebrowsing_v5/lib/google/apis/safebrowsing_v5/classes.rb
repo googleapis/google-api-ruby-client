@@ -102,9 +102,13 @@ module Google
         # applies to every hash prefix queried by the client in the request, regardless
         # of how many full hashes are returned in the response. Even if the server
         # returns no full hashes for a particular hash prefix, this fact MUST also be
-        # cached by the client. Important: the client MUST NOT assume that the server
-        # will return the same cache duration for all responses. The server MAY choose
-        # different cache durations for different responses depending on the situation.
+        # cached by the client. If and only if the field `full_hashes` is empty, the
+        # client MAY increase the `cache_duration` to determine a new expiration that is
+        # later than that specified by the server. In any case, the increased cache
+        # duration must not be longer than 24 hours. Important: the client MUST NOT
+        # assume that the server will return the same cache duration for all responses.
+        # The server MAY choose different cache durations for different responses
+        # depending on the situation.
         # Corresponds to the JSON property `cacheDuration`
         # @return [String]
         attr_accessor :cache_duration
