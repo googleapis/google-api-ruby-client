@@ -272,8 +272,8 @@ module Google
         # @return [Array<Google::Apis::ArtifactregistryV1beta2::HashProp>]
         attr_accessor :hashes
       
-        # The name of the file, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/files/a%2Fb%2Fc.txt". If the file ID part contains slashes,
+        # The name of the file, for example: `projects/p1/locations/us-central1/
+        # repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part contains slashes,
         # they are escaped.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1068,10 +1068,17 @@ module Google
         attr_accessor :maven_config
       
         # The name of the repository, for example: `projects/p1/locations/us-central1/
-        # repositories/repo1`.
+        # repositories/repo1`. For each location in a project, repository names must be
+        # unique.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. If set, the repository satisfies physical zone isolation.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
       
         # Output only. If set, the repository satisfies physical zone separation.
         # Corresponds to the JSON property `satisfiesPzs`
@@ -1104,6 +1111,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @maven_config = args[:maven_config] if args.key?(:maven_config)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @update_time = args[:update_time] if args.key?(:update_time)
