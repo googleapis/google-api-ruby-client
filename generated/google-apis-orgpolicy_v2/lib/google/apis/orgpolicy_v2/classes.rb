@@ -88,12 +88,6 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A Google managed constraint. This represents a subset of fields missing from
-        # Constraint proto that are required to describe CustomConstraint
-        # Corresponds to the JSON property `googleManagedConstraint`
-        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint]
-        attr_accessor :google_managed_constraint
-      
         # A constraint that allows or disallows a list of string values, which are
         # configured by an Organization Policy administrator with a policy.
         # Corresponds to the JSON property `listConstraint`
@@ -125,7 +119,6 @@ module Google
           @constraint_default = args[:constraint_default] if args.key?(:constraint_default)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @google_managed_constraint = args[:google_managed_constraint] if args.key?(:google_managed_constraint)
           @list_constraint = args[:list_constraint] if args.key?(:list_constraint)
           @name = args[:name] if args.key?(:name)
           @supports_dry_run = args[:supports_dry_run] if args.key?(:supports_dry_run)
@@ -144,47 +137,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # A Google managed constraint. This represents a subset of fields missing from
-      # Constraint proto that are required to describe CustomConstraint
-      class GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint
-        include Google::Apis::Core::Hashable
-      
-        # Allow or deny type.
-        # Corresponds to the JSON property `actionType`
-        # @return [String]
-        attr_accessor :action_type
-      
-        # Org policy condition/expression. For example: `resource.instanceName.matches("[
-        # production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true`
-        # The max length of the condition is 1000 characters.
-        # Corresponds to the JSON property `condition`
-        # @return [String]
-        attr_accessor :condition
-      
-        # All the operations being applied for this constraint.
-        # Corresponds to the JSON property `methodTypes`
-        # @return [Array<String>]
-        attr_accessor :method_types
-      
-        # The resource instance type on which this policy applies. Format will be of the
-        # form : `/` Example: * `compute.googleapis.com/Instance`.
-        # Corresponds to the JSON property `resourceTypes`
-        # @return [Array<String>]
-        attr_accessor :resource_types
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action_type = args[:action_type] if args.key?(:action_type)
-          @condition = args[:condition] if args.key?(:condition)
-          @method_types = args[:method_types] if args.key?(:method_types)
-          @resource_types = args[:resource_types] if args.key?(:resource_types)
         end
       end
       

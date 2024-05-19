@@ -40,12 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudOrgpolicyV2ConstraintListConstraint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -129,8 +123,6 @@ module Google
           property :constraint_default, as: 'constraintDefault'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
-          property :google_managed_constraint, as: 'googleManagedConstraint', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint::Representation
-      
           property :list_constraint, as: 'listConstraint', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintListConstraint, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintListConstraint::Representation
       
           property :name, as: 'name'
@@ -141,16 +133,6 @@ module Google
       class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action_type, as: 'actionType'
-          property :condition, as: 'condition'
-          collection :method_types, as: 'methodTypes'
-          collection :resource_types, as: 'resourceTypes'
         end
       end
       
