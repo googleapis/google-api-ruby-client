@@ -1188,6 +1188,11 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # Optional. Log configuration level.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1195,6 +1200,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @level = args[:level] if args.key?(:level)
         end
       end
       
@@ -1511,6 +1517,19 @@ module Google
         end
       end
       
+      # Request message for ConnectorsService.DeprecateCustomConnectorVersion
+      class DeprecateCustomConnectorVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # 
       class Destination
         include Google::Apis::Core::Hashable
@@ -1781,6 +1800,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. The Private Service Connect Connection Endpoint Global Access. https:
+        # //cloud.google.com/vpc/docs/about-accessing-vpc-hosted-services-endpoints#
+        # global-access
+        # Corresponds to the JSON property `endpointGlobalAccess`
+        # @return [Boolean]
+        attr_accessor :endpoint_global_access
+        alias_method :endpoint_global_access?, :endpoint_global_access
+      
         # Output only. The Private Service Connect connection endpoint ip
         # Corresponds to the JSON property `endpointIp`
         # @return [String]
@@ -1817,6 +1844,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @endpoint_global_access = args[:endpoint_global_access] if args.key?(:endpoint_global_access)
           @endpoint_ip = args[:endpoint_ip] if args.key?(:endpoint_ip)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
