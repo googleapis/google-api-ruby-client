@@ -136,12 +136,12 @@ module Google
       class AllowedDomainsSettings
         include Google::Apis::Core::Hashable
       
-        # List of trusted domains.
+        # Optional. List of trusted domains.
         # Corresponds to the JSON property `domains`
         # @return [Array<String>]
         attr_accessor :domains
       
-        # Configuration for customers to opt in for the feature.
+        # Optional. Configuration for customers to opt in for the feature.
         # Corresponds to the JSON property `enable`
         # @return [Boolean]
         attr_accessor :enable
@@ -206,35 +206,35 @@ module Google
       class AttributePropagationSettings
         include Google::Apis::Core::Hashable
       
-        # Whether the provided attribute propagation settings should be evaluated on
-        # user requests. If set to true, attributes returned from the expression will be
-        # propagated in the set output credentials.
+        # Optional. Whether the provided attribute propagation settings should be
+        # evaluated on user requests. If set to true, attributes returned from the
+        # expression will be propagated in the set output credentials.
         # Corresponds to the JSON property `enable`
         # @return [Boolean]
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # Raw string CEL expression. Must return a list of attributes. A maximum of 45
-        # attributes can be selected. Expressions can select different attribute types
-        # from `attributes`: `attributes.saml_attributes`, `attributes.iap_attributes`.
-        # The following functions are supported: - filter `.filter(, )`: Returns a
-        # subset of `` where `` is true for every item. - in ` in `: Returns true if ``
-        # contains ``. - selectByName `.selectByName()`: Returns the attribute in ``
-        # with the given `` name, otherwise returns empty. - emitAs `.emitAs()`: Sets
-        # the `` name field to the given `` for propagation in selected output
-        # credentials. - strict `.strict()`: Ignores the `x-goog-iap-attr-` prefix for
-        # the provided `` when propagating with the `HEADER` output credential, such as
-        # request headers. - append `.append()` OR `.append()`: Appends the provided ``
-        # or `` to the end of ``. Example expression: `attributes.saml_attributes.filter(
-        # x, x.name in ['test']).append(attributes.iap_attributes.selectByName('exact').
-        # emitAs('custom').strict())`
+        # Optional. Raw string CEL expression. Must return a list of attributes. A
+        # maximum of 45 attributes can be selected. Expressions can select different
+        # attribute types from `attributes`: `attributes.saml_attributes`, `attributes.
+        # iap_attributes`. The following functions are supported: - filter `.filter(, )`:
+        # Returns a subset of `` where `` is true for every item. - in ` in `: Returns
+        # true if `` contains ``. - selectByName `.selectByName()`: Returns the
+        # attribute in `` with the given `` name, otherwise returns empty. - emitAs `.
+        # emitAs()`: Sets the `` name field to the given `` for propagation in selected
+        # output credentials. - strict `.strict()`: Ignores the `x-goog-iap-attr-`
+        # prefix for the provided `` when propagating with the `HEADER` output
+        # credential, such as request headers. - append `.append()` OR `.append()`:
+        # Appends the provided `` or `` to the end of ``. Example expression: `
+        # attributes.saml_attributes.filter(x, x.name in ['test']).append(attributes.
+        # iap_attributes.selectByName('exact').emitAs('custom').strict())`
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # Which output credentials attributes selected by the CEL expression should be
-        # propagated in. All attributes will be fully duplicated in each selected output
-        # credential.
+        # Optional. Which output credentials attributes selected by the CEL expression
+        # should be propagated in. All attributes will be fully duplicated in each
+        # selected output credential.
         # Corresponds to the JSON property `outputCredentials`
         # @return [Array<String>]
         attr_accessor :output_credentials
@@ -519,11 +519,12 @@ module Google
         # @return [String]
         attr_accessor :login_page_uri
       
-        # GCIP tenant ids that are linked to the IAP resource. tenant_ids could be a
-        # string beginning with a number character to indicate authenticating with GCIP
-        # tenant flow, or in the format of _ to indicate authenticating with GCIP agent
-        # flow. If agent flow is used, tenant_ids should only contain one single element,
-        # while for tenant flow, tenant_ids can contain multiple elements.
+        # Optional. GCIP tenant ids that are linked to the IAP resource. tenant_ids
+        # could be a string beginning with a number character to indicate authenticating
+        # with GCIP tenant flow, or in the format of _ to indicate authenticating with
+        # GCIP agent flow. If agent flow is used, tenant_ids should only contain one
+        # single element, while for tenant flow, tenant_ids can contain multiple
+        # elements.
         # Corresponds to the JSON property `tenantIds`
         # @return [Array<String>]
         attr_accessor :tenant_ids
@@ -767,7 +768,7 @@ module Google
         # @return [String]
         attr_accessor :login_hint
       
-        # List of client ids allowed to use IAP programmatically.
+        # Optional. List of client ids allowed to use IAP programmatically.
         # Corresponds to the JSON property `programmaticClients`
         # @return [Array<String>]
         attr_accessor :programmatic_clients
@@ -961,7 +962,8 @@ module Google
       class ReauthSettings
         include Google::Apis::Core::Hashable
       
-        # Reauth session lifetime, how long before a user has to reauthenticate again.
+        # Optional. Reauth session lifetime, how long before a user has to
+        # reauthenticate again.
         # Corresponds to the JSON property `maxAge`
         # @return [String]
         attr_accessor :max_age
@@ -971,8 +973,9 @@ module Google
         # @return [String]
         attr_accessor :method_prop
       
-        # How IAP determines the effective policy in cases of hierarchical policies.
-        # Policies are merged from higher in the hierarchy to lower in the hierarchy.
+        # Optional. How IAP determines the effective policy in cases of hierarchical
+        # policies. Policies are merged from higher in the hierarchy to lower in the
+        # hierarchy.
         # Corresponds to the JSON property `policyType`
         # @return [String]
         attr_accessor :policy_type
@@ -1180,18 +1183,18 @@ module Google
       class TunnelDestGroup
         include Google::Apis::Core::Hashable
       
-        # Unordered list. List of CIDRs that this group applies to.
+        # Optional. Unordered list. List of CIDRs that this group applies to.
         # Corresponds to the JSON property `cidrs`
         # @return [Array<String>]
         attr_accessor :cidrs
       
-        # Unordered list. List of FQDNs that this group applies to.
+        # Optional. Unordered list. List of FQDNs that this group applies to.
         # Corresponds to the JSON property `fqdns`
         # @return [Array<String>]
         attr_accessor :fqdns
       
-        # Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within
-        # the project and contain only lower case letters (a-z) and dashes (-).
+        # Identifier. Identifier for the TunnelDestGroup. Must be unique within the
+        # project and contain only lower case letters (a-z) and dashes (-).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1208,9 +1211,7 @@ module Google
         end
       end
       
-      # API requires a return message, but currently all response strings will fit in
-      # the status and public message. In the future, this response can hold AST
-      # validation info.
+      # IAP Expression Linter endpoint returns empty response body.
       class ValidateIapAttributeExpressionResponse
         include Google::Apis::Core::Hashable
       
