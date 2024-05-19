@@ -485,8 +485,8 @@ module Google
         
         # Updates a TunnelDestGroup.
         # @param [String] name
-        #   Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within
-        #   the project and contain only lower case letters (a-z) and dashes (-).
+        #   Identifier. Identifier for the TunnelDestGroup. Must be unique within the
+        #   project and contain only lower case letters (a-z) and dashes (-).
         # @param [Google::Apis::IapV1::TunnelDestGroup] tunnel_dest_group_object
         # @param [String] update_mask
         #   A field mask that specifies which IAP settings to update. If omitted, then all
