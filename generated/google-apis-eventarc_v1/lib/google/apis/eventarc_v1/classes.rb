@@ -402,8 +402,7 @@ module Google
         # @return [Google::Apis::EventarcV1::HttpEndpoint]
         attr_accessor :http_endpoint
       
-        # Represents a network config to be used for destination resolution and
-        # connectivity.
+        # Network Configuration that can be inherited by other protos.
         # Corresponds to the JSON property `networkConfig`
         # @return [Google::Apis::EventarcV1::NetworkConfig]
         attr_accessor :network_config
@@ -1070,12 +1069,11 @@ module Google
         end
       end
       
-      # Represents a network config to be used for destination resolution and
-      # connectivity.
+      # Network Configuration that can be inherited by other protos.
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Name of the NetworkAttachment that allows access to the destination
+        # Required. Name of the NetworkAttachment that allows access to the customer's
         # VPC. Format: `projects/`PROJECT_ID`/regions/`REGION`/networkAttachments/`
         # NETWORK_ATTACHMENT_NAME``
         # Corresponds to the JSON property `networkAttachment`
