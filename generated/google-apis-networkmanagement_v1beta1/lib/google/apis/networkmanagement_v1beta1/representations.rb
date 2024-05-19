@@ -208,12 +208,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListVpcFlowLogsConfigsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class LoadBalancerBackend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,12 +335,6 @@ module Google
       end
       
       class VpcConnectorInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class VpcFlowLogsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -688,16 +676,6 @@ module Google
         end
       end
       
-      class ListVpcFlowLogsConfigsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
-          collection :vpc_flow_logs_configs, as: 'vpcFlowLogsConfigs', class: Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig, decorator: Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig::Representation
-      
-        end
-      end
-      
       class LoadBalancerBackend
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1003,27 +981,6 @@ module Google
           property :display_name, as: 'displayName'
           property :location, as: 'location'
           property :uri, as: 'uri'
-        end
-      end
-      
-      class VpcFlowLogsConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :aggregation_interval, as: 'aggregationInterval'
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :filter_expr, as: 'filterExpr'
-          property :flow_sampling, as: 'flowSampling'
-          property :interconnect_attachment, as: 'interconnectAttachment'
-          hash :labels, as: 'labels'
-          property :metadata, as: 'metadata'
-          collection :metadata_fields, as: 'metadataFields'
-          property :name, as: 'name'
-          property :network, as: 'network'
-          property :state, as: 'state'
-          property :subnet, as: 'subnet'
-          property :update_time, as: 'updateTime'
-          property :vpn_tunnel, as: 'vpnTunnel'
         end
       end
       
