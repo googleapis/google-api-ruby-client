@@ -843,6 +843,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a mute config.
+        # @param [String] parent
+        #   Required. Resource name of the new mute configs's parent. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
+        # @param [String] mute_config_id
+        #   Required. Unique identifier provided by the client within the parent scope. It
+        #   must consist of only lowercase letters, numbers, and hyphens, must start with
+        #   a letter, must end with either a letter or a number, and must be 63 characters
+        #   or less.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_location_mute_config(parent, google_cloud_securitycenter_v1_mute_config_object = nil, mute_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/muteConfigs', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig::Representation
+          command.request_object = google_cloud_securitycenter_v1_mute_config_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['muteConfigId'] = mute_config_id unless mute_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes an existing mute config.
         # @param [String] name
         #   Required. Name of the mute config to delete. Its format is organizations/`
@@ -908,6 +949,48 @@ module Google
           command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig::Representation
           command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists mute configs.
+        # @param [String] parent
+        #   Required. The parent, which owns the collection of mute configs. Its format is
+        #   "organizations/[organization_id]", "folders/[folder_id]", "projects/[
+        #   project_id]".
+        # @param [Fixnum] page_size
+        #   The maximum number of configs to return. The service may return fewer than
+        #   this value. If unspecified, at most 10 configs will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListMuteConfigs` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to `ListMuteConfigs` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListMuteConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListMuteConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_mute_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListMuteConfigsResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListMuteConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2989,6 +3072,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a mute config.
+        # @param [String] parent
+        #   Required. Resource name of the new mute configs's parent. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
+        # @param [String] mute_config_id
+        #   Required. Unique identifier provided by the client within the parent scope. It
+        #   must consist of only lowercase letters, numbers, and hyphens, must start with
+        #   a letter, must end with either a letter or a number, and must be 63 characters
+        #   or less.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_mute_config(parent, google_cloud_securitycenter_v1_mute_config_object = nil, mute_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/muteConfigs', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig::Representation
+          command.request_object = google_cloud_securitycenter_v1_mute_config_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['muteConfigId'] = mute_config_id unless mute_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes an existing mute config.
         # @param [String] name
         #   Required. Name of the mute config to delete. Its format is organizations/`
@@ -3054,6 +3178,48 @@ module Google
           command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig::Representation
           command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists mute configs.
+        # @param [String] parent
+        #   Required. The parent, which owns the collection of mute configs. Its format is
+        #   "organizations/[organization_id]", "folders/[folder_id]", "projects/[
+        #   project_id]".
+        # @param [Fixnum] page_size
+        #   The maximum number of configs to return. The service may return fewer than
+        #   this value. If unspecified, at most 10 configs will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListMuteConfigs` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to `ListMuteConfigs` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListMuteConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListMuteConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_mute_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListMuteConfigsResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListMuteConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5910,6 +6076,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a mute config.
+        # @param [String] parent
+        #   Required. Resource name of the new mute configs's parent. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
+        # @param [String] mute_config_id
+        #   Required. Unique identifier provided by the client within the parent scope. It
+        #   must consist of only lowercase letters, numbers, and hyphens, must start with
+        #   a letter, must end with either a letter or a number, and must be 63 characters
+        #   or less.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_mute_config(parent, google_cloud_securitycenter_v1_mute_config_object = nil, mute_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/muteConfigs', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig::Representation
+          command.request_object = google_cloud_securitycenter_v1_mute_config_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['muteConfigId'] = mute_config_id unless mute_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes an existing mute config.
         # @param [String] name
         #   Required. Name of the mute config to delete. Its format is organizations/`
@@ -5975,6 +6182,48 @@ module Google
           command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig::Representation
           command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists mute configs.
+        # @param [String] parent
+        #   Required. The parent, which owns the collection of mute configs. Its format is
+        #   "organizations/[organization_id]", "folders/[folder_id]", "projects/[
+        #   project_id]".
+        # @param [Fixnum] page_size
+        #   The maximum number of configs to return. The service may return fewer than
+        #   this value. If unspecified, at most 10 configs will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListMuteConfigs` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to `ListMuteConfigs` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListMuteConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListMuteConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_mute_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListMuteConfigsResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListMuteConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
