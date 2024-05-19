@@ -7524,9 +7524,7 @@ module Google
         # Required. Expression that defines what assets fields to use for grouping (
         # including `state_change`). The string value should follow SQL syntax: comma
         # separated list of fields. For example: "parent,resource_name". The following
-        # fields are supported: * resource_name * category * state * parent * severity
-        # The following fields are supported when compare_duration is set: *
-        # state_change
+        # fields are supported when compare_duration is set: * state_change
         # Corresponds to the JSON property `groupBy`
         # @return [String]
         attr_accessor :group_by
