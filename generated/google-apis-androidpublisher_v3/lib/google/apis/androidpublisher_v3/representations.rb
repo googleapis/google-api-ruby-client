@@ -652,6 +652,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstallmentPlan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstallmentsBasePlanType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InternalAppSharingArtifact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -838,6 +850,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PendingCancellation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrepaidBasePlanType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -947,6 +965,12 @@ module Google
       end
       
       class ReplacementCancellation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestrictedPaymentCountries
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1635,6 +1659,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_renew_enabled, as: 'autoRenewEnabled'
+          property :installment_details, as: 'installmentDetails', class: Google::Apis::AndroidpublisherV3::InstallmentPlan, decorator: Google::Apis::AndroidpublisherV3::InstallmentPlan::Representation
+      
           property :price_change_details, as: 'priceChangeDetails', class: Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails, decorator: Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails::Representation
       
         end
@@ -1646,6 +1672,8 @@ module Google
           property :auto_renewing_base_plan_type, as: 'autoRenewingBasePlanType', class: Google::Apis::AndroidpublisherV3::AutoRenewingBasePlanType, decorator: Google::Apis::AndroidpublisherV3::AutoRenewingBasePlanType::Representation
       
           property :base_plan_id, as: 'basePlanId'
+          property :installments_base_plan_type, as: 'installmentsBasePlanType', class: Google::Apis::AndroidpublisherV3::InstallmentsBasePlanType, decorator: Google::Apis::AndroidpublisherV3::InstallmentsBasePlanType::Representation
+      
           collection :offer_tags, as: 'offerTags', class: Google::Apis::AndroidpublisherV3::OfferTag, decorator: Google::Apis::AndroidpublisherV3::OfferTag::Representation
       
           property :other_regions_config, as: 'otherRegionsConfig', class: Google::Apis::AndroidpublisherV3::OtherRegionsBasePlanConfig, decorator: Google::Apis::AndroidpublisherV3::OtherRegionsBasePlanConfig::Representation
@@ -2389,6 +2417,30 @@ module Google
         end
       end
       
+      class InstallmentPlan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :initial_committed_payments_count, as: 'initialCommittedPaymentsCount'
+          property :pending_cancellation, as: 'pendingCancellation', class: Google::Apis::AndroidpublisherV3::PendingCancellation, decorator: Google::Apis::AndroidpublisherV3::PendingCancellation::Representation
+      
+          property :remaining_committed_payments_count, as: 'remainingCommittedPaymentsCount'
+          property :subsequent_committed_payments_count, as: 'subsequentCommittedPaymentsCount'
+        end
+      end
+      
+      class InstallmentsBasePlanType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_hold_duration, as: 'accountHoldDuration'
+          property :billing_period_duration, as: 'billingPeriodDuration'
+          property :committed_payments_count, as: 'committedPaymentsCount'
+          property :grace_period_duration, as: 'gracePeriodDuration'
+          property :proration_mode, as: 'prorationMode'
+          property :renewal_type, as: 'renewalType'
+          property :resubscribe_state, as: 'resubscribeState'
+        end
+      end
+      
       class InternalAppSharingArtifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2670,6 +2722,12 @@ module Google
         end
       end
       
+      class PendingCancellation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class PrepaidBasePlanType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2845,6 +2903,13 @@ module Google
         end
       end
       
+      class RestrictedPaymentCountries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :region_codes, as: 'regionCodes'
+        end
+      end
+      
       class Review
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3014,6 +3079,8 @@ module Google
       
           property :package_name, as: 'packageName'
           property :product_id, as: 'productId'
+          property :restricted_payment_countries, as: 'restrictedPaymentCountries', class: Google::Apis::AndroidpublisherV3::RestrictedPaymentCountries, decorator: Google::Apis::AndroidpublisherV3::RestrictedPaymentCountries::Representation
+      
           property :tax_and_compliance_settings, as: 'taxAndComplianceSettings', class: Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings, decorator: Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings::Representation
       
         end
