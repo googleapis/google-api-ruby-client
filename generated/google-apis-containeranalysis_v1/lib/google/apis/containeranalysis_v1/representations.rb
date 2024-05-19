@@ -292,7 +292,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1DeveloperConnectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GcsLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1312,6 +1336,8 @@ module Google
           property :non_compliance_reason, as: 'nonComplianceReason'
           collection :non_compliant_files, as: 'nonCompliantFiles', class: Google::Apis::ContaineranalysisV1::NonCompliantFile, decorator: Google::Apis::ContaineranalysisV1::NonCompliantFile::Representation
       
+          property :version, as: 'version', class: Google::Apis::ContaineranalysisV1::ComplianceVersion, decorator: Google::Apis::ContaineranalysisV1::ComplianceVersion::Representation
+      
         end
       end
       
@@ -1408,6 +1434,8 @@ module Google
           property :failure_info, as: 'failureInfo', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildFailureInfo, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildFailureInfo::Representation
       
           property :finish_time, as: 'finishTime'
+          property :git_config, as: 'gitConfig', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig::Representation
+      
           property :id, as: 'id'
           collection :images, as: 'images'
           property :log_url, as: 'logUrl'
@@ -1544,10 +1572,45 @@ module Google
         end
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1DeveloperConnectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dir, as: 'dir'
+          property :git_repository_link, as: 'gitRepositoryLink'
+          property :revision, as: 'revision'
+        end
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Hash, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Hash::Representation
+      
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GcsLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object, as: 'object'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http, as: 'http', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig::Representation
+      
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :proxy_secret_version_name, as: 'proxySecretVersionName'
+          property :proxy_ssl_ca_info, as: 'proxySslCaInfo', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1GcsLocation, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1GcsLocation::Representation
       
         end
       end
@@ -1641,6 +1704,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connected_repository, as: 'connectedRepository', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository::Representation
+      
+          property :developer_connect_config, as: 'developerConnectConfig', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1DeveloperConnectConfig, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1DeveloperConnectConfig::Representation
       
           property :git_source, as: 'gitSource', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource::Representation
       
