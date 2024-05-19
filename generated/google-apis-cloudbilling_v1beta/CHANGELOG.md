@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudbilling_v1beta
 
+### v0.20.0 (2024-05-19)
+
+* Regenerated using generator version 0.15.0
+
 ### v0.19.0 (2024-04-21)
 
 * Regenerated from discovery document revision 20240412
