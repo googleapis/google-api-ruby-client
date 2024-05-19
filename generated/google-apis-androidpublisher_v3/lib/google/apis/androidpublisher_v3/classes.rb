@@ -809,6 +809,11 @@ module Google
         attr_accessor :auto_renew_enabled
         alias_method :auto_renew_enabled?, :auto_renew_enabled
       
+        # Information to a installment plan.
+        # Corresponds to the JSON property `installmentDetails`
+        # @return [Google::Apis::AndroidpublisherV3::InstallmentPlan]
+        attr_accessor :installment_details
+      
         # Price change related information of a subscription item.
         # Corresponds to the JSON property `priceChangeDetails`
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails]
@@ -821,6 +826,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_renew_enabled = args[:auto_renew_enabled] if args.key?(:auto_renew_enabled)
+          @installment_details = args[:installment_details] if args.key?(:installment_details)
           @price_change_details = args[:price_change_details] if args.key?(:price_change_details)
         end
       end
@@ -842,6 +848,12 @@ module Google
         # Corresponds to the JSON property `basePlanId`
         # @return [String]
         attr_accessor :base_plan_id
+      
+        # Represents an installments base plan where a user commits to a specified
+        # number of payments.
+        # Corresponds to the JSON property `installmentsBasePlanType`
+        # @return [Google::Apis::AndroidpublisherV3::InstallmentsBasePlanType]
+        attr_accessor :installments_base_plan_type
       
         # List of up to 20 custom tags specified for this base plan, and returned to the
         # app through the billing library. Subscription offers for this base plan will
@@ -882,6 +894,7 @@ module Google
         def update!(**args)
           @auto_renewing_base_plan_type = args[:auto_renewing_base_plan_type] if args.key?(:auto_renewing_base_plan_type)
           @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @installments_base_plan_type = args[:installments_base_plan_type] if args.key?(:installments_base_plan_type)
           @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
           @other_regions_config = args[:other_regions_config] if args.key?(:other_regions_config)
           @prepaid_base_plan_type = args[:prepaid_base_plan_type] if args.key?(:prepaid_base_plan_type)
@@ -3179,6 +3192,114 @@ module Google
         end
       end
       
+      # Information to a installment plan.
+      class InstallmentPlan
+        include Google::Apis::Core::Hashable
+      
+        # Total number of payments the user is initially committed for.
+        # Corresponds to the JSON property `initialCommittedPaymentsCount`
+        # @return [Fixnum]
+        attr_accessor :initial_committed_payments_count
+      
+        # This is an indicator of whether there is a pending cancellation on the virtual
+        # installment plan. The cancellation will happen only after the user finished
+        # all committed payments.
+        # Corresponds to the JSON property `pendingCancellation`
+        # @return [Google::Apis::AndroidpublisherV3::PendingCancellation]
+        attr_accessor :pending_cancellation
+      
+        # Total number of committed payments remaining to be paid for in this renewal
+        # cycle.
+        # Corresponds to the JSON property `remainingCommittedPaymentsCount`
+        # @return [Fixnum]
+        attr_accessor :remaining_committed_payments_count
+      
+        # Total number of payments the user will be committed for after each commitment
+        # period. Empty means the installment plan will fall back to a normal auto-renew
+        # subscription after initial commitment.
+        # Corresponds to the JSON property `subsequentCommittedPaymentsCount`
+        # @return [Fixnum]
+        attr_accessor :subsequent_committed_payments_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @initial_committed_payments_count = args[:initial_committed_payments_count] if args.key?(:initial_committed_payments_count)
+          @pending_cancellation = args[:pending_cancellation] if args.key?(:pending_cancellation)
+          @remaining_committed_payments_count = args[:remaining_committed_payments_count] if args.key?(:remaining_committed_payments_count)
+          @subsequent_committed_payments_count = args[:subsequent_committed_payments_count] if args.key?(:subsequent_committed_payments_count)
+        end
+      end
+      
+      # Represents an installments base plan where a user commits to a specified
+      # number of payments.
+      class InstallmentsBasePlanType
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Account hold period of the subscription, specified exclusively in
+        # days and in ISO 8601 format. Acceptable values are P0D (zero days) to P30D (
+        # 30days). If not specified, the default value is P30D (30 days).
+        # Corresponds to the JSON property `accountHoldDuration`
+        # @return [String]
+        attr_accessor :account_hold_duration
+      
+        # Required. Subscription period, specified in ISO 8601 format. For a list of
+        # acceptable billing periods, refer to the help center.
+        # Corresponds to the JSON property `billingPeriodDuration`
+        # @return [String]
+        attr_accessor :billing_period_duration
+      
+        # Required. The number of payments the user is committed to.
+        # Corresponds to the JSON property `committedPaymentsCount`
+        # @return [Fixnum]
+        attr_accessor :committed_payments_count
+      
+        # Grace period of the subscription, specified in ISO 8601 format. Acceptable
+        # values are P0D (zero days), P3D (3 days), P7D (7 days), P14D (14 days), and
+        # P30D (30 days). If not specified, a default value will be used based on the
+        # recurring period duration.
+        # Corresponds to the JSON property `gracePeriodDuration`
+        # @return [String]
+        attr_accessor :grace_period_duration
+      
+        # The proration mode for the base plan determines what happens when a user
+        # switches to this plan from another base plan. If unspecified, defaults to
+        # CHARGE_ON_NEXT_BILLING_DATE.
+        # Corresponds to the JSON property `prorationMode`
+        # @return [String]
+        attr_accessor :proration_mode
+      
+        # Required. Installments base plan renewal type. Determines the behavior at the
+        # end of the initial commitment.
+        # Corresponds to the JSON property `renewalType`
+        # @return [String]
+        attr_accessor :renewal_type
+      
+        # Whether users should be able to resubscribe to this base plan in Google Play
+        # surfaces. Defaults to RESUBSCRIBE_STATE_ACTIVE if not specified.
+        # Corresponds to the JSON property `resubscribeState`
+        # @return [String]
+        attr_accessor :resubscribe_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_hold_duration = args[:account_hold_duration] if args.key?(:account_hold_duration)
+          @billing_period_duration = args[:billing_period_duration] if args.key?(:billing_period_duration)
+          @committed_payments_count = args[:committed_payments_count] if args.key?(:committed_payments_count)
+          @grace_period_duration = args[:grace_period_duration] if args.key?(:grace_period_duration)
+          @proration_mode = args[:proration_mode] if args.key?(:proration_mode)
+          @renewal_type = args[:renewal_type] if args.key?(:renewal_type)
+          @resubscribe_state = args[:resubscribe_state] if args.key?(:resubscribe_state)
+        end
+      end
+      
       # An artifact resource which gets created when uploading an APK or Android App
       # Bundle through internal app sharing.
       class InternalAppSharingArtifact
@@ -4068,6 +4189,21 @@ module Google
         end
       end
       
+      # This is an indicator of whether there is a pending cancellation on the virtual
+      # installment plan. The cancellation will happen only after the user finished
+      # all committed payments.
+      class PendingCancellation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a base plan that does not automatically renew at the end of the
       # base plan, and must be manually renewed by the user.
       class PrepaidBasePlanType
@@ -4707,6 +4843,28 @@ module Google
         end
       end
       
+      # Countries where the purchase of this product is restricted to payment methods
+      # registered in the same country. If empty, no payment location restrictions are
+      # imposed.
+      class RestrictedPaymentCountries
+        include Google::Apis::Core::Hashable
+      
+        # Required. Region codes to impose payment restrictions on, as defined by ISO
+        # 3166-2, e.g. "US".
+        # Corresponds to the JSON property `regionCodes`
+        # @return [Array<String>]
+        attr_accessor :region_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_codes = args[:region_codes] if args.key?(:region_codes)
+        end
+      end
+      
       # An Android app review.
       class Review
         include Google::Apis::Core::Hashable
@@ -5201,6 +5359,13 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
+        # Countries where the purchase of this product is restricted to payment methods
+        # registered in the same country. If empty, no payment location restrictions are
+        # imposed.
+        # Corresponds to the JSON property `restrictedPaymentCountries`
+        # @return [Google::Apis::AndroidpublisherV3::RestrictedPaymentCountries]
+        attr_accessor :restricted_payment_countries
+      
         # Details about taxation, Google Play policy and legal compliance for
         # subscription products.
         # Corresponds to the JSON property `taxAndComplianceSettings`
@@ -5218,6 +5383,7 @@ module Google
           @listings = args[:listings] if args.key?(:listings)
           @package_name = args[:package_name] if args.key?(:package_name)
           @product_id = args[:product_id] if args.key?(:product_id)
+          @restricted_payment_countries = args[:restricted_payment_countries] if args.key?(:restricted_payment_countries)
           @tax_and_compliance_settings = args[:tax_and_compliance_settings] if args.key?(:tax_and_compliance_settings)
         end
       end
