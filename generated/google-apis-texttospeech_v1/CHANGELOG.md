@@ -1,5 +1,9 @@
 # Release history for google-apis-texttospeech_v1
 
+### v0.31.0 (2024-05-19)
+
+* Regenerated using generator version 0.15.0
+
 ### v0.30.0 (2024-04-28)
 
 * Regenerated from discovery document revision 20240419
