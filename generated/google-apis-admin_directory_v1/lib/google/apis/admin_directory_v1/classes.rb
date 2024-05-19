@@ -1007,6 +1007,11 @@ module Google
         # @return [String]
         attr_accessor :boot_mode
       
+        # Output only. Chrome OS type of the device.
+        # Corresponds to the JSON property `chromeOsType`
+        # @return [String]
+        attr_accessor :chrome_os_type
+      
         # Information regarding CPU specs in the device.
         # Corresponds to the JSON property `cpuInfo`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo>]
@@ -1086,6 +1091,11 @@ module Google
         # Corresponds to the JSON property `extendedSupportStart`
         # @return [String]
         attr_accessor :extended_support_start
+      
+        # Output only. Fan information for the device.
+        # Corresponds to the JSON property `fanInfo`
+        # @return [Array<Google::Apis::AdminDirectoryV1::FanInfo>]
+        attr_accessor :fan_info
       
         # The Chrome device's firmware version.
         # Corresponds to the JSON property `firmwareVersion`
@@ -1268,6 +1278,7 @@ module Google
           @auto_update_through = args[:auto_update_through] if args.key?(:auto_update_through)
           @backlight_info = args[:backlight_info] if args.key?(:backlight_info)
           @boot_mode = args[:boot_mode] if args.key?(:boot_mode)
+          @chrome_os_type = args[:chrome_os_type] if args.key?(:chrome_os_type)
           @cpu_info = args[:cpu_info] if args.key?(:cpu_info)
           @cpu_status_reports = args[:cpu_status_reports] if args.key?(:cpu_status_reports)
           @deprovision_reason = args[:deprovision_reason] if args.key?(:deprovision_reason)
@@ -1282,6 +1293,7 @@ module Google
           @extended_support_eligible = args[:extended_support_eligible] if args.key?(:extended_support_eligible)
           @extended_support_enabled = args[:extended_support_enabled] if args.key?(:extended_support_enabled)
           @extended_support_start = args[:extended_support_start] if args.key?(:extended_support_start)
+          @fan_info = args[:fan_info] if args.key?(:fan_info)
           @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
           @first_enrollment_time = args[:first_enrollment_time] if args.key?(:first_enrollment_time)
           @kind = args[:kind] if args.key?(:kind)
@@ -2411,6 +2423,25 @@ module Google
           @error_message = args[:error_message] if args.key?(:error_message)
           @printer = args[:printer] if args.key?(:printer)
           @printer_id = args[:printer_id] if args.key?(:printer_id)
+        end
+      end
+      
+      # Information about the device's fan.
+      class FanInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Fan speed in RPM.
+        # Corresponds to the JSON property `speedRpm`
+        # @return [Fixnum]
+        attr_accessor :speed_rpm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speed_rpm = args[:speed_rpm] if args.key?(:speed_rpm)
         end
       end
       
