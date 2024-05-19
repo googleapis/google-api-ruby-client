@@ -6653,6 +6653,64 @@ module Google
         end
       end
       
+      # The rewritten queries returned by Apps Search Query Understanding service.
+      class RewrittenQueries
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `rewrittenQueries`
+        # @return [Array<Google::Apis::CloudsearchV1::RewrittenQuery>]
+        attr_accessor :rewritten_queries
+      
+        # The index of the selected query in `rewritten_queries` that is used by QAPI to
+        # call CSSR to get search results. If none of the queries were used (i.e. they
+        # all give empty search results), `selected_query_index` would default to -1.
+        # Corresponds to the JSON property `selectedQueryIndex`
+        # @return [Fixnum]
+        attr_accessor :selected_query_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rewritten_queries = args[:rewritten_queries] if args.key?(:rewritten_queries)
+          @selected_query_index = args[:selected_query_index] if args.key?(:selected_query_index)
+        end
+      end
+      
+      # 
+      class RewrittenQuery
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `rewrittenQuery`
+        # @return [String]
+        attr_accessor :rewritten_query
+      
+        # 
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # 
+        # Corresponds to the JSON property `sortBy`
+        # @return [String]
+        attr_accessor :sort_by
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rewritten_query = args[:rewritten_query] if args.key?(:rewritten_query)
+          @score = args[:score] if args.key?(:score)
+          @sort_by = args[:sort_by] if args.key?(:sort_by)
+        end
+      end
+      
       # IMPORTANT: It is unsafe to accept this message from an untrusted source, since
       # it's trivial for an attacker to forge serialized messages that don't fulfill
       # the type's safety contract -- for example, it could contain attacker
