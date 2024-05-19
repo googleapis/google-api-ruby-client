@@ -561,7 +561,7 @@ module Google
       
         # The DNS domain name for the public PTR record. You can set this field only if
         # the `setPublicPtr` field is enabled in accessConfig. If this field is
-        # unspecified in ipv6AccessConfig, a default PTR record will be createc for
+        # unspecified in ipv6AccessConfig, a default PTR record will be created for
         # first IP in associated external IPv6 range.
         # Corresponds to the JSON property `publicPtrDomainName`
         # @return [String]
@@ -1887,25 +1887,6 @@ module Google
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @ignore_child_exemptions = args[:ignore_child_exemptions] if args.key?(:ignore_child_exemptions)
           @log_type = args[:log_type] if args.key?(:log_type)
-        end
-      end
-      
-      # This is deprecated and has no effect. Do not use.
-      class AuthorizationLoggingOptions
-        include Google::Apis::Core::Hashable
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `permissionType`
-        # @return [String]
-        attr_accessor :permission_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permission_type = args[:permission_type] if args.key?(:permission_type)
         end
       end
       
@@ -10763,6 +10744,7 @@ module Google
         attr_accessor :proxy_header
       
         # The request path of the HTTP/2 health check request. The default value is /.
+        # Must comply with RFC3986.
         # Corresponds to the JSON property `requestPath`
         # @return [String]
         attr_accessor :request_path
@@ -10845,6 +10827,7 @@ module Google
         attr_accessor :proxy_header
       
         # The request path of the HTTP health check request. The default value is /.
+        # Must comply with RFC3986.
         # Corresponds to the JSON property `requestPath`
         # @return [String]
         attr_accessor :request_path
@@ -10927,6 +10910,7 @@ module Google
         attr_accessor :proxy_header
       
         # The request path of the HTTPS health check request. The default value is /.
+        # Must comply with RFC3986.
         # Corresponds to the JSON property `requestPath`
         # @return [String]
         attr_accessor :request_path
@@ -21710,11 +21694,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `authorizationLoggingOptions`
-        # @return [Google::Apis::ComputeV1::AuthorizationLoggingOptions]
-        attr_accessor :authorization_logging_options
-      
-        # This is deprecated and has no effect. Do not use.
         # Corresponds to the JSON property `logName`
         # @return [String]
         attr_accessor :log_name
@@ -21725,7 +21704,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @authorization_logging_options = args[:authorization_logging_options] if args.key?(:authorization_logging_options)
           @log_name = args[:log_name] if args.key?(:log_name)
         end
       end
@@ -39311,7 +39289,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the
-        # locations listed in this field. Keys are GCS bucket locations.
+        # locations listed in this field. Keys are Cloud Storage bucket locations. Only
+        # one location can be specified.
         # Corresponds to the JSON property `locations`
         # @return [Hash<String,Google::Apis::ComputeV1::SnapshotSettingsStorageLocationSettingsStorageLocationPreference>]
         attr_accessor :locations
@@ -39336,7 +39315,8 @@ module Google
       class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
         include Google::Apis::Core::Hashable
       
-        # Name of the location. It should be one of the GCS buckets.
+        # Name of the location. It should be one of the Cloud Storage buckets. Only one
+        # location can be specified.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

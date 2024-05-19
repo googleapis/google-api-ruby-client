@@ -244,12 +244,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthorizationLoggingOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Autoscaler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6938,13 +6932,6 @@ module Google
         end
       end
       
-      class AuthorizationLoggingOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :permission_type, as: 'permissionType'
-        end
-      end
-      
       class Autoscaler
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11627,8 +11614,6 @@ module Google
       class LogConfigCloudAuditOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization_logging_options, as: 'authorizationLoggingOptions', class: Google::Apis::ComputeV1::AuthorizationLoggingOptions, decorator: Google::Apis::ComputeV1::AuthorizationLoggingOptions::Representation
-      
           property :log_name, as: 'logName'
         end
       end
