@@ -530,7 +530,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Daily resource usage aggregations. Contains all of the data available for an
-        # asset, up to the last 420 days. Aggregations are sorted from oldest to most
+        # asset, up to the last 40 days. Aggregations are sorted from oldest to most
         # recent.
         # Corresponds to the JSON property `dailyResourceUsageAggregations`
         # @return [Array<Google::Apis::MigrationcenterV1::DailyResourceUsageAggregation>]
