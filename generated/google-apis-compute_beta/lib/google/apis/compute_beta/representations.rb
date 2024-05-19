@@ -244,12 +244,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthorizationLoggingOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Autoscaler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7402,13 +7396,6 @@ module Google
         end
       end
       
-      class AuthorizationLoggingOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :permission_type, as: 'permissionType'
-        end
-      end
-      
       class Autoscaler
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12513,8 +12500,6 @@ module Google
       class LogConfigCloudAuditOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization_logging_options, as: 'authorizationLoggingOptions', class: Google::Apis::ComputeBeta::AuthorizationLoggingOptions, decorator: Google::Apis::ComputeBeta::AuthorizationLoggingOptions::Representation
-      
           property :log_name, as: 'logName'
         end
       end
@@ -16646,6 +16631,7 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :short_name, as: 'shortName'
           property :type, as: 'type'
           collection :user_defined_fields, as: 'userDefinedFields', class: Google::Apis::ComputeBeta::SecurityPolicyUserDefinedField, decorator: Google::Apis::ComputeBeta::SecurityPolicyUserDefinedField::Representation
       
@@ -16730,8 +16716,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attachment_id, as: 'attachmentId'
           property :display_name, as: 'displayName'
+          collection :excluded_folders, as: 'excludedFolders'
+          collection :excluded_projects, as: 'excludedProjects'
           property :name, as: 'name'
           property :security_policy_id, as: 'securityPolicyId'
+          property :short_name, as: 'shortName'
         end
       end
       

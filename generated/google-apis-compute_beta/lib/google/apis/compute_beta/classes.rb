@@ -561,7 +561,7 @@ module Google
       
         # The DNS domain name for the public PTR record. You can set this field only if
         # the `setPublicPtr` field is enabled in accessConfig. If this field is
-        # unspecified in ipv6AccessConfig, a default PTR record will be createc for
+        # unspecified in ipv6AccessConfig, a default PTR record will be created for
         # first IP in associated external IPv6 range.
         # Corresponds to the JSON property `publicPtrDomainName`
         # @return [String]
@@ -1950,25 +1950,6 @@ module Google
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @ignore_child_exemptions = args[:ignore_child_exemptions] if args.key?(:ignore_child_exemptions)
           @log_type = args[:log_type] if args.key?(:log_type)
-        end
-      end
-      
-      # This is deprecated and has no effect. Do not use.
-      class AuthorizationLoggingOptions
-        include Google::Apis::Core::Hashable
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `permissionType`
-        # @return [String]
-        attr_accessor :permission_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permission_type = args[:permission_type] if args.key?(:permission_type)
         end
       end
       
@@ -11910,6 +11891,7 @@ module Google
         attr_accessor :proxy_header
       
         # The request path of the HTTP/2 health check request. The default value is /.
+        # Must comply with RFC3986.
         # Corresponds to the JSON property `requestPath`
         # @return [String]
         attr_accessor :request_path
@@ -11992,6 +11974,7 @@ module Google
         attr_accessor :proxy_header
       
         # The request path of the HTTP health check request. The default value is /.
+        # Must comply with RFC3986.
         # Corresponds to the JSON property `requestPath`
         # @return [String]
         attr_accessor :request_path
@@ -12074,6 +12057,7 @@ module Google
         attr_accessor :proxy_header
       
         # The request path of the HTTPS health check request. The default value is /.
+        # Must comply with RFC3986.
         # Corresponds to the JSON property `requestPath`
         # @return [String]
         attr_accessor :request_path
@@ -12200,13 +12184,13 @@ module Google
       
         # The list of cloud regions from which health checks are performed. If any
         # regions are specified, then exactly 3 regions should be specified. The region
-        # names must be valid names of GCP regions. This can only be set for global
-        # health check. If this list is non-empty, then there are restrictions on what
-        # other health check fields are supported and what other resources can use this
-        # health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP
-        # request field is not supported. - The proxyHeader field for HTTP, HTTPS, and
-        # TCP is not supported. - The checkIntervalSec field must be at least 30. - The
-        # health check cannot be used with BackendService nor with managed instance
+        # names must be valid names of Google Cloud regions. This can only be set for
+        # global health check. If this list is non-empty, then there are restrictions on
+        # what other health check fields are supported and what other resources can use
+        # this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The
+        # TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS,
+        # and TCP is not supported. - The checkIntervalSec field must be at least 30. -
+        # The health check cannot be used with BackendService nor with managed instance
         # group auto-healing.
         # Corresponds to the JSON property `sourceRegions`
         # @return [Array<String>]
@@ -23466,11 +23450,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `authorizationLoggingOptions`
-        # @return [Google::Apis::ComputeBeta::AuthorizationLoggingOptions]
-        attr_accessor :authorization_logging_options
-      
-        # This is deprecated and has no effect. Do not use.
         # Corresponds to the JSON property `logName`
         # @return [String]
         attr_accessor :log_name
@@ -23481,7 +23460,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @authorization_logging_options = args[:authorization_logging_options] if args.key?(:authorization_logging_options)
           @log_name = args[:log_name] if args.key?(:log_name)
         end
       end
@@ -39637,6 +39615,18 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # User-provided name of the organization security policy. The name should be
+        # unique in the organization in which the security policy is created. This
+        # should only be used when SecurityPolicyType is CLOUD_ARMOR. The name must be 1-
+        # 63 characters long, and comply with https://www.ietf.org/rfc/rfc1035.txt.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
         # The type indicates the intended use of the security policy. - CLOUD_ARMOR:
         # Cloud Armor backend security policies can be configured to filter incoming
         # HTTP requests targeting backend services. They filter requests before they hit
@@ -39692,6 +39682,7 @@ module Google
           @rules = args[:rules] if args.key?(:rules)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
           @user_defined_fields = args[:user_defined_fields] if args.key?(:user_defined_fields)
         end
@@ -39977,6 +39968,16 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # A list of folders to exclude from the security policy.
+        # Corresponds to the JSON property `excludedFolders`
+        # @return [Array<String>]
+        attr_accessor :excluded_folders
+      
+        # A list of projects to exclude from the security policy.
+        # Corresponds to the JSON property `excludedProjects`
+        # @return [Array<String>]
+        attr_accessor :excluded_projects
+      
         # The name for an association.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -39987,6 +39988,11 @@ module Google
         # @return [String]
         attr_accessor :security_policy_id
       
+        # [Output Only] The short name of the security policy of the association.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -39995,8 +40001,11 @@ module Google
         def update!(**args)
           @attachment_id = args[:attachment_id] if args.key?(:attachment_id)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @excluded_folders = args[:excluded_folders] if args.key?(:excluded_folders)
+          @excluded_projects = args[:excluded_projects] if args.key?(:excluded_projects)
           @name = args[:name] if args.key?(:name)
           @security_policy_id = args[:security_policy_id] if args.key?(:security_policy_id)
+          @short_name = args[:short_name] if args.key?(:short_name)
         end
       end
       
@@ -42606,7 +42615,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the
-        # locations listed in this field. Keys are GCS bucket locations.
+        # locations listed in this field. Keys are Cloud Storage bucket locations. Only
+        # one location can be specified.
         # Corresponds to the JSON property `locations`
         # @return [Hash<String,Google::Apis::ComputeBeta::SnapshotSettingsStorageLocationSettingsStorageLocationPreference>]
         attr_accessor :locations
@@ -42631,7 +42641,8 @@ module Google
       class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
         include Google::Apis::Core::Hashable
       
-        # Name of the location. It should be one of the GCS buckets.
+        # Name of the location. It should be one of the Cloud Storage buckets. Only one
+        # location can be specified.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
