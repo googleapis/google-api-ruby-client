@@ -662,9 +662,9 @@ module Google
         # Searches for Connections in a parent.
         # @param [String] parent
         #   Required. Parent name, typically an organization, without location. For
-        #   example: "organizations/12345678".
+        #   example: `organizations/12345678`.
         # @param [String] filter
-        #   Optional. * Supported fields/values - `state` - MISSING|AVAILABLE|ERROR
+        #   Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR
         # @param [Fixnum] page_size
         #   Optional. Number of results per page, max 1000.
         # @param [String] page_token
@@ -3418,8 +3418,8 @@ module Google
         
         # Create a Connection to an external data source.
         # @param [String] parent
-        #   Required. Parent resource name in the format: "projects/`project`/locations/`
-        #   location`".
+        #   Required. Parent resource name in the format: `projects/`project`/locations/`
+        #   location``.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateConnectionRequest] google_privacy_dlp_v2_create_connection_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3452,8 +3452,8 @@ module Google
         
         # Delete a Connection.
         # @param [String] name
-        #   Required. Resource name of the Connection to be deleted, in the format: "
-        #   projects/`project`/locations/`location`/connections/`connection`".
+        #   Required. Resource name of the Connection to be deleted, in the format: `
+        #   projects/`project`/locations/`location`/connections/`connection``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3483,8 +3483,8 @@ module Google
         
         # Get a Connection by name.
         # @param [String] name
-        #   Required. Resource name in the format: "projects/`project`/locations/`location`
-        #   /connections/`connection`".
+        #   Required. Resource name in the format: `projects/`project`/locations/`location`
+        #   /connections/`connection``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3514,9 +3514,9 @@ module Google
         
         # Lists Connections in a parent.
         # @param [String] parent
-        #   Required. Parent name, for example: "projects/project-id/locations/global".
+        #   Required. Parent name, for example: `projects/project-id/locations/global`.
         # @param [String] filter
-        #   Optional. * Supported fields/values - `state` - MISSING|AVAILABLE|ERROR
+        #   Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR
         # @param [Fixnum] page_size
         #   Optional. Number of results per page, max 1000.
         # @param [String] page_token
@@ -3554,8 +3554,8 @@ module Google
         
         # Update a Connection.
         # @param [String] name
-        #   Required. Resource name in the format: "projects/`project`/locations/`location`
-        #   /connections/`connection`".
+        #   Required. Resource name in the format: `projects/`project`/locations/`location`
+        #   /connections/`connection``.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateConnectionRequest] google_privacy_dlp_v2_update_connection_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3589,9 +3589,9 @@ module Google
         # Searches for Connections in a parent.
         # @param [String] parent
         #   Required. Parent name, typically an organization, without location. For
-        #   example: "organizations/12345678".
+        #   example: `organizations/12345678`.
         # @param [String] filter
-        #   Optional. * Supported fields/values - `state` - MISSING|AVAILABLE|ERROR
+        #   Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR
         # @param [Fixnum] page_size
         #   Optional. Number of results per page, max 1000.
         # @param [String] page_token
