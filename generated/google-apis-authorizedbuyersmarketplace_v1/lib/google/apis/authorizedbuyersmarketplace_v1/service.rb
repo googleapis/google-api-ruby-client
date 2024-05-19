@@ -67,6 +67,12 @@ module Google
         #   authorized-buyers/apis/guides/list-filters). Only supported when parent is
         #   bidder. Supported columns for filtering are: * displayName * createTime *
         #   updateTime * eligibleSeatIds
+        # @param [String] order_by
+        #   Optional. An optional query string to sort auction packages using the [Cloud
+        #   API sorting syntax](https://cloud.google.com/apis/design/design_patterns#
+        #   sorting_order). If no sort order is specified, results will be returned in an
+        #   arbitrary order. Only supported when parent is bidder. Supported columns for
+        #   sorting are: * displayName * createTime * updateTime
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested. Max
         #   allowed page size is 500.
@@ -89,12 +95,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_auction_packages(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_auction_packages(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/auctionPackages', options)
           command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1::ListAuctionPackagesResponse::Representation
           command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1::ListAuctionPackagesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -124,7 +131,7 @@ module Google
         #   updateTime * deal.flightStartTime * deal.flightEndTime * rtbMetrics.
         #   bidRequests7Days * rtbMetrics.bids7Days * rtbMetrics.adImpressions7Days *
         #   rtbMetrics.bidRate7Days * rtbMetrics.filteredBidRate7Days * rtbMetrics.
-        #   mustBidRateCurrentMonth Example: 'deal.displayName, deal.updateTime desc'
+        #   mustBidRateCurrentMonth
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested. If
         #   requested more than 500, the server will return 500 results per page. If
@@ -208,6 +215,12 @@ module Google
         #   authorized-buyers/apis/guides/list-filters). Only supported when parent is
         #   bidder. Supported columns for filtering are: * displayName * createTime *
         #   updateTime * eligibleSeatIds
+        # @param [String] order_by
+        #   Optional. An optional query string to sort auction packages using the [Cloud
+        #   API sorting syntax](https://cloud.google.com/apis/design/design_patterns#
+        #   sorting_order). If no sort order is specified, results will be returned in an
+        #   arbitrary order. Only supported when parent is bidder. Supported columns for
+        #   sorting are: * displayName * createTime * updateTime
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested. Max
         #   allowed page size is 500.
@@ -230,12 +243,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_buyer_auction_packages(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_buyer_auction_packages(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/auctionPackages', options)
           command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1::ListAuctionPackagesResponse::Representation
           command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1::ListAuctionPackagesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -915,7 +929,7 @@ module Google
         #   updateTime * deal.flightStartTime * deal.flightEndTime * rtbMetrics.
         #   bidRequests7Days * rtbMetrics.bids7Days * rtbMetrics.adImpressions7Days *
         #   rtbMetrics.bidRate7Days * rtbMetrics.filteredBidRate7Days * rtbMetrics.
-        #   mustBidRateCurrentMonth Example: 'deal.displayName, deal.updateTime desc'
+        #   mustBidRateCurrentMonth
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested. If
         #   requested more than 500, the server will return 500 results per page. If
