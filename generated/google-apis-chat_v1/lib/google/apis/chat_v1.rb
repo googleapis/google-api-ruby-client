@@ -39,7 +39,7 @@ module Google
       # Import spaces, messages, and memberships into Google Chat.
       AUTH_CHAT_IMPORT = 'https://www.googleapis.com/auth/chat.import'
 
-      # View, add, and remove members from conversations in Google Chat
+      # View, add, update, and remove members from conversations in Google Chat
       AUTH_CHAT_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.memberships'
 
       # Add and remove itself from conversations in Google Chat

@@ -463,30 +463,31 @@ module Google
         # automatically added to the space, and shouldn't be specified as a membership
         # in the request. For an example, see [Set up a space with initial members](
         # https://developers.google.com/workspace/chat/set-up-spaces). To specify the
-        # human members to add, add memberships with the appropriate `member.name` in
-        # the `SetUpSpaceRequest`. To add a human user, use `users/`user``, where ``user`
-        # ` can be the email address for the user. For users in the same Workspace
-        # organization ``user`` can also be the `id` for the person from the People API,
-        # or the `id` for the user in the Directory API. For example, if the People API
-        # Person profile ID for `user@example.com` is `123456789`, you can add the user
-        # to the space by setting the `membership.member.name` to `users/user@example.
-        # com` or `users/123456789`. For a space or group chat, if the caller blocks or
-        # is blocked by some members, then those members aren't added to the created
-        # space. To create a direct message (DM) between the calling user and another
-        # human user, specify exactly one membership to represent the human user. If one
-        # user blocks the other, the request fails and the DM isn't created. To create a
-        # DM between the calling user and the calling app, set `Space.singleUserBotDm`
-        # to `true` and don't specify any memberships. You can only use this method to
-        # set up a DM with the calling app. To add the calling app as a member of a
-        # space or an existing DM between two human users, see [Invite or add a user or
-        # app to a space](https://developers.google.com/workspace/chat/create-members).
-        # If a DM already exists between two users, even when one user blocks the other
-        # at the time a request is made, then the existing DM is returned. Spaces with
-        # threaded replies aren't supported. If you receive the error message `
-        # ALREADY_EXISTS` when setting up a space, try a different `displayName`. An
-        # existing space within the Google Workspace organization might already use this
-        # display name. Requires [user authentication](https://developers.google.com/
-        # workspace/chat/authenticate-authorize-chat-user).
+        # human members to add, add memberships with the appropriate `membership.member.
+        # name`. To add a human user, use `users/`user``, where ``user`` can be the
+        # email address for the user. For users in the same Workspace organization ``
+        # user`` can also be the `id` for the person from the People API, or the `id`
+        # for the user in the Directory API. For example, if the People API Person
+        # profile ID for `user@example.com` is `123456789`, you can add the user to the
+        # space by setting the `membership.member.name` to `users/user@example.com` or `
+        # users/123456789`. For a named space or group chat, if the caller blocks, or is
+        # blocked by some members, or doesn't have permission to add some members, then
+        # those members aren't added to the created space. To create a direct message (
+        # DM) between the calling user and another human user, specify exactly one
+        # membership to represent the human user. If one user blocks the other, the
+        # request fails and the DM isn't created. To create a DM between the calling
+        # user and the calling app, set `Space.singleUserBotDm` to `true` and don't
+        # specify any memberships. You can only use this method to set up a DM with the
+        # calling app. To add the calling app as a member of a space or an existing DM
+        # between two human users, see [Invite or add a user or app to a space](https://
+        # developers.google.com/workspace/chat/create-members). If a DM already exists
+        # between two users, even when one user blocks the other at the time a request
+        # is made, then the existing DM is returned. Spaces with threaded replies aren't
+        # supported. If you receive the error message `ALREADY_EXISTS` when setting up a
+        # space, try a different `displayName`. An existing space within the Google
+        # Workspace organization might already use this display name. Requires [user
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user).
         # @param [Google::Apis::ChatV1::SetUpSpaceRequest] set_up_space_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -524,16 +525,15 @@ module Google
         # accept the space invitation before joining. Otherwise, creating a membership
         # adds the member directly to the specified space. Requires [user authentication]
         # (https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-        # . To specify the member to add, set the `membership.member.name` in the `
-        # CreateMembershipRequest`: - To add the calling app to a space or a direct
-        # message between two human users, use `users/app`. Unable to add other apps to
-        # the space. - To add a human user, use `users/`user``, where ``user`` can be
-        # the email address for the user. For users in the same Workspace organization ``
-        # user`` can also be the `id` for the person from the People API, or the `id`
-        # for the user in the Directory API. For example, if the People API Person
-        # profile ID for `user@example.com` is `123456789`, you can add the user to the
-        # space by setting the `membership.member.name` to `users/user@example.com` or `
-        # users/123456789`.
+        # . To specify the member to add, set the `membership.member.name` for the human
+        # or app member. - To add the calling app to a space or a direct message between
+        # two human users, use `users/app`. Unable to add other apps to the space. - To
+        # add a human user, use `users/`user``, where ``user`` can be the email address
+        # for the user. For users in the same Workspace organization ``user`` can also
+        # be the `id` for the person from the People API, or the `id` for the user in
+        # the Directory API. For example, if the People API Person profile ID for `user@
+        # example.com` is `123456789`, you can add the user to the space by setting the `
+        # membership.member.name` to `users/user@example.com` or `users/123456789`.
         # @param [String] parent
         #   Required. The resource name of the space for which to create the membership.
         #   Format: spaces/`space`
@@ -734,8 +734,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a membership. Requires [user authentication](https://developers.google.
-        # com/workspace/chat/authenticate-authorize-chat-user).
+        # Updates a membership. For an example, see [Update a user's membership in a
+        # space](https://developers.google.com/workspace/chat/update-members). Requires [
+        # user authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user).
         # @param [String] name
         #   Resource name of the membership, assigned by the server. Format: `spaces/`
         #   space`/members/`member``
@@ -1428,8 +1430,10 @@ module Google
         end
         
         # Returns details about a user's read state within a space, used to identify
-        # read and unread messages. Requires [user authentication](https://developers.
-        # google.com/workspace/chat/authenticate-authorize-chat-user).
+        # read and unread messages. For an example, see [Get details about a user's
+        # space read state](https://developers.google.com/workspace/chat/get-space-read-
+        # state). Requires [user authentication](https://developers.google.com/workspace/
+        # chat/authenticate-authorize-chat-user).
         # @param [String] name
         #   Required. Resource name of the space read state to retrieve. Only supports
         #   getting read state for the calling user. To refer to the calling user, set one
@@ -1466,8 +1470,10 @@ module Google
         end
         
         # Updates a user's read state within a space, used to identify read and unread
-        # messages. Requires [user authentication](https://developers.google.com/
-        # workspace/chat/authenticate-authorize-chat-user).
+        # messages. For an example, see [Update a user's space read state](https://
+        # developers.google.com/workspace/chat/update-space-read-state). Requires [user
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user).
         # @param [String] name
         #   Resource name of the space read state. Format: `users/`user`/spaces/`space`/
         #   spaceReadState`
@@ -1512,8 +1518,10 @@ module Google
         end
         
         # Returns details about a user's read state within a thread, used to identify
-        # read and unread messages. Requires [user authentication](https://developers.
-        # google.com/workspace/chat/authenticate-authorize-chat-user).
+        # read and unread messages. For an example, see [Get details about a user's
+        # thread read state](https://developers.google.com/workspace/chat/get-thread-
+        # read-state). Requires [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user).
         # @param [String] name
         #   Required. Resource name of the thread read state to retrieve. Only supports
         #   getting read state for the calling user. To refer to the calling user, set one
