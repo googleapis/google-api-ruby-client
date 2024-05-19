@@ -1270,6 +1270,7 @@ module Google
           property :name, as: 'name'
           property :remote_repository_config, as: 'remoteRepositoryConfig', class: Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :update_time, as: 'updateTime'
@@ -1363,7 +1364,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filename, as: 'filename'
-          property :name, as: 'name'
           property :package_id, as: 'packageId'
           property :version_id, as: 'versionId'
         end

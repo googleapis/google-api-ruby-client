@@ -52,43 +52,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Download a file.
-        # @param [String] name
-        #   Required. The name of the file to download.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [IO, String] download_dest
-        #   IO stream or filename to receive content download
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ArtifactregistryV1::DownloadFileResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ArtifactregistryV1::DownloadFileResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def download_medium(name, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
-          if download_dest.nil?
-            command = make_simple_command(:get, 'v1/{+name}:download', options)
-          else
-            command = make_download_command(:get, 'v1/{+name}:download', options)
-            command.download_dest = download_dest
-          end
-          command.response_representation = Google::Apis::ArtifactregistryV1::DownloadFileResponse::Representation
-          command.response_class = Google::Apis::ArtifactregistryV1::DownloadFileResponse
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Retrieves the Settings for the Project.
         # @param [String] name
         #   Required. The name of the projectSettings resource.
@@ -510,7 +473,8 @@ module Google
         # Updates a repository.
         # @param [String] name
         #   The name of the repository, for example: `projects/p1/locations/us-central1/
-        #   repositories/repo1`.
+        #   repositories/repo1`. For each location in a project, repository names must be
+        #   unique.
         # @param [Google::Apis::ArtifactregistryV1::Repository] repository_object
         # @param [String] update_mask
         #   The update mask applies to the resource. For the `FieldMask` definition, see
@@ -734,7 +698,7 @@ module Google
         # @param [String] order_by
         #   The field to order the results by.
         # @param [Fixnum] page_size
-        #   The maximum number of artifacts to return.
+        #   The maximum number of artifacts to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] fields
@@ -762,6 +726,43 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Download a file.
+        # @param [String] name
+        #   Required. The name of the file to download.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] download_dest
+        #   IO stream or filename to receive content download
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::DownloadFileResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::DownloadFileResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def download_project_location_repository_file(name, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
+          if download_dest.nil?
+            command = make_simple_command(:get, 'v1/{+name}:download', options)
+          else
+            command = make_download_command(:get, 'v1/{+name}:download', options)
+            command.download_dest = download_dest
+          end
+          command.response_representation = Google::Apis::ArtifactregistryV1::DownloadFileResponse::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::DownloadFileResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -811,7 +812,7 @@ module Google
         # @param [String] order_by
         #   The field to order the results by.
         # @param [Fixnum] page_size
-        #   The maximum number of files to return.
+        #   The maximum number of files to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] fields
@@ -845,10 +846,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Directly uploads a Generic artifact. The returned Operation will complete once
-        # the resources are uploaded. Package, Version, and File resources are created
+        # Directly uploads a Generic artifact. The returned operation will complete once
+        # the resources are uploaded. Package, version, and file resources are created
         # based on the uploaded artifact. Uploaded artifacts that conflict with existing
-        # resources will raise an ALREADY_EXISTS error.
+        # resources will raise an `ALREADY_EXISTS` error.
         # @param [String] parent
         #   The resource name of the repository where the generic artifact will be
         #   uploaded.
@@ -1099,7 +1100,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the parent resource whose maven artifacts will be listed.
         # @param [Fixnum] page_size
-        #   The maximum number of artifacts to return.
+        #   The maximum number of artifacts to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] fields
@@ -1165,7 +1166,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the parent resource whose npm packages will be listed.
         # @param [Fixnum] page_size
-        #   The maximum number of artifacts to return.
+        #   The maximum number of artifacts to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] fields
@@ -1441,7 +1442,7 @@ module Google
         #   repo1/packages/pkg1/versions/1.0"` --> Tags that are applied to the version `1.
         #   0` in package `pkg1`.
         # @param [Fixnum] page_size
-        #   The maximum number of tags to return. Maximum page size is 10,000.
+        #   The maximum number of tags to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] fields
@@ -1693,7 +1694,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the parent resource whose python packages will be listed.
         # @param [Fixnum] page_size
-        #   The maximum number of artifacts to return.
+        #   The maximum number of artifacts to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] fields

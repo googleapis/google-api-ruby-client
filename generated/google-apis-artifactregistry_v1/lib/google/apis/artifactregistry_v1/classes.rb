@@ -703,8 +703,8 @@ module Google
         # @return [Array<Google::Apis::ArtifactregistryV1::HashProp>]
         attr_accessor :hashes
       
-        # The name of the file, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/files/a%2Fb%2Fc.txt". If the file ID part contains slashes,
+        # The name of the file, for example: `projects/p1/locations/us-central1/
+        # repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part contains slashes,
         # they are escaped.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2267,7 +2267,8 @@ module Google
         attr_accessor :mode
       
         # The name of the repository, for example: `projects/p1/locations/us-central1/
-        # repositories/repo1`.
+        # repositories/repo1`. For each location in a project, repository names must be
+        # unique.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2276,6 +2277,12 @@ module Google
         # Corresponds to the JSON property `remoteRepositoryConfig`
         # @return [Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig]
         attr_accessor :remote_repository_config
+      
+        # Output only. If set, the repository satisfies physical zone isolation.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
       
         # Output only. If set, the repository satisfies physical zone separation.
         # Corresponds to the JSON property `satisfiesPzs`
@@ -2319,6 +2326,7 @@ module Google
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @remote_repository_config = args[:remote_repository_config] if args.key?(:remote_repository_config)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -2587,35 +2595,26 @@ module Google
       class UploadGenericArtifactRequest
         include Google::Apis::Core::Hashable
       
-        # The name of the file of the generic artifact to be uploaded. E.g. "example-
-        # file.zip" The filename should only include letters, numbers, and url safe
-        # characters, i.e. [a-zA-Z0-9-_.~@].
+        # The name of the file of the generic artifact to be uploaded. E.g. `example-
+        # file.zip` The filename is limited to letters, numbers, and url safe characters,
+        # i.e. [a-zA-Z0-9-_.~@].
         # Corresponds to the JSON property `filename`
         # @return [String]
         attr_accessor :filename
       
-        # Deprecated. Use package_id, version_id and filename instead. The resource name
-        # of the generic artifact. E.g. "projects/math/locations/us/repositories/
-        # operations/genericArtifacts/addition/1.0.0/add.py"
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # The ID of the package of the generic artifact. If the package does not exist,
-        # a new package will be created. E.g. "pkg-1" The package_id must start with a
-        # letter, end with a letter or number, only contain letters, numbers, hyphens
-        # and periods i.e. [a-z0-9-.], and cannot exceed 256 characters.
+        # a new package will be created. The `package_id` must start with a letter, end
+        # with a letter or number, only contain letters, numbers, hyphens and periods i.
+        # e. [a-z0-9-.], and cannot exceed 256 characters.
         # Corresponds to the JSON property `packageId`
         # @return [String]
         attr_accessor :package_id
       
         # The ID of the version of the generic artifact. If the version does not exist,
-        # a new version will be created. E.g."1.0.0" The version_id must start and end
-        # with a letter or number, can only contain lowercase letters, numbers, hyphens
-        # and periods, i.e. [a-z0-9-.] and cannot exceed a total of 128 characters.
-        # While "latest" is a well-known name for the latest version of a package, it is
-        # not yet supported and is reserved for future use. Creating a version called "
-        # latest" is not allowed.
+        # a new version will be created. The version_id must start and end with a letter
+        # or number, can only contain lowercase letters, numbers, hyphens and periods, i.
+        # e. [a-z0-9-.] and cannot exceed a total of 128 characters. Creating a version
+        # called `latest` is not allowed.
         # Corresponds to the JSON property `versionId`
         # @return [String]
         attr_accessor :version_id
@@ -2627,7 +2626,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @filename = args[:filename] if args.key?(:filename)
-          @name = args[:name] if args.key?(:name)
           @package_id = args[:package_id] if args.key?(:package_id)
           @version_id = args[:version_id] if args.key?(:version_id)
         end
