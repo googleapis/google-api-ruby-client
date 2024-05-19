@@ -4310,6 +4310,7 @@ module Google
           collection :bot_reasons, as: 'botReasons'
           collection :developer_apps, as: 'developerApps'
           collection :developers, as: 'developers'
+          collection :http_methods, as: 'httpMethods'
           collection :ip_address_ranges, as: 'ipAddressRanges'
           collection :region_codes, as: 'regionCodes'
           collection :user_agents, as: 'userAgents'
