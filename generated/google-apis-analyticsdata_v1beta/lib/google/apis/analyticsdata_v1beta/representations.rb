@@ -112,6 +112,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Comparison
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComparisonMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConcatenateExpression
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,6 +569,25 @@ module Google
         end
       end
       
+      class Comparison
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comparison, as: 'comparison'
+          property :dimension_filter, as: 'dimensionFilter', class: Google::Apis::AnalyticsdataV1beta::FilterExpression, decorator: Google::Apis::AnalyticsdataV1beta::FilterExpression::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class ComparisonMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_name, as: 'apiName'
+          property :description, as: 'description'
+          property :ui_name, as: 'uiName'
+        end
+      end
+      
       class ConcatenateExpression
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -695,6 +726,8 @@ module Google
       class Metadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :comparisons, as: 'comparisons', class: Google::Apis::AnalyticsdataV1beta::ComparisonMetadata, decorator: Google::Apis::AnalyticsdataV1beta::ComparisonMetadata::Representation
+      
           collection :dimensions, as: 'dimensions', class: Google::Apis::AnalyticsdataV1beta::DimensionMetadata, decorator: Google::Apis::AnalyticsdataV1beta::DimensionMetadata::Representation
       
           collection :metrics, as: 'metrics', class: Google::Apis::AnalyticsdataV1beta::MetricMetadata, decorator: Google::Apis::AnalyticsdataV1beta::MetricMetadata::Representation
@@ -930,6 +963,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cohort_spec, as: 'cohortSpec', class: Google::Apis::AnalyticsdataV1beta::CohortSpec, decorator: Google::Apis::AnalyticsdataV1beta::CohortSpec::Representation
       
+          collection :comparisons, as: 'comparisons', class: Google::Apis::AnalyticsdataV1beta::Comparison, decorator: Google::Apis::AnalyticsdataV1beta::Comparison::Representation
+      
           property :currency_code, as: 'currencyCode'
           collection :date_ranges, as: 'dateRanges', class: Google::Apis::AnalyticsdataV1beta::DateRange, decorator: Google::Apis::AnalyticsdataV1beta::DateRange::Representation
       
@@ -1017,6 +1052,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cohort_spec, as: 'cohortSpec', class: Google::Apis::AnalyticsdataV1beta::CohortSpec, decorator: Google::Apis::AnalyticsdataV1beta::CohortSpec::Representation
+      
+          collection :comparisons, as: 'comparisons', class: Google::Apis::AnalyticsdataV1beta::Comparison, decorator: Google::Apis::AnalyticsdataV1beta::Comparison::Representation
       
           property :currency_code, as: 'currencyCode'
           collection :date_ranges, as: 'dateRanges', class: Google::Apis::AnalyticsdataV1beta::DateRange, decorator: Google::Apis::AnalyticsdataV1beta::DateRange::Representation

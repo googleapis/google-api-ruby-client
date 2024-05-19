@@ -514,6 +514,74 @@ module Google
         end
       end
       
+      # Defines an individual comparison. Most requests will include multiple
+      # comparisons so that the report compares between the comparisons.
+      class Comparison
+        include Google::Apis::Core::Hashable
+      
+        # A saved comparison identified by the comparison's resource name. For example, '
+        # comparisons/1234'.
+        # Corresponds to the JSON property `comparison`
+        # @return [String]
+        attr_accessor :comparison
+      
+        # To express dimension or metric filters. The fields in the same
+        # FilterExpression need to be either all dimensions or all metrics.
+        # Corresponds to the JSON property `dimensionFilter`
+        # @return [Google::Apis::AnalyticsdataV1beta::FilterExpression]
+        attr_accessor :dimension_filter
+      
+        # Each comparison produces separate rows in the response. In the response, this
+        # comparison is identified by this name. If name is unspecified, we will use the
+        # saved comparisons display name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comparison = args[:comparison] if args.key?(:comparison)
+          @dimension_filter = args[:dimension_filter] if args.key?(:dimension_filter)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The metadata for a single comparison.
+      class ComparisonMetadata
+        include Google::Apis::Core::Hashable
+      
+        # This comparison's resource name. Useable in [Comparison](#Comparison)'s `
+        # comparison` field. For example, 'comparisons/1234'.
+        # Corresponds to the JSON property `apiName`
+        # @return [String]
+        attr_accessor :api_name
+      
+        # This comparison's description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # This comparison's name within the Google Analytics user interface.
+        # Corresponds to the JSON property `uiName`
+        # @return [String]
+        attr_accessor :ui_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_name = args[:api_name] if args.key?(:api_name)
+          @description = args[:description] if args.key?(:description)
+          @ui_name = args[:ui_name] if args.key?(:ui_name)
+        end
+      end
+      
       # Used to combine dimension values to a single dimension.
       class ConcatenateExpression
         include Google::Apis::Core::Hashable
@@ -975,6 +1043,11 @@ module Google
       class Metadata
         include Google::Apis::Core::Hashable
       
+        # The comparison descriptions.
+        # Corresponds to the JSON property `comparisons`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::ComparisonMetadata>]
+        attr_accessor :comparisons
+      
         # The dimension descriptions.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::AnalyticsdataV1beta::DimensionMetadata>]
@@ -996,6 +1069,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @comparisons = args[:comparisons] if args.key?(:comparisons)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @metrics = args[:metrics] if args.key?(:metrics)
           @name = args[:name] if args.key?(:name)
@@ -1879,6 +1953,13 @@ module Google
         # @return [Google::Apis::AnalyticsdataV1beta::CohortSpec]
         attr_accessor :cohort_spec
       
+        # Optional. The configuration of comparisons requested and displayed. The
+        # request requires both a comparisons field and a comparisons dimension to
+        # receive a comparison column in the response.
+        # Corresponds to the JSON property `comparisons`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::Comparison>]
+        attr_accessor :comparisons
+      
         # A currency code in ISO4217 format, such as "AED", "USD", "JPY". If the field
         # is empty, the report uses the property's default currency.
         # Corresponds to the JSON property `currencyCode`
@@ -1963,6 +2044,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cohort_spec = args[:cohort_spec] if args.key?(:cohort_spec)
+          @comparisons = args[:comparisons] if args.key?(:comparisons)
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @date_ranges = args[:date_ranges] if args.key?(:date_ranges)
           @dimension_filter = args[:dimension_filter] if args.key?(:dimension_filter)
@@ -2231,6 +2313,13 @@ module Google
         # @return [Google::Apis::AnalyticsdataV1beta::CohortSpec]
         attr_accessor :cohort_spec
       
+        # Optional. The configuration of comparisons requested and displayed. The
+        # request only requires a comparisons field in order to receive a comparison
+        # column in the response.
+        # Corresponds to the JSON property `comparisons`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::Comparison>]
+        attr_accessor :comparisons
+      
         # A currency code in ISO4217 format, such as "AED", "USD", "JPY". If the field
         # is empty, the report uses the property's default currency.
         # Corresponds to the JSON property `currencyCode`
@@ -2339,6 +2428,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cohort_spec = args[:cohort_spec] if args.key?(:cohort_spec)
+          @comparisons = args[:comparisons] if args.key?(:comparisons)
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @date_ranges = args[:date_ranges] if args.key?(:date_ranges)
           @dimension_filter = args[:dimension_filter] if args.key?(:dimension_filter)
