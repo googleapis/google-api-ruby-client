@@ -3676,20 +3676,22 @@ module Google
       
         # Whether to force the creation of the quota overrides. Setting the force
         # parameter to 'true' ignores all quota safety checks that would fail the
-        # request. QuotaSafetyCheck lists all such validations. If force is set to true,
-        # it is recommended to include a case id in "X-Goog-Request-Reason" header when
-        # sending the request.
+        # request. QuotaSafetyCheck lists all such validations.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
         alias_method :force?, :force
       
+        # If force option is set to true, force_justification is suggested to be set to
+        # log the reason in audit logs.
+        # Corresponds to the JSON property `forceJustification`
+        # @return [String]
+        attr_accessor :force_justification
+      
         # The list of quota safety checks to ignore before the override mutation. Unlike
         # 'force' field that ignores all the quota safety checks, the 'force_only' field
         # ignores only the specified checks; other checks are still enforced. The 'force'
-        # and 'force_only' fields cannot both be set. If force_only is specified, it is
-        # recommended to include a case id in "X-Goog-Request-Reason" header when
-        # sending the request.
+        # and 'force_only' fields cannot both be set.
         # Corresponds to the JSON property `forceOnly`
         # @return [Array<String>]
         attr_accessor :force_only
@@ -3706,6 +3708,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @force = args[:force] if args.key?(:force)
+          @force_justification = args[:force_justification] if args.key?(:force_justification)
           @force_only = args[:force_only] if args.key?(:force_only)
           @inline_source = args[:inline_source] if args.key?(:inline_source)
         end
