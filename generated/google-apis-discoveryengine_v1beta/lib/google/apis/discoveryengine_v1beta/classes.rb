@@ -11998,6 +11998,19 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class GoogleLongrunningCancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class GoogleLongrunningListOperationsResponse
         include Google::Apis::Core::Hashable
