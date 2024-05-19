@@ -1,5 +1,9 @@
 # Release history for google-apis-datafusion_v1beta1
 
+### v0.31.0 (2024-05-19)
+
+* Regenerated using generator version 0.15.0
+
 ### v0.30.0 (2024-02-23)
 
 * Regenerated from discovery document revision 20240219
