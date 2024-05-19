@@ -2086,6 +2086,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleLongrunningCancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5449,6 +5455,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :user_agent, as: 'userAgent'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleLongrunningCancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
