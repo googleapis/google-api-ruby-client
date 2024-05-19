@@ -1899,6 +1899,7 @@ module Google
           collection :membership_bindings, as: 'membershipBindings', class: Google::Apis::GkehubV1::MembershipBinding, decorator: Google::Apis::GkehubV1::MembershipBinding::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
