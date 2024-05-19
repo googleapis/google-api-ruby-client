@@ -219,7 +219,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a conversation.
+        # Creates a conversation. DEPRECATED: Use UploadConversation instead.
+        # CreateConversation does not support audio transcription or DLP redaction.
         # @param [String] parent
         #   Required. The parent resource of the conversation.
         # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation] google_cloud_contactcenterinsights_v1_conversation_object
