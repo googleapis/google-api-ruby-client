@@ -717,6 +717,38 @@ module Google
         end
       end
       
+      # Metadata about a custom region. This is only populated if the region is a
+      # custom region. For single/multi regions, it will be empty.
+      class CustomRegionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The read-only regions for this custom region.
+        # Corresponds to the JSON property `optionalReadOnlyRegions`
+        # @return [Array<String>]
+        attr_accessor :optional_read_only_regions
+      
+        # The read-write regions for this custom region.
+        # Corresponds to the JSON property `requiredReadWriteRegions`
+        # @return [Array<String>]
+        attr_accessor :required_read_write_regions
+      
+        # The Spanner witness region for this custom region.
+        # Corresponds to the JSON property `witnessRegion`
+        # @return [String]
+        attr_accessor :witness_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @optional_read_only_regions = args[:optional_read_only_regions] if args.key?(:optional_read_only_regions)
+          @required_read_write_regions = args[:required_read_write_regions] if args.key?(:required_read_write_regions)
+          @witness_region = args[:witness_region] if args.key?(:witness_region)
+        end
+      end
+      
       # Specifies how metastore metadata should be integrated with the Data Catalog
       # service.
       class DataCatalogConfig
@@ -1494,9 +1526,14 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
+        # Possible configurations supported if the current region is a custom region.
+        # Corresponds to the JSON property `customRegionMetadata`
+        # @return [Array<Google::Apis::MetastoreV1beta::CustomRegionMetadata>]
+        attr_accessor :custom_region_metadata
+      
         # The metadata for the multi-region that includes the constituent regions. The
-        # metadata is only populated if the region is multi-region. For single region,
-        # it will be empty.
+        # metadata is only populated if the region is multi-region. For single region or
+        # custom dual region, it will be empty.
         # Corresponds to the JSON property `multiRegionMetadata`
         # @return [Google::Apis::MetastoreV1beta::MultiRegionMetadata]
         attr_accessor :multi_region_metadata
@@ -1514,6 +1551,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_region_metadata = args[:custom_region_metadata] if args.key?(:custom_region_metadata)
           @multi_region_metadata = args[:multi_region_metadata] if args.key?(:multi_region_metadata)
           @supported_hive_metastore_versions = args[:supported_hive_metastore_versions] if args.key?(:supported_hive_metastore_versions)
         end
@@ -1803,8 +1841,8 @@ module Google
       end
       
       # The metadata for the multi-region that includes the constituent regions. The
-      # metadata is only populated if the region is multi-region. For single region,
-      # it will be empty.
+      # metadata is only populated if the region is multi-region. For single region or
+      # custom dual region, it will be empty.
       class MultiRegionMetadata
         include Google::Apis::Core::Hashable
       
@@ -2388,6 +2426,13 @@ module Google
         # @return [String]
         attr_accessor :database_type
       
+        # Optional. Indicates if the dataproc metastore should be protected against
+        # accidental deletions.
+        # Corresponds to the JSON property `deletionProtection`
+        # @return [Boolean]
+        attr_accessor :deletion_protection
+        alias_method :deletion_protection?, :deletion_protection
+      
         # Encryption settings for the service.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::MetastoreV1beta::EncryptionConfig]
@@ -2505,6 +2550,7 @@ module Google
           @artifact_gcs_uri = args[:artifact_gcs_uri] if args.key?(:artifact_gcs_uri)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database_type = args[:database_type] if args.key?(:database_type)
+          @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
           @hive_metastore_config = args[:hive_metastore_config] if args.key?(:hive_metastore_config)
