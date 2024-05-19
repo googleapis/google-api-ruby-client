@@ -585,6 +585,162 @@ module Google
         end
       end
       
+      # Request message for GroundedGenerationService.CheckGrounding method.
+      class GoogleCloudDiscoveryengineV1CheckGroundingRequest
+        include Google::Apis::Core::Hashable
+      
+        # Answer candidate to check. Can have a maximum length of 1024 characters.
+        # Corresponds to the JSON property `answerCandidate`
+        # @return [String]
+        attr_accessor :answer_candidate
+      
+        # List of facts for the grounding check. We support up to 200 facts.
+        # Corresponds to the JSON property `facts`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GroundingFact>]
+        attr_accessor :facts
+      
+        # Specification for the grounding check.
+        # Corresponds to the JSON property `groundingSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CheckGroundingSpec]
+        attr_accessor :grounding_spec
+      
+        # The user labels applied to a resource must meet the following requirements: *
+        # Each resource can have multiple labels, up to a maximum of 64. * Each label
+        # must be a key-value pair. * Keys have a minimum length of 1 character and a
+        # maximum length of 63 characters and cannot be empty. Values can be empty and
+        # have a maximum length of 63 characters. * Keys and values can contain only
+        # lowercase letters, numeric characters, underscores, and dashes. All characters
+        # must use UTF-8 encoding, and international characters are allowed. * The key
+        # portion of a label must be unique. However, you can use the same key with
+        # multiple resources. * Keys must start with a lowercase letter or international
+        # character. See [Google Cloud Document](https://cloud.google.com/resource-
+        # manager/docs/creating-managing-labels#requirements) for more details.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_candidate = args[:answer_candidate] if args.key?(:answer_candidate)
+          @facts = args[:facts] if args.key?(:facts)
+          @grounding_spec = args[:grounding_spec] if args.key?(:grounding_spec)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
+      # Response message for the GroundedGenerationService.CheckGrounding method.
+      class GoogleCloudDiscoveryengineV1CheckGroundingResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of facts cited across all claims in the answer candidate. These are
+        # derived from the facts supplied in the request.
+        # Corresponds to the JSON property `citedChunks`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FactChunk>]
+        attr_accessor :cited_chunks
+      
+        # Claim texts and citation info across all claims in the answer candidate.
+        # Corresponds to the JSON property `claims`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim>]
+        attr_accessor :claims
+      
+        # The support score for the input answer candidate. Higher the score, higher is
+        # the fraction of claims that are supported by the provided facts. This is
+        # always set when a response is returned.
+        # Corresponds to the JSON property `supportScore`
+        # @return [Float]
+        attr_accessor :support_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cited_chunks = args[:cited_chunks] if args.key?(:cited_chunks)
+          @claims = args[:claims] if args.key?(:claims)
+          @support_score = args[:support_score] if args.key?(:support_score)
+        end
+      end
+      
+      # Text and citation info for a claim in the answer candidate.
+      class GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim
+        include Google::Apis::Core::Hashable
+      
+        # A list of indices (into 'cited_chunks') specifying the citations associated
+        # with the claim. For instance [1,3,4] means that cited_chunks[1], cited_chunks[
+        # 3], cited_chunks[4] are the facts cited supporting for the claim. A citation
+        # to a fact indicates that the claim is supported by the fact.
+        # Corresponds to the JSON property `citationIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :citation_indices
+      
+        # Text for the claim in the answer candidate. Always provided regardless of
+        # whether citations or anti-citations are found.
+        # Corresponds to the JSON property `claimText`
+        # @return [String]
+        attr_accessor :claim_text
+      
+        # Position indicating the end of the claim in the answer candidate, exclusive.
+        # Corresponds to the JSON property `endPos`
+        # @return [Fixnum]
+        attr_accessor :end_pos
+      
+        # Indicates that this claim required grounding check. When the system decided
+        # this claim doesn't require attribution/grounding check, this field will be set
+        # to false. In that case, no grounding check was done for the claim and
+        # therefore citation_indices, and anti_citation_indices should not be returned.
+        # Corresponds to the JSON property `groundingCheckRequired`
+        # @return [Boolean]
+        attr_accessor :grounding_check_required
+        alias_method :grounding_check_required?, :grounding_check_required
+      
+        # Position indicating the start of the claim in the answer candidate, measured
+        # in bytes.
+        # Corresponds to the JSON property `startPos`
+        # @return [Fixnum]
+        attr_accessor :start_pos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citation_indices = args[:citation_indices] if args.key?(:citation_indices)
+          @claim_text = args[:claim_text] if args.key?(:claim_text)
+          @end_pos = args[:end_pos] if args.key?(:end_pos)
+          @grounding_check_required = args[:grounding_check_required] if args.key?(:grounding_check_required)
+          @start_pos = args[:start_pos] if args.key?(:start_pos)
+        end
+      end
+      
+      # Specification for the grounding check.
+      class GoogleCloudDiscoveryengineV1CheckGroundingSpec
+        include Google::Apis::Core::Hashable
+      
+        # The threshold (in [0,1]) used for determining whether a fact must be cited for
+        # a claim in the answer candidate. Choosing a higher threshold will lead to
+        # fewer but very strong citations, while choosing a lower threshold may lead to
+        # more but somewhat weaker citations. If unset, the threshold will default to 0.
+        # 6.
+        # Corresponds to the JSON property `citationThreshold`
+        # @return [Float]
+        attr_accessor :citation_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citation_threshold = args[:citation_threshold] if args.key?(:citation_threshold)
+        end
+      end
+      
       # Cloud SQL source import data from.
       class GoogleCloudDiscoveryengineV1CloudSqlSource
         include Google::Apis::Core::Hashable
@@ -1937,6 +2093,45 @@ module Google
         end
       end
       
+      # Fact Chunk.
+      class GoogleCloudDiscoveryengineV1FactChunk
+        include Google::Apis::Core::Hashable
+      
+        # Text content of the fact chunk. Can be at most 10K characters long.
+        # Corresponds to the JSON property `chunkText`
+        # @return [String]
+        attr_accessor :chunk_text
+      
+        # The index of this chunk. Currently, only used for the streaming mode.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Source from which this fact chunk was retrieved. If it was retrieved from the
+        # GroundingFacts provided in the request then this field will contain the index
+        # of the specific fact from which this chunk was retrieved.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # More fine-grained information for the source reference.
+        # Corresponds to the JSON property `sourceMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :source_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_text = args[:chunk_text] if args.key?(:chunk_text)
+          @index = args[:index] if args.key?(:index)
+          @source = args[:source] if args.key?(:source)
+          @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
+        end
+      end
+      
       # Response message for SiteSearchEngineService.FetchDomainVerificationStatus
       # method.
       class GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusResponse
@@ -2081,6 +2276,33 @@ module Google
         def update!(**args)
           @data_schema = args[:data_schema] if args.key?(:data_schema)
           @input_uris = args[:input_uris] if args.key?(:input_uris)
+        end
+      end
+      
+      # Grounding Fact.
+      class GoogleCloudDiscoveryengineV1GroundingFact
+        include Google::Apis::Core::Hashable
+      
+        # Attributes associated with the fact. Common attributes include `source` (
+        # indicating where the fact was sourced from), `author` (indicating the author
+        # of the fact), and so on.
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,String>]
+        attr_accessor :attributes
+      
+        # Text content of the fact. Can be at most 10K characters long.
+        # Corresponds to the JSON property `factText`
+        # @return [String]
+        attr_accessor :fact_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @fact_text = args[:fact_text] if args.key?(:fact_text)
         end
       end
       
@@ -9649,6 +9871,19 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The request message for Operations.CancelOperation.
+      class GoogleLongrunningCancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
