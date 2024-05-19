@@ -603,7 +603,7 @@ module Google
       # Gateway represents the configuration for a proxy, typically a load balancer.
       # It captures the ip:port over which the services are exposed by the proxy,
       # along with any policy configurations. Routes have reference to to Gateways to
-      # dictate how requests should be routed by this Gateway. Next id: 32
+      # dictate how requests should be routed by this Gateway. Next id: 33
       class Gateway
         include Google::Apis::Core::Hashable
       
