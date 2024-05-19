@@ -991,6 +991,11 @@ module Google
         # @return [String]
         attr_accessor :serial_number
       
+        # Output only. Unified device id of the device.
+        # Corresponds to the JSON property `unifiedDeviceId`
+        # @return [String]
+        attr_accessor :unified_device_id
+      
         # WiFi MAC addresses of device.
         # Corresponds to the JSON property `wifiMacAddresses`
         # @return [Array<String>]
@@ -1033,6 +1038,7 @@ module Google
           @release_version = args[:release_version] if args.key?(:release_version)
           @security_patch_time = args[:security_patch_time] if args.key?(:security_patch_time)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
+          @unified_device_id = args[:unified_device_id] if args.key?(:unified_device_id)
           @wifi_mac_addresses = args[:wifi_mac_addresses] if args.key?(:wifi_mac_addresses)
         end
       end
@@ -2144,6 +2150,11 @@ module Google
         # @return [String]
         attr_accessor :serial_number
       
+        # Output only. Unified device id of the device.
+        # Corresponds to the JSON property `unifiedDeviceId`
+        # @return [String]
+        attr_accessor :unified_device_id
+      
         # WiFi MAC addresses of device.
         # Corresponds to the JSON property `wifiMacAddresses`
         # @return [Array<String>]
@@ -2185,6 +2196,7 @@ module Google
           @release_version = args[:release_version] if args.key?(:release_version)
           @security_patch_time = args[:security_patch_time] if args.key?(:security_patch_time)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
+          @unified_device_id = args[:unified_device_id] if args.key?(:unified_device_id)
           @wifi_mac_addresses = args[:wifi_mac_addresses] if args.key?(:wifi_mac_addresses)
         end
       end
