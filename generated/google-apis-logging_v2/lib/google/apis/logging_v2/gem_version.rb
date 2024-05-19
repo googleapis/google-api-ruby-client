@@ -16,13 +16,13 @@ module Google
   module Apis
     module LoggingV2
       # Version of the google-apis-logging_v2 gem
-      GEM_VERSION = "0.68.0"
+      GEM_VERSION = "0.69.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.14.0"
+      GENERATOR_VERSION = "0.15.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240426"
+      REVISION = "20240503"
     end
   end
 end
