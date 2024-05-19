@@ -412,6 +412,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1TelemetryAppInstallEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryAppLaunchEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryAppUninstallEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1267,6 +1285,35 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1TelemetryAppInstallEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          property :app_install_reason, as: 'appInstallReason'
+          property :app_install_source, as: 'appInstallSource'
+          property :app_install_time, as: 'appInstallTime'
+          property :app_type, as: 'appType'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryAppLaunchEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          property :app_launch_source, as: 'appLaunchSource'
+          property :app_type, as: 'appType'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryAppUninstallEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          property :app_type, as: 'appType'
+          property :app_uninstall_source, as: 'appUninstallSource'
+        end
+      end
+      
       class GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1339,6 +1386,12 @@ module Google
       class GoogleChromeManagementV1TelemetryEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_install_event, as: 'appInstallEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAppInstallEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAppInstallEvent::Representation
+      
+          property :app_launch_event, as: 'appLaunchEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAppLaunchEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAppLaunchEvent::Representation
+      
+          property :app_uninstall_event, as: 'appUninstallEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAppUninstallEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAppUninstallEvent::Representation
+      
           property :audio_severe_underrun_event, as: 'audioSevereUnderrunEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent::Representation
       
           property :device, as: 'device', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryDeviceInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryDeviceInfo::Representation

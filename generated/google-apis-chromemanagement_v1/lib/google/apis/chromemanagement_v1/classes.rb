@@ -2845,6 +2845,114 @@ module Google
         end
       end
       
+      # App installation data.
+      class GoogleChromeManagementV1TelemetryAppInstallEvent
+        include Google::Apis::Core::Hashable
+      
+        # App id. For PWAs this is the start URL, and for extensions this is the
+        # extension id.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # App installation reason.
+        # Corresponds to the JSON property `appInstallReason`
+        # @return [String]
+        attr_accessor :app_install_reason
+      
+        # App installation source.
+        # Corresponds to the JSON property `appInstallSource`
+        # @return [String]
+        attr_accessor :app_install_source
+      
+        # App installation time depending on the app lifecycle.
+        # Corresponds to the JSON property `appInstallTime`
+        # @return [String]
+        attr_accessor :app_install_time
+      
+        # Type of app.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @app_install_reason = args[:app_install_reason] if args.key?(:app_install_reason)
+          @app_install_source = args[:app_install_source] if args.key?(:app_install_source)
+          @app_install_time = args[:app_install_time] if args.key?(:app_install_time)
+          @app_type = args[:app_type] if args.key?(:app_type)
+        end
+      end
+      
+      # App launch data.
+      class GoogleChromeManagementV1TelemetryAppLaunchEvent
+        include Google::Apis::Core::Hashable
+      
+        # App id. For PWAs this is the start URL, and for extensions this is the
+        # extension id.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # App launch source.
+        # Corresponds to the JSON property `appLaunchSource`
+        # @return [String]
+        attr_accessor :app_launch_source
+      
+        # Type of app.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @app_launch_source = args[:app_launch_source] if args.key?(:app_launch_source)
+          @app_type = args[:app_type] if args.key?(:app_type)
+        end
+      end
+      
+      # App uninstall data.
+      class GoogleChromeManagementV1TelemetryAppUninstallEvent
+        include Google::Apis::Core::Hashable
+      
+        # App id. For PWAs this is the start URL, and for extensions this is the
+        # extension id.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Type of app.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
+        # App uninstall source.
+        # Corresponds to the JSON property `appUninstallSource`
+        # @return [String]
+        attr_accessor :app_uninstall_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @app_type = args[:app_type] if args.key?(:app_type)
+          @app_uninstall_source = args[:app_uninstall_source] if args.key?(:app_uninstall_source)
+        end
+      end
+      
       # `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run out
       # of buffer data for more than 5 seconds. * Granular permission needed:
       # TELEMETRY_API_AUDIO_REPORT
@@ -3112,6 +3220,21 @@ module Google
       class GoogleChromeManagementV1TelemetryEvent
         include Google::Apis::Core::Hashable
       
+        # App installation data.
+        # Corresponds to the JSON property `appInstallEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAppInstallEvent]
+        attr_accessor :app_install_event
+      
+        # App launch data.
+        # Corresponds to the JSON property `appLaunchEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAppLaunchEvent]
+        attr_accessor :app_launch_event
+      
+        # App uninstall data.
+        # Corresponds to the JSON property `appUninstallEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAppUninstallEvent]
+        attr_accessor :app_uninstall_event
+      
         # `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run out
         # of buffer data for more than 5 seconds. * Granular permission needed:
         # TELEMETRY_API_AUDIO_REPORT
@@ -3186,6 +3309,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_install_event = args[:app_install_event] if args.key?(:app_install_event)
+          @app_launch_event = args[:app_launch_event] if args.key?(:app_launch_event)
+          @app_uninstall_event = args[:app_uninstall_event] if args.key?(:app_uninstall_event)
           @audio_severe_underrun_event = args[:audio_severe_underrun_event] if args.key?(:audio_severe_underrun_event)
           @device = args[:device] if args.key?(:device)
           @event_type = args[:event_type] if args.key?(:event_type)
