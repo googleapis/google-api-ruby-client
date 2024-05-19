@@ -632,6 +632,19 @@ module Google
         end
       end
       
+      # Tool to retrieve public web data for grounding, powered by Google.
+      class GoogleSearchRetrieval
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata returned to client when grounding is enabled.
       class GroundingMetadata
         include Google::Apis::Core::Hashable
@@ -1113,6 +1126,11 @@ module Google
         # @return [Array<Google::Apis::FirebasemlV2beta::FunctionDeclaration>]
         attr_accessor :function_declarations
       
+        # Tool to retrieve public web data for grounding, powered by Google.
+        # Corresponds to the JSON property `googleSearchRetrieval`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleSearchRetrieval]
+        attr_accessor :google_search_retrieval
+      
         # Defines a retrieval tool that model can call to access external knowledge.
         # Corresponds to the JSON property `retrieval`
         # @return [Google::Apis::FirebasemlV2beta::Retrieval]
@@ -1125,6 +1143,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
+          @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
           @retrieval = args[:retrieval] if args.key?(:retrieval)
         end
       end
