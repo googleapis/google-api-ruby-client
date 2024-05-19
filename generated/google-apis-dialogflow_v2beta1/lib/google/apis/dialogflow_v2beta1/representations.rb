@@ -3196,7 +3196,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :endpointing_timeout_duration, as: 'endpointingTimeoutDuration'
           property :finish_digit, as: 'finishDigit'
+          property :interdigit_timeout_duration, as: 'interdigitTimeoutDuration'
           property :max_digits, as: 'maxDigits'
         end
       end
@@ -4248,7 +4250,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :endpointing_timeout_duration, as: 'endpointingTimeoutDuration'
           property :finish_digit, as: 'finishDigit'
+          property :interdigit_timeout_duration, as: 'interdigitTimeoutDuration'
           property :max_digits, as: 'maxDigits'
         end
       end
