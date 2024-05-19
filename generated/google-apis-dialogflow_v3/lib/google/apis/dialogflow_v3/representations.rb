@@ -3184,7 +3184,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :endpointing_timeout_duration, as: 'endpointingTimeoutDuration'
           property :finish_digit, as: 'finishDigit'
+          property :interdigit_timeout_duration, as: 'interdigitTimeoutDuration'
           property :max_digits, as: 'maxDigits'
         end
       end
@@ -5072,6 +5074,7 @@ module Google
           property :audio_format, as: 'audioFormat'
           property :enable_audio_redaction, as: 'enableAudioRedaction'
           property :gcs_bucket, as: 'gcsBucket'
+          property :store_tts_audio, as: 'storeTtsAudio'
         end
       end
       
@@ -5576,7 +5579,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :endpointing_timeout_duration, as: 'endpointingTimeoutDuration'
           property :finish_digit, as: 'finishDigit'
+          property :interdigit_timeout_duration, as: 'interdigitTimeoutDuration'
           property :max_digits, as: 'maxDigits'
         end
       end
