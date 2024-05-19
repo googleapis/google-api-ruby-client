@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleSearchRetrieval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GroundingMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -385,6 +391,12 @@ module Google
         end
       end
       
+      class GoogleSearchRetrieval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GroundingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -510,6 +522,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::FirebasemlV2beta::FunctionDeclaration, decorator: Google::Apis::FirebasemlV2beta::FunctionDeclaration::Representation
+      
+          property :google_search_retrieval, as: 'googleSearchRetrieval', class: Google::Apis::FirebasemlV2beta::GoogleSearchRetrieval, decorator: Google::Apis::FirebasemlV2beta::GoogleSearchRetrieval::Representation
       
           property :retrieval, as: 'retrieval', class: Google::Apis::FirebasemlV2beta::Retrieval, decorator: Google::Apis::FirebasemlV2beta::Retrieval::Representation
       
