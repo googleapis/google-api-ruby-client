@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomRegionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataCatalogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +461,15 @@ module Google
         end
       end
       
+      class CustomRegionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :optional_read_only_regions, as: 'optionalReadOnlyRegions'
+          collection :required_read_write_regions, as: 'requiredReadWriteRegions'
+          property :witness_region, as: 'witnessRegion'
+        end
+      end
+      
       class DataCatalogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -641,6 +656,8 @@ module Google
       class LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_region_metadata, as: 'customRegionMetadata', class: Google::Apis::MetastoreV1::CustomRegionMetadata, decorator: Google::Apis::MetastoreV1::CustomRegionMetadata::Representation
+      
           property :multi_region_metadata, as: 'multiRegionMetadata', class: Google::Apis::MetastoreV1::MultiRegionMetadata, decorator: Google::Apis::MetastoreV1::MultiRegionMetadata::Representation
       
           collection :supported_hive_metastore_versions, as: 'supportedHiveMetastoreVersions', class: Google::Apis::MetastoreV1::HiveMetastoreVersion, decorator: Google::Apis::MetastoreV1::HiveMetastoreVersion::Representation
@@ -837,6 +854,7 @@ module Google
           property :artifact_gcs_uri, as: 'artifactGcsUri'
           property :create_time, as: 'createTime'
           property :database_type, as: 'databaseType'
+          property :deletion_protection, as: 'deletionProtection'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::MetastoreV1::EncryptionConfig, decorator: Google::Apis::MetastoreV1::EncryptionConfig::Representation
       
           property :endpoint_uri, as: 'endpointUri'
