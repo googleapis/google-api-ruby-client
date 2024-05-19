@@ -146,20 +146,17 @@ module Google
       class AppLinkData
         include Google::Apis::Core::Hashable
       
-        # Optional information about the partner app link. If included, the app link
-        # link module will be rendered on the valuable details on the android client.
+        # Optional information about the partner app link.
         # Corresponds to the JSON property `androidAppLinkInfo`
         # @return [Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfo]
         attr_accessor :android_app_link_info
       
-        # Optional information about the partner app link. If included, the app link
-        # link module will be rendered on the valuable details on the ios client.
+        # Deprecated. Links to open iOS apps are not supported.
         # Corresponds to the JSON property `iosAppLinkInfo`
         # @return [Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfo]
         attr_accessor :ios_app_link_info
       
-        # Optional information about the partner app link. If included, the app link
-        # link module will be rendered on the valuable details on the web client.
+        # Optional information about the partner web link.
         # Corresponds to the JSON property `webAppLinkInfo`
         # @return [Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfo]
         attr_accessor :web_app_link_info
@@ -185,18 +182,18 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :app_logo_image
       
-        # Url to follow when opening the App Link Module on clients. It will be used by
-        # partners to open their webpage or deeplink into their app.
+        # Target to follow when opening the app link on clients. It will be used by
+        # partners to open their app or webpage.
         # Corresponds to the JSON property `appTarget`
         # @return [Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfoAppTarget]
         attr_accessor :app_target
       
-        # String to be displayed in the description of the App Link Module Required
+        # Deprecated. Description isn't supported in the app link module.
         # Corresponds to the JSON property `description`
         # @return [Google::Apis::WalletobjectsV1::LocalizedString]
         attr_accessor :description
       
-        # String to be displayed in the title of the App Link Module Required
+        # Deprecated. Title isn't supported in the app link module.
         # Corresponds to the JSON property `title`
         # @return [Google::Apis::WalletobjectsV1::LocalizedString]
         attr_accessor :title
@@ -1464,6 +1461,13 @@ module Google
         attr_accessor :allow_multiple_users_per_object
         alias_method :allow_multiple_users_per_object?, :allow_multiple_users_per_object
       
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding object that will
+        # be used instead.
+        # Corresponds to the JSON property `appLinkData`
+        # @return [Google::Apis::WalletobjectsV1::AppLinkData]
+        attr_accessor :app_link_data
+      
         # Callback options to be used to call the issuer back for every save/delete of
         # an object for this class by the end-user. All objects of this class are
         # eligible for the callback.
@@ -1778,6 +1782,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_multiple_users_per_object = args[:allow_multiple_users_per_object] if args.key?(:allow_multiple_users_per_object)
+          @app_link_data = args[:app_link_data] if args.key?(:app_link_data)
           @callback_options = args[:callback_options] if args.key?(:callback_options)
           @class_template_info = args[:class_template_info] if args.key?(:class_template_info)
           @confirmation_code_label = args[:confirmation_code_label] if args.key?(:confirmation_code_label)
@@ -1871,7 +1876,9 @@ module Google
       class EventTicketObject
         include Google::Apis::Core::Hashable
       
-        # Optional information about the partner app link.
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding class only
+        # object AppLinkData will be displayed.
         # Corresponds to the JSON property `appLinkData`
         # @return [Google::Apis::WalletobjectsV1::AppLinkData]
         attr_accessor :app_link_data
@@ -2350,6 +2357,13 @@ module Google
         attr_accessor :allow_multiple_users_per_object
         alias_method :allow_multiple_users_per_object?, :allow_multiple_users_per_object
       
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding object that will
+        # be used instead.
+        # Corresponds to the JSON property `appLinkData`
+        # @return [Google::Apis::WalletobjectsV1::AppLinkData]
+        attr_accessor :app_link_data
+      
         # Policies for boarding and seating. These will inform which labels will be
         # shown to users.
         # Corresponds to the JSON property `boardingAndSeatingPolicy`
@@ -2636,6 +2650,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_multiple_users_per_object = args[:allow_multiple_users_per_object] if args.key?(:allow_multiple_users_per_object)
+          @app_link_data = args[:app_link_data] if args.key?(:app_link_data)
           @boarding_and_seating_policy = args[:boarding_and_seating_policy] if args.key?(:boarding_and_seating_policy)
           @callback_options = args[:callback_options] if args.key?(:callback_options)
           @class_template_info = args[:class_template_info] if args.key?(:class_template_info)
@@ -2780,7 +2795,9 @@ module Google
       class FlightObject
         include Google::Apis::Core::Hashable
       
-        # Optional information about the partner app link.
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding class only
+        # object AppLinkData will be displayed.
         # Corresponds to the JSON property `appLinkData`
         # @return [Google::Apis::WalletobjectsV1::AppLinkData]
         attr_accessor :app_link_data
@@ -3072,6 +3089,13 @@ module Google
       class GenericClass
         include Google::Apis::Core::Hashable
       
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding object that will
+        # be used instead.
+        # Corresponds to the JSON property `appLinkData`
+        # @return [Google::Apis::WalletobjectsV1::AppLinkData]
+        attr_accessor :app_link_data
+      
         # Callback options to be used to call the issuer back for every save/delete of
         # an object for this class by the end-user. All objects of this class are
         # eligible for the callback.
@@ -3159,6 +3183,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_link_data = args[:app_link_data] if args.key?(:app_link_data)
           @callback_options = args[:callback_options] if args.key?(:callback_options)
           @class_template_info = args[:class_template_info] if args.key?(:class_template_info)
           @enable_smart_tap = args[:enable_smart_tap] if args.key?(:enable_smart_tap)
@@ -3224,8 +3249,9 @@ module Google
       class GenericObject
         include Google::Apis::Core::Hashable
       
-        # Information about the partner app link. The maximum number of these fields
-        # displayed is 10.
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding class only
+        # object AppLinkData will be displayed.
         # Corresponds to the JSON property `appLinkData`
         # @return [Google::Apis::WalletobjectsV1::AppLinkData]
         attr_accessor :app_link_data
@@ -3468,6 +3494,13 @@ module Google
         attr_accessor :allow_multiple_users_per_object
         alias_method :allow_multiple_users_per_object?, :allow_multiple_users_per_object
       
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding object that will
+        # be used instead.
+        # Corresponds to the JSON property `appLinkData`
+        # @return [Google::Apis::WalletobjectsV1::AppLinkData]
+        attr_accessor :app_link_data
+      
         # Callback options to be used to call the issuer back for every save/delete of
         # an object for this class by the end-user. All objects of this class are
         # eligible for the callback.
@@ -3696,6 +3729,7 @@ module Google
         def update!(**args)
           @allow_barcode_redemption = args[:allow_barcode_redemption] if args.key?(:allow_barcode_redemption)
           @allow_multiple_users_per_object = args[:allow_multiple_users_per_object] if args.key?(:allow_multiple_users_per_object)
+          @app_link_data = args[:app_link_data] if args.key?(:app_link_data)
           @callback_options = args[:callback_options] if args.key?(:callback_options)
           @card_number_label = args[:card_number_label] if args.key?(:card_number_label)
           @class_template_info = args[:class_template_info] if args.key?(:class_template_info)
@@ -3782,7 +3816,9 @@ module Google
       class GiftCardObject
         include Google::Apis::Core::Hashable
       
-        # Optional information about the partner app link.
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding class only
+        # object AppLinkData will be displayed.
         # Corresponds to the JSON property `appLinkData`
         # @return [Google::Apis::WalletobjectsV1::AppLinkData]
         attr_accessor :app_link_data
@@ -4576,6 +4612,13 @@ module Google
         attr_accessor :allow_multiple_users_per_object
         alias_method :allow_multiple_users_per_object?, :allow_multiple_users_per_object
       
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding object that will
+        # be used instead.
+        # Corresponds to the JSON property `appLinkData`
+        # @return [Google::Apis::WalletobjectsV1::AppLinkData]
+        attr_accessor :app_link_data
+      
         # Callback options to be used to call the issuer back for every save/delete of
         # an object for this class by the end-user. All objects of this class are
         # eligible for the callback.
@@ -4838,6 +4881,7 @@ module Google
           @account_id_label = args[:account_id_label] if args.key?(:account_id_label)
           @account_name_label = args[:account_name_label] if args.key?(:account_name_label)
           @allow_multiple_users_per_object = args[:allow_multiple_users_per_object] if args.key?(:allow_multiple_users_per_object)
+          @app_link_data = args[:app_link_data] if args.key?(:app_link_data)
           @callback_options = args[:callback_options] if args.key?(:callback_options)
           @class_template_info = args[:class_template_info] if args.key?(:class_template_info)
           @country_code = args[:country_code] if args.key?(:country_code)
@@ -4940,7 +4984,9 @@ module Google
         # @return [String]
         attr_accessor :account_name
       
-        # Optional information about the partner app link.
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding class only
+        # object AppLinkData will be displayed.
         # Corresponds to the JSON property `appLinkData`
         # @return [Google::Apis::WalletobjectsV1::AppLinkData]
         attr_accessor :app_link_data
@@ -5806,6 +5852,13 @@ module Google
         attr_accessor :allow_multiple_users_per_object
         alias_method :allow_multiple_users_per_object?, :allow_multiple_users_per_object
       
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding object that will
+        # be used instead.
+        # Corresponds to the JSON property `appLinkData`
+        # @return [Google::Apis::WalletobjectsV1::AppLinkData]
+        attr_accessor :app_link_data
+      
         # Callback options to be used to call the issuer back for every save/delete of
         # an object for this class by the end-user. All objects of this class are
         # eligible for the callback.
@@ -6061,6 +6114,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_multiple_users_per_object = args[:allow_multiple_users_per_object] if args.key?(:allow_multiple_users_per_object)
+          @app_link_data = args[:app_link_data] if args.key?(:app_link_data)
           @callback_options = args[:callback_options] if args.key?(:callback_options)
           @class_template_info = args[:class_template_info] if args.key?(:class_template_info)
           @country_code = args[:country_code] if args.key?(:country_code)
@@ -6151,7 +6205,9 @@ module Google
       class OfferObject
         include Google::Apis::Core::Hashable
       
-        # Optional information about the partner app link.
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding class only
+        # object AppLinkData will be displayed.
         # Corresponds to the JSON property `appLinkData`
         # @return [Google::Apis::WalletobjectsV1::AppLinkData]
         attr_accessor :app_link_data
@@ -7341,6 +7397,13 @@ module Google
         attr_accessor :allow_multiple_users_per_object
         alias_method :allow_multiple_users_per_object?, :allow_multiple_users_per_object
       
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding object that will
+        # be used instead.
+        # Corresponds to the JSON property `appLinkData`
+        # @return [Google::Apis::WalletobjectsV1::AppLinkData]
+        attr_accessor :app_link_data
+      
         # Callback options to be used to call the issuer back for every save/delete of
         # an object for this class by the end-user. All objects of this class are
         # eligible for the callback.
@@ -7663,6 +7726,7 @@ module Google
         def update!(**args)
           @activation_options = args[:activation_options] if args.key?(:activation_options)
           @allow_multiple_users_per_object = args[:allow_multiple_users_per_object] if args.key?(:allow_multiple_users_per_object)
+          @app_link_data = args[:app_link_data] if args.key?(:app_link_data)
           @callback_options = args[:callback_options] if args.key?(:callback_options)
           @class_template_info = args[:class_template_info] if args.key?(:class_template_info)
           @country_code = args[:country_code] if args.key?(:country_code)
@@ -7770,7 +7834,9 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::ActivationStatus]
         attr_accessor :activation_status
       
-        # Optional information about the partner app link.
+        # Optional app or website link that will be displayed as a button on the front
+        # of the pass. If AppLinkData is provided for the corresponding class only
+        # object AppLinkData will be displayed.
         # Corresponds to the JSON property `appLinkData`
         # @return [Google::Apis::WalletobjectsV1::AppLinkData]
         attr_accessor :app_link_data
