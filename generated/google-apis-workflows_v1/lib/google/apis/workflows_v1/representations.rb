@@ -185,9 +185,12 @@ module Google
       class Workflow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :all_kms_keys, as: 'allKmsKeys'
+          collection :all_kms_keys_versions, as: 'allKmsKeysVersions'
           property :call_log_level, as: 'callLogLevel'
           property :create_time, as: 'createTime'
           property :crypto_key_name, as: 'cryptoKeyName'
+          property :crypto_key_version, as: 'cryptoKeyVersion'
           property :description, as: 'description'
           hash :labels, as: 'labels'
           property :name, as: 'name'
