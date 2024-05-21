@@ -2756,12 +2756,29 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # DLP resources used for redaction while ingesting conversations.
+        # DLP resources used for redaction while ingesting conversations. DLP settings
+        # are applied to conversations ingested from the UploadConversation and
+        # IngestConversations endpoints, including conversation coming from CCAI
+        # Platform. They are not applied to conversations ingested from the
+        # CreateConversation endpoint or the Dialogflow / Agent Assist runtime
+        # integrations. When using Dialogflow / Agent Assist runtime integrations
+        # redaction should be performed in Dialogflow / Agent Assist.
         # Corresponds to the JSON property `redactionConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig]
         attr_accessor :redaction_config
       
-        # Speech-to-Text configuration.
+        # Optional. If set, this fields indicates the number of objects to ingest from
+        # the Cloud Storage bucket. If empty, the entire bucket will be ingested. Note
+        # that conversations produced via sampling will not be ingested by subsequent
+        # ingest requests unless they are first deleted.
+        # Corresponds to the JSON property `sampleSize`
+        # @return [Fixnum]
+        attr_accessor :sample_size
+      
+        # Speech-to-Text configuration. Speech-to-Text settings are applied to
+        # conversations ingested from the UploadConversation and IngestConversations
+        # endpoints, including conversation coming from CCAI Platform. They are not
+        # applied to conversations ingested from the CreateConversation endpoint.
         # Corresponds to the JSON property `speechConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig]
         attr_accessor :speech_config
@@ -2781,6 +2798,7 @@ module Google
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @parent = args[:parent] if args.key?(:parent)
           @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
+          @sample_size = args[:sample_size] if args.key?(:sample_size)
           @speech_config = args[:speech_config] if args.key?(:speech_config)
           @transcript_object_config = args[:transcript_object_config] if args.key?(:transcript_object_config)
         end
@@ -2796,8 +2814,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :agent_channel
       
-        # An opaque, user-specified string representing the human agent who handled the
-        # conversations.
+        # Optional. An opaque, user-specified string representing a human agent who
+        # handled all conversations in the import. Note that this will be overridden if
+        # per-conversation metadata is provided via the `metadata_bucket_uri`.
         # Corresponds to the JSON property `agentId`
         # @return [String]
         attr_accessor :agent_id
@@ -3584,7 +3603,13 @@ module Google
         end
       end
       
-      # DLP resources used for redaction while ingesting conversations.
+      # DLP resources used for redaction while ingesting conversations. DLP settings
+      # are applied to conversations ingested from the UploadConversation and
+      # IngestConversations endpoints, including conversation coming from CCAI
+      # Platform. They are not applied to conversations ingested from the
+      # CreateConversation endpoint or the Dialogflow / Agent Assist runtime
+      # integrations. When using Dialogflow / Agent Assist runtime integrations
+      # redaction should be performed in Dialogflow / Agent Assist.
       class GoogleCloudContactcenterinsightsV1RedactionConfig
         include Google::Apis::Core::Hashable
       
@@ -3869,12 +3894,21 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :pubsub_notification_settings
       
-        # DLP resources used for redaction while ingesting conversations.
+        # DLP resources used for redaction while ingesting conversations. DLP settings
+        # are applied to conversations ingested from the UploadConversation and
+        # IngestConversations endpoints, including conversation coming from CCAI
+        # Platform. They are not applied to conversations ingested from the
+        # CreateConversation endpoint or the Dialogflow / Agent Assist runtime
+        # integrations. When using Dialogflow / Agent Assist runtime integrations
+        # redaction should be performed in Dialogflow / Agent Assist.
         # Corresponds to the JSON property `redactionConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig]
         attr_accessor :redaction_config
       
-        # Speech-to-Text configuration.
+        # Speech-to-Text configuration. Speech-to-Text settings are applied to
+        # conversations ingested from the UploadConversation and IngestConversations
+        # endpoints, including conversation coming from CCAI Platform. They are not
+        # applied to conversations ingested from the CreateConversation endpoint.
         # Corresponds to the JSON property `speechConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig]
         attr_accessor :speech_config
@@ -4030,7 +4064,10 @@ module Google
         end
       end
       
-      # Speech-to-Text configuration.
+      # Speech-to-Text configuration. Speech-to-Text settings are applied to
+      # conversations ingested from the UploadConversation and IngestConversations
+      # endpoints, including conversation coming from CCAI Platform. They are not
+      # applied to conversations ingested from the CreateConversation endpoint.
       class GoogleCloudContactcenterinsightsV1SpeechConfig
         include Google::Apis::Core::Hashable
       
@@ -4167,7 +4204,13 @@ module Google
         # @return [String]
         attr_accessor :analysis_operation
       
-        # DLP resources used for redaction while ingesting conversations.
+        # DLP resources used for redaction while ingesting conversations. DLP settings
+        # are applied to conversations ingested from the UploadConversation and
+        # IngestConversations endpoints, including conversation coming from CCAI
+        # Platform. They are not applied to conversations ingested from the
+        # CreateConversation endpoint or the Dialogflow / Agent Assist runtime
+        # integrations. When using Dialogflow / Agent Assist runtime integrations
+        # redaction should be performed in Dialogflow / Agent Assist.
         # Corresponds to the JSON property `appliedRedactionConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig]
         attr_accessor :applied_redaction_config
@@ -4223,12 +4266,21 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # DLP resources used for redaction while ingesting conversations.
+        # DLP resources used for redaction while ingesting conversations. DLP settings
+        # are applied to conversations ingested from the UploadConversation and
+        # IngestConversations endpoints, including conversation coming from CCAI
+        # Platform. They are not applied to conversations ingested from the
+        # CreateConversation endpoint or the Dialogflow / Agent Assist runtime
+        # integrations. When using Dialogflow / Agent Assist runtime integrations
+        # redaction should be performed in Dialogflow / Agent Assist.
         # Corresponds to the JSON property `redactionConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig]
         attr_accessor :redaction_config
       
-        # Speech-to-Text configuration.
+        # Speech-to-Text configuration. Speech-to-Text settings are applied to
+        # conversations ingested from the UploadConversation and IngestConversations
+        # endpoints, including conversation coming from CCAI Platform. They are not
+        # applied to conversations ingested from the CreateConversation endpoint.
         # Corresponds to the JSON property `speechConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig]
         attr_accessor :speech_config
@@ -6867,12 +6919,29 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # DLP resources used for redaction while ingesting conversations.
+        # DLP resources used for redaction while ingesting conversations. DLP settings
+        # are applied to conversations ingested from the UploadConversation and
+        # IngestConversations endpoints, including conversation coming from CCAI
+        # Platform. They are not applied to conversations ingested from the
+        # CreateConversation endpoint or the Dialogflow / Agent Assist runtime
+        # integrations. When using Dialogflow / Agent Assist runtime integrations
+        # redaction should be performed in Dialogflow / Agent Assist.
         # Corresponds to the JSON property `redactionConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig]
         attr_accessor :redaction_config
       
-        # Speech-to-Text configuration.
+        # Optional. If set, this fields indicates the number of objects to ingest from
+        # the Cloud Storage bucket. If empty, the entire bucket will be ingested. Note
+        # that conversations produced via sampling will not be ingested by subsequent
+        # ingest requests unless they are first deleted.
+        # Corresponds to the JSON property `sampleSize`
+        # @return [Fixnum]
+        attr_accessor :sample_size
+      
+        # Speech-to-Text configuration. Speech-to-Text settings are applied to
+        # conversations ingested from the UploadConversation and IngestConversations
+        # endpoints, including conversation coming from CCAI Platform. They are not
+        # applied to conversations ingested from the CreateConversation endpoint.
         # Corresponds to the JSON property `speechConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig]
         attr_accessor :speech_config
@@ -6892,6 +6961,7 @@ module Google
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @parent = args[:parent] if args.key?(:parent)
           @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
+          @sample_size = args[:sample_size] if args.key?(:sample_size)
           @speech_config = args[:speech_config] if args.key?(:speech_config)
           @transcript_object_config = args[:transcript_object_config] if args.key?(:transcript_object_config)
         end
@@ -6907,8 +6977,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :agent_channel
       
-        # An opaque, user-specified string representing the human agent who handled the
-        # conversations.
+        # Optional. An opaque, user-specified string representing a human agent who
+        # handled all conversations in the import. Note that this will be overridden if
+        # per-conversation metadata is provided via the `metadata_bucket_uri`.
         # Corresponds to the JSON property `agentId`
         # @return [String]
         attr_accessor :agent_id
@@ -7342,7 +7413,13 @@ module Google
         end
       end
       
-      # DLP resources used for redaction while ingesting conversations.
+      # DLP resources used for redaction while ingesting conversations. DLP settings
+      # are applied to conversations ingested from the UploadConversation and
+      # IngestConversations endpoints, including conversation coming from CCAI
+      # Platform. They are not applied to conversations ingested from the
+      # CreateConversation endpoint or the Dialogflow / Agent Assist runtime
+      # integrations. When using Dialogflow / Agent Assist runtime integrations
+      # redaction should be performed in Dialogflow / Agent Assist.
       class GoogleCloudContactcenterinsightsV1alpha1RedactionConfig
         include Google::Apis::Core::Hashable
       
@@ -7672,7 +7749,10 @@ module Google
         end
       end
       
-      # Speech-to-Text configuration.
+      # Speech-to-Text configuration. Speech-to-Text settings are applied to
+      # conversations ingested from the UploadConversation and IngestConversations
+      # endpoints, including conversation coming from CCAI Platform. They are not
+      # applied to conversations ingested from the CreateConversation endpoint.
       class GoogleCloudContactcenterinsightsV1alpha1SpeechConfig
         include Google::Apis::Core::Hashable
       
@@ -7809,7 +7889,13 @@ module Google
         # @return [String]
         attr_accessor :analysis_operation
       
-        # DLP resources used for redaction while ingesting conversations.
+        # DLP resources used for redaction while ingesting conversations. DLP settings
+        # are applied to conversations ingested from the UploadConversation and
+        # IngestConversations endpoints, including conversation coming from CCAI
+        # Platform. They are not applied to conversations ingested from the
+        # CreateConversation endpoint or the Dialogflow / Agent Assist runtime
+        # integrations. When using Dialogflow / Agent Assist runtime integrations
+        # redaction should be performed in Dialogflow / Agent Assist.
         # Corresponds to the JSON property `appliedRedactionConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig]
         attr_accessor :applied_redaction_config
@@ -7865,12 +7951,21 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # DLP resources used for redaction while ingesting conversations.
+        # DLP resources used for redaction while ingesting conversations. DLP settings
+        # are applied to conversations ingested from the UploadConversation and
+        # IngestConversations endpoints, including conversation coming from CCAI
+        # Platform. They are not applied to conversations ingested from the
+        # CreateConversation endpoint or the Dialogflow / Agent Assist runtime
+        # integrations. When using Dialogflow / Agent Assist runtime integrations
+        # redaction should be performed in Dialogflow / Agent Assist.
         # Corresponds to the JSON property `redactionConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig]
         attr_accessor :redaction_config
       
-        # Speech-to-Text configuration.
+        # Speech-to-Text configuration. Speech-to-Text settings are applied to
+        # conversations ingested from the UploadConversation and IngestConversations
+        # endpoints, including conversation coming from CCAI Platform. They are not
+        # applied to conversations ingested from the CreateConversation endpoint.
         # Corresponds to the JSON property `speechConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig]
         attr_accessor :speech_config

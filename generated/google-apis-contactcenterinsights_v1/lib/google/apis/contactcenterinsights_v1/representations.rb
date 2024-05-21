@@ -2255,6 +2255,7 @@ module Google
           property :parent, as: 'parent'
           property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig::Representation
       
+          property :sample_size, as: 'sampleSize'
           property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig::Representation
       
           property :transcript_object_config, as: 'transcriptObjectConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig::Representation
@@ -3486,6 +3487,7 @@ module Google
           property :parent, as: 'parent'
           property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig::Representation
       
+          property :sample_size, as: 'sampleSize'
           property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig::Representation
       
           property :transcript_object_config, as: 'transcriptObjectConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig::Representation
