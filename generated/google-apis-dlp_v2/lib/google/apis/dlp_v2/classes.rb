@@ -970,10 +970,10 @@ module Google
         end
       end
       
-      # Use IAM auth to connect. This requires the Cloud SQL IAM feature to be enabled
-      # on the instance, which is not the default for Cloud SQL. See https://cloud.
-      # google.com/sql/docs/postgres/authentication and https://cloud.google.com/sql/
-      # docs/mysql/authentication.
+      # Use IAM authentication to connect. This requires the Cloud SQL IAM feature to
+      # be enabled on the instance, which is not the default for Cloud SQL. See https:/
+      # /cloud.google.com/sql/docs/postgres/authentication and https://cloud.google.
+      # com/sql/docs/mysql/authentication.
       class GooglePrivacyDlpV2CloudSqlIamCredential
         include Google::Apis::Core::Hashable
       
@@ -990,10 +990,10 @@ module Google
       class GooglePrivacyDlpV2CloudSqlProperties
         include Google::Apis::Core::Hashable
       
-        # Use IAM auth to connect. This requires the Cloud SQL IAM feature to be enabled
-        # on the instance, which is not the default for Cloud SQL. See https://cloud.
-        # google.com/sql/docs/postgres/authentication and https://cloud.google.com/sql/
-        # docs/mysql/authentication.
+        # Use IAM authentication to connect. This requires the Cloud SQL IAM feature to
+        # be enabled on the instance, which is not the default for Cloud SQL. See https:/
+        # /cloud.google.com/sql/docs/postgres/authentication and https://cloud.google.
+        # com/sql/docs/mysql/authentication.
         # Corresponds to the JSON property `cloudSqlIam`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlIamCredential]
         attr_accessor :cloud_sql_iam
@@ -1002,9 +1002,9 @@ module Google
         # defined. Only one connection per instance is allowed. This can only be set at
         # creation time, and cannot be updated. It is an error to use a connection_name
         # from different project or region than the one that holds the connection. For
-        # example, a Connection resource for Cloud SQL connection_name "project-id:us-
-        # central1:sql-instance" must be created under the parent "projects/project-id/
-        # locations/us-central1"
+        # example, a Connection resource for Cloud SQL connection_name `project-id:us-
+        # central1:sql-instance` must be created under the parent `projects/project-id/
+        # locations/us-central1`
         # Corresponds to the JSON property `connectionName`
         # @return [String]
         attr_accessor :connection_name
@@ -1459,8 +1459,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Error>]
         attr_accessor :errors
       
-        # Output only. Name of the connection: projects/`project`/locations/`location`/
-        # connections/`name`.
+        # Output only. Name of the connection: `projects/`project`/locations/`location`/
+        # connections/`name``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1816,7 +1816,7 @@ module Google
       class GooglePrivacyDlpV2CreateJobTriggerRequest
         include Google::Apis::Core::Hashable
       
-        # Contains a configuration to make api calls on a repeating basis. See https://
+        # Contains a configuration to make API calls on a repeating basis. See https://
         # cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to learn
         # more.
         # Corresponds to the JSON property `jobTrigger`
@@ -2449,14 +2449,25 @@ module Google
       class GooglePrivacyDlpV2DatabaseResourceReference
         include Google::Apis::Core::Hashable
       
-        # Required. The instance where this resource is located. For example: Cloud SQL'
-        # s instance id.
+        # Required. Name of a database within the instance.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Required. Name of a database resource, for example, a table within the
+        # database.
+        # Corresponds to the JSON property `databaseResource`
+        # @return [String]
+        attr_accessor :database_resource
+      
+        # Required. The instance where this resource is located. For example: Cloud SQL
+        # instance ID.
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
       
         # Required. If within a project-level config, then this must match the config's
-        # project id.
+        # project ID.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -2467,6 +2478,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @database_resource = args[:database_resource] if args.key?(:database_resource)
           @instance = args[:instance] if args.key?(:instance)
           @project_id = args[:project_id] if args.key?(:project_id)
         end
@@ -2496,8 +2509,8 @@ module Google
         # @return [String]
         attr_accessor :instance_regex
       
-        # For organizations, if unset, will match all projects. Has no effect for Data
-        # Profile configurations created within a project.
+        # For organizations, if unset, will match all projects. Has no effect for
+        # configurations created within a project.
         # Corresponds to the JSON property `projectIdRegex`
         # @return [String]
         attr_accessor :project_id_regex
@@ -3246,6 +3259,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherBigQueryTables]
         attr_accessor :other_tables
       
+        # Message defining the location of a BigQuery table with the projectId inferred
+        # from the parent project.
+        # Corresponds to the JSON property `tableReference`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TableReference]
+        attr_accessor :table_reference
+      
         # Specifies a collection of BigQuery tables. Used for Discovery.
         # Corresponds to the JSON property `tables`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTableCollection]
@@ -3258,6 +3277,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @other_tables = args[:other_tables] if args.key?(:other_tables)
+          @table_reference = args[:table_reference] if args.key?(:table_reference)
           @tables = args[:tables] if args.key?(:tables)
         end
       end
@@ -3336,7 +3356,7 @@ module Google
         # @return [String]
         attr_accessor :refresh_frequency
       
-        # How frequency to modify the profile when the table's schema is modified.
+        # How frequently to modify the profile when the table's schema is modified.
         # Corresponds to the JSON property `schemaModifiedCadence`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SchemaModifiedCadence]
         attr_accessor :schema_modified_cadence
@@ -3570,6 +3590,18 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlDiscoveryTarget]
         attr_accessor :cloud_sql_target
       
+        # Discovery target for credentials and secrets in Cloud resource metadata. This
+        # target does not include any filtering or frequency controls. Cloud DLP will
+        # scan Cloud resource metadata for secrets daily. No inspect template should be
+        # included in the discovery config for a security benchmarks scan. Instead, the
+        # built-in list of Secrets and Credentials infoTypes will be used (see https://
+        # cloud.google.com/sensitive-data-protection/docs/infotypes-reference#
+        # credentials_and_secrets). Credentials and secrets discovered will be reported
+        # as vulnerabilities to Security Command Center.
+        # Corresponds to the JSON property `secretsTarget`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SecretsDiscoveryTarget]
+        attr_accessor :secrets_target
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3578,6 +3610,7 @@ module Google
         def update!(**args)
           @big_query_target = args[:big_query_target] if args.key?(:big_query_target)
           @cloud_sql_target = args[:cloud_sql_target] if args.key?(:cloud_sql_target)
+          @secrets_target = args[:secrets_target] if args.key?(:secrets_target)
         end
       end
       
@@ -4621,7 +4654,7 @@ module Google
       end
       
       # Classification of infoTypes to organize them according to geographic location,
-      # industry, and data type. NEXT_ID: 48
+      # industry, and data type.
       class GooglePrivacyDlpV2InfoTypeCategory
         include Google::Apis::Core::Hashable
       
@@ -5237,7 +5270,7 @@ module Google
         end
       end
       
-      # Contains a configuration to make api calls on a repeating basis. See https://
+      # Contains a configuration to make API calls on a repeating basis. See https://
       # cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to learn
       # more.
       class GooglePrivacyDlpV2JobTrigger
@@ -7637,7 +7670,7 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeStats>]
         attr_accessor :info_type_stats
       
-        # Number of rows scanned post sampling and time filtering (Applicable for row
+        # Number of rows scanned after sampling and time filtering (applicable for row
         # based stores such as BigQuery).
         # Corresponds to the JSON property `numRowsProcessed`
         # @return [Fixnum]
@@ -7765,7 +7798,7 @@ module Google
         end
       end
       
-      # How frequency to modify the profile when the table's schema is modified.
+      # How frequently to modify the profile when the table's schema is modified.
       class GooglePrivacyDlpV2SchemaModifiedCadence
         include Google::Apis::Core::Hashable
       
@@ -7826,7 +7859,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The name of the Secret Manager resource that stores the password, in
-        # the form "projects/project-id/secrets/secret-name/versions/version".
+        # the form `projects/project-id/secrets/secret-name/versions/version`.
         # Corresponds to the JSON property `passwordSecretVersionName`
         # @return [String]
         attr_accessor :password_secret_version_name
@@ -7844,6 +7877,26 @@ module Google
         def update!(**args)
           @password_secret_version_name = args[:password_secret_version_name] if args.key?(:password_secret_version_name)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Discovery target for credentials and secrets in Cloud resource metadata. This
+      # target does not include any filtering or frequency controls. Cloud DLP will
+      # scan Cloud resource metadata for secrets daily. No inspect template should be
+      # included in the discovery config for a security benchmarks scan. Instead, the
+      # built-in list of Secrets and Credentials infoTypes will be used (see https://
+      # cloud.google.com/sensitive-data-protection/docs/infotypes-reference#
+      # credentials_and_secrets). Credentials and secrets discovered will be reported
+      # as vulnerabilities to Security Command Center.
+      class GooglePrivacyDlpV2SecretsDiscoveryTarget
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -8492,6 +8545,32 @@ module Google
         end
       end
       
+      # Message defining the location of a BigQuery table with the projectId inferred
+      # from the parent project.
+      class GooglePrivacyDlpV2TableReference
+        include Google::Apis::Core::Hashable
+      
+        # Dataset ID of the table.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # Name of the table.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
       # A column with a semantic tag attached.
       class GooglePrivacyDlpV2TaggedField
         include Google::Apis::Core::Hashable
@@ -8596,7 +8675,7 @@ module Google
         # valid start_time to avoid scanning files that have not been modified since the
         # last time the JobTrigger executed. This will be based on the time of the
         # execution of the last run of the JobTrigger or the timespan end_time used in
-        # the last run of the JobTrigger. *For BigQuery* Inspect jobs triggered by
+        # the last run of the JobTrigger. **For BigQuery** Inspect jobs triggered by
         # automatic population will scan data that is at least three hours old when the
         # job starts. This is because streaming buffer rows are not read during
         # inspection and reading up to the current timestamp will result in skipped rows.
@@ -9173,7 +9252,7 @@ module Google
       class GooglePrivacyDlpV2UpdateJobTriggerRequest
         include Google::Apis::Core::Hashable
       
-        # Contains a configuration to make api calls on a repeating basis. See https://
+        # Contains a configuration to make API calls on a repeating basis. See https://
         # cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to learn
         # more.
         # Corresponds to the JSON property `jobTrigger`

@@ -1396,6 +1396,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2SecretsDiscoveryTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2SelectedInfoTypes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1487,6 +1493,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2TableOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2TableReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2369,6 +2381,8 @@ module Google
       class GooglePrivacyDlpV2DatabaseResourceReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :database_resource, as: 'databaseResource'
           property :instance, as: 'instance'
           property :project_id, as: 'projectId'
         end
@@ -2599,6 +2613,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :other_tables, as: 'otherTables', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherBigQueryTables, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherBigQueryTables::Representation
       
+          property :table_reference, as: 'tableReference', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TableReference, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TableReference::Representation
+      
           property :tables, as: 'tables', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTableCollection, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTableCollection::Representation
       
         end
@@ -2694,6 +2710,8 @@ module Google
           property :big_query_target, as: 'bigQueryTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryDiscoveryTarget::Representation
       
           property :cloud_sql_target, as: 'cloudSqlTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlDiscoveryTarget::Representation
+      
+          property :secrets_target, as: 'secretsTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SecretsDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SecretsDiscoveryTarget::Representation
       
         end
       end
@@ -4016,6 +4034,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2SecretsDiscoveryTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2SelectedInfoTypes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4197,6 +4221,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :identifying_fields, as: 'identifyingFields', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2TableReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :table_id, as: 'tableId'
         end
       end
       
