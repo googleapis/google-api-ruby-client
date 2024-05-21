@@ -705,6 +705,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the parameters of a Network Connectivity Center group.
+        # @param [String] name
+        #   Immutable. The name of the group. Group names must be unique. They use the
+        #   following form: `projects/`project_number`/locations/global/hubs/`hub`/groups/`
+        #   group_id``
+        # @param [Google::Apis::NetworkconnectivityV1::Group] group_object
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that a request doesn't
+        #   result in creation of duplicate commitments for at least 60 minutes. For
+        #   example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check to see whether the original operation was received. If it was,
+        #   the server ignores the second request. This behavior prevents clients from
+        #   mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
+        # @param [String] update_mask
+        #   Optional. In the case of an update to an existing group, field mask is used to
+        #   specify the fields to be overwritten. The fields specified in the update_mask
+        #   are relative to the resource, not the full request. A field is overwritten if
+        #   it is in the mask. If the user does not provide a mask, then all fields are
+        #   overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_global_hub_group(name, group_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::Group::Representation
+          command.request_object = group_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.

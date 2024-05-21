@@ -151,6 +151,32 @@ module Google
         end
       end
       
+      # The auto-accept setting for a group controls whether proposed spokes are
+      # automatically attached to the hub. If auto-accept is enabled, the spoke
+      # immediately is attached to the hub and becomes part of the group. In this case,
+      # the new spoke is in the ACTIVE state. If auto-accept is disabled, the spoke
+      # goes to the INACTIVE state, and it must be reviewed and accepted by a hub
+      # administrator.
+      class AutoAccept
+        include Google::Apis::Core::Hashable
+      
+        # A list of project ids or project numbers for which you want to enable auto-
+        # accept. The auto-accept setting is applied to spokes being created or updated
+        # in these projects.
+        # Corresponds to the JSON property `autoAcceptProjects`
+        # @return [Array<String>]
+        attr_accessor :auto_accept_projects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_accept_projects = args[:auto_accept_projects] if args.key?(:auto_accept_projects)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -719,6 +745,16 @@ module Google
       class Group
         include Google::Apis::Core::Hashable
       
+        # The auto-accept setting for a group controls whether proposed spokes are
+        # automatically attached to the hub. If auto-accept is enabled, the spoke
+        # immediately is attached to the hub and becomes part of the group. In this case,
+        # the new spoke is in the ACTIVE state. If auto-accept is disabled, the spoke
+        # goes to the INACTIVE state, and it must be reviewed and accepted by a hub
+        # administrator.
+        # Corresponds to the JSON property `autoAccept`
+        # @return [Google::Apis::NetworkconnectivityV1::AutoAccept]
+        attr_accessor :auto_accept
+      
         # Output only. The time the group was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -743,6 +779,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The name of the route table that corresponds to this group. They
+        # use the following form: `projects/`project_number`/locations/global/hubs/`
+        # hub_id`/routeTables/`route_table_id``
+        # Corresponds to the JSON property `routeTable`
+        # @return [String]
+        attr_accessor :route_table
+      
         # Output only. The current lifecycle state of this group.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -766,10 +809,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_accept = args[:auto_accept] if args.key?(:auto_accept)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @route_table = args[:route_table] if args.key?(:route_table)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -795,6 +840,15 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Whether Private Service Connect transitivity is enabled for the hub.
+        # If true, Private Service Connect endpoints in VPC spokes attached to the hub
+        # are made accessible to other VPC spokes attached to the hub. The default value
+        # is false.
+        # Corresponds to the JSON property `exportPsc`
+        # @return [Boolean]
+        attr_accessor :export_psc
+        alias_method :export_psc?, :export_psc
+      
         # Optional labels in key-value pair format. For more information about labels,
         # see [Requirements for labels](https://cloud.google.com/resource-manager/docs/
         # creating-managing-labels#requirements).
@@ -807,6 +861,21 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. The policy mode of this hub. This field can be either PRESET or
+        # CUSTOM. If unspecified, the policy_mode defaults to PRESET.
+        # Corresponds to the JSON property `policyMode`
+        # @return [String]
+        attr_accessor :policy_mode
+      
+        # Optional. The topology implemented in this hub. Currently, this field is only
+        # used when policy_mode = PRESET. The available preset topologies are MESH and
+        # STAR. If preset_topology is unspecified and policy_mode = PRESET, the
+        # preset_topology defaults to MESH. When policy_mode = CUSTOM, the
+        # preset_topology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+        # Corresponds to the JSON property `presetTopology`
+        # @return [String]
+        attr_accessor :preset_topology
       
         # Output only. The route tables that belong to this hub. They use the following
         # form: `projects/`project_number`/locations/global/hubs/`hub_id`/routeTables/`
@@ -856,8 +925,11 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @export_psc = args[:export_psc] if args.key?(:export_psc)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @policy_mode = args[:policy_mode] if args.key?(:policy_mode)
+          @preset_topology = args[:preset_topology] if args.key?(:preset_topology)
           @route_tables = args[:route_tables] if args.key?(:route_tables)
           @routing_vpcs = args[:routing_vpcs] if args.key?(:routing_vpcs)
           @spoke_summary = args[:spoke_summary] if args.key?(:spoke_summary)
