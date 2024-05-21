@@ -1930,7 +1930,7 @@ module Google
       end
       
       # SecurityProfile is a resource that defines the behavior for one of many
-      # ProfileTypes. Next ID: 9
+      # ProfileTypes. Next ID: 10
       class SecurityProfile
         include Google::Apis::Core::Hashable
       
@@ -1997,7 +1997,7 @@ module Google
       end
       
       # SecurityProfileGroup is a resource that defines the behavior for various
-      # ProfileTypes. Next ID: 8
+      # ProfileTypes. Next ID: 9
       class SecurityProfileGroup
         include Google::Apis::Core::Hashable
       
