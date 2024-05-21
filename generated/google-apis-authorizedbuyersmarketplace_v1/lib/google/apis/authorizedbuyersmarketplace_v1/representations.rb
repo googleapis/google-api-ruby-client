@@ -757,6 +757,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :daypart_targeting, as: 'daypartTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::DayPartTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::DayPartTargeting::Representation
       
+          collection :excluded_sensitive_category_ids, as: 'excludedSensitiveCategoryIds'
           property :geo_targeting, as: 'geoTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::CriteriaTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::CriteriaTargeting::Representation
       
           property :inventory_size_targeting, as: 'inventorySizeTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::InventorySizeTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::InventorySizeTargeting::Representation
@@ -768,6 +769,8 @@ module Google
           property :technology_targeting, as: 'technologyTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::TechnologyTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::TechnologyTargeting::Representation
       
           property :user_list_targeting, as: 'userListTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::CriteriaTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::CriteriaTargeting::Representation
+      
+          property :vertical_targeting, as: 'verticalTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::CriteriaTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::CriteriaTargeting::Representation
       
           property :video_targeting, as: 'videoTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::VideoTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::VideoTargeting::Representation
       

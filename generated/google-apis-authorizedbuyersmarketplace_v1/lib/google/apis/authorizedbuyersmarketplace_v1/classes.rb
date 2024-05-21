@@ -701,10 +701,10 @@ module Google
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::TimeZone]
         attr_accessor :seller_time_zone
       
-        # Targeting represents different criteria that can be used to target inventory.
-        # For example, they can choose to target inventory only if the user is in the US.
-        # Multiple types of targeting are always applied as a logical AND, unless noted
-        # otherwise.
+        # Targeting represents different criteria that can be used to target deals or
+        # auction packages. For example, they can choose to target inventory only if the
+        # user is in the US. Multiple types of targeting are always applied as a logical
+        # AND, unless noted otherwise.
         # Corresponds to the JSON property `targeting`
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::MarketplaceTargeting]
         attr_accessor :targeting
@@ -1187,10 +1187,10 @@ module Google
         end
       end
       
-      # Targeting represents different criteria that can be used to target inventory.
-      # For example, they can choose to target inventory only if the user is in the US.
-      # Multiple types of targeting are always applied as a logical AND, unless noted
-      # otherwise.
+      # Targeting represents different criteria that can be used to target deals or
+      # auction packages. For example, they can choose to target inventory only if the
+      # user is in the US. Multiple types of targeting are always applied as a logical
+      # AND, unless noted otherwise.
       class MarketplaceTargeting
         include Google::Apis::Core::Hashable
       
@@ -1198,6 +1198,13 @@ module Google
         # Corresponds to the JSON property `daypartTargeting`
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::DayPartTargeting]
         attr_accessor :daypart_targeting
+      
+        # Output only. The sensitive content category label IDs excluded. Refer to this
+        # file https://storage.googleapis.com/adx-rtb-dictionaries/content-labels.txt
+        # for category IDs.
+        # Corresponds to the JSON property `excludedSensitiveCategoryIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :excluded_sensitive_category_ids
       
         # Generic targeting used for targeting dimensions that contains a list of
         # included and excluded numeric IDs. This cannot be filtered using list filter
@@ -1235,6 +1242,13 @@ module Google
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::CriteriaTargeting]
         attr_accessor :user_list_targeting
       
+        # Generic targeting used for targeting dimensions that contains a list of
+        # included and excluded numeric IDs. This cannot be filtered using list filter
+        # syntax.
+        # Corresponds to the JSON property `verticalTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::CriteriaTargeting]
+        attr_accessor :vertical_targeting
+      
         # Represents targeting information about video.
         # Corresponds to the JSON property `videoTargeting`
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::VideoTargeting]
@@ -1247,12 +1261,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @daypart_targeting = args[:daypart_targeting] if args.key?(:daypart_targeting)
+          @excluded_sensitive_category_ids = args[:excluded_sensitive_category_ids] if args.key?(:excluded_sensitive_category_ids)
           @geo_targeting = args[:geo_targeting] if args.key?(:geo_targeting)
           @inventory_size_targeting = args[:inventory_size_targeting] if args.key?(:inventory_size_targeting)
           @inventory_type_targeting = args[:inventory_type_targeting] if args.key?(:inventory_type_targeting)
           @placement_targeting = args[:placement_targeting] if args.key?(:placement_targeting)
           @technology_targeting = args[:technology_targeting] if args.key?(:technology_targeting)
           @user_list_targeting = args[:user_list_targeting] if args.key?(:user_list_targeting)
+          @vertical_targeting = args[:vertical_targeting] if args.key?(:vertical_targeting)
           @video_targeting = args[:video_targeting] if args.key?(:video_targeting)
         end
       end
