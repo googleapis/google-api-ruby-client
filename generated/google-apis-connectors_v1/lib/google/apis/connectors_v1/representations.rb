@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeprecateCustomConnectorVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Destination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1083,6 +1089,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :level, as: 'level'
         end
       end
       
@@ -1158,6 +1165,12 @@ module Google
       
           property :time, as: 'time', class: Google::Apis::ConnectorsV1::TimeOfDay, decorator: Google::Apis::ConnectorsV1::TimeOfDay::Representation
       
+        end
+      end
+      
+      class DeprecateCustomConnectorVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1240,6 +1253,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :endpoint_global_access, as: 'endpointGlobalAccess'
           property :endpoint_ip, as: 'endpointIp'
           hash :labels, as: 'labels'
           property :name, as: 'name'
