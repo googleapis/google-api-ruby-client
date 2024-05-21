@@ -508,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportResourcesHistoryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -815,6 +821,12 @@ module Google
       end
       
       class ImportMessagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportResourcesHistoryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2118,6 +2130,19 @@ module Google
         end
       end
       
+      class ExportResourcesHistoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :_since, as: '_since'
+          property :_type, as: '_type'
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination::Representation
+      
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination::Representation
+      
+          property :max_resource_versions, :numeric_string => true, as: 'maxResourceVersions'
+        end
+      end
+      
       class ExportResourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2593,6 +2618,16 @@ module Google
       class ImportMessagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ImportResourcesHistoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_structure, as: 'contentStructure'
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsSource, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsSource::Representation
+      
+          property :max_error_count, :numeric_string => true, as: 'maxErrorCount'
         end
       end
       
