@@ -1309,12 +1309,20 @@ module Google
       class GoogleFirestoreAdminV1DailyRecurrence
         include Google::Apis::Core::Hashable
       
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `time`
+        # @return [Google::Apis::FirestoreV1::TimeOfDay]
+        attr_accessor :time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @time = args[:time] if args.key?(:time)
         end
       end
       
@@ -1349,6 +1357,12 @@ module Google
         # Corresponds to the JSON property `deleteProtectionState`
         # @return [String]
         attr_accessor :delete_protection_state
+      
+        # Output only. The timestamp at which this database was soft deleted. Only set
+        # if the database has been soft deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
       
         # Output only. The earliest timestamp at which older versions of the data can be
         # read from the database. See [version_retention_period] above; this field is
@@ -1393,6 +1407,12 @@ module Google
         # @return [String]
         attr_accessor :point_in_time_recovery_enablement
       
+        # Output only. The database resource's prior database ID. This field is only
+        # populated for deleted databases.
+        # Corresponds to the JSON property `previousId`
+        # @return [String]
+        attr_accessor :previous_id
+      
         # The type of the database. See https://cloud.google.com/datastore/docs/
         # firestore-or-datastore for information about how to choose.
         # Corresponds to the JSON property `type`
@@ -1431,12 +1451,14 @@ module Google
           @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_protection_state = args[:delete_protection_state] if args.key?(:delete_protection_state)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
           @earliest_version_time = args[:earliest_version_time] if args.key?(:earliest_version_time)
           @etag = args[:etag] if args.key?(:etag)
           @key_prefix = args[:key_prefix] if args.key?(:key_prefix)
           @location_id = args[:location_id] if args.key?(:location_id)
           @name = args[:name] if args.key?(:name)
           @point_in_time_recovery_enablement = args[:point_in_time_recovery_enablement] if args.key?(:point_in_time_recovery_enablement)
+          @previous_id = args[:previous_id] if args.key?(:previous_id)
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -2476,6 +2498,13 @@ module Google
         # @return [String]
         attr_accessor :day
       
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `time`
+        # @return [Google::Apis::FirestoreV1::TimeOfDay]
+        attr_accessor :time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2483,6 +2512,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @day = args[:day] if args.key?(:day)
+          @time = args[:time] if args.key?(:time)
         end
       end
       
@@ -3673,6 +3703,47 @@ module Google
           @resume_token = args[:resume_token] if args.key?(:resume_token)
           @target_change_type = args[:target_change_type] if args.key?(:target_change_type)
           @target_ids = args[:target_ids] if args.key?(:target_ids)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+        # allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+        # allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
         end
       end
       

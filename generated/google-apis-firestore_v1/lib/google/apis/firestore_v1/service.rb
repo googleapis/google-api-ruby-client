@@ -240,6 +240,8 @@ module Google
         # List all the databases in the project.
         # @param [String] parent
         #   Required. A parent name of the form `projects/`project_id``
+        # @param [Boolean] show_deleted
+        #   If true, also returns deleted resources.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -257,11 +259,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_databases(parent, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_databases(parent, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/databases', options)
           command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListDatabasesResponse::Representation
           command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListDatabasesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
