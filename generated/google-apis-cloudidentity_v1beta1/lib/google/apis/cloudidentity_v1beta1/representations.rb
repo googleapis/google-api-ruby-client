@@ -994,6 +994,7 @@ module Google
           property :release_version, as: 'releaseVersion'
           property :security_patch_time, as: 'securityPatchTime'
           property :serial_number, as: 'serialNumber'
+          property :unified_device_id, as: 'unifiedDeviceId'
           collection :wifi_mac_addresses, as: 'wifiMacAddresses'
         end
       end
@@ -1289,6 +1290,7 @@ module Google
           property :release_version, as: 'releaseVersion'
           property :security_patch_time, as: 'securityPatchTime'
           property :serial_number, as: 'serialNumber'
+          property :unified_device_id, as: 'unifiedDeviceId'
           collection :wifi_mac_addresses, as: 'wifiMacAddresses'
         end
       end
