@@ -4404,20 +4404,20 @@ module Google
       
         # Optional. The Google Chat users to invite to join the space. Omit the calling
         # user, as they are added automatically. The set currently allows up to 20
-        # memberships (in addition to the caller). The `Membership.member` field must
-        # contain a `user` with `name` populated (format: `users/`user``) and `type` set
-        # to `User.Type.HUMAN`. You can only add human users when setting up a space (
-        # adding Chat apps is only supported for direct message setup with the calling
-        # app). You can also add members using the user's email as an alias for `user`.
-        # For example, the `user.name` can be `users/example@gmail.com`." To invite
-        # Gmail users or users from external Google Workspace domains, user's email must
-        # be used for ``user``. Optional when setting `Space.spaceType` to `SPACE`.
-        # Required when setting `Space.spaceType` to `GROUP_CHAT`, along with at least
-        # two memberships. Required when setting `Space.spaceType` to `DIRECT_MESSAGE`
-        # with a human user, along with exactly one membership. Must be empty when
-        # creating a 1:1 conversation between a human and the calling Chat app (when
-        # setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `
-        # true`).
+        # memberships (in addition to the caller). For human membership, the `Membership.
+        # member` field must contain a `user` with `name` populated (format: `users/`
+        # user``) and `type` set to `User.Type.HUMAN`. You can only add human users when
+        # setting up a space (adding Chat apps is only supported for direct message
+        # setup with the calling app). You can also add members using the user's email
+        # as an alias for `user`. For example, the `user.name` can be `users/example@
+        # gmail.com`. To invite Gmail users or users from external Google Workspace
+        # domains, user's email must be used for ``user``. Optional when setting `Space.
+        # spaceType` to `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`,
+        # along with at least two memberships. Required when setting `Space.spaceType`
+        # to `DIRECT_MESSAGE` with a human user, along with exactly one membership. Must
+        # be empty when creating a 1:1 conversation between a human and the calling Chat
+        # app (when setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.
+        # singleUserBotDm` to `true`).
         # Corresponds to the JSON property `memberships`
         # @return [Array<Google::Apis::ChatV1::Membership>]
         attr_accessor :memberships
@@ -4520,11 +4520,11 @@ module Google
       class Space
         include Google::Apis::Core::Hashable
       
-        # Output only. Whether the Chat app was installed by a Google Workspace
-        # administrator. Administrators can install a Chat app for their domain,
-        # organizational unit, or a group of users. Administrators can only install Chat
-        # apps for direct messaging between users and the app. To support admin install,
-        # your app must feature direct messaging.
+        # Output only. For direct message (DM) spaces with a Chat app, whether the space
+        # was created by a Google Workspace administrator. Administrators can install
+        # and set up a direct message with a Chat app on behalf of users in their
+        # organization. To support admin install, your Chat app must feature direct
+        # messaging.
         # Corresponds to the JSON property `adminInstalled`
         # @return [Boolean]
         attr_accessor :admin_installed
