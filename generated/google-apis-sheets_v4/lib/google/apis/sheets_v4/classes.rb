@@ -2420,7 +2420,7 @@ module Google
         # @return [Google::Apis::SheetsV4::DataSourceObjectReference]
         attr_accessor :reference
       
-        # The status of a refresh cancellation. You can send cancel request to
+        # The status of a refresh cancellation. You can send a cancel request to
         # explicitly cancel one or multiple data source object refreshes.
         # Corresponds to the JSON property `refreshCancellationStatus`
         # @return [Google::Apis::SheetsV4::RefreshCancellationStatus]
@@ -7799,7 +7799,7 @@ module Google
         end
       end
       
-      # The status of a refresh cancellation. You can send cancel request to
+      # The status of a refresh cancellation. You can send a cancel request to
       # explicitly cancel one or multiple data source object refreshes.
       class RefreshCancellationStatus
         include Google::Apis::Core::Hashable
