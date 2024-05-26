@@ -418,6 +418,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainObservabilityMetricData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainOperationError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -776,6 +788,7 @@ module Google
       
           property :observability_config, as: 'observabilityConfig', class: Google::Apis::AlloydbV1alpha::ObservabilityInstanceConfig, decorator: Google::Apis::AlloydbV1alpha::ObservabilityInstanceConfig::Representation
       
+          collection :outbound_public_ip_addresses, as: 'outboundPublicIpAddresses'
           property :psc_instance_config, as: 'pscInstanceConfig', class: Google::Apis::AlloydbV1alpha::PscInstanceConfig, decorator: Google::Apis::AlloydbV1alpha::PscInstanceConfig::Representation
       
           property :public_ip_address, as: 'publicIpAddress'
@@ -801,6 +814,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :authorized_external_networks, as: 'authorizedExternalNetworks', class: Google::Apis::AlloydbV1alpha::AuthorizedNetwork, decorator: Google::Apis::AlloydbV1alpha::AuthorizedNetwork::Representation
       
+          property :enable_outbound_public_ip, as: 'enableOutboundPublicIp'
           property :enable_public_ip, as: 'enablePublicIp'
         end
       end
@@ -1146,6 +1160,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :feed_timestamp, as: 'feedTimestamp'
           property :feed_type, as: 'feedType'
+          property :observability_metric_data, as: 'observabilityMetricData', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData::Representation
+      
           property :recommendation_signal_data, as: 'recommendationSignalData', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData::Representation
       
           property :resource_health_signal_data, as: 'resourceHealthSignalData', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData::Representation
@@ -1207,6 +1223,8 @@ module Google
       
           property :instance_type, as: 'instanceType'
           property :location, as: 'location'
+          property :machine_configuration, as: 'machineConfiguration', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainMachineConfiguration, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainMachineConfiguration::Representation
+      
           property :primary_resource_id, as: 'primaryResourceId', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
           property :product, as: 'product', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct::Representation
@@ -1239,6 +1257,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entitlement_state, as: 'entitlementState'
           property :type, as: 'type'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_count, as: 'cpuCount'
+          property :memory_size_in_bytes, :numeric_string => true, as: 'memorySizeInBytes'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainObservabilityMetricData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric_timestamp, as: 'metricTimestamp'
+          property :metric_type, as: 'metricType'
+          property :resource_name, as: 'resourceName'
+          property :value, as: 'value'
         end
       end
       
