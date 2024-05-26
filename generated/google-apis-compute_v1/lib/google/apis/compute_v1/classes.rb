@@ -1493,8 +1493,10 @@ module Google
         # the disk or when you attach the disk to a virtual machine instance. If you do
         # not provide an encryption key, then the disk will be encrypted using an
         # automatically generated key and you do not need to provide a key to use the
-        # disk later. Instance templates do not store customer-supplied encryption keys,
-        # so you cannot use your own keys to encrypt disks in a managed instance group.
+        # disk later. Note: Instance templates do not store customer-supplied encryption
+        # keys, so you cannot use your own keys to encrypt disks in a managed instance
+        # group. You cannot create VMs that have disks with customer-supplied keys using
+        # the bulk insert method.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -6295,6 +6297,16 @@ module Google
       class Disk
         include Google::Apis::Core::Hashable
       
+        # The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode,
+        # means the disk can be attached to single instance in RW mode. -
+        # READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple
+        # instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be
+        # attached to multiple instances in RO mode. The AccessMode is only valid for
+        # Hyperdisk disk types.
+        # Corresponds to the JSON property `accessMode`
+        # @return [String]
+        attr_accessor :access_mode
+      
         # The architecture of the disk. Valid values are ARM64 or X86_64.
         # Corresponds to the JSON property `architecture`
         # @return [String]
@@ -6654,6 +6666,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_mode = args[:access_mode] if args.key?(:access_mode)
           @architecture = args[:architecture] if args.key?(:architecture)
           @async_primary_disk = args[:async_primary_disk] if args.key?(:async_primary_disk)
           @async_secondary_disks = args[:async_secondary_disks] if args.key?(:async_secondary_disks)
@@ -17156,6 +17169,9 @@ module Google
         attr_accessor :labels
       
         # The machine type to use for instances that are created from these properties.
+        # This field only accept machine types name. e.g. n2-standard-4 and does not
+        # accept machine type full or partial url. e.g. projects/my-l7ilb-project/zones/
+        # us-central1-a/machineTypes/n2-standard-4 will throw INTERNAL_ERROR.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
