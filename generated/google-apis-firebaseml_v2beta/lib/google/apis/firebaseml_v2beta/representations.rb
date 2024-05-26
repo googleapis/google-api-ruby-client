@@ -384,6 +384,8 @@ module Google
           property :max_output_tokens, as: 'maxOutputTokens'
           property :presence_penalty, as: 'presencePenalty'
           property :response_mime_type, as: 'responseMimeType'
+          property :response_schema, as: 'responseSchema', class: Google::Apis::FirebasemlV2beta::Schema, decorator: Google::Apis::FirebasemlV2beta::Schema::Representation
+      
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
           property :top_k, as: 'topK'

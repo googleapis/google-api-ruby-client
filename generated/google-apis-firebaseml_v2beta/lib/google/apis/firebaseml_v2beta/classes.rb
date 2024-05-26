@@ -594,6 +594,13 @@ module Google
         # @return [String]
         attr_accessor :response_mime_type
       
+        # Schema is used to define the format of input/output data. Represents a select
+        # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
+        # schema). More fields may be added in the future as needed.
+        # Corresponds to the JSON property `responseSchema`
+        # @return [Google::Apis::FirebasemlV2beta::Schema]
+        attr_accessor :response_schema
+      
         # Optional. Stop sequences.
         # Corresponds to the JSON property `stopSequences`
         # @return [Array<String>]
@@ -625,6 +632,7 @@ module Google
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
+          @response_schema = args[:response_schema] if args.key?(:response_schema)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
           @top_k = args[:top_k] if args.key?(:top_k)
