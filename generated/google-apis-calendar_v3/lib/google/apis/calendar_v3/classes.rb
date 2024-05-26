@@ -1116,6 +1116,7 @@ module Google
         # - "outOfOffice" - An out-of-office event.
         # - "focusTime" - A focus-time event.
         # - "workingLocation" - A working location event.
+        # - "fromGmail" - An event from Gmail. This type of event cannot be created.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type

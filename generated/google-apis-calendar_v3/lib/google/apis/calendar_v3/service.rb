@@ -1434,8 +1434,8 @@ module Google
         end
         
         # Moves an event to another calendar, i.e. changes an event's organizer. Note
-        # that only default events can be moved; outOfOffice, focusTime and
-        # workingLocation events cannot be moved.
+        # that only default events can be moved; outOfOffice, focusTime, workingLocation
+        # and fromGmail events cannot be moved.
         # @param [String] calendar_id
         #   Calendar identifier of the source calendar where the event currently is on.
         # @param [String] event_id
