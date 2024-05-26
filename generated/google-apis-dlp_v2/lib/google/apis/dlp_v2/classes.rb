@@ -3351,7 +3351,7 @@ module Google
       
         # Data changes (non-schema changes) in Cloud SQL tables can't trigger
         # reprofiling. If you set this field, profiles are refreshed at this frequency
-        # regardless of whether the underlying tables have changes. Defaults to never.
+        # regardless of whether the underlying tables have changed. Defaults to never.
         # Corresponds to the JSON property `refreshFrequency`
         # @return [String]
         attr_accessor :refresh_frequency
@@ -3590,11 +3590,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlDiscoveryTarget]
         attr_accessor :cloud_sql_target
       
-        # Discovery target for credentials and secrets in Cloud resource metadata. This
+        # Discovery target for credentials and secrets in cloud resource metadata. This
         # target does not include any filtering or frequency controls. Cloud DLP will
-        # scan Cloud resource metadata for secrets daily. No inspect template should be
+        # scan cloud resource metadata for secrets daily. No inspect template should be
         # included in the discovery config for a security benchmarks scan. Instead, the
-        # built-in list of Secrets and Credentials infoTypes will be used (see https://
+        # built-in list of secrets and credentials infoTypes will be used (see https://
         # cloud.google.com/sensitive-data-protection/docs/infotypes-reference#
         # credentials_and_secrets). Credentials and secrets discovered will be reported
         # as vulnerabilities to Security Command Center.
@@ -7880,11 +7880,11 @@ module Google
         end
       end
       
-      # Discovery target for credentials and secrets in Cloud resource metadata. This
+      # Discovery target for credentials and secrets in cloud resource metadata. This
       # target does not include any filtering or frequency controls. Cloud DLP will
-      # scan Cloud resource metadata for secrets daily. No inspect template should be
+      # scan cloud resource metadata for secrets daily. No inspect template should be
       # included in the discovery config for a security benchmarks scan. Instead, the
-      # built-in list of Secrets and Credentials infoTypes will be used (see https://
+      # built-in list of secrets and credentials infoTypes will be used (see https://
       # cloud.google.com/sensitive-data-protection/docs/infotypes-reference#
       # credentials_and_secrets). Credentials and secrets discovered will be reported
       # as vulnerabilities to Security Command Center.
