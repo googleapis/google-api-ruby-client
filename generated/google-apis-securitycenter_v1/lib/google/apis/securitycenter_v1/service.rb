@@ -3932,7 +3932,7 @@ module Google
         
         # Updates an existing ResourceValueConfigs with new rules.
         # @param [String] name
-        #   Name for the resource value config
+        #   Name for the resource value configuration
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceValueConfig] google_cloud_securitycenter_v1_resource_value_config_object
         # @param [String] update_mask
         #   The list of fields to be updated. If empty all mutable fields will be updated.
