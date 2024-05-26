@@ -572,10 +572,20 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # PSC Google API target the packet is delivered to (if applicable).
+        # Corresponds to the JSON property `pscGoogleApiTarget`
+        # @return [String]
+        attr_accessor :psc_google_api_target
+      
         # URI of the resource that the packet is delivered to.
         # Corresponds to the JSON property `resourceUri`
         # @return [String]
         attr_accessor :resource_uri
+      
+        # Name of the Cloud Storage Bucket the packet is delivered to (if applicable).
+        # Corresponds to the JSON property `storageBucket`
+        # @return [String]
+        attr_accessor :storage_bucket
       
         # Target type where the packet is delivered to.
         # Corresponds to the JSON property `target`
@@ -589,7 +599,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @psc_google_api_target = args[:psc_google_api_target] if args.key?(:psc_google_api_target)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @storage_bucket = args[:storage_bucket] if args.key?(:storage_bucket)
           @target = args[:target] if args.key?(:target)
         end
       end
@@ -1022,32 +1034,53 @@ module Google
       class ForwardingRuleInfo
         include Google::Apis::Core::Hashable
       
-        # Name of a Compute Engine forwarding rule.
+        # Name of the forwarding rule.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Port range defined in the forwarding rule that matches the test.
+        # Name of the load balancer the forwarding rule belongs to. Empty for forwarding
+        # rules not related to load balancers (like PSC forwarding rules).
+        # Corresponds to the JSON property `loadBalancerName`
+        # @return [String]
+        attr_accessor :load_balancer_name
+      
+        # Port range defined in the forwarding rule that matches the packet.
         # Corresponds to the JSON property `matchedPortRange`
         # @return [String]
         attr_accessor :matched_port_range
       
-        # Protocol defined in the forwarding rule that matches the test.
+        # Protocol defined in the forwarding rule that matches the packet.
         # Corresponds to the JSON property `matchedProtocol`
         # @return [String]
         attr_accessor :matched_protocol
       
-        # Network URI. Only valid for Internal Load Balancer.
+        # Network URI.
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
+      
+        # PSC Google API target this forwarding rule targets (if applicable).
+        # Corresponds to the JSON property `pscGoogleApiTarget`
+        # @return [String]
+        attr_accessor :psc_google_api_target
+      
+        # URI of the PSC service attachment this forwarding rule targets (if applicable).
+        # Corresponds to the JSON property `pscServiceAttachmentUri`
+        # @return [String]
+        attr_accessor :psc_service_attachment_uri
+      
+        # Region of the forwarding rule. Set only for regional forwarding rules.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
       
         # Target type of the forwarding rule.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
       
-        # URI of a Compute Engine forwarding rule.
+        # URI of the forwarding rule.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1064,9 +1097,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @load_balancer_name = args[:load_balancer_name] if args.key?(:load_balancer_name)
           @matched_port_range = args[:matched_port_range] if args.key?(:matched_port_range)
           @matched_protocol = args[:matched_protocol] if args.key?(:matched_protocol)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @psc_google_api_target = args[:psc_google_api_target] if args.key?(:psc_google_api_target)
+          @psc_service_attachment_uri = args[:psc_service_attachment_uri] if args.key?(:psc_service_attachment_uri)
+          @region = args[:region] if args.key?(:region)
           @target = args[:target] if args.key?(:target)
           @uri = args[:uri] if args.key?(:uri)
           @vip = args[:vip] if args.key?(:vip)
@@ -2203,6 +2240,26 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with the serverless network endpoint
+      # group backend.
+      class ServerlessNegInfo
+        include Google::Apis::Core::Hashable
+      
+        # URI of the serverless network endpoint group.
+        # Corresponds to the JSON property `negUri`
+        # @return [String]
+        attr_accessor :neg_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @neg_uri = args[:neg_uri] if args.key?(:neg_uri)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -2424,6 +2481,12 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::RouteInfo]
         attr_accessor :route
       
+        # For display only. Metadata associated with the serverless network endpoint
+        # group backend.
+        # Corresponds to the JSON property `serverlessNeg`
+        # @return [Google::Apis::NetworkmanagementV1::ServerlessNegInfo]
+        attr_accessor :serverless_neg
+      
         # Each step is in one of the pre-defined states.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2478,6 +2541,7 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @proxy_connection = args[:proxy_connection] if args.key?(:proxy_connection)
           @route = args[:route] if args.key?(:route)
+          @serverless_neg = args[:serverless_neg] if args.key?(:serverless_neg)
           @state = args[:state] if args.key?(:state)
           @storage_bucket = args[:storage_bucket] if args.key?(:storage_bucket)
           @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
