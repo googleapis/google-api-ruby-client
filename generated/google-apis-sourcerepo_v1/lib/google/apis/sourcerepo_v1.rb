@@ -21,9 +21,14 @@ module Google
   module Apis
     # Cloud Source Repositories API
     #
-    # Accesses source code repositories hosted by Google.
+    # Accesses source code repositories hosted by Google. Important: Cloud Source
+    # Repositories is scheduled for end of sales starting June 17, 2024. Customers
+    # who have enabled the API prior to this date will not be affected and can
+    # continue to use Cloud Source Repositories. Organizations or projects who have
+    # not previously enabled the API cannot use Cloud Source Repositories after this
+    # date. View Cloud Source Repositories documentation for more info.
     #
-    # @see https://cloud.google.com/source-repositories/docs/apis
+    # @see https://cloud.google.com/source-repositories/docs
     module SourcerepoV1
       # Version of the Cloud Source Repositories API this client connects to.
       # This is NOT the gem version.
