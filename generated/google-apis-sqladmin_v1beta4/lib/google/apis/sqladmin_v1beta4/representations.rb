@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AvailableDatabaseVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -712,6 +718,15 @@ module Google
         end
       end
       
+      class AvailableDatabaseVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :major_version, as: 'majorVersion'
+          property :name, as: 'name'
+        end
+      end
+      
       class BackupConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -809,6 +824,7 @@ module Google
           property :kind, as: 'kind'
           property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
           property :point_in_time, as: 'pointInTime'
+          property :preferred_secondary_zone, as: 'preferredSecondaryZone'
           property :preferred_zone, as: 'preferredZone'
         end
       end
@@ -917,6 +933,8 @@ module Google
           property :sql_network_architecture, as: 'sqlNetworkArchitecture'
           property :state, as: 'state'
           collection :suspension_reason, as: 'suspensionReason'
+          collection :upgradable_database_versions, as: 'upgradableDatabaseVersions', class: Google::Apis::SqladminV1beta4::AvailableDatabaseVersion, decorator: Google::Apis::SqladminV1beta4::AvailableDatabaseVersion::Representation
+      
           property :write_endpoint, as: 'writeEndpoint'
         end
         
