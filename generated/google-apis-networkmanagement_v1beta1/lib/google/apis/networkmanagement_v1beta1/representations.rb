@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServerlessNegInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -485,7 +491,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'ipAddress'
+          property :psc_google_api_target, as: 'pscGoogleApiTarget'
           property :resource_uri, as: 'resourceUri'
+          property :storage_bucket, as: 'storageBucket'
           property :target, as: 'target'
         end
       end
@@ -591,9 +599,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :load_balancer_name, as: 'loadBalancerName'
           property :matched_port_range, as: 'matchedPortRange'
           property :matched_protocol, as: 'matchedProtocol'
           property :network_uri, as: 'networkUri'
+          property :psc_google_api_target, as: 'pscGoogleApiTarget'
+          property :psc_service_attachment_uri, as: 'pscServiceAttachmentUri'
+          property :region, as: 'region'
           property :target, as: 'target'
           property :uri, as: 'uri'
           property :vip, as: 'vip'
@@ -867,6 +879,13 @@ module Google
         end
       end
       
+      class ServerlessNegInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :neg_uri, as: 'negUri'
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -930,6 +949,8 @@ module Google
           property :proxy_connection, as: 'proxyConnection', class: Google::Apis::NetworkmanagementV1beta1::ProxyConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::ProxyConnectionInfo::Representation
       
           property :route, as: 'route', class: Google::Apis::NetworkmanagementV1beta1::RouteInfo, decorator: Google::Apis::NetworkmanagementV1beta1::RouteInfo::Representation
+      
+          property :serverless_neg, as: 'serverlessNeg', class: Google::Apis::NetworkmanagementV1beta1::ServerlessNegInfo, decorator: Google::Apis::NetworkmanagementV1beta1::ServerlessNegInfo::Representation
       
           property :state, as: 'state'
           property :storage_bucket, as: 'storageBucket', class: Google::Apis::NetworkmanagementV1beta1::StorageBucketInfo, decorator: Google::Apis::NetworkmanagementV1beta1::StorageBucketInfo::Representation
