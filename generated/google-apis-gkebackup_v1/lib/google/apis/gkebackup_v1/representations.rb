@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Filter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetBackupIndexDownloadUrlResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,12 @@ module Google
       end
       
       class GroupKind
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GroupKindDependency
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Restore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +251,12 @@ module Google
       end
       
       class RestoreConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreOrder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +334,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VolumeDataRestorePolicyBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VolumeDataRestorePolicyOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VolumeRestore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +389,7 @@ module Google
           hash :labels, as: 'labels'
           property :manual, as: 'manual'
           property :name, as: 'name'
+          property :permissive_mode, as: 'permissiveMode'
           property :pod_count, as: 'podCount'
           property :resource_count, as: 'resourceCount'
           property :retain_days, as: 'retainDays'
@@ -378,6 +415,7 @@ module Google
       
           property :include_secrets, as: 'includeSecrets'
           property :include_volume_data, as: 'includeVolumeData'
+          property :permissive_mode, as: 'permissiveMode'
           property :selected_applications, as: 'selectedApplications', class: Google::Apis::GkebackupV1::NamespacedNames, decorator: Google::Apis::GkebackupV1::NamespacedNames::Representation
       
           property :selected_namespaces, as: 'selectedNamespaces', class: Google::Apis::GkebackupV1::Namespaces, decorator: Google::Apis::GkebackupV1::Namespaces::Representation
@@ -497,6 +535,16 @@ module Google
         end
       end
       
+      class Filter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclusion_filters, as: 'exclusionFilters', class: Google::Apis::GkebackupV1::ResourceSelector, decorator: Google::Apis::GkebackupV1::ResourceSelector::Representation
+      
+          collection :inclusion_filters, as: 'inclusionFilters', class: Google::Apis::GkebackupV1::ResourceSelector, decorator: Google::Apis::GkebackupV1::ResourceSelector::Representation
+      
+        end
+      end
+      
       class GetBackupIndexDownloadUrlResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -545,6 +593,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_group, as: 'resourceGroup'
           property :resource_kind, as: 'resourceKind'
+        end
+      end
+      
+      class GroupKindDependency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requiring, as: 'requiring', class: Google::Apis::GkebackupV1::GroupKind, decorator: Google::Apis::GkebackupV1::GroupKind::Representation
+      
+          property :satisfying, as: 'satisfying', class: Google::Apis::GkebackupV1::GroupKind, decorator: Google::Apis::GkebackupV1::GroupKind::Representation
+      
         end
       end
       
@@ -683,6 +741,17 @@ module Google
         end
       end
       
+      class ResourceSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_kind, as: 'groupKind', class: Google::Apis::GkebackupV1::GroupKind, decorator: Google::Apis::GkebackupV1::GroupKind::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :namespace, as: 'namespace'
+        end
+      end
+      
       class Restore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -692,6 +761,8 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :etag, as: 'etag'
+          property :filter, as: 'filter', class: Google::Apis::GkebackupV1::Filter, decorator: Google::Apis::GkebackupV1::Filter::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :resources_excluded_count, as: 'resourcesExcludedCount'
@@ -703,6 +774,8 @@ module Google
           property :state_reason, as: 'stateReason'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+          collection :volume_data_restore_policy_overrides, as: 'volumeDataRestorePolicyOverrides', class: Google::Apis::GkebackupV1::VolumeDataRestorePolicyOverride, decorator: Google::Apis::GkebackupV1::VolumeDataRestorePolicyOverride::Representation
+      
           property :volumes_restored_count, as: 'volumesRestoredCount'
         end
       end
@@ -718,6 +791,8 @@ module Google
       
           property :namespaced_resource_restore_mode, as: 'namespacedResourceRestoreMode'
           property :no_namespaces, as: 'noNamespaces'
+          property :restore_order, as: 'restoreOrder', class: Google::Apis::GkebackupV1::RestoreOrder, decorator: Google::Apis::GkebackupV1::RestoreOrder::Representation
+      
           property :selected_applications, as: 'selectedApplications', class: Google::Apis::GkebackupV1::NamespacedNames, decorator: Google::Apis::GkebackupV1::NamespacedNames::Representation
       
           property :selected_namespaces, as: 'selectedNamespaces', class: Google::Apis::GkebackupV1::Namespaces, decorator: Google::Apis::GkebackupV1::Namespaces::Representation
@@ -727,6 +802,16 @@ module Google
           collection :transformation_rules, as: 'transformationRules', class: Google::Apis::GkebackupV1::TransformationRule, decorator: Google::Apis::GkebackupV1::TransformationRule::Representation
       
           property :volume_data_restore_policy, as: 'volumeDataRestorePolicy'
+          collection :volume_data_restore_policy_bindings, as: 'volumeDataRestorePolicyBindings', class: Google::Apis::GkebackupV1::VolumeDataRestorePolicyBinding, decorator: Google::Apis::GkebackupV1::VolumeDataRestorePolicyBinding::Representation
+      
+        end
+      end
+      
+      class RestoreOrder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :group_kind_dependencies, as: 'groupKindDependencies', class: Google::Apis::GkebackupV1::GroupKindDependency, decorator: Google::Apis::GkebackupV1::GroupKindDependency::Representation
+      
         end
       end
       
@@ -861,6 +946,23 @@ module Google
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :volume_backup_handle, as: 'volumeBackupHandle'
+        end
+      end
+      
+      class VolumeDataRestorePolicyBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+          property :volume_type, as: 'volumeType'
+        end
+      end
+      
+      class VolumeDataRestorePolicyOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+          property :selected_pvcs, as: 'selectedPvcs', class: Google::Apis::GkebackupV1::NamespacedNames, decorator: Google::Apis::GkebackupV1::NamespacedNames::Representation
+      
         end
       end
       
