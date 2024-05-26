@@ -149,6 +149,38 @@ module Google
         end
       end
       
+      # An available database version. It can be a major or a minor version.
+      class AvailableDatabaseVersion
+        include Google::Apis::Core::Hashable
+      
+        # The database version's display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The version's major version name.
+        # Corresponds to the JSON property `majorVersion`
+        # @return [String]
+        attr_accessor :major_version
+      
+        # The database version name. For MySQL 8.0, this string provides the database
+        # major and minor version.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @major_version = args[:major_version] if args.key?(:major_version)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Database instance backup configuration.
       class BackupConfiguration
         include Google::Apis::Core::Hashable
@@ -543,9 +575,9 @@ module Google
         # @return [String]
         attr_accessor :point_in_time
       
-        # Optional. (Point-in-time recovery for PostgreSQL only) Clone to an instance in
-        # the specified zone. If no zone is specified, clone to the same zone as the
-        # source instance.
+        # Optional. Copy clone and point-in-time recovery clone of an instance to the
+        # specified zone. If no zone is specified, clone to the same primary zone as the
+        # source instance. This field applies to all DB types.
         # Corresponds to the JSON property `preferredZone`
         # @return [String]
         attr_accessor :preferred_zone
@@ -998,6 +1030,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :suspension_reason
       
+        # Output only. All database versions that are available for upgrade.
+        # Corresponds to the JSON property `upgradableDatabaseVersions`
+        # @return [Array<Google::Apis::SqladminV1::AvailableDatabaseVersion>]
+        attr_accessor :upgradable_database_versions
+      
         # Output only. The dns name of the primary instance in a replication group.
         # Corresponds to the JSON property `writeEndpoint`
         # @return [String]
@@ -1051,6 +1088,7 @@ module Google
           @sql_network_architecture = args[:sql_network_architecture] if args.key?(:sql_network_architecture)
           @state = args[:state] if args.key?(:state)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
+          @upgradable_database_versions = args[:upgradable_database_versions] if args.key?(:upgradable_database_versions)
           @write_endpoint = args[:write_endpoint] if args.key?(:write_endpoint)
         end
         
