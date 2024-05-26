@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleTypeDate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -80,11 +86,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count_messages_accepted, :numeric_string => true, as: 'countMessagesAccepted'
+          property :count_notifications_accepted, :numeric_string => true, as: 'countNotificationsAccepted'
           property :delivery_performance_percents, as: 'deliveryPerformancePercents', class: Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents, decorator: Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents::Representation
       
           property :message_insight_percents, as: 'messageInsightPercents', class: Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1MessageInsightPercents, decorator: Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1MessageInsightPercents::Representation
       
           property :message_outcome_percents, as: 'messageOutcomePercents', class: Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1MessageOutcomePercents, decorator: Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1MessageOutcomePercents::Representation
+      
+          property :proxy_notification_insight_percents, as: 'proxyNotificationInsightPercents', class: Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents, decorator: Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents::Representation
       
         end
       end
@@ -124,6 +133,18 @@ module Google
           property :dropped_device_inactive, as: 'droppedDeviceInactive'
           property :dropped_too_many_pending_messages, as: 'droppedTooManyPendingMessages'
           property :pending, as: 'pending'
+        end
+      end
+      
+      class GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failed, as: 'failed'
+          property :proxied, as: 'proxied'
+          property :skipped_not_throttled, as: 'skippedNotThrottled'
+          property :skipped_opted_out, as: 'skippedOptedOut'
+          property :skipped_unconfigured, as: 'skippedUnconfigured'
+          property :skipped_unsupported, as: 'skippedUnsupported'
         end
       end
       
