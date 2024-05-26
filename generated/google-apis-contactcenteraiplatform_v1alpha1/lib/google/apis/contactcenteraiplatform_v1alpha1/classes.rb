@@ -60,7 +60,34 @@ module Google
         end
       end
       
-      # Message describing ContactCenter object Next ID: 22
+      # Defines a logical CCAIP component that e.g. “EMAIL”, "CRM". For more
+      # information see go/ccaip-private-path-v2. Each logical component is associated
+      # with a list of service attachments.
+      class Component
+        include Google::Apis::Core::Hashable
+      
+        # Name of the component.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Associated service attachments.
+        # Corresponds to the JSON property `serviceAttachments`
+        # @return [Array<Google::Apis::ContactcenteraiplatformV1alpha1::ServiceAttachment>]
+        attr_accessor :service_attachments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @service_attachments = args[:service_attachments] if args.key?(:service_attachments)
+        end
+      end
+      
+      # Message describing ContactCenter object Next ID: 23
       class ContactCenter
         include Google::Apis::Core::Hashable
       
@@ -81,6 +108,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Instances in this Channel will receive updates after all instances in `
+        # Critical` were updated + 2 days. They also will only be updated outside of
+        # their peak hours.
+        # Corresponds to the JSON property `critical`
+        # @return [Google::Apis::ContactcenteraiplatformV1alpha1::Critical]
+        attr_accessor :critical
+      
         # Required. Immutable. At least 2 and max 16 char long, must conform to [RFC
         # 1035](https://www.ietf.org/rfc/rfc1035.txt).
         # Corresponds to the JSON property `customerDomainPrefix`
@@ -92,7 +126,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # First Channel to receive the updates. Meant to dev/test instances
+        # LINT.IfChange First Channel to receive the updates. Meant to dev/test
+        # instances
         # Corresponds to the JSON property `early`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::Early]
         attr_accessor :early
@@ -122,6 +157,11 @@ module Google
         # Corresponds to the JSON property `normal`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::Normal]
         attr_accessor :normal
+      
+        # Defines ingress and egress private traffic settings for CCAIP instances.
+        # Corresponds to the JSON property `privateAccess`
+        # @return [Google::Apis::ContactcenteraiplatformV1alpha1::PrivateAccess]
+        attr_accessor :private_access
       
         # Output only. A list of UJET components that should be privately accessed. This
         # field is set by reading settings from the data plane. For more information
@@ -166,6 +206,7 @@ module Google
           @admin_user = args[:admin_user] if args.key?(:admin_user)
           @ccaip_managed_users = args[:ccaip_managed_users] if args.key?(:ccaip_managed_users)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @critical = args[:critical] if args.key?(:critical)
           @customer_domain_prefix = args[:customer_domain_prefix] if args.key?(:customer_domain_prefix)
           @display_name = args[:display_name] if args.key?(:display_name)
           @early = args[:early] if args.key?(:early)
@@ -174,6 +215,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @normal = args[:normal] if args.key?(:normal)
+          @private_access = args[:private_access] if args.key?(:private_access)
           @private_components = args[:private_components] if args.key?(:private_components)
           @saml_params = args[:saml_params] if args.key?(:saml_params)
           @state = args[:state] if args.key?(:state)
@@ -216,7 +258,29 @@ module Google
         end
       end
       
-      # First Channel to receive the updates. Meant to dev/test instances
+      # Instances in this Channel will receive updates after all instances in `
+      # Critical` were updated + 2 days. They also will only be updated outside of
+      # their peak hours.
+      class Critical
+        include Google::Apis::Core::Hashable
+      
+        # Required. Hours during which the instance should not be updated.
+        # Corresponds to the JSON property `peakHours`
+        # @return [Array<Google::Apis::ContactcenteraiplatformV1alpha1::WeeklySchedule>]
+        attr_accessor :peak_hours
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @peak_hours = args[:peak_hours] if args.key?(:peak_hours)
+        end
+      end
+      
+      # LINT.IfChange First Channel to receive the updates. Meant to dev/test
+      # instances
       class Early
         include Google::Apis::Core::Hashable
       
@@ -536,7 +600,7 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # Message describing ContactCenter object Next ID: 22
+        # Message describing ContactCenter object Next ID: 23
         # Corresponds to the JSON property `contactCenter`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::ContactCenter]
         attr_accessor :contact_center
@@ -592,6 +656,33 @@ module Google
         end
       end
       
+      # Defines ingress and egress private traffic settings for CCAIP instances.
+      class PrivateAccess
+        include Google::Apis::Core::Hashable
+      
+        # List of egress components that should not be accessed via the Internet. For
+        # more information see go/ccaip-private-path-v2.
+        # Corresponds to the JSON property `egressSettings`
+        # @return [Array<Google::Apis::ContactcenteraiplatformV1alpha1::Component>]
+        attr_accessor :egress_settings
+      
+        # List of ingress components that should not be accessed via the Internet. For
+        # more information see go/ccaip-private-path-v2.
+        # Corresponds to the JSON property `ingressSettings`
+        # @return [Array<Google::Apis::ContactcenteraiplatformV1alpha1::Component>]
+        attr_accessor :ingress_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_settings = args[:egress_settings] if args.key?(:egress_settings)
+          @ingress_settings = args[:ingress_settings] if args.key?(:ingress_settings)
+        end
+      end
+      
       # Quota details.
       class Quota
         include Google::Apis::Core::Hashable
@@ -627,6 +718,11 @@ module Google
       class SamlParams
         include Google::Apis::Core::Hashable
       
+        # Additional contexts used for authentication.
+        # Corresponds to the JSON property `authenticationContexts`
+        # @return [Array<String>]
+        attr_accessor :authentication_contexts
+      
         # SAML certificate
         # Corresponds to the JSON property `certificate`
         # @return [String]
@@ -658,11 +754,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @authentication_contexts = args[:authentication_contexts] if args.key?(:authentication_contexts)
           @certificate = args[:certificate] if args.key?(:certificate)
           @email_mapping = args[:email_mapping] if args.key?(:email_mapping)
           @entity_id = args[:entity_id] if args.key?(:entity_id)
           @sso_uri = args[:sso_uri] if args.key?(:sso_uri)
           @user_email = args[:user_email] if args.key?(:user_email)
+        end
+      end
+      
+      # Container for the VPC-SC networking configurations.
+      class ServiceAttachment
+        include Google::Apis::Core::Hashable
+      
+        # The service attachment name that will be used for sending private traffic to
+        # the CCAIP tenant project. Example: "projects/$`TENANT_PROJECT_ID`/regions/$`
+        # REGION`/serviceAttachments/ingress-default".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -705,6 +823,47 @@ module Google
         end
       end
       
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+        # allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+        # allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
       # Message storing the URIs of the ContactCenter.
       class UrIs
         include Google::Apis::Core::Hashable
@@ -739,6 +898,47 @@ module Google
           @media_uri = args[:media_uri] if args.key?(:media_uri)
           @root_uri = args[:root_uri] if args.key?(:root_uri)
           @virtual_agent_streaming_service_uri = args[:virtual_agent_streaming_service_uri] if args.key?(:virtual_agent_streaming_service_uri)
+        end
+      end
+      
+      # Message representing a weekly schedule.
+      class WeeklySchedule
+        include Google::Apis::Core::Hashable
+      
+        # Required. Days of the week this schedule applies to.
+        # Corresponds to the JSON property `days`
+        # @return [Array<String>]
+        attr_accessor :days
+      
+        # Optional. Duration of the schedule.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `endTime`
+        # @return [Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay]
+        attr_accessor :end_time
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @days = args[:days] if args.key?(:days)
+          @duration = args[:duration] if args.key?(:duration)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
     end

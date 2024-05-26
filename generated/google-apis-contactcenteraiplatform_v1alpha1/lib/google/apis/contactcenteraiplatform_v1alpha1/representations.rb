@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Component
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContactCenter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +47,12 @@ module Google
       end
       
       class ContactCenterQuota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Critical
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivateAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Quota
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,13 +142,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrIs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WeeklySchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -150,6 +186,15 @@ module Google
         end
       end
       
+      class Component
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :service_attachments, as: 'serviceAttachments', class: Google::Apis::ContactcenteraiplatformV1alpha1::ServiceAttachment, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::ServiceAttachment::Representation
+      
+        end
+      end
+      
       class ContactCenter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -157,6 +202,8 @@ module Google
       
           property :ccaip_managed_users, as: 'ccaipManagedUsers'
           property :create_time, as: 'createTime'
+          property :critical, as: 'critical', class: Google::Apis::ContactcenteraiplatformV1alpha1::Critical, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Critical::Representation
+      
           property :customer_domain_prefix, as: 'customerDomainPrefix'
           property :display_name, as: 'displayName'
           property :early, as: 'early', class: Google::Apis::ContactcenteraiplatformV1alpha1::Early, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Early::Representation
@@ -167,6 +214,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :normal, as: 'normal', class: Google::Apis::ContactcenteraiplatformV1alpha1::Normal, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Normal::Representation
+      
+          property :private_access, as: 'privateAccess', class: Google::Apis::ContactcenteraiplatformV1alpha1::PrivateAccess, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::PrivateAccess::Representation
       
           collection :private_components, as: 'privateComponents'
           property :saml_params, as: 'samlParams', class: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams::Representation
@@ -185,6 +234,14 @@ module Google
           property :contact_center_count_limit, as: 'contactCenterCountLimit'
           property :contact_center_count_sum, as: 'contactCenterCountSum'
           collection :quotas, as: 'quotas', class: Google::Apis::ContactcenteraiplatformV1alpha1::Quota, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Quota::Representation
+      
+        end
+      end
+      
+      class Critical
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :peak_hours, as: 'peakHours', class: Google::Apis::ContactcenteraiplatformV1alpha1::WeeklySchedule, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::WeeklySchedule::Representation
       
         end
       end
@@ -293,6 +350,16 @@ module Google
         end
       end
       
+      class PrivateAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :egress_settings, as: 'egressSettings', class: Google::Apis::ContactcenteraiplatformV1alpha1::Component, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Component::Representation
+      
+          collection :ingress_settings, as: 'ingressSettings', class: Google::Apis::ContactcenteraiplatformV1alpha1::Component, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Component::Representation
+      
+        end
+      end
+      
       class Quota
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -305,11 +372,19 @@ module Google
       class SamlParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authentication_contexts, as: 'authenticationContexts'
           property :certificate, as: 'certificate'
           property :email_mapping, as: 'emailMapping'
           property :entity_id, as: 'entityId'
           property :sso_uri, as: 'ssoUri'
           property :user_email, as: 'userEmail'
+        end
+      end
+      
+      class ServiceAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -322,6 +397,16 @@ module Google
         end
       end
       
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+        end
+      end
+      
       class UrIs
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -329,6 +414,18 @@ module Google
           property :media_uri, as: 'mediaUri'
           property :root_uri, as: 'rootUri'
           property :virtual_agent_streaming_service_uri, as: 'virtualAgentStreamingServiceUri'
+        end
+      end
+      
+      class WeeklySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :days, as: 'days'
+          property :duration, as: 'duration'
+          property :end_time, as: 'endTime', class: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay::Representation
+      
+          property :start_time, as: 'startTime', class: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay::Representation
+      
         end
       end
     end
