@@ -551,7 +551,7 @@ module Google
       
         # Optional. A set of events during request or response processing for which this
         # extension is called. This field is required for the `LbTrafficExtension`
-        # resource. It's not relevant for the `LbRouteExtension` resource.
+        # resource. It must not be set for the `LbRouteExtension` resource.
         # Corresponds to the JSON property `supportedEvents`
         # @return [Array<String>]
         attr_accessor :supported_events
@@ -2171,6 +2171,16 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
+        # Optional. The metadata provided here will be included as part of the `
+        # metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest`
+        # message sent to the extension server. The metadata will be available under
+        # the namespace `com.google.lb_route_extension.`. The following variables are
+        # supported in the metadata Struct: ``forwarding_rule_id`` - substituted with
+        # the forwarding rule's fully qualified resource name.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         # Required. Identifier. Name of the `LbRouteExtension` resource in the following
         # format: `projects/`project`/locations/`location`/lbRouteExtensions/`
         # lb_route_extension``.
@@ -2195,6 +2205,7 @@ module Google
           @forwarding_rules = args[:forwarding_rules] if args.key?(:forwarding_rules)
           @labels = args[:labels] if args.key?(:labels)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2249,6 +2260,15 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
+        # Optional. The metadata provided here will be included in the `
+        # ProcessingRequest.metadata_context.filter_metadata` map field. The metadata
+        # will be available under the key `com.google.lb_traffic_extension.`. The
+        # following variables are supported in the metadata: ``forwarding_rule_id`` -
+        # substituted with the forwarding rule's fully qualified resource name.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         # Required. Identifier. Name of the `LbTrafficExtension` resource in the
         # following format: `projects/`project`/locations/`location`/lbTrafficExtensions/
         # `lb_traffic_extension``.
@@ -2273,6 +2293,7 @@ module Google
           @forwarding_rules = args[:forwarding_rules] if args.key?(:forwarding_rules)
           @labels = args[:labels] if args.key?(:labels)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
