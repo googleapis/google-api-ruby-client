@@ -904,6 +904,11 @@ module Google
         attr_accessor :ads_personalization_enabled
         alias_method :ads_personalization_enabled?, :ads_personalization_enabled
       
+        # Output only. Time when the Audience was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Required. The description of the Audience.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -951,6 +956,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ads_personalization_enabled = args[:ads_personalization_enabled] if args.key?(:ads_personalization_enabled)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @event_trigger = args[:event_trigger] if args.key?(:event_trigger)
@@ -2472,12 +2478,6 @@ module Google
       class GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The ordinary property for which to create a subproperty. Format:
-        # properties/property_id Example: properties/123
-        # Corresponds to the JSON property `parent`
-        # @return [String]
-        attr_accessor :parent
-      
         # A resource message representing a Google Analytics GA4 property.
         # Corresponds to the JSON property `subproperty`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
@@ -2494,7 +2494,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @parent = args[:parent] if args.key?(:parent)
           @subproperty = args[:subproperty] if args.key?(:subproperty)
           @subproperty_event_filter = args[:subproperty_event_filter] if args.key?(:subproperty_event_filter)
         end
