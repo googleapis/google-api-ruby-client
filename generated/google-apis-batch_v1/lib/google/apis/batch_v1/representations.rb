@@ -455,6 +455,7 @@ module Google
           property :instance, as: 'instance'
           property :instance_id, :numeric_string => true, as: 'instanceId'
           property :instance_preemption_notice_received, as: 'instancePreemptionNoticeReceived'
+          property :machine_type, as: 'machineType'
           hash :os_release, as: 'osRelease'
           property :version, as: 'version'
           property :zone, as: 'zone'
