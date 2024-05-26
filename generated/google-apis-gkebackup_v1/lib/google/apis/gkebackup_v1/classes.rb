@@ -197,6 +197,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. If false, Backup will fail when Backup for GKE detects Kubernetes
+        # configuration that is non-standard or requires additional setup to restore.
+        # Inherited from the parent BackupPlan's permissive_mode value.
+        # Corresponds to the JSON property `permissiveMode`
+        # @return [Boolean]
+        attr_accessor :permissive_mode
+        alias_method :permissive_mode?, :permissive_mode
+      
         # Output only. The total number of Kubernetes Pods contained in the Backup.
         # Corresponds to the JSON property `podCount`
         # @return [Fixnum]
@@ -286,6 +294,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @manual = args[:manual] if args.key?(:manual)
           @name = args[:name] if args.key?(:name)
+          @permissive_mode = args[:permissive_mode] if args.key?(:permissive_mode)
           @pod_count = args[:pod_count] if args.key?(:pod_count)
           @resource_count = args[:resource_count] if args.key?(:resource_count)
           @retain_days = args[:retain_days] if args.key?(:retain_days)
@@ -331,6 +340,14 @@ module Google
         attr_accessor :include_volume_data
         alias_method :include_volume_data?, :include_volume_data
       
+        # Optional. If false, Backups will fail when Backup for GKE detects Kubernetes
+        # configuration that is non-standard or requires additional setup to restore.
+        # Default: False
+        # Corresponds to the JSON property `permissiveMode`
+        # @return [Boolean]
+        attr_accessor :permissive_mode
+        alias_method :permissive_mode?, :permissive_mode
+      
         # A list of namespaced Kubernetes resources.
         # Corresponds to the JSON property `selectedApplications`
         # @return [Google::Apis::GkebackupV1::NamespacedNames]
@@ -351,6 +368,7 @@ module Google
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @include_secrets = args[:include_secrets] if args.key?(:include_secrets)
           @include_volume_data = args[:include_volume_data] if args.key?(:include_volume_data)
+          @permissive_mode = args[:permissive_mode] if args.key?(:permissive_mode)
           @selected_applications = args[:selected_applications] if args.key?(:selected_applications)
           @selected_namespaces = args[:selected_namespaces] if args.key?(:selected_namespaces)
         end
@@ -907,6 +925,40 @@ module Google
         end
       end
       
+      # Defines the filter for `Restore`. This filter can be used to further refine
+      # the resource selection of the `Restore` beyond the coarse-grained scope
+      # defined in the `RestorePlan`. `exclusion_filters` take precedence over `
+      # inclusion_filters`. If a resource matches both `inclusion_filters` and `
+      # exclusion_filters`, it will not be restored.
+      class Filter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Excludes resources from restoration. If specified, a resource will
+        # not be restored if it matches any `ResourceSelector` of the `exclusion_filters`
+        # .
+        # Corresponds to the JSON property `exclusionFilters`
+        # @return [Array<Google::Apis::GkebackupV1::ResourceSelector>]
+        attr_accessor :exclusion_filters
+      
+        # Optional. Selects resources for restoration. If specified, only resources
+        # which match `inclusion_filters` will be selected for restoration. A resource
+        # will be selected if it matches any `ResourceSelector` of the `
+        # inclusion_filters`.
+        # Corresponds to the JSON property `inclusionFilters`
+        # @return [Array<Google::Apis::GkebackupV1::ResourceSelector>]
+        attr_accessor :inclusion_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusion_filters = args[:exclusion_filters] if args.key?(:exclusion_filters)
+          @inclusion_filters = args[:inclusion_filters] if args.key?(:inclusion_filters)
+        end
+      end
+      
       # Response message for GetBackupIndexDownloadUrl.
       class GetBackupIndexDownloadUrlResponse
         include Google::Apis::Core::Hashable
@@ -1091,6 +1143,35 @@ module Google
         def update!(**args)
           @resource_group = args[:resource_group] if args.key?(:resource_group)
           @resource_kind = args[:resource_kind] if args.key?(:resource_kind)
+        end
+      end
+      
+      # Defines a dependency between two group kinds.
+      class GroupKindDependency
+        include Google::Apis::Core::Hashable
+      
+        # This is a direct map to the Kubernetes GroupKind type [GroupKind](https://
+        # godoc.org/k8s.io/apimachinery/pkg/runtime/schema#GroupKind) and is used for
+        # identifying specific "types" of resources to restore.
+        # Corresponds to the JSON property `requiring`
+        # @return [Google::Apis::GkebackupV1::GroupKind]
+        attr_accessor :requiring
+      
+        # This is a direct map to the Kubernetes GroupKind type [GroupKind](https://
+        # godoc.org/k8s.io/apimachinery/pkg/runtime/schema#GroupKind) and is used for
+        # identifying specific "types" of resources to restore.
+        # Corresponds to the JSON property `satisfying`
+        # @return [Google::Apis::GkebackupV1::GroupKind]
+        attr_accessor :satisfying
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requiring = args[:requiring] if args.key?(:requiring)
+          @satisfying = args[:satisfying] if args.key?(:satisfying)
         end
       end
       
@@ -1606,6 +1687,59 @@ module Google
         end
       end
       
+      # Defines a selector to identify a single or a group of resources. Conditions in
+      # the selector are optional, but at least one field should be set to a non-empty
+      # value. If a condition is not specified, no restrictions will be applied on
+      # that dimension. If more than one condition is specified, a resource will be
+      # selected if and only if all conditions are met.
+      class ResourceSelector
+        include Google::Apis::Core::Hashable
+      
+        # This is a direct map to the Kubernetes GroupKind type [GroupKind](https://
+        # godoc.org/k8s.io/apimachinery/pkg/runtime/schema#GroupKind) and is used for
+        # identifying specific "types" of resources to restore.
+        # Corresponds to the JSON property `groupKind`
+        # @return [Google::Apis::GkebackupV1::GroupKind]
+        attr_accessor :group_kind
+      
+        # Optional. Selects resources using Kubernetes [labels](https://kubernetes.io/
+        # docs/concepts/overview/working-with-objects/labels/). If specified, a resource
+        # will be selected if and only if the resource has all of the provided labels
+        # and all the label values match.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. Selects resources using their resource names. If specified, only
+        # resources with the provided name will be selected.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Selects resources using their namespaces. This only applies to
+        # namespace scoped resources and cannot be used for selecting cluster scoped
+        # resources. If specified, only resources in the provided namespace will be
+        # selected. If not specified, the filter will apply to both cluster scoped and
+        # namespace scoped resources (e.g. name or label). The [Namespace](https://pkg.
+        # go.dev/k8s.io/api/core/v1#Namespace) resource itself will be restored if and
+        # only if any resources within the namespace are restored.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_kind = args[:group_kind] if args.key?(:group_kind)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @namespace = args[:namespace] if args.key?(:namespace)
+        end
+      end
+      
       # Represents both a request to Restore some portion of a Backup into a target
       # GKE cluster and a record of the restore operation itself.
       class Restore
@@ -1651,6 +1785,15 @@ module Google
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
+      
+        # Defines the filter for `Restore`. This filter can be used to further refine
+        # the resource selection of the `Restore` beyond the coarse-grained scope
+        # defined in the `RestorePlan`. `exclusion_filters` take precedence over `
+        # inclusion_filters`. If a resource matches both `inclusion_filters` and `
+        # exclusion_filters`, it will not be restored.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::GkebackupV1::Filter]
+        attr_accessor :filter
       
         # A set of custom labels supplied by user.
         # Corresponds to the JSON property `labels`
@@ -1706,6 +1849,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Optional. Immutable. Overrides the volume data restore policies selected in
+        # the Restore Config for override-scoped resources.
+        # Corresponds to the JSON property `volumeDataRestorePolicyOverrides`
+        # @return [Array<Google::Apis::GkebackupV1::VolumeDataRestorePolicyOverride>]
+        attr_accessor :volume_data_restore_policy_overrides
+      
         # Output only. Number of volumes restored during the restore execution.
         # Corresponds to the JSON property `volumesRestoredCount`
         # @return [Fixnum]
@@ -1723,6 +1872,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
+          @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @resources_excluded_count = args[:resources_excluded_count] if args.key?(:resources_excluded_count)
@@ -1733,6 +1883,7 @@ module Google
           @state_reason = args[:state_reason] if args.key?(:state_reason)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @volume_data_restore_policy_overrides = args[:volume_data_restore_policy_overrides] if args.key?(:volume_data_restore_policy_overrides)
           @volumes_restored_count = args[:volumes_restored_count] if args.key?(:volumes_restored_count)
         end
       end
@@ -1788,6 +1939,12 @@ module Google
         attr_accessor :no_namespaces
         alias_method :no_namespaces?, :no_namespaces
       
+        # Allows customers to specify dependencies between resources that Backup for GKE
+        # can use to compute a resasonable restore order.
+        # Corresponds to the JSON property `restoreOrder`
+        # @return [Google::Apis::GkebackupV1::RestoreOrder]
+        attr_accessor :restore_order
+      
         # A list of namespaced Kubernetes resources.
         # Corresponds to the JSON property `selectedApplications`
         # @return [Google::Apis::GkebackupV1::NamespacedNames]
@@ -1823,6 +1980,13 @@ module Google
         # @return [String]
         attr_accessor :volume_data_restore_policy
       
+        # Optional. A table that binds volumes by their scope to a restore policy.
+        # Bindings must have a unique scope. Any volumes not scoped in the bindings are
+        # subject to the policy defined in volume_data_restore_policy.
+        # Corresponds to the JSON property `volumeDataRestorePolicyBindings`
+        # @return [Array<Google::Apis::GkebackupV1::VolumeDataRestorePolicyBinding>]
+        attr_accessor :volume_data_restore_policy_bindings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1835,11 +1999,35 @@ module Google
           @excluded_namespaces = args[:excluded_namespaces] if args.key?(:excluded_namespaces)
           @namespaced_resource_restore_mode = args[:namespaced_resource_restore_mode] if args.key?(:namespaced_resource_restore_mode)
           @no_namespaces = args[:no_namespaces] if args.key?(:no_namespaces)
+          @restore_order = args[:restore_order] if args.key?(:restore_order)
           @selected_applications = args[:selected_applications] if args.key?(:selected_applications)
           @selected_namespaces = args[:selected_namespaces] if args.key?(:selected_namespaces)
           @substitution_rules = args[:substitution_rules] if args.key?(:substitution_rules)
           @transformation_rules = args[:transformation_rules] if args.key?(:transformation_rules)
           @volume_data_restore_policy = args[:volume_data_restore_policy] if args.key?(:volume_data_restore_policy)
+          @volume_data_restore_policy_bindings = args[:volume_data_restore_policy_bindings] if args.key?(:volume_data_restore_policy_bindings)
+        end
+      end
+      
+      # Allows customers to specify dependencies between resources that Backup for GKE
+      # can use to compute a resasonable restore order.
+      class RestoreOrder
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Contains a list of group kind dependency pairs provided by the
+        # customer, that is used by Backup for GKE to generate a group kind restore
+        # order.
+        # Corresponds to the JSON property `groupKindDependencies`
+        # @return [Array<Google::Apis::GkebackupV1::GroupKindDependency>]
+        attr_accessor :group_kind_dependencies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_kind_dependencies = args[:group_kind_dependencies] if args.key?(:group_kind_dependencies)
         end
       end
       
@@ -2460,6 +2648,56 @@ module Google
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @volume_backup_handle = args[:volume_backup_handle] if args.key?(:volume_backup_handle)
+        end
+      end
+      
+      # Binds resources in the scope to the given VolumeDataRestorePolicy.
+      class VolumeDataRestorePolicyBinding
+        include Google::Apis::Core::Hashable
+      
+        # Required. The VolumeDataRestorePolicy to apply when restoring volumes in scope.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        # The volume type, as determined by the PVC's bound PV, to apply the policy to.
+        # Corresponds to the JSON property `volumeType`
+        # @return [String]
+        attr_accessor :volume_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @volume_type = args[:volume_type] if args.key?(:volume_type)
+        end
+      end
+      
+      # Defines an override to apply a VolumeDataRestorePolicy for scoped resources.
+      class VolumeDataRestorePolicyOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. The VolumeDataRestorePolicy to apply when restoring volumes in scope.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        # A list of namespaced Kubernetes resources.
+        # Corresponds to the JSON property `selectedPvcs`
+        # @return [Google::Apis::GkebackupV1::NamespacedNames]
+        attr_accessor :selected_pvcs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @selected_pvcs = args[:selected_pvcs] if args.key?(:selected_pvcs)
         end
       end
       
