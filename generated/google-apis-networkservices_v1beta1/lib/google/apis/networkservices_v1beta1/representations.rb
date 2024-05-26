@@ -1007,6 +1007,7 @@ module Google
           collection :forwarding_rules, as: 'forwardingRules'
           hash :labels, as: 'labels'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
         end
@@ -1022,6 +1023,7 @@ module Google
           collection :forwarding_rules, as: 'forwardingRules'
           hash :labels, as: 'labels'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
         end
