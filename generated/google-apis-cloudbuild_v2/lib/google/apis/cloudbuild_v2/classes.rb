@@ -283,7 +283,7 @@ module Google
         # @return [Google::Apis::CloudbuildV2::UserCredential]
         attr_accessor :authorizer_credential
       
-        # Required. The URI of the Bitbucket Data Center instance or cluster this
+        # Optional. The URI of the Bitbucket Data Center instance or cluster this
         # connection is for.
         # Corresponds to the JSON property `hostUri`
         # @return [String]
@@ -415,7 +415,7 @@ module Google
       class Connection
         include Google::Apis::Core::Hashable
       
-        # Allows clients to store small amounts of arbitrary data.
+        # Optional. Allows clients to store small amounts of arbitrary data.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -435,9 +435,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # If disabled is set to true, functionality is disabled for this connection.
-        # Repository based API methods and webhooks processing for repositories in this
-        # connection will be disabled.
+        # Optional. If disabled is set to true, functionality is disabled for this
+        # connection. Repository based API methods and webhooks processing for
+        # repositories in this connection will be disabled.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
@@ -834,7 +834,7 @@ module Google
       class GitHubConfig
         include Google::Apis::Core::Hashable
       
-        # GitHub App installation id.
+        # Optional. GitHub App installation id.
         # Corresponds to the JSON property `appInstallationId`
         # @return [Fixnum]
         attr_accessor :app_installation_id
@@ -915,17 +915,17 @@ module Google
         # @return [String]
         attr_accessor :api_key
       
-        # Id of the GitHub App created from the manifest.
+        # Optional. Id of the GitHub App created from the manifest.
         # Corresponds to the JSON property `appId`
         # @return [Fixnum]
         attr_accessor :app_id
       
-        # ID of the installation of the GitHub App.
+        # Optional. ID of the installation of the GitHub App.
         # Corresponds to the JSON property `appInstallationId`
         # @return [Fixnum]
         attr_accessor :app_installation_id
       
-        # The URL-friendly name of the GitHub App.
+        # Optional. The URL-friendly name of the GitHub App.
         # Corresponds to the JSON property `appSlug`
         # @return [String]
         attr_accessor :app_slug
@@ -935,8 +935,8 @@ module Google
         # @return [String]
         attr_accessor :host_uri
       
-        # SecretManager resource containing the private key of the GitHub App, formatted
-        # as `projects/*/secrets/*/versions/*`.
+        # Optional. SecretManager resource containing the private key of the GitHub App,
+        # formatted as `projects/*/secrets/*/versions/*`.
         # Corresponds to the JSON property `privateKeySecretVersion`
         # @return [String]
         attr_accessor :private_key_secret_version
@@ -952,13 +952,13 @@ module Google
         # @return [Google::Apis::CloudbuildV2::GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig]
         attr_accessor :service_directory_config
       
-        # SSL certificate to use for requests to GitHub Enterprise.
+        # Optional. SSL certificate to use for requests to GitHub Enterprise.
         # Corresponds to the JSON property `sslCa`
         # @return [String]
         attr_accessor :ssl_ca
       
-        # SecretManager resource containing the webhook secret of the GitHub App,
-        # formatted as `projects/*/secrets/*/versions/*`.
+        # Optional. SecretManager resource containing the webhook secret of the GitHub
+        # App, formatted as `projects/*/secrets/*/versions/*`.
         # Corresponds to the JSON property `webhookSecretSecretVersion`
         # @return [String]
         attr_accessor :webhook_secret_secret_version
@@ -993,8 +993,8 @@ module Google
         # @return [Google::Apis::CloudbuildV2::UserCredential]
         attr_accessor :authorizer_credential
       
-        # The URI of the GitLab Enterprise host this connection is for. If not specified,
-        # the default value is https://gitlab.com.
+        # Optional. The URI of the GitLab Enterprise host this connection is for. If not
+        # specified, the default value is https://gitlab.com.
         # Corresponds to the JSON property `hostUri`
         # @return [String]
         attr_accessor :host_uri
@@ -1016,7 +1016,7 @@ module Google
         # @return [Google::Apis::CloudbuildV2::GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig]
         attr_accessor :service_directory_config
       
-        # SSL certificate to use for requests to GitLab Enterprise.
+        # Optional. SSL certificate to use for requests to GitLab Enterprise.
         # Corresponds to the JSON property `sslCa`
         # @return [String]
         attr_accessor :ssl_ca
@@ -1332,8 +1332,8 @@ module Google
       class OAuthCredential
         include Google::Apis::Core::Hashable
       
-        # A SecretManager resource containing the OAuth token that authorizes the Cloud
-        # Build connection. Format: `projects/*/secrets/*/versions/*`.
+        # Optional. A SecretManager resource containing the OAuth token that authorizes
+        # the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
         # Corresponds to the JSON property `oauthTokenSecretVersion`
         # @return [String]
         attr_accessor :oauth_token_secret_version
@@ -2200,7 +2200,7 @@ module Google
       class Repository
         include Google::Apis::Core::Hashable
       
-        # Allows clients to store small amounts of arbitrary data.
+        # Optional. Allows clients to store small amounts of arbitrary data.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
