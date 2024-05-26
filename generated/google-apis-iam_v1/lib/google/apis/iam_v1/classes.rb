@@ -1066,7 +1066,7 @@ module Google
       class ListOauthClientCredentialsResponse
         include Google::Apis::Core::Hashable
       
-        # A list of oauth client credentials.
+        # A list of OauthClientCredentials.
         # Corresponds to the JSON property `oauthClientCredentials`
         # @return [Array<Google::Apis::IamV1::OauthClientCredential>]
         attr_accessor :oauth_client_credentials
@@ -1091,7 +1091,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # A list of oauth clients.
+        # A list of OauthClients.
         # Corresponds to the JSON property `oauthClients`
         # @return [Array<Google::Apis::IamV1::OauthClient>]
         attr_accessor :oauth_clients
@@ -1334,13 +1334,13 @@ module Google
         end
       end
       
-      # Represents an oauth client. Used to access Google Cloud resources on behave of
-      # a user by using OAuth2 Protocol to obtain an access token from Google Cloud
+      # Represents an OauthClient. Used to access Google Cloud resources on behave of
+      # a user by using OAuth 2.0 Protocol to obtain an access token from Google Cloud
       # Platform.
       class OauthClient
         include Google::Apis::Core::Hashable
       
-        # Required. The list of OAuth grant type is allowed for the oauth client.
+        # Required. The list of OAuth grant types is allowed for the OauthClient.
         # Corresponds to the JSON property `allowedGrantTypes`
         # @return [Array<String>]
         attr_accessor :allowed_grant_types
@@ -1351,58 +1351,60 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_redirect_uris
       
-        # Required. The list of scopes that the oauth client is allowed to request
-        # during OAuth flows. The following scopes are supported: * `https://www.
-        # googleapis.com/auth/cloud-platform`: See, edit, configure, and delete your
-        # Google Cloud data and see the email address for your Google Account. * `openid`
-        # : Associate you with your personal info on Google Cloud. * `email`: See your
-        # Google Cloud Account email address.
+        # Required. The list of scopes that the OauthClient is allowed to request during
+        # OAuth flows. The following scopes are supported: * `https://www.googleapis.com/
+        # auth/cloud-platform`: See, edit, configure, and delete your Google Cloud data
+        # and see the email address for your Google Account. * `openid`: Associate you
+        # with your personal info on Google Cloud. * `email`: See your Google Cloud
+        # Account email address.
         # Corresponds to the JSON property `allowedScopes`
         # @return [Array<String>]
         attr_accessor :allowed_scopes
       
-        # Output only. The system-generated oauth client id.
+        # Output only. The system-generated OauthClient id.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
       
-        # Immutable. The type of oauth client. either public or private.
+        # Immutable. The type of OauthClient. Either public or private. For private
+        # clients, the client secret can be managed using the dedicated
+        # OauthClientCredential resource.
         # Corresponds to the JSON property `clientType`
         # @return [String]
         attr_accessor :client_type
       
-        # Optional. A user-specified description of the oauth client. Cannot exceed 256
+        # Optional. A user-specified description of the OauthClient. Cannot exceed 256
         # characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. Whether the oauth client is disabled. You cannot use a disabled
-        # oauth client for login.
+        # Optional. Whether the OauthClient is disabled. You cannot use a disabled OAuth
+        # client.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Optional. A user-specified display name of the oauth client. Cannot exceed 32
+        # Optional. A user-specified display name of the OauthClient. Cannot exceed 32
         # characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Time after which the oauth client will be permanently purged and
+        # Output only. Time after which the OauthClient will be permanently purged and
         # cannot be recovered.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
       
-        # Immutable. The resource name of the oauth client. Format:`projects/`project`/
+        # Immutable. The resource name of the OauthClient. Format:`projects/`project`/
         # locations/`location`/oauthClients/`oauth_client``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The state of the oauth client.
+        # Output only. The state of the OauthClient.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -1427,32 +1429,36 @@ module Google
         end
       end
       
-      # Represents an oauth client credential. Used to authenticate an oauth client
-      # while accessing Google Cloud resources on behalf of a user by using OAuth2
+      # Represents an OauthClientCredential. Used to authenticate an OauthClient while
+      # accessing Google Cloud resources on behalf of a user by using OAuth 2.0
       # Protocol.
       class OauthClientCredential
         include Google::Apis::Core::Hashable
       
-        # Output only. The system-generated oauth client secret.
+        # Output only. The system-generated OAuth client secret. The client secret must
+        # be stored securely. If the client secret is leaked, you must delete and re-
+        # create the client credential. To learn more, see [OAuth client and credential
+        # security risks and mitigations](https://cloud.google.com/iam/docs/workforce-
+        # oauth-app#security)
         # Corresponds to the JSON property `clientSecret`
         # @return [String]
         attr_accessor :client_secret
       
-        # Optional. Whether the oauth client credential is disabled. You cannot use a
-        # disabled oauth client credential for OAuth.
+        # Optional. Whether the OauthClientCredential is disabled. You cannot use a
+        # disabled OauthClientCredential.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Optional. A user-specified display name of the oauth client credential Cannot
+        # Optional. A user-specified display name of the OauthClientCredential. Cannot
         # exceed 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Immutable. The resource name of the oauth client credential. Format: `projects/
-        # `project`/locations/`location`/oauthClients/`oauth_client`/credentials/`
+        # Immutable. The resource name of the OauthClientCredential. Format: `projects/`
+        # project`/locations/`location`/oauthClients/`oauth_client`/credentials/`
         # credential``
         # Corresponds to the JSON property `name`
         # @return [String]
