@@ -7902,6 +7902,7 @@ module Google
       class Disk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_mode, as: 'accessMode'
           property :architecture, as: 'architecture'
           property :async_primary_disk, as: 'asyncPrimaryDisk', class: Google::Apis::ComputeV1::DiskAsyncReplication, decorator: Google::Apis::ComputeV1::DiskAsyncReplication::Representation
       
