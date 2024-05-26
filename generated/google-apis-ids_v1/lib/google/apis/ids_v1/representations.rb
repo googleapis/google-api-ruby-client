@@ -179,6 +179,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :severity, as: 'severity'
           property :state, as: 'state'
           collection :threat_exceptions, as: 'threatExceptions'
