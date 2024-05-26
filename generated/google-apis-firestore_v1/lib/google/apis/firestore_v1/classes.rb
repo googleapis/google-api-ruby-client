@@ -1358,8 +1358,8 @@ module Google
         # @return [String]
         attr_accessor :delete_protection_state
       
-        # Output only. The timestamp at which this database was soft deleted. Only set
-        # if the database has been soft deleted.
+        # Output only. The timestamp at which this database was deleted. Only set if the
+        # database has been deleted.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
@@ -1582,7 +1582,8 @@ module Google
       class GoogleFirestoreAdminV1ExportDocumentsRequest
         include Google::Apis::Core::Hashable
       
-        # Which collection ids to export. Unspecified means all collections.
+        # Which collection ids to export. Unspecified means all collections. Each
+        # collection id in this list must be unique.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
@@ -1855,7 +1856,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Which collection ids to import. Unspecified means all collections included in
-        # the import.
+        # the import. Each collection id in this list must be unique.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
