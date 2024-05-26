@@ -819,8 +819,8 @@ module Google
       class BatchUsageLogEvents
         include Google::Apis::Core::Hashable
       
-        # The name of the device in the form ‘enterprises/`enterpriseId`/devices/`
-        # deviceId`’
+        # If present, the name of the device in the form ‘enterprises/`enterpriseId`/
+        # devices/`deviceId`’
         # Corresponds to the JSON property `device`
         # @return [String]
         attr_accessor :device
@@ -836,8 +836,8 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::UsageLogEvent>]
         attr_accessor :usage_log_events
       
-        # The resource name of the user that owns this device in the form ‘enterprises/`
-        # enterpriseId`/users/`userId`’.
+        # If present, the resource name of the user that owns this device in the form ‘
+        # enterprises/`enterpriseId`/users/`userId`’.
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
@@ -5006,7 +5006,8 @@ module Google
         # @return [String]
         attr_accessor :enterprise
       
-        # IMEI number of the GSM device. For example, A1000031212.
+        # For corporate-owned devices, IMEI number of the GSM device. For example,
+        # A1000031212.
         # Corresponds to the JSON property `imei`
         # @return [String]
         attr_accessor :imei
@@ -5016,7 +5017,8 @@ module Google
         # @return [String]
         attr_accessor :management_mode
       
-        # MEID number of the CDMA device. For example, A00000292788E1.
+        # For corporate-owned devices, MEID number of the CDMA device. For example,
+        # A00000292788E1.
         # Corresponds to the JSON property `meid`
         # @return [String]
         attr_accessor :meid
@@ -5036,7 +5038,7 @@ module Google
         # @return [String]
         attr_accessor :ownership
       
-        # The device serial number.
+        # For corporate-owned devices, The device serial number.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
