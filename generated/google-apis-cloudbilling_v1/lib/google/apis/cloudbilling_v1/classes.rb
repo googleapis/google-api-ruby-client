@@ -855,12 +855,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name for the service. Example: "services/DA34-426B-A397"
+        # The resource name for the service. Example: "services/6F81-5844-456A"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The identifier for the service. Example: "DA34-426B-A397"
+        # The identifier for the service. Example: "6F81-5844-456A"
         # Corresponds to the JSON property `serviceId`
         # @return [String]
         attr_accessor :service_id
@@ -931,7 +931,7 @@ module Google
         end
       end
       
-      # Encapsulates a single SKU in Google Cloud Platform
+      # Encapsulates a single SKU in Google Cloud
       class Sku
         include Google::Apis::Core::Hashable
       
@@ -951,8 +951,8 @@ module Google
         # @return [Google::Apis::CloudbillingV1::GeoTaxonomy]
         attr_accessor :geo_taxonomy
       
-        # The resource name for the SKU. Example: "services/DA34-426B-A397/skus/AA95-
-        # CD31-42FE"
+        # The resource name for the SKU. Example: "services/6F81-5844-456A/skus/D041-
+        # B8A1-6E0B"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -974,7 +974,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :service_regions
       
-        # The identifier for the SKU. Example: "AA95-CD31-42FE"
+        # The identifier for the SKU. Example: "D041-B8A1-6E0B"
         # Corresponds to the JSON property `skuId`
         # @return [String]
         attr_accessor :sku_id
