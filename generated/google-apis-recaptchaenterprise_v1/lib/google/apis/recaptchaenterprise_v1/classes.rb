@@ -253,6 +253,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Assessment for Phone Fraud
+        # Corresponds to the JSON property `phoneFraudAssessment`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment]
+        attr_accessor :phone_fraud_assessment
+      
         # Private password leak verification info.
         # Corresponds to the JSON property `privatePasswordLeakVerification`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification]
@@ -281,6 +286,7 @@ module Google
           @fraud_prevention_assessment = args[:fraud_prevention_assessment] if args.key?(:fraud_prevention_assessment)
           @fraud_signals = args[:fraud_signals] if args.key?(:fraud_signals)
           @name = args[:name] if args.key?(:name)
+          @phone_fraud_assessment = args[:phone_fraud_assessment] if args.key?(:phone_fraud_assessment)
           @private_password_leak_verification = args[:private_password_leak_verification] if args.key?(:private_password_leak_verification)
           @risk_analysis = args[:risk_analysis] if args.key?(:risk_analysis)
           @token_properties = args[:token_properties] if args.key?(:token_properties)
@@ -1189,6 +1195,25 @@ module Google
         end
       end
       
+      # Assessment for Phone Fraud
+      class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment
+        include Google::Apis::Core::Hashable
+      
+        # Information about sms toll fraud
+        # Corresponds to the JSON property `smsTollFraudVerdict`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict]
+        attr_accessor :sms_toll_fraud_verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sms_toll_fraud_verdict = args[:sms_toll_fraud_verdict] if args.key?(:sms_toll_fraud_verdict)
+        end
+      end
+      
       # Private password leak verification info.
       class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
         include Google::Apis::Core::Hashable
@@ -1504,6 +1529,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @related_account_group_memberships = args[:related_account_group_memberships] if args.key?(:related_account_group_memberships)
+        end
+      end
+      
+      # Information about sms toll fraud
+      class GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Reasons contributing to the SMS toll fraud verdict.
+        # Corresponds to the JSON property `reasons`
+        # @return [Array<String>]
+        attr_accessor :reasons
+      
+        # Output only. Probability of an sms event being fraudulent. Values are from 0.0
+        # (lowest) to 1.0 (highest).
+        # Corresponds to the JSON property `risk`
+        # @return [Float]
+        attr_accessor :risk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reasons = args[:reasons] if args.key?(:reasons)
+          @risk = args[:risk] if args.key?(:risk)
         end
       end
       

@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +293,12 @@ module Google
       end
       
       class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -446,6 +458,8 @@ module Google
           property :fraud_signals, as: 'fraudSignals', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignals, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignals::Representation
       
           property :name, as: 'name'
+          property :phone_fraud_assessment, as: 'phoneFraudAssessment', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment::Representation
+      
           property :private_password_leak_verification, as: 'privatePasswordLeakVerification', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification::Representation
       
           property :risk_analysis, as: 'riskAnalysis', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RiskAnalysis, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RiskAnalysis::Representation
@@ -721,6 +735,14 @@ module Google
         end
       end
       
+      class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sms_toll_fraud_verdict, as: 'smsTollFraudVerdict', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict::Representation
+      
+        end
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -809,6 +831,14 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :related_account_group_memberships, as: 'relatedAccountGroupMemberships', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership::Representation
       
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reasons, as: 'reasons'
+          property :risk, as: 'risk'
         end
       end
       
