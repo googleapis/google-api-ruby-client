@@ -16,10 +16,10 @@ module Google
   module Apis
     module BusinessprofileperformanceV1
       # Version of the google-apis-businessprofileperformance_v1 gem
-      GEM_VERSION = "0.11.0"
+      GEM_VERSION = "0.12.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.14.0"
+      GENERATOR_VERSION = "0.15.0"
 
       # Revision of the discovery document this client was generated from
       REVISION = "20230607"
