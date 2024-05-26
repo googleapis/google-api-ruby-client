@@ -2660,8 +2660,8 @@ module Google
         end
       end
       
-      # A resource value config (RVC) is a mapping configuration of user's resources
-      # to resource values. Used in Attack path simulations.
+      # A resource value configuration (RVC) is a mapping configuration of user's
+      # resources to resource values. Used in Attack path simulations.
       class GoogleCloudSecuritycenterV1ResourceValueConfig
         include Google::Apis::Core::Hashable
       
@@ -2670,22 +2670,22 @@ module Google
         # @return [String]
         attr_accessor :cloud_provider
       
-        # Output only. Timestamp this resource value config was created.
+        # Output only. Timestamp this resource value configuration was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Description of the resource value config.
+        # Description of the resource value configuration.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Name for the resource value config
+        # Name for the resource value configuration
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # List of resource labels to search for, evaluated with AND. E.g. "
+        # List of resource labels to search for, evaluated with AND. For example, "
         # resource_labels_selector": `"key": "value", "env": "prod"` will match
         # resources with labels "key": "value" AND "env": "prod" https://cloud.google.
         # com/resource-manager/docs/creating-managing-labels
@@ -2694,9 +2694,9 @@ module Google
         attr_accessor :resource_labels_selector
       
         # Apply resource_value only to resources that match resource_type. resource_type
-        # will be checked with "AND" of other resources. E.g. "storage.googleapis.com/
-        # Bucket" with resource_value "HIGH" will apply "HIGH" value only to "storage.
-        # googleapis.com/Bucket" resources.
+        # will be checked with AND of other resources. For example, "storage.googleapis.
+        # com/Bucket" with resource_value "HIGH" will apply "HIGH" value only to "
+        # storage.googleapis.com/Bucket" resources.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -2706,9 +2706,9 @@ module Google
         # @return [String]
         attr_accessor :resource_value
       
-        # Project or folder to scope this config to. For example, "project/456" would
-        # apply this config only to resources in "project/456" scope will be checked
-        # with "AND" of other resources.
+        # Project or folder to scope this configuration to. For example, "project/456"
+        # would apply this configuration only to resources in "project/456" scope will
+        # be checked with AND of other resources.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -2721,13 +2721,13 @@ module Google
         attr_accessor :sensitive_data_protection_mapping
       
         # Required. Tag values combined with AND to check against. Values in the form "
-        # tagValues/123" E.g. [ "tagValues/123", "tagValues/456", "tagValues/789" ]
+        # tagValues/123" Example: [ "tagValues/123", "tagValues/456", "tagValues/789" ]
         # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         # Corresponds to the JSON property `tagValues`
         # @return [Array<String>]
         attr_accessor :tag_values
       
-        # Output only. Timestamp this resource value config was last updated.
+        # Output only. Timestamp this resource value configuration was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -6156,8 +6156,8 @@ module Google
         end
       end
       
-      # A resource value config (RVC) is a mapping configuration of user's resources
-      # to resource values. Used in Attack path simulations.
+      # A resource value configuration (RVC) is a mapping configuration of user's
+      # resources to resource values. Used in Attack path simulations.
       class GoogleCloudSecuritycenterV2ResourceValueConfig
         include Google::Apis::Core::Hashable
       
@@ -6166,22 +6166,22 @@ module Google
         # @return [String]
         attr_accessor :cloud_provider
       
-        # Output only. Timestamp this resource value config was created.
+        # Output only. Timestamp this resource value configuration was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Description of the resource value config.
+        # Description of the resource value configuration.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Name for the resource value config
+        # Name for the resource value configuration
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # List of resource labels to search for, evaluated with AND. E.g. "
+        # List of resource labels to search for, evaluated with AND. For example, "
         # resource_labels_selector": `"key": "value", "env": "prod"` will match
         # resources with labels "key": "value" AND "env": "prod" https://cloud.google.
         # com/resource-manager/docs/creating-managing-labels
@@ -6190,9 +6190,9 @@ module Google
         attr_accessor :resource_labels_selector
       
         # Apply resource_value only to resources that match resource_type. resource_type
-        # will be checked with "AND" of other resources. E.g. "storage.googleapis.com/
-        # Bucket" with resource_value "HIGH" will apply "HIGH" value only to "storage.
-        # googleapis.com/Bucket" resources.
+        # will be checked with AND of other resources. For example, "storage.googleapis.
+        # com/Bucket" with resource_value "HIGH" will apply "HIGH" value only to "
+        # storage.googleapis.com/Bucket" resources.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -6203,9 +6203,9 @@ module Google
         # @return [String]
         attr_accessor :resource_value
       
-        # Project or folder to scope this config to. For example, "project/456" would
-        # apply this config only to resources in "project/456" scope will be checked
-        # with "AND" of other resources.
+        # Project or folder to scope this configuration to. For example, "project/456"
+        # would apply this configuration only to resources in "project/456" scope will
+        # be checked with AND of other resources.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -6218,13 +6218,13 @@ module Google
         attr_accessor :sensitive_data_protection_mapping
       
         # Required. Tag values combined with AND to check against. Values in the form "
-        # tagValues/123" E.g. [ "tagValues/123", "tagValues/456", "tagValues/789" ]
+        # tagValues/123" Example: [ "tagValues/123", "tagValues/456", "tagValues/789" ]
         # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         # Corresponds to the JSON property `tagValues`
         # @return [Array<String>]
         attr_accessor :tag_values
       
-        # Output only. Timestamp this resource value config was last updated.
+        # Output only. Timestamp this resource value configuration was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
