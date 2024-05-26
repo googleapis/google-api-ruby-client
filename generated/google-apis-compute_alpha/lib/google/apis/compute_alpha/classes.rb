@@ -1552,8 +1552,10 @@ module Google
         # the disk or when you attach the disk to a virtual machine instance. If you do
         # not provide an encryption key, then the disk will be encrypted using an
         # automatically generated key and you do not need to provide a key to use the
-        # disk later. Instance templates do not store customer-supplied encryption keys,
-        # so you cannot use your own keys to encrypt disks in a managed instance group.
+        # disk later. Note: Instance templates do not store customer-supplied encryption
+        # keys, so you cannot use your own keys to encrypt disks in a managed instance
+        # group. You cannot create VMs that have disks with customer-supplied keys using
+        # the bulk insert method.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -20267,6 +20269,9 @@ module Google
         attr_accessor :labels
       
         # The machine type to use for instances that are created from these properties.
+        # This field only accept machine types name. e.g. n2-standard-4 and does not
+        # accept machine type full or partial url. e.g. projects/my-l7ilb-project/zones/
+        # us-central1-a/machineTypes/n2-standard-4 will throw INTERNAL_ERROR.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
