@@ -56,7 +56,6 @@ module Google
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
-        # @param [Boolean] temporary_eecc_bypass
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -74,12 +73,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_profile(user_id, temporary_eecc_bypass: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_user_profile(user_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'gmail/v1/users/{userId}/profile', options)
           command.response_representation = Google::Apis::GmailV1::Profile::Representation
           command.response_class = Google::Apis::GmailV1::Profile
           command.params['userId'] = user_id unless user_id.nil?
-          command.query['temporaryEeccBypass'] = temporary_eecc_bypass unless temporary_eecc_bypass.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -773,7 +771,6 @@ module Google
         #   The format to return the message in.
         # @param [Array<String>, String] metadata_headers
         #   When given and format is `METADATA`, only include headers specified.
-        # @param [Boolean] temporary_eecc_bypass
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -791,7 +788,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_message(user_id, id, format: nil, metadata_headers: nil, temporary_eecc_bypass: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_user_message(user_id, id, format: nil, metadata_headers: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'gmail/v1/users/{userId}/messages/{id}', options)
           command.response_representation = Google::Apis::GmailV1::Message::Representation
           command.response_class = Google::Apis::GmailV1::Message
@@ -799,7 +796,6 @@ module Google
           command.params['id'] = id unless id.nil?
           command.query['format'] = format unless format.nil?
           command.query['metadataHeaders'] = metadata_headers unless metadata_headers.nil?
-          command.query['temporaryEeccBypass'] = temporary_eecc_bypass unless temporary_eecc_bypass.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -941,7 +937,6 @@ module Google
         #   format as the Gmail search box. For example, `"from:someuser@example.com
         #   rfc822msgid: is:unread"`. Parameter cannot be used when accessing the api
         #   using the gmail.metadata scope.
-        # @param [Boolean] temporary_eecc_bypass
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -959,7 +954,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_messages(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, temporary_eecc_bypass: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_user_messages(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'gmail/v1/users/{userId}/messages', options)
           command.response_representation = Google::Apis::GmailV1::ListMessagesResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListMessagesResponse
@@ -969,7 +964,6 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['q'] = q unless q.nil?
-          command.query['temporaryEeccBypass'] = temporary_eecc_bypass unless temporary_eecc_bypass.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1134,7 +1128,6 @@ module Google
         #   The ID of the message containing the attachment.
         # @param [String] id
         #   The ID of the attachment.
-        # @param [Boolean] temporary_eecc_bypass
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1152,14 +1145,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_message_attachment(user_id, message_id, id, temporary_eecc_bypass: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_user_message_attachment(user_id, message_id, id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'gmail/v1/users/{userId}/messages/{messageId}/attachments/{id}', options)
           command.response_representation = Google::Apis::GmailV1::MessagePartBody::Representation
           command.response_class = Google::Apis::GmailV1::MessagePartBody
           command.params['userId'] = user_id unless user_id.nil?
           command.params['messageId'] = message_id unless message_id.nil?
           command.params['id'] = id unless id.nil?
-          command.query['temporaryEeccBypass'] = temporary_eecc_bypass unless temporary_eecc_bypass.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2810,7 +2802,6 @@ module Google
         #   The format to return the messages in.
         # @param [Array<String>, String] metadata_headers
         #   When given and format is METADATA, only include headers specified.
-        # @param [Boolean] temporary_eecc_bypass
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2828,7 +2819,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_thread(user_id, id, format: nil, metadata_headers: nil, temporary_eecc_bypass: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_user_thread(user_id, id, format: nil, metadata_headers: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'gmail/v1/users/{userId}/threads/{id}', options)
           command.response_representation = Google::Apis::GmailV1::Thread::Representation
           command.response_class = Google::Apis::GmailV1::Thread
@@ -2836,7 +2827,6 @@ module Google
           command.params['id'] = id unless id.nil?
           command.query['format'] = format unless format.nil?
           command.query['metadataHeaders'] = metadata_headers unless metadata_headers.nil?
-          command.query['temporaryEeccBypass'] = temporary_eecc_bypass unless temporary_eecc_bypass.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2860,7 +2850,6 @@ module Google
         #   format as the Gmail search box. For example, `"from:someuser@example.com
         #   rfc822msgid: is:unread"`. Parameter cannot be used when accessing the api
         #   using the gmail.metadata scope.
-        # @param [Boolean] temporary_eecc_bypass
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2878,7 +2867,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_threads(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, temporary_eecc_bypass: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_user_threads(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'gmail/v1/users/{userId}/threads', options)
           command.response_representation = Google::Apis::GmailV1::ListThreadsResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListThreadsResponse
@@ -2888,7 +2877,6 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['q'] = q unless q.nil?
-          command.query['temporaryEeccBypass'] = temporary_eecc_bypass unless temporary_eecc_bypass.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
