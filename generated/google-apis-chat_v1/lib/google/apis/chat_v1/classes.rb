@@ -249,8 +249,8 @@ module Google
         # @return [Google::Apis::ChatV1::DriveDataRef]
         attr_accessor :drive_data_ref
       
-        # Resource name of the attachment, in the form `spaces/*/messages/*/attachments/*
-        # `.
+        # Resource name of the attachment, in the form `spaces/`space`/messages/`message`
+        # /attachments/`attachment``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

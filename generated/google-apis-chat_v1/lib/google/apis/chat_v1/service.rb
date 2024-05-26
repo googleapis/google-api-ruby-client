@@ -310,8 +310,8 @@ module Google
         # workspace/chat/authenticate-authorize-chat-app) and [user authentication](
         # https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         # @param [String] name
-        #   Required. Resource name of the space, in the form "spaces/*". Format: `spaces/`
-        #   space``
+        #   Required. Resource name of the space, in the form `spaces/`space``. Format: `
+        #   spaces/`space``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -347,7 +347,9 @@ module Google
         # authorize-chat-app) and [user authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize-chat-user). Lists spaces visible to the
         # caller or authenticated user. Group chats and DMs aren't listed until the
-        # first message is sent.
+        # first message is sent. To list all named spaces by Google Workspace
+        # organization, use the `spaces.search()` method using Workspace administrator
+        # privileges instead.
         # @param [String] filter
         #   Optional. A query filter. You can filter spaces by the space type ([`
         #   space_type`](https://developers.google.com/workspace/chat/api/reference/rest/
@@ -673,13 +675,16 @@ module Google
         #   spaces.members#membershiprole)) and type ([`member.type`](https://developers.
         #   google.com/workspace/chat/api/reference/rest/v1/User#type)). To filter by role,
         #   set `role` to `ROLE_MEMBER` or `ROLE_MANAGER`. To filter by type, set `member.
-        #   type` to `HUMAN` or `BOT`. To filter by both role and type, use the `AND`
-        #   operator. To filter by either role or type, use the `OR` operator. For example,
-        #   the following queries are valid: ``` role = "ROLE_MANAGER" OR role = "
-        #   ROLE_MEMBER" member.type = "HUMAN" AND role = "ROLE_MANAGER" ``` The following
-        #   queries are invalid: ``` member.type = "HUMAN" AND member.type = "BOT" role = "
-        #   ROLE_MANAGER" AND role = "ROLE_MEMBER" ``` Invalid queries are rejected by the
-        #   server with an `INVALID_ARGUMENT` error.
+        #   type` to `HUMAN` or `BOT`. Developer Preview: You can also filter for `member.
+        #   type` using the `!=` operator. To filter by both role and type, use the `AND`
+        #   operator. To filter by either role or type, use the `OR` operator. Either `
+        #   member.type = "HUMAN"` or `member.type != "BOT"` is required when `
+        #   use_admin_access` is set to true. Other member type filters will be rejected.
+        #   For example, the following queries are valid: ``` role = "ROLE_MANAGER" OR
+        #   role = "ROLE_MEMBER" member.type = "HUMAN" AND role = "ROLE_MANAGER" member.
+        #   type != "BOT" ``` The following queries are invalid: ``` member.type = "HUMAN"
+        #   AND member.type = "BOT" role = "ROLE_MANAGER" AND role = "ROLE_MEMBER" ```
+        #   Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of memberships to return. The service might
         #   return fewer than this value. If unspecified, at most 100 memberships are
@@ -1142,8 +1147,8 @@ module Google
         # attachments). Requires [app authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize-chat-app).
         # @param [String] name
-        #   Required. Resource name of the attachment, in the form `spaces/*/messages/*/
-        #   attachments/*`.
+        #   Required. Resource name of the attachment, in the form `spaces/`space`/
+        #   messages/`message`/attachments/`attachment``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
