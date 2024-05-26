@@ -2409,6 +2409,11 @@ module Google
         # @return [String]
         attr_accessor :feed_type
       
+        # More feed data would be added in subsequent CLs
+        # Corresponds to the JSON property `observabilityMetricData`
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData]
+        attr_accessor :observability_metric_data
+      
         # Common model for database resource recommendation signal data.
         # Corresponds to the JSON property `recommendationSignalData`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData]
@@ -2437,6 +2442,7 @@ module Google
         def update!(**args)
           @feed_timestamp = args[:feed_timestamp] if args.key?(:feed_timestamp)
           @feed_type = args[:feed_type] if args.key?(:feed_type)
+          @observability_metric_data = args[:observability_metric_data] if args.key?(:observability_metric_data)
           @recommendation_signal_data = args[:recommendation_signal_data] if args.key?(:recommendation_signal_data)
           @resource_health_signal_data = args[:resource_health_signal_data] if args.key?(:resource_health_signal_data)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
@@ -2654,6 +2660,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # MachineConfiguration describes the configuration of a machine specific to
+        # Database Resource.
+        # Corresponds to the JSON property `machineConfiguration`
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainMachineConfiguration]
+        attr_accessor :machine_configuration
+      
         # DatabaseResourceId will serve as primary key for any resource ingestion event.
         # Corresponds to the JSON property `primaryResourceId`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
@@ -2715,6 +2727,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
           @location = args[:location] if args.key?(:location)
+          @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
           @primary_resource_id = args[:primary_resource_id] if args.key?(:primary_resource_id)
           @product = args[:product] if args.key?(:product)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
@@ -2821,6 +2834,70 @@ module Google
         def update!(**args)
           @entitlement_state = args[:entitlement_state] if args.key?(:entitlement_state)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # MachineConfiguration describes the configuration of a machine specific to
+      # Database Resource.
+      class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # The number of CPUs.
+        # Corresponds to the JSON property `cpuCount`
+        # @return [Fixnum]
+        attr_accessor :cpu_count
+      
+        # Memory size in bytes.
+        # Corresponds to the JSON property `memorySizeInBytes`
+        # @return [Fixnum]
+        attr_accessor :memory_size_in_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+          @memory_size_in_bytes = args[:memory_size_in_bytes] if args.key?(:memory_size_in_bytes)
+        end
+      end
+      
+      # 
+      class StorageDatabasecenterPartnerapiV1mainObservabilityMetricData
+        include Google::Apis::Core::Hashable
+      
+        # Required. The timestamp of the metric value.
+        # Corresponds to the JSON property `metricTimestamp`
+        # @return [String]
+        attr_accessor :metric_timestamp
+      
+        # Required. Type of metric like CPU, Memory, etc.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # Required. Database resource name associated with the signal. Resource name to
+        # follow CAIS resource_name format as noted here go/condor-common-datamodel
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Required. Value of the metric type.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_timestamp = args[:metric_timestamp] if args.key?(:metric_timestamp)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
