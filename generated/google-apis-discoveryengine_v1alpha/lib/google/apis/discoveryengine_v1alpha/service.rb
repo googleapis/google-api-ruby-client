@@ -745,14 +745,14 @@ module Google
         #   location`/collections/`collection`/dataStores/`data_store`/branches/`branch``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocument] google_cloud_discoveryengine_v1alpha_document_object
         # @param [String] document_id
-        #   Required. The ID to use for the Document, which will become the final
-        #   component of the Document.name. If the caller does not have permission to
-        #   create the Document, regardless of whether or not it exists, a `
-        #   PERMISSION_DENIED` error is returned. This field must be unique among all
-        #   Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is
-        #   returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/
-        #   rfc1034) standard with a length limit of 63 characters. Otherwise, an `
-        #   INVALID_ARGUMENT` error is returned.
+        #   Required. The ID to use for the Document, which becomes the final component of
+        #   the Document.name. If the caller does not have permission to create the
+        #   Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error
+        #   is returned. This field must be unique among all Documents with the same
+        #   parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must
+        #   conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a
+        #   length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -895,8 +895,8 @@ module Google
         end
         
         # Bulk import of multiple Documents. Request processing may be synchronous. Non-
-        # existing items will be created. Note: It is possible for a subset of the
-        # Documents to be successfully updated.
+        # existing items are created. Note: It is possible for a subset of the Documents
+        # to be successfully updated.
         # @param [String] parent
         #   Required. The parent branch resource name, such as `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
@@ -941,8 +941,8 @@ module Google
         #   PERMISSION_DENIED` error is returned.
         # @param [Fixnum] page_size
         #   Maximum number of Documents to return. If unspecified, defaults to 100. The
-        #   maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If
-        #   this field is negative, an `INVALID_ARGUMENT` error is returned.
+        #   maximum allowed value is 1000. Values above 1000 are set to 1000. If this
+        #   field is negative, an `INVALID_ARGUMENT` error is returned.
         # @param [String] page_token
         #   A page token ListDocumentsResponse.next_page_token, received from a previous
         #   DocumentService.ListDocuments call. Provide this to retrieve the subsequent
@@ -986,10 +986,10 @@ module Google
         #   with a length limit of 1024 characters.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocument] google_cloud_discoveryengine_v1alpha_document_object
         # @param [Boolean] allow_missing
-        #   If set to true, and the Document is not found, a new Document will be created.
+        #   If set to `true` and the Document is not found, a new Document is be created.
         # @param [String] update_mask
         #   Indicates which fields in the provided imported 'document' to update. If not
-        #   set, will by default update all fields.
+        #   set, by default updates all fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1661,8 +1661,8 @@ module Google
         #   .
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSchema] google_cloud_discoveryengine_v1alpha_schema_object
         # @param [String] schema_id
-        #   Required. The ID to use for the Schema, which will become the final component
-        #   of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.
+        #   Required. The ID to use for the Schema, which becomes the final component of
+        #   the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.
         #   org/html/rfc1034) standard with a length limit of 63 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1765,8 +1765,8 @@ module Google
         #   .
         # @param [Fixnum] page_size
         #   The maximum number of Schemas to return. The service may return fewer than
-        #   this value. If unspecified, at most 100 Schemas will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
+        #   this value. If unspecified, at most 100 Schemas are returned. The maximum
+        #   value is 1000; values above 1000 are set to 1000.
         # @param [String] page_token
         #   A page token, received from a previous SchemaService.ListSchemas call. Provide
         #   this to retrieve the subsequent page. When paginating, all other parameters
@@ -1809,8 +1809,8 @@ module Google
         #   limit of 1024 characters.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSchema] google_cloud_discoveryengine_v1alpha_schema_object
         # @param [Boolean] allow_missing
-        #   If set to true, and the Schema is not found, a new Schema will be created. In
-        #   this situation, `update_mask` is ignored.
+        #   If set to true, and the Schema is not found, a new Schema is created. In this
+        #   situation, `update_mask` is ignored.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2068,11 +2068,11 @@ module Google
         #   Required. Full resource name of a ServingConfig: `projects/*/locations/global/
         #   collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/
         #   collections/*/dataStores/*/servingConfigs/*` One default serving config is
-        #   created along with your recommendation engine creation. The engine ID will be
-        #   used as the ID of the default serving config. For example, for Engine `
-        #   projects/*/locations/global/collections/*/engines/my-engine`, you can use `
-        #   projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-
-        #   engine` for your RecommendationService.Recommend requests.
+        #   created along with your recommendation engine creation. The engine ID is used
+        #   as the ID of the default serving config. For example, for Engine `projects/*/
+        #   locations/global/collections/*/engines/my-engine`, you can use `projects/*/
+        #   locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
+        #   your RecommendationService.Recommend requests.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecommendRequest] google_cloud_discoveryengine_v1alpha_recommend_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3025,7 +3025,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Bulk import of User events. Request processing might be synchronous. Events
+        # Bulk import of user events. Request processing might be synchronous. Events
         # that already exist are skipped. Use this method for backfilling historical
         # user events. Operation.response is of type ImportResponse. Note that it is
         # possible for a subset of the items to be successfully inserted. Operation.
@@ -3887,11 +3887,11 @@ module Google
         #   Required. Full resource name of a ServingConfig: `projects/*/locations/global/
         #   collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/
         #   collections/*/dataStores/*/servingConfigs/*` One default serving config is
-        #   created along with your recommendation engine creation. The engine ID will be
-        #   used as the ID of the default serving config. For example, for Engine `
-        #   projects/*/locations/global/collections/*/engines/my-engine`, you can use `
-        #   projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-
-        #   engine` for your RecommendationService.Recommend requests.
+        #   created along with your recommendation engine creation. The engine ID is used
+        #   as the ID of the default serving config. For example, for Engine `projects/*/
+        #   locations/global/collections/*/engines/my-engine`, you can use `projects/*/
+        #   locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
+        #   your RecommendationService.Recommend requests.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecommendRequest] google_cloud_discoveryengine_v1alpha_recommend_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4633,14 +4633,14 @@ module Google
         #   location`/collections/`collection`/dataStores/`data_store`/branches/`branch``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocument] google_cloud_discoveryengine_v1alpha_document_object
         # @param [String] document_id
-        #   Required. The ID to use for the Document, which will become the final
-        #   component of the Document.name. If the caller does not have permission to
-        #   create the Document, regardless of whether or not it exists, a `
-        #   PERMISSION_DENIED` error is returned. This field must be unique among all
-        #   Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is
-        #   returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/
-        #   rfc1034) standard with a length limit of 63 characters. Otherwise, an `
-        #   INVALID_ARGUMENT` error is returned.
+        #   Required. The ID to use for the Document, which becomes the final component of
+        #   the Document.name. If the caller does not have permission to create the
+        #   Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error
+        #   is returned. This field must be unique among all Documents with the same
+        #   parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must
+        #   conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a
+        #   length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4783,8 +4783,8 @@ module Google
         end
         
         # Bulk import of multiple Documents. Request processing may be synchronous. Non-
-        # existing items will be created. Note: It is possible for a subset of the
-        # Documents to be successfully updated.
+        # existing items are created. Note: It is possible for a subset of the Documents
+        # to be successfully updated.
         # @param [String] parent
         #   Required. The parent branch resource name, such as `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
@@ -4829,8 +4829,8 @@ module Google
         #   PERMISSION_DENIED` error is returned.
         # @param [Fixnum] page_size
         #   Maximum number of Documents to return. If unspecified, defaults to 100. The
-        #   maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If
-        #   this field is negative, an `INVALID_ARGUMENT` error is returned.
+        #   maximum allowed value is 1000. Values above 1000 are set to 1000. If this
+        #   field is negative, an `INVALID_ARGUMENT` error is returned.
         # @param [String] page_token
         #   A page token ListDocumentsResponse.next_page_token, received from a previous
         #   DocumentService.ListDocuments call. Provide this to retrieve the subsequent
@@ -4874,10 +4874,10 @@ module Google
         #   with a length limit of 1024 characters.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocument] google_cloud_discoveryengine_v1alpha_document_object
         # @param [Boolean] allow_missing
-        #   If set to true, and the Document is not found, a new Document will be created.
+        #   If set to `true` and the Document is not found, a new Document is be created.
         # @param [String] update_mask
         #   Indicates which fields in the provided imported 'document' to update. If not
-        #   set, will by default update all fields.
+        #   set, by default updates all fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5517,8 +5517,8 @@ module Google
         #   .
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSchema] google_cloud_discoveryengine_v1alpha_schema_object
         # @param [String] schema_id
-        #   Required. The ID to use for the Schema, which will become the final component
-        #   of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.
+        #   Required. The ID to use for the Schema, which becomes the final component of
+        #   the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.
         #   org/html/rfc1034) standard with a length limit of 63 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5621,8 +5621,8 @@ module Google
         #   .
         # @param [Fixnum] page_size
         #   The maximum number of Schemas to return. The service may return fewer than
-        #   this value. If unspecified, at most 100 Schemas will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
+        #   this value. If unspecified, at most 100 Schemas are returned. The maximum
+        #   value is 1000; values above 1000 are set to 1000.
         # @param [String] page_token
         #   A page token, received from a previous SchemaService.ListSchemas call. Provide
         #   this to retrieve the subsequent page. When paginating, all other parameters
@@ -5665,8 +5665,8 @@ module Google
         #   limit of 1024 characters.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSchema] google_cloud_discoveryengine_v1alpha_schema_object
         # @param [Boolean] allow_missing
-        #   If set to true, and the Schema is not found, a new Schema will be created. In
-        #   this situation, `update_mask` is ignored.
+        #   If set to true, and the Schema is not found, a new Schema is created. In this
+        #   situation, `update_mask` is ignored.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5853,11 +5853,11 @@ module Google
         #   Required. Full resource name of a ServingConfig: `projects/*/locations/global/
         #   collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/
         #   collections/*/dataStores/*/servingConfigs/*` One default serving config is
-        #   created along with your recommendation engine creation. The engine ID will be
-        #   used as the ID of the default serving config. For example, for Engine `
-        #   projects/*/locations/global/collections/*/engines/my-engine`, you can use `
-        #   projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-
-        #   engine` for your RecommendationService.Recommend requests.
+        #   created along with your recommendation engine creation. The engine ID is used
+        #   as the ID of the default serving config. For example, for Engine `projects/*/
+        #   locations/global/collections/*/engines/my-engine`, you can use `projects/*/
+        #   locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
+        #   your RecommendationService.Recommend requests.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecommendRequest] google_cloud_discoveryengine_v1alpha_recommend_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6587,7 +6587,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Bulk import of User events. Request processing might be synchronous. Events
+        # Bulk import of user events. Request processing might be synchronous. Events
         # that already exist are skipped. Use this method for backfilling historical
         # user events. Operation.response is of type ImportResponse. Note that it is
         # possible for a subset of the items to be successfully inserted. Operation.
