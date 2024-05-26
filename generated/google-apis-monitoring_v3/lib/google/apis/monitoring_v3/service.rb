@@ -2571,7 +2571,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the list of IP addresses that checkers run from
+        # Returns the list of IP addresses that checkers run from.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. The server may
         #   further constrain the maximum number of results returned in a single page. If
