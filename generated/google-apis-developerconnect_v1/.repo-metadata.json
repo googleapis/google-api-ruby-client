@@ -1,0 +1,7 @@
+{
+    "api_id": "developerconnect:v1",
+    "name_pretty": "Developer Connect API",
+    "distribution_name": "google-apis-developerconnect_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
