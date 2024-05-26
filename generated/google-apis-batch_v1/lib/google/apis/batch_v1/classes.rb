@@ -274,6 +274,11 @@ module Google
         attr_accessor :instance_preemption_notice_received
         alias_method :instance_preemption_notice_received?, :instance_preemption_notice_received
       
+        # Optional. machine type of the VM
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
         # parsed contents of /etc/os-release
         # Corresponds to the JSON property `osRelease`
         # @return [Hash<String,String>]
@@ -301,6 +306,7 @@ module Google
           @instance = args[:instance] if args.key?(:instance)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @instance_preemption_notice_received = args[:instance_preemption_notice_received] if args.key?(:instance_preemption_notice_received)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
           @os_release = args[:os_release] if args.key?(:os_release)
           @version = args[:version] if args.key?(:version)
           @zone = args[:zone] if args.key?(:zone)
@@ -509,9 +515,14 @@ module Google
         # @return [Google::Apis::BatchV1::AgentEnvironment]
         attr_accessor :environment
       
-        # Maximum duration the task should run. The task will be killed and marked as
-        # FAILED if over this limit. The valid value range for max_run_duration in
-        # seconds is [0, 315576000000.999999999],
+        # Maximum duration the task should run before being automatically retried (if
+        # enabled) or automatically failed. Format the value of this field as a time
+        # limit in seconds followed by `s`—for example, `3600s` for 1 hour. The field
+        # accepts any value between 0 and the maximum listed for the `Duration` field
+        # type at https://protobuf.dev/reference/protobuf/google.protobuf/#duration;
+        # however, the actual maximum run time for a job will be limited to the maximum
+        # run time for a job listed at https://cloud.google.com/batch/quotas#max-job-
+        # duration.
         # Corresponds to the JSON property `maxRunDuration`
         # @return [String]
         attr_accessor :max_run_duration
@@ -1139,9 +1150,9 @@ module Google
       class InstancePolicyOrTemplate
         include Google::Apis::Core::Hashable
       
-        # Set this field true if users want Batch to help fetch drivers from a third
-        # party location and install them for GPUs specified in policy.accelerators or
-        # instance_template on their behalf. Default is false. For Container-Optimized
+        # Set this field true if you want Batch to help fetch drivers from a third party
+        # location and install them for GPUs specified in `policy.accelerators` or `
+        # instance_template` on your behalf. Default is false. For Container-Optimized
         # Image cases, Batch will install the accelerator driver following milestones of
         # https://cloud.google.com/container-optimized-os/docs/release-notes. For non
         # Container-Optimized Image cases, following https://github.com/
@@ -2259,12 +2270,11 @@ module Google
       
         # The exit code of a finished task. If the task succeeded, the exit code will be
         # 0. If the task failed but not due to the following reasons, the exit code will
-        # be 50000. Otherwise, it can be from different sources: - Batch known failures
-        # as https://cloud.google.com/batch/docs/troubleshooting#reserved-exit-codes. -
-        # Batch runnable execution failures: You can rely on Batch logs for further
+        # be 50000. Otherwise, it can be from different sources: * Batch known failures:
+        # https://cloud.google.com/batch/docs/troubleshooting#reserved-exit-codes. *
+        # Batch runnable execution failures; you can rely on Batch logs to further
         # diagnose: https://cloud.google.com/batch/docs/analyze-job-using-logs. If there
-        # are multiple runnables failures, Batch only exposes the first error caught for
-        # now.
+        # are multiple runnables failures, Batch only exposes the first error.
         # Corresponds to the JSON property `exitCode`
         # @return [Fixnum]
         attr_accessor :exit_code
@@ -2443,9 +2453,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_retry_count
       
-        # Maximum duration the task should run. The task will be killed and marked as
-        # FAILED if over this limit. The valid value range for max_run_duration in
-        # seconds is [0, 315576000000.999999999],
+        # Maximum duration the task should run before being automatically retried (if
+        # enabled) or automatically failed. Format the value of this field as a time
+        # limit in seconds followed by `s`—for example, `3600s` for 1 hour. The field
+        # accepts any value between 0 and the maximum listed for the `Duration` field
+        # type at https://protobuf.dev/reference/protobuf/google.protobuf/#duration;
+        # however, the actual maximum run time for a job will be limited to the maximum
+        # run time for a job listed at https://cloud.google.com/batch/quotas#max-job-
+        # duration.
         # Corresponds to the JSON property `maxRunDuration`
         # @return [String]
         attr_accessor :max_run_duration
