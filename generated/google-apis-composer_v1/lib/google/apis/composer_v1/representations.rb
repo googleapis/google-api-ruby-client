@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckUpgradeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckUpgradeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,6 +407,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :value, as: 'value'
+        end
+      end
+      
+      class CheckUpgradeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_version, as: 'imageVersion'
         end
       end
       
