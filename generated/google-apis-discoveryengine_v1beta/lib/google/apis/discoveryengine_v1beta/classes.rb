@@ -849,8 +849,7 @@ module Google
       
         # The industry vertical that the engine registers. The restriction of the Engine
         # industry vertical is based on DataStore: If unspecified, default to `GENERIC`.
-        # Vertical on Engine has to match vertical of the DataStore liniked to the
-        # engine.
+        # Vertical on Engine has to match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -2920,8 +2919,7 @@ module Google
       
         # The industry vertical that the engine registers. The restriction of the Engine
         # industry vertical is based on DataStore: If unspecified, default to `GENERIC`.
-        # Vertical on Engine has to match vertical of the DataStore liniked to the
-        # engine.
+        # Vertical on Engine has to match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -4283,7 +4281,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSessionTurn
         include Google::Apis::Core::Hashable
       
-        # The resource name of the answer to the user query.
+        # The resource name of the answer to the user query. Only set if the answer
+        # generation (/answer API call) happened in this turn.
         # Corresponds to the JSON property `answer`
         # @return [String]
         attr_accessor :answer
@@ -4793,7 +4792,7 @@ module Google
       
         # The session resource name. Not required. When session field is not set, the
         # API is in sessionless mode. We support auto session mode: users can use the
-        # wildcard symbol “-” as session id. A new id will be automatically generated
+        # wildcard symbol `-` as session ID. A new ID will be automatically generated
         # and assigned.
         # Corresponds to the JSON property `session`
         # @return [String]
@@ -7201,9 +7200,9 @@ module Google
         attr_accessor :promotion_ids
       
         # Quantity of the Document associated with the user event. Defaults to 1. For
-        # example, this field will be 2 if two quantities of the same Document are
-        # involved in a `add-to-cart` event. Required for events of the following event
-        # types: * `add-to-cart` * `purchase`
+        # example, this field is 2 if two quantities of the same Document are involved
+        # in a `add-to-cart` event. Required for events of the following event types: * `
+        # add-to-cart` * `purchase`
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
@@ -7467,8 +7466,7 @@ module Google
       
         # The industry vertical that the engine registers. The restriction of the Engine
         # industry vertical is based on DataStore: If unspecified, default to `GENERIC`.
-        # Vertical on Engine has to match vertical of the DataStore liniked to the
-        # engine.
+        # Vertical on Engine has to match vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -7772,8 +7770,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaFirestoreSource
         include Google::Apis::Core::Hashable
       
-        # Required. The Firestore collection to copy the data from with a length limit
-        # of 1,500 characters.
+        # Required. The Firestore collection (or entity) to copy the data from with a
+        # length limit of 1,500 characters.
         # Corresponds to the JSON property `collectionId`
         # @return [String]
         attr_accessor :collection_id
@@ -7826,17 +7824,17 @@ module Google
         # vertical. * `csv`: A CSV file with header conforming to the defined Schema of
         # the data store. Each entry after the header is imported as a Document. This
         # can only be used by the GENERIC Data Store vertical. Supported values for user
-        # even imports: * `user_event` (default): One JSON UserEvent per line.
+        # event imports: * `user_event` (default): One JSON UserEvent per line.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
       
-        # Required. Cloud Storage URIs to input files. URI can be up to 2000 characters
-        # long. URIs can match the full object path (for example, `gs://bucket/directory/
-        # object.json`) or a pattern matching one or more files, such as `gs://bucket/
-        # directory/*.json`. A request can contain at most 100 files (or 100,000 files
-        # if `data_schema` is `content`). Each file can be up to 2 GB (or 100 MB if `
-        # data_schema` is `content`).
+        # Required. Cloud Storage URIs to input files. Each URI can be up to 2000
+        # characters long. URIs can match the full object path (for example, `gs://
+        # bucket/directory/object.json`) or a pattern matching one or more files, such
+        # as `gs://bucket/directory/*.json`. A request can contain at most 100 files (or
+        # 100,000 files if `data_schema` is `content`). Each file can be up to 2 GB (or
+        # 100 MB if `data_schema` is `content`).
         # Corresponds to the JSON property `inputUris`
         # @return [Array<String>]
         attr_accessor :input_uris
@@ -9060,45 +9058,44 @@ module Google
         # field, then attribute-based expressions are expected instead of the above
         # described tag-based syntax. Examples: * (launguage: ANY("en", "es")) AND NOT (
         # categories: ANY("Movie")) * (available: true) AND (launguage: ANY("en", "es"))
-        # OR (categories: ANY("Movie")) If your filter blocks all results, the API will
-        # return generic (unfiltered) popular Documents. If you only want results
-        # strictly matching the filters, set `strictFiltering` to True in
+        # OR (categories: ANY("Movie")) If your filter blocks all results, the API
+        # returns generic (unfiltered) popular Documents. If you only want results
+        # strictly matching the filters, set `strictFiltering` to `true` in
         # RecommendRequest.params to receive empty results instead. Note that the API
-        # will never return Documents with `storageStatus` of `EXPIRED` or `DELETED`
+        # never returns Documents with `storageStatus` as `EXPIRED` or `DELETED`
         # regardless of filter choices.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
         # Maximum number of results to return. Set this property to the number of
-        # recommendation results needed. If zero, the service will choose a reasonable
-        # default. The maximum allowed value is 100. Values above 100 will be coerced to
-        # 100.
+        # recommendation results needed. If zero, the service chooses a reasonable
+        # default. The maximum allowed value is 100. Values above 100 are set to 100.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
         # Additional domain specific parameters for the recommendations. Allowed values:
-        # * `returnDocument`: Boolean. If set to true, the associated Document object
-        # will be returned in RecommendResponse.RecommendationResult.document. * `
-        # returnScore`: Boolean. If set to true, the recommendation 'score'
-        # corresponding to each returned Document will be set in RecommendResponse.
-        # RecommendationResult.metadata. The given 'score' indicates the probability of
-        # a Document conversion given the user's context and history. * `strictFiltering`
-        # : Boolean. True by default. If set to false, the service will return generic (
-        # unfiltered) popular Documents instead of empty if your filter blocks all
-        # recommendation results. * `diversityLevel`: String. Default empty. If set to
-        # be non-empty, then it needs to be one of: * `no-diversity` * `low-diversity` *
-        # `medium-diversity` * `high-diversity` * `auto-diversity` This gives request-
-        # level control and adjusts recommendation results based on Document category. *
-        # `attributeFilteringSyntax`: Boolean. False by default. If set to true, the `
-        # filter` field is interpreted according to the new, attribute-based syntax.
+        # * `returnDocument`: Boolean. If set to `true`, the associated Document object
+        # is returned in RecommendResponse.RecommendationResult.document. * `returnScore`
+        # : Boolean. If set to true, the recommendation score corresponding to each
+        # returned Document is set in RecommendResponse.RecommendationResult.metadata.
+        # The given score indicates the probability of a Document conversion given the
+        # user's context and history. * `strictFiltering`: Boolean. True by default. If
+        # set to `false`, the service returns generic (unfiltered) popular Documents
+        # instead of empty if your filter blocks all recommendation results. * `
+        # diversityLevel`: String. Default empty. If set to be non-empty, then it needs
+        # to be one of: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-
+        # diversity` * `auto-diversity` This gives request-level control and adjusts
+        # recommendation results based on Document category. * `attributeFilteringSyntax`
+        # : Boolean. False by default. If set to true, the `filter` field is interpreted
+        # according to the new, attribute-based syntax.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params
       
         # UserEvent captures all metadata information Discovery Engine API needs to know
-        # about how end users interact with customers' website.
+        # about how end users interact with your website.
         # Corresponds to the JSON property `userEvent`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaUserEvent]
         attr_accessor :user_event
@@ -9118,10 +9115,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :user_labels
       
-        # Use validate only mode for this recommendation query. If set to true, a fake
-        # model will be used that returns arbitrary Document IDs. Note that the validate
-        # only mode should only be used for testing the API, or if the model is not
-        # ready.
+        # Use validate only mode for this recommendation query. If set to `true`, a fake
+        # model is used that returns arbitrary Document IDs. Note that the validate only
+        # mode should only be used for testing the API, or if the model is not ready.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -9200,7 +9196,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Additional Document metadata / annotations. Possible values: * `score`:
+        # Additional Document metadata or annotations. Possible values: * `score`:
         # Recommendation score in double value. Is set if `returnScore` is set to true
         # in RecommendRequest.params.
         # Corresponds to the JSON property `metadata`
@@ -9254,7 +9250,7 @@ module Google
         # @return [String]
         attr_accessor :reply
       
-        # Summary of the top N search result specified by the summary spec.
+        # Summary of the top N search results specified by the summary spec.
         # Corresponds to the JSON property `summary`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummary]
         attr_accessor :summary
@@ -9434,7 +9430,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec]
         attr_accessor :content_search_spec
       
-        # A list of data store specs to apply on a search call.
+        # Specs defining dataStores to filter on in a search call and configurations for
+        # those dataStores. This is only considered for engines with multiple dataStores
+        # use case. For single dataStore within an engine, they should use the specs at
+        # the top level.
         # Corresponds to the JSON property `dataStoreSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
@@ -9508,12 +9507,12 @@ module Google
       
         # Additional search parameters. For public website search only, supported values
         # are: * `user_country_code`: string. Default empty. If set to non-empty,
-        # results are restricted or boosted based on the location provided. Example:
-        # user_country_code: "au" For available codes see [Country Codes](https://
+        # results are restricted or boosted based on the location provided. For example,
+        # `user_country_code: "au"` For available codes see [Country Codes](https://
         # developers.google.com/custom-search/docs/json_api_reference#countryCodes) * `
         # search_type`: double. Default empty. Enables non-webpage searching depending
         # on the value. The only valid non-default value is 1, which enables image
-        # searching. Example: search_type: 1
+        # searching. For example, `search_type: 1`
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params
@@ -10037,7 +10036,9 @@ module Google
         end
       end
       
-      # A struct to define data stores to filter on in a search call.
+      # A struct to define data stores to filter on in a search call and
+      # configurations for those data stores. A maximum of 1 DataStoreSpec per
+      # data_store is allowed. Otherwise, an `INVALID_ARGUMENT` error is returned.
       class GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec
         include Google::Apis::Core::Hashable
       
@@ -10153,9 +10154,9 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey]
         attr_accessor :facet_key
       
-        # Maximum of facet values that should be returned for this facet. If unspecified,
-        # defaults to 20. The maximum allowed value is 300. Values above 300 are
-        # coerced to 300. If this field is negative, an `INVALID_ARGUMENT` is returned.
+        # Maximum facet values that are returned for this facet. If unspecified,
+        # defaults to 20. The maximum allowed value is 300. Values above 300 are coerced
+        # to 300. If this field is negative, an `INVALID_ARGUMENT` is returned.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -10184,7 +10185,7 @@ module Google
         attr_accessor :case_insensitive
         alias_method :case_insensitive?, :case_insensitive
       
-        # Only get facet values that contains the given strings. For example, suppose "
+        # Only get facet values that contain the given strings. For example, suppose "
         # category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022"
         # . If set "contains" to "2022", the "category" facet only contains "Action >
         # 2022" and "Sci-Fi > 2022". Only supported on textual fields. Maximum is 10.
@@ -10301,8 +10302,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec
         include Google::Apis::Core::Hashable
       
-        # The mode under which spell correction should take effect to replace the
-        # original search query. Default to Mode.AUTO.
+        # The mode under which spell correction replaces the original search query.
+        # Defaults to Mode.AUTO.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -10380,7 +10381,7 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult>]
         attr_accessor :results
       
-        # Summary of the top N search result specified by the summary spec.
+        # Summary of the top N search results specified by the summary spec.
         # Corresponds to the JSON property `summary`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummary]
         attr_accessor :summary
@@ -10423,8 +10424,8 @@ module Google
         attr_accessor :dynamic_facet
         alias_method :dynamic_facet?, :dynamic_facet
       
-        # The key for this facet. E.g., "colors" or "price". It matches SearchRequest.
-        # FacetSpec.FacetKey.key.
+        # The key for this facet. For example, `"colors"` or `"price"`. It matches
+        # SearchRequest.FacetSpec.FacetKey.key.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -10533,12 +10534,12 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttribute
         include Google::Apis::Core::Hashable
       
-        # Attribute key used to refine the results e.g. 'movie_type'.
+        # Attribute key used to refine the results. For example, `"movie_type"`.
         # Corresponds to the JSON property `attributeKey`
         # @return [String]
         attr_accessor :attribute_key
       
-        # Attribute value used to refine the results e.g. 'drama'.
+        # Attribute value used to refine the results. For example, `"drama"`.
         # Corresponds to the JSON property `attributeValue`
         # @return [String]
         attr_accessor :attribute_value
@@ -10614,7 +10615,7 @@ module Google
         end
       end
       
-      # Summary of the top N search result specified by the summary spec.
+      # Summary of the top N search results specified by the summary spec.
       class GoogleCloudDiscoveryengineV1betaSearchResponseSummary
         include Google::Apis::Core::Hashable
       
@@ -11154,7 +11155,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSessionTurn
         include Google::Apis::Core::Hashable
       
-        # The resource name of the answer to the user query.
+        # The resource name of the answer to the user query. Only set if the answer
+        # generation (/answer API call) happened in this turn.
         # Corresponds to the JSON property `answer`
         # @return [String]
         attr_accessor :answer
@@ -11769,7 +11771,7 @@ module Google
       end
       
       # UserEvent captures all metadata information Discovery Engine API needs to know
-      # about how end users interact with customers' website.
+      # about how end users interact with your website.
       class GoogleCloudDiscoveryengineV1betaUserEvent
         include Google::Apis::Core::Hashable
       
@@ -11908,7 +11910,7 @@ module Google
       
         # A list of identifiers for the independent experiment groups this user event
         # belongs to. This is used to distinguish between user events associated with
-        # different experiment setups on the customer end.
+        # different experiment setups.
         # Corresponds to the JSON property `tagIds`
         # @return [Array<String>]
         attr_accessor :tag_ids
