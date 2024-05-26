@@ -71,12 +71,19 @@ module Google
       class GoogleFirebaseFcmDataV1beta1Data
         include Google::Apis::Core::Hashable
       
-        # Count of messages accepted by FCM intended to Android devices. The targeted
+        # Count of messages accepted by FCM intended for Android devices. The targeted
         # device must have opted in to the collection of usage and diagnostic
         # information.
         # Corresponds to the JSON property `countMessagesAccepted`
         # @return [Fixnum]
         attr_accessor :count_messages_accepted
+      
+        # Count of notifications accepted by FCM intended for Android devices. The
+        # targeted device must have opted in to the collection of usage and diagnostic
+        # information.
+        # Corresponds to the JSON property `countNotificationsAccepted`
+        # @return [Fixnum]
+        attr_accessor :count_notifications_accepted
       
         # Overview of delivery performance for messages that were successfully delivered.
         # All percentages are calculated with countMessagesAccepted as the denominator.
@@ -99,6 +106,12 @@ module Google
         # @return [Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1MessageOutcomePercents]
         attr_accessor :message_outcome_percents
       
+        # Additional information about proxy notification delivery. All percentages are
+        # calculated with countNotificationsAccepted as the denominator.
+        # Corresponds to the JSON property `proxyNotificationInsightPercents`
+        # @return [Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents]
+        attr_accessor :proxy_notification_insight_percents
+      
         def initialize(**args)
            update!(**args)
         end
@@ -106,9 +119,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count_messages_accepted = args[:count_messages_accepted] if args.key?(:count_messages_accepted)
+          @count_notifications_accepted = args[:count_notifications_accepted] if args.key?(:count_notifications_accepted)
           @delivery_performance_percents = args[:delivery_performance_percents] if args.key?(:delivery_performance_percents)
           @message_insight_percents = args[:message_insight_percents] if args.key?(:message_insight_percents)
           @message_outcome_percents = args[:message_outcome_percents] if args.key?(:message_outcome_percents)
+          @proxy_notification_insight_percents = args[:proxy_notification_insight_percents] if args.key?(:proxy_notification_insight_percents)
         end
       end
       
@@ -283,6 +298,65 @@ module Google
           @dropped_device_inactive = args[:dropped_device_inactive] if args.key?(:dropped_device_inactive)
           @dropped_too_many_pending_messages = args[:dropped_too_many_pending_messages] if args.key?(:dropped_too_many_pending_messages)
           @pending = args[:pending] if args.key?(:pending)
+        end
+      end
+      
+      # Additional information about proxy notification delivery. All percentages are
+      # calculated with countNotificationsAccepted as the denominator.
+      class GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents
+        include Google::Apis::Core::Hashable
+      
+        # The percentage of accepted notifications that failed to be proxied. This is
+        # usually caused by exceptions that occurred while calling [notifyAsPackage](
+        # https://developer.android.com/reference/android/app/NotificationManager#
+        # notifyAsPackage%28java.lang.String,%20java.lang.String,%20int,%20android.app.
+        # Notification%29).
+        # Corresponds to the JSON property `failed`
+        # @return [Float]
+        attr_accessor :failed
+      
+        # The percentage of accepted notifications that were successfully proxied by [
+        # Google Play services](https://developers.google.com/android/guides/overview).
+        # Corresponds to the JSON property `proxied`
+        # @return [Float]
+        attr_accessor :proxied
+      
+        # The percentage of accepted notifications that were skipped because the
+        # messages were not throttled.
+        # Corresponds to the JSON property `skippedNotThrottled`
+        # @return [Float]
+        attr_accessor :skipped_not_throttled
+      
+        # The percentage of accepted notifications that were skipped because the app
+        # disallowed these messages to be proxied.
+        # Corresponds to the JSON property `skippedOptedOut`
+        # @return [Float]
+        attr_accessor :skipped_opted_out
+      
+        # The percentage of accepted notifications that were skipped because
+        # configurations required for notifications to be proxied were missing.
+        # Corresponds to the JSON property `skippedUnconfigured`
+        # @return [Float]
+        attr_accessor :skipped_unconfigured
+      
+        # The percentage of accepted notifications that were skipped because proxy
+        # notification is unsupported for the recipient.
+        # Corresponds to the JSON property `skippedUnsupported`
+        # @return [Float]
+        attr_accessor :skipped_unsupported
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed = args[:failed] if args.key?(:failed)
+          @proxied = args[:proxied] if args.key?(:proxied)
+          @skipped_not_throttled = args[:skipped_not_throttled] if args.key?(:skipped_not_throttled)
+          @skipped_opted_out = args[:skipped_opted_out] if args.key?(:skipped_opted_out)
+          @skipped_unconfigured = args[:skipped_unconfigured] if args.key?(:skipped_unconfigured)
+          @skipped_unsupported = args[:skipped_unsupported] if args.key?(:skipped_unsupported)
         end
       end
       
