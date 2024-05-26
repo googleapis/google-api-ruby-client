@@ -720,10 +720,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :antenna_downtilt
       
-        # Peak antenna gain in dBi. This parameter is an integer with a value between -
-        # 127 and +128 (dBi) inclusive.
+        # Peak antenna gain in dBi. This parameter is a double with a value between -127
+        # and +128 (dBi) inclusive. Part of Release 2 to support floating-point value
         # Corresponds to the JSON property `antennaGain`
-        # @return [Fixnum]
+        # @return [Float]
         attr_accessor :antenna_gain
       
         # If an external antenna is used, the antenna model is optionally provided in
