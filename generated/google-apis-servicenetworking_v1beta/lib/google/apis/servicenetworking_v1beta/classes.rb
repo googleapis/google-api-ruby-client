@@ -3217,7 +3217,8 @@ module Google
         # securityAdmin' applied on the shared VPC host project - 'roles/compute.
         # networkAdmin' applied on the shared VPC host project - 'roles/compute.xpnAdmin'
         # applied on the shared VPC host project - 'roles/dns.admin' applied on the
-        # shared VPC host project
+        # shared VPC host project - 'roles/logging.admin' applied on the shared VPC host
+        # project
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
