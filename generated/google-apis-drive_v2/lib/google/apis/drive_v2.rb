@@ -41,6 +41,9 @@ module Google
       # See, edit, create, and delete only the specific Google Drive files you use with this app
       AUTH_DRIVE_FILE = 'https://www.googleapis.com/auth/drive.file'
 
+      # See and download your Google Drive files that were created or edited by Google Meet.
+      AUTH_DRIVE_MEET_READONLY = 'https://www.googleapis.com/auth/drive.meet.readonly'
+
       # View and manage metadata of files in your Google Drive
       AUTH_DRIVE_METADATA = 'https://www.googleapis.com/auth/drive.metadata'
 
