@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1GcsLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1GitConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1371,6 +1377,15 @@ module Google
         end
       end
       
+      class GoogleDevtoolsCloudbuildV1GcsLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object, as: 'object'
+        end
+      end
+      
       class GoogleDevtoolsCloudbuildV1GitConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1400,6 +1415,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :proxy_secret_version_name, as: 'proxySecretVersionName'
+          property :proxy_ssl_ca_info, as: 'proxySslCaInfo', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GcsLocation, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GcsLocation::Representation
+      
         end
       end
       
@@ -1993,6 +2010,7 @@ module Google
           collection :image_pull_secrets, as: 'imagePullSecrets', class: Google::Apis::RunV1::LocalObjectReference, decorator: Google::Apis::RunV1::LocalObjectReference::Representation
       
           hash :node_selector, as: 'nodeSelector'
+          property :runtime_class_name, as: 'runtimeClassName'
           property :service_account_name, as: 'serviceAccountName'
           property :timeout_seconds, as: 'timeoutSeconds'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
