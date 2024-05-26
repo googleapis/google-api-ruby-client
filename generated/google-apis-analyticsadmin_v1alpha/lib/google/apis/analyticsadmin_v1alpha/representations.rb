@@ -1278,6 +1278,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ads_personalization_enabled, as: 'adsPersonalizationEnabled'
+          property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :event_trigger, as: 'eventTrigger', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceEventTrigger, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceEventTrigger::Representation
@@ -1746,7 +1747,6 @@ module Google
       class GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :parent, as: 'parent'
           property :subproperty, as: 'subproperty', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
       
           property :subproperty_event_filter, as: 'subpropertyEventFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter::Representation
