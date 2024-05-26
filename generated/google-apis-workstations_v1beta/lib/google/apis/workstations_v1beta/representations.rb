@@ -314,6 +314,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::WorkstationsV1beta::Accelerator, decorator: Google::Apis::WorkstationsV1beta::Accelerator::Representation
       
+          property :boot_disk_size_gb, as: 'bootDiskSizeGb'
+          property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :id, as: 'id'
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
@@ -438,6 +440,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expire_time, as: 'expireTime'
+          property :port, as: 'port'
           property :ttl, as: 'ttl'
         end
       end

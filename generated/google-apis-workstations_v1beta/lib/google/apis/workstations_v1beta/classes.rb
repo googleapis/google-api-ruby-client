@@ -230,6 +230,41 @@ module Google
         # @return [Array<Google::Apis::WorkstationsV1beta::Accelerator>]
         attr_accessor :accelerators
       
+        # Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum
+        # boot disk size is `30` GB. Defaults to `50` GB.
+        # Corresponds to the JSON property `bootDiskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :boot_disk_size_gb
+      
+        # Optional. Whether to enable nested virtualization on boosted Cloud
+        # Workstations VMs running using this boost configuration. Nested virtualization
+        # lets you run virtual machine (VM) instances inside your workstation. Before
+        # enabling nested virtualization, consider the following important
+        # considerations. Cloud Workstations instances are subject to the [same
+        # restrictions as Compute Engine instances](https://cloud.google.com/compute/
+        # docs/instances/nested-virtualization/overview#restrictions): * **Organization
+        # policy**: projects, folders, or organizations may be restricted from creating
+        # nested VMs if the **Disable VM nested virtualization** constraint is enforced
+        # in the organization policy. For more information, see the Compute Engine
+        # section, [Checking whether nested virtualization is allowed](https://cloud.
+        # google.com/compute/docs/instances/nested-virtualization/managing-constraint#
+        # checking_whether_nested_virtualization_is_allowed). * **Performance**: nested
+        # VMs might experience a 10% or greater decrease in performance for workloads
+        # that are CPU-bound and possibly greater than a 10% decrease for workloads that
+        # are input/output bound. * **Machine Type**: nested virtualization can only be
+        # enabled on boost configurations that specify a machine_type in the N1 or N2
+        # machine series. * **GPUs**: nested virtualization may not be enabled on boost
+        # configurations with accelerators. * **Operating System**: Because [Container-
+        # Optimized OS](https://cloud.google.com/compute/docs/images/os-details#
+        # container-optimized_os_cos) does not support nested virtualization, when
+        # nested virtualization is enabled, the underlying Compute Engine VM instances
+        # boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-
+        # details#ubuntu_lts) image. Defaults to false.
+        # Corresponds to the JSON property `enableNestedVirtualization`
+        # @return [Boolean]
+        attr_accessor :enable_nested_virtualization
+        alias_method :enable_nested_virtualization?, :enable_nested_virtualization
+      
         # Optional. Required. The id to be used for the boost config.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -257,6 +292,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
+          @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @id = args[:id] if args.key?(:id)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool_size = args[:pool_size] if args.key?(:pool_size)
@@ -799,6 +836,15 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Optional. Port for which the access token should be generated. If specified,
+        # the generated access token will grant access only to the specified port of the
+        # workstation. If specified, values must be within the range [1 - 65535]. If not
+        # specified, the generated access token will grant access to all ports of the
+        # workstation.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
         # Desired lifetime duration of the access token. This value must be at most 24
         # hours. If a value is not specified, the token's lifetime will be set to a
         # default value of 1 hour.
@@ -813,6 +859,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @port = args[:port] if args.key?(:port)
           @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
