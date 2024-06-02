@@ -256,6 +256,8 @@ module Google
           collection :networks, as: 'networks', class: Google::Apis::BackupdrV1::NetworkConfig, decorator: Google::Apis::BackupdrV1::NetworkConfig::Representation
       
           property :oauth2_client_id, as: 'oauth2ClientId'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
