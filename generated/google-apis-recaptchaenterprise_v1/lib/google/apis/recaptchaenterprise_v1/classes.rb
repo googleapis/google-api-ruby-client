@@ -1199,7 +1199,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment
         include Google::Apis::Core::Hashable
       
-        # Information about sms toll fraud
+        # Information about SMS toll fraud.
         # Corresponds to the JSON property `smsTollFraudVerdict`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict]
         attr_accessor :sms_toll_fraud_verdict
@@ -1532,7 +1532,7 @@ module Google
         end
       end
       
-      # Information about sms toll fraud
+      # Information about SMS toll fraud.
       class GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict
         include Google::Apis::Core::Hashable
       
@@ -1541,7 +1541,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :reasons
       
-        # Output only. Probability of an sms event being fraudulent. Values are from 0.0
+        # Output only. Probability of an SMS event being fraudulent. Values are from 0.0
         # (lowest) to 1.0 (highest).
         # Corresponds to the JSON property `risk`
         # @return [Float]
