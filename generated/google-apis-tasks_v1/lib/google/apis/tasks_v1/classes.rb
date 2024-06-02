@@ -64,12 +64,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Type of the resource. This is always "tasks#task".
+        # Output only. Type of the resource. This is always "tasks#task".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Collection of links. This collection is read-only.
+        # Output only. Collection of links. This collection is read-only.
         # Corresponds to the JSON property `links`
         # @return [Array<Google::Apis::TasksV1::Task::Link>]
         attr_accessor :links
@@ -79,24 +79,25 @@ module Google
         # @return [String]
         attr_accessor :notes
       
-        # Parent task identifier. This field is omitted if it is a top-level task. This
-        # field is read-only. Use the "move" method to move the task under a different
-        # parent or to the top level.
+        # Output only. Parent task identifier. This field is omitted if it is a top-
+        # level task. This field is read-only. Use the "move" method to move the task
+        # under a different parent or to the top level.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
-        # String indicating the position of the task among its sibling tasks under the
-        # same parent task or at the top level. If this string is greater than another
-        # task's corresponding position string according to lexicographical ordering,
-        # the task is positioned after the other task under the same parent task (or at
-        # the top level). This field is read-only. Use the "move" method to move the
+        # Output only. String indicating the position of the task among its sibling
+        # tasks under the same parent task or at the top level. If this string is
+        # greater than another task's corresponding position string according to
+        # lexicographical ordering, the task is positioned after the other task under
+        # the same parent task (or at the top level). Use the "move" method to move the
         # task to another position.
         # Corresponds to the JSON property `position`
         # @return [String]
         attr_accessor :position
       
-        # URL pointing to this task. Used to retrieve, update, or delete this task.
+        # Output only. URL pointing to this task. Used to retrieve, update, or delete
+        # this task.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -111,13 +112,12 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Last modification time of the task (as a RFC 3339 timestamp).
+        # Output only. Last modification time of the task (as a RFC 3339 timestamp).
         # Corresponds to the JSON property `updated`
         # @return [String]
         attr_accessor :updated
       
-        # An absolute link to the task in the Google Tasks Web UI. This field is read-
-        # only.
+        # Output only. An absolute link to the task in the Google Tasks Web UI.
         # Corresponds to the JSON property `webViewLink`
         # @return [String]
         attr_accessor :web_view_link
@@ -192,13 +192,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Type of the resource. This is always "tasks#taskList".
+        # Output only. Type of the resource. This is always "tasks#taskList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # URL pointing to this task list. Used to retrieve, update, or delete this task
-        # list.
+        # Output only. URL pointing to this task list. Used to retrieve, update, or
+        # delete this task list.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -208,7 +208,7 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Last modification time of the task list (as a RFC 3339 timestamp).
+        # Output only. Last modification time of the task list (as a RFC 3339 timestamp).
         # Corresponds to the JSON property `updated`
         # @return [String]
         attr_accessor :updated
