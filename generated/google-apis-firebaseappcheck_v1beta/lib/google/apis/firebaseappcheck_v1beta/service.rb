@@ -1833,7 +1833,8 @@ module Google
         #   service IDs are supported: * `firebasestorage.googleapis.com` (Cloud Storage
         #   for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database)
         #   * `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.googleapis.
-        #   com` (Firebase Authentication with Identity Platform)
+        #   com` (Firebase Authentication with Identity Platform) * `oauth2.googleapis.com`
+        #   (Google Identity for iOS)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1870,8 +1871,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of Services to return in the response. Only explicitly
         #   configured services are returned. The server may return fewer than this at its
-        #   own discretion. If no value is specified or set to zero (or too large a value
-        #   is specified), the server will impose its own limit.
+        #   own discretion. If no value is specified (or too large a value is specified),
+        #   the server will impose its own limit.
         # @param [String] page_token
         #   Token returned from a previous call to ListServices indicating where in the
         #   set of Services to resume listing. Provide this to retrieve the subsequent
@@ -2157,8 +2158,8 @@ module Google
         
         # Updates the specified ResourcePolicy configuration.
         # @param [String] name
-        #   Required. The relative name of the resource policy object, in the format: ```
-        #   projects/`project_number`/services/`service_id`/resourcePolicies/`
+        #   Required. Identifier. The relative name of the resource policy object, in the
+        #   format: ``` projects/`project_number`/services/`service_id`/resourcePolicies/`
         #   resource_policy_id` ``` Note that the `service_id` element must be a supported
         #   service ID. Currently, the following service IDs are supported: * `oauth2.
         #   googleapis.com` (Google Identity for iOS) `resource_policy_id` is a system-
