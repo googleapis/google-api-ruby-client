@@ -16,13 +16,13 @@ module Google
   module Apis
     module CloudfunctionsV2beta
       # Version of the google-apis-cloudfunctions_v2beta gem
-      GEM_VERSION = "0.44.0"
+      GEM_VERSION = "0.45.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.15.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240307"
+      REVISION = "20240523"
     end
   end
 end
