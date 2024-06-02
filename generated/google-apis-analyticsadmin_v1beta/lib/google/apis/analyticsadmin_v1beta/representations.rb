@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1betaRunAccessReportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1003,6 +1009,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_ticket_id, as: 'accountTicketId'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_edit_rules, as: 'eventEditRules'
         end
       end
       

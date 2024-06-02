@@ -2085,6 +2085,27 @@ module Google
         end
       end
       
+      # Request message for ReorderEventEditRules RPC.
+      class GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. EventEditRule resource names for the specified data stream, in the
+        # needed processing order. All EventEditRules for the stream must be present in
+        # the list.
+        # Corresponds to the JSON property `eventEditRules`
+        # @return [Array<String>]
+        attr_accessor :event_edit_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_edit_rules = args[:event_edit_rules] if args.key?(:event_edit_rules)
+        end
+      end
+      
       # The request for a Data Access Record Report.
       class GoogleAnalyticsAdminV1betaRunAccessReportRequest
         include Google::Apis::Core::Hashable

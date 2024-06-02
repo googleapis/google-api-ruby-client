@@ -1452,6 +1452,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Changes the processing order of event edit rules on the specified stream.
+        # @param [String] parent
+        #   Required. Example format: properties/123/dataStreams/456
+        # @param [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest] google_analytics_admin_v1beta_reorder_event_edit_rules_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1beta::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reorder_property_data_stream_event_edit_rule(parent, google_analytics_admin_v1beta_reorder_event_edit_rules_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/eventEditRules:reorder', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest::Representation
+          command.request_object = google_analytics_admin_v1beta_reorder_event_edit_rules_request_object
+          command.response_representation = Google::Apis::AnalyticsadminV1beta::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1beta::GoogleProtobufEmpty
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a measurement protocol secret.
         # @param [String] parent
         #   Required. The parent resource where this secret will be created. Format:
