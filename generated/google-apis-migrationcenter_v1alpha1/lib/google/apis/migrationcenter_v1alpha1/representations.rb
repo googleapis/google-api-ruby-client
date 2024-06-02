@@ -130,6 +130,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssetsExportJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssetsExportJobExecution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssetsExportJobExecutionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssetsExportJobExportCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssetsExportJobNetworkDependencies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsEc2PlatformDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -610,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAssetsExportJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAssetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1030,6 +1066,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunAssetsExportJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RunAssetsExportJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunImportJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1079,6 +1127,24 @@ module Google
       end
       
       class Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SignedUri
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SignedUriDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SignedUris
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1419,6 +1485,60 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :daily_resource_usage_aggregations, as: 'dailyResourceUsageAggregations', class: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregation, decorator: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregation::Representation
       
+        end
+      end
+      
+      class AssetsExportJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExportCondition, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExportCondition::Representation
+      
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network_dependencies, as: 'networkDependencies', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobNetworkDependencies, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobNetworkDependencies::Representation
+      
+          collection :recent_executions, as: 'recentExecutions', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecution, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecution::Representation
+      
+          property :signed_uri_destination, as: 'signedUriDestination', class: Google::Apis::MigrationcenterV1alpha1::SignedUriDestination, decorator: Google::Apis::MigrationcenterV1alpha1::SignedUriDestination::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AssetsExportJobExecution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :execution_id, as: 'executionId'
+          property :expire_time, as: 'expireTime'
+          property :result, as: 'result', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecutionResult, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecutionResult::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class AssetsExportJobExecutionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::MigrationcenterV1alpha1::Status, decorator: Google::Apis::MigrationcenterV1alpha1::Status::Representation
+      
+          property :signed_uris, as: 'signedUris', class: Google::Apis::MigrationcenterV1alpha1::SignedUris, decorator: Google::Apis::MigrationcenterV1alpha1::SignedUris::Representation
+      
+        end
+      end
+      
+      class AssetsExportJobExportCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+        end
+      end
+      
+      class AssetsExportJobNetworkDependencies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_days, as: 'maxDays'
         end
       end
       
@@ -2266,6 +2386,15 @@ module Google
         end
       end
       
+      class ListAssetsExportJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assets_export_jobs, as: 'assetsExportJobs', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJob, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJob::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListAssetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3015,6 +3144,21 @@ module Google
         end
       end
       
+      class RunAssetsExportJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class RunAssetsExportJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assets_export_job_execution, as: 'assetsExportJobExecution', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecution, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecution::Representation
+      
+        end
+      end
+      
       class RunImportJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3096,6 +3240,28 @@ module Google
           property :disable_cloud_logging, as: 'disableCloudLogging'
           property :name, as: 'name'
           property :preference_set, as: 'preferenceSet'
+        end
+      end
+      
+      class SignedUri
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file, as: 'file'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class SignedUriDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SignedUris
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :signed_uris, as: 'signedUris', class: Google::Apis::MigrationcenterV1alpha1::SignedUri, decorator: Google::Apis::MigrationcenterV1alpha1::SignedUri::Representation
+      
         end
       end
       
