@@ -2381,6 +2381,19 @@ module Google
         end
       end
       
+      # Configuration to use Change Tables CDC read method.
+      class SqlServerChangeTables
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # SQLServer Column.
       class SqlServerColumn
         include Google::Apis::Core::Hashable
@@ -2560,6 +2573,11 @@ module Google
       class SqlServerSourceConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration to use Change Tables CDC read method.
+        # Corresponds to the JSON property `changeTables`
+        # @return [Google::Apis::DatastreamV1::SqlServerChangeTables]
+        attr_accessor :change_tables
+      
         # SQLServer database structure.
         # Corresponds to the JSON property `excludeObjects`
         # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
@@ -2580,16 +2598,23 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_concurrent_cdc_tasks
       
+        # Configuration to use Transaction Logs CDC read method.
+        # Corresponds to the JSON property `transactionLogs`
+        # @return [Google::Apis::DatastreamV1::SqlServerTransactionLogs]
+        attr_accessor :transaction_logs
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @change_tables = args[:change_tables] if args.key?(:change_tables)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
           @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
           @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
+          @transaction_logs = args[:transaction_logs] if args.key?(:transaction_logs)
         end
       end
       
@@ -2616,6 +2641,19 @@ module Google
         def update!(**args)
           @columns = args[:columns] if args.key?(:columns)
           @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # Configuration to use Transaction Logs CDC read method.
+      class SqlServerTransactionLogs
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
