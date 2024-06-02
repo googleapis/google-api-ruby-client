@@ -327,11 +327,11 @@ module Google
         end
       end
       
-      # Configuration options for a custom domain.
+      # Configuration options for private workstation clusters.
       class DomainConfig
         include Google::Apis::Core::Hashable
       
-        # Immutable. Domain used by Workstations for HTTP ingress.
+        # Immutable. Whether Workstations endpoint is private.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
@@ -502,7 +502,7 @@ module Google
         # are input/output bound. * **Machine Type**: nested virtualization can only be
         # enabled on workstation configurations that specify a machine_type in the N1 or
         # N2 machine series. * **GPUs**: nested virtualization may not be enabled on
-        # workstation configurations with accelerators. * **Operating System**: Because [
+        # workstation configurations with accelerators. * **Operating System**: because [
         # Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-
         # details#container-optimized_os_cos) does not support nested virtualization,
         # when nested virtualization is enabled, the underlying Compute Engine VM
@@ -1322,37 +1322,27 @@ module Google
         end
       end
       
-      # Configuration options for private workstation clusters.
+      # 
       class PrivateClusterConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Additional projects that are allowed to attach to the workstation
-        # cluster's service attachment. By default, the workstation cluster's project
-        # and the VPC host project (if different) are allowed.
+        # 
         # Corresponds to the JSON property `allowedProjects`
         # @return [Array<String>]
         attr_accessor :allowed_projects
       
-        # Output only. Hostname for the workstation cluster. This field will be
-        # populated only when private endpoint is enabled. To access workstations in the
-        # workstation cluster, create a new DNS zone mapping this domain name to an
-        # internal IP address and a forwarding rule mapping that address to the service
-        # attachment.
+        # 
         # Corresponds to the JSON property `clusterHostname`
         # @return [String]
         attr_accessor :cluster_hostname
       
-        # Immutable. Whether Workstations endpoint is private.
+        # 
         # Corresponds to the JSON property `enablePrivateEndpoint`
         # @return [Boolean]
         attr_accessor :enable_private_endpoint
         alias_method :enable_private_endpoint?, :enable_private_endpoint
       
-        # Output only. Service attachment URI for the workstation cluster. The service
-        # attachemnt is created when private endpoint is enabled. To access workstations
-        # in the workstation cluster, configure access to the managed service using [
-        # Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-
-        # service-connect-services).
+        # 
         # Corresponds to the JSON property `serviceAttachmentUri`
         # @return [String]
         attr_accessor :service_attachment_uri
@@ -1746,7 +1736,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Configuration options for a custom domain.
+        # Configuration options for private workstation clusters.
         # Corresponds to the JSON property `domainConfig`
         # @return [Google::Apis::WorkstationsV1::DomainConfig]
         attr_accessor :domain_config
@@ -1776,7 +1766,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Configuration options for private workstation clusters.
+        # Optional. Configuration for private workstation cluster.
         # Corresponds to the JSON property `privateClusterConfig`
         # @return [Google::Apis::WorkstationsV1::PrivateClusterConfig]
         attr_accessor :private_cluster_config
