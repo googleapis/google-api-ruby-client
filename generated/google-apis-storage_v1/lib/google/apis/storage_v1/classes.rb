@@ -1169,6 +1169,95 @@ module Google
         end
       end
       
+      # The storage layout configuration of a bucket.
+      class BucketStorageLayout
+        include Google::Apis::Core::Hashable
+      
+        # The name of the bucket.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # The bucket's custom placement configuration for Custom Dual Regions.
+        # Corresponds to the JSON property `customPlacementConfig`
+        # @return [Google::Apis::StorageV1::BucketStorageLayout::CustomPlacementConfig]
+        attr_accessor :custom_placement_config
+      
+        # The bucket's hierarchical namespace configuration.
+        # Corresponds to the JSON property `hierarchicalNamespace`
+        # @return [Google::Apis::StorageV1::BucketStorageLayout::HierarchicalNamespace]
+        attr_accessor :hierarchical_namespace
+      
+        # The kind of item this is. For storage layout, this is always storage#
+        # storageLayout.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The location of the bucket.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The type of the bucket location.
+        # Corresponds to the JSON property `locationType`
+        # @return [String]
+        attr_accessor :location_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @custom_placement_config = args[:custom_placement_config] if args.key?(:custom_placement_config)
+          @hierarchical_namespace = args[:hierarchical_namespace] if args.key?(:hierarchical_namespace)
+          @kind = args[:kind] if args.key?(:kind)
+          @location = args[:location] if args.key?(:location)
+          @location_type = args[:location_type] if args.key?(:location_type)
+        end
+        
+        # The bucket's custom placement configuration for Custom Dual Regions.
+        class CustomPlacementConfig
+          include Google::Apis::Core::Hashable
+        
+          # The list of regional locations in which data is placed.
+          # Corresponds to the JSON property `dataLocations`
+          # @return [Array<String>]
+          attr_accessor :data_locations
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @data_locations = args[:data_locations] if args.key?(:data_locations)
+          end
+        end
+        
+        # The bucket's hierarchical namespace configuration.
+        class HierarchicalNamespace
+          include Google::Apis::Core::Hashable
+        
+          # When set to true, hierarchical namespace is enabled for this bucket.
+          # Corresponds to the JSON property `enabled`
+          # @return [Boolean]
+          attr_accessor :enabled
+          alias_method :enabled?, :enabled
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @enabled = args[:enabled] if args.key?(:enabled)
+          end
+        end
+      end
+      
       # A list of buckets.
       class Buckets
         include Google::Apis::Core::Hashable
