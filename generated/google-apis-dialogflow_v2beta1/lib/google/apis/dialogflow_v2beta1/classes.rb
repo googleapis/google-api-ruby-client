@@ -12110,6 +12110,25 @@ module Google
         end
       end
       
+      # Context of the conversation, including transcripts.
+      class GoogleCloudDialogflowV2beta1ConversationContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of message transcripts in the conversation.
+        # Corresponds to the JSON property `messageEntries`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1MessageEntry>]
+        attr_accessor :message_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_entries = args[:message_entries] if args.key?(:message_entries)
+        end
+      end
+      
       # Represents a notification sent to Pub/Sub subscribers for conversation
       # lifecycle events.
       class GoogleCloudDialogflowV2beta1ConversationEvent
@@ -13054,6 +13073,46 @@ module Google
         end
       end
       
+      # Providing examples in the generator (i.e. building a few-shot generator) helps
+      # convey the desired format of the LLM response. NEXT_ID: 10
+      class GoogleCloudDialogflowV2beta1FewShotExample
+        include Google::Apis::Core::Hashable
+      
+        # Context of the conversation, including transcripts.
+        # Corresponds to the JSON property `conversationContext`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationContext]
+        attr_accessor :conversation_context
+      
+        # Optional. Key is the placeholder field name in input, value is the value of
+        # the placeholder. E.g. instruction contains "@price", and ingested data has <"
+        # price", "10">
+        # Corresponds to the JSON property `extraInfo`
+        # @return [Hash<String,String>]
+        attr_accessor :extra_info
+      
+        # Suggestion generated using a Generator.
+        # Corresponds to the JSON property `output`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorSuggestion]
+        attr_accessor :output
+      
+        # List of summarization sections.
+        # Corresponds to the JSON property `summarizationSectionList`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationSectionList]
+        attr_accessor :summarization_section_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_context = args[:conversation_context] if args.key?(:conversation_context)
+          @extra_info = args[:extra_info] if args.key?(:extra_info)
+          @output = args[:output] if args.key?(:output)
+          @summarization_section_list = args[:summarization_section_list] if args.key?(:summarization_section_list)
+        end
+      end
+      
       # By default, your agent responds to a matched intent with a static response. As
       # an alternative, you can provide a more dynamic response by using fulfillment.
       # When you enable fulfillment for an intent, Dialogflow responds to that intent
@@ -13245,6 +13304,64 @@ module Google
         end
       end
       
+      # The request message for Conversations.GenerateStatelessSuggestion.
+      class GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Context of the conversation, including transcripts.
+        # Corresponds to the JSON property `conversationContext`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationContext]
+        attr_accessor :conversation_context
+      
+        # LLM generator.
+        # Corresponds to the JSON property `generator`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Generator]
+        attr_accessor :generator
+      
+        # The resource name of the existing created generator. Format: `projects//
+        # locations//generators/`
+        # Corresponds to the JSON property `generatorName`
+        # @return [String]
+        attr_accessor :generator_name
+      
+        # Optional. A list of trigger events. Generator will be triggered only if it's
+        # trigger event is included here.
+        # Corresponds to the JSON property `triggerEvents`
+        # @return [Array<String>]
+        attr_accessor :trigger_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_context = args[:conversation_context] if args.key?(:conversation_context)
+          @generator = args[:generator] if args.key?(:generator)
+          @generator_name = args[:generator_name] if args.key?(:generator_name)
+          @trigger_events = args[:trigger_events] if args.key?(:trigger_events)
+        end
+      end
+      
+      # The response message for Conversations.GenerateStatelessSuggestion.
+      class GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Suggestion generated using a Generator.
+        # Corresponds to the JSON property `generatorSuggestion`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorSuggestion]
+        attr_accessor :generator_suggestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generator_suggestion = args[:generator_suggestion] if args.key?(:generator_suggestion)
+        end
+      end
+      
       # The request message for Conversations.GenerateStatelessSummary.
       class GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequest
         include Google::Apis::Core::Hashable
@@ -13377,6 +13494,82 @@ module Google
           @baseline_model_version = args[:baseline_model_version] if args.key?(:baseline_model_version)
           @text = args[:text] if args.key?(:text)
           @text_sections = args[:text_sections] if args.key?(:text_sections)
+        end
+      end
+      
+      # LLM generator.
+      class GoogleCloudDialogflowV2beta1Generator
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Creation time of this generator.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Human readable description of the generator.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The parameters of inference.
+        # Corresponds to the JSON property `inferenceParameter`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InferenceParameter]
+        attr_accessor :inference_parameter
+      
+        # Output only. Identifier. The resource name of the generator. Format: `projects/
+        # /locations//generators/`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Summarization context that customer can configure.
+        # Corresponds to the JSON property `summarizationContext`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationContext]
+        attr_accessor :summarization_context
+      
+        # Optional. The trigger event of the generator. It defines when the generator is
+        # triggered in a conversation.
+        # Corresponds to the JSON property `triggerEvent`
+        # @return [String]
+        attr_accessor :trigger_event
+      
+        # Output only. Update time of this generator.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @inference_parameter = args[:inference_parameter] if args.key?(:inference_parameter)
+          @name = args[:name] if args.key?(:name)
+          @summarization_context = args[:summarization_context] if args.key?(:summarization_context)
+          @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Suggestion generated using a Generator.
+      class GoogleCloudDialogflowV2beta1GeneratorSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Suggested summary of the conversation.
+        # Corresponds to the JSON property `summarySuggestion`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarySuggestion]
+        attr_accessor :summary_suggestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summary_suggestion = args[:summary_suggestion] if args.key?(:summary_suggestion)
         end
       end
       
@@ -13517,6 +13710,12 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig>]
         attr_accessor :feature_configs
       
+        # Optional. List of various generator resource names used in the conversation
+        # profile.
+        # Corresponds to the JSON property `generators`
+        # @return [Array<String>]
+        attr_accessor :generators
+      
         # If `group_suggestion_responses` is false, and there are multiple `
         # feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we
         # will try to deliver suggestions to customers as soon as we get new suggestion.
@@ -13537,6 +13736,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @feature_configs = args[:feature_configs] if args.key?(:feature_configs)
+          @generators = args[:generators] if args.key?(:generators)
           @group_suggestion_responses = args[:group_suggestion_responses] if args.key?(:group_suggestion_responses)
         end
       end
@@ -13902,7 +14102,7 @@ module Google
       class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig
         include Google::Apis::Core::Hashable
       
-        # Configuration specific to LivePerson (https://www.liveperson.com).
+        # Configuration specific to [LivePerson](https://www.liveperson.com).
         # Corresponds to the JSON property `livePersonConfig`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig]
         attr_accessor :live_person_config
@@ -13923,7 +14123,7 @@ module Google
         end
       end
       
-      # Configuration specific to LivePerson (https://www.liveperson.com).
+      # Configuration specific to [LivePerson](https://www.liveperson.com).
       class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig
         include Google::Apis::Core::Hashable
       
@@ -14100,6 +14300,60 @@ module Google
         end
       end
       
+      # The parameters of inference.
+      class GoogleCloudDialogflowV2beta1InferenceParameter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Maximum number of the output tokens for the generator.
+        # Corresponds to the JSON property `maxOutputTokens`
+        # @return [Fixnum]
+        attr_accessor :max_output_tokens
+      
+        # Optional. Controls the randomness of LLM predictions. Low temperature = less
+        # random. High temperature = more random. If unset (or 0), uses a default value
+        # of 0.
+        # Corresponds to the JSON property `temperature`
+        # @return [Float]
+        attr_accessor :temperature
+      
+        # Optional. Top-k changes how the model selects tokens for output. A top-k of 1
+        # means the selected token is the most probable among all tokens in the model's
+        # vocabulary (also called greedy decoding), while a top-k of 3 means that the
+        # next token is selected from among the 3 most probable tokens (using
+        # temperature). For each token selection step, the top K tokens with the highest
+        # probabilities are sampled. Then tokens are further filtered based on topP with
+        # the final token selected using temperature sampling. Specify a lower value for
+        # less random responses and a higher value for more random responses. Acceptable
+        # value is [1, 40], default to 40.
+        # Corresponds to the JSON property `topK`
+        # @return [Fixnum]
+        attr_accessor :top_k
+      
+        # Optional. Top-p changes how the model selects tokens for output. Tokens are
+        # selected from most K (see topK parameter) probable to least until the sum of
+        # their probabilities equals the top-p value. For example, if tokens A, B, and C
+        # have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the
+        # model will select either A or B as the next token (using temperature) and
+        # doesn't consider C. The default top-p value is 0.95. Specify a lower value for
+        # less random responses and a higher value for more random responses. Acceptable
+        # value is [0.0, 1.0], default to 0.95.
+        # Corresponds to the JSON property `topP`
+        # @return [Float]
+        attr_accessor :top_p
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
+          @temperature = args[:temperature] if args.key?(:temperature)
+          @top_k = args[:top_k] if args.key?(:top_k)
+          @top_p = args[:top_p] if args.key?(:top_p)
+        end
+      end
+      
       # Instructs the speech recognizer on how to process the audio content.
       class GoogleCloudDialogflowV2beta1InputAudioConfig
         include Google::Apis::Core::Hashable
@@ -14131,6 +14385,12 @@ module Google
         # Corresponds to the JSON property `bargeInConfig`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BargeInConfig]
         attr_accessor :barge_in_config
+      
+        # If set, use this no-speech timeout when the agent does not provide a no-speech
+        # timeout itself.
+        # Corresponds to the JSON property `defaultNoSpeechTimeout`
+        # @return [String]
+        attr_accessor :default_no_speech_timeout
       
         # Only used in Participants.AnalyzeContent and Participants.
         # StreamingAnalyzeContent. If `false` and recognition doesn't return any result,
@@ -14230,6 +14490,7 @@ module Google
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @barge_in_config = args[:barge_in_config] if args.key?(:barge_in_config)
+          @default_no_speech_timeout = args[:default_no_speech_timeout] if args.key?(:default_no_speech_timeout)
           @disable_no_speech_recognized_event = args[:disable_no_speech_recognized_event] if args.key?(:disable_no_speech_recognized_event)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
@@ -16384,6 +16645,32 @@ module Google
         end
       end
       
+      # Response of ListGenerators.
+      class GoogleCloudDialogflowV2beta1ListGeneratorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of generators retrieved.
+        # Corresponds to the JSON property `generators`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Generator>]
+        attr_accessor :generators
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generators = args[:generators] if args.key?(:generators)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Intents.ListIntents.
       class GoogleCloudDialogflowV2beta1ListIntentsResponse
         include Google::Apis::Core::Hashable
@@ -16696,6 +16983,45 @@ module Google
         def update!(**args)
           @contain_entities = args[:contain_entities] if args.key?(:contain_entities)
           @parts = args[:parts] if args.key?(:parts)
+        end
+      end
+      
+      # Represents a message entry of a conversation.
+      class GoogleCloudDialogflowV2beta1MessageEntry
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Create time of the message entry.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The language of the text. See [Language Support](https://cloud.
+        # google.com/dialogflow/docs/reference/language) for a list of the currently
+        # supported language codes.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Optional. Participant role of the message.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        # Optional. Transcript content of the message.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @role = args[:role] if args.key?(:role)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -18605,6 +18931,142 @@ module Google
           @suggest_entity_extraction_response = args[:suggest_entity_extraction_response] if args.key?(:suggest_entity_extraction_response)
           @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
           @suggest_smart_replies_response = args[:suggest_smart_replies_response] if args.key?(:suggest_smart_replies_response)
+        end
+      end
+      
+      # Summarization context that customer can configure.
+      class GoogleCloudDialogflowV2beta1SummarizationContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of few shot examples.
+        # Corresponds to the JSON property `fewShotExamples`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1FewShotExample>]
+        attr_accessor :few_shot_examples
+      
+        # Optional. The target language of the generated summary. The language code for
+        # conversation will be used if this field is empty. Supported 2.0 and later
+        # versions.
+        # Corresponds to the JSON property `outputLanguageCode`
+        # @return [String]
+        attr_accessor :output_language_code
+      
+        # Optional. List of sections. Note it contains both predefined section sand
+        # customer defined sections.
+        # Corresponds to the JSON property `summarizationSections`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationSection>]
+        attr_accessor :summarization_sections
+      
+        # Optional. Version of the feature. If not set, default to latest version.
+        # Current candidates are ["1.0"].
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @few_shot_examples = args[:few_shot_examples] if args.key?(:few_shot_examples)
+          @output_language_code = args[:output_language_code] if args.key?(:output_language_code)
+          @summarization_sections = args[:summarization_sections] if args.key?(:summarization_sections)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Represents the section of summarization.
+      class GoogleCloudDialogflowV2beta1SummarizationSection
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Definition of the section, for example, "what the customer needs
+        # help with or has question about."
+        # Corresponds to the JSON property `definition`
+        # @return [String]
+        attr_accessor :definition
+      
+        # Optional. Name of the section, for example, "situation".
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Type of the summarization section.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @definition = args[:definition] if args.key?(:definition)
+          @key = args[:key] if args.key?(:key)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # List of summarization sections.
+      class GoogleCloudDialogflowV2beta1SummarizationSectionList
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Summarization sections.
+        # Corresponds to the JSON property `summarizationSections`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationSection>]
+        attr_accessor :summarization_sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summarization_sections = args[:summarization_sections] if args.key?(:summarization_sections)
+        end
+      end
+      
+      # Suggested summary of the conversation.
+      class GoogleCloudDialogflowV2beta1SummarySuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Required. All the parts of generated summary.
+        # Corresponds to the JSON property `summarySections`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection>]
+        attr_accessor :summary_sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summary_sections = args[:summary_sections] if args.key?(:summary_sections)
+        end
+      end
+      
+      # A component of the generated summary.
+      class GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the section.
+        # Corresponds to the JSON property `section`
+        # @return [String]
+        attr_accessor :section
+      
+        # Required. Summary text for the section.
+        # Corresponds to the JSON property `summary`
+        # @return [String]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @section = args[:section] if args.key?(:section)
+          @summary = args[:summary] if args.key?(:summary)
         end
       end
       
