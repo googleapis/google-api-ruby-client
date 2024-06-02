@@ -2013,6 +2013,7 @@ module Google
           property :backup_file_pattern, as: 'backupFilePattern'
           collection :database_backups, as: 'databaseBackups', class: Google::Apis::DatamigrationV1::SqlServerDatabaseBackup, decorator: Google::Apis::DatamigrationV1::SqlServerDatabaseBackup::Representation
       
+          property :use_diff_backup, as: 'useDiffBackup'
         end
       end
       

@@ -4749,6 +4749,12 @@ module Google
         # @return [Array<Google::Apis::DatamigrationV1::SqlServerDatabaseBackup>]
         attr_accessor :database_backups
       
+        # Optional. Enable differential backups.
+        # Corresponds to the JSON property `useDiffBackup`
+        # @return [Boolean]
+        attr_accessor :use_diff_backup
+        alias_method :use_diff_backup?, :use_diff_backup
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4757,6 +4763,7 @@ module Google
         def update!(**args)
           @backup_file_pattern = args[:backup_file_pattern] if args.key?(:backup_file_pattern)
           @database_backups = args[:database_backups] if args.key?(:database_backups)
+          @use_diff_backup = args[:use_diff_backup] if args.key?(:use_diff_backup)
         end
       end
       
