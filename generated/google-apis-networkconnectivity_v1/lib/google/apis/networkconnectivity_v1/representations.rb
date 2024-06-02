@@ -262,6 +262,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NextHopInterconnectAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NextHopRouterApplianceInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NextHopVpnTunnel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NextHopVpcNetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -493,6 +511,7 @@ module Google
           property :network, as: 'network'
           property :producer_instance_id, as: 'producerInstanceId'
           property :project, as: 'project'
+          hash :service_attachment_ip_address_map, as: 'serviceAttachmentIpAddressMap'
           property :state, as: 'state'
         end
       end
@@ -845,6 +864,33 @@ module Google
         end
       end
       
+      class NextHopInterconnectAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
+          property :uri, as: 'uri'
+          property :vpc_network, as: 'vpcNetwork'
+        end
+      end
+      
+      class NextHopRouterApplianceInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
+          property :uri, as: 'uri'
+          property :vpc_network, as: 'vpcNetwork'
+        end
+      end
+      
+      class NextHopVpnTunnel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
+          property :uri, as: 'uri'
+          property :vpc_network, as: 'vpcNetwork'
+        end
+      end
+      
       class NextHopVpcNetwork
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -980,8 +1026,15 @@ module Google
           hash :labels, as: 'labels'
           property :location, as: 'location'
           property :name, as: 'name'
+          property :next_hop_interconnect_attachment, as: 'nextHopInterconnectAttachment', class: Google::Apis::NetworkconnectivityV1::NextHopInterconnectAttachment, decorator: Google::Apis::NetworkconnectivityV1::NextHopInterconnectAttachment::Representation
+      
+          property :next_hop_router_appliance_instance, as: 'nextHopRouterApplianceInstance', class: Google::Apis::NetworkconnectivityV1::NextHopRouterApplianceInstance, decorator: Google::Apis::NetworkconnectivityV1::NextHopRouterApplianceInstance::Representation
+      
           property :next_hop_vpc_network, as: 'nextHopVpcNetwork', class: Google::Apis::NetworkconnectivityV1::NextHopVpcNetwork, decorator: Google::Apis::NetworkconnectivityV1::NextHopVpcNetwork::Representation
       
+          property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel', class: Google::Apis::NetworkconnectivityV1::NextHopVpnTunnel, decorator: Google::Apis::NetworkconnectivityV1::NextHopVpnTunnel::Representation
+      
+          property :priority, :numeric_string => true, as: 'priority'
           property :spoke, as: 'spoke'
           property :state, as: 'state'
           property :type, as: 'type'

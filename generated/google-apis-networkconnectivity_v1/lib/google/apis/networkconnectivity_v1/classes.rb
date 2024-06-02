@@ -307,6 +307,13 @@ module Google
         # @return [String]
         attr_accessor :project
       
+        # Output only. A map to store mapping between customer vip and target service
+        # attachment. Only service attachment with producer specified ip addresses are
+        # stored here.
+        # Corresponds to the JSON property `serviceAttachmentIpAddressMap`
+        # @return [Hash<String,String>]
+        attr_accessor :service_attachment_ip_address_map
+      
         # Output only. Overall state of PSC Connections management for this consumer psc
         # config.
         # Corresponds to the JSON property `state`
@@ -323,6 +330,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @producer_instance_id = args[:producer_instance_id] if args.key?(:producer_instance_id)
           @project = args[:project] if args.key?(:project)
+          @service_attachment_ip_address_map = args[:service_attachment_ip_address_map] if args.key?(:service_attachment_ip_address_map)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -526,7 +534,7 @@ module Google
         attr_accessor :ip_protocol
       
         # Required. Internet protocol versions this policy-based route applies to. For
-        # this version, only IPV4 is supported.
+        # this version, only IPV4 is supported. IPV6 is supported in preview.
         # Corresponds to the JSON property `protocolVersion`
         # @return [String]
         attr_accessor :protocol_version
@@ -1725,6 +1733,111 @@ module Google
         end
       end
       
+      # A route next hop that leads to an interconnect attachment resource.
+      class NextHopInterconnectAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether site-to-site data transfer is allowed for this interconnect
+        # attachment resource. Data transfer is available only in [supported locations](
+        # https://cloud.google.com/network-connectivity/docs/network-connectivity-center/
+        # concepts/locations).
+        # Corresponds to the JSON property `siteToSiteDataTransfer`
+        # @return [Boolean]
+        attr_accessor :site_to_site_data_transfer
+        alias_method :site_to_site_data_transfer?, :site_to_site_data_transfer
+      
+        # The URI of the interconnect attachment resource.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # The VPC network where this interconnect attachment is located.
+        # Corresponds to the JSON property `vpcNetwork`
+        # @return [String]
+        attr_accessor :vpc_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
+          @uri = args[:uri] if args.key?(:uri)
+          @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
+        end
+      end
+      
+      # A route next hop that leads to a Router appliance instance.
+      class NextHopRouterApplianceInstance
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether site-to-site data transfer is allowed for this Router
+        # appliance instance resource. Data transfer is available only in [supported
+        # locations](https://cloud.google.com/network-connectivity/docs/network-
+        # connectivity-center/concepts/locations).
+        # Corresponds to the JSON property `siteToSiteDataTransfer`
+        # @return [Boolean]
+        attr_accessor :site_to_site_data_transfer
+        alias_method :site_to_site_data_transfer?, :site_to_site_data_transfer
+      
+        # The URI of the Router appliance instance.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # The VPC network where this VM is located.
+        # Corresponds to the JSON property `vpcNetwork`
+        # @return [String]
+        attr_accessor :vpc_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
+          @uri = args[:uri] if args.key?(:uri)
+          @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
+        end
+      end
+      
+      # A route next hop that leads to a VPN tunnel resource.
+      class NextHopVpnTunnel
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether site-to-site data transfer is allowed for this VPN tunnel
+        # resource. Data transfer is available only in [supported locations](https://
+        # cloud.google.com/network-connectivity/docs/network-connectivity-center/
+        # concepts/locations).
+        # Corresponds to the JSON property `siteToSiteDataTransfer`
+        # @return [Boolean]
+        attr_accessor :site_to_site_data_transfer
+        alias_method :site_to_site_data_transfer?, :site_to_site_data_transfer
+      
+        # The URI of the VPN tunnel resource.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # The VPC network where this VPN tunnel is located.
+        # Corresponds to the JSON property `vpcNetwork`
+        # @return [String]
+        attr_accessor :vpc_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
+          @uri = args[:uri] if args.key?(:uri)
+          @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
+        end
+      end
+      
       # 
       class NextHopVpcNetwork
         include Google::Apis::Core::Hashable
@@ -1900,8 +2013,8 @@ module Google
       
       # Policy-based routes route L4 network traffic based on not just destination IP
       # address, but also source IP address, protocol, and more. If a policy-based
-      # route conflicts with other types of routes, the policy-based route always take
-      # precedence.
+      # route conflicts with other types of routes, the policy-based route always
+      # takes precedence.
       class PolicyBasedRoute
         include Google::Apis::Core::Hashable
       
@@ -1980,7 +2093,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # VM instances to which this policy-based route applies to.
+        # VM instances that this policy-based route applies to.
         # Corresponds to the JSON property `virtualMachine`
         # @return [Google::Apis::NetworkconnectivityV1::VirtualMachine]
         attr_accessor :virtual_machine
@@ -2357,10 +2470,32 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A route next hop that leads to an interconnect attachment resource.
+        # Corresponds to the JSON property `nextHopInterconnectAttachment`
+        # @return [Google::Apis::NetworkconnectivityV1::NextHopInterconnectAttachment]
+        attr_accessor :next_hop_interconnect_attachment
+      
+        # A route next hop that leads to a Router appliance instance.
+        # Corresponds to the JSON property `nextHopRouterApplianceInstance`
+        # @return [Google::Apis::NetworkconnectivityV1::NextHopRouterApplianceInstance]
+        attr_accessor :next_hop_router_appliance_instance
+      
         # Immutable. The destination VPC network for packets on this route.
         # Corresponds to the JSON property `nextHopVpcNetwork`
         # @return [Google::Apis::NetworkconnectivityV1::NextHopVpcNetwork]
         attr_accessor :next_hop_vpc_network
+      
+        # A route next hop that leads to a VPN tunnel resource.
+        # Corresponds to the JSON property `nextHopVpnTunnel`
+        # @return [Google::Apis::NetworkconnectivityV1::NextHopVpnTunnel]
+        attr_accessor :next_hop_vpn_tunnel
+      
+        # Output only. The priority of this route. Priority is used to break ties in
+        # cases where a destination matches more than one route. In these cases the
+        # route with the lowest-numbered priority value wins.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
       
         # Immutable. The spoke that this route leads to. Example: projects/12345/
         # locations/global/spokes/SPOKE
@@ -2404,7 +2539,11 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @next_hop_interconnect_attachment = args[:next_hop_interconnect_attachment] if args.key?(:next_hop_interconnect_attachment)
+          @next_hop_router_appliance_instance = args[:next_hop_router_appliance_instance] if args.key?(:next_hop_router_appliance_instance)
           @next_hop_vpc_network = args[:next_hop_vpc_network] if args.key?(:next_hop_vpc_network)
+          @next_hop_vpn_tunnel = args[:next_hop_vpn_tunnel] if args.key?(:next_hop_vpn_tunnel)
+          @priority = args[:priority] if args.key?(:priority)
           @spoke = args[:spoke] if args.key?(:spoke)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
@@ -3215,12 +3354,12 @@ module Google
         end
       end
       
-      # VM instances to which this policy-based route applies to.
+      # VM instances that this policy-based route applies to.
       class VirtualMachine
         include Google::Apis::Core::Hashable
       
-        # Optional. A list of VM instance tags the this policy-based route applies to.
-        # VM instances that have ANY of tags specified here will install this PBR.
+        # Optional. A list of VM instance tags that this policy-based route applies to.
+        # VM instances that have ANY of tags specified here installs this PBR.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
