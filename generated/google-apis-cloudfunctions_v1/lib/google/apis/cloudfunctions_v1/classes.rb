@@ -1489,7 +1489,7 @@ module Google
       class OnDeployUpdatePolicy
         include Google::Apis::Core::Hashable
       
-        # Output only. contains the runtime version which was used during latest
+        # Output only. Contains the runtime version which was used during latest
         # function deployment.
         # Corresponds to the JSON property `runtimeVersion`
         # @return [String]
