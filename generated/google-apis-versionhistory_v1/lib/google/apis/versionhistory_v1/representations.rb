@@ -142,6 +142,7 @@ module Google
           property :fraction, as: 'fraction'
           property :fraction_group, :numeric_string => true, as: 'fractionGroup'
           property :name, as: 'name'
+          property :pinnable, as: 'pinnable'
           property :serving, as: 'serving', class: Google::Apis::VersionhistoryV1::Interval, decorator: Google::Apis::VersionhistoryV1::Interval::Representation
       
           property :version, as: 'version'
