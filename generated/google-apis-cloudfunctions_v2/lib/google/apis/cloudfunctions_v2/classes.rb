@@ -2022,6 +2022,12 @@ module Google
         # @return [String]
         attr_accessor :available_memory
       
+        # Optional. The binary authorization policy to be checked when deploying the
+        # Cloud Run service.
+        # Corresponds to the JSON property `binaryAuthorizationPolicy`
+        # @return [String]
+        attr_accessor :binary_authorization_policy
+      
         # Environment variables that shall be available during function execution.
         # Corresponds to the JSON property `environmentVariables`
         # @return [Hash<String,String>]
@@ -2128,6 +2134,7 @@ module Google
           @all_traffic_on_latest_revision = args[:all_traffic_on_latest_revision] if args.key?(:all_traffic_on_latest_revision)
           @available_cpu = args[:available_cpu] if args.key?(:available_cpu)
           @available_memory = args[:available_memory] if args.key?(:available_memory)
+          @binary_authorization_policy = args[:binary_authorization_policy] if args.key?(:binary_authorization_policy)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
           @ingress_settings = args[:ingress_settings] if args.key?(:ingress_settings)
           @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
@@ -2338,6 +2345,12 @@ module Google
         # @return [String]
         attr_accessor :object
       
+        # When the specified storage bucket is a 1st gen function uploard url bucket,
+        # this field should be set as the generated upload url for 1st gen deployment.
+        # Corresponds to the JSON property `sourceUploadUrl`
+        # @return [String]
+        attr_accessor :source_upload_url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2347,6 +2360,7 @@ module Google
           @bucket = args[:bucket] if args.key?(:bucket)
           @generation = args[:generation] if args.key?(:generation)
           @object = args[:object] if args.key?(:object)
+          @source_upload_url = args[:source_upload_url] if args.key?(:source_upload_url)
         end
       end
       
