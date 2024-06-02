@@ -999,6 +999,7 @@ module Google
       class Connector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -1009,6 +1010,7 @@ module Google
           hash :labels, as: 'labels'
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
+          collection :tags, as: 'tags'
           property :update_time, as: 'updateTime'
           property :web_assets_location, as: 'webAssetsLocation'
         end
