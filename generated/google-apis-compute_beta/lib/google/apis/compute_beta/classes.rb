@@ -1603,12 +1603,11 @@ module Google
         attr_accessor :shielded_instance_initial_state
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        # When creating a new instance, one of initializeParams.sourceImage or
-        # initializeParams.sourceSnapshot or disks.source is required except for local
-        # SSD. If desired, you can also attach existing non-root persistent disks using
-        # this property. This field is only applicable for persistent disks. Note that
-        # for InstanceTemplate, specify the disk name for zonal disk, and the URL for
-        # regional disk.
+        # When creating a new instance boot disk, one of initializeParams.sourceImage or
+        # initializeParams.sourceSnapshot or disks.source is required. If desired, you
+        # can also attach existing non-root persistent disks using this property. This
+        # field is only applicable for persistent disks. Note that for InstanceTemplate,
+        # specify the disk name for zonal disk, and the URL for regional disk.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -1779,19 +1778,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # The source image to create this disk. When creating a new instance, one of
-        # initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.
-        # source is required except for local SSD. To create a disk with one of the
-        # public operating system images, specify the image by its family name. For
-        # example, specify family/debian-9 to use the latest Debian 9 image: projects/
-        # debian-cloud/global/images/family/debian-9 Alternatively, use a specific
-        # version of a public operating system image: projects/debian-cloud/global/
-        # images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that
-        # you created, specify the image name in the following format: global/images/my-
-        # custom-image You can also specify a custom image by its image family, which
-        # returns the latest version of the image in that family. Replace the image name
-        # with family/family-name: global/images/family/my-image-family If the source
-        # image is deleted later, this field will not be set.
+        # The source image to create this disk. When creating a new instance boot disk,
+        # one of initializeParams.sourceImage or initializeParams.sourceSnapshot or
+        # disks.source is required. To create a disk with one of the public operating
+        # system images, specify the image by its family name. For example, specify
+        # family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/
+        # images/family/debian-9 Alternatively, use a specific version of a public
+        # operating system image: projects/debian-cloud/global/images/debian-9-stretch-
+        # vYYYYMMDD To create a disk with a custom image that you created, specify the
+        # image name in the following format: global/images/my-custom-image You can also
+        # specify a custom image by its image family, which returns the latest version
+        # of the image in that family. Replace the image name with family/family-name:
+        # global/images/family/my-image-family If the source image is deleted later,
+        # this field will not be set.
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -1805,23 +1804,21 @@ module Google
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
       
-        # The source instant-snapshot to create this disk. When creating a new instance,
-        # one of initializeParams.sourceSnapshot or initializeParams.
-        # sourceInstantSnapshot initializeParams.sourceImage or disks.source is required
-        # except for local SSD. To create a disk with a snapshot that you created,
-        # specify the snapshot name in the following format: us-central1-a/
-        # instantSnapshots/my-backup If the source instant-snapshot is deleted later,
-        # this field will not be set.
+        # The source instant-snapshot to create this disk. When creating a new instance
+        # boot disk, one of initializeParams.sourceSnapshot or initializeParams.
+        # sourceInstantSnapshot initializeParams.sourceImage or disks.source is required.
+        # To create a disk with a snapshot that you created, specify the snapshot name
+        # in the following format: us-central1-a/instantSnapshots/my-backup If the
+        # source instant-snapshot is deleted later, this field will not be set.
         # Corresponds to the JSON property `sourceInstantSnapshot`
         # @return [String]
         attr_accessor :source_instant_snapshot
       
-        # The source snapshot to create this disk. When creating a new instance, one of
-        # initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.
-        # source is required except for local SSD. To create a disk with a snapshot that
-        # you created, specify the snapshot name in the following format: global/
-        # snapshots/my-backup If the source snapshot is deleted later, this field will
-        # not be set.
+        # The source snapshot to create this disk. When creating a new instance boot
+        # disk, one of initializeParams.sourceSnapshot or initializeParams.sourceImage
+        # or disks.source is required. To create a disk with a snapshot that you created,
+        # specify the snapshot name in the following format: global/snapshots/my-backup
+        # If the source snapshot is deleted later, this field will not be set.
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -15976,6 +15973,18 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output Only] The URL for this managed instance group. The server defines this
         # URL.
         # Corresponds to the JSON property `selfLink`
@@ -16083,6 +16092,8 @@ module Google
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_account = args[:service_account] if args.key?(:service_account)
           @standby_policy = args[:standby_policy] if args.key?(:standby_policy)
@@ -16403,6 +16414,12 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>]
         attr_accessor :instance_selections
       
+        # Provisioning model configuration used by this managed instance group to create
+        # instances.
+        # Corresponds to the JSON property `provisioningModelMix`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix]
+        attr_accessor :provisioning_model_mix
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16411,6 +16428,7 @@ module Google
         def update!(**args)
           @instance_selection_lists = args[:instance_selection_lists] if args.key?(:instance_selection_lists)
           @instance_selections = args[:instance_selections] if args.key?(:instance_selections)
+          @provisioning_model_mix = args[:provisioning_model_mix] if args.key?(:provisioning_model_mix)
         end
       end
       
@@ -16439,6 +16457,36 @@ module Google
         def update!(**args)
           @machine_types = args[:machine_types] if args.key?(:machine_types)
           @rank = args[:rank] if args.key?(:rank)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix
+        include Google::Apis::Core::Hashable
+      
+        # The base capacity that will always use Standard VMs to avoid risk of more
+        # preemption than the minimum capacity user needs. MIG will create only Standard
+        # VMs until it reaches standard_capacity_base and only then will start using
+        # standard_capacity_percent_above_base to mix Spot with Standard VMs.
+        # Corresponds to the JSON property `standardCapacityBase`
+        # @return [Fixnum]
+        attr_accessor :standard_capacity_base
+      
+        # The percentage of target capacity that should use Standard VM. The remaining
+        # percentage will use Spot VMs. The percentage applies only to the capacity
+        # above standard_capacity_base.
+        # Corresponds to the JSON property `standardCapacityPercentAboveBase`
+        # @return [Fixnum]
+        attr_accessor :standard_capacity_percent_above_base
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @standard_capacity_base = args[:standard_capacity_base] if args.key?(:standard_capacity_base)
+          @standard_capacity_percent_above_base = args[:standard_capacity_percent_above_base] if args.key?(:standard_capacity_percent_above_base)
         end
       end
       
@@ -24624,6 +24672,11 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # The provisioning model to be used for this instance.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
         def initialize(**args)
            update!(**args)
         end
@@ -24631,6 +24684,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
         end
       end
       
@@ -52661,7 +52715,7 @@ module Google
       end
       
       # Represents a Zone resource. A zone is a deployment area. These deployment
-      # areas are subsets of a region. For example the zone us-east1-a is located in
+      # areas are subsets of a region. For example the zone us-east1-b is located in
       # the us-east1 region. For more information, read Regions and Zones.
       class Zone
         include Google::Apis::Core::Hashable
