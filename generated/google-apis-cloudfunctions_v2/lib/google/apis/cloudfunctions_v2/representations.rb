@@ -821,6 +821,7 @@ module Google
           property :all_traffic_on_latest_revision, as: 'allTrafficOnLatestRevision'
           property :available_cpu, as: 'availableCpu'
           property :available_memory, as: 'availableMemory'
+          property :binary_authorization_policy, as: 'binaryAuthorizationPolicy'
           hash :environment_variables, as: 'environmentVariables'
           property :ingress_settings, as: 'ingressSettings'
           property :max_instance_count, as: 'maxInstanceCount'
@@ -893,6 +894,7 @@ module Google
           property :bucket, as: 'bucket'
           property :generation, :numeric_string => true, as: 'generation'
           property :object, as: 'object'
+          property :source_upload_url, as: 'sourceUploadUrl'
         end
       end
       
