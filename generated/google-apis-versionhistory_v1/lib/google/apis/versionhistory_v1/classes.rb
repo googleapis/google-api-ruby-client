@@ -238,6 +238,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Whether or not the release was available for version pinning.
+        # Corresponds to the JSON property `pinnable`
+        # @return [Boolean]
+        attr_accessor :pinnable
+        alias_method :pinnable?, :pinnable
+      
         # Represents a time interval, encoded as a Timestamp start (inclusive) and a
         # Timestamp end (exclusive). The start must be less than or equal to the end.
         # When the start equals the end, the interval is empty (matches no time). When
@@ -260,6 +266,7 @@ module Google
           @fraction = args[:fraction] if args.key?(:fraction)
           @fraction_group = args[:fraction_group] if args.key?(:fraction_group)
           @name = args[:name] if args.key?(:name)
+          @pinnable = args[:pinnable] if args.key?(:pinnable)
           @serving = args[:serving] if args.key?(:serving)
           @version = args[:version] if args.key?(:version)
         end
