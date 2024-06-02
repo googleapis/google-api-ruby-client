@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MachineConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaintenancePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +257,12 @@ module Google
       end
       
       class NodeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObservabilityMetricData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -347,6 +359,12 @@ module Google
       end
       
       class TlsCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TypedValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -506,6 +524,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :feed_timestamp, as: 'feedTimestamp'
           property :feed_type, as: 'feedType'
+          property :observability_metric_data, as: 'observabilityMetricData', class: Google::Apis::RedisV1beta1::ObservabilityMetricData, decorator: Google::Apis::RedisV1beta1::ObservabilityMetricData::Representation
+      
           property :recommendation_signal_data, as: 'recommendationSignalData', class: Google::Apis::RedisV1beta1::DatabaseResourceRecommendationSignalData, decorator: Google::Apis::RedisV1beta1::DatabaseResourceRecommendationSignalData::Representation
       
           property :resource_health_signal_data, as: 'resourceHealthSignalData', class: Google::Apis::RedisV1beta1::DatabaseResourceHealthSignalData, decorator: Google::Apis::RedisV1beta1::DatabaseResourceHealthSignalData::Representation
@@ -567,6 +587,8 @@ module Google
       
           property :instance_type, as: 'instanceType'
           property :location, as: 'location'
+          property :machine_configuration, as: 'machineConfiguration', class: Google::Apis::RedisV1beta1::MachineConfiguration, decorator: Google::Apis::RedisV1beta1::MachineConfiguration::Representation
+      
           property :primary_resource_id, as: 'primaryResourceId', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
       
           property :product, as: 'product', class: Google::Apis::RedisV1beta1::Product, decorator: Google::Apis::RedisV1beta1::Product::Representation
@@ -576,7 +598,6 @@ module Google
           property :updation_time, as: 'updationTime'
           property :user_label_set, as: 'userLabelSet', class: Google::Apis::RedisV1beta1::UserLabels, decorator: Google::Apis::RedisV1beta1::UserLabels::Representation
       
-          hash :user_labels, as: 'userLabels'
         end
       end
       
@@ -794,6 +815,14 @@ module Google
         end
       end
       
+      class MachineConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_count, as: 'cpuCount'
+          property :memory_size_in_bytes, :numeric_string => true, as: 'memorySizeInBytes'
+        end
+      end
+      
       class MaintenancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -828,6 +857,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ObservabilityMetricData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_type, as: 'aggregationType'
+          property :metric_type, as: 'metricType'
+          property :observation_time, as: 'observationTime'
+          property :resource_name, as: 'resourceName'
+          property :value, as: 'value', class: Google::Apis::RedisV1beta1::TypedValue, decorator: Google::Apis::RedisV1beta1::TypedValue::Representation
+      
         end
       end
       
@@ -978,6 +1019,16 @@ module Google
           property :expire_time, as: 'expireTime'
           property :serial_number, as: 'serialNumber'
           property :sha1_fingerprint, as: 'sha1Fingerprint'
+        end
+      end
+      
+      class TypedValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :double_value, as: 'doubleValue'
+          property :int64_value, :numeric_string => true, as: 'int64Value'
+          property :string_value, as: 'stringValue'
         end
       end
       
