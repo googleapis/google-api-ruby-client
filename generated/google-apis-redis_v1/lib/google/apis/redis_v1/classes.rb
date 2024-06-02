@@ -474,6 +474,11 @@ module Google
         # @return [String]
         attr_accessor :feed_type
       
+        # More feed data would be added in subsequent CLs
+        # Corresponds to the JSON property `observabilityMetricData`
+        # @return [Google::Apis::RedisV1::ObservabilityMetricData]
+        attr_accessor :observability_metric_data
+      
         # Common model for database resource recommendation signal data.
         # Corresponds to the JSON property `recommendationSignalData`
         # @return [Google::Apis::RedisV1::DatabaseResourceRecommendationSignalData]
@@ -502,6 +507,7 @@ module Google
         def update!(**args)
           @feed_timestamp = args[:feed_timestamp] if args.key?(:feed_timestamp)
           @feed_type = args[:feed_type] if args.key?(:feed_type)
+          @observability_metric_data = args[:observability_metric_data] if args.key?(:observability_metric_data)
           @recommendation_signal_data = args[:recommendation_signal_data] if args.key?(:recommendation_signal_data)
           @resource_health_signal_data = args[:resource_health_signal_data] if args.key?(:resource_health_signal_data)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
@@ -719,6 +725,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # MachineConfiguration describes the configuration of a machine specific to
+        # Database Resource.
+        # Corresponds to the JSON property `machineConfiguration`
+        # @return [Google::Apis::RedisV1::MachineConfiguration]
+        attr_accessor :machine_configuration
+      
         # DatabaseResourceId will serve as primary key for any resource ingestion event.
         # Corresponds to the JSON property `primaryResourceId`
         # @return [Google::Apis::RedisV1::DatabaseResourceId]
@@ -757,12 +769,6 @@ module Google
         # @return [Google::Apis::RedisV1::UserLabels]
         attr_accessor :user_label_set
       
-        # User-provided labels, represented as a dictionary where each label is a single
-        # key value pair.
-        # Corresponds to the JSON property `userLabels`
-        # @return [Hash<String,String>]
-        attr_accessor :user_labels
-      
         def initialize(**args)
            update!(**args)
         end
@@ -780,13 +786,13 @@ module Google
           @id = args[:id] if args.key?(:id)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
           @location = args[:location] if args.key?(:location)
+          @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
           @primary_resource_id = args[:primary_resource_id] if args.key?(:primary_resource_id)
           @product = args[:product] if args.key?(:product)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
           @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
-          @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
       
@@ -1638,6 +1644,34 @@ module Google
         end
       end
       
+      # MachineConfiguration describes the configuration of a machine specific to
+      # Database Resource.
+      class MachineConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # The number of CPUs. TODO(b/342344482, b/342346271) add proto validations again
+        # after bug fix.
+        # Corresponds to the JSON property `cpuCount`
+        # @return [Fixnum]
+        attr_accessor :cpu_count
+      
+        # Memory size in bytes. TODO(b/342344482, b/342346271) add proto validations
+        # again after bug fix.
+        # Corresponds to the JSON property `memorySizeInBytes`
+        # @return [Fixnum]
+        attr_accessor :memory_size_in_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+          @memory_size_in_bytes = args[:memory_size_in_bytes] if args.key?(:memory_size_in_bytes)
+        end
+      end
+      
       # Maintenance policy for an instance.
       class MaintenancePolicy
         include Google::Apis::Core::Hashable
@@ -1761,6 +1795,51 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class ObservabilityMetricData
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of aggregation performed on the metric.
+        # Corresponds to the JSON property `aggregationType`
+        # @return [String]
+        attr_accessor :aggregation_type
+      
+        # Required. Type of metric like CPU, Memory, etc.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # Required. The time the metric value was observed.
+        # Corresponds to the JSON property `observationTime`
+        # @return [String]
+        attr_accessor :observation_time
+      
+        # Required. Database resource name associated with the signal. Resource name to
+        # follow CAIS resource_name format as noted here go/condor-common-datamodel
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # TypedValue represents the value of a metric type. It can either be a double,
+        # an int64, a string or a bool.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::RedisV1::TypedValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_type = args[:aggregation_type] if args.key?(:aggregation_type)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @observation_time = args[:observation_time] if args.key?(:observation_time)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -2337,6 +2416,45 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @sha1_fingerprint = args[:sha1_fingerprint] if args.key?(:sha1_fingerprint)
+        end
+      end
+      
+      # TypedValue represents the value of a metric type. It can either be a double,
+      # an int64, a string or a bool.
+      class TypedValue
+        include Google::Apis::Core::Hashable
+      
+        # For boolean value
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # For double value
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # For integer value
+        # Corresponds to the JSON property `int64Value`
+        # @return [Fixnum]
+        attr_accessor :int64_value
+      
+        # For string value
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
       
