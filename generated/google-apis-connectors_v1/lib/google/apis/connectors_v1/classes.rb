@@ -828,6 +828,11 @@ module Google
       class Connector
         include Google::Apis::Core::Hashable
       
+        # Output only. Category of the connector.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
         # Output only. Created time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -877,6 +882,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Tags of the connector.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -893,6 +903,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @category = args[:category] if args.key?(:category)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -902,6 +913,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
           @web_assets_location = args[:web_assets_location] if args.key?(:web_assets_location)
         end
