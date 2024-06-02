@@ -20121,8 +20121,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches the specified network with the data included in the request. Only the
-        # following fields can be modified: routingConfig.routingMode.
+        # Patches the specified network with the data included in the request. Only
+        # routingConfig can be modified.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network

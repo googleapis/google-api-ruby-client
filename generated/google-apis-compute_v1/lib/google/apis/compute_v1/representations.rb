@@ -9788,6 +9788,8 @@ module Google
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeV1::NamedPort, decorator: Google::Apis::ComputeV1::NamedPort::Representation
       
           property :region, as: 'region'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :stateful_policy, as: 'statefulPolicy', class: Google::Apis::ComputeV1::StatefulPolicy, decorator: Google::Apis::ComputeV1::StatefulPolicy::Representation
       
@@ -17159,6 +17161,7 @@ module Google
           property :server_tls_policy, as: 'serverTlsPolicy'
           collection :ssl_certificates, as: 'sslCertificates'
           property :ssl_policy, as: 'sslPolicy'
+          property :tls_early_data, as: 'tlsEarlyData'
           property :url_map, as: 'urlMap'
         end
       end
