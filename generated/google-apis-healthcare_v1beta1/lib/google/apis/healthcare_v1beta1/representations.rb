@@ -2135,8 +2135,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :_since, as: '_since'
           property :_type, as: '_type'
-          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination::Representation
-      
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination::Representation
       
           property :max_resource_versions, :numeric_string => true, as: 'maxResourceVersions'
