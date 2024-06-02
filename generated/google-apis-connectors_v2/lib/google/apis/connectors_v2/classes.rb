@@ -54,6 +54,27 @@ module Google
         end
       end
       
+      # AclInfo has a list of readers for a resource. This is defined as per the below
+      # docs https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/
+      # v1alpha/projects.locations.collections.dataStores.branches.documents#aclinfo
+      class AclInfo
+        include Google::Apis::Core::Hashable
+      
+        # A list of readers for a resource.
+        # Corresponds to the JSON property `readers`
+        # @return [Array<Google::Apis::ConnectorsV2::Readers>]
+        attr_accessor :readers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @readers = args[:readers] if args.key?(:readers)
+        end
+      end
+      
       # Action message contains metadata information about a single action present in
       # the external system.
       class Action
@@ -349,6 +370,39 @@ module Google
           @json_schema = args[:json_schema] if args.key?(:json_schema)
           @name = args[:name] if args.key?(:name)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # EntityWithACL refers to a single row of an entity type with ACL information.
+      class EntityWithAcl
+        include Google::Apis::Core::Hashable
+      
+        # AclInfo has a list of readers for a resource. This is defined as per the below
+        # docs https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/
+        # v1alpha/projects.locations.collections.dataStores.branches.documents#aclinfo
+        # Corresponds to the JSON property `acl_info`
+        # @return [Google::Apis::ConnectorsV2::AclInfo]
+        attr_accessor :acl_info
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Entity data in JSON format.
+        # Corresponds to the JSON property `jsonData`
+        # @return [String]
+        attr_accessor :json_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acl_info = args[:acl_info] if args.key?(:acl_info)
+          @id = args[:id] if args.key?(:id)
+          @json_data = args[:json_data] if args.key?(:json_data)
         end
       end
       
@@ -904,6 +958,31 @@ module Google
         end
       end
       
+      # Response message for EntityService.ListEntitiesWithACLs
+      class ListEntitiesWithAcLsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List containing entity rows.
+        # Corresponds to the JSON property `entitiesWithAcl`
+        # @return [Array<Google::Apis::ConnectorsV2::EntityWithAcl>]
+        attr_accessor :entities_with_acl
+      
+        # Next page token if more records are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entities_with_acl = args[:entities_with_acl] if args.key?(:entities_with_acl)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for EntityService.ListEntityTypes
       class ListEntityTypesResponse
         include Google::Apis::Core::Hashable
@@ -1198,6 +1277,31 @@ module Google
         end
       end
       
+      # Principal is a user or group that has access to a resource.
+      class Principal
+        include Google::Apis::Core::Hashable
+      
+        # The group that has access to a resource.
+        # Corresponds to the JSON property `group_id`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # The user that has access to a resource.
+        # Corresponds to the JSON property `user_id`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
       # Describes provisioned dataplane resources.
       class ProvisionedResource
         include Google::Apis::Core::Hashable
@@ -1291,6 +1395,25 @@ module Google
         def update!(**args)
           @data_type = args[:data_type] if args.key?(:data_type)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Readers is a list of principals that have read access to a resource.
+      class Readers
+        include Google::Apis::Core::Hashable
+      
+        # A list of principals that have read access to a resource.
+        # Corresponds to the JSON property `principals`
+        # @return [Array<Google::Apis::ConnectorsV2::Principal>]
+        attr_accessor :principals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principals = args[:principals] if args.key?(:principals)
         end
       end
       
