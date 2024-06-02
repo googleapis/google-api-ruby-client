@@ -2869,11 +2869,6 @@ module Google
         # @return [String]
         attr_accessor :_type
       
-        # The configuration for exporting to BigQuery.
-        # Corresponds to the JSON property `bigqueryDestination`
-        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination]
-        attr_accessor :bigquery_destination
-      
         # The configuration for exporting to Cloud Storage.
         # Corresponds to the JSON property `gcsDestination`
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination]
@@ -2895,7 +2890,6 @@ module Google
         def update!(**args)
           @_since = args[:_since] if args.key?(:_since)
           @_type = args[:_type] if args.key?(:_type)
-          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
           @max_resource_versions = args[:max_resource_versions] if args.key?(:max_resource_versions)
         end
