@@ -1,5 +1,9 @@
 # Release history for google-apis-marketingplatformadmin_v1alpha
 
+### v0.5.0 (2024-06-02)
+
+* Regenerated from discovery document revision 20240529
+
 ### v0.4.0 (2024-05-19)
 
 * Regenerated using generator version 0.15.0
