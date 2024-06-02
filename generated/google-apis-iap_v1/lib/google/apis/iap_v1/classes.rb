@@ -941,7 +941,8 @@ module Google
         attr_accessor :region
       
         # Resource type. Types are defined in IAM's .service files. Valid values for
-        # type might be 'gce', 'gcs', 'project', 'account' etc.
+        # type might be 'storage_buckets', 'compute_instances', '
+        # resourcemanager_customers', 'billing_accounts', etc.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
