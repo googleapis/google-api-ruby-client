@@ -722,7 +722,12 @@ module Google
         #   insensitive. The fields eligible for filtering are: * `version` An example of
         #   using a filter: * `version="projects/p1/locations/us-central1/repositories/
         #   repo1/packages/pkg1/versions/1.0"` --> Tags that are applied to the version `1.
-        #   0` in package `pkg1`.
+        #   0` in package `pkg1`. * `name="projects/p1/locations/us-central1/repositories/
+        #   repo1/packages/pkg1/tags/a%2Fb%2F*"` --> tags with an ID starting with "a/b/".
+        #   * `name="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/
+        #   tags/*%2Fb%2Fc"` --> tags with an ID ending with "/b/c". * `name="projects/p1/
+        #   locations/us-central1/repositories/repo1/packages/pkg1/tags/*%2Fb%2F*"` -->
+        #   tags with an ID containing "/b/".
         # @param [Fixnum] page_size
         #   The maximum number of tags to return. Maximum page size is 1,000.
         # @param [String] page_token
