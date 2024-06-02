@@ -676,6 +676,63 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Lists entity rows with ACLs of a particular entity type contained in the
+        # request. Note: 1. Currently, only max of one 'sort_by' column is supported. 2.
+        # If no 'sort_by' column is provided, the primary key of the table is used. If
+        # zero or more than one primary key is available, we default to the unpaginated
+        # list entities logic which only returns the first page. 3. The values of the '
+        # sort_by' columns must uniquely identify an entity row, otherwise undefined
+        # behaviors may be observed during pagination. 4. Since transactions are not
+        # supported, any updates, inserts or deletes during pagination can lead to stale
+        # data being returned or other unexpected behaviors.
+        # @param [String] parent
+        #   Required. Resource name of the Entity Type. Format: projects/`project`/
+        #   locations/`location`/connections/`connection`/entityTypes/`type`
+        # @param [String] conditions
+        #   Conditions to be used when listing entities. From a proto standpoint, There
+        #   are no restrictions on what can be passed using this field. The connector
+        #   documentation should have information about what format of filters/conditions
+        #   are supported.
+        # @param [String] gsutil_uri
+        #   Format: gs://object_path
+        # @param [Fixnum] page_size
+        #   Number of entity rows to return. Defaults page size = 25. Max page size = 200.
+        # @param [String] page_token
+        #   Page token value if available from a previous request.
+        # @param [Array<String>, String] sort_by
+        #   List of 'sort_by' columns to use when returning the results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV2::ListEntitiesWithAcLsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV2::ListEntitiesWithAcLsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_connection_entity_type_entitieswithacls(parent, conditions: nil, gsutil_uri: nil, page_size: nil, page_token: nil, sort_by: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/entitieswithacls', options)
+          command.response_representation = Google::Apis::ConnectorsV2::ListEntitiesWithAcLsResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV2::ListEntitiesWithAcLsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['conditions'] = conditions unless conditions.nil?
+          command.query['gsutilUri'] = gsutil_uri unless gsutil_uri.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['sortBy'] = sort_by unless sort_by.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
