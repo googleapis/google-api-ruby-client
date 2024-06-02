@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerChangeTables
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlServerColumn
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -479,6 +485,12 @@ module Google
       end
       
       class SqlServerTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerTransactionLogs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1282,6 +1294,12 @@ module Google
         end
       end
       
+      class SqlServerChangeTables
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SqlServerColumn
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1335,12 +1353,16 @@ module Google
       class SqlServerSourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_tables, as: 'changeTables', class: Google::Apis::DatastreamV1::SqlServerChangeTables, decorator: Google::Apis::DatastreamV1::SqlServerChangeTables::Representation
+      
           property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
       
           property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
           property :max_concurrent_cdc_tasks, as: 'maxConcurrentCdcTasks'
+          property :transaction_logs, as: 'transactionLogs', class: Google::Apis::DatastreamV1::SqlServerTransactionLogs, decorator: Google::Apis::DatastreamV1::SqlServerTransactionLogs::Representation
+      
         end
       end
       
@@ -1350,6 +1372,12 @@ module Google
           collection :columns, as: 'columns', class: Google::Apis::DatastreamV1::SqlServerColumn, decorator: Google::Apis::DatastreamV1::SqlServerColumn::Representation
       
           property :table, as: 'table'
+        end
+      end
+      
+      class SqlServerTransactionLogs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
