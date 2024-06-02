@@ -178,6 +178,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BucketStorageLayout
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class CustomPlacementConfig
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class HierarchicalNamespace
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Buckets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -679,6 +697,34 @@ module Google
           collection :items, as: 'items', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControl::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class BucketStorageLayout
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :custom_placement_config, as: 'customPlacementConfig', class: Google::Apis::StorageV1::BucketStorageLayout::CustomPlacementConfig, decorator: Google::Apis::StorageV1::BucketStorageLayout::CustomPlacementConfig::Representation
+      
+          property :hierarchical_namespace, as: 'hierarchicalNamespace', class: Google::Apis::StorageV1::BucketStorageLayout::HierarchicalNamespace, decorator: Google::Apis::StorageV1::BucketStorageLayout::HierarchicalNamespace::Representation
+      
+          property :kind, as: 'kind'
+          property :location, as: 'location'
+          property :location_type, as: 'locationType'
+        end
+        
+        class CustomPlacementConfig
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :data_locations, as: 'dataLocations'
+          end
+        end
+        
+        class HierarchicalNamespace
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :enabled, as: 'enabled'
+          end
         end
       end
       
