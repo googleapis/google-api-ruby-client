@@ -316,7 +316,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Jobs.
+        # Lists Jobs. Results are sorted by creation time, descending.
         # @param [String] parent
         #   Required. The location and project to list resources on. Format: projects/`
         #   project`/locations/`location`, where `project` can be project id or number.
@@ -650,7 +650,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Executions from a Job.
+        # Lists Executions from a Job. Results are sorted by creation time, descending.
         # @param [String] parent
         #   Required. The Execution from which the Executions should be listed. To list
         #   all Executions across Jobs, use "-" instead of Job name. Format: `projects/`
@@ -1077,7 +1077,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Services.
+        # Lists Services. Results are sorted by creation time, descending.
         # @param [String] parent
         #   Required. The location and project to list resources on. Location must be a
         #   valid Google Cloud region, and cannot be the "-" wildcard. Format: projects/`
@@ -1346,7 +1346,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Revisions from a given Service, or from a given location.
+        # Lists Revisions from a given Service, or from a given location. Results are
+        # sorted by creation time, descending.
         # @param [String] parent
         #   Required. The Service from which the Revisions should be listed. To list all
         #   Revisions across Services, use "-" instead of Service name. Format: projects/`

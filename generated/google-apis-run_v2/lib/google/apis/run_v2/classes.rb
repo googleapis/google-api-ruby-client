@@ -1109,6 +1109,13 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # A unique string used as a suffix for creating a new execution. The Job will
+        # become ready when the execution is successfully completed. The sum of job name
+        # and token length must be fewer than 63 characters.
+        # Corresponds to the JSON property `runExecutionToken`
+        # @return [String]
+        attr_accessor :run_execution_token
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -1170,6 +1177,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @run_execution_token = args[:run_execution_token] if args.key?(:run_execution_token)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @start_execution_token = args[:start_execution_token] if args.key?(:start_execution_token)
           @template = args[:template] if args.key?(:template)
@@ -3456,7 +3464,7 @@ module Google
         # disk free"; some of the space will be used by the operating system and build
         # utilities. Also note that this is the minimum disk size that will be allocated
         # for the build -- the build may run with a larger disk than requested. At
-        # present, the maximum disk size is 2000GB; builds that request more than the
+        # present, the maximum disk size is 4000GB; builds that request more than the
         # maximum are rejected with an error.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
@@ -3768,7 +3776,7 @@ module Google
       class GoogleDevtoolsCloudbuildV1ConnectedRepository
         include Google::Apis::Core::Hashable
       
-        # Directory, relative to the source root, in which to run the build.
+        # Optional. Directory, relative to the source root, in which to run the build.
         # Corresponds to the JSON property `dir`
         # @return [String]
         attr_accessor :dir
@@ -3779,8 +3787,8 @@ module Google
         # @return [String]
         attr_accessor :repository
       
-        # The revision to fetch from the Git repository such as a branch, a tag, a
-        # commit SHA, or any Git ref.
+        # Required. The revision to fetch from the Git repository such as a branch, a
+        # tag, a commit SHA, or any Git ref.
         # Corresponds to the JSON property `revision`
         # @return [String]
         attr_accessor :revision
@@ -3932,26 +3940,26 @@ module Google
       class GoogleDevtoolsCloudbuildV1GitSource
         include Google::Apis::Core::Hashable
       
-        # Directory, relative to the source root, in which to run the build. This must
-        # be a relative path. If a step's `dir` is specified and is an absolute path,
-        # this value is ignored for that step's execution.
+        # Optional. Directory, relative to the source root, in which to run the build.
+        # This must be a relative path. If a step's `dir` is specified and is an
+        # absolute path, this value is ignored for that step's execution.
         # Corresponds to the JSON property `dir`
         # @return [String]
         attr_accessor :dir
       
-        # The revision to fetch from the Git repository such as a branch, a tag, a
-        # commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision
-        # from the Git repository; therefore make sure that the string you provide for `
-        # revision` is parsable by the command. For information on string values
-        # accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#
+        # Optional. The revision to fetch from the Git repository such as a branch, a
+        # tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the
+        # revision from the Git repository; therefore make sure that the string you
+        # provide for `revision` is parsable by the command. For information on string
+        # values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#
         # _specifying_revisions. For information on `git fetch`, see https://git-scm.com/
         # docs/git-fetch.
         # Corresponds to the JSON property `revision`
         # @return [String]
         attr_accessor :revision
       
-        # Location of the Git repo to build. This will be used as a `git remote`, see
-        # https://git-scm.com/docs/git-remote.
+        # Required. Location of the Git repo to build. This will be used as a `git
+        # remote`, see https://git-scm.com/docs/git-remote.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -4196,31 +4204,32 @@ module Google
         # @return [String]
         attr_accessor :commit_sha
       
-        # Directory, relative to the source root, in which to run the build. This must
-        # be a relative path. If a step's `dir` is specified and is an absolute path,
-        # this value is ignored for that step's execution.
+        # Optional. Directory, relative to the source root, in which to run the build.
+        # This must be a relative path. If a step's `dir` is specified and is an
+        # absolute path, this value is ignored for that step's execution.
         # Corresponds to the JSON property `dir`
         # @return [String]
         attr_accessor :dir
       
-        # Only trigger a build if the revision regex does NOT match the revision regex.
+        # Optional. Only trigger a build if the revision regex does NOT match the
+        # revision regex.
         # Corresponds to the JSON property `invertRegex`
         # @return [Boolean]
         attr_accessor :invert_regex
         alias_method :invert_regex?, :invert_regex
       
-        # ID of the project that owns the Cloud Source Repository. If omitted, the
-        # project ID requesting the build is assumed.
+        # Optional. ID of the project that owns the Cloud Source Repository. If omitted,
+        # the project ID requesting the build is assumed.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Name of the Cloud Source Repository.
+        # Required. Name of the Cloud Source Repository.
         # Corresponds to the JSON property `repoName`
         # @return [String]
         attr_accessor :repo_name
       
-        # Substitutions to use in a triggered build. Should only be used with
+        # Optional. Substitutions to use in a triggered build. Should only be used with
         # RunBuildTrigger
         # Corresponds to the JSON property `substitutions`
         # @return [Hash<String,String>]
@@ -4526,14 +4535,14 @@ module Google
         # @return [String]
         attr_accessor :bucket
       
-        # Cloud Storage generation for the object. If the generation is omitted, the
-        # latest generation will be used.
+        # Optional. Cloud Storage generation for the object. If the generation is
+        # omitted, the latest generation will be used.
         # Corresponds to the JSON property `generation`
         # @return [Fixnum]
         attr_accessor :generation
       
-        # Cloud Storage object containing the source. This object must be a zipped (`.
-        # zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+        # Required. Cloud Storage object containing the source. This object must be a
+        # zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
         # Corresponds to the JSON property `object`
         # @return [String]
         attr_accessor :object
@@ -4562,9 +4571,9 @@ module Google
       class GoogleDevtoolsCloudbuildV1StorageSourceManifest
         include Google::Apis::Core::Hashable
       
-        # Cloud Storage bucket containing the source manifest (see [Bucket Name
-        # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
-        # ).
+        # Required. Cloud Storage bucket containing the source manifest (see [Bucket
+        # Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#
+        # requirements)).
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
@@ -4575,8 +4584,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :generation
       
-        # Cloud Storage object containing the source manifest. This object must be a
-        # JSON file.
+        # Required. Cloud Storage object containing the source manifest. This object
+        # must be a JSON file.
         # Corresponds to the JSON property `object`
         # @return [String]
         attr_accessor :object

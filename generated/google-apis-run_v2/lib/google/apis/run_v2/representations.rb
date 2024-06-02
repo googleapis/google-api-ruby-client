@@ -921,6 +921,7 @@ module Google
           property :name, as: 'name'
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
+          property :run_execution_token, as: 'runExecutionToken'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :start_execution_token, as: 'startExecutionToken'
           property :template, as: 'template', class: Google::Apis::RunV2::GoogleCloudRunV2ExecutionTemplate, decorator: Google::Apis::RunV2::GoogleCloudRunV2ExecutionTemplate::Representation
