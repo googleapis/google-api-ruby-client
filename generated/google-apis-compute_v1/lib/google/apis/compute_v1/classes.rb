@@ -1578,12 +1578,11 @@ module Google
         attr_accessor :shielded_instance_initial_state
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        # When creating a new instance, one of initializeParams.sourceImage or
-        # initializeParams.sourceSnapshot or disks.source is required except for local
-        # SSD. If desired, you can also attach existing non-root persistent disks using
-        # this property. This field is only applicable for persistent disks. Note that
-        # for InstanceTemplate, specify the disk name for zonal disk, and the URL for
-        # regional disk.
+        # When creating a new instance boot disk, one of initializeParams.sourceImage or
+        # initializeParams.sourceSnapshot or disks.source is required. If desired, you
+        # can also attach existing non-root persistent disks using this property. This
+        # field is only applicable for persistent disks. Note that for InstanceTemplate,
+        # specify the disk name for zonal disk, and the URL for regional disk.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -1730,19 +1729,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # The source image to create this disk. When creating a new instance, one of
-        # initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.
-        # source is required except for local SSD. To create a disk with one of the
-        # public operating system images, specify the image by its family name. For
-        # example, specify family/debian-9 to use the latest Debian 9 image: projects/
-        # debian-cloud/global/images/family/debian-9 Alternatively, use a specific
-        # version of a public operating system image: projects/debian-cloud/global/
-        # images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that
-        # you created, specify the image name in the following format: global/images/my-
-        # custom-image You can also specify a custom image by its image family, which
-        # returns the latest version of the image in that family. Replace the image name
-        # with family/family-name: global/images/family/my-image-family If the source
-        # image is deleted later, this field will not be set.
+        # The source image to create this disk. When creating a new instance boot disk,
+        # one of initializeParams.sourceImage or initializeParams.sourceSnapshot or
+        # disks.source is required. To create a disk with one of the public operating
+        # system images, specify the image by its family name. For example, specify
+        # family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/
+        # images/family/debian-9 Alternatively, use a specific version of a public
+        # operating system image: projects/debian-cloud/global/images/debian-9-stretch-
+        # vYYYYMMDD To create a disk with a custom image that you created, specify the
+        # image name in the following format: global/images/my-custom-image You can also
+        # specify a custom image by its image family, which returns the latest version
+        # of the image in that family. Replace the image name with family/family-name:
+        # global/images/family/my-image-family If the source image is deleted later,
+        # this field will not be set.
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -1756,12 +1755,11 @@ module Google
         # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
       
-        # The source snapshot to create this disk. When creating a new instance, one of
-        # initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.
-        # source is required except for local SSD. To create a disk with a snapshot that
-        # you created, specify the snapshot name in the following format: global/
-        # snapshots/my-backup If the source snapshot is deleted later, this field will
-        # not be set.
+        # The source snapshot to create this disk. When creating a new instance boot
+        # disk, one of initializeParams.sourceSnapshot or initializeParams.sourceImage
+        # or disks.source is required. To create a disk with a snapshot that you created,
+        # specify the snapshot name in the following format: global/snapshots/my-backup
+        # If the source snapshot is deleted later, this field will not be set.
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -14631,6 +14629,18 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output Only] The URL for this managed instance group. The server defines this
         # URL.
         # Corresponds to the JSON property `selfLink`
@@ -14706,6 +14716,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @region = args[:region] if args.key?(:region)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @stateful_policy = args[:stateful_policy] if args.key?(:stateful_policy)
           @status = args[:status] if args.key?(:status)
@@ -43701,6 +43713,25 @@ module Google
         # @return [String]
         attr_accessor :ssl_policy
       
+        # Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for
+        # this service. Early Data allows a TLS resumption handshake to include the
+        # initial application payload (a HTTP request) alongside the handshake, reducing
+        # the effective round trips to "zero". This applies to TLS 1.3 connections over
+        # TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application
+        # performance, especially on networks where interruptions may be common, such as
+        # on mobile. Requests with Early Data will have the "Early-Data" HTTP header set
+        # on the request, with a value of "1", to allow the backend to determine whether
+        # Early Data was included. Note: TLS Early Data may allow requests to be
+        # replayed, as the data is sent to the backend before the handshake has fully
+        # completed. Applications that allow idempotent HTTP methods to make non-
+        # idempotent changes, such as a GET request updating a database, should not
+        # accept Early Data on those requests, and reject requests with the "Early-Data:
+        # 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to
+        # remain RFC compliant. The default value is DISABLED.
+        # Corresponds to the JSON property `tlsEarlyData`
+        # @return [String]
+        attr_accessor :tls_early_data
+      
         # A fully-qualified or valid partial URL to the UrlMap resource that defines the
         # mapping from URL to the BackendService. For example, the following are all
         # valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/
@@ -43732,6 +43763,7 @@ module Google
           @server_tls_policy = args[:server_tls_policy] if args.key?(:server_tls_policy)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
           @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
+          @tls_early_data = args[:tls_early_data] if args.key?(:tls_early_data)
           @url_map = args[:url_map] if args.key?(:url_map)
         end
       end
@@ -49134,7 +49166,7 @@ module Google
       end
       
       # Represents a Zone resource. A zone is a deployment area. These deployment
-      # areas are subsets of a region. For example the zone us-east1-a is located in
+      # areas are subsets of a region. For example the zone us-east1-b is located in
       # the us-east1 region. For more information, read Regions and Zones.
       class Zone
         include Google::Apis::Core::Hashable
