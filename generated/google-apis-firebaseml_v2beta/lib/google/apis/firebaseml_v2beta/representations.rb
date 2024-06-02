@@ -349,6 +349,7 @@ module Google
       class GenerateContentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cached_content, as: 'cachedContent'
           collection :contents, as: 'contents', class: Google::Apis::FirebasemlV2beta::Content, decorator: Google::Apis::FirebasemlV2beta::Content::Representation
       
           property :generation_config, as: 'generationConfig', class: Google::Apis::FirebasemlV2beta::GenerationConfig, decorator: Google::Apis::FirebasemlV2beta::GenerationConfig::Representation
