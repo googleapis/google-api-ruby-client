@@ -1648,12 +1648,11 @@ module Google
         attr_accessor :shielded_instance_initial_state
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        # When creating a new instance, one of initializeParams.sourceImage or
-        # initializeParams.sourceSnapshot or disks.source is required except for local
-        # SSD. If desired, you can also attach existing non-root persistent disks using
-        # this property. This field is only applicable for persistent disks. Note that
-        # for InstanceTemplate, specify the disk name for zonal disk, and the URL for
-        # regional disk.
+        # When creating a new instance boot disk, one of initializeParams.sourceImage or
+        # initializeParams.sourceSnapshot or disks.source is required. If desired, you
+        # can also attach existing non-root persistent disks using this property. This
+        # field is only applicable for persistent disks. Note that for InstanceTemplate,
+        # specify the disk name for zonal disk, and the URL for regional disk.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -1835,19 +1834,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # The source image to create this disk. When creating a new instance, one of
-        # initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.
-        # source is required except for local SSD. To create a disk with one of the
-        # public operating system images, specify the image by its family name. For
-        # example, specify family/debian-9 to use the latest Debian 9 image: projects/
-        # debian-cloud/global/images/family/debian-9 Alternatively, use a specific
-        # version of a public operating system image: projects/debian-cloud/global/
-        # images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that
-        # you created, specify the image name in the following format: global/images/my-
-        # custom-image You can also specify a custom image by its image family, which
-        # returns the latest version of the image in that family. Replace the image name
-        # with family/family-name: global/images/family/my-image-family If the source
-        # image is deleted later, this field will not be set.
+        # The source image to create this disk. When creating a new instance boot disk,
+        # one of initializeParams.sourceImage or initializeParams.sourceSnapshot or
+        # disks.source is required. To create a disk with one of the public operating
+        # system images, specify the image by its family name. For example, specify
+        # family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/
+        # images/family/debian-9 Alternatively, use a specific version of a public
+        # operating system image: projects/debian-cloud/global/images/debian-9-stretch-
+        # vYYYYMMDD To create a disk with a custom image that you created, specify the
+        # image name in the following format: global/images/my-custom-image You can also
+        # specify a custom image by its image family, which returns the latest version
+        # of the image in that family. Replace the image name with family/family-name:
+        # global/images/family/my-image-family If the source image is deleted later,
+        # this field will not be set.
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -1861,23 +1860,21 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
       
-        # The source instant-snapshot to create this disk. When creating a new instance,
-        # one of initializeParams.sourceSnapshot or initializeParams.
-        # sourceInstantSnapshot initializeParams.sourceImage or disks.source is required
-        # except for local SSD. To create a disk with a snapshot that you created,
-        # specify the snapshot name in the following format: us-central1-a/
-        # instantSnapshots/my-backup If the source instant-snapshot is deleted later,
-        # this field will not be set.
+        # The source instant-snapshot to create this disk. When creating a new instance
+        # boot disk, one of initializeParams.sourceSnapshot or initializeParams.
+        # sourceInstantSnapshot initializeParams.sourceImage or disks.source is required.
+        # To create a disk with a snapshot that you created, specify the snapshot name
+        # in the following format: us-central1-a/instantSnapshots/my-backup If the
+        # source instant-snapshot is deleted later, this field will not be set.
         # Corresponds to the JSON property `sourceInstantSnapshot`
         # @return [String]
         attr_accessor :source_instant_snapshot
       
-        # The source snapshot to create this disk. When creating a new instance, one of
-        # initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.
-        # source is required except for local SSD. To create a disk with a snapshot that
-        # you created, specify the snapshot name in the following format: global/
-        # snapshots/my-backup If the source snapshot is deleted later, this field will
-        # not be set.
+        # The source snapshot to create this disk. When creating a new instance boot
+        # disk, one of initializeParams.sourceSnapshot or initializeParams.sourceImage
+        # or disks.source is required. To create a disk with a snapshot that you created,
+        # specify the snapshot name in the following format: global/snapshots/my-backup
+        # If the source snapshot is deleted later, this field will not be set.
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -10542,6 +10539,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :dest_ip_ranges
       
+        # Network scope of the traffic destination.
+        # Corresponds to the JSON property `destNetworkScope`
+        # @return [String]
+        attr_accessor :dest_network_scope
+      
         # Region codes whose IP addresses will be used to match for destination of
         # traffic. Should be specified as 2 letter country code defined as per ISO 3166
         # alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is
@@ -10578,6 +10580,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
       
+        # Network scope of the traffic source.
+        # Corresponds to the JSON property `srcNetworkScope`
+        # @return [String]
+        attr_accessor :src_network_scope
+      
+        # Networks of the traffic source. It can be either a full or partial url.
+        # Corresponds to the JSON property `srcNetworks`
+        # @return [Array<String>]
+        attr_accessor :src_networks
+      
         # Region codes whose IP addresses will be used to match for source of traffic.
         # Should be specified as 2 letter country code defined as per ISO 3166 alpha-2
         # country codes. ex."US" Maximum number of source region codes allowed is 5000.
@@ -10608,12 +10620,15 @@ module Google
           @dest_address_groups = args[:dest_address_groups] if args.key?(:dest_address_groups)
           @dest_fqdns = args[:dest_fqdns] if args.key?(:dest_fqdns)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
+          @dest_network_scope = args[:dest_network_scope] if args.key?(:dest_network_scope)
           @dest_region_codes = args[:dest_region_codes] if args.key?(:dest_region_codes)
           @dest_threat_intelligences = args[:dest_threat_intelligences] if args.key?(:dest_threat_intelligences)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
           @src_address_groups = args[:src_address_groups] if args.key?(:src_address_groups)
           @src_fqdns = args[:src_fqdns] if args.key?(:src_fqdns)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
+          @src_network_scope = args[:src_network_scope] if args.key?(:src_network_scope)
+          @src_networks = args[:src_networks] if args.key?(:src_networks)
           @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
           @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
           @src_threat_intelligences = args[:src_threat_intelligences] if args.key?(:src_threat_intelligences)
@@ -17232,6 +17247,18 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output Only] The URL for this managed instance group. The server defines this
         # URL.
         # Corresponds to the JSON property `selfLink`
@@ -17349,6 +17376,8 @@ module Google
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -27216,6 +27245,15 @@ module Google
         # @return [String]
         attr_accessor :network_placement
       
+        # A full or partial URL of the network profile to apply to this network. This
+        # field can be set only at resource creation time. For example, the following
+        # are valid URLs: - https://www.googleapis.com/compute/alpha/projects/`
+        # project_id`/global/networkProfiles/`network_profile_name` - projects/`
+        # project_id`/global/networkProfiles/`network_profile_name`
+        # Corresponds to the JSON property `networkProfile`
+        # @return [String]
+        attr_accessor :network_profile
+      
         # [Output Only] A list of network peerings for the resource.
         # Corresponds to the JSON property `peerings`
         # @return [Array<Google::Apis::ComputeAlpha::NetworkPeering>]
@@ -27271,6 +27309,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_firewall_policy_enforcement_order = args[:network_firewall_policy_enforcement_order] if args.key?(:network_firewall_policy_enforcement_order)
           @network_placement = args[:network_placement] if args.key?(:network_placement)
+          @network_profile = args[:network_profile] if args.key?(:network_profile)
           @peerings = args[:peerings] if args.key?(:peerings)
           @region = args[:region] if args.key?(:region)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
@@ -58202,7 +58241,7 @@ module Google
       end
       
       # Represents a Zone resource. A zone is a deployment area. These deployment
-      # areas are subsets of a region. For example the zone us-east1-a is located in
+      # areas are subsets of a region. For example the zone us-east1-b is located in
       # the us-east1 region. For more information, read Regions and Zones.
       class Zone
         include Google::Apis::Core::Hashable
