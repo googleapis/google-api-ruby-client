@@ -476,6 +476,15 @@ module Google
       class GenerateContentRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The name of the cached content used as context to serve the
+        # prediction. Note: only used in explicit caching, where users can have control
+        # over caching (e.g. what content to cache) and enjoy guaranteed cost savings.
+        # Format: `projects/`project`/locations/`location`/cachedContents/`cachedContent`
+        # `
+        # Corresponds to the JSON property `cachedContent`
+        # @return [String]
+        attr_accessor :cached_content
+      
         # Required. The content of the current conversation with the model. For single-
         # turn queries, this is a single instance. For multi-turn queries, this is a
         # repeated field that contains conversation history + latest request.
@@ -521,6 +530,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cached_content = args[:cached_content] if args.key?(:cached_content)
           @contents = args[:contents] if args.key?(:contents)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
