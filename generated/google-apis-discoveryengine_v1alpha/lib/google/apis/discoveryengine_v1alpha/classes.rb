@@ -323,6 +323,281 @@ module Google
         end
       end
       
+      # Defines circumstances to be checked before allowing a behavior
+      class GoogleCloudDiscoveryengineV1Condition
+        include Google::Apis::Core::Hashable
+      
+        # Range of time(s) specifying when condition is active. Maximum of 10 time
+        # ranges.
+        # Corresponds to the JSON property `activeTimeRange`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ConditionTimeRange>]
+        attr_accessor :active_time_range
+      
+        # Search only A list of terms to match the query on. Maximum of 10 query terms.
+        # Corresponds to the JSON property `queryTerms`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ConditionQueryTerm>]
+        attr_accessor :query_terms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_time_range = args[:active_time_range] if args.key?(:active_time_range)
+          @query_terms = args[:query_terms] if args.key?(:query_terms)
+        end
+      end
+      
+      # Matcher for search request query
+      class GoogleCloudDiscoveryengineV1ConditionQueryTerm
+        include Google::Apis::Core::Hashable
+      
+        # Whether the search query needs to exactly match the query term.
+        # Corresponds to the JSON property `fullMatch`
+        # @return [Boolean]
+        attr_accessor :full_match
+        alias_method :full_match?, :full_match
+      
+        # The specific query value to match against Must be lowercase, must be UTF-8.
+        # Can have at most 3 space separated terms if full_match is true. Cannot be an
+        # empty string. Maximum length of 5000 characters.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_match = args[:full_match] if args.key?(:full_match)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Used for time-dependent conditions.
+      class GoogleCloudDiscoveryengineV1ConditionTimeRange
+        include Google::Apis::Core::Hashable
+      
+        # End of time range. Range is inclusive. Must be in the future.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Start of time range. Range is inclusive.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Defines a conditioned behavior to employ during serving. Must be attached to a
+      # ServingConfig to be considered at serving time. Permitted actions dependent on
+      # `SolutionType`.
+      class GoogleCloudDiscoveryengineV1Control
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of all ServingConfig ids this control is attached to. May
+        # take up to 10 minutes to update after changes.
+        # Corresponds to the JSON property `associatedServingConfigIds`
+        # @return [Array<String>]
+        attr_accessor :associated_serving_config_ids
+      
+        # Adjusts order of products in returned list.
+        # Corresponds to the JSON property `boostAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ControlBoostAction]
+        attr_accessor :boost_action
+      
+        # Determines when the associated action will trigger. Omit to always apply the
+        # action. Currently only a single condition may be specified. Otherwise an
+        # INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1Condition>]
+        attr_accessor :conditions
+      
+        # Required. Human readable name. The identifier used in UI views. Must be UTF-8
+        # encoded string. Length limit is 128 characters. Otherwise an INVALID ARGUMENT
+        # error is thrown.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Specified which products may be included in results. Uses same filter as boost.
+        # Corresponds to the JSON property `filterAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ControlFilterAction]
+        attr_accessor :filter_action
+      
+        # Immutable. Fully qualified name `projects/*/locations/global/dataStore/*/
+        # controls/*`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Redirects a shopper to the provided URI.
+        # Corresponds to the JSON property `redirectAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ControlRedirectAction]
+        attr_accessor :redirect_action
+      
+        # Required. Immutable. What solution the control belongs to. Must be compatible
+        # with vertical of resource. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `solutionType`
+        # @return [String]
+        attr_accessor :solution_type
+      
+        # Creates a set of terms that will act as synonyms of one another. Example: "
+        # happy" will also be considered as "glad", "glad" will also be considered as "
+        # happy".
+        # Corresponds to the JSON property `synonymsAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ControlSynonymsAction]
+        attr_accessor :synonyms_action
+      
+        # Specifies the use case for the control. Affects what condition fields can be
+        # set. Only applies to SOLUTION_TYPE_SEARCH. Currently only allow one use case
+        # per control. Must be set when solution_type is SolutionType.
+        # SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `useCases`
+        # @return [Array<String>]
+        attr_accessor :use_cases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associated_serving_config_ids = args[:associated_serving_config_ids] if args.key?(:associated_serving_config_ids)
+          @boost_action = args[:boost_action] if args.key?(:boost_action)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @filter_action = args[:filter_action] if args.key?(:filter_action)
+          @name = args[:name] if args.key?(:name)
+          @redirect_action = args[:redirect_action] if args.key?(:redirect_action)
+          @solution_type = args[:solution_type] if args.key?(:solution_type)
+          @synonyms_action = args[:synonyms_action] if args.key?(:synonyms_action)
+          @use_cases = args[:use_cases] if args.key?(:use_cases)
+        end
+      end
+      
+      # Adjusts order of products in returned list.
+      class GoogleCloudDiscoveryengineV1ControlBoostAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. Strength of the boost, which should be in [-1, 1]. Negative boost
+        # means demotion. Default is 0.0 (No-op).
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
+      
+        # Required. Specifies which data store's documents can be boosted by this
+        # control. Full data store name e.g. projects/123/locations/global/collections/
+        # default_collection/dataStores/default_data_store
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Required. Specifies which products to apply the boost to. If no filter is
+        # provided all products will be boosted (No-op). Syntax documentation: https://
+        # cloud.google.com/retail/docs/filter-and-order Maximum length is 5000
+        # characters. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Specified which products may be included in results. Uses same filter as boost.
+      class GoogleCloudDiscoveryengineV1ControlFilterAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies which data store's documents can be filtered by this
+        # control. Full data store name e.g. projects/123/locations/global/collections/
+        # default_collection/dataStores/default_data_store
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Required. A filter to apply on the matching condition results. Required Syntax
+        # documentation: https://cloud.google.com/retail/docs/filter-and-order Maximum
+        # length is 5000 characters. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Redirects a shopper to the provided URI.
+      class GoogleCloudDiscoveryengineV1ControlRedirectAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. The URI to which the shopper will be redirected. Required. URI must
+        # have length equal or less than 2000 characters. Otherwise an INVALID ARGUMENT
+        # error is thrown.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+        end
+      end
+      
+      # Creates a set of terms that will act as synonyms of one another. Example: "
+      # happy" will also be considered as "glad", "glad" will also be considered as "
+      # happy".
+      class GoogleCloudDiscoveryengineV1ControlSynonymsAction
+        include Google::Apis::Core::Hashable
+      
+        # Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at
+        # least 2 synonyms. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `synonyms`
+        # @return [Array<String>]
+        attr_accessor :synonyms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @synonyms = args[:synonyms] if args.key?(:synonyms)
+        end
+      end
+      
       # Metadata related to the progress of the DataStoreService.CreateDataStore
       # operation. This will be returned by the google.longrunning.Operation.metadata
       # field.
@@ -1004,8 +1279,8 @@ module Google
       class GoogleCloudDiscoveryengineV1EngineCommonConfig
         include Google::Apis::Core::Hashable
       
-        # Immutable. The name of the company, business or entity that is associated with
-        # the engine. Setting this may help improve LLM related features.
+        # The name of the company, business or entity that is associated with the engine.
+        # Setting this may help improve LLM related features.
         # Corresponds to the JSON property `companyName`
         # @return [String]
         attr_accessor :company_name
@@ -1274,6 +1549,108 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @joined_events_count = args[:joined_events_count] if args.key?(:joined_events_count)
           @unjoined_events_count = args[:unjoined_events_count] if args.key?(:unjoined_events_count)
+        end
+      end
+      
+      # Metadata and configurations for a Google Cloud project in the service.
+      class GoogleCloudDiscoveryengineV1Project
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when this project is created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Full resource name of the project, for example `projects/`
+        # project_number``. Note that when making requests, project number and project
+        # id are both acceptable, but the server will always respond in project number.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when this project is successfully provisioned.
+        # Empty value means this project is still provisioning and is not ready for use.
+        # Corresponds to the JSON property `provisionCompletionTime`
+        # @return [String]
+        attr_accessor :provision_completion_time
+      
+        # Output only. A map of terms of services. The key is the `id` of ServiceTerms.
+        # Corresponds to the JSON property `serviceTermsMap`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ProjectServiceTerms>]
+        attr_accessor :service_terms_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @provision_completion_time = args[:provision_completion_time] if args.key?(:provision_completion_time)
+          @service_terms_map = args[:service_terms_map] if args.key?(:service_terms_map)
+        end
+      end
+      
+      # Metadata about the terms of service.
+      class GoogleCloudDiscoveryengineV1ProjectServiceTerms
+        include Google::Apis::Core::Hashable
+      
+        # The last time when the project agreed to the terms of service.
+        # Corresponds to the JSON property `acceptTime`
+        # @return [String]
+        attr_accessor :accept_time
+      
+        # The last time when the project declined or revoked the agreement to terms of
+        # service.
+        # Corresponds to the JSON property `declineTime`
+        # @return [String]
+        attr_accessor :decline_time
+      
+        # The unique identifier of this terms of service. Available terms: * `
+        # GA_DATA_USE_TERMS`: [Terms for data use](https://cloud.google.com/retail/data-
+        # use-terms). When using this as `id`, the acceptable version to provide is `
+        # 2022-11-23`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Whether the project has accepted/rejected the service terms or it is still
+        # pending.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The version string of the terms of service. For acceptable values, see the
+        # comments for id above.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accept_time = args[:accept_time] if args.key?(:accept_time)
+          @decline_time = args[:decline_time] if args.key?(:decline_time)
+          @id = args[:id] if args.key?(:id)
+          @state = args[:state] if args.key?(:state)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Metadata associated with a project provision operation.
+      class GoogleCloudDiscoveryengineV1ProvisionProjectMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1900,6 +2277,15 @@ module Google
         attr_accessor :ignore_adversarial_query
         alias_method :ignore_adversarial_query?, :ignore_adversarial_query
       
+        # Specifies whether to filter out queries that have low relevance. If this field
+        # is set to `false`, all search results are used regardless of relevance to
+        # generate answers. If set to `true` or unset, the behavior will be determined
+        # automatically by the service.
+        # Corresponds to the JSON property `ignoreLowRelevantContent`
+        # @return [Boolean]
+        attr_accessor :ignore_low_relevant_content
+        alias_method :ignore_low_relevant_content?, :ignore_low_relevant_content
+      
         # Specifies whether to filter out queries that are not answer-seeking. The
         # default value is `false`. Google employs search-query classification to detect
         # answer-seeking queries. No answer is returned if the search query is
@@ -1936,6 +2322,7 @@ module Google
         def update!(**args)
           @answer_language_code = args[:answer_language_code] if args.key?(:answer_language_code)
           @ignore_adversarial_query = args[:ignore_adversarial_query] if args.key?(:ignore_adversarial_query)
+          @ignore_low_relevant_content = args[:ignore_low_relevant_content] if args.key?(:ignore_low_relevant_content)
           @ignore_non_answer_seeking_query = args[:ignore_non_answer_seeking_query] if args.key?(:ignore_non_answer_seeking_query)
           @include_citations = args[:include_citations] if args.key?(:include_citations)
           @model_spec = args[:model_spec] if args.key?(:model_spec)
@@ -2132,6 +2519,14 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec]
         attr_accessor :custom_fine_tuning_spec
       
+        # Specs defining dataStores to filter on in a search call and configurations for
+        # those dataStores. This is only considered for engines with multiple dataStores
+        # use case. For single dataStore within an engine, they should use the specs at
+        # the top level.
+        # Corresponds to the JSON property `dataStoreSpecs`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec>]
+        attr_accessor :data_store_specs
+      
         # The filter syntax consists of an expression language for constructing a
         # predicate from one or more fields of the documents being filtered. Filter
         # expression is case-sensitive. This will be used to filter search results which
@@ -2179,6 +2574,7 @@ module Google
         def update!(**args)
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
           @custom_fine_tuning_spec = args[:custom_fine_tuning_spec] if args.key?(:custom_fine_tuning_spec)
+          @data_store_specs = args[:data_store_specs] if args.key?(:data_store_specs)
           @filter = args[:filter] if args.key?(:filter)
           @max_return_results = args[:max_return_results] if args.key?(:max_return_results)
           @order_by = args[:order_by] if args.key?(:order_by)
@@ -2533,6 +2929,12 @@ module Google
         # @return [String]
         attr_accessor :page_identifier
       
+        # The structured JSON metadata for the document. It is populated from the struct
+        # data from the Chunk in search result.
+        # Corresponds to the JSON property `structData`
+        # @return [Hash<String,Object>]
+        attr_accessor :struct_data
+      
         # Title.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -2551,6 +2953,7 @@ module Google
         def update!(**args)
           @document = args[:document] if args.key?(:document)
           @page_identifier = args[:page_identifier] if args.key?(:page_identifier)
+          @struct_data = args[:struct_data] if args.key?(:struct_data)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -2570,6 +2973,12 @@ module Google
         # @return [String]
         attr_accessor :document
       
+        # The structured JSON metadata for the document. It is populated from the struct
+        # data from the Chunk in search result.
+        # Corresponds to the JSON property `structData`
+        # @return [Hash<String,Object>]
+        attr_accessor :struct_data
+      
         # Title.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -2588,6 +2997,7 @@ module Google
         def update!(**args)
           @chunk_contents = args[:chunk_contents] if args.key?(:chunk_contents)
           @document = args[:document] if args.key?(:document)
+          @struct_data = args[:struct_data] if args.key?(:struct_data)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -3330,9 +3740,9 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaChunkPageSpan]
         attr_accessor :page_span
       
-        # Represents the relevance score based on similarity. Higher score represents
-        # the chunk relevance. The score is in range [-1.0, 1.0]. Only populated on
-        # SearchService.SearchResponse
+        # Output only. Represents the relevance score based on similarity. Higher score
+        # indicates higher chunk relevance. The score is in range [-1.0, 1.0]. Only
+        # populated on SearchService.SearchResponse.
         # Corresponds to the JSON property `relevanceScore`
         # @return [Float]
         attr_accessor :relevance_score
@@ -3581,6 +3991,281 @@ module Google
         def update!(**args)
           @selected_position = args[:selected_position] if args.key?(:selected_position)
           @selected_suggestion = args[:selected_suggestion] if args.key?(:selected_suggestion)
+        end
+      end
+      
+      # Defines circumstances to be checked before allowing a behavior
+      class GoogleCloudDiscoveryengineV1alphaCondition
+        include Google::Apis::Core::Hashable
+      
+        # Range of time(s) specifying when condition is active. Maximum of 10 time
+        # ranges.
+        # Corresponds to the JSON property `activeTimeRange`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConditionTimeRange>]
+        attr_accessor :active_time_range
+      
+        # Search only A list of terms to match the query on. Maximum of 10 query terms.
+        # Corresponds to the JSON property `queryTerms`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConditionQueryTerm>]
+        attr_accessor :query_terms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_time_range = args[:active_time_range] if args.key?(:active_time_range)
+          @query_terms = args[:query_terms] if args.key?(:query_terms)
+        end
+      end
+      
+      # Matcher for search request query
+      class GoogleCloudDiscoveryengineV1alphaConditionQueryTerm
+        include Google::Apis::Core::Hashable
+      
+        # Whether the search query needs to exactly match the query term.
+        # Corresponds to the JSON property `fullMatch`
+        # @return [Boolean]
+        attr_accessor :full_match
+        alias_method :full_match?, :full_match
+      
+        # The specific query value to match against Must be lowercase, must be UTF-8.
+        # Can have at most 3 space separated terms if full_match is true. Cannot be an
+        # empty string. Maximum length of 5000 characters.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_match = args[:full_match] if args.key?(:full_match)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Used for time-dependent conditions.
+      class GoogleCloudDiscoveryengineV1alphaConditionTimeRange
+        include Google::Apis::Core::Hashable
+      
+        # End of time range. Range is inclusive. Must be in the future.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Start of time range. Range is inclusive.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Defines a conditioned behavior to employ during serving. Must be attached to a
+      # ServingConfig to be considered at serving time. Permitted actions dependent on
+      # `SolutionType`.
+      class GoogleCloudDiscoveryengineV1alphaControl
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of all ServingConfig ids this control is attached to. May
+        # take up to 10 minutes to update after changes.
+        # Corresponds to the JSON property `associatedServingConfigIds`
+        # @return [Array<String>]
+        attr_accessor :associated_serving_config_ids
+      
+        # Adjusts order of products in returned list.
+        # Corresponds to the JSON property `boostAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaControlBoostAction]
+        attr_accessor :boost_action
+      
+        # Determines when the associated action will trigger. Omit to always apply the
+        # action. Currently only a single condition may be specified. Otherwise an
+        # INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCondition>]
+        attr_accessor :conditions
+      
+        # Required. Human readable name. The identifier used in UI views. Must be UTF-8
+        # encoded string. Length limit is 128 characters. Otherwise an INVALID ARGUMENT
+        # error is thrown.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Specified which products may be included in results. Uses same filter as boost.
+        # Corresponds to the JSON property `filterAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaControlFilterAction]
+        attr_accessor :filter_action
+      
+        # Immutable. Fully qualified name `projects/*/locations/global/dataStore/*/
+        # controls/*`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Redirects a shopper to the provided URI.
+        # Corresponds to the JSON property `redirectAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaControlRedirectAction]
+        attr_accessor :redirect_action
+      
+        # Required. Immutable. What solution the control belongs to. Must be compatible
+        # with vertical of resource. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `solutionType`
+        # @return [String]
+        attr_accessor :solution_type
+      
+        # Creates a set of terms that will act as synonyms of one another. Example: "
+        # happy" will also be considered as "glad", "glad" will also be considered as "
+        # happy".
+        # Corresponds to the JSON property `synonymsAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaControlSynonymsAction]
+        attr_accessor :synonyms_action
+      
+        # Specifies the use case for the control. Affects what condition fields can be
+        # set. Only applies to SOLUTION_TYPE_SEARCH. Currently only allow one use case
+        # per control. Must be set when solution_type is SolutionType.
+        # SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `useCases`
+        # @return [Array<String>]
+        attr_accessor :use_cases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associated_serving_config_ids = args[:associated_serving_config_ids] if args.key?(:associated_serving_config_ids)
+          @boost_action = args[:boost_action] if args.key?(:boost_action)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @filter_action = args[:filter_action] if args.key?(:filter_action)
+          @name = args[:name] if args.key?(:name)
+          @redirect_action = args[:redirect_action] if args.key?(:redirect_action)
+          @solution_type = args[:solution_type] if args.key?(:solution_type)
+          @synonyms_action = args[:synonyms_action] if args.key?(:synonyms_action)
+          @use_cases = args[:use_cases] if args.key?(:use_cases)
+        end
+      end
+      
+      # Adjusts order of products in returned list.
+      class GoogleCloudDiscoveryengineV1alphaControlBoostAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. Strength of the boost, which should be in [-1, 1]. Negative boost
+        # means demotion. Default is 0.0 (No-op).
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
+      
+        # Required. Specifies which data store's documents can be boosted by this
+        # control. Full data store name e.g. projects/123/locations/global/collections/
+        # default_collection/dataStores/default_data_store
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Required. Specifies which products to apply the boost to. If no filter is
+        # provided all products will be boosted (No-op). Syntax documentation: https://
+        # cloud.google.com/retail/docs/filter-and-order Maximum length is 5000
+        # characters. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Specified which products may be included in results. Uses same filter as boost.
+      class GoogleCloudDiscoveryengineV1alphaControlFilterAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies which data store's documents can be filtered by this
+        # control. Full data store name e.g. projects/123/locations/global/collections/
+        # default_collection/dataStores/default_data_store
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Required. A filter to apply on the matching condition results. Required Syntax
+        # documentation: https://cloud.google.com/retail/docs/filter-and-order Maximum
+        # length is 5000 characters. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Redirects a shopper to the provided URI.
+      class GoogleCloudDiscoveryengineV1alphaControlRedirectAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. The URI to which the shopper will be redirected. Required. URI must
+        # have length equal or less than 2000 characters. Otherwise an INVALID ARGUMENT
+        # error is thrown.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+        end
+      end
+      
+      # Creates a set of terms that will act as synonyms of one another. Example: "
+      # happy" will also be considered as "glad", "glad" will also be considered as "
+      # happy".
+      class GoogleCloudDiscoveryengineV1alphaControlSynonymsAction
+        include Google::Apis::Core::Hashable
+      
+        # Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at
+        # least 2 synonyms. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `synonyms`
+        # @return [Array<String>]
+        attr_accessor :synonyms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @synonyms = args[:synonyms] if args.key?(:synonyms)
         end
       end
       
@@ -4024,7 +4709,7 @@ module Google
         # @return [String]
         attr_accessor :model_state
       
-        # 
+        # The version of the model.
         # Corresponds to the JSON property `modelVersion`
         # @return [Fixnum]
         attr_accessor :model_version
@@ -5026,8 +5711,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngineCommonConfig
         include Google::Apis::Core::Hashable
       
-        # Immutable. The name of the company, business or entity that is associated with
-        # the engine. Setting this may help improve LLM related features.
+        # The name of the company, business or entity that is associated with the engine.
+        # Setting this may help improve LLM related features.
         # Corresponds to the JSON property `companyName`
         # @return [String]
         attr_accessor :company_name
@@ -5554,6 +6239,17 @@ module Google
         # @return [String]
         attr_accessor :retrievable_option
       
+        # Field paths for indexing custom attribute from schema.org data. More details
+        # of schema.org and its defined types can be found at [schema.org](https://
+        # schema.org). It is only used on advanced site search schema. Currently only
+        # support full path from root. The full path to a field is constructed by
+        # concatenating field names, starting from `_root`, with a period `.` as the
+        # delimiter. Examples: * Publish date of the root: _root.datePublished * Publish
+        # date of the reviews: _root.review.datePublished
+        # Corresponds to the JSON property `schemaOrgPaths`
+        # @return [Array<String>]
+        attr_accessor :schema_org_paths
+      
         # If searchable_option is SEARCHABLE_ENABLED, field values are searchable by
         # text queries in SearchService.Search. If SEARCHABLE_ENABLED but field type is
         # numerical, field values will not be searchable by text queries in
@@ -5583,6 +6279,7 @@ module Google
           @key_property_type = args[:key_property_type] if args.key?(:key_property_type)
           @recs_filterable_option = args[:recs_filterable_option] if args.key?(:recs_filterable_option)
           @retrievable_option = args[:retrievable_option] if args.key?(:retrievable_option)
+          @schema_org_paths = args[:schema_org_paths] if args.key?(:schema_org_paths)
           @searchable_option = args[:searchable_option] if args.key?(:searchable_option)
         end
       end
@@ -6303,6 +7000,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunks = args[:chunks] if args.key?(:chunks)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for ListControls method.
+      class GoogleCloudDiscoveryengineV1alphaListControlsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the Controls for a given data store.
+        # Corresponds to the JSON property `controls`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaControl>]
+        attr_accessor :controls
+      
+        # Pagination token, if not returned indicates the last page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @controls = args[:controls] if args.key?(:controls)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -7223,6 +7945,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :top_n
       
+        # The user labels applied to a resource must meet the following requirements: *
+        # Each resource can have multiple labels, up to a maximum of 64. * Each label
+        # must be a key-value pair. * Keys have a minimum length of 1 character and a
+        # maximum length of 63 characters and cannot be empty. Values can be empty and
+        # have a maximum length of 63 characters. * Keys and values can contain only
+        # lowercase letters, numeric characters, underscores, and dashes. All characters
+        # must use UTF-8 encoding, and international characters are allowed. * The key
+        # portion of a label must be unique. However, you can use the same key with
+        # multiple resources. * Keys must start with a lowercase letter or international
+        # character. See [Google Cloud Document](https://cloud.google.com/resource-
+        # manager/docs/creating-managing-labels#requirements) for more details.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7234,6 +7971,7 @@ module Google
           @query = args[:query] if args.key?(:query)
           @records = args[:records] if args.key?(:records)
           @top_n = args[:top_n] if args.key?(:top_n)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
       
@@ -8213,10 +8951,8 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec]
         attr_accessor :extractive_content_spec
       
-        # Specifies the search result mode. If unspecified, the search result mode is
-        # based on DataStore.DocumentProcessingConfig.chunking_config: * If DataStore.
-        # DocumentProcessingConfig.chunking_config is specified, it defaults to `CHUNKS`.
-        # * Otherwise, it defaults to `DOCUMENTS`.
+        # Specifies the search result mode. If unspecified, the search result mode
+        # defaults to `DOCUMENTS`.
         # Corresponds to the JSON property `searchResultMode`
         # @return [String]
         attr_accessor :search_result_mode
@@ -10317,6 +11053,15 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCompletionInfo]
         attr_accessor :completion_info
       
+        # The DataStore resource full name, of the form `projects/`project`/locations/`
+        # location`/collections/`collection_id`/dataStores/`data_store_id``. Optional.
+        # Only required for user events whose data store can't by determined by
+        # UserEvent.engine or UserEvent.documents. If data store is set in the parent of
+        # write/import/collect user event requests, this field can be omitted.
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
         # Should set to true if the request is made directly from the end user, in which
         # case the UserEvent.user_info.user_agent can be populated from the HTTP request.
         # This flag should be set only if the API request is made directly from the end
@@ -10338,6 +11083,14 @@ module Google
         # Corresponds to the JSON property `documents`
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentInfo>]
         attr_accessor :documents
+      
+        # The Engine resource name, in the form of `projects/`project`/locations/`
+        # location`/collections/`collection_id`/engines/`engine_id``. Optional. Only
+        # required for Engine produced user events. For example, user events from
+        # blended search.
+        # Corresponds to the JSON property `engine`
+        # @return [String]
+        attr_accessor :engine
       
         # Only required for UserEventService.ImportUserEvents method. Timestamp of when
         # the user event happened.
@@ -10446,8 +11199,10 @@ module Google
           @attributes = args[:attributes] if args.key?(:attributes)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @completion_info = args[:completion_info] if args.key?(:completion_info)
+          @data_store = args[:data_store] if args.key?(:data_store)
           @direct_user_request = args[:direct_user_request] if args.key?(:direct_user_request)
           @documents = args[:documents] if args.key?(:documents)
+          @engine = args[:engine] if args.key?(:engine)
           @event_time = args[:event_time] if args.key?(:event_time)
           @event_type = args[:event_type] if args.key?(:event_type)
           @filter = args[:filter] if args.key?(:filter)
@@ -10542,6 +11297,281 @@ module Google
         # Update properties of this object
         def update!(**args)
           @target_sites = args[:target_sites] if args.key?(:target_sites)
+        end
+      end
+      
+      # Defines circumstances to be checked before allowing a behavior
+      class GoogleCloudDiscoveryengineV1betaCondition
+        include Google::Apis::Core::Hashable
+      
+        # Range of time(s) specifying when condition is active. Maximum of 10 time
+        # ranges.
+        # Corresponds to the JSON property `activeTimeRange`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaConditionTimeRange>]
+        attr_accessor :active_time_range
+      
+        # Search only A list of terms to match the query on. Maximum of 10 query terms.
+        # Corresponds to the JSON property `queryTerms`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaConditionQueryTerm>]
+        attr_accessor :query_terms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_time_range = args[:active_time_range] if args.key?(:active_time_range)
+          @query_terms = args[:query_terms] if args.key?(:query_terms)
+        end
+      end
+      
+      # Matcher for search request query
+      class GoogleCloudDiscoveryengineV1betaConditionQueryTerm
+        include Google::Apis::Core::Hashable
+      
+        # Whether the search query needs to exactly match the query term.
+        # Corresponds to the JSON property `fullMatch`
+        # @return [Boolean]
+        attr_accessor :full_match
+        alias_method :full_match?, :full_match
+      
+        # The specific query value to match against Must be lowercase, must be UTF-8.
+        # Can have at most 3 space separated terms if full_match is true. Cannot be an
+        # empty string. Maximum length of 5000 characters.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_match = args[:full_match] if args.key?(:full_match)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Used for time-dependent conditions.
+      class GoogleCloudDiscoveryengineV1betaConditionTimeRange
+        include Google::Apis::Core::Hashable
+      
+        # End of time range. Range is inclusive. Must be in the future.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Start of time range. Range is inclusive.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Defines a conditioned behavior to employ during serving. Must be attached to a
+      # ServingConfig to be considered at serving time. Permitted actions dependent on
+      # `SolutionType`.
+      class GoogleCloudDiscoveryengineV1betaControl
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of all ServingConfig ids this control is attached to. May
+        # take up to 10 minutes to update after changes.
+        # Corresponds to the JSON property `associatedServingConfigIds`
+        # @return [Array<String>]
+        attr_accessor :associated_serving_config_ids
+      
+        # Adjusts order of products in returned list.
+        # Corresponds to the JSON property `boostAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaControlBoostAction]
+        attr_accessor :boost_action
+      
+        # Determines when the associated action will trigger. Omit to always apply the
+        # action. Currently only a single condition may be specified. Otherwise an
+        # INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaCondition>]
+        attr_accessor :conditions
+      
+        # Required. Human readable name. The identifier used in UI views. Must be UTF-8
+        # encoded string. Length limit is 128 characters. Otherwise an INVALID ARGUMENT
+        # error is thrown.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Specified which products may be included in results. Uses same filter as boost.
+        # Corresponds to the JSON property `filterAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaControlFilterAction]
+        attr_accessor :filter_action
+      
+        # Immutable. Fully qualified name `projects/*/locations/global/dataStore/*/
+        # controls/*`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Redirects a shopper to the provided URI.
+        # Corresponds to the JSON property `redirectAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaControlRedirectAction]
+        attr_accessor :redirect_action
+      
+        # Required. Immutable. What solution the control belongs to. Must be compatible
+        # with vertical of resource. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `solutionType`
+        # @return [String]
+        attr_accessor :solution_type
+      
+        # Creates a set of terms that will act as synonyms of one another. Example: "
+        # happy" will also be considered as "glad", "glad" will also be considered as "
+        # happy".
+        # Corresponds to the JSON property `synonymsAction`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaControlSynonymsAction]
+        attr_accessor :synonyms_action
+      
+        # Specifies the use case for the control. Affects what condition fields can be
+        # set. Only applies to SOLUTION_TYPE_SEARCH. Currently only allow one use case
+        # per control. Must be set when solution_type is SolutionType.
+        # SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `useCases`
+        # @return [Array<String>]
+        attr_accessor :use_cases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associated_serving_config_ids = args[:associated_serving_config_ids] if args.key?(:associated_serving_config_ids)
+          @boost_action = args[:boost_action] if args.key?(:boost_action)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @filter_action = args[:filter_action] if args.key?(:filter_action)
+          @name = args[:name] if args.key?(:name)
+          @redirect_action = args[:redirect_action] if args.key?(:redirect_action)
+          @solution_type = args[:solution_type] if args.key?(:solution_type)
+          @synonyms_action = args[:synonyms_action] if args.key?(:synonyms_action)
+          @use_cases = args[:use_cases] if args.key?(:use_cases)
+        end
+      end
+      
+      # Adjusts order of products in returned list.
+      class GoogleCloudDiscoveryengineV1betaControlBoostAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. Strength of the boost, which should be in [-1, 1]. Negative boost
+        # means demotion. Default is 0.0 (No-op).
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
+      
+        # Required. Specifies which data store's documents can be boosted by this
+        # control. Full data store name e.g. projects/123/locations/global/collections/
+        # default_collection/dataStores/default_data_store
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Required. Specifies which products to apply the boost to. If no filter is
+        # provided all products will be boosted (No-op). Syntax documentation: https://
+        # cloud.google.com/retail/docs/filter-and-order Maximum length is 5000
+        # characters. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Specified which products may be included in results. Uses same filter as boost.
+      class GoogleCloudDiscoveryengineV1betaControlFilterAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies which data store's documents can be filtered by this
+        # control. Full data store name e.g. projects/123/locations/global/collections/
+        # default_collection/dataStores/default_data_store
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Required. A filter to apply on the matching condition results. Required Syntax
+        # documentation: https://cloud.google.com/retail/docs/filter-and-order Maximum
+        # length is 5000 characters. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Redirects a shopper to the provided URI.
+      class GoogleCloudDiscoveryengineV1betaControlRedirectAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. The URI to which the shopper will be redirected. Required. URI must
+        # have length equal or less than 2000 characters. Otherwise an INVALID ARGUMENT
+        # error is thrown.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+        end
+      end
+      
+      # Creates a set of terms that will act as synonyms of one another. Example: "
+      # happy" will also be considered as "glad", "glad" will also be considered as "
+      # happy".
+      class GoogleCloudDiscoveryengineV1betaControlSynonymsAction
+        include Google::Apis::Core::Hashable
+      
+        # Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at
+        # least 2 synonyms. Otherwise an INVALID ARGUMENT error is thrown.
+        # Corresponds to the JSON property `synonyms`
+        # @return [Array<String>]
+        attr_accessor :synonyms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @synonyms = args[:synonyms] if args.key?(:synonyms)
         end
       end
       
@@ -10673,7 +11703,7 @@ module Google
         # @return [String]
         attr_accessor :model_state
       
-        # 
+        # The version of the model.
         # Corresponds to the JSON property `modelVersion`
         # @return [Fixnum]
         attr_accessor :model_version
@@ -11278,8 +12308,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEngineCommonConfig
         include Google::Apis::Core::Hashable
       
-        # Immutable. The name of the company, business or entity that is associated with
-        # the engine. Setting this may help improve LLM related features.
+        # The name of the company, business or entity that is associated with the engine.
+        # Setting this may help improve LLM related features.
         # Corresponds to the JSON property `companyName`
         # @return [String]
         attr_accessor :company_name
@@ -11567,6 +12597,108 @@ module Google
         # Update properties of this object
         def update!(**args)
           @models = args[:models] if args.key?(:models)
+        end
+      end
+      
+      # Metadata and configurations for a Google Cloud project in the service.
+      class GoogleCloudDiscoveryengineV1betaProject
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when this project is created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Full resource name of the project, for example `projects/`
+        # project_number``. Note that when making requests, project number and project
+        # id are both acceptable, but the server will always respond in project number.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when this project is successfully provisioned.
+        # Empty value means this project is still provisioning and is not ready for use.
+        # Corresponds to the JSON property `provisionCompletionTime`
+        # @return [String]
+        attr_accessor :provision_completion_time
+      
+        # Output only. A map of terms of services. The key is the `id` of ServiceTerms.
+        # Corresponds to the JSON property `serviceTermsMap`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaProjectServiceTerms>]
+        attr_accessor :service_terms_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @provision_completion_time = args[:provision_completion_time] if args.key?(:provision_completion_time)
+          @service_terms_map = args[:service_terms_map] if args.key?(:service_terms_map)
+        end
+      end
+      
+      # Metadata about the terms of service.
+      class GoogleCloudDiscoveryengineV1betaProjectServiceTerms
+        include Google::Apis::Core::Hashable
+      
+        # The last time when the project agreed to the terms of service.
+        # Corresponds to the JSON property `acceptTime`
+        # @return [String]
+        attr_accessor :accept_time
+      
+        # The last time when the project declined or revoked the agreement to terms of
+        # service.
+        # Corresponds to the JSON property `declineTime`
+        # @return [String]
+        attr_accessor :decline_time
+      
+        # The unique identifier of this terms of service. Available terms: * `
+        # GA_DATA_USE_TERMS`: [Terms for data use](https://cloud.google.com/retail/data-
+        # use-terms). When using this as `id`, the acceptable version to provide is `
+        # 2022-11-23`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Whether the project has accepted/rejected the service terms or it is still
+        # pending.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The version string of the terms of service. For acceptable values, see the
+        # comments for id above.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accept_time = args[:accept_time] if args.key?(:accept_time)
+          @decline_time = args[:decline_time] if args.key?(:decline_time)
+          @id = args[:id] if args.key?(:id)
+          @state = args[:state] if args.key?(:state)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Metadata associated with a project provision operation.
+      class GoogleCloudDiscoveryengineV1betaProvisionProjectMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
