@@ -283,7 +283,7 @@ module Google
         # @return [Google::Apis::CloudbuildV2::UserCredential]
         attr_accessor :authorizer_credential
       
-        # Optional. The URI of the Bitbucket Data Center instance or cluster this
+        # Required. The URI of the Bitbucket Data Center instance or cluster this
         # connection is for.
         # Corresponds to the JSON property `hostUri`
         # @return [String]
