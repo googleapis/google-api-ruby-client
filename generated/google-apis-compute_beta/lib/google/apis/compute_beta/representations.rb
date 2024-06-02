@@ -1858,6 +1858,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerInstanceLifecyclePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10559,6 +10565,8 @@ module Google
           property :params, as: 'params', class: Google::Apis::ComputeBeta::InstanceGroupManagerParams, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerParams::Representation
       
           property :region, as: 'region'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :service_account, as: 'serviceAccount'
           property :standby_policy, as: 'standbyPolicy', class: Google::Apis::ComputeBeta::InstanceGroupManagerStandbyPolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStandbyPolicy::Representation
@@ -10654,6 +10662,8 @@ module Google
       
           hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
       
+          property :provisioning_model_mix, as: 'provisioningModelMix', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix::Representation
+      
         end
       end
       
@@ -10662,6 +10672,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :machine_types, as: 'machineTypes'
           property :rank, as: 'rank'
+        end
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :standard_capacity_base, as: 'standardCapacityBase'
+          property :standard_capacity_percent_above_base, as: 'standardCapacityPercentAboveBase'
         end
       end
       
@@ -12811,6 +12829,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :machine_type, as: 'machineType'
+          property :provisioning_model, as: 'provisioningModel'
         end
       end
       
