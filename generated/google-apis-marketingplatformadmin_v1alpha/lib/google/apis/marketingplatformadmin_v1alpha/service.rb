@@ -25,8 +25,8 @@ module Google
       # The Google Marketing Platform Admin API allows for programmatic access to the
       #  Google Marketing Platform configuration data. You can use the Google Marketing
       #  Platform Admin API to manage links between your Google Marketing Platform
-      #  organization and Google Analytics accounts, set the service level of your GA4
-      #  properties.
+      #  organization and Google Analytics accounts, and to set the service level of
+      #  your GA4 properties.
       #
       # @example
       #    require 'google/apis/marketingplatformadmin_v1alpha'
