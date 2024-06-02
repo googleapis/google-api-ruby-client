@@ -13209,6 +13209,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a NotebookRuntimeTemplate.
+        # @param [String] name
+        #   The resource name of the NotebookRuntimeTemplate.
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntimeTemplate] google_cloud_aiplatform_v1_notebook_runtime_template_object
+        # @param [String] update_mask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see google.protobuf.FieldMask. Input format: ``paths: "$`
+        #   updated_filed`"`` Updatable fields: * `encryption_spec.kms_key_name`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntimeTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntimeTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_notebook_runtime_template(name, google_cloud_aiplatform_v1_notebook_runtime_template_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntimeTemplate::Representation
+          command.request_object = google_cloud_aiplatform_v1_notebook_runtime_template_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntimeTemplate::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntimeTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
