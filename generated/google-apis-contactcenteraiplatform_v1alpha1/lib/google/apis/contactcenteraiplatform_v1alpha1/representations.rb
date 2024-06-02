@@ -384,6 +384,7 @@ module Google
       class ServiceAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_project_ids, as: 'allowedProjectIds'
           property :name, as: 'name'
         end
       end
