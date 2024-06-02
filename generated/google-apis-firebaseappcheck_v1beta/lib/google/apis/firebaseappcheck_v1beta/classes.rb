@@ -316,9 +316,9 @@ module Google
         attr_accessor :requests
       
         # Optional. A comma-separated list of names of fields in the Services to update.
-        # Example: `display_name`. If this field is present, the `update_mask` field in
-        # the UpdateServiceRequest messages must all match this field, or the entire
-        # batch fails and no updates will be committed.
+        # Example: `display_name`. If the `update_mask` field is set in both this
+        # request and any of the UpdateServiceRequest messages, they must match or the
+        # entire batch fails and no updates will be committed.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -1249,8 +1249,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Required. The relative name of the resource policy object, in the format: ```
-        # projects/`project_number`/services/`service_id`/resourcePolicies/`
+        # Required. Identifier. The relative name of the resource policy object, in the
+        # format: ``` projects/`project_number`/services/`service_id`/resourcePolicies/`
         # resource_policy_id` ``` Note that the `service_id` element must be a supported
         # service ID. Currently, the following service IDs are supported: * `oauth2.
         # googleapis.com` (Google Identity for iOS) `resource_policy_id` is a system-
