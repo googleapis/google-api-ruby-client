@@ -121,7 +121,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List configurations.
+        # List configurations. Results are sorted by creation time, descending.
         # @param [String] parent
         #   The namespace from which the configurations should be listed. For Cloud Run,
         #   replace `namespace_id` with the project ID or number.
@@ -459,7 +459,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List executions.
+        # List executions. Results are sorted by creation time, descending.
         # @param [String] parent
         #   Required. The namespace from which the executions should be listed. Replace `
         #   namespace` with the project ID or number. It takes the form namespaces/`
@@ -623,7 +623,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List jobs.
+        # List jobs. Results are sorted by creation time, descending.
         # @param [String] parent
         #   Required. The namespace from which the jobs should be listed. Replace `
         #   namespace` with the project ID or number. It takes the form namespaces/`
@@ -828,7 +828,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List revisions.
+        # List revisions. Results are sorted by creation time, descending.
         # @param [String] parent
         #   The namespace from which the revisions should be listed. For Cloud Run (fully
         #   managed), replace `namespace` with the project ID or number. It takes the form
@@ -918,7 +918,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List routes.
+        # List routes. Results are sorted by creation time, descending.
         # @param [String] parent
         #   The namespace from which the routes should be listed. For Cloud Run (fully
         #   managed), replace `namespace` with the project ID or number. It takes the form
@@ -1099,7 +1099,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists services for the given project and region.
+        # Lists services for the given project and region. Results are sorted by
+        # creation time, descending.
         # @param [String] parent
         #   Required. The parent from where the resources should be listed. In Cloud Run,
         #   it may be one of the following: * ``project_id_or_number`` * `namespaces/`
@@ -1441,7 +1442,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List configurations.
+        # List configurations. Results are sorted by creation time, descending.
         # @param [String] parent
         #   The namespace from which the configurations should be listed. For Cloud Run,
         #   replace `namespace_id` with the project ID or number.
@@ -2015,7 +2016,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List revisions.
+        # List revisions. Results are sorted by creation time, descending.
         # @param [String] parent
         #   The namespace from which the revisions should be listed. For Cloud Run (fully
         #   managed), replace `namespace` with the project ID or number. It takes the form
@@ -2105,7 +2106,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List routes.
+        # List routes. Results are sorted by creation time, descending.
         # @param [String] parent
         #   The namespace from which the routes should be listed. For Cloud Run (fully
         #   managed), replace `namespace` with the project ID or number. It takes the form
@@ -2331,7 +2332,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists services for the given project and region.
+        # Lists services for the given project and region. Results are sorted by
+        # creation time, descending.
         # @param [String] parent
         #   Required. The parent from where the resources should be listed. In Cloud Run,
         #   it may be one of the following: * ``project_id_or_number`` * `namespaces/`
