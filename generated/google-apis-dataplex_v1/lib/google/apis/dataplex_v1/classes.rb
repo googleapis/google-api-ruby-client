@@ -2280,12 +2280,15 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSetExpectation]
         attr_accessor :set_expectation
       
-        # Queries for rows returned by the provided SQL statement. If any rows are are
-        # returned, this rule fails.The SQL statement needs to use BigQuery standard SQL
-        # syntax, and must not contain any semicolons.$`data()` can be used to reference
-        # the rows being evaluated, i.e. the table after all additional filters (row
-        # filters, incremental data filters, sampling) are applied.Example: SELECT *
-        # FROM $`data()` WHERE price < 0
+        # A SQL statement that is evaluated to return rows that match an invalid state.
+        # If any rows are are returned, this rule fails.The SQL statement must use
+        # BigQuery standard SQL syntax, and must not contain any semicolons.You can use
+        # the data reference parameter $`data()` to reference the source table with all
+        # of its precondition filters applied. Examples of precondition filters include
+        # row filters, incremental data filters, and sampling. For more information, see
+        # Data reference parameter (https://cloud.google.com/dataplex/docs/auto-data-
+        # quality-overview#data-reference-parameter).Example: SELECT * FROM $`data()`
+        # WHERE price < 0
         # Corresponds to the JSON property `sqlAssertion`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSqlAssertion]
         attr_accessor :sql_assertion
@@ -2420,8 +2423,8 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleResult
         include Google::Apis::Core::Hashable
       
-        # Output only. The number of rows returned by the sql statement in the
-        # SqlAssertion rule.This field is only valid for SqlAssertion rules.
+        # Output only. The number of rows returned by the SQL statement in a SQL
+        # assertion rule.This field is only valid for SQL assertion rules.
         # Corresponds to the JSON property `assertionRowCount`
         # @return [Fixnum]
         attr_accessor :assertion_row_count
@@ -2525,12 +2528,15 @@ module Google
         end
       end
       
-      # Queries for rows returned by the provided SQL statement. If any rows are are
-      # returned, this rule fails.The SQL statement needs to use BigQuery standard SQL
-      # syntax, and must not contain any semicolons.$`data()` can be used to reference
-      # the rows being evaluated, i.e. the table after all additional filters (row
-      # filters, incremental data filters, sampling) are applied.Example: SELECT *
-      # FROM $`data()` WHERE price < 0
+      # A SQL statement that is evaluated to return rows that match an invalid state.
+      # If any rows are are returned, this rule fails.The SQL statement must use
+      # BigQuery standard SQL syntax, and must not contain any semicolons.You can use
+      # the data reference parameter $`data()` to reference the source table with all
+      # of its precondition filters applied. Examples of precondition filters include
+      # row filters, incremental data filters, and sampling. For more information, see
+      # Data reference parameter (https://cloud.google.com/dataplex/docs/auto-data-
+      # quality-overview#data-reference-parameter).Example: SELECT * FROM $`data()`
+      # WHERE price < 0
       class GoogleCloudDataplexV1DataQualityRuleSqlAssertion
         include Google::Apis::Core::Hashable
       
@@ -2640,8 +2646,8 @@ module Google
       class GoogleCloudDataplexV1DataQualityScanRuleResult
         include Google::Apis::Core::Hashable
       
-        # The number of rows returned by the sql statement in the SqlAssertion rule.
-        # This field is only valid for SqlAssertion rules.
+        # The number of rows returned by the SQL statement in a SQL assertion rule. This
+        # field is only valid for SQL assertion rules.
         # Corresponds to the JSON property `assertionRowCount`
         # @return [Fixnum]
         attr_accessor :assertion_row_count
