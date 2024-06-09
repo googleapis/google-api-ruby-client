@@ -309,6 +309,11 @@ module Google
         # @return [String]
         attr_accessor :uid
       
+        # Zone distribution config for allocation of cluster resources.
+        # Corresponds to the JSON property `zoneDistributionConfig`
+        # @return [Google::Apis::RedisV1::ZoneDistributionConfig]
+        attr_accessor :zone_distribution_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -333,6 +338,7 @@ module Google
           @state_info = args[:state_info] if args.key?(:state_info)
           @transit_encryption_mode = args[:transit_encryption_mode] if args.key?(:transit_encryption_mode)
           @uid = args[:uid] if args.key?(:uid)
+          @zone_distribution_config = args[:zone_distribution_config] if args.key?(:zone_distribution_config)
         end
       end
       
@@ -2555,6 +2561,34 @@ module Google
           @day = args[:day] if args.key?(:day)
           @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Zone distribution config for allocation of cluster resources.
+      class ZoneDistributionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The mode of zone distribution. Defaults to MULTI_ZONE, when not
+        # specified.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Optional. When SINGLE ZONE distribution is selected, zone field would be used
+        # to allocate all resources in that zone. This is not applicable to MULTI_ZONE,
+        # and would be ignored for MULTI_ZONE clusters.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
     end
