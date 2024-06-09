@@ -1737,10 +1737,10 @@ module Google
         # @return [String]
         attr_accessor :default_collation
       
-        # The default encryption key for all tables in the dataset. Once this property
-        # is set, all newly-created partitioned tables in the dataset will have
-        # encryption key set to this value, unless table creation request (or query)
-        # overrides the key.
+        # The default encryption key for all tables in the dataset. After this property
+        # is set, the encryption key of all newly-created tables in the dataset is set
+        # to this value unless the table creation request or query explicitly overrides
+        # the key.
         # Corresponds to the JSON property `defaultEncryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :default_encryption_configuration
@@ -1867,6 +1867,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_time_travel_hours
       
+        # Optional. The [tags](/bigquery/docs/tags) attached to this dataset. Tag keys
+        # are globally unique. Tag key is expected to be in the namespaced format, for
+        # example "123456789012/environment" where 123456789012 is the ID of the parent
+        # organization or project resource for this tag key. Tag value is expected to be
+        # the short name, for example "Production". See [Tag definitions](/iam/docs/tags-
+        # access-control#definitions) for more details.
+        # Corresponds to the JSON property `resourceTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_tags
+      
         # Optional. Output only. Restriction config for all tables and dataset. If set,
         # restrict certain accesses on the dataset and all its tables based on the
         # config. See [Data egress](/bigquery/docs/analytics-hub-introduction#
@@ -1939,6 +1949,7 @@ module Google
           @linked_dataset_source = args[:linked_dataset_source] if args.key?(:linked_dataset_source)
           @location = args[:location] if args.key?(:location)
           @max_time_travel_hours = args[:max_time_travel_hours] if args.key?(:max_time_travel_hours)
+          @resource_tags = args[:resource_tags] if args.key?(:resource_tags)
           @restrictions = args[:restrictions] if args.key?(:restrictions)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -3364,6 +3375,32 @@ module Google
         end
       end
       
+      # A view can be represented in multiple ways. Each representation has its own
+      # dialect. This message stores the metadata required for these representations.
+      class ForeignViewDefinition
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Represents the dialect of the query.
+        # Corresponds to the JSON property `dialect`
+        # @return [String]
+        attr_accessor :dialect
+      
+        # Required. The query that defines the view.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dialect = args[:dialect] if args.key?(:dialect)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
       # Request message for `GetIamPolicy` method.
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -4289,7 +4326,10 @@ module Google
         attr_accessor :extract
       
         # Optional. Job timeout in milliseconds. If this time limit is exceeded,
-        # BigQuery might attempt to stop the job.
+        # BigQuery will attempt to stop a longer job, but may not always succeed in
+        # canceling it before the job completes. For example, a job that takes more than
+        # 60 seconds to complete has a better chance of being stopped than a job that
+        # takes 10 seconds to complete.
         # Corresponds to the JSON property `jobTimeoutMs`
         # @return [Fixnum]
         attr_accessor :job_timeout_ms
@@ -4460,6 +4500,13 @@ module Google
         # Corresponds to the JSON property `clustering`
         # @return [Google::Apis::BigqueryV2::Clustering]
         attr_accessor :clustering
+      
+        # Optional. Character map supported for column names in CSV/Parquet loads.
+        # Defaults to STRICT and can be overridden by Project Config Service. Using this
+        # option with unsupporting load formats will result in an error.
+        # Corresponds to the JSON property `columnNameCharacterMap`
+        # @return [String]
+        attr_accessor :column_name_character_map
       
         # Optional. Connection properties which can modify the load job behavior.
         # Currently, only the 'session_id' connection property is supported, and is used
@@ -4769,6 +4816,7 @@ module Google
           @allow_quoted_newlines = args[:allow_quoted_newlines] if args.key?(:allow_quoted_newlines)
           @autodetect = args[:autodetect] if args.key?(:autodetect)
           @clustering = args[:clustering] if args.key?(:clustering)
+          @column_name_character_map = args[:column_name_character_map] if args.key?(:column_name_character_map)
           @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
           @copy_files_only = args[:copy_files_only] if args.key?(:copy_files_only)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
@@ -6824,7 +6872,7 @@ module Google
         attr_accessor :enum_as_string
         alias_method :enum_as_string?, :enum_as_string
       
-        # Optional. Will indicate how to represent a parquet map if present.
+        # Optional. Indicates how to represent a Parquet map if present.
         # Corresponds to the JSON property `mapTargetType`
         # @return [String]
         attr_accessor :map_target_type
@@ -7748,9 +7796,8 @@ module Google
       class RangePartitioning
         include Google::Apis::Core::Hashable
       
-        # Required. [Experimental] The table is partitioned by this field. The field
-        # must be a top-level NULLABLE/REQUIRED field. The only supported type is
-        # INTEGER/INT64.
+        # Required. The name of the column to partition the table on. It must be a top-
+        # level, INT64 column whose mode is NULLABLE or REQUIRED.
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
@@ -9312,6 +9359,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_bytes
       
+        # Output only. Number of physical bytes used by current live data storage. This
+        # data is not kept in real time, and might be delayed by a few seconds to a few
+        # minutes.
+        # Corresponds to the JSON property `numCurrentPhysicalBytes`
+        # @return [Fixnum]
+        attr_accessor :num_current_physical_bytes
+      
         # Output only. The number of logical bytes in the table that are considered "
         # long-term storage".
         # Corresponds to the JSON property `numLongTermBytes`
@@ -9499,6 +9553,7 @@ module Google
           @num_active_logical_bytes = args[:num_active_logical_bytes] if args.key?(:num_active_logical_bytes)
           @num_active_physical_bytes = args[:num_active_physical_bytes] if args.key?(:num_active_physical_bytes)
           @num_bytes = args[:num_bytes] if args.key?(:num_bytes)
+          @num_current_physical_bytes = args[:num_current_physical_bytes] if args.key?(:num_current_physical_bytes)
           @num_long_term_bytes = args[:num_long_term_bytes] if args.key?(:num_long_term_bytes)
           @num_long_term_logical_bytes = args[:num_long_term_logical_bytes] if args.key?(:num_long_term_logical_bytes)
           @num_long_term_physical_bytes = args[:num_long_term_physical_bytes] if args.key?(:num_long_term_physical_bytes)
@@ -11211,7 +11266,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The exact time when the dataset was deleted. If not specified, the
-        # most recently deleted version is undeleted.
+        # most recently deleted version is undeleted. Undeleting a dataset using
+        # deletion time is not supported.
         # Corresponds to the JSON property `deletionTime`
         # @return [String]
         attr_accessor :deletion_time
@@ -11290,6 +11346,11 @@ module Google
       class ViewDefinition
         include Google::Apis::Core::Hashable
       
+        # Optional. Foreign view representations.
+        # Corresponds to the JSON property `foreignDefinitions`
+        # @return [Array<Google::Apis::BigqueryV2::ForeignViewDefinition>]
+        attr_accessor :foreign_definitions
+      
         # Represents privacy policy that contains the privacy requirements specified by
         # the data owner. Currently, this is only supported on views.
         # Corresponds to the JSON property `privacyPolicy`
@@ -11329,6 +11390,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @foreign_definitions = args[:foreign_definitions] if args.key?(:foreign_definitions)
           @privacy_policy = args[:privacy_policy] if args.key?(:privacy_policy)
           @query = args[:query] if args.key?(:query)
           @use_explicit_column_names = args[:use_explicit_column_names] if args.key?(:use_explicit_column_names)

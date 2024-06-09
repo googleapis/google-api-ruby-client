@@ -436,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ForeignViewDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1766,6 +1772,7 @@ module Google
       
           property :location, as: 'location'
           property :max_time_travel_hours, :numeric_string => true, as: 'maxTimeTravelHours'
+          hash :resource_tags, as: 'resourceTags'
           property :restrictions, as: 'restrictions', class: Google::Apis::BigqueryV2::RestrictionConfig, decorator: Google::Apis::BigqueryV2::RestrictionConfig::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
@@ -2118,6 +2125,14 @@ module Google
         end
       end
       
+      class ForeignViewDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dialect, as: 'dialect'
+          property :query, as: 'query'
+        end
+      end
+      
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2420,6 +2435,7 @@ module Google
           property :autodetect, as: 'autodetect'
           property :clustering, as: 'clustering', class: Google::Apis::BigqueryV2::Clustering, decorator: Google::Apis::BigqueryV2::Clustering::Representation
       
+          property :column_name_character_map, as: 'columnNameCharacterMap'
           collection :connection_properties, as: 'connectionProperties', class: Google::Apis::BigqueryV2::ConnectionProperty, decorator: Google::Apis::BigqueryV2::ConnectionProperty::Representation
       
           property :copy_files_only, as: 'copyFilesOnly'
@@ -3608,6 +3624,7 @@ module Google
           property :num_active_logical_bytes, :numeric_string => true, as: 'numActiveLogicalBytes'
           property :num_active_physical_bytes, :numeric_string => true, as: 'numActivePhysicalBytes'
           property :num_bytes, :numeric_string => true, as: 'numBytes'
+          property :num_current_physical_bytes, :numeric_string => true, as: 'numCurrentPhysicalBytes'
           property :num_long_term_bytes, :numeric_string => true, as: 'numLongTermBytes'
           property :num_long_term_logical_bytes, :numeric_string => true, as: 'numLongTermLogicalBytes'
           property :num_long_term_physical_bytes, :numeric_string => true, as: 'numLongTermPhysicalBytes'
@@ -4076,6 +4093,8 @@ module Google
       class ViewDefinition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :foreign_definitions, as: 'foreignDefinitions', class: Google::Apis::BigqueryV2::ForeignViewDefinition, decorator: Google::Apis::BigqueryV2::ForeignViewDefinition::Representation
+      
           property :privacy_policy, as: 'privacyPolicy', class: Google::Apis::BigqueryV2::PrivacyPolicy, decorator: Google::Apis::BigqueryV2::PrivacyPolicy::Representation
       
           property :query, as: 'query'
