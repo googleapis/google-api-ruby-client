@@ -1048,6 +1048,31 @@ module Google
         end
       end
       
+      # Recall tokens for a game.
+      class GamePlayerToken
+        include Google::Apis::Core::Hashable
+      
+        # The application that this player identifier is for.
+        # Corresponds to the JSON property `applicationId`
+        # @return [String]
+        attr_accessor :application_id
+      
+        # Recall token data.
+        # Corresponds to the JSON property `token`
+        # @return [Array<Google::Apis::GamesV1::RecallToken>]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
       # The payload to request to increment an achievement.
       class GamesAchievementIncrement
         include Google::Apis::Core::Hashable
@@ -2529,6 +2554,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # A list of recall token data returned from the RetrieveGamesPlayerTokens RPC
+      class RetrieveGamesPlayerTokensResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested applications along with the recall tokens for the player. If the
+        # player does not have recall tokens for an application, that application is not
+        # included in the response.
+        # Corresponds to the JSON property `applicationRecallTokens`
+        # @return [Array<Google::Apis::GamesV1::GamePlayerToken>]
+        attr_accessor :application_recall_tokens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_recall_tokens = args[:application_recall_tokens] if args.key?(:application_recall_tokens)
         end
       end
       
