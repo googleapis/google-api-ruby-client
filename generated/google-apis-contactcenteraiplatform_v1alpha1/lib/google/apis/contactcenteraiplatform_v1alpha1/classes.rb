@@ -66,6 +66,12 @@ module Google
       class Component
         include Google::Apis::Core::Hashable
       
+        # The list of project ids that are allowed to send traffic to the service
+        # attachment. This field should be filled only for the ingress components.
+        # Corresponds to the JSON property `allowedProjectIds`
+        # @return [Array<String>]
+        attr_accessor :allowed_project_ids
+      
         # Name of the component.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -82,6 +88,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_project_ids = args[:allowed_project_ids] if args.key?(:allowed_project_ids)
           @name = args[:name] if args.key?(:name)
           @service_attachments = args[:service_attachments] if args.key?(:service_attachments)
         end
@@ -767,13 +774,6 @@ module Google
       class ServiceAttachment
         include Google::Apis::Core::Hashable
       
-        # The list of project ids that are allowed to send traffic to the service
-        # attachment. This field should be filled only for the ingress service
-        # attachments.
-        # Corresponds to the JSON property `allowedProjectIds`
-        # @return [Array<String>]
-        attr_accessor :allowed_project_ids
-      
         # The service attachment name that will be used for sending private traffic to
         # the CCAIP tenant project. Example: "projects/$`TENANT_PROJECT_ID`/regions/$`
         # REGION`/serviceAttachments/ingress-default".
@@ -787,7 +787,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allowed_project_ids = args[:allowed_project_ids] if args.key?(:allowed_project_ids)
           @name = args[:name] if args.key?(:name)
         end
       end
