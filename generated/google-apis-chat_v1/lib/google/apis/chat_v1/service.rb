@@ -348,8 +348,9 @@ module Google
         # workspace/chat/authenticate-authorize-chat-user). Lists spaces visible to the
         # caller or authenticated user. Group chats and DMs aren't listed until the
         # first message is sent. To list all named spaces by Google Workspace
-        # organization, use the `spaces.search()` method using Workspace administrator
-        # privileges instead.
+        # organization, use the [`spaces.search()`](https://developers.google.com/
+        # workspace/chat/api/reference/rest/v1/spaces/search) method using Workspace
+        # administrator privileges instead.
         # @param [String] filter
         #   Optional. A query filter. You can filter spaces by the space type ([`
         #   space_type`](https://developers.google.com/workspace/chat/api/reference/rest/
