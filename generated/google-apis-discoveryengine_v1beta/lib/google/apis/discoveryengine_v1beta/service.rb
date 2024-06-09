@@ -893,7 +893,8 @@ module Google
         # @param [String] parent
         #   Required. Full resource name of parent data store. Format: `projects/`
         #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id``
+        #   `data_store_id`` or `projects/`project_number`/locations/`location_id`/
+        #   collections/`collection_id`/engines/`engine_id``.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaControl] google_cloud_discoveryengine_v1beta_control_object
         # @param [String] control_id
         #   Required. The ID to use for the Control, which will become the final component
@@ -998,6 +999,8 @@ module Google
         # @param [String] parent
         #   Required. The data store resource name. Format: `projects/`project_number`/
         #   locations/`location_id`/collections/`collection_id`/dataStores/`data_store_id``
+        #   or `projects/`project_number`/locations/`location_id`/collections/`
+        #   collection_id`/engines/`engine_id``.
         # @param [String] filter
         #   Optional. A filter to apply on the list results. Supported features: * List
         #   all the products under the parent branch if filter is unset. Currently this
@@ -3230,7 +3233,8 @@ module Google
         # @param [String] parent
         #   Required. Full resource name of parent data store. Format: `projects/`
         #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id``
+        #   `data_store_id`` or `projects/`project_number`/locations/`location_id`/
+        #   collections/`collection_id`/engines/`engine_id``.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaControl] google_cloud_discoveryengine_v1beta_control_object
         # @param [String] control_id
         #   Required. The ID to use for the Control, which will become the final component
@@ -3335,6 +3339,8 @@ module Google
         # @param [String] parent
         #   Required. The data store resource name. Format: `projects/`project_number`/
         #   locations/`location_id`/collections/`collection_id`/dataStores/`data_store_id``
+        #   or `projects/`project_number`/locations/`location_id`/collections/`
+        #   collection_id`/engines/`engine_id``.
         # @param [String] filter
         #   Optional. A filter to apply on the list results. Supported features: * List
         #   all the products under the parent branch if filter is unset. Currently this
@@ -4934,7 +4940,8 @@ module Google
         # @param [String] parent
         #   Required. Full resource name of parent data store. Format: `projects/`
         #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id``
+        #   `data_store_id`` or `projects/`project_number`/locations/`location_id`/
+        #   collections/`collection_id`/engines/`engine_id``.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaControl] google_cloud_discoveryengine_v1beta_control_object
         # @param [String] control_id
         #   Required. The ID to use for the Control, which will become the final component
@@ -5039,6 +5046,8 @@ module Google
         # @param [String] parent
         #   Required. The data store resource name. Format: `projects/`project_number`/
         #   locations/`location_id`/collections/`collection_id`/dataStores/`data_store_id``
+        #   or `projects/`project_number`/locations/`location_id`/collections/`
+        #   collection_id`/engines/`engine_id``.
         # @param [String] filter
         #   Optional. A filter to apply on the list results. Supported features: * List
         #   all the products under the parent branch if filter is unset. Currently this
@@ -6780,6 +6789,54 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankResponse
           command.params['rankingConfig'] = ranking_config unless ranking_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Writes a single user event from the browser. This uses a GET request to due to
+        # browser restriction of POST-ing to a third-party domain. This method is used
+        # only by the Discovery Engine API JavaScript pixel and Google Tag Manager.
+        # Users should not call this method directly.
+        # @param [String] parent
+        #   Required. The parent DataStore resource name, such as `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store``.
+        # @param [Fixnum] ets
+        #   The event timestamp in milliseconds. This prevents browser caching of
+        #   otherwise identical get requests. The name is abbreviated to reduce the
+        #   payload bytes.
+        # @param [String] uri
+        #   The URL including cgi-parameters but excluding the hash fragment with a length
+        #   limit of 5,000 characters. This is often more useful than the referer URL,
+        #   because many browsers only send the domain for third-party requests.
+        # @param [String] user_event
+        #   Required. URL encoded UserEvent proto with a length limit of 2,000,000
+        #   characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def collect_project_location_user_event(parent, ets: nil, uri: nil, user_event: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/userEvents:collect', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleApiHttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['ets'] = ets unless ets.nil?
+          command.query['uri'] = uri unless uri.nil?
+          command.query['userEvent'] = user_event unless user_event.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

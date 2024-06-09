@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +215,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -982,6 +1000,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaAlloyDbSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaAnswer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1276,6 +1300,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaChunkChunkMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaChunkPageSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaCloudSqlSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1492,6 +1540,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1499,6 +1559,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1949,6 +2015,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2574,6 +2646,8 @@ module Google
       class GoogleCloudDiscoveryengineV1DocumentProcessingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunking_config, as: 'chunkingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig::Representation
+      
           property :default_parsing_config, as: 'defaultParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig::Representation
       
           property :name, as: 'name'
@@ -2582,10 +2656,28 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :layout_based_chunking_config, as: 'layoutBasedChunkingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk_size, as: 'chunkSize'
+          property :include_ancestor_headings, as: 'includeAncestorHeadings'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :digital_parsing_config, as: 'digitalParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig::Representation
+      
+          property :layout_parsing_config, as: 'layoutParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig::Representation
       
           property :ocr_parsing_config, as: 'ocrParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig::Representation
       
@@ -2593,6 +2685,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -3819,6 +3917,18 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaAlloyDbSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :database_id, as: 'databaseId'
+          property :gcs_staging_dir, as: 'gcsStagingDir'
+          property :location_id, as: 'locationId'
+          property :project_id, as: 'projectId'
+          property :table_id, as: 'tableId'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaAnswer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3874,6 +3984,7 @@ module Google
           property :search_spec, as: 'searchSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpec::Representation
       
           property :session, as: 'session'
+          hash :user_labels, as: 'userLabels'
           property :user_pseudo_id, as: 'userPseudoId'
         end
       end
@@ -3966,6 +4077,7 @@ module Google
           property :filter, as: 'filter'
           property :max_return_results, as: 'maxReturnResults'
           property :order_by, as: 'orderBy'
+          property :search_result_mode, as: 'searchResultMode'
         end
       end
       
@@ -4301,6 +4413,50 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :citation_threshold, as: 'citationThreshold'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk_metadata, as: 'chunkMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunkChunkMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunkChunkMetadata::Representation
+      
+          property :content, as: 'content'
+          hash :derived_struct_data, as: 'derivedStructData'
+          property :document_metadata, as: 'documentMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata::Representation
+      
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :page_span, as: 'pageSpan', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunkPageSpan, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunkPageSpan::Representation
+      
+          property :relevance_score, as: 'relevanceScore'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaChunkChunkMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :next_chunks, as: 'nextChunks', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunk, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunk::Representation
+      
+          collection :previous_chunks, as: 'previousChunks', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunk, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunk::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :struct_data, as: 'structData'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaChunkPageSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_end, as: 'pageEnd'
+          property :page_start, as: 'pageStart'
         end
       end
       
@@ -4651,6 +4807,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunking_config, as: 'chunkingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig::Representation
+      
           property :default_parsing_config, as: 'defaultParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig::Representation
       
           property :name, as: 'name'
@@ -4659,10 +4817,28 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :layout_based_chunking_config, as: 'layoutBasedChunkingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk_size, as: 'chunkSize'
+          property :include_ancestor_headings, as: 'includeAncestorHeadings'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :digital_parsing_config, as: 'digitalParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig::Representation
+      
+          property :layout_parsing_config, as: 'layoutParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig::Representation
       
           property :ocr_parsing_config, as: 'ocrParsingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig::Representation
       
@@ -4670,6 +4846,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -4847,6 +5029,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaImportDocumentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alloy_db_source, as: 'alloyDbSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAlloyDbSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAlloyDbSource::Representation
+      
           property :auto_generate_ids, as: 'autoGenerateIds'
           property :bigquery_source, as: 'bigquerySource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigQuerySource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigQuerySource::Representation
       
@@ -5399,12 +5583,23 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk_spec, as: 'chunkSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec::Representation
+      
           property :extractive_content_spec, as: 'extractiveContentSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec::Representation
       
+          property :search_result_mode, as: 'searchResultMode'
           property :snippet_spec, as: 'snippetSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec::Representation
       
           property :summary_spec, as: 'summarySpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_next_chunks, as: 'numNextChunks'
+          property :num_previous_chunks, as: 'numPreviousChunks'
         end
       end
       
@@ -5608,6 +5803,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk, as: 'chunk', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunk, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaChunk::Representation
+      
           property :document, as: 'document', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocument, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocument::Representation
       
           property :id, as: 'id'
