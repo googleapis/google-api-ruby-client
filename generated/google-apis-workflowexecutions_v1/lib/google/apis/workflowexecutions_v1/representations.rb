@@ -329,6 +329,7 @@ module Google
       class StepEntryMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :expected_iteration, :numeric_string => true, as: 'expectedIteration'
           property :progress_number, :numeric_string => true, as: 'progressNumber'
           property :progress_type, as: 'progressType'
           property :thread_id, as: 'threadId'
