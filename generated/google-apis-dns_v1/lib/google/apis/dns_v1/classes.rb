@@ -22,13 +22,13 @@ module Google
   module Apis
     module DnsV1
       
-      # A Change represents a set of ResourceRecordSet additions and deletions applied
-      # atomically to a ManagedZone. ResourceRecordSets within a ManagedZone are
-      # modified by creating a new Change element in the Changes collection. In turn
-      # the Changes collection also records the past modifications to the
-      # ResourceRecordSets in a ManagedZone. The current state of the ManagedZone is
-      # the sum effect of applying all Change elements in the Changes collection in
-      # sequence.
+      # A Change represents a set of `ResourceRecordSet` additions and deletions
+      # applied atomically to a ManagedZone. ResourceRecordSets within a ManagedZone
+      # are modified by creating a new Change element in the Changes collection. In
+      # turn the Changes collection also records the past modifications to the `
+      # ResourceRecordSets` in a `ManagedZone`. The current state of the `ManagedZone`
+      # is the sum effect of applying all `Change` elements in the `Changes`
+      # collection in sequence.
       class Change
         include Google::Apis::Core::Hashable
       
@@ -97,24 +97,19 @@ module Google
         # @return [Array<Google::Apis::DnsV1::Change>]
         attr_accessor :changes
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The presence of this field indicates that there exist more results following
-        # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your pagination token. This lets you retrieve
-        # the complete contents of even very large collections one page at a time.
-        # However, if the contents of the collection change between the first and last
-        # paginated list request, the set of all elements returned are an inconsistent
-        # view of the collection. You cannot retrieve a "snapshot" of collections larger
-        # than the maximum page size.
+        # This field indicates that more results are available beyond the last page
+        # displayed. To fetch the results, make another list request and use this value
+        # as your page token. This lets you retrieve the complete contents of a very
+        # large collection one page at a time. However, if the contents of the
+        # collection change between the first and last paginated list request, the set
+        # of all elements returned are an inconsistent view of the collection. You can't
+        # retrieve a consistent snapshot of a collection larger than the maximum page
+        # size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -126,7 +121,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @changes = args[:changes] if args.key?(:changes)
-          @header = args[:header] if args.key?(:header)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
@@ -305,24 +299,19 @@ module Google
         # @return [Array<Google::Apis::DnsV1::DnsKey>]
         attr_accessor :dns_keys
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The presence of this field indicates that there exist more results following
-        # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your pagination token. In this way you can
-        # retrieve the complete contents of even very large collections one page at a
-        # time. However, if the contents of the collection change between the first and
-        # last paginated list request, the set of all elements returned are an
-        # inconsistent view of the collection. There is no way to retrieve a "snapshot"
-        # of collections larger than the maximum page size.
+        # This field indicates that more results are available beyond the last page
+        # displayed. To fetch the results, make another list request and use this value
+        # as your page token. This lets you retrieve the complete contents of a very
+        # large collection one page at a time. However, if the contents of the
+        # collection change between the first and last paginated list request, the set
+        # of all elements returned are an inconsistent view of the collection. You can't
+        # retrieve a consistent snapshot of a collection larger than the maximum page
+        # size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -334,7 +323,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dns_keys = args[:dns_keys] if args.key?(:dns_keys)
-          @header = args[:header] if args.key?(:header)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
@@ -1072,24 +1060,19 @@ module Google
       class ManagedZoneOperationsListResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The presence of this field indicates that there exist more results following
-        # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your page token. This lets you retrieve the
-        # complete contents of even very large collections one page at a time. However,
-        # if the contents of the collection change between the first and last paginated
-        # list request, the set of all elements returned are an inconsistent view of the
-        # collection. You cannot retrieve a consistent snapshot of a collection larger
-        # than the maximum page size.
+        # This field indicates that more results are available beyond the last page
+        # displayed. To fetch the results, make another list request and use this value
+        # as your page token. This lets you retrieve the complete contents of a very
+        # large collection one page at a time. However, if the contents of the
+        # collection change between the first and last paginated list request, the set
+        # of all elements returned are an inconsistent view of the collection. You can't
+        # retrieve a consistent snapshot of a collection larger than the maximum page
+        # size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1105,7 +1088,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
@@ -1155,8 +1137,8 @@ module Google
         attr_accessor :kind
       
         # The fully qualified URL of the VPC network to forward queries to. This should
-        # be formatted like https://www.googleapis.com/compute/v1/projects/`project`/
-        # global/networks/`network`
+        # be formatted like `https://www.googleapis.com/compute/v1/projects/`project`/
+        # global/networks/`network``
         # Corresponds to the JSON property `networkUrl`
         # @return [String]
         attr_accessor :network_url
@@ -1241,9 +1223,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The fully qualified URL of the VPC network to bind to. Format this URL like
+        # The fully qualified URL of the VPC network to bind to. Format this URL like `
         # https://www.googleapis.com/compute/v1/projects/`project`/global/networks/`
-        # network`
+        # network``
         # Corresponds to the JSON property `networkUrl`
         # @return [String]
         attr_accessor :network_url
@@ -1319,8 +1301,8 @@ module Google
         attr_accessor :kind
       
         # The fully qualified URL of the namespace associated with the zone. Format must
-        # be https://servicedirectory.googleapis.com/v1/projects/`project`/locations/`
-        # location`/namespaces/`namespace`
+        # be `https://servicedirectory.googleapis.com/v1/projects/`project`/locations/`
+        # location`/namespaces/`namespace``
         # Corresponds to the JSON property `namespaceUrl`
         # @return [String]
         attr_accessor :namespace_url
@@ -1341,11 +1323,6 @@ module Google
       class ListManagedZonesResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -1356,14 +1333,14 @@ module Google
         # @return [Array<Google::Apis::DnsV1::ManagedZone>]
         attr_accessor :managed_zones
       
-        # The presence of this field indicates that there exist more results following
-        # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your page token. This lets you the complete
-        # contents of even very large collections one page at a time. However, if the
-        # contents of the collection change between the first and last paginated list
-        # request, the set of all elements returned are an inconsistent view of the
-        # collection. You cannot retrieve a consistent snapshot of a collection larger
-        # than the maximum page size.
+        # This field indicates that more results are available beyond the last page
+        # displayed. To fetch the results, make another list request and use this value
+        # as your page token. This lets you retrieve the complete contents of a very
+        # large collection one page at a time. However, if the contents of the
+        # collection change between the first and last paginated list request, the set
+        # of all elements returned are an inconsistent view of the collection. You can't
+        # retrieve a consistent snapshot of a collection larger than the maximum page
+        # size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1374,7 +1351,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @kind = args[:kind] if args.key?(:kind)
           @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
@@ -1511,24 +1487,19 @@ module Google
       class PoliciesListResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The presence of this field indicates that there exist more results following
-        # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your page token. This lets you the complete
-        # contents of even very large collections one page at a time. However, if the
-        # contents of the collection change between the first and last paginated list
-        # request, the set of all elements returned are an inconsistent view of the
-        # collection. You cannot retrieve a consistent snapshot of a collection larger
-        # than the maximum page size.
+        # This field indicates that more results are available beyond the last page
+        # displayed. To fetch the results, make another list request and use this value
+        # as your page token. This lets you retrieve the complete contents of a very
+        # large collection one page at a time. However, if the contents of the
+        # collection change between the first and last paginated list request, the set
+        # of all elements returned are an inconsistent view of the collection. You can't
+        # retrieve a consistent snapshot of a collection larger than the maximum page
+        # size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1544,7 +1515,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @policies = args[:policies] if args.key?(:policies)
@@ -1555,11 +1525,6 @@ module Google
       class PoliciesPatchResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # A policy is a collection of DNS rules applied to one or more Virtual Private
         # Cloud resources.
         # Corresponds to the JSON property `policy`
@@ -1572,7 +1537,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @policy = args[:policy] if args.key?(:policy)
         end
       end
@@ -1581,11 +1545,6 @@ module Google
       class PoliciesUpdateResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # A policy is a collection of DNS rules applied to one or more Virtual Private
         # Cloud resources.
         # Corresponds to the JSON property `policy`
@@ -1598,7 +1557,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @policy = args[:policy] if args.key?(:policy)
         end
       end
@@ -1771,7 +1729,7 @@ module Google
       
       # A project resource. The project is a top level container for resources
       # including Cloud DNS ManagedZones. Projects can be created only in the APIs
-      # console. Next tag: 7.
+      # console.
       class Project
         include Google::Apis::Core::Hashable
       
@@ -1982,7 +1940,7 @@ module Google
       class RrSetRoutingPolicy
         include Google::Apis::Core::Hashable
       
-        # Configures a RRSetRoutingPolicy that routes based on the geo location of the
+        # Configures a `RRSetRoutingPolicy` that routes based on the geo location of the
         # querying user.
         # Corresponds to the JSON property `geo`
         # @return [Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy]
@@ -2018,7 +1976,7 @@ module Google
         end
       end
       
-      # Configures a RRSetRoutingPolicy that routes based on the geo location of the
+      # Configures a `RRSetRoutingPolicy` that routes based on the geo location of the
       # querying user.
       class RrSetRoutingPolicyGeoPolicy
         include Google::Apis::Core::Hashable
@@ -2063,8 +2021,7 @@ module Google
       
         # HealthCheckTargets describes endpoints to health-check when responding to
         # Routing Policy queries. Only the healthy endpoints will be included in the
-        # response. Only one of internal_load_balancer and external_endpoints should be
-        # set.
+        # response.
         # Corresponds to the JSON property `healthCheckedTargets`
         # @return [Google::Apis::DnsV1::RrSetRoutingPolicyHealthCheckTargets]
         attr_accessor :health_checked_targets
@@ -2086,7 +2043,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :rrdatas
       
-        # DNSSEC generated signatures for all the rrdata within this item. If health
+        # DNSSEC generated signatures for all the `rrdata` within this item. If health
         # checked targets are provided for DNSSEC enabled zones, there's a restriction
         # of 1 IP address per item.
         # Corresponds to the JSON property `signatureRrdatas`
@@ -2109,8 +2066,7 @@ module Google
       
       # HealthCheckTargets describes endpoints to health-check when responding to
       # Routing Policy queries. Only the healthy endpoints will be included in the
-      # response. Only one of internal_load_balancer and external_endpoints should be
-      # set.
+      # response.
       class RrSetRoutingPolicyHealthCheckTargets
         include Google::Apis::Core::Hashable
       
@@ -2159,8 +2115,8 @@ module Google
         attr_accessor :load_balancer_type
       
         # The fully qualified URL of the network that the load balancer is attached to.
-        # This should be formatted like https://www.googleapis.com/compute/v1/projects/`
-        # project`/global/networks/`network` .
+        # This should be formatted like `https://www.googleapis.com/compute/v1/projects/`
+        # project`/global/networks/`network``.
         # Corresponds to the JSON property `networkUrl`
         # @return [String]
         attr_accessor :network_url
@@ -2203,7 +2159,7 @@ module Google
       class RrSetRoutingPolicyPrimaryBackupPolicy
         include Google::Apis::Core::Hashable
       
-        # Configures a RRSetRoutingPolicy that routes based on the geo location of the
+        # Configures a `RRSetRoutingPolicy` that routes based on the geo location of the
         # querying user.
         # Corresponds to the JSON property `backupGeoTargets`
         # @return [Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy]
@@ -2216,13 +2172,12 @@ module Google
       
         # HealthCheckTargets describes endpoints to health-check when responding to
         # Routing Policy queries. Only the healthy endpoints will be included in the
-        # response. Only one of internal_load_balancer and external_endpoints should be
-        # set.
+        # response.
         # Corresponds to the JSON property `primaryTargets`
         # @return [Google::Apis::DnsV1::RrSetRoutingPolicyHealthCheckTargets]
         attr_accessor :primary_targets
       
-        # When serving state is PRIMARY, this field provides the option of sending a
+        # When serving state is `PRIMARY`, this field provides the option of sending a
         # small percentage of the traffic to the backup targets.
         # Corresponds to the JSON property `trickleTraffic`
         # @return [Float]
@@ -2272,8 +2227,7 @@ module Google
       
         # HealthCheckTargets describes endpoints to health-check when responding to
         # Routing Policy queries. Only the healthy endpoints will be included in the
-        # response. Only one of internal_load_balancer and external_endpoints should be
-        # set.
+        # response.
         # Corresponds to the JSON property `healthCheckedTargets`
         # @return [Google::Apis::DnsV1::RrSetRoutingPolicyHealthCheckTargets]
         attr_accessor :health_checked_targets
@@ -2288,16 +2242,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :rrdatas
       
-        # DNSSEC generated signatures for all the rrdata within this item. Note that if
-        # health checked targets are provided for DNSSEC enabled zones, there's a
+        # DNSSEC generated signatures for all the `rrdata` within this item. Note that
+        # if health checked targets are provided for DNSSEC enabled zones, there's a
         # restriction of 1 IP address per item.
         # Corresponds to the JSON property `signatureRrdatas`
         # @return [Array<String>]
         attr_accessor :signature_rrdatas
       
-        # The weight corresponding to this WrrPolicyItem object. When multiple
-        # WrrPolicyItem objects are configured, the probability of returning an
-        # WrrPolicyItem object's data is proportional to its weight relative to the sum
+        # The weight corresponding to this `WrrPolicyItem` object. When multiple `
+        # WrrPolicyItem` objects are configured, the probability of returning an `
+        # WrrPolicyItem` object's data is proportional to its weight relative to the sum
         # of weights configured for all items. This weight must be non-negative.
         # Corresponds to the JSON property `weight`
         # @return [Float]
@@ -2349,7 +2303,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :signature_rrdatas
       
-        # Number of seconds that this ResourceRecordSet can be cached by resolvers.
+        # Number of seconds that this `ResourceRecordSet` can be cached by resolvers.
         # Corresponds to the JSON property `ttl`
         # @return [Fixnum]
         attr_accessor :ttl
@@ -2393,23 +2347,19 @@ module Google
       class ListResourceRecordSetsResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The presence of this field indicates that there exist more results following
-        # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your pagination token. This lets you retrieve
-        # the complete contents of even larger collections, one page at a time. However,
-        # if the collection changes between paginated list requests, the set of elements
-        # returned is an inconsistent view of the collection. You cannot retrieve a
-        # consistent snapshot of a collection larger than the maximum page size.
+        # This field indicates that more results are available beyond the last page
+        # displayed. To fetch the results, make another list request and use this value
+        # as your page token. This lets you retrieve the complete contents of a very
+        # large collection one page at a time. However, if the contents of the
+        # collection change between the first and last paginated list request, the set
+        # of all elements returned are an inconsistent view of the collection. You can't
+        # retrieve a consistent snapshot of a collection larger than the maximum page
+        # size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2425,31 +2375,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @rrsets = args[:rrsets] if args.key?(:rrsets)
-        end
-      end
-      
-      # Elements common to every response.
-      class ResponseHeader
-        include Google::Apis::Core::Hashable
-      
-        # For mutating operation requests that completed successfully. This is the
-        # client_operation_id if the client specified it, otherwise it is generated by
-        # the server (output only).
-        # Corresponds to the JSON property `operationId`
-        # @return [String]
-        attr_accessor :operation_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @operation_id = args[:operation_id] if args.key?(:operation_id)
         end
       end
       
@@ -2457,19 +2385,14 @@ module Google
       class ResponsePoliciesListResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
-        # The presence of this field indicates that more results exist following your
-        # last page of results in pagination order. To fetch them, make another list
-        # request by using this value as your page token. This lets you view the
-        # complete contents of even very large collections one page at a time. However,
-        # if the contents of the collection change between the first and last paginated
-        # list request, the set of all elements returned are an inconsistent view of the
-        # collection. You cannot retrieve a consistent snapshot of a collection larger
-        # than the maximum page size.
+        # This field indicates that more results are available beyond the last page
+        # displayed. To fetch the results, make another list request and use this value
+        # as your page token. This lets you retrieve the complete contents of a very
+        # large collection one page at a time. However, if the contents of the
+        # collection change between the first and last paginated list request, the set
+        # of all elements returned are an inconsistent view of the collection. You can't
+        # retrieve a consistent snapshot of a collection larger than the maximum page
+        # size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2485,7 +2408,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @response_policies = args[:response_policies] if args.key?(:response_policies)
         end
@@ -2495,11 +2417,6 @@ module Google
       class ResponsePoliciesPatchResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # A Response Policy is a collection of selectors that apply to queries made
         # against one or more Virtual Private Cloud networks.
         # Corresponds to the JSON property `responsePolicy`
@@ -2512,7 +2429,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @response_policy = args[:response_policy] if args.key?(:response_policy)
         end
       end
@@ -2521,11 +2437,6 @@ module Google
       class ResponsePoliciesUpdateResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # A Response Policy is a collection of selectors that apply to queries made
         # against one or more Virtual Private Cloud networks.
         # Corresponds to the JSON property `responsePolicy`
@@ -2538,7 +2449,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @response_policy = args[:response_policy] if args.key?(:response_policy)
         end
       end
@@ -2638,8 +2548,8 @@ module Google
         attr_accessor :kind
       
         # The fully qualified URL of the VPC network to bind to. This should be
-        # formatted like https://www.googleapis.com/compute/v1/projects/`project`/global/
-        # networks/`network`
+        # formatted like `https://www.googleapis.com/compute/v1/projects/`project`/
+        # global/networks/`network``
         # Corresponds to the JSON property `networkUrl`
         # @return [String]
         attr_accessor :network_url
@@ -2730,19 +2640,14 @@ module Google
       class ResponsePolicyRulesListResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
-        # The presence of this field indicates that there exist more results following
-        # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your page token. This lets you the complete
-        # contents of even very large collections one page at a time. However, if the
-        # contents of the collection change between the first and last paginated list
-        # request, the set of all elements returned are an inconsistent view of the
-        # collection. You cannot retrieve a consistent snapshot of a collection larger
-        # than the maximum page size.
+        # This field indicates that more results are available beyond the last page
+        # displayed. To fetch the results, make another list request and use this value
+        # as your page token. This lets you retrieve the complete contents of a very
+        # large collection one page at a time. However, if the contents of the
+        # collection change between the first and last paginated list request, the set
+        # of all elements returned are an inconsistent view of the collection. You can't
+        # retrieve a consistent snapshot of a collection larger than the maximum page
+        # size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2758,7 +2663,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @response_policy_rules = args[:response_policy_rules] if args.key?(:response_policy_rules)
         end
@@ -2768,11 +2672,6 @@ module Google
       class ResponsePolicyRulesPatchResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # A Response Policy Rule is a selector that applies its behavior to queries that
         # match the selector. Selectors are DNS names, which may be wildcards or exact
         # matches. Each DNS query subject to a Response Policy matches at most one
@@ -2788,7 +2687,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @response_policy_rule = args[:response_policy_rule] if args.key?(:response_policy_rule)
         end
       end
@@ -2797,11 +2695,6 @@ module Google
       class ResponsePolicyRulesUpdateResponse
         include Google::Apis::Core::Hashable
       
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1::ResponseHeader]
-        attr_accessor :header
-      
         # A Response Policy Rule is a selector that applies its behavior to queries that
         # match the selector. Selectors are DNS names, which may be wildcards or exact
         # matches. Each DNS query subject to a Response Policy matches at most one
@@ -2817,7 +2710,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] if args.key?(:header)
           @response_policy_rule = args[:response_policy_rule] if args.key?(:response_policy_rule)
         end
       end
