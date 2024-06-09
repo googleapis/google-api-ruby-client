@@ -106,8 +106,9 @@ module Google
         # @return [Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1MessageOutcomePercents]
         attr_accessor :message_outcome_percents
       
-        # Additional information about proxy notification delivery. All percentages are
-        # calculated with countNotificationsAccepted as the denominator.
+        # Additional information about [proxy notification](https://firebase.google.com/
+        # docs/cloud-messaging/android/message-priority#proxy) delivery. All percentages
+        # are calculated with countNotificationsAccepted as the denominator.
         # Corresponds to the JSON property `proxyNotificationInsightPercents`
         # @return [Google::Apis::FcmdataV1beta1::GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents]
         attr_accessor :proxy_notification_insight_percents
@@ -242,6 +243,13 @@ module Google
       class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents
         include Google::Apis::Core::Hashable
       
+        # The percentage of accepted messages that were [collapsed](https://firebase.
+        # google.com/docs/cloud-messaging/concept-options#collapsible_and_non-
+        # collapsible_messages) by another message.
+        # Corresponds to the JSON property `collapsed`
+        # @return [Float]
+        attr_accessor :collapsed
+      
         # The percentage of all accepted messages that were successfully delivered to
         # the device.
         # Corresponds to the JSON property `delivered`
@@ -278,6 +286,13 @@ module Google
         # @return [Float]
         attr_accessor :dropped_too_many_pending_messages
       
+        # The percentage of accepted messages that expired because [Time To Live (TTL)](
+        # https://firebase.google.com/docs/cloud-messaging/concept-options#ttl) elapsed
+        # before the target device reconnected.
+        # Corresponds to the JSON property `droppedTtlExpired`
+        # @return [Float]
+        attr_accessor :dropped_ttl_expired
+      
         # The percentage of messages accepted on this day that were not dropped and not
         # delivered, due to the device being disconnected (as of the end of the America/
         # Los_Angeles day when the message was sent to FCM). A portion of these messages
@@ -293,16 +308,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @collapsed = args[:collapsed] if args.key?(:collapsed)
           @delivered = args[:delivered] if args.key?(:delivered)
           @dropped_app_force_stopped = args[:dropped_app_force_stopped] if args.key?(:dropped_app_force_stopped)
           @dropped_device_inactive = args[:dropped_device_inactive] if args.key?(:dropped_device_inactive)
           @dropped_too_many_pending_messages = args[:dropped_too_many_pending_messages] if args.key?(:dropped_too_many_pending_messages)
+          @dropped_ttl_expired = args[:dropped_ttl_expired] if args.key?(:dropped_ttl_expired)
           @pending = args[:pending] if args.key?(:pending)
         end
       end
       
-      # Additional information about proxy notification delivery. All percentages are
-      # calculated with countNotificationsAccepted as the denominator.
+      # Additional information about [proxy notification](https://firebase.google.com/
+      # docs/cloud-messaging/android/message-priority#proxy) delivery. All percentages
+      # are calculated with countNotificationsAccepted as the denominator.
       class GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents
         include Google::Apis::Core::Hashable
       

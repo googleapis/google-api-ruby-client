@@ -128,10 +128,12 @@ module Google
       class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :collapsed, as: 'collapsed'
           property :delivered, as: 'delivered'
           property :dropped_app_force_stopped, as: 'droppedAppForceStopped'
           property :dropped_device_inactive, as: 'droppedDeviceInactive'
           property :dropped_too_many_pending_messages, as: 'droppedTooManyPendingMessages'
+          property :dropped_ttl_expired, as: 'droppedTtlExpired'
           property :pending, as: 'pending'
         end
       end
