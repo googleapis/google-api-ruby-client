@@ -94,7 +94,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DomainForwarding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DsRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EmailForwarding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,6 +137,12 @@ module Google
       end
       
       class ImportDomainRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InitiatePushTransferRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,7 +226,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RenewDomainRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResetAuthorizationCodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetrieveGoogleDomainsForwardingConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -393,6 +423,18 @@ module Google
         end
       end
       
+      class DomainForwarding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path_forwarding, as: 'pathForwarding'
+          property :pem_certificate, as: 'pemCertificate'
+          property :redirect_type, as: 'redirectType'
+          property :ssl_enabled, as: 'sslEnabled'
+          property :subdomain, as: 'subdomain'
+          property :target_uri, as: 'targetUri'
+        end
+      end
+      
       class DsRecord
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -400,6 +442,14 @@ module Google
           property :digest, as: 'digest'
           property :digest_type, as: 'digestType'
           property :key_tag, as: 'keyTag'
+        end
+      end
+      
+      class EmailForwarding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :target_email_address, as: 'targetEmailAddress'
         end
       end
       
@@ -446,6 +496,13 @@ module Google
         end
       end
       
+      class InitiatePushTransferRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tag, as: 'tag'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -487,6 +544,7 @@ module Google
       class ManagementSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_transfer_lock_state, as: 'effectiveTransferLockState'
           property :preferred_renewal_method, as: 'preferredRenewalMethod'
           property :renewal_method, as: 'renewalMethod'
           property :transfer_lock_state, as: 'transferLockState'
@@ -589,6 +647,7 @@ module Google
           property :dns_settings, as: 'dnsSettings', class: Google::Apis::DomainsV1alpha2::DnsSettings, decorator: Google::Apis::DomainsV1alpha2::DnsSettings::Representation
       
           property :domain_name, as: 'domainName'
+          collection :domain_properties, as: 'domainProperties'
           property :expire_time, as: 'expireTime'
           collection :issues, as: 'issues'
           hash :labels, as: 'labels'
@@ -605,9 +664,28 @@ module Google
         end
       end
       
+      class RenewDomainRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :validate_only, as: 'validateOnly'
+          property :yearly_price, as: 'yearlyPrice', class: Google::Apis::DomainsV1alpha2::Money, decorator: Google::Apis::DomainsV1alpha2::Money::Representation
+      
+        end
+      end
+      
       class ResetAuthorizationCodeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RetrieveGoogleDomainsForwardingConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domain_forwardings, as: 'domainForwardings', class: Google::Apis::DomainsV1alpha2::DomainForwarding, decorator: Google::Apis::DomainsV1alpha2::DomainForwarding::Representation
+      
+          collection :email_forwardings, as: 'emailForwardings', class: Google::Apis::DomainsV1alpha2::EmailForwarding, decorator: Google::Apis::DomainsV1alpha2::EmailForwarding::Representation
+      
         end
       end
       
