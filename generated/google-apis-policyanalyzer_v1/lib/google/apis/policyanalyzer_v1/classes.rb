@@ -22,7 +22,7 @@ module Google
   module Apis
     module PolicyanalyzerV1
       
-      # 
+      # Represents Activity on a GCP resource over specific observation period.
       class GoogleCloudPolicyanalyzerV1Activity
         include Google::Apis::Core::Hashable
       
