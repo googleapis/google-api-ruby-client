@@ -436,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterProtoCommonTypedValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StringRestrictions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1167,7 +1173,6 @@ module Google
           property :updation_time, as: 'updationTime'
           property :user_label_set, as: 'userLabelSet', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUserLabels, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUserLabels::Representation
       
-          hash :user_labels, as: 'userLabels'
         end
       end
       
@@ -1204,10 +1209,12 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainObservabilityMetricData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :metric_timestamp, as: 'metricTimestamp'
+          property :aggregation_type, as: 'aggregationType'
           property :metric_type, as: 'metricType'
+          property :observation_time, as: 'observationTime'
           property :resource_name, as: 'resourceName'
-          property :value, as: 'value'
+          property :value, as: 'value', class: Google::Apis::AlloydbV1::StorageDatabasecenterProtoCommonTypedValue, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterProtoCommonTypedValue::Representation
+      
         end
       end
       
@@ -1242,6 +1249,16 @@ module Google
           property :engine, as: 'engine'
           property :type, as: 'type'
           property :version, as: 'version'
+        end
+      end
+      
+      class StorageDatabasecenterProtoCommonTypedValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :double_value, as: 'doubleValue'
+          property :int64_value, :numeric_string => true, as: 'int64Value'
+          property :string_value, as: 'stringValue'
         end
       end
       
