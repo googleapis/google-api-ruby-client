@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -288,6 +294,13 @@ module Google
         end
       end
       
+      class AccessConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_ip, as: 'externalIp'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -466,6 +479,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :proxy_uri, as: 'proxyUri'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :third_party_proxy_url, as: 'thirdPartyProxyUrl'
           property :update_time, as: 'updateTime'
@@ -516,6 +531,8 @@ module Google
       class NetworkInterface
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_configs, as: 'accessConfigs', class: Google::Apis::NotebooksV2::AccessConfig, decorator: Google::Apis::NotebooksV2::AccessConfig::Representation
+      
           property :network, as: 'network'
           property :nic_type, as: 'nicType'
           property :subnet, as: 'subnet'
