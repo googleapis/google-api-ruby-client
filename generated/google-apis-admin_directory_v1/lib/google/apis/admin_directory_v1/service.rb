@@ -279,7 +279,7 @@ module Google
         #   Return devices from all child orgunits, as well as the specified org unit. If
         #   this is set to true, 'orgUnitPath' must be provided.
         # @param [Fixnum] max_results
-        #   Maximum number of results to return, value should not exceed 300.
+        #   Maximum number of results to return. Value should not exceed 300.
         # @param [String] order_by
         #   Device property to use for sorting results.
         # @param [String] org_unit_path
