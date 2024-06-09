@@ -596,18 +596,15 @@ module Google
       class OrgPolicyViolationInfo
         include Google::Apis::Core::Hashable
       
-        # Optional. Resource payload that is currently in scope and is subjected to
-        # orgpolicy conditions. This payload may be the subset of the actual Resource
-        # that may come in the request. This payload should not contain any core content.
+        # Optional. Deprecated. Resource payload that is currently in scope and is
+        # subjected to orgpolicy conditions. This payload may be the subset of the
+        # actual Resource that may come in the request.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
       
-        # Optional. Tags referenced on the resource at the time of evaluation. These
-        # also include the federated tags, if they are supplied in the CheckOrgPolicy or
-        # CheckCustomConstraints Requests. Optional field as of now. These tags are the
-        # Cloud tags that are available on the resource during the policy evaluation and
-        # will be available as part of the OrgPolicy check response for logging purposes.
+        # Optional. Deprecated. Tags referenced on the resource at the time of
+        # evaluation.
         # Corresponds to the JSON property `resourceTags`
         # @return [Hash<String,String>]
         attr_accessor :resource_tags
