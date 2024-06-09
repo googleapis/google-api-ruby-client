@@ -394,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ZoneDistributionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AofConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -474,6 +480,8 @@ module Google
       
           property :transit_encryption_mode, as: 'transitEncryptionMode'
           property :uid, as: 'uid'
+          property :zone_distribution_config, as: 'zoneDistributionConfig', class: Google::Apis::RedisV1beta1::ZoneDistributionConfig, decorator: Google::Apis::RedisV1beta1::ZoneDistributionConfig::Representation
+      
         end
       end
       
@@ -1061,6 +1069,14 @@ module Google
           property :duration, as: 'duration'
           property :start_time, as: 'startTime', class: Google::Apis::RedisV1beta1::TimeOfDay, decorator: Google::Apis::RedisV1beta1::TimeOfDay::Representation
       
+        end
+      end
+      
+      class ZoneDistributionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :zone, as: 'zone'
         end
       end
     end
