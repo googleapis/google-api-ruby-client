@@ -292,21 +292,24 @@ module Google
         end
       end
       
-      # Describes values that are relevant in a CA certificate.
+      # Describes the X.509 basic constraints extension, per [RFC 5280 section 4.2.1.9]
+      # (https://tools.ietf.org/html/rfc5280#section-4.2.1.9)
       class CaOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. Refers to the "CA" X.509 extension, which is a boolean value. When
-        # this value is missing, the extension will be omitted from the CA certificate.
+        # Optional. Refers to the "CA" boolean field in the X.509 extension. When this
+        # value is missing, the basic constraints extension will be omitted from the
+        # certificate.
         # Corresponds to the JSON property `isCa`
         # @return [Boolean]
         attr_accessor :is_ca
         alias_method :is_ca?, :is_ca
       
-        # Optional. Refers to the path length restriction X.509 extension. For a CA
-        # certificate, this value describes the depth of subordinate CA certificates
-        # that are allowed. If this value is less than 0, the request will fail. If this
-        # value is missing, the max path length will be omitted from the CA certificate.
+        # Optional. Refers to the path length constraint field in the X.509 extension.
+        # For a CA certificate, this value describes the depth of subordinate CA
+        # certificates that are allowed. If this value is less than 0, the request will
+        # fail. If this value is missing, the max path length will be omitted from the
+        # certificate.
         # Corresponds to the JSON property `maxIssuerPathLength`
         # @return [Fixnum]
         attr_accessor :max_issuer_path_length
@@ -2842,7 +2845,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :aia_ocsp_servers
       
-        # Describes values that are relevant in a CA certificate.
+        # Describes the X.509 basic constraints extension, per [RFC 5280 section 4.2.1.9]
+        # (https://tools.ietf.org/html/rfc5280#section-4.2.1.9)
         # Corresponds to the JSON property `caOptions`
         # @return [Google::Apis::PrivatecaV1::CaOptions]
         attr_accessor :ca_options
