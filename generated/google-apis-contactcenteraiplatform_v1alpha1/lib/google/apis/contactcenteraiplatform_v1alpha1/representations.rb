@@ -189,6 +189,7 @@ module Google
       class Component
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_project_ids, as: 'allowedProjectIds'
           property :name, as: 'name'
           collection :service_attachments, as: 'serviceAttachments', class: Google::Apis::ContactcenteraiplatformV1alpha1::ServiceAttachment, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::ServiceAttachment::Representation
       
@@ -384,7 +385,6 @@ module Google
       class ServiceAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :allowed_project_ids, as: 'allowedProjectIds'
           property :name, as: 'name'
         end
       end
