@@ -28,12 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AclInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Action
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,12 +77,6 @@ module Google
       end
       
       class EntityType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EntityWithAcl
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,12 +154,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListEntitiesWithAcLsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListEntityTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,13 +196,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PerSliSloEligibility
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Principal
+      class PerSliSloEligibility
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,12 +221,6 @@ module Google
       end
       
       class QueryParameter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Readers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeOfDay
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,14 +304,6 @@ module Google
           property :access_token, as: 'accessToken'
           property :expires_in, as: 'expiresIn'
           property :refresh_token, as: 'refreshToken'
-        end
-      end
-      
-      class AclInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :readers, as: 'readers', class: Google::Apis::ConnectorsV2::Readers, decorator: Google::Apis::ConnectorsV2::Readers::Representation
-      
         end
       end
       
@@ -418,16 +392,6 @@ module Google
       
           property :name, as: 'name'
           collection :operations, as: 'operations'
-        end
-      end
-      
-      class EntityWithAcl
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :acl_info, as: 'acl_info', class: Google::Apis::ConnectorsV2::AclInfo, decorator: Google::Apis::ConnectorsV2::AclInfo::Representation
-      
-          property :id, as: 'id'
-          property :json_data, as: 'jsonData'
         end
       end
       
@@ -570,15 +534,6 @@ module Google
         end
       end
       
-      class ListEntitiesWithAcLsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :entities_with_acl, as: 'entitiesWithAcl', class: Google::Apis::ConnectorsV2::EntityWithAcl, decorator: Google::Apis::ConnectorsV2::EntityWithAcl::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class ListEntityTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -651,19 +606,23 @@ module Google
         end
       end
       
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::ConnectorsV2::Status, decorator: Google::Apis::ConnectorsV2::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
       class PerSliSloEligibility
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :eligibilities, as: 'eligibilities', class: Google::Apis::ConnectorsV2::SloEligibility, decorator: Google::Apis::ConnectorsV2::SloEligibility::Representation
       
-        end
-      end
-      
-      class Principal
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :group_id, as: 'group_id'
-          property :user_id, as: 'user_id'
         end
       end
       
@@ -691,14 +650,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_type, as: 'dataType'
           property :value, as: 'value'
-        end
-      end
-      
-      class Readers
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :principals, as: 'principals', class: Google::Apis::ConnectorsV2::Principal, decorator: Google::Apis::ConnectorsV2::Principal::Representation
-      
         end
       end
       
@@ -761,6 +712,15 @@ module Google
           property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::ConnectorsV2::PerSliSloEligibility, decorator: Google::Apis::ConnectorsV2::PerSliSloEligibility::Representation
       
           property :tier, as: 'tier'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
