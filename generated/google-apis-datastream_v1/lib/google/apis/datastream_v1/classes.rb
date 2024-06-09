@@ -462,6 +462,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
         attr_accessor :postgresql_rdbms
       
+        # SQLServer database structure.
+        # Corresponds to the JSON property `sqlServerRdbms`
+        # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
+        attr_accessor :sql_server_rdbms
+      
         def initialize(**args)
            update!(**args)
         end
@@ -475,6 +480,7 @@ module Google
           @mysql_rdbms = args[:mysql_rdbms] if args.key?(:mysql_rdbms)
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
           @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
+          @sql_server_rdbms = args[:sql_server_rdbms] if args.key?(:sql_server_rdbms)
         end
       end
       
@@ -497,6 +503,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
         attr_accessor :postgresql_rdbms
       
+        # SQLServer database structure.
+        # Corresponds to the JSON property `sqlServerRdbms`
+        # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
+        attr_accessor :sql_server_rdbms
+      
         def initialize(**args)
            update!(**args)
         end
@@ -506,6 +517,7 @@ module Google
           @mysql_rdbms = args[:mysql_rdbms] if args.key?(:mysql_rdbms)
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
           @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
+          @sql_server_rdbms = args[:sql_server_rdbms] if args.key?(:sql_server_rdbms)
         end
       end
       
