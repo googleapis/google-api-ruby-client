@@ -119,13 +119,13 @@ module Google
       class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
         include Google::Apis::Core::Hashable
       
-        # If true, DF Interaction logging is currently enabled.
+        # Enables DF Interaction logging.
         # Corresponds to the JSON property `enableInteractionLogging`
         # @return [Boolean]
         attr_accessor :enable_interaction_logging
         alias_method :enable_interaction_logging?, :enable_interaction_logging
       
-        # If true, StackDriver logging is currently enabled.
+        # Enables StackDriver logging.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_logging
@@ -8914,13 +8914,13 @@ module Google
       class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings
         include Google::Apis::Core::Hashable
       
-        # If true, DF Interaction logging is currently enabled.
+        # Enables DF Interaction logging.
         # Corresponds to the JSON property `enableInteractionLogging`
         # @return [Boolean]
         attr_accessor :enable_interaction_logging
         alias_method :enable_interaction_logging?, :enable_interaction_logging
       
-        # If true, StackDriver logging is currently enabled.
+        # Enables StackDriver logging.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_logging
@@ -11187,6 +11187,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1TextInput]
         attr_accessor :text
       
+        # The result of calling a tool's action that has been executed by the client.
+        # Corresponds to the JSON property `toolCallResult`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCallResult]
+        attr_accessor :tool_call_result
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11199,6 +11204,7 @@ module Google
           @intent = args[:intent] if args.key?(:intent)
           @language_code = args[:language_code] if args.key?(:language_code)
           @text = args[:text] if args.key?(:text)
+          @tool_call_result = args[:tool_call_result] if args.key?(:tool_call_result)
         end
       end
       
@@ -11315,6 +11321,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ResponseMessageText]
         attr_accessor :text
       
+        # Represents a call of a specific tool's action with the specified inputs.
+        # Corresponds to the JSON property `toolCall`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCall]
+        attr_accessor :tool_call
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11332,6 +11343,7 @@ module Google
           @play_audio = args[:play_audio] if args.key?(:play_audio)
           @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
           @text = args[:text] if args.key?(:text)
+          @tool_call = args[:tool_call] if args.key?(:tool_call)
         end
       end
       
@@ -11951,6 +11963,95 @@ module Google
         # Update properties of this object
         def update!(**args)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents a call of a specific tool's action with the specified inputs.
+      class GoogleCloudDialogflowCxV3beta1ToolCall
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the tool's action associated with this call.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Optional. The action's input parameters.
+        # Corresponds to the JSON property `inputParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :input_parameters
+      
+        # Required. The tool associated with this call. Format: `projects//locations//
+        # agents//tools/`.
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @tool = args[:tool] if args.key?(:tool)
+        end
+      end
+      
+      # The result of calling a tool's action that has been executed by the client.
+      class GoogleCloudDialogflowCxV3beta1ToolCallResult
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the tool's action associated with this call.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # An error produced by the tool call.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ToolCallResultError]
+        attr_accessor :error
+      
+        # The tool call's output parameters.
+        # Corresponds to the JSON property `outputParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :output_parameters
+      
+        # Required. The tool associated with this call. Format: `projects//locations//
+        # agents//tools/`.
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @error = args[:error] if args.key?(:error)
+          @output_parameters = args[:output_parameters] if args.key?(:output_parameters)
+          @tool = args[:tool] if args.key?(:tool)
+        end
+      end
+      
+      # An error produced by the tool call.
+      class GoogleCloudDialogflowCxV3beta1ToolCallResultError
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The error message of the function.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -14820,6 +14921,159 @@ module Google
         end
       end
       
+      # Represents a Knowledge Assist answer.
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The name of the answer record. Format: `projects//locations//answer Records/`.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Represents a suggested query.
+        # Corresponds to the JSON property `suggestedQuery`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery]
+        attr_accessor :suggested_query
+      
+        # Represents an answer from Knowledge. Currently supports FAQ and Generative
+        # answers.
+        # Corresponds to the JSON property `suggestedQueryAnswer`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer]
+        attr_accessor :suggested_query_answer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @suggested_query = args[:suggested_query] if args.key?(:suggested_query)
+          @suggested_query_answer = args[:suggested_query_answer] if args.key?(:suggested_query_answer)
+        end
+      end
+      
+      # Represents an answer from Knowledge. Currently supports FAQ and Generative
+      # answers.
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The piece of text from the `source` that answers this suggested query.
+        # Corresponds to the JSON property `answerText`
+        # @return [String]
+        attr_accessor :answer_text
+      
+        # Details about source of FAQ answer.
+        # Corresponds to the JSON property `faqSource`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource]
+        attr_accessor :faq_source
+      
+        # Details about source of Generative answer.
+        # Corresponds to the JSON property `generativeSource`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource]
+        attr_accessor :generative_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_text = args[:answer_text] if args.key?(:answer_text)
+          @faq_source = args[:faq_source] if args.key?(:faq_source)
+          @generative_source = args[:generative_source] if args.key?(:generative_source)
+        end
+      end
+      
+      # Details about source of FAQ answer.
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource
+        include Google::Apis::Core::Hashable
+      
+        # The corresponding FAQ question.
+        # Corresponds to the JSON property `question`
+        # @return [String]
+        attr_accessor :question
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @question = args[:question] if args.key?(:question)
+        end
+      end
+      
+      # Details about source of Generative answer.
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource
+        include Google::Apis::Core::Hashable
+      
+        # All snippets used for this Generative Prediction, with their source URI and
+        # data.
+        # Corresponds to the JSON property `snippets`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet>]
+        attr_accessor :snippets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snippets = args[:snippets] if args.key?(:snippets)
+        end
+      end
+      
+      # Snippet Source for a Generative Prediction.
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
+        include Google::Apis::Core::Hashable
+      
+        # Text taken from that URI.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Title of the document.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URI the data is sourced from.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Represents a suggested query.
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery
+        include Google::Apis::Core::Hashable
+      
+        # Suggested query text.
+        # Corresponds to the JSON property `queryText`
+        # @return [String]
+        attr_accessor :query_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_text = args[:query_text] if args.key?(:query_text)
+        end
+      end
+      
       # Metadata in google::longrunning::Operation for Knowledge operations.
       class GoogleCloudDialogflowV2KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
@@ -15420,6 +15674,41 @@ module Google
         end
       end
       
+      # The response message for Participants.SuggestKnowledgeAssist.
+      class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of messages prior to and including latest_message to compile the
+        # suggestion. It may be smaller than the SuggestKnowledgeAssistRequest.
+        # context_size field in the request if there are fewer messages in the
+        # conversation.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # Represents a Knowledge Assist answer.
+        # Corresponds to the JSON property `knowledgeAssistAnswer`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswer]
+        attr_accessor :knowledge_assist_answer
+      
+        # The name of the latest conversation message used to compile suggestion for.
+        # Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @knowledge_assist_answer = args[:knowledge_assist_answer] if args.key?(:knowledge_assist_answer)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
       # The response message for Participants.SuggestSmartReplies.
       class GoogleCloudDialogflowV2SuggestSmartRepliesResponse
         include Google::Apis::Core::Hashable
@@ -15482,6 +15771,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SuggestFaqAnswersResponse]
         attr_accessor :suggest_faq_answers_response
       
+        # The response message for Participants.SuggestKnowledgeAssist.
+        # Corresponds to the JSON property `suggestKnowledgeAssistResponse`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse]
+        attr_accessor :suggest_knowledge_assist_response
+      
         # The response message for Participants.SuggestSmartReplies.
         # Corresponds to the JSON property `suggestSmartRepliesResponse`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SuggestSmartRepliesResponse]
@@ -15496,6 +15790,7 @@ module Google
           @error = args[:error] if args.key?(:error)
           @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
           @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
+          @suggest_knowledge_assist_response = args[:suggest_knowledge_assist_response] if args.key?(:suggest_knowledge_assist_response)
           @suggest_smart_replies_response = args[:suggest_smart_replies_response] if args.key?(:suggest_smart_replies_response)
         end
       end
@@ -18100,6 +18395,159 @@ module Google
         end
       end
       
+      # Represents a Knowledge Assist answer.
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The name of the answer record. Format: `projects//locations//answer Records/`.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Represents a suggested query.
+        # Corresponds to the JSON property `suggestedQuery`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery]
+        attr_accessor :suggested_query
+      
+        # Represents an answer from Knowledge. Currently supports FAQ and Generative
+        # answers.
+        # Corresponds to the JSON property `suggestedQueryAnswer`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer]
+        attr_accessor :suggested_query_answer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @suggested_query = args[:suggested_query] if args.key?(:suggested_query)
+          @suggested_query_answer = args[:suggested_query_answer] if args.key?(:suggested_query_answer)
+        end
+      end
+      
+      # Represents an answer from Knowledge. Currently supports FAQ and Generative
+      # answers.
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The piece of text from the `source` that answers this suggested query.
+        # Corresponds to the JSON property `answerText`
+        # @return [String]
+        attr_accessor :answer_text
+      
+        # Details about source of FAQ answer.
+        # Corresponds to the JSON property `faqSource`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource]
+        attr_accessor :faq_source
+      
+        # Details about source of Generative answer.
+        # Corresponds to the JSON property `generativeSource`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource]
+        attr_accessor :generative_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_text = args[:answer_text] if args.key?(:answer_text)
+          @faq_source = args[:faq_source] if args.key?(:faq_source)
+          @generative_source = args[:generative_source] if args.key?(:generative_source)
+        end
+      end
+      
+      # Details about source of FAQ answer.
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource
+        include Google::Apis::Core::Hashable
+      
+        # The corresponding FAQ question.
+        # Corresponds to the JSON property `question`
+        # @return [String]
+        attr_accessor :question
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @question = args[:question] if args.key?(:question)
+        end
+      end
+      
+      # Details about source of Generative answer.
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource
+        include Google::Apis::Core::Hashable
+      
+        # All snippets used for this Generative Prediction, with their source URI and
+        # data.
+        # Corresponds to the JSON property `snippets`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet>]
+        attr_accessor :snippets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snippets = args[:snippets] if args.key?(:snippets)
+        end
+      end
+      
+      # Snippet Source for a Generative Prediction.
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
+        include Google::Apis::Core::Hashable
+      
+        # Text taken from that URI.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Title of the document.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URI the data is sourced from.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Represents a suggested query.
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery
+        include Google::Apis::Core::Hashable
+      
+        # Suggested query text.
+        # Corresponds to the JSON property `queryText`
+        # @return [String]
+        attr_accessor :query_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_text = args[:query_text] if args.key?(:query_text)
+        end
+      end
+      
       # Metadata in google::longrunning::Operation for Knowledge operations.
       class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
@@ -18726,6 +19174,41 @@ module Google
         end
       end
       
+      # The response message for Participants.SuggestKnowledgeAssist.
+      class GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of messages prior to and including latest_message to compile the
+        # suggestion. It may be smaller than the SuggestKnowledgeAssistRequest.
+        # context_size field in the request if there are fewer messages in the
+        # conversation.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # Represents a Knowledge Assist answer.
+        # Corresponds to the JSON property `knowledgeAssistAnswer`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer]
+        attr_accessor :knowledge_assist_answer
+      
+        # The name of the latest conversation message used to compile suggestion for.
+        # Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @knowledge_assist_answer = args[:knowledge_assist_answer] if args.key?(:knowledge_assist_answer)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
       # The response message for Participants.SuggestSmartReplies.
       class GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse
         include Google::Apis::Core::Hashable
@@ -18798,6 +19281,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse]
         attr_accessor :suggest_faq_answers_response
       
+        # The response message for Participants.SuggestKnowledgeAssist.
+        # Corresponds to the JSON property `suggestKnowledgeAssistResponse`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse]
+        attr_accessor :suggest_knowledge_assist_response
+      
         # The response message for Participants.SuggestSmartReplies.
         # Corresponds to the JSON property `suggestSmartRepliesResponse`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse]
@@ -18814,6 +19302,7 @@ module Google
           @suggest_dialogflow_assists_response = args[:suggest_dialogflow_assists_response] if args.key?(:suggest_dialogflow_assists_response)
           @suggest_entity_extraction_response = args[:suggest_entity_extraction_response] if args.key?(:suggest_entity_extraction_response)
           @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
+          @suggest_knowledge_assist_response = args[:suggest_knowledge_assist_response] if args.key?(:suggest_knowledge_assist_response)
           @suggest_smart_replies_response = args[:suggest_smart_replies_response] if args.key?(:suggest_smart_replies_response)
         end
       end
