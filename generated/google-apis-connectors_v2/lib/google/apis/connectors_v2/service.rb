@@ -696,12 +696,6 @@ module Google
         #   are supported.
         # @param [String] gsutil_uri
         #   Format: gs://object_path
-        # @param [Fixnum] page_size
-        #   Number of entity rows to return. Defaults page size = 25. Max page size = 200.
-        # @param [String] page_token
-        #   Page token value if available from a previous request.
-        # @param [Array<String>, String] sort_by
-        #   List of 'sort_by' columns to use when returning the results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -711,24 +705,21 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ConnectorsV2::ListEntitiesWithAcLsResponse] parsed result object
+        # @yieldparam result [Google::Apis::ConnectorsV2::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ConnectorsV2::ListEntitiesWithAcLsResponse]
+        # @return [Google::Apis::ConnectorsV2::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_connection_entity_type_entitieswithacls(parent, conditions: nil, gsutil_uri: nil, page_size: nil, page_token: nil, sort_by: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_connection_entity_type_entitieswithacls(parent, conditions: nil, gsutil_uri: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/entitieswithacls', options)
-          command.response_representation = Google::Apis::ConnectorsV2::ListEntitiesWithAcLsResponse::Representation
-          command.response_class = Google::Apis::ConnectorsV2::ListEntitiesWithAcLsResponse
+          command.response_representation = Google::Apis::ConnectorsV2::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV2::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['conditions'] = conditions unless conditions.nil?
           command.query['gsutilUri'] = gsutil_uri unless gsutil_uri.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['sortBy'] = sort_by unless sort_by.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
