@@ -510,11 +510,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :advance_automation_runs
       
-        # Output only. The current AutomationRun repairing the rollout.
-        # Corresponds to the JSON property `currentRepairAutomationRun`
-        # @return [String]
-        attr_accessor :current_repair_automation_run
-      
         # Output only. The name of the AutomationRun initiated by a promote release rule.
         # Corresponds to the JSON property `promoteAutomationRun`
         # @return [String]
@@ -533,7 +528,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advance_automation_runs = args[:advance_automation_runs] if args.key?(:advance_automation_runs)
-          @current_repair_automation_run = args[:current_repair_automation_run] if args.key?(:current_repair_automation_run)
           @promote_automation_run = args[:promote_automation_run] if args.key?(:promote_automation_run)
           @repair_automation_runs = args[:repair_automation_runs] if args.key?(:repair_automation_runs)
         end
@@ -2060,6 +2054,13 @@ module Google
         attr_accessor :internal_ip
         alias_method :internal_ip?, :internal_ip
       
+        # Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/
+        # concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the
+        # Kubernetes server.
+        # Corresponds to the JSON property `proxyUrl`
+        # @return [String]
+        attr_accessor :proxy_url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2068,6 +2069,7 @@ module Google
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
           @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
+          @proxy_url = args[:proxy_url] if args.key?(:proxy_url)
         end
       end
       
@@ -3809,33 +3811,8 @@ module Google
         end
       end
       
-      # Configuration of the repair action.
-      class RepairMode
-        include Google::Apis::Core::Hashable
-      
-        # Retries the failed job.
-        # Corresponds to the JSON property `retry`
-        # @return [Google::Apis::ClouddeployV1::Retry]
-        attr_accessor :retry
-      
-        # Rolls back a `Rollout`.
-        # Corresponds to the JSON property `rollback`
-        # @return [Google::Apis::ClouddeployV1::Rollback]
-        attr_accessor :rollback
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @retry = args[:retry] if args.key?(:retry)
-          @rollback = args[:rollback] if args.key?(:rollback)
-        end
-      end
-      
       # RepairPhase tracks the repair attempts that have been made for each `
-      # RepairMode` specified in the `Automation` resource.
+      # RepairPhaseConfig` specified in the `Automation` resource.
       class RepairPhase
         include Google::Apis::Core::Hashable
       
@@ -3865,11 +3842,6 @@ module Google
       class RepairRolloutOperation
         include Google::Apis::Core::Hashable
       
-        # Output only. The index of the current repair action in the repair sequence.
-        # Corresponds to the JSON property `currentRepairModeIndex`
-        # @return [Fixnum]
-        attr_accessor :current_repair_mode_index
-      
         # Output only. The job ID for the Job to repair.
         # Corresponds to the JSON property `jobId`
         # @return [String]
@@ -3897,7 +3869,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @current_repair_mode_index = args[:current_repair_mode_index] if args.key?(:current_repair_mode_index)
           @job_id = args[:job_id] if args.key?(:job_id)
           @phase_id = args[:phase_id] if args.key?(:phase_id)
           @repair_phases = args[:repair_phases] if args.key?(:repair_phases)
@@ -3931,21 +3902,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :jobs
       
-        # Required. Defines the types of automatic repair actions for failed jobs.
-        # Corresponds to the JSON property `repairModes`
-        # @return [Array<Google::Apis::ClouddeployV1::RepairMode>]
-        attr_accessor :repair_modes
-      
-        # Optional. Phases within which jobs are subject to automatic repair actions on
-        # failure. Proceeds only after phase name matched any one in the list, or for
-        # all phases if unspecified. This value must consist of lower-case letters,
-        # numbers, and hyphens, start with a letter and end with a letter or a number,
-        # and have a max length of 63 characters. In other words, it must match the
-        # following regex: `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`.
-        # Corresponds to the JSON property `sourcePhases`
-        # @return [Array<String>]
-        attr_accessor :source_phases
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3955,42 +3911,6 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @id = args[:id] if args.key?(:id)
           @jobs = args[:jobs] if args.key?(:jobs)
-          @repair_modes = args[:repair_modes] if args.key?(:repair_modes)
-          @source_phases = args[:source_phases] if args.key?(:source_phases)
-        end
-      end
-      
-      # Retries the failed job.
-      class Retry
-        include Google::Apis::Core::Hashable
-      
-        # Required. Total number of retries. Retry is skipped if set to 0; The minimum
-        # value is 1, and the maximum value is 10.
-        # Corresponds to the JSON property `attempts`
-        # @return [Fixnum]
-        attr_accessor :attempts
-      
-        # Optional. The pattern of how wait time will be increased. Default is linear.
-        # Backoff mode will be ignored if `wait` is 0.
-        # Corresponds to the JSON property `backoffMode`
-        # @return [String]
-        attr_accessor :backoff_mode
-      
-        # Optional. How long to wait for the first retry. Default is 0, and the maximum
-        # value is 14d.
-        # Corresponds to the JSON property `wait`
-        # @return [String]
-        attr_accessor :wait
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attempts = args[:attempts] if args.key?(:attempts)
-          @backoff_mode = args[:backoff_mode] if args.key?(:backoff_mode)
-          @wait = args[:wait] if args.key?(:wait)
         end
       end
       
@@ -4085,16 +4005,6 @@ module Google
         # @return [String]
         attr_accessor :backoff_mode
       
-        # Output only. The job ID for the Job to retry.
-        # Corresponds to the JSON property `jobId`
-        # @return [String]
-        attr_accessor :job_id
-      
-        # Output only. The phase ID of the phase that includes the job being retried.
-        # Corresponds to the JSON property `phaseId`
-        # @return [String]
-        attr_accessor :phase_id
-      
         # Output only. The number of attempts that have been made.
         # Corresponds to the JSON property `totalAttempts`
         # @return [Fixnum]
@@ -4108,29 +4018,7 @@ module Google
         def update!(**args)
           @attempts = args[:attempts] if args.key?(:attempts)
           @backoff_mode = args[:backoff_mode] if args.key?(:backoff_mode)
-          @job_id = args[:job_id] if args.key?(:job_id)
-          @phase_id = args[:phase_id] if args.key?(:phase_id)
           @total_attempts = args[:total_attempts] if args.key?(:total_attempts)
-        end
-      end
-      
-      # Rolls back a `Rollout`.
-      class Rollback
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The starting phase ID for the `Rollout`. If unspecified, the `
-        # Rollout` will start in the stable phase.
-        # Corresponds to the JSON property `destinationPhase`
-        # @return [String]
-        attr_accessor :destination_phase
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @destination_phase = args[:destination_phase] if args.key?(:destination_phase)
         end
       end
       
