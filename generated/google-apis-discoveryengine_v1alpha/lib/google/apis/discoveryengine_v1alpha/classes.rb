@@ -22,6 +22,320 @@ module Google
   module Apis
     module DiscoveryengineV1alpha
       
+      # `Distribution` contains summary statistics for a population of values. It
+      # optionally contains a histogram representing the distribution of those values
+      # across a set of buckets. The summary statistics are the count, mean, sum of
+      # the squared deviation from the mean, the minimum, and the maximum of the set
+      # of population of values. The histogram is based on a sequence of buckets and
+      # gives a count of values that fall into each bucket. The boundaries of the
+      # buckets are given either explicitly or by formulas for buckets of fixed or
+      # exponentially increasing widths. Although it is not forbidden, it is generally
+      # a bad idea to include non-finite values (infinities or NaNs) in the population
+      # of values, as this will render the `mean` and `sum_of_squared_deviation`
+      # fields meaningless.
+      class GoogleApiDistribution
+        include Google::Apis::Core::Hashable
+      
+        # The number of values in each bucket of the histogram, as described in `
+        # bucket_options`. If the distribution does not have a histogram, then omit this
+        # field. If there is a histogram, then the sum of the values in `bucket_counts`
+        # must equal the value in the `count` field of the distribution. If present, `
+        # bucket_counts` should contain N values, where N is the number of buckets
+        # specified in `bucket_options`. If you supply fewer than N values, the
+        # remaining values are assumed to be 0. The order of the values in `
+        # bucket_counts` follows the bucket numbering schemes described for the three
+        # bucket types. The first value must be the count for the underflow bucket (
+        # number 0). The next N-2 values are the counts for the finite buckets (number 1
+        # through N-2). The N'th value in `bucket_counts` is the count for the overflow
+        # bucket (number N-1).
+        # Corresponds to the JSON property `bucketCounts`
+        # @return [Array<Fixnum>]
+        attr_accessor :bucket_counts
+      
+        # `BucketOptions` describes the bucket boundaries used to create a histogram for
+        # the distribution. The buckets can be in a linear sequence, an exponential
+        # sequence, or each bucket can be specified explicitly. `BucketOptions` does not
+        # include the number of values in each bucket. A bucket has an inclusive lower
+        # bound and exclusive upper bound for the values that are counted for that
+        # bucket. The upper bound of a bucket must be strictly greater than the lower
+        # bound. The sequence of N buckets for a distribution consists of an underflow
+        # bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an
+        # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
+        # bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets
+        # span the whole range of finite values: lower bound of the underflow bucket is -
+        # infinity and the upper bound of the overflow bucket is +infinity. The finite
+        # buckets are so-called because both bounds are finite.
+        # Corresponds to the JSON property `bucketOptions`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleApiDistributionBucketOptions]
+        attr_accessor :bucket_options
+      
+        # The number of values in the population. Must be non-negative. This value must
+        # equal the sum of the values in `bucket_counts` if a histogram is provided.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Must be in increasing order of `value` field.
+        # Corresponds to the JSON property `exemplars`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleApiDistributionExemplar>]
+        attr_accessor :exemplars
+      
+        # The arithmetic mean of the values in the population. If `count` is zero then
+        # this field must be zero.
+        # Corresponds to the JSON property `mean`
+        # @return [Float]
+        attr_accessor :mean
+      
+        # The range of the population values.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleApiDistributionRange]
+        attr_accessor :range
+      
+        # The sum of squared deviations from the mean of the values in the population.
+        # For values x_i this is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of
+        # Computer Programming", Vol. 2, page 232, 3rd edition describes Welford's
+        # method for accumulating this sum in one pass. If `count` is zero then this
+        # field must be zero.
+        # Corresponds to the JSON property `sumOfSquaredDeviation`
+        # @return [Float]
+        attr_accessor :sum_of_squared_deviation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_counts = args[:bucket_counts] if args.key?(:bucket_counts)
+          @bucket_options = args[:bucket_options] if args.key?(:bucket_options)
+          @count = args[:count] if args.key?(:count)
+          @exemplars = args[:exemplars] if args.key?(:exemplars)
+          @mean = args[:mean] if args.key?(:mean)
+          @range = args[:range] if args.key?(:range)
+          @sum_of_squared_deviation = args[:sum_of_squared_deviation] if args.key?(:sum_of_squared_deviation)
+        end
+      end
+      
+      # `BucketOptions` describes the bucket boundaries used to create a histogram for
+      # the distribution. The buckets can be in a linear sequence, an exponential
+      # sequence, or each bucket can be specified explicitly. `BucketOptions` does not
+      # include the number of values in each bucket. A bucket has an inclusive lower
+      # bound and exclusive upper bound for the values that are counted for that
+      # bucket. The upper bound of a bucket must be strictly greater than the lower
+      # bound. The sequence of N buckets for a distribution consists of an underflow
+      # bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an
+      # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
+      # bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets
+      # span the whole range of finite values: lower bound of the underflow bucket is -
+      # infinity and the upper bound of the overflow bucket is +infinity. The finite
+      # buckets are so-called because both bounds are finite.
+      class GoogleApiDistributionBucketOptions
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a set of buckets with arbitrary widths. There are `size(bounds) + 1`
+        # (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 <= i <
+        # N-1): bounds[i] Lower bound (1 <= i < N); bounds[i - 1] The `bounds` field
+        # must contain at least one element. If `bounds` has only one element, then
+        # there are no finite buckets, and that single element is the common boundary of
+        # the overflow and underflow buckets.
+        # Corresponds to the JSON property `explicitBuckets`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleApiDistributionBucketOptionsExplicit]
+        attr_accessor :explicit_buckets
+      
+        # Specifies an exponential sequence of buckets that have a width that is
+        # proportional to the value of the lower bound. Each bucket represents a
+        # constant relative uncertainty on a specific value in the bucket. There are `
+        # num_finite_buckets + 2` (= N) buckets. Bucket `i` has the following boundaries:
+        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
+        # N): scale * (growth_factor ^ (i - 1)).
+        # Corresponds to the JSON property `exponentialBuckets`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleApiDistributionBucketOptionsExponential]
+        attr_accessor :exponential_buckets
+      
+        # Specifies a linear sequence of buckets that all have the same width (except
+        # overflow and underflow). Each bucket represents a constant absolute
+        # uncertainty on the specific value in the bucket. There are `num_finite_buckets
+        # + 2` (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 <=
+        # i < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i
+        # - 1)).
+        # Corresponds to the JSON property `linearBuckets`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleApiDistributionBucketOptionsLinear]
+        attr_accessor :linear_buckets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explicit_buckets = args[:explicit_buckets] if args.key?(:explicit_buckets)
+          @exponential_buckets = args[:exponential_buckets] if args.key?(:exponential_buckets)
+          @linear_buckets = args[:linear_buckets] if args.key?(:linear_buckets)
+        end
+      end
+      
+      # Specifies a set of buckets with arbitrary widths. There are `size(bounds) + 1`
+      # (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 <= i <
+      # N-1): bounds[i] Lower bound (1 <= i < N); bounds[i - 1] The `bounds` field
+      # must contain at least one element. If `bounds` has only one element, then
+      # there are no finite buckets, and that single element is the common boundary of
+      # the overflow and underflow buckets.
+      class GoogleApiDistributionBucketOptionsExplicit
+        include Google::Apis::Core::Hashable
+      
+        # The values must be monotonically increasing.
+        # Corresponds to the JSON property `bounds`
+        # @return [Array<Float>]
+        attr_accessor :bounds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounds = args[:bounds] if args.key?(:bounds)
+        end
+      end
+      
+      # Specifies an exponential sequence of buckets that have a width that is
+      # proportional to the value of the lower bound. Each bucket represents a
+      # constant relative uncertainty on a specific value in the bucket. There are `
+      # num_finite_buckets + 2` (= N) buckets. Bucket `i` has the following boundaries:
+      # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
+      # N): scale * (growth_factor ^ (i - 1)).
+      class GoogleApiDistributionBucketOptionsExponential
+        include Google::Apis::Core::Hashable
+      
+        # Must be greater than 1.
+        # Corresponds to the JSON property `growthFactor`
+        # @return [Float]
+        attr_accessor :growth_factor
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `numFiniteBuckets`
+        # @return [Fixnum]
+        attr_accessor :num_finite_buckets
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `scale`
+        # @return [Float]
+        attr_accessor :scale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @growth_factor = args[:growth_factor] if args.key?(:growth_factor)
+          @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
+          @scale = args[:scale] if args.key?(:scale)
+        end
+      end
+      
+      # Specifies a linear sequence of buckets that all have the same width (except
+      # overflow and underflow). Each bucket represents a constant absolute
+      # uncertainty on the specific value in the bucket. There are `num_finite_buckets
+      # + 2` (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 <=
+      # i < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i
+      # - 1)).
+      class GoogleApiDistributionBucketOptionsLinear
+        include Google::Apis::Core::Hashable
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `numFiniteBuckets`
+        # @return [Fixnum]
+        attr_accessor :num_finite_buckets
+      
+        # Lower bound of the first bucket.
+        # Corresponds to the JSON property `offset`
+        # @return [Float]
+        attr_accessor :offset
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `width`
+        # @return [Float]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
+          @offset = args[:offset] if args.key?(:offset)
+          @width = args[:width] if args.key?(:width)
+        end
+      end
+      
+      # Exemplars are example points that may be used to annotate aggregated
+      # distribution values. They are metadata that gives information about a
+      # particular value added to a Distribution bucket, such as a trace ID that was
+      # active when a value was added. They may contain further information, such as a
+      # example values and timestamps, origin, etc.
+      class GoogleApiDistributionExemplar
+        include Google::Apis::Core::Hashable
+      
+        # Contextual information about the example value. Examples are: Trace: type.
+        # googleapis.com/google.monitoring.v3.SpanContext Literal string: type.
+        # googleapis.com/google.protobuf.StringValue Labels dropped during aggregation:
+        # type.googleapis.com/google.monitoring.v3.DroppedLabels There may be only a
+        # single attachment of any given message type in a single exemplar, and this is
+        # enforced by the system.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :attachments
+      
+        # The observation (sampling) time of the above value.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        # Value of the exemplar point. This value determines to which bucket the
+        # exemplar belongs.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The range of the population values.
+      class GoogleApiDistributionRange
+        include Google::Apis::Core::Hashable
+      
+        # The maximum of the population values.
+        # Corresponds to the JSON property `max`
+        # @return [Float]
+        attr_accessor :max
+      
+        # The minimum of the population values.
+        # Corresponds to the JSON property `min`
+        # @return [Float]
+        attr_accessor :min
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
+        end
+      end
+      
       # Message that represents an arbitrary HTTP body. It should only be used for
       # payload formats that can't be represented as JSON, such as raw binary or an
       # HTML page. This message can be used both in streaming and non-streaming API
@@ -67,6 +381,46 @@ module Google
           @content_type = args[:content_type] if args.key?(:content_type)
           @data = args[:data] if args.key?(:data)
           @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
+      # An object representing a resource that can be used for monitoring, logging,
+      # billing, or other purposes. Examples include virtual machine instances,
+      # databases, and storage devices such as disks. The `type` field identifies a
+      # MonitoredResourceDescriptor object that describes the resource's schema.
+      # Information in the `labels` field identifies the actual resource and its
+      # attributes according to the schema. For example, a particular Compute Engine
+      # VM instance could be represented by the following object, because the
+      # MonitoredResourceDescriptor for `"gce_instance"` has labels `"project_id"`, `"
+      # instance_id"` and `"zone"`: ` "type": "gce_instance", "labels": ` "project_id":
+      # "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
+      class GoogleApiMonitoredResource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Values for all of the labels listed in the associated monitored
+        # resource descriptor. For example, Compute Engine VM instances use the labels `"
+        # project_id"`, `"instance_id"`, and `"zone"`.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The monitored resource type. This field must match the `type` field
+        # of a MonitoredResourceDescriptor object. For example, the type of a Compute
+        # Engine VM instance is `gce_instance`. Some descriptors include the service
+        # name in the type; for example, the type of a Datastream stream is `datastream.
+        # googleapis.com/Stream`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -941,6 +1295,11 @@ module Google
       class GoogleCloudDiscoveryengineV1DocumentProcessingConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration for chunking config.
+        # Corresponds to the JSON property `chunkingConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig]
+        attr_accessor :chunking_config
+      
         # Related configurations applied to a specific type of document parser.
         # Corresponds to the JSON property `defaultParsingConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig]
@@ -968,9 +1327,57 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunking_config = args[:chunking_config] if args.key?(:chunking_config)
           @default_parsing_config = args[:default_parsing_config] if args.key?(:default_parsing_config)
           @name = args[:name] if args.key?(:name)
           @parsing_config_overrides = args[:parsing_config_overrides] if args.key?(:parsing_config_overrides)
+        end
+      end
+      
+      # Configuration for chunking config.
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for the layout based chunking.
+        # Corresponds to the JSON property `layoutBasedChunkingConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig]
+        attr_accessor :layout_based_chunking_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @layout_based_chunking_config = args[:layout_based_chunking_config] if args.key?(:layout_based_chunking_config)
+        end
+      end
+      
+      # Configuration for the layout based chunking.
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The token size limit for each chunk. Supported values: 100-500 (inclusive).
+        # Default value: 500.
+        # Corresponds to the JSON property `chunkSize`
+        # @return [Fixnum]
+        attr_accessor :chunk_size
+      
+        # Whether to include appending different levels of headings to chunks from the
+        # middle of the document to prevent context loss. Default value: False.
+        # Corresponds to the JSON property `includeAncestorHeadings`
+        # @return [Boolean]
+        attr_accessor :include_ancestor_headings
+        alias_method :include_ancestor_headings?, :include_ancestor_headings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_size = args[:chunk_size] if args.key?(:chunk_size)
+          @include_ancestor_headings = args[:include_ancestor_headings] if args.key?(:include_ancestor_headings)
         end
       end
       
@@ -982,6 +1389,11 @@ module Google
         # Corresponds to the JSON property `digitalParsingConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig]
         attr_accessor :digital_parsing_config
+      
+        # The layout parsing configurations for documents.
+        # Corresponds to the JSON property `layoutParsingConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig]
+        attr_accessor :layout_parsing_config
       
         # The OCR parsing configurations for documents.
         # Corresponds to the JSON property `ocrParsingConfig`
@@ -995,12 +1407,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @digital_parsing_config = args[:digital_parsing_config] if args.key?(:digital_parsing_config)
+          @layout_parsing_config = args[:layout_parsing_config] if args.key?(:layout_parsing_config)
           @ocr_parsing_config = args[:ocr_parsing_config] if args.key?(:ocr_parsing_config)
         end
       end
       
       # The digital parsing configurations for documents.
       class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The layout parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2043,6 +2469,64 @@ module Google
         end
       end
       
+      # AlloyDB source import data from.
+      class GoogleCloudDiscoveryengineV1alphaAlloyDbSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The AlloyDB cluster to copy the data from with a length limit of 256
+        # characters.
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # Required. The AlloyDB database to copy the data from with a length limit of
+        # 256 characters.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        # Intermediate Cloud Storage directory used for the import with a length limit
+        # of 2,000 characters. Can be specified if one wants to have the AlloyDB export
+        # to a specific Cloud Storage directory. Ensure that the AlloyDB service account
+        # has the necessary Cloud Storage Admin permissions to access the specified
+        # Cloud Storage directory.
+        # Corresponds to the JSON property `gcsStagingDir`
+        # @return [String]
+        attr_accessor :gcs_staging_dir
+      
+        # Required. The AlloyDB location to copy the data from with a length limit of
+        # 256 characters.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        # The project ID that the AlloyDB source is in with a length limit of 128
+        # characters. If not specified, inherits the project ID from the parent request.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The AlloyDB table to copy the data from with a length limit of 256
+        # characters.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @database_id = args[:database_id] if args.key?(:database_id)
+          @gcs_staging_dir = args[:gcs_staging_dir] if args.key?(:gcs_staging_dir)
+          @location_id = args[:location_id] if args.key?(:location_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
       # Defines an answer.
       class GoogleCloudDiscoveryengineV1alphaAnswer
         include Google::Apis::Core::Hashable
@@ -2226,6 +2710,21 @@ module Google
         # @return [String]
         attr_accessor :session
       
+        # The user labels applied to a resource must meet the following requirements: *
+        # Each resource can have multiple labels, up to a maximum of 64. * Each label
+        # must be a key-value pair. * Keys have a minimum length of 1 character and a
+        # maximum length of 63 characters and cannot be empty. Values can be empty and
+        # have a maximum length of 63 characters. * Keys and values can contain only
+        # lowercase letters, numeric characters, underscores, and dashes. All characters
+        # must use UTF-8 encoding, and international characters are allowed. * The key
+        # portion of a label must be unique. However, you can use the same key with
+        # multiple resources. * Keys must start with a lowercase letter or international
+        # character. See [Google Cloud Document](https://cloud.google.com/resource-
+        # manager/docs/creating-managing-labels#requirements) for more details.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
         # A unique identifier for tracking visitors. For example, this could be
         # implemented with an HTTP cookie, which should be able to uniquely identify a
         # visitor on a single device. This unique identifier should not change if the
@@ -2251,6 +2750,7 @@ module Google
           @safety_spec = args[:safety_spec] if args.key?(:safety_spec)
           @search_spec = args[:search_spec] if args.key?(:search_spec)
           @session = args[:session] if args.key?(:session)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
           @user_pseudo_id = args[:user_pseudo_id] if args.key?(:user_pseudo_id)
         end
       end
@@ -3691,6 +4191,134 @@ module Google
         # Update properties of this object
         def update!(**args)
           @citation_threshold = args[:citation_threshold] if args.key?(:citation_threshold)
+        end
+      end
+      
+      # Request for CheckRequirement method.
+      class GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest
+        include Google::Apis::Core::Hashable
+      
+        # A Requirement.type specifying the requirement to check.
+        # Corresponds to the JSON property `requirementType`
+        # @return [String]
+        attr_accessor :requirement_type
+      
+        # The resources to be checked for this requirement.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleApiMonitoredResource>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requirement_type = args[:requirement_type] if args.key?(:requirement_type)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Response for CheckRequirement method.
+      class GoogleCloudDiscoveryengineV1alphaCheckRequirementResponse
+        include Google::Apis::Core::Hashable
+      
+        # Metric results.
+        # Corresponds to the JSON property `metricResults`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCheckRequirementResponseMetricQueryResult>]
+        attr_accessor :metric_results
+      
+        # Timestamp of the oldest calculated metric (i.e. the most stale metric).
+        # Indicates that the `requirement_result` may not accurately reflect any Event
+        # and Product Catalog updates performed after this time.
+        # Corresponds to the JSON property `oldestMetricTimestamp`
+        # @return [String]
+        attr_accessor :oldest_metric_timestamp
+      
+        # A data requirement.
+        # Corresponds to the JSON property `requirement`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRequirement]
+        attr_accessor :requirement
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `requirementCondition`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeExpr]
+        attr_accessor :requirement_condition
+      
+        # Requirement result, e.g. pass or fail.
+        # Corresponds to the JSON property `requirementResult`
+        # @return [String]
+        attr_accessor :requirement_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_results = args[:metric_results] if args.key?(:metric_results)
+          @oldest_metric_timestamp = args[:oldest_metric_timestamp] if args.key?(:oldest_metric_timestamp)
+          @requirement = args[:requirement] if args.key?(:requirement)
+          @requirement_condition = args[:requirement_condition] if args.key?(:requirement_condition)
+          @requirement_result = args[:requirement_result] if args.key?(:requirement_result)
+        end
+      end
+      
+      # Metric result. The metric are in the requirement_condition.
+      class GoogleCloudDiscoveryengineV1alphaCheckRequirementResponseMetricQueryResult
+        include Google::Apis::Core::Hashable
+      
+        # Type identifier of the metric corresponding to this query result.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # This metric query name is mapping to variables in the requirement_condition.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Time corresponding to when this metric value was calculated.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        # The unit in which this metric is reported. Follows [The Unified Code for Units
+        # of Measure](https://unitsofmeasure.org/ucum.html) standard.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        # A single strongly-typed value.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleMonitoringV3TypedValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @name = args[:name] if args.key?(:name)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @unit = args[:unit] if args.key?(:unit)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -6523,6 +7151,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsRequest
         include Google::Apis::Core::Hashable
       
+        # AlloyDB source import data from.
+        # Corresponds to the JSON property `alloyDbSource`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlloyDbSource]
+        attr_accessor :alloy_db_source
+      
         # Whether to automatically generate IDs for the documents if absent. If set to `
         # true`, Document.ids are automatically generated based on the hash of the
         # payload, where IDs may not be consistent during multiple imports. In which
@@ -6620,6 +7253,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alloy_db_source = args[:alloy_db_source] if args.key?(:alloy_db_source)
           @auto_generate_ids = args[:auto_generate_ids] if args.key?(:auto_generate_ids)
           @bigquery_source = args[:bigquery_source] if args.key?(:bigquery_source)
           @bigtable_source = args[:bigtable_source] if args.key?(:bigtable_source)
@@ -8463,6 +9097,201 @@ module Google
         end
       end
       
+      # A data requirement.
+      class GoogleCloudDiscoveryengineV1alphaRequirement
+        include Google::Apis::Core::Hashable
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeExpr]
+        attr_accessor :condition
+      
+        # The description of the requirement.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The name of the requirement.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A list of the metric bindings to be used in `condition`.
+        # Corresponds to the JSON property `metricBindings`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRequirementMetricBinding>]
+        attr_accessor :metric_bindings
+      
+        # A list of threshold bindings to be used in `condition`.
+        # Corresponds to the JSON property `thresholdBindings`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRequirementThresholdBinding>]
+        attr_accessor :threshold_bindings
+      
+        # The requirement type, used as an identifier. Must be unique. The type should
+        # prefix with service name to avoid possible collision. It's encoraged to use
+        # natural hierarchical grouping for similar requirements. Examples: * `library.
+        # googleapis.com/books/min_available_books` * `discoveryengine.googleapis.com/
+        # media_rec/recommended_for_you/conversion_rate`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # A list of the metric bindings to be used in `condition`.
+        # Corresponds to the JSON property `violationSamplesBindings`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRequirementViolationSamplesBinding>]
+        attr_accessor :violation_samples_bindings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @metric_bindings = args[:metric_bindings] if args.key?(:metric_bindings)
+          @threshold_bindings = args[:threshold_bindings] if args.key?(:threshold_bindings)
+          @type = args[:type] if args.key?(:type)
+          @violation_samples_bindings = args[:violation_samples_bindings] if args.key?(:violation_samples_bindings)
+        end
+      end
+      
+      # Specifies a metrics query and bind its result to a variable which will be used
+      # in the `condition`.
+      class GoogleCloudDiscoveryengineV1alphaRequirementMetricBinding
+        include Google::Apis::Core::Hashable
+      
+        # The category of the metric's target resource. Example: "Events"
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Human readable description of the corresponding metric filter.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The filter string used for metrics query. Example: "metric.type = \"
+        # discoveryengine.googleapis.com/events/day_count\" AND " "metric.conditions.
+        # time_range = \"NINETY_DAYS\""
+        # Corresponds to the JSON property `metricFilter`
+        # @return [String]
+        attr_accessor :metric_filter
+      
+        # The resource being monitored for the metric.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # The variable id to be referenced in `condition`.
+        # Corresponds to the JSON property `variableId`
+        # @return [String]
+        attr_accessor :variable_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @description = args[:description] if args.key?(:description)
+          @metric_filter = args[:metric_filter] if args.key?(:metric_filter)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @variable_id = args[:variable_id] if args.key?(:variable_id)
+        end
+      end
+      
+      # Specifies a multi-level threshold to apply to apply to a `metric_bindings` in
+      # the `condition` CEL expression.
+      class GoogleCloudDiscoveryengineV1alphaRequirementThresholdBinding
+        include Google::Apis::Core::Hashable
+      
+        # Threshold to trigger a blocking failure. If not met, the requirement will
+        # evaluate as a `FAILURE`.
+        # Corresponds to the JSON property `blockingThreshold`
+        # @return [Float]
+        attr_accessor :blocking_threshold
+      
+        # Human readable description of the corresponding threshold and sub-requirement.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The variable id to be referenced in `condition`. Must be unique across all `
+        # metric_bindings` and `threshold_bindings`.
+        # Corresponds to the JSON property `variableId`
+        # @return [String]
+        attr_accessor :variable_id
+      
+        # Threshold to trigger a warning. If not met, the requirement will evaluate as a
+        # `WARNING`.
+        # Corresponds to the JSON property `warningThreshold`
+        # @return [Float]
+        attr_accessor :warning_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocking_threshold = args[:blocking_threshold] if args.key?(:blocking_threshold)
+          @description = args[:description] if args.key?(:description)
+          @variable_id = args[:variable_id] if args.key?(:variable_id)
+          @warning_threshold = args[:warning_threshold] if args.key?(:warning_threshold)
+        end
+      end
+      
+      # Specifies a samples query and bind its result to a variable which will be used
+      # in the `condition`.
+      class GoogleCloudDiscoveryengineV1alphaRequirementViolationSamplesBinding
+        include Google::Apis::Core::Hashable
+      
+        # Description of this sample binding. Used by the UI to render user friendly
+        # descriptions for each requirement condition. Should be less than 128
+        # characters long.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The filter string used for samples query. Example: "sample.type = \"retail.
+        # googleapis.com/user_event\" AND " "sample.labels.event_type = \"PURCHASE\" "
+        # Corresponds to the JSON property `sampleFilter`
+        # @return [String]
+        attr_accessor :sample_filter
+      
+        # The variable id to be referenced in `condition`.
+        # Corresponds to the JSON property `variableId`
+        # @return [String]
+        attr_accessor :variable_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @sample_filter = args[:sample_filter] if args.key?(:sample_filter)
+          @variable_id = args[:variable_id] if args.key?(:variable_id)
+        end
+      end
+      
       # Request for resuming training of an engine.
       class GoogleCloudDiscoveryengineV1alphaResumeEngineRequest
         include Google::Apis::Core::Hashable
@@ -8951,8 +9780,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec]
         attr_accessor :extractive_content_spec
       
-        # Specifies the search result mode. If unspecified, the search result mode
-        # defaults to `DOCUMENTS`.
+        # Specifies the search result mode. If unspecified, the search result mode is
+        # based on DataStore.DocumentProcessingConfig.chunking_config: * If DataStore.
+        # DocumentProcessingConfig.chunking_config is specified, it defaults to `CHUNKS`.
+        # * Otherwise, it defaults to `DOCUMENTS`.
         # Corresponds to the JSON property `searchResultMode`
         # @return [String]
         attr_accessor :search_result_mode
@@ -11970,6 +12801,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration for chunking config.
+        # Corresponds to the JSON property `chunkingConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig]
+        attr_accessor :chunking_config
+      
         # Related configurations applied to a specific type of document parser.
         # Corresponds to the JSON property `defaultParsingConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig]
@@ -11997,9 +12833,57 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunking_config = args[:chunking_config] if args.key?(:chunking_config)
           @default_parsing_config = args[:default_parsing_config] if args.key?(:default_parsing_config)
           @name = args[:name] if args.key?(:name)
           @parsing_config_overrides = args[:parsing_config_overrides] if args.key?(:parsing_config_overrides)
+        end
+      end
+      
+      # Configuration for chunking config.
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for the layout based chunking.
+        # Corresponds to the JSON property `layoutBasedChunkingConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig]
+        attr_accessor :layout_based_chunking_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @layout_based_chunking_config = args[:layout_based_chunking_config] if args.key?(:layout_based_chunking_config)
+        end
+      end
+      
+      # Configuration for the layout based chunking.
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The token size limit for each chunk. Supported values: 100-500 (inclusive).
+        # Default value: 500.
+        # Corresponds to the JSON property `chunkSize`
+        # @return [Fixnum]
+        attr_accessor :chunk_size
+      
+        # Whether to include appending different levels of headings to chunks from the
+        # middle of the document to prevent context loss. Default value: False.
+        # Corresponds to the JSON property `includeAncestorHeadings`
+        # @return [Boolean]
+        attr_accessor :include_ancestor_headings
+        alias_method :include_ancestor_headings?, :include_ancestor_headings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_size = args[:chunk_size] if args.key?(:chunk_size)
+          @include_ancestor_headings = args[:include_ancestor_headings] if args.key?(:include_ancestor_headings)
         end
       end
       
@@ -12011,6 +12895,11 @@ module Google
         # Corresponds to the JSON property `digitalParsingConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig]
         attr_accessor :digital_parsing_config
+      
+        # The layout parsing configurations for documents.
+        # Corresponds to the JSON property `layoutParsingConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig]
+        attr_accessor :layout_parsing_config
       
         # The OCR parsing configurations for documents.
         # Corresponds to the JSON property `ocrParsingConfig`
@@ -12024,12 +12913,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @digital_parsing_config = args[:digital_parsing_config] if args.key?(:digital_parsing_config)
+          @layout_parsing_config = args[:layout_parsing_config] if args.key?(:layout_parsing_config)
           @ocr_parsing_config = args[:ocr_parsing_config] if args.key?(:ocr_parsing_config)
         end
       end
       
       # The digital parsing configurations for documents.
       class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The layout parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -13274,6 +14177,61 @@ module Google
         end
       end
       
+      # A single strongly-typed value.
+      class GoogleMonitoringV3TypedValue
+        include Google::Apis::Core::Hashable
+      
+        # A Boolean value: `true` or `false`.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # `Distribution` contains summary statistics for a population of values. It
+        # optionally contains a histogram representing the distribution of those values
+        # across a set of buckets. The summary statistics are the count, mean, sum of
+        # the squared deviation from the mean, the minimum, and the maximum of the set
+        # of population of values. The histogram is based on a sequence of buckets and
+        # gives a count of values that fall into each bucket. The boundaries of the
+        # buckets are given either explicitly or by formulas for buckets of fixed or
+        # exponentially increasing widths. Although it is not forbidden, it is generally
+        # a bad idea to include non-finite values (infinities or NaNs) in the population
+        # of values, as this will render the `mean` and `sum_of_squared_deviation`
+        # fields meaningless.
+        # Corresponds to the JSON property `distributionValue`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleApiDistribution]
+        attr_accessor :distribution_value
+      
+        # A 64-bit double-precision floating-point number. Its magnitude is
+        # approximately ±10±300 and it has 16 significant digits of precision.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # A 64-bit integer. Its range is approximately ±9.2x1018.
+        # Corresponds to the JSON property `int64Value`
+        # @return [Fixnum]
+        attr_accessor :int64_value
+      
+        # A variable-length string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @distribution_value = args[:distribution_value] if args.key?(:distribution_value)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -13367,6 +14325,60 @@ module Google
           @day = args[:day] if args.key?(:day)
           @month = args[:month] if args.key?(:month)
           @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+      # "Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
+      class GoogleTypeExpr
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in Common Expression Language syntax.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
         end
       end
     end
