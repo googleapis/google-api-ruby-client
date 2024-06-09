@@ -4053,6 +4053,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets knowledge assist suggestions based on historical messages.
+        # @param [String] parent
+        #   Required. The name of the participant to fetch suggestions for. Format: `
+        #   projects//locations//conversations//participants/`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistRequest] google_cloud_dialogflow_v2beta1_suggest_knowledge_assist_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def suggest_project_conversation_participant_suggestion_knowledge_assist(parent, google_cloud_dialogflow_v2beta1_suggest_knowledge_assist_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/{+parent}/suggestions:suggestKnowledgeAssist', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_suggest_knowledge_assist_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets smart replies for a participant based on specific historical messages.
         # @param [String] parent
         #   Required. The name of the participant to fetch suggestion for. Format: `
@@ -8250,6 +8284,40 @@ module Google
           command.request_object = google_cloud_dialogflow_v2beta1_suggest_faq_answers_request_object
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets knowledge assist suggestions based on historical messages.
+        # @param [String] parent
+        #   Required. The name of the participant to fetch suggestions for. Format: `
+        #   projects//locations//conversations//participants/`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistRequest] google_cloud_dialogflow_v2beta1_suggest_knowledge_assist_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def suggest_project_location_conversation_participant_suggestion_knowledge_assist(parent, google_cloud_dialogflow_v2beta1_suggest_knowledge_assist_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/{+parent}/suggestions:suggestKnowledgeAssist', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_suggest_knowledge_assist_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
