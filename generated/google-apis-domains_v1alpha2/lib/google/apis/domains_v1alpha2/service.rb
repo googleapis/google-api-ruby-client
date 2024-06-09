@@ -505,6 +505,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Initiates the `Push Transfer` process to transfer the domain to another
+        # registrar. The process might complete instantly or might require confirmation
+        # or additional work. Check the emails sent to the email address of the
+        # registrant. The process is aborted after a timeout if it's not completed. This
+        # method is only supported for domains that have the `REQUIRE_PUSH_TRANSFER`
+        # property in the list of `domain_properties`. The domain must also be unlocked
+        # before it can be transferred to a different registrar. For more information,
+        # see [Transfer a registered domain to another registrar](https://cloud.google.
+        # com/domains/docs/transfer-domain-to-another-registrar).
+        # @param [String] registration
+        #   Required. The name of the `Registration` for which the push transfer is
+        #   initiated, in the format `projects/*/locations/*/registrations/*`.
+        # @param [Google::Apis::DomainsV1alpha2::InitiatePushTransferRequest] initiate_push_transfer_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DomainsV1alpha2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DomainsV1alpha2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def initiate_registration_push_transfer(registration, initiate_push_transfer_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha2/{+registration}:initiatePushTransfer', options)
+          command.request_representation = Google::Apis::DomainsV1alpha2::InitiatePushTransferRequest::Representation
+          command.request_object = initiate_push_transfer_request_object
+          command.response_representation = Google::Apis::DomainsV1alpha2::Operation::Representation
+          command.response_class = Google::Apis::DomainsV1alpha2::Operation
+          command.params['registration'] = registration unless registration.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the `Registration` resources in a project.
         # @param [String] parent
         #   Required. The project and location from which to list `Registration`s,
@@ -641,9 +683,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Renews a recently expired domain. This method can only be called on domains
+        # that expired in the previous 30 days. After the renewal, the new expiration
+        # time of the domain is one year after the old expiration time and you are
+        # charged a `yearly_price` for the renewal.
+        # @param [String] registration
+        #   Required. The name of the `Registration` whish is being renewed, in the format
+        #   `projects/*/locations/*/registrations/*`.
+        # @param [Google::Apis::DomainsV1alpha2::RenewDomainRequest] renew_domain_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DomainsV1alpha2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DomainsV1alpha2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def renew_registration_domain(registration, renew_domain_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha2/{+registration}:renewDomain', options)
+          command.request_representation = Google::Apis::DomainsV1alpha2::RenewDomainRequest::Representation
+          command.request_object = renew_domain_request_object
+          command.response_representation = Google::Apis::DomainsV1alpha2::Operation::Representation
+          command.response_class = Google::Apis::DomainsV1alpha2::Operation
+          command.params['registration'] = registration unless registration.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Resets the authorization code of the `Registration` to a new random string.
         # You can call this method only after 60 days have elapsed since the initial
-        # domain registration.
+        # domain registration. Domains that have the `REQUIRE_PUSH_TRANSFER` property in
+        # the list of `domain_properties` don't support authorization codes and must use
+        # the `InitiatePushTransfer` method to initiate the process to transfer the
+        # domain to a different registrar.
         # @param [String] registration
         #   Required. The name of the `Registration` whose authorization code is being
         #   reset, in the format `projects/*/locations/*/registrations/*`.
@@ -679,7 +761,10 @@ module Google
         
         # Gets the authorization code of the `Registration` for the purpose of
         # transferring the domain to another registrar. You can call this method only
-        # after 60 days have elapsed since the initial domain registration.
+        # after 60 days have elapsed since the initial domain registration. Domains that
+        # have the `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties`
+        # don't support authorization codes and must use the `InitiatePushTransfer`
+        # method to initiate the process to transfer the domain to a different registrar.
         # @param [String] registration
         #   Required. The name of the `Registration` whose authorization code is being
         #   retrieved, in the format `projects/*/locations/*/registrations/*`.
@@ -704,6 +789,43 @@ module Google
           command = make_simple_command(:get, 'v1alpha2/{+registration}:retrieveAuthorizationCode', options)
           command.response_representation = Google::Apis::DomainsV1alpha2::AuthorizationCode::Representation
           command.response_class = Google::Apis::DomainsV1alpha2::AuthorizationCode
+          command.params['registration'] = registration unless registration.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the deprecated domain and email forwarding configurations you set up in
+        # the deprecated Google Domains UI. The configuration is present only for
+        # domains with the `google_domains_redirects_data_available` set to `true` in
+        # the `Registration`'s `dns_settings`. A forwarding configuration might not work
+        # correctly if required DNS records are not present in the domain's
+        # authoritative DNS Zone.
+        # @param [String] registration
+        #   Required. The name of the `Registration` whose Google Domains forwarding
+        #   configuration details are being retrieved, in the format `projects/*/locations/
+        #   */registrations/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DomainsV1alpha2::RetrieveGoogleDomainsForwardingConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DomainsV1alpha2::RetrieveGoogleDomainsForwardingConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_project_location_registration_google_domains_forwarding_config(registration, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha2/{+registration}:retrieveGoogleDomainsForwardingConfig', options)
+          command.response_representation = Google::Apis::DomainsV1alpha2::RetrieveGoogleDomainsForwardingConfigResponse::Representation
+          command.response_class = Google::Apis::DomainsV1alpha2::RetrieveGoogleDomainsForwardingConfigResponse
           command.params['registration'] = registration unless registration.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
