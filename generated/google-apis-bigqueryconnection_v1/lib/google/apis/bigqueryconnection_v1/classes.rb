@@ -619,7 +619,7 @@ module Google
       class ConnectorConfigurationAsset
         include Google::Apis::Core::Hashable
       
-        # Optional. Name of the database.
+        # Name of the database.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -646,6 +646,14 @@ module Google
       class ConnectorConfigurationAuthentication
         include Google::Apis::Core::Hashable
       
+        # Output only. Google-managed service account associated with this connection, e.
+        # g., `service-`project_number`@gcp-sa-bigqueryconnection.iam.gserviceaccount.
+        # com`. BigQuery jobs using this connection will act as `service_account`
+        # identity while connecting to the datasource.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Username and Password authentication.
         # Corresponds to the JSON property `usernamePassword`
         # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationUsernamePassword]
@@ -657,6 +665,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @username_password = args[:username_password] if args.key?(:username_password)
         end
       end
