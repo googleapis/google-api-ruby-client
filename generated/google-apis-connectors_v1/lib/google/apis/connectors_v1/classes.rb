@@ -474,6 +474,11 @@ module Google
         # @return [String]
         attr_accessor :location_type
       
+        # MultipleSelectConfig represents the multiple options for a config variable.
+        # Corresponds to the JSON property `multipleSelectConfig`
+        # @return [Google::Apis::ConnectorsV1::MultipleSelectConfig]
+        attr_accessor :multiple_select_config
+      
         # Flag represents that this `ConfigVariable` must be provided for a connection.
         # Corresponds to the JSON property `required`
         # @return [Boolean]
@@ -525,6 +530,7 @@ module Google
           @is_advanced = args[:is_advanced] if args.key?(:is_advanced)
           @key = args[:key] if args.key?(:key)
           @location_type = args[:location_type] if args.key?(:location_type)
+          @multiple_select_config = args[:multiple_select_config] if args.key?(:multiple_select_config)
           @required = args[:required] if args.key?(:required)
           @required_condition = args[:required_condition] if args.key?(:required_condition)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
@@ -3811,6 +3817,76 @@ module Google
           @target_project = args[:target_project] if args.key?(:target_project)
           @target_vpc = args[:target_vpc] if args.key?(:target_vpc)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # MultipleSelectConfig represents the multiple options for a config variable.
+      class MultipleSelectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Allow custom values.
+        # Corresponds to the JSON property `allowCustomValues`
+        # @return [Boolean]
+        attr_accessor :allow_custom_values
+        alias_method :allow_custom_values?, :allow_custom_values
+      
+        # Required. Multiple select options.
+        # Corresponds to the JSON property `multipleSelectOptions`
+        # @return [Array<Google::Apis::ConnectorsV1::MultipleSelectOption>]
+        attr_accessor :multiple_select_options
+      
+        # Required. Value separator.
+        # Corresponds to the JSON property `valueSeparator`
+        # @return [String]
+        attr_accessor :value_separator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_custom_values = args[:allow_custom_values] if args.key?(:allow_custom_values)
+          @multiple_select_options = args[:multiple_select_options] if args.key?(:multiple_select_options)
+          @value_separator = args[:value_separator] if args.key?(:value_separator)
+        end
+      end
+      
+      # MultiplSelecteOption represents the single option for a config variable.
+      class MultipleSelectOption
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Value of the option.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Display name of the option.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Key of the option.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Indicates if the option is preselected.
+        # Corresponds to the JSON property `preselected`
+        # @return [Boolean]
+        attr_accessor :preselected
+        alias_method :preselected?, :preselected
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @key = args[:key] if args.key?(:key)
+          @preselected = args[:preselected] if args.key?(:preselected)
         end
       end
       

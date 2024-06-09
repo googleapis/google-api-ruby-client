@@ -514,6 +514,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultipleSelectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultipleSelectOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -917,6 +929,8 @@ module Google
           property :is_advanced, as: 'isAdvanced'
           property :key, as: 'key'
           property :location_type, as: 'locationType'
+          property :multiple_select_config, as: 'multipleSelectConfig', class: Google::Apis::ConnectorsV1::MultipleSelectConfig, decorator: Google::Apis::ConnectorsV1::MultipleSelectConfig::Representation
+      
           property :required, as: 'required'
           property :required_condition, as: 'requiredCondition', class: Google::Apis::ConnectorsV1::LogicalExpression, decorator: Google::Apis::ConnectorsV1::LogicalExpression::Representation
       
@@ -1800,6 +1814,26 @@ module Google
           property :target_project, as: 'targetProject'
           property :target_vpc, as: 'targetVpc'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MultipleSelectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_custom_values, as: 'allowCustomValues'
+          collection :multiple_select_options, as: 'multipleSelectOptions', class: Google::Apis::ConnectorsV1::MultipleSelectOption, decorator: Google::Apis::ConnectorsV1::MultipleSelectOption::Representation
+      
+          property :value_separator, as: 'valueSeparator'
+        end
+      end
+      
+      class MultipleSelectOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :key, as: 'key'
+          property :preselected, as: 'preselected'
         end
       end
       
