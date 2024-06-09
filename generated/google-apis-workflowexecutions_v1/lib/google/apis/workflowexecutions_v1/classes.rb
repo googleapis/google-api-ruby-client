@@ -700,6 +700,12 @@ module Google
       class StepEntryMetadata
         include Google::Apis::Core::Hashable
       
+        # Expected iteration represents the expected number of iterations in the step's
+        # progress.
+        # Corresponds to the JSON property `expectedIteration`
+        # @return [Fixnum]
+        attr_accessor :expected_iteration
+      
         # Progress number represents the current state of the current progress. eg: A
         # step entry represents the 4th iteration in a progress of PROGRESS_TYPE_FOR.
         # Corresponds to the JSON property `progressNumber`
@@ -722,6 +728,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @expected_iteration = args[:expected_iteration] if args.key?(:expected_iteration)
           @progress_number = args[:progress_number] if args.key?(:progress_number)
           @progress_type = args[:progress_type] if args.key?(:progress_type)
           @thread_id = args[:thread_id] if args.key?(:thread_id)
