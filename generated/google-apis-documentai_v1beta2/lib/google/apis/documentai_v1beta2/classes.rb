@@ -2065,6 +2065,11 @@ module Google
       class GoogleCloudDocumentaiV1beta1Document
         include Google::Apis::Core::Hashable
       
+        # Represents the chunks that the document is divided into.
+        # Corresponds to the JSON property `chunkedDocument`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentChunkedDocument]
+        attr_accessor :chunked_document
+      
         # Optional. Inline document content, represented as a stream of bytes. Note: As
         # with all `bytes` fields, protobuffers use a pure binary representation,
         # whereas JSON representations use base64.
@@ -2072,6 +2077,12 @@ module Google
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :content
+      
+        # Represents the parsed layout of a document as a collection of blocks that the
+        # document is divided into.
+        # Corresponds to the JSON property `documentLayout`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayout]
+        attr_accessor :document_layout
       
         # A list of entities detected on Document.text. For document shards, entities in
         # this list may cross shard boundaries.
@@ -2147,7 +2158,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunked_document = args[:chunked_document] if args.key?(:chunked_document)
           @content = args[:content] if args.key?(:content)
+          @document_layout = args[:document_layout] if args.key?(:document_layout)
           @entities = args[:entities] if args.key?(:entities)
           @entity_relations = args[:entity_relations] if args.key?(:entity_relations)
           @error = args[:error] if args.key?(:error)
@@ -2159,6 +2172,400 @@ module Google
           @text_changes = args[:text_changes] if args.key?(:text_changes)
           @text_styles = args[:text_styles] if args.key?(:text_styles)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Represents the chunks that the document is divided into.
+      class GoogleCloudDocumentaiV1beta1DocumentChunkedDocument
+        include Google::Apis::Core::Hashable
+      
+        # List of chunks.
+        # Corresponds to the JSON property `chunks`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunk>]
+        attr_accessor :chunks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunks = args[:chunks] if args.key?(:chunks)
+        end
+      end
+      
+      # Represents a chunk.
+      class GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunk
+        include Google::Apis::Core::Hashable
+      
+        # ID of the chunk.
+        # Corresponds to the JSON property `chunkId`
+        # @return [String]
+        attr_accessor :chunk_id
+      
+        # Text content of the chunk.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Page footers associated with the chunk.
+        # Corresponds to the JSON property `pageFooters`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageFooter>]
+        attr_accessor :page_footers
+      
+        # Page headers associated with the chunk.
+        # Corresponds to the JSON property `pageHeaders`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageHeader>]
+        attr_accessor :page_headers
+      
+        # Represents where the chunk starts and ends in the document.
+        # Corresponds to the JSON property `pageSpan`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageSpan]
+        attr_accessor :page_span
+      
+        # Unused.
+        # Corresponds to the JSON property `sourceBlockIds`
+        # @return [Array<String>]
+        attr_accessor :source_block_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_id = args[:chunk_id] if args.key?(:chunk_id)
+          @content = args[:content] if args.key?(:content)
+          @page_footers = args[:page_footers] if args.key?(:page_footers)
+          @page_headers = args[:page_headers] if args.key?(:page_headers)
+          @page_span = args[:page_span] if args.key?(:page_span)
+          @source_block_ids = args[:source_block_ids] if args.key?(:source_block_ids)
+        end
+      end
+      
+      # Represents the page footer associated with the chunk.
+      class GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageFooter
+        include Google::Apis::Core::Hashable
+      
+        # Represents where the chunk starts and ends in the document.
+        # Corresponds to the JSON property `pageSpan`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageSpan]
+        attr_accessor :page_span
+      
+        # Footer in text format.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_span = args[:page_span] if args.key?(:page_span)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents the page header associated with the chunk.
+      class GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageHeader
+        include Google::Apis::Core::Hashable
+      
+        # Represents where the chunk starts and ends in the document.
+        # Corresponds to the JSON property `pageSpan`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageSpan]
+        attr_accessor :page_span
+      
+        # Header in text format.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_span = args[:page_span] if args.key?(:page_span)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents where the chunk starts and ends in the document.
+      class GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageSpan
+        include Google::Apis::Core::Hashable
+      
+        # Page where chunk ends in the document.
+        # Corresponds to the JSON property `pageEnd`
+        # @return [Fixnum]
+        attr_accessor :page_end
+      
+        # Page where chunk starts in the document.
+        # Corresponds to the JSON property `pageStart`
+        # @return [Fixnum]
+        attr_accessor :page_start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_end = args[:page_end] if args.key?(:page_end)
+          @page_start = args[:page_start] if args.key?(:page_start)
+        end
+      end
+      
+      # Represents the parsed layout of a document as a collection of blocks that the
+      # document is divided into.
+      class GoogleCloudDocumentaiV1beta1DocumentDocumentLayout
+        include Google::Apis::Core::Hashable
+      
+        # List of blocks in the document.
+        # Corresponds to the JSON property `blocks`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlock>]
+        attr_accessor :blocks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocks = args[:blocks] if args.key?(:blocks)
+        end
+      end
+      
+      # Represents a block. A block could be one of the various types (text, table,
+      # list) supported.
+      class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlock
+        include Google::Apis::Core::Hashable
+      
+        # ID of the block.
+        # Corresponds to the JSON property `blockId`
+        # @return [String]
+        attr_accessor :block_id
+      
+        # Represents a list type block.
+        # Corresponds to the JSON property `listBlock`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock]
+        attr_accessor :list_block
+      
+        # Represents where the block starts and ends in the document.
+        # Corresponds to the JSON property `pageSpan`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan]
+        attr_accessor :page_span
+      
+        # Represents a table type block.
+        # Corresponds to the JSON property `tableBlock`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock]
+        attr_accessor :table_block
+      
+        # Represents a text type block.
+        # Corresponds to the JSON property `textBlock`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock]
+        attr_accessor :text_block
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block_id = args[:block_id] if args.key?(:block_id)
+          @list_block = args[:list_block] if args.key?(:list_block)
+          @page_span = args[:page_span] if args.key?(:page_span)
+          @table_block = args[:table_block] if args.key?(:table_block)
+          @text_block = args[:text_block] if args.key?(:text_block)
+        end
+      end
+      
+      # Represents a list type block.
+      class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock
+        include Google::Apis::Core::Hashable
+      
+        # List entries that constitute a list block.
+        # Corresponds to the JSON property `listEntries`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry>]
+        attr_accessor :list_entries
+      
+        # Type of the list_entries (if exist). Available options are `ordered` and `
+        # unordered`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @list_entries = args[:list_entries] if args.key?(:list_entries)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents an entry in the list.
+      class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry
+        include Google::Apis::Core::Hashable
+      
+        # A list entry is a list of blocks. Repeated blocks support further hierarchies
+        # and nested blocks.
+        # Corresponds to the JSON property `blocks`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlock>]
+        attr_accessor :blocks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocks = args[:blocks] if args.key?(:blocks)
+        end
+      end
+      
+      # Represents where the block starts and ends in the document.
+      class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan
+        include Google::Apis::Core::Hashable
+      
+        # Page where block ends in the document.
+        # Corresponds to the JSON property `pageEnd`
+        # @return [Fixnum]
+        attr_accessor :page_end
+      
+        # Page where block starts in the document.
+        # Corresponds to the JSON property `pageStart`
+        # @return [Fixnum]
+        attr_accessor :page_start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_end = args[:page_end] if args.key?(:page_end)
+          @page_start = args[:page_start] if args.key?(:page_start)
+        end
+      end
+      
+      # Represents a table type block.
+      class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock
+        include Google::Apis::Core::Hashable
+      
+        # Body rows containing main table content.
+        # Corresponds to the JSON property `bodyRows`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>]
+        attr_accessor :body_rows
+      
+        # Table caption/title.
+        # Corresponds to the JSON property `caption`
+        # @return [String]
+        attr_accessor :caption
+      
+        # Header rows at the top of the table.
+        # Corresponds to the JSON property `headerRows`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>]
+        attr_accessor :header_rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body_rows = args[:body_rows] if args.key?(:body_rows)
+          @caption = args[:caption] if args.key?(:caption)
+          @header_rows = args[:header_rows] if args.key?(:header_rows)
+        end
+      end
+      
+      # Represents a cell in a table row.
+      class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell
+        include Google::Apis::Core::Hashable
+      
+        # A table cell is a list of blocks. Repeated blocks support further hierarchies
+        # and nested blocks.
+        # Corresponds to the JSON property `blocks`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlock>]
+        attr_accessor :blocks
+      
+        # How many columns this cell spans.
+        # Corresponds to the JSON property `colSpan`
+        # @return [Fixnum]
+        attr_accessor :col_span
+      
+        # How many rows this cell spans.
+        # Corresponds to the JSON property `rowSpan`
+        # @return [Fixnum]
+        attr_accessor :row_span
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocks = args[:blocks] if args.key?(:blocks)
+          @col_span = args[:col_span] if args.key?(:col_span)
+          @row_span = args[:row_span] if args.key?(:row_span)
+        end
+      end
+      
+      # Represents a row in a table.
+      class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow
+        include Google::Apis::Core::Hashable
+      
+        # A table row is a list of table cells.
+        # Corresponds to the JSON property `cells`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell>]
+        attr_accessor :cells
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cells = args[:cells] if args.key?(:cells)
+        end
+      end
+      
+      # Represents a text type block.
+      class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock
+        include Google::Apis::Core::Hashable
+      
+        # A text block could further have child blocks. Repeated blocks support further
+        # hierarchies and nested blocks.
+        # Corresponds to the JSON property `blocks`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlock>]
+        attr_accessor :blocks
+      
+        # Text content stored in the block.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Type of the text in the block. Available options are: `paragraph`, `subtitle`,
+        # `heading-1`, `heading-2`, `heading-3`, `heading-4`, `heading-5`, `header`, `
+        # footer`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocks = args[:blocks] if args.key?(:blocks)
+          @text = args[:text] if args.key?(:text)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -4211,6 +4618,11 @@ module Google
       class GoogleCloudDocumentaiV1beta2Document
         include Google::Apis::Core::Hashable
       
+        # Represents the chunks that the document is divided into.
+        # Corresponds to the JSON property `chunkedDocument`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentChunkedDocument]
+        attr_accessor :chunked_document
+      
         # Optional. Inline document content, represented as a stream of bytes. Note: As
         # with all `bytes` fields, protobuffers use a pure binary representation,
         # whereas JSON representations use base64.
@@ -4218,6 +4630,12 @@ module Google
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :content
+      
+        # Represents the parsed layout of a document as a collection of blocks that the
+        # document is divided into.
+        # Corresponds to the JSON property `documentLayout`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayout]
+        attr_accessor :document_layout
       
         # A list of entities detected on Document.text. For document shards, entities in
         # this list may cross shard boundaries.
@@ -4298,7 +4716,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunked_document = args[:chunked_document] if args.key?(:chunked_document)
           @content = args[:content] if args.key?(:content)
+          @document_layout = args[:document_layout] if args.key?(:document_layout)
           @entities = args[:entities] if args.key?(:entities)
           @entity_relations = args[:entity_relations] if args.key?(:entity_relations)
           @error = args[:error] if args.key?(:error)
@@ -4311,6 +4731,400 @@ module Google
           @text_changes = args[:text_changes] if args.key?(:text_changes)
           @text_styles = args[:text_styles] if args.key?(:text_styles)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Represents the chunks that the document is divided into.
+      class GoogleCloudDocumentaiV1beta2DocumentChunkedDocument
+        include Google::Apis::Core::Hashable
+      
+        # List of chunks.
+        # Corresponds to the JSON property `chunks`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunk>]
+        attr_accessor :chunks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunks = args[:chunks] if args.key?(:chunks)
+        end
+      end
+      
+      # Represents a chunk.
+      class GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunk
+        include Google::Apis::Core::Hashable
+      
+        # ID of the chunk.
+        # Corresponds to the JSON property `chunkId`
+        # @return [String]
+        attr_accessor :chunk_id
+      
+        # Text content of the chunk.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Page footers associated with the chunk.
+        # Corresponds to the JSON property `pageFooters`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageFooter>]
+        attr_accessor :page_footers
+      
+        # Page headers associated with the chunk.
+        # Corresponds to the JSON property `pageHeaders`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageHeader>]
+        attr_accessor :page_headers
+      
+        # Represents where the chunk starts and ends in the document.
+        # Corresponds to the JSON property `pageSpan`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageSpan]
+        attr_accessor :page_span
+      
+        # Unused.
+        # Corresponds to the JSON property `sourceBlockIds`
+        # @return [Array<String>]
+        attr_accessor :source_block_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_id = args[:chunk_id] if args.key?(:chunk_id)
+          @content = args[:content] if args.key?(:content)
+          @page_footers = args[:page_footers] if args.key?(:page_footers)
+          @page_headers = args[:page_headers] if args.key?(:page_headers)
+          @page_span = args[:page_span] if args.key?(:page_span)
+          @source_block_ids = args[:source_block_ids] if args.key?(:source_block_ids)
+        end
+      end
+      
+      # Represents the page footer associated with the chunk.
+      class GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageFooter
+        include Google::Apis::Core::Hashable
+      
+        # Represents where the chunk starts and ends in the document.
+        # Corresponds to the JSON property `pageSpan`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageSpan]
+        attr_accessor :page_span
+      
+        # Footer in text format.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_span = args[:page_span] if args.key?(:page_span)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents the page header associated with the chunk.
+      class GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageHeader
+        include Google::Apis::Core::Hashable
+      
+        # Represents where the chunk starts and ends in the document.
+        # Corresponds to the JSON property `pageSpan`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageSpan]
+        attr_accessor :page_span
+      
+        # Header in text format.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_span = args[:page_span] if args.key?(:page_span)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents where the chunk starts and ends in the document.
+      class GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageSpan
+        include Google::Apis::Core::Hashable
+      
+        # Page where chunk ends in the document.
+        # Corresponds to the JSON property `pageEnd`
+        # @return [Fixnum]
+        attr_accessor :page_end
+      
+        # Page where chunk starts in the document.
+        # Corresponds to the JSON property `pageStart`
+        # @return [Fixnum]
+        attr_accessor :page_start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_end = args[:page_end] if args.key?(:page_end)
+          @page_start = args[:page_start] if args.key?(:page_start)
+        end
+      end
+      
+      # Represents the parsed layout of a document as a collection of blocks that the
+      # document is divided into.
+      class GoogleCloudDocumentaiV1beta2DocumentDocumentLayout
+        include Google::Apis::Core::Hashable
+      
+        # List of blocks in the document.
+        # Corresponds to the JSON property `blocks`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlock>]
+        attr_accessor :blocks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocks = args[:blocks] if args.key?(:blocks)
+        end
+      end
+      
+      # Represents a block. A block could be one of the various types (text, table,
+      # list) supported.
+      class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlock
+        include Google::Apis::Core::Hashable
+      
+        # ID of the block.
+        # Corresponds to the JSON property `blockId`
+        # @return [String]
+        attr_accessor :block_id
+      
+        # Represents a list type block.
+        # Corresponds to the JSON property `listBlock`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock]
+        attr_accessor :list_block
+      
+        # Represents where the block starts and ends in the document.
+        # Corresponds to the JSON property `pageSpan`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan]
+        attr_accessor :page_span
+      
+        # Represents a table type block.
+        # Corresponds to the JSON property `tableBlock`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock]
+        attr_accessor :table_block
+      
+        # Represents a text type block.
+        # Corresponds to the JSON property `textBlock`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock]
+        attr_accessor :text_block
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block_id = args[:block_id] if args.key?(:block_id)
+          @list_block = args[:list_block] if args.key?(:list_block)
+          @page_span = args[:page_span] if args.key?(:page_span)
+          @table_block = args[:table_block] if args.key?(:table_block)
+          @text_block = args[:text_block] if args.key?(:text_block)
+        end
+      end
+      
+      # Represents a list type block.
+      class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock
+        include Google::Apis::Core::Hashable
+      
+        # List entries that constitute a list block.
+        # Corresponds to the JSON property `listEntries`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry>]
+        attr_accessor :list_entries
+      
+        # Type of the list_entries (if exist). Available options are `ordered` and `
+        # unordered`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @list_entries = args[:list_entries] if args.key?(:list_entries)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents an entry in the list.
+      class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry
+        include Google::Apis::Core::Hashable
+      
+        # A list entry is a list of blocks. Repeated blocks support further hierarchies
+        # and nested blocks.
+        # Corresponds to the JSON property `blocks`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlock>]
+        attr_accessor :blocks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocks = args[:blocks] if args.key?(:blocks)
+        end
+      end
+      
+      # Represents where the block starts and ends in the document.
+      class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan
+        include Google::Apis::Core::Hashable
+      
+        # Page where block ends in the document.
+        # Corresponds to the JSON property `pageEnd`
+        # @return [Fixnum]
+        attr_accessor :page_end
+      
+        # Page where block starts in the document.
+        # Corresponds to the JSON property `pageStart`
+        # @return [Fixnum]
+        attr_accessor :page_start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_end = args[:page_end] if args.key?(:page_end)
+          @page_start = args[:page_start] if args.key?(:page_start)
+        end
+      end
+      
+      # Represents a table type block.
+      class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock
+        include Google::Apis::Core::Hashable
+      
+        # Body rows containing main table content.
+        # Corresponds to the JSON property `bodyRows`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>]
+        attr_accessor :body_rows
+      
+        # Table caption/title.
+        # Corresponds to the JSON property `caption`
+        # @return [String]
+        attr_accessor :caption
+      
+        # Header rows at the top of the table.
+        # Corresponds to the JSON property `headerRows`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>]
+        attr_accessor :header_rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body_rows = args[:body_rows] if args.key?(:body_rows)
+          @caption = args[:caption] if args.key?(:caption)
+          @header_rows = args[:header_rows] if args.key?(:header_rows)
+        end
+      end
+      
+      # Represents a cell in a table row.
+      class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell
+        include Google::Apis::Core::Hashable
+      
+        # A table cell is a list of blocks. Repeated blocks support further hierarchies
+        # and nested blocks.
+        # Corresponds to the JSON property `blocks`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlock>]
+        attr_accessor :blocks
+      
+        # How many columns this cell spans.
+        # Corresponds to the JSON property `colSpan`
+        # @return [Fixnum]
+        attr_accessor :col_span
+      
+        # How many rows this cell spans.
+        # Corresponds to the JSON property `rowSpan`
+        # @return [Fixnum]
+        attr_accessor :row_span
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocks = args[:blocks] if args.key?(:blocks)
+          @col_span = args[:col_span] if args.key?(:col_span)
+          @row_span = args[:row_span] if args.key?(:row_span)
+        end
+      end
+      
+      # Represents a row in a table.
+      class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow
+        include Google::Apis::Core::Hashable
+      
+        # A table row is a list of table cells.
+        # Corresponds to the JSON property `cells`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell>]
+        attr_accessor :cells
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cells = args[:cells] if args.key?(:cells)
+        end
+      end
+      
+      # Represents a text type block.
+      class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock
+        include Google::Apis::Core::Hashable
+      
+        # A text block could further have child blocks. Repeated blocks support further
+        # hierarchies and nested blocks.
+        # Corresponds to the JSON property `blocks`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlock>]
+        attr_accessor :blocks
+      
+        # Text content stored in the block.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Type of the text in the block. Available options are: `paragraph`, `subtitle`,
+        # `heading-1`, `heading-2`, `heading-3`, `heading-4`, `heading-5`, `header`, `
+        # footer`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocks = args[:blocks] if args.key?(:blocks)
+          @text = args[:text] if args.key?(:text)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -6784,6 +7598,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Configuration specific to spanner-based indexing.
         # Corresponds to the JSON property `spannerIndexingConfig`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig]
@@ -6808,6 +7634,8 @@ module Google
           @document_warehouse_config = args[:document_warehouse_config] if args.key?(:document_warehouse_config)
           @gcs_managed_config = args[:gcs_managed_config] if args.key?(:gcs_managed_config)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @spanner_indexing_config = args[:spanner_indexing_config] if args.key?(:spanner_indexing_config)
           @state = args[:state] if args.key?(:state)
           @unmanaged_dataset_config = args[:unmanaged_dataset_config] if args.key?(:unmanaged_dataset_config)
