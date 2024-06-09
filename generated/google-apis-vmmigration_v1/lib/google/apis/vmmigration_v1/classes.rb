@@ -178,17 +178,17 @@ module Google
       class AwsDiskDetails
         include Google::Apis::Core::Hashable
       
-        # The ordinal number of the disk.
+        # Output only. The ordinal number of the disk.
         # Corresponds to the JSON property `diskNumber`
         # @return [Fixnum]
         attr_accessor :disk_number
       
-        # Size in GB.
+        # Output only. Size in GB.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
       
-        # AWS volume ID.
+        # Output only. AWS volume ID.
         # Corresponds to the JSON property `volumeId`
         # @return [String]
         attr_accessor :volume_id
@@ -304,17 +304,17 @@ module Google
       class AwsSourceVmDetails
         include Google::Apis::Core::Hashable
       
-        # The total size of the disks being migrated in bytes.
+        # Output only. The total size of the disks being migrated in bytes.
         # Corresponds to the JSON property `committedStorageBytes`
         # @return [Fixnum]
         attr_accessor :committed_storage_bytes
       
-        # The disks attached to the source VM.
+        # Output only. The disks attached to the source VM.
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::VmmigrationV1::AwsDiskDetails>]
         attr_accessor :disks
       
-        # The firmware type of the source VM.
+        # Output only. The firmware type of the source VM.
         # Corresponds to the JSON property `firmware`
         # @return [String]
         attr_accessor :firmware
@@ -482,17 +482,17 @@ module Google
       class AzureDiskDetails
         include Google::Apis::Core::Hashable
       
-        # Azure disk ID.
+        # Output only. Azure disk ID.
         # Corresponds to the JSON property `diskId`
         # @return [String]
         attr_accessor :disk_id
       
-        # The ordinal number of the disk.
+        # Output only. The ordinal number of the disk.
         # Corresponds to the JSON property `diskNumber`
         # @return [Fixnum]
         attr_accessor :disk_number
       
-        # Size in GB.
+        # Output only. Size in GB.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -579,17 +579,17 @@ module Google
       class AzureSourceVmDetails
         include Google::Apis::Core::Hashable
       
-        # The total size of the disks being migrated in bytes.
+        # Output only. The total size of the disks being migrated in bytes.
         # Corresponds to the JSON property `committedStorageBytes`
         # @return [Fixnum]
         attr_accessor :committed_storage_bytes
       
-        # The disks attached to the source VM.
+        # Output only. The disks attached to the source VM.
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::VmmigrationV1::AzureDiskDetails>]
         attr_accessor :disks
       
-        # The firmware type of the source VM.
+        # Output only. The firmware type of the source VM.
         # Corresponds to the JSON property `firmware`
         # @return [String]
         attr_accessor :firmware
@@ -3127,7 +3127,8 @@ module Google
         # @return [String]
         attr_accessor :code
       
-        # URL(s) pointing to additional information on handling the current warning.
+        # Output only. URL(s) pointing to additional information on handling the current
+        # warning.
         # Corresponds to the JSON property `helpLinks`
         # @return [Array<Google::Apis::VmmigrationV1::Link>]
         attr_accessor :help_links
@@ -3161,13 +3162,13 @@ module Google
       class NetworkInterface
         include Google::Apis::Core::Hashable
       
-        # The external IP to define in the NIC.
+        # Optional. The external IP to define in the NIC.
         # Corresponds to the JSON property `externalIp`
         # @return [String]
         attr_accessor :external_ip
       
-        # The internal IP to define in the NIC. The formats accepted are: `ephemeral` \
-        # ipv4 address \ a named address resource full path.
+        # Optional. The internal IP to define in the NIC. The formats accepted are: `
+        # ephemeral` \ ipv4 address \ a named address resource full path.
         # Corresponds to the JSON property `internalIp`
         # @return [String]
         attr_accessor :internal_ip
@@ -3867,12 +3868,12 @@ module Google
       class Tag
         include Google::Apis::Core::Hashable
       
-        # Key of tag.
+        # Required. Key of tag.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # Value of tag.
+        # Required. Value of tag.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -4243,17 +4244,17 @@ module Google
       class VmwareDiskDetails
         include Google::Apis::Core::Hashable
       
-        # The ordinal number of the disk.
+        # Output only. The ordinal number of the disk.
         # Corresponds to the JSON property `diskNumber`
         # @return [Fixnum]
         attr_accessor :disk_number
       
-        # The disk label.
+        # Output only. The disk label.
         # Corresponds to the JSON property `label`
         # @return [String]
         attr_accessor :label
       
-        # Size in GB.
+        # Output only. Size in GB.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -4319,17 +4320,17 @@ module Google
       class VmwareSourceVmDetails
         include Google::Apis::Core::Hashable
       
-        # The total size of the disks being migrated in bytes.
+        # Output only. The total size of the disks being migrated in bytes.
         # Corresponds to the JSON property `committedStorageBytes`
         # @return [Fixnum]
         attr_accessor :committed_storage_bytes
       
-        # The disks attached to the source VM.
+        # Output only. The disks attached to the source VM.
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::VmmigrationV1::VmwareDiskDetails>]
         attr_accessor :disks
       
-        # The firmware type of the source VM.
+        # Output only. The firmware type of the source VM.
         # Corresponds to the JSON property `firmware`
         # @return [String]
         attr_accessor :firmware
