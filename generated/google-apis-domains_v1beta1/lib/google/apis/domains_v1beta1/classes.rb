@@ -509,6 +509,61 @@ module Google
         end
       end
       
+      # Domain forwarding configuration.
+      class DomainForwarding
+        include Google::Apis::Core::Hashable
+      
+        # If true, forwards the path after the domain name to the same path at the new
+        # address.
+        # Corresponds to the JSON property `pathForwarding`
+        # @return [Boolean]
+        attr_accessor :path_forwarding
+        alias_method :path_forwarding?, :path_forwarding
+      
+        # The PEM-encoded certificate chain.
+        # Corresponds to the JSON property `pemCertificate`
+        # @return [String]
+        attr_accessor :pem_certificate
+      
+        # The redirect type.
+        # Corresponds to the JSON property `redirectType`
+        # @return [String]
+        attr_accessor :redirect_type
+      
+        # If true, the forwarding works also over HTTPS.
+        # Corresponds to the JSON property `sslEnabled`
+        # @return [Boolean]
+        attr_accessor :ssl_enabled
+        alias_method :ssl_enabled?, :ssl_enabled
+      
+        # The subdomain of the registered domain that is being forwarded. E.g. `www.
+        # example.com`, `example.com` (i.e. the registered domain itself) or `*.example.
+        # com` (i.e. all subdomains).
+        # Corresponds to the JSON property `subdomain`
+        # @return [String]
+        attr_accessor :subdomain
+      
+        # The target of the domain forwarding, i.e. the path to redirect the `subdomain`
+        # to.
+        # Corresponds to the JSON property `targetUri`
+        # @return [String]
+        attr_accessor :target_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path_forwarding = args[:path_forwarding] if args.key?(:path_forwarding)
+          @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
+          @redirect_type = args[:redirect_type] if args.key?(:redirect_type)
+          @ssl_enabled = args[:ssl_enabled] if args.key?(:ssl_enabled)
+          @subdomain = args[:subdomain] if args.key?(:subdomain)
+          @target_uri = args[:target_uri] if args.key?(:target_uri)
+        end
+      end
+      
       # Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for
       # a domain. It contains a digest (hash) of a DNSKEY record that must be present
       # in the domain's DNS zone.
@@ -545,6 +600,33 @@ module Google
           @digest = args[:digest] if args.key?(:digest)
           @digest_type = args[:digest_type] if args.key?(:digest_type)
           @key_tag = args[:key_tag] if args.key?(:key_tag)
+        end
+      end
+      
+      # Email forwarding configuration.
+      class EmailForwarding
+        include Google::Apis::Core::Hashable
+      
+        # An alias recipient email that forwards emails to the `target_email_address`.
+        # For example, `admin@example.com` or `*@example.com` (wildcard alias forwards
+        # all the emails under the registered domain).
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # Target email that receives emails sent to the `alias`.
+        # Corresponds to the JSON property `targetEmailAddress`
+        # @return [String]
+        attr_accessor :target_email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+          @target_email_address = args[:target_email_address] if args.key?(:target_email_address)
         end
       end
       
@@ -726,6 +808,26 @@ module Google
         end
       end
       
+      # Request for the `InitiatePushTransfer` method.
+      class InitiatePushTransferRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Tag of the new registrar. Can be found at [List of registrars](
+        # https://nominet.uk/registrar-list/).
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -853,6 +955,11 @@ module Google
       class ManagementSettings
         include Google::Apis::Core::Hashable
       
+        # Output only. The actual transfer lock state for this `Registration`.
+        # Corresponds to the JSON property `effectiveTransferLockState`
+        # @return [String]
+        attr_accessor :effective_transfer_lock_state
+      
         # Optional. The desired renewal method for this `Registration`. The actual `
         # renewal_method` is automatically updated to reflect this choice. If unset or
         # equal to `RENEWAL_METHOD_UNSPECIFIED`, the actual `renewalMethod` is treated
@@ -881,7 +988,13 @@ module Google
         attr_accessor :renewal_method
       
         # This is the desired transfer lock state for this `Registration`. A transfer
-        # lock controls whether the domain can be transferred to another registrar.
+        # lock controls whether the domain can be transferred to another registrar. The
+        # transfer lock state of the domain is returned in the `
+        # effective_transfer_lock_state` property. The transfer lock state values might
+        # be different for the following reasons: * `transfer_lock_state` was updated
+        # only a short time ago. * Domains with the `
+        # TRANSFER_LOCK_UNSUPPORTED_BY_REGISTRY` state are in the list of `
+        # domain_properties`. These domains are always in the `UNLOCKED` state.
         # Corresponds to the JSON property `transferLockState`
         # @return [String]
         attr_accessor :transfer_lock_state
@@ -892,6 +1005,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @effective_transfer_lock_state = args[:effective_transfer_lock_state] if args.key?(:effective_transfer_lock_state)
           @preferred_renewal_method = args[:preferred_renewal_method] if args.key?(:preferred_renewal_method)
           @renewal_method = args[:renewal_method] if args.key?(:renewal_method)
           @transfer_lock_state = args[:transfer_lock_state] if args.key?(:transfer_lock_state)
@@ -1433,6 +1547,11 @@ module Google
         # @return [String]
         attr_accessor :domain_name
       
+        # Output only. Special properties of the domain.
+        # Corresponds to the JSON property `domainProperties`
+        # @return [Array<String>]
+        attr_accessor :domain_properties
+      
         # Output only. The expiration timestamp of the `Registration`.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
@@ -1502,6 +1621,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @dns_settings = args[:dns_settings] if args.key?(:dns_settings)
           @domain_name = args[:domain_name] if args.key?(:domain_name)
+          @domain_properties = args[:domain_properties] if args.key?(:domain_properties)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @issues = args[:issues] if args.key?(:issues)
           @labels = args[:labels] if args.key?(:labels)
@@ -1515,6 +1635,34 @@ module Google
         end
       end
       
+      # Request for the `RenewDomain` method.
+      class RenewDomainRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When true, only validation is performed, without actually renewing
+        # the domain. For more information, see [Request validation](https://cloud.
+        # google.com/apis/design/design_patterns#request_validation)
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `yearlyPrice`
+        # @return [Google::Apis::DomainsV1beta1::Money]
+        attr_accessor :yearly_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+          @yearly_price = args[:yearly_price] if args.key?(:yearly_price)
+        end
+      end
+      
       # Request for the `ResetAuthorizationCode` method.
       class ResetAuthorizationCodeRequest
         include Google::Apis::Core::Hashable
@@ -1525,6 +1673,35 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Response for the `RetrieveGoogleDomainsForwardingConfig` method.
+      class RetrieveGoogleDomainsForwardingConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of domain forwarding configurations. A forwarding configuration might
+        # not work correctly if the required DNS records are not present in the domain's
+        # authoritative DNS zone.
+        # Corresponds to the JSON property `domainForwardings`
+        # @return [Array<Google::Apis::DomainsV1beta1::DomainForwarding>]
+        attr_accessor :domain_forwardings
+      
+        # The list of email forwarding configurations. A forwarding configuration might
+        # not work correctly if the required DNS records are not present in the domain's
+        # authoritative DNS zone.
+        # Corresponds to the JSON property `emailForwardings`
+        # @return [Array<Google::Apis::DomainsV1beta1::EmailForwarding>]
+        attr_accessor :email_forwardings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_forwardings = args[:domain_forwardings] if args.key?(:domain_forwardings)
+          @email_forwardings = args[:email_forwardings] if args.key?(:email_forwardings)
         end
       end
       
