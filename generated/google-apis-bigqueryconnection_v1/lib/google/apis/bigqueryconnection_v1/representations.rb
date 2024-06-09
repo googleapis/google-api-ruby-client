@@ -364,6 +364,7 @@ module Google
       class ConnectorConfigurationAuthentication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account, as: 'serviceAccount'
           property :username_password, as: 'usernamePassword', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationUsernamePassword, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationUsernamePassword::Representation
       
         end
