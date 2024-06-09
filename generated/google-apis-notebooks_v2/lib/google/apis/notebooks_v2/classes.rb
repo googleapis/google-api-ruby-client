@@ -50,6 +50,29 @@ module Google
         end
       end
       
+      # An access configuration attached to an instance's network interface.
+      class AccessConfig
+        include Google::Apis::Core::Hashable
+      
+        # An external IP address associated with this instance. Specify an unused static
+        # external IP address available to the project or leave this field undefined to
+        # use an IP from a shared ephemeral IP address pool. If you specify a static
+        # external IP address, it must live in the same region as the zone of the
+        # instance.
+        # Corresponds to the JSON property `externalIp`
+        # @return [String]
+        attr_accessor :external_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_ip = args[:external_ip] if args.key?(:external_ip)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -786,6 +809,18 @@ module Google
         # @return [String]
         attr_accessor :proxy_uri
       
+        # Output only. Reserved for future use for Zone Isolation.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use for Zone Separation.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The state of this instance.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -824,6 +859,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @third_party_proxy_url = args[:third_party_proxy_url] if args.key?(:third_party_proxy_url)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -966,6 +1003,14 @@ module Google
       class NetworkInterface
         include Google::Apis::Core::Hashable
       
+        # Optional. An array of configurations for this interface. Currently, only one
+        # access config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified,
+        # the instance will have an external internet access through an ephemeral
+        # external IP address.
+        # Corresponds to the JSON property `accessConfigs`
+        # @return [Array<Google::Apis::NotebooksV2::AccessConfig>]
+        attr_accessor :access_configs
+      
         # Optional. The name of the VPC that this VM instance is in. Format: `projects/`
         # project_id`/global/networks/`network_id``
         # Corresponds to the JSON property `network`
@@ -990,6 +1035,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_configs = args[:access_configs] if args.key?(:access_configs)
           @network = args[:network] if args.key?(:network)
           @nic_type = args[:nic_type] if args.key?(:nic_type)
           @subnet = args[:subnet] if args.key?(:subnet)
