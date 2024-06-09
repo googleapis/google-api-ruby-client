@@ -2704,12 +2704,6 @@ module Google
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUserLabels]
         attr_accessor :user_label_set
       
-        # User-provided labels, represented as a dictionary where each label is a single
-        # key value pair.
-        # Corresponds to the JSON property `userLabels`
-        # @return [Hash<String,String>]
-        attr_accessor :user_labels
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2734,7 +2728,6 @@ module Google
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
           @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
-          @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
       
@@ -2842,12 +2835,14 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         include Google::Apis::Core::Hashable
       
-        # The number of CPUs.
+        # The number of CPUs. TODO(b/342344482, b/342346271) add proto validations again
+        # after bug fix.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
       
-        # Memory size in bytes.
+        # Memory size in bytes. TODO(b/342344482, b/342346271) add proto validations
+        # again after bug fix.
         # Corresponds to the JSON property `memorySizeInBytes`
         # @return [Fixnum]
         attr_accessor :memory_size_in_bytes
@@ -2867,15 +2862,20 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainObservabilityMetricData
         include Google::Apis::Core::Hashable
       
-        # Required. The timestamp of the metric value.
-        # Corresponds to the JSON property `metricTimestamp`
+        # Required. Type of aggregation performed on the metric.
+        # Corresponds to the JSON property `aggregationType`
         # @return [String]
-        attr_accessor :metric_timestamp
+        attr_accessor :aggregation_type
       
         # Required. Type of metric like CPU, Memory, etc.
         # Corresponds to the JSON property `metricType`
         # @return [String]
         attr_accessor :metric_type
+      
+        # Required. The time the metric value was observed.
+        # Corresponds to the JSON property `observationTime`
+        # @return [String]
+        attr_accessor :observation_time
       
         # Required. Database resource name associated with the signal. Resource name to
         # follow CAIS resource_name format as noted here go/condor-common-datamodel
@@ -2883,9 +2883,10 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
-        # Required. Value of the metric type.
+        # TypedValue represents the value of a metric type. It can either be a double,
+        # an int64, a string or a bool.
         # Corresponds to the JSON property `value`
-        # @return [Float]
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterProtoCommonTypedValue]
         attr_accessor :value
       
         def initialize(**args)
@@ -2894,8 +2895,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @metric_timestamp = args[:metric_timestamp] if args.key?(:metric_timestamp)
+          @aggregation_type = args[:aggregation_type] if args.key?(:aggregation_type)
           @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @observation_time = args[:observation_time] if args.key?(:observation_time)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @value = args[:value] if args.key?(:value)
         end
@@ -3013,6 +3015,45 @@ module Google
           @engine = args[:engine] if args.key?(:engine)
           @type = args[:type] if args.key?(:type)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # TypedValue represents the value of a metric type. It can either be a double,
+      # an int64, a string or a bool.
+      class StorageDatabasecenterProtoCommonTypedValue
+        include Google::Apis::Core::Hashable
+      
+        # For boolean value
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # For double value
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # For integer value
+        # Corresponds to the JSON property `int64Value`
+        # @return [Fixnum]
+        attr_accessor :int64_value
+      
+        # For string value
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
       
