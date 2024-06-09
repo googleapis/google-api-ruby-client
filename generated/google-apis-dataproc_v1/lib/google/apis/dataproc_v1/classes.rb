@@ -235,6 +235,25 @@ module Google
         end
       end
       
+      # Autotuning configuration of the workload.
+      class AutotuningConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Scenarios for which tunings are applied.
+        # Corresponds to the JSON property `scenarios`
+        # @return [Array<String>]
+        attr_accessor :scenarios
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scenarios = args[:scenarios] if args.key?(:scenarios)
+        end
+      end
+      
       # Node group identification and configuration information.
       class AuxiliaryNodeGroup
         include Google::Apis::Core::Hashable
@@ -4738,6 +4757,17 @@ module Google
       class RuntimeConfig
         include Google::Apis::Core::Hashable
       
+        # Autotuning configuration of the workload.
+        # Corresponds to the JSON property `autotuningConfig`
+        # @return [Google::Apis::DataprocV1::AutotuningConfig]
+        attr_accessor :autotuning_config
+      
+        # Optional. Cohort identifier. Identifies families of the workloads having the
+        # same shape, e.g. daily ETL jobs.
+        # Corresponds to the JSON property `cohort`
+        # @return [String]
+        attr_accessor :cohort
+      
         # Optional. Optional custom container image for the job runtime environment. If
         # not specified, a default container image will be used.
         # Corresponds to the JSON property `containerImage`
@@ -4766,6 +4796,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autotuning_config = args[:autotuning_config] if args.key?(:autotuning_config)
+          @cohort = args[:cohort] if args.key?(:cohort)
           @container_image = args[:container_image] if args.key?(:container_image)
           @properties = args[:properties] if args.key?(:properties)
           @repository_config = args[:repository_config] if args.key?(:repository_config)

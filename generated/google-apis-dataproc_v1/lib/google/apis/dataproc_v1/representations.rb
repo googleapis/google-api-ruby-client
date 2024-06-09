@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutotuningConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuxiliaryNodeGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -922,6 +928,13 @@ module Google
       
           property :worker_config, as: 'workerConfig', class: Google::Apis::DataprocV1::InstanceGroupAutoscalingPolicyConfig, decorator: Google::Apis::DataprocV1::InstanceGroupAutoscalingPolicyConfig::Representation
       
+        end
+      end
+      
+      class AutotuningConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :scenarios, as: 'scenarios'
         end
       end
       
@@ -2035,6 +2048,9 @@ module Google
       class RuntimeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autotuning_config, as: 'autotuningConfig', class: Google::Apis::DataprocV1::AutotuningConfig, decorator: Google::Apis::DataprocV1::AutotuningConfig::Representation
+      
+          property :cohort, as: 'cohort'
           property :container_image, as: 'containerImage'
           hash :properties, as: 'properties'
           property :repository_config, as: 'repositoryConfig', class: Google::Apis::DataprocV1::RepositoryConfig, decorator: Google::Apis::DataprocV1::RepositoryConfig::Representation
