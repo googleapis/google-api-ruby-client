@@ -628,12 +628,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RepairMode
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RepairPhase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -647,12 +641,6 @@ module Google
       end
       
       class RepairRolloutRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Retry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -677,12 +665,6 @@ module Google
       end
       
       class RetryPhase
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Rollback
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1031,7 +1013,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advance_automation_runs, as: 'advanceAutomationRuns'
-          property :current_repair_automation_run, as: 'currentRepairAutomationRun'
           property :promote_automation_run, as: 'promoteAutomationRun'
           collection :repair_automation_runs, as: 'repairAutomationRuns'
         end
@@ -1447,6 +1428,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
           property :internal_ip, as: 'internalIp'
+          property :proxy_url, as: 'proxyUrl'
         end
       end
       
@@ -1920,16 +1902,6 @@ module Google
         end
       end
       
-      class RepairMode
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :retry, as: 'retry', class: Google::Apis::ClouddeployV1::Retry, decorator: Google::Apis::ClouddeployV1::Retry::Representation
-      
-          property :rollback, as: 'rollback', class: Google::Apis::ClouddeployV1::Rollback, decorator: Google::Apis::ClouddeployV1::Rollback::Representation
-      
-        end
-      end
-      
       class RepairPhase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1943,7 +1915,6 @@ module Google
       class RepairRolloutOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :current_repair_mode_index, :numeric_string => true, as: 'currentRepairModeIndex'
           property :job_id, as: 'jobId'
           property :phase_id, as: 'phaseId'
           collection :repair_phases, as: 'repairPhases', class: Google::Apis::ClouddeployV1::RepairPhase, decorator: Google::Apis::ClouddeployV1::RepairPhase::Representation
@@ -1959,18 +1930,6 @@ module Google
       
           property :id, as: 'id'
           collection :jobs, as: 'jobs'
-          collection :repair_modes, as: 'repairModes', class: Google::Apis::ClouddeployV1::RepairMode, decorator: Google::Apis::ClouddeployV1::RepairMode::Representation
-      
-          collection :source_phases, as: 'sourcePhases'
-        end
-      end
-      
-      class Retry
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :attempts, :numeric_string => true, as: 'attempts'
-          property :backoff_mode, as: 'backoffMode'
-          property :wait, as: 'wait'
         end
       end
       
@@ -2004,16 +1963,7 @@ module Google
           collection :attempts, as: 'attempts', class: Google::Apis::ClouddeployV1::RetryAttempt, decorator: Google::Apis::ClouddeployV1::RetryAttempt::Representation
       
           property :backoff_mode, as: 'backoffMode'
-          property :job_id, as: 'jobId'
-          property :phase_id, as: 'phaseId'
           property :total_attempts, :numeric_string => true, as: 'totalAttempts'
-        end
-      end
-      
-      class Rollback
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :destination_phase, as: 'destinationPhase'
         end
       end
       
