@@ -22,42 +22,6 @@ module Google
   module Apis
     module ContactcenterinsightsV1
       
-      class GoogleCloudContactcenterinsightsV1AgentCoachingInstruction
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudContactcenterinsightsV1Analysis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,67 +352,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudContactcenterinsightsV1FreeFormSuggestion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudContactcenterinsightsV1GcsSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GeneratorSuggestion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -670,13 +574,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource
+      class GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -724,18 +622,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudContactcenterinsightsV1SummarySuggestion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -767,42 +653,6 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1View
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingInstruction
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentActionSuggestion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionEval
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionReasoning
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionSampleResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1108,67 +958,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudContactcenterinsightsV1alpha1FreeFormSuggestion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudContactcenterinsightsV1alpha1GcsSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GeneratorSuggestion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetGeneratorSuggestionResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswer
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseSuggestedQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1324,13 +1114,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswer
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswerAnswerSource
+      class GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1361,18 +1145,6 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1SpeechConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1SummarySuggestion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1SummarySuggestionSummarySection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1430,64 +1202,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1AgentCoachingInstruction
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :agent_action, as: 'agentAction'
-          property :condition, as: 'condition'
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          hash :metadata, as: 'metadata'
-          property :system_action, as: 'systemAction'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :agent_action_suggestions, as: 'agentActionSuggestions', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion::Representation
-      
-          collection :applicable_instructions, as: 'applicableInstructions', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingInstruction, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingInstruction::Representation
-      
-          collection :sample_responses, as: 'sampleResponses', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse::Representation
-      
-          property :suggestion_eval, as: 'suggestionEval', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval::Representation
-      
-          property :suggestion_reasoning, as: 'suggestionReasoning', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :agent_action, as: 'agentAction'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action_action_suggestion_eval, as: 'actionActionSuggestionEval'
-          property :sample_response_eval, as: 'sampleResponseEval'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :agent_action_taken, as: 'agentActionTaken'
-          property :issue_summary, as: 'issueSummary'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :response_text, as: 'responseText'
-        end
       end
       
       class GoogleCloudContactcenterinsightsV1Analysis
@@ -2080,105 +1794,11 @@ module Google
         end
       end
       
-      class GoogleCloudContactcenterinsightsV1FreeFormSuggestion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :labels, as: 'labels'
-          property :response, as: 'response'
-        end
-      end
-      
       class GoogleCloudContactcenterinsightsV1GcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_uri, as: 'audioUri'
           property :transcript_uri, as: 'transcriptUri'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GeneratorSuggestion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :agent_coaching_suggestion, as: 'agentCoachingSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion::Representation
-      
-          property :free_form_suggestion, as: 'freeFormSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1FreeFormSuggestion, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1FreeFormSuggestion::Representation
-      
-          property :summary_suggestion, as: 'summarySuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SummarySuggestion, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SummarySuggestion::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generator_suggestion, as: 'generatorSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GeneratorSuggestion, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GeneratorSuggestion::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :suggested_query, as: 'suggestedQuery', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery::Representation
-      
-          property :suggested_query_answer, as: 'suggestedQueryAnswer', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :answer_text, as: 'answerText'
-          property :faq_source, as: 'faqSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource::Representation
-      
-          property :generative_source, as: 'generativeSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource::Representation
-      
-          property :intent_matching_source, as: 'intentMatchingSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource::Representation
-      
-          property :match_confidence, as: 'matchConfidence'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :document, as: 'document'
-          property :question, as: 'question'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :snippets, as: 'snippets', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :document, as: 'document'
-          property :text, as: 'text'
-          property :title, as: 'title'
-          property :uri, as: 'uri'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          property :uri, as: 'uri'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :query_text, as: 'queryText'
-          property :score, as: 'score'
         end
       end
       
@@ -2529,40 +2149,22 @@ module Google
       
           property :faq_answer, as: 'faqAnswer', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1FaqAnswerData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1FaqAnswerData::Representation
       
-          property :generator_suggestion_result, as: 'generatorSuggestionResult', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse::Representation
-      
-          property :knowledge_assist_result, as: 'knowledgeAssistResult', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse::Representation
-      
-          property :knowledge_search_result, as: 'knowledgeSearchResult', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer::Representation
-      
           property :smart_compose_suggestion, as: 'smartComposeSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData::Representation
       
           property :smart_reply, as: 'smartReply', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SmartReplyData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SmartReplyData::Representation
       
           property :start_boundary, as: 'startBoundary', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotationBoundary, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotationBoundary::Representation
       
+          property :user_input, as: 'userInput', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput::Representation
+      
         end
       end
       
-      class GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer
+      class GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :answer, as: 'answer'
-          property :answer_record, as: 'answerRecord'
-          collection :answer_sources, as: 'answerSources', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource::Representation
-      
-          property :answer_type, as: 'answerType'
-          property :confidence_score, as: 'confidenceScore'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :document, as: 'document'
-          property :snippet, as: 'snippet'
-          property :title, as: 'title'
-          property :uri, as: 'uri'
+          property :generator_name, as: 'generatorName'
+          property :query, as: 'query'
         end
       end
       
@@ -2635,22 +2237,6 @@ module Google
         end
       end
       
-      class GoogleCloudContactcenterinsightsV1SummarySuggestion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :summary_sections, as: 'summarySections', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :section, as: 'section'
-          property :summary, as: 'summary'
-        end
-      end
-      
       class GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2709,64 +2295,6 @@ module Google
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
           property :value, as: 'value'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingInstruction
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :agent_action, as: 'agentAction'
-          property :condition, as: 'condition'
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          hash :metadata, as: 'metadata'
-          property :system_action, as: 'systemAction'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :agent_action_suggestions, as: 'agentActionSuggestions', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentActionSuggestion, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentActionSuggestion::Representation
-      
-          collection :applicable_instructions, as: 'applicableInstructions', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingInstruction, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingInstruction::Representation
-      
-          collection :sample_responses, as: 'sampleResponses', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionSampleResponse, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionSampleResponse::Representation
-      
-          property :suggestion_eval, as: 'suggestionEval', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionEval, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionEval::Representation
-      
-          property :suggestion_reasoning, as: 'suggestionReasoning', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionReasoning, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionReasoning::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentActionSuggestion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :agent_action, as: 'agentAction'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionEval
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action_action_suggestion_eval, as: 'actionActionSuggestionEval'
-          property :sample_response_eval, as: 'sampleResponseEval'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionReasoning
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :agent_action_taken, as: 'agentActionTaken'
-          property :issue_summary, as: 'issueSummary'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionSampleResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :response_text, as: 'responseText'
         end
       end
       
@@ -3312,105 +2840,11 @@ module Google
         end
       end
       
-      class GoogleCloudContactcenterinsightsV1alpha1FreeFormSuggestion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :labels, as: 'labels'
-          property :response, as: 'response'
-        end
-      end
-      
       class GoogleCloudContactcenterinsightsV1alpha1GcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_uri, as: 'audioUri'
           property :transcript_uri, as: 'transcriptUri'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GeneratorSuggestion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :agent_coaching_suggestion, as: 'agentCoachingSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestion, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestion::Representation
-      
-          property :free_form_suggestion, as: 'freeFormSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1FreeFormSuggestion, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1FreeFormSuggestion::Representation
-      
-          property :summary_suggestion, as: 'summarySuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SummarySuggestion, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SummarySuggestion::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetGeneratorSuggestionResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generator_suggestion, as: 'generatorSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GeneratorSuggestion, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GeneratorSuggestion::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :suggested_query, as: 'suggestedQuery', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseSuggestedQuery, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseSuggestedQuery::Representation
-      
-          property :suggested_query_answer, as: 'suggestedQueryAnswer', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswer, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswer::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswer
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :answer_text, as: 'answerText'
-          property :faq_source, as: 'faqSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource::Representation
-      
-          property :generative_source, as: 'generativeSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource::Representation
-      
-          property :intent_matching_source, as: 'intentMatchingSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource::Representation
-      
-          property :match_confidence, as: 'matchConfidence'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :document, as: 'document'
-          property :question, as: 'question'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :snippets, as: 'snippets', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :document, as: 'document'
-          property :text, as: 'text'
-          property :title, as: 'title'
-          property :uri, as: 'uri'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          property :uri, as: 'uri'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseSuggestedQuery
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :query_text, as: 'queryText'
-          property :score, as: 'score'
         end
       end
       
@@ -3653,40 +3087,22 @@ module Google
       
           property :faq_answer, as: 'faqAnswer', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData::Representation
       
-          property :generator_suggestion_result, as: 'generatorSuggestionResult', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetGeneratorSuggestionResponse, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetGeneratorSuggestionResponse::Representation
-      
-          property :knowledge_assist_result, as: 'knowledgeAssistResult', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponse, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponse::Representation
-      
-          property :knowledge_search_result, as: 'knowledgeSearchResult', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswer, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswer::Representation
-      
           property :smart_compose_suggestion, as: 'smartComposeSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData::Representation
       
           property :smart_reply, as: 'smartReply', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SmartReplyData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SmartReplyData::Representation
       
           property :start_boundary, as: 'startBoundary', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary::Representation
       
+          property :user_input, as: 'userInput', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput::Representation
+      
         end
       end
       
-      class GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswer
+      class GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :answer, as: 'answer'
-          property :answer_record, as: 'answerRecord'
-          collection :answer_sources, as: 'answerSources', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswerAnswerSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswerAnswerSource::Representation
-      
-          property :answer_type, as: 'answerType'
-          property :confidence_score, as: 'confidenceScore'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswerAnswerSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :document, as: 'document'
-          property :snippet, as: 'snippet'
-          property :title, as: 'title'
-          property :uri, as: 'uri'
+          property :generator_name, as: 'generatorName'
+          property :query, as: 'query'
         end
       end
       
@@ -3728,22 +3144,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :speech_recognizer, as: 'speechRecognizer'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1SummarySuggestion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :summary_sections, as: 'summarySections', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SummarySuggestionSummarySection, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SummarySuggestionSummarySection::Representation
-      
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1SummarySuggestionSummarySection
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :section, as: 'section'
-          property :summary, as: 'summary'
         end
       end
       

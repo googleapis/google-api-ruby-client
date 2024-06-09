@@ -22,193 +22,6 @@ module Google
   module Apis
     module ContactcenterinsightsV1
       
-      # Agent Coaching instructions that customer can configure.
-      class GoogleCloudContactcenterinsightsV1AgentCoachingInstruction
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The action that human agent should take. For example, "apologize for
-        # the slow shipping". If the users only want to use agent coaching for intent
-        # detection, agent_action can be empty
-        # Corresponds to the JSON property `agentAction`
-        # @return [String]
-        attr_accessor :agent_action
-      
-        # Optional. The condition of the instruction. For example, "the customer wants
-        # to cancel an order". If the users want the instruction to be triggered
-        # unconditionally, the condition can be empty.
-        # Corresponds to the JSON property `condition`
-        # @return [String]
-        attr_accessor :condition
-      
-        # Optional. The detailed description of this instruction.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional. Display name for the instruction.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Optional. Additional information attached to this instruction.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,String>]
-        attr_accessor :metadata
-      
-        # Optional. The action that system should take. For example, "call GetOrderTime
-        # with order_number=`order number provided by the customer`". If the users don't
-        # have plugins or don't want to trigger plugins, the system_action can be empty
-        # Corresponds to the JSON property `systemAction`
-        # @return [String]
-        attr_accessor :system_action
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_action = args[:agent_action] if args.key?(:agent_action)
-          @condition = args[:condition] if args.key?(:condition)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @system_action = args[:system_action] if args.key?(:system_action)
-        end
-      end
-      
-      # Suggestion for coaching agents.
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Suggested actions for the agent to take.
-        # Corresponds to the JSON property `agentActionSuggestions`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion>]
-        attr_accessor :agent_action_suggestions
-      
-        # Optional. Instructions applicable based on the current context.
-        # Corresponds to the JSON property `applicableInstructions`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingInstruction>]
-        attr_accessor :applicable_instructions
-      
-        # Optional. Sample response for the Agent.
-        # Corresponds to the JSON property `sampleResponses`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse>]
-        attr_accessor :sample_responses
-      
-        # Self evaluations of the suggestion.
-        # Corresponds to the JSON property `suggestionEval`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval]
-        attr_accessor :suggestion_eval
-      
-        # Reasoning for the suggestion.
-        # Corresponds to the JSON property `suggestionReasoning`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning]
-        attr_accessor :suggestion_reasoning
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_action_suggestions = args[:agent_action_suggestions] if args.key?(:agent_action_suggestions)
-          @applicable_instructions = args[:applicable_instructions] if args.key?(:applicable_instructions)
-          @sample_responses = args[:sample_responses] if args.key?(:sample_responses)
-          @suggestion_eval = args[:suggestion_eval] if args.key?(:suggestion_eval)
-          @suggestion_reasoning = args[:suggestion_reasoning] if args.key?(:suggestion_reasoning)
-        end
-      end
-      
-      # Actions suggested for the agent. This is based on applicable instructions.
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The suggested action for the agent.
-        # Corresponds to the JSON property `agentAction`
-        # @return [String]
-        attr_accessor :agent_action
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_action = args[:agent_action] if args.key?(:agent_action)
-        end
-      end
-      
-      # Self evaluations of the suggestion.
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Eval for Agent action suggestion.
-        # Corresponds to the JSON property `actionActionSuggestionEval`
-        # @return [String]
-        attr_accessor :action_action_suggestion_eval
-      
-        # Optional. Eval for sample response.
-        # Corresponds to the JSON property `sampleResponseEval`
-        # @return [String]
-        attr_accessor :sample_response_eval
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action_action_suggestion_eval = args[:action_action_suggestion_eval] if args.key?(:action_action_suggestion_eval)
-          @sample_response_eval = args[:sample_response_eval] if args.key?(:sample_response_eval)
-        end
-      end
-      
-      # Reasoning for the suggestion.
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The actions that the agent has taken already.
-        # Corresponds to the JSON property `agentActionTaken`
-        # @return [String]
-        attr_accessor :agent_action_taken
-      
-        # Optional. Summary of the issue.
-        # Corresponds to the JSON property `issueSummary`
-        # @return [String]
-        attr_accessor :issue_summary
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_action_taken = args[:agent_action_taken] if args.key?(:agent_action_taken)
-          @issue_summary = args[:issue_summary] if args.key?(:issue_summary)
-        end
-      end
-      
-      # Sample response that the agent can use. This could be based on applicable
-      # instructions and ingested data from other systems.
-      class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Sample response for Agent in text.
-        # Corresponds to the JSON property `responseText`
-        # @return [String]
-        attr_accessor :response_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @response_text = args[:response_text] if args.key?(:response_text)
-        end
-      end
-      
       # The analysis resource.
       class GoogleCloudContactcenterinsightsV1Analysis
         include Google::Apis::Core::Hashable
@@ -2235,31 +2048,6 @@ module Google
         end
       end
       
-      # Suggestion generated using free form generator.
-      class GoogleCloudContactcenterinsightsV1FreeFormSuggestion
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Labels for the generator.
-        # Corresponds to the JSON property `labels`
-        # @return [Array<String>]
-        attr_accessor :labels
-      
-        # Required. Free form suggestion.
-        # Corresponds to the JSON property `response`
-        # @return [String]
-        attr_accessor :response
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @labels = args[:labels] if args.key?(:labels)
-          @response = args[:response] if args.key?(:response)
-        end
-      end
-      
       # A Cloud Storage source of conversation data.
       class GoogleCloudContactcenterinsightsV1GcsSource
         include Google::Apis::Core::Hashable
@@ -2283,263 +2071,6 @@ module Google
         def update!(**args)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
           @transcript_uri = args[:transcript_uri] if args.key?(:transcript_uri)
-        end
-      end
-      
-      # Suggestion generated using a Generator.
-      class GoogleCloudContactcenterinsightsV1GeneratorSuggestion
-        include Google::Apis::Core::Hashable
-      
-        # Suggestion for coaching agents.
-        # Corresponds to the JSON property `agentCoachingSuggestion`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion]
-        attr_accessor :agent_coaching_suggestion
-      
-        # Suggestion generated using free form generator.
-        # Corresponds to the JSON property `freeFormSuggestion`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1FreeFormSuggestion]
-        attr_accessor :free_form_suggestion
-      
-        # Suggested summary of the conversation.
-        # Corresponds to the JSON property `summarySuggestion`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SummarySuggestion]
-        attr_accessor :summary_suggestion
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_coaching_suggestion = args[:agent_coaching_suggestion] if args.key?(:agent_coaching_suggestion)
-          @free_form_suggestion = args[:free_form_suggestion] if args.key?(:free_form_suggestion)
-          @summary_suggestion = args[:summary_suggestion] if args.key?(:summary_suggestion)
-        end
-      end
-      
-      # Represents response from generators.
-      class GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse
-        include Google::Apis::Core::Hashable
-      
-        # Suggestion generated using a Generator.
-        # Corresponds to the JSON property `generatorSuggestion`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GeneratorSuggestion]
-        attr_accessor :generator_suggestion
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generator_suggestion = args[:generator_suggestion] if args.key?(:generator_suggestion)
-        end
-      end
-      
-      # Response for Knowledge Assist. Contains suggested query and optionally
-      # includes an answer for the query.
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse
-        include Google::Apis::Core::Hashable
-      
-        # Represents a suggested query.
-        # Corresponds to the JSON property `suggestedQuery`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery]
-        attr_accessor :suggested_query
-      
-        # Represents an answer from Knowledge. Cuurently supports FAQ and Generative
-        # answers.
-        # Corresponds to the JSON property `suggestedQueryAnswer`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer]
-        attr_accessor :suggested_query_answer
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @suggested_query = args[:suggested_query] if args.key?(:suggested_query)
-          @suggested_query_answer = args[:suggested_query_answer] if args.key?(:suggested_query_answer)
-        end
-      end
-      
-      # Represents an answer from Knowledge. Cuurently supports FAQ and Generative
-      # answers.
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer
-        include Google::Apis::Core::Hashable
-      
-        # The piece of text from the `source` that answers this suggested query.
-        # Corresponds to the JSON property `answerText`
-        # @return [String]
-        attr_accessor :answer_text
-      
-        # Details about source of FAQ answer.
-        # Corresponds to the JSON property `faqSource`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource]
-        attr_accessor :faq_source
-      
-        # Details about source of Generative answer.
-        # Corresponds to the JSON property `generativeSource`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource]
-        attr_accessor :generative_source
-      
-        # Details about source of Intent Matching answer.
-        # Corresponds to the JSON property `intentMatchingSource`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource]
-        attr_accessor :intent_matching_source
-      
-        # The system's confidence score that this answer is a good match for this
-        # conversational query. The range is from 0.0 (completely uncertain) to 1.0 (
-        # completely certain).
-        # Corresponds to the JSON property `matchConfidence`
-        # @return [Float]
-        attr_accessor :match_confidence
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @answer_text = args[:answer_text] if args.key?(:answer_text)
-          @faq_source = args[:faq_source] if args.key?(:faq_source)
-          @generative_source = args[:generative_source] if args.key?(:generative_source)
-          @intent_matching_source = args[:intent_matching_source] if args.key?(:intent_matching_source)
-          @match_confidence = args[:match_confidence] if args.key?(:match_confidence)
-        end
-      end
-      
-      # Details about source of FAQ answer.
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource
-        include Google::Apis::Core::Hashable
-      
-        # Indicates which Knowledge Document this answer was extracted from. Format: `
-        # projects//knowledgeBases//documents/`.
-        # Corresponds to the JSON property `document`
-        # @return [String]
-        attr_accessor :document
-      
-        # The corresponding FAQ question.
-        # Corresponds to the JSON property `question`
-        # @return [String]
-        attr_accessor :question
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @document = args[:document] if args.key?(:document)
-          @question = args[:question] if args.key?(:question)
-        end
-      end
-      
-      # Details about source of Generative answer.
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource
-        include Google::Apis::Core::Hashable
-      
-        # All snippets used for this Generative Prediction, with their source URI and
-        # data.
-        # Corresponds to the JSON property `snippets`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet>]
-        attr_accessor :snippets
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @snippets = args[:snippets] if args.key?(:snippets)
-        end
-      end
-      
-      # Snippet Source for a Generative Prediction.
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet
-        include Google::Apis::Core::Hashable
-      
-        # Indicates which Knowledge Document this snippet was extracted from. Format: `
-        # projects//knowledgeBases//documents/`.
-        # Corresponds to the JSON property `document`
-        # @return [String]
-        attr_accessor :document
-      
-        # text taken from that URI.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        # Title of the document.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # URI the data is sourced from.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @document = args[:document] if args.key?(:document)
-          @text = args[:text] if args.key?(:text)
-          @title = args[:title] if args.key?(:title)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # Details about source of Intent Matching answer.
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource
-        include Google::Apis::Core::Hashable
-      
-        # Title of the document.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # URI the data is sourced from.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @title = args[:title] if args.key?(:title)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # Represents a suggested query.
-      class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery
-        include Google::Apis::Core::Hashable
-      
-        # Suggested query text.
-        # Corresponds to the JSON property `queryText`
-        # @return [String]
-        attr_accessor :query_text
-      
-        # Suggested query score.
-        # Corresponds to the JSON property `score`
-        # @return [Float]
-        attr_accessor :score
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @query_text = args[:query_text] if args.key?(:query_text)
-          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -3682,22 +3213,6 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1FaqAnswerData]
         attr_accessor :faq_answer
       
-        # Represents response from generators.
-        # Corresponds to the JSON property `generatorSuggestionResult`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse]
-        attr_accessor :generator_suggestion_result
-      
-        # Response for Knowledge Assist. Contains suggested query and optionally
-        # includes an answer for the query.
-        # Corresponds to the JSON property `knowledgeAssistResult`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse]
-        attr_accessor :knowledge_assist_result
-      
-        # Represents a SearchKnowledge answer.
-        # Corresponds to the JSON property `knowledgeSearchResult`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer]
-        attr_accessor :knowledge_search_result
-      
         # Agent Assist Smart Compose suggestion data.
         # Corresponds to the JSON property `smartComposeSuggestion`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData]
@@ -3713,6 +3228,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotationBoundary]
         attr_accessor :start_boundary
       
+        # Explicit input used for generating the answer
+        # Corresponds to the JSON property `userInput`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput]
+        attr_accessor :user_input
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3727,44 +3247,28 @@ module Google
           @dialogflow_interaction = args[:dialogflow_interaction] if args.key?(:dialogflow_interaction)
           @end_boundary = args[:end_boundary] if args.key?(:end_boundary)
           @faq_answer = args[:faq_answer] if args.key?(:faq_answer)
-          @generator_suggestion_result = args[:generator_suggestion_result] if args.key?(:generator_suggestion_result)
-          @knowledge_assist_result = args[:knowledge_assist_result] if args.key?(:knowledge_assist_result)
-          @knowledge_search_result = args[:knowledge_search_result] if args.key?(:knowledge_search_result)
           @smart_compose_suggestion = args[:smart_compose_suggestion] if args.key?(:smart_compose_suggestion)
           @smart_reply = args[:smart_reply] if args.key?(:smart_reply)
           @start_boundary = args[:start_boundary] if args.key?(:start_boundary)
+          @user_input = args[:user_input] if args.key?(:user_input)
         end
       end
       
-      # Represents a SearchKnowledge answer.
-      class GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer
+      # Explicit input used for generating the answer
+      class GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput
         include Google::Apis::Core::Hashable
       
-        # The piece of text from the knowledge base documents that answers the search
-        # query
-        # Corresponds to the JSON property `answer`
+        # The resource name of associated generator. Format: `projects//locations//
+        # generators/`
+        # Corresponds to the JSON property `generatorName`
         # @return [String]
-        attr_accessor :answer
+        attr_accessor :generator_name
       
-        # The name of the answer record. Format: `projects//locations//answer Records/`
-        # Corresponds to the JSON property `answerRecord`
+        # Query text. Article Search uses this to store the input query used to generate
+        # the search results.
+        # Corresponds to the JSON property `query`
         # @return [String]
-        attr_accessor :answer_record
-      
-        # All sources used to generate the answer.
-        # Corresponds to the JSON property `answerSources`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource>]
-        attr_accessor :answer_sources
-      
-        # The type of the answer.
-        # Corresponds to the JSON property `answerType`
-        # @return [String]
-        attr_accessor :answer_type
-      
-        # The confidence score in [0.0, 1.0] range.
-        # Corresponds to the JSON property `confidenceScore`
-        # @return [Float]
-        attr_accessor :confidence_score
+        attr_accessor :query
       
         def initialize(**args)
            update!(**args)
@@ -3772,49 +3276,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @answer = args[:answer] if args.key?(:answer)
-          @answer_record = args[:answer_record] if args.key?(:answer_record)
-          @answer_sources = args[:answer_sources] if args.key?(:answer_sources)
-          @answer_type = args[:answer_type] if args.key?(:answer_type)
-          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
-        end
-      end
-      
-      # The sources of the answers.
-      class GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource
-        include Google::Apis::Core::Hashable
-      
-        # The document from which the snippet was extracted. Format: `projects//
-        # knowledgeBases//documents/`
-        # Corresponds to the JSON property `document`
-        # @return [String]
-        attr_accessor :document
-      
-        # The relevant snippet of the article.
-        # Corresponds to the JSON property `snippet`
-        # @return [String]
-        attr_accessor :snippet
-      
-        # The title of the article.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # The URI of the article.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @document = args[:document] if args.key?(:document)
-          @snippet = args[:snippet] if args.key?(:snippet)
-          @title = args[:title] if args.key?(:title)
-          @uri = args[:uri] if args.key?(:uri)
+          @generator_name = args[:generator_name] if args.key?(:generator_name)
+          @query = args[:query] if args.key?(:query)
         end
       end
       
@@ -4087,50 +3550,6 @@ module Google
         end
       end
       
-      # Suggested summary of the conversation.
-      class GoogleCloudContactcenterinsightsV1SummarySuggestion
-        include Google::Apis::Core::Hashable
-      
-        # Required. All the parts of generated summary.
-        # Corresponds to the JSON property `summarySections`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection>]
-        attr_accessor :summary_sections
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @summary_sections = args[:summary_sections] if args.key?(:summary_sections)
-        end
-      end
-      
-      # A component of the generated summary.
-      class GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection
-        include Google::Apis::Core::Hashable
-      
-        # Required. Name of the section.
-        # Corresponds to the JSON property `section`
-        # @return [String]
-        attr_accessor :section
-      
-        # Required. Summary text for the section.
-        # Corresponds to the JSON property `summary`
-        # @return [String]
-        attr_accessor :summary
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @section = args[:section] if args.key?(:section)
-          @summary = args[:summary] if args.key?(:summary)
-        end
-      end
-      
       # Metadata for undeploying an issue model.
       class GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata
         include Google::Apis::Core::Hashable
@@ -4340,193 +3759,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Agent Coaching instructions that customer can configure.
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingInstruction
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The action that human agent should take. For example, "apologize for
-        # the slow shipping". If the users only want to use agent coaching for intent
-        # detection, agent_action can be empty
-        # Corresponds to the JSON property `agentAction`
-        # @return [String]
-        attr_accessor :agent_action
-      
-        # Optional. The condition of the instruction. For example, "the customer wants
-        # to cancel an order". If the users want the instruction to be triggered
-        # unconditionally, the condition can be empty.
-        # Corresponds to the JSON property `condition`
-        # @return [String]
-        attr_accessor :condition
-      
-        # Optional. The detailed description of this instruction.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional. Display name for the instruction.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Optional. Additional information attached to this instruction.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,String>]
-        attr_accessor :metadata
-      
-        # Optional. The action that system should take. For example, "call GetOrderTime
-        # with order_number=`order number provided by the customer`". If the users don't
-        # have plugins or don't want to trigger plugins, the system_action can be empty
-        # Corresponds to the JSON property `systemAction`
-        # @return [String]
-        attr_accessor :system_action
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_action = args[:agent_action] if args.key?(:agent_action)
-          @condition = args[:condition] if args.key?(:condition)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @system_action = args[:system_action] if args.key?(:system_action)
-        end
-      end
-      
-      # Suggestion for coaching agents.
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestion
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Suggested actions for the agent to take.
-        # Corresponds to the JSON property `agentActionSuggestions`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentActionSuggestion>]
-        attr_accessor :agent_action_suggestions
-      
-        # Optional. Instructions applicable based on the current context.
-        # Corresponds to the JSON property `applicableInstructions`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingInstruction>]
-        attr_accessor :applicable_instructions
-      
-        # Optional. Sample response for the Agent.
-        # Corresponds to the JSON property `sampleResponses`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionSampleResponse>]
-        attr_accessor :sample_responses
-      
-        # Self evaluations of the suggestion.
-        # Corresponds to the JSON property `suggestionEval`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionEval]
-        attr_accessor :suggestion_eval
-      
-        # Reasoning for the suggestion.
-        # Corresponds to the JSON property `suggestionReasoning`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionReasoning]
-        attr_accessor :suggestion_reasoning
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_action_suggestions = args[:agent_action_suggestions] if args.key?(:agent_action_suggestions)
-          @applicable_instructions = args[:applicable_instructions] if args.key?(:applicable_instructions)
-          @sample_responses = args[:sample_responses] if args.key?(:sample_responses)
-          @suggestion_eval = args[:suggestion_eval] if args.key?(:suggestion_eval)
-          @suggestion_reasoning = args[:suggestion_reasoning] if args.key?(:suggestion_reasoning)
-        end
-      end
-      
-      # Actions suggested for the agent. This is based on applicable instructions.
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentActionSuggestion
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The suggested action for the agent.
-        # Corresponds to the JSON property `agentAction`
-        # @return [String]
-        attr_accessor :agent_action
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_action = args[:agent_action] if args.key?(:agent_action)
-        end
-      end
-      
-      # Self evaluations of the suggestion.
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionEval
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Eval for Agent action suggestion.
-        # Corresponds to the JSON property `actionActionSuggestionEval`
-        # @return [String]
-        attr_accessor :action_action_suggestion_eval
-      
-        # Optional. Eval for sample response.
-        # Corresponds to the JSON property `sampleResponseEval`
-        # @return [String]
-        attr_accessor :sample_response_eval
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action_action_suggestion_eval = args[:action_action_suggestion_eval] if args.key?(:action_action_suggestion_eval)
-          @sample_response_eval = args[:sample_response_eval] if args.key?(:sample_response_eval)
-        end
-      end
-      
-      # Reasoning for the suggestion.
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionReasoning
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The actions that the agent has taken already.
-        # Corresponds to the JSON property `agentActionTaken`
-        # @return [String]
-        attr_accessor :agent_action_taken
-      
-        # Optional. Summary of the issue.
-        # Corresponds to the JSON property `issueSummary`
-        # @return [String]
-        attr_accessor :issue_summary
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_action_taken = args[:agent_action_taken] if args.key?(:agent_action_taken)
-          @issue_summary = args[:issue_summary] if args.key?(:issue_summary)
-        end
-      end
-      
-      # Sample response that the agent can use. This could be based on applicable
-      # instructions and ingested data from other systems.
-      class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionSampleResponse
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Sample response for Agent in text.
-        # Corresponds to the JSON property `responseText`
-        # @return [String]
-        attr_accessor :response_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @response_text = args[:response_text] if args.key?(:response_text)
         end
       end
       
@@ -6398,31 +5630,6 @@ module Google
         end
       end
       
-      # Suggestion generated using free form generator.
-      class GoogleCloudContactcenterinsightsV1alpha1FreeFormSuggestion
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Labels for the generator.
-        # Corresponds to the JSON property `labels`
-        # @return [Array<String>]
-        attr_accessor :labels
-      
-        # Required. Free form suggestion.
-        # Corresponds to the JSON property `response`
-        # @return [String]
-        attr_accessor :response
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @labels = args[:labels] if args.key?(:labels)
-          @response = args[:response] if args.key?(:response)
-        end
-      end
-      
       # A Cloud Storage source of conversation data.
       class GoogleCloudContactcenterinsightsV1alpha1GcsSource
         include Google::Apis::Core::Hashable
@@ -6446,263 +5653,6 @@ module Google
         def update!(**args)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
           @transcript_uri = args[:transcript_uri] if args.key?(:transcript_uri)
-        end
-      end
-      
-      # Suggestion generated using a Generator.
-      class GoogleCloudContactcenterinsightsV1alpha1GeneratorSuggestion
-        include Google::Apis::Core::Hashable
-      
-        # Suggestion for coaching agents.
-        # Corresponds to the JSON property `agentCoachingSuggestion`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestion]
-        attr_accessor :agent_coaching_suggestion
-      
-        # Suggestion generated using free form generator.
-        # Corresponds to the JSON property `freeFormSuggestion`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1FreeFormSuggestion]
-        attr_accessor :free_form_suggestion
-      
-        # Suggested summary of the conversation.
-        # Corresponds to the JSON property `summarySuggestion`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SummarySuggestion]
-        attr_accessor :summary_suggestion
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_coaching_suggestion = args[:agent_coaching_suggestion] if args.key?(:agent_coaching_suggestion)
-          @free_form_suggestion = args[:free_form_suggestion] if args.key?(:free_form_suggestion)
-          @summary_suggestion = args[:summary_suggestion] if args.key?(:summary_suggestion)
-        end
-      end
-      
-      # Represents response from generators.
-      class GoogleCloudContactcenterinsightsV1alpha1GetGeneratorSuggestionResponse
-        include Google::Apis::Core::Hashable
-      
-        # Suggestion generated using a Generator.
-        # Corresponds to the JSON property `generatorSuggestion`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GeneratorSuggestion]
-        attr_accessor :generator_suggestion
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generator_suggestion = args[:generator_suggestion] if args.key?(:generator_suggestion)
-        end
-      end
-      
-      # Response for Knowledge Assist. Contains suggested query and optionally
-      # includes an answer for the query.
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponse
-        include Google::Apis::Core::Hashable
-      
-        # Represents a suggested query.
-        # Corresponds to the JSON property `suggestedQuery`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseSuggestedQuery]
-        attr_accessor :suggested_query
-      
-        # Represents an answer from Knowledge. Cuurently supports FAQ and Generative
-        # answers.
-        # Corresponds to the JSON property `suggestedQueryAnswer`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswer]
-        attr_accessor :suggested_query_answer
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @suggested_query = args[:suggested_query] if args.key?(:suggested_query)
-          @suggested_query_answer = args[:suggested_query_answer] if args.key?(:suggested_query_answer)
-        end
-      end
-      
-      # Represents an answer from Knowledge. Cuurently supports FAQ and Generative
-      # answers.
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswer
-        include Google::Apis::Core::Hashable
-      
-        # The piece of text from the `source` that answers this suggested query.
-        # Corresponds to the JSON property `answerText`
-        # @return [String]
-        attr_accessor :answer_text
-      
-        # Details about source of FAQ answer.
-        # Corresponds to the JSON property `faqSource`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource]
-        attr_accessor :faq_source
-      
-        # Details about source of Generative answer.
-        # Corresponds to the JSON property `generativeSource`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource]
-        attr_accessor :generative_source
-      
-        # Details about source of Intent Matching answer.
-        # Corresponds to the JSON property `intentMatchingSource`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource]
-        attr_accessor :intent_matching_source
-      
-        # The system's confidence score that this answer is a good match for this
-        # conversational query. The range is from 0.0 (completely uncertain) to 1.0 (
-        # completely certain).
-        # Corresponds to the JSON property `matchConfidence`
-        # @return [Float]
-        attr_accessor :match_confidence
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @answer_text = args[:answer_text] if args.key?(:answer_text)
-          @faq_source = args[:faq_source] if args.key?(:faq_source)
-          @generative_source = args[:generative_source] if args.key?(:generative_source)
-          @intent_matching_source = args[:intent_matching_source] if args.key?(:intent_matching_source)
-          @match_confidence = args[:match_confidence] if args.key?(:match_confidence)
-        end
-      end
-      
-      # Details about source of FAQ answer.
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource
-        include Google::Apis::Core::Hashable
-      
-        # Indicates which Knowledge Document this answer was extracted from. Format: `
-        # projects//knowledgeBases//documents/`.
-        # Corresponds to the JSON property `document`
-        # @return [String]
-        attr_accessor :document
-      
-        # The corresponding FAQ question.
-        # Corresponds to the JSON property `question`
-        # @return [String]
-        attr_accessor :question
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @document = args[:document] if args.key?(:document)
-          @question = args[:question] if args.key?(:question)
-        end
-      end
-      
-      # Details about source of Generative answer.
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource
-        include Google::Apis::Core::Hashable
-      
-        # All snippets used for this Generative Prediction, with their source URI and
-        # data.
-        # Corresponds to the JSON property `snippets`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet>]
-        attr_accessor :snippets
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @snippets = args[:snippets] if args.key?(:snippets)
-        end
-      end
-      
-      # Snippet Source for a Generative Prediction.
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet
-        include Google::Apis::Core::Hashable
-      
-        # Indicates which Knowledge Document this snippet was extracted from. Format: `
-        # projects//knowledgeBases//documents/`.
-        # Corresponds to the JSON property `document`
-        # @return [String]
-        attr_accessor :document
-      
-        # text taken from that URI.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        # Title of the document.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # URI the data is sourced from.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @document = args[:document] if args.key?(:document)
-          @text = args[:text] if args.key?(:text)
-          @title = args[:title] if args.key?(:title)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # Details about source of Intent Matching answer.
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource
-        include Google::Apis::Core::Hashable
-      
-        # Title of the document.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # URI the data is sourced from.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @title = args[:title] if args.key?(:title)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # Represents a suggested query.
-      class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseSuggestedQuery
-        include Google::Apis::Core::Hashable
-      
-        # Suggested query text.
-        # Corresponds to the JSON property `queryText`
-        # @return [String]
-        attr_accessor :query_text
-      
-        # Suggested query score.
-        # Corresponds to the JSON property `score`
-        # @return [Float]
-        attr_accessor :score
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @query_text = args[:query_text] if args.key?(:query_text)
-          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -7492,22 +6442,6 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData]
         attr_accessor :faq_answer
       
-        # Represents response from generators.
-        # Corresponds to the JSON property `generatorSuggestionResult`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetGeneratorSuggestionResponse]
-        attr_accessor :generator_suggestion_result
-      
-        # Response for Knowledge Assist. Contains suggested query and optionally
-        # includes an answer for the query.
-        # Corresponds to the JSON property `knowledgeAssistResult`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponse]
-        attr_accessor :knowledge_assist_result
-      
-        # Represents a SearchKnowledge answer.
-        # Corresponds to the JSON property `knowledgeSearchResult`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswer]
-        attr_accessor :knowledge_search_result
-      
         # Agent Assist Smart Compose suggestion data.
         # Corresponds to the JSON property `smartComposeSuggestion`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData]
@@ -7523,6 +6457,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary]
         attr_accessor :start_boundary
       
+        # Explicit input used for generating the answer
+        # Corresponds to the JSON property `userInput`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput]
+        attr_accessor :user_input
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7537,44 +6476,28 @@ module Google
           @dialogflow_interaction = args[:dialogflow_interaction] if args.key?(:dialogflow_interaction)
           @end_boundary = args[:end_boundary] if args.key?(:end_boundary)
           @faq_answer = args[:faq_answer] if args.key?(:faq_answer)
-          @generator_suggestion_result = args[:generator_suggestion_result] if args.key?(:generator_suggestion_result)
-          @knowledge_assist_result = args[:knowledge_assist_result] if args.key?(:knowledge_assist_result)
-          @knowledge_search_result = args[:knowledge_search_result] if args.key?(:knowledge_search_result)
           @smart_compose_suggestion = args[:smart_compose_suggestion] if args.key?(:smart_compose_suggestion)
           @smart_reply = args[:smart_reply] if args.key?(:smart_reply)
           @start_boundary = args[:start_boundary] if args.key?(:start_boundary)
+          @user_input = args[:user_input] if args.key?(:user_input)
         end
       end
       
-      # Represents a SearchKnowledge answer.
-      class GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswer
+      # Explicit input used for generating the answer
+      class GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput
         include Google::Apis::Core::Hashable
       
-        # The piece of text from the knowledge base documents that answers the search
-        # query
-        # Corresponds to the JSON property `answer`
+        # The resource name of associated generator. Format: `projects//locations//
+        # generators/`
+        # Corresponds to the JSON property `generatorName`
         # @return [String]
-        attr_accessor :answer
+        attr_accessor :generator_name
       
-        # The name of the answer record. Format: `projects//locations//answer Records/`
-        # Corresponds to the JSON property `answerRecord`
+        # Query text. Article Search uses this to store the input query used to generate
+        # the search results.
+        # Corresponds to the JSON property `query`
         # @return [String]
-        attr_accessor :answer_record
-      
-        # All sources used to generate the answer.
-        # Corresponds to the JSON property `answerSources`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswerAnswerSource>]
-        attr_accessor :answer_sources
-      
-        # The type of the answer.
-        # Corresponds to the JSON property `answerType`
-        # @return [String]
-        attr_accessor :answer_type
-      
-        # The confidence score in [0.0, 1.0] range.
-        # Corresponds to the JSON property `confidenceScore`
-        # @return [Float]
-        attr_accessor :confidence_score
+        attr_accessor :query
       
         def initialize(**args)
            update!(**args)
@@ -7582,49 +6505,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @answer = args[:answer] if args.key?(:answer)
-          @answer_record = args[:answer_record] if args.key?(:answer_record)
-          @answer_sources = args[:answer_sources] if args.key?(:answer_sources)
-          @answer_type = args[:answer_type] if args.key?(:answer_type)
-          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
-        end
-      end
-      
-      # The sources of the answers.
-      class GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswerAnswerSource
-        include Google::Apis::Core::Hashable
-      
-        # The document from which the snippet was extracted. Format: `projects//
-        # knowledgeBases//documents/`
-        # Corresponds to the JSON property `document`
-        # @return [String]
-        attr_accessor :document
-      
-        # The relevant snippet of the article.
-        # Corresponds to the JSON property `snippet`
-        # @return [String]
-        attr_accessor :snippet
-      
-        # The title of the article.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # The URI of the article.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @document = args[:document] if args.key?(:document)
-          @snippet = args[:snippet] if args.key?(:snippet)
-          @title = args[:title] if args.key?(:title)
-          @uri = args[:uri] if args.key?(:uri)
+          @generator_name = args[:generator_name] if args.key?(:generator_name)
+          @query = args[:query] if args.key?(:query)
         end
       end
       
@@ -7769,50 +6651,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @speech_recognizer = args[:speech_recognizer] if args.key?(:speech_recognizer)
-        end
-      end
-      
-      # Suggested summary of the conversation.
-      class GoogleCloudContactcenterinsightsV1alpha1SummarySuggestion
-        include Google::Apis::Core::Hashable
-      
-        # Required. All the parts of generated summary.
-        # Corresponds to the JSON property `summarySections`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SummarySuggestionSummarySection>]
-        attr_accessor :summary_sections
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @summary_sections = args[:summary_sections] if args.key?(:summary_sections)
-        end
-      end
-      
-      # A component of the generated summary.
-      class GoogleCloudContactcenterinsightsV1alpha1SummarySuggestionSummarySection
-        include Google::Apis::Core::Hashable
-      
-        # Required. Name of the section.
-        # Corresponds to the JSON property `section`
-        # @return [String]
-        attr_accessor :section
-      
-        # Required. Summary text for the section.
-        # Corresponds to the JSON property `summary`
-        # @return [String]
-        attr_accessor :summary
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @section = args[:section] if args.key?(:section)
-          @summary = args[:summary] if args.key?(:summary)
         end
       end
       
