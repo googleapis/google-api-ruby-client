@@ -3595,6 +3595,14 @@ module Google
         # @return [String]
         attr_accessor :edition
       
+        # Optional. By default, Cloud SQL instances have schema extraction disabled for
+        # Dataplex. When this parameter is set to true, schema extraction for Dataplex
+        # on Cloud SQL instances is activated.
+        # Corresponds to the JSON property `enableDataplexIntegration`
+        # @return [Boolean]
+        attr_accessor :enable_dataplex_integration
+        alias_method :enable_dataplex_integration?, :enable_dataplex_integration
+      
         # Optional. When this parameter is set to true, Cloud SQL instances can connect
         # to Vertex AI to pass requests for real-time predictions and insights to the AI.
         # The default value is false. This applies only to Cloud SQL for PostgreSQL
@@ -3717,6 +3725,7 @@ module Google
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @deny_maintenance_periods = args[:deny_maintenance_periods] if args.key?(:deny_maintenance_periods)
           @edition = args[:edition] if args.key?(:edition)
+          @enable_dataplex_integration = args[:enable_dataplex_integration] if args.key?(:enable_dataplex_integration)
           @enable_google_ml_integration = args[:enable_google_ml_integration] if args.key?(:enable_google_ml_integration)
           @insights_config = args[:insights_config] if args.key?(:insights_config)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
