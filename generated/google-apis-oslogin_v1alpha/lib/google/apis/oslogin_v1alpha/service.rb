@@ -178,9 +178,7 @@ module Google
         # Signs an SSH public key for a user to authenticate to a virtual machine on
         # Google Compute Engine.
         # @param [String] parent
-        #   The parent project and zone for the signing request. This is needed to
-        #   properly ensure per-organization ISS processing and potentially to provide for
-        #   the possibility of zone-specific certificates used in the signing process.
+        #   The parent project and region for the signing request.
         # @param [Google::Apis::OsloginV1alpha::SignSshPublicKeyRequest] sign_ssh_public_key_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -214,9 +212,7 @@ module Google
         # Signs an SSH public key for a user to authenticate to a virtual machine on
         # Google Compute Engine.
         # @param [String] parent
-        #   The parent project and zone for the signing request. This is needed to
-        #   properly ensure per-organization ISS processing and potentially to provide for
-        #   the possibility of zone-specific certificates used in the signing process.
+        #   The parent project and region for the signing request.
         # @param [Google::Apis::OsloginV1alpha::SignSshPublicKeyRequest] sign_ssh_public_key_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
