@@ -478,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class V1Beta1ImportProducerQuotaPoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class V1Beta1ImportProducerQuotaPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -496,7 +502,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class V1Beta1ListProducerQuotaPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class V1Beta1OverrideInlineSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1Beta1PolicyInlineSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1433,6 +1451,17 @@ module Google
         end
       end
       
+      class V1Beta1ImportProducerQuotaPoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
+          property :force_justification, as: 'forceJustification'
+          property :inline_source, as: 'inlineSource', class: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1PolicyInlineSource, decorator: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1PolicyInlineSource::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
       class V1Beta1ImportProducerQuotaPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1459,10 +1488,27 @@ module Google
         end
       end
       
+      class V1Beta1ListProducerQuotaPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :producer_quota_policies, as: 'producerQuotaPolicies', class: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy, decorator: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy::Representation
+      
+        end
+      end
+      
       class V1Beta1OverrideInlineSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :overrides, as: 'overrides', class: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride, decorator: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride::Representation
+      
+        end
+      end
+      
+      class V1Beta1PolicyInlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :policies, as: 'policies', class: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy, decorator: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy::Representation
       
         end
       end
