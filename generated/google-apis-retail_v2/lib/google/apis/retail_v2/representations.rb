@@ -1198,12 +1198,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudRetailV2betaCreateMerchantCenterAccountLinkMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudRetailV2betaCreateModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1271,18 +1265,6 @@ module Google
       end
       
       class GoogleCloudRetailV2betaImportUserEventsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudRetailV2betaMerchantCenterAccountLink
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3306,14 +3288,6 @@ module Google
         end
       end
       
-      class GoogleCloudRetailV2betaCreateMerchantCenterAccountLinkMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
       class GoogleCloudRetailV2betaCreateModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3425,31 +3399,6 @@ module Google
       
           property :import_summary, as: 'importSummary', class: Google::Apis::RetailV2::GoogleCloudRetailV2betaUserEventImportSummary, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2betaUserEventImportSummary::Representation
       
-        end
-      end
-      
-      class GoogleCloudRetailV2betaMerchantCenterAccountLink
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :branch_id, as: 'branchId'
-          collection :feed_filters, as: 'feedFilters', class: Google::Apis::RetailV2::GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter::Representation
-      
-          property :feed_label, as: 'feedLabel'
-          property :id, as: 'id'
-          property :language_code, as: 'languageCode'
-          property :merchant_center_account_id, :numeric_string => true, as: 'merchantCenterAccountId'
-          property :name, as: 'name'
-          property :project_id, as: 'projectId'
-          property :source, as: 'source'
-          property :state, as: 'state'
-        end
-      end
-      
-      class GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :primary_feed_id, :numeric_string => true, as: 'primaryFeedId'
-          property :primary_feed_name, as: 'primaryFeedName'
         end
       end
       

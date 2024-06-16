@@ -75,8 +75,8 @@ module Google
         #   all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `
         #   MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
         # @param [Boolean] enable_attribute_suggestions
-        #   If true, attribute suggestions are enabled and provided in response. This
-        #   field is only available for "cloud-retail" dataset.
+        #   If true, attribute suggestions are enabled and provided in the response. This
+        #   field is only available for the "cloud-retail" dataset.
         # @param [String] entity
         #   The entity for customers who run multiple entities, domains, sites, or regions,
         #   for example, `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`,
