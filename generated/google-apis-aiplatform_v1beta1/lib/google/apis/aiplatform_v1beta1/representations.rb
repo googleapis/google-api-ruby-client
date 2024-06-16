@@ -2842,12 +2842,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1beta1ModelMonitoringGenAiStats
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1beta1ModelMonitoringInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3761,6 +3755,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1RagCorpus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagEmbeddingModelConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagEmbeddingModelConfigVertexPredictionEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5236,12 +5242,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilterGenAiStatsFilter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilterTabularStatsFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5315,6 +5315,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1StratifiedSplit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1StreamRawPredictRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9787,6 +9793,7 @@ module Google
       
           property :google_drive_source, as: 'googleDriveSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleDriveSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleDriveSource::Representation
       
+          property :max_embedding_requests_per_min, as: 'maxEmbeddingRequestsPerMin'
           property :rag_file_chunking_config, as: 'ragFileChunkingConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileChunkingConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileChunkingConfig::Representation
       
         end
@@ -11089,16 +11096,6 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1beta1ModelMonitoringGenAiStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :data_points, as: 'dataPoints', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringStatsDataPoint, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringStatsDataPoint::Representation
-      
-          property :objective_type, as: 'objectiveType'
-          property :stats_name, as: 'statsName'
-        end
-      end
-      
       class GoogleCloudAiplatformV1beta1ModelMonitoringInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11401,8 +11398,6 @@ module Google
       class GoogleCloudAiplatformV1beta1ModelMonitoringStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :gen_ai_stats, as: 'genAiStats', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringGenAiStats, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringGenAiStats::Representation
-      
           property :tabular_stats, as: 'tabularStats', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringTabularStats, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringTabularStats::Representation
       
         end
@@ -12310,8 +12305,6 @@ module Google
       
           property :deploy_gke, as: 'deployGke', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke::Representation
       
-          property :fine_tune, as: 'fineTune', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences::Representation
-      
           property :open_evaluation_pipeline, as: 'openEvaluationPipeline', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences::Representation
       
           property :open_fine_tuning_pipeline, as: 'openFineTuningPipeline', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences::Representation
@@ -12726,7 +12719,26 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :rag_embedding_model_config, as: 'ragEmbeddingModelConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagEmbeddingModelConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagEmbeddingModelConfig::Representation
+      
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagEmbeddingModelConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vertex_prediction_endpoint, as: 'vertexPredictionEndpoint', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagEmbeddingModelConfigVertexPredictionEndpoint, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagEmbeddingModelConfigVertexPredictionEndpoint::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagEmbeddingModelConfigVertexPredictionEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint, as: 'endpoint'
+          property :model, as: 'model'
+          property :model_version_id, as: 'modelVersionId'
         end
       end
       
@@ -15107,21 +15119,8 @@ module Google
       class GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :gen_ai_stats_filter, as: 'genAiStatsFilter', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilterGenAiStatsFilter, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilterGenAiStatsFilter::Representation
-      
           property :tabular_stats_filter, as: 'tabularStatsFilter', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilterTabularStatsFilter, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilterTabularStatsFilter::Representation
       
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilterGenAiStatsFilter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster_id, as: 'clusterId'
-          property :model_monitoring_job, as: 'modelMonitoringJob'
-          property :model_monitoring_schedule, as: 'modelMonitoringSchedule'
-          property :objective_type, as: 'objectiveType'
-          property :stats_name, as: 'statsName'
         end
       end
       
@@ -15239,6 +15238,14 @@ module Google
           property :test_fraction, as: 'testFraction'
           property :training_fraction, as: 'trainingFraction'
           property :validation_fraction, as: 'validationFraction'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1StreamRawPredictRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_body, as: 'httpBody', class: Google::Apis::AiplatformV1beta1::GoogleApiHttpBody, decorator: Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+      
         end
       end
       
