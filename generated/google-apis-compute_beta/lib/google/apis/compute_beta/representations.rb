@@ -7231,6 +7231,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :enable_uefi_networking, as: 'enableUefiNetworking'
+          property :performance_monitoring_unit, as: 'performanceMonitoringUnit'
           property :threads_per_core, as: 'threadsPerCore'
           property :visible_core_count, as: 'visibleCoreCount'
         end
