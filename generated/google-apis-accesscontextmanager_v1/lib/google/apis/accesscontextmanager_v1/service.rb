@@ -234,8 +234,8 @@ module Google
         # successful status after the changes to the access policy propagate to long-
         # lasting storage.
         # @param [String] name
-        #   Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/`
-        #   access_policy``
+        #   Output only. Identifier. Resource name of the `AccessPolicy`. Format: `
+        #   accessPolicies/`access_policy``
         # @param [Google::Apis::AccesscontextmanagerV1::AccessPolicy] access_policy_object
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.
@@ -500,10 +500,11 @@ module Google
         # lasting storage. If access levels contain errors, an error response is
         # returned for the first error encountered.
         # @param [String] name
-        #   Resource name for the `AccessLevel`. Format: `accessPolicies/`access_policy`/
-        #   accessLevels/`access_level``. The `access_level` component must begin with a
-        #   letter, followed by alphanumeric characters or `_`. Its maximum length is 50
-        #   characters. After you create an `AccessLevel`, you cannot change its `name`.
+        #   Identifier. Resource name for the `AccessLevel`. Format: `accessPolicies/`
+        #   access_policy`/accessLevels/`access_level``. The `access_level` component must
+        #   begin with a letter, followed by alphanumeric characters or `_`. Its maximum
+        #   length is 50 characters. After you create an `AccessLevel`, you cannot change
+        #   its `name`.
         # @param [Google::Apis::AccesscontextmanagerV1::AccessLevel] access_level_object
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.
@@ -762,9 +763,9 @@ module Google
         # AuthorizedOrgsDesc` can be updated. The name, authorization_type, asset_type
         # and authorization_direction cannot be updated.
         # @param [String] name
-        #   Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/`
-        #   access_policy`/authorizedOrgsDescs/`authorized_orgs_desc``. The `
-        #   authorized_orgs_desc` component must begin with a letter, followed by
+        #   Identifier. Resource name for the `AuthorizedOrgsDesc`. Format: `
+        #   accessPolicies/`access_policy`/authorizedOrgsDescs/`authorized_orgs_desc``.
+        #   The `authorized_orgs_desc` component must begin with a letter, followed by
         #   alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you
         #   cannot change its `name`.
         # @param [Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc] authorized_orgs_desc_object
@@ -989,7 +990,7 @@ module Google
         # storage. If a service perimeter contains errors, an error response is returned
         # for the first error encountered.
         # @param [String] name
-        #   Resource name for the `ServicePerimeter`. Format: `accessPolicies/`
+        #   Identifier. Resource name for the `ServicePerimeter`. Format: `accessPolicies/`
         #   access_policy`/servicePerimeters/`service_perimeter``. The `service_perimeter`
         #   component must begin with a letter, followed by alphanumeric characters or `_`.
         #   After you create a `ServicePerimeter`, you cannot change its `name`.

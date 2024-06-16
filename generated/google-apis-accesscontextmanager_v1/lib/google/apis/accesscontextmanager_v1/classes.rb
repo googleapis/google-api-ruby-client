@@ -58,10 +58,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Resource name for the `AccessLevel`. Format: `accessPolicies/`access_policy`/
-        # accessLevels/`access_level``. The `access_level` component must begin with a
-        # letter, followed by alphanumeric characters or `_`. Its maximum length is 50
-        # characters. After you create an `AccessLevel`, you cannot change its `name`.
+        # Identifier. Resource name for the `AccessLevel`. Format: `accessPolicies/`
+        # access_policy`/accessLevels/`access_level``. The `access_level` component must
+        # begin with a letter, followed by alphanumeric characters or `_`. Its maximum
+        # length is 50 characters. After you create an `AccessLevel`, you cannot change
+        # its `name`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -95,14 +96,14 @@ module Google
       
         # Output only. An opaque identifier for the current version of the `AccessPolicy`
         # . This will always be a strongly validated etag, meaning that two Access
-        # Polices will be identical if and only if their etags are identical. Clients
+        # Policies will be identical if and only if their etags are identical. Clients
         # should not expect this to be in any specific format.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/`
-        # access_policy``
+        # Output only. Identifier. Resource name of the `AccessPolicy`. Format: `
+        # accessPolicies/`access_policy``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -304,9 +305,9 @@ module Google
         # @return [String]
         attr_accessor :authorization_type
       
-        # Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/`
-        # access_policy`/authorizedOrgsDescs/`authorized_orgs_desc``. The `
-        # authorized_orgs_desc` component must begin with a letter, followed by
+        # Identifier. Resource name for the `AuthorizedOrgsDesc`. Format: `
+        # accessPolicies/`access_policy`/authorizedOrgsDescs/`authorized_orgs_desc``.
+        # The `authorized_orgs_desc` component must begin with a letter, followed by
         # alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you
         # cannot change its `name`.
         # Corresponds to the JSON property `name`
@@ -1733,7 +1734,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Resource name for the `ServicePerimeter`. Format: `accessPolicies/`
+        # Identifier. Resource name for the `ServicePerimeter`. Format: `accessPolicies/`
         # access_policy`/servicePerimeters/`service_perimeter``. The `service_perimeter`
         # component must begin with a letter, followed by alphanumeric characters or `_`.
         # After you create a `ServicePerimeter`, you cannot change its `name`.
