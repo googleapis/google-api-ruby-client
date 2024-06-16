@@ -507,6 +507,8 @@ module Google
           property :parameters, as: 'parameters', class: Google::Apis::MemcacheV1::MemcacheParameters, decorator: Google::Apis::MemcacheV1::MemcacheParameters::Representation
       
           collection :reserved_ip_range_id, as: 'reservedIpRangeId'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
           collection :zones, as: 'zones'

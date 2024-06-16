@@ -883,6 +883,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :reserved_ip_range_id
       
+        # Optional. Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Optional. Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The state of this Memcached instance.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -922,6 +934,8 @@ module Google
           @node_count = args[:node_count] if args.key?(:node_count)
           @parameters = args[:parameters] if args.key?(:parameters)
           @reserved_ip_range_id = args[:reserved_ip_range_id] if args.key?(:reserved_ip_range_id)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @zones = args[:zones] if args.key?(:zones)
