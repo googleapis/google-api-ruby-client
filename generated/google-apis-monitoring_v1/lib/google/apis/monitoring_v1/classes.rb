@@ -481,12 +481,6 @@ module Google
       class DashboardFilter
         include Google::Apis::Core::Hashable
       
-        # Whether to apply this filter to new widgets by default
-        # Corresponds to the JSON property `applyToNewWidgets`
-        # @return [Boolean]
-        attr_accessor :apply_to_new_widgets
-        alias_method :apply_to_new_widgets?, :apply_to_new_widgets
-      
         # The specified filter type
         # Corresponds to the JSON property `filterType`
         # @return [String]
@@ -515,7 +509,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @apply_to_new_widgets = args[:apply_to_new_widgets] if args.key?(:apply_to_new_widgets)
           @filter_type = args[:filter_type] if args.key?(:filter_type)
           @label_key = args[:label_key] if args.key?(:label_key)
           @string_value = args[:string_value] if args.key?(:string_value)
@@ -1888,12 +1881,24 @@ module Google
         # @return [Google::Apis::MonitoringV1::Empty]
         attr_accessor :blank_view
       
+        # Optional. A dimension is a structured label, class, or category for a set of
+        # measurements in your data.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::MonitoringV1::Dimension>]
+        attr_accessor :dimensions
+      
         # A gauge chart shows where the current value sits within a pre-defined range.
         # The upper and lower bounds should define the possible range of values for the
         # scorecard's query (inclusive).
         # Corresponds to the JSON property `gaugeView`
         # @return [Google::Apis::MonitoringV1::GaugeView]
         attr_accessor :gauge_view
+      
+        # Optional. A measure is a measured value of a property in your data. For
+        # example, rainfall in inches, number of units sold, revenue gained, etc.
+        # Corresponds to the JSON property `measures`
+        # @return [Array<Google::Apis::MonitoringV1::Measure>]
+        attr_accessor :measures
       
         # A sparkChart is a small chart suitable for inclusion in a table-cell or inline
         # in text. This message contains the configuration for a sparkChart to show up
@@ -1934,7 +1939,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @blank_view = args[:blank_view] if args.key?(:blank_view)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
           @gauge_view = args[:gauge_view] if args.key?(:gauge_view)
+          @measures = args[:measures] if args.key?(:measures)
           @spark_chart_view = args[:spark_chart_view] if args.key?(:spark_chart_view)
           @thresholds = args[:thresholds] if args.key?(:thresholds)
           @time_series_query = args[:time_series_query] if args.key?(:time_series_query)

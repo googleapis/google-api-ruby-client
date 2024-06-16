@@ -561,7 +561,6 @@ module Google
       class DashboardFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :apply_to_new_widgets, as: 'applyToNewWidgets'
           property :filter_type, as: 'filterType'
           property :label_key, as: 'labelKey'
           property :string_value, as: 'stringValue'
@@ -920,7 +919,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blank_view, as: 'blankView', class: Google::Apis::MonitoringV1::Empty, decorator: Google::Apis::MonitoringV1::Empty::Representation
       
+          collection :dimensions, as: 'dimensions', class: Google::Apis::MonitoringV1::Dimension, decorator: Google::Apis::MonitoringV1::Dimension::Representation
+      
           property :gauge_view, as: 'gaugeView', class: Google::Apis::MonitoringV1::GaugeView, decorator: Google::Apis::MonitoringV1::GaugeView::Representation
+      
+          collection :measures, as: 'measures', class: Google::Apis::MonitoringV1::Measure, decorator: Google::Apis::MonitoringV1::Measure::Representation
       
           property :spark_chart_view, as: 'sparkChartView', class: Google::Apis::MonitoringV1::SparkChartView, decorator: Google::Apis::MonitoringV1::SparkChartView::Representation
       
