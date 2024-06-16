@@ -55,7 +55,7 @@ module Google
         # @param [String] endpoint
         #   Required. The name of the Endpoint requested to perform token counting. Format:
         #   `projects/`project`/locations/`location`/endpoints/`endpoint``
-        # @param [Google::Apis::FirebasemlV2beta::CountTokensRequest] count_tokens_request_object
+        # @param [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CountTokensRequest] google_cloud_aiplatform_v1beta1_count_tokens_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -65,20 +65,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebasemlV2beta::CountTokensResponse] parsed result object
+        # @yieldparam result [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CountTokensResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FirebasemlV2beta::CountTokensResponse]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CountTokensResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def count_model_tokens(endpoint, count_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def count_model_tokens(endpoint, google_cloud_aiplatform_v1beta1_count_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2beta/{+endpoint}:countTokens', options)
-          command.request_representation = Google::Apis::FirebasemlV2beta::CountTokensRequest::Representation
-          command.request_object = count_tokens_request_object
-          command.response_representation = Google::Apis::FirebasemlV2beta::CountTokensResponse::Representation
-          command.response_class = Google::Apis::FirebasemlV2beta::CountTokensResponse
+          command.request_representation = Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CountTokensRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_count_tokens_request_object
+          command.response_representation = Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CountTokensResponse::Representation
+          command.response_class = Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CountTokensResponse
           command.params['endpoint'] = endpoint unless endpoint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -89,7 +89,7 @@ module Google
         # @param [String] model
         #   Required. The name of the publisher model requested to serve the prediction.
         #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
-        # @param [Google::Apis::FirebasemlV2beta::GenerateContentRequest] generate_content_request_object
+        # @param [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -99,20 +99,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebasemlV2beta::GenerateContentResponse] parsed result object
+        # @yieldparam result [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FirebasemlV2beta::GenerateContentResponse]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_model_content(model, generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def generate_model_content(model, google_cloud_aiplatform_v1beta1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2beta/{+model}:generateContent', options)
-          command.request_representation = Google::Apis::FirebasemlV2beta::GenerateContentRequest::Representation
-          command.request_object = generate_content_request_object
-          command.response_representation = Google::Apis::FirebasemlV2beta::GenerateContentResponse::Representation
-          command.response_class = Google::Apis::FirebasemlV2beta::GenerateContentResponse
+          command.request_representation = Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_content_request_object
+          command.response_representation = Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponse
           command.params['model'] = model unless model.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -123,7 +123,7 @@ module Google
         # @param [String] model
         #   Required. The name of the publisher model requested to serve the prediction.
         #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
-        # @param [Google::Apis::FirebasemlV2beta::GenerateContentRequest] generate_content_request_object
+        # @param [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -133,20 +133,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebasemlV2beta::GenerateContentResponse] parsed result object
+        # @yieldparam result [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FirebasemlV2beta::GenerateContentResponse]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stream_project_location_publisher_model_generate_content(model, generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def stream_project_location_publisher_model_generate_content(model, google_cloud_aiplatform_v1beta1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2beta/{+model}:streamGenerateContent', options)
-          command.request_representation = Google::Apis::FirebasemlV2beta::GenerateContentRequest::Representation
-          command.request_object = generate_content_request_object
-          command.response_representation = Google::Apis::FirebasemlV2beta::GenerateContentResponse::Representation
-          command.response_class = Google::Apis::FirebasemlV2beta::GenerateContentResponse
+          command.request_representation = Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_content_request_object
+          command.response_representation = Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponse
           command.params['model'] = model unless model.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -22,109 +22,193 @@ module Google
   module Apis
     module FirebasemlV2beta
       
-      class Blob
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Candidate
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Citation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CitationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Content
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CountTokensRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CountTokensResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FileData
+      class GoogleCloudAiplatformV1beta1Blob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FunctionCall
+      class GoogleCloudAiplatformV1beta1Candidate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FunctionCallingConfig
+      class GoogleCloudAiplatformV1beta1Citation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FunctionDeclaration
+      class GoogleCloudAiplatformV1beta1CitationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FunctionResponse
+      class GoogleCloudAiplatformV1beta1Content
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenerateContentRequest
+      class GoogleCloudAiplatformV1beta1CountTokensRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenerateContentResponse
+      class GoogleCloudAiplatformV1beta1CountTokensResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenerationConfig
+      class GoogleCloudAiplatformV1beta1FileData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSearchRetrieval
+      class GoogleCloudAiplatformV1beta1FunctionCall
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GroundingMetadata
+      class GoogleCloudAiplatformV1beta1FunctionCallingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1FunctionDeclaration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1FunctionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateContentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateContentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1Part
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1Retrieval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1SafetyRating
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1SafetySetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1Schema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1SearchEntryPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1Tool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ToolConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1VertexAiSearch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1VertexRagStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1VertexRagStoreRagResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1VideoMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,91 +220,16 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Part
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
       end
       
-      class PromptFeedback
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RagResource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Retrieval
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SafetyRating
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SafetySetting
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Schema
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SearchEntryPoint
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Tool
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ToolConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UsageMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class VertexAiSearch
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class VertexRagStore
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class VideoMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Blob
+      class GoogleCloudAiplatformV1beta1Blob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, :base64 => true, as: 'data'
@@ -228,24 +237,24 @@ module Google
         end
       end
       
-      class Candidate
+      class GoogleCloudAiplatformV1beta1Candidate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :citation_metadata, as: 'citationMetadata', class: Google::Apis::FirebasemlV2beta::CitationMetadata, decorator: Google::Apis::FirebasemlV2beta::CitationMetadata::Representation
+          property :citation_metadata, as: 'citationMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CitationMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CitationMetadata::Representation
       
-          property :content, as: 'content', class: Google::Apis::FirebasemlV2beta::Content, decorator: Google::Apis::FirebasemlV2beta::Content::Representation
+          property :content, as: 'content', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content::Representation
       
           property :finish_message, as: 'finishMessage'
           property :finish_reason, as: 'finishReason'
-          property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::FirebasemlV2beta::GroundingMetadata, decorator: Google::Apis::FirebasemlV2beta::GroundingMetadata::Representation
+          property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingMetadata::Representation
       
           property :index, as: 'index'
-          collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::FirebasemlV2beta::SafetyRating, decorator: Google::Apis::FirebasemlV2beta::SafetyRating::Representation
+          collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating::Representation
       
         end
       end
       
-      class Citation
+      class GoogleCloudAiplatformV1beta1Citation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_index, as: 'endIndex'
@@ -258,34 +267,34 @@ module Google
         end
       end
       
-      class CitationMetadata
+      class GoogleCloudAiplatformV1beta1CitationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :citations, as: 'citations', class: Google::Apis::FirebasemlV2beta::Citation, decorator: Google::Apis::FirebasemlV2beta::Citation::Representation
+          collection :citations, as: 'citations', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Citation, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Citation::Representation
       
         end
       end
       
-      class Content
+      class GoogleCloudAiplatformV1beta1Content
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :parts, as: 'parts', class: Google::Apis::FirebasemlV2beta::Part, decorator: Google::Apis::FirebasemlV2beta::Part::Representation
+          collection :parts, as: 'parts', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Part, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Part::Representation
       
           property :role, as: 'role'
         end
       end
       
-      class CountTokensRequest
+      class GoogleCloudAiplatformV1beta1CountTokensRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :contents, as: 'contents', class: Google::Apis::FirebasemlV2beta::Content, decorator: Google::Apis::FirebasemlV2beta::Content::Representation
+          collection :contents, as: 'contents', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content::Representation
       
           collection :instances, as: 'instances'
           property :model, as: 'model'
         end
       end
       
-      class CountTokensResponse
+      class GoogleCloudAiplatformV1beta1CountTokensResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :total_billable_characters, as: 'totalBillableCharacters'
@@ -293,16 +302,7 @@ module Google
         end
       end
       
-      class Date
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :day, as: 'day'
-          property :month, as: 'month'
-          property :year, as: 'year'
-        end
-      end
-      
-      class FileData
+      class GoogleCloudAiplatformV1beta1FileData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_uri, as: 'fileUri'
@@ -310,7 +310,7 @@ module Google
         end
       end
       
-      class FunctionCall
+      class GoogleCloudAiplatformV1beta1FunctionCall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :args, as: 'args'
@@ -318,7 +318,7 @@ module Google
         end
       end
       
-      class FunctionCallingConfig
+      class GoogleCloudAiplatformV1beta1FunctionCallingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_function_names, as: 'allowedFunctionNames'
@@ -326,19 +326,19 @@ module Google
         end
       end
       
-      class FunctionDeclaration
+      class GoogleCloudAiplatformV1beta1FunctionDeclaration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :name, as: 'name'
-          property :parameters, as: 'parameters', class: Google::Apis::FirebasemlV2beta::Schema, decorator: Google::Apis::FirebasemlV2beta::Schema::Representation
+          property :parameters, as: 'parameters', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
-          property :response, as: 'response', class: Google::Apis::FirebasemlV2beta::Schema, decorator: Google::Apis::FirebasemlV2beta::Schema::Representation
+          property :response, as: 'response', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
         end
       end
       
-      class FunctionResponse
+      class GoogleCloudAiplatformV1beta1FunctionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
@@ -346,38 +346,57 @@ module Google
         end
       end
       
-      class GenerateContentRequest
+      class GoogleCloudAiplatformV1beta1GenerateContentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cached_content, as: 'cachedContent'
-          collection :contents, as: 'contents', class: Google::Apis::FirebasemlV2beta::Content, decorator: Google::Apis::FirebasemlV2beta::Content::Representation
+          collection :contents, as: 'contents', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content::Representation
       
-          property :generation_config, as: 'generationConfig', class: Google::Apis::FirebasemlV2beta::GenerationConfig, decorator: Google::Apis::FirebasemlV2beta::GenerationConfig::Representation
+          property :generation_config, as: 'generationConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfig::Representation
       
-          collection :safety_settings, as: 'safetySettings', class: Google::Apis::FirebasemlV2beta::SafetySetting, decorator: Google::Apis::FirebasemlV2beta::SafetySetting::Representation
+          collection :safety_settings, as: 'safetySettings', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetySetting, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetySetting::Representation
       
-          property :system_instruction, as: 'systemInstruction', class: Google::Apis::FirebasemlV2beta::Content, decorator: Google::Apis::FirebasemlV2beta::Content::Representation
+          property :system_instruction, as: 'systemInstruction', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content::Representation
       
-          property :tool_config, as: 'toolConfig', class: Google::Apis::FirebasemlV2beta::ToolConfig, decorator: Google::Apis::FirebasemlV2beta::ToolConfig::Representation
+          property :tool_config, as: 'toolConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolConfig::Representation
       
-          collection :tools, as: 'tools', class: Google::Apis::FirebasemlV2beta::Tool, decorator: Google::Apis::FirebasemlV2beta::Tool::Representation
+          collection :tools, as: 'tools', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Tool, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Tool::Representation
       
         end
       end
       
-      class GenerateContentResponse
+      class GoogleCloudAiplatformV1beta1GenerateContentResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :candidates, as: 'candidates', class: Google::Apis::FirebasemlV2beta::Candidate, decorator: Google::Apis::FirebasemlV2beta::Candidate::Representation
+          collection :candidates, as: 'candidates', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Candidate, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Candidate::Representation
       
-          property :prompt_feedback, as: 'promptFeedback', class: Google::Apis::FirebasemlV2beta::PromptFeedback, decorator: Google::Apis::FirebasemlV2beta::PromptFeedback::Representation
+          property :prompt_feedback, as: 'promptFeedback', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback::Representation
       
-          property :usage_metadata, as: 'usageMetadata', class: Google::Apis::FirebasemlV2beta::UsageMetadata, decorator: Google::Apis::FirebasemlV2beta::UsageMetadata::Representation
+          property :usage_metadata, as: 'usageMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata::Representation
       
         end
       end
       
-      class GenerationConfig
+      class GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_reason, as: 'blockReason'
+          property :block_reason_message, as: 'blockReasonMessage'
+          collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :candidates_token_count, as: 'candidatesTokenCount'
+          property :prompt_token_count, as: 'promptTokenCount'
+          property :total_token_count, as: 'totalTokenCount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :candidate_count, as: 'candidateCount'
@@ -385,7 +404,7 @@ module Google
           property :max_output_tokens, as: 'maxOutputTokens'
           property :presence_penalty, as: 'presencePenalty'
           property :response_mime_type, as: 'responseMimeType'
-          property :response_schema, as: 'responseSchema', class: Google::Apis::FirebasemlV2beta::Schema, decorator: Google::Apis::FirebasemlV2beta::Schema::Representation
+          property :response_schema, as: 'responseSchema', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
@@ -394,77 +413,51 @@ module Google
         end
       end
       
-      class GoogleSearchRetrieval
+      class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      class GroundingMetadata
+      class GoogleCloudAiplatformV1beta1GroundingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :retrieval_queries, as: 'retrievalQueries'
-          property :search_entry_point, as: 'searchEntryPoint', class: Google::Apis::FirebasemlV2beta::SearchEntryPoint, decorator: Google::Apis::FirebasemlV2beta::SearchEntryPoint::Representation
+          property :search_entry_point, as: 'searchEntryPoint', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SearchEntryPoint, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SearchEntryPoint::Representation
       
           collection :web_search_queries, as: 'webSearchQueries'
         end
       end
       
-      class ModelOperationMetadata
+      class GoogleCloudAiplatformV1beta1Part
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :basic_operation_status, as: 'basicOperationStatus'
-          property :name, as: 'name'
-        end
-      end
+          property :file_data, as: 'fileData', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FileData, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FileData::Representation
       
-      class Part
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :file_data, as: 'fileData', class: Google::Apis::FirebasemlV2beta::FileData, decorator: Google::Apis::FirebasemlV2beta::FileData::Representation
+          property :function_call, as: 'functionCall', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCall, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCall::Representation
       
-          property :function_call, as: 'functionCall', class: Google::Apis::FirebasemlV2beta::FunctionCall, decorator: Google::Apis::FirebasemlV2beta::FunctionCall::Representation
+          property :function_response, as: 'functionResponse', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionResponse, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionResponse::Representation
       
-          property :function_response, as: 'functionResponse', class: Google::Apis::FirebasemlV2beta::FunctionResponse, decorator: Google::Apis::FirebasemlV2beta::FunctionResponse::Representation
-      
-          property :inline_data, as: 'inlineData', class: Google::Apis::FirebasemlV2beta::Blob, decorator: Google::Apis::FirebasemlV2beta::Blob::Representation
+          property :inline_data, as: 'inlineData', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob::Representation
       
           property :text, as: 'text'
-          property :video_metadata, as: 'videoMetadata', class: Google::Apis::FirebasemlV2beta::VideoMetadata, decorator: Google::Apis::FirebasemlV2beta::VideoMetadata::Representation
+          property :video_metadata, as: 'videoMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoMetadata::Representation
       
         end
       end
       
-      class PromptFeedback
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :block_reason, as: 'blockReason'
-          property :block_reason_message, as: 'blockReasonMessage'
-          collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::FirebasemlV2beta::SafetyRating, decorator: Google::Apis::FirebasemlV2beta::SafetyRating::Representation
-      
-        end
-      end
-      
-      class RagResource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :rag_corpus, as: 'ragCorpus'
-          collection :rag_file_ids, as: 'ragFileIds'
-        end
-      end
-      
-      class Retrieval
+      class GoogleCloudAiplatformV1beta1Retrieval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_attribution, as: 'disableAttribution'
-          property :vertex_ai_search, as: 'vertexAiSearch', class: Google::Apis::FirebasemlV2beta::VertexAiSearch, decorator: Google::Apis::FirebasemlV2beta::VertexAiSearch::Representation
+          property :vertex_ai_search, as: 'vertexAiSearch', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexAiSearch, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexAiSearch::Representation
       
-          property :vertex_rag_store, as: 'vertexRagStore', class: Google::Apis::FirebasemlV2beta::VertexRagStore, decorator: Google::Apis::FirebasemlV2beta::VertexRagStore::Representation
+          property :vertex_rag_store, as: 'vertexRagStore', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStore, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStore::Representation
       
         end
       end
       
-      class SafetyRating
+      class GoogleCloudAiplatformV1beta1SafetyRating
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blocked, as: 'blocked'
@@ -476,7 +469,7 @@ module Google
         end
       end
       
-      class SafetySetting
+      class GoogleCloudAiplatformV1beta1SafetySetting
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
@@ -485,7 +478,7 @@ module Google
         end
       end
       
-      class Schema
+      class GoogleCloudAiplatformV1beta1Schema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default, as: 'default'
@@ -493,7 +486,7 @@ module Google
           collection :enum, as: 'enum'
           property :example, as: 'example'
           property :format, as: 'format'
-          property :items, as: 'items', class: Google::Apis::FirebasemlV2beta::Schema, decorator: Google::Apis::FirebasemlV2beta::Schema::Representation
+          property :items, as: 'items', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
           property :max_items, :numeric_string => true, as: 'maxItems'
           property :max_length, :numeric_string => true, as: 'maxLength'
@@ -505,7 +498,7 @@ module Google
           property :minimum, as: 'minimum'
           property :nullable, as: 'nullable'
           property :pattern, as: 'pattern'
-          hash :properties, as: 'properties', class: Google::Apis::FirebasemlV2beta::Schema, decorator: Google::Apis::FirebasemlV2beta::Schema::Representation
+          hash :properties, as: 'properties', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
           collection :required, as: 'required'
           property :title, as: 'title'
@@ -513,7 +506,7 @@ module Google
         end
       end
       
-      class SearchEntryPoint
+      class GoogleCloudAiplatformV1beta1SearchEntryPoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rendered_content, as: 'renderedContent'
@@ -521,58 +514,65 @@ module Google
         end
       end
       
-      class Tool
+      class GoogleCloudAiplatformV1beta1Tool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::FirebasemlV2beta::FunctionDeclaration, decorator: Google::Apis::FirebasemlV2beta::FunctionDeclaration::Representation
+          collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration::Representation
       
-          property :google_search_retrieval, as: 'googleSearchRetrieval', class: Google::Apis::FirebasemlV2beta::GoogleSearchRetrieval, decorator: Google::Apis::FirebasemlV2beta::GoogleSearchRetrieval::Representation
+          property :google_search_retrieval, as: 'googleSearchRetrieval', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval::Representation
       
-          property :retrieval, as: 'retrieval', class: Google::Apis::FirebasemlV2beta::Retrieval, decorator: Google::Apis::FirebasemlV2beta::Retrieval::Representation
+          property :retrieval, as: 'retrieval', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Retrieval, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Retrieval::Representation
       
         end
       end
       
-      class ToolConfig
+      class GoogleCloudAiplatformV1beta1ToolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :function_calling_config, as: 'functionCallingConfig', class: Google::Apis::FirebasemlV2beta::FunctionCallingConfig, decorator: Google::Apis::FirebasemlV2beta::FunctionCallingConfig::Representation
+          property :function_calling_config, as: 'functionCallingConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCallingConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCallingConfig::Representation
       
         end
       end
       
-      class UsageMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :candidates_token_count, as: 'candidatesTokenCount'
-          property :prompt_token_count, as: 'promptTokenCount'
-          property :total_token_count, as: 'totalTokenCount'
-        end
-      end
-      
-      class VertexAiSearch
+      class GoogleCloudAiplatformV1beta1VertexAiSearch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
         end
       end
       
-      class VertexRagStore
+      class GoogleCloudAiplatformV1beta1VertexRagStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :rag_corpora, as: 'ragCorpora'
-          collection :rag_resources, as: 'ragResources', class: Google::Apis::FirebasemlV2beta::RagResource, decorator: Google::Apis::FirebasemlV2beta::RagResource::Representation
+          collection :rag_resources, as: 'ragResources', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStoreRagResource, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStoreRagResource::Representation
       
           property :similarity_top_k, as: 'similarityTopK'
           property :vector_distance_threshold, as: 'vectorDistanceThreshold'
         end
       end
       
-      class VideoMetadata
+      class GoogleCloudAiplatformV1beta1VertexRagStoreRagResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rag_corpus, as: 'ragCorpus'
+          collection :rag_file_ids, as: 'ragFileIds'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1VideoMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_offset, as: 'endOffset'
           property :start_offset, as: 'startOffset'
+        end
+      end
+      
+      class ModelOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basic_operation_status, as: 'basicOperationStatus'
+          property :name, as: 'name'
         end
       end
     end
