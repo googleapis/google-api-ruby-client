@@ -340,12 +340,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ResponseHeader
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ResponsePoliciesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -432,8 +426,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :changes, as: 'changes', class: Google::Apis::DnsV1beta2::Change, decorator: Google::Apis::DnsV1beta2::Change::Representation
       
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
         end
@@ -479,8 +471,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dns_keys, as: 'dnsKeys', class: Google::Apis::DnsV1beta2::DnsKey, decorator: Google::Apis::DnsV1beta2::DnsKey::Representation
-      
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -645,8 +635,6 @@ module Google
       class ManagedZoneOperationsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DnsV1beta2::Operation, decorator: Google::Apis::DnsV1beta2::Operation::Representation
@@ -727,8 +715,6 @@ module Google
       class ManagedZonesListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :kind, as: 'kind'
           collection :managed_zones, as: 'managedZones', class: Google::Apis::DnsV1beta2::ManagedZone, decorator: Google::Apis::DnsV1beta2::ManagedZone::Representation
       
@@ -775,8 +761,6 @@ module Google
       class PoliciesListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           collection :policies, as: 'policies', class: Google::Apis::DnsV1beta2::Policy, decorator: Google::Apis::DnsV1beta2::Policy::Representation
@@ -787,8 +771,6 @@ module Google
       class PoliciesPatchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :policy, as: 'policy', class: Google::Apis::DnsV1beta2::Policy, decorator: Google::Apis::DnsV1beta2::Policy::Representation
       
         end
@@ -797,8 +779,6 @@ module Google
       class PoliciesUpdateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :policy, as: 'policy', class: Google::Apis::DnsV1beta2::Policy, decorator: Google::Apis::DnsV1beta2::Policy::Representation
       
         end
@@ -1001,8 +981,6 @@ module Google
       class ResourceRecordSetsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           collection :rrsets, as: 'rrsets', class: Google::Apis::DnsV1beta2::ResourceRecordSet, decorator: Google::Apis::DnsV1beta2::ResourceRecordSet::Representation
@@ -1010,18 +988,9 @@ module Google
         end
       end
       
-      class ResponseHeader
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_id, as: 'operationId'
-        end
-      end
-      
       class ResponsePoliciesListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :next_page_token, as: 'nextPageToken'
           collection :response_policies, as: 'responsePolicies', class: Google::Apis::DnsV1beta2::ResponsePolicy, decorator: Google::Apis::DnsV1beta2::ResponsePolicy::Representation
       
@@ -1031,8 +1000,6 @@ module Google
       class ResponsePoliciesPatchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :response_policy, as: 'responsePolicy', class: Google::Apis::DnsV1beta2::ResponsePolicy, decorator: Google::Apis::DnsV1beta2::ResponsePolicy::Representation
       
         end
@@ -1041,8 +1008,6 @@ module Google
       class ResponsePoliciesUpdateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :response_policy, as: 'responsePolicy', class: Google::Apis::DnsV1beta2::ResponsePolicy, decorator: Google::Apis::DnsV1beta2::ResponsePolicy::Representation
       
         end
@@ -1102,8 +1067,6 @@ module Google
       class ResponsePolicyRulesListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :next_page_token, as: 'nextPageToken'
           collection :response_policy_rules, as: 'responsePolicyRules', class: Google::Apis::DnsV1beta2::ResponsePolicyRule, decorator: Google::Apis::DnsV1beta2::ResponsePolicyRule::Representation
       
@@ -1113,8 +1076,6 @@ module Google
       class ResponsePolicyRulesPatchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :response_policy_rule, as: 'responsePolicyRule', class: Google::Apis::DnsV1beta2::ResponsePolicyRule, decorator: Google::Apis::DnsV1beta2::ResponsePolicyRule::Representation
       
         end
@@ -1123,8 +1084,6 @@ module Google
       class ResponsePolicyRulesUpdateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
-      
           property :response_policy_rule, as: 'responsePolicyRule', class: Google::Apis::DnsV1beta2::ResponsePolicyRule, decorator: Google::Apis::DnsV1beta2::ResponsePolicyRule::Representation
       
         end
