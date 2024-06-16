@@ -7098,6 +7098,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The optimization objective of the insertion order.
+        # Corresponds to the JSON property `optimizationObjective`
+        # @return [String]
+        attr_accessor :optimization_objective
+      
         # Settings that control the rate at which a budget is spent.
         # Corresponds to the JSON property `pacing`
         # @return [Google::Apis::DisplayvideoV3::Pacing]
@@ -7139,6 +7144,7 @@ module Google
           @integration_details = args[:integration_details] if args.key?(:integration_details)
           @kpi = args[:kpi] if args.key?(:kpi)
           @name = args[:name] if args.key?(:name)
+          @optimization_objective = args[:optimization_objective] if args.key?(:optimization_objective)
           @pacing = args[:pacing] if args.key?(:pacing)
           @partner_costs = args[:partner_costs] if args.key?(:partner_costs)
           @reservation_type = args[:reservation_type] if args.key?(:reservation_type)

@@ -3952,6 +3952,7 @@ module Google
           property :kpi, as: 'kpi', class: Google::Apis::DisplayvideoV3::Kpi, decorator: Google::Apis::DisplayvideoV3::Kpi::Representation
       
           property :name, as: 'name'
+          property :optimization_objective, as: 'optimizationObjective'
           property :pacing, as: 'pacing', class: Google::Apis::DisplayvideoV3::Pacing, decorator: Google::Apis::DisplayvideoV3::Pacing::Representation
       
           collection :partner_costs, as: 'partnerCosts', class: Google::Apis::DisplayvideoV3::PartnerCost, decorator: Google::Apis::DisplayvideoV3::PartnerCost::Representation
