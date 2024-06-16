@@ -795,6 +795,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the DNS records from the Google Domains DNS zone for domains that use
+        # the deprecated `google_domains_dns` in the `Registration`'s `dns_settings`.
+        # @param [String] registration
+        #   Required. The name of the `Registration` whose Google Domains DNS records
+        #   details you are retrieving, in the format `projects/*/locations/*/
+        #   registrations/*`.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results to return.
+        # @param [String] page_token
+        #   Optional. When set to the `next_page_token` from a prior response, provides
+        #   the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DomainsV1beta1::RetrieveGoogleDomainsDnsRecordsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DomainsV1beta1::RetrieveGoogleDomainsDnsRecordsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_project_location_registration_google_domains_dns_records(registration, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+registration}:retrieveGoogleDomainsDnsRecords', options)
+          command.response_representation = Google::Apis::DomainsV1beta1::RetrieveGoogleDomainsDnsRecordsResponse::Representation
+          command.response_class = Google::Apis::DomainsV1beta1::RetrieveGoogleDomainsDnsRecordsResponse
+          command.params['registration'] = registration unless registration.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the deprecated domain and email forwarding configurations you set up in
         # the deprecated Google Domains UI. The configuration is present only for
         # domains with the `google_domains_redirects_data_available` set to `true` in
