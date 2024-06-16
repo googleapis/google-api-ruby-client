@@ -136,12 +136,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CustomRegionMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DataCatalogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -630,15 +624,6 @@ module Google
         end
       end
       
-      class CustomRegionMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :optional_read_only_regions, as: 'optionalReadOnlyRegions'
-          collection :required_read_write_regions, as: 'requiredReadWriteRegions'
-          property :witness_region, as: 'witnessRegion'
-        end
-      end
-      
       class DataCatalogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -858,8 +843,6 @@ module Google
       class LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :custom_region_metadata, as: 'customRegionMetadata', class: Google::Apis::MetastoreV1alpha::CustomRegionMetadata, decorator: Google::Apis::MetastoreV1alpha::CustomRegionMetadata::Representation
-      
           property :multi_region_metadata, as: 'multiRegionMetadata', class: Google::Apis::MetastoreV1alpha::MultiRegionMetadata, decorator: Google::Apis::MetastoreV1alpha::MultiRegionMetadata::Representation
       
           collection :supported_hive_metastore_versions, as: 'supportedHiveMetastoreVersions', class: Google::Apis::MetastoreV1alpha::HiveMetastoreVersion, decorator: Google::Apis::MetastoreV1alpha::HiveMetastoreVersion::Representation
