@@ -107,6 +107,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :storage_bytes
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -127,6 +134,7 @@ module Google
           @source_instance_tier = args[:source_instance_tier] if args.key?(:source_instance_tier)
           @state = args[:state] if args.key?(:state)
           @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -832,6 +840,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :suspension_reasons
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # The service tier of the instance.
         # Corresponds to the JSON property `tier`
         # @return [String]
@@ -857,6 +872,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
           @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)
+          @tags = args[:tags] if args.key?(:tags)
           @tier = args[:tier] if args.key?(:tier)
         end
       end
@@ -1380,6 +1396,19 @@ module Google
         end
       end
       
+      # PromoteReplicaRequest promotes a Filestore standby instance (replica).
+      class PromoteReplicaRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Replica configuration for the instance.
       class ReplicaConfig
         include Google::Apis::Core::Hashable
@@ -1566,6 +1595,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1578,6 +1614,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       

@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PromoteReplicaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -273,6 +279,7 @@ module Google
           property :source_instance_tier, as: 'sourceInstanceTier'
           property :state, as: 'state'
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
+          hash :tags, as: 'tags'
         end
       end
       
@@ -450,6 +457,7 @@ module Google
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
           collection :suspension_reasons, as: 'suspensionReasons'
+          hash :tags, as: 'tags'
           property :tier, as: 'tier'
         end
       end
@@ -583,6 +591,12 @@ module Google
         end
       end
       
+      class PromoteReplicaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ReplicaConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -636,6 +650,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :state, as: 'state'
+          hash :tags, as: 'tags'
         end
       end
       
