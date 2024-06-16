@@ -262,8 +262,8 @@ module Google
         # @param [String] update_mask
         #   Indicates which fields in the provided LoggingConfig to update. The following
         #   are the only supported fields: * LoggingConfig.default_log_generation_rule *
-        #   LoggingConfig.per_service_log_generation_rules If not set, all supported
-        #   fields are updated.
+        #   LoggingConfig.service_log_generation_rules If not set, all supported fields
+        #   are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -315,8 +315,8 @@ module Google
         #   all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `
         #   MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
         # @param [Boolean] enable_attribute_suggestions
-        #   If true, attribute suggestions are enabled and provided in response. This
-        #   field is only available for "cloud-retail" dataset.
+        #   If true, attribute suggestions are enabled and provided in the response. This
+        #   field is only available for the "cloud-retail" dataset.
         # @param [String] entity
         #   The entity for customers who run multiple entities, domains, sites, or regions,
         #   for example, `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`,
@@ -905,7 +905,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all Branchs under the specified parent Catalog.
+        # Lists all instances of Branch under the specified parent Catalog.
         # @param [String] parent
         #   Required. The parent catalog resource name.
         # @param [String] view
