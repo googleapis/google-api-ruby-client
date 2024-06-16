@@ -399,6 +399,11 @@ module Google
       class CorpusQuery
         include Google::Apis::Core::Hashable
       
+        # Options for Calendar holds.
+        # Corresponds to the JSON property `calendarQuery`
+        # @return [Google::Apis::VaultV1::HeldCalendarQuery]
+        attr_accessor :calendar_query
+      
         # Options for Drive holds.
         # Corresponds to the JSON property `driveQuery`
         # @return [Google::Apis::VaultV1::HeldDriveQuery]
@@ -430,6 +435,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @calendar_query = args[:calendar_query] if args.key?(:calendar_query)
           @drive_query = args[:drive_query] if args.key?(:drive_query)
           @groups_query = args[:groups_query] if args.key?(:groups_query)
           @hangouts_chat_query = args[:hangouts_chat_query] if args.key?(:hangouts_chat_query)
@@ -953,6 +959,19 @@ module Google
           @first_name = args[:first_name] if args.key?(:first_name)
           @hold_time = args[:hold_time] if args.key?(:hold_time)
           @last_name = args[:last_name] if args.key?(:last_name)
+        end
+      end
+      
+      # Options for Calendar holds.
+      class HeldCalendarQuery
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

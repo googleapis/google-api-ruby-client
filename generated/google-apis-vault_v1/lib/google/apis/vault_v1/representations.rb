@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HeldCalendarQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HeldDriveQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -532,6 +538,8 @@ module Google
       class CorpusQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :calendar_query, as: 'calendarQuery', class: Google::Apis::VaultV1::HeldCalendarQuery, decorator: Google::Apis::VaultV1::HeldCalendarQuery::Representation
+      
           property :drive_query, as: 'driveQuery', class: Google::Apis::VaultV1::HeldDriveQuery, decorator: Google::Apis::VaultV1::HeldDriveQuery::Representation
       
           property :groups_query, as: 'groupsQuery', class: Google::Apis::VaultV1::HeldGroupsQuery, decorator: Google::Apis::VaultV1::HeldGroupsQuery::Representation
@@ -698,6 +706,12 @@ module Google
           property :first_name, as: 'firstName'
           property :hold_time, as: 'holdTime'
           property :last_name, as: 'lastName'
+        end
+      end
+      
+      class HeldCalendarQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
