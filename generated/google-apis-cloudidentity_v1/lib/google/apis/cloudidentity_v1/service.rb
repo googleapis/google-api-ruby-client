@@ -1859,7 +1859,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an InboundSamlSsoProfile for a customer.
+        # Creates an InboundSamlSsoProfile for a customer. When the target customer has
+        # enabled [Multi-party approval for sensitive actions](https://support.google.
+        # com/a/answer/13790448), the `Operation` in the response will have `"done":
+        # false`, it will not have a response, and the metadata will have `"state": "
+        # awaiting-multi-party-approval"`.
         # @param [Google::Apis::CloudidentityV1::InboundSamlSsoProfile] inbound_saml_sso_profile_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2000,7 +2004,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an InboundSamlSsoProfile.
+        # Updates an InboundSamlSsoProfile. When the target customer has enabled [Multi-
+        # party approval for sensitive actions](https://support.google.com/a/answer/
+        # 13790448), the `Operation` in the response will have `"done": false`, it will
+        # not have a response, and the metadata will have `"state": "awaiting-multi-
+        # party-approval"`.
         # @param [String] name
         #   Output only. [Resource name](https://cloud.google.com/apis/design/
         #   resource_names) of the SAML SSO profile.
@@ -2037,7 +2045,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds an IdpCredential. Up to 2 credentials are allowed.
+        # Adds an IdpCredential. Up to 2 credentials are allowed. When the target
+        # customer has enabled [Multi-party approval for sensitive actions](https://
+        # support.google.com/a/answer/13790448), the `Operation` in the response will
+        # have `"done": false`, it will not have a response, and the metadata will have `
+        # "state": "awaiting-multi-party-approval"`.
         # @param [String] parent
         #   Required. The InboundSamlSsoProfile that owns the IdpCredential. Format: `
         #   inboundSamlSsoProfiles/`sso_profile_id``
