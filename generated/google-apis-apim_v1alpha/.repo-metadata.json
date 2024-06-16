@@ -1,0 +1,7 @@
+{
+    "api_id": "apim:v1alpha",
+    "name_pretty": "API Management API",
+    "distribution_name": "google-apis-apim_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
