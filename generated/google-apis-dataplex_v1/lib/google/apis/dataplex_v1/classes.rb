@@ -3377,6 +3377,11 @@ module Google
       class GoogleCloudDataplexV1DataScanExecutionStatus
         include Google::Apis::Core::Hashable
       
+        # Optional. The time when the DataScanJob execution was created.
+        # Corresponds to the JSON property `latestJobCreateTime`
+        # @return [String]
+        attr_accessor :latest_job_create_time
+      
         # The time when the latest DataScanJob ended.
         # Corresponds to the JSON property `latestJobEndTime`
         # @return [String]
@@ -3393,6 +3398,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @latest_job_create_time = args[:latest_job_create_time] if args.key?(:latest_job_create_time)
           @latest_job_end_time = args[:latest_job_end_time] if args.key?(:latest_job_end_time)
           @latest_job_start_time = args[:latest_job_start_time] if args.key?(:latest_job_start_time)
         end
@@ -4129,6 +4135,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Output only. Location of the resource in the source system. Entry will be
+        # searchable by this location. By default, this should match the location of the
+        # EntryGroup containing this entry. A different value allows capturing source
+        # location for data external to GCP.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # The platform containing the source system. The maximum size of the field is 64
         # characters.
         # Corresponds to the JSON property `platform`
@@ -4162,6 +4176,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
+          @location = args[:location] if args.key?(:location)
           @platform = args[:platform] if args.key?(:platform)
           @resource = args[:resource] if args.key?(:resource)
           @system = args[:system] if args.key?(:system)
@@ -4600,7 +4615,7 @@ module Google
         end
       end
       
-      # Generate recommended DataQualityRules request.
+      # Request details for generating data quality rule recommendations.
       class GoogleCloudDataplexV1GenerateDataQualityRulesRequest
         include Google::Apis::Core::Hashable
       
@@ -4613,11 +4628,12 @@ module Google
         end
       end
       
-      # Generate recommended DataQualityRules response.
+      # Response details for data quality rule recommendations.
       class GoogleCloudDataplexV1GenerateDataQualityRulesResponse
         include Google::Apis::Core::Hashable
       
-        # Generated recommended `@link DataQualityRule`s.
+        # The data quality rules that Dataplex generates based on the results of a data
+        # profiling scan.
         # Corresponds to the JSON property `rule`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule>]
         attr_accessor :rule
