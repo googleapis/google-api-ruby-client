@@ -816,7 +816,8 @@ module Google
       class GoogleCloudRunV2GcsVolumeSource
         include Google::Apis::Core::Hashable
       
-        # Cloud Storage Bucket name.
+        # Cloud Storage Bucket name. TODO (b/344678062) Fix the error validation once
+        # dynamic mounting is public.
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
