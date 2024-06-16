@@ -1213,11 +1213,16 @@ module Google
         attr_accessor :license_type
       
         # The type of machines to consider when calculating virtual machine migration
-        # insights and recommendations. Not all machine types are available in all zones
-        # and regions.
+        # insights and recommendations for GCE. Not all machine types are available in
+        # all zones and regions.
         # Corresponds to the JSON property `machinePreferences`
         # @return [Google::Apis::MigrationcenterV1alpha1::MachinePreferences]
         attr_accessor :machine_preferences
+      
+        # Pricing options for OS images.
+        # Corresponds to the JSON property `osPricingPreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferences]
+        attr_accessor :os_pricing_preferences
       
         # Persistent disk type to use. If unspecified (default), all types are
         # considered, based on available usage data.
@@ -1233,6 +1238,7 @@ module Google
         def update!(**args)
           @license_type = args[:license_type] if args.key?(:license_type)
           @machine_preferences = args[:machine_preferences] if args.key?(:machine_preferences)
+          @os_pricing_preferences = args[:os_pricing_preferences] if args.key?(:os_pricing_preferences)
           @persistent_disk_type = args[:persistent_disk_type] if args.key?(:persistent_disk_type)
         end
       end
@@ -4016,8 +4022,8 @@ module Google
       end
       
       # The type of machines to consider when calculating virtual machine migration
-      # insights and recommendations. Not all machine types are available in all zones
-      # and regions.
+      # insights and recommendations for GCE. Not all machine types are available in
+      # all zones and regions.
       class MachinePreferences
         include Google::Apis::Core::Hashable
       
@@ -4669,6 +4675,68 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # Pricing options for OS images.
+      class OperatingSystemPricingPreferences
+        include Google::Apis::Core::Hashable
+      
+        # Pricing options of an OS image.
+        # Corresponds to the JSON property `rhel`
+        # @return [Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing]
+        attr_accessor :rhel
+      
+        # Pricing options of an OS image.
+        # Corresponds to the JSON property `sles`
+        # @return [Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing]
+        attr_accessor :sles
+      
+        # Pricing options of an OS image.
+        # Corresponds to the JSON property `slesForSap`
+        # @return [Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing]
+        attr_accessor :sles_for_sap
+      
+        # Pricing options of an OS image.
+        # Corresponds to the JSON property `windows`
+        # @return [Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing]
+        attr_accessor :windows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rhel = args[:rhel] if args.key?(:rhel)
+          @sles = args[:sles] if args.key?(:sles)
+          @sles_for_sap = args[:sles_for_sap] if args.key?(:sles_for_sap)
+          @windows = args[:windows] if args.key?(:windows)
+        end
+      end
+      
+      # Pricing options of an OS image.
+      class OperatingSystemPricingPreferencesOperatingSystemPricing
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The plan of commitments for committed use discounts (CUD).
+        # Corresponds to the JSON property `commitmentPlan`
+        # @return [String]
+        attr_accessor :commitment_plan
+      
+        # Optional. License type of the OS image.
+        # Corresponds to the JSON property `licenseType`
+        # @return [String]
+        attr_accessor :license_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commitment_plan = args[:commitment_plan] if args.key?(:commitment_plan)
+          @license_type = args[:license_type] if args.key?(:license_type)
         end
       end
       
@@ -6508,6 +6576,11 @@ module Google
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::SoleTenantNodeType>]
         attr_accessor :node_types
       
+        # Pricing options for OS images.
+        # Corresponds to the JSON property `osPricingPreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferences]
+        attr_accessor :os_pricing_preferences
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6518,6 +6591,7 @@ module Google
           @cpu_overcommit_ratio = args[:cpu_overcommit_ratio] if args.key?(:cpu_overcommit_ratio)
           @host_maintenance_policy = args[:host_maintenance_policy] if args.key?(:host_maintenance_policy)
           @node_types = args[:node_types] if args.key?(:node_types)
+          @os_pricing_preferences = args[:os_pricing_preferences] if args.key?(:os_pricing_preferences)
         end
       end
       

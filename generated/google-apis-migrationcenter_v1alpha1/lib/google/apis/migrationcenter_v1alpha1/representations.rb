@@ -856,6 +856,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperatingSystemPricingPreferences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperatingSystemPricingPreferencesOperatingSystemPricing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1670,6 +1682,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :license_type, as: 'licenseType'
           property :machine_preferences, as: 'machinePreferences', class: Google::Apis::MigrationcenterV1alpha1::MachinePreferences, decorator: Google::Apis::MigrationcenterV1alpha1::MachinePreferences::Representation
+      
+          property :os_pricing_preferences, as: 'osPricingPreferences', class: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferences, decorator: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferences::Representation
       
           property :persistent_disk_type, as: 'persistentDiskType'
         end
@@ -2733,6 +2747,28 @@ module Google
         end
       end
       
+      class OperatingSystemPricingPreferences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rhel, as: 'rhel', class: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing, decorator: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing::Representation
+      
+          property :sles, as: 'sles', class: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing, decorator: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing::Representation
+      
+          property :sles_for_sap, as: 'slesForSap', class: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing, decorator: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing::Representation
+      
+          property :windows, as: 'windows', class: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing, decorator: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferencesOperatingSystemPricing::Representation
+      
+        end
+      end
+      
+      class OperatingSystemPricingPreferencesOperatingSystemPricing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commitment_plan, as: 'commitmentPlan'
+          property :license_type, as: 'licenseType'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3280,6 +3316,8 @@ module Google
           property :cpu_overcommit_ratio, as: 'cpuOvercommitRatio'
           property :host_maintenance_policy, as: 'hostMaintenancePolicy'
           collection :node_types, as: 'nodeTypes', class: Google::Apis::MigrationcenterV1alpha1::SoleTenantNodeType, decorator: Google::Apis::MigrationcenterV1alpha1::SoleTenantNodeType::Representation
+      
+          property :os_pricing_preferences, as: 'osPricingPreferences', class: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferences, decorator: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferences::Representation
       
         end
       end
