@@ -141,6 +141,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :preferred_request_expiration_days
       
+        # Optional. A setting to indicate the maximum width of an Access Approval
+        # request.
+        # Corresponds to the JSON property `requestScopeMaxWidthPreference`
+        # @return [String]
+        attr_accessor :request_scope_max_width_preference
+      
         # Optional. A setting to require approval request justifications to be customer
         # visible.
         # Corresponds to the JSON property `requireCustomerVisibleJustification`
@@ -164,6 +170,7 @@ module Google
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
           @prefer_no_broad_approval_requests = args[:prefer_no_broad_approval_requests] if args.key?(:prefer_no_broad_approval_requests)
           @preferred_request_expiration_days = args[:preferred_request_expiration_days] if args.key?(:preferred_request_expiration_days)
+          @request_scope_max_width_preference = args[:request_scope_max_width_preference] if args.key?(:request_scope_max_width_preference)
           @require_customer_visible_justification = args[:require_customer_visible_justification] if args.key?(:require_customer_visible_justification)
         end
       end
