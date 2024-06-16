@@ -5705,6 +5705,14 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestImageQuery]
         attr_accessor :image_query
       
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see [Standard fields](https://cloud.google.com/apis/design/standard_fields).
+        # This field helps to better interpret the query. If a value isn't specified,
+        # the query language code is automatically detected, which may not be accurate.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # A 0-indexed integer that specifies the current offset (that is, starting
         # result location, amongst the Documents deemed by the API as relevant) in
         # search results. This field is only considered if page_token is unset. If this
@@ -5818,6 +5826,7 @@ module Google
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
           @image_query = args[:image_query] if args.key?(:image_query)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @offset = args[:offset] if args.key?(:offset)
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_size = args[:page_size] if args.key?(:page_size)
@@ -8707,6 +8716,11 @@ module Google
         # @return [String]
         attr_accessor :industry_vertical
       
+        # Language info for DataStore.
+        # Corresponds to the JSON property `languageInfo`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaLanguageInfo]
+        attr_accessor :language_info
+      
         # Immutable. The full resource name of the data store. Format: `projects/`
         # project`/locations/`location`/collections/`collection_id`/dataStores/`
         # data_store_id``. This field must be a UTF-8 encoded string with a length limit
@@ -8742,6 +8756,7 @@ module Google
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
           @idp_config = args[:idp_config] if args.key?(:idp_config)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @language_info = args[:language_info] if args.key?(:language_info)
           @name = args[:name] if args.key?(:name)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
@@ -9967,6 +9982,47 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @joined_events_count = args[:joined_events_count] if args.key?(:joined_events_count)
           @unjoined_events_count = args[:unjoined_events_count] if args.key?(:unjoined_events_count)
+        end
+      end
+      
+      # Language info for DataStore.
+      class GoogleCloudDiscoveryengineV1alphaLanguageInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Language part of normalized_language_code. E.g.: `en-US` -> `en`,
+        # `zh-Hans-HK` -> `zh`, `en` -> `en`.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # The language code for the DataStore.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Output only. This is the normalized form of language_code. E.g.: language_code
+        # of `en-GB`, `en_GB`, `en-UK` or `en-gb` will have normalized_language_code of `
+        # en-GB`.
+        # Corresponds to the JSON property `normalizedLanguageCode`
+        # @return [String]
+        attr_accessor :normalized_language_code
+      
+        # Output only. Region part of normalized_language_code, if present. E.g.: `en-US`
+        # -> `US`, `zh-Hans-HK` -> `HK`, `en` -> ``.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language = args[:language] if args.key?(:language)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @normalized_language_code = args[:normalized_language_code] if args.key?(:normalized_language_code)
+          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -11389,6 +11445,11 @@ module Google
         # @return [String]
         attr_accessor :industry_vertical
       
+        # Language info for DataStore.
+        # Corresponds to the JSON property `languageInfo`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaLanguageInfo]
+        attr_accessor :language_info
+      
         # Immutable. The full resource name of the data store. Format: `projects/`
         # project`/locations/`location`/collections/`collection_id`/dataStores/`
         # data_store_id``. This field must be a UTF-8 encoded string with a length limit
@@ -11422,6 +11483,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @language_info = args[:language_info] if args.key?(:language_info)
           @name = args[:name] if args.key?(:name)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
@@ -12264,6 +12326,47 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @joined_events_count = args[:joined_events_count] if args.key?(:joined_events_count)
           @unjoined_events_count = args[:unjoined_events_count] if args.key?(:unjoined_events_count)
+        end
+      end
+      
+      # Language info for DataStore.
+      class GoogleCloudDiscoveryengineV1betaLanguageInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Language part of normalized_language_code. E.g.: `en-US` -> `en`,
+        # `zh-Hans-HK` -> `zh`, `en` -> `en`.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # The language code for the DataStore.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Output only. This is the normalized form of language_code. E.g.: language_code
+        # of `en-GB`, `en_GB`, `en-UK` or `en-gb` will have normalized_language_code of `
+        # en-GB`.
+        # Corresponds to the JSON property `normalizedLanguageCode`
+        # @return [String]
+        attr_accessor :normalized_language_code
+      
+        # Output only. Region part of normalized_language_code, if present. E.g.: `en-US`
+        # -> `US`, `zh-Hans-HK` -> `HK`, `en` -> ``.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language = args[:language] if args.key?(:language)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @normalized_language_code = args[:normalized_language_code] if args.key?(:normalized_language_code)
+          @region = args[:region] if args.key?(:region)
         end
       end
       
