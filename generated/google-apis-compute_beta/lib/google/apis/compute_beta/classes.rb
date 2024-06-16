@@ -1145,6 +1145,11 @@ module Google
         attr_accessor :enable_uefi_networking
         alias_method :enable_uefi_networking?, :enable_uefi_networking
       
+        # Type of Performance Monitoring Unit requested on instance.
+        # Corresponds to the JSON property `performanceMonitoringUnit`
+        # @return [String]
+        attr_accessor :performance_monitoring_unit
+      
         # The number of threads per physical core. To disable simultaneous
         # multithreading (SMT) set this to 1. If unset, the maximum number of threads
         # supported per core by the underlying processor is assumed.
@@ -1168,6 +1173,7 @@ module Google
         def update!(**args)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @enable_uefi_networking = args[:enable_uefi_networking] if args.key?(:enable_uefi_networking)
+          @performance_monitoring_unit = args[:performance_monitoring_unit] if args.key?(:performance_monitoring_unit)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
           @visible_core_count = args[:visible_core_count] if args.key?(:visible_core_count)
         end
@@ -52553,7 +52559,9 @@ module Google
         # selection of a backend service is determined only for new traffic. Once a user'
         # s request has been directed to a backend service, subsequent requests are sent
         # to the same backend service as determined by the backend service's session
-        # affinity policy. The value must be from 0 to 1000.
+        # affinity policy. Don't configure session affinity if you're using weighted
+        # traffic splitting. If you do, the weighted traffic splitting configuration
+        # takes precedence. The value must be from 0 to 1000.
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight
