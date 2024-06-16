@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KeyAccessJustificationsPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KeyHandle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -489,6 +495,8 @@ module Google
           property :crypto_key_backend, as: 'cryptoKeyBackend'
           property :destroy_scheduled_duration, as: 'destroyScheduledDuration'
           property :import_only, as: 'importOnly'
+          property :key_access_justifications_policy, as: 'keyAccessJustificationsPolicy', class: Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicy, decorator: Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicy::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :next_rotation_time, as: 'nextRotationTime'
@@ -671,6 +679,13 @@ module Google
           property :public_key, as: 'publicKey', class: Google::Apis::CloudkmsV1::WrappingPublicKey, decorator: Google::Apis::CloudkmsV1::WrappingPublicKey::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class KeyAccessJustificationsPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_access_reasons, as: 'allowedAccessReasons'
         end
       end
       
