@@ -855,6 +855,39 @@ module Google
         end
       end
       
+      # Debug Search Response.
+      class DebugResponse
+        include Google::Apis::Core::Hashable
+      
+        # Serialized string of GenericSearchRequest.
+        # Corresponds to the JSON property `gsrRequest`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :gsr_request
+      
+        # Serialized string of GenericSearchResponse.
+        # Corresponds to the JSON property `gsrResponse`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :gsr_response
+      
+        # The search API response.
+        # Corresponds to the JSON property `searchResponse`
+        # @return [Google::Apis::CloudsearchV1::SearchResponse]
+        attr_accessor :search_response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gsr_request = args[:gsr_request] if args.key?(:gsr_request)
+          @gsr_response = args[:gsr_response] if args.key?(:gsr_response)
+          @search_response = args[:search_response] if args.key?(:search_response)
+        end
+      end
+      
       # 
       class DeleteQueueItemsRequest
         include Google::Apis::Core::Hashable

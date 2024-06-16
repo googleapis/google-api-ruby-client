@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DebugResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteQueueItemsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1601,6 +1607,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_debugging, as: 'enableDebugging'
+        end
+      end
+      
+      class DebugResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gsr_request, :base64 => true, as: 'gsrRequest'
+          property :gsr_response, :base64 => true, as: 'gsrResponse'
+          property :search_response, as: 'searchResponse', class: Google::Apis::CloudsearchV1::SearchResponse, decorator: Google::Apis::CloudsearchV1::SearchResponse::Representation
+      
         end
       end
       
