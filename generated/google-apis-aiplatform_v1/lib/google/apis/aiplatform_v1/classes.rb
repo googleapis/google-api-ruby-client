@@ -17131,12 +17131,6 @@ module Google
       
         # The regional resource name or the URI. Key is region, e.g., us-central1,
         # europe-west2, global, etc..
-        # Corresponds to the JSON property `fineTune`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences]
-        attr_accessor :fine_tune
-      
-        # The regional resource name or the URI. Key is region, e.g., us-central1,
-        # europe-west2, global, etc..
         # Corresponds to the JSON property `openEvaluationPipeline`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences]
         attr_accessor :open_evaluation_pipeline
@@ -17201,7 +17195,6 @@ module Google
           @create_application = args[:create_application] if args.key?(:create_application)
           @deploy = args[:deploy] if args.key?(:deploy)
           @deploy_gke = args[:deploy_gke] if args.key?(:deploy_gke)
-          @fine_tune = args[:fine_tune] if args.key?(:fine_tune)
           @open_evaluation_pipeline = args[:open_evaluation_pipeline] if args.key?(:open_evaluation_pipeline)
           @open_fine_tuning_pipeline = args[:open_fine_tuning_pipeline] if args.key?(:open_fine_tuning_pipeline)
           @open_fine_tuning_pipelines = args[:open_fine_tuning_pipelines] if args.key?(:open_fine_tuning_pipelines)

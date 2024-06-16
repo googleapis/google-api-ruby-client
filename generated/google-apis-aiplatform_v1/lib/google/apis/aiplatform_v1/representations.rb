@@ -9649,8 +9649,6 @@ module Google
       
           property :deploy_gke, as: 'deployGke', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke::Representation
       
-          property :fine_tune, as: 'fineTune', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::Representation
-      
           property :open_evaluation_pipeline, as: 'openEvaluationPipeline', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::Representation
       
           property :open_fine_tuning_pipeline, as: 'openFineTuningPipeline', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::Representation
