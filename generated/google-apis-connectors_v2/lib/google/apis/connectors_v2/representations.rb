@@ -196,12 +196,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Operation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PerSliSloEligibility
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,12 +257,6 @@ module Google
       end
       
       class SloMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -606,18 +594,6 @@ module Google
         end
       end
       
-      class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          property :error, as: 'error', class: Google::Apis::ConnectorsV2::Status, decorator: Google::Apis::ConnectorsV2::Status::Representation
-      
-          hash :metadata, as: 'metadata'
-          property :name, as: 'name'
-          hash :response, as: 'response'
-        end
-      end
-      
       class PerSliSloEligibility
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -712,15 +688,6 @@ module Google
           property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::ConnectorsV2::PerSliSloEligibility, decorator: Google::Apis::ConnectorsV2::PerSliSloEligibility::Representation
       
           property :tier, as: 'tier'
-        end
-      end
-      
-      class Status
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          collection :details, as: 'details'
-          property :message, as: 'message'
         end
       end
       
