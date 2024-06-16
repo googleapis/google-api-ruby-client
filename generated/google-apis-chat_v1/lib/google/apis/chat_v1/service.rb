@@ -423,15 +423,17 @@ module Google
         #   SPACE` space type. Including the `space_type` mask and the `SPACE` type in the
         #   specified space when updating the display name is optional if the existing
         #   space already has the `SPACE` type. Trying to update the space type in other
-        #   ways results in an invalid argument error). - `space_details` - `
-        #   space_history_state` (Supports [turning history on or off for the space](https:
-        #   //support.google.com/chat/answer/7664687) if [the organization allows users to
-        #   change their history setting](https://support.google.com/a/answer/7664184).
-        #   Warning: mutually exclusive with all other field paths.) - Developer Preview: `
-        #   access_settings.audience` (Supports changing the [access setting](https://
-        #   support.google.com/chat/answer/11971020) of a space. If no audience is
-        #   specified in the access setting, the space's access setting is updated to
-        #   restricted. Warning: mutually exclusive with all other field paths.)
+        #   ways results in an invalid argument error). `space_type` is not supported with
+        #   admin access. - `space_details` - `space_history_state` (Supports [turning
+        #   history on or off for the space](https://support.google.com/chat/answer/
+        #   7664687) if [the organization allows users to change their history setting](
+        #   https://support.google.com/a/answer/7664184). Warning: mutually exclusive with
+        #   all other field paths.) `space_history_state` is not supported with admin
+        #   access. - Developer Preview: `access_settings.audience` (Supports changing the
+        #   [access setting](https://support.google.com/chat/answer/11971020) of a space.
+        #   If no audience is specified in the access setting, the space's access setting
+        #   is updated to restricted. Warning: mutually exclusive with all other field
+        #   paths.) `access_settings.audience` is not supported with admin access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
