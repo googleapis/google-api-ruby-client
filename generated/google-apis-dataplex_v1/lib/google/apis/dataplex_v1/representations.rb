@@ -2112,6 +2112,7 @@ module Google
       class GoogleCloudDataplexV1DataScanExecutionStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :latest_job_create_time, as: 'latestJobCreateTime'
           property :latest_job_end_time, as: 'latestJobEndTime'
           property :latest_job_start_time, as: 'latestJobStartTime'
         end
@@ -2300,6 +2301,7 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           hash :labels, as: 'labels'
+          property :location, as: 'location'
           property :platform, as: 'platform'
           property :resource, as: 'resource'
           property :system, as: 'system'
