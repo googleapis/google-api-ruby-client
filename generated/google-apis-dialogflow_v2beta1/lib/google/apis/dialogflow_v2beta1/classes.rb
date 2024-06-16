@@ -14046,7 +14046,7 @@ module Google
         # features in the API response. The human_agent_assistant_config.
         # notification_config must be configured and enable_event_based_suggestion must
         # be set to true to receive the responses from high latency features in Pub/Sub.
-        # High latency feature(s): KNOWLEDGE_ASSIST.
+        # High latency feature(s): KNOWLEDGE_ASSIST
         # Corresponds to the JSON property `disableHighLatencyFeaturesSyncDelivery`
         # @return [Boolean]
         attr_accessor :disable_high_latency_features_sync_delivery
