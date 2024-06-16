@@ -152,7 +152,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_voter_info(address, election_id: nil, official_only: nil, production_data_only: nil, return_all_available_data: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def query_voter_info(address: nil, election_id: nil, official_only: nil, production_data_only: nil, return_all_available_data: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'civicinfo/v2/voterinfo', options)
           command.response_representation = Google::Apis::CivicinfoV2::VoterInfoResponse::Representation
           command.response_class = Google::Apis::CivicinfoV2::VoterInfoResponse
