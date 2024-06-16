@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Quota
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,12 +143,6 @@ module Google
       end
       
       class SamlParams
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServiceAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -189,10 +189,8 @@ module Google
       class Component
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :allowed_project_ids, as: 'allowedProjectIds'
           property :name, as: 'name'
-          collection :service_attachments, as: 'serviceAttachments', class: Google::Apis::ContactcenteraiplatformV1alpha1::ServiceAttachment, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::ServiceAttachment::Representation
-      
+          collection :service_attachment_names, as: 'serviceAttachmentNames'
         end
       end
       
@@ -358,6 +356,15 @@ module Google
       
           collection :ingress_settings, as: 'ingressSettings', class: Google::Apis::ContactcenteraiplatformV1alpha1::Component, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Component::Representation
       
+          property :psc_setting, as: 'pscSetting', class: Google::Apis::ContactcenteraiplatformV1alpha1::PscSetting, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::PscSetting::Representation
+      
+        end
+      end
+      
+      class PscSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_consumer_project_ids, as: 'allowedConsumerProjectIds'
         end
       end
       
@@ -379,13 +386,6 @@ module Google
           property :entity_id, as: 'entityId'
           property :sso_uri, as: 'ssoUri'
           property :user_email, as: 'userEmail'
-        end
-      end
-      
-      class ServiceAttachment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
         end
       end
       

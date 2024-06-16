@@ -66,21 +66,18 @@ module Google
       class Component
         include Google::Apis::Core::Hashable
       
-        # The list of project ids that are allowed to send traffic to the service
-        # attachment. This field should be filled only for the ingress components.
-        # Corresponds to the JSON property `allowedProjectIds`
-        # @return [Array<String>]
-        attr_accessor :allowed_project_ids
-      
         # Name of the component.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Associated service attachments.
-        # Corresponds to the JSON property `serviceAttachments`
-        # @return [Array<Google::Apis::ContactcenteraiplatformV1alpha1::ServiceAttachment>]
-        attr_accessor :service_attachments
+        # Associated service attachments. The service attachment names that will be used
+        # for sending private traffic to the CCAIP tenant project. Example service
+        # attachment name: "projects/$`TENANT_PROJECT_ID`/regions/$`REGION`/
+        # serviceAttachments/ingress-default".
+        # Corresponds to the JSON property `serviceAttachmentNames`
+        # @return [Array<String>]
+        attr_accessor :service_attachment_names
       
         def initialize(**args)
            update!(**args)
@@ -88,9 +85,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allowed_project_ids = args[:allowed_project_ids] if args.key?(:allowed_project_ids)
           @name = args[:name] if args.key?(:name)
-          @service_attachments = args[:service_attachments] if args.key?(:service_attachments)
+          @service_attachment_names = args[:service_attachment_names] if args.key?(:service_attachment_names)
         end
       end
       
@@ -679,6 +675,11 @@ module Google
         # @return [Array<Google::Apis::ContactcenteraiplatformV1alpha1::Component>]
         attr_accessor :ingress_settings
       
+        # Private service connect settings.
+        # Corresponds to the JSON property `pscSetting`
+        # @return [Google::Apis::ContactcenteraiplatformV1alpha1::PscSetting]
+        attr_accessor :psc_setting
+      
         def initialize(**args)
            update!(**args)
         end
@@ -687,6 +688,27 @@ module Google
         def update!(**args)
           @egress_settings = args[:egress_settings] if args.key?(:egress_settings)
           @ingress_settings = args[:ingress_settings] if args.key?(:ingress_settings)
+          @psc_setting = args[:psc_setting] if args.key?(:psc_setting)
+        end
+      end
+      
+      # Private service connect settings.
+      class PscSetting
+        include Google::Apis::Core::Hashable
+      
+        # The list of project ids that are allowed to send traffic to the service
+        # attachment. This field should be filled only for the ingress components.
+        # Corresponds to the JSON property `allowedConsumerProjectIds`
+        # @return [Array<String>]
+        attr_accessor :allowed_consumer_project_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_consumer_project_ids = args[:allowed_consumer_project_ids] if args.key?(:allowed_consumer_project_ids)
         end
       end
       
@@ -767,27 +789,6 @@ module Google
           @entity_id = args[:entity_id] if args.key?(:entity_id)
           @sso_uri = args[:sso_uri] if args.key?(:sso_uri)
           @user_email = args[:user_email] if args.key?(:user_email)
-        end
-      end
-      
-      # Container for the VPC-SC networking configurations.
-      class ServiceAttachment
-        include Google::Apis::Core::Hashable
-      
-        # The service attachment name that will be used for sending private traffic to
-        # the CCAIP tenant project. Example: "projects/$`TENANT_PROJECT_ID`/regions/$`
-        # REGION`/serviceAttachments/ingress-default".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
