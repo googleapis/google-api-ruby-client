@@ -668,6 +668,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :install_gpu_drivers, as: 'installGpuDrivers'
+          property :install_ops_agent, as: 'installOpsAgent'
           property :instance_template, as: 'instanceTemplate'
           property :policy, as: 'policy', class: Google::Apis::BatchV1::InstancePolicy, decorator: Google::Apis::BatchV1::InstancePolicy::Representation
       
