@@ -1318,7 +1318,7 @@ module Google
         end
       end
       
-      # # gRPC Transcoding gRPC Transcoding is a feature for mapping between a gRPC
+      # gRPC Transcoding gRPC Transcoding is a feature for mapping between a gRPC
       # method and one or more HTTP REST endpoints. It allows developers to build a
       # single API service that supports both gRPC APIs and REST APIs. Many systems,
       # including [Google APIs](https://github.com/googleapis/googleapis), [Cloud
@@ -1338,70 +1338,69 @@ module Google
       # Message) ` option (google.api.http) = ` get: "/v1/`name=messages/*`" `; ` `
       # message GetMessageRequest ` string name = 1; // Mapped to URL path. ` message
       # Message ` string text = 1; // The resource content. ` This enables an HTTP
-      # REST to gRPC mapping as below: HTTP | gRPC -----|----- `GET /v1/messages/
-      # 123456` | `GetMessage(name: "messages/123456")` Any fields in the request
-      # message which are not bound by the path template automatically become HTTP
-      # query parameters if there is no HTTP request body. For example: service
-      # Messaging ` rpc GetMessage(GetMessageRequest) returns (Message) ` option (
-      # google.api.http) = ` get:"/v1/messages/`message_id`" `; ` ` message
-      # GetMessageRequest ` message SubMessage ` string subfield = 1; ` string
-      # message_id = 1; // Mapped to URL path. int64 revision = 2; // Mapped to URL
-      # query parameter `revision`. SubMessage sub = 3; // Mapped to URL query
-      # parameter `sub.subfield`. ` This enables a HTTP JSON to RPC mapping as below:
-      # HTTP | gRPC -----|----- `GET /v1/messages/123456?revision=2&sub.subfield=foo` |
-      # `GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield: "foo"))
-      # ` Note that fields which are mapped to URL query parameters must have a
-      # primitive type or a repeated primitive type or a non-repeated message type. In
-      # the case of a repeated type, the parameter can be repeated in the URL as `...?
-      # param=A&param=B`. In the case of a message type, each field of the message is
-      # mapped to a separate parameter, such as `...?foo.a=A&foo.b=B&foo.c=C`. For
-      # HTTP methods that allow a request body, the `body` field specifies the mapping.
-      # Consider a REST update method on the message resource collection: service
-      # Messaging ` rpc UpdateMessage(UpdateMessageRequest) returns (Message) ` option
-      # (google.api.http) = ` patch: "/v1/messages/`message_id`" body: "message" `; ` `
-      # message UpdateMessageRequest ` string message_id = 1; // mapped to the URL
-      # Message message = 2; // mapped to the body ` The following HTTP JSON to RPC
-      # mapping is enabled, where the representation of the JSON in the request body
-      # is determined by protos JSON encoding: HTTP | gRPC -----|----- `PATCH /v1/
-      # messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id: "123456"
-      # message ` text: "Hi!" `)` The special name `*` can be used in the body mapping
-      # to define that every field not bound by the path template should be mapped to
-      # the request body. This enables the following alternative definition of the
-      # update method: service Messaging ` rpc UpdateMessage(Message) returns (Message)
-      # ` option (google.api.http) = ` patch: "/v1/messages/`message_id`" body: "*" `;
-      # ` ` message Message ` string message_id = 1; string text = 2; ` The following
-      # HTTP JSON to RPC mapping is enabled: HTTP | gRPC -----|----- `PATCH /v1/
-      # messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id: "123456" text:
-      # "Hi!")` Note that when using `*` in the body mapping, it is not possible to
-      # have HTTP parameters, as all fields not bound by the path end in the body.
-      # This makes this option more rarely used in practice when defining REST APIs.
-      # The common usage of `*` is in custom methods which don't use the URL at all
-      # for transferring data. It is possible to define multiple HTTP methods for one
-      # RPC by using the `additional_bindings` option. Example: service Messaging `
-      # rpc GetMessage(GetMessageRequest) returns (Message) ` option (google.api.http)
-      # = ` get: "/v1/messages/`message_id`" additional_bindings ` get: "/v1/users/`
-      # user_id`/messages/`message_id`" ` `; ` ` message GetMessageRequest ` string
-      # message_id = 1; string user_id = 2; ` This enables the following two
-      # alternative HTTP JSON to RPC mappings: HTTP | gRPC -----|----- `GET /v1/
-      # messages/123456` | `GetMessage(message_id: "123456")` `GET /v1/users/me/
-      # messages/123456` | `GetMessage(user_id: "me" message_id: "123456")` ## Rules
-      # for HTTP mapping 1. Leaf request fields (recursive expansion nested messages
-      # in the request message) are classified into three categories: - Fields
-      # referred by the path template. They are passed via the URL path. - Fields
-      # referred by the HttpRule.body. They are passed via the HTTP request body. -
-      # All other fields are passed via the URL query parameters, and the parameter
-      # name is the field path in the request message. A repeated field can be
-      # represented as multiple query parameters under the same name. 2. If HttpRule.
-      # body is "*", there is no URL query parameter, all fields are passed via URL
-      # path and HTTP request body. 3. If HttpRule.body is omitted, there is no HTTP
-      # request body, all fields are passed via URL path and URL query parameters. ###
-      # Path template syntax Template = "/" Segments [ Verb ] ; Segments = Segment ` "/
-      # " Segment ` ; Segment = "*" | "**" | LITERAL | Variable ; Variable = "`"
-      # FieldPath [ "=" Segments ] "`" ; FieldPath = IDENT ` "." IDENT ` ; Verb = ":"
-      # LITERAL ; The syntax `*` matches a single URL path segment. The syntax `**`
-      # matches zero or more URL path segments, which must be the last part of the URL
-      # path except the `Verb`. The syntax `Variable` matches part of the URL path as
-      # specified by its template. A variable template must not contain other
+      # REST to gRPC mapping as below: - HTTP: `GET /v1/messages/123456` - gRPC: `
+      # GetMessage(name: "messages/123456")` Any fields in the request message which
+      # are not bound by the path template automatically become HTTP query parameters
+      # if there is no HTTP request body. For example: service Messaging ` rpc
+      # GetMessage(GetMessageRequest) returns (Message) ` option (google.api.http) = `
+      # get:"/v1/messages/`message_id`" `; ` ` message GetMessageRequest ` message
+      # SubMessage ` string subfield = 1; ` string message_id = 1; // Mapped to URL
+      # path. int64 revision = 2; // Mapped to URL query parameter `revision`.
+      # SubMessage sub = 3; // Mapped to URL query parameter `sub.subfield`. ` This
+      # enables a HTTP JSON to RPC mapping as below: - HTTP: `GET /v1/messages/123456?
+      # revision=2&sub.subfield=foo` - gRPC: `GetMessage(message_id: "123456" revision:
+      # 2 sub: SubMessage(subfield: "foo"))` Note that fields which are mapped to URL
+      # query parameters must have a primitive type or a repeated primitive type or a
+      # non-repeated message type. In the case of a repeated type, the parameter can
+      # be repeated in the URL as `...?param=A&param=B`. In the case of a message type,
+      # each field of the message is mapped to a separate parameter, such as `...?foo.
+      # a=A&foo.b=B&foo.c=C`. For HTTP methods that allow a request body, the `body`
+      # field specifies the mapping. Consider a REST update method on the message
+      # resource collection: service Messaging ` rpc UpdateMessage(
+      # UpdateMessageRequest) returns (Message) ` option (google.api.http) = ` patch: "
+      # /v1/messages/`message_id`" body: "message" `; ` ` message UpdateMessageRequest
+      # ` string message_id = 1; // mapped to the URL Message message = 2; // mapped
+      # to the body ` The following HTTP JSON to RPC mapping is enabled, where the
+      # representation of the JSON in the request body is determined by protos JSON
+      # encoding: - HTTP: `PATCH /v1/messages/123456 ` "text": "Hi!" `` - gRPC: `
+      # UpdateMessage(message_id: "123456" message ` text: "Hi!" `)` The special name `
+      # *` can be used in the body mapping to define that every field not bound by the
+      # path template should be mapped to the request body. This enables the following
+      # alternative definition of the update method: service Messaging ` rpc
+      # UpdateMessage(Message) returns (Message) ` option (google.api.http) = ` patch:
+      # "/v1/messages/`message_id`" body: "*" `; ` ` message Message ` string
+      # message_id = 1; string text = 2; ` The following HTTP JSON to RPC mapping is
+      # enabled: - HTTP: `PATCH /v1/messages/123456 ` "text": "Hi!" `` - gRPC: `
+      # UpdateMessage(message_id: "123456" text: "Hi!")` Note that when using `*` in
+      # the body mapping, it is not possible to have HTTP parameters, as all fields
+      # not bound by the path end in the body. This makes this option more rarely used
+      # in practice when defining REST APIs. The common usage of `*` is in custom
+      # methods which don't use the URL at all for transferring data. It is possible
+      # to define multiple HTTP methods for one RPC by using the `additional_bindings`
+      # option. Example: service Messaging ` rpc GetMessage(GetMessageRequest) returns
+      # (Message) ` option (google.api.http) = ` get: "/v1/messages/`message_id`"
+      # additional_bindings ` get: "/v1/users/`user_id`/messages/`message_id`" ` `; ` `
+      # message GetMessageRequest ` string message_id = 1; string user_id = 2; ` This
+      # enables the following two alternative HTTP JSON to RPC mappings: - HTTP: `GET /
+      # v1/messages/123456` - gRPC: `GetMessage(message_id: "123456")` - HTTP: `GET /
+      # v1/users/me/messages/123456` - gRPC: `GetMessage(user_id: "me" message_id: "
+      # 123456")` Rules for HTTP mapping 1. Leaf request fields (recursive expansion
+      # nested messages in the request message) are classified into three categories: -
+      # Fields referred by the path template. They are passed via the URL path. -
+      # Fields referred by the HttpRule.body. They are passed via the HTTP request
+      # body. - All other fields are passed via the URL query parameters, and the
+      # parameter name is the field path in the request message. A repeated field can
+      # be represented as multiple query parameters under the same name. 2. If
+      # HttpRule.body is "*", there is no URL query parameter, all fields are passed
+      # via URL path and HTTP request body. 3. If HttpRule.body is omitted, there is
+      # no HTTP request body, all fields are passed via URL path and URL query
+      # parameters. Path template syntax Template = "/" Segments [ Verb ] ; Segments =
+      # Segment ` "/" Segment ` ; Segment = "*" | "**" | LITERAL | Variable ; Variable
+      # = "`" FieldPath [ "=" Segments ] "`" ; FieldPath = IDENT ` "." IDENT ` ; Verb =
+      # ":" LITERAL ; The syntax `*` matches a single URL path segment. The syntax `**
+      # ` matches zero or more URL path segments, which must be the last part of the
+      # URL path except the `Verb`. The syntax `Variable` matches part of the URL path
+      # as specified by its template. A variable template must not contain other
       # variables. If a variable matches a single path segment, its template may be
       # omitted, e.g. ``var`` is equivalent to ``var=*``. The syntax `LITERAL` matches
       # literal text in the URL path. If the `LITERAL` contains any reserved character,
@@ -1416,7 +1415,7 @@ module Google
       # except `[-_.~/0-9a-zA-Z]` are percent-encoded. The server side does the
       # reverse decoding, except "%2F" and "%2f" are left unchanged. Such variables
       # show up in the [Discovery Document](https://developers.google.com/discovery/v1/
-      # reference/apis) as ``+var``. ## Using gRPC API Service Configuration gRPC API
+      # reference/apis) as ``+var``. Using gRPC API Service Configuration gRPC API
       # Service Configuration (service config) is a configuration language for
       # configuring a gRPC service to become a user-facing product. The service config
       # is simply the YAML representation of the `google.api.Service` proto message.
@@ -1426,11 +1425,11 @@ module Google
       # effect as the proto annotation. This can be particularly useful if you have a
       # proto that is reused in multiple services. Note that any transcoding specified
       # in the service config will override any matching transcoding configuration in
-      # the proto. Example: http: rules: # Selects a gRPC method and applies HttpRule
-      # to it. - selector: example.v1.Messaging.GetMessage get: /v1/messages/`
-      # message_id`/`sub.subfield` ## Special notes When gRPC Transcoding is used to
-      # map a gRPC to JSON REST endpoints, the proto to JSON conversion must follow
-      # the [proto3 specification](https://developers.google.com/protocol-buffers/docs/
+      # the proto. Example below selects a gRPC method and applies HttpRule to it.
+      # http: rules: - selector: example.v1.Messaging.GetMessage get: /v1/messages/`
+      # message_id`/`sub.subfield` Special notes When gRPC Transcoding is used to map
+      # a gRPC to JSON REST endpoints, the proto to JSON conversion must follow the [
+      # proto3 specification](https://developers.google.com/protocol-buffers/docs/
       # proto3#json). While the single segment variable follows the semantics of [RFC
       # 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String
       # Expansion, the multi segment variable **does not** follow RFC 6570 Section 3.2.
@@ -3733,6 +3732,49 @@ module Google
         end
       end
       
+      # Request message for ImportProducerQuotaPolicies
+      class V1Beta1ImportProducerQuotaPoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Whether to force the import of the quota policies. If the policy import would
+        # decrease the default limit of any consumer tier by more than 10 percent, the
+        # call is rejected, as a safety measure to avoid accidentally decreasing quota
+        # too quickly. Setting the force parameter to true ignores this restriction.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # If force option is set to true, force_justification is suggested to be set to
+        # log the reason in audit logs.
+        # Corresponds to the JSON property `forceJustification`
+        # @return [String]
+        attr_accessor :force_justification
+      
+        # Import data embedded in the request message
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1PolicyInlineSource]
+        attr_accessor :inline_source
+      
+        # If set to true, validate the request, but do not actually update.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+          @force_justification = args[:force_justification] if args.key?(:force_justification)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Response message for ImportProducerQuotaPolicies
       class V1Beta1ImportProducerQuotaPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -3802,6 +3844,31 @@ module Google
         end
       end
       
+      # Response message for ListProducerQuotaPolicies.
+      class V1Beta1ListProducerQuotaPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token identifying which result to start with; returned by a previous list call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Producer policies on this limit.
+        # Corresponds to the JSON property `producerQuotaPolicies`
+        # @return [Array<Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy>]
+        attr_accessor :producer_quota_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @producer_quota_policies = args[:producer_quota_policies] if args.key?(:producer_quota_policies)
+        end
+      end
+      
       # Import data embedded in the request message
       class V1Beta1OverrideInlineSource
         include Google::Apis::Core::Hashable
@@ -3820,6 +3887,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @overrides = args[:overrides] if args.key?(:overrides)
+        end
+      end
+      
+      # Import data embedded in the request message
+      class V1Beta1PolicyInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # The policies to create. Each policy must have a value for 'metric' and 'unit',
+        # to specify which metric and which limit the policy should be applied to.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policies = args[:policies] if args.key?(:policies)
         end
       end
       

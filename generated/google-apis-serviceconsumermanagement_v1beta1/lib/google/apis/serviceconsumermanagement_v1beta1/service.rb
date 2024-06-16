@@ -153,6 +153,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create or update multiple producer quota policies atomically, all on the same
+        # ancestor, but on many different metrics or limits. The name field in the quota
+        # policy message should not be set.
+        # @param [String] parent
+        #   The resource name of the consumer. An example name would be: `services/compute.
+        #   googleapis.com/organizations/123`
+        # @param [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ImportProducerQuotaPoliciesRequest] v1_beta1_import_producer_quota_policies_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceconsumermanagementV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceconsumermanagementV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_service_consumer_quota_metric_producer_quota_policies(parent, v1_beta1_import_producer_quota_policies_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/consumerQuotaMetrics:importProducerQuotaPolicies', options)
+          command.request_representation = Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ImportProducerQuotaPoliciesRequest::Representation
+          command.request_object = v1_beta1_import_producer_quota_policies_request_object
+          command.response_representation = Google::Apis::ServiceconsumermanagementV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceconsumermanagementV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves a summary of all quota information about this consumer that is
         # visible to the service producer, for each quota metric defined by the service.
         # Each metric includes information about all of its defined limits. Each limit
@@ -425,6 +461,199 @@ module Google
           command.query['forceJustification'] = force_justification unless force_justification.nil?
           command.query['forceOnly'] = force_only unless force_only.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a producer quota policy. A producer quota policy is applied by the
+        # owner or administrator of a service at an org or folder node to set the
+        # default quota limit for all consumers under the node where the policy is
+        # created. To create multiple policies at once, use ImportProducerQuotaPolicies
+        # instead. If a policy with the specified dimensions already exists, this call
+        # will fail. To overwrite an existing policy if one is already present ("upsert"
+        # semantics), use ImportProducerQuotaPolicies instead.
+        # @param [String] parent
+        #   Required. The resource name of the parent quota limit. An example name would
+        #   be: `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/
+        #   compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+        # @param [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy] v1_beta1_producer_quota_policy_object
+        # @param [Boolean] force
+        #   Whether to force the creation of the quota policy. If the policy creation
+        #   would decrease the default limit of any consumer tier by more than 10 percent,
+        #   the call is rejected, as a safety measure to avoid accidentally decreasing
+        #   quota too quickly. Setting the force parameter to true ignores this
+        #   restriction.
+        # @param [String] force_justification
+        #   If force option is set to true, force_justification is suggested to be set to
+        #   log the reason in audit logs.
+        # @param [Boolean] validate_only
+        #   If set to true, validate the request, but do not actually update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceconsumermanagementV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceconsumermanagementV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_service_consumer_quota_metric_limit_producer_quota_policy(parent, v1_beta1_producer_quota_policy_object = nil, force: nil, force_justification: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/producerQuotaPolicies', options)
+          command.request_representation = Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy::Representation
+          command.request_object = v1_beta1_producer_quota_policy_object
+          command.response_representation = Google::Apis::ServiceconsumermanagementV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceconsumermanagementV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['forceJustification'] = force_justification unless force_justification.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a producer quota policy.
+        # @param [String] name
+        #   Required. The resource name of the policy to delete. An example name would be:
+        #   `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/
+        #   compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQuotaPolicies/
+        #   4a3f2c1d`
+        # @param [Boolean] force
+        #   Whether to force the deletion of the quota policy. If the policy deletion
+        #   would decrease the default limit of any consumer tier by more than 10 percent,
+        #   the call is rejected, as a safety measure to avoid accidentally decreasing
+        #   quota too quickly. Setting the force parameter to true ignores this
+        #   restriction.
+        # @param [String] force_justification
+        #   If force option is set to true, force_justification is suggested to be set to
+        #   log the reason in audit logs.
+        # @param [Boolean] validate_only
+        #   If set to true, validate the request, but do not actually update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceconsumermanagementV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceconsumermanagementV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_service_consumer_quota_metric_limit_producer_quota_policy(name, force: nil, force_justification: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::ServiceconsumermanagementV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceconsumermanagementV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['forceJustification'] = force_justification unless force_justification.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all producer policies created at current consumer node for a limit.
+        # @param [String] parent
+        #   Required. The resource name of the parent quota limit. An example name would
+        #   be: `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/
+        #   compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+        # @param [Fixnum] page_size
+        #   Requested size of the next page of data.
+        # @param [String] page_token
+        #   Token identifying which result to start with; returned by a previous list call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ListProducerQuotaPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ListProducerQuotaPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_service_consumer_quota_metric_limit_producer_quota_policies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/producerQuotaPolicies', options)
+          command.response_representation = Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ListProducerQuotaPoliciesResponse::Representation
+          command.response_class = Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ListProducerQuotaPoliciesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a producer quota policy.
+        # @param [String] name
+        #   The resource name of the producer policy. An example name would be: `services/
+        #   compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.
+        #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQuotaPolicies/
+        #   4a3f2c1d`
+        # @param [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy] v1_beta1_producer_quota_policy_object
+        # @param [Boolean] force
+        #   Whether to force the update of the quota policy. If the policy update would
+        #   decrease the default limit of any consumer tier by more than 10 percent, the
+        #   call is rejected, as a safety measure to avoid accidentally decreasing quota
+        #   too quickly. Setting the force parameter to true ignores this restriction.
+        # @param [String] force_justification
+        #   If force option is set to true, force_justification is suggested to be set to
+        #   log the reason in audit logs.
+        # @param [String] update_mask
+        #   Update only the specified fields. If unset, all modifiable fields will be
+        #   updated.
+        # @param [Boolean] validate_only
+        #   If set to true, validate the request, but do not actually update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceconsumermanagementV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceconsumermanagementV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_service_consumer_quota_metric_limit_producer_quota_policy(name, v1_beta1_producer_quota_policy_object = nil, force: nil, force_justification: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy::Representation
+          command.request_object = v1_beta1_producer_quota_policy_object
+          command.response_representation = Google::Apis::ServiceconsumermanagementV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceconsumermanagementV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['forceJustification'] = force_justification unless force_justification.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
