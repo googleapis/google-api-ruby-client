@@ -12212,6 +12212,15 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleDriveSource]
         attr_accessor :google_drive_source
       
+        # Optional. The max number of queries per minute that this job is allowed to
+        # make to the embedding model specified on the corpus. This value is specific to
+        # this job and not shared across other import jobs. Consult the Quotas page on
+        # the project to set an appropriate value here. If unspecified, a default value
+        # of 1,000 QPM would be used.
+        # Corresponds to the JSON property `maxEmbeddingRequestsPerMin`
+        # @return [Fixnum]
+        attr_accessor :max_embedding_requests_per_min
+      
         # Specifies the size and overlap of chunks for RagFiles.
         # Corresponds to the JSON property `ragFileChunkingConfig`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileChunkingConfig]
@@ -12225,6 +12234,7 @@ module Google
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @google_drive_source = args[:google_drive_source] if args.key?(:google_drive_source)
+          @max_embedding_requests_per_min = args[:max_embedding_requests_per_min] if args.key?(:max_embedding_requests_per_min)
           @rag_file_chunking_config = args[:rag_file_chunking_config] if args.key?(:rag_file_chunking_config)
         end
       end
@@ -16831,40 +16841,6 @@ module Google
         end
       end
       
-      # A collection of data points that describes the time-varying values of a gen ai
-      # metric.
-      class GoogleCloudAiplatformV1beta1ModelMonitoringGenAiStats
-        include Google::Apis::Core::Hashable
-      
-        # The data points of this time series. When listing time series, points are
-        # returned in reverse time order.
-        # Corresponds to the JSON property `dataPoints`
-        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringStatsDataPoint>]
-        attr_accessor :data_points
-      
-        # One of the supported monitoring objectives: `gen-ai-general` `gen-ai-
-        # evaluation` `gen-ai-safety`
-        # Corresponds to the JSON property `objectiveType`
-        # @return [String]
-        attr_accessor :objective_type
-      
-        # The stats name.
-        # Corresponds to the JSON property `statsName`
-        # @return [String]
-        attr_accessor :stats_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_points = args[:data_points] if args.key?(:data_points)
-          @objective_type = args[:objective_type] if args.key?(:objective_type)
-          @stats_name = args[:stats_name] if args.key?(:stats_name)
-        end
-      end
-      
       # Model monitoring data input spec.
       class GoogleCloudAiplatformV1beta1ModelMonitoringInput
         include Google::Apis::Core::Hashable
@@ -17838,12 +17814,6 @@ module Google
       class GoogleCloudAiplatformV1beta1ModelMonitoringStats
         include Google::Apis::Core::Hashable
       
-        # A collection of data points that describes the time-varying values of a gen ai
-        # metric.
-        # Corresponds to the JSON property `genAiStats`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringGenAiStats]
-        attr_accessor :gen_ai_stats
-      
         # A collection of data points that describes the time-varying values of a
         # tabular metric.
         # Corresponds to the JSON property `tabularStats`
@@ -17856,7 +17826,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @gen_ai_stats = args[:gen_ai_stats] if args.key?(:gen_ai_stats)
           @tabular_stats = args[:tabular_stats] if args.key?(:tabular_stats)
         end
       end
@@ -21197,12 +21166,6 @@ module Google
       
         # The regional resource name or the URI. Key is region, e.g., us-central1,
         # europe-west2, global, etc..
-        # Corresponds to the JSON property `fineTune`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences]
-        attr_accessor :fine_tune
-      
-        # The regional resource name or the URI. Key is region, e.g., us-central1,
-        # europe-west2, global, etc..
         # Corresponds to the JSON property `openEvaluationPipeline`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences]
         attr_accessor :open_evaluation_pipeline
@@ -21267,7 +21230,6 @@ module Google
           @create_application = args[:create_application] if args.key?(:create_application)
           @deploy = args[:deploy] if args.key?(:deploy)
           @deploy_gke = args[:deploy_gke] if args.key?(:deploy_gke)
-          @fine_tune = args[:fine_tune] if args.key?(:fine_tune)
           @open_evaluation_pipeline = args[:open_evaluation_pipeline] if args.key?(:open_evaluation_pipeline)
           @open_fine_tuning_pipeline = args[:open_fine_tuning_pipeline] if args.key?(:open_fine_tuning_pipeline)
           @open_fine_tuning_pipelines = args[:open_fine_tuning_pipelines] if args.key?(:open_fine_tuning_pipelines)
@@ -22544,6 +22506,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Config for the embedding model to use for RAG.
+        # Corresponds to the JSON property `ragEmbeddingModelConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagEmbeddingModelConfig]
+        attr_accessor :rag_embedding_model_config
+      
         # Output only. Timestamp when this RagCorpus was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -22559,7 +22526,63 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @rag_embedding_model_config = args[:rag_embedding_model_config] if args.key?(:rag_embedding_model_config)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Config for the embedding model to use for RAG.
+      class GoogleCloudAiplatformV1beta1RagEmbeddingModelConfig
+        include Google::Apis::Core::Hashable
+      
+        # Config representing a model hosted on Vertex Prediction Endpoint.
+        # Corresponds to the JSON property `vertexPredictionEndpoint`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagEmbeddingModelConfigVertexPredictionEndpoint]
+        attr_accessor :vertex_prediction_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vertex_prediction_endpoint = args[:vertex_prediction_endpoint] if args.key?(:vertex_prediction_endpoint)
+        end
+      end
+      
+      # Config representing a model hosted on Vertex Prediction Endpoint.
+      class GoogleCloudAiplatformV1beta1RagEmbeddingModelConfigVertexPredictionEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Required. The endpoint resource name. Format: `projects/`project`/locations/`
+        # location`/publishers/`publisher`/models/`model`` or `projects/`project`/
+        # locations/`location`/endpoints/`endpoint``
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Output only. The resource name of the model that is deployed on the endpoint.
+        # Present only when the endpoint is not a publisher model. Pattern: `projects/`
+        # project`/locations/`location`/models/`model``
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Output only. Version ID of the model that is deployed on the endpoint. Present
+        # only when the endpoint is not a publisher model.
+        # Corresponds to the JSON property `modelVersionId`
+        # @return [String]
+        attr_accessor :model_version_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @model = args[:model] if args.key?(:model)
+          @model_version_id = args[:model_version_id] if args.key?(:model_version_id)
         end
       end
       
@@ -31216,11 +31239,6 @@ module Google
       class GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilter
         include Google::Apis::Core::Hashable
       
-        # GenAi statistics filter.
-        # Corresponds to the JSON property `genAiStatsFilter`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilterGenAiStatsFilter]
-        attr_accessor :gen_ai_stats_filter
-      
         # Tabular statistics filter.
         # Corresponds to the JSON property `tabularStatsFilter`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilterTabularStatsFilter]
@@ -31232,52 +31250,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @gen_ai_stats_filter = args[:gen_ai_stats_filter] if args.key?(:gen_ai_stats_filter)
           @tabular_stats_filter = args[:tabular_stats_filter] if args.key?(:tabular_stats_filter)
-        end
-      end
-      
-      # GenAi statistics filter.
-      class GoogleCloudAiplatformV1beta1SearchModelMonitoringStatsFilterGenAiStatsFilter
-        include Google::Apis::Core::Hashable
-      
-        # From a particular cluster of monitoring results.
-        # Corresponds to the JSON property `clusterId`
-        # @return [String]
-        attr_accessor :cluster_id
-      
-        # From a particular monitoring job.
-        # Corresponds to the JSON property `modelMonitoringJob`
-        # @return [String]
-        attr_accessor :model_monitoring_job
-      
-        # From a particular monitoring schedule.
-        # Corresponds to the JSON property `modelMonitoringSchedule`
-        # @return [String]
-        attr_accessor :model_monitoring_schedule
-      
-        # One of the supported monitoring objectives: `gen-ai-general` `gen-ai-
-        # evaluation` `gen-ai-safety`
-        # Corresponds to the JSON property `objectiveType`
-        # @return [String]
-        attr_accessor :objective_type
-      
-        # If not specified, will return all the stats_names.
-        # Corresponds to the JSON property `statsName`
-        # @return [String]
-        attr_accessor :stats_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
-          @model_monitoring_job = args[:model_monitoring_job] if args.key?(:model_monitoring_job)
-          @model_monitoring_schedule = args[:model_monitoring_schedule] if args.key?(:model_monitoring_schedule)
-          @objective_type = args[:objective_type] if args.key?(:objective_type)
-          @stats_name = args[:stats_name] if args.key?(:stats_name)
         end
       end
       
@@ -31703,6 +31676,40 @@ module Google
           @test_fraction = args[:test_fraction] if args.key?(:test_fraction)
           @training_fraction = args[:training_fraction] if args.key?(:training_fraction)
           @validation_fraction = args[:validation_fraction] if args.key?(:validation_fraction)
+        end
+      end
+      
+      # Request message for PredictionService.StreamRawPredict.
+      class GoogleCloudAiplatformV1beta1StreamRawPredictRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message that represents an arbitrary HTTP body. It should only be used for
+        # payload formats that can't be represented as JSON, such as raw binary or an
+        # HTML page. This message can be used both in streaming and non-streaming API
+        # methods in the request as well as the response. It can be used as a top-level
+        # request field, which is convenient if one wants to extract parameters from
+        # either the URL or HTTP template into the request fields and also want access
+        # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+        # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+        # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+        # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+        # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+        # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+        # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+        # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+        # only changes how the request and response bodies are handled, all other
+        # features will continue to work unchanged.
+        # Corresponds to the JSON property `httpBody`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        attr_accessor :http_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_body = args[:http_body] if args.key?(:http_body)
         end
       end
       

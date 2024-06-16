@@ -906,18 +906,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        # @return [Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_cached_content(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
-          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -4706,6 +4706,40 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse
           command.params['model'] = model unless model.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Perform a streaming online prediction with an arbitrary HTTP payload.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StreamRawPredictRequest] google_cloud_aiplatform_v1beta1_stream_raw_predict_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_endpoint_raw_predict(endpoint, google_cloud_aiplatform_v1beta1_stream_raw_predict_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:streamRawPredict', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StreamRawPredictRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_stream_raw_predict_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
+          command.params['endpoint'] = endpoint unless endpoint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -18016,6 +18050,40 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse
           command.params['model'] = model unless model.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Perform a streaming online prediction with an arbitrary HTTP payload.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StreamRawPredictRequest] google_cloud_aiplatform_v1beta1_stream_raw_predict_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_publisher_model_raw_predict(endpoint, google_cloud_aiplatform_v1beta1_stream_raw_predict_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:streamRawPredict', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StreamRawPredictRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_stream_raw_predict_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
+          command.params['endpoint'] = endpoint unless endpoint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
