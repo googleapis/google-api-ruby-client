@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAuthenticationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HardwareInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -979,6 +985,7 @@ module Google
           property :package_name, as: 'packageName'
           collection :permission_grants, as: 'permissionGrants', class: Google::Apis::AndroidmanagementV1::PermissionGrant, decorator: Google::Apis::AndroidmanagementV1::PermissionGrant::Representation
       
+          property :user_control_settings, as: 'userControlSettings'
           property :work_profile_widgets, as: 'workProfileWidgets'
         end
       end
@@ -1344,6 +1351,8 @@ module Google
       
           collection :enabled_notification_types, as: 'enabledNotificationTypes'
           property :enterprise_display_name, as: 'enterpriseDisplayName'
+          property :google_authentication_settings, as: 'googleAuthenticationSettings', class: Google::Apis::AndroidmanagementV1::GoogleAuthenticationSettings, decorator: Google::Apis::AndroidmanagementV1::GoogleAuthenticationSettings::Representation
+      
           property :logo, as: 'logo', class: Google::Apis::AndroidmanagementV1::ExternalData, decorator: Google::Apis::AndroidmanagementV1::ExternalData::Representation
       
           property :name, as: 'name'
@@ -1393,6 +1402,13 @@ module Google
       
           property :start_date, as: 'startDate', class: Google::Apis::AndroidmanagementV1::Date, decorator: Google::Apis::AndroidmanagementV1::Date::Representation
       
+        end
+      end
+      
+      class GoogleAuthenticationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_authentication_required, as: 'googleAuthenticationRequired'
         end
       end
       
@@ -2029,6 +2045,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_level, as: 'apiLevel'
+          property :authenticated_user_email, as: 'authenticatedUserEmail'
           property :brand, as: 'brand'
           property :enterprise, as: 'enterprise'
           property :imei, as: 'imei'

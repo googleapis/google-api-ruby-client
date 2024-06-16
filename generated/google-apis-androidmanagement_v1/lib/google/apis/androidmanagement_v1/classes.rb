@@ -670,6 +670,13 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::PermissionGrant>]
         attr_accessor :permission_grants
       
+        # Optional. Specifies whether user control is permitted for the app. User
+        # control includes user actions like force-stopping and clearing app data.
+        # Supported on Android 11 and above.
+        # Corresponds to the JSON property `userControlSettings`
+        # @return [String]
+        attr_accessor :user_control_settings
+      
         # Specifies whether the app installed in the work profile is allowed to add
         # widgets to the home screen.
         # Corresponds to the JSON property `workProfileWidgets`
@@ -700,6 +707,7 @@ module Google
           @minimum_version_code = args[:minimum_version_code] if args.key?(:minimum_version_code)
           @package_name = args[:package_name] if args.key?(:package_name)
           @permission_grants = args[:permission_grants] if args.key?(:permission_grants)
+          @user_control_settings = args[:user_control_settings] if args.key?(:user_control_settings)
           @work_profile_widgets = args[:work_profile_widgets] if args.key?(:work_profile_widgets)
         end
       end
@@ -2203,6 +2211,11 @@ module Google
         # @return [String]
         attr_accessor :enterprise_display_name
       
+        # Contains settings for Google-provided user authentication.
+        # Corresponds to the JSON property `googleAuthenticationSettings`
+        # @return [Google::Apis::AndroidmanagementV1::GoogleAuthenticationSettings]
+        attr_accessor :google_authentication_settings
+      
         # Data hosted at an external location. The data is to be downloaded by Android
         # Device Policy and verified against the hash.
         # Corresponds to the JSON property `logo`
@@ -2251,6 +2264,7 @@ module Google
           @contact_info = args[:contact_info] if args.key?(:contact_info)
           @enabled_notification_types = args[:enabled_notification_types] if args.key?(:enabled_notification_types)
           @enterprise_display_name = args[:enterprise_display_name] if args.key?(:enterprise_display_name)
+          @google_authentication_settings = args[:google_authentication_settings] if args.key?(:google_authentication_settings)
           @logo = args[:logo] if args.key?(:logo)
           @name = args[:name] if args.key?(:name)
           @primary_color = args[:primary_color] if args.key?(:primary_color)
@@ -2416,6 +2430,31 @@ module Google
         def update!(**args)
           @end_date = args[:end_date] if args.key?(:end_date)
           @start_date = args[:start_date] if args.key?(:start_date)
+        end
+      end
+      
+      # Contains settings for Google-provided user authentication.
+      class GoogleAuthenticationSettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether users need to be authenticated by Google during the
+        # enrollment process. IT admin can specify if Google authentication is enabled
+        # for the enterprise for knowledge worker devices. This value can be set only
+        # via the Google Admin Console. Google authentication can be used with
+        # signin_url In the case where Google authentication is required and a
+        # signin_url is specified, Google authentication will be launched before
+        # signin_url.
+        # Corresponds to the JSON property `googleAuthenticationRequired`
+        # @return [String]
+        attr_accessor :google_authentication_required
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_authentication_required = args[:google_authentication_required] if args.key?(:google_authentication_required)
         end
       end
       
@@ -4996,6 +5035,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :api_level
       
+        # The email address of the authenticated user (only present for Google Account
+        # provisioning method).
+        # Corresponds to the JSON property `authenticatedUserEmail`
+        # @return [String]
+        attr_accessor :authenticated_user_email
+      
         # The brand of the device. For example, Google.
         # Corresponds to the JSON property `brand`
         # @return [String]
@@ -5050,6 +5095,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_level = args[:api_level] if args.key?(:api_level)
+          @authenticated_user_email = args[:authenticated_user_email] if args.key?(:authenticated_user_email)
           @brand = args[:brand] if args.key?(:brand)
           @enterprise = args[:enterprise] if args.key?(:enterprise)
           @imei = args[:imei] if args.key?(:imei)
