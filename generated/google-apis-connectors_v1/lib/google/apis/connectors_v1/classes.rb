@@ -839,6 +839,11 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Output only. The type of the connector.
+        # Corresponds to the JSON property `connectorType`
+        # @return [String]
+        attr_accessor :connector_type
+      
         # Output only. Created time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -910,6 +915,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @category = args[:category] if args.key?(:category)
+          @connector_type = args[:connector_type] if args.key?(:connector_type)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
