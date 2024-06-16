@@ -389,7 +389,7 @@ module Google
         # @return [String]
         attr_accessor :comments
       
-        # Email of the user profile. The email addresss must be linked to a Google
+        # Email of the user profile. The email address must be linked to a Google
         # Account. This field is required on insertion and is read-only after insertion.
         # Corresponds to the JSON property `email`
         # @return [String]
@@ -2218,74 +2218,6 @@ module Google
         end
       end
       
-      # Represents a DfaReporting channel grouping.
-      class ChannelGrouping
-        include Google::Apis::Core::Hashable
-      
-        # ChannelGrouping fallback name.
-        # Corresponds to the JSON property `fallbackName`
-        # @return [String]
-        attr_accessor :fallback_name
-      
-        # The kind of resource this is, in this case dfareporting#channelGrouping.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ChannelGrouping name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The rules contained within this channel grouping.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::DfareportingV4::ChannelGroupingRule>]
-        attr_accessor :rules
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @fallback_name = args[:fallback_name] if args.key?(:fallback_name)
-          @kind = args[:kind] if args.key?(:kind)
-          @name = args[:name] if args.key?(:name)
-          @rules = args[:rules] if args.key?(:rules)
-        end
-      end
-      
-      # Represents a DfaReporting channel grouping rule.
-      class ChannelGroupingRule
-        include Google::Apis::Core::Hashable
-      
-        # The disjunctive match statements contained within this rule.
-        # Corresponds to the JSON property `disjunctiveMatchStatements`
-        # @return [Array<Google::Apis::DfareportingV4::DisjunctiveMatchStatement>]
-        attr_accessor :disjunctive_match_statements
-      
-        # The kind of resource this is, in this case dfareporting#channelGroupingRule.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Rule name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @disjunctive_match_statements = args[:disjunctive_match_statements] if args.key?(:disjunctive_match_statements)
-          @kind = args[:kind] if args.key?(:kind)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
       # City List Response
       class CitiesListResponse
         include Google::Apis::Core::Hashable
@@ -2576,18 +2508,6 @@ module Google
         attr_accessor :kind
       
         # Represents fields that are compatible to be selected for a report of type "
-        # PATH".
-        # Corresponds to the JSON property `pathAttributionReportCompatibleFields`
-        # @return [Google::Apis::DfareportingV4::PathReportCompatibleFields]
-        attr_accessor :path_attribution_report_compatible_fields
-      
-        # Represents fields that are compatible to be selected for a report of type "
-        # PATH".
-        # Corresponds to the JSON property `pathReportCompatibleFields`
-        # @return [Google::Apis::DfareportingV4::PathReportCompatibleFields]
-        attr_accessor :path_report_compatible_fields
-      
-        # Represents fields that are compatible to be selected for a report of type "
         # PATH_TO_CONVERSION".
         # Corresponds to the JSON property `pathToConversionReportCompatibleFields`
         # @return [Google::Apis::DfareportingV4::PathToConversionReportCompatibleFields]
@@ -2614,8 +2534,6 @@ module Google
           @cross_dimension_reach_report_compatible_fields = args[:cross_dimension_reach_report_compatible_fields] if args.key?(:cross_dimension_reach_report_compatible_fields)
           @floodlight_report_compatible_fields = args[:floodlight_report_compatible_fields] if args.key?(:floodlight_report_compatible_fields)
           @kind = args[:kind] if args.key?(:kind)
-          @path_attribution_report_compatible_fields = args[:path_attribution_report_compatible_fields] if args.key?(:path_attribution_report_compatible_fields)
-          @path_report_compatible_fields = args[:path_report_compatible_fields] if args.key?(:path_report_compatible_fields)
           @path_to_conversion_report_compatible_fields = args[:path_to_conversion_report_compatible_fields] if args.key?(:path_to_conversion_report_compatible_fields)
           @reach_report_compatible_fields = args[:reach_report_compatible_fields] if args.key?(:reach_report_compatible_fields)
           @report_compatible_fields = args[:report_compatible_fields] if args.key?(:report_compatible_fields)
@@ -5713,33 +5631,6 @@ module Google
         end
       end
       
-      # Represents a Disjunctive Match Statement resource, which is a conjunction (and)
-      # of disjunctive (or) boolean statements.
-      class DisjunctiveMatchStatement
-        include Google::Apis::Core::Hashable
-      
-        # The event filters contained within this disjunctive match statement.
-        # Corresponds to the JSON property `eventFilters`
-        # @return [Array<Google::Apis::DfareportingV4::EventFilter>]
-        attr_accessor :event_filters
-      
-        # The kind of resource this is, in this case dfareporting#
-        # disjunctiveMatchStatement.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @event_filters = args[:event_filters] if args.key?(:event_filters)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
       # Contains properties of a dynamic targeting key. Dynamic targeting keys are
       # unique, user-friendly labels, created at the advertiser level in DCM, that can
       # be assigned to ads, creatives, and placements and used for targeting with
@@ -5849,37 +5740,6 @@ module Google
           @encryption_entity_type = args[:encryption_entity_type] if args.key?(:encryption_entity_type)
           @encryption_source = args[:encryption_source] if args.key?(:encryption_source)
           @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # Represents a DfaReporting event filter.
-      class EventFilter
-        include Google::Apis::Core::Hashable
-      
-        # Represents a PathReportDimensionValue resource.
-        # Corresponds to the JSON property `dimensionFilter`
-        # @return [Google::Apis::DfareportingV4::PathReportDimensionValue]
-        attr_accessor :dimension_filter
-      
-        # The kind of resource this is, in this case dfareporting#eventFilter.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Defines the filtering on a single uvar.
-        # Corresponds to the JSON property `uvarFilter`
-        # @return [Google::Apis::DfareportingV4::UvarFilter]
-        attr_accessor :uvar_filter
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dimension_filter = args[:dimension_filter] if args.key?(:dimension_filter)
-          @kind = args[:kind] if args.key?(:kind)
-          @uvar_filter = args[:uvar_filter] if args.key?(:uvar_filter)
         end
       end
       
@@ -6260,15 +6120,15 @@ module Google
       class FloodlightActivitiesGenerateTagResponse
         include Google::Apis::Core::Hashable
       
-        # Generated tag for this Floodlight activity. For global site tags, this is the
-        # event snippet.
+        # Generated tag for this Floodlight activity. For Google tags, this is the event
+        # snippet.
         # Corresponds to the JSON property `floodlightActivityTag`
         # @return [String]
         attr_accessor :floodlight_activity_tag
       
-        # The global snippet section of a global site tag. The global site tag sets new
-        # cookies on your domain, which will store a unique identifier for a user or the
-        # ad click that brought the user to your site. Learn more.
+        # The global snippet section of a Google tag. The Google tag sets new cookies on
+        # your domain, which will store a unique identifier for a user or the ad click
+        # that brought the user to your site. Learn more.
         # Corresponds to the JSON property `globalSiteTagGlobalSnippet`
         # @return [String]
         attr_accessor :global_site_tag_global_snippet
@@ -8719,138 +8579,6 @@ module Google
         end
       end
       
-      # Represents a DfaReporting path filter.
-      class PathFilter
-        include Google::Apis::Core::Hashable
-      
-        # Event filters in path report.
-        # Corresponds to the JSON property `eventFilters`
-        # @return [Array<Google::Apis::DfareportingV4::EventFilter>]
-        attr_accessor :event_filters
-      
-        # The kind of resource this is, in this case dfareporting#pathFilter.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Determines how the 'value' field is matched when filtering. If not specified,
-        # defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed as a
-        # placeholder for variable length character sequences, and it can be escaped
-        # with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow
-        # a matchType other than EXACT.
-        # Corresponds to the JSON property `pathMatchPosition`
-        # @return [String]
-        attr_accessor :path_match_position
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @event_filters = args[:event_filters] if args.key?(:event_filters)
-          @kind = args[:kind] if args.key?(:kind)
-          @path_match_position = args[:path_match_position] if args.key?(:path_match_position)
-        end
-      end
-      
-      # Represents fields that are compatible to be selected for a report of type "
-      # PATH".
-      class PathReportCompatibleFields
-        include Google::Apis::Core::Hashable
-      
-        # Dimensions which are compatible to be selected in the "channelGroupings"
-        # section of the report.
-        # Corresponds to the JSON property `channelGroupings`
-        # @return [Array<Google::Apis::DfareportingV4::Dimension>]
-        attr_accessor :channel_groupings
-      
-        # Dimensions which are compatible to be selected in the "dimensions" section of
-        # the report.
-        # Corresponds to the JSON property `dimensions`
-        # @return [Array<Google::Apis::DfareportingV4::Dimension>]
-        attr_accessor :dimensions
-      
-        # The kind of resource this is, in this case dfareporting#
-        # pathReportCompatibleFields.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Metrics which are compatible to be selected in the "metricNames" section of
-        # the report.
-        # Corresponds to the JSON property `metrics`
-        # @return [Array<Google::Apis::DfareportingV4::Metric>]
-        attr_accessor :metrics
-      
-        # Dimensions which are compatible to be selected in the "pathFilters" section of
-        # the report.
-        # Corresponds to the JSON property `pathFilters`
-        # @return [Array<Google::Apis::DfareportingV4::Dimension>]
-        attr_accessor :path_filters
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @channel_groupings = args[:channel_groupings] if args.key?(:channel_groupings)
-          @dimensions = args[:dimensions] if args.key?(:dimensions)
-          @kind = args[:kind] if args.key?(:kind)
-          @metrics = args[:metrics] if args.key?(:metrics)
-          @path_filters = args[:path_filters] if args.key?(:path_filters)
-        end
-      end
-      
-      # Represents a PathReportDimensionValue resource.
-      class PathReportDimensionValue
-        include Google::Apis::Core::Hashable
-      
-        # The name of the dimension.
-        # Corresponds to the JSON property `dimensionName`
-        # @return [String]
-        attr_accessor :dimension_name
-      
-        # The possible ID's associated with the value if available.
-        # Corresponds to the JSON property `ids`
-        # @return [Array<String>]
-        attr_accessor :ids
-      
-        # The kind of resource this is, in this case dfareporting#
-        # pathReportDimensionValue.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Determines how the 'value' field is matched when filtering. If not specified,
-        # defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed as a
-        # placeholder for variable length character sequences, and it can be escaped
-        # with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow
-        # a matchType other than EXACT.
-        # Corresponds to the JSON property `matchType`
-        # @return [String]
-        attr_accessor :match_type
-      
-        # The possible values of the dimension.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dimension_name = args[:dimension_name] if args.key?(:dimension_name)
-          @ids = args[:ids] if args.key?(:ids)
-          @kind = args[:kind] if args.key?(:kind)
-          @match_type = args[:match_type] if args.key?(:match_type)
-          @values = args[:values] if args.key?(:values)
-        end
-      end
-      
       # Represents fields that are compatible to be selected for a report of type "
       # PATH_TO_CONVERSION".
       class PathToConversionReportCompatibleFields
@@ -10642,16 +10370,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :owner_profile_id
       
-        # The report criteria for a report of type "PATH_ATTRIBUTION".
-        # Corresponds to the JSON property `pathAttributionCriteria`
-        # @return [Google::Apis::DfareportingV4::Report::PathAttributionCriteria]
-        attr_accessor :path_attribution_criteria
-      
-        # The report criteria for a report of type "PATH".
-        # Corresponds to the JSON property `pathCriteria`
-        # @return [Google::Apis::DfareportingV4::Report::PathCriteria]
-        attr_accessor :path_criteria
-      
         # The report criteria for a report of type "PATH_TO_CONVERSION".
         # Corresponds to the JSON property `pathToConversionCriteria`
         # @return [Google::Apis::DfareportingV4::Report::PathToConversionCriteria]
@@ -10697,8 +10415,6 @@ module Google
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @name = args[:name] if args.key?(:name)
           @owner_profile_id = args[:owner_profile_id] if args.key?(:owner_profile_id)
-          @path_attribution_criteria = args[:path_attribution_criteria] if args.key?(:path_attribution_criteria)
-          @path_criteria = args[:path_criteria] if args.key?(:path_criteria)
           @path_to_conversion_criteria = args[:path_to_conversion_criteria] if args.key?(:path_to_conversion_criteria)
           @reach_criteria = args[:reach_criteria] if args.key?(:reach_criteria)
           @schedule = args[:schedule] if args.key?(:schedule)
@@ -10943,116 +10659,6 @@ module Google
               @include_unattributed_cookie_conversions = args[:include_unattributed_cookie_conversions] if args.key?(:include_unattributed_cookie_conversions)
               @include_unattributed_ip_conversions = args[:include_unattributed_ip_conversions] if args.key?(:include_unattributed_ip_conversions)
             end
-          end
-        end
-        
-        # The report criteria for a report of type "PATH_ATTRIBUTION".
-        class PathAttributionCriteria
-          include Google::Apis::Core::Hashable
-        
-          # The list of 'dfa:activity' values to filter on.
-          # Corresponds to the JSON property `activityFilters`
-          # @return [Array<Google::Apis::DfareportingV4::DimensionValue>]
-          attr_accessor :activity_filters
-        
-          # Represents a DfaReporting channel grouping.
-          # Corresponds to the JSON property `customChannelGrouping`
-          # @return [Google::Apis::DfareportingV4::ChannelGrouping]
-          attr_accessor :custom_channel_grouping
-        
-          # Represents a date range.
-          # Corresponds to the JSON property `dateRange`
-          # @return [Google::Apis::DfareportingV4::DateRange]
-          attr_accessor :date_range
-        
-          # The list of dimensions the report should include.
-          # Corresponds to the JSON property `dimensions`
-          # @return [Array<Google::Apis::DfareportingV4::SortedDimension>]
-          attr_accessor :dimensions
-        
-          # Represents a DimensionValue resource.
-          # Corresponds to the JSON property `floodlightConfigId`
-          # @return [Google::Apis::DfareportingV4::DimensionValue]
-          attr_accessor :floodlight_config_id
-        
-          # The list of names of metrics the report should include.
-          # Corresponds to the JSON property `metricNames`
-          # @return [Array<String>]
-          attr_accessor :metric_names
-        
-          # Path Filters.
-          # Corresponds to the JSON property `pathFilters`
-          # @return [Array<Google::Apis::DfareportingV4::PathFilter>]
-          attr_accessor :path_filters
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @activity_filters = args[:activity_filters] if args.key?(:activity_filters)
-            @custom_channel_grouping = args[:custom_channel_grouping] if args.key?(:custom_channel_grouping)
-            @date_range = args[:date_range] if args.key?(:date_range)
-            @dimensions = args[:dimensions] if args.key?(:dimensions)
-            @floodlight_config_id = args[:floodlight_config_id] if args.key?(:floodlight_config_id)
-            @metric_names = args[:metric_names] if args.key?(:metric_names)
-            @path_filters = args[:path_filters] if args.key?(:path_filters)
-          end
-        end
-        
-        # The report criteria for a report of type "PATH".
-        class PathCriteria
-          include Google::Apis::Core::Hashable
-        
-          # The list of 'dfa:activity' values to filter on.
-          # Corresponds to the JSON property `activityFilters`
-          # @return [Array<Google::Apis::DfareportingV4::DimensionValue>]
-          attr_accessor :activity_filters
-        
-          # Represents a DfaReporting channel grouping.
-          # Corresponds to the JSON property `customChannelGrouping`
-          # @return [Google::Apis::DfareportingV4::ChannelGrouping]
-          attr_accessor :custom_channel_grouping
-        
-          # Represents a date range.
-          # Corresponds to the JSON property `dateRange`
-          # @return [Google::Apis::DfareportingV4::DateRange]
-          attr_accessor :date_range
-        
-          # The list of dimensions the report should include.
-          # Corresponds to the JSON property `dimensions`
-          # @return [Array<Google::Apis::DfareportingV4::SortedDimension>]
-          attr_accessor :dimensions
-        
-          # Represents a DimensionValue resource.
-          # Corresponds to the JSON property `floodlightConfigId`
-          # @return [Google::Apis::DfareportingV4::DimensionValue]
-          attr_accessor :floodlight_config_id
-        
-          # The list of names of metrics the report should include.
-          # Corresponds to the JSON property `metricNames`
-          # @return [Array<String>]
-          attr_accessor :metric_names
-        
-          # Path Filters.
-          # Corresponds to the JSON property `pathFilters`
-          # @return [Array<Google::Apis::DfareportingV4::PathFilter>]
-          attr_accessor :path_filters
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @activity_filters = args[:activity_filters] if args.key?(:activity_filters)
-            @custom_channel_grouping = args[:custom_channel_grouping] if args.key?(:custom_channel_grouping)
-            @date_range = args[:date_range] if args.key?(:date_range)
-            @dimensions = args[:dimensions] if args.key?(:dimensions)
-            @floodlight_config_id = args[:floodlight_config_id] if args.key?(:floodlight_config_id)
-            @metric_names = args[:metric_names] if args.key?(:metric_names)
-            @path_filters = args[:path_filters] if args.key?(:path_filters)
           end
         end
         
@@ -13165,50 +12771,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @user_roles = args[:user_roles] if args.key?(:user_roles)
-        end
-      end
-      
-      # Defines the filtering on a single uvar.
-      class UvarFilter
-        include Google::Apis::Core::Hashable
-      
-        # Return rows which don't match this filter.
-        # Corresponds to the JSON property `complement`
-        # @return [Boolean]
-        attr_accessor :complement
-        alias_method :complement?, :complement
-      
-        # Custom variable index the filter is applied to.
-        # Corresponds to the JSON property `index`
-        # @return [Fixnum]
-        attr_accessor :index
-      
-        # The kind of resource this is, in this case dfareporting#uvarFilter.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Indicates how the filter should be matched to the values.
-        # Corresponds to the JSON property `match`
-        # @return [String]
-        attr_accessor :match
-      
-        # Values to filter on.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @complement = args[:complement] if args.key?(:complement)
-          @index = args[:index] if args.key?(:index)
-          @kind = args[:kind] if args.key?(:kind)
-          @match = args[:match] if args.key?(:match)
-          @values = args[:values] if args.key?(:values)
         end
       end
       

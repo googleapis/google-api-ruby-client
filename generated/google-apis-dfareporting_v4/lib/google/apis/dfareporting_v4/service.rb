@@ -341,7 +341,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing user role. This method supports patch semantics.
+        # Updates an existing account user profile. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] id
@@ -746,7 +746,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing event tag. This method supports patch semantics.
+        # Updates an existing ad. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] id
@@ -1213,7 +1213,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing advertiser. This method supports patch semantics.
+        # Updates an existing landing page. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] id
@@ -1982,7 +1982,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing creative. This method supports patch semantics.
+        # Updates an existing campaign. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] id
@@ -4372,7 +4372,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing event tag. This method supports patch semantics.
+        # Updates an existing floodlight activity. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] id
@@ -4578,7 +4578,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing event tag. This method supports patch semantics.
+        # Updates an existing floodlight activity group. This method supports patch
+        # semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] id
@@ -4714,7 +4715,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing event tag. This method supports patch semantics.
+        # Updates an existing floodlight configuration. This method supports patch
+        # semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] id
@@ -6329,7 +6331,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing RemarketingListShare. This method supports patch semantics.
+        # Updates an existing remarketing list share. This method supports patch
+        # semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] id
@@ -6525,7 +6528,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing RemarketingList. This method supports patch semantics.
+        # Updates an existing remarketing list. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] id
