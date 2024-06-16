@@ -22,8 +22,49 @@ module Google
   module Apis
     module FirebasemlV2beta
       
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
       # Content blob. It's preferred to send as text directly rather than raw bytes.
-      class Blob
+      class GoogleCloudAiplatformV1beta1Blob
         include Google::Apis::Core::Hashable
       
         # Required. Raw bytes.
@@ -49,12 +90,12 @@ module Google
       end
       
       # A response candidate generated from the model.
-      class Candidate
+      class GoogleCloudAiplatformV1beta1Candidate
         include Google::Apis::Core::Hashable
       
         # A collection of source attributions for a piece of content.
         # Corresponds to the JSON property `citationMetadata`
-        # @return [Google::Apis::FirebasemlV2beta::CitationMetadata]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CitationMetadata]
         attr_accessor :citation_metadata
       
         # The base structured datatype containing multi-part content of a message. A `
@@ -62,7 +103,7 @@ module Google
         # a `parts` field containing multi-part data that contains the content of the
         # message turn.
         # Corresponds to the JSON property `content`
-        # @return [Google::Apis::FirebasemlV2beta::Content]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content]
         attr_accessor :content
       
         # Output only. Describes the reason the mode stopped generating tokens in more
@@ -79,7 +120,7 @@ module Google
       
         # Metadata returned to client when grounding is enabled.
         # Corresponds to the JSON property `groundingMetadata`
-        # @return [Google::Apis::FirebasemlV2beta::GroundingMetadata]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingMetadata]
         attr_accessor :grounding_metadata
       
         # Output only. Index of the candidate.
@@ -90,7 +131,7 @@ module Google
         # Output only. List of ratings for the safety of a response candidate. There is
         # at most one rating per category.
         # Corresponds to the JSON property `safetyRatings`
-        # @return [Array<Google::Apis::FirebasemlV2beta::SafetyRating>]
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating>]
         attr_accessor :safety_ratings
       
         def initialize(**args)
@@ -110,7 +151,7 @@ module Google
       end
       
       # Source attributions for content.
-      class Citation
+      class GoogleCloudAiplatformV1beta1Citation
         include Google::Apis::Core::Hashable
       
         # Output only. End index into the content.
@@ -166,12 +207,12 @@ module Google
       end
       
       # A collection of source attributions for a piece of content.
-      class CitationMetadata
+      class GoogleCloudAiplatformV1beta1CitationMetadata
         include Google::Apis::Core::Hashable
       
         # Output only. List of citations.
         # Corresponds to the JSON property `citations`
-        # @return [Array<Google::Apis::FirebasemlV2beta::Citation>]
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Citation>]
         attr_accessor :citations
       
         def initialize(**args)
@@ -188,13 +229,13 @@ module Google
       # Content` includes a `role` field designating the producer of the `Content` and
       # a `parts` field containing multi-part data that contains the content of the
       # message turn.
-      class Content
+      class GoogleCloudAiplatformV1beta1Content
         include Google::Apis::Core::Hashable
       
         # Required. Ordered `Parts` that constitute a single message. Parts may have
         # different IANA MIME types.
         # Corresponds to the JSON property `parts`
-        # @return [Array<Google::Apis::FirebasemlV2beta::Part>]
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Part>]
         attr_accessor :parts
       
         # Optional. The producer of the content. Must be either 'user' or 'model'.
@@ -216,12 +257,12 @@ module Google
       end
       
       # Request message for PredictionService.CountTokens.
-      class CountTokensRequest
+      class GoogleCloudAiplatformV1beta1CountTokensRequest
         include Google::Apis::Core::Hashable
       
         # Required. Input content.
         # Corresponds to the JSON property `contents`
-        # @return [Array<Google::Apis::FirebasemlV2beta::Content>]
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content>]
         attr_accessor :contents
       
         # Required. The instances that are the input to token counting call. Schema is
@@ -249,7 +290,7 @@ module Google
       end
       
       # Response message for PredictionService.CountTokens.
-      class CountTokensResponse
+      class GoogleCloudAiplatformV1beta1CountTokensResponse
         include Google::Apis::Core::Hashable
       
         # The total number of billable characters counted across all instances from the
@@ -274,49 +315,8 @@ module Google
         end
       end
       
-      # Represents a whole or partial calendar date, such as a birthday. The time of
-      # day and time zone are either specified elsewhere or are insignificant. The
-      # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values. * A month
-      # and day, with a zero year (for example, an anniversary). * A year on its own,
-      # with a zero month and a zero day. * A year and month, with a zero day (for
-      # example, a credit card expiration date). Related types: * google.type.
-      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
-      class Date
-        include Google::Apis::Core::Hashable
-      
-        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
-        # specify a year by itself or a year and month where the day isn't significant.
-        # Corresponds to the JSON property `day`
-        # @return [Fixnum]
-        attr_accessor :day
-      
-        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
-        # and day.
-        # Corresponds to the JSON property `month`
-        # @return [Fixnum]
-        attr_accessor :month
-      
-        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
-        # year.
-        # Corresponds to the JSON property `year`
-        # @return [Fixnum]
-        attr_accessor :year
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @day = args[:day] if args.key?(:day)
-          @month = args[:month] if args.key?(:month)
-          @year = args[:year] if args.key?(:year)
-        end
-      end
-      
       # URI based data.
-      class FileData
+      class GoogleCloudAiplatformV1beta1FileData
         include Google::Apis::Core::Hashable
       
         # Required. URI.
@@ -343,7 +343,7 @@ module Google
       # A predicted [FunctionCall] returned from the model that contains a string
       # representing the [FunctionDeclaration.name] and a structured JSON object
       # containing the parameters and their values.
-      class FunctionCall
+      class GoogleCloudAiplatformV1beta1FunctionCall
         include Google::Apis::Core::Hashable
       
         # Optional. Required. The function parameters and values in JSON object format.
@@ -369,7 +369,7 @@ module Google
       end
       
       # Function calling config.
-      class FunctionCallingConfig
+      class GoogleCloudAiplatformV1beta1FunctionCallingConfig
         include Google::Apis::Core::Hashable
       
         # Optional. Function names to call. Only set when the Mode is ANY. Function
@@ -400,7 +400,7 @@ module Google
       # declaration are the function name and parameters. This FunctionDeclaration is
       # a representation of a block of code that can be used as a `Tool` by the model
       # and executed by the client.
-      class FunctionDeclaration
+      class GoogleCloudAiplatformV1beta1FunctionDeclaration
         include Google::Apis::Core::Hashable
       
         # Optional. Description and purpose of the function. Model uses it to decide how
@@ -420,14 +420,14 @@ module Google
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
         # schema). More fields may be added in the future as needed.
         # Corresponds to the JSON property `parameters`
-        # @return [Google::Apis::FirebasemlV2beta::Schema]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :parameters
       
         # Schema is used to define the format of input/output data. Represents a select
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
         # schema). More fields may be added in the future as needed.
         # Corresponds to the JSON property `response`
-        # @return [Google::Apis::FirebasemlV2beta::Schema]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :response
       
         def initialize(**args)
@@ -447,7 +447,7 @@ module Google
       # the [FunctionDeclaration.name] and a structured JSON object containing any
       # output from the function is used as context to the model. This should contain
       # the result of a [FunctionCall] made based on model prediction.
-      class FunctionResponse
+      class GoogleCloudAiplatformV1beta1FunctionResponse
         include Google::Apis::Core::Hashable
       
         # Required. The name of the function to call. Matches [FunctionDeclaration.name]
@@ -473,7 +473,7 @@ module Google
       end
       
       # Request message for [PredictionService.GenerateContent].
-      class GenerateContentRequest
+      class GoogleCloudAiplatformV1beta1GenerateContentRequest
         include Google::Apis::Core::Hashable
       
         # Optional. The name of the cached content used as context to serve the
@@ -489,18 +489,18 @@ module Google
         # turn queries, this is a single instance. For multi-turn queries, this is a
         # repeated field that contains conversation history + latest request.
         # Corresponds to the JSON property `contents`
-        # @return [Array<Google::Apis::FirebasemlV2beta::Content>]
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content>]
         attr_accessor :contents
       
         # Generation config.
         # Corresponds to the JSON property `generationConfig`
-        # @return [Google::Apis::FirebasemlV2beta::GenerationConfig]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfig]
         attr_accessor :generation_config
       
         # Optional. Per request settings for blocking unsafe content. Enforced on
         # GenerateContentResponse.candidates.
         # Corresponds to the JSON property `safetySettings`
-        # @return [Array<Google::Apis::FirebasemlV2beta::SafetySetting>]
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetySetting>]
         attr_accessor :safety_settings
       
         # The base structured datatype containing multi-part content of a message. A `
@@ -508,12 +508,12 @@ module Google
         # a `parts` field containing multi-part data that contains the content of the
         # message turn.
         # Corresponds to the JSON property `systemInstruction`
-        # @return [Google::Apis::FirebasemlV2beta::Content]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content]
         attr_accessor :system_instruction
       
         # Tool config. This config is shared for all tools provided in the request.
         # Corresponds to the JSON property `toolConfig`
-        # @return [Google::Apis::FirebasemlV2beta::ToolConfig]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolConfig]
         attr_accessor :tool_config
       
         # Optional. A list of `Tools` the model may use to generate the next response. A
@@ -521,7 +521,7 @@ module Google
         # systems to perform an action, or set of actions, outside of knowledge and
         # scope of the model.
         # Corresponds to the JSON property `tools`
-        # @return [Array<Google::Apis::FirebasemlV2beta::Tool>]
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Tool>]
         attr_accessor :tools
       
         def initialize(**args)
@@ -541,22 +541,22 @@ module Google
       end
       
       # Response message for [PredictionService.GenerateContent].
-      class GenerateContentResponse
+      class GoogleCloudAiplatformV1beta1GenerateContentResponse
         include Google::Apis::Core::Hashable
       
         # Output only. Generated candidates.
         # Corresponds to the JSON property `candidates`
-        # @return [Array<Google::Apis::FirebasemlV2beta::Candidate>]
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Candidate>]
         attr_accessor :candidates
       
         # Content filter results for a prompt sent in the request.
         # Corresponds to the JSON property `promptFeedback`
-        # @return [Google::Apis::FirebasemlV2beta::PromptFeedback]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback]
         attr_accessor :prompt_feedback
       
         # Usage metadata about response(s).
         # Corresponds to the JSON property `usageMetadata`
-        # @return [Google::Apis::FirebasemlV2beta::UsageMetadata]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata]
         attr_accessor :usage_metadata
       
         def initialize(**args)
@@ -571,8 +571,70 @@ module Google
         end
       end
       
+      # Content filter results for a prompt sent in the request.
+      class GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Blocked reason.
+        # Corresponds to the JSON property `blockReason`
+        # @return [String]
+        attr_accessor :block_reason
+      
+        # Output only. A readable block reason message.
+        # Corresponds to the JSON property `blockReasonMessage`
+        # @return [String]
+        attr_accessor :block_reason_message
+      
+        # Output only. Safety ratings.
+        # Corresponds to the JSON property `safetyRatings`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating>]
+        attr_accessor :safety_ratings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block_reason = args[:block_reason] if args.key?(:block_reason)
+          @block_reason_message = args[:block_reason_message] if args.key?(:block_reason_message)
+          @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+        end
+      end
+      
+      # Usage metadata about response(s).
+      class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Number of tokens in the response(s).
+        # Corresponds to the JSON property `candidatesTokenCount`
+        # @return [Fixnum]
+        attr_accessor :candidates_token_count
+      
+        # Number of tokens in the request.
+        # Corresponds to the JSON property `promptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_token_count
+      
+        # 
+        # Corresponds to the JSON property `totalTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
+          @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
+        end
+      end
+      
       # Generation config.
-      class GenerationConfig
+      class GoogleCloudAiplatformV1beta1GenerationConfig
         include Google::Apis::Core::Hashable
       
         # Optional. Number of candidates to generate.
@@ -608,7 +670,7 @@ module Google
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
         # schema). More fields may be added in the future as needed.
         # Corresponds to the JSON property `responseSchema`
-        # @return [Google::Apis::FirebasemlV2beta::Schema]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :response_schema
       
         # Optional. Stop sequences.
@@ -651,7 +713,7 @@ module Google
       end
       
       # Tool to retrieve public web data for grounding, powered by Google.
-      class GoogleSearchRetrieval
+      class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -664,7 +726,7 @@ module Google
       end
       
       # Metadata returned to client when grounding is enabled.
-      class GroundingMetadata
+      class GoogleCloudAiplatformV1beta1GroundingMetadata
         include Google::Apis::Core::Hashable
       
         # Optional. Queries executed by the retrieval tools.
@@ -674,7 +736,7 @@ module Google
       
         # Google search entry point.
         # Corresponds to the JSON property `searchEntryPoint`
-        # @return [Google::Apis::FirebasemlV2beta::SearchEntryPoint]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SearchEntryPoint]
         attr_accessor :search_entry_point
       
         # Optional. Web search queries for the following-up web search.
@@ -694,50 +756,24 @@ module Google
         end
       end
       
-      # This is returned in the longrunning operations for create/update.
-      class ModelOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `basicOperationStatus`
-        # @return [String]
-        attr_accessor :basic_operation_status
-      
-        # The name of the model we are creating/updating The name must have the form `
-        # projects/`project_id`/models/`model_id``
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @basic_operation_status = args[:basic_operation_status] if args.key?(:basic_operation_status)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
       # A datatype containing media that is part of a multi-part `Content` message. A `
       # Part` consists of data which has an associated datatype. A `Part` can only
       # contain one of the accepted types in `Part.data`. A `Part` must have a fixed
       # IANA MIME type identifying the type and subtype of the media if `inline_data`
       # or `file_data` field is filled with raw bytes.
-      class Part
+      class GoogleCloudAiplatformV1beta1Part
         include Google::Apis::Core::Hashable
       
         # URI based data.
         # Corresponds to the JSON property `fileData`
-        # @return [Google::Apis::FirebasemlV2beta::FileData]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FileData]
         attr_accessor :file_data
       
         # A predicted [FunctionCall] returned from the model that contains a string
         # representing the [FunctionDeclaration.name] and a structured JSON object
         # containing the parameters and their values.
         # Corresponds to the JSON property `functionCall`
-        # @return [Google::Apis::FirebasemlV2beta::FunctionCall]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCall]
         attr_accessor :function_call
       
         # The result output from a [FunctionCall] that contains a string representing
@@ -745,12 +781,12 @@ module Google
         # output from the function is used as context to the model. This should contain
         # the result of a [FunctionCall] made based on model prediction.
         # Corresponds to the JSON property `functionResponse`
-        # @return [Google::Apis::FirebasemlV2beta::FunctionResponse]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionResponse]
         attr_accessor :function_response
       
         # Content blob. It's preferred to send as text directly rather than raw bytes.
         # Corresponds to the JSON property `inlineData`
-        # @return [Google::Apis::FirebasemlV2beta::Blob]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob]
         attr_accessor :inline_data
       
         # Optional. Text part (can be code).
@@ -760,7 +796,7 @@ module Google
       
         # Metadata describes the input video content.
         # Corresponds to the JSON property `videoMetadata`
-        # @return [Google::Apis::FirebasemlV2beta::VideoMetadata]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoMetadata]
         attr_accessor :video_metadata
       
         def initialize(**args)
@@ -778,66 +814,8 @@ module Google
         end
       end
       
-      # Content filter results for a prompt sent in the request.
-      class PromptFeedback
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Blocked reason.
-        # Corresponds to the JSON property `blockReason`
-        # @return [String]
-        attr_accessor :block_reason
-      
-        # Output only. A readable block reason message.
-        # Corresponds to the JSON property `blockReasonMessage`
-        # @return [String]
-        attr_accessor :block_reason_message
-      
-        # Output only. Safety ratings.
-        # Corresponds to the JSON property `safetyRatings`
-        # @return [Array<Google::Apis::FirebasemlV2beta::SafetyRating>]
-        attr_accessor :safety_ratings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @block_reason = args[:block_reason] if args.key?(:block_reason)
-          @block_reason_message = args[:block_reason_message] if args.key?(:block_reason_message)
-          @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
-        end
-      end
-      
-      # The definition of the Rag resource.
-      class RagResource
-        include Google::Apis::Core::Hashable
-      
-        # Optional. RagCorpora resource name. Format: `projects/`project`/locations/`
-        # location`/ragCorpora/`rag_corpus``
-        # Corresponds to the JSON property `ragCorpus`
-        # @return [String]
-        attr_accessor :rag_corpus
-      
-        # Optional. rag_file_id. The files should be in the same rag_corpus set in
-        # rag_corpus field.
-        # Corresponds to the JSON property `ragFileIds`
-        # @return [Array<String>]
-        attr_accessor :rag_file_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rag_corpus = args[:rag_corpus] if args.key?(:rag_corpus)
-          @rag_file_ids = args[:rag_file_ids] if args.key?(:rag_file_ids)
-        end
-      end
-      
       # Defines a retrieval tool that model can call to access external knowledge.
-      class Retrieval
+      class GoogleCloudAiplatformV1beta1Retrieval
         include Google::Apis::Core::Hashable
       
         # Optional. Disable using the result from this tool in detecting grounding
@@ -851,12 +829,12 @@ module Google
         # Retrieve from Vertex AI Search datastore for grounding. See https://cloud.
         # google.com/vertex-ai-search-and-conversation
         # Corresponds to the JSON property `vertexAiSearch`
-        # @return [Google::Apis::FirebasemlV2beta::VertexAiSearch]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexAiSearch]
         attr_accessor :vertex_ai_search
       
         # Retrieve from Vertex RAG Store for grounding.
         # Corresponds to the JSON property `vertexRagStore`
-        # @return [Google::Apis::FirebasemlV2beta::VertexRagStore]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStore]
         attr_accessor :vertex_rag_store
       
         def initialize(**args)
@@ -872,7 +850,7 @@ module Google
       end
       
       # Safety rating corresponding to the generated content.
-      class SafetyRating
+      class GoogleCloudAiplatformV1beta1SafetyRating
         include Google::Apis::Core::Hashable
       
         # Output only. Indicates whether the content was filtered out because of this
@@ -923,7 +901,7 @@ module Google
       end
       
       # Safety settings.
-      class SafetySetting
+      class GoogleCloudAiplatformV1beta1SafetySetting
         include Google::Apis::Core::Hashable
       
         # Required. Harm category.
@@ -957,7 +935,7 @@ module Google
       # Schema is used to define the format of input/output data. Represents a select
       # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
       # schema). More fields may be added in the future as needed.
-      class Schema
+      class GoogleCloudAiplatformV1beta1Schema
         include Google::Apis::Core::Hashable
       
         # Optional. Default value of the data.
@@ -994,7 +972,7 @@ module Google
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
         # schema). More fields may be added in the future as needed.
         # Corresponds to the JSON property `items`
-        # @return [Google::Apis::FirebasemlV2beta::Schema]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :items
       
         # Optional. Maximum number of the elements for Type.ARRAY.
@@ -1052,7 +1030,7 @@ module Google
       
         # Optional. SCHEMA FIELDS FOR TYPE OBJECT Properties of Type.OBJECT.
         # Corresponds to the JSON property `properties`
-        # @return [Hash<String,Google::Apis::FirebasemlV2beta::Schema>]
+        # @return [Hash<String,Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema>]
         attr_accessor :properties
       
         # Optional. Required properties of Type.OBJECT.
@@ -1100,7 +1078,7 @@ module Google
       end
       
       # Google search entry point.
-      class SearchEntryPoint
+      class GoogleCloudAiplatformV1beta1SearchEntryPoint
         include Google::Apis::Core::Hashable
       
         # Optional. Web content snippet that can be embedded in a web page or an app
@@ -1131,7 +1109,7 @@ module Google
       # an action, or set of actions, outside of knowledge and scope of the model. A
       # Tool object should contain exactly one type of Tool (e.g FunctionDeclaration,
       # Retrieval or GoogleSearchRetrieval).
-      class Tool
+      class GoogleCloudAiplatformV1beta1Tool
         include Google::Apis::Core::Hashable
       
         # Optional. Function tool type. One or more function declarations to be passed
@@ -1141,17 +1119,17 @@ module Google
         # Based on the function responses, Model will generate the final response back
         # to the user. Maximum 64 function declarations can be provided.
         # Corresponds to the JSON property `functionDeclarations`
-        # @return [Array<Google::Apis::FirebasemlV2beta::FunctionDeclaration>]
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration>]
         attr_accessor :function_declarations
       
         # Tool to retrieve public web data for grounding, powered by Google.
         # Corresponds to the JSON property `googleSearchRetrieval`
-        # @return [Google::Apis::FirebasemlV2beta::GoogleSearchRetrieval]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval]
         attr_accessor :google_search_retrieval
       
         # Defines a retrieval tool that model can call to access external knowledge.
         # Corresponds to the JSON property `retrieval`
-        # @return [Google::Apis::FirebasemlV2beta::Retrieval]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Retrieval]
         attr_accessor :retrieval
       
         def initialize(**args)
@@ -1167,12 +1145,12 @@ module Google
       end
       
       # Tool config. This config is shared for all tools provided in the request.
-      class ToolConfig
+      class GoogleCloudAiplatformV1beta1ToolConfig
         include Google::Apis::Core::Hashable
       
         # Function calling config.
         # Corresponds to the JSON property `functionCallingConfig`
-        # @return [Google::Apis::FirebasemlV2beta::FunctionCallingConfig]
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCallingConfig]
         attr_accessor :function_calling_config
       
         def initialize(**args)
@@ -1185,40 +1163,9 @@ module Google
         end
       end
       
-      # Usage metadata about response(s).
-      class UsageMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Number of tokens in the response(s).
-        # Corresponds to the JSON property `candidatesTokenCount`
-        # @return [Fixnum]
-        attr_accessor :candidates_token_count
-      
-        # Number of tokens in the request.
-        # Corresponds to the JSON property `promptTokenCount`
-        # @return [Fixnum]
-        attr_accessor :prompt_token_count
-      
-        # 
-        # Corresponds to the JSON property `totalTokenCount`
-        # @return [Fixnum]
-        attr_accessor :total_token_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
-          @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
-          @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
-        end
-      end
-      
       # Retrieve from Vertex AI Search datastore for grounding. See https://cloud.
       # google.com/vertex-ai-search-and-conversation
-      class VertexAiSearch
+      class GoogleCloudAiplatformV1beta1VertexAiSearch
         include Google::Apis::Core::Hashable
       
         # Required. Fully-qualified Vertex AI Search's datastore resource ID. Format: `
@@ -1239,7 +1186,7 @@ module Google
       end
       
       # Retrieve from Vertex RAG Store for grounding.
-      class VertexRagStore
+      class GoogleCloudAiplatformV1beta1VertexRagStore
         include Google::Apis::Core::Hashable
       
         # Optional. Deprecated. Please use rag_resources instead.
@@ -1251,7 +1198,7 @@ module Google
         # corpus only or ragfiles. Currently only support one corpus or multiple files
         # from one corpus. In the future we may open up multiple corpora support.
         # Corresponds to the JSON property `ragResources`
-        # @return [Array<Google::Apis::FirebasemlV2beta::RagResource>]
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStoreRagResource>]
         attr_accessor :rag_resources
       
         # Optional. Number of top k results to return from the selected corpora.
@@ -1277,8 +1224,35 @@ module Google
         end
       end
       
+      # The definition of the Rag resource.
+      class GoogleCloudAiplatformV1beta1VertexRagStoreRagResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. RagCorpora resource name. Format: `projects/`project`/locations/`
+        # location`/ragCorpora/`rag_corpus``
+        # Corresponds to the JSON property `ragCorpus`
+        # @return [String]
+        attr_accessor :rag_corpus
+      
+        # Optional. rag_file_id. The files should be in the same rag_corpus set in
+        # rag_corpus field.
+        # Corresponds to the JSON property `ragFileIds`
+        # @return [Array<String>]
+        attr_accessor :rag_file_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rag_corpus = args[:rag_corpus] if args.key?(:rag_corpus)
+          @rag_file_ids = args[:rag_file_ids] if args.key?(:rag_file_ids)
+        end
+      end
+      
       # Metadata describes the input video content.
-      class VideoMetadata
+      class GoogleCloudAiplatformV1beta1VideoMetadata
         include Google::Apis::Core::Hashable
       
         # Optional. The end offset of the video.
@@ -1299,6 +1273,32 @@ module Google
         def update!(**args)
           @end_offset = args[:end_offset] if args.key?(:end_offset)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
+        end
+      end
+      
+      # This is returned in the longrunning operations for create/update.
+      class ModelOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `basicOperationStatus`
+        # @return [String]
+        attr_accessor :basic_operation_status
+      
+        # The name of the model we are creating/updating The name must have the form `
+        # projects/`project_id`/models/`model_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basic_operation_status = args[:basic_operation_status] if args.key?(:basic_operation_status)
+          @name = args[:name] if args.key?(:name)
         end
       end
     end
