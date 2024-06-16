@@ -1145,6 +1145,11 @@ module Google
         attr_accessor :enable_uefi_networking
         alias_method :enable_uefi_networking?, :enable_uefi_networking
       
+        # Type of Performance Monitoring Unit requested on instance.
+        # Corresponds to the JSON property `performanceMonitoringUnit`
+        # @return [String]
+        attr_accessor :performance_monitoring_unit
+      
         # The number of threads per physical core. To disable simultaneous
         # multithreading (SMT) set this to 1. If unset, the maximum number of threads
         # supported per core by the underlying processor is assumed.
@@ -1168,6 +1173,7 @@ module Google
         def update!(**args)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @enable_uefi_networking = args[:enable_uefi_networking] if args.key?(:enable_uefi_networking)
+          @performance_monitoring_unit = args[:performance_monitoring_unit] if args.key?(:performance_monitoring_unit)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
           @visible_core_count = args[:visible_core_count] if args.key?(:visible_core_count)
         end
@@ -5954,6 +5960,11 @@ module Google
       class ConfidentialInstanceConfig
         include Google::Apis::Core::Hashable
       
+        # Defines the type of technology used by the confidential instance.
+        # Corresponds to the JSON property `confidentialInstanceType`
+        # @return [String]
+        attr_accessor :confidential_instance_type
+      
         # Defines whether the instance should have confidential compute enabled.
         # Corresponds to the JSON property `enableConfidentialCompute`
         # @return [Boolean]
@@ -5966,6 +5977,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidential_instance_type = args[:confidential_instance_type] if args.key?(:confidential_instance_type)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
         end
       end
@@ -36309,6 +36321,14 @@ module Google
         # @return [String]
         attr_accessor :location_hint
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxRunDuration`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :max_run_duration
+      
         # The minimum number of virtual CPUs this instance will consume when running on
         # a sole-tenant node.
         # Corresponds to the JSON property `minNodeCpus`
@@ -36329,6 +36349,11 @@ module Google
         # @return [String]
         attr_accessor :on_host_maintenance
       
+        # Defines the behaviour for instances with the instance_termination_action STOP.
+        # Corresponds to the JSON property `onInstanceStopAction`
+        # @return [Google::Apis::ComputeV1::SchedulingOnInstanceStopAction]
+        attr_accessor :on_instance_stop_action
+      
         # Defines whether the instance is preemptible. This can only be set during
         # instance creation or while the instance is stopped and therefore, in a `
         # TERMINATED` state. See Instance Life Cycle for more information on the
@@ -36343,6 +36368,13 @@ module Google
         # @return [String]
         attr_accessor :provisioning_model
       
+        # Specifies the timestamp, when the instance will be terminated, in RFC3339 text
+        # format. If specified, the instance termination action will be performed at the
+        # termination time.
+        # Corresponds to the JSON property `terminationTime`
+        # @return [String]
+        attr_accessor :termination_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -36353,11 +36385,14 @@ module Google
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @local_ssd_recovery_timeout = args[:local_ssd_recovery_timeout] if args.key?(:local_ssd_recovery_timeout)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
+          @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
+          @on_instance_stop_action = args[:on_instance_stop_action] if args.key?(:on_instance_stop_action)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+          @termination_time = args[:termination_time] if args.key?(:termination_time)
         end
       end
       
@@ -36391,6 +36426,28 @@ module Google
           @key = args[:key] if args.key?(:key)
           @operator = args[:operator] if args.key?(:operator)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Defines the behaviour for instances with the instance_termination_action STOP.
+      class SchedulingOnInstanceStopAction
+        include Google::Apis::Core::Hashable
+      
+        # If true, the contents of any attached Local SSD disks will be discarded else,
+        # the Local SSD data will be preserved when the instance is stopped at the end
+        # of the run duration/termination time.
+        # Corresponds to the JSON property `discardLocalSsd`
+        # @return [Boolean]
+        attr_accessor :discard_local_ssd
+        alias_method :discard_local_ssd?, :discard_local_ssd
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discard_local_ssd = args[:discard_local_ssd] if args.key?(:discard_local_ssd)
         end
       end
       
@@ -49004,7 +49061,9 @@ module Google
         # selection of a backend service is determined only for new traffic. Once a user'
         # s request has been directed to a backend service, subsequent requests are sent
         # to the same backend service as determined by the backend service's session
-        # affinity policy. The value must be from 0 to 1000.
+        # affinity policy. Don't configure session affinity if you're using weighted
+        # traffic splitting. If you do, the weighted traffic splitting configuration
+        # takes precedence. The value must be from 0 to 1000.
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight

@@ -4702,6 +4702,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchedulingOnInstanceStopAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Screenshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6769,6 +6775,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :enable_uefi_networking, as: 'enableUefiNetworking'
+          property :performance_monitoring_unit, as: 'performanceMonitoringUnit'
           property :threads_per_core, as: 'threadsPerCore'
           property :visible_core_count, as: 'visibleCoreCount'
         end
@@ -7823,6 +7830,7 @@ module Google
       class ConfidentialInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidential_instance_type, as: 'confidentialInstanceType'
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
         end
       end
@@ -15325,12 +15333,17 @@ module Google
           property :local_ssd_recovery_timeout, as: 'localSsdRecoveryTimeout', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
       
           property :location_hint, as: 'locationHint'
+          property :max_run_duration, as: 'maxRunDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
           property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeV1::SchedulingNodeAffinity, decorator: Google::Apis::ComputeV1::SchedulingNodeAffinity::Representation
       
           property :on_host_maintenance, as: 'onHostMaintenance'
+          property :on_instance_stop_action, as: 'onInstanceStopAction', class: Google::Apis::ComputeV1::SchedulingOnInstanceStopAction, decorator: Google::Apis::ComputeV1::SchedulingOnInstanceStopAction::Representation
+      
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
+          property :termination_time, as: 'terminationTime'
         end
       end
       
@@ -15340,6 +15353,13 @@ module Google
           property :key, as: 'key'
           property :operator, as: 'operator'
           collection :values, as: 'values'
+        end
+      end
+      
+      class SchedulingOnInstanceStopAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discard_local_ssd, as: 'discardLocalSsd'
         end
       end
       
