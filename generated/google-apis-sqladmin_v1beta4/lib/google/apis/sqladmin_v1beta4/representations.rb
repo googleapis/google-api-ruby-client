@@ -1604,6 +1604,7 @@ module Google
           collection :deny_maintenance_periods, as: 'denyMaintenancePeriods', class: Google::Apis::SqladminV1beta4::DenyMaintenancePeriod, decorator: Google::Apis::SqladminV1beta4::DenyMaintenancePeriod::Representation
       
           property :edition, as: 'edition'
+          property :enable_dataplex_integration, as: 'enableDataplexIntegration'
           property :enable_google_ml_integration, as: 'enableGoogleMlIntegration'
           property :insights_config, as: 'insightsConfig', class: Google::Apis::SqladminV1beta4::InsightsConfig, decorator: Google::Apis::SqladminV1beta4::InsightsConfig::Representation
       
