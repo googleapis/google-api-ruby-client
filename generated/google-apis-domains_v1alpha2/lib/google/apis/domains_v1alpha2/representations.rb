@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeoPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeoPolicyItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlueRecord
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +143,12 @@ module Google
       end
       
       class GoogleDomainsDns
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthCheckTargets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,6 +179,12 @@ module Google
       end
       
       class ListRegistrationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LoadBalancerTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,6 +232,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrimaryBackupPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RrSetRoutingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegisterDomainRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +269,18 @@ module Google
       end
       
       class ResetAuthorizationCodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceRecordSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetrieveGoogleDomainsDnsRecordsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -299,6 +347,18 @@ module Google
       end
       
       class TransferParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WrrPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WrrPolicyItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -410,6 +470,7 @@ module Google
       
           property :google_domains_dns, as: 'googleDomainsDns', class: Google::Apis::DomainsV1alpha2::GoogleDomainsDns, decorator: Google::Apis::DomainsV1alpha2::GoogleDomainsDns::Representation
       
+          property :google_domains_redirects_data_available, as: 'googleDomainsRedirectsDataAvailable'
         end
       end
       
@@ -469,6 +530,26 @@ module Google
         end
       end
       
+      class GeoPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_fencing, as: 'enableFencing'
+          collection :item, as: 'item', class: Google::Apis::DomainsV1alpha2::GeoPolicyItem, decorator: Google::Apis::DomainsV1alpha2::GeoPolicyItem::Representation
+      
+        end
+      end
+      
+      class GeoPolicyItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_checked_targets, as: 'healthCheckedTargets', class: Google::Apis::DomainsV1alpha2::HealthCheckTargets, decorator: Google::Apis::DomainsV1alpha2::HealthCheckTargets::Representation
+      
+          property :location, as: 'location'
+          collection :rrdata, as: 'rrdata'
+          collection :signature_rrdata, as: 'signatureRrdata'
+        end
+      end
+      
       class GlueRecord
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -485,6 +566,14 @@ module Google
       
           property :ds_state, as: 'dsState'
           collection :name_servers, as: 'nameServers'
+        end
+      end
+      
+      class HealthCheckTargets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :internal_load_balancer, as: 'internalLoadBalancer', class: Google::Apis::DomainsV1alpha2::LoadBalancerTarget, decorator: Google::Apis::DomainsV1alpha2::LoadBalancerTarget::Representation
+      
         end
       end
       
@@ -527,6 +616,19 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :registrations, as: 'registrations', class: Google::Apis::DomainsV1alpha2::Registration, decorator: Google::Apis::DomainsV1alpha2::Registration::Representation
       
+        end
+      end
+      
+      class LoadBalancerTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :ip_protocol, as: 'ipProtocol'
+          property :load_balancer_type, as: 'loadBalancerType'
+          property :network_url, as: 'networkUrl'
+          property :port, as: 'port'
+          property :project, as: 'project'
+          property :region, as: 'region'
         end
       end
       
@@ -613,6 +715,33 @@ module Google
         end
       end
       
+      class PrimaryBackupPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_geo_targets, as: 'backupGeoTargets', class: Google::Apis::DomainsV1alpha2::GeoPolicy, decorator: Google::Apis::DomainsV1alpha2::GeoPolicy::Representation
+      
+          property :primary_targets, as: 'primaryTargets', class: Google::Apis::DomainsV1alpha2::HealthCheckTargets, decorator: Google::Apis::DomainsV1alpha2::HealthCheckTargets::Representation
+      
+          property :trickle_traffic, as: 'trickleTraffic'
+        end
+      end
+      
+      class RrSetRoutingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :geo, as: 'geo', class: Google::Apis::DomainsV1alpha2::GeoPolicy, decorator: Google::Apis::DomainsV1alpha2::GeoPolicy::Representation
+      
+          property :geo_policy, as: 'geoPolicy', class: Google::Apis::DomainsV1alpha2::GeoPolicy, decorator: Google::Apis::DomainsV1alpha2::GeoPolicy::Representation
+      
+          property :primary_backup, as: 'primaryBackup', class: Google::Apis::DomainsV1alpha2::PrimaryBackupPolicy, decorator: Google::Apis::DomainsV1alpha2::PrimaryBackupPolicy::Representation
+      
+          property :wrr, as: 'wrr', class: Google::Apis::DomainsV1alpha2::WrrPolicy, decorator: Google::Apis::DomainsV1alpha2::WrrPolicy::Representation
+      
+          property :wrr_policy, as: 'wrrPolicy', class: Google::Apis::DomainsV1alpha2::WrrPolicy, decorator: Google::Apis::DomainsV1alpha2::WrrPolicy::Representation
+      
+        end
+      end
+      
       class RegisterDomainRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -676,6 +805,28 @@ module Google
       class ResetAuthorizationCodeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ResourceRecordSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :routing_policy, as: 'routingPolicy', class: Google::Apis::DomainsV1alpha2::RrSetRoutingPolicy, decorator: Google::Apis::DomainsV1alpha2::RrSetRoutingPolicy::Representation
+      
+          collection :rrdata, as: 'rrdata'
+          collection :signature_rrdata, as: 'signatureRrdata'
+          property :ttl, as: 'ttl'
+          property :type, as: 'type'
+        end
+      end
+      
+      class RetrieveGoogleDomainsDnsRecordsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rrset, as: 'rrset', class: Google::Apis::DomainsV1alpha2::ResourceRecordSet, decorator: Google::Apis::DomainsV1alpha2::ResourceRecordSet::Representation
+      
         end
       end
       
@@ -779,6 +930,25 @@ module Google
           property :transfer_lock_state, as: 'transferLockState'
           property :yearly_price, as: 'yearlyPrice', class: Google::Apis::DomainsV1alpha2::Money, decorator: Google::Apis::DomainsV1alpha2::Money::Representation
       
+        end
+      end
+      
+      class WrrPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :item, as: 'item', class: Google::Apis::DomainsV1alpha2::WrrPolicyItem, decorator: Google::Apis::DomainsV1alpha2::WrrPolicyItem::Representation
+      
+        end
+      end
+      
+      class WrrPolicyItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_checked_targets, as: 'healthCheckedTargets', class: Google::Apis::DomainsV1alpha2::HealthCheckTargets, decorator: Google::Apis::DomainsV1alpha2::HealthCheckTargets::Representation
+      
+          collection :rrdata, as: 'rrdata'
+          collection :signature_rrdata, as: 'signatureRrdata'
+          property :weight, as: 'weight'
         end
       end
     end

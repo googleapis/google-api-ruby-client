@@ -466,6 +466,19 @@ module Google
         # @return [Google::Apis::DomainsV1alpha2::GoogleDomainsDns]
         attr_accessor :google_domains_dns
       
+        # Output only. Indicates if this `Registration` has configured one of the
+        # following deprecated Google Domains DNS features: * Domain forwarding (HTTP `
+        # 301` and `302` response status codes), * Email forwarding. See https://cloud.
+        # google.com/domains/docs/deprecations/feature-deprecations for more details. If
+        # any of these features is enabled call the `
+        # RetrieveGoogleDomainsForwardingConfig` method to get details about the feature'
+        # s configuration. A forwarding configuration might not work correctly if
+        # required DNS records are not present in the domain's authoritative DNS Zone.
+        # Corresponds to the JSON property `googleDomainsRedirectsDataAvailable`
+        # @return [Boolean]
+        attr_accessor :google_domains_redirects_data_available
+        alias_method :google_domains_redirects_data_available?, :google_domains_redirects_data_available
+      
         def initialize(**args)
            update!(**args)
         end
@@ -475,6 +488,7 @@ module Google
           @custom_dns = args[:custom_dns] if args.key?(:custom_dns)
           @glue_records = args[:glue_records] if args.key?(:glue_records)
           @google_domains_dns = args[:google_domains_dns] if args.key?(:google_domains_dns)
+          @google_domains_redirects_data_available = args[:google_domains_redirects_data_available] if args.key?(:google_domains_redirects_data_available)
         end
       end
       
@@ -699,6 +713,82 @@ module Google
         end
       end
       
+      # Configures a `RRSetRoutingPolicy` that routes based on the geo location of the
+      # querying user.
+      class GeoPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Without fencing, if health check fails for all configured items in the current
+        # geo bucket, we failover to the next nearest geo bucket. With fencing, if
+        # health checking is enabled, as long as some targets in the current geo bucket
+        # are healthy, we return only the healthy targets. However, if all targets are
+        # unhealthy, we don't failover to the next nearest bucket; instead, we return
+        # all the items in the current bucket even when all targets are unhealthy.
+        # Corresponds to the JSON property `enableFencing`
+        # @return [Boolean]
+        attr_accessor :enable_fencing
+        alias_method :enable_fencing?, :enable_fencing
+      
+        # The primary geo routing configuration. If there are multiple items with the
+        # same location, an error is returned instead.
+        # Corresponds to the JSON property `item`
+        # @return [Array<Google::Apis::DomainsV1alpha2::GeoPolicyItem>]
+        attr_accessor :item
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_fencing = args[:enable_fencing] if args.key?(:enable_fencing)
+          @item = args[:item] if args.key?(:item)
+        end
+      end
+      
+      # ResourceRecordSet data for one geo location.
+      class GeoPolicyItem
+        include Google::Apis::Core::Hashable
+      
+        # HealthCheckTargets describes endpoints to health-check when responding to
+        # Routing Policy queries. Only the healthy endpoints will be included in the
+        # response.
+        # Corresponds to the JSON property `healthCheckedTargets`
+        # @return [Google::Apis::DomainsV1alpha2::HealthCheckTargets]
+        attr_accessor :health_checked_targets
+      
+        # The geo-location granularity is a GCP region. This location string should
+        # correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1"
+        # , etc.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # 
+        # Corresponds to the JSON property `rrdata`
+        # @return [Array<String>]
+        attr_accessor :rrdata
+      
+        # DNSSEC generated signatures for all the `rrdata` within this item. If health
+        # checked targets are provided for DNSSEC enabled zones, there's a restriction
+        # of 1 IP address per item.
+        # Corresponds to the JSON property `signatureRrdata`
+        # @return [Array<String>]
+        attr_accessor :signature_rrdata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_checked_targets = args[:health_checked_targets] if args.key?(:health_checked_targets)
+          @location = args[:location] if args.key?(:location)
+          @rrdata = args[:rrdata] if args.key?(:rrdata)
+          @signature_rrdata = args[:signature_rrdata] if args.key?(:signature_rrdata)
+        end
+      end
+      
       # Defines a host on your domain that is a DNS name server for your domain and/or
       # other domains. Glue records are a way of making the IP address of a name
       # server known, even when it serves DNS queries for its parent domain. For
@@ -777,6 +867,27 @@ module Google
           @ds_records = args[:ds_records] if args.key?(:ds_records)
           @ds_state = args[:ds_state] if args.key?(:ds_state)
           @name_servers = args[:name_servers] if args.key?(:name_servers)
+        end
+      end
+      
+      # HealthCheckTargets describes endpoints to health-check when responding to
+      # Routing Policy queries. Only the healthy endpoints will be included in the
+      # response.
+      class HealthCheckTargets
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for internal load balancers to be health checked.
+        # Corresponds to the JSON property `internalLoadBalancer`
+        # @return [Array<Google::Apis::DomainsV1alpha2::LoadBalancerTarget>]
+        attr_accessor :internal_load_balancer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @internal_load_balancer = args[:internal_load_balancer] if args.key?(:internal_load_balancer)
         end
       end
       
@@ -901,6 +1012,68 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @registrations = args[:registrations] if args.key?(:registrations)
+        end
+      end
+      
+      # The configuration for an individual load balancer to health check.
+      class LoadBalancerTarget
+        include Google::Apis::Core::Hashable
+      
+        # The frontend IP address of the load balancer to health check.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # The protocol of the load balancer to health check.
+        # Corresponds to the JSON property `ipProtocol`
+        # @return [String]
+        attr_accessor :ip_protocol
+      
+        # The type of load balancer specified by this target. This value must match the
+        # configuration of the load balancer located at the LoadBalancerTarget's IP
+        # address, port, and region. Use the following: - *regionalL4ilb*: for a
+        # regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a
+        # regional internal Application Load Balancer. - *globalL7ilb*: for a global
+        # internal Application Load Balancer.
+        # Corresponds to the JSON property `loadBalancerType`
+        # @return [String]
+        attr_accessor :load_balancer_type
+      
+        # The fully qualified URL of the network that the load balancer is attached to.
+        # This should be formatted like `https://www.googleapis.com/compute/v1/projects/`
+        # project`/global/networks/`network``.
+        # Corresponds to the JSON property `networkUrl`
+        # @return [String]
+        attr_accessor :network_url
+      
+        # The configured port of the load balancer.
+        # Corresponds to the JSON property `port`
+        # @return [String]
+        attr_accessor :port
+      
+        # The project ID in which the load balancer is located.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # The region in which the load balancer is located.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @load_balancer_type = args[:load_balancer_type] if args.key?(:load_balancer_type)
+          @network_url = args[:network_url] if args.key?(:network_url)
+          @port = args[:port] if args.key?(:port)
+          @project = args[:project] if args.key?(:project)
+          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -1387,6 +1560,92 @@ module Google
         end
       end
       
+      # Configures a RRSetRoutingPolicy such that all queries are responded with the
+      # primary_targets if they are healthy. And if all of them are unhealthy, then we
+      # fallback to a geo localized policy.
+      class PrimaryBackupPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Configures a `RRSetRoutingPolicy` that routes based on the geo location of the
+        # querying user.
+        # Corresponds to the JSON property `backupGeoTargets`
+        # @return [Google::Apis::DomainsV1alpha2::GeoPolicy]
+        attr_accessor :backup_geo_targets
+      
+        # HealthCheckTargets describes endpoints to health-check when responding to
+        # Routing Policy queries. Only the healthy endpoints will be included in the
+        # response.
+        # Corresponds to the JSON property `primaryTargets`
+        # @return [Google::Apis::DomainsV1alpha2::HealthCheckTargets]
+        attr_accessor :primary_targets
+      
+        # When serving state is `PRIMARY`, this field provides the option of sending a
+        # small percentage of the traffic to the backup targets.
+        # Corresponds to the JSON property `trickleTraffic`
+        # @return [Float]
+        attr_accessor :trickle_traffic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_geo_targets = args[:backup_geo_targets] if args.key?(:backup_geo_targets)
+          @primary_targets = args[:primary_targets] if args.key?(:primary_targets)
+          @trickle_traffic = args[:trickle_traffic] if args.key?(:trickle_traffic)
+        end
+      end
+      
+      # A RRSetRoutingPolicy represents ResourceRecordSet data that is returned
+      # dynamically with the response varying based on configured properties such as
+      # geolocation or by weighted random selection.
+      class RrSetRoutingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Configures a `RRSetRoutingPolicy` that routes based on the geo location of the
+        # querying user.
+        # Corresponds to the JSON property `geo`
+        # @return [Google::Apis::DomainsV1alpha2::GeoPolicy]
+        attr_accessor :geo
+      
+        # Configures a `RRSetRoutingPolicy` that routes based on the geo location of the
+        # querying user.
+        # Corresponds to the JSON property `geoPolicy`
+        # @return [Google::Apis::DomainsV1alpha2::GeoPolicy]
+        attr_accessor :geo_policy
+      
+        # Configures a RRSetRoutingPolicy such that all queries are responded with the
+        # primary_targets if they are healthy. And if all of them are unhealthy, then we
+        # fallback to a geo localized policy.
+        # Corresponds to the JSON property `primaryBackup`
+        # @return [Google::Apis::DomainsV1alpha2::PrimaryBackupPolicy]
+        attr_accessor :primary_backup
+      
+        # Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
+        # Corresponds to the JSON property `wrr`
+        # @return [Google::Apis::DomainsV1alpha2::WrrPolicy]
+        attr_accessor :wrr
+      
+        # Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
+        # Corresponds to the JSON property `wrrPolicy`
+        # @return [Google::Apis::DomainsV1alpha2::WrrPolicy]
+        attr_accessor :wrr_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @geo = args[:geo] if args.key?(:geo)
+          @geo_policy = args[:geo_policy] if args.key?(:geo_policy)
+          @primary_backup = args[:primary_backup] if args.key?(:primary_backup)
+          @wrr = args[:wrr] if args.key?(:wrr)
+          @wrr_policy = args[:wrr_policy] if args.key?(:wrr_policy)
+        end
+      end
+      
       # Request for the `RegisterDomain` method.
       class RegisterDomainRequest
         include Google::Apis::Core::Hashable
@@ -1679,6 +1938,85 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A unit of data that is returned by the DNS servers.
+      class ResourceRecordSet
+        include Google::Apis::Core::Hashable
+      
+        # For example, www.example.com.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A RRSetRoutingPolicy represents ResourceRecordSet data that is returned
+        # dynamically with the response varying based on configured properties such as
+        # geolocation or by weighted random selection.
+        # Corresponds to the JSON property `routingPolicy`
+        # @return [Google::Apis::DomainsV1alpha2::RrSetRoutingPolicy]
+        attr_accessor :routing_policy
+      
+        # As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see
+        # examples.
+        # Corresponds to the JSON property `rrdata`
+        # @return [Array<String>]
+        attr_accessor :rrdata
+      
+        # As defined in RFC 4034 (section 3.2).
+        # Corresponds to the JSON property `signatureRrdata`
+        # @return [Array<String>]
+        attr_accessor :signature_rrdata
+      
+        # Number of seconds that this `ResourceRecordSet` can be cached by resolvers.
+        # Corresponds to the JSON property `ttl`
+        # @return [Fixnum]
+        attr_accessor :ttl
+      
+        # The identifier of a supported record type. See the list of Supported DNS
+        # record types.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @routing_policy = args[:routing_policy] if args.key?(:routing_policy)
+          @rrdata = args[:rrdata] if args.key?(:rrdata)
+          @signature_rrdata = args[:signature_rrdata] if args.key?(:signature_rrdata)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Response for the `RetrieveGoogleDomainsDnsRecords` method.
+      class RetrieveGoogleDomainsDnsRecordsResponse
+        include Google::Apis::Core::Hashable
+      
+        # When present, there are more results to retrieve. Set `page_token` to this
+        # value on a subsequent call to get the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The resource record set resources (DNS Zone records).
+        # Corresponds to the JSON property `rrset`
+        # @return [Array<Google::Apis::DomainsV1alpha2::ResourceRecordSet>]
+        attr_accessor :rrset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rrset = args[:rrset] if args.key?(:rrset)
         end
       end
       
@@ -2054,6 +2392,69 @@ module Google
           @supported_privacy = args[:supported_privacy] if args.key?(:supported_privacy)
           @transfer_lock_state = args[:transfer_lock_state] if args.key?(:transfer_lock_state)
           @yearly_price = args[:yearly_price] if args.key?(:yearly_price)
+        end
+      end
+      
+      # Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
+      class WrrPolicy
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `item`
+        # @return [Array<Google::Apis::DomainsV1alpha2::WrrPolicyItem>]
+        attr_accessor :item
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @item = args[:item] if args.key?(:item)
+        end
+      end
+      
+      # A routing block which contains the routing information for one WRR item.
+      class WrrPolicyItem
+        include Google::Apis::Core::Hashable
+      
+        # HealthCheckTargets describes endpoints to health-check when responding to
+        # Routing Policy queries. Only the healthy endpoints will be included in the
+        # response.
+        # Corresponds to the JSON property `healthCheckedTargets`
+        # @return [Google::Apis::DomainsV1alpha2::HealthCheckTargets]
+        attr_accessor :health_checked_targets
+      
+        # 
+        # Corresponds to the JSON property `rrdata`
+        # @return [Array<String>]
+        attr_accessor :rrdata
+      
+        # DNSSEC generated signatures for all the `rrdata` within this item. Note that
+        # if health checked targets are provided for DNSSEC enabled zones, there's a
+        # restriction of 1 IP address per item.
+        # Corresponds to the JSON property `signatureRrdata`
+        # @return [Array<String>]
+        attr_accessor :signature_rrdata
+      
+        # The weight corresponding to this `WrrPolicyItem` object. When multiple `
+        # WrrPolicyItem` objects are configured, the probability of returning an `
+        # WrrPolicyItem` object's data is proportional to its weight relative to the sum
+        # of weights configured for all items. This weight must be non-negative.
+        # Corresponds to the JSON property `weight`
+        # @return [Float]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_checked_targets = args[:health_checked_targets] if args.key?(:health_checked_targets)
+          @rrdata = args[:rrdata] if args.key?(:rrdata)
+          @signature_rrdata = args[:signature_rrdata] if args.key?(:signature_rrdata)
+          @weight = args[:weight] if args.key?(:weight)
         end
       end
     end
