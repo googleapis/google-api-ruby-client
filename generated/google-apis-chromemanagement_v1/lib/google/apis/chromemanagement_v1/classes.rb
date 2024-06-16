@@ -201,6 +201,68 @@ module Google
         end
       end
       
+      # App report.
+      class GoogleChromeManagementV1AppReport
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp when the report was collected.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        # App usage data.
+        # Corresponds to the JSON property `usageData`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppUsageData>]
+        attr_accessor :usage_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @report_time = args[:report_time] if args.key?(:report_time)
+          @usage_data = args[:usage_data] if args.key?(:usage_data)
+        end
+      end
+      
+      # App usage data.
+      class GoogleChromeManagementV1AppUsageData
+        include Google::Apis::Core::Hashable
+      
+        # App id.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Application instance id. This will be unique per window/instance.
+        # Corresponds to the JSON property `appInstanceId`
+        # @return [String]
+        attr_accessor :app_instance_id
+      
+        # Type of app.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
+        # App foreground running time.
+        # Corresponds to the JSON property `runningDuration`
+        # @return [String]
+        attr_accessor :running_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @app_instance_id = args[:app_instance_id] if args.key?(:app_instance_id)
+          @app_type = args[:app_type] if args.key?(:app_type)
+          @running_duration = args[:running_duration] if args.key?(:running_duration)
+        end
+      end
+      
       # Status data for storage. * This field is telemetry information and this will
       # change over time as the device is utilized. * Data for this field is
       # controlled via policy: [ReportDeviceAudioStatus](https://chromeenterprise.
@@ -2973,6 +3035,12 @@ module Google
       class GoogleChromeManagementV1TelemetryDevice
         include Google::Apis::Core::Hashable
       
+        # Output only. App reports collected periodically sorted in a decreasing order
+        # of report_time.
+        # Corresponds to the JSON property `appReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppReport>]
+        attr_accessor :app_report
+      
         # Output only. Audio reports collected periodically sorted in a decreasing order
         # of report_time.
         # Corresponds to the JSON property `audioStatusReport`
@@ -3159,6 +3227,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_report = args[:app_report] if args.key?(:app_report)
           @audio_status_report = args[:audio_status_report] if args.key?(:audio_status_report)
           @battery_info = args[:battery_info] if args.key?(:battery_info)
           @battery_status_report = args[:battery_status_report] if args.key?(:battery_status_report)
@@ -3585,6 +3654,12 @@ module Google
       class GoogleChromeManagementV1TelemetryUserDevice
         include Google::Apis::Core::Hashable
       
+        # Output only. App reports collected periodically sorted in a decreasing order
+        # of report_time.
+        # Corresponds to the JSON property `appReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppReport>]
+        attr_accessor :app_report
+      
         # Output only. Audio reports collected periodically sorted in a decreasing order
         # of report_time.
         # Corresponds to the JSON property `audioStatusReport`
@@ -3621,6 +3696,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_report = args[:app_report] if args.key?(:app_report)
           @audio_status_report = args[:audio_status_report] if args.key?(:audio_status_report)
           @device_activity_report = args[:device_activity_report] if args.key?(:device_activity_report)
           @device_id = args[:device_id] if args.key?(:device_id)
