@@ -739,6 +739,7 @@ module Google
       class AddIdpCredentialOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       
@@ -922,6 +923,7 @@ module Google
       class CreateInboundSamlSsoProfileOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       
@@ -1832,6 +1834,7 @@ module Google
       class UpdateInboundSamlSsoProfileOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       
