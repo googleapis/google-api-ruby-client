@@ -2700,6 +2700,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. OnError defines the exiting behavior on error can be set to [
+        # continue | stopAndFail ]
+        # Corresponds to the JSON property `onError`
+        # @return [String]
+        attr_accessor :on_error
+      
         # Optional. Optional parameters passed to the StepAction.
         # Corresponds to the JSON property `params`
         # @return [Array<Google::Apis::CloudbuildV2::Param>]
@@ -2746,6 +2752,7 @@ module Google
           @env = args[:env] if args.key?(:env)
           @image = args[:image] if args.key?(:image)
           @name = args[:name] if args.key?(:name)
+          @on_error = args[:on_error] if args.key?(:on_error)
           @params = args[:params] if args.key?(:params)
           @ref = args[:ref] if args.key?(:ref)
           @script = args[:script] if args.key?(:script)

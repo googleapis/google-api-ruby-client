@@ -1199,6 +1199,7 @@ module Google
       
           property :image, as: 'image'
           property :name, as: 'name'
+          property :on_error, as: 'onError'
           collection :params, as: 'params', class: Google::Apis::CloudbuildV2::Param, decorator: Google::Apis::CloudbuildV2::Param::Representation
       
           property :ref, as: 'ref', class: Google::Apis::CloudbuildV2::StepRef, decorator: Google::Apis::CloudbuildV2::StepRef::Representation
