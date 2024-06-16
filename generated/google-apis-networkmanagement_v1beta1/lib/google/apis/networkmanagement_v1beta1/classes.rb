@@ -394,6 +394,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # ID of Cloud Run Service this revision belongs to. Was never set, is not
+        # exported to v1 proto and public protos. Do not export to v1beta1 public proto.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
         # URI of Cloud Run service this revision belongs to.
         # Corresponds to the JSON property `serviceUri`
         # @return [String]
@@ -412,6 +418,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @location = args[:location] if args.key?(:location)
+          @service_name = args[:service_name] if args.key?(:service_name)
           @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
         end

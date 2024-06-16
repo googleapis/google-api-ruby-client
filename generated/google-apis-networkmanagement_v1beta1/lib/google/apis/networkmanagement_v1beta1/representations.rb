@@ -447,6 +447,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :location, as: 'location'
+          property :service_name, as: 'serviceName'
           property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
         end
