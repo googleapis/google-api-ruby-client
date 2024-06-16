@@ -366,13 +366,13 @@ module Google
       class Workflow
         include Google::Apis::Core::Hashable
       
-        # Output only. A list of all KMS crypto keys used to encrypt or decrpt the data
+        # Output only. A list of all KMS crypto keys used to encrypt or decrypt the data
         # associated with the workflow.
         # Corresponds to the JSON property `allKmsKeys`
         # @return [Array<String>]
         attr_accessor :all_kms_keys
       
-        # Output only. A list of all KMS crypto keys versions used to encrypt or decrpt
+        # Output only. A list of all KMS crypto key versions used to encrypt or decrypt
         # the data associated with the workflow.
         # Corresponds to the JSON property `allKmsKeysVersions`
         # @return [Array<String>]
