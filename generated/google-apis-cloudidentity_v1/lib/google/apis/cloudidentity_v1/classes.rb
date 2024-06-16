@@ -26,12 +26,20 @@ module Google
       class AddIdpCredentialOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # State of this Operation Will be "awaiting-multi-party-approval" when the
+        # operation is deferred due to the target customer having enabled [Multi-party
+        # approval for sensitive actions](https://support.google.com/a/answer/13790448).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -110,12 +118,20 @@ module Google
       class CreateInboundSamlSsoProfileOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # State of this Operation Will be "awaiting-multi-party-approval" when the
+        # operation is deferred due to the target customer having enabled [Multi-party
+        # approval for sensitive actions](https://support.google.com/a/answer/13790448).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -3068,12 +3084,20 @@ module Google
       class UpdateInboundSamlSsoProfileOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # State of this Operation Will be "awaiting-multi-party-approval" when the
+        # operation is deferred due to the target customer having enabled [Multi-party
+        # approval for sensitive actions](https://support.google.com/a/answer/13790448).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
