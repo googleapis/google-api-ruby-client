@@ -47,6 +47,13 @@ module Google
       class AvroConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. When true, the output Cloud Storage file will be serialized using
+        # the topic schema, if it exists.
+        # Corresponds to the JSON property `useTopicSchema`
+        # @return [Boolean]
+        attr_accessor :use_topic_schema
+        alias_method :use_topic_schema?, :use_topic_schema
+      
         # Optional. When true, write the subscription name, message_id, publish_time,
         # attributes, and ordering_key as additional fields in the output. The
         # subscription name, message_id, and publish_time fields are put in their own
@@ -63,6 +70,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @use_topic_schema = args[:use_topic_schema] if args.key?(:use_topic_schema)
           @write_metadata = args[:write_metadata] if args.key?(:write_metadata)
         end
       end

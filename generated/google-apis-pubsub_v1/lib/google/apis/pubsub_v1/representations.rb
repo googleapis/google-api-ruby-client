@@ -362,6 +362,7 @@ module Google
       class AvroConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_topic_schema, as: 'useTopicSchema'
           property :write_metadata, as: 'writeMetadata'
         end
       end
