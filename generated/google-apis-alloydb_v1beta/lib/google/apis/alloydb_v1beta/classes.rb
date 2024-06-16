@@ -555,6 +555,16 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Subscription type of the cluster.
+        # Corresponds to the JSON property `subscriptionType`
+        # @return [String]
+        attr_accessor :subscription_type
+      
+        # Contains information and all metadata related to TRIAL clusters.
+        # Corresponds to the JSON property `trialMetadata`
+        # @return [Google::Apis::AlloydbV1beta::TrialMetadata]
+        attr_accessor :trial_metadata
+      
         # Output only. The system-generated UID of the resource. The UID is assigned
         # when the resource is created, and it is retained until it is deleted.
         # Corresponds to the JSON property `uid`
@@ -601,6 +611,8 @@ module Google
           @secondary_config = args[:secondary_config] if args.key?(:secondary_config)
           @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @state = args[:state] if args.key?(:state)
+          @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
+          @trial_metadata = args[:trial_metadata] if args.key?(:trial_metadata)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -3332,6 +3344,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @retention_period = args[:retention_period] if args.key?(:retention_period)
+        end
+      end
+      
+      # Contains information and all metadata related to TRIAL clusters.
+      class TrialMetadata
+        include Google::Apis::Core::Hashable
+      
+        # End time of the trial cluster.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # start time of the trial cluster.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Upgrade time of trial cluster to Standard cluster.
+        # Corresponds to the JSON property `upgradeTime`
+        # @return [String]
+        attr_accessor :upgrade_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @upgrade_time = args[:upgrade_time] if args.key?(:upgrade_time)
         end
       end
       
