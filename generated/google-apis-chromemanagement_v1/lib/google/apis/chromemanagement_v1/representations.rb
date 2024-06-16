@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1AppReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1AppUsageData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1AudioStatusReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -614,6 +626,25 @@ module Google
           property :service_error, as: 'serviceError', class: Google::Apis::ChromemanagementV1::GoogleRpcStatus, decorator: Google::Apis::ChromemanagementV1::GoogleRpcStatus::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleChromeManagementV1AppReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :report_time, as: 'reportTime'
+          collection :usage_data, as: 'usageData', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppUsageData, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppUsageData::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementV1AppUsageData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          property :app_instance_id, as: 'appInstanceId'
+          property :app_type, as: 'appType'
+          property :running_duration, as: 'runningDuration'
         end
       end
       
@@ -1323,6 +1354,8 @@ module Google
       class GoogleChromeManagementV1TelemetryDevice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_report, as: 'appReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppReport::Representation
+      
           collection :audio_status_report, as: 'audioStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport::Representation
       
           collection :battery_info, as: 'batteryInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryInfo::Representation
@@ -1493,6 +1526,8 @@ module Google
       class GoogleChromeManagementV1TelemetryUserDevice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_report, as: 'appReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppReport::Representation
+      
           collection :audio_status_report, as: 'audioStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport::Representation
       
           collection :device_activity_report, as: 'deviceActivityReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceActivityReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceActivityReport::Representation
