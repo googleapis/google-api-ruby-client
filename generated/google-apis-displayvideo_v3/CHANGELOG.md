@@ -1,5 +1,9 @@
 # Release history for google-apis-displayvideo_v3
 
+### v0.14.0 (2024-06-16)
+
+* Regenerated from discovery document revision 20240613
+
 ### v0.13.0 (2024-06-02)
 
 * Regenerated from discovery document revision 20240530
