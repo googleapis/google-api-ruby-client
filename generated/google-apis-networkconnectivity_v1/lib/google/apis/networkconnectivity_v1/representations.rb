@@ -694,6 +694,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exclude_export_ranges, as: 'excludeExportRanges'
+          collection :include_export_ranges, as: 'includeExportRanges'
           property :uri, as: 'uri'
         end
       end

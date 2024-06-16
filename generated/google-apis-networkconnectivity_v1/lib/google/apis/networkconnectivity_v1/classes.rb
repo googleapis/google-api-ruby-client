@@ -1165,6 +1165,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :exclude_export_ranges
       
+        # Optional. IP ranges allowed to be included from peering.
+        # Corresponds to the JSON property `includeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :include_export_ranges
+      
         # Required. The URI of the VPC network resource.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -1177,6 +1182,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
+          @include_export_ranges = args[:include_export_ranges] if args.key?(:include_export_ranges)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
