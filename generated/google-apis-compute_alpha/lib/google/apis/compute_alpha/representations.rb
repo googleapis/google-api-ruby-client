@@ -3748,6 +3748,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkProfileNetworkFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkProfilesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkRoutingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7959,6 +7989,7 @@ module Google
           property :numa_node_count, as: 'numaNodeCount'
           property :performance_monitoring_unit, as: 'performanceMonitoringUnit'
           property :threads_per_core, as: 'threadsPerCore'
+          property :turbo_mode, as: 'turboMode'
           property :visible_core_count, as: 'visibleCoreCount'
         end
       end
@@ -8388,6 +8419,7 @@ module Google
           property :enable_cdn, as: 'enableCdn'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -13988,6 +14020,7 @@ module Google
       
           property :properties_from_flexibility_policy, as: 'propertiesFromFlexibilityPolicy', class: Google::Apis::ComputeAlpha::ManagedInstancePropertiesFromFlexibilityPolicy, decorator: Google::Apis::ComputeAlpha::ManagedInstancePropertiesFromFlexibilityPolicy::Representation
       
+          property :size_in_unit, as: 'sizeInUnit'
           property :tag, as: 'tag'
           property :target_status, as: 'targetStatus'
           property :version, as: 'version', class: Google::Apis::ComputeAlpha::ManagedInstanceVersion, decorator: Google::Apis::ComputeAlpha::ManagedInstanceVersion::Representation
@@ -14847,6 +14880,85 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeAlpha::NetworkPlacementsListResponse::Warning::Datum, decorator: Google::Apis::ComputeAlpha::NetworkPlacementsListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NetworkProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :features, as: 'features', class: Google::Apis::ComputeAlpha::NetworkProfileNetworkFeatures, decorator: Google::Apis::ComputeAlpha::NetworkProfileNetworkFeatures::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class NetworkProfileNetworkFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :address_purposes, as: 'addressPurposes'
+          property :allow_alias_ip_ranges, as: 'allowAliasIpRanges'
+          property :allow_auto_mode_subnet, as: 'allowAutoModeSubnet'
+          property :allow_class_d_firewalls, as: 'allowClassDFirewalls'
+          property :allow_cloud_nat, as: 'allowCloudNat'
+          property :allow_cloud_router, as: 'allowCloudRouter'
+          property :allow_external_ip_access, as: 'allowExternalIpAccess'
+          property :allow_interconnect, as: 'allowInterconnect'
+          property :allow_load_balancing, as: 'allowLoadBalancing'
+          property :allow_multi_nic_in_same_network, as: 'allowMultiNicInSameNetwork'
+          property :allow_packet_mirroring, as: 'allowPacketMirroring'
+          property :allow_private_google_access, as: 'allowPrivateGoogleAccess'
+          property :allow_psc, as: 'allowPsc'
+          property :allow_same_network_unicast, as: 'allowSameNetworkUnicast'
+          property :allow_static_routes, as: 'allowStaticRoutes'
+          property :allow_sub_interfaces, as: 'allowSubInterfaces'
+          property :allow_vpc_peering, as: 'allowVpcPeering'
+          property :allow_vpn, as: 'allowVpn'
+          collection :allowed_subnet_purposes, as: 'allowedSubnetPurposes'
+          collection :allowed_subnet_stack_types, as: 'allowedSubnetStackTypes'
+          collection :interface_types, as: 'interfaceTypes'
+          property :multicast, as: 'multicast'
+          property :unicast, as: 'unicast'
+        end
+      end
+      
+      class NetworkProfilesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::NetworkProfile, decorator: Google::Apis::ComputeAlpha::NetworkProfile::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::NetworkProfilesListResponse::Warning, decorator: Google::Apis::ComputeAlpha::NetworkProfilesListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::NetworkProfilesListResponse::Warning::Datum, decorator: Google::Apis::ComputeAlpha::NetworkProfilesListResponse::Warning::Datum::Representation
         
             property :message, as: 'message'
           end

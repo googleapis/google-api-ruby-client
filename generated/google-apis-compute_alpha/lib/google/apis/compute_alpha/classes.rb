@@ -1194,6 +1194,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :threads_per_core
       
+        # Turbo mode to use for the instance. Supported modes include: * ALL_CORE_MAX
+        # Using empty string or not setting this field will use the default turbo mode.
+        # Corresponds to the JSON property `turboMode`
+        # @return [String]
+        attr_accessor :turbo_mode
+      
         # The number of physical cores to expose to an instance. Multiply by the number
         # of threads per core to compute the total number of virtual CPUs to expose to
         # the instance. If unset, the number of cores is inferred from the instance's
@@ -1214,6 +1220,7 @@ module Google
           @numa_node_count = args[:numa_node_count] if args.key?(:numa_node_count)
           @performance_monitoring_unit = args[:performance_monitoring_unit] if args.key?(:performance_monitoring_unit)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
+          @turbo_mode = args[:turbo_mode] if args.key?(:turbo_mode)
           @visible_core_count = args[:visible_core_count] if args.key?(:visible_core_count)
         end
       end
@@ -3155,6 +3162,14 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load
+        # balancer. If loadBalancingScheme is not specified, the backend bucket can be
+        # used by classic global external load balancers, or global application external
+        # load balancers, or both.
+        # Corresponds to the JSON property `loadBalancingScheme`
+        # @return [String]
+        attr_accessor :load_balancing_scheme
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -3191,6 +3206,7 @@ module Google
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -26464,6 +26480,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ManagedInstancePropertiesFromFlexibilityPolicy]
         attr_accessor :properties_from_flexibility_policy
       
+        # [Output only] The size of the VM represented by this Managed Instance. This is
+        # how much this Managed Instance contributes to the size of the group.
+        # Corresponds to the JSON property `sizeInUnit`
+        # @return [Float]
+        attr_accessor :size_in_unit
+      
         # [Output Only] Tag describing the version.
         # Corresponds to the JSON property `tag`
         # @return [String]
@@ -26500,6 +26522,7 @@ module Google
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
           @properties_from_flexibility_policy = args[:properties_from_flexibility_policy] if args.key?(:properties_from_flexibility_policy)
+          @size_in_unit = args[:size_in_unit] if args.key?(:size_in_unit)
           @tag = args[:tag] if args.key?(:tag)
           @target_status = args[:target_status] if args.key?(:target_status)
           @version = args[:version] if args.key?(:version)
@@ -29998,6 +30021,360 @@ module Google
           # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkPlacementsListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # NetworkProfile represents a Google managed network profile resource.
+      class NetworkProfile
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] Features supported by the network.
+        # Corresponds to the JSON property `features`
+        # @return [Google::Apis::ComputeAlpha::NetworkProfileNetworkFeatures]
+        attr_accessor :features
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#networkProfile for network
+        # profiles.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] Name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output Only] Zone to which the network is restricted.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @features = args[:features] if args.key?(:features)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class NetworkProfileNetworkFeatures
+        include Google::Apis::Core::Hashable
+      
+        # Specifies what address purposes are supported. If empty, all address purposes
+        # are supported.
+        # Corresponds to the JSON property `addressPurposes`
+        # @return [Array<String>]
+        attr_accessor :address_purposes
+      
+        # Specifies whether alias IP ranges (and secondary address ranges) are allowed.
+        # Corresponds to the JSON property `allowAliasIpRanges`
+        # @return [String]
+        attr_accessor :allow_alias_ip_ranges
+      
+        # Specifies whether auto mode subnet creation is allowed.
+        # Corresponds to the JSON property `allowAutoModeSubnet`
+        # @return [String]
+        attr_accessor :allow_auto_mode_subnet
+      
+        # Specifies whether firewalls for Class D address ranges are supported.
+        # Corresponds to the JSON property `allowClassDFirewalls`
+        # @return [String]
+        attr_accessor :allow_class_d_firewalls
+      
+        # Specifies whether cloud NAT creation is allowed.
+        # Corresponds to the JSON property `allowCloudNat`
+        # @return [String]
+        attr_accessor :allow_cloud_nat
+      
+        # Specifies whether cloud router creation is allowed.
+        # Corresponds to the JSON property `allowCloudRouter`
+        # @return [String]
+        attr_accessor :allow_cloud_router
+      
+        # Specifies whether VMs are allowed to have external IP access on network
+        # interfaces connected to this VPC.
+        # Corresponds to the JSON property `allowExternalIpAccess`
+        # @return [String]
+        attr_accessor :allow_external_ip_access
+      
+        # Specifies whether Cloud Interconnect creation is allowed.
+        # Corresponds to the JSON property `allowInterconnect`
+        # @return [String]
+        attr_accessor :allow_interconnect
+      
+        # Specifies whether cloud load balancing is allowed.
+        # Corresponds to the JSON property `allowLoadBalancing`
+        # @return [String]
+        attr_accessor :allow_load_balancing
+      
+        # Specifies whether multi-nic in the same network is allowed.
+        # Corresponds to the JSON property `allowMultiNicInSameNetwork`
+        # @return [String]
+        attr_accessor :allow_multi_nic_in_same_network
+      
+        # Specifies whether Packet Mirroring 1.0 is supported.
+        # Corresponds to the JSON property `allowPacketMirroring`
+        # @return [String]
+        attr_accessor :allow_packet_mirroring
+      
+        # Specifies whether private Google access is allowed.
+        # Corresponds to the JSON property `allowPrivateGoogleAccess`
+        # @return [String]
+        attr_accessor :allow_private_google_access
+      
+        # Specifies whether PSC creation is allowed.
+        # Corresponds to the JSON property `allowPsc`
+        # @return [String]
+        attr_accessor :allow_psc
+      
+        # Specifies whether unicast within the same network is allowed.
+        # Corresponds to the JSON property `allowSameNetworkUnicast`
+        # @return [String]
+        attr_accessor :allow_same_network_unicast
+      
+        # Specifies whether static route creation is allowed.
+        # Corresponds to the JSON property `allowStaticRoutes`
+        # @return [String]
+        attr_accessor :allow_static_routes
+      
+        # Specifies whether sub interfaces are allowed.
+        # Corresponds to the JSON property `allowSubInterfaces`
+        # @return [String]
+        attr_accessor :allow_sub_interfaces
+      
+        # Specifies whether VPC peering is allowed.
+        # Corresponds to the JSON property `allowVpcPeering`
+        # @return [String]
+        attr_accessor :allow_vpc_peering
+      
+        # Specifies whether VPN creation is allowed.
+        # Corresponds to the JSON property `allowVpn`
+        # @return [String]
+        attr_accessor :allow_vpn
+      
+        # Specifies which subnetwork purposes are supported.
+        # Corresponds to the JSON property `allowedSubnetPurposes`
+        # @return [Array<String>]
+        attr_accessor :allowed_subnet_purposes
+      
+        # Specifies which subnetwork stack types are supported.
+        # Corresponds to the JSON property `allowedSubnetStackTypes`
+        # @return [Array<String>]
+        attr_accessor :allowed_subnet_stack_types
+      
+        # If set, limits the interface types that the network supports. If empty, all
+        # interface types are supported.
+        # Corresponds to the JSON property `interfaceTypes`
+        # @return [Array<String>]
+        attr_accessor :interface_types
+      
+        # Specifies which type of multicast is supported.
+        # Corresponds to the JSON property `multicast`
+        # @return [String]
+        attr_accessor :multicast
+      
+        # Specifies which type of unicast is supported.
+        # Corresponds to the JSON property `unicast`
+        # @return [String]
+        attr_accessor :unicast
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address_purposes = args[:address_purposes] if args.key?(:address_purposes)
+          @allow_alias_ip_ranges = args[:allow_alias_ip_ranges] if args.key?(:allow_alias_ip_ranges)
+          @allow_auto_mode_subnet = args[:allow_auto_mode_subnet] if args.key?(:allow_auto_mode_subnet)
+          @allow_class_d_firewalls = args[:allow_class_d_firewalls] if args.key?(:allow_class_d_firewalls)
+          @allow_cloud_nat = args[:allow_cloud_nat] if args.key?(:allow_cloud_nat)
+          @allow_cloud_router = args[:allow_cloud_router] if args.key?(:allow_cloud_router)
+          @allow_external_ip_access = args[:allow_external_ip_access] if args.key?(:allow_external_ip_access)
+          @allow_interconnect = args[:allow_interconnect] if args.key?(:allow_interconnect)
+          @allow_load_balancing = args[:allow_load_balancing] if args.key?(:allow_load_balancing)
+          @allow_multi_nic_in_same_network = args[:allow_multi_nic_in_same_network] if args.key?(:allow_multi_nic_in_same_network)
+          @allow_packet_mirroring = args[:allow_packet_mirroring] if args.key?(:allow_packet_mirroring)
+          @allow_private_google_access = args[:allow_private_google_access] if args.key?(:allow_private_google_access)
+          @allow_psc = args[:allow_psc] if args.key?(:allow_psc)
+          @allow_same_network_unicast = args[:allow_same_network_unicast] if args.key?(:allow_same_network_unicast)
+          @allow_static_routes = args[:allow_static_routes] if args.key?(:allow_static_routes)
+          @allow_sub_interfaces = args[:allow_sub_interfaces] if args.key?(:allow_sub_interfaces)
+          @allow_vpc_peering = args[:allow_vpc_peering] if args.key?(:allow_vpc_peering)
+          @allow_vpn = args[:allow_vpn] if args.key?(:allow_vpn)
+          @allowed_subnet_purposes = args[:allowed_subnet_purposes] if args.key?(:allowed_subnet_purposes)
+          @allowed_subnet_stack_types = args[:allowed_subnet_stack_types] if args.key?(:allowed_subnet_stack_types)
+          @interface_types = args[:interface_types] if args.key?(:interface_types)
+          @multicast = args[:multicast] if args.key?(:multicast)
+          @unicast = args[:unicast] if args.key?(:unicast)
+        end
+      end
+      
+      # Contains a list of network profiles.
+      class NetworkProfilesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of NetworkProfile resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::NetworkProfile>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#networkProfileList for network
+        # profiles.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources. end_interface:
+        # MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::NetworkProfilesListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::NetworkProfilesListResponse::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -58079,7 +58456,9 @@ module Google
         # selection of a backend service is determined only for new traffic. Once a user'
         # s request has been directed to a backend service, subsequent requests are sent
         # to the same backend service as determined by the backend service's session
-        # affinity policy. The value must be from 0 to 1000.
+        # affinity policy. Don't configure session affinity if you're using weighted
+        # traffic splitting. If you do, the weighted traffic splitting configuration
+        # takes precedence. The value must be from 0 to 1000.
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight
