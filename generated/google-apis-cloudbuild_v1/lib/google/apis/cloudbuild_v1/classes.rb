@@ -2176,7 +2176,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Name to display for this config.
+        # Optional. Name to display for this config.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2186,9 +2186,8 @@ module Google
         # @return [String]
         attr_accessor :host_url
       
-        # Optional. The full resource name for the GitHubEnterpriseConfig For example: "
-        # projects/`$project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$
-        # config_id`"
+        # The full resource name for the GitHubEnterpriseConfig For example: "projects/`$
+        # project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$config_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2307,8 +2306,8 @@ module Google
       class GitHubEventsConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The resource name of the github enterprise config that should be
-        # applied to this installation. For example: "projects/`$project_id`/locations/`$
+        # The resource name of the github enterprise config that should be applied to
+        # this installation. For example: "projects/`$project_id`/locations/`$
         # location_id`/githubEnterpriseConfigs/`$config_id`"
         # Corresponds to the JSON property `enterpriseConfigResourceName`
         # @return [String]
@@ -3411,8 +3410,8 @@ module Google
         # @return [String]
         attr_accessor :subscription
       
-        # The name of the topic from which this subscription is receiving messages.
-        # Format is `projects/`project`/topics/`topic``.
+        # Optional. The name of the topic from which this subscription is receiving
+        # messages. Format is `projects/`project`/topics/`topic``.
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
@@ -4509,9 +4508,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # Machine type of a worker, such as `e2-medium`. See [Worker pool config file](
-        # https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-
-        # schema). If left blank, Cloud Build will use a sensible default.
+        # Optional. Machine type of a worker, such as `e2-medium`. See [Worker pool
+        # config file](https://cloud.google.com/build/docs/private-pools/worker-pool-
+        # config-file-schema). If left blank, Cloud Build will use a sensible default.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
