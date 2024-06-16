@@ -446,8 +446,8 @@ module Google
         
         # Create an association between a GCP project and a GitHub Enterprise server.
         # @param [String] parent
-        #   Name of the parent project. For example: projects/`$project_number` or
-        #   projects/`$project_id`
+        #   Required. Name of the parent project. For example: projects/`$project_number`
+        #   or projects/`$project_id`
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
         # @param [String] ghe_config_id
         #   Optional. The ID to use for the GithubEnterpriseConfig, which will become the
@@ -600,9 +600,8 @@ module Google
         
         # Update an association between a GCP project and a GitHub Enterprise server.
         # @param [String] name
-        #   Optional. The full resource name for the GitHubEnterpriseConfig For example: "
-        #   projects/`$project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$
-        #   config_id`"
+        #   The full resource name for the GitHubEnterpriseConfig For example: "projects/`$
+        #   project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$config_id`"
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
         # @param [String] update_mask
         #   Update mask for the resource. If this is set, the server will only update the
@@ -1497,8 +1496,8 @@ module Google
         
         # Create an association between a GCP project and a GitHub Enterprise server.
         # @param [String] parent
-        #   Name of the parent project. For example: projects/`$project_number` or
-        #   projects/`$project_id`
+        #   Required. Name of the parent project. For example: projects/`$project_number`
+        #   or projects/`$project_id`
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
         # @param [String] ghe_config_id
         #   Optional. The ID to use for the GithubEnterpriseConfig, which will become the
@@ -1651,9 +1650,8 @@ module Google
         
         # Update an association between a GCP project and a GitHub Enterprise server.
         # @param [String] name
-        #   Optional. The full resource name for the GitHubEnterpriseConfig For example: "
-        #   projects/`$project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$
-        #   config_id`"
+        #   The full resource name for the GitHubEnterpriseConfig For example: "projects/`$
+        #   project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$config_id`"
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
         # @param [String] update_mask
         #   Update mask for the resource. If this is set, the server will only update the
@@ -2203,7 +2201,7 @@ module Google
         #   and the value of ``location`` is determined by the endpoint accessed.
         # @param [Google::Apis::CloudbuildV1::WorkerPool] worker_pool_object
         # @param [String] update_mask
-        #   A mask specifying which fields in `worker_pool` to update.
+        #   Optional. A mask specifying which fields in `worker_pool` to update.
         # @param [Boolean] validate_only
         #   If set, validate the request and preview the response, but do not actually
         #   post it.
