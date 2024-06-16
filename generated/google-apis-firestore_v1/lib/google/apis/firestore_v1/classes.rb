@@ -1662,23 +1662,21 @@ module Google
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexConfig]
         attr_accessor :index_config
       
-        # Required. A field name of the form `projects/`project_id`/databases/`
+        # Required. A field name of the form: `projects/`project_id`/databases/`
         # database_id`/collectionGroups/`collection_id`/fields/`field_path`` A field
-        # path may be a simple field name, e.g. `address` or a path to fields within
-        # map_value , e.g. `address.city`, or a special field path. The only valid
-        # special field is `*`, which represents any field. Field paths may be quoted
-        # using ` (backtick). The only character that needs to be escaped within a
+        # path can be a simple field name, e.g. `address` or a path to fields within `
+        # map_value` , e.g. `address.city`, or a special field path. The only valid
+        # special field is `*`, which represents any field. Field paths can be quoted
+        # using `` ` `` (backtick). The only character that must be escaped within a
         # quoted field path is the backtick character itself, escaped using a backslash.
-        # Special characters in field paths that must be quoted include: `*`, `.`, ``` (
-        # backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note:
-        # Comments here are written in markdown syntax, so there is an additional layer
-        # of backticks to represent a code block) `\`address.city\`` represents a field
-        # named `address.city`, not the map key `city` in the field `address`. `\`*\``
-        # represents a field named `*`, not any field. A special `Field` contains the
-        # default indexing settings for all fields. This field's resource name is: `
-        # projects/`project_id`/databases/`database_id`/collectionGroups/__default__/
-        # fields/*` Indexes defined on this `Field` will be applied to all fields which
-        # do not have their own `Field` index configuration.
+        # Special characters in field paths that must be quoted include: `*`, `.`, `` ` `
+        # ` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: ``
+        # `address.city` `` represents a field named `address.city`, not the map key `
+        # city` in the field `address`. `` `*` `` represents a field named `*`, not any
+        # field. A special `Field` contains the default indexing settings for all fields.
+        # This field's resource name is: `projects/`project_id`/databases/`database_id`/
+        # collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be
+        # applied to all fields which do not have their own `Field` index configuration.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2361,6 +2359,33 @@ module Google
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DatabaseSnapshot]
         attr_accessor :database_snapshot
       
+        # Use Customer Managed Encryption Keys (CMEK) for encryption. Only keys in the
+        # same location as this database are allowed to be used for encryption. For
+        # Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us.
+        # For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region
+        # europe. See https://cloud.google.com/kms/docs/locations. The expected format
+        # is `projects/`project_id`/locations/`kms_location`/keyRings/`key_ring`/
+        # cryptoKeys/`crypto_key``.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `useBackupEncryption`
+        # @return [Google::Apis::FirestoreV1::Empty]
+        attr_accessor :use_backup_encryption
+      
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `useGoogleDefaultEncryption`
+        # @return [Google::Apis::FirestoreV1::Empty]
+        attr_accessor :use_google_default_encryption
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2370,6 +2395,9 @@ module Google
           @backup = args[:backup] if args.key?(:backup)
           @database_id = args[:database_id] if args.key?(:database_id)
           @database_snapshot = args[:database_snapshot] if args.key?(:database_snapshot)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @use_backup_encryption = args[:use_backup_encryption] if args.key?(:use_backup_encryption)
+          @use_google_default_encryption = args[:use_google_default_encryption] if args.key?(:use_google_default_encryption)
         end
       end
       
