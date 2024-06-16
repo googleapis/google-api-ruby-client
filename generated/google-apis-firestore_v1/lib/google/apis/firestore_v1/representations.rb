@@ -1333,6 +1333,11 @@ module Google
           property :database_id, as: 'databaseId'
           property :database_snapshot, as: 'databaseSnapshot', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DatabaseSnapshot, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DatabaseSnapshot::Representation
       
+          property :kms_key_name, as: 'kmsKeyName'
+          property :use_backup_encryption, as: 'useBackupEncryption', class: Google::Apis::FirestoreV1::Empty, decorator: Google::Apis::FirestoreV1::Empty::Representation
+      
+          property :use_google_default_encryption, as: 'useGoogleDefaultEncryption', class: Google::Apis::FirestoreV1::Empty, decorator: Google::Apis::FirestoreV1::Empty::Representation
+      
         end
       end
       
