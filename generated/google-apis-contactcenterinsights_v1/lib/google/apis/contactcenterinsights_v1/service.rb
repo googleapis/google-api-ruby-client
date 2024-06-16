@@ -219,8 +219,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a conversation. DEPRECATED: Use UploadConversation instead.
-        # CreateConversation does not support audio transcription or DLP redaction.
+        # Creates a conversation. Does not support audio transcription or DLP redaction.
+        # Use `conversations.upload` instead.
         # @param [String] parent
         #   Required. The parent resource of the conversation.
         # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation] google_cloud_contactcenterinsights_v1_conversation_object
@@ -370,8 +370,9 @@ module Google
         #   empty, conversations will be ordered by descending creation time. Supported
         #   values are one of the following: * create_time * customer_satisfaction_rating *
         #   duration * latest_analysis * start_time * turn_count The default sort order
-        #   is ascending. To specify order, append `asc` or `desc`, i.e. `create_time desc`
-        #   . See https://google.aip.dev/132#ordering for more details.
+        #   is ascending. To specify order, append `asc` or `desc` (`create_time desc`).
+        #   For more details, see [Google AIPs Ordering](https://google.aip.dev/132#
+        #   ordering).
         # @param [Fixnum] page_size
         #   The maximum number of conversations to return in the response. A valid page
         #   size ranges from 0 to 1,000 inclusive. If the page size is zero or unspecified,
@@ -456,8 +457,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a longrunning conversation upload operation. This method differs from
-        # CreateConversation by allowing audio transcription and optional DLP redaction.
+        # Create a long-running conversation upload operation. This method differs from `
+        # CreateConversation` by allowing audio transcription and optional DLP redaction.
         # @param [String] parent
         #   Required. The parent resource of the conversation.
         # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1UploadConversationRequest] google_cloud_contactcenterinsights_v1_upload_conversation_request_object
@@ -791,7 +792,7 @@ module Google
         
         # Exports an issue model to the provided destination.
         # @param [String] name
-        #   Required. The issue model to export
+        #   Required. The issue model to export.
         # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportIssueModelRequest] google_cloud_contactcenterinsights_v1_export_issue_model_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
