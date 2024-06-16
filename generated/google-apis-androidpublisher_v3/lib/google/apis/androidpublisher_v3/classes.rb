@@ -7369,7 +7369,7 @@ module Google
       
         # The reason why the purchase was voided, possible values are: 0. Other 1.
         # Remorse 2. Not_received 3. Defective 4. Accidental_purchase 5. Fraud 6.
-        # Friendly_fraud 7. Chargeback
+        # Friendly_fraud 7. Chargeback 8. Unacknowledged_purchase
         # Corresponds to the JSON property `voidedReason`
         # @return [Fixnum]
         attr_accessor :voided_reason
