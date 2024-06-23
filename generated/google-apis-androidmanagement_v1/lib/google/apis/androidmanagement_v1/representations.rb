@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisplaySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DnsEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -659,6 +665,18 @@ module Google
       end
       
       class RemoteLockEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScreenBrightnessSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScreenTimeoutSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1296,6 +1314,16 @@ module Google
         end
       end
       
+      class DisplaySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :screen_brightness_settings, as: 'screenBrightnessSettings', class: Google::Apis::AndroidmanagementV1::ScreenBrightnessSettings, decorator: Google::Apis::AndroidmanagementV1::ScreenBrightnessSettings::Representation
+      
+          property :screen_timeout_settings, as: 'screenTimeoutSettings', class: Google::Apis::AndroidmanagementV1::ScreenTimeoutSettings, decorator: Google::Apis::AndroidmanagementV1::ScreenTimeoutSettings::Representation
+      
+        end
+      end
+      
       class DnsEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1929,6 +1957,8 @@ module Google
       
           property :device_radio_state, as: 'deviceRadioState', class: Google::Apis::AndroidmanagementV1::DeviceRadioState, decorator: Google::Apis::AndroidmanagementV1::DeviceRadioState::Representation
       
+          property :display_settings, as: 'displaySettings', class: Google::Apis::AndroidmanagementV1::DisplaySettings, decorator: Google::Apis::AndroidmanagementV1::DisplaySettings::Representation
+      
           property :encryption_policy, as: 'encryptionPolicy'
           property :ensure_verify_apps_enabled, as: 'ensureVerifyAppsEnabled'
           property :factory_reset_disabled, as: 'factoryResetDisabled'
@@ -2074,6 +2104,22 @@ module Google
           property :admin_package_name, as: 'adminPackageName'
           property :admin_user_id, as: 'adminUserId'
           property :target_user_id, as: 'targetUserId'
+        end
+      end
+      
+      class ScreenBrightnessSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :screen_brightness, as: 'screenBrightness'
+          property :screen_brightness_mode, as: 'screenBrightnessMode'
+        end
+      end
+      
+      class ScreenTimeoutSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :screen_timeout, as: 'screenTimeout'
+          property :screen_timeout_mode, as: 'screenTimeoutMode'
         end
       end
       

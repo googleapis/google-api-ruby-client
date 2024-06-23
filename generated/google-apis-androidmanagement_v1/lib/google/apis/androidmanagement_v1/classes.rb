@@ -1982,6 +1982,31 @@ module Google
         end
       end
       
+      # Controls for the display settings.
+      class DisplaySettings
+        include Google::Apis::Core::Hashable
+      
+        # Controls for the screen brightness settings.
+        # Corresponds to the JSON property `screenBrightnessSettings`
+        # @return [Google::Apis::AndroidmanagementV1::ScreenBrightnessSettings]
+        attr_accessor :screen_brightness_settings
+      
+        # Controls the screen timeout settings.
+        # Corresponds to the JSON property `screenTimeoutSettings`
+        # @return [Google::Apis::AndroidmanagementV1::ScreenTimeoutSettings]
+        attr_accessor :screen_timeout_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @screen_brightness_settings = args[:screen_brightness_settings] if args.key?(:screen_brightness_settings)
+          @screen_timeout_settings = args[:screen_timeout_settings] if args.key?(:screen_timeout_settings)
+        end
+      end
+      
       # A DNS lookup event was initiated through the standard network stack.
       class DnsEvent
         include Google::Apis::Core::Hashable
@@ -4405,6 +4430,11 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::DeviceRadioState]
         attr_accessor :device_radio_state
       
+        # Controls for the display settings.
+        # Corresponds to the JSON property `displaySettings`
+        # @return [Google::Apis::AndroidmanagementV1::DisplaySettings]
+        attr_accessor :display_settings
+      
         # Whether encryption is enabled
         # Corresponds to the JSON property `encryptionPolicy`
         # @return [String]
@@ -4861,6 +4891,7 @@ module Google
           @device_connectivity_management = args[:device_connectivity_management] if args.key?(:device_connectivity_management)
           @device_owner_lock_screen_info = args[:device_owner_lock_screen_info] if args.key?(:device_owner_lock_screen_info)
           @device_radio_state = args[:device_radio_state] if args.key?(:device_radio_state)
+          @display_settings = args[:display_settings] if args.key?(:display_settings)
           @encryption_policy = args[:encryption_policy] if args.key?(:encryption_policy)
           @ensure_verify_apps_enabled = args[:ensure_verify_apps_enabled] if args.key?(:ensure_verify_apps_enabled)
           @factory_reset_disabled = args[:factory_reset_disabled] if args.key?(:factory_reset_disabled)
@@ -5175,6 +5206,70 @@ module Google
           @admin_package_name = args[:admin_package_name] if args.key?(:admin_package_name)
           @admin_user_id = args[:admin_user_id] if args.key?(:admin_user_id)
           @target_user_id = args[:target_user_id] if args.key?(:target_user_id)
+        end
+      end
+      
+      # Controls for the screen brightness settings.
+      class ScreenBrightnessSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The screen brightness between 1 and 255 where 1 is the lowest and
+        # 255 is the highest brightness. A value of 0 (default) means no screen
+        # brightness set. Any other value is rejected. screenBrightnessMode must be
+        # either BRIGHTNESS_AUTOMATIC or BRIGHTNESS_FIXED to set this. Supported on
+        # Android 9 and above on fully managed devices. A NonComplianceDetail with
+        # API_LEVEL is reported if the Android version is less than 9.
+        # Corresponds to the JSON property `screenBrightness`
+        # @return [Fixnum]
+        attr_accessor :screen_brightness
+      
+        # Optional. Controls the screen brightness mode.
+        # Corresponds to the JSON property `screenBrightnessMode`
+        # @return [String]
+        attr_accessor :screen_brightness_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @screen_brightness = args[:screen_brightness] if args.key?(:screen_brightness)
+          @screen_brightness_mode = args[:screen_brightness_mode] if args.key?(:screen_brightness_mode)
+        end
+      end
+      
+      # Controls the screen timeout settings.
+      class ScreenTimeoutSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Controls the screen timeout duration. The screen timeout duration
+        # must be greater than 0, otherwise it is rejected. Additionally, it should not
+        # be greater than maximumTimeToLock, otherwise the screen timeout is set to
+        # maximumTimeToLock and a NonComplianceDetail with INVALID_VALUE reason and
+        # SCREEN_TIMEOUT_GREATER_THAN_MAXIMUM_TIME_TO_LOCK specific reason is reported.
+        # If the screen timeout is less than a certain lower bound, it is set to the
+        # lower bound. The lower bound may vary across devices. If this is set,
+        # screenTimeoutMode must be SCREEN_TIMEOUT_ENFORCED. Supported on Android 9 and
+        # above on fully managed devices. A NonComplianceDetail with API_LEVEL is
+        # reported if the Android version is less than 9.
+        # Corresponds to the JSON property `screenTimeout`
+        # @return [String]
+        attr_accessor :screen_timeout
+      
+        # Optional. Controls whether the user is allowed to configure the screen timeout.
+        # Corresponds to the JSON property `screenTimeoutMode`
+        # @return [String]
+        attr_accessor :screen_timeout_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @screen_timeout = args[:screen_timeout] if args.key?(:screen_timeout)
+          @screen_timeout_mode = args[:screen_timeout_mode] if args.key?(:screen_timeout_mode)
         end
       end
       
