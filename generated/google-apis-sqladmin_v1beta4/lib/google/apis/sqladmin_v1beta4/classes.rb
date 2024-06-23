@@ -575,13 +575,6 @@ module Google
         # @return [String]
         attr_accessor :point_in_time
       
-        # Optional. Copy clone and point-in-time recovery clone of a regional instance
-        # in the specified zones. If not specified, clone to the same secondary zone as
-        # the source instance. This value cannot be the same as the preferred_zone field.
-        # Corresponds to the JSON property `preferredSecondaryZone`
-        # @return [String]
-        attr_accessor :preferred_secondary_zone
-      
         # Optional. Copy clone and point-in-time recovery clone of an instance to the
         # specified zone. If no zone is specified, clone to the same primary zone as the
         # source instance.
@@ -602,7 +595,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
           @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
-          @preferred_secondary_zone = args[:preferred_secondary_zone] if args.key?(:preferred_secondary_zone)
           @preferred_zone = args[:preferred_zone] if args.key?(:preferred_zone)
         end
       end
@@ -2693,12 +2685,14 @@ module Google
       class MaintenanceWindow
         include Google::Apis::Core::Hashable
       
-        # day of week (1-7), starting on Monday.
+        # Day of week - `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `
+        # SATURDAY`, or `SUNDAY`. Specify in the UTC time zone. Returned in output as an
+        # integer, 1 to 7, where `1` equals Monday.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # hour of day - 0 to 23.
+        # Hour of day - 0 to 23. Specify in the UTC time zone.
         # Corresponds to the JSON property `hour`
         # @return [Fixnum]
         attr_accessor :hour
@@ -2708,9 +2702,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn
-        # more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-
-        # timing-2ndgen).
+        # Maintenance timing settings: `canary`, `stable`, or `week5`. For more
+        # information, see [About maintenance on Cloud SQL instances](https://cloud.
+        # google.com/sql/docs/mysql/maintenance).
         # Corresponds to the JSON property `updateTrack`
         # @return [String]
         attr_accessor :update_track
