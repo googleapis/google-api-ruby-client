@@ -2171,10 +2171,10 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
-        # Optional. The metadata provided here will be included as part of the `
+        # Optional. The metadata provided here is included as part of the `
         # metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest`
-        # message sent to the extension server. The metadata will be available under
-        # the namespace `com.google.lb_route_extension.`. The following variables are
+        # message sent to the extension server. The metadata is available under the
+        # namespace `com.google.lb_route_extension.`. The following variables are
         # supported in the metadata Struct: ``forwarding_rule_id`` - substituted with
         # the forwarding rule's fully qualified resource name.
         # Corresponds to the JSON property `metadata`
@@ -2260,11 +2260,11 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
-        # Optional. The metadata provided here will be included in the `
-        # ProcessingRequest.metadata_context.filter_metadata` map field. The metadata
-        # will be available under the key `com.google.lb_traffic_extension.`. The
-        # following variables are supported in the metadata: ``forwarding_rule_id`` -
-        # substituted with the forwarding rule's fully qualified resource name.
+        # Optional. The metadata provided here is included in the `ProcessingRequest.
+        # metadata_context.filter_metadata` map field. The metadata is available under
+        # the key `com.google.lb_traffic_extension.`. The following variables are
+        # supported in the metadata: ``forwarding_rule_id`` - substituted with the
+        # forwarding rule's fully qualified resource name.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
