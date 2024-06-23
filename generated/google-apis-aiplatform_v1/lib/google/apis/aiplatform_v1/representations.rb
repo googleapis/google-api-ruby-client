@@ -754,24 +754,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1DatasetDistribution
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1DatasetDistributionDistributionBucket
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1DatasetStats
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1DatasetVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -947,12 +929,6 @@ module Google
       end
       
       class GoogleCloudAiplatformV1DiskSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1DistillationDataStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2992,12 +2968,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1ReinforcementLearningDataStats
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1RemoveContextChildrenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4930,6 +4900,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntelligenceCloudAutomlXpsMetricEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntelligenceCloudAutomlXpsMetricEntryLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntelligenceCloudAutomlXpsReportingMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4937,6 +4925,8 @@ module Google
       
           property :rai_media_filtered_count, as: 'raiMediaFilteredCount'
           collection :rai_media_filtered_reasons, as: 'raiMediaFilteredReasons'
+          property :reporting_metrics, as: 'reportingMetrics', class: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsReportingMetrics, decorator: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsReportingMetrics::Representation
+      
         end
       end
       
@@ -4991,6 +4981,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :detected_labels, as: 'detectedLabels', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionRaiInfoDetectedLabels, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionRaiInfoDetectedLabels::Representation
       
+          property :model_name, as: 'modelName'
           collection :rai_categories, as: 'raiCategories'
           collection :scores, as: 'scores'
         end
@@ -6112,48 +6103,6 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1DatasetDistribution
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :buckets, as: 'buckets', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistributionDistributionBucket, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistributionDistributionBucket::Representation
-      
-          property :max, as: 'max'
-          property :mean, as: 'mean'
-          property :median, as: 'median'
-          property :min, as: 'min'
-          property :p5, as: 'p5'
-          property :p95, as: 'p95'
-          property :sum, as: 'sum'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1DatasetDistributionDistributionBucket
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, :numeric_string => true, as: 'count'
-          property :left, as: 'left'
-          property :right, as: 'right'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1DatasetStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :total_billable_character_count, :numeric_string => true, as: 'totalBillableCharacterCount'
-          property :total_tuning_character_count, :numeric_string => true, as: 'totalTuningCharacterCount'
-          property :tuning_dataset_example_count, :numeric_string => true, as: 'tuningDatasetExampleCount'
-          property :tuning_step_count, :numeric_string => true, as: 'tuningStepCount'
-          collection :user_dataset_examples, as: 'userDatasetExamples', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
-      
-          property :user_input_token_distribution, as: 'userInputTokenDistribution', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution::Representation
-      
-          property :user_message_per_example_distribution, as: 'userMessagePerExampleDistribution', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution::Representation
-      
-          property :user_output_token_distribution, as: 'userOutputTokenDistribution', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution::Representation
-      
-        end
-      end
-      
       class GoogleCloudAiplatformV1DatasetVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6451,14 +6400,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
           property :boot_disk_type, as: 'bootDiskType'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1DistillationDataStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :training_dataset_stats, as: 'trainingDatasetStats', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetStats, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetStats::Representation
-      
         end
       end
       
@@ -9394,6 +9335,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           hash :pipeline_spec, as: 'pipelineSpec'
+          property :preflight_validations, as: 'preflightValidations'
           collection :reserved_ip_ranges, as: 'reservedIpRanges'
           property :runtime_config, as: 'runtimeConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfig::Representation
       
@@ -10006,16 +9948,6 @@ module Google
       class GoogleCloudAiplatformV1RebootPersistentResourceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudAiplatformV1ReinforcementLearningDataStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :preference_dataset_stats, as: 'preferenceDatasetStats', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetStats, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetStats::Representation
-      
-          property :prompt_dataset_stats, as: 'promptDatasetStats', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetStats, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetStats::Representation
-      
         end
       end
       
@@ -12677,10 +12609,6 @@ module Google
       class GoogleCloudAiplatformV1TuningDataStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :distillation_data_stats, as: 'distillationDataStats', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DistillationDataStats, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DistillationDataStats::Representation
-      
-          property :reinforcement_learning_data_stats, as: 'reinforcementLearningDataStats', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReinforcementLearningDataStats, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReinforcementLearningDataStats::Representation
-      
           property :supervised_tuning_data_stats, as: 'supervisedTuningDataStats', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedTuningDataStats, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedTuningDataStats::Representation
       
         end
@@ -13185,6 +13113,35 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class IntelligenceCloudAutomlXpsMetricEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :argentum_metric_id, as: 'argentumMetricId'
+          property :double_value, as: 'doubleValue'
+          property :int64_value, :numeric_string => true, as: 'int64Value'
+          property :metric_name, as: 'metricName'
+          collection :system_labels, as: 'systemLabels', class: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntryLabel, decorator: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntryLabel::Representation
+      
+        end
+      end
+      
+      class IntelligenceCloudAutomlXpsMetricEntryLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_name, as: 'labelName'
+          property :label_value, as: 'labelValue'
+        end
+      end
+      
+      class IntelligenceCloudAutomlXpsReportingMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_training_duration, as: 'effectiveTrainingDuration'
+          collection :metric_entries, as: 'metricEntries', class: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntry, decorator: Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntry::Representation
+      
         end
       end
     end

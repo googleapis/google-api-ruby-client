@@ -41,6 +41,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :rai_media_filtered_reasons
       
+        # Billable prediction metrics.
+        # Corresponds to the JSON property `reportingMetrics`
+        # @return [Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsReportingMetrics]
+        attr_accessor :reporting_metrics
+      
         def initialize(**args)
            update!(**args)
         end
@@ -50,6 +55,7 @@ module Google
           @generated_samples = args[:generated_samples] if args.key?(:generated_samples)
           @rai_media_filtered_count = args[:rai_media_filtered_count] if args.key?(:rai_media_filtered_count)
           @rai_media_filtered_reasons = args[:rai_media_filtered_reasons] if args.key?(:rai_media_filtered_reasons)
+          @reporting_metrics = args[:reporting_metrics] if args.key?(:reporting_metrics)
         end
       end
       
@@ -217,6 +223,14 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::CloudAiLargeModelsVisionRaiInfoDetectedLabels>]
         attr_accessor :detected_labels
       
+        # The model name used to indexing into the RaiFilterConfig map. Would either be
+        # one of imagegeneration@002-006, imagen-3.0-... api endpoint names, or internal
+        # names used for mapping to different filter configs (genselfie, ai_watermark)
+        # than its api endpoint.
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
         # List of rai categories' information to return
         # Corresponds to the JSON property `raiCategories`
         # @return [Array<String>]
@@ -234,6 +248,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @detected_labels = args[:detected_labels] if args.key?(:detected_labels)
+          @model_name = args[:model_name] if args.key?(:model_name)
           @rai_categories = args[:rai_categories] if args.key?(:rai_categories)
           @scores = args[:scores] if args.key?(:scores)
         end
@@ -4134,160 +4149,6 @@ module Google
         end
       end
       
-      # Distribution computed over a tuning dataset.
-      class GoogleCloudAiplatformV1DatasetDistribution
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Defines the histogram bucket.
-        # Corresponds to the JSON property `buckets`
-        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistributionDistributionBucket>]
-        attr_accessor :buckets
-      
-        # Output only. The maximum of the population values.
-        # Corresponds to the JSON property `max`
-        # @return [Float]
-        attr_accessor :max
-      
-        # Output only. The arithmetic mean of the values in the population.
-        # Corresponds to the JSON property `mean`
-        # @return [Float]
-        attr_accessor :mean
-      
-        # Output only. The median of the values in the population.
-        # Corresponds to the JSON property `median`
-        # @return [Float]
-        attr_accessor :median
-      
-        # Output only. The minimum of the population values.
-        # Corresponds to the JSON property `min`
-        # @return [Float]
-        attr_accessor :min
-      
-        # Output only. The 5th percentile of the values in the population.
-        # Corresponds to the JSON property `p5`
-        # @return [Float]
-        attr_accessor :p5
-      
-        # Output only. The 95th percentile of the values in the population.
-        # Corresponds to the JSON property `p95`
-        # @return [Float]
-        attr_accessor :p95
-      
-        # Output only. Sum of a given population of values.
-        # Corresponds to the JSON property `sum`
-        # @return [Float]
-        attr_accessor :sum
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @buckets = args[:buckets] if args.key?(:buckets)
-          @max = args[:max] if args.key?(:max)
-          @mean = args[:mean] if args.key?(:mean)
-          @median = args[:median] if args.key?(:median)
-          @min = args[:min] if args.key?(:min)
-          @p5 = args[:p5] if args.key?(:p5)
-          @p95 = args[:p95] if args.key?(:p95)
-          @sum = args[:sum] if args.key?(:sum)
-        end
-      end
-      
-      # Dataset bucket used to create a histogram for the distribution given a
-      # population of values.
-      class GoogleCloudAiplatformV1DatasetDistributionDistributionBucket
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Number of values in the bucket.
-        # Corresponds to the JSON property `count`
-        # @return [Fixnum]
-        attr_accessor :count
-      
-        # Output only. Left bound of the bucket.
-        # Corresponds to the JSON property `left`
-        # @return [Float]
-        attr_accessor :left
-      
-        # Output only. Right bound of the bucket.
-        # Corresponds to the JSON property `right`
-        # @return [Float]
-        attr_accessor :right
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @count = args[:count] if args.key?(:count)
-          @left = args[:left] if args.key?(:left)
-          @right = args[:right] if args.key?(:right)
-        end
-      end
-      
-      # Statistics computed over a tuning dataset.
-      class GoogleCloudAiplatformV1DatasetStats
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Number of billable characters in the tuning dataset.
-        # Corresponds to the JSON property `totalBillableCharacterCount`
-        # @return [Fixnum]
-        attr_accessor :total_billable_character_count
-      
-        # Output only. Number of tuning characters in the tuning dataset.
-        # Corresponds to the JSON property `totalTuningCharacterCount`
-        # @return [Fixnum]
-        attr_accessor :total_tuning_character_count
-      
-        # Output only. Number of examples in the tuning dataset.
-        # Corresponds to the JSON property `tuningDatasetExampleCount`
-        # @return [Fixnum]
-        attr_accessor :tuning_dataset_example_count
-      
-        # Output only. Number of tuning steps for this Tuning Job.
-        # Corresponds to the JSON property `tuningStepCount`
-        # @return [Fixnum]
-        attr_accessor :tuning_step_count
-      
-        # Output only. Sample user messages in the training dataset uri.
-        # Corresponds to the JSON property `userDatasetExamples`
-        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
-        attr_accessor :user_dataset_examples
-      
-        # Distribution computed over a tuning dataset.
-        # Corresponds to the JSON property `userInputTokenDistribution`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution]
-        attr_accessor :user_input_token_distribution
-      
-        # Distribution computed over a tuning dataset.
-        # Corresponds to the JSON property `userMessagePerExampleDistribution`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution]
-        attr_accessor :user_message_per_example_distribution
-      
-        # Distribution computed over a tuning dataset.
-        # Corresponds to the JSON property `userOutputTokenDistribution`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution]
-        attr_accessor :user_output_token_distribution
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @total_billable_character_count = args[:total_billable_character_count] if args.key?(:total_billable_character_count)
-          @total_tuning_character_count = args[:total_tuning_character_count] if args.key?(:total_tuning_character_count)
-          @tuning_dataset_example_count = args[:tuning_dataset_example_count] if args.key?(:tuning_dataset_example_count)
-          @tuning_step_count = args[:tuning_step_count] if args.key?(:tuning_step_count)
-          @user_dataset_examples = args[:user_dataset_examples] if args.key?(:user_dataset_examples)
-          @user_input_token_distribution = args[:user_input_token_distribution] if args.key?(:user_input_token_distribution)
-          @user_message_per_example_distribution = args[:user_message_per_example_distribution] if args.key?(:user_message_per_example_distribution)
-          @user_output_token_distribution = args[:user_output_token_distribution] if args.key?(:user_output_token_distribution)
-        end
-      end
-      
       # Describes the dataset version.
       class GoogleCloudAiplatformV1DatasetVersion
         include Google::Apis::Core::Hashable
@@ -5360,25 +5221,6 @@ module Google
         def update!(**args)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @boot_disk_type = args[:boot_disk_type] if args.key?(:boot_disk_type)
-        end
-      end
-      
-      # Statistics computed for datasets used for distillation.
-      class GoogleCloudAiplatformV1DistillationDataStats
-        include Google::Apis::Core::Hashable
-      
-        # Statistics computed over a tuning dataset.
-        # Corresponds to the JSON property `trainingDatasetStats`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetStats]
-        attr_accessor :training_dataset_stats
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @training_dataset_stats = args[:training_dataset_stats] if args.key?(:training_dataset_stats)
         end
       end
       
@@ -16155,6 +15997,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :pipeline_spec
       
+        # Optional. Whether to do component level validations before job creation.
+        # Corresponds to the JSON property `preflightValidations`
+        # @return [Boolean]
+        attr_accessor :preflight_validations
+        alias_method :preflight_validations?, :preflight_validations
+      
         # A list of names for the reserved ip ranges under the VPC network that can be
         # used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job'
         # s workload within the provided ip ranges. Otherwise, the job will be deployed
@@ -16229,6 +16077,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @pipeline_spec = args[:pipeline_spec] if args.key?(:pipeline_spec)
+          @preflight_validations = args[:preflight_validations] if args.key?(:preflight_validations)
           @reserved_ip_ranges = args[:reserved_ip_ranges] if args.key?(:reserved_ip_ranges)
           @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
           @schedule_name = args[:schedule_name] if args.key?(:schedule_name)
@@ -18258,31 +18107,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Statistics computed for datasets used for reinforcement learning.
-      class GoogleCloudAiplatformV1ReinforcementLearningDataStats
-        include Google::Apis::Core::Hashable
-      
-        # Statistics computed over a tuning dataset.
-        # Corresponds to the JSON property `preferenceDatasetStats`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetStats]
-        attr_accessor :preference_dataset_stats
-      
-        # Statistics computed over a tuning dataset.
-        # Corresponds to the JSON property `promptDatasetStats`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetStats]
-        attr_accessor :prompt_dataset_stats
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @preference_dataset_stats = args[:preference_dataset_stats] if args.key?(:preference_dataset_stats)
-          @prompt_dataset_stats = args[:prompt_dataset_stats] if args.key?(:prompt_dataset_stats)
         end
       end
       
@@ -28337,16 +28161,6 @@ module Google
       class GoogleCloudAiplatformV1TuningDataStats
         include Google::Apis::Core::Hashable
       
-        # Statistics computed for datasets used for distillation.
-        # Corresponds to the JSON property `distillationDataStats`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DistillationDataStats]
-        attr_accessor :distillation_data_stats
-      
-        # Statistics computed for datasets used for reinforcement learning.
-        # Corresponds to the JSON property `reinforcementLearningDataStats`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReinforcementLearningDataStats]
-        attr_accessor :reinforcement_learning_data_stats
-      
         # Tuning data statistics for Supervised Tuning.
         # Corresponds to the JSON property `supervisedTuningDataStats`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedTuningDataStats]
@@ -28358,8 +28172,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @distillation_data_stats = args[:distillation_data_stats] if args.key?(:distillation_data_stats)
-          @reinforcement_learning_data_stats = args[:reinforcement_learning_data_stats] if args.key?(:reinforcement_learning_data_stats)
           @supervised_tuning_data_stats = args[:supervised_tuning_data_stats] if args.key?(:supervised_tuning_data_stats)
         end
       end
@@ -30151,6 +29963,102 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # 
+      class IntelligenceCloudAutomlXpsMetricEntry
+        include Google::Apis::Core::Hashable
+      
+        # For billing metrics that are using legacy sku's, set the legacy billing metric
+        # id here. This will be sent to Chemist as the "cloudbilling.googleapis.com/
+        # argentum_metric_id" label. Otherwise leave empty.
+        # Corresponds to the JSON property `argentumMetricId`
+        # @return [String]
+        attr_accessor :argentum_metric_id
+      
+        # A double value.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # A signed 64-bit integer value.
+        # Corresponds to the JSON property `int64Value`
+        # @return [Fixnum]
+        attr_accessor :int64_value
+      
+        # The metric name defined in the service configuration.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
+        # Billing system labels for this (metric, value) pair.
+        # Corresponds to the JSON property `systemLabels`
+        # @return [Array<Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntryLabel>]
+        attr_accessor :system_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @argentum_metric_id = args[:argentum_metric_id] if args.key?(:argentum_metric_id)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
+          @system_labels = args[:system_labels] if args.key?(:system_labels)
+        end
+      end
+      
+      # 
+      class IntelligenceCloudAutomlXpsMetricEntryLabel
+        include Google::Apis::Core::Hashable
+      
+        # The name of the label.
+        # Corresponds to the JSON property `labelName`
+        # @return [String]
+        attr_accessor :label_name
+      
+        # The value of the label.
+        # Corresponds to the JSON property `labelValue`
+        # @return [String]
+        attr_accessor :label_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_name = args[:label_name] if args.key?(:label_name)
+          @label_value = args[:label_value] if args.key?(:label_value)
+        end
+      end
+      
+      # 
+      class IntelligenceCloudAutomlXpsReportingMetrics
+        include Google::Apis::Core::Hashable
+      
+        # The effective time training used. If set, this is used for quota management
+        # and billing. Deprecated. AutoML BE doesn't use this. Don't set.
+        # Corresponds to the JSON property `effectiveTrainingDuration`
+        # @return [String]
+        attr_accessor :effective_training_duration
+      
+        # One entry per metric name. The values must be aggregated per metric name.
+        # Corresponds to the JSON property `metricEntries`
+        # @return [Array<Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntry>]
+        attr_accessor :metric_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_training_duration = args[:effective_training_duration] if args.key?(:effective_training_duration)
+          @metric_entries = args[:metric_entries] if args.key?(:metric_entries)
         end
       end
     end
