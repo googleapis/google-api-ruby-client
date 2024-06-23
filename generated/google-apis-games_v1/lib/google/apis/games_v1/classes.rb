@@ -1131,6 +1131,44 @@ module Google
         end
       end
       
+      # Response for the GeneratePlayGroupingApiToken RPC.
+      class GeneratePlayGroupingApiTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token data returned from GeneratePlayGroupingApiToken RPC.
+        # Corresponds to the JSON property `token`
+        # @return [Google::Apis::GamesV1::PlayGroupingApiToken]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # Response for the GenerateRecallPlayGroupingApiToken RPC.
+      class GenerateRecallPlayGroupingApiTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token data returned from GeneratePlayGroupingApiToken RPC.
+        # Corresponds to the JSON property `token`
+        # @return [Google::Apis::GamesV1::PlayGroupingApiToken]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
       # Response message for GetMultipleApplicationPlayerIds rpc.
       class GetMultipleApplicationPlayerIdsResponse
         include Google::Apis::Core::Hashable
@@ -1759,6 +1797,25 @@ module Google
           @current_version = args[:current_version] if args.key?(:current_version)
           @kind = args[:kind] if args.key?(:kind)
           @player_levels = args[:player_levels] if args.key?(:player_levels)
+        end
+      end
+      
+      # Token data returned from GeneratePlayGroupingApiToken RPC.
+      class PlayGroupingApiToken
+        include Google::Apis::Core::Hashable
+      
+        # Value of the token.
+        # Corresponds to the JSON property `tokenValue`
+        # @return [String]
+        attr_accessor :token_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token_value = args[:token_value] if args.key?(:token_value)
         end
       end
       
