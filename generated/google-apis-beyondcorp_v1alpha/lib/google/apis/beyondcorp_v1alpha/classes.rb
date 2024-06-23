@@ -2797,6 +2797,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. Type of subscriber.
+        # Corresponds to the JSON property `subscriberType`
+        # @return [String]
+        attr_accessor :subscriber_type
+      
         # Required. Type of subscription.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2817,6 +2822,7 @@ module Google
           @sku = args[:sku] if args.key?(:sku)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+          @subscriber_type = args[:subscriber_type] if args.key?(:subscriber_type)
           @type = args[:type] if args.key?(:type)
         end
       end
