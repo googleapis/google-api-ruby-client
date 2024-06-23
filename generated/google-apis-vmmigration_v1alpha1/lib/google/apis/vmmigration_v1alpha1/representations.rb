@@ -478,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkInsights
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -773,6 +779,8 @@ module Google
           collection :inventory_tag_list, as: 'inventoryTagList', class: Google::Apis::VmmigrationV1alpha1::Tag, decorator: Google::Apis::VmmigrationV1alpha1::Tag::Representation
       
           hash :migration_resources_user_tags, as: 'migrationResourcesUserTags'
+          property :network_insights, as: 'networkInsights', class: Google::Apis::VmmigrationV1alpha1::NetworkInsights, decorator: Google::Apis::VmmigrationV1alpha1::NetworkInsights::Representation
+      
           property :public_ip, as: 'publicIp'
           property :state, as: 'state'
         end
@@ -1600,6 +1608,14 @@ module Google
           property :warning_message, as: 'warningMessage', class: Google::Apis::VmmigrationV1alpha1::LocalizedMessage, decorator: Google::Apis::VmmigrationV1alpha1::LocalizedMessage::Representation
       
           property :warning_time, as: 'warningTime'
+        end
+      end
+      
+      class NetworkInsights
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_network_config, as: 'sourceNetworkConfig'
+          property :source_network_terraform, as: 'sourceNetworkTerraform'
         end
       end
       

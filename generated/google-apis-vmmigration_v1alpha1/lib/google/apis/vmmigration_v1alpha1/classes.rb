@@ -272,6 +272,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :migration_resources_user_tags
       
+        # Information about the network coniguration of the source.
+        # Corresponds to the JSON property `networkInsights`
+        # @return [Google::Apis::VmmigrationV1alpha1::NetworkInsights]
+        attr_accessor :network_insights
+      
         # Output only. The source's public IP. All communication initiated by this
         # source will originate from this IP.
         # Corresponds to the JSON property `publicIp`
@@ -295,6 +300,7 @@ module Google
           @inventory_security_group_names = args[:inventory_security_group_names] if args.key?(:inventory_security_group_names)
           @inventory_tag_list = args[:inventory_tag_list] if args.key?(:inventory_tag_list)
           @migration_resources_user_tags = args[:migration_resources_user_tags] if args.key?(:migration_resources_user_tags)
+          @network_insights = args[:network_insights] if args.key?(:network_insights)
           @public_ip = args[:public_ip] if args.key?(:public_ip)
           @state = args[:state] if args.key?(:state)
         end
@@ -3210,6 +3216,33 @@ module Google
           @help_links = args[:help_links] if args.key?(:help_links)
           @warning_message = args[:warning_message] if args.key?(:warning_message)
           @warning_time = args[:warning_time] if args.key?(:warning_time)
+        end
+      end
+      
+      # Information about the network coniguration of the source.
+      class NetworkInsights
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The gathered network configuration of the source. Presented in
+        # json format.
+        # Corresponds to the JSON property `sourceNetworkConfig`
+        # @return [String]
+        attr_accessor :source_network_config
+      
+        # Output only. The gathered network configuration of the source. Presented in
+        # terraform format.
+        # Corresponds to the JSON property `sourceNetworkTerraform`
+        # @return [String]
+        attr_accessor :source_network_terraform
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_network_config = args[:source_network_config] if args.key?(:source_network_config)
+          @source_network_terraform = args[:source_network_terraform] if args.key?(:source_network_terraform)
         end
       end
       
