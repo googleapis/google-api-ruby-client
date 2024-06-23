@@ -412,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1CompletionSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1Condition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -724,6 +730,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequestInlineSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1ImportDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -893,6 +923,24 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1ProvisionProjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1648,6 +1696,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1715,6 +1775,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2081,6 +2153,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2931,6 +3015,19 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1CompletionSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternative_phrases, as: 'alternativePhrases'
+          property :frequency, :numeric_string => true, as: 'frequency'
+          property :global_score, as: 'globalScore'
+          property :group_id, as: 'groupId'
+          property :group_score, as: 'groupScore'
+          property :language_code, as: 'languageCode'
+          property :suggestion, as: 'suggestion'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3422,6 +3519,48 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_source, as: 'bigquerySource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BigQuerySource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BigQuerySource::Representation
+      
+          property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportErrorConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportErrorConfig::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource::Representation
+      
+          property :inline_source, as: 'inlineSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequestInlineSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequestInlineSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequestInlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :suggestions, as: 'suggestions', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CompletionSuggestion, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CompletionSuggestion::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportErrorConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportErrorConfig::Representation
+      
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1ImportDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3712,6 +3851,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accept_data_use_terms, as: 'acceptDataUseTerms'
           property :data_use_terms_version, as: 'dataUseTermsVersion'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
+          property :purge_succeeded, as: 'purgeSucceeded'
         end
       end
       
@@ -4964,6 +5126,26 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaImportErrorConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaImportErrorConfig::Representation
+      
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5075,6 +5257,23 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
+          property :purge_succeeded, as: 'purgeSucceeded'
         end
       end
       
@@ -5639,6 +5838,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :search_add_ons, as: 'searchAddOns'
           property :search_tier, as: 'searchTier'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaImportErrorConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaImportErrorConfig::Representation
+      
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
         end
       end
       

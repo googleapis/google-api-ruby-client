@@ -2288,6 +2288,65 @@ module Google
         end
       end
       
+      # Autocomplete suggestions that are imported from Customer.
+      class GoogleCloudDiscoveryengineV1CompletionSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Alternative matching phrases for this suggestion.
+        # Corresponds to the JSON property `alternativePhrases`
+        # @return [Array<String>]
+        attr_accessor :alternative_phrases
+      
+        # Frequency of this suggestion. Will be used to rank suggestions when score is
+        # not available.
+        # Corresponds to the JSON property `frequency`
+        # @return [Fixnum]
+        attr_accessor :frequency
+      
+        # Global score of this suggestion. Control how this suggestion would be scored /
+        # ranked.
+        # Corresponds to the JSON property `globalScore`
+        # @return [Float]
+        attr_accessor :global_score
+      
+        # If two suggestions have the same groupId, they will not be returned together.
+        # Instead the one ranked higher will be returned. This can be used to
+        # deduplicate semantically identical suggestions.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # The score of this suggestion within its group.
+        # Corresponds to the JSON property `groupScore`
+        # @return [Float]
+        attr_accessor :group_score
+      
+        # BCP-47 language code of this suggestion.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Required. The suggestion text.
+        # Corresponds to the JSON property `suggestion`
+        # @return [String]
+        attr_accessor :suggestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternative_phrases = args[:alternative_phrases] if args.key?(:alternative_phrases)
+          @frequency = args[:frequency] if args.key?(:frequency)
+          @global_score = args[:global_score] if args.key?(:global_score)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @group_score = args[:group_score] if args.key?(:group_score)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @suggestion = args[:suggestion] if args.key?(:suggestion)
+        end
+      end
+      
       # Defines circumstances to be checked before allowing a behavior
       class GoogleCloudDiscoveryengineV1Condition
         include Google::Apis::Core::Hashable
@@ -3306,7 +3365,7 @@ module Google
       
         # The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/
         # to/file`) are supported. The maximum file size is 2.5 MB for text-based
-        # formats, 100 MB for other formats.
+        # formats, 200 MB for other formats.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -4054,6 +4113,128 @@ module Google
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
           @fact_text = args[:fact_text] if args.key?(:fact_text)
+        end
+      end
+      
+      # Metadata related to the progress of the ImportCompletionSuggestions operation.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of CompletionSuggestions that failed to be imported.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of CompletionSuggestions successfully imported.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for CompletionService.ImportCompletionSuggestions method.
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # BigQuery source import data from.
+        # Corresponds to the JSON property `bigquerySource`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BigQuerySource]
+        attr_accessor :bigquery_source
+      
+        # Configuration of destination for Import related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportErrorConfig]
+        attr_accessor :error_config
+      
+        # Cloud Storage location for input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource]
+        attr_accessor :gcs_source
+      
+        # The inline source for CompletionSuggestions.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequestInlineSource]
+        attr_accessor :inline_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_source = args[:bigquery_source] if args.key?(:bigquery_source)
+          @error_config = args[:error_config] if args.key?(:error_config)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+        end
+      end
+      
+      # The inline source for CompletionSuggestions.
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequestInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of all denylist entries to import. Max of 1000 items.
+        # Corresponds to the JSON property `suggestions`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CompletionSuggestion>]
+        attr_accessor :suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggestions = args[:suggestions] if args.key?(:suggestions)
+        end
+      end
+      
+      # Response of the CompletionService.ImportCompletionSuggestions method. If the
+      # long running operation is done, this message is returned by the google.
+      # longrunning.Operations.response field if the operation is successful.
+      class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of destination for Import related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportErrorConfig]
+        attr_accessor :error_config
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_config = args[:error_config] if args.key?(:error_config)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
         end
       end
       
@@ -5031,6 +5212,72 @@ module Google
         def update!(**args)
           @accept_data_use_terms = args[:accept_data_use_terms] if args.key?(:accept_data_use_terms)
           @data_use_terms_version = args[:data_use_terms_version] if args.key?(:data_use_terms_version)
+        end
+      end
+      
+      # Metadata related to the progress of the PurgeCompletionSuggestions operation.
+      # This is returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for CompletionService.PurgeCompletionSuggestions method.
+      class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for CompletionService.PurgeCompletionSuggestions method.
+      class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Whether the completion suggestions were successfully purged.
+        # Corresponds to the JSON property `purgeSucceeded`
+        # @return [Boolean]
+        attr_accessor :purge_succeeded
+        alias_method :purge_succeeded?, :purge_succeeded
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @purge_succeeded = args[:purge_succeeded] if args.key?(:purge_succeeded)
         end
       end
       
@@ -6298,7 +6545,10 @@ module Google
       
         # Maximum facet values that are returned for this facet. If unspecified,
         # defaults to 20. The maximum allowed value is 300. Values above 300 are coerced
-        # to 300. If this field is negative, an `INVALID_ARGUMENT` is returned.
+        # to 300. For aggregation in healthcare search, when the [FacetKey.key] is "
+        # healthcare_aggregation_key", the limit will be overridden to 10,000 internally,
+        # regardless of the value set here. If this field is negative, an `
+        # INVALID_ARGUMENT` is returned.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -9755,6 +10005,72 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the ImportCompletionSuggestions operation.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of CompletionSuggestions that failed to be imported.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of CompletionSuggestions successfully imported.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response of the CompletionService.ImportCompletionSuggestions method. If the
+      # long running operation is done, this message is returned by the google.
+      # longrunning.Operations.response field if the operation is successful.
+      class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of destination for Import related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaImportErrorConfig]
+        attr_accessor :error_config
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_config = args[:error_config] if args.key?(:error_config)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+        end
+      end
+      
       # Metadata related to the progress of the ImportDocuments operation. This is
       # returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
@@ -10144,6 +10460,59 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the PurgeCompletionSuggestions operation.
+      # This is returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for CompletionService.PurgeCompletionSuggestions method.
+      class GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Whether the completion suggestions were successfully purged.
+        # Corresponds to the JSON property `purgeSucceeded`
+        # @return [Boolean]
+        attr_accessor :purge_succeeded
+        alias_method :purge_succeeded?, :purge_succeeded
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @purge_succeeded = args[:purge_succeeded] if args.key?(:purge_succeeded)
         end
       end
       
@@ -12096,6 +12465,72 @@ module Google
         def update!(**args)
           @search_add_ons = args[:search_add_ons] if args.key?(:search_add_ons)
           @search_tier = args[:search_tier] if args.key?(:search_tier)
+        end
+      end
+      
+      # Metadata related to the progress of the ImportCompletionSuggestions operation.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of CompletionSuggestions that failed to be imported.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of CompletionSuggestions successfully imported.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response of the CompletionService.ImportCompletionSuggestions method. If the
+      # long running operation is done, this message is returned by the google.
+      # longrunning.Operations.response field if the operation is successful.
+      class GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of destination for Import related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaImportErrorConfig]
+        attr_accessor :error_config
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_config = args[:error_config] if args.key?(:error_config)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
         end
       end
       
