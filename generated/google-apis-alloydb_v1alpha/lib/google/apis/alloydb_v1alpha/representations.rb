@@ -472,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SwitchoverClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeBasedRetention
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1358,6 +1364,14 @@ module Google
       
           collection :supported_db_versions, as: 'supportedDbVersions'
           property :value_type, as: 'valueType'
+        end
+      end
+      
+      class SwitchoverClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
