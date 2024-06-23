@@ -603,6 +603,110 @@ module Google
         end
       end
       
+      # Represents an Azure management group.
+      class AzureManagementGroup
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the Azure management group.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The UUID of the Azure management group, for example, "20000000-0001-0000-0000-
+        # 000000000000".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Azure metadata associated with the resource, only applicable if the finding's
+      # cloud provider is Microsoft Azure.
+      class AzureMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A list of Azure management groups associated with the resource, ordered from
+        # lowest level (closest to the subscription) to highest level.
+        # Corresponds to the JSON property `managementGroups`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::AzureManagementGroup>]
+        attr_accessor :management_groups
+      
+        # Represents an Azure resource group.
+        # Corresponds to the JSON property `resourceGroup`
+        # @return [Google::Apis::SecuritycenterV1beta1::AzureResourceGroup]
+        attr_accessor :resource_group
+      
+        # Represents an Azure subscription.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::SecuritycenterV1beta1::AzureSubscription]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @management_groups = args[:management_groups] if args.key?(:management_groups)
+          @resource_group = args[:resource_group] if args.key?(:resource_group)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
+      # Represents an Azure resource group.
+      class AzureResourceGroup
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Azure resource group. This is not a UUID.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents an Azure subscription.
+      class AzureSubscription
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the Azure subscription.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The UUID of the Azure subscription, for example, "291bba3f-e0a5-47bc-a099-
+        # 3bdcb2a50a05".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # Information related to Google Cloud Backup and DR Service findings.
       class BackupDisasterRecovery
         include Google::Apis::Core::Hashable
@@ -1830,6 +1934,13 @@ module Google
         # @return [String]
         attr_accessor :finding_class
       
+        # Contains details about groups of which this finding is a member. A group is a
+        # collection of findings that are related in some way. This field cannot be
+        # updated. Its value is ignored in all update requests.
+        # Corresponds to the JSON property `groupMemberships`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GroupMembership>]
+        attr_accessor :group_memberships
+      
         # Represents IAM bindings associated with the finding.
         # Corresponds to the JSON property `iamBindings`
         # @return [Array<Google::Apis::SecuritycenterV1beta1::IamBinding>]
@@ -1984,6 +2095,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Contains details about a group of security issues that, when the issues occur
+        # together, represent a greater risk than when the issues occur independently. A
+        # group of such issues is referred to as a toxic combination.
+        # Corresponds to the JSON property `toxicCombination`
+        # @return [Google::Apis::SecuritycenterV1beta1::ToxicCombination]
+        attr_accessor :toxic_combination
+      
         # Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
         # Corresponds to the JSON property `vulnerability`
         # @return [Google::Apis::SecuritycenterV1beta1::Vulnerability]
@@ -2017,6 +2135,7 @@ module Google
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @files = args[:files] if args.key?(:files)
           @finding_class = args[:finding_class] if args.key?(:finding_class)
+          @group_memberships = args[:group_memberships] if args.key?(:group_memberships)
           @iam_bindings = args[:iam_bindings] if args.key?(:iam_bindings)
           @indicator = args[:indicator] if args.key?(:indicator)
           @kernel_rootkit = args[:kernel_rootkit] if args.key?(:kernel_rootkit)
@@ -2041,6 +2160,7 @@ module Google
           @severity = args[:severity] if args.key?(:severity)
           @source_properties = args[:source_properties] if args.key?(:source_properties)
           @state = args[:state] if args.key?(:state)
+          @toxic_combination = args[:toxic_combination] if args.key?(:toxic_combination)
           @vulnerability = args[:vulnerability] if args.key?(:vulnerability)
         end
       end
@@ -2717,6 +2837,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::AwsMetadata]
         attr_accessor :aws_metadata
       
+        # Azure metadata associated with the resource, only applicable if the finding's
+        # cloud provider is Microsoft Azure.
+        # Corresponds to the JSON property `azureMetadata`
+        # @return [Google::Apis::SecuritycenterV1beta1::AzureMetadata]
+        attr_accessor :azure_metadata
+      
         # Indicates which cloud provider the resource resides in.
         # Corresponds to the JSON property `cloudProvider`
         # @return [String]
@@ -2807,6 +2933,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
+          @azure_metadata = args[:azure_metadata] if args.key?(:azure_metadata)
           @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @display_name = args[:display_name] if args.key?(:display_name)
           @folders = args[:folders] if args.key?(:folders)
@@ -3941,6 +4068,110 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents an Azure management group.
+      class GoogleCloudSecuritycenterV2AzureManagementGroup
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the Azure management group.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The UUID of the Azure management group, for example, "20000000-0001-0000-0000-
+        # 000000000000".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Azure metadata associated with the resource, only applicable if the finding's
+      # cloud provider is Microsoft Azure.
+      class GoogleCloudSecuritycenterV2AzureMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A list of Azure management groups associated with the resource, ordered from
+        # lowest level (closest to the subscription) to highest level.
+        # Corresponds to the JSON property `managementGroups`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AzureManagementGroup>]
+        attr_accessor :management_groups
+      
+        # Represents an Azure resource group.
+        # Corresponds to the JSON property `resourceGroup`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AzureResourceGroup]
+        attr_accessor :resource_group
+      
+        # Represents an Azure subscription.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AzureSubscription]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @management_groups = args[:management_groups] if args.key?(:management_groups)
+          @resource_group = args[:resource_group] if args.key?(:resource_group)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
+      # Represents an Azure resource group.
+      class GoogleCloudSecuritycenterV2AzureResourceGroup
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Azure resource group. This is not a UUID.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents an Azure subscription.
+      class GoogleCloudSecuritycenterV2AzureSubscription
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the Azure subscription.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The UUID of the Azure subscription, for example, "291bba3f-e0a5-47bc-a099-
+        # 3bdcb2a50a05".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -5155,6 +5386,13 @@ module Google
         # @return [String]
         attr_accessor :finding_class
       
+        # Contains details about groups of which this finding is a member. A group is a
+        # collection of findings that are related in some way. This field cannot be
+        # updated. Its value is ignored in all update requests.
+        # Corresponds to the JSON property `groupMemberships`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2GroupMembership>]
+        attr_accessor :group_memberships
+      
         # Represents IAM bindings associated with the finding.
         # Corresponds to the JSON property `iamBindings`
         # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2IamBinding>]
@@ -5318,6 +5556,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Contains details about a group of security issues that, when the issues occur
+        # together, represent a greater risk than when the issues occur independently. A
+        # group of such issues is referred to as a toxic combination.
+        # Corresponds to the JSON property `toxicCombination`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ToxicCombination]
+        attr_accessor :toxic_combination
+      
         # Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
         # Corresponds to the JSON property `vulnerability`
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Vulnerability]
@@ -5351,6 +5596,7 @@ module Google
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @files = args[:files] if args.key?(:files)
           @finding_class = args[:finding_class] if args.key?(:finding_class)
+          @group_memberships = args[:group_memberships] if args.key?(:group_memberships)
           @iam_bindings = args[:iam_bindings] if args.key?(:iam_bindings)
           @indicator = args[:indicator] if args.key?(:indicator)
           @kernel_rootkit = args[:kernel_rootkit] if args.key?(:kernel_rootkit)
@@ -5375,6 +5621,7 @@ module Google
           @severity = args[:severity] if args.key?(:severity)
           @source_properties = args[:source_properties] if args.key?(:source_properties)
           @state = args[:state] if args.key?(:state)
+          @toxic_combination = args[:toxic_combination] if args.key?(:toxic_combination)
           @vulnerability = args[:vulnerability] if args.key?(:vulnerability)
         end
       end
@@ -5421,6 +5668,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Contains details about groups of which this finding is a member. A group is a
+      # collection of findings that are related in some way.
+      class GoogleCloudSecuritycenterV2GroupMembership
+        include Google::Apis::Core::Hashable
+      
+        # ID of the group.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # Type of group.
+        # Corresponds to the JSON property `groupType`
+        # @return [String]
+        attr_accessor :group_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @group_type = args[:group_type] if args.key?(:group_type)
         end
       end
       
@@ -6345,6 +6618,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AwsMetadata]
         attr_accessor :aws_metadata
       
+        # Azure metadata associated with the resource, only applicable if the finding's
+        # cloud provider is Microsoft Azure.
+        # Corresponds to the JSON property `azureMetadata`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AzureMetadata]
+        attr_accessor :azure_metadata
+      
         # Indicates which cloud provider the finding is from.
         # Corresponds to the JSON property `cloudProvider`
         # @return [String]
@@ -6407,6 +6686,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
+          @azure_metadata = args[:azure_metadata] if args.key?(:azure_metadata)
           @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @display_name = args[:display_name] if args.key?(:display_name)
           @gcp_metadata = args[:gcp_metadata] if args.key?(:gcp_metadata)
@@ -6926,6 +7206,37 @@ module Google
         end
       end
       
+      # Contains details about a group of security issues that, when the issues occur
+      # together, represent a greater risk than when the issues occur independently. A
+      # group of such issues is referred to as a toxic combination.
+      class GoogleCloudSecuritycenterV2ToxicCombination
+        include Google::Apis::Core::Hashable
+      
+        # The [Attack exposure score](https://cloud.google.com/security-command-center/
+        # docs/attack-exposure-learn#attack_exposure_scores) of this toxic combination.
+        # The score is a measure of how much this toxic combination exposes one or more
+        # high-value resources to potential attack.
+        # Corresponds to the JSON property `attackExposureScore`
+        # @return [Float]
+        attr_accessor :attack_exposure_score
+      
+        # List of resource names of findings associated with this toxic combination. For
+        # example, organizations/123/sources/456/findings/789.
+        # Corresponds to the JSON property `relatedFindings`
+        # @return [Array<String>]
+        attr_accessor :related_findings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attack_exposure_score = args[:attack_exposure_score] if args.key?(:attack_exposure_score)
+          @related_findings = args[:related_findings] if args.key?(:related_findings)
+        end
+      end
+      
       # Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
       class GoogleCloudSecuritycenterV2Vulnerability
         include Google::Apis::Core::Hashable
@@ -7195,6 +7506,32 @@ module Google
           @group_by_results = args[:group_by_results] if args.key?(:group_by_results)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @read_time = args[:read_time] if args.key?(:read_time)
+        end
+      end
+      
+      # Contains details about groups of which this finding is a member. A group is a
+      # collection of findings that are related in some way.
+      class GroupMembership
+        include Google::Apis::Core::Hashable
+      
+        # ID of the group.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # Type of group.
+        # Corresponds to the JSON property `groupType`
+        # @return [String]
+        attr_accessor :group_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @group_type = args[:group_type] if args.key?(:group_type)
         end
       end
       
@@ -9010,6 +9347,37 @@ module Google
           @status = args[:status] if args.key?(:status)
           @update_time = args[:update_time] if args.key?(:update_time)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Contains details about a group of security issues that, when the issues occur
+      # together, represent a greater risk than when the issues occur independently. A
+      # group of such issues is referred to as a toxic combination.
+      class ToxicCombination
+        include Google::Apis::Core::Hashable
+      
+        # The [Attack exposure score](https://cloud.google.com/security-command-center/
+        # docs/attack-exposure-learn#attack_exposure_scores) of this toxic combination.
+        # The score is a measure of how much this toxic combination exposes one or more
+        # high-value resources to potential attack.
+        # Corresponds to the JSON property `attackExposureScore`
+        # @return [Float]
+        attr_accessor :attack_exposure_score
+      
+        # List of resource names of findings associated with this toxic combination. For
+        # example, organizations/123/sources/456/findings/789.
+        # Corresponds to the JSON property `relatedFindings`
+        # @return [Array<String>]
+        attr_accessor :related_findings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attack_exposure_score = args[:attack_exposure_score] if args.key?(:attack_exposure_score)
+          @related_findings = args[:related_findings] if args.key?(:related_findings)
         end
       end
       
