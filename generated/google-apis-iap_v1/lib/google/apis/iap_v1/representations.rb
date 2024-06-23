@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NextStateOfTags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OAuth2
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,24 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TagsFullState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TagsFullStateForChildResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TagsPartialState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -399,6 +423,18 @@ module Google
         end
       end
       
+      class NextStateOfTags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tags_full_state, as: 'tagsFullState', class: Google::Apis::IapV1::TagsFullState, decorator: Google::Apis::IapV1::TagsFullState::Representation
+      
+          property :tags_full_state_for_child_resource, as: 'tagsFullStateForChildResource', class: Google::Apis::IapV1::TagsFullStateForChildResource, decorator: Google::Apis::IapV1::TagsFullStateForChildResource::Representation
+      
+          property :tags_partial_state, as: 'tagsPartialState', class: Google::Apis::IapV1::TagsPartialState, decorator: Google::Apis::IapV1::TagsPartialState::Representation
+      
+        end
+      end
+      
       class OAuth2
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -468,6 +504,8 @@ module Google
           hash :expected_next_state, as: 'expectedNextState'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :next_state_of_tags, as: 'nextStateOfTags', class: Google::Apis::IapV1::NextStateOfTags, decorator: Google::Apis::IapV1::NextStateOfTags::Representation
+      
           property :service, as: 'service'
           property :type, as: 'type'
         end
@@ -478,6 +516,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::IapV1::Policy, decorator: Google::Apis::IapV1::Policy::Representation
       
+        end
+      end
+      
+      class TagsFullState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :tags, as: 'tags'
+        end
+      end
+      
+      class TagsFullStateForChildResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :tags, as: 'tags'
+        end
+      end
+      
+      class TagsPartialState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tag_keys_to_remove, as: 'tagKeysToRemove'
+          hash :tags_to_upsert, as: 'tagsToUpsert'
         end
       end
       

@@ -720,6 +720,39 @@ module Google
         end
       end
       
+      # Used for calculating the next state of tags on the resource being passed for
+      # the CheckCustomConstraints RPC call. The detail evaluation of each field is
+      # described in go/op-create-update-time-tags and go/tags-in-orgpolicy-requests.
+      class NextStateOfTags
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `tagsFullState`
+        # @return [Google::Apis::IapV1::TagsFullState]
+        attr_accessor :tags_full_state
+      
+        # 
+        # Corresponds to the JSON property `tagsFullStateForChildResource`
+        # @return [Google::Apis::IapV1::TagsFullStateForChildResource]
+        attr_accessor :tags_full_state_for_child_resource
+      
+        # 
+        # Corresponds to the JSON property `tagsPartialState`
+        # @return [Google::Apis::IapV1::TagsPartialState]
+        attr_accessor :tags_partial_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags_full_state = args[:tags_full_state] if args.key?(:tags_full_state)
+          @tags_full_state_for_child_resource = args[:tags_full_state_for_child_resource] if args.key?(:tags_full_state_for_child_resource)
+          @tags_partial_state = args[:tags_partial_state] if args.key?(:tags_partial_state)
+        end
+      end
+      
       # The OAuth 2.0 Settings
       class OAuth2
         include Google::Apis::Core::Hashable
@@ -1053,6 +1086,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Used for calculating the next state of tags on the resource being passed for
+        # the CheckCustomConstraints RPC call. The detail evaluation of each field is
+        # described in go/op-create-update-time-tags and go/tags-in-orgpolicy-requests.
+        # Corresponds to the JSON property `nextStateOfTags`
+        # @return [Google::Apis::IapV1::NextStateOfTags]
+        attr_accessor :next_state_of_tags
+      
         # The name of the service this resource belongs to. It is configured using the
         # official_service_name of the Service as defined in service configurations
         # under //configs/cloud/resourcetypes. For example, the official_service_name of
@@ -1090,6 +1130,7 @@ module Google
           @expected_next_state = args[:expected_next_state] if args.key?(:expected_next_state)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @next_state_of_tags = args[:next_state_of_tags] if args.key?(:next_state_of_tags)
           @service = args[:service] if args.key?(:service)
           @type = args[:type] if args.key?(:type)
         end
@@ -1137,6 +1178,83 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # 
+      class TagsFullState
+        include Google::Apis::Core::Hashable
+      
+        # If TagsFullState is initialized, the values in this field fully represent all
+        # the tags in the next state (the current tag values are not used). If tags.size(
+        # ) == 0, the next state of tags would be no tags for evaluation purposes. Only
+        # one type of tags reference (numeric or namespace) is required to be passed.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # 
+      class TagsFullStateForChildResource
+        include Google::Apis::Core::Hashable
+      
+        # If TagsFullStateForChildResource is initialized, the values in this field
+        # represent all the tags in the next state for the child resource. Only one type
+        # of tags reference (numeric or namespace) is required to be passed. IMPORTANT:
+        # This field should only be used when the target resource IAM policy name is
+        # UNKNOWN and the resource's parent IAM policy name is being passed in the
+        # request.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # 
+      class TagsPartialState
+        include Google::Apis::Core::Hashable
+      
+        # Keys of the tags that should be removed for evaluation purposes. IMPORTANT:
+        # Currently only numeric references are supported. Once support for namespace
+        # references is added, both the tag references (numeric and namespace) will be
+        # removed.
+        # Corresponds to the JSON property `tagKeysToRemove`
+        # @return [Array<String>]
+        attr_accessor :tag_keys_to_remove
+      
+        # Tags that’ll be updated or added to the current state of tags for evaluation
+        # purposes. If a key exists in both "tags_to_upsert" and "tag_keys_to_remove",
+        # the one in "tag_keys_to_remove" is ignored. Only one type of tags reference (
+        # numeric or namespace) is required to be passed.
+        # Corresponds to the JSON property `tagsToUpsert`
+        # @return [Hash<String,String>]
+        attr_accessor :tags_to_upsert
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tag_keys_to_remove = args[:tag_keys_to_remove] if args.key?(:tag_keys_to_remove)
+          @tags_to_upsert = args[:tags_to_upsert] if args.key?(:tags_to_upsert)
         end
       end
       
