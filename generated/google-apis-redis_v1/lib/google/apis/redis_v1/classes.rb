@@ -230,9 +230,9 @@ module Google
         # @return [Array<Google::Apis::RedisV1::DiscoveryEndpoint>]
         attr_accessor :discovery_endpoints
       
-        # Required. Unique name of the resource in this scope including project and
-        # location using the form: `projects/`project_id`/locations/`location_id`/
-        # clusters/`cluster_id``
+        # Required. Identifier. Unique name of the resource in this scope including
+        # project and location using the form: `projects/`project_id`/locations/`
+        # location_id`/clusters/`cluster_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
