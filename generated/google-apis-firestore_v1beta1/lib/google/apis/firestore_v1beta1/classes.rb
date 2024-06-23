@@ -1138,6 +1138,73 @@ module Google
         end
       end
       
+      # Metadata for google.longrunning.Operation results from FirestoreAdmin.
+      # BulkDeleteDocuments.
+      class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The ids of the collection groups that are being deleted.
+        # Corresponds to the JSON property `collectionIds`
+        # @return [Array<String>]
+        attr_accessor :collection_ids
+      
+        # The time this operation completed. Will be unset if operation still in
+        # progress.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Which namespace ids are being deleted.
+        # Corresponds to the JSON property `namespaceIds`
+        # @return [Array<String>]
+        attr_accessor :namespace_ids
+      
+        # The state of the operation.
+        # Corresponds to the JSON property `operationState`
+        # @return [String]
+        attr_accessor :operation_state
+      
+        # Describes the progress of the operation. Unit of work is generic and must be
+        # interpreted based on where Progress is used.
+        # Corresponds to the JSON property `progressBytes`
+        # @return [Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1Progress]
+        attr_accessor :progress_bytes
+      
+        # Describes the progress of the operation. Unit of work is generic and must be
+        # interpreted based on where Progress is used.
+        # Corresponds to the JSON property `progressDocuments`
+        # @return [Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1Progress]
+        attr_accessor :progress_documents
+      
+        # The timestamp that corresponds to the version of the database that is being
+        # read to get the list of documents to delete. This time can also be used as the
+        # timestamp of PITR in case of disaster recovery (subject to PITR window limit).
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
+        # The time this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @namespace_ids = args[:namespace_ids] if args.key?(:namespace_ids)
+          @operation_state = args[:operation_state] if args.key?(:operation_state)
+          @progress_bytes = args[:progress_bytes] if args.key?(:progress_bytes)
+          @progress_documents = args[:progress_documents] if args.key?(:progress_documents)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Metadata related to the create database operation.
       class GoogleFirestoreAdminV1CreateDatabaseMetadata
         include Google::Apis::Core::Hashable
