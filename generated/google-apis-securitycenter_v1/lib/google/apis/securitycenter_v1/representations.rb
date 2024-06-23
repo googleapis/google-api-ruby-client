@@ -130,6 +130,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AzureManagementGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AzureMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AzureResourceGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AzureSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupDisasterRecovery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -550,6 +574,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2AzureManagementGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AzureMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AzureResourceGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AzureSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2BackupDisasterRecovery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +749,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Geolocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2GroupMembership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -922,6 +976,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2ToxicCombination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Vulnerability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -953,6 +1013,12 @@ module Google
       end
       
       class GroupFindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GroupMembership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1402,6 +1468,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ToxicCombination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ValidateEventThreatDetectionCustomModuleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1632,6 +1704,41 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
+        end
+      end
+      
+      class AzureManagementGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+        end
+      end
+      
+      class AzureMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :management_groups, as: 'managementGroups', class: Google::Apis::SecuritycenterV1::AzureManagementGroup, decorator: Google::Apis::SecuritycenterV1::AzureManagementGroup::Representation
+      
+          property :resource_group, as: 'resourceGroup', class: Google::Apis::SecuritycenterV1::AzureResourceGroup, decorator: Google::Apis::SecuritycenterV1::AzureResourceGroup::Representation
+      
+          property :subscription, as: 'subscription', class: Google::Apis::SecuritycenterV1::AzureSubscription, decorator: Google::Apis::SecuritycenterV1::AzureSubscription::Representation
+      
+        end
+      end
+      
+      class AzureResourceGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class AzureSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
         end
       end
       
@@ -2002,6 +2109,8 @@ module Google
           collection :files, as: 'files', class: Google::Apis::SecuritycenterV1::File, decorator: Google::Apis::SecuritycenterV1::File::Representation
       
           property :finding_class, as: 'findingClass'
+          collection :group_memberships, as: 'groupMemberships', class: Google::Apis::SecuritycenterV1::GroupMembership, decorator: Google::Apis::SecuritycenterV1::GroupMembership::Representation
+      
           collection :iam_bindings, as: 'iamBindings', class: Google::Apis::SecuritycenterV1::IamBinding, decorator: Google::Apis::SecuritycenterV1::IamBinding::Representation
       
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1::Indicator, decorator: Google::Apis::SecuritycenterV1::Indicator::Representation
@@ -2038,6 +2147,8 @@ module Google
           property :severity, as: 'severity'
           hash :source_properties, as: 'sourceProperties'
           property :state, as: 'state'
+          property :toxic_combination, as: 'toxicCombination', class: Google::Apis::SecuritycenterV1::ToxicCombination, decorator: Google::Apis::SecuritycenterV1::ToxicCombination::Representation
+      
           property :vulnerability, as: 'vulnerability', class: Google::Apis::SecuritycenterV1::Vulnerability, decorator: Google::Apis::SecuritycenterV1::Vulnerability::Representation
       
         end
@@ -2207,6 +2318,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1::AwsMetadata, decorator: Google::Apis::SecuritycenterV1::AwsMetadata::Representation
+      
+          property :azure_metadata, as: 'azureMetadata', class: Google::Apis::SecuritycenterV1::AzureMetadata, decorator: Google::Apis::SecuritycenterV1::AzureMetadata::Representation
       
           property :cloud_provider, as: 'cloudProvider'
           property :display_name, as: 'displayName'
@@ -2459,6 +2572,41 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AzureManagementGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AzureMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :management_groups, as: 'managementGroups', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureManagementGroup, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureManagementGroup::Representation
+      
+          property :resource_group, as: 'resourceGroup', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureResourceGroup, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureResourceGroup::Representation
+      
+          property :subscription, as: 'subscription', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureSubscription, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureSubscription::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AzureResourceGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AzureSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
         end
       end
       
@@ -2759,6 +2907,8 @@ module Google
           collection :files, as: 'files', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2File, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2File::Representation
       
           property :finding_class, as: 'findingClass'
+          collection :group_memberships, as: 'groupMemberships', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2GroupMembership, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2GroupMembership::Representation
+      
           collection :iam_bindings, as: 'iamBindings', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IamBinding, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IamBinding::Representation
       
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Indicator, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Indicator::Representation
@@ -2795,6 +2945,8 @@ module Google
           property :severity, as: 'severity'
           hash :source_properties, as: 'sourceProperties'
           property :state, as: 'state'
+          property :toxic_combination, as: 'toxicCombination', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ToxicCombination, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ToxicCombination::Representation
+      
           property :vulnerability, as: 'vulnerability', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Vulnerability, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Vulnerability::Representation
       
         end
@@ -2812,6 +2964,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2GroupMembership
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_id, as: 'groupId'
+          property :group_type, as: 'groupType'
         end
       end
       
@@ -3067,6 +3227,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AwsMetadata, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AwsMetadata::Representation
       
+          property :azure_metadata, as: 'azureMetadata', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureMetadata, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureMetadata::Representation
+      
           property :cloud_provider, as: 'cloudProvider'
           property :display_name, as: 'displayName'
           property :gcp_metadata, as: 'gcpMetadata', class: Google::Apis::SecuritycenterV1::GcpMetadata, decorator: Google::Apis::SecuritycenterV1::GcpMetadata::Representation
@@ -3204,6 +3366,14 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2ToxicCombination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attack_exposure_score, as: 'attackExposureScore'
+          collection :related_findings, as: 'relatedFindings'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2Vulnerability
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3268,6 +3438,14 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           property :read_time, as: 'readTime'
           property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class GroupMembership
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_id, as: 'groupId'
+          property :group_type, as: 'groupType'
         end
       end
       
@@ -3746,6 +3924,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1::AwsMetadata, decorator: Google::Apis::SecuritycenterV1::AwsMetadata::Representation
       
+          property :azure_metadata, as: 'azureMetadata', class: Google::Apis::SecuritycenterV1::AzureMetadata, decorator: Google::Apis::SecuritycenterV1::AzureMetadata::Representation
+      
           property :cloud_provider, as: 'cloudProvider'
           property :display_name, as: 'displayName'
           collection :folders, as: 'folders', class: Google::Apis::SecuritycenterV1::Folder, decorator: Google::Apis::SecuritycenterV1::Folder::Representation
@@ -4003,6 +4183,14 @@ module Google
           property :status, as: 'status'
           property :update_time, as: 'updateTime'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class ToxicCombination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attack_exposure_score, as: 'attackExposureScore'
+          collection :related_findings, as: 'relatedFindings'
         end
       end
       
