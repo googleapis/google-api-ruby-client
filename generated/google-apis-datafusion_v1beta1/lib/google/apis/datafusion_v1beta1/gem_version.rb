@@ -16,13 +16,13 @@ module Google
   module Apis
     module DatafusionV1beta1
       # Version of the google-apis-datafusion_v1beta1 gem
-      GEM_VERSION = "0.31.0"
+      GEM_VERSION = "0.32.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.15.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240219"
+      REVISION = "20240618"
     end
   end
 end

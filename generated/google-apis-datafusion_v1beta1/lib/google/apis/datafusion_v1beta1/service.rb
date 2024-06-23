@@ -94,8 +94,6 @@ module Google
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
         #   in [AIP-160](https://google.aip.dev/160).
-        # @param [Boolean] include_unrevealed_locations
-        #   If true, the returned list will include locations which are not yet revealed.
         # @param [Fixnum] page_size
         #   The maximum number of results to return. If not set, the service selects a
         #   default.
@@ -119,13 +117,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_locations(name, filter: nil, include_unrevealed_locations: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}/locations', options)
           command.response_representation = Google::Apis::DatafusionV1beta1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::DatafusionV1beta1::ListLocationsResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
-          command.query['includeUnrevealedLocations'] = include_unrevealed_locations unless include_unrevealed_locations.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
