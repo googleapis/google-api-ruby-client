@@ -5774,8 +5774,7 @@ module Google
         end
       end
       
-      # To change this message, in the same CL add a change log in go/changing-api-
-      # proto-breaks-ui
+      # 
       class GoogleCloudApigeeV1ListApiProxiesResponse
         include Google::Apis::Core::Hashable
       
@@ -6523,8 +6522,7 @@ module Google
         end
       end
       
-      # To change this message, in the same CL add a change log in go/changing-api-
-      # proto-breaks-ui
+      # 
       class GoogleCloudApigeeV1ListSharedFlowsResponse
         include Google::Apis::Core::Hashable
       
