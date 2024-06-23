@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudKmsV1KeyAccessJustificationsPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudKmsV1KeyOperationAttestation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -135,6 +141,8 @@ module Google
           property :crypto_key_backend, as: 'cryptoKeyBackend'
           property :destroy_scheduled_duration, as: 'destroyScheduledDuration'
           property :import_only, as: 'importOnly'
+          property :key_access_justifications_policy, as: 'keyAccessJustificationsPolicy', class: Google::Apis::KmsinventoryV1::GoogleCloudKmsV1KeyAccessJustificationsPolicy, decorator: Google::Apis::KmsinventoryV1::GoogleCloudKmsV1KeyAccessJustificationsPolicy::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :next_rotation_time, as: 'nextRotationTime'
@@ -184,6 +192,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ekm_connection_key_path, as: 'ekmConnectionKeyPath'
           property :external_key_uri, as: 'externalKeyUri'
+        end
+      end
+      
+      class GoogleCloudKmsV1KeyAccessJustificationsPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_access_reasons, as: 'allowedAccessReasons'
         end
       end
       
