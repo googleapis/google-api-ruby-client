@@ -934,7 +934,8 @@ module Google
       
         # Required. The percentage based deployments that will occur as a part of a `
         # Rollout`. List is expected in ascending order and each integer n is 0 <= n <
-        # 100.
+        # 100. If the GatewayServiceMesh is configured for Kubernetes, then the range
+        # for n is 0 <= n <= 100.
         # Corresponds to the JSON property `percentages`
         # @return [Array<Fixnum>]
         attr_accessor :percentages
