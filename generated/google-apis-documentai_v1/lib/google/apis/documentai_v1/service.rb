@@ -406,7 +406,10 @@ module Google
         end
         
         # Creates a processor from the ProcessorType provided. The processor will be at `
-        # ENABLED` state by default after its creation.
+        # ENABLED` state by default after its creation. Note that this method requires
+        # the `documentai.processors.create` permission on the project, which is highly
+        # privileged. A user or service account with this permission can create new
+        # processors that can interact with any gcs bucket in your project.
         # @param [String] parent
         #   Required. The parent (project and location) under which to create the
         #   processor. Format: `projects/`project`/locations/`location``
