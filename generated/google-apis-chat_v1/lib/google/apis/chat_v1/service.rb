@@ -433,7 +433,15 @@ module Google
         #   [access setting](https://support.google.com/chat/answer/11971020) of a space.
         #   If no audience is specified in the access setting, the space's access setting
         #   is updated to restricted. Warning: mutually exclusive with all other field
-        #   paths.) `access_settings.audience` is not supported with admin access.
+        #   paths.) `access_settings.audience` is not supported with admin access. -
+        #   Developer Preview: Supports changing the [permission settings](https://support.
+        #   google.com/chat/answer/13340792) of a space, supported field paths include: `
+        #   permission_settings.manage_members_and_groups`, `permission_settings.
+        #   modify_space_details`, `permission_settings.toggle_history`, `
+        #   permission_settings.use_at_mention_all`, `permission_settings.manage_apps`, `
+        #   permission_settings.manage_webhooks`, `permission_settings.reply_messages` (
+        #   Warning: mutually exclusive with all other non-permission settings field paths)
+        #   . `permission_settings` is not supported with admin access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
