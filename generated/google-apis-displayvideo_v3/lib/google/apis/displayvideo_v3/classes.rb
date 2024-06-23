@@ -7098,7 +7098,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The optimization objective of the insertion order.
+        # Optional. The optimization objective of the insertion order. **This field is
+        # only available to allowlisted customers.** If a customer is not allowlisted,
+        # this field will be null and attempts to set it will return an error.
         # Corresponds to the JSON property `optimizationObjective`
         # @return [String]
         attr_accessor :optimization_objective
