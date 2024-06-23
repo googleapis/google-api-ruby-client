@@ -1,0 +1,7 @@
+{
+    "api_id": "meet:v2",
+    "name_pretty": "Google Meet API",
+    "distribution_name": "google-apis-meet_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
