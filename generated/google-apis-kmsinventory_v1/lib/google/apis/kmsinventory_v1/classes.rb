@@ -246,6 +246,12 @@ module Google
         attr_accessor :import_only
         alias_method :import_only?, :import_only
       
+        # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
+        # values for encrypt, decrypt, and sign operations on a CryptoKey.
+        # Corresponds to the JSON property `keyAccessJustificationsPolicy`
+        # @return [Google::Apis::KmsinventoryV1::GoogleCloudKmsV1KeyAccessJustificationsPolicy]
+        attr_accessor :key_access_justifications_policy
+      
         # Labels with user-defined metadata. For more information, see [Labeling Keys](
         # https://cloud.google.com/kms/docs/labeling-keys).
         # Corresponds to the JSON property `labels`
@@ -309,6 +315,7 @@ module Google
           @crypto_key_backend = args[:crypto_key_backend] if args.key?(:crypto_key_backend)
           @destroy_scheduled_duration = args[:destroy_scheduled_duration] if args.key?(:destroy_scheduled_duration)
           @import_only = args[:import_only] if args.key?(:import_only)
+          @key_access_justifications_policy = args[:key_access_justifications_policy] if args.key?(:key_access_justifications_policy)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @next_rotation_time = args[:next_rotation_time] if args.key?(:next_rotation_time)
@@ -505,6 +512,28 @@ module Google
         def update!(**args)
           @ekm_connection_key_path = args[:ekm_connection_key_path] if args.key?(:ekm_connection_key_path)
           @external_key_uri = args[:external_key_uri] if args.key?(:external_key_uri)
+        end
+      end
+      
+      # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
+      # values for encrypt, decrypt, and sign operations on a CryptoKey.
+      class GoogleCloudKmsV1KeyAccessJustificationsPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The list of allowed reasons for access to a CryptoKey. Zero allowed access
+        # reasons means all encrypt, decrypt, and sign operations for the CryptoKey
+        # associated with this policy will fail.
+        # Corresponds to the JSON property `allowedAccessReasons`
+        # @return [Array<String>]
+        attr_accessor :allowed_access_reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_access_reasons = args[:allowed_access_reasons] if args.key?(:allowed_access_reasons)
         end
       end
       
