@@ -244,6 +244,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1BulkDeleteDocumentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1CmekConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,12 +275,6 @@ module Google
       end
       
       class GoogleFirestoreAdminV1Database
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleFirestoreAdminV1DatabaseSnapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1044,6 +1050,30 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_ids, as: 'collectionIds'
+          property :end_time, as: 'endTime'
+          collection :namespace_ids, as: 'namespaceIds'
+          property :operation_state, as: 'operationState'
+          property :progress_bytes, as: 'progressBytes', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress::Representation
+      
+          property :progress_documents, as: 'progressDocuments', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress::Representation
+      
+          property :snapshot_time, as: 'snapshotTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1BulkDeleteDocumentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_ids, as: 'collectionIds'
+          collection :namespace_ids, as: 'namespaceIds'
+        end
+      end
+      
       class GoogleFirestoreAdminV1CmekConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1087,14 +1117,6 @@ module Google
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :version_retention_period, as: 'versionRetentionPeriod'
-        end
-      end
-      
-      class GoogleFirestoreAdminV1DatabaseSnapshot
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :database, as: 'database'
-          property :snapshot_time, as: 'snapshotTime'
         end
       end
       
@@ -1331,8 +1353,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
           property :database_id, as: 'databaseId'
-          property :database_snapshot, as: 'databaseSnapshot', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DatabaseSnapshot, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DatabaseSnapshot::Representation
-      
           property :kms_key_name, as: 'kmsKeyName'
           property :use_backup_encryption, as: 'useBackupEncryption', class: Google::Apis::FirestoreV1::Empty, decorator: Google::Apis::FirestoreV1::Empty::Representation
       
