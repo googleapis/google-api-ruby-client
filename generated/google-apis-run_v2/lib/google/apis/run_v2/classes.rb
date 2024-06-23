@@ -1014,7 +1014,8 @@ module Google
         # @return [String]
         attr_accessor :creator
       
-        # Output only. The deletion time.
+        # Output only. The deletion time. It is only populated as a response to a Delete
+        # request.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
@@ -2151,7 +2152,8 @@ module Google
         attr_accessor :default_uri_disabled
         alias_method :default_uri_disabled?, :default_uri_disabled
       
-        # Output only. The deletion time.
+        # Output only. The deletion time. It is only populated as a response to a Delete
+        # request.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
