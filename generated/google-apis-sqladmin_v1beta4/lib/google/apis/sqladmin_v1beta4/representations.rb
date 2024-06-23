@@ -824,7 +824,6 @@ module Google
           property :kind, as: 'kind'
           property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
           property :point_in_time, as: 'pointInTime'
-          property :preferred_secondary_zone, as: 'preferredSecondaryZone'
           property :preferred_zone, as: 'preferredZone'
         end
       end
