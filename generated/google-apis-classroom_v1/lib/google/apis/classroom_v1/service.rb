@@ -544,6 +544,63 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets metadata for Classroom add-ons in the context of a specific post. To
+        # maintain the integrity of its own data and permissions model, an add-on should
+        # call this to validate query parameters and the requesting user's role whenever
+        # the add-on is opened in an [iframe](https://developers.google.com/classroom/
+        # add-ons/get-started/iframes/iframes-overview). This method returns the
+        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
+        # identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] add_on_token
+        #   Optional. Token that authorizes the request. The token is passed as a query
+        #   parameter when the user is redirected from Classroom to the add-on's URL. The
+        #   authorization token is required when neither of the following is true: * The
+        #   add-on has attachments on the post. * The developer project issuing the
+        #   request is the same project that created the post.
+        # @param [String] attachment_id
+        #   Optional. The identifier of the attachment. This field is required for student
+        #   users and optional for teacher users. If not provided in the student case, an
+        #   error is returned.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnContext] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnContext]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_announcement_add_on_context(course_id, item_id, add_on_token: nil, attachment_id: nil, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/announcements/{itemId}/addOnContext', options)
+          command.response_representation = Google::Apis::ClassroomV1::AddOnContext::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnContext
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.query['addOnToken'] = add_on_token unless add_on_token.nil?
+          command.query['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns a list of announcements that the requester is permitted to view.
         # Course students may only view `PUBLISHED` announcements. Course teachers and
         # domain administrators may view all announcements. This method returns the
@@ -694,6 +751,257 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an add-on attachment under a post. Requires the add-on to have
+        # permission to create new attachments on the post. This method returns the
+        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
+        # identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   to create the attachment. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
+        # @param [String] add_on_token
+        #   Optional. Token that authorizes the request. The token is passed as a query
+        #   parameter when the user is redirected from Classroom to the add-on's URL. This
+        #   authorization token is required for in-Classroom attachment creation but
+        #   optional for partner-first attachment creation. Returns an error if not
+        #   provided for partner-first attachment creation and the developer projects that
+        #   created the attachment and its parent stream item do not match.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_course_announcement_add_on_attachment(course_id, item_id, add_on_attachment_object = nil, add_on_token: nil, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/announcements/{itemId}/addOnAttachments', options)
+          command.request_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.request_object = add_on_attachment_object
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.query['addOnToken'] = add_on_token unless add_on_token.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an add-on attachment. Requires the add-on to have been the original
+        # creator of the attachment. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_course_announcement_add_on_attachment(course_id, item_id, attachment_id, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
+          command.response_class = Google::Apis::ClassroomV1::Empty
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns an add-on attachment. Requires the add-on requesting the attachment to
+        # be the original creator of the attachment. This method returns the following
+        # error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if
+        # the request is malformed. * `NOT_FOUND` if one of the identified resources
+        # does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_announcement_add_on_attachment(course_id, item_id, attachment_id, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns all attachments created by an add-on under the post. Requires the add-
+        # on to have active attachments on the post or have permission to create new
+        # attachments on the post. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial whose
+        #   attachments should be enumerated. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
+        # @param [Fixnum] page_size
+        #   The maximum number of attachments to return. The service may return fewer than
+        #   this value. If unspecified, at most 20 attachments will be returned. The
+        #   maximum value is 20; values above 20 will be coerced to 20.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListAddOnAttachments` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListAddOnAttachments` must match the call that provided the page
+        #   token.
+        # @param [String] post_id
+        #   Optional. Identifier of the post under the course whose attachments to
+        #   enumerate. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_course_announcement_add_on_attachments(course_id, item_id, page_size: nil, page_token: nil, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/announcements/{itemId}/addOnAttachments', options)
+          command.response_representation = Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse::Representation
+          command.response_class = Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an add-on attachment. Requires the add-on to have been the original
+        # creator of the attachment. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the post under which the attachment is attached.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
+        # @param [String] post_id
+        #   Required. Identifier of the post under which the attachment is attached.
+        # @param [String] update_mask
+        #   Required. Mask that identifies which fields on the attachment to update. The
+        #   update fails if invalid fields are specified. If a field supports empty values,
+        #   it can be cleared by specifying it in the update mask and not in the `
+        #   AddOnAttachment` object. If a field that does not support empty values is
+        #   included in the update mask and not set in the `AddOnAttachment` object, an `
+        #   INVALID_ARGUMENT` error is returned. The following fields may be specified by
+        #   teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `
+        #   student_work_review_uri` * `due_date` * `due_time` * `max_points`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_course_announcement_add_on_attachment(course_id, item_id, attachment_id, add_on_attachment_object = nil, post_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', options)
+          command.request_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.request_object = add_on_attachment_object
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates course work. The resulting course work (and corresponding student
         # submissions) are associated with the Developer Console project of the [OAuth
         # client ID](https://support.google.com/cloud/answer/6158849) used to make the
@@ -813,6 +1121,63 @@ module Google
           command.response_class = Google::Apis::ClassroomV1::CourseWork
           command.params['courseId'] = course_id unless course_id.nil?
           command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets metadata for Classroom add-ons in the context of a specific post. To
+        # maintain the integrity of its own data and permissions model, an add-on should
+        # call this to validate query parameters and the requesting user's role whenever
+        # the add-on is opened in an [iframe](https://developers.google.com/classroom/
+        # add-ons/get-started/iframes/iframes-overview). This method returns the
+        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
+        # identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] add_on_token
+        #   Optional. Token that authorizes the request. The token is passed as a query
+        #   parameter when the user is redirected from Classroom to the add-on's URL. The
+        #   authorization token is required when neither of the following is true: * The
+        #   add-on has attachments on the post. * The developer project issuing the
+        #   request is the same project that created the post.
+        # @param [String] attachment_id
+        #   Optional. The identifier of the attachment. This field is required for student
+        #   users and optional for teacher users. If not provided in the student case, an
+        #   error is returned.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnContext] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnContext]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_course_work_add_on_context(course_id, item_id, add_on_token: nil, attachment_id: nil, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{itemId}/addOnContext', options)
+          command.response_representation = Google::Apis::ClassroomV1::AddOnContext::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnContext
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.query['addOnToken'] = add_on_token unless add_on_token.nil?
+          command.query['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -969,6 +1334,363 @@ module Google
           command.response_class = Google::Apis::ClassroomV1::CourseWork
           command.params['courseId'] = course_id unless course_id.nil?
           command.params['id'] = id unless id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an add-on attachment under a post. Requires the add-on to have
+        # permission to create new attachments on the post. This method returns the
+        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
+        # identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   to create the attachment. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
+        # @param [String] add_on_token
+        #   Optional. Token that authorizes the request. The token is passed as a query
+        #   parameter when the user is redirected from Classroom to the add-on's URL. This
+        #   authorization token is required for in-Classroom attachment creation but
+        #   optional for partner-first attachment creation. Returns an error if not
+        #   provided for partner-first attachment creation and the developer projects that
+        #   created the attachment and its parent stream item do not match.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_course_course_work_add_on_attachment(course_id, item_id, add_on_attachment_object = nil, add_on_token: nil, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments', options)
+          command.request_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.request_object = add_on_attachment_object
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.query['addOnToken'] = add_on_token unless add_on_token.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an add-on attachment. Requires the add-on to have been the original
+        # creator of the attachment. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_course_course_work_add_on_attachment(course_id, item_id, attachment_id, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
+          command.response_class = Google::Apis::ClassroomV1::Empty
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns an add-on attachment. Requires the add-on requesting the attachment to
+        # be the original creator of the attachment. This method returns the following
+        # error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if
+        # the request is malformed. * `NOT_FOUND` if one of the identified resources
+        # does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_course_work_add_on_attachment(course_id, item_id, attachment_id, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns all attachments created by an add-on under the post. Requires the add-
+        # on to have active attachments on the post or have permission to create new
+        # attachments on the post. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial whose
+        #   attachments should be enumerated. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
+        # @param [Fixnum] page_size
+        #   The maximum number of attachments to return. The service may return fewer than
+        #   this value. If unspecified, at most 20 attachments will be returned. The
+        #   maximum value is 20; values above 20 will be coerced to 20.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListAddOnAttachments` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListAddOnAttachments` must match the call that provided the page
+        #   token.
+        # @param [String] post_id
+        #   Optional. Identifier of the post under the course whose attachments to
+        #   enumerate. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_course_course_work_add_on_attachments(course_id, item_id, page_size: nil, page_token: nil, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments', options)
+          command.response_representation = Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse::Representation
+          command.response_class = Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an add-on attachment. Requires the add-on to have been the original
+        # creator of the attachment. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the post under which the attachment is attached.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
+        # @param [String] post_id
+        #   Required. Identifier of the post under which the attachment is attached.
+        # @param [String] update_mask
+        #   Required. Mask that identifies which fields on the attachment to update. The
+        #   update fails if invalid fields are specified. If a field supports empty values,
+        #   it can be cleared by specifying it in the update mask and not in the `
+        #   AddOnAttachment` object. If a field that does not support empty values is
+        #   included in the update mask and not set in the `AddOnAttachment` object, an `
+        #   INVALID_ARGUMENT` error is returned. The following fields may be specified by
+        #   teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `
+        #   student_work_review_uri` * `due_date` * `due_time` * `max_points`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_course_course_work_add_on_attachment(course_id, item_id, attachment_id, add_on_attachment_object = nil, post_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', options)
+          command.request_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.request_object = add_on_attachment_object
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a student submission for an add-on attachment. This method returns the
+        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
+        # identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] submission_id
+        #   Required. Identifier of the student’s submission.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_course_work_add_on_attachment_student_submission(course_id, item_id, attachment_id, submission_id, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.params['submissionId'] = submission_id unless submission_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates data associated with an add-on attachment submission. Requires the add-
+        # on to have been the original creator of the attachment and the attachment to
+        # have a positive `max_points` value set. This method returns the following
+        # error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if
+        # the request is malformed. * `NOT_FOUND` if one of the identified resources
+        # does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] submission_id
+        #   Required. Identifier of the student's submission.
+        # @param [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission] add_on_attachment_student_submission_object
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] update_mask
+        #   Required. Mask that identifies which fields on the attachment to update. The
+        #   update fails if invalid fields are specified. If a field supports empty values,
+        #   it can be cleared by specifying it in the update mask and not in the `
+        #   AddOnAttachmentStudentSubmission` object. The following fields may be
+        #   specified by teachers: * `points_earned`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_course_course_work_add_on_attachment_student_submission(course_id, item_id, attachment_id, submission_id, add_on_attachment_student_submission_object = nil, post_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', options)
+          command.request_representation = Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission::Representation
+          command.request_object = add_on_attachment_student_submission_object
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.params['submissionId'] = submission_id unless submission_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1464,6 +2186,63 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets metadata for Classroom add-ons in the context of a specific post. To
+        # maintain the integrity of its own data and permissions model, an add-on should
+        # call this to validate query parameters and the requesting user's role whenever
+        # the add-on is opened in an [iframe](https://developers.google.com/classroom/
+        # add-ons/get-started/iframes/iframes-overview). This method returns the
+        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
+        # identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] add_on_token
+        #   Optional. Token that authorizes the request. The token is passed as a query
+        #   parameter when the user is redirected from Classroom to the add-on's URL. The
+        #   authorization token is required when neither of the following is true: * The
+        #   add-on has attachments on the post. * The developer project issuing the
+        #   request is the same project that created the post.
+        # @param [String] attachment_id
+        #   Optional. The identifier of the attachment. This field is required for student
+        #   users and optional for teacher users. If not provided in the student case, an
+        #   error is returned.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnContext] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnContext]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_course_work_material_add_on_context(course_id, item_id, add_on_token: nil, attachment_id: nil, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnContext', options)
+          command.response_representation = Google::Apis::ClassroomV1::AddOnContext::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnContext
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.query['addOnToken'] = add_on_token unless add_on_token.nil?
+          command.query['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns a list of course work material that the requester is permitted to view.
         # Course students may only view `PUBLISHED` course work material. Course
         # teachers and domain administrators may view all course work material. This
@@ -1577,6 +2356,671 @@ module Google
           command.response_class = Google::Apis::ClassroomV1::CourseWorkMaterial
           command.params['courseId'] = course_id unless course_id.nil?
           command.params['id'] = id unless id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an add-on attachment under a post. Requires the add-on to have
+        # permission to create new attachments on the post. This method returns the
+        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
+        # identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   to create the attachment. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
+        # @param [String] add_on_token
+        #   Optional. Token that authorizes the request. The token is passed as a query
+        #   parameter when the user is redirected from Classroom to the add-on's URL. This
+        #   authorization token is required for in-Classroom attachment creation but
+        #   optional for partner-first attachment creation. Returns an error if not
+        #   provided for partner-first attachment creation and the developer projects that
+        #   created the attachment and its parent stream item do not match.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_course_course_work_material_add_on_attachment(course_id, item_id, add_on_attachment_object = nil, add_on_token: nil, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments', options)
+          command.request_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.request_object = add_on_attachment_object
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.query['addOnToken'] = add_on_token unless add_on_token.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an add-on attachment. Requires the add-on to have been the original
+        # creator of the attachment. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_course_course_work_material_add_on_attachment(course_id, item_id, attachment_id, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
+          command.response_class = Google::Apis::ClassroomV1::Empty
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns an add-on attachment. Requires the add-on requesting the attachment to
+        # be the original creator of the attachment. This method returns the following
+        # error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if
+        # the request is malformed. * `NOT_FOUND` if one of the identified resources
+        # does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_course_work_material_add_on_attachment(course_id, item_id, attachment_id, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns all attachments created by an add-on under the post. Requires the add-
+        # on to have active attachments on the post or have permission to create new
+        # attachments on the post. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial whose
+        #   attachments should be enumerated. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
+        # @param [Fixnum] page_size
+        #   The maximum number of attachments to return. The service may return fewer than
+        #   this value. If unspecified, at most 20 attachments will be returned. The
+        #   maximum value is 20; values above 20 will be coerced to 20.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListAddOnAttachments` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListAddOnAttachments` must match the call that provided the page
+        #   token.
+        # @param [String] post_id
+        #   Optional. Identifier of the post under the course whose attachments to
+        #   enumerate. Deprecated, use item_id instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_course_course_work_material_add_on_attachments(course_id, item_id, page_size: nil, page_token: nil, post_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments', options)
+          command.response_representation = Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse::Representation
+          command.response_class = Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an add-on attachment. Requires the add-on to have been the original
+        # creator of the attachment. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Identifier of the post under which the attachment is attached.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
+        # @param [String] post_id
+        #   Required. Identifier of the post under which the attachment is attached.
+        # @param [String] update_mask
+        #   Required. Mask that identifies which fields on the attachment to update. The
+        #   update fails if invalid fields are specified. If a field supports empty values,
+        #   it can be cleared by specifying it in the update mask and not in the `
+        #   AddOnAttachment` object. If a field that does not support empty values is
+        #   included in the update mask and not set in the `AddOnAttachment` object, an `
+        #   INVALID_ARGUMENT` error is returned. The following fields may be specified by
+        #   teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `
+        #   student_work_review_uri` * `due_date` * `due_time` * `max_points`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_course_course_work_material_add_on_attachment(course_id, item_id, attachment_id, add_on_attachment_object = nil, post_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', options)
+          command.request_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.request_object = add_on_attachment_object
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['postId'] = post_id unless post_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets metadata for Classroom add-ons in the context of a specific post. To
+        # maintain the integrity of its own data and permissions model, an add-on should
+        # call this to validate query parameters and the requesting user's role whenever
+        # the add-on is opened in an [iframe](https://developers.google.com/classroom/
+        # add-ons/get-started/iframes/iframes-overview). This method returns the
+        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
+        # identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] add_on_token
+        #   Optional. Token that authorizes the request. The token is passed as a query
+        #   parameter when the user is redirected from Classroom to the add-on's URL. The
+        #   authorization token is required when neither of the following is true: * The
+        #   add-on has attachments on the post. * The developer project issuing the
+        #   request is the same project that created the post.
+        # @param [String] attachment_id
+        #   Optional. The identifier of the attachment. This field is required for student
+        #   users and optional for teacher users. If not provided in the student case, an
+        #   error is returned.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnContext] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnContext]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_post_add_on_context(course_id, post_id, add_on_token: nil, attachment_id: nil, item_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/posts/{postId}/addOnContext', options)
+          command.response_representation = Google::Apis::ClassroomV1::AddOnContext::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnContext
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['postId'] = post_id unless post_id.nil?
+          command.query['addOnToken'] = add_on_token unless add_on_token.nil?
+          command.query['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['itemId'] = item_id unless item_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an add-on attachment under a post. Requires the add-on to have
+        # permission to create new attachments on the post. This method returns the
+        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
+        # identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
+        # @param [String] add_on_token
+        #   Optional. Token that authorizes the request. The token is passed as a query
+        #   parameter when the user is redirected from Classroom to the add-on's URL. This
+        #   authorization token is required for in-Classroom attachment creation but
+        #   optional for partner-first attachment creation. Returns an error if not
+        #   provided for partner-first attachment creation and the developer projects that
+        #   created the attachment and its parent stream item do not match.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   to create the attachment. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_course_post_add_on_attachment(course_id, post_id, add_on_attachment_object = nil, add_on_token: nil, item_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/posts/{postId}/addOnAttachments', options)
+          command.request_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.request_object = add_on_attachment_object
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['postId'] = post_id unless post_id.nil?
+          command.query['addOnToken'] = add_on_token unless add_on_token.nil?
+          command.query['itemId'] = item_id unless item_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an add-on attachment. Requires the add-on to have been the original
+        # creator of the attachment. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_course_post_add_on_attachment(course_id, post_id, attachment_id, item_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
+          command.response_class = Google::Apis::ClassroomV1::Empty
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['postId'] = post_id unless post_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['itemId'] = item_id unless item_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns an add-on attachment. Requires the add-on requesting the attachment to
+        # be the original creator of the attachment. This method returns the following
+        # error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if
+        # the request is malformed. * `NOT_FOUND` if one of the identified resources
+        # does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_post_add_on_attachment(course_id, post_id, attachment_id, item_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['postId'] = post_id unless post_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['itemId'] = item_id unless item_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns all attachments created by an add-on under the post. Requires the add-
+        # on to have active attachments on the post or have permission to create new
+        # attachments on the post. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] post_id
+        #   Optional. Identifier of the post under the course whose attachments to
+        #   enumerate. Deprecated, use item_id instead.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial whose
+        #   attachments should be enumerated. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
+        # @param [Fixnum] page_size
+        #   The maximum number of attachments to return. The service may return fewer than
+        #   this value. If unspecified, at most 20 attachments will be returned. The
+        #   maximum value is 20; values above 20 will be coerced to 20.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListAddOnAttachments` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListAddOnAttachments` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_course_post_add_on_attachments(course_id, post_id, item_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/posts/{postId}/addOnAttachments', options)
+          command.response_representation = Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse::Representation
+          command.response_class = Google::Apis::ClassroomV1::ListAddOnAttachmentsResponse
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['postId'] = post_id unless post_id.nil?
+          command.query['itemId'] = item_id unless item_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an add-on attachment. Requires the add-on to have been the original
+        # creator of the attachment. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] post_id
+        #   Required. Identifier of the post under which the attachment is attached.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
+        # @param [String] item_id
+        #   Identifier of the post under which the attachment is attached.
+        # @param [String] update_mask
+        #   Required. Mask that identifies which fields on the attachment to update. The
+        #   update fails if invalid fields are specified. If a field supports empty values,
+        #   it can be cleared by specifying it in the update mask and not in the `
+        #   AddOnAttachment` object. If a field that does not support empty values is
+        #   included in the update mask and not set in the `AddOnAttachment` object, an `
+        #   INVALID_ARGUMENT` error is returned. The following fields may be specified by
+        #   teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `
+        #   student_work_review_uri` * `due_date` * `due_time` * `max_points`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_course_post_add_on_attachment(course_id, post_id, attachment_id, add_on_attachment_object = nil, item_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', options)
+          command.request_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.request_object = add_on_attachment_object
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachment::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachment
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['postId'] = post_id unless post_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['itemId'] = item_id unless item_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a student submission for an add-on attachment. This method returns the
+        # following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the
+        # identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] submission_id
+        #   Required. Identifier of the student’s submission.
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_post_add_on_attachment_student_submission(course_id, post_id, attachment_id, submission_id, item_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['postId'] = post_id unless post_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.params['submissionId'] = submission_id unless submission_id.nil?
+          command.query['itemId'] = item_id unless item_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates data associated with an add-on attachment submission. Requires the add-
+        # on to have been the original creator of the attachment and the attachment to
+        # have a positive `max_points` value set. This method returns the following
+        # error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if
+        # the request is malformed. * `NOT_FOUND` if one of the identified resources
+        # does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] post_id
+        #   Optional. Deprecated, use item_id instead.
+        # @param [String] attachment_id
+        #   Required. Identifier of the attachment.
+        # @param [String] submission_id
+        #   Required. Identifier of the student's submission.
+        # @param [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission] add_on_attachment_student_submission_object
+        # @param [String] item_id
+        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
+        #   the attachment is attached. This field is required, but is not marked as such
+        #   while we are migrating from post_id.
+        # @param [String] update_mask
+        #   Required. Mask that identifies which fields on the attachment to update. The
+        #   update fails if invalid fields are specified. If a field supports empty values,
+        #   it can be cleared by specifying it in the update mask and not in the `
+        #   AddOnAttachmentStudentSubmission` object. The following fields may be
+        #   specified by teachers: * `points_earned`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_course_post_add_on_attachment_student_submission(course_id, post_id, attachment_id, submission_id, add_on_attachment_student_submission_object = nil, item_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', options)
+          command.request_representation = Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission::Representation
+          command.request_object = add_on_attachment_student_submission_object
+          command.response_representation = Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission::Representation
+          command.response_class = Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['postId'] = post_id unless post_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.params['submissionId'] = submission_id unless submission_id.nil?
+          command.query['itemId'] = item_id unless item_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

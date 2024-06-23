@@ -22,6 +22,193 @@ module Google
   module Apis
     module ClassroomV1
       
+      # An add-on attachment on a post.
+      class AddOnAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Identifiers of attachments that were previous copies of this
+        # attachment. If the attachment was previously copied by virtue of its parent
+        # post being copied, this enumerates the identifiers of attachments that were
+        # its previous copies in ascending chronological order of copy.
+        # Corresponds to the JSON property `copyHistory`
+        # @return [Array<Google::Apis::ClassroomV1::CopyHistory>]
+        attr_accessor :copy_history
+      
+        # Immutable. Identifier of the course.
+        # Corresponds to the JSON property `courseId`
+        # @return [String]
+        attr_accessor :course_id
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `dueDate`
+        # @return [Google::Apis::ClassroomV1::Date]
+        attr_accessor :due_date
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `dueTime`
+        # @return [Google::Apis::ClassroomV1::TimeOfDay]
+        attr_accessor :due_time
+      
+        # Immutable. Classroom-assigned identifier for this attachment, unique per post.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Immutable. Identifier of the announcement, courseWork, or courseWorkMaterial
+        # under which the attachment is attached. Unique per course.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # Maximum grade for this attachment. Can only be set if `studentWorkReviewUri`
+        # is set. Set to a non-zero value to indicate that the attachment supports grade
+        # passback. If set, this must be a non-negative integer value. When set to zero,
+        # the attachment will not support grade passback.
+        # Corresponds to the JSON property `maxPoints`
+        # @return [Float]
+        attr_accessor :max_points
+      
+        # Immutable. Deprecated, use item_id instead.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        # URI to be iframed after being populated with query parameters.
+        # Corresponds to the JSON property `studentViewUri`
+        # @return [Google::Apis::ClassroomV1::EmbedUri]
+        attr_accessor :student_view_uri
+      
+        # URI to be iframed after being populated with query parameters.
+        # Corresponds to the JSON property `studentWorkReviewUri`
+        # @return [Google::Apis::ClassroomV1::EmbedUri]
+        attr_accessor :student_work_review_uri
+      
+        # URI to be iframed after being populated with query parameters.
+        # Corresponds to the JSON property `teacherViewUri`
+        # @return [Google::Apis::ClassroomV1::EmbedUri]
+        attr_accessor :teacher_view_uri
+      
+        # Required. Title of this attachment. The title must be between 1 and 1000
+        # characters.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @copy_history = args[:copy_history] if args.key?(:copy_history)
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @due_date = args[:due_date] if args.key?(:due_date)
+          @due_time = args[:due_time] if args.key?(:due_time)
+          @id = args[:id] if args.key?(:id)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @max_points = args[:max_points] if args.key?(:max_points)
+          @post_id = args[:post_id] if args.key?(:post_id)
+          @student_view_uri = args[:student_view_uri] if args.key?(:student_view_uri)
+          @student_work_review_uri = args[:student_work_review_uri] if args.key?(:student_work_review_uri)
+          @teacher_view_uri = args[:teacher_view_uri] if args.key?(:teacher_view_uri)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Payload for grade update requests.
+      class AddOnAttachmentStudentSubmission
+        include Google::Apis::Core::Hashable
+      
+        # Student grade on this attachment. If unset, no grade was set.
+        # Corresponds to the JSON property `pointsEarned`
+        # @return [Float]
+        attr_accessor :points_earned
+      
+        # Submission state of add-on attachment's parent post (i.e. assignment).
+        # Corresponds to the JSON property `postSubmissionState`
+        # @return [String]
+        attr_accessor :post_submission_state
+      
+        # Identifier for the student that owns this submission. This field is part of an
+        # experimental API change and is populated only if sufficient scopes are granted.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @points_earned = args[:points_earned] if args.key?(:points_earned)
+          @post_submission_state = args[:post_submission_state] if args.key?(:post_submission_state)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Attachment-relevant metadata for Classroom add-ons in the context of a
+      # specific post.
+      class AddOnContext
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Identifier of the course.
+        # Corresponds to the JSON property `courseId`
+        # @return [String]
+        attr_accessor :course_id
+      
+        # Immutable. Identifier of the announcement, courseWork, or courseWorkMaterial
+        # under which the attachment is attached.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # Immutable. Deprecated, use item_id instead.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        # Role-specific context if the requesting user is a student.
+        # Corresponds to the JSON property `studentContext`
+        # @return [Google::Apis::ClassroomV1::StudentContext]
+        attr_accessor :student_context
+      
+        # Optional. Whether the post allows the teacher to see student work and passback
+        # grades.
+        # Corresponds to the JSON property `supportsStudentWork`
+        # @return [Boolean]
+        attr_accessor :supports_student_work
+        alias_method :supports_student_work?, :supports_student_work
+      
+        # Role-specific context if the requesting user is a teacher.
+        # Corresponds to the JSON property `teacherContext`
+        # @return [Google::Apis::ClassroomV1::TeacherContext]
+        attr_accessor :teacher_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @post_id = args[:post_id] if args.key?(:post_id)
+          @student_context = args[:student_context] if args.key?(:student_context)
+          @supports_student_work = args[:supports_student_work] if args.key?(:supports_student_work)
+          @teacher_context = args[:teacher_context] if args.key?(:teacher_context)
+        end
+      end
+      
       # Announcement created by a teacher for students of the course
       class Announcement
         include Google::Apis::Core::Hashable
@@ -212,6 +399,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @topic_name = args[:topic_name] if args.key?(:topic_name)
+        end
+      end
+      
+      # Identifier of a previous copy of a given attachment.
+      class CopyHistory
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Identifier of the attachment.
+        # Corresponds to the JSON property `attachmentId`
+        # @return [String]
+        attr_accessor :attachment_id
+      
+        # Immutable. Identifier of the course.
+        # Corresponds to the JSON property `courseId`
+        # @return [String]
+        attr_accessor :course_id
+      
+        # Immutable. Identifier of the announcement, courseWork, or courseWorkMaterial
+        # under which the attachment is attached.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # Immutable. Deprecated, use item_id instead.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment_id = args[:attachment_id] if args.key?(:attachment_id)
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @post_id = args[:post_id] if args.key?(:post_id)
         end
       end
       
@@ -896,6 +1121,26 @@ module Google
         end
       end
       
+      # URI to be iframed after being populated with query parameters.
+      class EmbedUri
+        include Google::Apis::Core::Hashable
+      
+        # Required. URI to be iframed after being populated with query parameters. This
+        # must be a valid UTF-8 string containing between 1 and 1800 characters.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1293,6 +1538,32 @@ module Google
           @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
           @title = args[:title] if args.key?(:title)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Response when listing add-on attachments.
+      class ListAddOnAttachmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Attachments under the given post.
+        # Corresponds to the JSON property `addOnAttachments`
+        # @return [Array<Google::Apis::ClassroomV1::AddOnAttachment>]
+        attr_accessor :add_on_attachments
+      
+        # A token, which can be sent as `pageToken` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_on_attachments = args[:add_on_attachments] if args.key?(:add_on_attachments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2001,6 +2272,27 @@ module Google
         end
       end
       
+      # Role-specific context if the requesting user is a student.
+      class StudentContext
+        include Google::Apis::Core::Hashable
+      
+        # Requesting user's submission id to be used for grade passback and to identify
+        # the student when showing student work to the teacher. This is set exactly when
+        # `supportsStudentWork` is `true`.
+        # Corresponds to the JSON property `submissionId`
+        # @return [String]
+        attr_accessor :submission_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @submission_id = args[:submission_id] if args.key?(:submission_id)
+        end
+      end
+      
       # Student submission for course work. `StudentSubmission` items are generated
       # when a `CourseWork` item is created. Student submissions that have never been
       # accessed (i.e. with `state` = NEW) may not have a creation time or update time.
@@ -2186,6 +2478,19 @@ module Google
           @course_id = args[:course_id] if args.key?(:course_id)
           @profile = args[:profile] if args.key?(:profile)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Role-specific context if the requesting user is a teacher.
+      class TeacherContext
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
