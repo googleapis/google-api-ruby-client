@@ -202,6 +202,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeneratePlayGroupingApiTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateRecallPlayGroupingApiTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetMultipleApplicationPlayerIdsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +293,12 @@ module Google
       end
       
       class MetagameConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlayGroupingApiToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -783,6 +801,22 @@ module Google
         end
       end
       
+      class GeneratePlayGroupingApiTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token, as: 'token', class: Google::Apis::GamesV1::PlayGroupingApiToken, decorator: Google::Apis::GamesV1::PlayGroupingApiToken::Representation
+      
+        end
+      end
+      
+      class GenerateRecallPlayGroupingApiTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token, as: 'token', class: Google::Apis::GamesV1::PlayGroupingApiToken, decorator: Google::Apis::GamesV1::PlayGroupingApiToken::Representation
+      
+        end
+      end
+      
       class GetMultipleApplicationPlayerIdsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -942,6 +976,13 @@ module Google
           property :kind, as: 'kind'
           collection :player_levels, as: 'playerLevels', class: Google::Apis::GamesV1::PlayerLevel, decorator: Google::Apis::GamesV1::PlayerLevel::Representation
       
+        end
+      end
+      
+      class PlayGroupingApiToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token_value, as: 'tokenValue'
         end
       end
       
