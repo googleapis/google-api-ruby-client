@@ -8964,9 +8964,9 @@ module Google
         # @return [String]
         attr_accessor :conversation_profile
       
-        # The stage of a conversation. It indicates whether the virtual agent or a human
-        # agent is handling the conversation. If the conversation is created with the
-        # conversation profile that has Dialogflow config set, defaults to
+        # Optional. The stage of a conversation. It indicates whether the virtual agent
+        # or a human agent is handling the conversation. If the conversation is created
+        # with the conversation profile that has Dialogflow config set, defaults to
         # ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to
         # ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the
         # conversation profile that has Dialogflow config set but explicitly sets
@@ -8987,8 +8987,8 @@ module Google
         # @return [String]
         attr_accessor :lifecycle_state
       
-        # Output only. The unique identifier of this conversation. Format: `projects//
-        # locations//conversations/`.
+        # Output only. Identifier. The unique identifier of this conversation. Format: `
+        # projects//locations//conversations/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -10735,15 +10735,16 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationProfile]
         attr_accessor :conversation_profile
       
-        # The name of the latest conversation message used as context for generating a
-        # Summary. If empty, the latest message of the conversation will be used. The
-        # format is specific to the user and the names of the messages provided.
+        # Optional. The name of the latest conversation message used as context for
+        # generating a Summary. If empty, the latest message of the conversation will be
+        # used. The format is specific to the user and the names of the messages
+        # provided.
         # Corresponds to the JSON property `latestMessage`
         # @return [String]
         attr_accessor :latest_message
       
-        # Max number of messages prior to and including [latest_message] to use as
-        # context when compiling the suggestion. By default 500 and at most 1000.
+        # Optional. Max number of messages prior to and including [latest_message] to
+        # use as context when compiling the suggestion. By default 500 and at most 1000.
         # Corresponds to the JSON property `maxContextSize`
         # @return [Fixnum]
         attr_accessor :max_context_size
@@ -14787,8 +14788,8 @@ module Google
       class GoogleCloudDialogflowV2SearchKnowledgeRequest
         include Google::Apis::Core::Hashable
       
-        # The conversation (between human agent and end user) where the search request
-        # is triggered. Format: `projects//locations//conversations/`.
+        # Optional. The conversation (between human agent and end user) where the search
+        # request is triggered. Format: `projects//locations//conversations/`.
         # Corresponds to the JSON property `conversation`
         # @return [String]
         attr_accessor :conversation
@@ -14799,14 +14800,14 @@ module Google
         # @return [String]
         attr_accessor :conversation_profile
       
-        # The name of the latest conversation message when the request is triggered.
-        # Format: `projects//locations//conversations//messages/`.
+        # Optional. The name of the latest conversation message when the request is
+        # triggered. Format: `projects//locations//conversations//messages/`.
         # Corresponds to the JSON property `latestMessage`
         # @return [String]
         attr_accessor :latest_message
       
-        # The parent resource contains the conversation profile Format: 'projects/' or `
-        # projects//locations/`.
+        # Required. The parent resource contains the conversation profile Format: '
+        # projects/' or `projects//locations/`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -14816,12 +14817,12 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput]
         attr_accessor :query
       
-        # The ID of the search session. The session_id can be combined with Dialogflow
-        # V3 Agent ID retrieved from conversation profile or on its own to identify a
-        # search session. The search history of the same session will impact the search
-        # result. It's up to the API caller to choose an appropriate `Session ID`. It
-        # can be a random number or some type of session identifiers (preferably hashed).
-        # The length must not exceed 36 characters.
+        # Optional. The ID of the search session. The session_id can be combined with
+        # Dialogflow V3 Agent ID retrieved from conversation profile or on its own to
+        # identify a search session. The search history of the same session will impact
+        # the search result. It's up to the API caller to choose an appropriate `Session
+        # ID`. It can be a random number or some type of session identifiers (preferably
+        # hashed). The length must not exceed 36 characters.
         # Corresponds to the JSON property `sessionId`
         # @return [String]
         attr_accessor :session_id
@@ -15331,15 +15332,15 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters]
         attr_accessor :assist_query_params
       
-        # Max number of messages prior to and including [latest_message] to use as
-        # context when compiling the suggestion. By default 500 and at most 1000.
+        # Optional. Max number of messages prior to and including [latest_message] to
+        # use as context when compiling the suggestion. By default 500 and at most 1000.
         # Corresponds to the JSON property `contextSize`
         # @return [Fixnum]
         attr_accessor :context_size
       
-        # The name of the latest conversation message used as context for compiling
-        # suggestion. If empty, the latest message of the conversation will be used.
-        # Format: `projects//locations//conversations//messages/`.
+        # Optional. The name of the latest conversation message used as context for
+        # compiling suggestion. If empty, the latest message of the conversation will be
+        # used. Format: `projects//locations//conversations//messages/`.
         # Corresponds to the JSON property `latestMessage`
         # @return [String]
         attr_accessor :latest_message
