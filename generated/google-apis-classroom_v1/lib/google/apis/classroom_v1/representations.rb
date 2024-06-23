@@ -22,6 +22,24 @@ module Google
   module Apis
     module ClassroomV1
       
+      class AddOnAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddOnAttachmentStudentSubmission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddOnContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Announcement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +65,12 @@ module Google
       end
       
       class CloudPubsubTopic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CopyHistory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -113,6 +137,12 @@ module Google
       end
       
       class DriveFolder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EmbedUri
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -185,6 +215,12 @@ module Google
       end
       
       class Link
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAddOnAttachmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -352,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StudentContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StudentSubmission
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +407,12 @@ module Google
       end
       
       class Teacher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TeacherContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -398,6 +446,53 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddOnAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :copy_history, as: 'copyHistory', class: Google::Apis::ClassroomV1::CopyHistory, decorator: Google::Apis::ClassroomV1::CopyHistory::Representation
+      
+          property :course_id, as: 'courseId'
+          property :due_date, as: 'dueDate', class: Google::Apis::ClassroomV1::Date, decorator: Google::Apis::ClassroomV1::Date::Representation
+      
+          property :due_time, as: 'dueTime', class: Google::Apis::ClassroomV1::TimeOfDay, decorator: Google::Apis::ClassroomV1::TimeOfDay::Representation
+      
+          property :id, as: 'id'
+          property :item_id, as: 'itemId'
+          property :max_points, as: 'maxPoints'
+          property :post_id, as: 'postId'
+          property :student_view_uri, as: 'studentViewUri', class: Google::Apis::ClassroomV1::EmbedUri, decorator: Google::Apis::ClassroomV1::EmbedUri::Representation
+      
+          property :student_work_review_uri, as: 'studentWorkReviewUri', class: Google::Apis::ClassroomV1::EmbedUri, decorator: Google::Apis::ClassroomV1::EmbedUri::Representation
+      
+          property :teacher_view_uri, as: 'teacherViewUri', class: Google::Apis::ClassroomV1::EmbedUri, decorator: Google::Apis::ClassroomV1::EmbedUri::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
+      class AddOnAttachmentStudentSubmission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :points_earned, as: 'pointsEarned'
+          property :post_submission_state, as: 'postSubmissionState'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class AddOnContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_id, as: 'courseId'
+          property :item_id, as: 'itemId'
+          property :post_id, as: 'postId'
+          property :student_context, as: 'studentContext', class: Google::Apis::ClassroomV1::StudentContext, decorator: Google::Apis::ClassroomV1::StudentContext::Representation
+      
+          property :supports_student_work, as: 'supportsStudentWork'
+          property :teacher_context, as: 'teacherContext', class: Google::Apis::ClassroomV1::TeacherContext, decorator: Google::Apis::ClassroomV1::TeacherContext::Representation
+      
+        end
       end
       
       class Announcement
@@ -454,6 +549,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :topic_name, as: 'topicName'
+        end
+      end
+      
+      class CopyHistory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_id, as: 'attachmentId'
+          property :course_id, as: 'courseId'
+          property :item_id, as: 'itemId'
+          property :post_id, as: 'postId'
         end
       end
       
@@ -615,6 +720,13 @@ module Google
         end
       end
       
+      class EmbedUri
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -725,6 +837,15 @@ module Google
           property :thumbnail_url, as: 'thumbnailUrl'
           property :title, as: 'title'
           property :url, as: 'url'
+        end
+      end
+      
+      class ListAddOnAttachmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_on_attachments, as: 'addOnAttachments', class: Google::Apis::ClassroomV1::AddOnAttachment, decorator: Google::Apis::ClassroomV1::AddOnAttachment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -968,6 +1089,13 @@ module Google
         end
       end
       
+      class StudentContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :submission_id, as: 'submissionId'
+        end
+      end
+      
       class StudentSubmission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1012,6 +1140,12 @@ module Google
           property :profile, as: 'profile', class: Google::Apis::ClassroomV1::UserProfile, decorator: Google::Apis::ClassroomV1::UserProfile::Representation
       
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class TeacherContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
