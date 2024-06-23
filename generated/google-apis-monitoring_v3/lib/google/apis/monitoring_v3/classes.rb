@@ -1221,10 +1221,16 @@ module Google
         # may not exceed 8,192 Unicode characters and may not exceed more than 10,240
         # bytes when encoded in UTF-8 format, whichever is smaller. This text can be
         # templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-
-        # variables).
+        # variables#doc-vars).
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
+      
+        # Optional. Links to content such as playbooks, repositories, and other
+        # resources. This field can contain up to 3 entries.
+        # Corresponds to the JSON property `links`
+        # @return [Array<Google::Apis::MonitoringV3::Link>]
+        attr_accessor :links
       
         # The format of the content field. Presently, only the value "text/markdown" is
         # supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more
@@ -1241,8 +1247,9 @@ module Google
         # is-the-email-subject-length-limit). It is both the limit imposed by some third-
         # party ticketing products and it is common to define textual fields in
         # databases as VARCHAR(255).The contents of the subject line can be templatized
-        # by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
-        # If this field is missing or empty, a default subject line will be generated.
+        # by using variables (https://cloud.google.com/monitoring/alerts/doc-variables#
+        # doc-vars). If this field is missing or empty, a default subject line will be
+        # generated.
         # Corresponds to the JSON property `subject`
         # @return [String]
         attr_accessor :subject
@@ -1254,6 +1261,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
+          @links = args[:links] if args.key?(:links)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @subject = args[:subject] if args.key?(:subject)
         end
@@ -2215,6 +2223,35 @@ module Google
           @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
           @offset = args[:offset] if args.key?(:offset)
           @width = args[:width] if args.key?(:width)
+        end
+      end
+      
+      # Links to content such as playbooks, repositories, and other resources.
+      class Link
+        include Google::Apis::Core::Hashable
+      
+        # A short display name for the link. The display name must not be empty or
+        # exceed 63 characters. Example: "playbook".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The url of a webpage. A url can be templatized by using variables in the path
+        # or the query parameters. The total length of a URL should not exceed 2083
+        # characters before and after variable expansion. Example: "https://my_domain.
+        # com/playbook?name=$`resource.name`"
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -3827,9 +3864,9 @@ module Google
         # Optional. Labels to add to or overwrite in the PromQL query result. Label
         # names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-
         # names-and-labels). Label values can be templatized by using variables (https://
-        # cloud.google.com/monitoring/alerts/doc-variables). The only available variable
-        # names are the names of the labels in the PromQL result, including "__name__"
-        # and "value". "labels" may be empty.
+        # cloud.google.com/monitoring/alerts/doc-variables#doc-vars). The only available
+        # variable names are the names of the labels in the PromQL result, including "
+        # __name__" and "value". "labels" may be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -4287,7 +4324,7 @@ module Google
         attr_accessor :display_name
       
         # The fraction of service that must be good in order for this objective to be
-        # met. 0 < goal <= 0.999.
+        # met. 0 < goal <= 0.9999.
         # Corresponds to the JSON property `goal`
         # @return [Float]
         attr_accessor :goal
