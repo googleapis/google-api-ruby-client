@@ -597,7 +597,7 @@ module Google
         alias_method :import_only?, :import_only
       
         # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
-        # values for Encrypt, Decrypt, and Sign requests on a CryptoKey.
+        # values for encrypt, decrypt, and sign operations on a CryptoKey.
         # Corresponds to the JSON property `keyAccessJustificationsPolicy`
         # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicy]
         attr_accessor :key_access_justifications_policy
@@ -1535,12 +1535,12 @@ module Google
       end
       
       # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
-      # values for Encrypt, Decrypt, and Sign requests on a CryptoKey.
+      # values for encrypt, decrypt, and sign operations on a CryptoKey.
       class KeyAccessJustificationsPolicy
         include Google::Apis::Core::Hashable
       
         # The list of allowed reasons for access to a CryptoKey. Zero allowed access
-        # reasons means all Encrypt, Decrypt, and Sign requests for the CryptoKey
+        # reasons means all encrypt, decrypt, and sign operations for the CryptoKey
         # associated with this policy will fail.
         # Corresponds to the JSON property `allowedAccessReasons`
         # @return [Array<String>]
