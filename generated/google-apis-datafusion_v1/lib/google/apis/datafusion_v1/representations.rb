@@ -58,12 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DataResidencyAugmentedView
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DnsPeering
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -130,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaintenancePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,12 +154,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PersistentDiskData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -166,13 +166,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RestartInstanceRequest
+      class RecurringTimeWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ServiceData
+      class RestartInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +197,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -253,17 +259,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_reference, as: 'keyReference'
-        end
-      end
-      
-      class DataResidencyAugmentedView
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :cr_gopo_guris, as: 'crGopoGuris'
-          collection :cr_gopo_prefixes, as: 'crGopoPrefixes'
-          property :service_data, as: 'serviceData', class: Google::Apis::DatafusionV1::ServiceData, decorator: Google::Apis::DatafusionV1::ServiceData::Representation
-      
-          collection :tp_ids, as: 'tpIds'
         end
       end
       
@@ -326,6 +321,8 @@ module Google
       
           property :gcs_bucket, as: 'gcsBucket'
           hash :labels, as: 'labels'
+          property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::DatafusionV1::MaintenancePolicy, decorator: Google::Apis::DatafusionV1::MaintenancePolicy::Representation
+      
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::DatafusionV1::NetworkConfig, decorator: Google::Apis::DatafusionV1::NetworkConfig::Representation
       
@@ -404,6 +401,24 @@ module Google
         end
       end
       
+      class MaintenancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_exclusion_window, as: 'maintenanceExclusionWindow', class: Google::Apis::DatafusionV1::TimeWindow, decorator: Google::Apis::DatafusionV1::TimeWindow::Representation
+      
+          property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::DatafusionV1::MaintenanceWindow, decorator: Google::Apis::DatafusionV1::MaintenanceWindow::Representation
+      
+        end
+      end
+      
+      class MaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recurring_time_window, as: 'recurringTimeWindow', class: Google::Apis::DatafusionV1::RecurringTimeWindow, decorator: Google::Apis::DatafusionV1::RecurringTimeWindow::Representation
+      
+        end
+      end
+      
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -441,14 +456,6 @@ module Google
         end
       end
       
-      class PersistentDiskData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :cfs_roots, as: 'cfsRoots'
-          collection :gcs_bucket_names, as: 'gcsBucketNames'
-        end
-      end
-      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -470,17 +477,18 @@ module Google
         end
       end
       
-      class RestartInstanceRequest
+      class RecurringTimeWindow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :recurrence, as: 'recurrence'
+          property :window, as: 'window', class: Google::Apis::DatafusionV1::TimeWindow, decorator: Google::Apis::DatafusionV1::TimeWindow::Representation
+      
         end
       end
       
-      class ServiceData
+      class RestartInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :pd, as: 'pd', class: Google::Apis::DatafusionV1::PersistentDiskData, decorator: Google::Apis::DatafusionV1::PersistentDiskData::Representation
-      
         end
       end
       
@@ -513,6 +521,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TimeWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       
