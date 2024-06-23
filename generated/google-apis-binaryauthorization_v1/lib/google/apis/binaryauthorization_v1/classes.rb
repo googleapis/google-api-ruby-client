@@ -1152,6 +1152,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Used to prevent updating the policy when another request has updated
+        # it since it was retrieved.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # A Binary Authorization policy for a GKE cluster. This is one type of policy
         # that can occur as a `PlatformPolicy`.
         # Corresponds to the JSON property `gkePolicy`
@@ -1176,6 +1182,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @gke_policy = args[:gke_policy] if args.key?(:gke_policy)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
