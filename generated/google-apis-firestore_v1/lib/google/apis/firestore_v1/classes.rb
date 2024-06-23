@@ -1256,6 +1256,106 @@ module Google
         end
       end
       
+      # Metadata for google.longrunning.Operation results from FirestoreAdmin.
+      # BulkDeleteDocuments.
+      class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The ids of the collection groups that are being deleted.
+        # Corresponds to the JSON property `collectionIds`
+        # @return [Array<String>]
+        attr_accessor :collection_ids
+      
+        # The time this operation completed. Will be unset if operation still in
+        # progress.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Which namespace ids are being deleted.
+        # Corresponds to the JSON property `namespaceIds`
+        # @return [Array<String>]
+        attr_accessor :namespace_ids
+      
+        # The state of the operation.
+        # Corresponds to the JSON property `operationState`
+        # @return [String]
+        attr_accessor :operation_state
+      
+        # Describes the progress of the operation. Unit of work is generic and must be
+        # interpreted based on where Progress is used.
+        # Corresponds to the JSON property `progressBytes`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress]
+        attr_accessor :progress_bytes
+      
+        # Describes the progress of the operation. Unit of work is generic and must be
+        # interpreted based on where Progress is used.
+        # Corresponds to the JSON property `progressDocuments`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress]
+        attr_accessor :progress_documents
+      
+        # The timestamp that corresponds to the version of the database that is being
+        # read to get the list of documents to delete. This time can also be used as the
+        # timestamp of PITR in case of disaster recovery (subject to PITR window limit).
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
+        # The time this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @namespace_ids = args[:namespace_ids] if args.key?(:namespace_ids)
+          @operation_state = args[:operation_state] if args.key?(:operation_state)
+          @progress_bytes = args[:progress_bytes] if args.key?(:progress_bytes)
+          @progress_documents = args[:progress_documents] if args.key?(:progress_documents)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The request for FirestoreAdmin.BulkDeleteDocuments. When both collection_ids
+      # and namespace_ids are set, only documents satisfying both conditions will be
+      # deleted. Requests with namespace_ids and collection_ids both empty will be
+      # rejected. Please use FirestoreAdmin.DeleteDatabase instead.
+      class GoogleFirestoreAdminV1BulkDeleteDocumentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. IDs of the collection groups to delete. Unspecified means all
+        # collection groups. Each collection group in this list must be unique.
+        # Corresponds to the JSON property `collectionIds`
+        # @return [Array<String>]
+        attr_accessor :collection_ids
+      
+        # Optional. Namespaces to delete. An empty list means all namespaces. This is
+        # the recommended usage for databases that don't use namespaces. An empty string
+        # element represents the default namespace. This should be used if the database
+        # has data in non-default namespaces, but doesn't want to delete from them. Each
+        # namespace in this list must be unique.
+        # Corresponds to the JSON property `namespaceIds`
+        # @return [Array<String>]
+        attr_accessor :namespace_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
+          @namespace_ids = args[:namespace_ids] if args.key?(:namespace_ids)
+        end
+      end
+      
       # The CMEK (Customer Managed Encryption Key) configuration for a Firestore
       # database. If not present, the database is secured by the default Google
       # encryption key.
@@ -1463,32 +1563,6 @@ module Google
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version_retention_period = args[:version_retention_period] if args.key?(:version_retention_period)
-        end
-      end
-      
-      # A consistent snapshot of a database at a specific point in time.
-      class GoogleFirestoreAdminV1DatabaseSnapshot
-        include Google::Apis::Core::Hashable
-      
-        # Required. A name of the form `projects/`project_id`/databases/`database_id``
-        # Corresponds to the JSON property `database`
-        # @return [String]
-        attr_accessor :database
-      
-        # Required. The timestamp at which the database snapshot is taken. The requested
-        # timestamp must be a whole minute within the PITR window.
-        # Corresponds to the JSON property `snapshotTime`
-        # @return [String]
-        attr_accessor :snapshot_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @database = args[:database] if args.key?(:database)
-          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
         end
       end
       
@@ -2354,11 +2428,6 @@ module Google
         # @return [String]
         attr_accessor :database_id
       
-        # A consistent snapshot of a database at a specific point in time.
-        # Corresponds to the JSON property `databaseSnapshot`
-        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DatabaseSnapshot]
-        attr_accessor :database_snapshot
-      
         # Use Customer Managed Encryption Keys (CMEK) for encryption. Only keys in the
         # same location as this database are allowed to be used for encryption. For
         # Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us.
@@ -2394,7 +2463,6 @@ module Google
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
           @database_id = args[:database_id] if args.key?(:database_id)
-          @database_snapshot = args[:database_snapshot] if args.key?(:database_snapshot)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @use_backup_encryption = args[:use_backup_encryption] if args.key?(:use_backup_encryption)
           @use_google_default_encryption = args[:use_google_default_encryption] if args.key?(:use_google_default_encryption)
