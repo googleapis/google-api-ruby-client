@@ -254,7 +254,7 @@ module Google
         # @param [String] parent
         #   Required. Parent value for ListEvaluationsRequest
         # @param [String] filter
-        #   Filtering results
+        #   Filter to be applied when listing the evaluation results.
         # @param [String] order_by
         #   Hint for how to order the results
         # @param [Fixnum] page_size
@@ -443,7 +443,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the running result of a single Execution.
+        # Lists the result of a single evaluation.
         # @param [String] parent
         #   Required. The execution results. Format: `parent`/evaluations/*/executions/*/
         #   results

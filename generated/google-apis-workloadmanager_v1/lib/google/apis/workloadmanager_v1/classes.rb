@@ -361,7 +361,7 @@ module Google
       class ExecutionResult
         include Google::Apis::Core::Hashable
       
-        # the document url of the rule
+        # The URL for the documentation of the rule.
         # Corresponds to the JSON property `documentationUrl`
         # @return [String]
         attr_accessor :documentation_url
@@ -371,22 +371,22 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::Resource]
         attr_accessor :resource
       
-        # the rule which violate in execution
+        # The rule that is violated in an evaluation.
         # Corresponds to the JSON property `rule`
         # @return [String]
         attr_accessor :rule
       
-        # severity of violation
+        # The severity of violation.
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
       
-        # Message describing the violdation in execution result
+        # Message describing the violation in an evaluation result.
         # Corresponds to the JSON property `violationDetails`
         # @return [Google::Apis::WorkloadmanagerV1::ViolationDetails]
         attr_accessor :violation_details
       
-        # the violation message of an execution
+        # The violation message of an execution.
         # Corresponds to the JSON property `violationMessage`
         # @return [String]
         attr_accessor :violation_message
@@ -866,6 +866,12 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::TenantProjectProxy]
         attr_accessor :gcp_project_proxy
       
+        # Message describing that the location of the customer resource is tied to
+        # placer allocations
+        # Corresponds to the JSON property `placerLocation`
+        # @return [Google::Apis::WorkloadmanagerV1::PlacerLocation]
+        attr_accessor :placer_location
+      
         # 
         # Corresponds to the JSON property `spannerLocation`
         # @return [Google::Apis::WorkloadmanagerV1::SpannerLocation]
@@ -881,6 +887,7 @@ module Google
           @child_asset_location = args[:child_asset_location] if args.key?(:child_asset_location)
           @direct_location = args[:direct_location] if args.key?(:direct_location)
           @gcp_project_proxy = args[:gcp_project_proxy] if args.key?(:gcp_project_proxy)
+          @placer_location = args[:placer_location] if args.key?(:placer_location)
           @spanner_location = args[:spanner_location] if args.key?(:spanner_location)
         end
       end
@@ -1006,6 +1013,27 @@ module Google
         end
       end
       
+      # Message describing that the location of the customer resource is tied to
+      # placer allocations
+      class PlacerLocation
+        include Google::Apis::Core::Hashable
+      
+        # Directory with a config related to it in placer (e.g. "/placer/prod/home/my-
+        # root/my-dir")
+        # Corresponds to the JSON property `placerConfig`
+        # @return [String]
+        attr_accessor :placer_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @placer_config = args[:placer_config] if args.key?(:placer_config)
+        end
+      end
+      
       # To be used for specifying the intended distribution of regional compute.
       # googleapis.com/InstanceGroupManager instances
       class RegionalMigDistributionPolicy
@@ -1037,17 +1065,17 @@ module Google
       class Resource
         include Google::Apis::Core::Hashable
       
-        # the name of the resource
+        # The name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # the service account accosiate with resource
+        # The service account associated with the resource.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
       
-        # the type of reresource
+        # The type of resource.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1327,6 +1355,12 @@ module Google
         # @return [String]
         attr_accessor :host_project
       
+        # Optional. A list of replication sites used in Disaster Recovery (DR)
+        # configurations.
+        # Corresponds to the JSON property `replicationSites`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent>]
+        attr_accessor :replication_sites
+      
         # Optional. The resources in a component.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::WorkloadmanagerV1::SapDiscoveryResource>]
@@ -1353,6 +1387,7 @@ module Google
           @database_properties = args[:database_properties] if args.key?(:database_properties)
           @ha_hosts = args[:ha_hosts] if args.key?(:ha_hosts)
           @host_project = args[:host_project] if args.key?(:host_project)
+          @replication_sites = args[:replication_sites] if args.key?(:replication_sites)
           @resources = args[:resources] if args.key?(:resources)
           @sid = args[:sid] if args.key?(:sid)
           @topology_type = args[:topology_type] if args.key?(:topology_type)
@@ -1363,8 +1398,8 @@ module Google
       class SapDiscoveryComponentApplicationProperties
         include Google::Apis::Core::Hashable
       
-        # Optional. Indicates whether this is a Java or ABAP Netweaver instance. true
-        # means it is ABAP, false means it is Java.
+        # Optional. Deprecated: ApplicationType now tells you whether this is ABAP or
+        # Java.
         # Corresponds to the JSON property `abap`
         # @return [Boolean]
         attr_accessor :abap
@@ -1967,21 +2002,21 @@ module Google
         end
       end
       
-      # Message describing the violdation in execution result
+      # Message describing the violation in an evaluation result.
       class ViolationDetails
         include Google::Apis::Core::Hashable
       
-        # the name of asset
+        # The name of the asset.
         # Corresponds to the JSON property `asset`
         # @return [String]
         attr_accessor :asset
       
-        # observed
+        # Details of the violation.
         # Corresponds to the JSON property `observed`
         # @return [Hash<String,String>]
         attr_accessor :observed
       
-        # the service account associate with resource
+        # The service account associated with the resource.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account

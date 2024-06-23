@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlacerLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionalMigDistributionPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -632,6 +638,8 @@ module Google
       
           property :gcp_project_proxy, as: 'gcpProjectProxy', class: Google::Apis::WorkloadmanagerV1::TenantProjectProxy, decorator: Google::Apis::WorkloadmanagerV1::TenantProjectProxy::Representation
       
+          property :placer_location, as: 'placerLocation', class: Google::Apis::WorkloadmanagerV1::PlacerLocation, decorator: Google::Apis::WorkloadmanagerV1::PlacerLocation::Representation
+      
           property :spanner_location, as: 'spannerLocation', class: Google::Apis::WorkloadmanagerV1::SpannerLocation, decorator: Google::Apis::WorkloadmanagerV1::SpannerLocation::Representation
       
         end
@@ -659,6 +667,13 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PlacerLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :placer_config, as: 'placerConfig'
         end
       end
       
@@ -752,6 +767,8 @@ module Google
       
           collection :ha_hosts, as: 'haHosts'
           property :host_project, as: 'hostProject'
+          collection :replication_sites, as: 'replicationSites', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent::Representation
+      
           collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResource, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResource::Representation
       
           property :sid, as: 'sid'
