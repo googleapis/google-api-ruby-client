@@ -1606,6 +1606,12 @@ module Google
       class Dataset
         include Google::Apis::Core::Hashable
       
+        # Represents a customer-managed encryption key spec that can be applied to a
+        # resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::HealthcareV1beta1::EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Identifier. Resource name of the dataset, of the form `projects/`project_id`/
         # locations/`location_id`/datasets/`dataset_id``.
         # Corresponds to the JSON property `name`
@@ -1626,6 +1632,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @name = args[:name] if args.key?(:name)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
@@ -2214,6 +2221,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents a customer-managed encryption key spec that can be applied to a
+      # resource.
+      class EncryptionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of customer-managed encryption key that is used to
+        # secure a resource and its sub-resources. Only the key in the same location as
+        # this dataset is allowed to be used for encryption. Format is: `projects/`
+        # project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`key``
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
       end
       

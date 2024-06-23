@@ -16,13 +16,13 @@ module Google
   module Apis
     module HealthcareV1beta1
       # Version of the google-apis-healthcare_v1beta1 gem
-      GEM_VERSION = "0.71.0"
+      GEM_VERSION = "0.72.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.15.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240521"
+      REVISION = "20240605"
     end
   end
 end
