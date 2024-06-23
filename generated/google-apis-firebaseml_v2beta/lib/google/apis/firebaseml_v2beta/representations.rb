@@ -136,7 +136,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1GroundingAttribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingAttributionWeb
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingChunkWeb
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1GroundingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingSupport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -173,6 +215,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1SearchEntryPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1Segment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -419,13 +467,84 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1GroundingAttribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_score, as: 'confidenceScore'
+          property :retrieved_context, as: 'retrievedContext', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext::Representation
+      
+          property :segment, as: 'segment', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Segment, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Segment::Representation
+      
+          property :web, as: 'web', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionWeb, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionWeb::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingAttributionWeb
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retrieved_context, as: 'retrievedContext', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext::Representation
+      
+          property :web, as: 'web', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkWeb, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkWeb::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingChunkWeb
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1GroundingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :grounding_attributions, as: 'groundingAttributions', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttribution, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttribution::Representation
+      
+          collection :grounding_chunks, as: 'groundingChunks', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunk, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunk::Representation
+      
+          collection :grounding_supports, as: 'groundingSupports', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingSupport, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingSupport::Representation
+      
           collection :retrieval_queries, as: 'retrievalQueries'
           property :search_entry_point, as: 'searchEntryPoint', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SearchEntryPoint, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SearchEntryPoint::Representation
       
           collection :web_search_queries, as: 'webSearchQueries'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :confidence_scores, as: 'confidenceScores'
+          collection :grounding_chunk_indices, as: 'groundingChunkIndices'
+          property :segment, as: 'segment', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Segment, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Segment::Representation
+      
         end
       end
       
@@ -511,6 +630,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rendered_content, as: 'renderedContent'
           property :sdk_blob, :base64 => true, as: 'sdkBlob'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1Segment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_index, as: 'endIndex'
+          property :part_index, as: 'partIndex'
+          property :start_index, as: 'startIndex'
+          property :text, as: 'text'
         end
       end
       

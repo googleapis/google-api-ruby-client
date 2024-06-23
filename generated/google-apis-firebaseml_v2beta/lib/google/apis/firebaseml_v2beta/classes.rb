@@ -725,9 +725,187 @@ module Google
         end
       end
       
+      # Grounding attribution.
+      class GoogleCloudAiplatformV1beta1GroundingAttribution
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. Confidence score of the attribution. Ranges from 0 to 1.
+        # 1 is the most confident.
+        # Corresponds to the JSON property `confidenceScore`
+        # @return [Float]
+        attr_accessor :confidence_score
+      
+        # Attribution from context retrieved by the retrieval tools.
+        # Corresponds to the JSON property `retrievedContext`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext]
+        attr_accessor :retrieved_context
+      
+        # Segment of the content.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Segment]
+        attr_accessor :segment
+      
+        # Attribution from the web.
+        # Corresponds to the JSON property `web`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionWeb]
+        attr_accessor :web
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
+          @retrieved_context = args[:retrieved_context] if args.key?(:retrieved_context)
+          @segment = args[:segment] if args.key?(:segment)
+          @web = args[:web] if args.key?(:web)
+        end
+      end
+      
+      # Attribution from context retrieved by the retrieval tools.
+      class GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Title of the attribution.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Output only. URI reference of the attribution.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Attribution from the web.
+      class GoogleCloudAiplatformV1beta1GroundingAttributionWeb
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Title of the attribution.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Output only. URI reference of the attribution.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Grounding chunk.
+      class GoogleCloudAiplatformV1beta1GroundingChunk
+        include Google::Apis::Core::Hashable
+      
+        # Chunk from context retrieved by the retrieval tools.
+        # Corresponds to the JSON property `retrievedContext`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext]
+        attr_accessor :retrieved_context
+      
+        # Chunk from the web.
+        # Corresponds to the JSON property `web`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkWeb]
+        attr_accessor :web
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retrieved_context = args[:retrieved_context] if args.key?(:retrieved_context)
+          @web = args[:web] if args.key?(:web)
+        end
+      end
+      
+      # Chunk from context retrieved by the retrieval tools.
+      class GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext
+        include Google::Apis::Core::Hashable
+      
+        # Title of the attribution.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URI reference of the attribution.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Chunk from the web.
+      class GoogleCloudAiplatformV1beta1GroundingChunkWeb
+        include Google::Apis::Core::Hashable
+      
+        # Title of the chunk.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URI reference of the chunk.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Metadata returned to client when grounding is enabled.
       class GoogleCloudAiplatformV1beta1GroundingMetadata
         include Google::Apis::Core::Hashable
+      
+        # Optional. List of grounding attributions.
+        # Corresponds to the JSON property `groundingAttributions`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttribution>]
+        attr_accessor :grounding_attributions
+      
+        # List of supporting references retrieved from specified grounding source.
+        # Corresponds to the JSON property `groundingChunks`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunk>]
+        attr_accessor :grounding_chunks
+      
+        # Optional. List of grounding support.
+        # Corresponds to the JSON property `groundingSupports`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingSupport>]
+        attr_accessor :grounding_supports
       
         # Optional. Queries executed by the retrieval tools.
         # Corresponds to the JSON property `retrievalQueries`
@@ -750,9 +928,47 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @grounding_attributions = args[:grounding_attributions] if args.key?(:grounding_attributions)
+          @grounding_chunks = args[:grounding_chunks] if args.key?(:grounding_chunks)
+          @grounding_supports = args[:grounding_supports] if args.key?(:grounding_supports)
           @retrieval_queries = args[:retrieval_queries] if args.key?(:retrieval_queries)
           @search_entry_point = args[:search_entry_point] if args.key?(:search_entry_point)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
+        end
+      end
+      
+      # Grounding support.
+      class GoogleCloudAiplatformV1beta1GroundingSupport
+        include Google::Apis::Core::Hashable
+      
+        # Confidence score of the support references. Ranges from 0 to 1. 1 is the most
+        # confident. This list must have the same size as the grounding_chunk_indices.
+        # Corresponds to the JSON property `confidenceScores`
+        # @return [Array<Float>]
+        attr_accessor :confidence_scores
+      
+        # A list of indices (into 'grounding_chunk') specifying the citations associated
+        # with the claim. For instance [1,3,4] means that grounding_chunk[1],
+        # grounding_chunk[3], grounding_chunk[4] are the retrieved content attributed to
+        # the claim.
+        # Corresponds to the JSON property `groundingChunkIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :grounding_chunk_indices
+      
+        # Segment of the content.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Segment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_scores = args[:confidence_scores] if args.key?(:confidence_scores)
+          @grounding_chunk_indices = args[:grounding_chunk_indices] if args.key?(:grounding_chunk_indices)
+          @segment = args[:segment] if args.key?(:segment)
         end
       end
       
@@ -1101,6 +1317,45 @@ module Google
         def update!(**args)
           @rendered_content = args[:rendered_content] if args.key?(:rendered_content)
           @sdk_blob = args[:sdk_blob] if args.key?(:sdk_blob)
+        end
+      end
+      
+      # Segment of the content.
+      class GoogleCloudAiplatformV1beta1Segment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. End index in the given Part, measured in bytes. Offset from the
+        # start of the Part, exclusive, starting at zero.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # Output only. The index of a Part object within its parent Content object.
+        # Corresponds to the JSON property `partIndex`
+        # @return [Fixnum]
+        attr_accessor :part_index
+      
+        # Output only. Start index in the given Part, measured in bytes. Offset from the
+        # start of the Part, inclusive, starting at zero.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        # Output only. The text corresponding to the segment from the response.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @part_index = args[:part_index] if args.key?(:part_index)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
