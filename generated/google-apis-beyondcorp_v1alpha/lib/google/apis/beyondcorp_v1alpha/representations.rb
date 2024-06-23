@@ -1382,6 +1382,7 @@ module Google
           property :sku, as: 'sku'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+          property :subscriber_type, as: 'subscriberType'
           property :type, as: 'type'
         end
       end
