@@ -16,13 +16,13 @@ module Google
   module Apis
     module FirestoreV1beta2
       # Version of the google-apis-firestore_v1beta2 gem
-      GEM_VERSION = "0.24.0"
+      GEM_VERSION = "0.25.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.15.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230905"
+      REVISION = "20240617"
     end
   end
 end
