@@ -55,7 +55,9 @@ module Google
         # Optional. If true, Google will cancel the subscription immediately, and may or
         # may not (based on the contract) issue a prorated refund for the remainder of
         # the billing cycle. Otherwise, Google defers the cancelation at renewal_time,
-        # and will not issue a refund.
+        # and will not issue a refund. - YouTube subscriptions must use this option
+        # currently. However, the user will still have access to the subscription until
+        # the end of the billing cycle.
         # Corresponds to the JSON property `cancelImmediately`
         # @return [Boolean]
         attr_accessor :cancel_immediately
@@ -129,8 +131,9 @@ module Google
         end
       end
       
-      # Partner request for entitling the previously provisioned subscription to an
-      # end user. The end user identity is inferred from the request OAuth context.
+      # LINT.IfChange Partner request for entitling the previously provisioned
+      # subscription to an end user. The end user identity is inferred from the
+      # request OAuth context.
       class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest
         include Google::Apis::Core::Hashable
       
