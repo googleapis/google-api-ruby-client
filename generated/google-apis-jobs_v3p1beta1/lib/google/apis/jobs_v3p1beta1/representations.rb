@@ -268,19 +268,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MendelDebugInput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Money
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NamespacedDebugInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -827,41 +815,12 @@ module Google
         end
       end
       
-      class MendelDebugInput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :namespaced_debug_input, as: 'namespacedDebugInput', class: Google::Apis::JobsV3p1beta1::NamespacedDebugInput, decorator: Google::Apis::JobsV3p1beta1::NamespacedDebugInput::Representation
-      
-        end
-      end
-      
       class Money
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
-        end
-      end
-      
-      class NamespacedDebugInput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :absolutely_forced_exp_names, as: 'absolutelyForcedExpNames'
-          collection :absolutely_forced_exp_tags, as: 'absolutelyForcedExpTags'
-          collection :absolutely_forced_exps, as: 'absolutelyForcedExps'
-          collection :conditionally_forced_exp_names, as: 'conditionallyForcedExpNames'
-          collection :conditionally_forced_exp_tags, as: 'conditionallyForcedExpTags'
-          collection :conditionally_forced_exps, as: 'conditionallyForcedExps'
-          property :disable_automatic_enrollment_selection, as: 'disableAutomaticEnrollmentSelection'
-          collection :disable_exp_names, as: 'disableExpNames'
-          collection :disable_exp_tags, as: 'disableExpTags'
-          collection :disable_exps, as: 'disableExps'
-          property :disable_manual_enrollment_selection, as: 'disableManualEnrollmentSelection'
-          property :disable_organic_selection, as: 'disableOrganicSelection'
-          hash :forced_flags, as: 'forcedFlags'
-          hash :forced_rollouts, as: 'forcedRollouts'
-          property :testing_mode, as: 'testingMode'
         end
       end
       
