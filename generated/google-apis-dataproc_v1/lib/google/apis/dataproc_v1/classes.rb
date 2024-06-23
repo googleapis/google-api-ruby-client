@@ -1287,6 +1287,21 @@ module Google
       class DiskConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates how many IOPS to provision for the disk. This sets the
+        # number of I/O operations per second that the disk can handle. Note: This field
+        # is only supported if boot_disk_type is hyperdisk-balanced.
+        # Corresponds to the JSON property `bootDiskProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :boot_disk_provisioned_iops
+      
+        # Optional. Indicates how much throughput to provision for the disk. This sets
+        # the number of throughput mb per second that the disk can handle. Values must
+        # be greater than or equal to 1. Note: This field is only supported if
+        # boot_disk_type is hyperdisk-balanced.
+        # Corresponds to the JSON property `bootDiskProvisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :boot_disk_provisioned_throughput
+      
         # Optional. Size in GB of the boot disk (default is 500GB).
         # Corresponds to the JSON property `bootDiskSizeGb`
         # @return [Fixnum]
@@ -1324,6 +1339,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boot_disk_provisioned_iops = args[:boot_disk_provisioned_iops] if args.key?(:boot_disk_provisioned_iops)
+          @boot_disk_provisioned_throughput = args[:boot_disk_provisioned_throughput] if args.key?(:boot_disk_provisioned_throughput)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @boot_disk_type = args[:boot_disk_type] if args.key?(:boot_disk_type)
           @local_ssd_interface = args[:local_ssd_interface] if args.key?(:local_ssd_interface)
@@ -1771,8 +1788,8 @@ module Google
         # @return [String]
         attr_accessor :subnetwork_uri
       
-        # The Compute Engine tags to add to all instances (see Tagging instances (https:/
-        # /cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        # The Compute Engine network tags to add to all instances (see Tagging instances
+        # (https://cloud.google.com/vpc/docs/add-remove-network-tags)).
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags

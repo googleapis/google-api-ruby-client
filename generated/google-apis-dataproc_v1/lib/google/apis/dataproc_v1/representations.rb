@@ -1199,6 +1199,8 @@ module Google
       class DiskConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_disk_provisioned_iops, :numeric_string => true, as: 'bootDiskProvisionedIops'
+          property :boot_disk_provisioned_throughput, :numeric_string => true, as: 'bootDiskProvisionedThroughput'
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
           property :boot_disk_type, as: 'bootDiskType'
           property :local_ssd_interface, as: 'localSsdInterface'
