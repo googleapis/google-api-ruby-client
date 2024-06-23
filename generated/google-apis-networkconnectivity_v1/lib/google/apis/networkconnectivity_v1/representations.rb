@@ -507,6 +507,7 @@ module Google
       class ConsumerPscConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_instance_project, as: 'consumerInstanceProject'
           property :disable_global_access, as: 'disableGlobalAccess'
           property :network, as: 'network'
           property :producer_instance_id, as: 'producerInstanceId'
@@ -674,6 +675,7 @@ module Google
       class LinkedInterconnectAttachments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :include_import_ranges, as: 'includeImportRanges'
           property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
           collection :uris, as: 'uris'
           property :vpc_network, as: 'vpcNetwork'
@@ -683,6 +685,7 @@ module Google
       class LinkedRouterApplianceInstances
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :include_import_ranges, as: 'includeImportRanges'
           collection :instances, as: 'instances', class: Google::Apis::NetworkconnectivityV1::RouterApplianceInstance, decorator: Google::Apis::NetworkconnectivityV1::RouterApplianceInstance::Representation
       
           property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
@@ -702,6 +705,7 @@ module Google
       class LinkedVpnTunnels
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :include_import_ranges, as: 'includeImportRanges'
           property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
           collection :uris, as: 'uris'
           property :vpc_network, as: 'vpcNetwork'
@@ -959,7 +963,9 @@ module Google
       class PscConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_google_producers_resource_hierarchy_level, as: 'allowedGoogleProducersResourceHierarchyLevel'
           property :limit, :numeric_string => true, as: 'limit'
+          property :producer_instance_location, as: 'producerInstanceLocation'
           collection :subnetworks, as: 'subnetworks'
         end
       end
