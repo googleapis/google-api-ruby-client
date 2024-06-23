@@ -26,12 +26,12 @@ module Google
       class Accelerator
         include Google::Apis::Core::Hashable
       
-        # The type of an accelator for a CDF instance.
+        # Optional. The type of an accelator for a Cloud Data Fusion instance.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
       
-        # The state of the accelerator.
+        # Output only. The state of the accelerator.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -251,54 +251,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @key_reference = args[:key_reference] if args.key?(:key_reference)
-        end
-      end
-      
-      # Next tag: 7
-      class DataResidencyAugmentedView
-        include Google::Apis::Core::Hashable
-      
-        # Cloud resource to Google owned production object mapping in the form of GURIs.
-        # The GURIs should be available in DG KB storage/cns tables. This is the
-        # preferred way of providing cloud resource mappings. For further details please
-        # read go/cloud-resource-monitoring_sig
-        # Corresponds to the JSON property `crGopoGuris`
-        # @return [Array<String>]
-        attr_accessor :cr_gopo_guris
-      
-        # Cloud resource to Google owned production object mapping in the form of
-        # prefixes. These should be available in DG KB storage/cns tables. The entity
-        # type, which is the part of the string before the first colon in the GURI, must
-        # be completely specified in prefix. For details about GURI please read go/guri.
-        # For further details about the field please read go/cloud-resource-
-        # monitoring_sig.
-        # Corresponds to the JSON property `crGopoPrefixes`
-        # @return [Array<String>]
-        attr_accessor :cr_gopo_prefixes
-      
-        # This message defines service-specific data that certain service teams must
-        # provide as part of the Data Residency Augmented View for a resource. Next ID:
-        # 2
-        # Corresponds to the JSON property `serviceData`
-        # @return [Google::Apis::DatafusionV1::ServiceData]
-        attr_accessor :service_data
-      
-        # The list of project_id's of the tenant projects in the 'google.com' org which
-        # serve the Cloud Resource. See go/drz-mst-sig for more details.
-        # Corresponds to the JSON property `tpIds`
-        # @return [Array<String>]
-        attr_accessor :tp_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cr_gopo_guris = args[:cr_gopo_guris] if args.key?(:cr_gopo_guris)
-          @cr_gopo_prefixes = args[:cr_gopo_prefixes] if args.key?(:cr_gopo_prefixes)
-          @service_data = args[:service_data] if args.key?(:service_data)
-          @tp_ids = args[:tp_ids] if args.key?(:tp_ids)
         end
       end
       
@@ -546,6 +498,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Maintenance policy of the instance.
+        # Corresponds to the JSON property `maintenancePolicy`
+        # @return [Google::Apis::DatafusionV1::MaintenancePolicy]
+        attr_accessor :maintenance_policy
+      
         # Output only. The name of this instance is in the form of projects/`project`/
         # locations/`location`/instances/`instance`.
         # Corresponds to the JSON property `name`
@@ -568,7 +525,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :options
       
-        # Output only. P4 service account for the customer project.
+        # Output only. Service agent for the customer project.
         # Corresponds to the JSON property `p4ServiceAccount`
         # @return [String]
         attr_accessor :p4_service_account
@@ -669,6 +626,7 @@ module Google
           @event_publish_config = args[:event_publish_config] if args.key?(:event_publish_config)
           @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
           @labels = args[:labels] if args.key?(:labels)
+          @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @options = args[:options] if args.key?(:options)
@@ -870,6 +828,50 @@ module Google
         end
       end
       
+      # Maintenance policy of the instance.
+      class MaintenancePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Represents an arbitrary window of time.
+        # Corresponds to the JSON property `maintenanceExclusionWindow`
+        # @return [Google::Apis::DatafusionV1::TimeWindow]
+        attr_accessor :maintenance_exclusion_window
+      
+        # Maintenance window of the instance.
+        # Corresponds to the JSON property `maintenanceWindow`
+        # @return [Google::Apis::DatafusionV1::MaintenanceWindow]
+        attr_accessor :maintenance_window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_exclusion_window = args[:maintenance_exclusion_window] if args.key?(:maintenance_exclusion_window)
+          @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
+        end
+      end
+      
+      # Maintenance window of the instance.
+      class MaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Represents an arbitrary window of time that recurs.
+        # Corresponds to the JSON property `recurringTimeWindow`
+        # @return [Google::Apis::DatafusionV1::RecurringTimeWindow]
+        attr_accessor :recurring_time_window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recurring_time_window = args[:recurring_time_window] if args.key?(:recurring_time_window)
+        end
+      end
+      
       # Network configuration for a Data Fusion instance. These configurations are
       # used for peering with the customer network. Configurations are optional when a
       # public Data Fusion instance is to be created. However, providing these
@@ -1051,46 +1053,6 @@ module Google
         end
       end
       
-      # Persistent Disk service-specific Data. Contains information that may not be
-      # appropriate for the generic DRZ Augmented View. This currently includes LSV
-      # Colossus Roots and GCS Buckets.
-      class PersistentDiskData
-        include Google::Apis::Core::Hashable
-      
-        # Path to Colossus root for an LSV. NOTE: Unlike `cr_ti_guris` and `
-        # cr_ti_prefixes`, the field `cfs_roots` below does not need to be a GUri or
-        # GUri prefix. It can simply be any valid CFS or CFS2 Path. The DRZ KR8 SIG has
-        # more details overall, but generally the `cfs_roots` provided here should be
-        # scoped to an individual Persistent Disk. An example for a PD Disk with a disk
-        # ID 3277719120423414466, follows: * `cr_ti_guris` could be ‘/cfs2/pj/pd-cloud-
-        # prod’ as this is a valid GUri present in the DG KB and contains enough
-        # information to perform location monitoring and scope ownership of the
-        # Production Object. * `cfs_roots` would be: ‘/cfs2/pj/pd-cloud-staging/
-        # lsv000001234@/ lsv/projects~773365403387~zones~2700~disks~3277719120423414466 ~
-        # bank-blue-careful-3526-lsv00054DB1B7254BA3/’ as this allows us to enumerate
-        # the files on CFS2 that belong to an individual Disk.
-        # Corresponds to the JSON property `cfsRoots`
-        # @return [Array<String>]
-        attr_accessor :cfs_roots
-      
-        # The GCS Buckets that back this snapshot or image. This is required as `
-        # cr_ti_prefixes` and `cr_ti_guris` only accept TI resources. This should be the
-        # globally unique bucket name.
-        # Corresponds to the JSON property `gcsBucketNames`
-        # @return [Array<String>]
-        attr_accessor :gcs_bucket_names
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cfs_roots = args[:cfs_roots] if args.key?(:cfs_roots)
-          @gcs_bucket_names = args[:gcs_bucket_names] if args.key?(:gcs_bucket_names)
-        end
-      end
-      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -1229,6 +1191,38 @@ module Google
         end
       end
       
+      # Represents an arbitrary window of time that recurs.
+      class RecurringTimeWindow
+        include Google::Apis::Core::Hashable
+      
+        # Required. An RRULE with format [RFC-5545](https://tools.ietf.org/html/rfc5545#
+        # section-3.8.5.3) for how this window reccurs. They go on for the span of time
+        # between the start and end time. The only supported FREQ value is "WEEKLY". To
+        # have something repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR".
+        # This specifies how frequently the window starts. To have a 9 am - 5 pm UTC-4
+        # window every weekday, use something like: ``` start time = 2019-01-01T09:00:00-
+        # 0400 end time = 2019-01-01T17:00:00-0400 recurrence = FREQ=WEEKLY;BYDAY=MO,TU,
+        # WE,TH,FR ```
+        # Corresponds to the JSON property `recurrence`
+        # @return [String]
+        attr_accessor :recurrence
+      
+        # Represents an arbitrary window of time.
+        # Corresponds to the JSON property `window`
+        # @return [Google::Apis::DatafusionV1::TimeWindow]
+        attr_accessor :window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recurrence = args[:recurrence] if args.key?(:recurrence)
+          @window = args[:window] if args.key?(:window)
+        end
+      end
+      
       # Request message for restarting a Data Fusion instance.
       class RestartInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1239,29 +1233,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # This message defines service-specific data that certain service teams must
-      # provide as part of the Data Residency Augmented View for a resource. Next ID:
-      # 2
-      class ServiceData
-        include Google::Apis::Core::Hashable
-      
-        # Persistent Disk service-specific Data. Contains information that may not be
-        # appropriate for the generic DRZ Augmented View. This currently includes LSV
-        # Colossus Roots and GCS Buckets.
-        # Corresponds to the JSON property `pd`
-        # @return [Google::Apis::DatafusionV1::PersistentDiskData]
-        attr_accessor :pd
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @pd = args[:pd] if args.key?(:pd)
         end
       end
       
@@ -1394,6 +1365,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Represents an arbitrary window of time.
+      class TimeWindow
+        include Google::Apis::Core::Hashable
+      
+        # Required. The end time of the time window provided in [RFC 3339](https://www.
+        # ietf.org/rfc/rfc3339.txt) format. The end time should take place after the
+        # start time. Example: "2024-01-02T12:04:06-06:00"
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required. The start time of the time window provided in [RFC 3339](https://www.
+        # ietf.org/rfc/rfc3339.txt) format. Example: "2024-01-01T12:04:06-04:00"
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
