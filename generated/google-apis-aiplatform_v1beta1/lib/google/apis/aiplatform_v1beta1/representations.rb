@@ -904,24 +904,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1beta1DatasetDistribution
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1DatasetDistributionDistributionBucket
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1DatasetStats
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1beta1DatasetVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1109,24 +1091,6 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1DiskSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1DistillationDataStats
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1DistillationHyperParameters
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1DistillationSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1997,12 +1961,6 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1GroundingMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1HumanFeedbackConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3922,24 +3880,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1beta1ReinforcementLearningDataStats
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1ReinforcementLearningHyperParameters
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1ReinforcementLearningSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1beta1RemoveContextChildrenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4061,12 +4001,6 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1RetrieveContextsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1RewardModelTrainingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6304,6 +6238,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntelligenceCloudAutomlXpsMetricEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntelligenceCloudAutomlXpsMetricEntryLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntelligenceCloudAutomlXpsReportingMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6311,6 +6263,8 @@ module Google
       
           property :rai_media_filtered_count, as: 'raiMediaFilteredCount'
           collection :rai_media_filtered_reasons, as: 'raiMediaFilteredReasons'
+          property :reporting_metrics, as: 'reportingMetrics', class: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsReportingMetrics, decorator: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsReportingMetrics::Representation
+      
         end
       end
       
@@ -6365,6 +6319,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :detected_labels, as: 'detectedLabels', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionRaiInfoDetectedLabels, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionRaiInfoDetectedLabels::Representation
       
+          property :model_name, as: 'modelName'
           collection :rai_categories, as: 'raiCategories'
           collection :scores, as: 'scores'
         end
@@ -7055,6 +7010,7 @@ module Google
           collection :contents, as: 'contents', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
       
           property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
           property :expire_time, as: 'expireTime'
           property :model, as: 'model'
           property :name, as: 'name'
@@ -7717,48 +7673,6 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1beta1DatasetDistribution
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :buckets, as: 'buckets', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetDistributionDistributionBucket, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetDistributionDistributionBucket::Representation
-      
-          property :max, as: 'max'
-          property :mean, as: 'mean'
-          property :median, as: 'median'
-          property :min, as: 'min'
-          property :p5, as: 'p5'
-          property :p95, as: 'p95'
-          property :sum, as: 'sum'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1DatasetDistributionDistributionBucket
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, :numeric_string => true, as: 'count'
-          property :left, as: 'left'
-          property :right, as: 'right'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1DatasetStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :total_billable_character_count, :numeric_string => true, as: 'totalBillableCharacterCount'
-          property :total_tuning_character_count, :numeric_string => true, as: 'totalTuningCharacterCount'
-          property :tuning_dataset_example_count, :numeric_string => true, as: 'tuningDatasetExampleCount'
-          property :tuning_step_count, :numeric_string => true, as: 'tuningStepCount'
-          collection :user_dataset_examples, as: 'userDatasetExamples', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
-      
-          property :user_input_token_distribution, as: 'userInputTokenDistribution', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetDistribution, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetDistribution::Representation
-      
-          property :user_message_per_example_distribution, as: 'userMessagePerExampleDistribution', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetDistribution, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetDistribution::Representation
-      
-          property :user_output_token_distribution, as: 'userOutputTokenDistribution', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetDistribution, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetDistribution::Representation
-      
-        end
-      end
-      
       class GoogleCloudAiplatformV1beta1DatasetVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8070,37 +7984,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
           property :boot_disk_type, as: 'bootDiskType'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1DistillationDataStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :training_dataset_stats, as: 'trainingDatasetStats', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetStats, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetStats::Representation
-      
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1DistillationHyperParameters
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :adapter_size, as: 'adapterSize'
-          property :epoch_count, :numeric_string => true, as: 'epochCount'
-          property :learning_rate_multiplier, as: 'learningRateMultiplier'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1DistillationSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :base_teacher_model, as: 'baseTeacherModel'
-          property :hyper_parameters, as: 'hyperParameters', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DistillationHyperParameters, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DistillationHyperParameters::Representation
-      
-          property :pipeline_root_directory, as: 'pipelineRootDirectory'
-          property :student_model, as: 'studentModel'
-          property :training_dataset_uri, as: 'trainingDatasetUri'
-          property :tuned_teacher_model_source, as: 'tunedTeacherModelSource'
-          property :validation_dataset_uri, as: 'validationDatasetUri'
         end
       end
       
@@ -9641,13 +9524,6 @@ module Google
           property :search_entry_point, as: 'searchEntryPoint', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SearchEntryPoint, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SearchEntryPoint::Representation
       
           collection :web_search_queries, as: 'webSearchQueries'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1HumanFeedbackConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :preference_dataset_uri, as: 'preferenceDatasetUri'
         end
       end
       
@@ -12774,6 +12650,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :similarity_top_k, as: 'similarityTopK'
           property :text, as: 'text'
+          property :vector_distance_threshold, as: 'vectorDistanceThreshold'
         end
       end
       
@@ -12968,39 +12845,6 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1beta1ReinforcementLearningDataStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :preference_dataset_stats, as: 'preferenceDatasetStats', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetStats, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetStats::Representation
-      
-          property :prompt_dataset_stats, as: 'promptDatasetStats', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetStats, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetStats::Representation
-      
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1ReinforcementLearningHyperParameters
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :epoch_count, :numeric_string => true, as: 'epochCount'
-          property :human_feedback_config, as: 'humanFeedbackConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1HumanFeedbackConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1HumanFeedbackConfig::Representation
-      
-          property :kl_coefficient, as: 'klCoefficient'
-          property :learning_rate_multiplier, as: 'learningRateMultiplier'
-          property :reward_model_training_config, as: 'rewardModelTrainingConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RewardModelTrainingConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RewardModelTrainingConfig::Representation
-      
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1ReinforcementLearningSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :hyper_parameters, as: 'hyperParameters', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReinforcementLearningHyperParameters, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReinforcementLearningHyperParameters::Representation
-      
-          property :prompt_dataset_uri, as: 'promptDatasetUri'
-          property :validation_dataset_uri, as: 'validationDatasetUri'
-        end
-      end
-      
       class GoogleCloudAiplatformV1beta1RemoveContextChildrenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13176,14 +13020,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contexts, as: 'contexts', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagContexts, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagContexts::Representation
       
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1RewardModelTrainingConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :epoch_count, :numeric_string => true, as: 'epochCount'
-          property :learning_rate_multiplier, as: 'learningRateMultiplier'
         end
       end
       
@@ -16205,10 +16041,6 @@ module Google
       class GoogleCloudAiplatformV1beta1TuningDataStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :distillation_data_stats, as: 'distillationDataStats', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DistillationDataStats, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DistillationDataStats::Representation
-      
-          property :reinforcement_learning_data_stats, as: 'reinforcementLearningDataStats', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReinforcementLearningDataStats, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReinforcementLearningDataStats::Representation
-      
           property :supervised_tuning_data_stats, as: 'supervisedTuningDataStats', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SupervisedTuningDataStats, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SupervisedTuningDataStats::Representation
       
         end
@@ -16220,8 +16052,6 @@ module Google
           property :base_model, as: 'baseModel'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
-          property :distillation_spec, as: 'distillationSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DistillationSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DistillationSpec::Representation
-      
           property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec::Representation
       
           property :end_time, as: 'endTime'
@@ -16231,8 +16061,6 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :pipeline_job, as: 'pipelineJob'
-          property :reinforcement_learning_spec, as: 'reinforcementLearningSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReinforcementLearningSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReinforcementLearningSpec::Representation
-      
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :supervised_tuning_spec, as: 'supervisedTuningSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SupervisedTuningSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SupervisedTuningSpec::Representation
@@ -16803,6 +16631,35 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class IntelligenceCloudAutomlXpsMetricEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :argentum_metric_id, as: 'argentumMetricId'
+          property :double_value, as: 'doubleValue'
+          property :int64_value, :numeric_string => true, as: 'int64Value'
+          property :metric_name, as: 'metricName'
+          collection :system_labels, as: 'systemLabels', class: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsMetricEntryLabel, decorator: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsMetricEntryLabel::Representation
+      
+        end
+      end
+      
+      class IntelligenceCloudAutomlXpsMetricEntryLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_name, as: 'labelName'
+          property :label_value, as: 'labelValue'
+        end
+      end
+      
+      class IntelligenceCloudAutomlXpsReportingMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_training_duration, as: 'effectiveTrainingDuration'
+          collection :metric_entries, as: 'metricEntries', class: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsMetricEntry, decorator: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsMetricEntry::Representation
+      
         end
       end
     end
