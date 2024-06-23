@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1CreateDatabaseMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -163,6 +169,22 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_ids, as: 'collectionIds'
+          property :end_time, as: 'endTime'
+          collection :namespace_ids, as: 'namespaceIds'
+          property :operation_state, as: 'operationState'
+          property :progress_bytes, as: 'progressBytes', class: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1Progress::Representation
+      
+          property :progress_documents, as: 'progressDocuments', class: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1Progress::Representation
+      
+          property :snapshot_time, as: 'snapshotTime'
+          property :start_time, as: 'startTime'
         end
       end
       
