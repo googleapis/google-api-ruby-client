@@ -603,6 +603,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :etag, as: 'etag'
           property :gke_policy, as: 'gkePolicy', class: Google::Apis::BinaryauthorizationV1::GkePolicy, decorator: Google::Apis::BinaryauthorizationV1::GkePolicy::Representation
       
           property :name, as: 'name'
