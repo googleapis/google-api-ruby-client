@@ -324,9 +324,9 @@ module Google
         # field. The returned operation is automatically deleted after a few hours, so
         # there is no need to call DeleteOperation.
         # @param [String] name
-        #   Required. Unique name of the resource in this scope including project and
-        #   location using the form: `projects/`project_id`/locations/`location_id`/
-        #   clusters/`cluster_id``
+        #   Required. Identifier. Unique name of the resource in this scope including
+        #   project and location using the form: `projects/`project_id`/locations/`
+        #   location_id`/clusters/`cluster_id``
         # @param [Google::Apis::RedisV1::Cluster] cluster_object
         # @param [String] request_id
         #   Idempotent request UUID.
