@@ -52,7 +52,8 @@ module Google
         end
         
         # To retrieve the products that can be resold by the partner. It should be
-        # autenticated with a service account.
+        # autenticated with a service account. - This API doesn't apply to YouTube
+        # products currently.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
         # @param [String] filter
@@ -138,8 +139,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # To retrieve the promotions, such as free trial, that can be used by the
-        # partner. It should be autenticated with a service account.
+        # Retrieves the promotions, such as free trial, that can be used by the partner.
+        # - This API doesn't apply to YouTube promotions currently. It should be
+        # autenticated with a service account.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
         # @param [String] filter
@@ -421,10 +423,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Used by partners to revoke the pending cancellation of a subscription, which
-        # is currently in `STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is
-        # already cancelled, the request will fail. It should be called directly by the
-        # partner using service accounts.
+        # Revokes the pending cancellation of a subscription, which is currently in `
+        # STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is already cancelled,
+        # the request will fail. - **This API doesn't apply to YouTube subscriptions.**
+        # It should be called directly by the partner using service accounts.
         # @param [String] name
         #   Required. The name of the subscription resource whose pending cancellation
         #   needs to be undone. It will have the format of "partners/`partner_id`/
