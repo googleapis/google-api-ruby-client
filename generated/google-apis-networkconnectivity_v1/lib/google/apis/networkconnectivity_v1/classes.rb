@@ -282,6 +282,15 @@ module Google
       class ConsumerPscConfig
         include Google::Apis::Core::Hashable
       
+        # Required. The project ID or project number of the consumer project. This
+        # project is the one that the consumer uses to interact with the producer
+        # instance. From the perspective of a consumer who's created a producer instance,
+        # this is the project of the producer instance. Format: 'projects/' Eg. '
+        # projects/consumer-project' or 'projects/1234'
+        # Corresponds to the JSON property `consumerInstanceProject`
+        # @return [String]
+        attr_accessor :consumer_instance_project
+      
         # This is used in PSC consumer ForwardingRule to control whether the PSC
         # endpoint can be accessed from another region.
         # Corresponds to the JSON property `disableGlobalAccess`
@@ -326,6 +335,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consumer_instance_project = args[:consumer_instance_project] if args.key?(:consumer_instance_project)
           @disable_global_access = args[:disable_global_access] if args.key?(:disable_global_access)
           @network = args[:network] if args.key?(:network)
           @producer_instance_id = args[:producer_instance_id] if args.key?(:producer_instance_id)
@@ -1086,6 +1096,13 @@ module Google
       class LinkedInterconnectAttachments
         include Google::Apis::Core::Hashable
       
+        # Optional. IP ranges allowed to be included during import from hub.(does not
+        # control transit connectivity) The only allowed value for now is "
+        # ALL_IPV4_RANGES".
+        # Corresponds to the JSON property `includeImportRanges`
+        # @return [Array<String>]
+        attr_accessor :include_import_ranges
+      
         # A value that controls whether site-to-site data transfer is enabled for these
         # resources. Data transfer is available only in [supported locations](https://
         # cloud.google.com/network-connectivity/docs/network-connectivity-center/
@@ -1111,6 +1128,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_import_ranges = args[:include_import_ranges] if args.key?(:include_import_ranges)
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
           @uris = args[:uris] if args.key?(:uris)
           @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
@@ -1123,6 +1141,13 @@ module Google
       # spoke.
       class LinkedRouterApplianceInstances
         include Google::Apis::Core::Hashable
+      
+        # Optional. IP ranges allowed to be included during import from hub.(does not
+        # control transit connectivity) The only allowed value for now is "
+        # ALL_IPV4_RANGES".
+        # Corresponds to the JSON property `includeImportRanges`
+        # @return [Array<String>]
+        attr_accessor :include_import_ranges
       
         # The list of router appliance instances.
         # Corresponds to the JSON property `instances`
@@ -1150,6 +1175,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_import_ranges = args[:include_import_ranges] if args.key?(:include_import_ranges)
           @instances = args[:instances] if args.key?(:instances)
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
           @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
@@ -1194,6 +1220,13 @@ module Google
       class LinkedVpnTunnels
         include Google::Apis::Core::Hashable
       
+        # Optional. IP ranges allowed to be included during import from hub.(does not
+        # control transit connectivity) The only allowed value for now is "
+        # ALL_IPV4_RANGES".
+        # Corresponds to the JSON property `includeImportRanges`
+        # @return [Array<String>]
+        attr_accessor :include_import_ranges
+      
         # A value that controls whether site-to-site data transfer is enabled for these
         # resources. Data transfer is available only in [supported locations](https://
         # cloud.google.com/network-connectivity/docs/network-connectivity-center/
@@ -1219,6 +1252,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_import_ranges = args[:include_import_ranges] if args.key?(:include_import_ranges)
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
           @uris = args[:uris] if args.key?(:uris)
           @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
@@ -2159,10 +2193,34 @@ module Google
       class PscConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. List of Projects, Folders, or Organizations from where the Producer
+        # instance can be within. For example, a network administrator can provide both '
+        # organizations/foo' and 'projects/bar' as
+        # allowed_google_producers_resource_hierarchy_levels. This allowlists this
+        # network to connect with any Producer instance within the 'foo' organization or
+        # the 'bar' project. By default,
+        # allowed_google_producers_resource_hierarchy_level is empty. The format for
+        # each allowed_google_producers_resource_hierarchy_level is / where is one of '
+        # projects', 'folders', or 'organizations' and is either the ID or the number of
+        # the resource type. Format for each
+        # allowed_google_producers_resource_hierarchy_level value: 'projects/' or '
+        # folders/' or 'organizations/' Eg. [projects/my-project-id, projects/567,
+        # folders/891, organizations/123]
+        # Corresponds to the JSON property `allowedGoogleProducersResourceHierarchyLevel`
+        # @return [Array<String>]
+        attr_accessor :allowed_google_producers_resource_hierarchy_level
+      
         # Optional. Max number of PSC connections for this policy.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
+      
+        # Required. ProducerInstanceLocation is used to specify which authorization
+        # mechanism to use to determine which projects the Producer instance can be
+        # within.
+        # Corresponds to the JSON property `producerInstanceLocation`
+        # @return [String]
+        attr_accessor :producer_instance_location
       
         # The resource paths of subnetworks to use for IP address management. Example:
         # projects/`projectNumOrId`/regions/`region`/subnetworks/`resourceId`.
@@ -2176,7 +2234,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_google_producers_resource_hierarchy_level = args[:allowed_google_producers_resource_hierarchy_level] if args.key?(:allowed_google_producers_resource_hierarchy_level)
           @limit = args[:limit] if args.key?(:limit)
+          @producer_instance_location = args[:producer_instance_location] if args.key?(:producer_instance_location)
           @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
         end
       end
