@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Link
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAlertPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1025,6 +1031,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
+          collection :links, as: 'links', class: Google::Apis::MonitoringV3::Link, decorator: Google::Apis::MonitoringV3::Link::Representation
+      
           property :mime_type, as: 'mimeType'
           property :subject, as: 'subject'
         end
@@ -1252,6 +1260,14 @@ module Google
           property :num_finite_buckets, as: 'numFiniteBuckets'
           property :offset, as: 'offset'
           property :width, as: 'width'
+        end
+      end
+      
+      class Link
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :url, as: 'url'
         end
       end
       
