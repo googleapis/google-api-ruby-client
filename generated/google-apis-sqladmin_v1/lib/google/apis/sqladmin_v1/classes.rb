@@ -2684,12 +2684,14 @@ module Google
       class MaintenanceWindow
         include Google::Apis::Core::Hashable
       
-        # day of week (1-7), starting on Monday.
+        # Day of week - `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `
+        # SATURDAY`, or `SUNDAY`. Specify in the UTC time zone. Returned in output as an
+        # integer, 1 to 7, where `1` equals Monday.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # hour of day - 0 to 23.
+        # Hour of day - 0 to 23. Specify in the UTC time zone.
         # Corresponds to the JSON property `hour`
         # @return [Fixnum]
         attr_accessor :hour
@@ -2699,9 +2701,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn
-        # more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-
-        # timing-2ndgen).
+        # Maintenance timing settings: `canary`, `stable`, or `week5`. For more
+        # information, see [About maintenance on Cloud SQL instances](https://cloud.
+        # google.com/sql/docs/mysql/maintenance).
         # Corresponds to the JSON property `updateTrack`
         # @return [String]
         attr_accessor :update_track
