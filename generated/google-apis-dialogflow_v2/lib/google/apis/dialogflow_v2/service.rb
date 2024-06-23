@@ -3864,14 +3864,9 @@ module Google
         #   Required. The project from which to list all conversation. Format: `projects//
         #   locations/`.
         # @param [String] filter
-        #   A filter expression that filters conversations listed in the response. In
-        #   general, the expression must specify the field name, a comparison operator,
-        #   and the value to use for filtering: - The value must be a string, a number, or
-        #   a boolean. - The comparison operator must be either `=`,`!=`, `>`, or `<`. -
-        #   To filter on multiple expressions, separate the expressions with `AND` or `OR`
-        #   (omitting both implies `AND`). - For clarity, expressions can be enclosed in
-        #   parentheses. Only `lifecycle_state` can be filtered on in this way. For
-        #   example, the following expression only returns `COMPLETED` conversations: `
+        #   Optional. A filter expression that filters conversations listed in the
+        #   response. Only `lifecycle_state` can be filtered on in this way. For example,
+        #   the following expression only returns `COMPLETED` conversations: `
         #   lifecycle_state = "COMPLETED"` For more information about filtering, see [API
         #   Filtering](https://aip.dev/160).
         # @param [Fixnum] page_size
@@ -4274,8 +4269,8 @@ module Google
         
         # Get answers for the given query based on knowledge documents.
         # @param [String] conversation
-        #   The conversation (between human agent and end user) where the search request
-        #   is triggered. Format: `projects//locations//conversations/`.
+        #   Optional. The conversation (between human agent and end user) where the search
+        #   request is triggered. Format: `projects//locations//conversations/`.
         # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequest] google_cloud_dialogflow_v2_search_knowledge_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8492,14 +8487,9 @@ module Google
         #   Required. The project from which to list all conversation. Format: `projects//
         #   locations/`.
         # @param [String] filter
-        #   A filter expression that filters conversations listed in the response. In
-        #   general, the expression must specify the field name, a comparison operator,
-        #   and the value to use for filtering: - The value must be a string, a number, or
-        #   a boolean. - The comparison operator must be either `=`,`!=`, `>`, or `<`. -
-        #   To filter on multiple expressions, separate the expressions with `AND` or `OR`
-        #   (omitting both implies `AND`). - For clarity, expressions can be enclosed in
-        #   parentheses. Only `lifecycle_state` can be filtered on in this way. For
-        #   example, the following expression only returns `COMPLETED` conversations: `
+        #   Optional. A filter expression that filters conversations listed in the
+        #   response. Only `lifecycle_state` can be filtered on in this way. For example,
+        #   the following expression only returns `COMPLETED` conversations: `
         #   lifecycle_state = "COMPLETED"` For more information about filtering, see [API
         #   Filtering](https://aip.dev/160).
         # @param [Fixnum] page_size
@@ -8902,8 +8892,8 @@ module Google
         
         # Get answers for the given query based on knowledge documents.
         # @param [String] conversation
-        #   The conversation (between human agent and end user) where the search request
-        #   is triggered. Format: `projects//locations//conversations/`.
+        #   Optional. The conversation (between human agent and end user) where the search
+        #   request is triggered. Format: `projects//locations//conversations/`.
         # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequest] google_cloud_dialogflow_v2_search_knowledge_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -9833,8 +9823,8 @@ module Google
         
         # Get answers for the given query based on knowledge documents.
         # @param [String] parent
-        #   The parent resource contains the conversation profile Format: 'projects/' or `
-        #   projects//locations/`.
+        #   Required. The parent resource contains the conversation profile Format: '
+        #   projects/' or `projects//locations/`.
         # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequest] google_cloud_dialogflow_v2_search_knowledge_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -10010,8 +10000,8 @@ module Google
         
         # Get answers for the given query based on knowledge documents.
         # @param [String] parent
-        #   The parent resource contains the conversation profile Format: 'projects/' or `
-        #   projects//locations/`.
+        #   Required. The parent resource contains the conversation profile Format: '
+        #   projects/' or `projects//locations/`.
         # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequest] google_cloud_dialogflow_v2_search_knowledge_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
