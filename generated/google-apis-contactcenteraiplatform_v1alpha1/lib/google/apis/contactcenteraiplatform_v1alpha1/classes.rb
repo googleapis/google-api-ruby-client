@@ -166,11 +166,7 @@ module Google
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::PrivateAccess]
         attr_accessor :private_access
       
-        # Output only. A list of UJET components that should be privately accessed. This
-        # field is set by reading settings from the data plane. For more information
-        # about the format of the component please refer to go/ccaip-vpc-sc-org-policy.
-        # This field is must be fully populated only for Create/Update resource
-        # operations. The main use case for this field is OrgPolicy checks via CPE.
+        # Output only. TODO(b/283407860) Deprecate this field.
         # Corresponds to the JSON property `privateComponents`
         # @return [Array<String>]
         attr_accessor :private_components
