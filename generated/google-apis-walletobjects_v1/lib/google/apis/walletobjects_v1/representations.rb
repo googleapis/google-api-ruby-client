@@ -2637,6 +2637,10 @@ module Google
       
           collection :flight_objects, as: 'flightObjects', class: Google::Apis::WalletobjectsV1::FlightObject, decorator: Google::Apis::WalletobjectsV1::FlightObject::Representation
       
+          collection :generic_classes, as: 'genericClasses', class: Google::Apis::WalletobjectsV1::GenericClass, decorator: Google::Apis::WalletobjectsV1::GenericClass::Representation
+      
+          collection :generic_objects, as: 'genericObjects', class: Google::Apis::WalletobjectsV1::GenericObject, decorator: Google::Apis::WalletobjectsV1::GenericObject::Representation
+      
           collection :gift_card_classes, as: 'giftCardClasses', class: Google::Apis::WalletobjectsV1::GiftCardClass, decorator: Google::Apis::WalletobjectsV1::GiftCardClass::Representation
       
           collection :gift_card_objects, as: 'giftCardObjects', class: Google::Apis::WalletobjectsV1::GiftCardObject, decorator: Google::Apis::WalletobjectsV1::GiftCardObject::Representation

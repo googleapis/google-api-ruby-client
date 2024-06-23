@@ -6636,62 +6636,72 @@ module Google
       class Resources
         include Google::Apis::Core::Hashable
       
-        # 
+        # A list of event ticket classes.
         # Corresponds to the JSON property `eventTicketClasses`
         # @return [Array<Google::Apis::WalletobjectsV1::EventTicketClass>]
         attr_accessor :event_ticket_classes
       
-        # 
+        # A list of event ticket objects.
         # Corresponds to the JSON property `eventTicketObjects`
         # @return [Array<Google::Apis::WalletobjectsV1::EventTicketObject>]
         attr_accessor :event_ticket_objects
       
-        # 
+        # A list of flight classes.
         # Corresponds to the JSON property `flightClasses`
         # @return [Array<Google::Apis::WalletobjectsV1::FlightClass>]
         attr_accessor :flight_classes
       
-        # 
+        # A list of flight objects.
         # Corresponds to the JSON property `flightObjects`
         # @return [Array<Google::Apis::WalletobjectsV1::FlightObject>]
         attr_accessor :flight_objects
       
-        # 
+        # A list of generic classes.
+        # Corresponds to the JSON property `genericClasses`
+        # @return [Array<Google::Apis::WalletobjectsV1::GenericClass>]
+        attr_accessor :generic_classes
+      
+        # A list of generic objects.
+        # Corresponds to the JSON property `genericObjects`
+        # @return [Array<Google::Apis::WalletobjectsV1::GenericObject>]
+        attr_accessor :generic_objects
+      
+        # A list of gift card classes.
         # Corresponds to the JSON property `giftCardClasses`
         # @return [Array<Google::Apis::WalletobjectsV1::GiftCardClass>]
         attr_accessor :gift_card_classes
       
-        # 
+        # A list of gift card objects.
         # Corresponds to the JSON property `giftCardObjects`
         # @return [Array<Google::Apis::WalletobjectsV1::GiftCardObject>]
         attr_accessor :gift_card_objects
       
-        # 
+        # A list of loyalty classes.
         # Corresponds to the JSON property `loyaltyClasses`
         # @return [Array<Google::Apis::WalletobjectsV1::LoyaltyClass>]
         attr_accessor :loyalty_classes
       
-        # 
+        # A list of loyalty objects.
         # Corresponds to the JSON property `loyaltyObjects`
         # @return [Array<Google::Apis::WalletobjectsV1::LoyaltyObject>]
         attr_accessor :loyalty_objects
       
-        # 
+        # A list of offer classes.
         # Corresponds to the JSON property `offerClasses`
         # @return [Array<Google::Apis::WalletobjectsV1::OfferClass>]
         attr_accessor :offer_classes
       
-        # 
+        # A list of offer objects.
         # Corresponds to the JSON property `offerObjects`
         # @return [Array<Google::Apis::WalletobjectsV1::OfferObject>]
         attr_accessor :offer_objects
       
-        # 
+        # A list of transit classes.
         # Corresponds to the JSON property `transitClasses`
         # @return [Array<Google::Apis::WalletobjectsV1::TransitClass>]
         attr_accessor :transit_classes
       
-        # 
+        # A list of transit objects.
         # Corresponds to the JSON property `transitObjects`
         # @return [Array<Google::Apis::WalletobjectsV1::TransitObject>]
         attr_accessor :transit_objects
@@ -6706,6 +6716,8 @@ module Google
           @event_ticket_objects = args[:event_ticket_objects] if args.key?(:event_ticket_objects)
           @flight_classes = args[:flight_classes] if args.key?(:flight_classes)
           @flight_objects = args[:flight_objects] if args.key?(:flight_objects)
+          @generic_classes = args[:generic_classes] if args.key?(:generic_classes)
+          @generic_objects = args[:generic_objects] if args.key?(:generic_objects)
           @gift_card_classes = args[:gift_card_classes] if args.key?(:gift_card_classes)
           @gift_card_objects = args[:gift_card_objects] if args.key?(:gift_card_objects)
           @loyalty_classes = args[:loyalty_classes] if args.key?(:loyalty_classes)
