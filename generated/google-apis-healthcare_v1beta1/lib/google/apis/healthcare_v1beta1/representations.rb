@@ -412,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Entity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1785,6 +1791,8 @@ module Google
       class Dataset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::HealthcareV1beta1::EncryptionSpec, decorator: Google::Apis::HealthcareV1beta1::EncryptionSpec::Representation
+      
           property :name, as: 'name'
           property :time_zone, as: 'timeZone'
         end
@@ -1957,6 +1965,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
         end
       end
       
