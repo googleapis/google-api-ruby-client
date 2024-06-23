@@ -1121,7 +1121,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a note for this proposal and sends to the seller.
+        # Creates a note for this proposal and sends to the seller. This method is not
+        # supported for proposals with DealType set to 'PRIVATE_AUCTION'.
         # @param [String] proposal
         #   Name of the proposal. Format: `buyers/`accountId`/proposals/`proposalId``
         # @param [Google::Apis::AuthorizedbuyersmarketplaceV1::AddNoteRequest] add_note_request_object
