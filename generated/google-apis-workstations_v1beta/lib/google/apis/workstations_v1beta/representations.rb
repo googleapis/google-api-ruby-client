@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +473,13 @@ module Google
         end
       end
       
+      class HttpOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed_unauthenticated_cors_preflight_requests, as: 'allowedUnauthenticatedCorsPreflightRequests'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -661,6 +674,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :source_workstation, as: 'sourceWorkstation'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :uid, as: 'uid'
@@ -716,6 +730,8 @@ module Google
       
           property :etag, as: 'etag'
           property :host, as: 'host', class: Google::Apis::WorkstationsV1beta::Host, decorator: Google::Apis::WorkstationsV1beta::Host::Representation
+      
+          property :http_options, as: 'httpOptions', class: Google::Apis::WorkstationsV1beta::HttpOptions, decorator: Google::Apis::WorkstationsV1beta::HttpOptions::Representation
       
           property :idle_timeout, as: 'idleTimeout'
           hash :labels, as: 'labels'
