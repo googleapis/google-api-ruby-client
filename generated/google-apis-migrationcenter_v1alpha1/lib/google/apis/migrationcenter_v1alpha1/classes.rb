@@ -1148,6 +1148,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :memory_mb
       
+        # Output only. Whether simultaneous multithreading is enabled (see https://cloud.
+        # google.com/sql/docs/sqlserver/create-instance#smt-create-instance).
+        # Corresponds to the JSON property `smtEnabled`
+        # @return [Boolean]
+        attr_accessor :smt_enabled
+        alias_method :smt_enabled?, :smt_enabled
+      
         # Compute Engine storage option descriptor.
         # Corresponds to the JSON property `storage`
         # @return [Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor]
@@ -1175,6 +1182,7 @@ module Google
           @egress_gb_per_month = args[:egress_gb_per_month] if args.key?(:egress_gb_per_month)
           @logical_core_count = args[:logical_core_count] if args.key?(:logical_core_count)
           @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
+          @smt_enabled = args[:smt_enabled] if args.key?(:smt_enabled)
           @storage = args[:storage] if args.key?(:storage)
           @version = args[:version] if args.key?(:version)
           @zone_availability = args[:zone_availability] if args.key?(:zone_availability)
@@ -1204,10 +1212,9 @@ module Google
       class ComputeEnginePreferences
         include Google::Apis::Core::Hashable
       
-        # If os_pricing_preferences is specified, it overrides this field. License type
-        # to consider when calculating costs for virtual machine insights and
-        # recommendations. If unspecified, costs are calculated based on the default
-        # licensing plan.
+        # License type to consider when calculating costs for operating systems. If
+        # unspecified, costs are calculated based on the default licensing plan. If
+        # os_pricing_preferences is specified, it overrides this field.
         # Corresponds to the JSON property `licenseType`
         # @return [String]
         attr_accessor :license_type
@@ -1218,6 +1225,11 @@ module Google
         # Corresponds to the JSON property `machinePreferences`
         # @return [Google::Apis::MigrationcenterV1alpha1::MachinePreferences]
         attr_accessor :machine_preferences
+      
+        # Optional. Preferences for multithreading support.
+        # Corresponds to the JSON property `multithreading`
+        # @return [String]
+        attr_accessor :multithreading
       
         # Pricing options for OS images.
         # Corresponds to the JSON property `osPricingPreferences`
@@ -1238,6 +1250,7 @@ module Google
         def update!(**args)
           @license_type = args[:license_type] if args.key?(:license_type)
           @machine_preferences = args[:machine_preferences] if args.key?(:machine_preferences)
+          @multithreading = args[:multithreading] if args.key?(:multithreading)
           @os_pricing_preferences = args[:os_pricing_preferences] if args.key?(:os_pricing_preferences)
           @persistent_disk_type = args[:persistent_disk_type] if args.key?(:persistent_disk_type)
         end
@@ -1272,6 +1285,13 @@ module Google
         # @return [String]
         attr_accessor :series
       
+        # Output only. Whether simultaneous multithreading is enabled (see https://cloud.
+        # google.com/compute/docs/instances/set-threads-per-core).
+        # Corresponds to the JSON property `smtEnabled`
+        # @return [Boolean]
+        attr_accessor :smt_enabled
+        alias_method :smt_enabled?, :smt_enabled
+      
         # Output only. Compute Engine storage. Never empty.
         # Corresponds to the JSON property `storage`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor>]
@@ -1288,6 +1308,7 @@ module Google
           @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
           @physical_core_count = args[:physical_core_count] if args.key?(:physical_core_count)
           @series = args[:series] if args.key?(:series)
+          @smt_enabled = args[:smt_enabled] if args.key?(:smt_enabled)
           @storage = args[:storage] if args.key?(:storage)
         end
       end
@@ -7091,7 +7112,7 @@ module Google
       class VirtualMachineDetails
         include Google::Apis::Core::Hashable
       
-        # Number of CPU cores in the VirtualMachine. Must be non-negative.
+        # Number of logical CPU cores in the VirtualMachine. Must be non-negative.
         # Corresponds to the JSON property `coreCount`
         # @return [Fixnum]
         attr_accessor :core_count
