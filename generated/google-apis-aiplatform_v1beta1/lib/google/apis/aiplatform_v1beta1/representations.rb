@@ -16060,7 +16060,6 @@ module Google
           property :experiment, as: 'experiment'
           hash :labels, as: 'labels'
           property :name, as: 'name'
-          property :pipeline_job, as: 'pipelineJob'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :supervised_tuning_spec, as: 'supervisedTuningSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SupervisedTuningSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SupervisedTuningSpec::Representation
