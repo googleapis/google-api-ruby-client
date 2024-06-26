@@ -2718,7 +2718,7 @@ module Google
         # @return [Google::Apis::MigrationcenterV1::MachineArchitectureDetails]
         attr_accessor :architecture
       
-        # Number of CPU cores in the machine. Must be non-negative.
+        # Number of logical CPU cores in the machine. Must be non-negative.
         # Corresponds to the JSON property `coreCount`
         # @return [Fixnum]
         attr_accessor :core_count
