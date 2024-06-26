@@ -1260,6 +1260,11 @@ module Google
         #   projects/my-project/locations/us-central1Note: The location portion of the
         #   resource must be specified, but supplying the character - in place of
         #   LOCATION_ID will return all recent queries.
+        # @param [String] filter
+        #   Optional. Specifies the type ("Logging" or "OpsAnalytics") of the recent
+        #   queries to list. The only valid value for this field is one of the two
+        #   allowable type function calls, which are the following: type("Logging") type("
+        #   OpsAnalytics")
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -1286,11 +1291,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_billing_account_location_recent_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_billing_account_location_recent_queries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/recentQueries', options)
           command.response_representation = Google::Apis::LoggingV2::ListRecentQueriesResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListRecentQueriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1380,6 +1386,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns all data associated with the requested query.
+        # @param [String] name
+        #   Required. The resource name of the saved query. "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[
+        #   QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]
+        #   " For example: "projects/my-project/locations/global/savedQueries/my-saved-
+        #   query"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_billing_account_location_saved_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the SavedQueries that were created by the user making the request.
         # @param [String] parent
         #   Required. The resource to which the listed queries belong. "projects/[
@@ -1423,6 +1465,53 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing SavedQuery.
+        # @param [String] name
+        #   Output only. Resource name of the saved query.In the format: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
+        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
+        #   docs/region-support#bucket-regions)After the saved query is created, the
+        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
+        #   will generate an alphanumeric ID.
+        # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
+        # @param [String] update_mask
+        #   Required. A non-empty list of fields to change in the existing saved query.
+        #   Fields are relative to the saved_query and new values for the fields are taken
+        #   from the corresponding fields in the SavedQuery included in this request.
+        #   Fields not mentioned in update_mask are not changed and are ignored in the
+        #   request.To update all mutable fields, specify an update_mask of *.For example,
+        #   to change the description and query filter text of a saved query, specify an
+        #   update_mask of "description, query.filter".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_billing_account_location_saved_query(name, saved_query_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.request_object = saved_query_object
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1532,11 +1621,11 @@ module Google
         #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
@@ -1711,11 +1800,11 @@ module Google
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -1780,11 +1869,11 @@ module Google
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -3529,6 +3618,11 @@ module Google
         #   projects/my-project/locations/us-central1Note: The location portion of the
         #   resource must be specified, but supplying the character - in place of
         #   LOCATION_ID will return all recent queries.
+        # @param [String] filter
+        #   Optional. Specifies the type ("Logging" or "OpsAnalytics") of the recent
+        #   queries to list. The only valid value for this field is one of the two
+        #   allowable type function calls, which are the following: type("Logging") type("
+        #   OpsAnalytics")
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -3555,11 +3649,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_folder_location_recent_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_folder_location_recent_queries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/recentQueries', options)
           command.response_representation = Google::Apis::LoggingV2::ListRecentQueriesResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListRecentQueriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3649,6 +3744,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns all data associated with the requested query.
+        # @param [String] name
+        #   Required. The resource name of the saved query. "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[
+        #   QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]
+        #   " For example: "projects/my-project/locations/global/savedQueries/my-saved-
+        #   query"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_location_saved_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the SavedQueries that were created by the user making the request.
         # @param [String] parent
         #   Required. The resource to which the listed queries belong. "projects/[
@@ -3692,6 +3823,53 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing SavedQuery.
+        # @param [String] name
+        #   Output only. Resource name of the saved query.In the format: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
+        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
+        #   docs/region-support#bucket-regions)After the saved query is created, the
+        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
+        #   will generate an alphanumeric ID.
+        # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
+        # @param [String] update_mask
+        #   Required. A non-empty list of fields to change in the existing saved query.
+        #   Fields are relative to the saved_query and new values for the fields are taken
+        #   from the corresponding fields in the SavedQuery included in this request.
+        #   Fields not mentioned in update_mask are not changed and are ignored in the
+        #   request.To update all mutable fields, specify an update_mask of *.For example,
+        #   to change the description and query filter text of a saved query, specify an
+        #   update_mask of "description, query.filter".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_location_saved_query(name, saved_query_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.request_object = saved_query_object
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3801,11 +3979,11 @@ module Google
         #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
@@ -3980,11 +4158,11 @@ module Google
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -4049,11 +4227,11 @@ module Google
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -6644,6 +6822,11 @@ module Google
         #   projects/my-project/locations/us-central1Note: The location portion of the
         #   resource must be specified, but supplying the character - in place of
         #   LOCATION_ID will return all recent queries.
+        # @param [String] filter
+        #   Optional. Specifies the type ("Logging" or "OpsAnalytics") of the recent
+        #   queries to list. The only valid value for this field is one of the two
+        #   allowable type function calls, which are the following: type("Logging") type("
+        #   OpsAnalytics")
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -6670,11 +6853,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_recent_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_recent_queries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/recentQueries', options)
           command.response_representation = Google::Apis::LoggingV2::ListRecentQueriesResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListRecentQueriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -6764,6 +6948,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns all data associated with the requested query.
+        # @param [String] name
+        #   Required. The resource name of the saved query. "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[
+        #   QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]
+        #   " For example: "projects/my-project/locations/global/savedQueries/my-saved-
+        #   query"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_saved_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the SavedQueries that were created by the user making the request.
         # @param [String] parent
         #   Required. The resource to which the listed queries belong. "projects/[
@@ -6807,6 +7027,53 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing SavedQuery.
+        # @param [String] name
+        #   Output only. Resource name of the saved query.In the format: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
+        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
+        #   docs/region-support#bucket-regions)After the saved query is created, the
+        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
+        #   will generate an alphanumeric ID.
+        # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
+        # @param [String] update_mask
+        #   Required. A non-empty list of fields to change in the existing saved query.
+        #   Fields are relative to the saved_query and new values for the fields are taken
+        #   from the corresponding fields in the SavedQuery included in this request.
+        #   Fields not mentioned in update_mask are not changed and are ignored in the
+        #   request.To update all mutable fields, specify an update_mask of *.For example,
+        #   to change the description and query filter text of a saved query, specify an
+        #   update_mask of "description, query.filter".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_saved_query(name, saved_query_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.request_object = saved_query_object
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6916,11 +7183,11 @@ module Google
         #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
@@ -7095,11 +7362,11 @@ module Google
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -7164,11 +7431,11 @@ module Google
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -8542,6 +8809,11 @@ module Google
         #   projects/my-project/locations/us-central1Note: The location portion of the
         #   resource must be specified, but supplying the character - in place of
         #   LOCATION_ID will return all recent queries.
+        # @param [String] filter
+        #   Optional. Specifies the type ("Logging" or "OpsAnalytics") of the recent
+        #   queries to list. The only valid value for this field is one of the two
+        #   allowable type function calls, which are the following: type("Logging") type("
+        #   OpsAnalytics")
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -8568,11 +8840,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_recent_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_recent_queries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/recentQueries', options)
           command.response_representation = Google::Apis::LoggingV2::ListRecentQueriesResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListRecentQueriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -8662,6 +8935,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns all data associated with the requested query.
+        # @param [String] name
+        #   Required. The resource name of the saved query. "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[
+        #   QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]
+        #   " For example: "projects/my-project/locations/global/savedQueries/my-saved-
+        #   query"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_saved_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the SavedQueries that were created by the user making the request.
         # @param [String] parent
         #   Required. The resource to which the listed queries belong. "projects/[
@@ -8705,6 +9014,53 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing SavedQuery.
+        # @param [String] name
+        #   Output only. Resource name of the saved query.In the format: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
+        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
+        #   docs/region-support#bucket-regions)After the saved query is created, the
+        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
+        #   will generate an alphanumeric ID.
+        # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
+        # @param [String] update_mask
+        #   Required. A non-empty list of fields to change in the existing saved query.
+        #   Fields are relative to the saved_query and new values for the fields are taken
+        #   from the corresponding fields in the SavedQuery included in this request.
+        #   Fields not mentioned in update_mask are not changed and are ignored in the
+        #   request.To update all mutable fields, specify an update_mask of *.For example,
+        #   to change the description and query filter text of a saved query, specify an
+        #   update_mask of "description, query.filter".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_saved_query(name, saved_query_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.request_object = saved_query_object
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8988,11 +9344,11 @@ module Google
         #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
@@ -9167,11 +9523,11 @@ module Google
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -9236,11 +9592,11 @@ module Google
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -9304,11 +9660,11 @@ module Google
         #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
@@ -9483,11 +9839,11 @@ module Google
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [String] custom_writer_identity
-        #   Optional. A service account provided by the caller that will be used to write
-        #   the log entries. The format must be serviceAccount:some@email. This field can
-        #   only be specified if you are routing logs to a destination outside this sink's
-        #   project. If not specified, a Logging service account will automatically be
-        #   generated.
+        #   Optional. The service account provided by the caller that will be used to
+        #   write the log entries. The format must be serviceAccount:some@email. This
+        #   field can only be specified when you are routing logs to a log bucket that is
+        #   in a different project than the sink. When not specified, a Logging service
+        #   account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated

@@ -911,12 +911,13 @@ module Google
         alias_method :cache_validated_with_origin_server?, :cache_validated_with_origin_server
       
         # The request processing latency on the server, from the time the request was
-        # received until the response was sent.
+        # received until the response was sent. For WebSocket connections, this field
+        # refers to the entire time duration of the connection.
         # Corresponds to the JSON property `latency`
         # @return [String]
         attr_accessor :latency
       
-        # Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2", "websocket"
+        # Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2"
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
