@@ -175,6 +175,19 @@ module Google
         end
       end
       
+      # Response for EnableComplianceUpdates endpoint.
+      class GoogleCloudAssuredworkloadsV1beta1EnableComplianceUpdatesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response for EnableResourceMonitoring endpoint.
       class GoogleCloudAssuredworkloadsV1beta1EnableResourceMonitoringResponse
         include Google::Apis::Core::Hashable
@@ -691,6 +704,14 @@ module Google
         # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus]
         attr_accessor :compliance_status
       
+        # Output only. Indicates whether the compliance updates feature is enabled for a
+        # workload. The compliance updates feature can be enabled via the
+        # EnableComplianceUpdates endpoint.
+        # Corresponds to the JSON property `complianceUpdatesEnabled`
+        # @return [Boolean]
+        attr_accessor :compliance_updates_enabled
+        alias_method :compliance_updates_enabled?, :compliance_updates_enabled
+      
         # Output only. Urls for services which are compliant for this Assured Workload,
         # but which are currently disallowed by the ResourceUsageRestriction org policy.
         # Invoke RestrictAllowedResources endpoint to allow your project developers to
@@ -830,6 +851,7 @@ module Google
           @cjis_settings = args[:cjis_settings] if args.key?(:cjis_settings)
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
           @compliance_status = args[:compliance_status] if args.key?(:compliance_status)
+          @compliance_updates_enabled = args[:compliance_updates_enabled] if args.key?(:compliance_updates_enabled)
           @compliant_but_disallowed_services = args[:compliant_but_disallowed_services] if args.key?(:compliant_but_disallowed_services)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
