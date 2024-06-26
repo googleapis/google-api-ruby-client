@@ -1,5 +1,9 @@
 # Release history for google-apis-beyondcorp_v1alpha
 
+### v0.40.0 (2024-06-26)
+
+* Regenerated from discovery document revision 20240619
+
 ### v0.39.0 (2024-06-23)
 
 * Regenerated from discovery document revision 20240612

@@ -1566,7 +1566,7 @@ module Google
         # Location will always be global as BeyondCorp subscriptions are per
         # organization.
         # @param [String] name
-        #   Required. Unique resource name of the Subscription. The name is ignored when
+        #   Identifier. Unique resource name of the Subscription. The name is ignored when
         #   creating a subscription.
         # @param [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription] google_cloud_beyondcorp_saasplatform_subscriptions_v1alpha_subscription_object
         # @param [String] request_id
