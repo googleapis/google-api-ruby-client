@@ -22,6 +22,32 @@ module Google
   module Apis
     module WorkloadmanagerV1
       
+      # * An AgentCommand specifies a one-time executable program for the agent to run.
+      class AgentCommand
+        include Google::Apis::Core::Hashable
+      
+        # command is the name of the agent one-time executable that will be invoked.
+        # Corresponds to the JSON property `command`
+        # @return [String]
+        attr_accessor :command
+      
+        # parameters is a map of key/value pairs that can be used to specify additional
+        # one-time executable settings.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,String>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command = args[:command] if args.key?(:command)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
       # Provides the mapping of a cloud asset to a direct physical location or to a
       # proxy that defines the location on its behalf.
       class AssetLocation
@@ -162,6 +188,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @child_asset = args[:child_asset] if args.key?(:child_asset)
+        end
+      end
+      
+      # * Command specifies the type of command to execute.
+      class Command
+        include Google::Apis::Core::Hashable
+      
+        # * An AgentCommand specifies a one-time executable program for the agent to run.
+        # Corresponds to the JSON property `agentCommand`
+        # @return [Google::Apis::WorkloadmanagerV1::AgentCommand]
+        attr_accessor :agent_command
+      
+        # * A ShellCommand is invoked via the agent's command line executor
+        # Corresponds to the JSON property `shellCommand`
+        # @return [Google::Apis::WorkloadmanagerV1::ShellCommand]
+        attr_accessor :shell_command
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_command = args[:agent_command] if args.key?(:agent_command)
+          @shell_command = args[:shell_command] if args.key?(:shell_command)
         end
       end
       
@@ -361,6 +412,11 @@ module Google
       class ExecutionResult
         include Google::Apis::Core::Hashable
       
+        # The commands to remediate the violation.
+        # Corresponds to the JSON property `commands`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::Command>]
+        attr_accessor :commands
+      
         # The URL for the documentation of the rule.
         # Corresponds to the JSON property `documentationUrl`
         # @return [String]
@@ -397,6 +453,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @commands = args[:commands] if args.key?(:commands)
           @documentation_url = args[:documentation_url] if args.key?(:documentation_url)
           @resource = args[:resource] if args.key?(:resource)
           @rule = args[:rule] if args.key?(:rule)
@@ -410,7 +467,13 @@ module Google
       class ExternalDataSources
         include Google::Apis::Core::Hashable
       
-        # Required. Name of external data source. The name will be used inside the rego/
+        # Required. The asset type of the external data source must be one of go/cai-
+        # asset-types
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        # Optional. Name of external data source. The name will be used inside the rego/
         # sql to refer the external data
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -433,6 +496,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
           @uri = args[:uri] if args.key?(:uri)
@@ -1838,6 +1902,37 @@ module Google
         def update!(**args)
           @resource = args[:resource] if args.key?(:resource)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # * A ShellCommand is invoked via the agent's command line executor
+      class ShellCommand
+        include Google::Apis::Core::Hashable
+      
+        # args is a string of arguments to be passed to the command.
+        # Corresponds to the JSON property `args`
+        # @return [String]
+        attr_accessor :args
+      
+        # command is the name of the command to be executed.
+        # Corresponds to the JSON property `command`
+        # @return [String]
+        attr_accessor :command
+      
+        # Optional. If not specified, the default timeout is 60 seconds.
+        # Corresponds to the JSON property `timeoutSeconds`
+        # @return [Fixnum]
+        attr_accessor :timeout_seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @command = args[:command] if args.key?(:command)
+          @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
         end
       end
       

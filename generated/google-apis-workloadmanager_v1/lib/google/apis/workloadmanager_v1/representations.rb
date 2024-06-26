@@ -22,6 +22,12 @@ module Google
   module Apis
     module WorkloadmanagerV1
       
+      class AgentCommand
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssetLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,12 @@ module Google
       end
       
       class CloudAssetComposition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Command
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShellCommand
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpannerLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,6 +394,14 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentCommand
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :command, as: 'command'
+          hash :parameters, as: 'parameters'
+        end
+      end
+      
       class AssetLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -423,6 +449,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :child_asset, as: 'childAsset', class: Google::Apis::WorkloadmanagerV1::CloudAsset, decorator: Google::Apis::WorkloadmanagerV1::CloudAsset::Representation
+      
+        end
+      end
+      
+      class Command
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_command, as: 'agentCommand', class: Google::Apis::WorkloadmanagerV1::AgentCommand, decorator: Google::Apis::WorkloadmanagerV1::AgentCommand::Representation
+      
+          property :shell_command, as: 'shellCommand', class: Google::Apis::WorkloadmanagerV1::ShellCommand, decorator: Google::Apis::WorkloadmanagerV1::ShellCommand::Representation
       
         end
       end
@@ -481,6 +517,8 @@ module Google
       class ExecutionResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :commands, as: 'commands', class: Google::Apis::WorkloadmanagerV1::Command, decorator: Google::Apis::WorkloadmanagerV1::Command::Representation
+      
           property :documentation_url, as: 'documentationUrl'
           property :resource, as: 'resource', class: Google::Apis::WorkloadmanagerV1::Resource, decorator: Google::Apis::WorkloadmanagerV1::Resource::Representation
       
@@ -495,6 +533,7 @@ module Google
       class ExternalDataSources
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_type, as: 'assetType'
           property :name, as: 'name'
           property :type, as: 'type'
           property :uri, as: 'uri'
@@ -897,6 +936,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource, as: 'resource'
           property :type, as: 'type'
+        end
+      end
+      
+      class ShellCommand
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :args, as: 'args'
+          property :command, as: 'command'
+          property :timeout_seconds, as: 'timeoutSeconds'
         end
       end
       
