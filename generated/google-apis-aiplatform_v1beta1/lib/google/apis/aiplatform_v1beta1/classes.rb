@@ -34789,13 +34789,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The resource name of the PipelineJob associated with the
-        # TuningJob. Format: `projects/`project`/locations/`location`/pipelineJobs/`
-        # pipeline_job``.
-        # Corresponds to the JSON property `pipelineJob`
-        # @return [String]
-        attr_accessor :pipeline_job
-      
         # Output only. Time when the TuningJob for the first time entered the `
         # JOB_STATE_RUNNING` state.
         # Corresponds to the JSON property `startTime`
@@ -34849,7 +34842,6 @@ module Google
           @experiment = args[:experiment] if args.key?(:experiment)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
-          @pipeline_job = args[:pipeline_job] if args.key?(:pipeline_job)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @supervised_tuning_spec = args[:supervised_tuning_spec] if args.key?(:supervised_tuning_spec)
