@@ -388,6 +388,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1BleuInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1BleuInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1BleuMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1BleuResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1BleuSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1Blob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -485,6 +515,30 @@ module Google
       end
       
       class GoogleCloudAiplatformV1CitationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1CoherenceInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1CoherenceInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1CoherenceResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1CoherenceSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -982,6 +1036,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1EvaluateInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluateInstancesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1EvaluatedAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -995,6 +1061,36 @@ module Google
       end
       
       class GoogleCloudAiplatformV1Event
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ExactMatchInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ExactMatchInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ExactMatchMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ExactMatchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ExactMatchSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1504,7 +1600,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1FluencyInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FluencyInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FluencyResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FluencySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1FractionSplit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FulfillmentInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FulfillmentInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FulfillmentResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FulfillmentSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1589,6 +1733,30 @@ module Google
       end
       
       class GoogleCloudAiplatformV1GoogleSearchRetrieval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GroundednessInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GroundednessInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GroundednessResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GroundednessSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2560,6 +2728,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualitySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseSummarizationQualityInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseSummarizationQualityInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseSummarizationQualityResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseSummarizationQualitySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1Part
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2854,6 +3070,102 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringCorrectnessResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringCorrectnessSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringQualityInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringQualityInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringQualityResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringQualitySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringRelevanceInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringRelevanceInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringRelevanceResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1RawPredictRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3046,13 +3358,67 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1RougeInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RougeInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RougeMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RougeResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RougeSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SafetyInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SafetyInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1SafetyRating
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1SafetyResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1SafetySetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SafetySpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4372,6 +4738,78 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1SummarizationHelpfulnessInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationHelpfulnessInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationHelpfulnessResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationHelpfulnessSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationQualityInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationQualityInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationQualityResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationQualitySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationVerbosityInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationVerbosityInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationVerbosityResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationVerbositySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1SupervisedHyperParameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4510,7 +4948,127 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1ToolCallValidInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolCallValidInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolCallValidMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolCallValidResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolCallValidSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1ToolConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolNameMatchInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolNameMatchInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolNameMatchMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolNameMatchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolNameMatchSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKvMatchInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKvMatchInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKvMatchMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKvMatchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKvMatchSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKeyMatchInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKeyMatchInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKeyMatchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKeyMatchSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5519,6 +6077,45 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1BleuInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1BleuInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1BleuMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1BleuResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bleu_metric_values, as: 'bleuMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1BleuSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudAiplatformV1Blob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5647,6 +6244,39 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :citations, as: 'citations', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Citation, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Citation::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CoherenceInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CoherenceInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CoherenceInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CoherenceSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CoherenceSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CoherenceInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prediction, as: 'prediction'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CoherenceResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CoherenceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
         end
       end
       
@@ -6493,6 +7123,102 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1EvaluateInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bleu_input, as: 'bleuInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuInput::Representation
+      
+          property :coherence_input, as: 'coherenceInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CoherenceInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CoherenceInput::Representation
+      
+          property :exact_match_input, as: 'exactMatchInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchInput::Representation
+      
+          property :fluency_input, as: 'fluencyInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FluencyInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FluencyInput::Representation
+      
+          property :fulfillment_input, as: 'fulfillmentInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FulfillmentInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FulfillmentInput::Representation
+      
+          property :groundedness_input, as: 'groundednessInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessInput::Representation
+      
+          property :pairwise_question_answering_quality_input, as: 'pairwiseQuestionAnsweringQualityInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput::Representation
+      
+          property :pairwise_summarization_quality_input, as: 'pairwiseSummarizationQualityInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityInput::Representation
+      
+          property :question_answering_correctness_input, as: 'questionAnsweringCorrectnessInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInput::Representation
+      
+          property :question_answering_helpfulness_input, as: 'questionAnsweringHelpfulnessInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessInput::Representation
+      
+          property :question_answering_quality_input, as: 'questionAnsweringQualityInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringQualityInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringQualityInput::Representation
+      
+          property :question_answering_relevance_input, as: 'questionAnsweringRelevanceInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringRelevanceInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringRelevanceInput::Representation
+      
+          property :rouge_input, as: 'rougeInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeInput::Representation
+      
+          property :safety_input, as: 'safetyInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyInput::Representation
+      
+          property :summarization_helpfulness_input, as: 'summarizationHelpfulnessInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationHelpfulnessInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationHelpfulnessInput::Representation
+      
+          property :summarization_quality_input, as: 'summarizationQualityInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationQualityInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationQualityInput::Representation
+      
+          property :summarization_verbosity_input, as: 'summarizationVerbosityInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationVerbosityInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationVerbosityInput::Representation
+      
+          property :tool_call_valid_input, as: 'toolCallValidInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCallValidInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCallValidInput::Representation
+      
+          property :tool_name_match_input, as: 'toolNameMatchInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolNameMatchInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolNameMatchInput::Representation
+      
+          property :tool_parameter_key_match_input, as: 'toolParameterKeyMatchInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchInput::Representation
+      
+          property :tool_parameter_kv_match_input, as: 'toolParameterKvMatchInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchInput::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluateInstancesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bleu_results, as: 'bleuResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuResults::Representation
+      
+          property :coherence_result, as: 'coherenceResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CoherenceResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CoherenceResult::Representation
+      
+          property :exact_match_results, as: 'exactMatchResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchResults::Representation
+      
+          property :fluency_result, as: 'fluencyResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FluencyResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FluencyResult::Representation
+      
+          property :fulfillment_result, as: 'fulfillmentResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FulfillmentResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FulfillmentResult::Representation
+      
+          property :groundedness_result, as: 'groundednessResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessResult::Representation
+      
+          property :pairwise_question_answering_quality_result, as: 'pairwiseQuestionAnsweringQualityResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResult::Representation
+      
+          property :pairwise_summarization_quality_result, as: 'pairwiseSummarizationQualityResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityResult::Representation
+      
+          property :question_answering_correctness_result, as: 'questionAnsweringCorrectnessResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessResult::Representation
+      
+          property :question_answering_helpfulness_result, as: 'questionAnsweringHelpfulnessResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessResult::Representation
+      
+          property :question_answering_quality_result, as: 'questionAnsweringQualityResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringQualityResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringQualityResult::Representation
+      
+          property :question_answering_relevance_result, as: 'questionAnsweringRelevanceResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringRelevanceResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringRelevanceResult::Representation
+      
+          property :rouge_results, as: 'rougeResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeResults::Representation
+      
+          property :safety_result, as: 'safetyResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyResult::Representation
+      
+          property :summarization_helpfulness_result, as: 'summarizationHelpfulnessResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationHelpfulnessResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationHelpfulnessResult::Representation
+      
+          property :summarization_quality_result, as: 'summarizationQualityResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationQualityResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationQualityResult::Representation
+      
+          property :summarization_verbosity_result, as: 'summarizationVerbosityResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationVerbosityResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationVerbosityResult::Representation
+      
+          property :tool_call_valid_results, as: 'toolCallValidResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCallValidResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCallValidResults::Representation
+      
+          property :tool_name_match_results, as: 'toolNameMatchResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolNameMatchResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolNameMatchResults::Representation
+      
+          property :tool_parameter_key_match_results, as: 'toolParameterKeyMatchResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchResults::Representation
+      
+          property :tool_parameter_kv_match_results, as: 'toolParameterKvMatchResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchResults::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1EvaluatedAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6525,6 +7251,45 @@ module Google
           property :execution, as: 'execution'
           hash :labels, as: 'labels'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ExactMatchInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ExactMatchInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ExactMatchMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ExactMatchResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exact_match_metric_values, as: 'exactMatchMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ExactMatchSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -7391,12 +8156,79 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1FluencyInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FluencyInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FluencyInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FluencySpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FluencySpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FluencyInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prediction, as: 'prediction'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FluencyResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FluencySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
+        end
+      end
+      
       class GoogleCloudAiplatformV1FractionSplit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :test_fraction, as: 'testFraction'
           property :training_fraction, as: 'trainingFraction'
           property :validation_fraction, as: 'validationFraction'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FulfillmentInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FulfillmentInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FulfillmentInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FulfillmentSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FulfillmentSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FulfillmentInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instruction, as: 'instruction'
+          property :prediction, as: 'prediction'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FulfillmentResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FulfillmentSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
         end
       end
       
@@ -7534,6 +8366,40 @@ module Google
       class GoogleCloudAiplatformV1GoogleSearchRetrieval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GroundednessInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GroundednessInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+          property :prediction, as: 'prediction'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GroundednessResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GroundednessSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
         end
       end
       
@@ -9257,6 +10123,82 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualitySpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualitySpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :baseline_prediction, as: 'baselinePrediction'
+          property :context, as: 'context'
+          property :instruction, as: 'instruction'
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :pairwise_choice, as: 'pairwiseChoice'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualitySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_reference, as: 'useReference'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseSummarizationQualityInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualitySpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualitySpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseSummarizationQualityInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :baseline_prediction, as: 'baselinePrediction'
+          property :context, as: 'context'
+          property :instruction, as: 'instruction'
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseSummarizationQualityResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :pairwise_choice, as: 'pairwiseChoice'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseSummarizationQualitySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_reference, as: 'useReference'
+          property :version, as: 'version'
+        end
+      end
+      
       class GoogleCloudAiplatformV1Part
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9793,6 +10735,154 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+          property :instruction, as: 'instruction'
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringCorrectnessResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringCorrectnessSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_reference, as: 'useReference'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+          property :instruction, as: 'instruction'
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_reference, as: 'useReference'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringQualityInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringQualityInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringQualityInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringQualitySpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringQualitySpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringQualityInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+          property :instruction, as: 'instruction'
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringQualityResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringQualitySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_reference, as: 'useReference'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringRelevanceInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringRelevanceInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringRelevanceInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringRelevanceInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+          property :instruction, as: 'instruction'
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringRelevanceResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_reference, as: 'useReference'
+          property :version, as: 'version'
+        end
+      end
+      
       class GoogleCloudAiplatformV1RawPredictRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10054,6 +11144,65 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1RougeInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RougeInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RougeMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RougeResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rouge_metric_values, as: 'rougeMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RougeSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rouge_type, as: 'rougeType'
+          property :split_summaries, as: 'splitSummaries'
+          property :use_stemmer, as: 'useStemmer'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SafetyInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SafetyInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prediction, as: 'prediction'
+        end
+      end
+      
       class GoogleCloudAiplatformV1SafetyRating
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10066,12 +11215,28 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1SafetyResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
       class GoogleCloudAiplatformV1SafetySetting
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
           property :method_prop, as: 'method'
           property :threshold, as: 'threshold'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SafetySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
         end
       end
       
@@ -12258,6 +13423,117 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1SummarizationHelpfulnessInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationHelpfulnessInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationHelpfulnessInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationHelpfulnessSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationHelpfulnessSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationHelpfulnessInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+          property :instruction, as: 'instruction'
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationHelpfulnessResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationHelpfulnessSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_reference, as: 'useReference'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationQualityInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationQualityInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationQualityInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationQualitySpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationQualitySpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationQualityInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+          property :instruction, as: 'instruction'
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationQualityResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationQualitySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_reference, as: 'useReference'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationVerbosityInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationVerbosityInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationVerbosityInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationVerbositySpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummarizationVerbositySpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationVerbosityInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+          property :instruction, as: 'instruction'
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationVerbosityResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SummarizationVerbositySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_reference, as: 'useReference'
+          property :version, as: 'version'
+        end
+      end
+      
       class GoogleCloudAiplatformV1SupervisedHyperParameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12518,11 +13794,168 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1ToolCallValidInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCallValidInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCallValidInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCallValidSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCallValidSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolCallValidInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolCallValidMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolCallValidResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_call_valid_metric_values, as: 'toolCallValidMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCallValidMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCallValidMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolCallValidSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudAiplatformV1ToolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function_calling_config, as: 'functionCallingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionCallingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionCallingConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolNameMatchInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolNameMatchInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolNameMatchInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolNameMatchSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolNameMatchSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolNameMatchInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolNameMatchMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolNameMatchResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_name_match_metric_values, as: 'toolNameMatchMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolNameMatchMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolNameMatchMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolNameMatchSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKvMatchInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKvMatchInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKvMatchMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKvMatchResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_parameter_kv_match_metric_values, as: 'toolParameterKvMatchMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKvMatchSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_strict_string_match, as: 'useStrictStringMatch'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKeyMatchInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKeyMatchInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prediction, as: 'prediction'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKeyMatchResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_parameter_key_match_metric_values, as: 'toolParameterKeyMatchMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolParameterKeyMatchSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
