@@ -7456,18 +7456,16 @@ module Google
       
         # Flow name to start the test case with. Format: `projects//locations//agents//
         # flows/`. Only one of `flow` and `page` should be set to indicate the starting
-        # point of the test case. If both are set, `page` takes precedence over `flow`.
-        # If neither is set, the test case will start with start page on the default
-        # start flow.
+        # point of the test case. If neither is set, the test case will start with start
+        # page on the default start flow.
         # Corresponds to the JSON property `flow`
         # @return [String]
         attr_accessor :flow
       
         # The page to start the test case with. Format: `projects//locations//agents//
         # flows//pages/`. Only one of `flow` and `page` should be set to indicate the
-        # starting point of the test case. If both are set, `page` takes precedence over
-        # `flow`. If neither is set, the test case will start with start page on the
-        # default start flow.
+        # starting point of the test case. If neither is set, the test case will start
+        # with start page on the default start flow.
         # Corresponds to the JSON property `page`
         # @return [String]
         attr_accessor :page
@@ -11852,18 +11850,16 @@ module Google
       
         # Flow name to start the test case with. Format: `projects//locations//agents//
         # flows/`. Only one of `flow` and `page` should be set to indicate the starting
-        # point of the test case. If both are set, `page` takes precedence over `flow`.
-        # If neither is set, the test case will start with start page on the default
-        # start flow.
+        # point of the test case. If neither is set, the test case will start with start
+        # page on the default start flow.
         # Corresponds to the JSON property `flow`
         # @return [String]
         attr_accessor :flow
       
         # The page to start the test case with. Format: `projects//locations//agents//
         # flows//pages/`. Only one of `flow` and `page` should be set to indicate the
-        # starting point of the test case. If both are set, `page` takes precedence over
-        # `flow`. If neither is set, the test case will start with start page on the
-        # default start flow.
+        # starting point of the test case. If neither is set, the test case will start
+        # with start page on the default start flow.
         # Corresponds to the JSON property `page`
         # @return [String]
         attr_accessor :page
