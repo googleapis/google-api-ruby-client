@@ -1662,6 +1662,7 @@ module Google
           property :egress_gb_per_month, :numeric_string => true, as: 'egressGbPerMonth'
           property :logical_core_count, as: 'logicalCoreCount'
           property :memory_mb, as: 'memoryMb'
+          property :smt_enabled, as: 'smtEnabled'
           property :storage, as: 'storage', class: Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor, decorator: Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor::Representation
       
           property :version, as: 'version'
@@ -1683,6 +1684,7 @@ module Google
           property :license_type, as: 'licenseType'
           property :machine_preferences, as: 'machinePreferences', class: Google::Apis::MigrationcenterV1alpha1::MachinePreferences, decorator: Google::Apis::MigrationcenterV1alpha1::MachinePreferences::Representation
       
+          property :multithreading, as: 'multithreading'
           property :os_pricing_preferences, as: 'osPricingPreferences', class: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferences, decorator: Google::Apis::MigrationcenterV1alpha1::OperatingSystemPricingPreferences::Representation
       
           property :persistent_disk_type, as: 'persistentDiskType'
@@ -1697,6 +1699,7 @@ module Google
           property :memory_mb, as: 'memoryMb'
           property :physical_core_count, as: 'physicalCoreCount'
           property :series, as: 'series'
+          property :smt_enabled, as: 'smtEnabled'
           collection :storage, as: 'storage', class: Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor, decorator: Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor::Representation
       
         end
