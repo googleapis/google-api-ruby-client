@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationReservationSharingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationResourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3372,6 +3378,48 @@ module Google
       
       class Money
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMigLocationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMigPart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMigSchedulingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMigsList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8030,6 +8078,13 @@ module Google
         end
       end
       
+      class AllocationReservationSharingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_share_type, as: 'serviceShareType'
+        end
+      end
+      
       class AllocationResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11778,6 +11833,7 @@ module Google
           property :force_update_on_repair, as: 'forceUpdateOnRepair'
           property :metadata_based_readiness_signal, as: 'metadataBasedReadinessSignal', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal::Representation
       
+          property :on_failed_health_check, as: 'onFailedHealthCheck'
         end
       end
       
@@ -14158,6 +14214,83 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class MultiMig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :location_policy, as: 'locationPolicy', class: Google::Apis::ComputeAlpha::MultiMigLocationPolicy, decorator: Google::Apis::ComputeAlpha::MultiMigLocationPolicy::Representation
+      
+          property :name, as: 'name'
+          hash :parts, as: 'parts', class: Google::Apis::ComputeAlpha::MultiMigPart, decorator: Google::Apis::ComputeAlpha::MultiMigPart::Representation
+      
+          property :region, as: 'region'
+          property :scheduling_policy, as: 'schedulingPolicy', class: Google::Apis::ComputeAlpha::MultiMigSchedulingPolicy, decorator: Google::Apis::ComputeAlpha::MultiMigSchedulingPolicy::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+        end
+      end
+      
+      class MultiMigLocationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :provisioning_zones, as: 'provisioningZones'
+        end
+      end
+      
+      class MultiMigPart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_group_manager, as: 'instanceGroupManager'
+          property :instance_group_manager_properties, as: 'instanceGroupManagerProperties', class: Google::Apis::ComputeAlpha::InstanceGroupManager, decorator: Google::Apis::ComputeAlpha::InstanceGroupManager::Representation
+      
+        end
+      end
+      
+      class MultiMigSchedulingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :provisioning, as: 'provisioning'
+        end
+      end
+      
+      class MultiMigsList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::MultiMig, decorator: Google::Apis::ComputeAlpha::MultiMig::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::MultiMigsList::Warning, decorator: Google::Apis::ComputeAlpha::MultiMigsList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::MultiMigsList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::MultiMigsList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -17264,6 +17397,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeAlpha::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeAlpha::AllocationReservationSharingPolicy::Representation
+      
           hash :resource_policies, as: 'resourcePolicies'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::AllocationResourceStatus, decorator: Google::Apis::ComputeAlpha::AllocationResourceStatus::Representation
       
