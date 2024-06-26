@@ -1673,6 +1673,12 @@ module Google
       class GoogleLongrunningListOperationsResponse
         include Google::Apis::Core::Hashable
       
+        # The kind of item this is. For lists of operations, this is always storage#
+        # operations.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
         # The continuation token, used to page through large result sets. Provide this
         # value in a subsequent request to return the next page of results.
         # Corresponds to the JSON property `nextPageToken`
@@ -1690,6 +1696,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
         end
@@ -1717,6 +1724,11 @@ module Google
         # @return [Google::Apis::StorageV1::GoogleRpcStatus]
         attr_accessor :error
       
+        # The kind of item this is. For operations, this is always storage#operation.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
         # Service-specific metadata associated with the operation. It typically contains
         # progress information and common metadata such as create time. Some services
         # might not provide such metadata. Any method that returns a long-running
@@ -1743,6 +1755,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :response
       
+        # The link to this long running operation.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1751,9 +1768,11 @@ module Google
         def update!(**args)
           @done = args[:done] if args.key?(:done)
           @error = args[:error] if args.key?(:error)
+          @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
