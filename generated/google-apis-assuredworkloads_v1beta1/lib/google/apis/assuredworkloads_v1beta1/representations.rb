@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1beta1EnableComplianceUpdatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1beta1EnableResourceMonitoringResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -278,6 +284,12 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1beta1EnableComplianceUpdatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1beta1EnableResourceMonitoringResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -427,6 +439,7 @@ module Google
           property :compliance_regime, as: 'complianceRegime'
           property :compliance_status, as: 'complianceStatus', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus::Representation
       
+          property :compliance_updates_enabled, as: 'complianceUpdatesEnabled'
           collection :compliant_but_disallowed_services, as: 'compliantButDisallowedServices'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
