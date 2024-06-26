@@ -843,6 +843,7 @@ module Google
       class GoogleLongrunningListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::StorageV1::GoogleLongrunningOperation, decorator: Google::Apis::StorageV1::GoogleLongrunningOperation::Representation
       
@@ -855,9 +856,11 @@ module Google
           property :done, as: 'done'
           property :error, as: 'error', class: Google::Apis::StorageV1::GoogleRpcStatus, decorator: Google::Apis::StorageV1::GoogleRpcStatus::Representation
       
+          property :kind, as: 'kind'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+          property :self_link, as: 'selfLink'
         end
       end
       
