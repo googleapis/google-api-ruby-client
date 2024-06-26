@@ -2143,6 +2143,7 @@ module Google
       
           property :test_purchase, as: 'testPurchase', class: Google::Apis::AndroidpublisherV3::ExternalTransactionTestPurchase, decorator: Google::Apis::AndroidpublisherV3::ExternalTransactionTestPurchase::Representation
       
+          property :transaction_program_code, as: 'transactionProgramCode'
           property :transaction_state, as: 'transactionState'
           property :transaction_time, as: 'transactionTime'
           property :user_tax_address, as: 'userTaxAddress', class: Google::Apis::AndroidpublisherV3::ExternalTransactionAddress, decorator: Google::Apis::AndroidpublisherV3::ExternalTransactionAddress::Representation

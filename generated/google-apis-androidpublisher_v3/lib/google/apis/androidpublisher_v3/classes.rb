@@ -2239,6 +2239,17 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::ExternalTransactionTestPurchase]
         attr_accessor :test_purchase
       
+        # Optional. The transaction program code, used to help determine service fee for
+        # apps partcipating in special partner programs. This field can not be used for
+        # external offers transactions. Developers participating in the Play Media
+        # Experience Program (https://play.google.com/console/about/programs/
+        # mediaprogram/) must provide the program code when reporting alternative
+        # billing external transactions. If you are an eligible developer, please
+        # contact your BDM for more information on how to set this field.
+        # Corresponds to the JSON property `transactionProgramCode`
+        # @return [Fixnum]
+        attr_accessor :transaction_program_code
+      
         # Output only. The current state of the transaction.
         # Corresponds to the JSON property `transactionState`
         # @return [String]
@@ -2270,6 +2281,7 @@ module Google
           @package_name = args[:package_name] if args.key?(:package_name)
           @recurring_transaction = args[:recurring_transaction] if args.key?(:recurring_transaction)
           @test_purchase = args[:test_purchase] if args.key?(:test_purchase)
+          @transaction_program_code = args[:transaction_program_code] if args.key?(:transaction_program_code)
           @transaction_state = args[:transaction_state] if args.key?(:transaction_state)
           @transaction_time = args[:transaction_time] if args.key?(:transaction_time)
           @user_tax_address = args[:user_tax_address] if args.key?(:user_tax_address)
