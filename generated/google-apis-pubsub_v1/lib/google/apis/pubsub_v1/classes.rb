@@ -42,6 +42,35 @@ module Google
         end
       end
       
+      # Information about an associated Analytics Hub subscription (https://cloud.
+      # google.com/bigquery/docs/analytics-hub-manage-subscriptions).
+      class AnalyticsHubSubscriptionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the associated Analytics Hub listing resource. Pattern: "
+        # projects/`project`/locations/`location`/dataExchanges/`data_exchange`/listings/
+        # `listing`"
+        # Corresponds to the JSON property `listing`
+        # @return [String]
+        attr_accessor :listing
+      
+        # Optional. The name of the associated Analytics Hub subscription resource.
+        # Pattern: "projects/`project`/locations/`location`/subscriptions/`subscription`"
+        # Corresponds to the JSON property `subscription`
+        # @return [String]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @listing = args[:listing] if args.key?(:listing)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
       # Configuration for writing message data in Avro format. Message payloads and
       # metadata will be written to files as an Avro binary.
       class AvroConfig
@@ -1619,6 +1648,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
+        # Information about an associated Analytics Hub subscription (https://cloud.
+        # google.com/bigquery/docs/analytics-hub-manage-subscriptions).
+        # Corresponds to the JSON property `analyticsHubSubscriptionInfo`
+        # @return [Google::Apis::PubsubV1::AnalyticsHubSubscriptionInfo]
+        attr_accessor :analytics_hub_subscription_info
+      
         # Configuration for a BigQuery subscription.
         # Corresponds to the JSON property `bigqueryConfig`
         # @return [Google::Apis::PubsubV1::BigQueryConfig]
@@ -1765,6 +1800,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
+          @analytics_hub_subscription_info = args[:analytics_hub_subscription_info] if args.key?(:analytics_hub_subscription_info)
           @bigquery_config = args[:bigquery_config] if args.key?(:bigquery_config)
           @cloud_storage_config = args[:cloud_storage_config] if args.key?(:cloud_storage_config)
           @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
