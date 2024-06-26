@@ -297,7 +297,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists access requests associated with a workload
+        # Deprecated: Only returns access approval requests directly associated with an
+        # assured workload folder.
         # @param [String] parent
         #   Required. Parent resource Format: `organizations/`organization`/locations/`
         #   location`/customers/`customer`/workloads/`workload``
