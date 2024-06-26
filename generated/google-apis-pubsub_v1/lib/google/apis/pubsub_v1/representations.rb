@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalyticsHubSubscriptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AvroConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -356,6 +362,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ack_ids, as: 'ackIds'
+        end
+      end
+      
+      class AnalyticsHubSubscriptionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :listing, as: 'listing'
+          property :subscription, as: 'subscription'
         end
       end
       
@@ -734,6 +748,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
+          property :analytics_hub_subscription_info, as: 'analyticsHubSubscriptionInfo', class: Google::Apis::PubsubV1::AnalyticsHubSubscriptionInfo, decorator: Google::Apis::PubsubV1::AnalyticsHubSubscriptionInfo::Representation
+      
           property :bigquery_config, as: 'bigqueryConfig', class: Google::Apis::PubsubV1::BigQueryConfig, decorator: Google::Apis::PubsubV1::BigQueryConfig::Representation
       
           property :cloud_storage_config, as: 'cloudStorageConfig', class: Google::Apis::PubsubV1::CloudStorageConfig, decorator: Google::Apis::PubsubV1::CloudStorageConfig::Representation
