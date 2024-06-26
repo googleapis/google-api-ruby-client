@@ -926,6 +926,32 @@ module Google
         end
       end
       
+      # Http options for the running workstations.
+      class HttpOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. By default, the workstations service makes sure that all requests to
+        # the workstation are authenticated. CORS preflight requests do not include
+        # cookies or custom headers, and so are considered unauthenticated and blocked
+        # by the workstations service. Enabling this option allows these unauthenticated
+        # CORS preflight requests through to the workstation, where it becomes the
+        # responsibility of the destination server in the workstation to validate the
+        # request.
+        # Corresponds to the JSON property `allowedUnauthenticatedCorsPreflightRequests`
+        # @return [Boolean]
+        attr_accessor :allowed_unauthenticated_cors_preflight_requests
+        alias_method :allowed_unauthenticated_cors_preflight_requests?, :allowed_unauthenticated_cors_preflight_requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_unauthenticated_cors_preflight_requests = args[:allowed_unauthenticated_cors_preflight_requests] if args.key?(:allowed_unauthenticated_cors_preflight_requests)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -1711,6 +1737,12 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Optional. The source workstation from which this workstations persistent
+        # directories were cloned on creation.
+        # Corresponds to the JSON property `sourceWorkstation`
+        # @return [String]
+        attr_accessor :source_workstation
+      
         # Output only. Time when this workstation was most recently successfully started,
         # regardless of the workstation's initial state.
         # Corresponds to the JSON property `startTime`
@@ -1749,6 +1781,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @source_workstation = args[:source_workstation] if args.key?(:source_workstation)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
@@ -1988,6 +2021,11 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::Host]
         attr_accessor :host
       
+        # Http options for the running workstations.
+        # Corresponds to the JSON property `httpOptions`
+        # @return [Google::Apis::WorkstationsV1beta::HttpOptions]
+        attr_accessor :http_options
+      
         # Optional. Number of seconds to wait before automatically stopping a
         # workstation after it last received user traffic. A value of `"0s"` indicates
         # that Cloud Workstations VMs created with this configuration should never time
@@ -2087,6 +2125,7 @@ module Google
           @ephemeral_directories = args[:ephemeral_directories] if args.key?(:ephemeral_directories)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
+          @http_options = args[:http_options] if args.key?(:http_options)
           @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
