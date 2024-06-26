@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FixedIops
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,12 @@ module Google
       end
       
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IopsPerGb
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -191,6 +203,18 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerformanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerformanceLimits
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -332,7 +356,18 @@ module Google
           property :name, as: 'name'
           collection :nfs_export_options, as: 'nfsExportOptions', class: Google::Apis::FileV1::NfsExportOptions, decorator: Google::Apis::FileV1::NfsExportOptions::Representation
       
+          property :performance_config, as: 'performanceConfig', class: Google::Apis::FileV1::PerformanceConfig, decorator: Google::Apis::FileV1::PerformanceConfig::Representation
+      
+          property :performance_limits, as: 'performanceLimits', class: Google::Apis::FileV1::PerformanceLimits, decorator: Google::Apis::FileV1::PerformanceLimits::Representation
+      
           property :source_backup, as: 'sourceBackup'
+        end
+      end
+      
+      class FixedIops
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_read_iops, :numeric_string => true, as: 'maxReadIops'
         end
       end
       
@@ -434,6 +469,13 @@ module Google
           property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
       
           property :tier, as: 'tier'
+        end
+      end
+      
+      class IopsPerGb
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_read_iops_per_gb, :numeric_string => true, as: 'maxReadIopsPerGb'
         end
       end
       
@@ -588,6 +630,27 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PerformanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fixed_iops, as: 'fixedIops', class: Google::Apis::FileV1::FixedIops, decorator: Google::Apis::FileV1::FixedIops::Representation
+      
+          property :iops_by_capacity, as: 'iopsByCapacity'
+          property :iops_per_gb, as: 'iopsPerGb', class: Google::Apis::FileV1::IopsPerGb, decorator: Google::Apis::FileV1::IopsPerGb::Representation
+      
+        end
+      end
+      
+      class PerformanceLimits
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_read_iops, :numeric_string => true, as: 'maxReadIops'
+          property :max_read_throughput, :numeric_string => true, as: 'maxReadThroughput'
+          property :max_write_iops, :numeric_string => true, as: 'maxWriteIops'
+          property :max_write_throughput, :numeric_string => true, as: 'maxWriteThroughput'
         end
       end
       
