@@ -785,8 +785,8 @@ module Google
       
         # Specifies how each object's `timeCreated` metadata is preserved for transfers.
         # If unspecified, the default behavior is the same as TIME_CREATED_SKIP. This
-        # behavior is supported for transfers to GCS buckets from GCS, S3, Azure, S3
-        # Compatible, and Azure sources.
+        # behavior is supported for transfers to Cloud Storage buckets from Cloud
+        # Storage, Amazon S3, S3-compatible storage, and Azure sources.
         # Corresponds to the JSON property `timeCreated`
         # @return [String]
         attr_accessor :time_created
