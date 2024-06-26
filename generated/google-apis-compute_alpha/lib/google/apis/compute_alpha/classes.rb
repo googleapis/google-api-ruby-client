@@ -1340,6 +1340,25 @@ module Google
         end
       end
       
+      # 
+      class AllocationReservationSharingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Sharing config for all Google Cloud services.
+        # Corresponds to the JSON property `serviceShareType`
+        # @return [String]
+        attr_accessor :service_share_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_share_type = args[:service_share_type] if args.key?(:service_share_type)
+        end
+      end
+      
       # [Output Only] Contains output only fields.
       class AllocationResourceStatus
         include Google::Apis::Core::Hashable
@@ -17881,6 +17900,19 @@ module Google
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal]
         attr_accessor :metadata_based_readiness_signal
       
+        # The action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy
+        # when the application running on that VM fails a health check. Valid values are:
+        # - DEFAULT_ACTION (default): The MIG performs the same action as specified in
+        # the instanceLifecyclePolicy.defaultActionOnFailure field. If the
+        # defaultActionOnFailure field is set to REPAIR, then the MIG repairs unhealthy
+        # VMs. If the defaultActionOnFailure field is set to DO_NOTHING, then the MIG
+        # doesn't repair unhealthy VMs. - REPAIR: The MIG repairs unhealthy VMs by
+        # recreating it. - DO_NOTHING: The MIG doesn't repair unhealthy VMs. For more
+        # information, see About repairing VMs in a MIG.
+        # Corresponds to the JSON property `onFailedHealthCheck`
+        # @return [String]
+        attr_accessor :on_failed_health_check
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17890,6 +17922,7 @@ module Google
           @default_action_on_failure = args[:default_action_on_failure] if args.key?(:default_action_on_failure)
           @force_update_on_repair = args[:force_update_on_repair] if args.key?(:force_update_on_repair)
           @metadata_based_readiness_signal = args[:metadata_based_readiness_signal] if args.key?(:metadata_based_readiness_signal)
+          @on_failed_health_check = args[:on_failed_health_check] if args.key?(:on_failed_health_check)
         end
       end
       
@@ -20314,9 +20347,10 @@ module Google
         attr_accessor :labels
       
         # The machine type to use for instances that are created from these properties.
-        # This field only accept machine types name. e.g. n2-standard-4 and does not
-        # accept machine type full or partial url. e.g. projects/my-l7ilb-project/zones/
-        # us-central1-a/machineTypes/n2-standard-4 will throw INTERNAL_ERROR.
+        # This field only accepts a machine type name, for example `n2-standard-4`. If
+        # you use the machine type full or partial URL, for example `projects/my-l7ilb-
+        # project/zones/us-central1-a/machineTypes/n2-standard-4`, the request will
+        # result in an `INTERNAL_ERROR`.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -22392,10 +22426,9 @@ module Google
         end
       end
       
-      # Specify bandwidth percentages (0-100) for various traffic classes in
-      # BandwidthPercentagePolicy. The sum of all percentages must equal 100. It is
-      # valid to specify percentages for some classes and not for others. The others
-      # will be implicitly marked as 0.
+      # Specify bandwidth percentages [1-100] for various traffic classes in
+      # BandwidthPercentagePolicy. The sum of all percentages must equal 100. All
+      # traffic classes must have a percentage value specified.
       class InterconnectApplicationAwareInterconnectBandwidthPercentage
         include Google::Apis::Core::Hashable
       
@@ -26988,6 +27021,291 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # MultiMIG represents a group of Managed Instance Groups.
+      class MultiMig
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#multiMig for MultiMIGs.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Policy regarding where to create MIGs Initially only zonal MIGs in the same
+        # zone are supported.
+        # Corresponds to the JSON property `locationPolicy`
+        # @return [Google::Apis::ComputeAlpha::MultiMigLocationPolicy]
+        attr_accessor :location_policy
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # User-provided names for Parts of MultiMIG and the Parts themselves.
+        # Corresponds to the JSON property `parts`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::MultiMigPart>]
+        attr_accessor :parts
+      
+        # [Output Only] URL of the region where the resource resides. Only applicable
+        # for regional resources. You must specify this field as part of the HTTP
+        # request URL. It is not settable as a field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Policy for handling provisioning and other scheduling-related events.
+        # Corresponds to the JSON property `schedulingPolicy`
+        # @return [Google::Apis::ComputeAlpha::MultiMigSchedulingPolicy]
+        attr_accessor :scheduling_policy
+      
+        # [Output only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @location_policy = args[:location_policy] if args.key?(:location_policy)
+          @name = args[:name] if args.key?(:name)
+          @parts = args[:parts] if args.key?(:parts)
+          @region = args[:region] if args.key?(:region)
+          @scheduling_policy = args[:scheduling_policy] if args.key?(:scheduling_policy)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+        end
+      end
+      
+      # Policy regarding where to create MIGs Initially only zonal MIGs in the same
+      # zone are supported.
+      class MultiMigLocationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # List of zones where MIGs will be provisioned. Should be valid RFC1035 name
+        # Corresponds to the JSON property `provisioningZones`
+        # @return [Array<String>]
+        attr_accessor :provisioning_zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @provisioning_zones = args[:provisioning_zones] if args.key?(:provisioning_zones)
+        end
+      end
+      
+      # Config for an MMIG part.
+      class MultiMigPart
+        include Google::Apis::Core::Hashable
+      
+        # Link to an existing InstanceGroupManager that will be adopted by a MultiMIG.
+        # Corresponds to the JSON property `instanceGroupManager`
+        # @return [String]
+        attr_accessor :instance_group_manager
+      
+        # Represents a Managed Instance Group resource. An instance group is a
+        # collection of VM instances that you can manage as a single entity. For more
+        # information, read Instance groups. For zonal Managed Instance Group, use the
+        # instanceGroupManagers resource. For regional Managed Instance Group, use the
+        # regionInstanceGroupManagers resource.
+        # Corresponds to the JSON property `instanceGroupManagerProperties`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManager]
+        attr_accessor :instance_group_manager_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_group_manager = args[:instance_group_manager] if args.key?(:instance_group_manager)
+          @instance_group_manager_properties = args[:instance_group_manager_properties] if args.key?(:instance_group_manager_properties)
+        end
+      end
+      
+      # Policy for handling provisioning and other scheduling-related events.
+      class MultiMigSchedulingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # How provisioning of MIGs should be scheduled (coordinated or not)
+        # Corresponds to the JSON property `provisioning`
+        # @return [String]
+        attr_accessor :provisioning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @provisioning = args[:provisioning] if args.key?(:provisioning)
+        end
+      end
+      
+      # 
+      class MultiMigsList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of MultiMig resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::MultiMig>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # This token allows you to get the next page of results for maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::MultiMigsList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::MultiMigsList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -39094,6 +39412,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Specify the reservation sharing policy. If unspecified, the reservation will
+        # not be shared with Google Cloud managed services.
+        # Corresponds to the JSON property `reservationSharingPolicy`
+        # @return [Google::Apis::ComputeAlpha::AllocationReservationSharingPolicy]
+        attr_accessor :reservation_sharing_policy
+      
         # Resource policies to be added to this reservation. The key is defined by user,
         # and the value is resource policy url. This is to define placement policy with
         # reservation.
@@ -39166,6 +39490,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @reservation_sharing_policy = args[:reservation_sharing_policy] if args.key?(:reservation_sharing_policy)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -40920,9 +41245,14 @@ module Google
       
         # The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should
         # handle matching packets or the IP address of the forwarding Rule. For example,
-        # the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/
-        # compute/v1/projects/project/regions/region /forwardingRules/forwardingRule -
-        # regions/region/forwardingRules/forwardingRule
+        # the following are all valid URLs: - https://www.googleapis.com/compute/v1/
+        # projects/project/regions/region /forwardingRules/forwardingRule - regions/
+        # region/forwardingRules/forwardingRule If an IP address is provided, must
+        # specify an IPv4 address in dot-decimal notation or an IPv6 address in RFC 4291
+        # format. For example, the following are all valid IP addresses: - 10.128.0.56 -
+        # 2001:db8::2d9:51:0:0 - 2001:db8:0:0:2d9:51:0:0 IPv6 addresses will be
+        # displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should
+        # never be an IPv4-mapped IPv6 address.
         # Corresponds to the JSON property `nextHopIlb`
         # @return [String]
         attr_accessor :next_hop_ilb
@@ -42489,11 +42819,11 @@ module Google
         # CEL expression that specifies the match condition that egress traffic from a
         # VM is evaluated against. If it evaluates to true, the corresponding `action`
         # is enforced. The following examples are valid match expressions for public NAT:
-        # "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.
-        # 0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The
-        # following example is a valid match expression for private NAT: "nexthop.hub ==
+        # `inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.
+        # 0/16')` `destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'` The
+        # following example is a valid match expression for private NAT: `nexthop.hub ==
         # '//networkconnectivity.googleapis.com/projects/my-project/locations/global/
-        # hubs/hub-1'"
+        # hubs/hub-1'`
         # Corresponds to the JSON property `match`
         # @return [String]
         attr_accessor :match
@@ -42604,12 +42934,19 @@ module Google
       class RouterStatus
         include Google::Apis::Core::Hashable
       
-        # Best routes for this router's network.
+        # A list of the best dynamic routes for this Cloud Router's Virtual Private
+        # Cloud (VPC) network in the same region as this Cloud Router. Lists all of the
+        # best routes per prefix that are programmed into this region's VPC data plane.
+        # When global dynamic routing mode is turned on in the VPC network, this list
+        # can include cross-region dynamic routes from Cloud Routers in other regions.
         # Corresponds to the JSON property `bestRoutes`
         # @return [Array<Google::Apis::ComputeAlpha::Route>]
         attr_accessor :best_routes
       
-        # Best routes learned by this router.
+        # A list of the best BGP routes learned by this Cloud Router. It is possible
+        # that routes listed might not be programmed into the data plane, if the Google
+        # Cloud control plane finds a more optimal route for a prefix than a route
+        # learned by this Cloud Router.
         # Corresponds to the JSON property `bestRoutesForRouter`
         # @return [Array<Google::Apis::ComputeAlpha::Route>]
         attr_accessor :best_routes_for_router
@@ -49618,7 +49955,8 @@ module Google
         # @return [String]
         attr_accessor :performance_provisioning_type
       
-        # Size, in GiB, of the storage pool.
+        # Size, in GiB, of the storage pool. For more information about the size limits,
+        # see https://cloud.google.com/compute/docs/disks/storage-pools.
         # Corresponds to the JSON property `poolProvisionedCapacityGb`
         # @return [Fixnum]
         attr_accessor :pool_provisioned_capacity_gb
@@ -50238,8 +50576,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_used_capacity_bytes
       
-        # Sum of all the disks' provisioned IOPS, minus some amount that is allowed per
-        # disk that is not counted towards pool's IOPS capacity.
+        # [Output Only] Sum of all the disks' provisioned IOPS, minus some amount that
+        # is allowed per disk that is not counted towards pool's IOPS capacity. For more
+        # information, see https://cloud.google.com/compute/docs/disks/storage-pools.
         # Corresponds to the JSON property `poolUsedIops`
         # @return [Fixnum]
         attr_accessor :pool_used_iops
