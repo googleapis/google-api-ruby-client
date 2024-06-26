@@ -571,6 +571,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # Optional. Resource manager tags to be bound to this instance. Tag keys and
+        # values have the same definition as https://cloud.google.com/resource-manager/
+        # docs/tags/tags-overview Keys must be in the format `tagKeys/`tag_key_id``, and
+        # values are in the format `tagValues/456`.
+        # Corresponds to the JSON property `vmTags`
+        # @return [Hash<String,String>]
+        attr_accessor :vm_tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -590,6 +598,7 @@ module Google
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
+          @vm_tags = args[:vm_tags] if args.key?(:vm_tags)
         end
       end
       
@@ -740,6 +749,15 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Optional. Port for which the access token should be generated. If specified,
+        # the generated access token grants access only to the specified port of the
+        # workstation. If specified, values must be within the range [1 - 65535]. If not
+        # specified, the generated access token grants access to all ports of the
+        # workstation.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
         # Desired lifetime duration of the access token. This value must be at most 24
         # hours. If a value is not specified, the token's lifetime will be set to a
         # default value of 1 hour.
@@ -754,6 +772,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @port = args[:port] if args.key?(:port)
           @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
