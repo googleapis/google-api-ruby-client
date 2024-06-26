@@ -1982,6 +1982,11 @@ module Google
         attr_accessor :name
       
         # The support stage of the service.
+        # Corresponds to the JSON property `serviceSupportStage`
+        # @return [String]
+        attr_accessor :service_support_stage
+      
+        # The support stage of the service.
         # Corresponds to the JSON property `supportStage`
         # @return [String]
         attr_accessor :support_stage
@@ -2006,6 +2011,7 @@ module Google
           @available_on_restricted_vip = args[:available_on_restricted_vip] if args.key?(:available_on_restricted_vip)
           @known_limitations = args[:known_limitations] if args.key?(:known_limitations)
           @name = args[:name] if args.key?(:name)
+          @service_support_stage = args[:service_support_stage] if args.key?(:service_support_stage)
           @support_stage = args[:support_stage] if args.key?(:support_stage)
           @supported_methods = args[:supported_methods] if args.key?(:supported_methods)
           @title = args[:title] if args.key?(:title)

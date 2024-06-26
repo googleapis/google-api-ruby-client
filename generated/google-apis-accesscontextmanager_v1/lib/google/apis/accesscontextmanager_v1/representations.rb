@@ -819,6 +819,7 @@ module Google
           property :available_on_restricted_vip, as: 'availableOnRestrictedVip'
           property :known_limitations, as: 'knownLimitations'
           property :name, as: 'name'
+          property :service_support_stage, as: 'serviceSupportStage'
           property :support_stage, as: 'supportStage'
           collection :supported_methods, as: 'supportedMethods', class: Google::Apis::AccesscontextmanagerV1::MethodSelector, decorator: Google::Apis::AccesscontextmanagerV1::MethodSelector::Representation
       
