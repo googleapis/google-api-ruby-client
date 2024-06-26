@@ -7539,7 +7539,12 @@ module Google
       class GoogleCloudDialogflowV2SpeechToTextConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternative_language_codes, as: 'alternativeLanguageCodes'
+          property :audio_encoding, as: 'audioEncoding'
+          property :enable_word_info, as: 'enableWordInfo'
+          property :language_code, as: 'languageCode'
           property :model, as: 'model'
+          property :sample_rate_hertz, as: 'sampleRateHertz'
           property :speech_model_variant, as: 'speechModelVariant'
           property :use_timeout_based_endpointing, as: 'useTimeoutBasedEndpointing'
         end

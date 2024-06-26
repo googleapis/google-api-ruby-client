@@ -3051,18 +3051,16 @@ module Google
       
         # Flow name to start the test case with. Format: `projects//locations//agents//
         # flows/`. Only one of `flow` and `page` should be set to indicate the starting
-        # point of the test case. If both are set, `page` takes precedence over `flow`.
-        # If neither is set, the test case will start with start page on the default
-        # start flow.
+        # point of the test case. If neither is set, the test case will start with start
+        # page on the default start flow.
         # Corresponds to the JSON property `flow`
         # @return [String]
         attr_accessor :flow
       
         # The page to start the test case with. Format: `projects//locations//agents//
         # flows//pages/`. Only one of `flow` and `page` should be set to indicate the
-        # starting point of the test case. If both are set, `page` takes precedence over
-        # `flow`. If neither is set, the test case will start with start page on the
-        # default start flow.
+        # starting point of the test case. If neither is set, the test case will start
+        # with start page on the default start flow.
         # Corresponds to the JSON property `page`
         # @return [String]
         attr_accessor :page
@@ -6903,18 +6901,16 @@ module Google
       
         # Flow name to start the test case with. Format: `projects//locations//agents//
         # flows/`. Only one of `flow` and `page` should be set to indicate the starting
-        # point of the test case. If both are set, `page` takes precedence over `flow`.
-        # If neither is set, the test case will start with start page on the default
-        # start flow.
+        # point of the test case. If neither is set, the test case will start with start
+        # page on the default start flow.
         # Corresponds to the JSON property `flow`
         # @return [String]
         attr_accessor :flow
       
         # The page to start the test case with. Format: `projects//locations//agents//
         # flows//pages/`. Only one of `flow` and `page` should be set to indicate the
-        # starting point of the test case. If both are set, `page` takes precedence over
-        # `flow`. If neither is set, the test case will start with start page on the
-        # default start flow.
+        # starting point of the test case. If neither is set, the test case will start
+        # with start page on the default start flow.
         # Corresponds to the JSON property `page`
         # @return [String]
         attr_accessor :page
@@ -15210,6 +15206,37 @@ module Google
       class GoogleCloudDialogflowV2SpeechToTextConfig
         include Google::Apis::Core::Hashable
       
+        # Defines the list of other language codes in addition to the one provided by
+        # the conversation profile that may be detected as the language code for the
+        # utterances over the conversation. See [Language Support](https://cloud.google.
+        # com/dialogflow/docs/reference/language) for a list of the currently supported
+        # language codes.
+        # Corresponds to the JSON property `alternativeLanguageCodes`
+        # @return [Array<String>]
+        attr_accessor :alternative_language_codes
+      
+        # Audio encoding of the audio content to process.
+        # Corresponds to the JSON property `audioEncoding`
+        # @return [String]
+        attr_accessor :audio_encoding
+      
+        # If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult
+        # with information about the recognized speech words, e.g. start and end time
+        # offsets. If false or unspecified, Speech doesn't return any word-level
+        # information.
+        # Corresponds to the JSON property `enableWordInfo`
+        # @return [Boolean]
+        attr_accessor :enable_word_info
+        alias_method :enable_word_info?, :enable_word_info
+      
+        # The language of the supplied audio. Dialogflow does not do translations. See [
+        # Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+        # for a list of the currently supported language codes. Note that queries in the
+        # same session do not necessarily need to specify the same language.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # Which Speech model to select. Select the model best suited to your domain to
         # get best results. If a model is not explicitly specified, then Dialogflow auto-
         # selects a model based on other parameters in the SpeechToTextConfig and Agent
@@ -15226,6 +15253,13 @@ module Google
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
+      
+        # Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud
+        # Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics)
+        # for more details.
+        # Corresponds to the JSON property `sampleRateHertz`
+        # @return [Fixnum]
+        attr_accessor :sample_rate_hertz
       
         # The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `
         # USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in
@@ -15249,7 +15283,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alternative_language_codes = args[:alternative_language_codes] if args.key?(:alternative_language_codes)
+          @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @model = args[:model] if args.key?(:model)
+          @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @speech_model_variant = args[:speech_model_variant] if args.key?(:speech_model_variant)
           @use_timeout_based_endpointing = args[:use_timeout_based_endpointing] if args.key?(:use_timeout_based_endpointing)
         end
