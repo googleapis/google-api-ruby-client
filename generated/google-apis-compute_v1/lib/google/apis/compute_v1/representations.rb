@@ -718,6 +718,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomErrorResponsePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomErrorResponsePolicyCustomErrorResponseRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerEncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4786,6 +4798,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyAdvancedOptionsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7876,6 +7894,24 @@ module Google
         end
       end
       
+      class CustomErrorResponsePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_response_rules, as: 'errorResponseRules', class: Google::Apis::ComputeV1::CustomErrorResponsePolicyCustomErrorResponseRule, decorator: Google::Apis::ComputeV1::CustomErrorResponsePolicyCustomErrorResponseRule::Representation
+      
+          property :error_service, as: 'errorService'
+        end
+      end
+      
+      class CustomErrorResponsePolicyCustomErrorResponseRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :match_response_codes, as: 'matchResponseCodes'
+          property :override_response_code, as: 'overrideResponseCode'
+          property :path, as: 'path'
+        end
+      end
+      
       class CustomerEncryptionKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9370,6 +9406,8 @@ module Google
       class HttpRouteRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_error_response_policy, as: 'customErrorResponsePolicy', class: Google::Apis::ComputeV1::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeV1::CustomErrorResponsePolicy::Representation
+      
           property :description, as: 'description'
           property :header_action, as: 'headerAction', class: Google::Apis::ComputeV1::HttpHeaderAction, decorator: Google::Apis::ComputeV1::HttpHeaderAction::Representation
       
@@ -13508,6 +13546,8 @@ module Google
       class PathMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_custom_error_response_policy, as: 'defaultCustomErrorResponsePolicy', class: Google::Apis::ComputeV1::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeV1::CustomErrorResponsePolicy::Representation
+      
           property :default_route_action, as: 'defaultRouteAction', class: Google::Apis::ComputeV1::HttpRouteAction, decorator: Google::Apis::ComputeV1::HttpRouteAction::Representation
       
           property :default_service, as: 'defaultService'
@@ -13527,6 +13567,8 @@ module Google
       class PathRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_error_response_policy, as: 'customErrorResponsePolicy', class: Google::Apis::ComputeV1::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeV1::CustomErrorResponsePolicy::Representation
+      
           collection :paths, as: 'paths'
           property :route_action, as: 'routeAction', class: Google::Apis::ComputeV1::HttpRouteAction, decorator: Google::Apis::ComputeV1::HttpRouteAction::Representation
       
@@ -15503,7 +15545,21 @@ module Google
           property :auto_deploy_expiration_sec, as: 'autoDeployExpirationSec'
           property :auto_deploy_impacted_baseline_threshold, as: 'autoDeployImpactedBaselineThreshold'
           property :auto_deploy_load_threshold, as: 'autoDeployLoadThreshold'
+          property :detection_absolute_qps, as: 'detectionAbsoluteQps'
+          property :detection_load_threshold, as: 'detectionLoadThreshold'
+          property :detection_relative_to_baseline_qps, as: 'detectionRelativeToBaselineQps'
           property :name, as: 'name'
+          collection :traffic_granularity_configs, as: 'trafficGranularityConfigs', class: Google::Apis::ComputeV1::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_each_unique_value, as: 'enableEachUniqueValue'
+          property :type, as: 'type'
+          property :value, as: 'value'
         end
       end
       
@@ -17887,6 +17943,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
+          property :default_custom_error_response_policy, as: 'defaultCustomErrorResponsePolicy', class: Google::Apis::ComputeV1::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeV1::CustomErrorResponsePolicy::Representation
+      
           property :default_route_action, as: 'defaultRouteAction', class: Google::Apis::ComputeV1::HttpRouteAction, decorator: Google::Apis::ComputeV1::HttpRouteAction::Representation
       
           property :default_service, as: 'defaultService'

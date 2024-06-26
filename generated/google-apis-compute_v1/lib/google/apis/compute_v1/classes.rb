@@ -6149,6 +6149,95 @@ module Google
         end
       end
       
+      # Specifies the custom error response policy that must be applied when the
+      # backend service or backend bucket responds with an error.
+      class CustomErrorResponsePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies rules for returning error responses. In a given policy, if you
+        # specify rules for both a range of error codes as well as rules for specific
+        # error codes then rules with specific error codes have a higher priority. For
+        # example, assume that you configure a rule for 401 (Un-authorized) code, and
+        # another for all 4 series error codes (4XX). If the backend service returns a
+        # 401, then the rule for 401 will be applied. However if the backend service
+        # returns a 403, the rule for 4xx takes effect.
+        # Corresponds to the JSON property `errorResponseRules`
+        # @return [Array<Google::Apis::ComputeV1::CustomErrorResponsePolicyCustomErrorResponseRule>]
+        attr_accessor :error_response_rules
+      
+        # The full or partial URL to the BackendBucket resource that contains the custom
+        # error content. Examples are: - https://www.googleapis.com/compute/v1/projects/
+        # project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/
+        # global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket
+        # If errorService is not specified at lower levels like pathMatcher, pathRule
+        # and routeRule, an errorService specified at a higher level in the UrlMap will
+        # be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more
+        # errorResponseRules[], it must specify errorService. If load balancer cannot
+        # reach the backendBucket, a simple Not Found Error will be returned, with the
+        # original response code (or overrideResponseCode if configured). errorService
+        # is not supported for internal or regional HTTP/HTTPS load balancers.
+        # Corresponds to the JSON property `errorService`
+        # @return [String]
+        attr_accessor :error_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_response_rules = args[:error_response_rules] if args.key?(:error_response_rules)
+          @error_service = args[:error_service] if args.key?(:error_service)
+        end
+      end
+      
+      # Specifies the mapping between the response code that will be returned along
+      # with the custom error content and the response code returned by the backend
+      # service.
+      class CustomErrorResponsePolicyCustomErrorResponseRule
+        include Google::Apis::Core::Hashable
+      
+        # Valid values include: - A number between 400 and 599: For example 401 or 503,
+        # in which case the load balancer applies the policy if the error code exactly
+        # matches this value. - 5xx: Load Balancer will apply the policy if the backend
+        # service responds with any response code in the range of 500 to 599. - 4xx:
+        # Load Balancer will apply the policy if the backend service responds with any
+        # response code in the range of 400 to 499. Values must be unique within
+        # matchResponseCodes and across all errorResponseRules of
+        # CustomErrorResponsePolicy.
+        # Corresponds to the JSON property `matchResponseCodes`
+        # @return [Array<String>]
+        attr_accessor :match_response_codes
+      
+        # The HTTP status code returned with the response containing the custom error
+        # content. If overrideResponseCode is not supplied, the same response code
+        # returned by the original backend bucket or backend service is returned to the
+        # client.
+        # Corresponds to the JSON property `overrideResponseCode`
+        # @return [Fixnum]
+        attr_accessor :override_response_code
+      
+        # The full path to a file within backendBucket . For example: /errors/
+        # defaultError.html path must start with a leading slash. path cannot have
+        # trailing slashes. If the file is not available in backendBucket or the load
+        # balancer cannot reach the BackendBucket, a simple Not Found Error is returned
+        # to the client. The value must be from 1 to 1024 characters
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @match_response_codes = args[:match_response_codes] if args.key?(:match_response_codes)
+          @override_response_code = args[:override_response_code] if args.key?(:override_response_code)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # 
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
@@ -12716,6 +12805,12 @@ module Google
       class HttpRouteRule
         include Google::Apis::Core::Hashable
       
+        # Specifies the custom error response policy that must be applied when the
+        # backend service or backend bucket responds with an error.
+        # Corresponds to the JSON property `customErrorResponsePolicy`
+        # @return [Google::Apis::ComputeV1::CustomErrorResponsePolicy]
+        attr_accessor :custom_error_response_policy
+      
         # The short description conveying the intent of this routeRule. The description
         # can have a maximum length of 1024 characters.
         # Corresponds to the JSON property `description`
@@ -12786,6 +12881,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_error_response_policy = args[:custom_error_response_policy] if args.key?(:custom_error_response_policy)
           @description = args[:description] if args.key?(:description)
           @header_action = args[:header_action] if args.key?(:header_action)
           @match_rules = args[:match_rules] if args.key?(:match_rules)
@@ -17193,9 +17289,10 @@ module Google
         attr_accessor :labels
       
         # The machine type to use for instances that are created from these properties.
-        # This field only accept machine types name. e.g. n2-standard-4 and does not
-        # accept machine type full or partial url. e.g. projects/my-l7ilb-project/zones/
-        # us-central1-a/machineTypes/n2-standard-4 will throw INTERNAL_ERROR.
+        # This field only accepts a machine type name, for example `n2-standard-4`. If
+        # you use the machine type full or partial URL, for example `projects/my-l7ilb-
+        # project/zones/us-central1-a/machineTypes/n2-standard-4`, the request will
+        # result in an `INTERNAL_ERROR`.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -29091,6 +29188,12 @@ module Google
       class PathMatcher
         include Google::Apis::Core::Hashable
       
+        # Specifies the custom error response policy that must be applied when the
+        # backend service or backend bucket responds with an error.
+        # Corresponds to the JSON property `defaultCustomErrorResponsePolicy`
+        # @return [Google::Apis::ComputeV1::CustomErrorResponsePolicy]
+        attr_accessor :default_custom_error_response_policy
+      
         # defaultRouteAction takes effect when none of the pathRules or routeRules match.
         # The load balancer performs advanced routing actions, such as URL rewrites and
         # header transformations, before forwarding the request to the selected backend.
@@ -29170,6 +29273,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_custom_error_response_policy = args[:default_custom_error_response_policy] if args.key?(:default_custom_error_response_policy)
           @default_route_action = args[:default_route_action] if args.key?(:default_route_action)
           @default_service = args[:default_service] if args.key?(:default_service)
           @default_url_redirect = args[:default_url_redirect] if args.key?(:default_url_redirect)
@@ -29185,6 +29289,12 @@ module Google
       # BackendService to handle the traffic arriving at this URL.
       class PathRule
         include Google::Apis::Core::Hashable
+      
+        # Specifies the custom error response policy that must be applied when the
+        # backend service or backend bucket responds with an error.
+        # Corresponds to the JSON property `customErrorResponsePolicy`
+        # @return [Google::Apis::ComputeV1::CustomErrorResponsePolicy]
+        attr_accessor :custom_error_response_policy
       
         # The list of path patterns to match. Each must start with / and the only place
         # a * is allowed is at the end following a /. The string fed to the path matcher
@@ -29227,6 +29337,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_error_response_policy = args[:custom_error_response_policy] if args.key?(:custom_error_response_policy)
           @paths = args[:paths] if args.key?(:paths)
           @route_action = args[:route_action] if args.key?(:route_action)
           @service = args[:service] if args.key?(:service)
@@ -34005,9 +34116,14 @@ module Google
       
         # The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should
         # handle matching packets or the IP address of the forwarding Rule. For example,
-        # the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/
-        # compute/v1/projects/project/regions/region /forwardingRules/forwardingRule -
-        # regions/region/forwardingRules/forwardingRule
+        # the following are all valid URLs: - https://www.googleapis.com/compute/v1/
+        # projects/project/regions/region /forwardingRules/forwardingRule - regions/
+        # region/forwardingRules/forwardingRule If an IP address is provided, must
+        # specify an IPv4 address in dot-decimal notation or an IPv6 address in RFC 4291
+        # format. For example, the following are all valid IP addresses: - 10.128.0.56 -
+        # 2001:db8::2d9:51:0:0 - 2001:db8:0:0:2d9:51:0:0 IPv6 addresses will be
+        # displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should
+        # never be an IPv4-mapped IPv6 address.
         # Corresponds to the JSON property `nextHopIlb`
         # @return [String]
         attr_accessor :next_hop_ilb
@@ -35404,11 +35520,11 @@ module Google
         # CEL expression that specifies the match condition that egress traffic from a
         # VM is evaluated against. If it evaluates to true, the corresponding `action`
         # is enforced. The following examples are valid match expressions for public NAT:
-        # "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.
-        # 0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The
-        # following example is a valid match expression for private NAT: "nexthop.hub ==
+        # `inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.
+        # 0/16')` `destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'` The
+        # following example is a valid match expression for private NAT: `nexthop.hub ==
         # '//networkconnectivity.googleapis.com/projects/my-project/locations/global/
-        # hubs/hub-1'"
+        # hubs/hub-1'`
         # Corresponds to the JSON property `match`
         # @return [String]
         attr_accessor :match
@@ -35519,12 +35635,19 @@ module Google
       class RouterStatus
         include Google::Apis::Core::Hashable
       
-        # Best routes for this router's network.
+        # A list of the best dynamic routes for this Cloud Router's Virtual Private
+        # Cloud (VPC) network in the same region as this Cloud Router. Lists all of the
+        # best routes per prefix that are programmed into this region's VPC data plane.
+        # When global dynamic routing mode is turned on in the VPC network, this list
+        # can include cross-region dynamic routes from Cloud Routers in other regions.
         # Corresponds to the JSON property `bestRoutes`
         # @return [Array<Google::Apis::ComputeV1::Route>]
         attr_accessor :best_routes
       
-        # Best routes learned by this router.
+        # A list of the best BGP routes learned by this Cloud Router. It is possible
+        # that routes listed might not be programmed into the data plane, if the Google
+        # Cloud control plane finds a more optimal route for a prefix than a route
+        # learned by this Cloud Router.
         # Corresponds to the JSON property `bestRoutesForRouter`
         # @return [Array<Google::Apis::ComputeV1::Route>]
         attr_accessor :best_routes_for_router
@@ -36982,11 +37105,32 @@ module Google
         # @return [Float]
         attr_accessor :auto_deploy_load_threshold
       
+        # 
+        # Corresponds to the JSON property `detectionAbsoluteQps`
+        # @return [Float]
+        attr_accessor :detection_absolute_qps
+      
+        # 
+        # Corresponds to the JSON property `detectionLoadThreshold`
+        # @return [Float]
+        attr_accessor :detection_load_threshold
+      
+        # 
+        # Corresponds to the JSON property `detectionRelativeToBaselineQps`
+        # @return [Float]
+        attr_accessor :detection_relative_to_baseline_qps
+      
         # The name must be 1-63 characters long, and comply with RFC1035. The name must
         # be unique within the security policy.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Configuration options for enabling Adaptive Protection to operate on specified
+        # granular traffic units.
+        # Corresponds to the JSON property `trafficGranularityConfigs`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>]
+        attr_accessor :traffic_granularity_configs
       
         def initialize(**args)
            update!(**args)
@@ -36998,7 +37142,46 @@ module Google
           @auto_deploy_expiration_sec = args[:auto_deploy_expiration_sec] if args.key?(:auto_deploy_expiration_sec)
           @auto_deploy_impacted_baseline_threshold = args[:auto_deploy_impacted_baseline_threshold] if args.key?(:auto_deploy_impacted_baseline_threshold)
           @auto_deploy_load_threshold = args[:auto_deploy_load_threshold] if args.key?(:auto_deploy_load_threshold)
+          @detection_absolute_qps = args[:detection_absolute_qps] if args.key?(:detection_absolute_qps)
+          @detection_load_threshold = args[:detection_load_threshold] if args.key?(:detection_load_threshold)
+          @detection_relative_to_baseline_qps = args[:detection_relative_to_baseline_qps] if args.key?(:detection_relative_to_baseline_qps)
           @name = args[:name] if args.key?(:name)
+          @traffic_granularity_configs = args[:traffic_granularity_configs] if args.key?(:traffic_granularity_configs)
+        end
+      end
+      
+      # Configurations to specifc granular traffic units processed by Adaptive
+      # Protection.
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
+        include Google::Apis::Core::Hashable
+      
+        # If enabled, traffic matching each unique value for the specified type
+        # constitutes a separate traffic unit. It can only be set to true if `value` is
+        # empty.
+        # Corresponds to the JSON property `enableEachUniqueValue`
+        # @return [Boolean]
+        attr_accessor :enable_each_unique_value
+        alias_method :enable_each_unique_value?, :enable_each_unique_value
+      
+        # Type of this configuration.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Requests that match this value constitute a granular traffic unit.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_each_unique_value = args[:enable_each_unique_value] if args.key?(:enable_each_unique_value)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -40868,7 +41051,8 @@ module Google
         # @return [String]
         attr_accessor :performance_provisioning_type
       
-        # Size, in GiB, of the storage pool.
+        # Size, in GiB, of the storage pool. For more information about the size limits,
+        # see https://cloud.google.com/compute/docs/disks/storage-pools.
         # Corresponds to the JSON property `poolProvisionedCapacityGb`
         # @return [Fixnum]
         attr_accessor :pool_provisioned_capacity_gb
@@ -41450,8 +41634,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_used_capacity_bytes
       
-        # Sum of all the disks' provisioned IOPS, minus some amount that is allowed per
-        # disk that is not counted towards pool's IOPS capacity.
+        # [Output Only] Sum of all the disks' provisioned IOPS, minus some amount that
+        # is allowed per disk that is not counted towards pool's IOPS capacity. For more
+        # information, see https://cloud.google.com/compute/docs/disks/storage-pools.
         # Corresponds to the JSON property `poolUsedIops`
         # @return [Fixnum]
         attr_accessor :pool_used_iops
@@ -46518,6 +46703,12 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Specifies the custom error response policy that must be applied when the
+        # backend service or backend bucket responds with an error.
+        # Corresponds to the JSON property `defaultCustomErrorResponsePolicy`
+        # @return [Google::Apis::ComputeV1::CustomErrorResponsePolicy]
+        attr_accessor :default_custom_error_response_policy
+      
         # defaultRouteAction takes effect when none of the hostRules match. The load
         # balancer performs advanced routing actions, such as URL rewrites and header
         # transformations, before forwarding the request to the selected backend. If
@@ -46631,6 +46822,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @default_custom_error_response_policy = args[:default_custom_error_response_policy] if args.key?(:default_custom_error_response_policy)
           @default_route_action = args[:default_route_action] if args.key?(:default_route_action)
           @default_service = args[:default_service] if args.key?(:default_service)
           @default_url_redirect = args[:default_url_redirect] if args.key?(:default_url_redirect)
