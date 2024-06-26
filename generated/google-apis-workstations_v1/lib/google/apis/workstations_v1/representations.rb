@@ -387,6 +387,7 @@ module Google
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::WorkstationsV1::GceShieldedInstanceConfig, decorator: Google::Apis::WorkstationsV1::GceShieldedInstanceConfig::Representation
       
           collection :tags, as: 'tags'
+          hash :vm_tags, as: 'vmTags'
         end
       end
       
@@ -424,6 +425,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expire_time, as: 'expireTime'
+          property :port, as: 'port'
           property :ttl, as: 'ttl'
         end
       end
