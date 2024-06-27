@@ -1,0 +1,7 @@
+{
+    "api_id": "merchantapi:promotions_v1beta",
+    "name_pretty": "Merchant API",
+    "distribution_name": "google-apis-merchantapi_promotions_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
