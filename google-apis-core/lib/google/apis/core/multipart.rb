@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# frozen_string_literal: true
 
 module Google
   module Apis
@@ -31,7 +32,7 @@ module Google
         end
 
         def to_io(boundary)
-          part = ''
+          part = +''
           part << "--#{boundary}\r\n"
           part << "Content-Type: application/json\r\n"
           @header.each do |(k, v)|
@@ -59,7 +60,7 @@ module Google
         end
 
         def to_io(boundary)
-          head = ''
+          head = +''
           head << "--#{boundary}\r\n"
           @header.each do |(k, v)|
             head << "#{k}: #{v}\r\n"
