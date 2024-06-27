@@ -3356,6 +3356,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::SbomStatus]
         attr_accessor :sbom_status
       
+        # The status of a vulnerability attestation generation.
+        # Corresponds to the JSON property `vulnerabilityAttestation`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::VulnerabilityAttestation]
+        attr_accessor :vulnerability_attestation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3372,6 +3377,7 @@ module Google
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
           @operation = args[:operation] if args.key?(:operation)
           @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
+          @vulnerability_attestation = args[:vulnerability_attestation] if args.key?(:vulnerability_attestation)
         end
       end
       
@@ -7502,6 +7508,38 @@ module Google
           @publisher = args[:publisher] if args.key?(:publisher)
           @short_description = args[:short_description] if args.key?(:short_description)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # The status of a vulnerability attestation generation.
+      class VulnerabilityAttestation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If failure, the error reason for why the attestation generation
+        # failed.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Output only. The last time we attempted to generate an attestation.
+        # Corresponds to the JSON property `lastAttemptTime`
+        # @return [String]
+        attr_accessor :last_attempt_time
+      
+        # Output only. The success/failure state of the latest attestation attempt.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @last_attempt_time = args[:last_attempt_time] if args.key?(:last_attempt_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
