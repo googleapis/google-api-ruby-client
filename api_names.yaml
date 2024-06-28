@@ -268,6 +268,8 @@
 "/androidpublisher:v2/androidpublisher.purchases.subscriptions.get": get_purchase_subscription
 "/androidpublisher:v2/androidpublisher.purchases.subscriptions.refund": refund_purchase_subscription
 "/androidpublisher:v2/androidpublisher.purchases.subscriptions.revoke": revoke_purchase_subscription
+"/androidpublisher:v2/androidpublisher.purchases.subscriptionsv2.get": get_purchase_subscription_v2
+"/androidpublisher:v2/androidpublisher.purchases.subscriptionsv2.revoke": revoke_purchase_subscription_v2
 "/autoscaler:v1beta2/AutoscalerListResponse": list_autoscaler_response
 "/bigquery:v2/TableDataInsertAllRequest": insert_all_table_data_request
 "/bigquery:v2/TableDataInsertAllResponse": insert_all_table_data_response
