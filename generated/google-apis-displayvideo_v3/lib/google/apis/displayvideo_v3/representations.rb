@@ -3906,9 +3906,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ad_group_ad_ids, as: 'adGroupAdIds'
           collection :ad_group_ids, as: 'adGroupIds'
+          collection :ad_group_qa_ids, as: 'adGroupQaIds'
           collection :campaign_ids, as: 'campaignIds'
           collection :insertion_order_ids, as: 'insertionOrderIds'
           collection :line_item_ids, as: 'lineItemIds'
+          collection :line_item_qa_ids, as: 'lineItemQaIds'
           collection :media_product_ids, as: 'mediaProductIds'
         end
       end

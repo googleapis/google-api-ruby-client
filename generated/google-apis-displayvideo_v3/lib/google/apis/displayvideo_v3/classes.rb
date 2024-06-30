@@ -6928,6 +6928,12 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :ad_group_ids
       
+        # Optional. YouTube Ad Groups QA to download by ID. All IDs must belong to the
+        # same Advertiser or Partner specified in CreateSdfDownloadTaskRequest.
+        # Corresponds to the JSON property `adGroupQaIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :ad_group_qa_ids
+      
         # Campaigns to download by ID. All IDs must belong to the same Advertiser or
         # Partner specified in CreateSdfDownloadTaskRequest.
         # Corresponds to the JSON property `campaignIds`
@@ -6946,6 +6952,12 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :line_item_ids
       
+        # Optional. Line Items QA to download by ID. All IDs must belong to the same
+        # Advertiser or Partner specified in CreateSdfDownloadTaskRequest.
+        # Corresponds to the JSON property `lineItemQaIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :line_item_qa_ids
+      
         # Media Products to download by ID. All IDs must belong to the same Advertiser
         # or Partner specified in CreateSdfDownloadTaskRequest.
         # Corresponds to the JSON property `mediaProductIds`
@@ -6960,9 +6972,11 @@ module Google
         def update!(**args)
           @ad_group_ad_ids = args[:ad_group_ad_ids] if args.key?(:ad_group_ad_ids)
           @ad_group_ids = args[:ad_group_ids] if args.key?(:ad_group_ids)
+          @ad_group_qa_ids = args[:ad_group_qa_ids] if args.key?(:ad_group_qa_ids)
           @campaign_ids = args[:campaign_ids] if args.key?(:campaign_ids)
           @insertion_order_ids = args[:insertion_order_ids] if args.key?(:insertion_order_ids)
           @line_item_ids = args[:line_item_ids] if args.key?(:line_item_ids)
+          @line_item_qa_ids = args[:line_item_qa_ids] if args.key?(:line_item_qa_ids)
           @media_product_ids = args[:media_product_ids] if args.key?(:media_product_ids)
         end
       end
