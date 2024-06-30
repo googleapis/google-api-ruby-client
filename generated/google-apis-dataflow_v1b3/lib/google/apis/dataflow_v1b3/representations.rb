@@ -736,6 +736,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShellTask
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1758,6 +1764,8 @@ module Google
       
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :service_resources, as: 'serviceResources', class: Google::Apis::DataflowV1b3::ServiceResources, decorator: Google::Apis::DataflowV1b3::ServiceResources::Representation
+      
           collection :stage_states, as: 'stageStates', class: Google::Apis::DataflowV1b3::ExecutionStageState, decorator: Google::Apis::DataflowV1b3::ExecutionStageState::Representation
       
           property :start_time, as: 'startTime'
@@ -2444,6 +2452,13 @@ module Google
           property :sink, as: 'sink', class: Google::Apis::DataflowV1b3::Sink, decorator: Google::Apis::DataflowV1b3::Sink::Representation
       
           property :tag, as: 'tag'
+        end
+      end
+      
+      class ServiceResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :zones, as: 'zones'
         end
       end
       
