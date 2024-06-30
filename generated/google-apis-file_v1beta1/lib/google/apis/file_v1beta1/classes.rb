@@ -323,6 +323,18 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::NfsExportOptions>]
         attr_accessor :nfs_export_options
       
+        # Performance configuration. Used for setting the performance configuration.
+        # Defaults to `iops_by_capacity` if unset in instance creation.
+        # Corresponds to the JSON property `performanceConfig`
+        # @return [Google::Apis::FileV1beta1::PerformanceConfig]
+        attr_accessor :performance_config
+      
+        # The enforced performance limits, calculated from the instance's performance
+        # configuration.
+        # Corresponds to the JSON property `performanceLimits`
+        # @return [Google::Apis::FileV1beta1::PerformanceLimits]
+        attr_accessor :performance_limits
+      
         # The resource name of the backup, in the format `projects/`project_id`/
         # locations/`location_id`/backups/`backup_id``, that this file share has been
         # restored from.
@@ -339,7 +351,28 @@ module Google
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
           @name = args[:name] if args.key?(:name)
           @nfs_export_options = args[:nfs_export_options] if args.key?(:nfs_export_options)
+          @performance_config = args[:performance_config] if args.key?(:performance_config)
+          @performance_limits = args[:performance_limits] if args.key?(:performance_limits)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
+        end
+      end
+      
+      # Fixed IOPS parameters.
+      class FixedIops
+        include Google::Apis::Core::Hashable
+      
+        # Required. Maximum raw read IOPS.
+        # Corresponds to the JSON property `maxReadIops`
+        # @return [Fixnum]
+        attr_accessor :max_read_iops
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_read_iops = args[:max_read_iops] if args.key?(:max_read_iops)
         end
       end
       
@@ -774,6 +807,25 @@ module Google
           @nodes = args[:nodes] if args.key?(:nodes)
           @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
           @tier = args[:tier] if args.key?(:tier)
+        end
+      end
+      
+      # IOPS per capacity parameters.
+      class IopsPerGb
+        include Google::Apis::Core::Hashable
+      
+        # Required. Maximum read IOPS per GB.
+        # Corresponds to the JSON property `maxReadIopsPerGb`
+        # @return [Fixnum]
+        attr_accessor :max_read_iops_per_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_read_iops_per_gb = args[:max_read_iops_per_gb] if args.key?(:max_read_iops_per_gb)
         end
       end
       
@@ -1527,6 +1579,81 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Performance configuration. Used for setting the performance configuration.
+      # Defaults to `iops_by_capacity` if unset in instance creation.
+      class PerformanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Fixed IOPS parameters.
+        # Corresponds to the JSON property `fixedIops`
+        # @return [Google::Apis::FileV1beta1::FixedIops]
+        attr_accessor :fixed_iops
+      
+        # Automatically provision maximum available IOPS based on the capacity of the
+        # instance. Larger instances will be granted more IOPS. If instance capacity is
+        # increased or decreased, IOPS will be automatically adjusted upwards or
+        # downwards accordingly. The maximum available IOPS for a given capacity is
+        # defined in Filestore documentation.
+        # Corresponds to the JSON property `iopsByCapacity`
+        # @return [Boolean]
+        attr_accessor :iops_by_capacity
+        alias_method :iops_by_capacity?, :iops_by_capacity
+      
+        # IOPS per capacity parameters.
+        # Corresponds to the JSON property `iopsPerGb`
+        # @return [Google::Apis::FileV1beta1::IopsPerGb]
+        attr_accessor :iops_per_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fixed_iops = args[:fixed_iops] if args.key?(:fixed_iops)
+          @iops_by_capacity = args[:iops_by_capacity] if args.key?(:iops_by_capacity)
+          @iops_per_gb = args[:iops_per_gb] if args.key?(:iops_per_gb)
+        end
+      end
+      
+      # The enforced performance limits, calculated from the instance's performance
+      # configuration.
+      class PerformanceLimits
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The max read IOPS.
+        # Corresponds to the JSON property `maxReadIops`
+        # @return [Fixnum]
+        attr_accessor :max_read_iops
+      
+        # Output only. The max read throughput.
+        # Corresponds to the JSON property `maxReadThroughput`
+        # @return [Fixnum]
+        attr_accessor :max_read_throughput
+      
+        # Output only. The max write IOPS.
+        # Corresponds to the JSON property `maxWriteIops`
+        # @return [Fixnum]
+        attr_accessor :max_write_iops
+      
+        # Output only. The max write throughput.
+        # Corresponds to the JSON property `maxWriteThroughput`
+        # @return [Fixnum]
+        attr_accessor :max_write_throughput
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_read_iops = args[:max_read_iops] if args.key?(:max_read_iops)
+          @max_read_throughput = args[:max_read_throughput] if args.key?(:max_read_throughput)
+          @max_write_iops = args[:max_write_iops] if args.key?(:max_write_iops)
+          @max_write_throughput = args[:max_write_throughput] if args.key?(:max_write_throughput)
         end
       end
       
