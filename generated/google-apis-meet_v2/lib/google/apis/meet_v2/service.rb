@@ -87,7 +87,9 @@ module Google
         #   Optional. User specified filtering condition in [EBNF format](https://en.
         #   wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the
         #   filterable fields: * `space.meeting_code` * `space.name` * `start_time` * `
-        #   end_time` For example, `space.meeting_code = "abc-mnop-xyz"`.
+        #   end_time` For example, consider the following filters: * `space.name = "spaces/
+        #   NAME"` * `space.meeting_code = "abc-mnop-xyz"` * `start_time>="2024-01-01T00:
+        #   00:00.000Z" AND start_time<="2024-01-02T00:00:00.000Z"` * `end_time IS NULL`
         # @param [Fixnum] page_size
         #   Optional. Maximum number of conference records to return. The service might
         #   return fewer than this value. If unspecified, at most 25 conference records
