@@ -2193,6 +2193,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ColumnDataProfile]
         attr_accessor :column_profile
       
+        # The profile for a file store. * Google Cloud Storage: maps 1:1 with a bucket.
+        # Corresponds to the JSON property `fileStoreProfile`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile]
+        attr_accessor :file_store_profile
+      
         # The profile for a scanned table.
         # Corresponds to the JSON property `tableProfile`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile]
@@ -2205,6 +2210,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column_profile = args[:column_profile] if args.key?(:column_profile)
+          @file_store_profile = args[:file_store_profile] if args.key?(:file_store_profile)
           @table_profile = args[:table_profile] if args.key?(:table_profile)
         end
       end
@@ -2368,6 +2374,11 @@ module Google
         # @return [String]
         attr_accessor :event
       
+        # The profile for a file store. * Google Cloud Storage: maps 1:1 with a bucket.
+        # Corresponds to the JSON property `fileStoreProfile`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile]
+        attr_accessor :file_store_profile
+      
         # The profile for a scanned table.
         # Corresponds to the JSON property `profile`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile]
@@ -2380,6 +2391,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event = args[:event] if args.key?(:event)
+          @file_store_profile = args[:file_store_profile] if args.key?(:file_store_profile)
           @profile = args[:profile] if args.key?(:profile)
         end
       end
@@ -3758,6 +3770,11 @@ module Google
         # @return [Google::Apis::DlpV2::GoogleRpcStatus]
         attr_accessor :details
       
+        # Additional information about the error.
+        # Corresponds to the JSON property `extraInfo`
+        # @return [String]
+        attr_accessor :extra_info
+      
         # The times the error occurred. List includes the oldest timestamp and the last
         # 9 timestamps.
         # Corresponds to the JSON property `timestamps`
@@ -3771,6 +3788,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
+          @extra_info = args[:extra_info] if args.key?(:extra_info)
           @timestamps = args[:timestamps] if args.key?(:timestamps)
         end
       end
@@ -4000,6 +4018,111 @@ module Google
         end
       end
       
+      # The file cluster summary.
+      class GooglePrivacyDlpV2FileClusterSummary
+        include Google::Apis::Core::Hashable
+      
+        # Score is a summary of all elements in the data profile. A higher number means
+        # more risk.
+        # Corresponds to the JSON property `dataRiskLevel`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel]
+        attr_accessor :data_risk_level
+      
+        # A list of Errors detected while scanning this cluster. The list is truncated
+        # to 10 per cluster.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Error>]
+        attr_accessor :errors
+      
+        # Message used to identify file cluster type being profiled.
+        # Corresponds to the JSON property `fileClusterType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileClusterType]
+        attr_accessor :file_cluster_type
+      
+        # A sample of file types scanned in this cluster. Empty if no files were scanned.
+        # Corresponds to the JSON property `fileExtensionsScanned`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileExtensionInfo>]
+        attr_accessor :file_extensions_scanned
+      
+        # A sample of file types seen in this cluster. Empty if no files were seen.
+        # Corresponds to the JSON property `fileExtensionsSeen`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileExtensionInfo>]
+        attr_accessor :file_extensions_seen
+      
+        # InfoTypes detected in this cluster.
+        # Corresponds to the JSON property `fileStoreInfoTypeSummaries`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary>]
+        attr_accessor :file_store_info_type_summaries
+      
+        # True if no files exist in this cluster. If the bucket had more files than
+        # could be listed, this will be false even if no files for this cluster were
+        # seen and file_extensions_seen is empty.
+        # Corresponds to the JSON property `noFilesExist`
+        # @return [Boolean]
+        attr_accessor :no_files_exist
+        alias_method :no_files_exist?, :no_files_exist
+      
+        # Score is calculated from of all elements in the data profile. A higher level
+        # means the data is more sensitive.
+        # Corresponds to the JSON property `sensitivityScore`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
+        attr_accessor :sensitivity_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_risk_level = args[:data_risk_level] if args.key?(:data_risk_level)
+          @errors = args[:errors] if args.key?(:errors)
+          @file_cluster_type = args[:file_cluster_type] if args.key?(:file_cluster_type)
+          @file_extensions_scanned = args[:file_extensions_scanned] if args.key?(:file_extensions_scanned)
+          @file_extensions_seen = args[:file_extensions_seen] if args.key?(:file_extensions_seen)
+          @file_store_info_type_summaries = args[:file_store_info_type_summaries] if args.key?(:file_store_info_type_summaries)
+          @no_files_exist = args[:no_files_exist] if args.key?(:no_files_exist)
+          @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
+        end
+      end
+      
+      # Message used to identify file cluster type being profiled.
+      class GooglePrivacyDlpV2FileClusterType
+        include Google::Apis::Core::Hashable
+      
+        # Cluster type.
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+        end
+      end
+      
+      # Information regarding the discovered file extension.
+      class GooglePrivacyDlpV2FileExtensionInfo
+        include Google::Apis::Core::Hashable
+      
+        # The file extension if set. (aka .pdf, .jpg, .txt)
+        # Corresponds to the JSON property `fileExtension`
+        # @return [String]
+        attr_accessor :file_extension
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_extension = args[:file_extension] if args.key?(:file_extension)
+        end
+      end
+      
       # Set of files to scan.
       class GooglePrivacyDlpV2FileSet
         include Google::Apis::Core::Hashable
@@ -4046,6 +4169,189 @@ module Google
         def update!(**args)
           @regex_file_set = args[:regex_file_set] if args.key?(:regex_file_set)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # The profile for a file store. * Google Cloud Storage: maps 1:1 with a bucket.
+      class GooglePrivacyDlpV2FileStoreDataProfile
+        include Google::Apis::Core::Hashable
+      
+        # Snapshot of the configurations used to generate the profile.
+        # Corresponds to the JSON property `configSnapshot`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileConfigSnapshot]
+        attr_accessor :config_snapshot
+      
+        # The time the file store was first created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Score is a summary of all elements in the data profile. A higher number means
+        # more risk.
+        # Corresponds to the JSON property `dataRiskLevel`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel]
+        attr_accessor :data_risk_level
+      
+        # Message used to identify the type of resource being profiled.
+        # Corresponds to the JSON property `dataSourceType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType]
+        attr_accessor :data_source_type
+      
+        # For resources that have multiple storage locations, these are those regions.
+        # For Google Cloud Storage this is the list of regions chosen for dual-region
+        # storage. `file_store_location` will normally be the corresponding multi-region
+        # for the list of individual locations. The first region is always picked as the
+        # processing and storage location for the data profile.
+        # Corresponds to the JSON property `dataStorageLocations`
+        # @return [Array<String>]
+        attr_accessor :data_storage_locations
+      
+        # FileClusterSummary per each cluster.
+        # Corresponds to the JSON property `fileClusterSummaries`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileClusterSummary>]
+        attr_accessor :file_cluster_summaries
+      
+        # InfoTypes detected in this file store.
+        # Corresponds to the JSON property `fileStoreInfoTypeSummaries`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary>]
+        attr_accessor :file_store_info_type_summaries
+      
+        # The file store does not have any files.
+        # Corresponds to the JSON property `fileStoreIsEmpty`
+        # @return [Boolean]
+        attr_accessor :file_store_is_empty
+        alias_method :file_store_is_empty?, :file_store_is_empty
+      
+        # The location of the file store. * Google Cloud Storage: https://cloud.google.
+        # com/storage/docs/locations#available-locations
+        # Corresponds to the JSON property `fileStoreLocation`
+        # @return [String]
+        attr_accessor :file_store_location
+      
+        # The file store path. * Google Cloud Storage: `gs://`bucket``
+        # Corresponds to the JSON property `fileStorePath`
+        # @return [String]
+        attr_accessor :file_store_path
+      
+        # The resource name of the resource profiled. https://cloud.google.com/apis/
+        # design/resource_names#full_resource_name
+        # Corresponds to the JSON property `fullResource`
+        # @return [String]
+        attr_accessor :full_resource
+      
+        # The time the file store was last modified.
+        # Corresponds to the JSON property `lastModifiedTime`
+        # @return [String]
+        attr_accessor :last_modified_time
+      
+        # The location type of the bucket (region, dual-region, multi-region, etc). If
+        # dual-region, expect data_storage_locations to be populated.
+        # Corresponds to the JSON property `locationType`
+        # @return [String]
+        attr_accessor :location_type
+      
+        # The name of the profile.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The last time the profile was generated.
+        # Corresponds to the JSON property `profileLastGenerated`
+        # @return [String]
+        attr_accessor :profile_last_generated
+      
+        # Success or errors for the profile generation.
+        # Corresponds to the JSON property `profileStatus`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus]
+        attr_accessor :profile_status
+      
+        # The resource name to the project data profile for this file store.
+        # Corresponds to the JSON property `projectDataProfile`
+        # @return [String]
+        attr_accessor :project_data_profile
+      
+        # The Google Cloud project ID that owns the resource.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Attributes of the resource being profiled. Currently used attributes: -
+        # customer_managed_encryption: boolean true: the resource is encrypted with a
+        # customer-managed key. false: the resource is encrypted with a provider-managed
+        # key.
+        # Corresponds to the JSON property `resourceAttributes`
+        # @return [Hash<String,Google::Apis::DlpV2::GooglePrivacyDlpV2Value>]
+        attr_accessor :resource_attributes
+      
+        # The labels applied to the resource at the time the profile was generated.
+        # Corresponds to the JSON property `resourceLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_labels
+      
+        # How broadly a resource has been shared.
+        # Corresponds to the JSON property `resourceVisibility`
+        # @return [String]
+        attr_accessor :resource_visibility
+      
+        # Score is calculated from of all elements in the data profile. A higher level
+        # means the data is more sensitive.
+        # Corresponds to the JSON property `sensitivityScore`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
+        attr_accessor :sensitivity_score
+      
+        # State of a profile.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_snapshot = args[:config_snapshot] if args.key?(:config_snapshot)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_risk_level = args[:data_risk_level] if args.key?(:data_risk_level)
+          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
+          @data_storage_locations = args[:data_storage_locations] if args.key?(:data_storage_locations)
+          @file_cluster_summaries = args[:file_cluster_summaries] if args.key?(:file_cluster_summaries)
+          @file_store_info_type_summaries = args[:file_store_info_type_summaries] if args.key?(:file_store_info_type_summaries)
+          @file_store_is_empty = args[:file_store_is_empty] if args.key?(:file_store_is_empty)
+          @file_store_location = args[:file_store_location] if args.key?(:file_store_location)
+          @file_store_path = args[:file_store_path] if args.key?(:file_store_path)
+          @full_resource = args[:full_resource] if args.key?(:full_resource)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @location_type = args[:location_type] if args.key?(:location_type)
+          @name = args[:name] if args.key?(:name)
+          @profile_last_generated = args[:profile_last_generated] if args.key?(:profile_last_generated)
+          @profile_status = args[:profile_status] if args.key?(:profile_status)
+          @project_data_profile = args[:project_data_profile] if args.key?(:project_data_profile)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
+          @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
+          @resource_visibility = args[:resource_visibility] if args.key?(:resource_visibility)
+          @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Information regarding the discovered InfoType.
+      class GooglePrivacyDlpV2FileStoreInfoTypeSummary
+        include Google::Apis::Core::Hashable
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infoType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
+        attr_accessor :info_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_type = args[:info_type] if args.key?(:info_type)
         end
       end
       
@@ -6062,6 +6368,31 @@ module Google
         end
       end
       
+      # List of file store data profiles generated for a given organization or project.
+      class GooglePrivacyDlpV2ListFileStoreDataProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of data profiles.
+        # Corresponds to the JSON property `fileStoreDataProfiles`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile>]
+        attr_accessor :file_store_data_profiles
+      
+        # The next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_store_data_profiles = args[:file_store_data_profiles] if args.key?(:file_store_data_profiles)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response to the ListInfoTypes request.
       class GooglePrivacyDlpV2ListInfoTypesResponse
         include Google::Apis::Core::Hashable
@@ -6761,6 +7092,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel]
         attr_accessor :data_risk_level
       
+        # The number of file store data profiles generated for this project.
+        # Corresponds to the JSON property `fileStoreDataProfileCount`
+        # @return [Fixnum]
+        attr_accessor :file_store_data_profile_count
+      
         # The resource name of the profile.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -6787,6 +7123,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
         attr_accessor :sensitivity_score
       
+        # The number of table data profiles generated for this project.
+        # Corresponds to the JSON property `tableDataProfileCount`
+        # @return [Fixnum]
+        attr_accessor :table_data_profile_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6794,11 +7135,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_risk_level = args[:data_risk_level] if args.key?(:data_risk_level)
+          @file_store_data_profile_count = args[:file_store_data_profile_count] if args.key?(:file_store_data_profile_count)
           @name = args[:name] if args.key?(:name)
           @profile_last_generated = args[:profile_last_generated] if args.key?(:profile_last_generated)
           @profile_status = args[:profile_status] if args.key?(:profile_status)
           @project_id = args[:project_id] if args.key?(:project_id)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
+          @table_data_profile_count = args[:table_data_profile_count] if args.key?(:table_data_profile_count)
         end
       end
       

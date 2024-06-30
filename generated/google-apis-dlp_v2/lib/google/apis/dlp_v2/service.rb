@@ -1305,6 +1305,136 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Delete a FileStoreDataProfile. Will not prevent the profile from being
+        # regenerated if the resource is still included in a discovery configuration.
+        # @param [String] name
+        #   Required. Resource name of the file store data profile.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_file_store_data_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a file store data profile.
+        # @param [String] name
+        #   Required. Resource name, for example `organizations/12345/locations/us/
+        #   fileStoreDataProfiles/53234423`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_file_store_data_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists file store data profiles for an organization.
+        # @param [String] parent
+        #   Required. Resource name of the organization or project, for example `
+        #   organizations/433245324/locations/europe` or `projects/project-id/locations/
+        #   asia`.
+        # @param [String] filter
+        #   Optional. Allows filtering. Supported syntax: * Filter expressions are made up
+        #   of one or more restrictions. * Restrictions can be combined by `AND` or `OR`
+        #   logical operators. A sequence of restrictions implicitly uses `AND`. * A
+        #   restriction has the form of ``field` `operator` `value``. * Supported fields/
+        #   values: - `project_id` - The Google Cloud project ID. - `file_store_path` -
+        #   The path like "gs://bucket". - `sensitivity_level` - HIGH|MODERATE|LOW - `
+        #   data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|
+        #   RESTRICTED - `status_code` - an RPC status code as defined in https://github.
+        #   com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator
+        #   must be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `
+        #   project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
+        #   resource_visibility = PUBLIC` . * 'file_store_path = "gs://mybucket"` The
+        #   length of this field should be no more than 500 characters.
+        # @param [String] order_by
+        #   Optional. Comma separated list of fields to order by, followed by `asc` or `
+        #   desc` postfix. This list is case insensitive. The default sorting order is
+        #   ascending. Redundant space characters are insignificant. Only one order field
+        #   at a time is allowed. Examples: * `project_id asc` * `name` * `
+        #   sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud
+        #   project ID. - `sensitivity_level`: How sensitive the data in a table is, at
+        #   most. - `data_risk_level`: How much risk is associated with this data. - `
+        #   profile_last_generated`: When the profile was last updated in epoch seconds. -
+        #   `last_modified`: The last time the resource was modified. - `
+        #   resource_visibility`: Visibility restriction for this resource. - `name`: The
+        #   name of the profile. - `create_time`: The time the file store was first
+        #   created.
+        # @param [Fixnum] page_size
+        #   Optional. Size of the page. This value can be limited by the server. If zero,
+        #   server returns a page of max size 100.
+        # @param [String] page_token
+        #   Optional. Page token to continue retrieval.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListFileStoreDataProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListFileStoreDataProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_file_store_data_profiles(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/fileStoreDataProfiles', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListFileStoreDataProfilesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListFileStoreDataProfilesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an InspectTemplate for reusing frequently used configuration for
         # inspecting content, images, and storage. See https://cloud.google.com/
         # sensitive-data-protection/docs/creating-templates to learn more.
@@ -4581,6 +4711,136 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['type'] = type unless type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a FileStoreDataProfile. Will not prevent the profile from being
+        # regenerated if the resource is still included in a discovery configuration.
+        # @param [String] name
+        #   Required. Resource name of the file store data profile.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_file_store_data_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a file store data profile.
+        # @param [String] name
+        #   Required. Resource name, for example `organizations/12345/locations/us/
+        #   fileStoreDataProfiles/53234423`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_file_store_data_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists file store data profiles for an organization.
+        # @param [String] parent
+        #   Required. Resource name of the organization or project, for example `
+        #   organizations/433245324/locations/europe` or `projects/project-id/locations/
+        #   asia`.
+        # @param [String] filter
+        #   Optional. Allows filtering. Supported syntax: * Filter expressions are made up
+        #   of one or more restrictions. * Restrictions can be combined by `AND` or `OR`
+        #   logical operators. A sequence of restrictions implicitly uses `AND`. * A
+        #   restriction has the form of ``field` `operator` `value``. * Supported fields/
+        #   values: - `project_id` - The Google Cloud project ID. - `file_store_path` -
+        #   The path like "gs://bucket". - `sensitivity_level` - HIGH|MODERATE|LOW - `
+        #   data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|
+        #   RESTRICTED - `status_code` - an RPC status code as defined in https://github.
+        #   com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator
+        #   must be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `
+        #   project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
+        #   resource_visibility = PUBLIC` . * 'file_store_path = "gs://mybucket"` The
+        #   length of this field should be no more than 500 characters.
+        # @param [String] order_by
+        #   Optional. Comma separated list of fields to order by, followed by `asc` or `
+        #   desc` postfix. This list is case insensitive. The default sorting order is
+        #   ascending. Redundant space characters are insignificant. Only one order field
+        #   at a time is allowed. Examples: * `project_id asc` * `name` * `
+        #   sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud
+        #   project ID. - `sensitivity_level`: How sensitive the data in a table is, at
+        #   most. - `data_risk_level`: How much risk is associated with this data. - `
+        #   profile_last_generated`: When the profile was last updated in epoch seconds. -
+        #   `last_modified`: The last time the resource was modified. - `
+        #   resource_visibility`: Visibility restriction for this resource. - `name`: The
+        #   name of the profile. - `create_time`: The time the file store was first
+        #   created.
+        # @param [Fixnum] page_size
+        #   Optional. Size of the page. This value can be limited by the server. If zero,
+        #   server returns a page of max size 100.
+        # @param [String] page_token
+        #   Optional. Page token to continue retrieval.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListFileStoreDataProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListFileStoreDataProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_file_store_data_profiles(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/fileStoreDataProfiles', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListFileStoreDataProfilesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListFileStoreDataProfilesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
