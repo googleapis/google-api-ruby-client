@@ -179,6 +179,56 @@ module Google
         end
       end
       
+      # Instructions for AI driven test
+      class GoogleFirebaseAppdistroV1alphaAiInstructions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Describes the app to give the AI some context
+        # Corresponds to the JSON property `appDescription`
+        # @return [String]
+        attr_accessor :app_description
+      
+        # Required. Steps to be accomplished by the AI
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructionsStep>]
+        attr_accessor :steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_description = args[:app_description] if args.key?(:app_description)
+          @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # A step to be accomplished by the AI
+      class GoogleFirebaseAppdistroV1alphaAiInstructionsStep
+        include Google::Apis::Core::Hashable
+      
+        # An assertion to be checked by the AI
+        # Corresponds to the JSON property `assertion`
+        # @return [String]
+        attr_accessor :assertion
+      
+        # A goal to be accomplished by the AI
+        # Corresponds to the JSON property `goal`
+        # @return [String]
+        attr_accessor :goal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assertion = args[:assertion] if args.key?(:assertion)
+          @goal = args[:goal] if args.key?(:goal)
+        end
+      end
+      
       # 
       class GoogleFirebaseAppdistroV1alphaApp
         include Google::Apis::Core::Hashable
@@ -729,6 +779,11 @@ module Google
       class GoogleFirebaseAppdistroV1alphaReleaseTest
         include Google::Apis::Core::Hashable
       
+        # Instructions for AI driven test
+        # Corresponds to the JSON property `aiInstructions`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions]
+        attr_accessor :ai_instructions
+      
         # Output only. Timestamp when the test was run.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -756,6 +811,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ai_instructions = args[:ai_instructions] if args.key?(:ai_instructions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @device_executions = args[:device_executions] if args.key?(:device_executions)
           @login_credential = args[:login_credential] if args.key?(:login_credential)
@@ -766,6 +822,11 @@ module Google
       # Configuration for Robo crawler
       class GoogleFirebaseAppdistroV1alphaRoboCrawler
         include Google::Apis::Core::Hashable
+      
+        # Instructions for AI driven test
+        # Corresponds to the JSON property `aiInstructions`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions]
+        attr_accessor :ai_instructions
       
         # Login credential for automated tests
         # Corresponds to the JSON property `loginCredential`
@@ -778,6 +839,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ai_instructions = args[:ai_instructions] if args.key?(:ai_instructions)
           @login_credential = args[:login_credential] if args.key?(:login_credential)
         end
       end

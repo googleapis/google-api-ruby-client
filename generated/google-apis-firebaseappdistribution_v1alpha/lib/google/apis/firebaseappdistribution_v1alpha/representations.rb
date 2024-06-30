@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppdistroV1alphaAiInstructions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaAiInstructionsStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppdistroV1alphaApp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -236,6 +248,23 @@ module Google
         end
       end
       
+      class GoogleFirebaseAppdistroV1alphaAiInstructions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_description, as: 'appDescription'
+          collection :steps, as: 'steps', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructionsStep, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructionsStep::Representation
+      
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaAiInstructionsStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assertion, as: 'assertion'
+          property :goal, as: 'goal'
+        end
+      end
+      
       class GoogleFirebaseAppdistroV1alphaApp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -402,6 +431,8 @@ module Google
       class GoogleFirebaseAppdistroV1alphaReleaseTest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ai_instructions, as: 'aiInstructions', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions::Representation
+      
           property :create_time, as: 'createTime'
           collection :device_executions, as: 'deviceExecutions', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceExecution, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceExecution::Representation
       
@@ -414,6 +445,8 @@ module Google
       class GoogleFirebaseAppdistroV1alphaRoboCrawler
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ai_instructions, as: 'aiInstructions', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions::Representation
+      
           property :login_credential, as: 'loginCredential', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaLoginCredential, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaLoginCredential::Representation
       
         end
