@@ -586,6 +586,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMembershipRbacRoleBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListMembershipsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1899,6 +1905,16 @@ module Google
           collection :membership_bindings, as: 'membershipBindings', class: Google::Apis::GkehubV1::MembershipBinding, decorator: Google::Apis::GkehubV1::MembershipBinding::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListMembershipRbacRoleBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rbacrolebindings, as: 'rbacrolebindings', class: Google::Apis::GkehubV1::RbacRoleBinding, decorator: Google::Apis::GkehubV1::RbacRoleBinding::Representation
+      
           collection :unreachable, as: 'unreachable'
         end
       end

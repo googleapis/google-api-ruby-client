@@ -3412,6 +3412,39 @@ module Google
         end
       end
       
+      # List of Membership RBACRoleBindings.
+      class ListMembershipRbacRoleBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the `
+        # ListMembershipRBACRoleBindings` method. The value of an empty string means
+        # that there are no more resources to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Membership RBACRoleBindings.
+        # Corresponds to the JSON property `rbacrolebindings`
+        # @return [Array<Google::Apis::GkehubV1::RbacRoleBinding>]
+        attr_accessor :rbacrolebindings
+      
+        # List of locations that could not be reached while fetching this list.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rbacrolebindings = args[:rbacrolebindings] if args.key?(:rbacrolebindings)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response message for the `GkeHub.ListMemberships` method.
       class ListMembershipsResponse
         include Google::Apis::Core::Hashable
