@@ -22,6 +22,12 @@ module Google
   module Apis
     module AnalyticshubV1
       
+      class AnalyticsHubSubscriptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -34,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AvroConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigQueryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryDatasetSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +59,12 @@ module Google
       end
       
       class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudStorageConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -64,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeadLetterPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DefaultExchangeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,7 +112,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DestinationPubSubSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExpirationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +143,12 @@ module Google
       end
       
       class GetPolicyOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePubsubV1Subscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NoWrapper
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OidcToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -166,7 +226,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PubSubTopicSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Publisher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubsubWrapper
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PushConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -191,6 +269,12 @@ module Google
       end
       
       class RestrictedExportPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetryPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +358,20 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyticsHubSubscriptionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :listing, as: 'listing'
+          property :subscription, as: 'subscription'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -288,6 +386,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class AvroConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_topic_schema, as: 'useTopicSchema'
+          property :write_metadata, as: 'writeMetadata'
+        end
+      end
+      
+      class BigQueryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :drop_unknown_fields, as: 'dropUnknownFields'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :state, as: 'state'
+          property :table, as: 'table'
+          property :use_table_schema, as: 'useTableSchema'
+          property :use_topic_schema, as: 'useTopicSchema'
+          property :write_metadata, as: 'writeMetadata'
         end
       end
       
@@ -312,10 +431,30 @@ module Google
         end
       end
       
+      class CloudStorageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avro_config, as: 'avroConfig', class: Google::Apis::AnalyticshubV1::AvroConfig, decorator: Google::Apis::AnalyticshubV1::AvroConfig::Representation
+      
+          property :bucket, as: 'bucket'
+          property :filename_datetime_format, as: 'filenameDatetimeFormat'
+          property :filename_prefix, as: 'filenamePrefix'
+          property :filename_suffix, as: 'filenameSuffix'
+          property :max_bytes, :numeric_string => true, as: 'maxBytes'
+          property :max_duration, as: 'maxDuration'
+          property :max_messages, :numeric_string => true, as: 'maxMessages'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :state, as: 'state'
+          property :text_config, as: 'textConfig', class: Google::Apis::AnalyticshubV1::TextConfig, decorator: Google::Apis::AnalyticshubV1::TextConfig::Representation
+      
+        end
+      end
+      
       class DataExchange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :discovery_type, as: 'discoveryType'
           property :display_name, as: 'displayName'
           property :documentation, as: 'documentation'
           property :icon, :base64 => true, as: 'icon'
@@ -340,6 +479,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :single_linked_dataset_per_cleanroom, as: 'singleLinkedDatasetPerCleanroom'
           property :single_selected_resource_sharing_restriction, as: 'singleSelectedResourceSharingRestriction'
+        end
+      end
+      
+      class DeadLetterPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dead_letter_topic, as: 'deadLetterTopic'
+          property :max_delivery_attempts, as: 'maxDeliveryAttempts'
         end
       end
       
@@ -369,9 +516,24 @@ module Google
         end
       end
       
+      class DestinationPubSubSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub_subscription, as: 'pubsubSubscription', class: Google::Apis::AnalyticshubV1::GooglePubsubV1Subscription, decorator: Google::Apis::AnalyticshubV1::GooglePubsubV1Subscription::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ExpirationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ttl, as: 'ttl'
         end
       end
       
@@ -400,10 +562,43 @@ module Google
         end
       end
       
+      class GooglePubsubV1Subscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
+          property :analytics_hub_subscription_info, as: 'analyticsHubSubscriptionInfo', class: Google::Apis::AnalyticshubV1::AnalyticsHubSubscriptionInfo, decorator: Google::Apis::AnalyticshubV1::AnalyticsHubSubscriptionInfo::Representation
+      
+          property :bigquery_config, as: 'bigqueryConfig', class: Google::Apis::AnalyticshubV1::BigQueryConfig, decorator: Google::Apis::AnalyticshubV1::BigQueryConfig::Representation
+      
+          property :cloud_storage_config, as: 'cloudStorageConfig', class: Google::Apis::AnalyticshubV1::CloudStorageConfig, decorator: Google::Apis::AnalyticshubV1::CloudStorageConfig::Representation
+      
+          property :dead_letter_policy, as: 'deadLetterPolicy', class: Google::Apis::AnalyticshubV1::DeadLetterPolicy, decorator: Google::Apis::AnalyticshubV1::DeadLetterPolicy::Representation
+      
+          property :detached, as: 'detached'
+          property :enable_exactly_once_delivery, as: 'enableExactlyOnceDelivery'
+          property :enable_message_ordering, as: 'enableMessageOrdering'
+          property :expiration_policy, as: 'expirationPolicy', class: Google::Apis::AnalyticshubV1::ExpirationPolicy, decorator: Google::Apis::AnalyticshubV1::ExpirationPolicy::Representation
+      
+          property :filter, as: 'filter'
+          hash :labels, as: 'labels'
+          property :message_retention_duration, as: 'messageRetentionDuration'
+          property :name, as: 'name'
+          property :push_config, as: 'pushConfig', class: Google::Apis::AnalyticshubV1::PushConfig, decorator: Google::Apis::AnalyticshubV1::PushConfig::Representation
+      
+          property :retain_acked_messages, as: 'retainAckedMessages'
+          property :retry_policy, as: 'retryPolicy', class: Google::Apis::AnalyticshubV1::RetryPolicy, decorator: Google::Apis::AnalyticshubV1::RetryPolicy::Representation
+      
+          property :state, as: 'state'
+          property :topic_message_retention_duration, as: 'topicMessageRetentionDuration'
+        end
+      end
+      
       class LinkedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :linked_dataset, as: 'linkedDataset'
+          property :linked_pubsub_subscription, as: 'linkedPubsubSubscription'
+          property :listing, as: 'listing'
         end
       end
       
@@ -461,6 +656,7 @@ module Google
           property :data_provider, as: 'dataProvider', class: Google::Apis::AnalyticshubV1::DataProvider, decorator: Google::Apis::AnalyticshubV1::DataProvider::Representation
       
           property :description, as: 'description'
+          property :discovery_type, as: 'discoveryType'
           property :display_name, as: 'displayName'
           property :documentation, as: 'documentation'
           property :icon, :base64 => true, as: 'icon'
@@ -468,10 +664,28 @@ module Google
           property :primary_contact, as: 'primaryContact'
           property :publisher, as: 'publisher', class: Google::Apis::AnalyticshubV1::Publisher, decorator: Google::Apis::AnalyticshubV1::Publisher::Representation
       
+          property :pubsub_topic, as: 'pubsubTopic', class: Google::Apis::AnalyticshubV1::PubSubTopicSource, decorator: Google::Apis::AnalyticshubV1::PubSubTopicSource::Representation
+      
           property :request_access, as: 'requestAccess'
+          property :resource_type, as: 'resourceType'
           property :restricted_export_config, as: 'restrictedExportConfig', class: Google::Apis::AnalyticshubV1::RestrictedExportConfig, decorator: Google::Apis::AnalyticshubV1::RestrictedExportConfig::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class NoWrapper
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :write_metadata, as: 'writeMetadata'
+        end
+      end
+      
+      class OidcToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience'
+          property :service_account_email, as: 'serviceAccountEmail'
         end
       end
       
@@ -512,11 +726,39 @@ module Google
         end
       end
       
+      class PubSubTopicSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_affinity_regions, as: 'dataAffinityRegions'
+          property :topic, as: 'topic'
+        end
+      end
+      
       class Publisher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :primary_contact, as: 'primaryContact'
+        end
+      end
+      
+      class PubsubWrapper
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class PushConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attributes, as: 'attributes'
+          property :no_wrapper, as: 'noWrapper', class: Google::Apis::AnalyticshubV1::NoWrapper, decorator: Google::Apis::AnalyticshubV1::NoWrapper::Representation
+      
+          property :oidc_token, as: 'oidcToken', class: Google::Apis::AnalyticshubV1::OidcToken, decorator: Google::Apis::AnalyticshubV1::OidcToken::Representation
+      
+          property :pubsub_wrapper, as: 'pubsubWrapper', class: Google::Apis::AnalyticshubV1::PubsubWrapper, decorator: Google::Apis::AnalyticshubV1::PubsubWrapper::Representation
+      
+          property :push_endpoint, as: 'pushEndpoint'
         end
       end
       
@@ -549,6 +791,14 @@ module Google
           property :enabled, as: 'enabled'
           property :restrict_direct_table_access, as: 'restrictDirectTableAccess'
           property :restrict_query_result, as: 'restrictQueryResult'
+        end
+      end
+      
+      class RetryPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maximum_backoff, as: 'maximumBackoff'
+          property :minimum_backoff, as: 'minimumBackoff'
         end
       end
       
@@ -621,6 +871,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_dataset, as: 'destinationDataset', class: Google::Apis::AnalyticshubV1::DestinationDataset, decorator: Google::Apis::AnalyticshubV1::DestinationDataset::Representation
       
+          property :destination_pubsub_subscription, as: 'destinationPubsubSubscription', class: Google::Apis::AnalyticshubV1::DestinationPubSubSubscription, decorator: Google::Apis::AnalyticshubV1::DestinationPubSubSubscription::Representation
+      
         end
       end
       
@@ -640,10 +892,13 @@ module Google
           property :last_modify_time, as: 'lastModifyTime'
           hash :linked_dataset_map, as: 'linkedDatasetMap', class: Google::Apis::AnalyticshubV1::LinkedResource, decorator: Google::Apis::AnalyticshubV1::LinkedResource::Representation
       
+          collection :linked_resources, as: 'linkedResources', class: Google::Apis::AnalyticshubV1::LinkedResource, decorator: Google::Apis::AnalyticshubV1::LinkedResource::Representation
+      
           property :listing, as: 'listing'
           property :name, as: 'name'
           property :organization_display_name, as: 'organizationDisplayName'
           property :organization_id, as: 'organizationId'
+          property :resource_type, as: 'resourceType'
           property :state, as: 'state'
           property :subscriber_contact, as: 'subscriberContact'
         end
@@ -660,6 +915,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TextConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end

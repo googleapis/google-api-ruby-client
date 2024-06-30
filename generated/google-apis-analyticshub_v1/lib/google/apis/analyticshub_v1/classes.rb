@@ -22,6 +22,35 @@ module Google
   module Apis
     module AnalyticshubV1
       
+      # Information about an associated Analytics Hub subscription (https://cloud.
+      # google.com/bigquery/docs/analytics-hub-manage-subscriptions).
+      class AnalyticsHubSubscriptionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the associated Analytics Hub listing resource. Pattern: "
+        # projects/`project`/locations/`location`/dataExchanges/`data_exchange`/listings/
+        # `listing`"
+        # Corresponds to the JSON property `listing`
+        # @return [String]
+        attr_accessor :listing
+      
+        # Optional. The name of the associated Analytics Hub subscription resource.
+        # Pattern: "projects/`project`/locations/`location`/subscriptions/`subscription`"
+        # Corresponds to the JSON property `subscription`
+        # @return [String]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @listing = args[:listing] if args.key?(:listing)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -93,6 +122,116 @@ module Google
         end
       end
       
+      # Configuration for writing message data in Avro format. Message payloads and
+      # metadata will be written to files as an Avro binary.
+      class AvroConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When true, the output Cloud Storage file will be serialized using
+        # the topic schema, if it exists.
+        # Corresponds to the JSON property `useTopicSchema`
+        # @return [Boolean]
+        attr_accessor :use_topic_schema
+        alias_method :use_topic_schema?, :use_topic_schema
+      
+        # Optional. When true, write the subscription name, message_id, publish_time,
+        # attributes, and ordering_key as additional fields in the output. The
+        # subscription name, message_id, and publish_time fields are put in their own
+        # fields while all other message properties other than data (for example, an
+        # ordering_key, if present) are added as entries in the attributes map.
+        # Corresponds to the JSON property `writeMetadata`
+        # @return [Boolean]
+        attr_accessor :write_metadata
+        alias_method :write_metadata?, :write_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_topic_schema = args[:use_topic_schema] if args.key?(:use_topic_schema)
+          @write_metadata = args[:write_metadata] if args.key?(:write_metadata)
+        end
+      end
+      
+      # Configuration for a BigQuery subscription.
+      class BigQueryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When true and use_topic_schema is true, any fields that are a part
+        # of the topic schema that are not part of the BigQuery table schema are dropped
+        # when writing to BigQuery. Otherwise, the schemas must be kept in sync and any
+        # messages with extra fields are not written and remain in the subscription's
+        # backlog.
+        # Corresponds to the JSON property `dropUnknownFields`
+        # @return [Boolean]
+        attr_accessor :drop_unknown_fields
+        alias_method :drop_unknown_fields?, :drop_unknown_fields
+      
+        # Optional. The service account to use to write to BigQuery. The subscription
+        # creator or updater that specifies this field must have `iam.serviceAccounts.
+        # actAs` permission on the service account. If not specified, the Pub/Sub [
+        # service agent](https://cloud.google.com/iam/docs/service-agents), service-`
+        # project_number`@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Output only. An output-only field that indicates whether or not the
+        # subscription can receive messages.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. The name of the table to which to write data, of the form `projectId`
+        # .`datasetId`.`tableId`
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        # Optional. When true, use the BigQuery table's schema as the columns to write
+        # to in BigQuery. `use_table_schema` and `use_topic_schema` cannot be enabled at
+        # the same time.
+        # Corresponds to the JSON property `useTableSchema`
+        # @return [Boolean]
+        attr_accessor :use_table_schema
+        alias_method :use_table_schema?, :use_table_schema
+      
+        # Optional. When true, use the topic's schema as the columns to write to in
+        # BigQuery, if it exists. `use_topic_schema` and `use_table_schema` cannot be
+        # enabled at the same time.
+        # Corresponds to the JSON property `useTopicSchema`
+        # @return [Boolean]
+        attr_accessor :use_topic_schema
+        alias_method :use_topic_schema?, :use_topic_schema
+      
+        # Optional. When true, write the subscription name, message_id, publish_time,
+        # attributes, and ordering_key to additional columns in the table. The
+        # subscription name, message_id, and publish_time fields are put in their own
+        # columns while all other message properties (other than data) are written to a
+        # JSON object in the attributes column.
+        # Corresponds to the JSON property `writeMetadata`
+        # @return [Boolean]
+        attr_accessor :write_metadata
+        alias_method :write_metadata?, :write_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drop_unknown_fields = args[:drop_unknown_fields] if args.key?(:drop_unknown_fields)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @state = args[:state] if args.key?(:state)
+          @table = args[:table] if args.key?(:table)
+          @use_table_schema = args[:use_table_schema] if args.key?(:use_table_schema)
+          @use_topic_schema = args[:use_topic_schema] if args.key?(:use_topic_schema)
+          @write_metadata = args[:write_metadata] if args.key?(:write_metadata)
+        end
+      end
+      
       # A reference to a shared dataset. It is an existing BigQuery dataset with a
       # collection of objects such as tables and views that you want to share with
       # subscribers. When subscriber's subscribe to a listing, Analytics Hub creates a
@@ -113,9 +252,8 @@ module Google
         # @return [Google::Apis::AnalyticshubV1::RestrictedExportPolicy]
         attr_accessor :restricted_export_policy
       
-        # Optional. Resources in this dataset that are selectively shared. If this field
-        # is empty, then the entire dataset (all resources) are shared. This field is
-        # only valid for data clean room exchanges.
+        # Optional. Resource in this dataset that is selectively shared. This field is
+        # required for data clean room exchanges.
         # Corresponds to the JSON property `selectedResources`
         # @return [Array<Google::Apis::AnalyticshubV1::SelectedResource>]
         attr_accessor :selected_resources
@@ -233,6 +371,105 @@ module Google
         end
       end
       
+      # Configuration for a Cloud Storage subscription.
+      class CloudStorageConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for writing message data in Avro format. Message payloads and
+        # metadata will be written to files as an Avro binary.
+        # Corresponds to the JSON property `avroConfig`
+        # @return [Google::Apis::AnalyticshubV1::AvroConfig]
+        attr_accessor :avro_config
+      
+        # Required. User-provided name for the Cloud Storage bucket. The bucket must be
+        # created by the user. The bucket name must be without any prefix like "gs://".
+        # See the [bucket naming requirements] (https://cloud.google.com/storage/docs/
+        # buckets#naming).
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Optional. User-provided format string specifying how to represent datetimes in
+        # Cloud Storage filenames. See the [datetime format guidance](https://cloud.
+        # google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+        # Corresponds to the JSON property `filenameDatetimeFormat`
+        # @return [String]
+        attr_accessor :filename_datetime_format
+      
+        # Optional. User-provided prefix for Cloud Storage filename. See the [object
+        # naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        # Corresponds to the JSON property `filenamePrefix`
+        # @return [String]
+        attr_accessor :filename_prefix
+      
+        # Optional. User-provided suffix for Cloud Storage filename. See the [object
+        # naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        # Must not end in "/".
+        # Corresponds to the JSON property `filenameSuffix`
+        # @return [String]
+        attr_accessor :filename_suffix
+      
+        # Optional. The maximum bytes that can be written to a Cloud Storage file before
+        # a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be
+        # exceeded in cases where messages are larger than the limit.
+        # Corresponds to the JSON property `maxBytes`
+        # @return [Fixnum]
+        attr_accessor :max_bytes
+      
+        # Optional. The maximum duration that can elapse before a new Cloud Storage file
+        # is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed
+        # the subscription's acknowledgement deadline.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [String]
+        attr_accessor :max_duration
+      
+        # Optional. The maximum number of messages that can be written to a Cloud
+        # Storage file before a new file is created. Min 1000 messages.
+        # Corresponds to the JSON property `maxMessages`
+        # @return [Fixnum]
+        attr_accessor :max_messages
+      
+        # Optional. The service account to use to write to Cloud Storage. The
+        # subscription creator or updater that specifies this field must have `iam.
+        # serviceAccounts.actAs` permission on the service account. If not specified,
+        # the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+        # service-`project_number`@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Output only. An output-only field that indicates whether or not the
+        # subscription can receive messages.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Configuration for writing message data in text format. Message payloads will
+        # be written to files as raw text, separated by a newline.
+        # Corresponds to the JSON property `textConfig`
+        # @return [Google::Apis::AnalyticshubV1::TextConfig]
+        attr_accessor :text_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avro_config = args[:avro_config] if args.key?(:avro_config)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @filename_datetime_format = args[:filename_datetime_format] if args.key?(:filename_datetime_format)
+          @filename_prefix = args[:filename_prefix] if args.key?(:filename_prefix)
+          @filename_suffix = args[:filename_suffix] if args.key?(:filename_suffix)
+          @max_bytes = args[:max_bytes] if args.key?(:max_bytes)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @max_messages = args[:max_messages] if args.key?(:max_messages)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @state = args[:state] if args.key?(:state)
+          @text_config = args[:text_config] if args.key?(:text_config)
+        end
+      end
+      
       # A data exchange is a container that lets you share data. Along with the
       # descriptive information about the data exchange, it contains listings that
       # reference shared datasets.
@@ -246,6 +483,13 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Optional. Type of discovery on the discovery page for all the listings under
+        # this exchange. Updating this field also updates (overwrites) the
+        # discovery_type field for all the listings under this exchange.
+        # Corresponds to the JSON property `discoveryType`
+        # @return [String]
+        attr_accessor :discovery_type
       
         # Required. Human-readable display name of the data exchange. The display name
         # must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-),
@@ -300,6 +544,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @discovery_type = args[:discovery_type] if args.key?(:discovery_type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @documentation = args[:documentation] if args.key?(:documentation)
           @icon = args[:icon] if args.key?(:icon)
@@ -368,6 +613,46 @@ module Google
         def update!(**args)
           @single_linked_dataset_per_cleanroom = args[:single_linked_dataset_per_cleanroom] if args.key?(:single_linked_dataset_per_cleanroom)
           @single_selected_resource_sharing_restriction = args[:single_selected_resource_sharing_restriction] if args.key?(:single_selected_resource_sharing_restriction)
+        end
+      end
+      
+      # Dead lettering is done on a best effort basis. The same message might be dead
+      # lettered multiple times. If validation on any of the fields fails at
+      # subscription creation/updation, the create/update subscription request will
+      # fail.
+      class DeadLetterPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the topic to which dead letter messages should be
+        # published. Format is `projects/`project`/topics/`topic``.The Pub/Sub service
+        # account associated with the enclosing subscription's parent project (i.e.,
+        # service-`project_number`@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        # permission to Publish() to this topic. The operation will fail if the topic
+        # does not exist. Users should ensure that there is a subscription attached to
+        # this topic since messages published to a topic with no subscriptions are lost.
+        # Corresponds to the JSON property `deadLetterTopic`
+        # @return [String]
+        attr_accessor :dead_letter_topic
+      
+        # Optional. The maximum number of delivery attempts for any message. The value
+        # must be between 5 and 100. The number of delivery attempts is defined as 1 + (
+        # the sum of number of NACKs and number of times the acknowledgement deadline
+        # has been exceeded for the message). A NACK is any call to ModifyAckDeadline
+        # with a 0 deadline. Note that client libraries may automatically extend
+        # ack_deadlines. This field will be honored on a best effort basis. If this
+        # parameter is 0, a default value of 5 is used.
+        # Corresponds to the JSON property `maxDeliveryAttempts`
+        # @return [Fixnum]
+        attr_accessor :max_delivery_attempts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dead_letter_topic = args[:dead_letter_topic] if args.key?(:dead_letter_topic)
+          @max_delivery_attempts = args[:max_delivery_attempts] if args.key?(:max_delivery_attempts)
         end
       end
       
@@ -458,6 +743,27 @@ module Google
         end
       end
       
+      # Defines the destination Pub/Sub subscription.
+      class DestinationPubSubSubscription
+        include Google::Apis::Core::Hashable
+      
+        # A subscription resource. If none of `push_config`, `bigquery_config`, or `
+        # cloud_storage_config` is set, then the subscriber will pull and ack messages
+        # using API methods. At most one of these fields may be set.
+        # Corresponds to the JSON property `pubsubSubscription`
+        # @return [Google::Apis::AnalyticshubV1::GooglePubsubV1Subscription]
+        attr_accessor :pubsub_subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pubsub_subscription = args[:pubsub_subscription] if args.key?(:pubsub_subscription)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -471,6 +777,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A policy that specifies the conditions for resource expiration (i.e.,
+      # automatic resource deletion).
+      class ExpirationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the "time-to-live" duration for an associated resource.
+        # The resource expires if it is not active for a period of `ttl`. The definition
+        # of "activity" depends on the type of the associated resource. The minimum and
+        # maximum allowed values for `ttl` depend on the type of the associated resource,
+        # as well. If `ttl` is not set, the associated resource never expires.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
@@ -575,6 +905,192 @@ module Google
         end
       end
       
+      # A subscription resource. If none of `push_config`, `bigquery_config`, or `
+      # cloud_storage_config` is set, then the subscriber will pull and ack messages
+      # using API methods. At most one of these fields may be set.
+      class GooglePubsubV1Subscription
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The approximate amount of time (on a best-effort basis) Pub/Sub
+        # waits for the subscriber to acknowledge receipt before resending the message.
+        # In the interval after the message is delivered and before it is acknowledged,
+        # it is considered to be _outstanding_. During that time period, the message
+        # will not be redelivered (on a best-effort basis). For pull subscriptions, this
+        # value is used as the initial value for the ack deadline. To override this
+        # value for a given message, call `ModifyAckDeadline` with the corresponding `
+        # ack_id` if using non-streaming pull or send the `ack_id` in a `
+        # StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+        # deadline you can specify is 10 seconds. The maximum custom deadline you can
+        # specify is 600 seconds (10 minutes). If this parameter is 0, a default value
+        # of 10 seconds is used. For push delivery, this value is also used to set the
+        # request timeout for the call to the push endpoint. If the subscriber never
+        # acknowledges the message, the Pub/Sub system will eventually redeliver the
+        # message.
+        # Corresponds to the JSON property `ackDeadlineSeconds`
+        # @return [Fixnum]
+        attr_accessor :ack_deadline_seconds
+      
+        # Information about an associated Analytics Hub subscription (https://cloud.
+        # google.com/bigquery/docs/analytics-hub-manage-subscriptions).
+        # Corresponds to the JSON property `analyticsHubSubscriptionInfo`
+        # @return [Google::Apis::AnalyticshubV1::AnalyticsHubSubscriptionInfo]
+        attr_accessor :analytics_hub_subscription_info
+      
+        # Configuration for a BigQuery subscription.
+        # Corresponds to the JSON property `bigqueryConfig`
+        # @return [Google::Apis::AnalyticshubV1::BigQueryConfig]
+        attr_accessor :bigquery_config
+      
+        # Configuration for a Cloud Storage subscription.
+        # Corresponds to the JSON property `cloudStorageConfig`
+        # @return [Google::Apis::AnalyticshubV1::CloudStorageConfig]
+        attr_accessor :cloud_storage_config
+      
+        # Dead lettering is done on a best effort basis. The same message might be dead
+        # lettered multiple times. If validation on any of the fields fails at
+        # subscription creation/updation, the create/update subscription request will
+        # fail.
+        # Corresponds to the JSON property `deadLetterPolicy`
+        # @return [Google::Apis::AnalyticshubV1::DeadLetterPolicy]
+        attr_accessor :dead_letter_policy
+      
+        # Optional. Indicates whether the subscription is detached from its topic.
+        # Detached subscriptions don't receive messages from their topic and don't
+        # retain any backlog. `Pull` and `StreamingPull` requests will return
+        # FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the
+        # endpoint will not be made.
+        # Corresponds to the JSON property `detached`
+        # @return [Boolean]
+        attr_accessor :detached
+        alias_method :detached?, :detached
+      
+        # Optional. If true, Pub/Sub provides the following guarantees for the delivery
+        # of a message with a given value of `message_id` on this subscription: * The
+        # message sent to a subscriber is guaranteed not to be resent before the message'
+        # s acknowledgement deadline expires. * An acknowledged message will not be
+        # resent to a subscriber. Note that subscribers may still receive multiple
+        # copies of a message when `enable_exactly_once_delivery` is true if the message
+        # was published multiple times by a publisher client. These copies are
+        # considered distinct by Pub/Sub and have distinct `message_id` values.
+        # Corresponds to the JSON property `enableExactlyOnceDelivery`
+        # @return [Boolean]
+        attr_accessor :enable_exactly_once_delivery
+        alias_method :enable_exactly_once_delivery?, :enable_exactly_once_delivery
+      
+        # Optional. If true, messages published with the same `ordering_key` in `
+        # PubsubMessage` will be delivered to the subscribers in the order in which they
+        # are received by the Pub/Sub system. Otherwise, they may be delivered in any
+        # order.
+        # Corresponds to the JSON property `enableMessageOrdering`
+        # @return [Boolean]
+        attr_accessor :enable_message_ordering
+        alias_method :enable_message_ordering?, :enable_message_ordering
+      
+        # A policy that specifies the conditions for resource expiration (i.e.,
+        # automatic resource deletion).
+        # Corresponds to the JSON property `expirationPolicy`
+        # @return [Google::Apis::AnalyticshubV1::ExpirationPolicy]
+        attr_accessor :expiration_policy
+      
+        # Optional. An expression written in the Pub/Sub [filter language](https://cloud.
+        # google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s
+        # whose `attributes` field matches the filter are delivered on this subscription.
+        # If empty, then no messages are filtered out.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. See [Creating and managing labels](https://cloud.google.com/pubsub/
+        # docs/labels).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. How long to retain unacknowledged messages in the subscription's
+        # backlog, from the moment a message is published. If `retain_acked_messages` is
+        # true, then this also configures the retention of acknowledged messages, and
+        # thus configures how far back in time a `Seek` can be done. Defaults to 7 days.
+        # Cannot be more than 7 days or less than 10 minutes.
+        # Corresponds to the JSON property `messageRetentionDuration`
+        # @return [String]
+        attr_accessor :message_retention_duration
+      
+        # Required. Name of the subscription. Format is `projects/`project`/
+        # subscriptions/`sub``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for a push delivery endpoint.
+        # Corresponds to the JSON property `pushConfig`
+        # @return [Google::Apis::AnalyticshubV1::PushConfig]
+        attr_accessor :push_config
+      
+        # Optional. Indicates whether to retain acknowledged messages. If true, then
+        # messages are not expunged from the subscription's backlog, even if they are
+        # acknowledged, until they fall out of the `message_retention_duration` window.
+        # This must be true if you would like to [`Seek` to a timestamp] (https://cloud.
+        # google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay
+        # previously-acknowledged messages.
+        # Corresponds to the JSON property `retainAckedMessages`
+        # @return [Boolean]
+        attr_accessor :retain_acked_messages
+        alias_method :retain_acked_messages?, :retain_acked_messages
+      
+        # A policy that specifies how Pub/Sub retries message delivery. Retry delay will
+        # be exponential based on provided minimum and maximum backoffs. https://en.
+        # wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs
+        # or acknowledgement deadline exceeded events for a given message. Retry Policy
+        # is implemented on a best effort basis. At times, the delay between consecutive
+        # deliveries may not match the configuration. That is, delay can be more or less
+        # than configured backoff.
+        # Corresponds to the JSON property `retryPolicy`
+        # @return [Google::Apis::AnalyticshubV1::RetryPolicy]
+        attr_accessor :retry_policy
+      
+        # Output only. An output-only field indicating whether or not the subscription
+        # can receive messages.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Indicates the minimum duration for which a message is retained
+        # after it is published to the subscription's topic. If this field is set,
+        # messages published to the subscription's topic in the last `
+        # topic_message_retention_duration` are always available to subscribers. See the
+        # `message_retention_duration` field in `Topic`. This field is set only in
+        # responses from the server; it is ignored if it is set in any requests.
+        # Corresponds to the JSON property `topicMessageRetentionDuration`
+        # @return [String]
+        attr_accessor :topic_message_retention_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
+          @analytics_hub_subscription_info = args[:analytics_hub_subscription_info] if args.key?(:analytics_hub_subscription_info)
+          @bigquery_config = args[:bigquery_config] if args.key?(:bigquery_config)
+          @cloud_storage_config = args[:cloud_storage_config] if args.key?(:cloud_storage_config)
+          @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
+          @detached = args[:detached] if args.key?(:detached)
+          @enable_exactly_once_delivery = args[:enable_exactly_once_delivery] if args.key?(:enable_exactly_once_delivery)
+          @enable_message_ordering = args[:enable_message_ordering] if args.key?(:enable_message_ordering)
+          @expiration_policy = args[:expiration_policy] if args.key?(:expiration_policy)
+          @filter = args[:filter] if args.key?(:filter)
+          @labels = args[:labels] if args.key?(:labels)
+          @message_retention_duration = args[:message_retention_duration] if args.key?(:message_retention_duration)
+          @name = args[:name] if args.key?(:name)
+          @push_config = args[:push_config] if args.key?(:push_config)
+          @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
+          @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @state = args[:state] if args.key?(:state)
+          @topic_message_retention_duration = args[:topic_message_retention_duration] if args.key?(:topic_message_retention_duration)
+        end
+      end
+      
       # Reference to a linked resource tracked by this Subscription.
       class LinkedResource
         include Google::Apis::Core::Hashable
@@ -585,6 +1101,17 @@ module Google
         # @return [String]
         attr_accessor :linked_dataset
       
+        # Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/
+        # subscriptions/subscriptions/sub_id
+        # Corresponds to the JSON property `linkedPubsubSubscription`
+        # @return [String]
+        attr_accessor :linked_pubsub_subscription
+      
+        # Output only. Listing for which linked resource is created.
+        # Corresponds to the JSON property `listing`
+        # @return [String]
+        attr_accessor :listing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -592,6 +1119,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @linked_dataset = args[:linked_dataset] if args.key?(:linked_dataset)
+          @linked_pubsub_subscription = args[:linked_pubsub_subscription] if args.key?(:linked_pubsub_subscription)
+          @listing = args[:listing] if args.key?(:listing)
         end
       end
       
@@ -754,6 +1283,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Type of discovery of the listing on the discovery page.
+        # Corresponds to the JSON property `discoveryType`
+        # @return [String]
+        attr_accessor :discovery_type
+      
         # Required. Human-readable display name of the listing. The display name must
         # contain only Unicode letters, numbers (0-9), underscores (_), dashes (-),
         # spaces ( ), ampersands (&) and can't start or end with spaces. Default value
@@ -794,11 +1328,21 @@ module Google
         # @return [Google::Apis::AnalyticshubV1::Publisher]
         attr_accessor :publisher
       
+        # Pub/Sub topic source.
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [Google::Apis::AnalyticshubV1::PubSubTopicSource]
+        attr_accessor :pubsub_topic
+      
         # Optional. Email or URL of the request access of the listing. Subscribers can
         # use this reference to request access. Max Length: 1000 bytes.
         # Corresponds to the JSON property `requestAccess`
         # @return [String]
         attr_accessor :request_access
+      
+        # Output only. Listing shared asset type.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
       
         # Restricted export config, used to configure restricted export on linked
         # dataset.
@@ -821,15 +1365,74 @@ module Google
           @categories = args[:categories] if args.key?(:categories)
           @data_provider = args[:data_provider] if args.key?(:data_provider)
           @description = args[:description] if args.key?(:description)
+          @discovery_type = args[:discovery_type] if args.key?(:discovery_type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @documentation = args[:documentation] if args.key?(:documentation)
           @icon = args[:icon] if args.key?(:icon)
           @name = args[:name] if args.key?(:name)
           @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
           @publisher = args[:publisher] if args.key?(:publisher)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @request_access = args[:request_access] if args.key?(:request_access)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
           @restricted_export_config = args[:restricted_export_config] if args.key?(:restricted_export_config)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Sets the `data` field as the HTTP body for delivery.
+      class NoWrapper
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:`
+        # headers of the HTTP request. Writes the Pub/Sub message attributes to `:`
+        # headers of the HTTP request.
+        # Corresponds to the JSON property `writeMetadata`
+        # @return [Boolean]
+        attr_accessor :write_metadata
+        alias_method :write_metadata?, :write_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @write_metadata = args[:write_metadata] if args.key?(:write_metadata)
+        end
+      end
+      
+      # Contains information needed for generating an [OpenID Connect token](https://
+      # developers.google.com/identity/protocols/OpenIDConnect).
+      class OidcToken
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Audience to be used when generating OIDC token. The audience claim
+        # identifies the recipients that the JWT is intended for. The audience value is
+        # a single case-sensitive string. Having multiple values (array) for the
+        # audience field is not supported. More info about the OIDC JWT token audience
+        # here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+        # the Push endpoint URL will be used.
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
+        # Optional. [Service account email](https://cloud.google.com/iam/docs/service-
+        # accounts) used for generating the OIDC token. For more information on setting
+        # up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/
+        # docs/push).
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience = args[:audience] if args.key?(:audience)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
         end
       end
       
@@ -1049,6 +1652,34 @@ module Google
         end
       end
       
+      # Pub/Sub topic source.
+      class PubSubTopicSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Region hint on where the data might be published. Data affinity
+        # regions are modifiable. See go/regions for full listing of possible Cloud
+        # regions.
+        # Corresponds to the JSON property `dataAffinityRegions`
+        # @return [Array<String>]
+        attr_accessor :data_affinity_regions
+      
+        # Required. Resource name of the Pub/Sub topic source for this listing. e.g.
+        # projects/myproject/topics/topicId
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_affinity_regions = args[:data_affinity_regions] if args.key?(:data_affinity_regions)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
       # Contains details of the listing publisher.
       class Publisher
         include Google::Apis::Core::Hashable
@@ -1071,6 +1702,80 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
+        end
+      end
+      
+      # The payload to the push endpoint is in the form of the JSON representation of
+      # a PubsubMessage (https://cloud.google.com/pubsub/docs/reference/rpc/google.
+      # pubsub.v1#pubsubmessage).
+      class PubsubWrapper
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Configuration for a push delivery endpoint.
+      class PushConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Endpoint configuration attributes that can be used to control
+        # different aspects of the message delivery. The only currently supported
+        # attribute is `x-goog-version`, which you can use to change the format of the
+        # pushed message. This attribute indicates the version of the data expected by
+        # the endpoint. This controls the shape of the pushed message (i.e., its fields
+        # and metadata). If not present during the `CreateSubscription` call, it will
+        # default to the version of the Pub/Sub API used to make such call. If not
+        # present in a `ModifyPushConfig` call, its value will not be changed. `
+        # GetSubscription` calls will always return a valid version, even if the
+        # subscription was created without this attribute. The only supported values for
+        # the `x-goog-version` attribute are: * `v1beta1`: uses the push format defined
+        # in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined
+        # in the v1 Pub/Sub API. For example: `attributes ` "x-goog-version": "v1" ``
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,String>]
+        attr_accessor :attributes
+      
+        # Sets the `data` field as the HTTP body for delivery.
+        # Corresponds to the JSON property `noWrapper`
+        # @return [Google::Apis::AnalyticshubV1::NoWrapper]
+        attr_accessor :no_wrapper
+      
+        # Contains information needed for generating an [OpenID Connect token](https://
+        # developers.google.com/identity/protocols/OpenIDConnect).
+        # Corresponds to the JSON property `oidcToken`
+        # @return [Google::Apis::AnalyticshubV1::OidcToken]
+        attr_accessor :oidc_token
+      
+        # The payload to the push endpoint is in the form of the JSON representation of
+        # a PubsubMessage (https://cloud.google.com/pubsub/docs/reference/rpc/google.
+        # pubsub.v1#pubsubmessage).
+        # Corresponds to the JSON property `pubsubWrapper`
+        # @return [Google::Apis::AnalyticshubV1::PubsubWrapper]
+        attr_accessor :pubsub_wrapper
+      
+        # Optional. A URL locating the endpoint to which messages should be pushed. For
+        # example, a Webhook endpoint might use `https://example.com/push`.
+        # Corresponds to the JSON property `pushEndpoint`
+        # @return [String]
+        attr_accessor :push_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @no_wrapper = args[:no_wrapper] if args.key?(:no_wrapper)
+          @oidc_token = args[:oidc_token] if args.key?(:oidc_token)
+          @pubsub_wrapper = args[:pubsub_wrapper] if args.key?(:pubsub_wrapper)
+          @push_endpoint = args[:push_endpoint] if args.key?(:push_endpoint)
         end
       end
       
@@ -1181,6 +1886,39 @@ module Google
         end
       end
       
+      # A policy that specifies how Pub/Sub retries message delivery. Retry delay will
+      # be exponential based on provided minimum and maximum backoffs. https://en.
+      # wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs
+      # or acknowledgement deadline exceeded events for a given message. Retry Policy
+      # is implemented on a best effort basis. At times, the delay between consecutive
+      # deliveries may not match the configuration. That is, delay can be more or less
+      # than configured backoff.
+      class RetryPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum delay between consecutive deliveries of a given message.
+        # Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+        # Corresponds to the JSON property `maximumBackoff`
+        # @return [String]
+        attr_accessor :maximum_backoff
+      
+        # Optional. The minimum delay between consecutive deliveries of a given message.
+        # Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+        # Corresponds to the JSON property `minimumBackoff`
+        # @return [String]
+        attr_accessor :minimum_backoff
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maximum_backoff = args[:maximum_backoff] if args.key?(:maximum_backoff)
+          @minimum_backoff = args[:minimum_backoff] if args.key?(:minimum_backoff)
+        end
+      end
+      
       # Message for revoking a subscription.
       class RevokeSubscriptionRequest
         include Google::Apis::Core::Hashable
@@ -1207,7 +1945,7 @@ module Google
         end
       end
       
-      # Resource in this dataset that are selectively shared.
+      # Resource in this dataset that is selectively shared.
       class SelectedResource
         include Google::Apis::Core::Hashable
       
@@ -1408,6 +2146,11 @@ module Google
         # @return [Google::Apis::AnalyticshubV1::DestinationDataset]
         attr_accessor :destination_dataset
       
+        # Defines the destination Pub/Sub subscription.
+        # Corresponds to the JSON property `destinationPubsubSubscription`
+        # @return [Google::Apis::AnalyticshubV1::DestinationPubSubSubscription]
+        attr_accessor :destination_pubsub_subscription
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1415,6 +2158,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destination_dataset = args[:destination_dataset] if args.key?(:destination_dataset)
+          @destination_pubsub_subscription = args[:destination_pubsub_subscription] if args.key?(:destination_pubsub_subscription)
         end
       end
       
@@ -1469,6 +2213,12 @@ module Google
         # @return [Hash<String,Google::Apis::AnalyticshubV1::LinkedResource>]
         attr_accessor :linked_dataset_map
       
+        # Output only. Linked resources created in the subscription. Only contains
+        # values if state = STATE_ACTIVE.
+        # Corresponds to the JSON property `linkedResources`
+        # @return [Array<Google::Apis::AnalyticshubV1::LinkedResource>]
+        attr_accessor :linked_resources
+      
         # Output only. Resource name of the source Listing. e.g. projects/123/locations/
         # US/dataExchanges/456/listings/789
         # Corresponds to the JSON property `listing`
@@ -1491,6 +2241,11 @@ module Google
         # @return [String]
         attr_accessor :organization_id
       
+        # Output only. Listing shared asset type.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
         # Output only. Current state of the subscription.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1511,10 +2266,12 @@ module Google
           @data_exchange = args[:data_exchange] if args.key?(:data_exchange)
           @last_modify_time = args[:last_modify_time] if args.key?(:last_modify_time)
           @linked_dataset_map = args[:linked_dataset_map] if args.key?(:linked_dataset_map)
+          @linked_resources = args[:linked_resources] if args.key?(:linked_resources)
           @listing = args[:listing] if args.key?(:listing)
           @name = args[:name] if args.key?(:name)
           @organization_display_name = args[:organization_display_name] if args.key?(:organization_display_name)
           @organization_id = args[:organization_id] if args.key?(:organization_id)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
           @state = args[:state] if args.key?(:state)
           @subscriber_contact = args[:subscriber_contact] if args.key?(:subscriber_contact)
         end
@@ -1557,6 +2314,20 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Configuration for writing message data in text format. Message payloads will
+      # be written to files as raw text, separated by a newline.
+      class TextConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end
