@@ -7072,7 +7072,10 @@ module Google
         attr_accessor :header
       
         # The ID associated with a text module. This field is here to enable ease of
-        # management of text modules.
+        # management of text modules and referencing them in template overrides. The ID
+        # should only include alphanumeric characters, '_', or '-'. It can not include
+        # dots, as dots are used to separate fields within FieldReference.fieldPaths in
+        # template overrides.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
