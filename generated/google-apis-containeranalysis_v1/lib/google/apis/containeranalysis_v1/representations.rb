@@ -994,6 +994,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VulnerabilityAttestation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VulnerabilityNote
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1902,6 +1908,8 @@ module Google
           property :cpe, as: 'cpe'
           property :last_scan_time, as: 'lastScanTime'
           property :sbom_status, as: 'sbomStatus', class: Google::Apis::ContaineranalysisV1::SbomStatus, decorator: Google::Apis::ContaineranalysisV1::SbomStatus::Representation
+      
+          property :vulnerability_attestation, as: 'vulnerabilityAttestation', class: Google::Apis::ContaineranalysisV1::VulnerabilityAttestation, decorator: Google::Apis::ContaineranalysisV1::VulnerabilityAttestation::Representation
       
         end
       end
@@ -2826,6 +2834,15 @@ module Google
       
           property :short_description, as: 'shortDescription'
           property :title, as: 'title'
+        end
+      end
+      
+      class VulnerabilityAttestation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :last_attempt_time, as: 'lastAttemptTime'
+          property :state, as: 'state'
         end
       end
       
