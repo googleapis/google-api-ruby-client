@@ -138,12 +138,6 @@ module Google
         # @return [String]
         attr_accessor :post_submission_state
       
-        # Identifier for the student that owns this submission. This field is part of an
-        # experimental API change and is populated only if sufficient scopes are granted.
-        # Corresponds to the JSON property `userId`
-        # @return [String]
-        attr_accessor :user_id
-      
         def initialize(**args)
            update!(**args)
         end
@@ -152,7 +146,6 @@ module Google
         def update!(**args)
           @points_earned = args[:points_earned] if args.key?(:points_earned)
           @post_submission_state = args[:post_submission_state] if args.key?(:post_submission_state)
-          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
