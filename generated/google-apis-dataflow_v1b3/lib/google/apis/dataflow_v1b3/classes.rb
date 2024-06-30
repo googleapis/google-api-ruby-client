@@ -1073,8 +1073,8 @@ module Google
         # @return [Google::Apis::DataflowV1b3::DataSamplingConfig]
         attr_accessor :data_sampling
       
-        # When true, enables the logging of the literal hot key to the user's Cloud
-        # Logging.
+        # Optional. When true, enables the logging of the literal hot key to the user's
+        # Cloud Logging.
         # Corresponds to the JSON property `enableHotKeyLogging`
         # @return [Boolean]
         attr_accessor :enable_hot_key_logging
@@ -1367,9 +1367,9 @@ module Google
         # @return [String]
         attr_accessor :cluster_manager_api_service
       
-        # The dataset for the current project where various workflow related tables are
-        # stored. The supported resource type is: Google BigQuery: bigquery.googleapis.
-        # com/`dataset`
+        # Optional. The dataset for the current project where various workflow related
+        # tables are stored. The supported resource type is: Google BigQuery: bigquery.
+        # googleapis.com/`dataset`
         # Corresponds to the JSON property `dataset`
         # @return [String]
         attr_accessor :dataset
@@ -1386,7 +1386,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :experiments
       
-        # Which Flexible Resource Scheduling mode to run in.
+        # Optional. Which Flexible Resource Scheduling mode to run in.
         # Corresponds to the JSON property `flexResourceSchedulingGoal`
         # @return [String]
         attr_accessor :flex_resource_scheduling_goal
@@ -1403,14 +1403,14 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :sdk_pipeline_options
       
-        # Identity to run virtual machines as. Defaults to the default account.
+        # Optional. Identity to run virtual machines as. Defaults to the default account.
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
         attr_accessor :service_account_email
       
-        # If set, contains the Cloud KMS key identifier used to encrypt data at rest,
-        # AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/
-        # locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+        # Optional. If set, contains the Cloud KMS key identifier used to encrypt data
+        # at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/
+        # PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
         # Corresponds to the JSON property `serviceKmsKeyName`
         # @return [String]
         attr_accessor :service_kms_key_name
@@ -1472,17 +1472,17 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::WorkerPool>]
         attr_accessor :worker_pools
       
-        # The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/
-        # regions-zones) in which worker processing should occur, e.g. "us-west1".
-        # Mutually exclusive with worker_zone. If neither worker_region nor worker_zone
-        # is specified, default to the control plane's region.
+        # Optional. The Compute Engine region (https://cloud.google.com/compute/docs/
+        # regions-zones/regions-zones) in which worker processing should occur, e.g. "us-
+        # west1". Mutually exclusive with worker_zone. If neither worker_region nor
+        # worker_zone is specified, default to the control plane's region.
         # Corresponds to the JSON property `workerRegion`
         # @return [String]
         attr_accessor :worker_region
       
-        # The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/
-        # regions-zones) in which worker processing should occur, e.g. "us-west1-a".
-        # Mutually exclusive with worker_region. If neither worker_region nor
+        # Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/
+        # regions-zones/regions-zones) in which worker processing should occur, e.g. "us-
+        # west1-a". Mutually exclusive with worker_region. If neither worker_region nor
         # worker_zone is specified, a zone in the control plane's region is chosen based
         # on available capacity.
         # Corresponds to the JSON property `workerZone`
@@ -2360,8 +2360,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
-        # regional-endpoints) that contains this job.
+        # Optional. The [regional endpoint] (https://cloud.google.com/dataflow/docs/
+        # concepts/regional-endpoints) that contains this job.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -2434,6 +2434,11 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # Resources used by the Dataflow Service to run the job.
+        # Corresponds to the JSON property `serviceResources`
+        # @return [Google::Apis::DataflowV1b3::ServiceResources]
+        attr_accessor :service_resources
+      
         # This field may be mutated by the Cloud Dataflow service; callers cannot mutate
         # it.
         # Corresponds to the JSON property `stageStates`
@@ -2469,7 +2474,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :temp_files
       
-        # The map of transform name prefixes of the job to be replaced to the
+        # Optional. The map of transform name prefixes of the job to be replaced to the
         # corresponding name prefixes of the new job.
         # Corresponds to the JSON property `transformNameMapping`
         # @return [Hash<String,String>]
@@ -2506,6 +2511,7 @@ module Google
           @runtime_updatable_params = args[:runtime_updatable_params] if args.key?(:runtime_updatable_params)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @service_resources = args[:service_resources] if args.key?(:service_resources)
           @stage_states = args[:stage_states] if args.key?(:stage_states)
           @start_time = args[:start_time] if args.key?(:start_time)
           @steps = args[:steps] if args.key?(:steps)
@@ -4944,6 +4950,26 @@ module Google
         def update!(**args)
           @sink = args[:sink] if args.key?(:sink)
           @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # Resources used by the Dataflow Service to run the job.
+      class ServiceResources
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of Cloud Zones being used by the Dataflow Service for this
+        # job. Example: us-central1-c
+        # Corresponds to the JSON property `zones`
+        # @return [Array<String>]
+        attr_accessor :zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zones = args[:zones] if args.key?(:zones)
         end
       end
       
