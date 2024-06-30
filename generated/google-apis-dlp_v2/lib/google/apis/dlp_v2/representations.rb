@@ -670,7 +670,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2FileClusterSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2FileClusterType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2FileExtensionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2FileSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2FileStoreDataProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2FileStoreInfoTypeSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1031,6 +1061,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2ListDlpJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ListFileStoreDataProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2300,6 +2336,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column_profile, as: 'columnProfile', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ColumnDataProfile, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ColumnDataProfile::Representation
       
+          property :file_store_profile, as: 'fileStoreProfile', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile::Representation
+      
           property :table_profile, as: 'tableProfile', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile::Representation
       
         end
@@ -2351,6 +2389,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :event, as: 'event'
+          property :file_store_profile, as: 'fileStoreProfile', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile::Representation
+      
           property :profile, as: 'profile', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile::Representation
       
         end
@@ -2758,6 +2798,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :details, as: 'details', class: Google::Apis::DlpV2::GoogleRpcStatus, decorator: Google::Apis::DlpV2::GoogleRpcStatus::Representation
       
+          property :extra_info, as: 'extraInfo'
           collection :timestamps, as: 'timestamps'
         end
       end
@@ -2833,12 +2874,92 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2FileClusterSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_risk_level, as: 'dataRiskLevel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel::Representation
+      
+          collection :errors, as: 'errors', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Error, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Error::Representation
+      
+          property :file_cluster_type, as: 'fileClusterType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileClusterType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileClusterType::Representation
+      
+          collection :file_extensions_scanned, as: 'fileExtensionsScanned', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileExtensionInfo, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileExtensionInfo::Representation
+      
+          collection :file_extensions_seen, as: 'fileExtensionsSeen', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileExtensionInfo, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileExtensionInfo::Representation
+      
+          collection :file_store_info_type_summaries, as: 'fileStoreInfoTypeSummaries', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary::Representation
+      
+          property :no_files_exist, as: 'noFilesExist'
+          property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2FileClusterType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster'
+        end
+      end
+      
+      class GooglePrivacyDlpV2FileExtensionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_extension, as: 'fileExtension'
+        end
+      end
+      
       class GooglePrivacyDlpV2FileSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :regex_file_set, as: 'regexFileSet', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageRegexFileSet, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageRegexFileSet::Representation
       
           property :url, as: 'url'
+        end
+      end
+      
+      class GooglePrivacyDlpV2FileStoreDataProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_snapshot, as: 'configSnapshot', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileConfigSnapshot, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileConfigSnapshot::Representation
+      
+          property :create_time, as: 'createTime'
+          property :data_risk_level, as: 'dataRiskLevel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel::Representation
+      
+          property :data_source_type, as: 'dataSourceType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType::Representation
+      
+          collection :data_storage_locations, as: 'dataStorageLocations'
+          collection :file_cluster_summaries, as: 'fileClusterSummaries', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileClusterSummary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileClusterSummary::Representation
+      
+          collection :file_store_info_type_summaries, as: 'fileStoreInfoTypeSummaries', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary::Representation
+      
+          property :file_store_is_empty, as: 'fileStoreIsEmpty'
+          property :file_store_location, as: 'fileStoreLocation'
+          property :file_store_path, as: 'fileStorePath'
+          property :full_resource, as: 'fullResource'
+          property :last_modified_time, as: 'lastModifiedTime'
+          property :location_type, as: 'locationType'
+          property :name, as: 'name'
+          property :profile_last_generated, as: 'profileLastGenerated'
+          property :profile_status, as: 'profileStatus', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus::Representation
+      
+          property :project_data_profile, as: 'projectDataProfile'
+          property :project_id, as: 'projectId'
+          hash :resource_attributes, as: 'resourceAttributes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Value, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Value::Representation
+      
+          hash :resource_labels, as: 'resourceLabels'
+          property :resource_visibility, as: 'resourceVisibility'
+          property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GooglePrivacyDlpV2FileStoreInfoTypeSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :info_type, as: 'infoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
         end
       end
       
@@ -3452,6 +3573,15 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2ListFileStoreDataProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :file_store_data_profiles, as: 'fileStoreDataProfiles', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GooglePrivacyDlpV2ListInfoTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3669,6 +3799,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_risk_level, as: 'dataRiskLevel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel::Representation
       
+          property :file_store_data_profile_count, :numeric_string => true, as: 'fileStoreDataProfileCount'
           property :name, as: 'name'
           property :profile_last_generated, as: 'profileLastGenerated'
           property :profile_status, as: 'profileStatus', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus::Representation
@@ -3676,6 +3807,7 @@ module Google
           property :project_id, as: 'projectId'
           property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
       
+          property :table_data_profile_count, :numeric_string => true, as: 'tableDataProfileCount'
         end
       end
       
