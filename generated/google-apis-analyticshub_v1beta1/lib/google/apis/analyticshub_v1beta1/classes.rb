@@ -515,6 +515,17 @@ module Google
         # @return [String]
         attr_accessor :linked_dataset
       
+        # Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/
+        # subscriptions/subscriptions/sub_id
+        # Corresponds to the JSON property `linkedPubsubSubscription`
+        # @return [String]
+        attr_accessor :linked_pubsub_subscription
+      
+        # Output only. Listing for which linked resource is created.
+        # Corresponds to the JSON property `listing`
+        # @return [String]
+        attr_accessor :listing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -522,6 +533,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @linked_dataset = args[:linked_dataset] if args.key?(:linked_dataset)
+          @linked_pubsub_subscription = args[:linked_pubsub_subscription] if args.key?(:linked_pubsub_subscription)
+          @listing = args[:listing] if args.key?(:listing)
         end
       end
       
@@ -1086,6 +1099,12 @@ module Google
         # @return [Hash<String,Google::Apis::AnalyticshubV1beta1::LinkedResource>]
         attr_accessor :linked_dataset_map
       
+        # Output only. Linked resources created in the subscription. Only contains
+        # values if state = STATE_ACTIVE.
+        # Corresponds to the JSON property `linkedResources`
+        # @return [Array<Google::Apis::AnalyticshubV1beta1::LinkedResource>]
+        attr_accessor :linked_resources
+      
         # Output only. Resource name of the source Listing. e.g. projects/123/locations/
         # US/dataExchanges/456/listings/789
         # Corresponds to the JSON property `listing`
@@ -1108,6 +1127,11 @@ module Google
         # @return [String]
         attr_accessor :organization_id
       
+        # Output only. Listing shared asset type.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
         # Output only. Current state of the subscription.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1128,10 +1152,12 @@ module Google
           @data_exchange = args[:data_exchange] if args.key?(:data_exchange)
           @last_modify_time = args[:last_modify_time] if args.key?(:last_modify_time)
           @linked_dataset_map = args[:linked_dataset_map] if args.key?(:linked_dataset_map)
+          @linked_resources = args[:linked_resources] if args.key?(:linked_resources)
           @listing = args[:listing] if args.key?(:listing)
           @name = args[:name] if args.key?(:name)
           @organization_display_name = args[:organization_display_name] if args.key?(:organization_display_name)
           @organization_id = args[:organization_id] if args.key?(:organization_id)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
           @state = args[:state] if args.key?(:state)
           @subscriber_contact = args[:subscriber_contact] if args.key?(:subscriber_contact)
         end
