@@ -306,6 +306,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :linked_dataset, as: 'linkedDataset'
+          property :linked_pubsub_subscription, as: 'linkedPubsubSubscription'
+          property :listing, as: 'listing'
         end
       end
       
@@ -448,10 +450,13 @@ module Google
           property :last_modify_time, as: 'lastModifyTime'
           hash :linked_dataset_map, as: 'linkedDatasetMap', class: Google::Apis::AnalyticshubV1beta1::LinkedResource, decorator: Google::Apis::AnalyticshubV1beta1::LinkedResource::Representation
       
+          collection :linked_resources, as: 'linkedResources', class: Google::Apis::AnalyticshubV1beta1::LinkedResource, decorator: Google::Apis::AnalyticshubV1beta1::LinkedResource::Representation
+      
           property :listing, as: 'listing'
           property :name, as: 'name'
           property :organization_display_name, as: 'organizationDisplayName'
           property :organization_id, as: 'organizationId'
+          property :resource_type, as: 'resourceType'
           property :state, as: 'state'
           property :subscriber_contact, as: 'subscriberContact'
         end
