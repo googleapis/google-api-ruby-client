@@ -107,12 +107,12 @@ module Google
         attr_accessor :max_pods_per_node
       
         # The name of the secondary range on the subnet which provides IP address for
-        # this pod range
+        # this pod range.
         # Corresponds to the JSON property `secondaryPodRange`
         # @return [String]
         attr_accessor :secondary_pod_range
       
-        # Name of the subnetwork where the additional pod network belongs
+        # Name of the subnetwork where the additional pod network belongs.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
