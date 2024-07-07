@@ -22,6 +22,12 @@ module Google
   module Apis
     module ChatV1
       
+      class AccessSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessoryWidget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -788,6 +794,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_state, as: 'accessState'
+          property :audience, as: 'audience'
+        end
       end
       
       class AccessoryWidget
@@ -1924,6 +1938,8 @@ module Google
       class Space
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_settings, as: 'accessSettings', class: Google::Apis::ChatV1::AccessSettings, decorator: Google::Apis::ChatV1::AccessSettings::Representation
+      
           property :admin_installed, as: 'adminInstalled'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
@@ -1936,6 +1952,7 @@ module Google
           property :space_history_state, as: 'spaceHistoryState'
           property :space_threading_state, as: 'spaceThreadingState'
           property :space_type, as: 'spaceType'
+          property :space_uri, as: 'spaceUri'
           property :threaded, as: 'threaded'
           property :type, as: 'type'
         end
