@@ -22,6 +22,37 @@ module Google
   module Apis
     module ChatV1
       
+      # Represents the [access setting](https://support.google.com/chat/answer/
+      # 11971020) of the space.
+      class AccessSettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates the access state of the space.
+        # Corresponds to the JSON property `accessState`
+        # @return [String]
+        attr_accessor :access_state
+      
+        # Optional. The resource name of the [target audience](https://support.google.
+        # com/a/answer/9934697) who can discover the space, join the space, and preview
+        # the messages in the space. For details, see [Make a space discoverable to a
+        # target audience](https://developers.google.com/workspace/chat/space-target-
+        # audience). Format: `audiences/`audience`` To use the default target audience
+        # for the Google Workspace organization, set to `audiences/default`.
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_state = args[:access_state] if args.key?(:access_state)
+          @audience = args[:audience] if args.key?(:audience)
+        end
+      end
+      
       # One or more interactive widgets that appear at the bottom of a message. For
       # details, see [Add interactive widgets at the bottom of a message](https://
       # developers.google.com/workspace/chat/create-messages#add-accessory-widgets).
@@ -1714,8 +1745,7 @@ module Google
       end
       
       # A column. [Google Workspace Add-ons and Chat apps](https://developers.google.
-      # com/workspace/extend): Columns for Google Workspace Add-ons are in Developer
-      # Preview.
+      # com/workspace/extend)
       class GoogleAppsCardV1Column
         include Google::Apis::Core::Hashable
       
@@ -3072,8 +3102,7 @@ module Google
       end
       
       # The supported widgets that you can include in a column. [Google Workspace Add-
-      # ons and Chat apps](https://developers.google.com/workspace/extend): Columns
-      # for Google Workspace Add-ons are in Developer Preview.
+      # ons and Chat apps](https://developers.google.com/workspace/extend)
       class GoogleAppsCardV1Widgets
         include Google::Apis::Core::Hashable
       
@@ -4402,20 +4431,23 @@ module Google
       class SetUpSpaceRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The Google Chat users to invite to join the space. Omit the calling
-        # user, as they are added automatically. The set currently allows up to 20
-        # memberships (in addition to the caller). For human membership, the `Membership.
-        # member` field must contain a `user` with `name` populated (format: `users/`
-        # user``) and `type` set to `User.Type.HUMAN`. You can only add human users when
-        # setting up a space (adding Chat apps is only supported for direct message
-        # setup with the calling app). You can also add members using the user's email
-        # as an alias for `user`. For example, the `user.name` can be `users/example@
-        # gmail.com`. To invite Gmail users or users from external Google Workspace
-        # domains, user's email must be used for ``user``. Optional when setting `Space.
-        # spaceType` to `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`,
-        # along with at least two memberships. Required when setting `Space.spaceType`
-        # to `DIRECT_MESSAGE` with a human user, along with exactly one membership. Must
-        # be empty when creating a 1:1 conversation between a human and the calling Chat
+        # Optional. The Google Chat users or groups to invite to join the space. Omit
+        # the calling user, as they are added automatically. The set currently allows up
+        # to 20 memberships (in addition to the caller). For human membership, the `
+        # Membership.member` field must contain a `user` with `name` populated (format: `
+        # users/`user``) and `type` set to `User.Type.HUMAN`. You can only add human
+        # users when setting up a space (adding Chat apps is only supported for direct
+        # message setup with the calling app). You can also add members using the user's
+        # email as an alias for `user`. For example, the `user.name` can be `users/
+        # example@gmail.com`. To invite Gmail users or users from external Google
+        # Workspace domains, user's email must be used for ``user``. For Google group
+        # membership, the `Membership.group_member` field must contain a `group` with `
+        # name` populated (format `groups/`group``). You can only add Google groups when
+        # setting `Space.spaceType` to `SPACE`. Optional when setting `Space.spaceType`
+        # to `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`, along
+        # with at least two memberships. Required when setting `Space.spaceType` to `
+        # DIRECT_MESSAGE` with a human user, along with exactly one membership. Must be
+        # empty when creating a 1:1 conversation between a human and the calling Chat
         # app (when setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.
         # singleUserBotDm` to `true`).
         # Corresponds to the JSON property `memberships`
@@ -4520,6 +4552,12 @@ module Google
       class Space
         include Google::Apis::Core::Hashable
       
+        # Represents the [access setting](https://support.google.com/chat/answer/
+        # 11971020) of the space.
+        # Corresponds to the JSON property `accessSettings`
+        # @return [Google::Apis::ChatV1::AccessSettings]
+        attr_accessor :access_settings
+      
         # Output only. For direct message (DM) spaces with a Chat app, whether the space
         # was created by a Google Workspace administrator. Administrators can install
         # and set up a direct message with a Chat app on behalf of users in their
@@ -4605,6 +4643,11 @@ module Google
         # @return [String]
         attr_accessor :space_type
       
+        # Output only. The URI for a user to access the space.
+        # Corresponds to the JSON property `spaceUri`
+        # @return [String]
+        attr_accessor :space_uri
+      
         # Output only. Deprecated: Use `spaceThreadingState` instead. Whether messages
         # are threaded in this space.
         # Corresponds to the JSON property `threaded`
@@ -4623,6 +4666,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_settings = args[:access_settings] if args.key?(:access_settings)
           @admin_installed = args[:admin_installed] if args.key?(:admin_installed)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -4634,6 +4678,7 @@ module Google
           @space_history_state = args[:space_history_state] if args.key?(:space_history_state)
           @space_threading_state = args[:space_threading_state] if args.key?(:space_threading_state)
           @space_type = args[:space_type] if args.key?(:space_type)
+          @space_uri = args[:space_uri] if args.key?(:space_uri)
           @threaded = args[:threaded] if args.key?(:threaded)
           @type = args[:type] if args.key?(:type)
         end
