@@ -235,7 +235,7 @@ module Google
       
         # Immutable. The period of time that versions of this key spend in the
         # DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at
-        # creation time, the default duration is 24 hours.
+        # creation time, the default duration is 30 days.
         # Corresponds to the JSON property `destroyScheduledDuration`
         # @return [String]
         attr_accessor :destroy_scheduled_duration
