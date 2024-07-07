@@ -2040,40 +2040,6 @@ module Google
         end
       end
       
-      # Represents a storage location in Cloud Storage
-      class GcsLocation
-        include Google::Apis::Core::Hashable
-      
-        # Cloud Storage bucket. See https://cloud.google.com/storage/docs/naming#
-        # requirements
-        # Corresponds to the JSON property `bucket`
-        # @return [String]
-        attr_accessor :bucket
-      
-        # Cloud Storage generation for the object. If the generation is omitted, the
-        # latest generation will be used.
-        # Corresponds to the JSON property `generation`
-        # @return [Fixnum]
-        attr_accessor :generation
-      
-        # Cloud Storage object. See https://cloud.google.com/storage/docs/naming#
-        # objectnames
-        # Corresponds to the JSON property `object`
-        # @return [String]
-        attr_accessor :object
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bucket = args[:bucket] if args.key?(:bucket)
-          @generation = args[:generation] if args.key?(:generation)
-          @object = args[:object] if args.key?(:object)
-        end
-      end
-      
       # GitConfig is a configuration for git operations.
       class GitConfig
         include Google::Apis::Core::Hashable
@@ -2815,16 +2781,12 @@ module Google
       class HttpConfig
         include Google::Apis::Core::Hashable
       
-        # SecretVersion resource of the HTTP proxy URL. The proxy URL should be in
-        # format protocol://@]proxyhost[:port].
+        # SecretVersion resource of the HTTP proxy URL. The Service Account should have
+        # accessor permissions on this secret. The proxy URL should be in format
+        # protocol://@]proxyhost[:port].
         # Corresponds to the JSON property `proxySecretVersionName`
         # @return [String]
         attr_accessor :proxy_secret_version_name
-      
-        # Represents a storage location in Cloud Storage
-        # Corresponds to the JSON property `proxySslCaInfo`
-        # @return [Google::Apis::CloudbuildV1::GcsLocation]
-        attr_accessor :proxy_ssl_ca_info
       
         def initialize(**args)
            update!(**args)
@@ -2833,7 +2795,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @proxy_secret_version_name = args[:proxy_secret_version_name] if args.key?(:proxy_secret_version_name)
-          @proxy_ssl_ca_info = args[:proxy_ssl_ca_info] if args.key?(:proxy_ssl_ca_info)
         end
       end
       
