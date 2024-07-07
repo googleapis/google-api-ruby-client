@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuxiliaryVersionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,7 +82,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CdcConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudSqlConnectionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudSqlMigrationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompleteMigrationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LimitConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBackupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +221,12 @@ module Google
       end
       
       class ListMetadataImportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMigrationExecutionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -233,6 +281,12 @@ module Google
       end
       
       class MetadataManagementActivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MigrationExecution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -398,6 +458,16 @@ module Google
         end
       end
       
+      class AutoscalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_enabled, as: 'autoscalingEnabled'
+          property :autoscaling_factor, as: 'autoscalingFactor'
+          property :limit_config, as: 'limitConfig', class: Google::Apis::MetastoreV1::LimitConfig, decorator: Google::Apis::MetastoreV1::LimitConfig::Representation
+      
+        end
+      end
+      
       class AuxiliaryVersionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -440,7 +510,56 @@ module Google
         end
       end
       
+      class CancelMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CdcConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :password, as: 'password'
+          property :reverse_proxy_subnet, as: 'reverseProxySubnet'
+          property :root_path, as: 'rootPath'
+          property :subnet_ip_range, as: 'subnetIpRange'
+          property :username, as: 'username'
+          property :vpc_network, as: 'vpcNetwork'
+        end
+      end
+      
+      class CloudSqlConnectionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hive_database_name, as: 'hiveDatabaseName'
+          property :instance_connection_name, as: 'instanceConnectionName'
+          property :ip_address, as: 'ipAddress'
+          property :nat_subnet, as: 'natSubnet'
+          property :password, as: 'password'
+          property :port, as: 'port'
+          property :proxy_subnet, as: 'proxySubnet'
+          property :username, as: 'username'
+        end
+      end
+      
+      class CloudSqlMigrationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cdc_config, as: 'cdcConfig', class: Google::Apis::MetastoreV1::CdcConfig, decorator: Google::Apis::MetastoreV1::CdcConfig::Representation
+      
+          property :cloud_sql_connection_config, as: 'cloudSqlConnectionConfig', class: Google::Apis::MetastoreV1::CloudSqlConnectionConfig, decorator: Google::Apis::MetastoreV1::CloudSqlConnectionConfig::Representation
+      
+        end
+      end
+      
+      class CompleteMigrationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -569,6 +688,14 @@ module Google
         end
       end
       
+      class LimitConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_scaling_factor, as: 'maxScalingFactor'
+          property :min_scaling_factor, as: 'minScalingFactor'
+        end
+      end
+      
       class ListBackupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -602,6 +729,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :metadata_imports, as: 'metadataImports', class: Google::Apis::MetastoreV1::MetadataImport, decorator: Google::Apis::MetastoreV1::MetadataImport::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListMigrationExecutionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :migration_executions, as: 'migrationExecutions', class: Google::Apis::MetastoreV1::MigrationExecution, decorator: Google::Apis::MetastoreV1::MigrationExecution::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -696,6 +833,20 @@ module Google
       
           collection :restores, as: 'restores', class: Google::Apis::MetastoreV1::Restore, decorator: Google::Apis::MetastoreV1::Restore::Representation
       
+        end
+      end
+      
+      class MigrationExecution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_sql_migration_config, as: 'cloudSqlMigrationConfig', class: Google::Apis::MetastoreV1::CloudSqlMigrationConfig, decorator: Google::Apis::MetastoreV1::CloudSqlMigrationConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :phase, as: 'phase'
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
         end
       end
       
@@ -806,6 +957,8 @@ module Google
       class ScalingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_config, as: 'autoscalingConfig', class: Google::Apis::MetastoreV1::AutoscalingConfig, decorator: Google::Apis::MetastoreV1::AutoscalingConfig::Representation
+      
           property :instance_size, as: 'instanceSize'
           property :scaling_factor, as: 'scalingFactor'
         end
@@ -876,6 +1029,15 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::MetastoreV1::Policy, decorator: Google::Apis::MetastoreV1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class StartMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :migration_execution, as: 'migrationExecution', class: Google::Apis::MetastoreV1::MigrationExecution, decorator: Google::Apis::MetastoreV1::MigrationExecution::Representation
+      
+          property :request_id, as: 'requestId'
         end
       end
       
