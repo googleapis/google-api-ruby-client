@@ -446,8 +446,8 @@ module Google
         
         # Create an association between a GCP project and a GitHub Enterprise server.
         # @param [String] parent
-        #   Required. Name of the parent project. For example: projects/`$project_number`
-        #   or projects/`$project_id`
+        #   Name of the parent project. For example: projects/`$project_number` or
+        #   projects/`$project_id`
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
         # @param [String] ghe_config_id
         #   Optional. The ID to use for the GithubEnterpriseConfig, which will become the
@@ -1496,8 +1496,8 @@ module Google
         
         # Create an association between a GCP project and a GitHub Enterprise server.
         # @param [String] parent
-        #   Required. Name of the parent project. For example: projects/`$project_number`
-        #   or projects/`$project_id`
+        #   Name of the parent project. For example: projects/`$project_number` or
+        #   projects/`$project_id`
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
         # @param [String] ghe_config_id
         #   Optional. The ID to use for the GithubEnterpriseConfig, which will become the
