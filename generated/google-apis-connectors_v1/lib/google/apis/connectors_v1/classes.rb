@@ -218,6 +218,11 @@ module Google
         attr_accessor :enable_pkce
         alias_method :enable_pkce?, :enable_pkce
       
+        # Optional. Omit query params from the redirect URI.
+        # Corresponds to the JSON property `omitQueryParams`
+        # @return [String]
+        attr_accessor :omit_query_params
+      
         # The scopes for which the user will authorize Google Cloud Connectors on the
         # connector data source.
         # Corresponds to the JSON property `scopes`
@@ -237,6 +242,7 @@ module Google
         def update!(**args)
           @client_id = args[:client_id] if args.key?(:client_id)
           @enable_pkce = args[:enable_pkce] if args.key?(:enable_pkce)
+          @omit_query_params = args[:omit_query_params] if args.key?(:omit_query_params)
           @scopes = args[:scopes] if args.key?(:scopes)
           @uri = args[:uri] if args.key?(:uri)
         end

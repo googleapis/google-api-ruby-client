@@ -874,6 +874,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_id, as: 'clientId'
           property :enable_pkce, as: 'enablePkce'
+          property :omit_query_params, as: 'omitQueryParams'
           collection :scopes, as: 'scopes'
           property :uri, as: 'uri'
         end
