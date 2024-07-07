@@ -3702,7 +3702,7 @@ module Google
       
         # Output only. Resource name of the Message, of the form `projects/`project_id`/
         # locations/`location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7_v2_store_id`/
-        # messages/`message_id``. Assigned by the server.
+        # messages/`message_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
