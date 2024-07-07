@@ -22,6 +22,24 @@ module Google
   module Apis
     module TasksV1
       
+      class AssignmentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DriveResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpaceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Task
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -52,9 +70,38 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssignmentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :drive_resource_info, as: 'driveResourceInfo', class: Google::Apis::TasksV1::DriveResourceInfo, decorator: Google::Apis::TasksV1::DriveResourceInfo::Representation
+      
+          property :link_to_task, as: 'linkToTask'
+          property :space_info, as: 'spaceInfo', class: Google::Apis::TasksV1::SpaceInfo, decorator: Google::Apis::TasksV1::SpaceInfo::Representation
+      
+          property :surface_type, as: 'surfaceType'
+        end
+      end
+      
+      class DriveResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :drive_file_id, as: 'driveFileId'
+          property :resource_key, as: 'resourceKey'
+        end
+      end
+      
+      class SpaceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space, as: 'space'
+        end
+      end
+      
       class Task
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignment_info, as: 'assignmentInfo', class: Google::Apis::TasksV1::AssignmentInfo, decorator: Google::Apis::TasksV1::AssignmentInfo::Representation
+      
           property :completed, as: 'completed'
           property :deleted, as: 'deleted'
           property :due, as: 'due'

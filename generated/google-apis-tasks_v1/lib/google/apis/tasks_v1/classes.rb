@@ -22,9 +22,102 @@ module Google
   module Apis
     module TasksV1
       
+      # Information about the source of the task assignment (Document, Chat Space).
+      class AssignmentInfo
+        include Google::Apis::Core::Hashable
+      
+        # Information about the Drive resource where a task was assigned from (the
+        # document, sheet, etc.).
+        # Corresponds to the JSON property `driveResourceInfo`
+        # @return [Google::Apis::TasksV1::DriveResourceInfo]
+        attr_accessor :drive_resource_info
+      
+        # Output only. An absolute link to the original task in the surface of
+        # assignment (Docs, Chat spaces, etc.).
+        # Corresponds to the JSON property `linkToTask`
+        # @return [String]
+        attr_accessor :link_to_task
+      
+        # Information about the Chat Space where a task was assigned from.
+        # Corresponds to the JSON property `spaceInfo`
+        # @return [Google::Apis::TasksV1::SpaceInfo]
+        attr_accessor :space_info
+      
+        # Output only. The type of surface this assigned task originates from. Currently
+        # limited to DOCUMENT or SPACE.
+        # Corresponds to the JSON property `surfaceType`
+        # @return [String]
+        attr_accessor :surface_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drive_resource_info = args[:drive_resource_info] if args.key?(:drive_resource_info)
+          @link_to_task = args[:link_to_task] if args.key?(:link_to_task)
+          @space_info = args[:space_info] if args.key?(:space_info)
+          @surface_type = args[:surface_type] if args.key?(:surface_type)
+        end
+      end
+      
+      # Information about the Drive resource where a task was assigned from (the
+      # document, sheet, etc.).
+      class DriveResourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Identifier of the file in the Drive API.
+        # Corresponds to the JSON property `driveFileId`
+        # @return [String]
+        attr_accessor :drive_file_id
+      
+        # Output only. Resource key required to access files shared via a shared link.
+        # Not required for all files. See also developers.google.com/drive/api/guides/
+        # resource-keys.
+        # Corresponds to the JSON property `resourceKey`
+        # @return [String]
+        attr_accessor :resource_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drive_file_id = args[:drive_file_id] if args.key?(:drive_file_id)
+          @resource_key = args[:resource_key] if args.key?(:resource_key)
+        end
+      end
+      
+      # Information about the Chat Space where a task was assigned from.
+      class SpaceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The Chat space where this task originates from. The format is "
+        # spaces/`space`".
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @space = args[:space] if args.key?(:space)
+        end
+      end
+      
       # 
       class Task
         include Google::Apis::Core::Hashable
+      
+        # Information about the source of the task assignment (Document, Chat Space).
+        # Corresponds to the JSON property `assignmentInfo`
+        # @return [Google::Apis::TasksV1::AssignmentInfo]
+        attr_accessor :assignment_info
       
         # Completion date of the task (as a RFC 3339 timestamp). This field is omitted
         # if the task has not been completed.
@@ -32,7 +125,11 @@ module Google
         # @return [String]
         attr_accessor :completed
       
-        # Flag indicating whether the task has been deleted. The default is False.
+        # Flag indicating whether the task has been deleted. For assigned tasks this
+        # field is read-only. They can only be deleted by calling tasks.delete, in which
+        # case both the assigned task and the original task (in Docs or Chat Spaces) are
+        # deleted. To delete the assigned task only, navigate to the assignment surface
+        # and unassign the task from there. The default is False.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
@@ -74,14 +171,16 @@ module Google
         # @return [Array<Google::Apis::TasksV1::Task::Link>]
         attr_accessor :links
       
-        # Notes describing the task. Optional. Maximum length allowed: 8192 characters.
+        # Notes describing the task. Tasks assigned from Google Docs cannot have notes.
+        # Optional. Maximum length allowed: 8192 characters.
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
       
         # Output only. Parent task identifier. This field is omitted if it is a top-
-        # level task. This field is read-only. Use the "move" method to move the task
-        # under a different parent or to the top level.
+        # level task. Use the "move" method to move the task under a different parent or
+        # to the top level. A parent task can never be an assigned task (from Chat
+        # Spaces, Docs). This field is read-only.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -128,6 +227,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assignment_info = args[:assignment_info] if args.key?(:assignment_info)
           @completed = args[:completed] if args.key?(:completed)
           @deleted = args[:deleted] if args.key?(:deleted)
           @due = args[:due] if args.key?(:due)
