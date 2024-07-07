@@ -51,7 +51,9 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Deletes the authenticated user's specified task list.
+        # Deletes the authenticated user's specified task list. If the list contains
+        # assigned tasks, both the assigned tasks and the original tasks in the
+        # assignment surface (Docs, Chat Spaces) are deleted.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] fields
@@ -272,7 +274,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified task from the task list.
+        # Deletes the specified task from the task list. If the task is assigned, both
+        # the assigned task and the original task (in Docs, Chat Spaces) are deleted. To
+        # delete the assigned task only, navigate to the assignment surface and unassign
+        # the task from there.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] task
@@ -336,14 +341,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new task on the specified task list. A user can have up to 20,000
-        # non-hidden tasks per list and up to 100,000 tasks in total at a time.
+        # Creates a new task on the specified task list. Tasks assigned from Docs or
+        # Chat Spaces cannot be inserted from Tasks Public API; they can only be created
+        # by assigning them from Docs or Chat Spaces. A user can have up to 20,000 non-
+        # hidden tasks per list and up to 100,000 tasks in total at a time.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [Google::Apis::TasksV1::Task] task_object
         # @param [String] parent
         #   Parent task identifier. If the task is created at the top level, this
-        #   parameter is omitted. Optional.
+        #   parameter is omitted. An assigned task cannot be a parent task, nor can it
+        #   have a parent. Setting the parent to an assigned task results in failure of
+        #   the request. Optional.
         # @param [String] previous
         #   Previous sibling task identifier. If the task is created at the first position
         #   among its siblings, this parameter is omitted. Optional.
@@ -378,8 +387,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all tasks in the specified task list. A user can have up to 20,000 non-
-        # hidden tasks per list and up to 100,000 tasks in total at a time.
+        # Returns all tasks in the specified task list. Does not return assigned tasks
+        # be default (from Docs, Chat Spaces). A user can have up to 20,000 non-hidden
+        # tasks per list and up to 100,000 tasks in total at a time.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] completed_max
@@ -399,10 +409,13 @@ module Google
         #   allowed: 100).
         # @param [String] page_token
         #   Token specifying the result page to return. Optional.
+        # @param [Boolean] show_assigned
+        #   Optional. Flag indicating whether tasks assigned to the current user are
+        #   returned in the result. Optional. The default is False.
         # @param [Boolean] show_completed
-        #   Flag indicating whether completed tasks are returned in the result. Optional.
-        #   The default is True. Note that showHidden must also be True to show tasks
-        #   completed in first party clients, such as the web UI and Google's mobile apps.
+        #   Flag indicating whether completed tasks are returned in the result. Note that
+        #   showHidden must also be True to show tasks completed in first party clients,
+        #   such as the web UI and Google's mobile apps. Optional. The default is True.
         # @param [Boolean] show_deleted
         #   Flag indicating whether deleted tasks are returned in the result. Optional.
         #   The default is False.
@@ -429,7 +442,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_tasks(tasklist, completed_max: nil, completed_min: nil, due_max: nil, due_min: nil, max_results: nil, page_token: nil, show_completed: nil, show_deleted: nil, show_hidden: nil, updated_min: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_tasks(tasklist, completed_max: nil, completed_min: nil, due_max: nil, due_min: nil, max_results: nil, page_token: nil, show_assigned: nil, show_completed: nil, show_deleted: nil, show_hidden: nil, updated_min: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'tasks/v1/lists/{tasklist}/tasks', options)
           command.response_representation = Google::Apis::TasksV1::Tasks::Representation
           command.response_class = Google::Apis::TasksV1::Tasks
@@ -440,6 +453,7 @@ module Google
           command.query['dueMin'] = due_min unless due_min.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showAssigned'] = show_assigned unless show_assigned.nil?
           command.query['showCompleted'] = show_completed unless show_completed.nil?
           command.query['showDeleted'] = show_deleted unless show_deleted.nil?
           command.query['showHidden'] = show_hidden unless show_hidden.nil?
@@ -449,17 +463,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Moves the specified task to another position in the task list. This can
-        # include putting it as a child task under a new parent and/or move it to a
-        # different position among its sibling tasks. A user can have up to 2,000
-        # subtasks per task.
+        # Moves the specified task to another position in the destination task list. If
+        # the destination list is not specified, the task is moved within its current
+        # list. This can include putting it as a child task under a new parent and/or
+        # move it to a different position among its sibling tasks. A user can have up to
+        # 2,000 subtasks per task.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] task
         #   Task identifier.
+        # @param [String] destination_tasklist
+        #   Optional. Destination task list identifier. If set, the task is moved from
+        #   tasklist to the destinationTasklist list. Otherwise the task is moved within
+        #   its current list. Recurrent tasks cannot currently be moved between lists.
+        #   Optional.
         # @param [String] parent
         #   New parent task identifier. If the task is moved to the top level, this
-        #   parameter is omitted. Optional.
+        #   parameter is omitted. Assigned tasks can not be set as parent task (have
+        #   subtasks) or be moved under a parent task (become subtasks). Optional.
         # @param [String] previous
         #   New previous sibling task identifier. If the task is moved to the first
         #   position among its siblings, this parameter is omitted. Optional.
@@ -480,12 +501,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_task(tasklist, task, parent: nil, previous: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def move_task(tasklist, task, destination_tasklist: nil, parent: nil, previous: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'tasks/v1/lists/{tasklist}/tasks/{task}/move', options)
           command.response_representation = Google::Apis::TasksV1::Task::Representation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.params['task'] = task unless task.nil?
+          command.query['destinationTasklist'] = destination_tasklist unless destination_tasklist.nil?
           command.query['parent'] = parent unless parent.nil?
           command.query['previous'] = previous unless previous.nil?
           command.query['fields'] = fields unless fields.nil?
