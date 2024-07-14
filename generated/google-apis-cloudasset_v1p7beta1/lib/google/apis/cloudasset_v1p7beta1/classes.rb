@@ -1477,6 +1477,8 @@ module Google
       
         # Sources that this EgressPolicy authorizes access from. If this field is not
         # empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
+        # TODO (b/332744441): annotate this field with custom_org_policy_accessibility
+        # when cl/640698580 will be rolled out.
         # Corresponds to the JSON property `sources`
         # @return [Array<Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1EgressSource>]
         attr_accessor :sources
@@ -1552,7 +1554,9 @@ module Google
         # name is not specified, only resources within the perimeter can be accessed
         # through Google Cloud calls with request origins within the perimeter. Example:
         # `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified
-        # for `access_level`, then all EgressSources will be allowed.
+        # for `access_level`, then all EgressSources will be allowed. TODO (b/332744441):
+        # annotate this field with custom_org_policy_accessibility when cl/640698580
+        # will be rolled out.
         # Corresponds to the JSON property `accessLevel`
         # @return [String]
         attr_accessor :access_level
