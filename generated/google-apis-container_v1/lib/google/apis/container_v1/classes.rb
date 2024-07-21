@@ -220,6 +220,11 @@ module Google
         # @return [Google::Apis::ContainerV1::NetworkPolicyConfig]
         attr_accessor :network_policy_config
       
+        # Configuration options for the Ray Operator add-on.
+        # Corresponds to the JSON property `rayOperatorConfig`
+        # @return [Google::Apis::ContainerV1::RayOperatorConfig]
+        attr_accessor :ray_operator_config
+      
         # Configuration for the Stateful HA add-on.
         # Corresponds to the JSON property `statefulHaConfig`
         # @return [Google::Apis::ContainerV1::StatefulHaConfig]
@@ -242,6 +247,7 @@ module Google
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
+          @ray_operator_config = args[:ray_operator_config] if args.key?(:ray_operator_config)
           @stateful_ha_config = args[:stateful_ha_config] if args.key?(:stateful_ha_config)
         end
       end
@@ -5465,6 +5471,78 @@ module Google
         def update!(**args)
           @range_name = args[:range_name] if args.key?(:range_name)
           @utilization = args[:utilization] if args.key?(:utilization)
+        end
+      end
+      
+      # RayClusterLoggingConfig specifies configuration of Ray logging.
+      class RayClusterLoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable log collection for Ray clusters.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # RayClusterMonitoringConfig specifies monitoring configuration for Ray clusters.
+      class RayClusterMonitoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable metrics collection for Ray clusters.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Configuration options for the Ray Operator add-on.
+      class RayOperatorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Ray Operator addon is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # RayClusterLoggingConfig specifies configuration of Ray logging.
+        # Corresponds to the JSON property `rayClusterLoggingConfig`
+        # @return [Google::Apis::ContainerV1::RayClusterLoggingConfig]
+        attr_accessor :ray_cluster_logging_config
+      
+        # RayClusterMonitoringConfig specifies monitoring configuration for Ray clusters.
+        # Corresponds to the JSON property `rayClusterMonitoringConfig`
+        # @return [Google::Apis::ContainerV1::RayClusterMonitoringConfig]
+        attr_accessor :ray_cluster_monitoring_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @ray_cluster_logging_config = args[:ray_cluster_logging_config] if args.key?(:ray_cluster_logging_config)
+          @ray_cluster_monitoring_config = args[:ray_cluster_monitoring_config] if args.key?(:ray_cluster_monitoring_config)
         end
       end
       
