@@ -85,12 +85,13 @@ def pr_single_gem api, version, index, total
     puts "(#{index}/#{total}) Pull request already exists for google-apis-#{api}_#{version}", :yellow
     return
   end
-  approval_message = "Rubber-stamped client auto-generation!"
+  approval_message = approval_token ? "Rubber-stamped client auto-generation!" : nil
+  labels = approval_token ? ["automerge"] : nil
   result = yoshi_pr_generator.capture enabled: !git_remote.nil?,
                                       remote: git_remote,
                                       branch_name: branch_name,
                                       commit_message: commit_message,
-                                      labels: ["automerge"],
+                                      labels: labels,
                                       auto_approve: approval_message,
                                       approval_token: approval_token do
     regen_single_gem api, version
@@ -115,12 +116,13 @@ def pr_clean_old_gems
     puts "Pull request already exists for cleaning obsolete gems", :yellow
     return
   end
-  approval_message = "Rubber-stamped cleanup of obsolete gems!"
+  approval_message = approval_token ? "Rubber-stamped cleanup of obsolete gems!" : nil
+  labels = approval_token ? ["automerge"] : nil
   result = yoshi_pr_generator.capture enabled: !git_remote.nil?,
                                       remote: git_remote,
                                       branch_name: branch_name,
                                       commit_message: commit_message,
-                                      labels: ["automerge"],
+                                      labels: labels,
                                       auto_approve: approval_message,
                                       approval_token: approval_token do
     clean_old_gems
