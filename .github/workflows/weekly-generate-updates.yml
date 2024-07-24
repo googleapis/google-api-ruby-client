@@ -9,14 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
-      APPROVAL_GITHUB_TOKEN: ${{secrets.YOSHI_APPROVER_TOKEN}}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
-      - name: Install Ruby 3.2
+        uses: actions/checkout@v4
+      - name: Install Ruby 3.3
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2"
+          ruby-version: "3.3"
       - name: Install tools
         run: |
           gem install --no-document toys
