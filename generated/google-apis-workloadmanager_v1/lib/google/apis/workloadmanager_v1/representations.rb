@@ -405,6 +405,7 @@ module Google
       class AssetLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ccfe_rms_path, as: 'ccfeRmsPath'
           property :expected, as: 'expected', class: Google::Apis::WorkloadmanagerV1::IsolationExpectations, decorator: Google::Apis::WorkloadmanagerV1::IsolationExpectations::Representation
       
           collection :extra_parameters, as: 'extraParameters', class: Google::Apis::WorkloadmanagerV1::ExtraParameter, decorator: Google::Apis::WorkloadmanagerV1::ExtraParameter::Representation
@@ -951,6 +952,7 @@ module Google
       class SpannerLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_name, as: 'backupName'
           collection :db_name, as: 'dbName'
         end
       end
