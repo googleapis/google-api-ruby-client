@@ -754,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SaveRestrictions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityAnimation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1420,6 +1426,8 @@ module Google
       
           property :rotating_barcode, as: 'rotatingBarcode', class: Google::Apis::WalletobjectsV1::RotatingBarcode, decorator: Google::Apis::WalletobjectsV1::RotatingBarcode::Representation
       
+          property :save_restrictions, as: 'saveRestrictions', class: Google::Apis::WalletobjectsV1::SaveRestrictions, decorator: Google::Apis::WalletobjectsV1::SaveRestrictions::Representation
+      
           property :seat_info, as: 'seatInfo', class: Google::Apis::WalletobjectsV1::EventSeat, decorator: Google::Apis::WalletobjectsV1::EventSeat::Representation
       
           property :smart_tap_redemption_value, as: 'smartTapRedemptionValue'
@@ -1649,6 +1657,8 @@ module Google
       
           property :rotating_barcode, as: 'rotatingBarcode', class: Google::Apis::WalletobjectsV1::RotatingBarcode, decorator: Google::Apis::WalletobjectsV1::RotatingBarcode::Representation
       
+          property :save_restrictions, as: 'saveRestrictions', class: Google::Apis::WalletobjectsV1::SaveRestrictions, decorator: Google::Apis::WalletobjectsV1::SaveRestrictions::Representation
+      
           property :security_program_logo, as: 'securityProgramLogo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
       
           property :smart_tap_redemption_value, as: 'smartTapRedemptionValue'
@@ -1765,6 +1775,8 @@ module Google
           property :pass_constraints, as: 'passConstraints', class: Google::Apis::WalletobjectsV1::PassConstraints, decorator: Google::Apis::WalletobjectsV1::PassConstraints::Representation
       
           property :rotating_barcode, as: 'rotatingBarcode', class: Google::Apis::WalletobjectsV1::RotatingBarcode, decorator: Google::Apis::WalletobjectsV1::RotatingBarcode::Representation
+      
+          property :save_restrictions, as: 'saveRestrictions', class: Google::Apis::WalletobjectsV1::SaveRestrictions, decorator: Google::Apis::WalletobjectsV1::SaveRestrictions::Representation
       
           property :smart_tap_redemption_value, as: 'smartTapRedemptionValue'
           property :state, as: 'state'
@@ -1919,6 +1931,8 @@ module Google
       
           property :pin, as: 'pin'
           property :rotating_barcode, as: 'rotatingBarcode', class: Google::Apis::WalletobjectsV1::RotatingBarcode, decorator: Google::Apis::WalletobjectsV1::RotatingBarcode::Representation
+      
+          property :save_restrictions, as: 'saveRestrictions', class: Google::Apis::WalletobjectsV1::SaveRestrictions, decorator: Google::Apis::WalletobjectsV1::SaveRestrictions::Representation
       
           property :smart_tap_redemption_value, as: 'smartTapRedemptionValue'
           property :state, as: 'state'
@@ -2246,6 +2260,8 @@ module Google
       
           property :rotating_barcode, as: 'rotatingBarcode', class: Google::Apis::WalletobjectsV1::RotatingBarcode, decorator: Google::Apis::WalletobjectsV1::RotatingBarcode::Representation
       
+          property :save_restrictions, as: 'saveRestrictions', class: Google::Apis::WalletobjectsV1::SaveRestrictions, decorator: Google::Apis::WalletobjectsV1::SaveRestrictions::Representation
+      
           property :secondary_loyalty_points, as: 'secondaryLoyaltyPoints', class: Google::Apis::WalletobjectsV1::LoyaltyPoints, decorator: Google::Apis::WalletobjectsV1::LoyaltyPoints::Representation
       
           property :smart_tap_redemption_value, as: 'smartTapRedemptionValue'
@@ -2541,6 +2557,8 @@ module Google
       
           property :rotating_barcode, as: 'rotatingBarcode', class: Google::Apis::WalletobjectsV1::RotatingBarcode, decorator: Google::Apis::WalletobjectsV1::RotatingBarcode::Representation
       
+          property :save_restrictions, as: 'saveRestrictions', class: Google::Apis::WalletobjectsV1::SaveRestrictions, decorator: Google::Apis::WalletobjectsV1::SaveRestrictions::Representation
+      
           property :smart_tap_redemption_value, as: 'smartTapRedemptionValue'
           property :state, as: 'state'
           collection :text_modules_data, as: 'textModulesData', class: Google::Apis::WalletobjectsV1::TextModuleData, decorator: Google::Apis::WalletobjectsV1::TextModuleData::Representation
@@ -2707,6 +2725,13 @@ module Google
           property :period_millis, :numeric_string => true, as: 'periodMillis'
           property :start_date_time, as: 'startDateTime'
           collection :values, as: 'values'
+        end
+      end
+      
+      class SaveRestrictions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restrict_to_email_sha256, as: 'restrictToEmailSha256'
         end
       end
       
@@ -3006,6 +3031,8 @@ module Google
           property :purchase_details, as: 'purchaseDetails', class: Google::Apis::WalletobjectsV1::PurchaseDetails, decorator: Google::Apis::WalletobjectsV1::PurchaseDetails::Representation
       
           property :rotating_barcode, as: 'rotatingBarcode', class: Google::Apis::WalletobjectsV1::RotatingBarcode, decorator: Google::Apis::WalletobjectsV1::RotatingBarcode::Representation
+      
+          property :save_restrictions, as: 'saveRestrictions', class: Google::Apis::WalletobjectsV1::SaveRestrictions, decorator: Google::Apis::WalletobjectsV1::SaveRestrictions::Representation
       
           property :smart_tap_redemption_value, as: 'smartTapRedemptionValue'
           property :state, as: 'state'

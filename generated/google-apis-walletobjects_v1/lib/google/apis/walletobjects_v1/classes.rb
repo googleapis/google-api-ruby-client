@@ -2017,6 +2017,12 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::RotatingBarcode]
         attr_accessor :rotating_barcode
       
+        # Defines restrictions on the object that will be verified during save. Note:
+        # this is an advanced feature, please contact Google for implementation support.
+        # Corresponds to the JSON property `saveRestrictions`
+        # @return [Google::Apis::WalletobjectsV1::SaveRestrictions]
+        attr_accessor :save_restrictions
+      
         # Seating details for this ticket.
         # Corresponds to the JSON property `seatInfo`
         # @return [Google::Apis::WalletobjectsV1::EventSeat]
@@ -2101,6 +2107,7 @@ module Google
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @reservation_info = args[:reservation_info] if args.key?(:reservation_info)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
+          @save_restrictions = args[:save_restrictions] if args.key?(:save_restrictions)
           @seat_info = args[:seat_info] if args.key?(:seat_info)
           @smart_tap_redemption_value = args[:smart_tap_redemption_value] if args.key?(:smart_tap_redemption_value)
           @state = args[:state] if args.key?(:state)
@@ -2487,8 +2494,7 @@ module Google
         # millisecond precision. eg: `2027-03-05T06:30:00` This should be the local date/
         # time at the airport (not a UTC time). Google will reject the request if UTC
         # offset is provided. Time zones will be calculated by Google based on departure
-        # airport. If this is not set, Google will set it based on data from other
-        # sources.
+        # airport.
         # Corresponds to the JSON property `localBoardingDateTime`
         # @return [String]
         attr_accessor :local_boarding_date_time
@@ -2502,8 +2508,7 @@ module Google
         # specified up to millisecond precision. eg: `2027-03-05T06:30:00` This should
         # be the local date/time at the airport (not a UTC time). Google will reject the
         # request if UTC offset is provided. Time zones will be calculated by Google
-        # based on arrival airport. If this is not set, Google will set it based on data
-        # from other sources.
+        # based on arrival airport.
         # Corresponds to the JSON property `localEstimatedOrActualArrivalDateTime`
         # @return [String]
         attr_accessor :local_estimated_or_actual_arrival_date_time
@@ -2517,8 +2522,7 @@ module Google
         # time without an offset. Time may be specified up to millisecond precision. eg:
         # `2027-03-05T06:30:00` This should be the local date/time at the airport (not a
         # UTC time). Google will reject the request if UTC offset is provided. Time
-        # zones will be calculated by Google based on departure airport. If this is not
-        # set, Google will set it based on data from other sources.
+        # zones will be calculated by Google based on departure airport.
         # Corresponds to the JSON property `localEstimatedOrActualDepartureDateTime`
         # @return [String]
         attr_accessor :local_estimated_or_actual_departure_date_time
@@ -2541,8 +2545,7 @@ module Google
         # date/time without an offset. Time may be specified up to millisecond precision.
         # eg: `2027-03-05T06:30:00` This should be the local date/time at the airport (
         # not a UTC time). Google will reject the request if UTC offset is provided.
-        # Time zones will be calculated by Google based on arrival airport. If this is
-        # not set, Google will set it based on data from other sources.
+        # Time zones will be calculated by Google based on arrival airport.
         # Corresponds to the JSON property `localScheduledArrivalDateTime`
         # @return [String]
         attr_accessor :local_scheduled_arrival_date_time
@@ -2933,6 +2936,12 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::RotatingBarcode]
         attr_accessor :rotating_barcode
       
+        # Defines restrictions on the object that will be verified during save. Note:
+        # this is an advanced feature, please contact Google for implementation support.
+        # Corresponds to the JSON property `saveRestrictions`
+        # @return [Google::Apis::WalletobjectsV1::SaveRestrictions]
+        attr_accessor :save_restrictions
+      
         # Wrapping type for Google hosted images. Next ID: 7
         # Corresponds to the JSON property `securityProgramLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
@@ -2999,6 +3008,7 @@ module Google
           @passenger_name = args[:passenger_name] if args.key?(:passenger_name)
           @reservation_info = args[:reservation_info] if args.key?(:reservation_info)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
+          @save_restrictions = args[:save_restrictions] if args.key?(:save_restrictions)
           @security_program_logo = args[:security_program_logo] if args.key?(:security_program_logo)
           @smart_tap_redemption_value = args[:smart_tap_redemption_value] if args.key?(:smart_tap_redemption_value)
           @state = args[:state] if args.key?(:state)
@@ -3357,6 +3367,12 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::RotatingBarcode]
         attr_accessor :rotating_barcode
       
+        # Defines restrictions on the object that will be verified during save. Note:
+        # this is an advanced feature, please contact Google for implementation support.
+        # Corresponds to the JSON property `saveRestrictions`
+        # @return [Google::Apis::WalletobjectsV1::SaveRestrictions]
+        attr_accessor :save_restrictions
+      
         # The value that will be transmitted to a Smart Tap certified terminal over NFC
         # for this object. The class level fields `enableSmartTap` and `
         # redemptionIssuers` must also be set up correctly in order for the pass to
@@ -3421,6 +3437,7 @@ module Google
           @notifications = args[:notifications] if args.key?(:notifications)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
+          @save_restrictions = args[:save_restrictions] if args.key?(:save_restrictions)
           @smart_tap_redemption_value = args[:smart_tap_redemption_value] if args.key?(:smart_tap_redemption_value)
           @state = args[:state] if args.key?(:state)
           @subheader = args[:subheader] if args.key?(:subheader)
@@ -3956,6 +3973,12 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::RotatingBarcode]
         attr_accessor :rotating_barcode
       
+        # Defines restrictions on the object that will be verified during save. Note:
+        # this is an advanced feature, please contact Google for implementation support.
+        # Corresponds to the JSON property `saveRestrictions`
+        # @return [Google::Apis::WalletobjectsV1::SaveRestrictions]
+        attr_accessor :save_restrictions
+      
         # The value that will be transmitted to a Smart Tap certified terminal over NFC
         # for this object. The class level fields `enableSmartTap` and `
         # redemptionIssuers` must also be set up correctly in order for the pass to
@@ -4018,6 +4041,7 @@ module Google
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @pin = args[:pin] if args.key?(:pin)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
+          @save_restrictions = args[:save_restrictions] if args.key?(:save_restrictions)
           @smart_tap_redemption_value = args[:smart_tap_redemption_value] if args.key?(:smart_tap_redemption_value)
           @state = args[:state] if args.key?(:state)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
@@ -5109,6 +5133,12 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::RotatingBarcode]
         attr_accessor :rotating_barcode
       
+        # Defines restrictions on the object that will be verified during save. Note:
+        # this is an advanced feature, please contact Google for implementation support.
+        # Corresponds to the JSON property `saveRestrictions`
+        # @return [Google::Apis::WalletobjectsV1::SaveRestrictions]
+        attr_accessor :save_restrictions
+      
         # The secondary loyalty reward points label, balance, and type. Shown in
         # addition to the primary loyalty points.
         # Corresponds to the JSON property `secondaryLoyaltyPoints`
@@ -5179,6 +5209,7 @@ module Google
           @messages = args[:messages] if args.key?(:messages)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
+          @save_restrictions = args[:save_restrictions] if args.key?(:save_restrictions)
           @secondary_loyalty_points = args[:secondary_loyalty_points] if args.key?(:secondary_loyalty_points)
           @smart_tap_redemption_value = args[:smart_tap_redemption_value] if args.key?(:smart_tap_redemption_value)
           @state = args[:state] if args.key?(:state)
@@ -6318,6 +6349,12 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::RotatingBarcode]
         attr_accessor :rotating_barcode
       
+        # Defines restrictions on the object that will be verified during save. Note:
+        # this is an advanced feature, please contact Google for implementation support.
+        # Corresponds to the JSON property `saveRestrictions`
+        # @return [Google::Apis::WalletobjectsV1::SaveRestrictions]
+        attr_accessor :save_restrictions
+      
         # The value that will be transmitted to a Smart Tap certified terminal over NFC
         # for this object. The class level fields `enableSmartTap` and `
         # redemptionIssuers` must also be set up correctly in order for the pass to
@@ -6375,6 +6412,7 @@ module Google
           @messages = args[:messages] if args.key?(:messages)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
+          @save_restrictions = args[:save_restrictions] if args.key?(:save_restrictions)
           @smart_tap_redemption_value = args[:smart_tap_redemption_value] if args.key?(:smart_tap_redemption_value)
           @state = args[:state] if args.key?(:state)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
@@ -6912,6 +6950,38 @@ module Google
           @period_millis = args[:period_millis] if args.key?(:period_millis)
           @start_date_time = args[:start_date_time] if args.key?(:start_date_time)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Defines restrictions on the object that will be verified during save. Note:
+      # this is an advanced feature, please contact Google for implementation support.
+      class SaveRestrictions
+        include Google::Apis::Core::Hashable
+      
+        # Restrict the save of the referencing object to the given email address only.
+        # This is the hex output of SHA256 sum of the email address, all lowercase and
+        # without any notations like "." or "+", except "@". For example, for example@
+        # example.com, this value will be
+        # 31c5543c1734d25c7206f5fd591525d0295bec6fe84ff82f946a34fe970a1e66 and for
+        # Example@example.com, this value will be
+        # bc34f262c93ad7122763684ccea6f07fb7f5d8a2d11e60ce15a6f43fe70ce632 If email
+        # address of the logged-in user who tries to save this pass does not match with
+        # the defined value here, users won't be allowed to save this pass. They will
+        # instead be prompted with an error to contact the issuer. This information
+        # should be gathered from the user with an explicit consent via Sign in with
+        # Google integration https://developers.google.com/identity/authentication.
+        # Please contact with support before using Save Restrictions.
+        # Corresponds to the JSON property `restrictToEmailSha256`
+        # @return [String]
+        attr_accessor :restrict_to_email_sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @restrict_to_email_sha256 = args[:restrict_to_email_sha256] if args.key?(:restrict_to_email_sha256)
         end
       end
       
@@ -8005,6 +8075,12 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::RotatingBarcode]
         attr_accessor :rotating_barcode
       
+        # Defines restrictions on the object that will be verified during save. Note:
+        # this is an advanced feature, please contact Google for implementation support.
+        # Corresponds to the JSON property `saveRestrictions`
+        # @return [Google::Apis::WalletobjectsV1::SaveRestrictions]
+        attr_accessor :save_restrictions
+      
         # The value that will be transmitted to a Smart Tap certified terminal over NFC
         # for this object. The class level fields `enableSmartTap` and `
         # redemptionIssuers` must also be set up correctly in order for the pass to
@@ -8117,6 +8193,7 @@ module Google
           @passenger_type = args[:passenger_type] if args.key?(:passenger_type)
           @purchase_details = args[:purchase_details] if args.key?(:purchase_details)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
+          @save_restrictions = args[:save_restrictions] if args.key?(:save_restrictions)
           @smart_tap_redemption_value = args[:smart_tap_redemption_value] if args.key?(:smart_tap_redemption_value)
           @state = args[:state] if args.key?(:state)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
