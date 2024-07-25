@@ -1112,10 +1112,12 @@ module Google
         # occur immediately: * You cannot bind a principal to the custom role in an IAM
         # Policy. * Existing bindings to the custom role are not changed, but they have
         # no effect. * By default, the response from ListRoles does not include the
-        # custom role. You have 7 days to undelete the custom role. After 7 days, the
-        # following changes occur: * The custom role is permanently deleted and cannot
-        # be recovered. * If an IAM policy contains a binding to the custom role, the
-        # binding is permanently removed.
+        # custom role. A deleted custom role still counts toward the [custom role limit](
+        # /iam/quotas#limits) until it is permanently deleted. You have 7 days to
+        # undelete the custom role. After 7 days, the following changes occur: * The
+        # custom role is permanently deleted and cannot be recovered. * If an IAM policy
+        # contains a binding to the custom role, the binding is permanently removed. *
+        # The custom role no longer counts toward your custom role limit.
         # @param [String] name
         #   The `name` parameter's value depends on the target resource for the request,
         #   namely [projects](https://cloud.google.com/iam/docs/reference/rest/v1/projects.
@@ -2658,10 +2660,12 @@ module Google
         # occur immediately: * You cannot bind a principal to the custom role in an IAM
         # Policy. * Existing bindings to the custom role are not changed, but they have
         # no effect. * By default, the response from ListRoles does not include the
-        # custom role. You have 7 days to undelete the custom role. After 7 days, the
-        # following changes occur: * The custom role is permanently deleted and cannot
-        # be recovered. * If an IAM policy contains a binding to the custom role, the
-        # binding is permanently removed.
+        # custom role. A deleted custom role still counts toward the [custom role limit](
+        # /iam/quotas#limits) until it is permanently deleted. You have 7 days to
+        # undelete the custom role. After 7 days, the following changes occur: * The
+        # custom role is permanently deleted and cannot be recovered. * If an IAM policy
+        # contains a binding to the custom role, the binding is permanently removed. *
+        # The custom role no longer counts toward your custom role limit.
         # @param [String] name
         #   The `name` parameter's value depends on the target resource for the request,
         #   namely [projects](https://cloud.google.com/iam/docs/reference/rest/v1/projects.
@@ -3801,40 +3805,6 @@ module Google
           command.response_class = Google::Apis::IamV1::ListServiceAccountKeysResponse
           command.params['name'] = name unless name.nil?
           command.query['keyTypes'] = key_types unless key_types.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Patches a ServiceAccountKey.
-        # @param [String] name
-        #   The resource name of the service account key in the following format `projects/
-        #   `PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``.
-        # @param [Google::Apis::IamV1::PatchServiceAccountKeyRequest] patch_service_account_key_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::IamV1::ServiceAccountKey] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::IamV1::ServiceAccountKey]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_service_account_key(name, patch_service_account_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+name}:patch', options)
-          command.request_representation = Google::Apis::IamV1::PatchServiceAccountKeyRequest::Representation
-          command.request_object = patch_service_account_key_request_object
-          command.response_representation = Google::Apis::IamV1::ServiceAccountKey::Representation
-          command.response_class = Google::Apis::IamV1::ServiceAccountKey
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

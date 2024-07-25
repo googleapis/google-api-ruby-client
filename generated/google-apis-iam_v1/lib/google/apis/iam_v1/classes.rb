@@ -1641,46 +1641,6 @@ module Google
         end
       end
       
-      # The service account key patch request.
-      class PatchServiceAccountKeyRequest
-        include Google::Apis::Core::Hashable
-      
-        # Represents a service account key. A service account has two sets of key-pairs:
-        # user-managed, and system-managed. User-managed key-pairs can be created and
-        # deleted by users. Users are responsible for rotating these keys periodically
-        # to ensure security of their service accounts. Users retain the private key of
-        # these key-pairs, and Google retains ONLY the public key. System-managed keys
-        # are automatically rotated by Google, and are used for signing for a maximum of
-        # two weeks. The rotation process is probabilistic, and usage of the new key
-        # will gradually ramp up and down over the key's lifetime. If you cache the
-        # public key set for a service account, we recommend that you update the cache
-        # every 15 minutes. User-managed keys can be added and removed at any time, so
-        # it is important to update the cache frequently. For Google-managed keys,
-        # Google will publish a key at least 6 hours before it is first used for signing
-        # and will keep publishing it for at least 6 hours after it was last used for
-        # signing. Public keys for all service accounts are also published at the OAuth2
-        # Service Account API.
-        # Corresponds to the JSON property `serviceAccountKey`
-        # @return [Google::Apis::IamV1::ServiceAccountKey]
-        attr_accessor :service_account_key
-      
-        # Required. The update mask to apply to the service account key. Only the
-        # following fields are eligible for patching: - contact - description
-        # Corresponds to the JSON property `updateMask`
-        # @return [String]
-        attr_accessor :update_mask
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @service_account_key = args[:service_account_key] if args.key?(:service_account_key)
-          @update_mask = args[:update_mask] if args.key?(:update_mask)
-        end
-      end
-      
       # The service account patch request. You can patch only the `display_name` and `
       # description` fields. You must use the `update_mask` field to specify which of
       # these fields you want to patch. Only the fields specified in the request are
@@ -2321,23 +2281,6 @@ module Google
       class ServiceAccountKey
         include Google::Apis::Core::Hashable
       
-        # Optional. A user provided email address as the point of contact for this
-        # service account key. Must be an email address. Limit 64 characters.
-        # Corresponds to the JSON property `contact`
-        # @return [String]
-        attr_accessor :contact
-      
-        # Output only. The cloud identity that created this service account key.
-        # Populated automatically when the key is created and not editable by the user.
-        # Corresponds to the JSON property `creator`
-        # @return [String]
-        attr_accessor :creator
-      
-        # Optional. A user provided description of this service account key.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
         # Output only. optional. If the key is disabled, it may have a DisableReason
         # describing why it was disabled.
         # Corresponds to the JSON property `disableReason`
@@ -2421,9 +2364,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @contact = args[:contact] if args.key?(:contact)
-          @creator = args[:creator] if args.key?(:creator)
-          @description = args[:description] if args.key?(:description)
           @disable_reason = args[:disable_reason] if args.key?(:disable_reason)
           @disabled = args[:disabled] if args.key?(:disabled)
           @extended_status = args[:extended_status] if args.key?(:extended_status)
