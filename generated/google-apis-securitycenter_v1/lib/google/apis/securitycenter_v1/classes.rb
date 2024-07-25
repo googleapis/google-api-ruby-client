@@ -383,8 +383,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The resource name of the attack path simulation result that contains the
-        # details regarding this attack exposure score. Example: organizations/123/
-        # simulations/456/attackExposureResults/789
+        # details regarding this attack exposure score. Example: `organizations/123/
+        # simulations/456/attackExposureResults/789`
         # Corresponds to the JSON property `attackExposureResult`
         # @return [String]
         attr_accessor :attack_exposure_result
@@ -519,14 +519,14 @@ module Google
         attr_accessor :display_name
       
         # The name of the resource at this point in the attack path. The format of the
-        # name follows the Cloud Asset Inventory [resource name format]("https://cloud.
-        # google.com/asset-inventory/docs/resource-name-format")
+        # name follows the Cloud Asset Inventory [resource name format](https://cloud.
+        # google.com/asset-inventory/docs/resource-name-format)
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
       
         # The [supported resource type](https://cloud.google.com/asset-inventory/docs/
-        # supported-asset-types")
+        # supported-asset-types)
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -788,8 +788,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The UUID of the Azure management group, for example, "20000000-0001-0000-0000-
-        # 000000000000".
+        # The UUID of the Azure management group, for example, `20000000-0001-0000-0000-
+        # 000000000000`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -866,8 +866,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The UUID of the Azure subscription, for example, "291bba3f-e0a5-47bc-a099-
-        # 3bdcb2a50a05".
+        # The UUID of the Azure subscription, for example, `291bba3f-e0a5-47bc-a099-
+        # 3bdcb2a50a05`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1919,10 +1919,10 @@ module Google
         attr_accessor :enablement_state
       
         # Output only. The resource name of the effective ETD custom module. Its format
-        # is: * "organizations/`organization`/eventThreatDetectionSettings/
-        # effectiveCustomModules/`module`". * "folders/`folder`/
-        # eventThreatDetectionSettings/effectiveCustomModules/`module`". * "projects/`
-        # project`/eventThreatDetectionSettings/effectiveCustomModules/`module`".
+        # is: * `organizations/`organization`/eventThreatDetectionSettings/
+        # effectiveCustomModules/`module``. * `folders/`folder`/
+        # eventThreatDetectionSettings/effectiveCustomModules/`module``. * `projects/`
+        # project`/eventThreatDetectionSettings/effectiveCustomModules/`module``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2032,10 +2032,10 @@ module Google
         attr_accessor :last_editor
       
         # Immutable. The resource name of the Event Threat Detection custom module. Its
-        # format is: * "organizations/`organization`/eventThreatDetectionSettings/
-        # customModules/`module`". * "folders/`folder`/eventThreatDetectionSettings/
-        # customModules/`module`". * "projects/`project`/eventThreatDetectionSettings/
-        # customModules/`module`".
+        # format is: * `organizations/`organization`/eventThreatDetectionSettings/
+        # customModules/`module``. * `folders/`folder`/eventThreatDetectionSettings/
+        # customModules/`module``. * `projects/`project`/eventThreatDetectionSettings/
+        # customModules/`module``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3183,12 +3183,12 @@ module Google
         # @return [String]
         attr_accessor :most_recent_editor
       
-        # This field will be ignored if provided on config creation. Format "
-        # organizations/`organization`/muteConfigs/`mute_config`" "folders/`folder`/
-        # muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`" "
-        # organizations/`organization`/locations/global/muteConfigs/`mute_config`" "
-        # folders/`folder`/locations/global/muteConfigs/`mute_config`" "projects/`
-        # project`/locations/global/muteConfigs/`mute_config`"
+        # This field will be ignored if provided on config creation. Format `
+        # organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
+        # muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
+        # organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
+        # folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
+        # project`/locations/global/muteConfigs/`mute_config``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3367,13 +3367,14 @@ module Google
         attr_accessor :resource_path
       
         # A string representation of the resource path. For Google Cloud, it has the
-        # format of organizations/`organization_id`/folders/`folder_id`/folders/`
-        # folder_id`/projects/`project_id` where there can be any number of folders. For
-        # AWS, it has the format of org/`organization_id`/ou/`organizational_unit_id`/ou/
-        # `organizational_unit_id`/account/`account_id` where there can be any number of
-        # organizational units. For Azure, it has the format of mg/`management_group_id`/
-        # mg/`management_group_id`/subscription/`subscription_id`/rg/`
-        # resource_group_name` where there can be any number of management groups.
+        # format of `organizations/`organization_id`/folders/`folder_id`/folders/`
+        # folder_id`/projects/`project_id`` where there can be any number of folders.
+        # For AWS, it has the format of `org/`organization_id`/ou/`
+        # organizational_unit_id`/ou/`organizational_unit_id`/account/`account_id``
+        # where there can be any number of organizational units. For Azure, it has the
+        # format of `mg/`management_group_id`/mg/`management_group_id`/subscription/`
+        # subscription_id`/rg/`resource_group_name`` where there can be any number of
+        # management groups.
         # Corresponds to the JSON property `resourcePathString`
         # @return [String]
         attr_accessor :resource_path_string
@@ -3458,18 +3459,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # List of resource labels to search for, evaluated with AND. For example, "
-        # resource_labels_selector": `"key": "value", "env": "prod"` will match
-        # resources with labels "key": "value" AND "env": "prod" https://cloud.google.
+        # List of resource labels to search for, evaluated with `AND`. For example, `"
+        # resource_labels_selector": `"key": "value", "env": "prod"`` will match
+        # resources with labels "key": "value" `AND` "env": "prod" https://cloud.google.
         # com/resource-manager/docs/creating-managing-labels
         # Corresponds to the JSON property `resourceLabelsSelector`
         # @return [Hash<String,String>]
         attr_accessor :resource_labels_selector
       
         # Apply resource_value only to resources that match resource_type. resource_type
-        # will be checked with AND of other resources. For example, "storage.googleapis.
-        # com/Bucket" with resource_value "HIGH" will apply "HIGH" value only to "
-        # storage.googleapis.com/Bucket" resources.
+        # will be checked with `AND` of other resources. For example, "storage.
+        # googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH" value only
+        # to "storage.googleapis.com/Bucket" resources.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -3481,7 +3482,7 @@ module Google
       
         # Project or folder to scope this configuration to. For example, "project/456"
         # would apply this configuration only to resources in "project/456" scope will
-        # be checked with AND of other resources.
+        # be checked with `AND` of other resources.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -3493,9 +3494,10 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping]
         attr_accessor :sensitive_data_protection_mapping
       
-        # Required. Tag values combined with AND to check against. Values in the form "
-        # tagValues/123" Example: [ "tagValues/123", "tagValues/456", "tagValues/789" ]
-        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
+        # Required. Tag values combined with `AND` to check against. Values in the form "
+        # tagValues/123" Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]`
+        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-
+        # managing
         # Corresponds to the JSON property `tagValues`
         # @return [Array<String>]
         attr_accessor :tag_values
@@ -4229,8 +4231,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The resource name of the attack path simulation result that contains the
-        # details regarding this attack exposure score. Example: organizations/123/
-        # simulations/456/attackExposureResults/789
+        # details regarding this attack exposure score. Example: `organizations/123/
+        # simulations/456/attackExposureResults/789`
         # Corresponds to the JSON property `attackExposureResult`
         # @return [String]
         attr_accessor :attack_exposure_result
@@ -4410,8 +4412,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The UUID of the Azure management group, for example, "20000000-0001-0000-0000-
-        # 000000000000".
+        # The UUID of the Azure management group, for example, `20000000-0001-0000-0000-
+        # 000000000000`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4488,8 +4490,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The UUID of the Azure subscription, for example, "291bba3f-e0a5-47bc-a099-
-        # 3bdcb2a50a05".
+        # The UUID of the Azure subscription, for example, `291bba3f-e0a5-47bc-a099-
+        # 3bdcb2a50a05`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4613,7 +4615,7 @@ module Google
         attr_accessor :create_time
       
         # The dataset to write findings' updates to. Its format is "projects/[project_id]
-        # /datasets/[bigquery_dataset_id]". BigQuery Dataset unique ID must contain only
+        # /datasets/[bigquery_dataset_id]". BigQuery dataset unique ID must contain only
         # letters (a-z, A-Z), numbers (0-9), or underscores (_).
         # Corresponds to the JSON property `dataset`
         # @return [String]
@@ -4645,13 +4647,13 @@ module Google
         # @return [String]
         attr_accessor :most_recent_editor
       
-        # The relative resource name of this export. See: https://cloud.google.com/apis/
-        # design/resource_names#relative_resource_name. The following list shows some
-        # examples: + `organizations/`organization_id`/locations/`location_id`/
-        # bigQueryExports/`export_id`` + `folders/`folder_id`/locations/`location_id`/
-        # bigQueryExports/`export_id`` + `projects/`project_id`/locations/`location_id`/
-        # bigQueryExports/`export_id`` This field is provided in responses, and is
-        # ignored when provided in create requests.
+        # Identifier. The relative resource name of this export. See: https://cloud.
+        # google.com/apis/design/resource_names#relative_resource_name. The following
+        # list shows some examples: + `organizations/`organization_id`/locations/`
+        # location_id`/bigQueryExports/`export_id`` + `folders/`folder_id`/locations/`
+        # location_id`/bigQueryExports/`export_id`` + `projects/`project_id`/locations/`
+        # location_id`/bigQueryExports/`export_id`` This field is provided in responses,
+        # and is ignored when provided in create requests.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -6429,13 +6431,13 @@ module Google
         # @return [String]
         attr_accessor :most_recent_editor
       
-        # This field will be ignored if provided on config creation. The following list
-        # shows some examples of the format: + `organizations/`organization`/muteConfigs/
-        # `mute_config`` + `organizations/`organization`locations/`location`//
-        # muteConfigs/`mute_config`` + `folders/`folder`/muteConfigs/`mute_config`` + `
-        # folders/`folder`/locations/`location`/muteConfigs/`mute_config`` + `projects/`
-        # project`/muteConfigs/`mute_config`` + `projects/`project`/locations/`location`/
-        # muteConfigs/`mute_config``
+        # Identifier. This field will be ignored if provided on config creation. The
+        # following list shows some examples of the format: + `organizations/`
+        # organization`/muteConfigs/`mute_config`` + `organizations/`organization`
+        # locations/`location`//muteConfigs/`mute_config`` + `folders/`folder`/
+        # muteConfigs/`mute_config`` + `folders/`folder`/locations/`location`/
+        # muteConfigs/`mute_config`` + `projects/`project`/muteConfigs/`mute_config`` + `
+        # projects/`project`/locations/`location`/muteConfigs/`mute_config``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -6988,13 +6990,14 @@ module Google
         attr_accessor :resource_path
       
         # A string representation of the resource path. For Google Cloud, it has the
-        # format of organizations/`organization_id`/folders/`folder_id`/folders/`
-        # folder_id`/projects/`project_id` where there can be any number of folders. For
-        # AWS, it has the format of org/`organization_id`/ou/`organizational_unit_id`/ou/
-        # `organizational_unit_id`/account/`account_id` where there can be any number of
-        # organizational units. For Azure, it has the format of mg/`management_group_id`/
-        # mg/`management_group_id`/subscription/`subscription_id`/rg/`
-        # resource_group_name` where there can be any number of management groups.
+        # format of `organizations/`organization_id`/folders/`folder_id`/folders/`
+        # folder_id`/projects/`project_id`` where there can be any number of folders.
+        # For AWS, it has the format of `org/`organization_id`/ou/`
+        # organizational_unit_id`/ou/`organizational_unit_id`/account/`account_id``
+        # where there can be any number of organizational units. For Azure, it has the
+        # format of `mg/`management_group_id`/mg/`management_group_id`/subscription/`
+        # subscription_id`/rg/`resource_group_name`` where there can be any number of
+        # management groups.
         # Corresponds to the JSON property `resourcePathString`
         # @return [String]
         attr_accessor :resource_path_string
@@ -7102,36 +7105,36 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Name for the resource value configuration
+        # Identifier. Name for the resource value configuration
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # List of resource labels to search for, evaluated with AND. For example, "
+        # List of resource labels to search for, evaluated with `AND`. For example, "
         # resource_labels_selector": `"key": "value", "env": "prod"` will match
-        # resources with labels "key": "value" AND "env": "prod" https://cloud.google.
+        # resources with labels "key": "value" `AND` "env": "prod" https://cloud.google.
         # com/resource-manager/docs/creating-managing-labels
         # Corresponds to the JSON property `resourceLabelsSelector`
         # @return [Hash<String,String>]
         attr_accessor :resource_labels_selector
       
         # Apply resource_value only to resources that match resource_type. resource_type
-        # will be checked with AND of other resources. For example, "storage.googleapis.
-        # com/Bucket" with resource_value "HIGH" will apply "HIGH" value only to "
-        # storage.googleapis.com/Bucket" resources.
+        # will be checked with `AND` of other resources. For example, "storage.
+        # googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH" value only
+        # to "storage.googleapis.com/Bucket" resources.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
       
         # Resource value level this expression represents Only required when there is no
-        # SDP mapping in the request
+        # Sensitive Data Protection mapping in the request
         # Corresponds to the JSON property `resourceValue`
         # @return [String]
         attr_accessor :resource_value
       
         # Project or folder to scope this configuration to. For example, "project/456"
-        # would apply this configuration only to resources in "project/456" scope will
-        # be checked with AND of other resources.
+        # would apply this configuration only to resources in "project/456" scope and
+        # will be checked with `AND` of other resources.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -7143,9 +7146,9 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping]
         attr_accessor :sensitive_data_protection_mapping
       
-        # Required. Tag values combined with AND to check against. Values in the form "
-        # tagValues/123" Example: [ "tagValues/123", "tagValues/456", "tagValues/789" ]
-        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
+        # Tag values combined with `AND` to check against. Values in the form "tagValues/
+        # 123" Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]` https://
+        # cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         # Corresponds to the JSON property `tagValues`
         # @return [Array<String>]
         attr_accessor :tag_values
@@ -7551,7 +7554,7 @@ module Google
         attr_accessor :attack_exposure_score
       
         # List of resource names of findings associated with this toxic combination. For
-        # example, organizations/123/sources/456/findings/789.
+        # example, `organizations/123/sources/456/findings/789`.
         # Corresponds to the JSON property `relatedFindings`
         # @return [Array<String>]
         attr_accessor :related_findings
@@ -9208,8 +9211,8 @@ module Google
       class PathNodeAssociatedFinding
         include Google::Apis::Core::Hashable
       
-        # Canonical name of the associated findings. Example: organizations/123/sources/
-        # 456/findings/789
+        # Canonical name of the associated findings. Example: `organizations/123/sources/
+        # 456/findings/789`
         # Corresponds to the JSON property `canonicalFinding`
         # @return [String]
         attr_accessor :canonical_finding
@@ -9679,13 +9682,13 @@ module Google
         attr_accessor :resource_path
       
         # A string representation of the resource path. For Google Cloud, it has the
-        # format of org/`organization_id`/folder/`folder_id`/folder/`folder_id`/project/`
-        # project_id` where there can be any number of folders. For AWS, it has the
-        # format of org/`organization_id`/ou/`organizational_unit_id`/ou/`
-        # organizational_unit_id`/account/`account_id` where there can be any number of
-        # organizational units. For Azure, it has the format of mg/`management_group_id`/
-        # mg/`management_group_id`/subscription/`subscription_id`/rg/`
-        # resource_group_name` where there can be any number of management groups.
+        # format of `org/`organization_id`/folder/`folder_id`/folder/`folder_id`/project/
+        # `project_id`` where there can be any number of folders. For AWS, it has the
+        # format of `org/`organization_id`/ou/`organizational_unit_id`/ou/`
+        # organizational_unit_id`/account/`account_id`` where there can be any number of
+        # organizational units. For Azure, it has the format of `mg/`management_group_id`
+        # /mg/`management_group_id`/subscription/`subscription_id`/rg/`
+        # resource_group_name`` where there can be any number of management groups.
         # Corresponds to the JSON property `resourcePathString`
         # @return [String]
         attr_accessor :resource_path_string
@@ -10395,7 +10398,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Full resource name of the Simulation: organizations/123/simulations/456
+        # Full resource name of the Simulation: `organizations/123/simulations/456`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -10674,7 +10677,7 @@ module Google
         attr_accessor :attack_exposure_score
       
         # List of resource names of findings associated with this toxic combination. For
-        # example, organizations/123/sources/456/findings/789.
+        # example, `organizations/123/sources/456/findings/789`.
         # Corresponds to the JSON property `relatedFindings`
         # @return [Array<String>]
         attr_accessor :related_findings
