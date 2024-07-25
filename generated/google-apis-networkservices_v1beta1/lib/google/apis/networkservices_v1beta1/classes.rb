@@ -3546,7 +3546,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :meshes
       
-        # Required. Name of the TlsRoute resource. It matches pattern `projects/*/
+        # Identifier. Name of the TlsRoute resource. It matches pattern `projects/*/
         # locations/global/tlsRoutes/tls_route_name>`.
         # Corresponds to the JSON property `name`
         # @return [String]
