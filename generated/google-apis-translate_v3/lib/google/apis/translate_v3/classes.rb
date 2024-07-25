@@ -174,8 +174,7 @@ module Google
       class AdaptiveMtTranslateRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The content of the input in string format. For now only one sentence
-        # per request is supported.
+        # Required. The content of the input in string format.
         # Corresponds to the JSON property `content`
         # @return [Array<String>]
         attr_accessor :content
@@ -186,6 +185,17 @@ module Google
         # @return [String]
         attr_accessor :dataset
       
+        # Configures which glossary is used for a specific target language and defines
+        # options for applying that glossary.
+        # Corresponds to the JSON property `glossaryConfig`
+        # @return [Google::Apis::TranslateV3::TranslateTextGlossaryConfig]
+        attr_accessor :glossary_config
+      
+        # Message of caller-provided reference configuration.
+        # Corresponds to the JSON property `referenceSentenceConfig`
+        # @return [Google::Apis::TranslateV3::ReferenceSentenceConfig]
+        attr_accessor :reference_sentence_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -194,12 +204,20 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @dataset = args[:dataset] if args.key?(:dataset)
+          @glossary_config = args[:glossary_config] if args.key?(:glossary_config)
+          @reference_sentence_config = args[:reference_sentence_config] if args.key?(:reference_sentence_config)
         end
       end
       
       # An AdaptiveMtTranslate response.
       class AdaptiveMtTranslateResponse
         include Google::Apis::Core::Hashable
+      
+        # Text translation response if a glossary is provided in the request. This could
+        # be the same as 'translation' above if no terms apply.
+        # Corresponds to the JSON property `glossaryTranslations`
+        # @return [Array<Google::Apis::TranslateV3::AdaptiveMtTranslation>]
+        attr_accessor :glossary_translations
       
         # Output only. The translation's language code.
         # Corresponds to the JSON property `languageCode`
@@ -217,6 +235,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @glossary_translations = args[:glossary_translations] if args.key?(:glossary_translations)
           @language_code = args[:language_code] if args.key?(:language_code)
           @translations = args[:translations] if args.key?(:translations)
         end
@@ -1031,7 +1050,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Required. The resource name of the entry. Format: "projects/*/locations/*/
+        # Identifier. The resource name of the entry. Format: "projects/*/locations/*/
         # glossaries/*/glossaryEntries/*"
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1782,6 +1801,83 @@ module Google
         end
       end
       
+      # Message of caller-provided reference configuration.
+      class ReferenceSentenceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Reference sentences pair lists. Each list will be used as the references to
+        # translate the sentence under "content" field at the corresponding index.
+        # Length of the list is required to be equal to the length of "content" field.
+        # Corresponds to the JSON property `referenceSentencePairLists`
+        # @return [Array<Google::Apis::TranslateV3::ReferenceSentencePairList>]
+        attr_accessor :reference_sentence_pair_lists
+      
+        # Source language code.
+        # Corresponds to the JSON property `sourceLanguageCode`
+        # @return [String]
+        attr_accessor :source_language_code
+      
+        # Target language code.
+        # Corresponds to the JSON property `targetLanguageCode`
+        # @return [String]
+        attr_accessor :target_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference_sentence_pair_lists = args[:reference_sentence_pair_lists] if args.key?(:reference_sentence_pair_lists)
+          @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
+          @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
+        end
+      end
+      
+      # A pair of sentences used as reference in source and target languages.
+      class ReferenceSentencePair
+        include Google::Apis::Core::Hashable
+      
+        # Source sentence in the sentence pair.
+        # Corresponds to the JSON property `sourceSentence`
+        # @return [String]
+        attr_accessor :source_sentence
+      
+        # Target sentence in the sentence pair.
+        # Corresponds to the JSON property `targetSentence`
+        # @return [String]
+        attr_accessor :target_sentence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_sentence = args[:source_sentence] if args.key?(:source_sentence)
+          @target_sentence = args[:target_sentence] if args.key?(:target_sentence)
+        end
+      end
+      
+      # A list of reference sentence pairs.
+      class ReferenceSentencePairList
+        include Google::Apis::Core::Hashable
+      
+        # Reference sentence pairs.
+        # Corresponds to the JSON property `referenceSentencePairs`
+        # @return [Array<Google::Apis::TranslateV3::ReferenceSentencePair>]
+        attr_accessor :reference_sentence_pairs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference_sentence_pairs = args[:reference_sentence_pairs] if args.key?(:reference_sentence_pairs)
+        end
+      end
+      
       # A single romanization response.
       class Romanization
         include Google::Apis::Core::Hashable
@@ -2173,10 +2269,12 @@ module Google
         # Optional. The `model` type requested for this translation. The format depends
         # on model type: - AutoML Translation models: `projects/`project-number-or-id`/
         # locations/`location-id`/models/`model-id`` - General (built-in) models: `
-        # projects/`project-number-or-id`/locations/`location-id`/models/general/nmt`,
-        # For global (non-regionalized) requests, use `location-id` `global`. For
-        # example, `projects/`project-number-or-id`/locations/global/models/general/nmt`.
-        # If not provided, the default Google model (NMT) will be used
+        # projects/`project-number-or-id`/locations/`location-id`/models/general/nmt`, -
+        # Translation LLM models: `projects/`project-number-or-id`/locations/`location-
+        # id`/models/general/translation-llm`, For global (non-regionalized) requests,
+        # use `location-id` `global`. For example, `projects/`project-number-or-id`/
+        # locations/global/models/general/nmt`. If not provided, the default Google
+        # model (NMT) will be used
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model

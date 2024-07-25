@@ -1540,7 +1540,7 @@ module Google
         
         # Updates a glossary entry.
         # @param [String] name
-        #   Required. The resource name of the entry. Format: "projects/*/locations/*/
+        #   Identifier. The resource name of the entry. Format: "projects/*/locations/*/
         #   glossaries/*/glossaryEntries/*"
         # @param [Google::Apis::TranslateV3::GlossaryEntry] glossary_entry_object
         # @param [String] fields

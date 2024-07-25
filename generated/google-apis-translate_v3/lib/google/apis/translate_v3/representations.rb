@@ -352,6 +352,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReferenceSentenceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReferenceSentencePair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReferenceSentencePairList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Romanization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -476,12 +494,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :content, as: 'content'
           property :dataset, as: 'dataset'
+          property :glossary_config, as: 'glossaryConfig', class: Google::Apis::TranslateV3::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3::TranslateTextGlossaryConfig::Representation
+      
+          property :reference_sentence_config, as: 'referenceSentenceConfig', class: Google::Apis::TranslateV3::ReferenceSentenceConfig, decorator: Google::Apis::TranslateV3::ReferenceSentenceConfig::Representation
+      
         end
       end
       
       class AdaptiveMtTranslateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :glossary_translations, as: 'glossaryTranslations', class: Google::Apis::TranslateV3::AdaptiveMtTranslation, decorator: Google::Apis::TranslateV3::AdaptiveMtTranslation::Representation
+      
           property :language_code, as: 'languageCode'
           collection :translations, as: 'translations', class: Google::Apis::TranslateV3::AdaptiveMtTranslation, decorator: Google::Apis::TranslateV3::AdaptiveMtTranslation::Representation
       
@@ -954,6 +978,32 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::TranslateV3::GcsDestination, decorator: Google::Apis::TranslateV3::GcsDestination::Representation
+      
+        end
+      end
+      
+      class ReferenceSentenceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reference_sentence_pair_lists, as: 'referenceSentencePairLists', class: Google::Apis::TranslateV3::ReferenceSentencePairList, decorator: Google::Apis::TranslateV3::ReferenceSentencePairList::Representation
+      
+          property :source_language_code, as: 'sourceLanguageCode'
+          property :target_language_code, as: 'targetLanguageCode'
+        end
+      end
+      
+      class ReferenceSentencePair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_sentence, as: 'sourceSentence'
+          property :target_sentence, as: 'targetSentence'
+        end
+      end
+      
+      class ReferenceSentencePairList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reference_sentence_pairs, as: 'referenceSentencePairs', class: Google::Apis::TranslateV3::ReferenceSentencePair, decorator: Google::Apis::TranslateV3::ReferenceSentencePair::Representation
       
         end
       end
