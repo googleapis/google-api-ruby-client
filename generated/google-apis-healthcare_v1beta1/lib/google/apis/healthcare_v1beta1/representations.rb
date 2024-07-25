@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplyAdminConsentsErrorDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApplyAdminConsentsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +257,12 @@ module Google
       end
       
       class ConsentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConsentErrors
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1468,6 +1480,15 @@ module Google
         end
       end
       
+      class ApplyAdminConsentsErrorDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consent_errors, as: 'consentErrors', class: Google::Apis::HealthcareV1beta1::ConsentErrors, decorator: Google::Apis::HealthcareV1beta1::ConsentErrors::Representation
+      
+          property :existing_operation_id, :numeric_string => true, as: 'existingOperationId'
+        end
+      end
+      
       class ApplyAdminConsentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1725,6 +1746,15 @@ module Google
       
           collection :enforced_admin_consents, as: 'enforcedAdminConsents'
           property :version, as: 'version'
+        end
+      end
+      
+      class ConsentErrors
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::HealthcareV1beta1::Status, decorator: Google::Apis::HealthcareV1beta1::Status::Representation
+      
+          property :name, as: 'name'
         end
       end
       
