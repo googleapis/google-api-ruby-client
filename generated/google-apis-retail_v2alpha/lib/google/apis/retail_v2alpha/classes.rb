@@ -1712,28 +1712,6 @@ module Google
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchProductCountStatistic>]
         attr_accessor :product_count_stats
       
-        # Output only. The number of products in different groups that this branch has.
-        # The key is a group representing a set of products, and the value is the number
-        # of products in that group. Note: keys in this map may change over time.
-        # Possible keys: * "primary-in-stock", products have Product.Type.PRIMARY type
-        # and Product.Availability.IN_STOCK availability. * "primary-out-of-stock",
-        # products have Product.Type.PRIMARY type and Product.Availability.OUT_OF_STOCK
-        # availability. * "primary-preorder", products have Product.Type.PRIMARY type
-        # and Product.Availability.PREORDER availability. * "primary-backorder",
-        # products have Product.Type.PRIMARY type and Product.Availability.BACKORDER
-        # availability. * "variant-in-stock", products have Product.Type.VARIANT type
-        # and Product.Availability.IN_STOCK availability. * "variant-out-of-stock",
-        # products have Product.Type.VARIANT type and Product.Availability.OUT_OF_STOCK
-        # availability. * "variant-preorder", products have Product.Type.VARIANT type
-        # and Product.Availability.PREORDER availability. * "variant-backorder",
-        # products have Product.Type.VARIANT type and Product.Availability.BACKORDER
-        # availability. * "price-discounted", products have [Product.price_info.price] <
-        # [Product.price_info.original_price]. This field is not populated in BranchView.
-        # BASIC view.
-        # Corresponds to the JSON property `productCounts`
-        # @return [Hash<String,Fixnum>]
-        attr_accessor :product_counts
-      
         # Output only. The quality metrics measured among products of this branch. See
         # QualityMetric.requirement_key for supported metrics. Metrics could be missing
         # if failed to retrieve. This field is not populated in BranchView.BASIC view.
@@ -1752,7 +1730,6 @@ module Google
           @last_product_import_time = args[:last_product_import_time] if args.key?(:last_product_import_time)
           @name = args[:name] if args.key?(:name)
           @product_count_stats = args[:product_count_stats] if args.key?(:product_count_stats)
-          @product_counts = args[:product_counts] if args.key?(:product_counts)
           @quality_metrics = args[:quality_metrics] if args.key?(:quality_metrics)
         end
       end
@@ -2142,13 +2119,6 @@ module Google
         # @return [String]
         attr_accessor :merged_facet_key
       
-        # Each instance is a list of facet values that map into the same (possibly
-        # different) merged facet value. For the current attribute config, each facet
-        # value should map to at most one merged facet value.
-        # Corresponds to the JSON property `mergedFacetValues`
-        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue>]
-        attr_accessor :merged_facet_values
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2156,7 +2126,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @merged_facet_key = args[:merged_facet_key] if args.key?(:merged_facet_key)
-          @merged_facet_values = args[:merged_facet_values] if args.key?(:merged_facet_values)
         end
       end
       
@@ -2378,7 +2347,7 @@ module Google
         end
       end
       
-      # Recent search of this user.
+      # Deprecated: Recent search of this user.
       class GoogleCloudRetailV2alphaCompleteQueryResponseRecentSearchResult
         include Google::Apis::Core::Hashable
       
@@ -3070,6 +3039,51 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @errors_config = args[:errors_config] if args.key?(:errors_config)
           @output_result = args[:output_result] if args.key?(:output_result)
+        end
+      end
+      
+      # Request message for the `ExportUserEvents` method.
+      class GoogleCloudRetailV2alphaExportUserEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A filtering expression to specify restrictions on returned events. The
+        # expression is a sequence of terms. Each term applies a restriction to the
+        # returned user events. Use this expression to restrict results to a specific
+        # time range or to filter events by eventType. For example, `eventTime > "2012-
+        # 04-23T18:25:43.511Z" eventsMissingCatalogItems eventTime<"2012-04-23T18:25:43.
+        # 511Z" eventType=search` We expect only three types of fields: * `eventTime`:
+        # This can be specified twice, once with a less than operator and once with a
+        # greater than operator. The `eventTime` restriction should result in one,
+        # contiguous, valid, `eventTime` range. * `eventType`: Boolean operators `OR`
+        # and `NOT` are supported if the expression is enclosed in parentheses and the
+        # operators are separated from the tag values by a space. * `
+        # eventsMissingCatalogItems`: This restricts results to events for which catalog
+        # items were not found in the catalog. The default behavior is to return only
+        # those events for which catalog items were found. Some examples of valid
+        # filters expressions: * Example 1: `eventTime > "2012-04-23T18:25:43.511Z"
+        # eventTime < "2012-04-23T18:30:43.511Z"` * Example 2: `eventTime > "2012-04-
+        # 23T18:25:43.511Z" eventType = detail-page-view` * Example 3: `
+        # eventsMissingCatalogItems eventType = (NOT search) eventTime < "2018-04-23T18:
+        # 30:43.511Z"` * Example 4: `eventTime > "2012-04-23T18:25:43.511Z"` * Example 5:
+        # `eventType = (detail-page-view OR search)` * Example 6: `
+        # eventsMissingCatalogItems`
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The output configuration setting.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaOutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @output_config = args[:output_config] if args.key?(:output_config)
         end
       end
       
