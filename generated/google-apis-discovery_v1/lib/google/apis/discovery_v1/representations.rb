@@ -85,6 +85,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class Endpoint
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Icons
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -188,8 +194,10 @@ module Google
           property :annotations, as: 'annotations', class: Google::Apis::DiscoveryV1::JsonSchema::Annotations, decorator: Google::Apis::DiscoveryV1::JsonSchema::Annotations::Representation
       
           property :default, as: 'default'
+          property :deprecated, as: 'deprecated'
           property :description, as: 'description'
           collection :enum, as: 'enum'
+          collection :enum_deprecated, as: 'enumDeprecated'
           collection :enum_descriptions, as: 'enumDescriptions'
           property :format, as: 'format'
           property :id, as: 'id'
@@ -246,6 +254,8 @@ module Google
           property :description, as: 'description'
           property :discovery_version, as: 'discoveryVersion'
           property :documentation_link, as: 'documentationLink'
+          collection :endpoints, as: 'endpoints', class: Google::Apis::DiscoveryV1::RestDescription::Endpoint, decorator: Google::Apis::DiscoveryV1::RestDescription::Endpoint::Representation
+      
           property :etag, as: 'etag'
           property :exponential_backoff_default, as: 'exponentialBackoffDefault'
           collection :features, as: 'features'
@@ -298,6 +308,16 @@ module Google
           end
         end
         
+        class Endpoint
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :deprecated, as: 'deprecated'
+            property :description, as: 'description'
+            property :endpoint_url, as: 'endpointUrl'
+            property :location, as: 'location'
+          end
+        end
+        
         class Icons
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -310,6 +330,8 @@ module Google
       class RestMethod
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :deprecated, as: 'deprecated'
           property :description, as: 'description'
           property :etag_required, as: 'etagRequired'
           property :flat_path, as: 'flatPath'
@@ -387,6 +409,7 @@ module Google
       class RestResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :deprecated, as: 'deprecated'
           hash :api_methods, as: 'methods', class: Google::Apis::DiscoveryV1::RestMethod, decorator: Google::Apis::DiscoveryV1::RestMethod::Representation
       
           hash :resources, as: 'resources', class: Google::Apis::DiscoveryV1::RestResource, decorator: Google::Apis::DiscoveryV1::RestResource::Representation
