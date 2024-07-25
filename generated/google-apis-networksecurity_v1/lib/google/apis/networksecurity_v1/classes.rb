@@ -1707,8 +1707,8 @@ module Google
       class MtlsPolicy
         include Google::Apis::Core::Hashable
       
-        # Required if the policy is to be used with Traffic Director. For external HTTPS
-        # load balancers it must be empty. Defines the mechanism to obtain the
+        # Required if the policy is to be used with Traffic Director. For Application
+        # Load Balancers it must be empty. Defines the mechanism to obtain the
         # Certificate Authority certificate to validate the client certificate.
         # Corresponds to the JSON property `clientValidationCa`
         # @return [Array<Google::Apis::NetworksecurityV1::ValidationCa>]
@@ -1716,8 +1716,8 @@ module Google
       
         # When the client presents an invalid certificate or no certificate to the load
         # balancer, the `client_validation_mode` specifies how the client connection is
-        # handled. Required if the policy is to be used with the external HTTPS load
-        # balancing. For Traffic Director it must be empty.
+        # handled. Required if the policy is to be used with the Application Load
+        # Balancers. For Traffic Director it must be empty.
         # Corresponds to the JSON property `clientValidationMode`
         # @return [String]
         attr_accessor :client_validation_mode
@@ -1725,7 +1725,7 @@ module Google
         # Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
         # If specified, the chain validation will be performed against certificates
         # configured in the given TrustConfig. Allowed only if the policy is to be used
-        # with external HTTPS load balancers.
+        # with Application Load Balancers.
         # Corresponds to the JSON property `clientValidationTrustConfig`
         # @return [String]
         attr_accessor :client_validation_trust_config
@@ -1930,7 +1930,7 @@ module Google
       end
       
       # SecurityProfile is a resource that defines the behavior for one of many
-      # ProfileTypes. Next ID: 10
+      # ProfileTypes. Next ID: 11
       class SecurityProfile
         include Google::Apis::Core::Hashable
       
@@ -1997,7 +1997,7 @@ module Google
       end
       
       # SecurityProfileGroup is a resource that defines the behavior for various
-      # ProfileTypes. Next ID: 9
+      # ProfileTypes. Next ID: 10
       class SecurityProfileGroup
         include Google::Apis::Core::Hashable
       
@@ -2061,16 +2061,16 @@ module Google
       # ServerTlsPolicy is a resource that specifies how a server should authenticate
       # incoming requests. This resource itself does not affect configuration unless
       # it is attached to a target HTTPS proxy or endpoint config selector resource.
-      # ServerTlsPolicy in the form accepted by external HTTPS load balancers can be
-      # attached only to TargetHttpsProxy with an `EXTERNAL` or `EXTERNAL_MANAGED`
-      # load balancing scheme. Traffic Director compatible ServerTlsPolicies can be
-      # attached to EndpointPolicy and TargetHttpsProxy with Traffic Director `
-      # INTERNAL_SELF_MANAGED` load balancing scheme.
+      # ServerTlsPolicy in the form accepted by Application Load Balancers can be
+      # attached only to TargetHttpsProxy with an `EXTERNAL`, `EXTERNAL_MANAGED` or `
+      # INTERNAL_MANAGED` load balancing scheme. Traffic Director compatible
+      # ServerTlsPolicies can be attached to EndpointPolicy and TargetHttpsProxy with
+      # Traffic Director `INTERNAL_SELF_MANAGED` load balancing scheme.
       class ServerTlsPolicy
         include Google::Apis::Core::Hashable
       
         # This field applies only for Traffic Director policies. It is must be set to
-        # false for external HTTPS load balancer policies. Determines if server allows
+        # false for Application Load Balancer policies. Determines if server allows
         # plaintext connections. If set to true, server allows plain text connections.
         # By default, it is set to false. This setting is not exclusive of other
         # encryption modes. For example, if `allow_open` and `mtls_policy` are set,
