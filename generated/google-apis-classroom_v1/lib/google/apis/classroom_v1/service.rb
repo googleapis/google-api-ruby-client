@@ -565,9 +565,10 @@ module Google
         #   add-on has attachments on the post. * The developer project issuing the
         #   request is the same project that created the post.
         # @param [String] attachment_id
-        #   Optional. The identifier of the attachment. This field is required for student
-        #   users and optional for teacher users. If not provided in the student case, an
-        #   error is returned.
+        #   Optional. The identifier of the attachment. This field is required for all
+        #   requests except when the user is in the [Attachment Discovery iframe](https://
+        #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
+        #   discovery-iframe).
         # @param [String] post_id
         #   Optional. Deprecated, use item_id instead.
         # @param [String] fields
@@ -1147,9 +1148,10 @@ module Google
         #   add-on has attachments on the post. * The developer project issuing the
         #   request is the same project that created the post.
         # @param [String] attachment_id
-        #   Optional. The identifier of the attachment. This field is required for student
-        #   users and optional for teacher users. If not provided in the student case, an
-        #   error is returned.
+        #   Optional. The identifier of the attachment. This field is required for all
+        #   requests except when the user is in the [Attachment Discovery iframe](https://
+        #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
+        #   discovery-iframe).
         # @param [String] post_id
         #   Optional. Deprecated, use item_id instead.
         # @param [String] fields
@@ -1292,7 +1294,7 @@ module Google
         # modification to the student submission, or for access errors. * `
         # INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the
         # requested course work has already been deleted. * `NOT_FOUND` if the requested
-        # course, course work, or student submission does not exist.
+        # course or course work does not exist.
         # @param [String] course_id
         #   Identifier of the course. This identifier can be either the Classroom-assigned
         #   identifier or an alias.
@@ -1308,7 +1310,9 @@ module Google
         #   CourseWork` object, an `INVALID_ARGUMENT` error is returned. The following
         #   fields may be specified by teachers: * `title` * `description` * `state` * `
         #   due_date` * `due_time` * `max_points` * `scheduled_time` * `
-        #   submission_modification_mode` * `topic_id`
+        #   submission_modification_mode` * `topic_id` * `grading_period_id` Available in [
+        #   V1_20240401_PREVIEW](https://developers.google.com/classroom/reference/preview)
+        #   and later.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2207,9 +2211,10 @@ module Google
         #   add-on has attachments on the post. * The developer project issuing the
         #   request is the same project that created the post.
         # @param [String] attachment_id
-        #   Optional. The identifier of the attachment. This field is required for student
-        #   users and optional for teacher users. If not provided in the student case, an
-        #   error is returned.
+        #   Optional. The identifier of the attachment. This field is required for all
+        #   requests except when the user is in the [Attachment Discovery iframe](https://
+        #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
+        #   discovery-iframe).
         # @param [String] post_id
         #   Optional. Deprecated, use item_id instead.
         # @param [String] fields
@@ -2632,9 +2637,10 @@ module Google
         #   add-on has attachments on the post. * The developer project issuing the
         #   request is the same project that created the post.
         # @param [String] attachment_id
-        #   Optional. The identifier of the attachment. This field is required for student
-        #   users and optional for teacher users. If not provided in the student case, an
-        #   error is returned.
+        #   Optional. The identifier of the attachment. This field is required for all
+        #   requests except when the user is in the [Attachment Discovery iframe](https://
+        #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
+        #   discovery-iframe).
         # @param [String] item_id
         #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
         #   the attachment is attached. This field is required, but is not marked as such
