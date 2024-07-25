@@ -1363,6 +1363,12 @@ module Google
         # @return [String]
         attr_accessor :data_type
       
+        # The following field specifies the default value of the Parameter provided by
+        # the external system if a value is not provided.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [Object]
+        attr_accessor :default_value
+      
         # A brief description of the metadata field.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1378,6 +1384,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Specifies whether a null value is allowed.
+        # Corresponds to the JSON property `nullable`
+        # @return [Boolean]
+        attr_accessor :nullable
+        alias_method :nullable?, :nullable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1385,9 +1397,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_type = args[:data_type] if args.key?(:data_type)
+          @default_value = args[:default_value] if args.key?(:default_value)
           @description = args[:description] if args.key?(:description)
           @json_schema = args[:json_schema] if args.key?(:json_schema)
           @name = args[:name] if args.key?(:name)
+          @nullable = args[:nullable] if args.key?(:nullable)
         end
       end
       
