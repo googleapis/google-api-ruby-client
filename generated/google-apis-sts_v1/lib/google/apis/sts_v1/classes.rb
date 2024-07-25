@@ -347,6 +347,16 @@ module Google
       class GoogleIdentityStsV1ExchangeTokenResponse
         include Google::Apis::Core::Hashable
       
+        # The access boundary session key. This key is used along with the access
+        # boundary intermediate token to generate Credential Access Boundary tokens at
+        # client side. This field is absent when the `requested_token_type` from the
+        # request is not `urn:ietf:params:oauth:token-type:
+        # access_boundary_intermediate_token`.
+        # Corresponds to the JSON property `access_boundary_session_key`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :access_boundary_session_key
+      
         # An OAuth 2.0 security token, issued by Google, in response to the token
         # exchange request. Tokens can vary in size, depending in part on the size of
         # mapped claims, up to a maximum of 12288 bytes (12 KB). Google reserves the
@@ -381,6 +391,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_boundary_session_key = args[:access_boundary_session_key] if args.key?(:access_boundary_session_key)
           @access_token = args[:access_token] if args.key?(:access_token)
           @expires_in = args[:expires_in] if args.key?(:expires_in)
           @issued_token_type = args[:issued_token_type] if args.key?(:issued_token_type)
