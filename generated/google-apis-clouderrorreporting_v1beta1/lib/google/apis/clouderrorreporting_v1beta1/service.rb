@@ -55,9 +55,12 @@ module Google
         # Deletes all error events of a given project.
         # @param [String] project_name
         #   Required. The resource name of the Google Cloud Platform project. Written as `
-        #   projects/`projectID``, where ``projectID`` is the [Google Cloud Platform
-        #   project ID](https://support.google.com/cloud/answer/6158840). Example: `
-        #   projects/my-project-123`.
+        #   projects/`projectID`` or `projects/`projectID`/locations/`location``, where ``
+        #   projectID`` is the [Google Cloud Platform project ID](https://support.google.
+        #   com/cloud/answer/6158840) and ``location`` is a Cloud region. Examples: `
+        #   projects/my-project-123`, `projects/my-project-123/locations/global`. For a
+        #   list of supported locations, see [Supported Regions](https://cloud.google.com/
+        #   logging/docs/region-support). `global` is the default when unspecified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -88,9 +91,12 @@ module Google
         # Lists the specified events.
         # @param [String] project_name
         #   Required. The resource name of the Google Cloud Platform project. Written as `
-        #   projects/`projectID``, where ``projectID`` is the [Google Cloud Platform
-        #   project ID](https://support.google.com/cloud/answer/6158840). Example: `
-        #   projects/my-project-123`.
+        #   projects/`projectID`` or `projects/`projectID`/locations/`location``, where ``
+        #   projectID`` is the [Google Cloud Platform project ID](https://support.google.
+        #   com/cloud/answer/6158840) and ``location`` is a Cloud region. Examples: `
+        #   projects/my-project-123`, `projects/my-project-123/locations/global`. For a
+        #   list of supported locations, see [Supported Regions](https://cloud.google.com/
+        #   logging/docs/region-support). `global` is the default when unspecified.
         # @param [String] group_id
         #   Required. The group for which events shall be returned. The `group_id` is a
         #   unique identifier for a particular error group. The identifier is derived from
@@ -152,9 +158,8 @@ module Google
         # the URL as the value of a `key` parameter. For example: `POST https://
         # clouderrorreporting.googleapis.com/v1beta1/`projectName`/events:report?key=
         # 123ABC456` **Note:** [Error Reporting] (https://cloud.google.com/error-
-        # reporting) is a global service built on Cloud Logging and can analyze log
-        # entries when all of the following are true: * The log entries are stored in a
-        # log bucket in the `global` location. * Customer-managed encryption keys (CMEK)
+        # reporting) is a service built on Cloud Logging and can analyze log entries
+        # when all of the following are true: * Customer-managed encryption keys (CMEK)
         # are disabled on the log bucket. * The log bucket satisfies one of the
         # following: * The log bucket is stored in the same project where the logs
         # originated. * The logs were routed to a project, and then that project stored
@@ -199,8 +204,13 @@ module Google
         #   Required. The resource name of the Google Cloud Platform project. Written as `
         #   projects/`projectID`` or `projects/`projectNumber``, where ``projectID`` and ``
         #   projectNumber`` can be found in the [Google Cloud console](https://support.
-        #   google.com/cloud/answer/6158840). Examples: `projects/my-project-123`, `
-        #   projects/5551234`.
+        #   google.com/cloud/answer/6158840). It may also include a location, such as `
+        #   projects/`projectID`/locations/`location`` where ``location`` is a cloud
+        #   region. Examples: `projects/my-project-123`, `projects/5551234`, `projects/my-
+        #   project-123/locations/us-central1`, `projects/5551234/locations/us-central1`.
+        #   For a list of supported locations, see [Supported Regions](https://cloud.
+        #   google.com/logging/docs/region-support). `global` is the default when
+        #   unspecified. Use `-` as a wildcard to request group stats from all regions.
         # @param [String] alignment
         #   Optional. The alignment of the timed counts to be returned. Default is `
         #   ALIGNMENT_EQUAL_AT_END`.
@@ -276,14 +286,17 @@ module Google
         
         # Get the specified group.
         # @param [String] group_name
-        #   Required. The group resource name. Written as `projects/`projectID`/groups/`
+        #   Required. The group resource name. Written as either `projects/`projectID`/
+        #   groups/`group_id`` or `projects/`projectID`/locations/`location`/groups/`
         #   group_id``. Call groupStats.list to return a list of groups belonging to this
-        #   project. Example: `projects/my-project-123/groups/my-group` In the group
-        #   resource name, the `group_id` is a unique identifier for a particular error
-        #   group. The identifier is derived from key parts of the error-log content and
-        #   is treated as Service Data. For information about how Service Data is handled,
-        #   see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-
-        #   notice).
+        #   project. Examples: `projects/my-project-123/groups/my-group`, `projects/my-
+        #   project-123/locations/global/groups/my-group` In the group resource name, the `
+        #   group_id` is a unique identifier for a particular error group. The identifier
+        #   is derived from key parts of the error-log content and is treated as Service
+        #   Data. For information about how Service Data is handled, see [Google Cloud
+        #   Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a
+        #   list of supported locations, see [Supported Regions](https://cloud.google.com/
+        #   logging/docs/region-support). `global` is the default when unspecified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -313,13 +326,16 @@ module Google
         
         # Replace the data for the specified group. Fails if the group does not exist.
         # @param [String] name
-        #   The group resource name. Written as `projects/`projectID`/groups/`group_id``.
-        #   Example: `projects/my-project-123/groups/my-group` In the group resource name,
-        #   the `group_id` is a unique identifier for a particular error group. The
-        #   identifier is derived from key parts of the error-log content and is treated
-        #   as Service Data. For information about how Service Data is handled, see [
-        #   Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-
-        #   notice).
+        #   The group resource name. Written as `projects/`projectID`/groups/`group_id``
+        #   or `projects/`projectID`/locations/`location`/groups/`group_id`` Examples: `
+        #   projects/my-project-123/groups/my-group`, `projects/my-project-123/locations/
+        #   us-central1/groups/my-group` In the group resource name, the `group_id` is a
+        #   unique identifier for a particular error group. The identifier is derived from
+        #   key parts of the error-log content and is treated as Service Data. For
+        #   information about how Service Data is handled, see [Google Cloud Privacy
+        #   Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a list of
+        #   supported locations, see [Supported Regions](https://cloud.google.com/logging/
+        #   docs/region-support). `global` is the default when unspecified.
         # @param [Google::Apis::ClouderrorreportingV1beta1::ErrorGroup] error_group_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -339,6 +355,273 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_group(name, error_group_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
+          command.request_object = error_group_object
+          command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
+          command.response_class = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes all error events of a given project.
+        # @param [String] project_name
+        #   Required. The resource name of the Google Cloud Platform project. Written as `
+        #   projects/`projectID`` or `projects/`projectID`/locations/`location``, where ``
+        #   projectID`` is the [Google Cloud Platform project ID](https://support.google.
+        #   com/cloud/answer/6158840) and ``location`` is a Cloud region. Examples: `
+        #   projects/my-project-123`, `projects/my-project-123/locations/global`. For a
+        #   list of supported locations, see [Supported Regions](https://cloud.google.com/
+        #   logging/docs/region-support). `global` is the default when unspecified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouderrorreportingV1beta1::DeleteEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouderrorreportingV1beta1::DeleteEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_events(project_name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+projectName}/events', options)
+          command.response_representation = Google::Apis::ClouderrorreportingV1beta1::DeleteEventsResponse::Representation
+          command.response_class = Google::Apis::ClouderrorreportingV1beta1::DeleteEventsResponse
+          command.params['projectName'] = project_name unless project_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the specified events.
+        # @param [String] project_name
+        #   Required. The resource name of the Google Cloud Platform project. Written as `
+        #   projects/`projectID`` or `projects/`projectID`/locations/`location``, where ``
+        #   projectID`` is the [Google Cloud Platform project ID](https://support.google.
+        #   com/cloud/answer/6158840) and ``location`` is a Cloud region. Examples: `
+        #   projects/my-project-123`, `projects/my-project-123/locations/global`. For a
+        #   list of supported locations, see [Supported Regions](https://cloud.google.com/
+        #   logging/docs/region-support). `global` is the default when unspecified.
+        # @param [String] group_id
+        #   Required. The group for which events shall be returned. The `group_id` is a
+        #   unique identifier for a particular error group. The identifier is derived from
+        #   key parts of the error-log content and is treated as Service Data. For
+        #   information about how Service Data is handled, see [Google Cloud Privacy
+        #   Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return per response.
+        # @param [String] page_token
+        #   Optional. A `next_page_token` provided by a previous response.
+        # @param [String] service_filter_resource_type
+        #   Optional. The exact value to match against [`ServiceContext.resource_type`](/
+        #   error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+        # @param [String] service_filter_service
+        #   Optional. The exact value to match against [`ServiceContext.service`](/error-
+        #   reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+        # @param [String] service_filter_version
+        #   Optional. The exact value to match against [`ServiceContext.version`](/error-
+        #   reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+        # @param [String] time_range_period
+        #   Restricts the query to the specified time range.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_events(project_name, group_id: nil, page_size: nil, page_token: nil, service_filter_resource_type: nil, service_filter_service: nil, service_filter_version: nil, time_range_period: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+projectName}/events', options)
+          command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse::Representation
+          command.response_class = Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse
+          command.params['projectName'] = project_name unless project_name.nil?
+          command.query['groupId'] = group_id unless group_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['serviceFilter.resourceType'] = service_filter_resource_type unless service_filter_resource_type.nil?
+          command.query['serviceFilter.service'] = service_filter_service unless service_filter_service.nil?
+          command.query['serviceFilter.version'] = service_filter_version unless service_filter_version.nil?
+          command.query['timeRange.period'] = time_range_period unless time_range_period.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the specified groups.
+        # @param [String] project_name
+        #   Required. The resource name of the Google Cloud Platform project. Written as `
+        #   projects/`projectID`` or `projects/`projectNumber``, where ``projectID`` and ``
+        #   projectNumber`` can be found in the [Google Cloud console](https://support.
+        #   google.com/cloud/answer/6158840). It may also include a location, such as `
+        #   projects/`projectID`/locations/`location`` where ``location`` is a cloud
+        #   region. Examples: `projects/my-project-123`, `projects/5551234`, `projects/my-
+        #   project-123/locations/us-central1`, `projects/5551234/locations/us-central1`.
+        #   For a list of supported locations, see [Supported Regions](https://cloud.
+        #   google.com/logging/docs/region-support). `global` is the default when
+        #   unspecified. Use `-` as a wildcard to request group stats from all regions.
+        # @param [String] alignment
+        #   Optional. The alignment of the timed counts to be returned. Default is `
+        #   ALIGNMENT_EQUAL_AT_END`.
+        # @param [String] alignment_time
+        #   Optional. Time where the timed counts shall be aligned if rounded alignment is
+        #   chosen. Default is 00:00 UTC.
+        # @param [Array<String>, String] group_id
+        #   Optional. List all ErrorGroupStats with these IDs. The `group_id` is a unique
+        #   identifier for a particular error group. The identifier is derived from key
+        #   parts of the error-log content and is treated as Service Data. For information
+        #   about how Service Data is handled, see [Google Cloud Privacy Notice] (https://
+        #   cloud.google.com/terms/cloud-privacy-notice).
+        # @param [String] order
+        #   Optional. The sort order in which the results are returned. Default is `
+        #   COUNT_DESC`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return per response. Default is 20.
+        # @param [String] page_token
+        #   Optional. A next_page_token provided by a previous response. To view
+        #   additional results, pass this token along with the identical query parameters
+        #   as the first request.
+        # @param [String] service_filter_resource_type
+        #   Optional. The exact value to match against [`ServiceContext.resource_type`](/
+        #   error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+        # @param [String] service_filter_service
+        #   Optional. The exact value to match against [`ServiceContext.service`](/error-
+        #   reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+        # @param [String] service_filter_version
+        #   Optional. The exact value to match against [`ServiceContext.version`](/error-
+        #   reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+        # @param [String] time_range_period
+        #   Restricts the query to the specified time range.
+        # @param [String] timed_count_duration
+        #   Optional. The preferred duration for a single returned TimedCount. If not set,
+        #   no timed counts are returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouderrorreportingV1beta1::ListGroupStatsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouderrorreportingV1beta1::ListGroupStatsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_group_stats(project_name, alignment: nil, alignment_time: nil, group_id: nil, order: nil, page_size: nil, page_token: nil, service_filter_resource_type: nil, service_filter_service: nil, service_filter_version: nil, time_range_period: nil, timed_count_duration: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+projectName}/groupStats', options)
+          command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ListGroupStatsResponse::Representation
+          command.response_class = Google::Apis::ClouderrorreportingV1beta1::ListGroupStatsResponse
+          command.params['projectName'] = project_name unless project_name.nil?
+          command.query['alignment'] = alignment unless alignment.nil?
+          command.query['alignmentTime'] = alignment_time unless alignment_time.nil?
+          command.query['groupId'] = group_id unless group_id.nil?
+          command.query['order'] = order unless order.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['serviceFilter.resourceType'] = service_filter_resource_type unless service_filter_resource_type.nil?
+          command.query['serviceFilter.service'] = service_filter_service unless service_filter_service.nil?
+          command.query['serviceFilter.version'] = service_filter_version unless service_filter_version.nil?
+          command.query['timeRange.period'] = time_range_period unless time_range_period.nil?
+          command.query['timedCountDuration'] = timed_count_duration unless timed_count_duration.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the specified group.
+        # @param [String] group_name
+        #   Required. The group resource name. Written as either `projects/`projectID`/
+        #   groups/`group_id`` or `projects/`projectID`/locations/`location`/groups/`
+        #   group_id``. Call groupStats.list to return a list of groups belonging to this
+        #   project. Examples: `projects/my-project-123/groups/my-group`, `projects/my-
+        #   project-123/locations/global/groups/my-group` In the group resource name, the `
+        #   group_id` is a unique identifier for a particular error group. The identifier
+        #   is derived from key parts of the error-log content and is treated as Service
+        #   Data. For information about how Service Data is handled, see [Google Cloud
+        #   Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a
+        #   list of supported locations, see [Supported Regions](https://cloud.google.com/
+        #   logging/docs/region-support). `global` is the default when unspecified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouderrorreportingV1beta1::ErrorGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouderrorreportingV1beta1::ErrorGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_group(group_name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+groupName}', options)
+          command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
+          command.response_class = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup
+          command.params['groupName'] = group_name unless group_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Replace the data for the specified group. Fails if the group does not exist.
+        # @param [String] name
+        #   The group resource name. Written as `projects/`projectID`/groups/`group_id``
+        #   or `projects/`projectID`/locations/`location`/groups/`group_id`` Examples: `
+        #   projects/my-project-123/groups/my-group`, `projects/my-project-123/locations/
+        #   us-central1/groups/my-group` In the group resource name, the `group_id` is a
+        #   unique identifier for a particular error group. The identifier is derived from
+        #   key parts of the error-log content and is treated as Service Data. For
+        #   information about how Service Data is handled, see [Google Cloud Privacy
+        #   Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a list of
+        #   supported locations, see [Supported Regions](https://cloud.google.com/logging/
+        #   docs/region-support). `global` is the default when unspecified.
+        # @param [Google::Apis::ClouderrorreportingV1beta1::ErrorGroup] error_group_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouderrorreportingV1beta1::ErrorGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouderrorreportingV1beta1::ErrorGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_group(name, error_group_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
           command.request_object = error_group_object
