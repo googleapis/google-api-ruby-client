@@ -146,130 +146,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the business identity of an account.
-        # @param [String] name
-        #   Required. The resource name of the business identity. Format: `accounts/`
-        #   account`/businessIdentity`
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_business_identity(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves the business info of an account.
-        # @param [String] name
-        #   Required. The resource name of the business info. Format: `accounts/`account`/
-        #   businessInfo`
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::BusinessInfo] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::BusinessInfo]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_business_info(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessInfo::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::BusinessInfo
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves a store's homepage.
-        # @param [String] name
-        #   Required. The name of the homepage to retrieve. Format: `accounts/`account`/
-        #   homepage`
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::Homepage] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::Homepage]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_homepage(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Homepage::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::Homepage
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieve shipping setting information.
-        # @param [String] name
-        #   Required. The name of the shipping setting to retrieve. Format: `accounts/`
-        #   account`/shippingsetting`
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::ShippingSettings] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::ShippingSettings]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_shipping_settings(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::ShippingSettings::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::ShippingSettings
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists accounts accessible to the calling user and matching the constraints of
         # the request such as page size or filters. This is not just listing the sub-
         # accounts of an MCA, but all accounts the calling user has access to including
@@ -395,119 +271,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the business identity of an account. Executing this method requires
-        # admin access.
-        # @param [String] name
-        #   Identifier. The resource name of the business identity. Format: `accounts/`
-        #   account`/businessIdentity`
-        # @param [Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity] business_identity_object
-        # @param [String] update_mask
-        #   Required. List of fields being updated.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_business_identity(name, business_identity_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
-          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity::Representation
-          command.request_object = business_identity_object
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the business info of an account. Executing this method requires admin
-        # access.
-        # @param [String] name
-        #   Identifier. The resource name of the business info. Format: `accounts/`account`
-        #   /businessInfo`
-        # @param [Google::Apis::MerchantapiAccountsV1beta::BusinessInfo] business_info_object
-        # @param [String] update_mask
-        #   Required. List of fields being updated.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::BusinessInfo] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::BusinessInfo]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_business_info(name, business_info_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
-          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessInfo::Representation
-          command.request_object = business_info_object
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessInfo::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::BusinessInfo
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates a store's homepage. Executing this method requires admin access.
-        # @param [String] name
-        #   Identifier. The resource name of the store's homepage. Format: `accounts/`
-        #   account`/homepage`
-        # @param [Google::Apis::MerchantapiAccountsV1beta::Homepage] homepage_object
-        # @param [String] update_mask
-        #   Required. List of fields being updated.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::Homepage] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::Homepage]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_homepage(name, homepage_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
-          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::Homepage::Representation
-          command.request_object = homepage_object
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Homepage::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::Homepage
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns the tax rules that match the conditions of GetAccountTaxRequest
         # @param [String] name
         #   Required. The name from which tax settings will be retrieved
@@ -614,6 +377,219 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves the business identity of an account.
+        # @param [String] name
+        #   Required. The resource name of the business identity. Format: `accounts/`
+        #   account`/businessIdentity`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_business_identity_business_identity(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the business identity of an account. Executing this method requires
+        # admin access.
+        # @param [String] name
+        #   Identifier. The resource name of the business identity. Format: `accounts/`
+        #   account`/businessIdentity`
+        # @param [Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity] business_identity_object
+        # @param [String] update_mask
+        #   Required. List of fields being updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_business_identity_business_identity(name, business_identity_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity::Representation
+          command.request_object = business_identity_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the business info of an account.
+        # @param [String] name
+        #   Required. The resource name of the business info. Format: `accounts/`account`/
+        #   businessInfo`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::BusinessInfo] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::BusinessInfo]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_business_info_business_info(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessInfo::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::BusinessInfo
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the business info of an account. Executing this method requires admin
+        # access.
+        # @param [String] name
+        #   Identifier. The resource name of the business info. Format: `accounts/`account`
+        #   /businessInfo`
+        # @param [Google::Apis::MerchantapiAccountsV1beta::BusinessInfo] business_info_object
+        # @param [String] update_mask
+        #   Required. List of fields being updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::BusinessInfo] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::BusinessInfo]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_business_info_business_info(name, business_info_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessInfo::Representation
+          command.request_object = business_info_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::BusinessInfo::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::BusinessInfo
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the email preferences for a Merchant Center account user. Use the name=
+        # accounts/*/users/me/emailPreferences alias to get preferences for the
+        # authenticated user.
+        # @param [String] name
+        #   Required. The name of the `EmailPreferences` resource. Format: `accounts/`
+        #   account`/users/`email`/emailPreferences`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::EmailPreferences] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::EmailPreferences]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_emailpreference_email_preferences(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the email preferences for a Merchant Center account user. MCA users
+        # should specify the MCA account rather than a sub-account of the MCA.
+        # Preferences which are not explicitly selected in the update mask will not be
+        # updated. It is invalid for updates to specify an UNCONFIRMED opt-in status
+        # value. Use the name=accounts/*/users/me/emailPreferences alias to update
+        # preferences for the authenticated user.
+        # @param [String] name
+        #   Identifier. The name of the EmailPreferences. The endpoint is only supported
+        #   for the authenticated user.
+        # @param [Google::Apis::MerchantapiAccountsV1beta::EmailPreferences] email_preferences_object
+        # @param [String] update_mask
+        #   Required. List of fields being updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::EmailPreferences] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::EmailPreferences]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_emailpreference_email_preferences(name, email_preferences_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences::Representation
+          command.request_object = email_preferences_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Claims a store's homepage. Executing this method requires admin access. If the
         # homepage is already claimed, this will recheck the verification (unless the
         # merchant is exempted from claiming, which also exempts from verification) and
@@ -656,6 +632,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves a store's homepage.
+        # @param [String] name
+        #   Required. The name of the homepage to retrieve. Format: `accounts/`account`/
+        #   homepage`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::Homepage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Homepage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_homepage_homepage(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Homepage::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::Homepage
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Unclaims a store's homepage. Executing this method requires admin access.
         # @param [String] name
         #   Required. The name of the homepage to unclaim. Format: `accounts/`account`/
@@ -685,6 +692,43 @@ module Google
           command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Homepage::Representation
           command.response_class = Google::Apis::MerchantapiAccountsV1beta::Homepage
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a store's homepage. Executing this method requires admin access.
+        # @param [String] name
+        #   Identifier. The resource name of the store's homepage. Format: `accounts/`
+        #   account`/homepage`
+        # @param [Google::Apis::MerchantapiAccountsV1beta::Homepage] homepage_object
+        # @param [String] update_mask
+        #   Required. List of fields being updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::Homepage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Homepage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_homepage_homepage(name, homepage_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::Homepage::Representation
+          command.request_object = homepage_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Homepage::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::Homepage
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1140,6 +1184,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieve shipping setting information.
+        # @param [String] name
+        #   Required. The name of the shipping setting to retrieve. Format: `accounts/`
+        #   account`/shippingsetting`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::ShippingSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::ShippingSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_shipping_setting_shipping_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::ShippingSettings::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::ShippingSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Replace the shipping setting of a merchant with the request shipping setting.
         # Executing this method requires admin access.
         # @param [String] parent
@@ -1178,7 +1253,8 @@ module Google
         # Returns the state of a terms of service agreement.
         # @param [String] name
         #   Required. The resource name of the terms of service version. Format: `accounts/
-        #   `account`/termsOfServiceAgreementState/`identifier``
+        #   `account`/termsOfServiceAgreementState/`identifier`` The identifier format is:
+        #   ``TermsOfServiceKind`-`country``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1340,39 +1416,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the email preferences for a Merchant Center account user. Use the name=
-        # accounts/*/users/me/emailPreferences alias to get preferences for the
-        # authenticated user.
-        # @param [String] name
-        #   Required. The name of the `EmailPreferences` resource. Format: `accounts/`
-        #   account`/users/`email`/emailPreferences`
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::EmailPreferences] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::EmailPreferences]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_user_email_preferences(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists all users of a Merchant Center account.
         # @param [String] parent
         #   Required. The parent, which owns this collection of users. Format: `accounts/`
@@ -1446,48 +1489,6 @@ module Google
           command.request_object = user_object
           command.response_representation = Google::Apis::MerchantapiAccountsV1beta::User::Representation
           command.response_class = Google::Apis::MerchantapiAccountsV1beta::User
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the email preferences for a Merchant Center account user. MCA users
-        # should specify the MCA account rather than a sub-account of the MCA.
-        # Preferences which are not explicitly selected in the update mask will not be
-        # updated. It is invalid for updates to specify an UNCONFIRMED opt-in status
-        # value. Use the name=accounts/*/users/me/emailPreferences alias to update
-        # preferences for the authenticated user.
-        # @param [String] name
-        #   Identifier. The name of the EmailPreferences. The endpoint is only supported
-        #   for the authenticated user.
-        # @param [Google::Apis::MerchantapiAccountsV1beta::EmailPreferences] email_preferences_object
-        # @param [String] update_mask
-        #   Required. List of fields being updated.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::EmailPreferences] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::EmailPreferences]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_user_email_preferences(name, email_preferences_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
-          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences::Representation
-          command.request_object = email_preferences_object
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
