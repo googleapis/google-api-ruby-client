@@ -1781,8 +1781,8 @@ module Google
       class ObservabilityInstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Observability feature status for an instance. This is a read-only flag and
-        # modifiable only by producer API. This flag is turned "off" by default.
+        # Observability feature status for an instance. This flag is turned "off" by
+        # default.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -1801,7 +1801,7 @@ module Google
         alias_method :preserve_comments?, :preserve_comments
       
         # Number of query execution plans captured by Insights per minute for all
-        # queries combined. The default value is 5. Any integer between 0 to 20 is
+        # queries combined. The default value is 200. Any integer between 0 to 200 is
         # considered valid.
         # Corresponds to the JSON property `queryPlansPerMinute`
         # @return [Fixnum]
