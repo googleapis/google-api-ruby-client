@@ -136,24 +136,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1beta1GroundingAttribution
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1GroundingAttributionWeb
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1beta1GroundingChunk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -339,6 +321,10 @@ module Google
       
           collection :instances, as: 'instances'
           property :model, as: 'model'
+          property :system_instruction, as: 'systemInstruction', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content::Representation
+      
+          collection :tools, as: 'tools', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Tool, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Tool::Representation
+      
         end
       end
       
@@ -467,35 +453,6 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1beta1GroundingAttribution
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence_score, as: 'confidenceScore'
-          property :retrieved_context, as: 'retrievedContext', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext::Representation
-      
-          property :segment, as: 'segment', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Segment, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Segment::Representation
-      
-          property :web, as: 'web', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionWeb, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionWeb::Representation
-      
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          property :uri, as: 'uri'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1GroundingAttributionWeb
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          property :uri, as: 'uri'
-        end
-      end
-      
       class GoogleCloudAiplatformV1beta1GroundingChunk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -525,8 +482,6 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :grounding_attributions, as: 'groundingAttributions', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttribution, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttribution::Representation
-      
           collection :grounding_chunks, as: 'groundingChunks', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunk, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunk::Representation
       
           collection :grounding_supports, as: 'groundingSupports', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingSupport, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingSupport::Representation
