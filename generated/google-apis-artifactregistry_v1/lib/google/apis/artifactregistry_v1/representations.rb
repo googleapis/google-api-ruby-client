@@ -406,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PromoteArtifactMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PythonPackage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1204,6 +1210,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :legacy_redirection_state, as: 'legacyRedirectionState'
           property :name, as: 'name'
+          property :pull_percent, as: 'pullPercent'
+        end
+      end
+      
+      class PromoteArtifactMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

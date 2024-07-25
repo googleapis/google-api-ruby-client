@@ -2030,6 +2030,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The percentage of pull traffic to redirect from GCR to AR when using partial
+        # redirection.
+        # Corresponds to the JSON property `pullPercent`
+        # @return [Fixnum]
+        attr_accessor :pull_percent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2038,6 +2044,20 @@ module Google
         def update!(**args)
           @legacy_redirection_state = args[:legacy_redirection_state] if args.key?(:legacy_redirection_state)
           @name = args[:name] if args.key?(:name)
+          @pull_percent = args[:pull_percent] if args.key?(:pull_percent)
+        end
+      end
+      
+      # The metadata for promote artifact long running operation.
+      class PromoteArtifactMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2602,9 +2622,9 @@ module Google
         attr_accessor :filename
       
         # The ID of the package of the generic artifact. If the package does not exist,
-        # a new package will be created. The `package_id` must start with a letter, end
-        # with a letter or number, only contain letters, numbers, hyphens and periods i.
-        # e. [a-z0-9-.], and cannot exceed 256 characters.
+        # a new package will be created. The `package_id` should start and end with a
+        # letter or number, only contain letters, numbers, hyphens, underscores, and
+        # periods, and not exceed 256 characters.
         # Corresponds to the JSON property `packageId`
         # @return [String]
         attr_accessor :package_id
