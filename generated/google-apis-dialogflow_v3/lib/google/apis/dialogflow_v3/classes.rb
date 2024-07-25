@@ -1326,6 +1326,12 @@ module Google
       class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals
         include Google::Apis::Core::Hashable
       
+        # Name of the generative model. For example, "gemini-ultra", "gemini-pro", "
+        # gemini-1.5-flash" etc. Defaults to "Other" if the model is unknown.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
         # Output of the generative model.
         # Corresponds to the JSON property `modelOutput`
         # @return [String]
@@ -1342,6 +1348,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @model = args[:model] if args.key?(:model)
           @model_output = args[:model_output] if args.key?(:model_output)
           @rendered_prompt = args[:rendered_prompt] if args.key?(:rendered_prompt)
         end
@@ -1426,6 +1433,12 @@ module Google
       class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals
         include Google::Apis::Core::Hashable
       
+        # Name of the generative model. For example, "gemini-ultra", "gemini-pro", "
+        # gemini-1.5-flash" etc. Defaults to "Other" if the model is unknown.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
         # Output of the generative model.
         # Corresponds to the JSON property `modelOutput`
         # @return [String]
@@ -1442,6 +1455,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @model = args[:model] if args.key?(:model)
           @model_output = args[:model_output] if args.key?(:model_output)
           @rendered_prompt = args[:rendered_prompt] if args.key?(:rendered_prompt)
         end
@@ -2112,6 +2126,12 @@ module Google
         # @return [String]
         attr_accessor :target_page
       
+        # The target playbook to transition to. Format: `projects//locations//agents//
+        # playbooks/`.
+        # Corresponds to the JSON property `targetPlaybook`
+        # @return [String]
+        attr_accessor :target_playbook
+      
         # A fulfillment can do one or more of the following actions at the same time: *
         # Generate rich message responses. * Set parameter values. * Call the webhook.
         # Fulfillments can be called at various stages in the Page or Form lifecycle.
@@ -2133,6 +2153,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @target_flow = args[:target_flow] if args.key?(:target_flow)
           @target_page = args[:target_page] if args.key?(:target_page)
+          @target_playbook = args[:target_playbook] if args.key?(:target_playbook)
           @trigger_fulfillment = args[:trigger_fulfillment] if args.key?(:trigger_fulfillment)
         end
       end
@@ -9629,6 +9650,12 @@ module Google
         # @return [String]
         attr_accessor :target_page
       
+        # The target playbook to transition to. Format: `projects//locations//agents//
+        # playbooks/`.
+        # Corresponds to the JSON property `targetPlaybook`
+        # @return [String]
+        attr_accessor :target_playbook
+      
         # A fulfillment can do one or more of the following actions at the same time: *
         # Generate rich message responses. * Set parameter values. * Call the webhook.
         # Fulfillments can be called at various stages in the Page or Form lifecycle.
@@ -9650,6 +9677,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @target_flow = args[:target_flow] if args.key?(:target_flow)
           @target_page = args[:target_page] if args.key?(:target_page)
+          @target_playbook = args[:target_playbook] if args.key?(:target_playbook)
           @trigger_fulfillment = args[:trigger_fulfillment] if args.key?(:trigger_fulfillment)
         end
       end
@@ -13272,6 +13300,37 @@ module Google
         end
       end
       
+      # A customer-managed encryption key specification that can be applied to all
+      # created resources (e.g. Conversation).
+      class GoogleCloudDialogflowV2EncryptionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of customer-managed encryption key that is used to secure a
+        # resource and its sub-resources. If empty, the resource is secured by the
+        # default Google encryption key. Only the key in the same location as this
+        # resource is allowed to be used for encryption. Format: `projects/`project`/
+        # locations/`location`/keyRings/`keyRing`/cryptoKeys/`key``
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Immutable. The resource name of the encryption key specification resource.
+        # Format: projects/`project`/locations/`location`/encryptionSpec
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Each intent parameter has a type, called the entity type, which dictates
       # exactly how data from an end-user expression is extracted. Dialogflow provides
       # predefined system entities that can match many common types of data. For
@@ -13643,6 +13702,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Metadata for initializing a location-level encryption specification.
+      class GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The request to initialize a location-level encryption specification.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2InitializeEncryptionSpecRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to initialize a location-level encryption specification.
+      class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest
+        include Google::Apis::Core::Hashable
+      
+        # A customer-managed encryption key specification that can be applied to all
+        # created resources (e.g. Conversation).
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2EncryptionSpec]
+        attr_accessor :encryption_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
         end
       end
       
@@ -16242,6 +16340,37 @@ module Google
         end
       end
       
+      # A customer-managed encryption key specification that can be applied to all
+      # created resources (e.g. Conversation).
+      class GoogleCloudDialogflowV2beta1EncryptionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of customer-managed encryption key that is used to secure a
+        # resource and its sub-resources. If empty, the resource is secured by the
+        # default Google encryption key. Only the key in the same location as this
+        # resource is allowed to be used for encryption. Format: `projects/`project`/
+        # locations/`location`/keyRings/`keyRing`/cryptoKeys/`key``
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Immutable. The resource name of the encryption key specification resource.
+        # Format: projects/`project`/locations/`location`/encryptionSpec
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Each intent parameter has a type, called the entity type, which dictates
       # exactly how data from an end-user expression is extracted. Dialogflow provides
       # predefined system entities that can match many common types of data. For
@@ -16557,6 +16686,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Metadata for initializing a location-level encryption specification.
+      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The request to initialize a location-level encryption specification.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to initialize a location-level encryption specification.
+      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest
+        include Google::Apis::Core::Hashable
+      
+        # A customer-managed encryption key specification that can be applied to all
+        # created resources (e.g. Conversation).
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
         end
       end
       
@@ -18616,6 +18784,11 @@ module Google
         # @return [String]
         attr_accessor :participant_role
       
+        # Optional. Automated agent responses.
+        # Corresponds to the JSON property `responseMessages`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ResponseMessage>]
+        attr_accessor :response_messages
+      
         # Optional. The time when the message was sent.
         # Corresponds to the JSON property `sendTime`
         # @return [String]
@@ -18646,6 +18819,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @participant = args[:participant] if args.key?(:participant)
           @participant_role = args[:participant_role] if args.key?(:participant_role)
+          @response_messages = args[:response_messages] if args.key?(:response_messages)
           @send_time = args[:send_time] if args.key?(:send_time)
           @sentiment_analysis = args[:sentiment_analysis] if args.key?(:sentiment_analysis)
         end
@@ -18886,6 +19060,203 @@ module Google
           @speech_recognition_confidence = args[:speech_recognition_confidence] if args.key?(:speech_recognition_confidence)
           @webhook_payload = args[:webhook_payload] if args.key?(:webhook_payload)
           @webhook_source = args[:webhook_source] if args.key?(:webhook_source)
+        end
+      end
+      
+      # Response messages from an automated agent.
+      class GoogleCloudDialogflowV2beta1ResponseMessage
+        include Google::Apis::Core::Hashable
+      
+        # Indicates that interaction with the Dialogflow agent has ended.
+        # Corresponds to the JSON property `endInteraction`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction]
+        attr_accessor :end_interaction
+      
+        # Indicates that the conversation should be handed off to a human agent.
+        # Dialogflow only uses this to determine which conversations were handed off to
+        # a human agent for measurement purposes. What else to do with this signal is up
+        # to you and your handoff procedures. You may set this, for example: * In the
+        # entry fulfillment of a CX Page if entering the page indicates something went
+        # extremely wrong in the conversation. * In a webhook response when you
+        # determine that the customer issue can only be handled by a human.
+        # Corresponds to the JSON property `liveAgentHandoff`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff]
+        attr_accessor :live_agent_handoff
+      
+        # Represents an audio message that is composed of both segments synthesized from
+        # the Dialogflow agent prompts and ones hosted externally at the specified URIs.
+        # Corresponds to the JSON property `mixedAudio`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio]
+        attr_accessor :mixed_audio
+      
+        # Returns a response containing a custom, platform-specific payload.
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # Represents the signal that telles the client to transfer the phone call
+        # connected to the agent to a third-party endpoint.
+        # Corresponds to the JSON property `telephonyTransferCall`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall]
+        attr_accessor :telephony_transfer_call
+      
+        # The text response message.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ResponseMessageText]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
+          @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
+          @mixed_audio = args[:mixed_audio] if args.key?(:mixed_audio)
+          @payload = args[:payload] if args.key?(:payload)
+          @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Indicates that interaction with the Dialogflow agent has ended.
+      class GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Indicates that the conversation should be handed off to a human agent.
+      # Dialogflow only uses this to determine which conversations were handed off to
+      # a human agent for measurement purposes. What else to do with this signal is up
+      # to you and your handoff procedures. You may set this, for example: * In the
+      # entry fulfillment of a CX Page if entering the page indicates something went
+      # extremely wrong in the conversation. * In a webhook response when you
+      # determine that the customer issue can only be handled by a human.
+      class GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff
+        include Google::Apis::Core::Hashable
+      
+        # Custom metadata for your handoff procedure. Dialogflow doesn't impose any
+        # structure on this.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # Represents an audio message that is composed of both segments synthesized from
+      # the Dialogflow agent prompts and ones hosted externally at the specified URIs.
+      class GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio
+        include Google::Apis::Core::Hashable
+      
+        # Segments this audio response is composed of.
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment>]
+        attr_accessor :segments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segments = args[:segments] if args.key?(:segments)
+        end
+      end
+      
+      # Represents one segment of audio.
+      class GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment
+        include Google::Apis::Core::Hashable
+      
+        # Whether the playback of this segment can be interrupted by the end user's
+        # speech and the client should then start the next Dialogflow request.
+        # Corresponds to the JSON property `allowPlaybackInterruption`
+        # @return [Boolean]
+        attr_accessor :allow_playback_interruption
+        alias_method :allow_playback_interruption?, :allow_playback_interruption
+      
+        # Raw audio synthesized from the Dialogflow agent's response using the output
+        # config specified in the request.
+        # Corresponds to the JSON property `audio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :audio
+      
+        # Client-specific URI that points to an audio clip accessible to the client.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_playback_interruption = args[:allow_playback_interruption] if args.key?(:allow_playback_interruption)
+          @audio = args[:audio] if args.key?(:audio)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Represents the signal that telles the client to transfer the phone call
+      # connected to the agent to a third-party endpoint.
+      class GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall
+        include Google::Apis::Core::Hashable
+      
+        # Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/
+        # wiki/E.164).
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # Transfer the call to a SIP endpoint.
+        # Corresponds to the JSON property `sipUri`
+        # @return [String]
+        attr_accessor :sip_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @sip_uri = args[:sip_uri] if args.key?(:sip_uri)
+        end
+      end
+      
+      # The text response message.
+      class GoogleCloudDialogflowV2beta1ResponseMessageText
+        include Google::Apis::Core::Hashable
+      
+        # A collection of text responses.
+        # Corresponds to the JSON property `text`
+        # @return [Array<String>]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
