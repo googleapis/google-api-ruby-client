@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoscalingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -412,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Thresholds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UndeletePrivateCloudRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -453,6 +471,33 @@ module Google
         end
       end
       
+      class AutoscalingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumed_memory_thresholds, as: 'consumedMemoryThresholds', class: Google::Apis::VmwareengineV1::Thresholds, decorator: Google::Apis::VmwareengineV1::Thresholds::Representation
+      
+          property :cpu_thresholds, as: 'cpuThresholds', class: Google::Apis::VmwareengineV1::Thresholds, decorator: Google::Apis::VmwareengineV1::Thresholds::Representation
+      
+          property :granted_memory_thresholds, as: 'grantedMemoryThresholds', class: Google::Apis::VmwareengineV1::Thresholds, decorator: Google::Apis::VmwareengineV1::Thresholds::Representation
+      
+          property :node_type_id, as: 'nodeTypeId'
+          property :scale_out_size, as: 'scaleOutSize'
+          property :storage_thresholds, as: 'storageThresholds', class: Google::Apis::VmwareengineV1::Thresholds, decorator: Google::Apis::VmwareengineV1::Thresholds::Representation
+      
+        end
+      end
+      
+      class AutoscalingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :autoscaling_policies, as: 'autoscalingPolicies', class: Google::Apis::VmwareengineV1::AutoscalingPolicy, decorator: Google::Apis::VmwareengineV1::AutoscalingPolicy::Representation
+      
+          property :cool_down_period, as: 'coolDownPeriod'
+          property :max_cluster_node_count, as: 'maxClusterNodeCount'
+          property :min_cluster_node_count, as: 'minClusterNodeCount'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -466,6 +511,8 @@ module Google
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_settings, as: 'autoscalingSettings', class: Google::Apis::VmwareengineV1::AutoscalingSettings, decorator: Google::Apis::VmwareengineV1::AutoscalingSettings::Representation
+      
           property :create_time, as: 'createTime'
           property :management, as: 'management'
           property :name, as: 'name'
@@ -1134,6 +1181,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class Thresholds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scale_in, as: 'scaleIn'
+          property :scale_out, as: 'scaleOut'
         end
       end
       
