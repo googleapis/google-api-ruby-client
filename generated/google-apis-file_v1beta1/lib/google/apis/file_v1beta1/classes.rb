@@ -47,6 +47,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :download_bytes
       
+        # Output only. The file system protocol of the source Filestore instance that
+        # this backup is created from.
+        # Corresponds to the JSON property `fileSystemProtocol`
+        # @return [String]
+        attr_accessor :file_system_protocol
+      
         # Immutable. KMS key name used for data encryption.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
@@ -122,6 +128,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
+          @file_system_protocol = args[:file_system_protocol] if args.key?(:file_system_protocol)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
