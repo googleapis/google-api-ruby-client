@@ -89,8 +89,8 @@ module Google
         # @return [String]
         attr_accessor :validate_time
       
-        # The validity of the contact. A contact is considered valid if it is the
-        # correct recipient for notifications for a particular resource.
+        # Output only. The validity of the contact. A contact is considered valid if it
+        # is the correct recipient for notifications for a particular resource.
         # Corresponds to the JSON property `validationState`
         # @return [String]
         attr_accessor :validation_state
