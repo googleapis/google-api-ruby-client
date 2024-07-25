@@ -646,12 +646,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TimeOfDay
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TransactionOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1091,8 +1085,6 @@ module Google
       class GoogleFirestoreAdminV1DailyRecurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :time, as: 'time', class: Google::Apis::FirestoreV1::TimeOfDay, decorator: Google::Apis::FirestoreV1::TimeOfDay::Representation
-      
         end
       end
       
@@ -1403,8 +1395,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :day, as: 'day'
-          property :time, as: 'time', class: Google::Apis::FirestoreV1::TimeOfDay, decorator: Google::Apis::FirestoreV1::TimeOfDay::Representation
-      
         end
       end
       
@@ -1733,16 +1723,6 @@ module Google
           property :resume_token, :base64 => true, as: 'resumeToken'
           property :target_change_type, as: 'targetChangeType'
           collection :target_ids, as: 'targetIds'
-        end
-      end
-      
-      class TimeOfDay
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :hours, as: 'hours'
-          property :minutes, as: 'minutes'
-          property :nanos, as: 'nanos'
-          property :seconds, as: 'seconds'
         end
       end
       
