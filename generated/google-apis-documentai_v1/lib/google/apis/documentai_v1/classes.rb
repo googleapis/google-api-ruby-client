@@ -5477,6 +5477,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema]
         attr_accessor :document_schema
       
+        # Information about Generative AI model-based processor versions.
+        # Corresponds to the JSON property `genAiModelInfo`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo]
+        attr_accessor :gen_ai_model_info
+      
         # Output only. Denotes that this `ProcessorVersion` is managed by Google.
         # Corresponds to the JSON property `googleManaged`
         # @return [Boolean]
@@ -5537,6 +5542,7 @@ module Google
           @deprecation_info = args[:deprecation_info] if args.key?(:deprecation_info)
           @display_name = args[:display_name] if args.key?(:display_name)
           @document_schema = args[:document_schema] if args.key?(:document_schema)
+          @gen_ai_model_info = args[:gen_ai_model_info] if args.key?(:gen_ai_model_info)
           @google_managed = args[:google_managed] if args.key?(:google_managed)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
@@ -5596,6 +5602,87 @@ module Google
         def update!(**args)
           @deprecation_time = args[:deprecation_time] if args.key?(:deprecation_time)
           @replacement_processor_version = args[:replacement_processor_version] if args.key?(:replacement_processor_version)
+        end
+      end
+      
+      # Information about Generative AI model-based processor versions.
+      class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo
+        include Google::Apis::Core::Hashable
+      
+        # Information for a custom Generative AI model created by the user. These are
+        # created with `Create New Version` in either the `Call foundation model` or `
+        # Fine tuning` tabs.
+        # Corresponds to the JSON property `customGenAiModelInfo`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo]
+        attr_accessor :custom_gen_ai_model_info
+      
+        # Information for a pretrained Google-managed foundation model.
+        # Corresponds to the JSON property `foundationGenAiModelInfo`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo]
+        attr_accessor :foundation_gen_ai_model_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_gen_ai_model_info = args[:custom_gen_ai_model_info] if args.key?(:custom_gen_ai_model_info)
+          @foundation_gen_ai_model_info = args[:foundation_gen_ai_model_info] if args.key?(:foundation_gen_ai_model_info)
+        end
+      end
+      
+      # Information for a custom Generative AI model created by the user. These are
+      # created with `Create New Version` in either the `Call foundation model` or `
+      # Fine tuning` tabs.
+      class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+        include Google::Apis::Core::Hashable
+      
+        # The base processor version ID for the custom model.
+        # Corresponds to the JSON property `baseProcessorVersionId`
+        # @return [String]
+        attr_accessor :base_processor_version_id
+      
+        # The type of custom model created by the user.
+        # Corresponds to the JSON property `customModelType`
+        # @return [String]
+        attr_accessor :custom_model_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_processor_version_id = args[:base_processor_version_id] if args.key?(:base_processor_version_id)
+          @custom_model_type = args[:custom_model_type] if args.key?(:custom_model_type)
+        end
+      end
+      
+      # Information for a pretrained Google-managed foundation model.
+      class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+        include Google::Apis::Core::Hashable
+      
+        # Whether finetuning is allowed for this base processor version.
+        # Corresponds to the JSON property `finetuningAllowed`
+        # @return [Boolean]
+        attr_accessor :finetuning_allowed
+        alias_method :finetuning_allowed?, :finetuning_allowed
+      
+        # The minimum number of labeled documents in the training dataset required for
+        # finetuning.
+        # Corresponds to the JSON property `minTrainLabeledDocuments`
+        # @return [Fixnum]
+        attr_accessor :min_train_labeled_documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finetuning_allowed = args[:finetuning_allowed] if args.key?(:finetuning_allowed)
+          @min_train_labeled_documents = args[:min_train_labeled_documents] if args.key?(:min_train_labeled_documents)
         end
       end
       
