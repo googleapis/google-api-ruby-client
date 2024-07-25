@@ -779,7 +779,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :application_id, as: 'applicationId'
-          collection :token, as: 'token', class: Google::Apis::GamesV1::RecallToken, decorator: Google::Apis::GamesV1::RecallToken::Representation
+          property :recall_token, as: 'recallToken', class: Google::Apis::GamesV1::RecallToken, decorator: Google::Apis::GamesV1::RecallToken::Representation
       
         end
       end
@@ -1201,7 +1201,7 @@ module Google
       class RetrieveDeveloperGamesLastPlayerTokenResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :token, as: 'token', class: Google::Apis::GamesV1::RecallToken, decorator: Google::Apis::GamesV1::RecallToken::Representation
+          property :game_player_token, as: 'gamePlayerToken', class: Google::Apis::GamesV1::GamePlayerToken, decorator: Google::Apis::GamesV1::GamePlayerToken::Representation
       
         end
       end
@@ -1209,7 +1209,7 @@ module Google
       class RetrieveGamesPlayerTokensResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :application_recall_tokens, as: 'applicationRecallTokens', class: Google::Apis::GamesV1::GamePlayerToken, decorator: Google::Apis::GamesV1::GamePlayerToken::Representation
+          collection :game_player_tokens, as: 'gamePlayerTokens', class: Google::Apis::GamesV1::GamePlayerToken, decorator: Google::Apis::GamesV1::GamePlayerToken::Representation
       
         end
       end
