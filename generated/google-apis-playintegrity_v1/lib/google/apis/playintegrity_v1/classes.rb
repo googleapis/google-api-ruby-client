@@ -371,6 +371,80 @@ module Google
           @testing_details = args[:testing_details] if args.key?(:testing_details)
         end
       end
+      
+      # Contains the recall bits values.
+      class Values
+        include Google::Apis::Core::Hashable
+      
+        # Required. First recall bit value.
+        # Corresponds to the JSON property `bitFirst`
+        # @return [Boolean]
+        attr_accessor :bit_first
+        alias_method :bit_first?, :bit_first
+      
+        # Required. Second recall bit value.
+        # Corresponds to the JSON property `bitSecond`
+        # @return [Boolean]
+        attr_accessor :bit_second
+        alias_method :bit_second?, :bit_second
+      
+        # Required. Third recall bit value.
+        # Corresponds to the JSON property `bitThird`
+        # @return [Boolean]
+        attr_accessor :bit_third
+        alias_method :bit_third?, :bit_third
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bit_first = args[:bit_first] if args.key?(:bit_first)
+          @bit_second = args[:bit_second] if args.key?(:bit_second)
+          @bit_third = args[:bit_third] if args.key?(:bit_third)
+        end
+      end
+      
+      # Request to write device recall bits.
+      class WriteDeviceRecallRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Integrity token obtained from calling Play Integrity API. Note that
+        # the integrity token contains the existing device recall bits. The write will
+        # only succeed if those bits in the integrity token are up to date.
+        # Corresponds to the JSON property `integrityToken`
+        # @return [String]
+        attr_accessor :integrity_token
+      
+        # Contains the recall bits values.
+        # Corresponds to the JSON property `newValues`
+        # @return [Google::Apis::PlayintegrityV1::Values]
+        attr_accessor :new_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integrity_token = args[:integrity_token] if args.key?(:integrity_token)
+          @new_values = args[:new_values] if args.key?(:new_values)
+        end
+      end
+      
+      # Response for the Write Device Recall action. Currently empty.
+      class WriteDeviceRecallResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
     end
   end
 end

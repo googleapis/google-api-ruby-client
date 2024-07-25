@@ -94,6 +94,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Values
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WriteDeviceRecallRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WriteDeviceRecallResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountActivity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -201,6 +219,30 @@ module Google
       
           property :testing_details, as: 'testingDetails', class: Google::Apis::PlayintegrityV1::TestingDetails, decorator: Google::Apis::PlayintegrityV1::TestingDetails::Representation
       
+        end
+      end
+      
+      class Values
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bit_first, as: 'bitFirst'
+          property :bit_second, as: 'bitSecond'
+          property :bit_third, as: 'bitThird'
+        end
+      end
+      
+      class WriteDeviceRecallRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integrity_token, as: 'integrityToken'
+          property :new_values, as: 'newValues', class: Google::Apis::PlayintegrityV1::Values, decorator: Google::Apis::PlayintegrityV1::Values::Representation
+      
+        end
+      end
+      
+      class WriteDeviceRecallResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end
