@@ -1692,6 +1692,253 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Atomically updates the specified ResourcePolicy configurations.
+        # @param [String] parent
+        #   Required. The parent service name, in the format ``` projects/`project_number`/
+        #   services/`service_id` ``` The parent collection in the `name` field of any
+        #   resource being updated must match this field, or the entire batch fails.
+        # @param [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest] google_firebase_appcheck_v1_batch_update_resource_policies_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_service_resource_policy_update(parent, google_firebase_appcheck_v1_batch_update_resource_policies_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/resourcePolicies:batchUpdate', options)
+          command.request_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest::Representation
+          command.request_object = google_firebase_appcheck_v1_batch_update_resource_policies_request_object
+          command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates the specified ResourcePolicy configuration.
+        # @param [String] parent
+        #   Required. The relative resource name of the parent Service in which the
+        #   specified ResourcePolicy will be created, in the format: ``` projects/`
+        #   project_number`/services/`service_id` ``` Note that the `service_id` element
+        #   must be a supported service ID. Currently, the following service IDs are
+        #   supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+        # @param [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy] google_firebase_appcheck_v1_resource_policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_service_resource_policy(parent, google_firebase_appcheck_v1_resource_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/resourcePolicies', options)
+          command.request_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy::Representation
+          command.request_object = google_firebase_appcheck_v1_resource_policy_object
+          command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified ResourcePolicy configuration.
+        # @param [String] name
+        #   Required. The relative resource name of the ResourcePolicy to delete, in the
+        #   format: ``` projects/`project_number`/services/`service_id`/resourcePolicies/`
+        #   resource_policy_id` ```
+        # @param [String] etag
+        #   The checksum to be validated against the current ResourcePolicy, to ensure the
+        #   client has an up-to-date value before proceeding. This checksum is computed by
+        #   the server based on the values of fields in the ResourcePolicy object, and can
+        #   be obtained from the ResourcePolicy object received from the last
+        #   CreateResourcePolicy, GetResourcePolicy, ListResourcePolicies,
+        #   UpdateResourcePolicy, or BatchUpdateResourcePolicies call. This etag is
+        #   strongly validated as defined by RFC 7232.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_service_resource_policy(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the requested ResourcePolicy configuration.
+        # @param [String] name
+        #   Required. The relative resource name of the ResourcePolicy to retrieve, in the
+        #   format: ``` projects/`project_number`/services/`service_id`/resourcePolicies/`
+        #   resource_policy_id` ``` Note that the `service_id` element must be a supported
+        #   service ID. Currently, the following service IDs are supported: * `oauth2.
+        #   googleapis.com` (Google Identity for iOS)
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_service_resource_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all ResourcePolicy configurations for the specified project and service.
+        # @param [String] parent
+        #   Required. The relative resource name of the parent Service for which to list
+        #   each associated ResourcePolicy, in the format: ``` projects/`project_number`/
+        #   services/`service_id` ``` Note that the `service_id` element must be a
+        #   supported service ID. Currently, the following service IDs are supported: * `
+        #   oauth2.googleapis.com` (Google Identity for iOS)
+        # @param [String] filter
+        #   Optional. Filters the results by the specified rule. For the exact syntax of
+        #   this field, please consult the [AIP-160](https://google.aip.dev/160) standard.
+        #   Currently, since the only fields in the ResourcePolicy resource are the scalar
+        #   fields `enforcement_mode` and `target_resource`, this method does not support
+        #   the traversal operator (`.`) or the has operator (`:`). Here are some examples
+        #   of valid filters: * `enforcement_mode = ENFORCED` * `target_resource = "//
+        #   oauth2.googleapis.com/projects/12345/oauthClients/"` * `enforcement_mode =
+        #   ENFORCED AND target_resource = "//oauth2.googleapis.com/projects/12345/
+        #   oauthClients/"`
+        # @param [Fixnum] page_size
+        #   The maximum number of ResourcePolicy objects to return in the response. The
+        #   server may return fewer than this at its own discretion. If no value is
+        #   specified (or too large a value is specified), the server will impose its own
+        #   limit.
+        # @param [String] page_token
+        #   Token returned from a previous call to ListResourcePolicies indicating where
+        #   in the set of ResourcePolicy objects to resume listing. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to ListResourcePolicies must match the call that provided the page token; if
+        #   they do not match, the result is undefined.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ListResourcePoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ListResourcePoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_service_resource_policies(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/resourcePolicies', options)
+          command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ListResourcePoliciesResponse::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ListResourcePoliciesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified ResourcePolicy configuration.
+        # @param [String] name
+        #   Required. Identifier. The relative name of the resource policy object, in the
+        #   format: ``` projects/`project_number`/services/`service_id`/resourcePolicies/`
+        #   resource_policy_id` ``` Note that the `service_id` element must be a supported
+        #   service ID. Currently, the following service IDs are supported: * `oauth2.
+        #   googleapis.com` (Google Identity for iOS) `resource_policy_id` is a system-
+        #   generated UID.
+        # @param [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy] google_firebase_appcheck_v1_resource_policy_object
+        # @param [String] update_mask
+        #   Required. A comma-separated list of names of fields in the ResourcePolicy to
+        #   update. Example: `enforcement_mode`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_service_resource_policy(name, google_firebase_appcheck_v1_resource_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy::Representation
+          command.request_object = google_firebase_appcheck_v1_resource_policy_object
+          command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
