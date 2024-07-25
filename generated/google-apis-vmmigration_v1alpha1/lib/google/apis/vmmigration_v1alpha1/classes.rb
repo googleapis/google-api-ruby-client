@@ -804,6 +804,19 @@ module Google
         end
       end
       
+      # Request message for 'CancelDiskMigrationJob' request.
+      class CancelDiskMigrationJobRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for 'CancelImageImportJob' request.
       class CancelImageImportJobRequest
         include Google::Apis::Core::Hashable
@@ -1816,7 +1829,10 @@ module Google
       class DiskImageTargetDetails
         include Google::Apis::Core::Hashable
       
-        # Optional. Additional licenses to assign to the image.
+        # Optional. Additional licenses to assign to the image. Format: https://www.
+        # googleapis.com/compute/v1/projects/PROJECT_ID/global/licenses/LICENSE_NAME Or
+        # https://www.googleapis.com/compute/beta/projects/PROJECT_ID/global/licenses/
+        # LICENSE_NAME
         # Corresponds to the JSON property `additionalLicenses`
         # @return [Array<String>]
         attr_accessor :additional_licenses
@@ -2202,6 +2218,12 @@ module Google
         # @return [Google::Apis::VmmigrationV1alpha1::Encryption]
         attr_accessor :encryption
       
+        # The target details of the machine image resource that will be created by the
+        # image import job.
+        # Corresponds to the JSON property `machineImageTargetDefaults`
+        # @return [Google::Apis::VmmigrationV1alpha1::MachineImageTargetDetails]
+        attr_accessor :machine_image_target_defaults
+      
         # Output only. The resource path of the ImageImport.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2223,6 +2245,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @disk_image_target_defaults = args[:disk_image_target_defaults] if args.key?(:disk_image_target_defaults)
           @encryption = args[:encryption] if args.key?(:encryption)
+          @machine_image_target_defaults = args[:machine_image_target_defaults] if args.key?(:machine_image_target_defaults)
           @name = args[:name] if args.key?(:name)
           @recent_image_import_jobs = args[:recent_image_import_jobs] if args.key?(:recent_image_import_jobs)
         end
@@ -2267,6 +2290,12 @@ module Google
         # @return [Array<Google::Apis::VmmigrationV1alpha1::Status>]
         attr_accessor :errors
       
+        # The target details of the machine image resource that will be created by the
+        # image import job.
+        # Corresponds to the JSON property `machineImageTargetDetails`
+        # @return [Google::Apis::VmmigrationV1alpha1::MachineImageTargetDetails]
+        attr_accessor :machine_image_target_details
+      
         # Output only. The resource path of the ImageImportJob.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2299,6 +2328,7 @@ module Google
           @disk_image_target_details = args[:disk_image_target_details] if args.key?(:disk_image_target_details)
           @end_time = args[:end_time] if args.key?(:end_time)
           @errors = args[:errors] if args.key?(:errors)
+          @machine_image_target_details = args[:machine_image_target_details] if args.key?(:machine_image_target_details)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @steps = args[:steps] if args.key?(:steps)
@@ -2938,6 +2968,136 @@ module Google
         end
       end
       
+      # Parameters overriding decisions based on the source machine image
+      # configurations.
+      class MachineImageParametersOverrides
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The machine type to create the MachineImage with. If empty, the
+        # service will choose a relevant machine type based on the information from the
+        # source image. For more information about machine types, please refer to https:/
+        # /cloud.google.com/compute/docs/machine-resource.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+        end
+      end
+      
+      # The target details of the machine image resource that will be created by the
+      # image import job.
+      class MachineImageTargetDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional licenses to assign to the instance created by the machine
+        # image. Format: https://www.googleapis.com/compute/v1/projects/PROJECT_ID/
+        # global/licenses/LICENSE_NAME Or https://www.googleapis.com/compute/beta/
+        # projects/PROJECT_ID/global/licenses/LICENSE_NAME
+        # Corresponds to the JSON property `additionalLicenses`
+        # @return [Array<String>]
+        attr_accessor :additional_licenses
+      
+        # Optional. An optional description of the machine image.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Encryption message describes the details of the applied encryption.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::VmmigrationV1alpha1::Encryption]
+        attr_accessor :encryption
+      
+        # Optional. The labels to apply to the instance created by the machine image.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The name of the machine image to be created.
+        # Corresponds to the JSON property `machineImageName`
+        # @return [String]
+        attr_accessor :machine_image_name
+      
+        # Parameters overriding decisions based on the source machine image
+        # configurations.
+        # Corresponds to the JSON property `machineImageParametersOverrides`
+        # @return [Google::Apis::VmmigrationV1alpha1::MachineImageParametersOverrides]
+        attr_accessor :machine_image_parameters_overrides
+      
+        # Optional. The network interfaces to create with the instance created by the
+        # machine image. Internal and external IP addresses are ignored for machine
+        # image import.
+        # Corresponds to the JSON property `networkInterfaces`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::NetworkInterface>]
+        attr_accessor :network_interfaces
+      
+        # Parameters affecting the OS adaptation process.
+        # Corresponds to the JSON property `osAdaptationParameters`
+        # @return [Google::Apis::VmmigrationV1alpha1::ImageImportOsAdaptationParameters]
+        attr_accessor :os_adaptation_parameters
+      
+        # Service account to assign to the instance created by the machine image.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [Google::Apis::VmmigrationV1alpha1::ServiceAccount]
+        attr_accessor :service_account
+      
+        # Shielded instance configuration.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::VmmigrationV1alpha1::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
+        # Optional. Set to true to set the machine image storageLocations to the single
+        # region of the import job. When false, the closest multi-region is selected.
+        # Corresponds to the JSON property `singleRegionStorage`
+        # @return [Boolean]
+        attr_accessor :single_region_storage
+        alias_method :single_region_storage?, :single_region_storage
+      
+        # Mentions that the machine image import is not using OS adaptation process.
+        # Corresponds to the JSON property `skipOsAdaptation`
+        # @return [Google::Apis::VmmigrationV1alpha1::SkipOsAdaptation]
+        attr_accessor :skip_os_adaptation
+      
+        # Optional. The tags to apply to the instance created by the machine image.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Required. Reference to the TargetProject resource that represents the target
+        # project in which the imported machine image will be created.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
+          @description = args[:description] if args.key?(:description)
+          @encryption = args[:encryption] if args.key?(:encryption)
+          @labels = args[:labels] if args.key?(:labels)
+          @machine_image_name = args[:machine_image_name] if args.key?(:machine_image_name)
+          @machine_image_parameters_overrides = args[:machine_image_parameters_overrides] if args.key?(:machine_image_parameters_overrides)
+          @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @os_adaptation_parameters = args[:os_adaptation_parameters] if args.key?(:os_adaptation_parameters)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
+          @single_region_storage = args[:single_region_storage] if args.key?(:single_region_storage)
+          @skip_os_adaptation = args[:skip_os_adaptation] if args.key?(:skip_os_adaptation)
+          @tags = args[:tags] if args.key?(:tags)
+          @target_project = args[:target_project] if args.key?(:target_project)
+        end
+      end
+      
       # MigratingVm describes the VM that will be migrated from a Source environment
       # and its replication state.
       class MigratingVm
@@ -3266,7 +3426,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The subnetwork to connect the NIC to.
+        # Optional. The networking tier used for configuring network access
+        # configuration. If left empty, will default to PREMIUM.
+        # Corresponds to the JSON property `networkTier`
+        # @return [String]
+        attr_accessor :network_tier
+      
+        # Optional. The subnetwork to connect the NIC to.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -3280,6 +3446,7 @@ module Google
           @external_ip = args[:external_ip] if args.key?(:external_ip)
           @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
           @network = args[:network] if args.key?(:network)
+          @network_tier = args[:network_tier] if args.key?(:network_tier)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
@@ -3761,6 +3928,19 @@ module Google
         end
       end
       
+      # Request message for 'RunDiskMigrationJobRequest' request.
+      class RunDiskMigrationJobRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A policy for scheduling replications.
       class SchedulePolicy
         include Google::Apis::Core::Hashable
@@ -3822,8 +4002,83 @@ module Google
         end
       end
       
+      # Service account to assign to the instance created by the machine image.
+      class ServiceAccount
+        include Google::Apis::Core::Hashable
+      
+        # Required. The email address of the service account.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Optional. The list of scopes to be made available for this service account.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
+      # Shielded instance configuration.
+      class ShieldedInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defines whether the instance created by the machine image has
+        # integrity monitoring enabled. This can be set to true only if the image boot
+        # option is EFI, and vTPM is enabled.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Optional. Defines whether the instance created by the machine image has vTPM
+        # enabled. This can be set to true only if the image boot option is EFI.
+        # Corresponds to the JSON property `enableVtpm`
+        # @return [Boolean]
+        attr_accessor :enable_vtpm
+        alias_method :enable_vtpm?, :enable_vtpm
+      
+        # Optional. Defines whether the instance created by the machine image has Secure
+        # Boot enabled. This can be set to true only if the image boot option is EFI.
+        # Corresponds to the JSON property `secureBoot`
+        # @return [String]
+        attr_accessor :secure_boot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
+          @secure_boot = args[:secure_boot] if args.key?(:secure_boot)
+        end
+      end
+      
       # ShuttingDownSourceVMStep contains specific step details.
       class ShuttingDownSourceVmStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Mentions that the machine image import is not using OS adaptation process.
+      class SkipOsAdaptation
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
