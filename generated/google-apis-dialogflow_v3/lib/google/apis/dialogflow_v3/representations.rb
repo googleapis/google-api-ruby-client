@@ -3374,6 +3374,7 @@ module Google
       class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_consent_based_redaction, as: 'enableConsentBasedRedaction'
           property :enable_interaction_logging, as: 'enableInteractionLogging'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
         end
@@ -5772,6 +5773,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_consent_based_redaction, as: 'enableConsentBasedRedaction'
           property :enable_interaction_logging, as: 'enableInteractionLogging'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
         end
