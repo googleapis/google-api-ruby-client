@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelDiskMigrationJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelImageImportJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -460,6 +466,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MachineImageParametersOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MachineImageTargetDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MigratingVm
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -574,6 +592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunDiskMigrationJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SchedulePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -586,7 +610,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShuttingDownSourceVmStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SkipOsAdaptation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -911,6 +953,12 @@ module Google
       end
       
       class CancelCutoverJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CancelDiskMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1292,6 +1340,8 @@ module Google
       
           property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1::Encryption, decorator: Google::Apis::VmmigrationV1::Encryption::Representation
       
+          property :machine_image_target_defaults, as: 'machineImageTargetDefaults', class: Google::Apis::VmmigrationV1::MachineImageTargetDetails, decorator: Google::Apis::VmmigrationV1::MachineImageTargetDetails::Representation
+      
           property :name, as: 'name'
           collection :recent_image_import_jobs, as: 'recentImageImportJobs', class: Google::Apis::VmmigrationV1::ImageImportJob, decorator: Google::Apis::VmmigrationV1::ImageImportJob::Representation
       
@@ -1308,6 +1358,8 @@ module Google
       
           property :end_time, as: 'endTime'
           collection :errors, as: 'errors', class: Google::Apis::VmmigrationV1::Status, decorator: Google::Apis::VmmigrationV1::Status::Representation
+      
+          property :machine_image_target_details, as: 'machineImageTargetDetails', class: Google::Apis::VmmigrationV1::MachineImageTargetDetails, decorator: Google::Apis::VmmigrationV1::MachineImageTargetDetails::Representation
       
           property :name, as: 'name'
           property :state, as: 'state'
@@ -1521,6 +1573,40 @@ module Google
         end
       end
       
+      class MachineImageParametersOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
+        end
+      end
+      
+      class MachineImageTargetDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_licenses, as: 'additionalLicenses'
+          property :description, as: 'description'
+          property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1::Encryption, decorator: Google::Apis::VmmigrationV1::Encryption::Representation
+      
+          hash :labels, as: 'labels'
+          property :machine_image_name, as: 'machineImageName'
+          property :machine_image_parameters_overrides, as: 'machineImageParametersOverrides', class: Google::Apis::VmmigrationV1::MachineImageParametersOverrides, decorator: Google::Apis::VmmigrationV1::MachineImageParametersOverrides::Representation
+      
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::VmmigrationV1::NetworkInterface, decorator: Google::Apis::VmmigrationV1::NetworkInterface::Representation
+      
+          property :os_adaptation_parameters, as: 'osAdaptationParameters', class: Google::Apis::VmmigrationV1::ImageImportOsAdaptationParameters, decorator: Google::Apis::VmmigrationV1::ImageImportOsAdaptationParameters::Representation
+      
+          property :service_account, as: 'serviceAccount', class: Google::Apis::VmmigrationV1::ServiceAccount, decorator: Google::Apis::VmmigrationV1::ServiceAccount::Representation
+      
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::VmmigrationV1::ShieldedInstanceConfig, decorator: Google::Apis::VmmigrationV1::ShieldedInstanceConfig::Representation
+      
+          property :single_region_storage, as: 'singleRegionStorage'
+          property :skip_os_adaptation, as: 'skipOsAdaptation', class: Google::Apis::VmmigrationV1::SkipOsAdaptation, decorator: Google::Apis::VmmigrationV1::SkipOsAdaptation::Representation
+      
+          collection :tags, as: 'tags'
+          property :target_project, as: 'targetProject'
+        end
+      end
+      
       class MigratingVm
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1605,6 +1691,7 @@ module Google
           property :external_ip, as: 'externalIp'
           property :internal_ip, as: 'internalIp'
           property :network, as: 'network'
+          property :network_tier, as: 'networkTier'
           property :subnetwork, as: 'subnetwork'
         end
       end
@@ -1742,6 +1829,12 @@ module Google
         end
       end
       
+      class RunDiskMigrationJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SchedulePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1759,7 +1852,30 @@ module Google
         end
       end
       
+      class ServiceAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          collection :scopes, as: 'scopes'
+        end
+      end
+      
+      class ShieldedInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_vtpm, as: 'enableVtpm'
+          property :secure_boot, as: 'secureBoot'
+        end
+      end
+      
       class ShuttingDownSourceVmStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SkipOsAdaptation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
