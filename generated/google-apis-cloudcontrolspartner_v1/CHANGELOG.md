@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudcontrolspartner_v1
 
+### v0.4.0 (2024-07-25)
+
+* Regenerated from discovery document revision 20240717
+
 ### v0.3.0 (2024-06-26)
 
 * Regenerated from discovery document revision 20240619
