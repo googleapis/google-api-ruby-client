@@ -754,6 +754,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RayClusterLoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RayClusterMonitoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RayOperatorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RecurringTimeWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1130,6 +1148,8 @@ module Google
           property :kubernetes_dashboard, as: 'kubernetesDashboard', class: Google::Apis::ContainerV1::KubernetesDashboard, decorator: Google::Apis::ContainerV1::KubernetesDashboard::Representation
       
           property :network_policy_config, as: 'networkPolicyConfig', class: Google::Apis::ContainerV1::NetworkPolicyConfig, decorator: Google::Apis::ContainerV1::NetworkPolicyConfig::Representation
+      
+          property :ray_operator_config, as: 'rayOperatorConfig', class: Google::Apis::ContainerV1::RayOperatorConfig, decorator: Google::Apis::ContainerV1::RayOperatorConfig::Representation
       
           property :stateful_ha_config, as: 'statefulHaConfig', class: Google::Apis::ContainerV1::StatefulHaConfig, decorator: Google::Apis::ContainerV1::StatefulHaConfig::Representation
       
@@ -2502,6 +2522,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :range_name, as: 'rangeName'
           property :utilization, as: 'utilization'
+        end
+      end
+      
+      class RayClusterLoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class RayClusterMonitoringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class RayOperatorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :ray_cluster_logging_config, as: 'rayClusterLoggingConfig', class: Google::Apis::ContainerV1::RayClusterLoggingConfig, decorator: Google::Apis::ContainerV1::RayClusterLoggingConfig::Representation
+      
+          property :ray_cluster_monitoring_config, as: 'rayClusterMonitoringConfig', class: Google::Apis::ContainerV1::RayClusterMonitoringConfig, decorator: Google::Apis::ContainerV1::RayClusterMonitoringConfig::Representation
+      
         end
       end
       
