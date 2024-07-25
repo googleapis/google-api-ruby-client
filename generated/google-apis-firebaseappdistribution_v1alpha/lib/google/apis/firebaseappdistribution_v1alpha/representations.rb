@@ -58,7 +58,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleFirebaseAppdistroV1alphaAiInstructionsStep
+      class GoogleFirebaseAppdistroV1alphaAiStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaAiStepResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -252,16 +258,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_description, as: 'appDescription'
-          collection :steps, as: 'steps', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructionsStep, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructionsStep::Representation
+          collection :steps, as: 'steps', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep::Representation
       
         end
       end
       
-      class GoogleFirebaseAppdistroV1alphaAiInstructionsStep
+      class GoogleFirebaseAppdistroV1alphaAiStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assertion, as: 'assertion'
           property :goal, as: 'goal'
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaAiStepResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :step, as: 'step', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep::Representation
+      
         end
       end
       
@@ -304,6 +319,8 @@ module Google
       class GoogleFirebaseAppdistroV1alphaDeviceExecution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ai_step_results, as: 'aiStepResults', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStepResult, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStepResult::Representation
+      
           property :app_crash, as: 'appCrash', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAppCrash, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAppCrash::Representation
       
           property :crawl_graph_uri, as: 'crawlGraphUri'
