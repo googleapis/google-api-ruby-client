@@ -237,29 +237,23 @@ module Google
         attr_accessor :boot_disk_size_gb
       
         # Optional. Whether to enable nested virtualization on boosted Cloud
-        # Workstations VMs running using this boost configuration. Nested virtualization
-        # lets you run virtual machine (VM) instances inside your workstation. Before
-        # enabling nested virtualization, consider the following important
-        # considerations. Cloud Workstations instances are subject to the [same
-        # restrictions as Compute Engine instances](https://cloud.google.com/compute/
-        # docs/instances/nested-virtualization/overview#restrictions): * **Organization
-        # policy**: projects, folders, or organizations may be restricted from creating
-        # nested VMs if the **Disable VM nested virtualization** constraint is enforced
-        # in the organization policy. For more information, see the Compute Engine
-        # section, [Checking whether nested virtualization is allowed](https://cloud.
-        # google.com/compute/docs/instances/nested-virtualization/managing-constraint#
-        # checking_whether_nested_virtualization_is_allowed). * **Performance**: nested
-        # VMs might experience a 10% or greater decrease in performance for workloads
-        # that are CPU-bound and possibly greater than a 10% decrease for workloads that
-        # are input/output bound. * **Machine Type**: nested virtualization can only be
-        # enabled on boost configurations that specify a machine_type in the N1 or N2
-        # machine series. * **GPUs**: nested virtualization may not be enabled on boost
-        # configurations with accelerators. * **Operating System**: Because [Container-
-        # Optimized OS](https://cloud.google.com/compute/docs/images/os-details#
-        # container-optimized_os_cos) does not support nested virtualization, when
-        # nested virtualization is enabled, the underlying Compute Engine VM instances
-        # boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-
-        # details#ubuntu_lts) image. Defaults to false.
+        # Workstations VMs running using this boost configuration. Defaults to false.
+        # Nested virtualization lets you run virtual machine (VM) instances inside your
+        # workstation. Before enabling nested virtualization, consider the following
+        # important considerations. Cloud Workstations instances are subject to the [
+        # same restrictions as Compute Engine instances](https://cloud.google.com/
+        # compute/docs/instances/nested-virtualization/overview#restrictions): * **
+        # Organization policy**: projects, folders, or organizations may be restricted
+        # from creating nested VMs if the **Disable VM nested virtualization**
+        # constraint is enforced in the organization policy. For more information, see
+        # the Compute Engine section, [Checking whether nested virtualization is allowed]
+        # (https://cloud.google.com/compute/docs/instances/nested-virtualization/
+        # managing-constraint#checking_whether_nested_virtualization_is_allowed). * **
+        # Performance**: nested VMs might experience a 10% or greater decrease in
+        # performance for workloads that are CPU-bound and possibly greater than a 10%
+        # decrease for workloads that are input/output bound. * **Machine Type**: nested
+        # virtualization can only be enabled on boost configurations that specify a
+        # machine_type in the N1 or N2 machine series.
         # Corresponds to the JSON property `enableNestedVirtualization`
         # @return [Boolean]
         attr_accessor :enable_nested_virtualization
@@ -407,11 +401,11 @@ module Google
         end
       end
       
-      # Configuration options for private workstation clusters.
+      # Configuration options for a custom domain.
       class DomainConfig
         include Google::Apis::Core::Hashable
       
-        # Immutable. Whether Workstations endpoint is private.
+        # Immutable. Domain used by Workstations for HTTP ingress.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
@@ -571,29 +565,23 @@ module Google
         alias_method :disable_ssh?, :disable_ssh
       
         # Optional. Whether to enable nested virtualization on Cloud Workstations VMs
-        # created using this workstation configuration. Nested virtualization lets you
-        # run virtual machine (VM) instances inside your workstation. Before enabling
-        # nested virtualization, consider the following important considerations. Cloud
-        # Workstations instances are subject to the [same restrictions as Compute Engine
-        # instances](https://cloud.google.com/compute/docs/instances/nested-
-        # virtualization/overview#restrictions): * **Organization policy**: projects,
-        # folders, or organizations may be restricted from creating nested VMs if the **
-        # Disable VM nested virtualization** constraint is enforced in the organization
-        # policy. For more information, see the Compute Engine section, [Checking
-        # whether nested virtualization is allowed](https://cloud.google.com/compute/
-        # docs/instances/nested-virtualization/managing-constraint#
-        # checking_whether_nested_virtualization_is_allowed). * **Performance**: nested
-        # VMs might experience a 10% or greater decrease in performance for workloads
-        # that are CPU-bound and possibly greater than a 10% decrease for workloads that
-        # are input/output bound. * **Machine Type**: nested virtualization can only be
-        # enabled on workstation configurations that specify a machine_type in the N1 or
-        # N2 machine series. * **GPUs**: nested virtualization may not be enabled on
-        # workstation configurations with accelerators. * **Operating System**: because [
-        # Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-
-        # details#container-optimized_os_cos) does not support nested virtualization,
-        # when nested virtualization is enabled, the underlying Compute Engine VM
-        # instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/
-        # images/os-details#ubuntu_lts) image.
+        # created using this workstation configuration. Defaults to false. Nested
+        # virtualization lets you run virtual machine (VM) instances inside your
+        # workstation. Before enabling nested virtualization, consider the following
+        # important considerations. Cloud Workstations instances are subject to the [
+        # same restrictions as Compute Engine instances](https://cloud.google.com/
+        # compute/docs/instances/nested-virtualization/overview#restrictions): * **
+        # Organization policy**: projects, folders, or organizations may be restricted
+        # from creating nested VMs if the **Disable VM nested virtualization**
+        # constraint is enforced in the organization policy. For more information, see
+        # the Compute Engine section, [Checking whether nested virtualization is allowed]
+        # (https://cloud.google.com/compute/docs/instances/nested-virtualization/
+        # managing-constraint#checking_whether_nested_virtualization_is_allowed). * **
+        # Performance**: nested VMs might experience a 10% or greater decrease in
+        # performance for workloads that are CPU-bound and possibly greater than a 10%
+        # decrease for workloads that are input/output bound. * **Machine Type**: nested
+        # virtualization can only be enabled on workstation configurations that specify
+        # a machine_type in the N1 or N2 machine series.
         # Corresponds to the JSON property `enableNestedVirtualization`
         # @return [Boolean]
         attr_accessor :enable_nested_virtualization
@@ -1382,7 +1370,7 @@ module Google
         end
       end
       
-      # A PortsConfig defines a range of ports. Both first and last are inclusive. To
+      # A PortRange defines a range of ports. Both first and last are inclusive. To
       # specify a single port, both first and last should be the same.
       class PortRange
         include Google::Apis::Core::Hashable
@@ -1408,27 +1396,37 @@ module Google
         end
       end
       
-      # 
+      # Configuration options for private workstation clusters.
       class PrivateClusterConfig
         include Google::Apis::Core::Hashable
       
-        # 
+        # Optional. Additional projects that are allowed to attach to the workstation
+        # cluster's service attachment. By default, the workstation cluster's project
+        # and the VPC host project (if different) are allowed.
         # Corresponds to the JSON property `allowedProjects`
         # @return [Array<String>]
         attr_accessor :allowed_projects
       
-        # 
+        # Output only. Hostname for the workstation cluster. This field will be
+        # populated only when private endpoint is enabled. To access workstations in the
+        # workstation cluster, create a new DNS zone mapping this domain name to an
+        # internal IP address and a forwarding rule mapping that address to the service
+        # attachment.
         # Corresponds to the JSON property `clusterHostname`
         # @return [String]
         attr_accessor :cluster_hostname
       
-        # 
+        # Immutable. Whether Workstations endpoint is private.
         # Corresponds to the JSON property `enablePrivateEndpoint`
         # @return [Boolean]
         attr_accessor :enable_private_endpoint
         alias_method :enable_private_endpoint?, :enable_private_endpoint
       
-        # 
+        # Output only. Service attachment URI for the workstation cluster. The service
+        # attachemnt is created when private endpoint is enabled. To access workstations
+        # in the workstation cluster, configure access to the managed service using [
+        # Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-
+        # service-connect-services).
         # Corresponds to the JSON property `serviceAttachmentUri`
         # @return [String]
         attr_accessor :service_attachment_uri
@@ -1675,6 +1673,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Output only. List of available boost configuration ids that this workstation
+        # can be boosted up to
+        # Corresponds to the JSON property `boostConfigs`
+        # @return [Array<Google::Apis::WorkstationsV1beta::WorkstationBoostConfig>]
+        attr_accessor :boost_configs
+      
         # Output only. Time when this workstation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1737,6 +1741,18 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Optional. The source workstation from which this workstations persistent
         # directories were cloned on creation.
         # Corresponds to the JSON property `sourceWorkstation`
@@ -1771,6 +1787,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @boost_configs = args[:boost_configs] if args.key?(:boost_configs)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -1781,11 +1798,33 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @source_workstation = args[:source_workstation] if args.key?(:source_workstation)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Boost config for this workstation. This object is populated from the parent
+      # workstation config.
+      class WorkstationBoostConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Boost config id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -1836,7 +1875,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Configuration options for private workstation clusters.
+        # Configuration options for a custom domain.
         # Corresponds to the JSON property `domainConfig`
         # @return [Google::Apis::WorkstationsV1beta::DomainConfig]
         attr_accessor :domain_config
@@ -1866,7 +1905,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Optional. Configuration for private workstation cluster.
+        # Configuration options for private workstation clusters.
         # Corresponds to the JSON property `privateClusterConfig`
         # @return [Google::Apis::WorkstationsV1beta::PrivateClusterConfig]
         attr_accessor :private_cluster_config
@@ -1877,6 +1916,18 @@ module Google
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
       
         # Immutable. Name of the Compute Engine subnetwork in which instances associated
         # with this workstation cluster will be created. Must be part of the subnetwork
@@ -1915,6 +1966,8 @@ module Google
           @network = args[:network] if args.key?(:network)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1985,10 +2038,14 @@ module Google
         attr_accessor :display_name
       
         # Optional. Whether to enable Linux `auditd` logging on the workstation. When
-        # enabled, a service account must also be specified that has `logging.buckets.
-        # write` permission on the project. Operating system audit logging is distinct
-        # from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-
-        # logging).
+        # enabled, a service_account must also be specified that has `roles/logging.
+        # logWriter` and `roles/monitoring.metricWriter` on the project. Operating
+        # system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.
+        # com/workstations/docs/audit-logging) and [Container output logging](http://
+        # cloud/workstations/docs/container-output-logging#overview). Operating system
+        # audit logs are available in the [Cloud Logging](https://cloud.google.com/
+        # logging/docs) console by querying: resource.type="gce_instance" log_name:"/
+        # logs/linux-auditd"
         # Corresponds to the JSON property `enableAuditAgent`
         # @return [Boolean]
         attr_accessor :enable_audit_agent
@@ -2093,6 +2150,18 @@ module Google
         # @return [String]
         attr_accessor :running_timeout
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. A system-assigned unique identifier for this workstation
         # configuration.
         # Corresponds to the JSON property `uid`
@@ -2134,6 +2203,8 @@ module Google
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @running_timeout = args[:running_timeout] if args.key?(:running_timeout)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
