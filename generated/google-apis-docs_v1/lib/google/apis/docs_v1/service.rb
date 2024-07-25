@@ -131,6 +131,14 @@ module Google
         # Gets the latest version of the specified document.
         # @param [String] document_id
         #   The ID of the document to retrieve.
+        # @param [Boolean] include_tabs_content
+        #   Whether to populate the Document.tabs field instead of the text content fields
+        #   like body and documentStyle on Document. - When `True`: Document content
+        #   populates in the Document.tabs field instead of the text content fields in
+        #   Document. - When `False`: The content of the document's first tab populates
+        #   the content fields in Document excluding Document.tabs. If a document has only
+        #   one tab, then that tab is used to populate the document content. Document.tabs
+        #   will be empty.
         # @param [String] suggestions_view_mode
         #   The suggestions view mode to apply to the document. This allows viewing the
         #   document with all suggestions inline, accepted or rejected. If one is not
@@ -152,11 +160,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_document(document_id, suggestions_view_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_document(document_id, include_tabs_content: nil, suggestions_view_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/documents/{documentId}', options)
           command.response_representation = Google::Apis::DocsV1::Document::Representation
           command.response_class = Google::Apis::DocsV1::Document
           command.params['documentId'] = document_id unless document_id.nil?
+          command.query['includeTabsContent'] = include_tabs_content unless include_tabs_content.nil?
           command.query['suggestionsViewMode'] = suggestions_view_mode unless suggestions_view_mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

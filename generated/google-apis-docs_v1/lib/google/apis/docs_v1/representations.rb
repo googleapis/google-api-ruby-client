@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BookmarkLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Bullet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DocumentTab
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EmbeddedDrawingProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +299,12 @@ module Google
       end
       
       class Header
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HeadingLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -766,6 +784,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Tab
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TabProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TabStop
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -845,6 +875,12 @@ module Google
       end
       
       class TableStyle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TabsCriteria
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -982,6 +1018,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :content, as: 'content', class: Google::Apis::DocsV1::StructuralElement, decorator: Google::Apis::DocsV1::StructuralElement::Representation
       
+        end
+      end
+      
+      class BookmarkLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :tab_id, as: 'tabId'
         end
       end
       
@@ -1133,6 +1177,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :footer_id, as: 'footerId'
+          property :tab_id, as: 'tabId'
         end
       end
       
@@ -1140,6 +1185,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :header_id, as: 'headerId'
+          property :tab_id, as: 'tabId'
         end
       end
       
@@ -1148,6 +1194,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :named_range_id, as: 'namedRangeId'
+          property :tabs_criteria, as: 'tabsCriteria', class: Google::Apis::DocsV1::TabsCriteria, decorator: Google::Apis::DocsV1::TabsCriteria::Representation
+      
         end
       end
       
@@ -1163,6 +1211,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :object_id_prop, as: 'objectId'
+          property :tab_id, as: 'tabId'
         end
       end
       
@@ -1220,6 +1269,8 @@ module Google
           hash :suggested_named_styles_changes, as: 'suggestedNamedStylesChanges', class: Google::Apis::DocsV1::SuggestedNamedStyles, decorator: Google::Apis::DocsV1::SuggestedNamedStyles::Representation
       
           property :suggestions_view_mode, as: 'suggestionsViewMode'
+          collection :tabs, as: 'tabs', class: Google::Apis::DocsV1::Tab, decorator: Google::Apis::DocsV1::Tab::Representation
+      
           property :title, as: 'title'
         end
       end
@@ -1281,6 +1332,36 @@ module Google
           property :use_custom_header_footer_margins_suggested, as: 'useCustomHeaderFooterMarginsSuggested'
           property :use_even_page_header_footer_suggested, as: 'useEvenPageHeaderFooterSuggested'
           property :use_first_page_header_footer_suggested, as: 'useFirstPageHeaderFooterSuggested'
+        end
+      end
+      
+      class DocumentTab
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, as: 'body', class: Google::Apis::DocsV1::Body, decorator: Google::Apis::DocsV1::Body::Representation
+      
+          property :document_style, as: 'documentStyle', class: Google::Apis::DocsV1::DocumentStyle, decorator: Google::Apis::DocsV1::DocumentStyle::Representation
+      
+          hash :footers, as: 'footers', class: Google::Apis::DocsV1::Footer, decorator: Google::Apis::DocsV1::Footer::Representation
+      
+          hash :footnotes, as: 'footnotes', class: Google::Apis::DocsV1::Footnote, decorator: Google::Apis::DocsV1::Footnote::Representation
+      
+          hash :headers, as: 'headers', class: Google::Apis::DocsV1::Header, decorator: Google::Apis::DocsV1::Header::Representation
+      
+          hash :inline_objects, as: 'inlineObjects', class: Google::Apis::DocsV1::InlineObject, decorator: Google::Apis::DocsV1::InlineObject::Representation
+      
+          hash :lists, as: 'lists', class: Google::Apis::DocsV1::List, decorator: Google::Apis::DocsV1::List::Representation
+      
+          hash :named_ranges, as: 'namedRanges', class: Google::Apis::DocsV1::NamedRanges, decorator: Google::Apis::DocsV1::NamedRanges::Representation
+      
+          property :named_styles, as: 'namedStyles', class: Google::Apis::DocsV1::NamedStyles, decorator: Google::Apis::DocsV1::NamedStyles::Representation
+      
+          hash :positioned_objects, as: 'positionedObjects', class: Google::Apis::DocsV1::PositionedObject, decorator: Google::Apis::DocsV1::PositionedObject::Representation
+      
+          hash :suggested_document_style_changes, as: 'suggestedDocumentStyleChanges', class: Google::Apis::DocsV1::SuggestedDocumentStyle, decorator: Google::Apis::DocsV1::SuggestedDocumentStyle::Representation
+      
+          hash :suggested_named_styles_changes, as: 'suggestedNamedStylesChanges', class: Google::Apis::DocsV1::SuggestedNamedStyles, decorator: Google::Apis::DocsV1::SuggestedNamedStyles::Representation
+      
         end
       end
       
@@ -1370,6 +1451,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :segment_id, as: 'segmentId'
+          property :tab_id, as: 'tabId'
         end
       end
       
@@ -1419,6 +1501,14 @@ module Google
           collection :content, as: 'content', class: Google::Apis::DocsV1::StructuralElement, decorator: Google::Apis::DocsV1::StructuralElement::Representation
       
           property :header_id, as: 'headerId'
+        end
+      end
+      
+      class HeadingLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :tab_id, as: 'tabId'
         end
       end
       
@@ -1596,8 +1686,13 @@ module Google
       class Link
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bookmark, as: 'bookmark', class: Google::Apis::DocsV1::BookmarkLink, decorator: Google::Apis::DocsV1::BookmarkLink::Representation
+      
           property :bookmark_id, as: 'bookmarkId'
+          property :heading, as: 'heading', class: Google::Apis::DocsV1::HeadingLink, decorator: Google::Apis::DocsV1::HeadingLink::Representation
+      
           property :heading_id, as: 'headingId'
+          property :tab_id, as: 'tabId'
           property :url, as: 'url'
         end
       end
@@ -1651,6 +1746,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :index, as: 'index'
           property :segment_id, as: 'segmentId'
+          property :tab_id, as: 'tabId'
         end
       end
       
@@ -1997,6 +2093,7 @@ module Google
           property :end_index, as: 'endIndex'
           property :segment_id, as: 'segmentId'
           property :start_index, as: 'startIndex'
+          property :tab_id, as: 'tabId'
         end
       end
       
@@ -2006,6 +2103,8 @@ module Google
           property :contains_text, as: 'containsText', class: Google::Apis::DocsV1::SubstringMatchCriteria, decorator: Google::Apis::DocsV1::SubstringMatchCriteria::Representation
       
           property :replace_text, as: 'replaceText'
+          property :tabs_criteria, as: 'tabsCriteria', class: Google::Apis::DocsV1::TabsCriteria, decorator: Google::Apis::DocsV1::TabsCriteria::Representation
+      
         end
       end
       
@@ -2021,6 +2120,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image_object_id, as: 'imageObjectId'
           property :image_replace_method, as: 'imageReplaceMethod'
+          property :tab_id, as: 'tabId'
           property :uri, as: 'uri'
         end
       end
@@ -2030,6 +2130,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :named_range_id, as: 'namedRangeId'
           property :named_range_name, as: 'namedRangeName'
+          property :tabs_criteria, as: 'tabsCriteria', class: Google::Apis::DocsV1::TabsCriteria, decorator: Google::Apis::DocsV1::TabsCriteria::Representation
+      
           property :text, as: 'text'
         end
       end
@@ -2384,6 +2486,29 @@ module Google
         end
       end
       
+      class Tab
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :child_tabs, as: 'childTabs', class: Google::Apis::DocsV1::Tab, decorator: Google::Apis::DocsV1::Tab::Representation
+      
+          property :document_tab, as: 'documentTab', class: Google::Apis::DocsV1::DocumentTab, decorator: Google::Apis::DocsV1::DocumentTab::Representation
+      
+          property :tab_properties, as: 'tabProperties', class: Google::Apis::DocsV1::TabProperties, decorator: Google::Apis::DocsV1::TabProperties::Representation
+      
+        end
+      end
+      
+      class TabProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :index, as: 'index'
+          property :nesting_level, as: 'nestingLevel'
+          property :parent_tab_id, as: 'parentTabId'
+          property :tab_id, as: 'tabId'
+          property :title, as: 'title'
+        end
+      end
+      
       class TabStop
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2559,6 +2684,13 @@ module Google
         end
       end
       
+      class TabsCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tab_ids, as: 'tabIds'
+        end
+      end
+      
       class TextRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2625,6 +2757,7 @@ module Google
           property :document_style, as: 'documentStyle', class: Google::Apis::DocsV1::DocumentStyle, decorator: Google::Apis::DocsV1::DocumentStyle::Representation
       
           property :fields, as: 'fields'
+          property :tab_id, as: 'tabId'
         end
       end
       
