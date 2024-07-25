@@ -280,12 +280,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ContaineranalysisGoogleDevtoolsCloudbuildV1GcsLocation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1517,15 +1511,6 @@ module Google
         end
       end
       
-      class ContaineranalysisGoogleDevtoolsCloudbuildV1GcsLocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bucket, as: 'bucket'
-          property :generation, :numeric_string => true, as: 'generation'
-          property :object, as: 'object'
-        end
-      end
-      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1538,8 +1523,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :proxy_secret_version_name, as: 'proxySecretVersionName'
-          property :proxy_ssl_ca_info, as: 'proxySslCaInfo', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1GcsLocation, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1GcsLocation::Representation
-      
         end
       end
       
