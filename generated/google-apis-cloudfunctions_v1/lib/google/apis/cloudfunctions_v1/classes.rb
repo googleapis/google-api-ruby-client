@@ -1941,7 +1941,7 @@ module Google
         # particular, to refer to HEAD use `master` moveable alias. To refer to a
         # specific fixed alias (tag): `https://source.developers.google.com/projects/*/
         # repos/*/fixed-aliases/*/paths/*` You may omit `paths/*` if you want to use the
-        # main directory.
+        # main directory. The function response may add an empty `/paths/` to the URL.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
