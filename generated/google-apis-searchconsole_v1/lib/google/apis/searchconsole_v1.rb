@@ -24,7 +24,7 @@ module Google
     # The Search Console API provides access to both Search Console data (verified
     # users only) and to public information on an URL basis (anyone)
     #
-    # @see https://developers.google.com/webmaster-tools/search-console-api/
+    # @see https://developers.google.com/webmaster-tools/about
     module SearchconsoleV1
       # Version of the Google Search Console API this client connects to.
       # This is NOT the gem version.
