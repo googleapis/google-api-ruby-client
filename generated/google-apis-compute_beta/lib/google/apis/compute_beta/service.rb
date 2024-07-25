@@ -4362,6 +4362,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Inserts a packet mirroring rule into a firewall policy.
+        # @param [String] firewall_policy
+        #   Name of the firewall policy to update.
+        # @param [Google::Apis::ComputeBeta::FirewallPolicyRule] firewall_policy_rule_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_firewall_policy_packet_mirroring_rule(firewall_policy, firewall_policy_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'locations/global/firewallPolicies/{firewallPolicy}/addPacketMirroringRule', options)
+          command.request_representation = Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+          command.request_object = firewall_policy_rule_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Inserts a rule into a firewall policy.
         # @param [String] firewall_policy
         #   Name of the firewall policy to update.
@@ -4600,6 +4647,42 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a packet mirroring rule of the specified priority.
+        # @param [String] firewall_policy
+        #   Name of the firewall policy to which the queried rule belongs.
+        # @param [Fixnum] priority
+        #   The priority of the rule to get from the firewall policy.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::FirewallPolicyRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::FirewallPolicyRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_firewall_policy_packet_mirroring_rule(firewall_policy, priority: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'locations/global/firewallPolicies/{firewallPolicy}/getPacketMirroringRule', options)
+          command.response_representation = Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+          command.response_class = Google::Apis::ComputeBeta::FirewallPolicyRule
+          command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4915,6 +4998,56 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Patches a packet mirroring rule of the specified priority.
+        # @param [String] firewall_policy
+        #   Name of the firewall policy to update.
+        # @param [Google::Apis::ComputeBeta::FirewallPolicyRule] firewall_policy_rule_object
+        # @param [Fixnum] priority
+        #   The priority of the rule to patch.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_firewall_policy_packet_mirroring_rule(firewall_policy, firewall_policy_rule_object = nil, priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'locations/global/firewallPolicies/{firewallPolicy}/patchPacketMirroringRule', options)
+          command.request_representation = Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+          command.request_object = firewall_policy_rule_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Patches a rule of the specified priority.
         # @param [String] firewall_policy
         #   Name of the firewall policy to update.
@@ -5005,6 +5138,53 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
           command.query['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a packet mirroring rule of the specified priority.
+        # @param [String] firewall_policy
+        #   Name of the firewall policy to update.
+        # @param [Fixnum] priority
+        #   The priority of the rule to remove from the firewall policy.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_firewall_policy_packet_mirroring_rule(firewall_policy, priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'locations/global/firewallPolicies/{firewallPolicy}/removePacketMirroringRule', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -20658,6 +20838,64 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Inserts a packet mirroring rule into a firewall policy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] firewall_policy
+        #   Name of the firewall policy to update.
+        # @param [Google::Apis::ComputeBeta::FirewallPolicyRule] firewall_policy_rule_object
+        # @param [Fixnum] max_priority
+        #   When rule.priority is not specified, auto choose a unused priority between
+        #   minPriority and maxPriority>. This field is exclusive with rule.priority.
+        # @param [Fixnum] min_priority
+        #   When rule.priority is not specified, auto choose a unused priority between
+        #   minPriority and maxPriority>. This field is exclusive with rule.priority.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_network_firewall_policy_packet_mirroring_rule(project, firewall_policy, firewall_policy_rule_object = nil, max_priority: nil, min_priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/firewallPolicies/{firewallPolicy}/addPacketMirroringRule', options)
+          command.request_representation = Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+          command.request_object = firewall_policy_rule_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
+          command.query['maxPriority'] = max_priority unless max_priority.nil?
+          command.query['minPriority'] = min_priority unless min_priority.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Inserts a rule into a firewall policy.
         # @param [String] project
         #   Project ID for this request.
@@ -20928,6 +21166,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a packet mirroring rule of the specified priority.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] firewall_policy
+        #   Name of the firewall policy to which the queried rule belongs.
+        # @param [Fixnum] priority
+        #   The priority of the rule to get from the firewall policy.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::FirewallPolicyRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::FirewallPolicyRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_network_firewall_policy_packet_mirroring_rule(project, firewall_policy, priority: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/firewallPolicies/{firewallPolicy}/getPacketMirroringRule', options)
+          command.response_representation = Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+          command.response_class = Google::Apis::ComputeBeta::FirewallPolicyRule
+          command.params['project'] = project unless project.nil?
+          command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a rule of the specified priority.
         # @param [String] project
         #   Project ID for this request.
@@ -21156,6 +21433,59 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Patches a packet mirroring rule of the specified priority.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] firewall_policy
+        #   Name of the firewall policy to update.
+        # @param [Google::Apis::ComputeBeta::FirewallPolicyRule] firewall_policy_rule_object
+        # @param [Fixnum] priority
+        #   The priority of the rule to patch.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_network_firewall_policy_packet_mirroring_rule(project, firewall_policy, firewall_policy_rule_object = nil, priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/firewallPolicies/{firewallPolicy}/patchPacketMirroringRule', options)
+          command.request_representation = Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+          command.request_object = firewall_policy_rule_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Patches a rule of the specified priority.
         # @param [String] project
         #   Project ID for this request.
@@ -21252,6 +21582,56 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
           command.query['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a packet mirroring rule of the specified priority.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] firewall_policy
+        #   Name of the firewall policy to update.
+        # @param [Fixnum] priority
+        #   The priority of the rule to remove from the firewall policy.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_network_firewall_policy_packet_mirroring_rule(project, firewall_policy, priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/firewallPolicies/{firewallPolicy}/removePacketMirroringRule', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -37016,7 +37396,13 @@ module Google
         # information (the `quotas` field). To exclude one or more fields, set your
         # request's `fields` query parameter to only include the fields you need. For
         # example, to only include the `id` and `selfLink` fields, add the query
-        # parameter `?fields=id,selfLink` to your request.
+        # parameter `?fields=id,selfLink` to your request. This method fails if the
+        # quota information is unavailable for the region and if the organization policy
+        # constraint compute.requireBasicQuotaInResponse is enforced. This constraint,
+        # when enforced, disables the fail-open behaviour when quota information (the `
+        # items.quotas` field) is unavailable for the region. It is recommended to use
+        # the default setting for the constraint unless your application requires the
+        # fail-closed behaviour for this method.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
