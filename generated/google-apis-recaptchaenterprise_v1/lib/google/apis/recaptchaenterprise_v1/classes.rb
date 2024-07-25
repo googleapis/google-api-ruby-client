@@ -385,8 +385,7 @@ module Google
         attr_accessor :expected_action
       
         # Optional. Flag for a reCAPTCHA express request for an assessment without a
-        # token. If enabled, `site_key` must reference a SCORE key with WAF feature set
-        # to EXPRESS.
+        # token. If enabled, `site_key` must reference an Express site key.
         # Corresponds to the JSON property `express`
         # @return [Boolean]
         attr_accessor :express
@@ -490,6 +489,19 @@ module Google
           @user_info = args[:user_info] if args.key?(:user_info)
           @user_ip_address = args[:user_ip_address] if args.key?(:user_ip_address)
           @waf_token_assessment = args[:waf_token_assessment] if args.key?(:waf_token_assessment)
+        end
+      end
+      
+      # Settings specific to keys that can be used for reCAPTCHA Express.
+      class GoogleCloudRecaptchaenterpriseV1ExpressKeySettings
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -973,13 +985,18 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Settings specific to keys that can be used for reCAPTCHA Express.
+        # Corresponds to the JSON property `expressSettings`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ExpressKeySettings]
+        attr_accessor :express_settings
+      
         # Settings specific to keys that can be used by iOS apps.
         # Corresponds to the JSON property `iosSettings`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IosKeySettings]
         attr_accessor :ios_settings
       
         # Optional. See [Creating and managing labels] (https://cloud.google.com/
-        # recaptcha-enterprise/docs/labels).
+        # recaptcha/docs/labels).
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1014,6 +1031,7 @@ module Google
           @android_settings = args[:android_settings] if args.key?(:android_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @express_settings = args[:express_settings] if args.key?(:express_settings)
           @ios_settings = args[:ios_settings] if args.key?(:ios_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -1174,12 +1192,11 @@ module Google
       
         # Optional. If true, skips the billing check. A reCAPTCHA Enterprise key or
         # migrated key behaves differently than a reCAPTCHA (non-Enterprise version) key
-        # when you reach a quota limit (see https://cloud.google.com/recaptcha-
-        # enterprise/quotas#quota_limit). To avoid any disruption of your usage, we
-        # check that a billing account is present. If your usage of reCAPTCHA is under
-        # the free quota, you can safely skip the billing check and proceed with the
-        # migration. See https://cloud.google.com/recaptcha-enterprise/docs/billing-
-        # information.
+        # when you reach a quota limit (see https://cloud.google.com/recaptcha/quotas#
+        # quota_limit). To avoid any disruption of your usage, we check that a billing
+        # account is present. If your usage of reCAPTCHA is under the free quota, you
+        # can safely skip the billing check and proceed with the migration. See https://
+        # cloud.google.com/recaptcha/docs/billing-information.
         # Corresponds to the JSON property `skipBillingCheck`
         # @return [Boolean]
         attr_accessor :skip_billing_check
