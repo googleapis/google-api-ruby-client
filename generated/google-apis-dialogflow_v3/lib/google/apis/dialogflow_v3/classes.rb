@@ -119,6 +119,14 @@ module Google
       class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
         include Google::Apis::Core::Hashable
       
+        # Enables consent-based end-user input redaction, if true, a pre-defined session
+        # parameter `$session.params.conversation-redaction` will be used to determine
+        # if the utterance should be redacted.
+        # Corresponds to the JSON property `enableConsentBasedRedaction`
+        # @return [Boolean]
+        attr_accessor :enable_consent_based_redaction
+        alias_method :enable_consent_based_redaction?, :enable_consent_based_redaction
+      
         # Enables DF Interaction logging.
         # Corresponds to the JSON property `enableInteractionLogging`
         # @return [Boolean]
@@ -137,6 +145,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_consent_based_redaction = args[:enable_consent_based_redaction] if args.key?(:enable_consent_based_redaction)
           @enable_interaction_logging = args[:enable_interaction_logging] if args.key?(:enable_interaction_logging)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
         end
@@ -8933,6 +8942,14 @@ module Google
       class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings
         include Google::Apis::Core::Hashable
       
+        # Enables consent-based end-user input redaction, if true, a pre-defined session
+        # parameter `$session.params.conversation-redaction` will be used to determine
+        # if the utterance should be redacted.
+        # Corresponds to the JSON property `enableConsentBasedRedaction`
+        # @return [Boolean]
+        attr_accessor :enable_consent_based_redaction
+        alias_method :enable_consent_based_redaction?, :enable_consent_based_redaction
+      
         # Enables DF Interaction logging.
         # Corresponds to the JSON property `enableInteractionLogging`
         # @return [Boolean]
@@ -8951,6 +8968,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_consent_based_redaction = args[:enable_consent_based_redaction] if args.key?(:enable_consent_based_redaction)
           @enable_interaction_logging = args[:enable_interaction_logging] if args.key?(:enable_interaction_logging)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
         end
