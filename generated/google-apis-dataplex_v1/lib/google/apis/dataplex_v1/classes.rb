@@ -337,7 +337,7 @@ module Google
       class GoogleCloudDataplexV1Aspect
         include Google::Apis::Core::Hashable
       
-        # AspectSource contains source system related information for the aspect.
+        # AspectSource contains information related to the source system of the Aspect.
         # Corresponds to the JSON property `aspectSource`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectSource]
         attr_accessor :aspect_source
@@ -352,9 +352,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The content of the aspect, according to its aspect type schema. This
-        # will replace content. The maximum size of the field is 120KB (encoded as UTF-8)
-        # .
+        # Required. The content of the aspect, according to its aspect type schema. The
+        # maximum size of the field is 120KB (encoded as UTF-8).
         # Corresponds to the JSON property `data`
         # @return [Hash<String,Object>]
         attr_accessor :data
@@ -384,7 +383,7 @@ module Google
         end
       end
       
-      # AspectSource contains source system related information for the aspect.
+      # AspectSource contains information related to the source system of the Aspect.
       class GoogleCloudDataplexV1AspectSource
         include Google::Apis::Core::Hashable
       
@@ -409,12 +408,12 @@ module Google
         end
       end
       
-      # Aspect Type is a template for creating Aspects, and represents the JSON-schema
-      # for a given Entry, e.g., BigQuery Table Schema.
+      # AspectType is a template for creating Aspects, and represents the JSON-schema
+      # for a given Entry, for example, BigQuery Table Schema.
       class GoogleCloudDataplexV1AspectType
         include Google::Apis::Core::Hashable
       
-        # Autorization for an Aspect Type.
+        # Autorization for an AspectType.
         # Corresponds to the JSON property `authorization`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeAuthorization]
         attr_accessor :authorization
@@ -434,9 +433,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # This checksum is computed by the server based on the value of other fields,
-        # and may be sent on update and delete requests to ensure the client has an up-
-        # to-date value before proceeding.
+        # The service computes this checksum. The client may send it on update and
+        # delete requests to ensure it has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -446,7 +444,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # MetadataTemplate definition for AspectType
+        # MetadataTemplate definition for an AspectType.
         # Corresponds to the JSON property `metadataTemplate`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeMetadataTemplate]
         attr_accessor :metadata_template
@@ -457,15 +455,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Denotes the transfer status of the Aspect Type. It is unspecified
-        # for Aspect Types created from Dataplex API.
-        # Corresponds to the JSON property `transferStatus`
-        # @return [String]
-        attr_accessor :transfer_status
-      
-        # Output only. System generated globally unique ID for the AspectType. This ID
-        # will be different if the AspectType is deleted and re-created with the same
-        # name.
+        # Output only. System generated globally unique ID for the AspectType. If you
+        # delete and recreate the AspectType with the same name, then this ID will be
+        # different.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -489,18 +481,17 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @metadata_template = args[:metadata_template] if args.key?(:metadata_template)
           @name = args[:name] if args.key?(:name)
-          @transfer_status = args[:transfer_status] if args.key?(:transfer_status)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
-      # Autorization for an Aspect Type.
+      # Autorization for an AspectType.
       class GoogleCloudDataplexV1AspectTypeAuthorization
         include Google::Apis::Core::Hashable
       
-        # Immutable. The IAM permission grantable on the Entry Group to allow access to
-        # instantiate Aspects of Dataplex owned Aspect Types, only settable for Dataplex
+        # Immutable. The IAM permission grantable on the EntryGroup to allow access to
+        # instantiate Aspects of Dataplex owned AspectTypes, only settable for Dataplex
         # owned Types.
         # Corresponds to the JSON property `alternateUsePermission`
         # @return [String]
@@ -516,26 +507,26 @@ module Google
         end
       end
       
-      # MetadataTemplate definition for AspectType
+      # MetadataTemplate definition for an AspectType.
       class GoogleCloudDataplexV1AspectTypeMetadataTemplate
         include Google::Apis::Core::Hashable
       
-        # Definition of the annotations of a field
+        # Definition of the annotations of a field.
         # Corresponds to the JSON property `annotations`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations]
         attr_accessor :annotations
       
-        # MetadataTemplate definition for AspectType
+        # MetadataTemplate definition for an AspectType.
         # Corresponds to the JSON property `arrayItems`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeMetadataTemplate]
         attr_accessor :array_items
       
-        # Definition of the constraints of a field
+        # Definition of the constraints of a field.
         # Corresponds to the JSON property `constraints`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints]
         attr_accessor :constraints
       
-        # Optional. The list of values for an enum type. Needs to be defined if the type
+        # Optional. The list of values for an enum type. You must define it if the type
         # is enum.
         # Corresponds to the JSON property `enumValues`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue>]
@@ -551,7 +542,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :index
       
-        # MetadataTemplate definition for AspectType
+        # MetadataTemplate definition for an AspectType.
         # Corresponds to the JSON property `mapItems`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeMetadataTemplate]
         attr_accessor :map_items
@@ -561,31 +552,30 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Field definition, needs to be specified if the type is record.
-        # Defines the nested fields.
+        # Optional. Field definition. You must specify it if the type is record. It
+        # defines the nested fields.
         # Corresponds to the JSON property `recordFields`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeMetadataTemplate>]
         attr_accessor :record_fields
       
         # Required. The datatype of this field. The following values are supported:
-        # Primitive types (string, integer, boolean, double, datetime); datetime must be
-        # of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-
-        # 10-02T15:01:23.045123456Z"). Complex types (enum, array, map, record).
+        # Primitive types: string integer boolean double datetime. Must be of the format
+        # RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.
+        # 045123456Z").Complex types: enum array map record
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Optional. Id can be used if this definition of the field needs to be reused
-        # later. Id needs to be unique across the entire template. Id can only be
-        # specified if the field type is record.
+        # Optional. You can use type id if this definition of the field needs to be
+        # reused later. The type id must be unique across the entire template. You can
+        # only specify it if the field type is record.
         # Corresponds to the JSON property `typeId`
         # @return [String]
         attr_accessor :type_id
       
-        # Optional. A reference to another field definition (instead of an inline
-        # definition). The value must be equal to the value of an id field defined
-        # elsewhere in the MetadataTemplate. Only fields with type as record can refer
-        # to other fields.
+        # Optional. A reference to another field definition (not an inline definition).
+        # The value must be equal to the value of an id field defined elsewhere in the
+        # MetadataTemplate. Only fields with record type can refer to other fields.
         # Corresponds to the JSON property `typeRef`
         # @return [String]
         attr_accessor :type_ref
@@ -610,41 +600,41 @@ module Google
         end
       end
       
-      # Definition of the annotations of a field
+      # Definition of the annotations of a field.
       class GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations
         include Google::Apis::Core::Hashable
       
-        # Optional. Marks a field as deprecated, a deprecation message can be included.
+        # Optional. Marks a field as deprecated. You can include a deprecation message.
         # Corresponds to the JSON property `deprecated`
         # @return [String]
         attr_accessor :deprecated
       
-        # Optional. Specify a description for a field
+        # Optional. Description for a field.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. Specify a displayname for a field.
+        # Optional. Display name for a field.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Specify a display order for a field. Display order can be used to
-        # reorder where a field is rendered
+        # Optional. Display order for a field. You can use this to reorder where a field
+        # is rendered.
         # Corresponds to the JSON property `displayOrder`
         # @return [Fixnum]
         attr_accessor :display_order
       
-        # Optional. String Type annotations can be used to specify special meaning to
+        # Optional. You can use String Type annotations to specify special meaning to
         # string fields. The following values are supported: richText: The field must be
-        # interpreted as a rich text field. url: A fully qualified url link. resource: A
+        # interpreted as a rich text field. url: A fully qualified URL link. resource: A
         # service qualified resource reference.
         # Corresponds to the JSON property `stringType`
         # @return [String]
         attr_accessor :string_type
       
-        # Optional. Suggested hints for string fields. These can be used to suggest
-        # values to users, through an UI for example.
+        # Optional. Suggested hints for string fields. You can use them to suggest
+        # values to users through console.
         # Corresponds to the JSON property `stringValues`
         # @return [Array<String>]
         attr_accessor :string_values
@@ -664,11 +654,11 @@ module Google
         end
       end
       
-      # Definition of the constraints of a field
+      # Definition of the constraints of a field.
       class GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints
         include Google::Apis::Core::Hashable
       
-        # Optional. Marks this as an optional/required field.
+        # Optional. Marks this field as optional or required.
         # Corresponds to the JSON property `required`
         # @return [Boolean]
         attr_accessor :required
@@ -684,22 +674,21 @@ module Google
         end
       end
       
-      # Definition of Enumvalue (to be used by enum fields)
+      # Definition of Enumvalue, to be used for enum fields.
       class GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue
         include Google::Apis::Core::Hashable
       
-        # Optional. Optional deprecation message to be set if an enum value needs to be
-        # deprecated.
+        # Optional. You can set this message if you need to deprecate an enum value.
         # Corresponds to the JSON property `deprecated`
         # @return [String]
         attr_accessor :deprecated
       
-        # Required. Index for the enum. Cannot be modified.
+        # Required. Index for the enum value. It can't be modified.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
       
-        # Required. Name of the enumvalue. This is the actual value that the aspect will
+        # Required. Name of the enumvalue. This is the actual value that the aspect can
         # contain.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3408,6 +3397,11 @@ module Google
       class GoogleCloudDataplexV1DataScanJob
         include Google::Apis::Core::Hashable
       
+        # Output only. The time when the DataScanJob was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # DataProfileResult defines the output of DataProfileScan. Each field of the
         # table will have field type specific profile result.
         # Corresponds to the JSON property `dataProfileResult`
@@ -3473,6 +3467,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @data_profile_result = args[:data_profile_result] if args.key?(:data_profile_result)
           @data_profile_spec = args[:data_profile_spec] if args.key?(:data_profile_spec)
           @data_quality_result = args[:data_quality_result] if args.key?(:data_quality_result)
@@ -3970,9 +3965,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The Aspects attached to the Entry. The format for the key can be one
-        # of the following: 1. `projectId`.`locationId`.`aspectTypeId` (if the aspect is
-        # attached directly to the entry) 2. `projectId`.`locationId`.`aspectTypeId`@`
-        # path` (if the aspect is attached to an entry's path)
+        # of the following: `projectId`.`locationId`.`aspectTypeId` (if the aspect is
+        # attached directly to the entry) `projectId`.`locationId`.`aspectTypeId`@`path`
+        # (if the aspect is attached to an entry's path)
         # Corresponds to the JSON property `aspects`
         # @return [Hash<String,Google::Apis::DataplexV1::GoogleCloudDataplexV1Aspect>]
         attr_accessor :aspects
@@ -3982,7 +3977,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # EntrySource contains source system related information for the entry.
+        # EntrySource contains information related to the source system of the Entry.
         # Corresponds to the JSON property `entrySource`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntrySource]
         attr_accessor :entry_source
@@ -4051,9 +4046,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # This checksum is computed by the server based on the value of other fields,
-        # and may be sent on update and delete requests to ensure the client has an up-
-        # to-date value before proceeding.
+        # This checksum is computed by the service, and might be sent on update and
+        # delete requests to ensure the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -4069,15 +4063,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Denotes the transfer status of the Entry Group. It is unspecified
-        # for Entry Group created from Dataplex API.
-        # Corresponds to the JSON property `transferStatus`
-        # @return [String]
-        attr_accessor :transfer_status
-      
-        # Output only. System generated globally unique ID for the EntryGroup. This ID
-        # will be different if the EntryGroup is deleted and re-created with the same
-        # name.
+        # Output only. System generated globally unique ID for the EntryGroup. If you
+        # delete and recreate the EntryGroup with the same name, this ID will be
+        # different.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -4099,13 +4087,12 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
-          @transfer_status = args[:transfer_status] if args.key?(:transfer_status)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
-      # EntrySource contains source system related information for the entry.
+      # EntrySource contains information related to the source system of the Entry.
       class GoogleCloudDataplexV1EntrySource
         include Google::Apis::Core::Hashable
       
@@ -4135,10 +4122,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Location of the resource in the source system. Entry will be
-        # searchable by this location. By default, this should match the location of the
-        # EntryGroup containing this entry. A different value allows capturing source
-        # location for data external to GCP.
+        # Output only. Location of the resource in the source system. You can search the
+        # Entry by this location. By default, this should match the location of the
+        # EntryGroup containing this entry. A different value allows capturing the
+        # source location for data external to Google Cloud.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -4234,9 +4221,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. This checksum is computed by the server based on the value of other
-        # fields, and may be sent on update and delete requests to ensure the client has
-        # an up-to-date value before proceeding.
+        # Optional. This checksum is computed by the service, and might be sent on
+        # update and delete requests to ensure the client has an up-to-date value before
+        # proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -4268,7 +4255,7 @@ module Google
         # @return [String]
         attr_accessor :system
       
-        # Optional. Indicates the class this Entry Type belongs to, for example, TABLE,
+        # Optional. Indicates the classes this Entry Type belongs to, for example, TABLE,
         # DATABASE, MODEL.
         # Corresponds to the JSON property `typeAliases`
         # @return [Array<String>]
@@ -5047,11 +5034,11 @@ module Google
         end
       end
       
-      # List AspectTypes response
+      # List AspectTypes response.
       class GoogleCloudDataplexV1ListAspectTypesResponse
         include Google::Apis::Core::Hashable
       
-        # ListAspectTypes under the given parent location.
+        # AspectTypes under the given parent location.
         # Corresponds to the JSON property `aspectTypes`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectType>]
         attr_accessor :aspect_types
@@ -5062,7 +5049,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations that could not be reached.
+        # Locations that the service couldn't reach.
         # Corresponds to the JSON property `unreachableLocations`
         # @return [Array<String>]
         attr_accessor :unreachable_locations
@@ -5311,16 +5298,17 @@ module Google
         end
       end
       
-      # 
+      # List Entries response.
       class GoogleCloudDataplexV1ListEntriesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of entries.
+        # The list of entries under the given parent location.
         # Corresponds to the JSON property `entries`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry>]
         attr_accessor :entries
       
-        # Pagination token.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5336,11 +5324,11 @@ module Google
         end
       end
       
-      # List ListEntryGroups response.
+      # List entry groups response.
       class GoogleCloudDataplexV1ListEntryGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # ListEntryGroups under the given parent location.
+        # Entry groups under the given parent location.
         # Corresponds to the JSON property `entryGroups`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryGroup>]
         attr_accessor :entry_groups
@@ -5351,7 +5339,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations that could not be reached.
+        # Locations that the service couldn't reach.
         # Corresponds to the JSON property `unreachableLocations`
         # @return [Array<String>]
         attr_accessor :unreachable_locations
@@ -5368,11 +5356,11 @@ module Google
         end
       end
       
-      # List EntryTypes response
+      # List EntryTypes response.
       class GoogleCloudDataplexV1ListEntryTypesResponse
         include Google::Apis::Core::Hashable
       
-        # ListEntryTypes under the given parent location.
+        # EntryTypes under the given parent location.
         # Corresponds to the JSON property `entryTypes`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryType>]
         attr_accessor :entry_types
@@ -5383,7 +5371,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations that could not be reached.
+        # Locations that the service couldn't reach.
         # Corresponds to the JSON property `unreachableLocations`
         # @return [Array<String>]
         attr_accessor :unreachable_locations
@@ -5996,7 +5984,8 @@ module Google
       class GoogleCloudDataplexV1SearchEntriesResponse
         include Google::Apis::Core::Hashable
       
-        # Pagination token.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6006,12 +5995,14 @@ module Google
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1SearchEntriesResult>]
         attr_accessor :results
       
-        # The estimated total number of matching entries. Not guaranteed to be accurate.
+        # The estimated total number of matching entries. This number isn't guaranteed
+        # to be accurate.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
       
-        # Unreachable locations. Search results don't include data from those locations.
+        # Locations that the service couldn't reach. Search results don't include data
+        # from these locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable

@@ -1320,7 +1320,6 @@ module Google
           property :metadata_template, as: 'metadataTemplate', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeMetadataTemplate, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeMetadataTemplate::Representation
       
           property :name, as: 'name'
-          property :transfer_status, as: 'transferStatus'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -2121,6 +2120,7 @@ module Google
       class GoogleCloudDataplexV1DataScanJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :data_profile_result, as: 'dataProfileResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult::Representation
       
           property :data_profile_spec, as: 'dataProfileSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec::Representation
@@ -2286,7 +2286,6 @@ module Google
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
-          property :transfer_status, as: 'transferStatus'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end

@@ -124,21 +124,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up a single entry.
+        # Looks up a single Entry by name using the permission on the source system.
         # @param [String] name
         #   Required. The project to which the request should be attributed in the
         #   following form: projects/`project`/locations/`location`.
         # @param [Array<String>, String] aspect_types
-        #   Optional. Limits the aspects returned to the provided aspect types. Only works
-        #   if the CUSTOM view is selected.
+        #   Optional. Limits the aspects returned to the provided aspect types. It only
+        #   works for CUSTOM view.
         # @param [String] entry
         #   Required. The resource name of the Entry: projects/`project`/locations/`
         #   location`/entryGroups/`entry_group`/entries/`entry`.
         # @param [Array<String>, String] paths
         #   Optional. Limits the aspects returned to those associated with the provided
-        #   paths within the Entry. Only works if the CUSTOM view is selected.
+        #   paths within the Entry. It only works for CUSTOM view.
         # @param [String] view
-        #   Optional. View for controlling which parts of an entry are to be returned.
+        #   Optional. View to control which parts of an entry the service should return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -170,20 +170,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches for entries matching given query and scope.
+        # Searches for Entries matching the given query and scope.
         # @param [String] name
         #   Required. The project to which the request should be attributed in the
         #   following form: projects/`project`/locations/`location`.
         # @param [String] order_by
-        #   Optional. Ordering of the results. Supported options to be added later.
+        #   Optional. Specifies the ordering of results.
         # @param [Fixnum] page_size
-        #   Optional. Pagination.
+        #   Optional. Number of results in the search page. If <=0, then defaults to 10.
+        #   Max limit for page_size is 1000. Throws an invalid argument for page_size >
+        #   1000.
         # @param [String] page_token
+        #   Optional. Page token received from a previous SearchEntries call. Provide this
+        #   to retrieve the subsequent page.
         # @param [String] query
         #   Required. The query against which entries in scope should be matched.
         # @param [String] scope
-        #   Optional. The scope under which the search should be operating. Should either
-        #   be organizations/ or projects/. If left unspecified, it will default to the
+        #   Optional. The scope under which the search should be operating. It must either
+        #   be organizations/ or projects/. If it is unspecified, it defaults to the
         #   organization where the project provided in name is located.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -217,17 +221,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an AspectType
+        # Creates an AspectType.
         # @param [String] parent
         #   Required. The resource name of the AspectType, of the form: projects/`
-        #   project_number`/locations/`location_id` where location_id refers to a GCP
-        #   region.
+        #   project_number`/locations/`location_id` where location_id refers to a Google
+        #   Cloud region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectType] google_cloud_dataplex_v1_aspect_type_object
         # @param [String] aspect_type_id
         #   Required. AspectType identifier.
         # @param [Boolean] validate_only
-        #   Optional. Only validate the request, but do not perform mutations. The default
-        #   is false.
+        #   Optional. The service validates the request without performing any mutations.
+        #   The default is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -259,13 +263,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a AspectType resource.
+        # Deletes an AspectType.
         # @param [String] name
         #   Required. The resource name of the AspectType: projects/`project_number`/
         #   locations/`location_id`/aspectTypes/`aspect_type_id`.
         # @param [String] etag
         #   Optional. If the client provided etag value does not match the current etag
-        #   value, the DeleteAspectTypeRequest method returns an ABORTED error response
+        #   value, the DeleteAspectTypeRequest method returns an ABORTED error response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -294,7 +298,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a AspectType resource.
+        # Gets an AspectType.
         # @param [String] name
         #   Required. The resource name of the AspectType: projects/`project_number`/
         #   locations/`location_id`/aspectTypes/`aspect_type_id`.
@@ -373,23 +377,25 @@ module Google
         # Lists AspectType resources in a project and location.
         # @param [String] parent
         #   Required. The resource name of the AspectType location, of the form: projects/`
-        #   project_number`/locations/`location_id` where location_id refers to a GCP
-        #   region.
+        #   project_number`/locations/`location_id` where location_id refers to a Google
+        #   Cloud region.
         # @param [String] filter
-        #   Optional. Filter request. Filters are case-sensitive. The following formats
-        #   are supported:labels.key1 = "value1" labels:key1 name = "value" These
-        #   restrictions can be coinjoined with AND, OR and NOT conjunctions.
+        #   Optional. Filter request. Filters are case-sensitive. The service supports the
+        #   following formats: labels.key1 = "value1" labels:key1 name = "value"These
+        #   restrictions can be conjoined with AND, OR, and NOT conjunctions.
         # @param [String] order_by
-        #   Optional. Order by fields (name or create_time) for the result. If not
-        #   specified, the ordering is undefined.
+        #   Optional. Orders the result by name or create_time fields. If not specified,
+        #   the ordering is undefined.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of AspectTypes to return. The service may return
-        #   fewer than this value. If unspecified, at most 10 AspectTypes will be returned.
-        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   fewer than this value. If unspecified, the service returns at most 10
+        #   AspectTypes. The maximum value is 1000; values above 1000 will be coerced to
+        #   1000.
         # @param [String] page_token
         #   Optional. Page token received from a previous ListAspectTypes call. Provide
         #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to ListAspectTypes must match the call that provided the page token.
+        #   you provide to ListAspectTypes must match the call that provided the page
+        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -421,7 +427,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a AspectType resource.
+        # Updates an AspectType.
         # @param [String] name
         #   Output only. The relative resource name of the AspectType, of the form:
         #   projects/`project_number`/locations/`location_id`/aspectTypes/`aspect_type_id`.
@@ -2035,7 +2041,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an EntryGroup
+        # Creates an EntryGroup.
         # @param [String] parent
         #   Required. The resource name of the entryGroup, of the form: projects/`
         #   project_number`/locations/`location_id` where location_id refers to a GCP
@@ -2044,8 +2050,8 @@ module Google
         # @param [String] entry_group_id
         #   Required. EntryGroup identifier.
         # @param [Boolean] validate_only
-        #   Optional. Only validate the request, but do not perform mutations. The default
-        #   is false.
+        #   Optional. The service validates the request without performing any mutations.
+        #   The default is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2077,13 +2083,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a EntryGroup resource.
+        # Deletes an EntryGroup.
         # @param [String] name
         #   Required. The resource name of the EntryGroup: projects/`project_number`/
         #   locations/`location_id`/entryGroups/`entry_group_id`.
         # @param [String] etag
         #   Optional. If the client provided etag value does not match the current etag
-        #   value, the DeleteEntryGroupRequest method returns an ABORTED error response
+        #   value, the DeleteEntryGroupRequest method returns an ABORTED error response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2112,7 +2118,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a EntryGroup resource.
+        # Gets an EntryGroup.
         # @param [String] name
         #   Required. The resource name of the EntryGroup: projects/`project_number`/
         #   locations/`location_id`/entryGroups/`entry_group_id`.
@@ -2191,20 +2197,22 @@ module Google
         # Lists EntryGroup resources in a project and location.
         # @param [String] parent
         #   Required. The resource name of the entryGroup location, of the form: projects/`
-        #   project_number`/locations/`location_id` where location_id refers to a GCP
-        #   region.
+        #   project_number`/locations/`location_id` where location_id refers to a Google
+        #   Cloud region.
         # @param [String] filter
         #   Optional. Filter request.
         # @param [String] order_by
         #   Optional. Order by fields for the result.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of EntryGroups to return. The service may return
-        #   fewer than this value. If unspecified, at most 10 EntryGroups will be returned.
-        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   fewer than this value. If unspecified, the service returns at most 10
+        #   EntryGroups. The maximum value is 1000; values above 1000 will be coerced to
+        #   1000.
         # @param [String] page_token
         #   Optional. Page token received from a previous ListEntryGroups call. Provide
         #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to ListEntryGroups must match the call that provided the page token.
+        #   you provide to ListEntryGroups must match the call that provided the page
+        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2236,7 +2244,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a EntryGroup resource.
+        # Updates an EntryGroup.
         # @param [String] name
         #   Output only. The relative resource name of the EntryGroup, of the form:
         #   projects/`project_number`/locations/`location_id`/entryGroups/`entry_group_id`.
@@ -2244,8 +2252,8 @@ module Google
         # @param [String] update_mask
         #   Required. Mask of fields to update.
         # @param [Boolean] validate_only
-        #   Optional. Only validate the request, but do not perform mutations. The default
-        #   is false.
+        #   Optional. The service validates the request, without performing any mutations.
+        #   The default is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2360,17 +2368,17 @@ module Google
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry] google_cloud_dataplex_v1_entry_object
         # @param [String] entry_id
         #   Required. Entry identifier. It has to be unique within an Entry Group.Entries
-        #   corresponding to Google Cloud resources use Entry ID format based on Full
-        #   Resource Names (https://cloud.google.com/apis/design/resource_names#
-        #   full_resource_name). The format is a Full Resource Name of the resource
-        #   without the prefix double slashes in the API Service Name part of Full
-        #   Resource Name. This allows retrieval of entries using their associated
-        #   resource name.For example if the Full Resource Name of a resource is //library.
-        #   googleapis.com/shelves/shelf1/books/book2, then the suggested entry_id is
-        #   library.googleapis.com/shelves/shelf1/books/book2.It is also suggested to
-        #   follow the same convention for entries corresponding to resources from other
-        #   providers or systems than Google Cloud.The maximum size of the field is 4000
-        #   characters.
+        #   corresponding to Google Cloud resources use an Entry ID format based on full
+        #   resource names (https://cloud.google.com/apis/design/resource_names#
+        #   full_resource_name). The format is a full resource name of the resource
+        #   without the prefix double slashes in the API service name part of the full
+        #   resource name. This allows retrieval of entries using their associated
+        #   resource name.For example, if the full resource name of a resource is //
+        #   library.googleapis.com/shelves/shelf1/books/book2, then the suggested entry_id
+        #   is library.googleapis.com/shelves/shelf1/books/book2.It is also suggested to
+        #   follow the same convention for entries corresponding to resources from
+        #   providers or systems other than Google Cloud.The maximum size of the field is
+        #   4000 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2432,18 +2440,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a single entry.
+        # Gets an Entry.
         # @param [String] name
         #   Required. The resource name of the Entry: projects/`project`/locations/`
         #   location`/entryGroups/`entry_group`/entries/`entry`.
         # @param [Array<String>, String] aspect_types
-        #   Optional. Limits the aspects returned to the provided aspect types. Only works
-        #   if the CUSTOM view is selected.
+        #   Optional. Limits the aspects returned to the provided aspect types. It only
+        #   works for CUSTOM view.
         # @param [Array<String>, String] paths
         #   Optional. Limits the aspects returned to those associated with the provided
-        #   paths within the Entry. Only works if the CUSTOM view is selected.
+        #   paths within the Entry. It only works for CUSTOM view.
         # @param [String] view
-        #   Optional. View for controlling which parts of an entry are to be returned.
+        #   Optional. View to control which parts of an entry the service should return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2474,24 +2482,29 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists entries within an entry group.
+        # Lists Entries within an EntryGroup.
         # @param [String] parent
         #   Required. The resource name of the parent Entry Group: projects/`project`/
         #   locations/`location`/entryGroups/`entry_group`.
         # @param [String] filter
-        #   Optional. A filter on the entries to return. Filters are case-sensitive. The
-        #   request can be filtered by the following fields: entry_type, entry_source.
-        #   display_name. The comparison operators are =, !=, <, >, <=, >= (strings are
-        #   compared according to lexical order) The logical operators AND, OR, NOT can be
-        #   used in the filter. Wildcard "*" can be used, but for entry_type the full
-        #   project id or number needs to be provided. Example filter expressions: "
+        #   Optional. A filter on the entries to return. Filters are case-sensitive. You
+        #   can filter the request by the following fields: entry_type entry_source.
+        #   display_nameThe comparison operators are =, !=, <, >, <=, >=. The service
+        #   compares strings according to lexical order.You can use the logical operators
+        #   AND, OR, NOT in the filter.You can use Wildcard "*", but for entry_type you
+        #   need to provide the full project id or number.Example filter expressions: "
         #   entry_source.display_name=AnExampleDisplayName" "entry_type=projects/example-
         #   project/locations/global/entryTypes/example-entry_type" "entry_type=projects/
         #   example-project/locations/us/entryTypes/a* OR entry_type=projects/another-
         #   project/locations/*" "NOT entry_source.display_name=AnotherExampleDisplayName"
         # @param [Fixnum] page_size
+        #   Optional. Number of items to return per page. If there are remaining results,
+        #   the service returns a next_page_token. If unspecified, the service returns at
+        #   most 10 Entries. The maximum value is 100; values above 100 will be coerced to
+        #   100.
         # @param [String] page_token
-        #   Optional. The pagination token returned by a previous request.
+        #   Optional. Page token received from a previous ListEntries call. Provide this
+        #   to retrieve the subsequent page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2528,22 +2541,25 @@ module Google
         #   project`/locations/`location`/entryGroups/`entry_group`/entries/`entry`.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry] google_cloud_dataplex_v1_entry_object
         # @param [Boolean] allow_missing
-        #   Optional. If set to true and the entry does not exist, it will be created.
+        #   Optional. If set to true and the entry doesn't exist, the service will create
+        #   it.
         # @param [Array<String>, String] aspect_keys
-        #   Optional. The map keys of the Aspects which should be modified. Supports the
-        #   following syntaxes: * - matches aspect on given type and empty path * @path -
-        #   matches aspect on given type and specified path * * - matches aspects on given
-        #   type for all paths * *@path - matches aspects of all types on the given
-        #   pathExisting aspects matching the syntax will not be removed unless
-        #   delete_missing_aspects is set to true.If this field is left empty, it will be
-        #   treated as specifying exactly those Aspects present in the request.
+        #   Optional. The map keys of the Aspects which the service should modify. It
+        #   supports the following syntaxes: - matches an aspect of the given type and
+        #   empty path. @path - matches an aspect of the given type and specified path. * -
+        #   matches aspects of the given type for all paths. *@path - matches aspects of
+        #   all types on the given path.The service will not remove existing aspects
+        #   matching the syntax unless delete_missing_aspects is set to true.If this field
+        #   is left empty, the service treats it as specifying exactly those Aspects
+        #   present in the request.
         # @param [Boolean] delete_missing_aspects
-        #   Optional. If set to true and the aspect_keys specify aspect ranges, any
-        #   existing aspects from that range not provided in the request will be deleted.
+        #   Optional. If set to true and the aspect_keys specify aspect ranges, the
+        #   service deletes any existing aspects from that range that weren't provided in
+        #   the request.
         # @param [String] update_mask
         #   Optional. Mask of fields to update. To update Aspects, the update_mask must
-        #   contain the value "aspects".If the update_mask is empty, all modifiable fields
-        #   present in the request will be updated.
+        #   contain the value "aspects".If the update_mask is empty, the service will
+        #   update all modifiable fields present in the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2577,17 +2593,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an EntryType
+        # Creates an EntryType.
         # @param [String] parent
         #   Required. The resource name of the EntryType, of the form: projects/`
-        #   project_number`/locations/`location_id` where location_id refers to a GCP
-        #   region.
+        #   project_number`/locations/`location_id` where location_id refers to a Google
+        #   Cloud region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryType] google_cloud_dataplex_v1_entry_type_object
         # @param [String] entry_type_id
         #   Required. EntryType identifier.
         # @param [Boolean] validate_only
-        #   Optional. Only validate the request, but do not perform mutations. The default
-        #   is false.
+        #   Optional. The service validates the request without performing any mutations.
+        #   The default is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2619,13 +2635,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a EntryType resource.
+        # Deletes an EntryType.
         # @param [String] name
         #   Required. The resource name of the EntryType: projects/`project_number`/
         #   locations/`location_id`/entryTypes/`entry_type_id`.
         # @param [String] etag
         #   Optional. If the client provided etag value does not match the current etag
-        #   value, the DeleteEntryTypeRequest method returns an ABORTED error response
+        #   value, the DeleteEntryTypeRequest method returns an ABORTED error response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2654,7 +2670,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a EntryType resource.
+        # Gets an EntryType.
         # @param [String] name
         #   Required. The resource name of the EntryType: projects/`project_number`/
         #   locations/`location_id`/entryTypes/`entry_type_id`.
@@ -2733,23 +2749,24 @@ module Google
         # Lists EntryType resources in a project and location.
         # @param [String] parent
         #   Required. The resource name of the EntryType location, of the form: projects/`
-        #   project_number`/locations/`location_id` where location_id refers to a GCP
-        #   region.
+        #   project_number`/locations/`location_id` where location_id refers to a Google
+        #   Cloud region.
         # @param [String] filter
-        #   Optional. Filter request. Filters are case-sensitive. The following formats
-        #   are supported:labels.key1 = "value1" labels:key1 name = "value" These
-        #   restrictions can be coinjoined with AND, OR and NOT conjunctions.
+        #   Optional. Filter request. Filters are case-sensitive. The service supports the
+        #   following formats: labels.key1 = "value1" labels:key1 name = "value"These
+        #   restrictions can be conjoined with AND, OR, and NOT conjunctions.
         # @param [String] order_by
-        #   Optional. Order by fields (name or create_time) for the result. If not
-        #   specified, the ordering is undefined.
+        #   Optional. Orders the result by name or create_time fields. If not specified,
+        #   the ordering is undefined.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of EntryTypes to return. The service may return fewer
-        #   than this value. If unspecified, at most 10 EntryTypes will be returned. The
-        #   maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   than this value. If unspecified, the service returns at most 10 EntryTypes.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
         #   Optional. Page token received from a previous ListEntryTypes call. Provide
         #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to ListEntryTypes must match the call that provided the page token.
+        #   you provided to ListEntryTypes must match the call that provided the page
+        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2781,7 +2798,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a EntryType resource.
+        # Updates an EntryType.
         # @param [String] name
         #   Output only. The relative resource name of the EntryType, of the form:
         #   projects/`project_number`/locations/`location_id`/entryTypes/`entry_type_id`.
@@ -2789,8 +2806,8 @@ module Google
         # @param [String] update_mask
         #   Required. Mask of fields to update.
         # @param [Boolean] validate_only
-        #   Optional. Only validate the request, but do not perform mutations. The default
-        #   is false.
+        #   Optional. The service validates the request without performing any mutations.
+        #   The default is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
