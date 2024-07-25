@@ -219,6 +219,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # The bucket's IP filter configuration. Specifies the network sources that are
+        # allowed to access the operations on the bucket, as well as its underlying
+        # objects. Only enforced when the mode is set to 'Enabled'.
+        # Corresponds to the JSON property `ipFilter`
+        # @return [Google::Apis::StorageV1::Bucket::IpFilter]
+        attr_accessor :ip_filter
+      
         # The kind of item this is. For buckets, this is always storage#bucket.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -365,6 +372,7 @@ module Google
           @hierarchical_namespace = args[:hierarchical_namespace] if args.key?(:hierarchical_namespace)
           @iam_configuration = args[:iam_configuration] if args.key?(:iam_configuration)
           @id = args[:id] if args.key?(:id)
+          @ip_filter = args[:ip_filter] if args.key?(:ip_filter)
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
           @lifecycle = args[:lifecycle] if args.key?(:lifecycle)
@@ -645,6 +653,87 @@ module Google
             def update!(**args)
               @enabled = args[:enabled] if args.key?(:enabled)
               @locked_time = args[:locked_time] if args.key?(:locked_time)
+            end
+          end
+        end
+        
+        # The bucket's IP filter configuration. Specifies the network sources that are
+        # allowed to access the operations on the bucket, as well as its underlying
+        # objects. Only enforced when the mode is set to 'Enabled'.
+        class IpFilter
+          include Google::Apis::Core::Hashable
+        
+          # The mode of the IP filter. Valid values are 'Enabled' and 'Disabled'.
+          # Corresponds to the JSON property `mode`
+          # @return [String]
+          attr_accessor :mode
+        
+          # The public network source of the bucket's IP filter.
+          # Corresponds to the JSON property `publicNetworkSource`
+          # @return [Google::Apis::StorageV1::Bucket::IpFilter::PublicNetworkSource]
+          attr_accessor :public_network_source
+        
+          # The list of [VPC network](https://cloud.google.com/vpc/docs/vpc) sources of
+          # the bucket's IP filter.
+          # Corresponds to the JSON property `vpcNetworkSources`
+          # @return [Array<Google::Apis::StorageV1::Bucket::IpFilter::VpcNetworkSource>]
+          attr_accessor :vpc_network_sources
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @mode = args[:mode] if args.key?(:mode)
+            @public_network_source = args[:public_network_source] if args.key?(:public_network_source)
+            @vpc_network_sources = args[:vpc_network_sources] if args.key?(:vpc_network_sources)
+          end
+          
+          # The public network source of the bucket's IP filter.
+          class PublicNetworkSource
+            include Google::Apis::Core::Hashable
+          
+            # The list of public IPv4, IPv6 cidr ranges that are allowed to access the
+            # bucket.
+            # Corresponds to the JSON property `allowedIpCidrRanges`
+            # @return [Array<String>]
+            attr_accessor :allowed_ip_cidr_ranges
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @allowed_ip_cidr_ranges = args[:allowed_ip_cidr_ranges] if args.key?(:allowed_ip_cidr_ranges)
+            end
+          end
+          
+          # 
+          class VpcNetworkSource
+            include Google::Apis::Core::Hashable
+          
+            # The list of IPv4, IPv6 cidr ranges subnetworks that are allowed to access the
+            # bucket.
+            # Corresponds to the JSON property `allowedIpCidrRanges`
+            # @return [Array<String>]
+            attr_accessor :allowed_ip_cidr_ranges
+          
+            # Name of the network. Format: projects/`PROJECT_ID`/global/networks/`
+            # NETWORK_NAME`
+            # Corresponds to the JSON property `network`
+            # @return [String]
+            attr_accessor :network
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @allowed_ip_cidr_ranges = args[:allowed_ip_cidr_ranges] if args.key?(:allowed_ip_cidr_ranges)
+              @network = args[:network] if args.key?(:network)
             end
           end
         end

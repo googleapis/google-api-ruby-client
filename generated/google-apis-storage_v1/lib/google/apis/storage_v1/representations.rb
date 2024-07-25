@@ -91,6 +91,24 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class IpFilter
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class PublicNetworkSource
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+          
+          class VpcNetworkSource
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Lifecycle
           class Representation < Google::Apis::Core::JsonRepresentation; end
           
@@ -448,6 +466,8 @@ module Google
           property :iam_configuration, as: 'iamConfiguration', class: Google::Apis::StorageV1::Bucket::IamConfiguration, decorator: Google::Apis::StorageV1::Bucket::IamConfiguration::Representation
       
           property :id, as: 'id'
+          property :ip_filter, as: 'ipFilter', class: Google::Apis::StorageV1::Bucket::IpFilter, decorator: Google::Apis::StorageV1::Bucket::IpFilter::Representation
+      
           property :kind, as: 'kind'
           hash :labels, as: 'labels'
           property :lifecycle, as: 'lifecycle', class: Google::Apis::StorageV1::Bucket::Lifecycle, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Representation
@@ -556,6 +576,32 @@ module Google
               property :enabled, as: 'enabled'
               property :locked_time, as: 'lockedTime', type: DateTime
           
+            end
+          end
+        end
+        
+        class IpFilter
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :mode, as: 'mode'
+            property :public_network_source, as: 'publicNetworkSource', class: Google::Apis::StorageV1::Bucket::IpFilter::PublicNetworkSource, decorator: Google::Apis::StorageV1::Bucket::IpFilter::PublicNetworkSource::Representation
+        
+            collection :vpc_network_sources, as: 'vpcNetworkSources', class: Google::Apis::StorageV1::Bucket::IpFilter::VpcNetworkSource, decorator: Google::Apis::StorageV1::Bucket::IpFilter::VpcNetworkSource::Representation
+        
+          end
+          
+          class PublicNetworkSource
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              collection :allowed_ip_cidr_ranges, as: 'allowedIpCidrRanges'
+            end
+          end
+          
+          class VpcNetworkSource
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              collection :allowed_ip_cidr_ranges, as: 'allowedIpCidrRanges'
+              property :network, as: 'network'
             end
           end
         end
