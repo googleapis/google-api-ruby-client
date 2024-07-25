@@ -1431,9 +1431,9 @@ module Google
         # CreateNotificationChannel, DeleteNotificationChannel and
         # UpdateNotificationChannel.
         # @param [String] name
-        #   The full REST resource name for this channel. The format is: projects/[
-        #   PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is
-        #   automatically assigned by the server on creation.
+        #   Identifier. The full REST resource name for this channel. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [
+        #   CHANNEL_ID] is automatically assigned by the server on creation.
         # @param [Google::Apis::MonitoringV3::NotificationChannel] notification_channel_object
         # @param [String] update_mask
         #   The fields to update.
