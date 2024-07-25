@@ -921,13 +921,6 @@ module Google
         # @return [String]
         attr_accessor :merged_facet_key
       
-        # Each instance is a list of facet values that map into the same (possibly
-        # different) merged facet value. For the current attribute config, each facet
-        # value should map to at most one merged facet value.
-        # Corresponds to the JSON property `mergedFacetValues`
-        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue>]
-        attr_accessor :merged_facet_values
-      
         def initialize(**args)
            update!(**args)
         end
@@ -935,7 +928,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @merged_facet_key = args[:merged_facet_key] if args.key?(:merged_facet_key)
-          @merged_facet_values = args[:merged_facet_values] if args.key?(:merged_facet_values)
         end
       end
       
@@ -1114,7 +1106,7 @@ module Google
         end
       end
       
-      # Recent search of this user.
+      # Deprecated: Recent search of this user.
       class GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult
         include Google::Apis::Core::Hashable
       
