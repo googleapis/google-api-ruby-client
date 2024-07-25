@@ -1643,8 +1643,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :merged_facet_key, as: 'mergedFacetKey'
-          collection :merged_facet_values, as: 'mergedFacetValues', class: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue::Representation
-      
         end
       end
       
