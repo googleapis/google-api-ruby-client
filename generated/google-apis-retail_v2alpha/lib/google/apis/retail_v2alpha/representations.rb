@@ -592,6 +592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaExportUserEventsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaExportUserEventsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2048,7 +2054,6 @@ module Google
           property :name, as: 'name'
           collection :product_count_stats, as: 'productCountStats', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchProductCountStatistic, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchProductCountStatistic::Representation
       
-          hash :product_counts, as: 'productCounts'
           collection :quality_metrics, as: 'qualityMetrics', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchQualityMetric, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchQualityMetric::Representation
       
         end
@@ -2132,8 +2137,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :merged_facet_key, as: 'mergedFacetKey'
-          collection :merged_facet_values, as: 'mergedFacetValues', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue::Representation
-      
         end
       end
       
@@ -2385,6 +2388,15 @@ module Google
           property :errors_config, as: 'errorsConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaExportErrorsConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaExportErrorsConfig::Representation
       
           property :output_result, as: 'outputResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaOutputResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaExportUserEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :output_config, as: 'outputConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaOutputConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaOutputConfig::Representation
       
         end
       end
