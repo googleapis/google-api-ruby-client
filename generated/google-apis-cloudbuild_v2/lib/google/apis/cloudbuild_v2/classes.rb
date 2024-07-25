@@ -2365,8 +2365,8 @@ module Google
         # @return [String]
         attr_accessor :secret_name
       
-        # Output only. Resource name of the SecretVersion. In format: projects/*/secrets/
-        # */versions/*
+        # Optional. Resource name of the SecretVersion. In format: projects/*/secrets/*/
+        # versions/*
         # Corresponds to the JSON property `secretVersion`
         # @return [String]
         attr_accessor :secret_version
