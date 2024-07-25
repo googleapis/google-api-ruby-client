@@ -317,6 +317,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :download_bytes, :numeric_string => true, as: 'downloadBytes'
+          property :file_system_protocol, as: 'fileSystemProtocol'
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
