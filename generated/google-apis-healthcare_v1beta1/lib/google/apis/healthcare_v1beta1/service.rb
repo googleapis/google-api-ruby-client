@@ -3486,10 +3486,10 @@ module Google
         
         # GetStorageInfo returns the storage info of the specified resource.
         # @param [String] resource
-        #   Required. The path of the resource for which the storage info is requested (
-        #   for exaxmple for a DICOM Instance: `projects/`projectID`/locations/`locationID`
-        #   /datasets/`datasetID`/dicomStores/`dicomStoreId`/dicomWeb/studies/`study_uid`/
-        #   series/`series_uid`/instances/`instance_uid``)
+        #   Required. The path of the instance to return storage info for, in the form: `
+        #   projects/`projectID`/locations/`locationID`/datasets/`datasetID`/dicomStores/`
+        #   dicomStoreID`/dicomWeb/studies/`studyUID`/series/`seriesUID`/instances/`
+        #   instanceUID``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
