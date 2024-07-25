@@ -379,8 +379,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Subscription to a Data Exchange. This is a long-running operation as
-        # it will create one or more linked datasets.
+        # Creates a Subscription to a Data Clean Room. This is a long-running operation
+        # as it will create one or more linked datasets.
         # @param [String] name
         #   Required. Resource name of the Data Exchange. e.g. `projects/publisherproject/
         #   locations/US/dataExchanges/123`
