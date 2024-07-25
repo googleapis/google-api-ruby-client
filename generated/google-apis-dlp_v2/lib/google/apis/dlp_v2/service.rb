@@ -270,7 +270,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,update_time,
         #   create_time desc` Supported fields are: - `create_time`: corresponds to the
@@ -480,7 +480,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,update_time,
         #   create_time desc` Supported fields are: - `create_time`: corresponds to the
@@ -614,7 +614,7 @@ module Google
         #   sensitivity_level = HIGH * project_id = 12345 AND info_type = STREET_ADDRESS
         #   The length of this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Only one order field at a time
         #   is allowed. Examples: * `project_id asc` * `table_id` * `sensitivity_level
@@ -962,7 +962,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,update_time,
         #   create_time desc` Supported fields are: - `create_time`: corresponds to the
@@ -1151,7 +1151,7 @@ module Google
         #   specifies the `europe-west3` location for processing data: parent=projects/
         #   example-project/locations/europe-west3
         # @param [String] order_by
-        #   Comma separated list of config fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of config fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,update_time,
         #   create_time desc` Supported fields are: - `last_run_time`: corresponds to the
@@ -1259,7 +1259,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc, end_time
         #   asc, create_time desc` Supported fields are: - `create_time`: corresponds to
@@ -1384,10 +1384,10 @@ module Google
         #   com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator
         #   must be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `
         #   project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
-        #   resource_visibility = PUBLIC` . * 'file_store_path = "gs://mybucket"` The
-        #   length of this field should be no more than 500 characters.
+        #   resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` The length
+        #   of this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Optional. Comma separated list of fields to order by, followed by `asc` or `
+        #   Optional. Comma-separated list of fields to order by, followed by `asc` or `
         #   desc` postfix. This list is case insensitive. The default sorting order is
         #   ascending. Redundant space characters are insignificant. Only one order field
         #   at a time is allowed. Examples: * `project_id asc` * `name` * `
@@ -1565,7 +1565,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,update_time,
         #   create_time desc` Supported fields are: - `create_time`: corresponds to the
@@ -1780,7 +1780,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of triggeredJob fields to order by, followed by `asc` or `
+        #   Comma-separated list of triggeredJob fields to order by, followed by `asc` or `
         #   desc` postfix. This list is case insensitive. The default sorting order is
         #   ascending. Redundant space characters are insignificant. Example: `name asc,
         #   update_time, create_time desc` Supported fields are: - `create_time`:
@@ -1910,7 +1910,7 @@ module Google
         #   project_id = 12345 AND sensitivity_level = HIGH` The length of this field
         #   should be no more than 500 characters.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Only one order field at a time
         #   is allowed. Examples: * `project_id` * `sensitivity_level desc` Supported
@@ -2081,7 +2081,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,
         #   display_name, create_time desc` Supported fields are: - `create_time`:
@@ -2245,7 +2245,7 @@ module Google
         #   project_id = 12345 AND resource_visibility = PUBLIC` The length of this field
         #   should be no more than 500 characters.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Only one order field at a time
         #   is allowed. Examples: * `project_id asc` * `table_id` * `sensitivity_level
@@ -2420,7 +2420,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,
         #   display_name, create_time desc` Supported fields are: - `create_time`:
@@ -2765,7 +2765,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,update_time,
         #   create_time desc` Supported fields are: - `create_time`: corresponds to the
@@ -3026,7 +3026,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc, end_time
         #   asc, create_time desc` Supported fields are: - `create_time`: corresponds to
@@ -3247,7 +3247,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,update_time,
         #   create_time desc` Supported fields are: - `create_time`: corresponds to the
@@ -3497,7 +3497,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of triggeredJob fields to order by, followed by `asc` or `
+        #   Comma-separated list of triggeredJob fields to order by, followed by `asc` or `
         #   desc` postfix. This list is case insensitive. The default sorting order is
         #   ascending. Redundant space characters are insignificant. Example: `name asc,
         #   update_time, create_time desc` Supported fields are: - `create_time`:
@@ -3635,7 +3635,7 @@ module Google
         #   sensitivity_level = HIGH * project_id = 12345 AND info_type = STREET_ADDRESS
         #   The length of this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Only one order field at a time
         #   is allowed. Examples: * `project_id asc` * `table_id` * `sensitivity_level
@@ -4156,7 +4156,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,update_time,
         #   create_time desc` Supported fields are: - `create_time`: corresponds to the
@@ -4345,7 +4345,7 @@ module Google
         #   specifies the `europe-west3` location for processing data: parent=projects/
         #   example-project/locations/europe-west3
         # @param [String] order_by
-        #   Comma separated list of config fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of config fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,update_time,
         #   create_time desc` Supported fields are: - `last_run_time`: corresponds to the
@@ -4670,7 +4670,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc, end_time
         #   asc, create_time desc` Supported fields are: - `create_time`: corresponds to
@@ -4795,10 +4795,10 @@ module Google
         #   com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator
         #   must be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `
         #   project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
-        #   resource_visibility = PUBLIC` . * 'file_store_path = "gs://mybucket"` The
-        #   length of this field should be no more than 500 characters.
+        #   resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` The length
+        #   of this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Optional. Comma separated list of fields to order by, followed by `asc` or `
+        #   Optional. Comma-separated list of fields to order by, followed by `asc` or `
         #   desc` postfix. This list is case insensitive. The default sorting order is
         #   ascending. Redundant space characters are insignificant. Only one order field
         #   at a time is allowed. Examples: * `project_id asc` * `name` * `
@@ -5021,7 +5021,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,update_time,
         #   create_time desc` Supported fields are: - `create_time`: corresponds to the
@@ -5307,7 +5307,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of triggeredJob fields to order by, followed by `asc` or `
+        #   Comma-separated list of triggeredJob fields to order by, followed by `asc` or `
         #   desc` postfix. This list is case insensitive. The default sorting order is
         #   ascending. Redundant space characters are insignificant. Example: `name asc,
         #   update_time, create_time desc` Supported fields are: - `create_time`:
@@ -5437,7 +5437,7 @@ module Google
         #   project_id = 12345 AND sensitivity_level = HIGH` The length of this field
         #   should be no more than 500 characters.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Only one order field at a time
         #   is allowed. Examples: * `project_id` * `sensitivity_level desc` Supported
@@ -5608,7 +5608,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,
         #   display_name, create_time desc` Supported fields are: - `create_time`:
@@ -5772,7 +5772,7 @@ module Google
         #   project_id = 12345 AND resource_visibility = PUBLIC` The length of this field
         #   should be no more than 500 characters.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Only one order field at a time
         #   is allowed. Examples: * `project_id asc` * `table_id` * `sensitivity_level
@@ -5947,7 +5947,7 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Example: `name asc,
         #   display_name, create_time desc` Supported fields are: - `create_time`:
