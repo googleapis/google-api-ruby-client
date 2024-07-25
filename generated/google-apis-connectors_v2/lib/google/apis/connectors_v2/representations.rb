@@ -655,10 +655,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_type, as: 'dataType'
+          property :default_value, as: 'defaultValue'
           property :description, as: 'description'
           property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
           property :name, as: 'name'
+          property :nullable, as: 'nullable'
         end
       end
       
