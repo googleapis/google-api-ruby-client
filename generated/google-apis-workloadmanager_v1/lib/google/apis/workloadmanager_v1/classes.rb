@@ -53,6 +53,12 @@ module Google
       class AssetLocation
         include Google::Apis::Core::Hashable
       
+        # Spanner path of the CCFE RMS database. It is only applicable for CCFE tenants
+        # that use CCFE RMS for storing resource metadata.
+        # Corresponds to the JSON property `ccfeRmsPath`
+        # @return [String]
+        attr_accessor :ccfe_rms_path
+      
         # Defines the customer expectation around ZI/ZS for this asset and ZI/ZS state
         # of the region at the time of asset creation.
         # Corresponds to the JSON property `expected`
@@ -81,6 +87,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ccfe_rms_path = args[:ccfe_rms_path] if args.key?(:ccfe_rms_path)
           @expected = args[:expected] if args.key?(:expected)
           @extra_parameters = args[:extra_parameters] if args.key?(:extra_parameters)
           @location_data = args[:location_data] if args.key?(:location_data)
@@ -1940,7 +1947,13 @@ module Google
       class SpannerLocation
         include Google::Apis::Core::Hashable
       
-        # 
+        # Set of backups used by the resource with name in the same format as what is
+        # available at http://table/spanner_automon.backup_metadata
+        # Corresponds to the JSON property `backupName`
+        # @return [Array<String>]
+        attr_accessor :backup_name
+      
+        # Set of databases used by the resource in format /span//
         # Corresponds to the JSON property `dbName`
         # @return [Array<String>]
         attr_accessor :db_name
@@ -1951,6 +1964,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_name = args[:backup_name] if args.key?(:backup_name)
           @db_name = args[:db_name] if args.key?(:db_name)
         end
       end
