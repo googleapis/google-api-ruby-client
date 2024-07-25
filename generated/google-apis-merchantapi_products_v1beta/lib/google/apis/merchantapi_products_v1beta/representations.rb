@@ -451,6 +451,8 @@ module Google
           property :cashback_for_future_use, as: 'cashbackForFutureUse', class: Google::Apis::MerchantapiProductsV1beta::Price, decorator: Google::Apis::MerchantapiProductsV1beta::Price::Representation
       
           property :loyalty_points, :numeric_string => true, as: 'loyaltyPoints'
+          property :member_price_effective_date, as: 'memberPriceEffectiveDate', class: Google::Apis::MerchantapiProductsV1beta::Interval, decorator: Google::Apis::MerchantapiProductsV1beta::Interval::Representation
+      
           property :price, as: 'price', class: Google::Apis::MerchantapiProductsV1beta::Price, decorator: Google::Apis::MerchantapiProductsV1beta::Price::Representation
       
           property :program_label, as: 'programLabel'

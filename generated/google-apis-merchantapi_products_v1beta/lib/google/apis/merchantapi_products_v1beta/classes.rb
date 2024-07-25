@@ -1071,6 +1071,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :loyalty_points
       
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `memberPriceEffectiveDate`
+        # @return [Google::Apis::MerchantapiProductsV1beta::Interval]
+        attr_accessor :member_price_effective_date
+      
         # The price represented as a number and currency.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::MerchantapiProductsV1beta::Price]
@@ -1099,6 +1107,7 @@ module Google
         def update!(**args)
           @cashback_for_future_use = args[:cashback_for_future_use] if args.key?(:cashback_for_future_use)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
+          @member_price_effective_date = args[:member_price_effective_date] if args.key?(:member_price_effective_date)
           @price = args[:price] if args.key?(:price)
           @program_label = args[:program_label] if args.key?(:program_label)
           @tier_label = args[:tier_label] if args.key?(:tier_label)
