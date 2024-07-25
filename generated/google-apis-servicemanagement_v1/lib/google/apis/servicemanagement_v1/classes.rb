@@ -988,12 +988,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_response_extensions
       
-        # A list of full type names of provided contexts.
+        # A list of full type names of provided contexts. It is used to support
+        # propagating HTTP headers and ETags from the response extension.
         # Corresponds to the JSON property `provided`
         # @return [Array<String>]
         attr_accessor :provided
       
-        # A list of full type names of requested contexts.
+        # A list of full type names of requested contexts, only the requested context
+        # will be made available to the backend.
         # Corresponds to the JSON property `requested`
         # @return [Array<String>]
         attr_accessor :requested
@@ -2017,27 +2019,27 @@ module Google
       # effect as the proto annotation. This can be particularly useful if you have a
       # proto that is reused in multiple services. Note that any transcoding specified
       # in the service config will override any matching transcoding configuration in
-      # the proto. Example below selects a gRPC method and applies HttpRule to it.
-      # http: rules: - selector: example.v1.Messaging.GetMessage get: /v1/messages/`
-      # message_id`/`sub.subfield` Special notes When gRPC Transcoding is used to map
-      # a gRPC to JSON REST endpoints, the proto to JSON conversion must follow the [
-      # proto3 specification](https://developers.google.com/protocol-buffers/docs/
-      # proto3#json). While the single segment variable follows the semantics of [RFC
-      # 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String
-      # Expansion, the multi segment variable **does not** follow RFC 6570 Section 3.2.
-      # 3 Reserved Expansion. The reason is that the Reserved Expansion does not
-      # expand special characters like `?` and `#`, which would lead to invalid URLs.
-      # As the result, gRPC Transcoding uses a custom encoding for multi segment
-      # variables. The path variables **must not** refer to any repeated or mapped
-      # field, because client libraries are not capable of handling such variable
-      # expansion. The path variables **must not** capture the leading "/" character.
-      # The reason is that the most common use case "`var`" does not capture the
-      # leading "/" character. For consistency, all path variables must share the same
-      # behavior. Repeated message fields must not be mapped to URL query parameters,
-      # because no client library can support such complicated mapping. If an API
-      # needs to use a JSON array for request or response body, it can map the request
-      # or response body to a repeated field. However, some gRPC Transcoding
-      # implementations may not support this feature.
+      # the proto. The following example selects a gRPC method and applies an `
+      # HttpRule` to it: http: rules: - selector: example.v1.Messaging.GetMessage get:
+      # /v1/messages/`message_id`/`sub.subfield` Special notes When gRPC Transcoding
+      # is used to map a gRPC to JSON REST endpoints, the proto to JSON conversion
+      # must follow the [proto3 specification](https://developers.google.com/protocol-
+      # buffers/docs/proto3#json). While the single segment variable follows the
+      # semantics of [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2
+      # Simple String Expansion, the multi segment variable **does not** follow RFC
+      # 6570 Section 3.2.3 Reserved Expansion. The reason is that the Reserved
+      # Expansion does not expand special characters like `?` and `#`, which would
+      # lead to invalid URLs. As the result, gRPC Transcoding uses a custom encoding
+      # for multi segment variables. The path variables **must not** refer to any
+      # repeated or mapped field, because client libraries are not capable of handling
+      # such variable expansion. The path variables **must not** capture the leading "/
+      # " character. The reason is that the most common use case "`var`" does not
+      # capture the leading "/" character. For consistency, all path variables must
+      # share the same behavior. Repeated message fields must not be mapped to URL
+      # query parameters, because no client library can support such complicated
+      # mapping. If an API needs to use a JSON array for request or response body, it
+      # can map the request or response body to a repeated field. However, some gRPC
+      # Transcoding implementations may not support this feature.
       class HttpRule
         include Google::Apis::Core::Hashable
       
