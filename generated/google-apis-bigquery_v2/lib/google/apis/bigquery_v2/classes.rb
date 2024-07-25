@@ -667,8 +667,8 @@ module Google
       
         # Required. The connection specifying the credentials to be used to read and
         # write to external storage, such as Cloud Storage. The connection_id can have
-        # the form "<project\_id>.<location\_id>.<connection\_id>" or "projects/<project\
-        # _id>/locations/<location\_id>/connections/<connection\_id>".
+        # the form ``project`.`location`.`connection_id`` or `projects/`project`/
+        # locations/`location`/connections/`connection_id`".
         # Corresponds to the JSON property `connectionId`
         # @return [String]
         attr_accessor :connection_id
@@ -680,7 +680,7 @@ module Google
       
         # Required. The fully qualified location prefix of the external folder where
         # table data is stored. The '*' wildcard character is not allowed. The URI
-        # should be in the format "gs://bucket/path_to_table/"
+        # should be in the format `gs://bucket/path_to_table/`
         # Corresponds to the JSON property `storageUri`
         # @return [String]
         attr_accessor :storage_uri
@@ -758,10 +758,10 @@ module Google
         alias_method :only_read_latest?, :only_read_latest
       
         # [Required] Qualifier of the column. Columns in the parent column family that
-        # has this exact qualifier are exposed as . field. If the qualifier is valid UTF-
-        # 8 string, it can be specified in the qualifier_string field. Otherwise, a base-
-        # 64 encoded value must be set to qualifier_encoded. The column field name is
-        # the same as the column qualifier. However, if the qualifier is not a valid
+        # has this exact qualifier are exposed as `.` field. If the qualifier is valid
+        # UTF-8 string, it can be specified in the qualifier_string field. Otherwise, a
+        # base-64 encoded value must be set to qualifier_encoded. The column field name
+        # is the same as the column qualifier. However, if the qualifier is not a valid
         # BigQuery field identifier i.e. does not match a-zA-Z*, a valid identifier must
         # be provided as field_name.
         # Corresponds to the JSON property `qualifierEncoded`
@@ -805,8 +805,8 @@ module Google
       
         # Optional. Lists of columns that should be exposed as individual fields as
         # opposed to a list of (column name, value) pairs. All columns whose qualifier
-        # matches a qualifier in this list can be accessed as .. Other columns can be
-        # accessed as a list through .Column field.
+        # matches a qualifier in this list can be accessed as `.`. Other columns can be
+        # accessed as a list through the `.Column` field.
         # Corresponds to the JSON property `columns`
         # @return [Array<Google::Apis::BigqueryV2::BigtableColumn>]
         attr_accessor :columns
@@ -1701,7 +1701,7 @@ module Google
         end
       end
       
-      # 
+      # Represents a BigQuery dataset.
       class Dataset
         include Google::Apis::Core::Hashable
       
@@ -1723,7 +1723,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :creation_time
       
-        # Required. A reference that identifies the dataset.
+        # Identifier for a dataset.
         # Corresponds to the JSON property `datasetReference`
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :dataset_reference
@@ -1740,10 +1740,7 @@ module Google
         # @return [String]
         attr_accessor :default_collation
       
-        # The default encryption key for all tables in the dataset. After this property
-        # is set, the encryption key of all newly-created tables in the dataset is set
-        # to this value unless the table creation request or query explicitly overrides
-        # the key.
+        # Configuration for Cloud KMS encryption settings.
         # Corresponds to the JSON property `defaultEncryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :default_encryption_configuration
@@ -1837,7 +1834,9 @@ module Google
       
         # The labels associated with this dataset. You can use these to organize and
         # group your datasets. You can set this property when inserting or updating a
-        # dataset. See Creating and Updating Dataset Labels for more information.
+        # dataset. See [Creating and Updating Dataset Labels](https://cloud.google.com/
+        # bigquery/docs/creating-managing-labels#creating_and_updating_dataset_labels)
+        # for more information.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1995,11 +1994,11 @@ module Google
           attr_accessor :iam_member
         
           # An IAM role ID that should be granted to the user, group, or domain specified
-          # in this access entry. The following legacy mappings will be applied: OWNER <=>
-          # roles/bigquery.dataOwner WRITER <=> roles/bigquery.dataEditor READER <=> roles/
-          # bigquery.dataViewer This field will accept any of the above formats, but will
-          # return only the legacy format. For example, if you set this field to "roles/
-          # bigquery.dataOwner", it will be returned back as "OWNER".
+          # in this access entry. The following legacy mappings will be applied: * `OWNER`:
+          # `roles/bigquery.dataOwner` * `WRITER`: `roles/bigquery.dataEditor` * `READER`:
+          # `roles/bigquery.dataViewer` This field will accept any of the above formats,
+          # but will return only the legacy format. For example, if you set this field to "
+          # roles/bigquery.dataOwner", it will be returned back as "OWNER".
           # Corresponds to the JSON property `role`
           # @return [String]
           attr_accessor :role
@@ -2009,9 +2008,9 @@ module Google
           # @return [Google::Apis::BigqueryV2::RoutineReference]
           attr_accessor :routine
         
-          # [Pick one] A special group to grant access to. Possible values include:
-          # projectOwners: Owners of the enclosing project. projectReaders: Readers of the
-          # enclosing project. projectWriters: Writers of the enclosing project.
+          # [Pick one] A special group to grant access to. Possible values include: *
+          # projectOwners: Owners of the enclosing project. * projectReaders: Readers of
+          # the enclosing project. * projectWriters: Writers of the enclosing project. *
           # allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-
           # named IAM members.
           # Corresponds to the JSON property `specialGroup`
@@ -2087,7 +2086,7 @@ module Google
       class DatasetAccessEntry
         include Google::Apis::Core::Hashable
       
-        # The dataset this entry applies to
+        # Identifier for a dataset.
         # Corresponds to the JSON property `dataset`
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :dataset
@@ -2164,8 +2163,7 @@ module Google
         class Dataset
           include Google::Apis::Core::Hashable
         
-          # The dataset reference. Use this property to access specific parts of the
-          # dataset's ID, such as project ID or dataset ID.
+          # Identifier for a dataset.
           # Corresponds to the JSON property `datasetReference`
           # @return [Google::Apis::BigqueryV2::DatasetReference]
           attr_accessor :dataset_reference
@@ -2213,7 +2211,7 @@ module Google
         end
       end
       
-      # 
+      # Identifier for a dataset.
       class DatasetReference
         include Google::Apis::Core::Hashable
       
@@ -2505,7 +2503,7 @@ module Google
         end
       end
       
-      # 
+      # Configuration for Cloud KMS encryption settings.
       class EncryptionConfiguration
         include Google::Apis::Core::Hashable
       
@@ -3079,8 +3077,8 @@ module Google
       
         # Optional. The connection specifying the credentials to be used to read
         # external storage, such as Azure Blob, Cloud Storage, or S3. The connection_id
-        # can have the form "<project\_id>.<location\_id>.<connection\_id>" or "projects/
-        # <project\_id>/locations/<location\_id>/connections/<connection\_id>".
+        # can have the form ``project_id`.`location_id`;`connection_id`` or `projects/`
+        # project_id`/locations/`location_id`/connections/`connection_id``.
         # Corresponds to the JSON property `connectionId`
         # @return [String]
         attr_accessor :connection_id
@@ -4575,7 +4573,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :decimal_target_types
       
-        # Custom encryption configuration (e.g., Cloud KMS keys)
+        # Configuration for Cloud KMS encryption settings.
         # Corresponds to the JSON property `destinationEncryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :destination_encryption_configuration
@@ -4908,16 +4906,12 @@ module Google
         attr_accessor :create_session
         alias_method :create_session?, :create_session
       
-        # Optional. Specifies the default dataset to use for unqualified table names in
-        # the query. This setting does not alter behavior of unqualified dataset names.
-        # Setting the system variable `@@dataset_id` achieves the same behavior. See
-        # https://cloud.google.com/bigquery/docs/reference/system-variables for more
-        # information on system variables.
+        # Identifier for a dataset.
         # Corresponds to the JSON property `defaultDataset`
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :default_dataset
       
-        # Custom encryption configuration (e.g., Cloud KMS keys)
+        # Configuration for Cloud KMS encryption settings.
         # Corresponds to the JSON property `destinationEncryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :destination_encryption_configuration
@@ -5119,7 +5113,7 @@ module Google
         # @return [String]
         attr_accessor :create_disposition
       
-        # Custom encryption configuration (e.g., Cloud KMS keys).
+        # Configuration for Cloud KMS encryption settings.
         # Corresponds to the JSON property `destinationEncryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :destination_encryption_configuration
@@ -5560,7 +5554,7 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
-        # Output only. Referenced dataset for DCL statement.
+        # Identifier for a dataset.
         # Corresponds to the JSON property `dclTargetDataset`
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :dcl_target_dataset
@@ -5593,8 +5587,7 @@ module Google
         # @return [String]
         attr_accessor :ddl_operation_performed
       
-        # Output only. The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA(
-        # dataset) queries.
+        # Identifier for a dataset.
         # Corresponds to the JSON property `ddlTargetDataset`
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :ddl_target_dataset
@@ -6164,7 +6157,7 @@ module Google
       class LinkedDatasetSource
         include Google::Apis::Core::Hashable
       
-        # The source dataset reference contains project numbers and not project ids.
+        # Identifier for a dataset.
         # Corresponds to the JSON property `sourceDataset`
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :source_dataset
@@ -6581,10 +6574,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Custom encryption configuration (e.g., Cloud KMS keys). This shows the
-        # encryption configuration of the model data while stored in BigQuery storage.
-        # This field can be used with PatchModel to update encryption key for an already
-        # encrypted model.
+        # Configuration for Cloud KMS encryption settings.
         # Corresponds to the JSON property `encryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :encryption_configuration
@@ -7451,9 +7441,7 @@ module Google
         attr_accessor :create_session
         alias_method :create_session?, :create_session
       
-        # Optional. Specifies the default datasetId and projectId to assume for any
-        # unqualified table names in the query. If not set, all table names in the query
-        # string must be qualified in the format 'datasetId.tableId'.
+        # Identifier for a dataset.
         # Corresponds to the JSON property `defaultDataset`
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :default_dataset
@@ -9259,7 +9247,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Custom encryption configuration (e.g., Cloud KMS keys).
+        # Configuration for Cloud KMS encryption settings.
         # Corresponds to the JSON property `encryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :encryption_configuration
@@ -10301,6 +10289,12 @@ module Google
         # @return [String]
         attr_accessor :explanation
       
+        # Duration since last refresh as of this job for managed tables (indicates
+        # metadata cache staleness as seen by this job).
+        # Corresponds to the JSON property `staleness`
+        # @return [String]
+        attr_accessor :staleness
+      
         # Metadata caching eligible table referenced in the query.
         # Corresponds to the JSON property `tableReference`
         # @return [Google::Apis::BigqueryV2::TableReference]
@@ -10323,6 +10317,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @explanation = args[:explanation] if args.key?(:explanation)
+          @staleness = args[:staleness] if args.key?(:staleness)
           @table_reference = args[:table_reference] if args.key?(:table_reference)
           @table_type = args[:table_type] if args.key?(:table_type)
           @unused_reason = args[:unused_reason] if args.key?(:unused_reason)
