@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2AllOtherResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2AllText
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2CloudStorageDiscoveryTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2CloudStorageFileSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,7 +238,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2CloudStorageRegex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2CloudStorageRegexFileSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2CloudStorageResourceReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -568,13 +592,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2DiscoveryCloudStorageConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryCloudStorageFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2DiscoveryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2DiscoveryFileStoreConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2DiscoveryGenerationCadence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -694,6 +748,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2FileStoreCollection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2FileStoreDataProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +761,18 @@ module Google
       end
       
       class GooglePrivacyDlpV2FileStoreInfoTypeSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2FileStoreRegex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2FileStoreRegexes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1778,6 +1850,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2AllOtherResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2AllText
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2035,6 +2113,20 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2CloudStorageDiscoveryTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conditions, as: 'conditions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryFileStoreConditions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryFileStoreConditions::Representation
+      
+          property :disabled, as: 'disabled', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled::Representation
+      
+          property :filter, as: 'filter', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudStorageFilter, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudStorageFilter::Representation
+      
+          property :generation_cadence, as: 'generationCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2CloudStorageFileSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2062,12 +2154,28 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2CloudStorageRegex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name_regex, as: 'bucketNameRegex'
+          property :project_id_regex, as: 'projectIdRegex'
+        end
+      end
+      
       class GooglePrivacyDlpV2CloudStorageRegexFileSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_name, as: 'bucketName'
           collection :exclude_regex, as: 'excludeRegex'
           collection :include_regex, as: 'includeRegex'
+        end
+      end
+      
+      class GooglePrivacyDlpV2CloudStorageResourceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name, as: 'bucketName'
+          property :project_id, as: 'projectId'
         end
       end
       
@@ -2689,6 +2797,35 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2DiscoveryCloudStorageConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :included_bucket_attributes, as: 'includedBucketAttributes'
+          collection :included_object_attributes, as: 'includedObjectAttributes'
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryCloudStorageFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_storage_resource_reference, as: 'cloudStorageResourceReference', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageResourceReference, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageResourceReference::Representation
+      
+          property :collection, as: 'collection', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreCollection, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreCollection::Representation
+      
+          property :others, as: 'others', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherResources, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherResources::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inspect_template_modified_cadence, as: 'inspectTemplateModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence::Representation
+      
+          property :refresh_frequency, as: 'refreshFrequency'
+        end
+      end
+      
       class GooglePrivacyDlpV2DiscoveryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2710,13 +2847,32 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2DiscoveryFileStoreConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_storage_conditions, as: 'cloudStorageConditions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudStorageConditions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudStorageConditions::Representation
+      
+          property :created_after, as: 'createdAfter'
+          property :min_age, as: 'minAge'
+        end
+      end
+      
       class GooglePrivacyDlpV2DiscoveryGenerationCadence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :inspect_template_modified_cadence, as: 'inspectTemplateModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence::Representation
+      
           property :schema_modified_cadence, as: 'schemaModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoverySchemaModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoverySchemaModifiedCadence::Representation
       
           property :table_modified_cadence, as: 'tableModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTableModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTableModifiedCadence::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frequency, as: 'frequency'
         end
       end
       
@@ -2750,6 +2906,8 @@ module Google
           property :big_query_target, as: 'bigQueryTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryDiscoveryTarget::Representation
       
           property :cloud_sql_target, as: 'cloudSqlTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlDiscoveryTarget::Representation
+      
+          property :cloud_storage_target, as: 'cloudStorageTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageDiscoveryTarget::Representation
       
           property :secrets_target, as: 'secretsTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SecretsDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SecretsDiscoveryTarget::Representation
       
@@ -2918,6 +3076,14 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2FileStoreCollection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_regexes, as: 'includeRegexes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreRegexes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreRegexes::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2FileStoreDataProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2959,6 +3125,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :info_type, as: 'infoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2FileStoreRegex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_storage_regex, as: 'cloudStorageRegex', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageRegex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageRegex::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2FileStoreRegexes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :patterns, as: 'patterns', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreRegex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreRegex::Representation
       
         end
       end

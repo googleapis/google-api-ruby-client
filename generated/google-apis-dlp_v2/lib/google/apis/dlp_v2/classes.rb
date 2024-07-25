@@ -188,6 +188,19 @@ module Google
         end
       end
       
+      # Match discovery resources not covered by any other filter.
+      class GooglePrivacyDlpV2AllOtherResources
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Apply to all text.
       class GooglePrivacyDlpV2AllText
         include Google::Apis::Core::Hashable
@@ -1042,6 +1055,47 @@ module Google
         end
       end
       
+      # Target used to match against for discovery with Cloud Storage buckets.
+      class GooglePrivacyDlpV2CloudStorageDiscoveryTarget
+        include Google::Apis::Core::Hashable
+      
+        # Requirements that must be true before a file store is scanned in discovery for
+        # the first time. There is an AND relationship between the top-level attributes.
+        # Corresponds to the JSON property `conditions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryFileStoreConditions]
+        attr_accessor :conditions
+      
+        # Do not profile the tables.
+        # Corresponds to the JSON property `disabled`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled]
+        attr_accessor :disabled
+      
+        # Determines which buckets will have profiles generated within an organization
+        # or project. Includes the ability to filter by regular expression patterns on
+        # project ID and bucket name.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudStorageFilter]
+        attr_accessor :filter
+      
+        # How often existing buckets should have their profiles refreshed. New buckets
+        # are scanned as quickly as possible depending on system capacity.
+        # Corresponds to the JSON property `generationCadence`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence]
+        attr_accessor :generation_cadence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @filter = args[:filter] if args.key?(:filter)
+          @generation_cadence = args[:generation_cadence] if args.key?(:generation_cadence)
+        end
+      end
+      
       # Message representing a set of files in Cloud Storage.
       class GooglePrivacyDlpV2CloudStorageFileSet
         include Google::Apis::Core::Hashable
@@ -1150,6 +1204,36 @@ module Google
         end
       end
       
+      # A pattern to match against one or more file stores. At least one pattern must
+      # be specified. Regular expressions use RE2 [syntax](https://github.com/google/
+      # re2/wiki/Syntax); a guide can be found under the google/re2 repository on
+      # GitHub.
+      class GooglePrivacyDlpV2CloudStorageRegex
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Regex to test the bucket name against. If empty, all buckets match.
+        # Example: "marketing2021" or "(marketing)\d`4`" will both match the bucket gs://
+        # marketing2021
+        # Corresponds to the JSON property `bucketNameRegex`
+        # @return [String]
+        attr_accessor :bucket_name_regex
+      
+        # Optional. For organizations, if unset, will match all projects.
+        # Corresponds to the JSON property `projectIdRegex`
+        # @return [String]
+        attr_accessor :project_id_regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_name_regex = args[:bucket_name_regex] if args.key?(:bucket_name_regex)
+          @project_id_regex = args[:project_id_regex] if args.key?(:project_id_regex)
+        end
+      end
+      
       # Message representing a set of files in a Cloud Storage bucket. Regular
       # expressions are used to allow fine-grained control over which files in the
       # bucket to include. Included files are those that match at least one item in `
@@ -1206,6 +1290,32 @@ module Google
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
           @exclude_regex = args[:exclude_regex] if args.key?(:exclude_regex)
           @include_regex = args[:include_regex] if args.key?(:include_regex)
+        end
+      end
+      
+      # Identifies a single Cloud Storage bucket.
+      class GooglePrivacyDlpV2CloudStorageResourceReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. The bucket to scan.
+        # Corresponds to the JSON property `bucketName`
+        # @return [String]
+        attr_accessor :bucket_name
+      
+        # Required. If within a project-level config, then this must match the config's
+        # project id.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -2193,7 +2303,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ColumnDataProfile]
         attr_accessor :column_profile
       
-        # The profile for a file store. * Google Cloud Storage: maps 1:1 with a bucket.
+        # The profile for a file store. * Cloud Storage: maps 1:1 with a bucket.
         # Corresponds to the JSON property `fileStoreProfile`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile]
         attr_accessor :file_store_profile
@@ -2323,7 +2433,7 @@ module Google
       class GooglePrivacyDlpV2DataProfileLocation
         include Google::Apis::Core::Hashable
       
-        # The ID of the Folder within an organization to scan.
+        # The ID of the folder within an organization to scan.
         # Corresponds to the JSON property `folderId`
         # @return [Fixnum]
         attr_accessor :folder_id
@@ -2374,7 +2484,7 @@ module Google
         # @return [String]
         attr_accessor :event
       
-        # The profile for a file store. * Google Cloud Storage: maps 1:1 with a bucket.
+        # The profile for a file store. * Cloud Storage: maps 1:1 with a bucket.
         # Corresponds to the JSON property `fileStoreProfile`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile]
         attr_accessor :file_store_profile
@@ -2715,7 +2825,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. User settable Cloud Storage bucket and folders to store de-
-        # identified files. This field must be set for cloud storage deidentification.
+        # identified files. This field must be set for Cloud Storage deidentification.
         # The output Cloud Storage bucket must be different from the input bucket. De-
         # identified files will overwrite files in the output path. Form of: gs://bucket/
         # folder/ or gs://bucket
@@ -2724,11 +2834,11 @@ module Google
         attr_accessor :cloud_storage_output
       
         # List of user-specified file type groups to transform. If specified, only the
-        # files with these filetypes will be transformed. If empty, all supported files
+        # files with these file types will be transformed. If empty, all supported files
         # will be transformed. Supported types may be automatically added over time. If
         # a file type is set in this field that isn't supported by the Deidentify action
         # then the job will fail and will not be successfully created/started. Currently
-        # the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
+        # the only file types supported are: IMAGES, TEXT_FILES, CSV, TSV.
         # Corresponds to the JSON property `fileTypesToTransform`
         # @return [Array<String>]
         attr_accessor :file_types_to_transform
@@ -3384,6 +3494,99 @@ module Google
         end
       end
       
+      # Requirements that must be true before a Cloud Storage bucket or object is
+      # scanned in discovery for the first time. There is an AND relationship between
+      # the top-level attributes.
+      class GooglePrivacyDlpV2DiscoveryCloudStorageConditions
+        include Google::Apis::Core::Hashable
+      
+        # Required. Only objects with the specified attributes will be scanned. Defaults
+        # to [ALL_SUPPORTED_BUCKETS] if unset.
+        # Corresponds to the JSON property `includedBucketAttributes`
+        # @return [Array<String>]
+        attr_accessor :included_bucket_attributes
+      
+        # Required. Only objects with the specified attributes will be scanned. If an
+        # object has one of the specified attributes but is inside an excluded bucket,
+        # it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be
+        # created even if no objects match the included_object_attributes.
+        # Corresponds to the JSON property `includedObjectAttributes`
+        # @return [Array<String>]
+        attr_accessor :included_object_attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @included_bucket_attributes = args[:included_bucket_attributes] if args.key?(:included_bucket_attributes)
+          @included_object_attributes = args[:included_object_attributes] if args.key?(:included_object_attributes)
+        end
+      end
+      
+      # Determines which buckets will have profiles generated within an organization
+      # or project. Includes the ability to filter by regular expression patterns on
+      # project ID and bucket name.
+      class GooglePrivacyDlpV2DiscoveryCloudStorageFilter
+        include Google::Apis::Core::Hashable
+      
+        # Identifies a single Cloud Storage bucket.
+        # Corresponds to the JSON property `cloudStorageResourceReference`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageResourceReference]
+        attr_accessor :cloud_storage_resource_reference
+      
+        # Match file stores (e.g. buckets) using regex filters.
+        # Corresponds to the JSON property `collection`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreCollection]
+        attr_accessor :collection
+      
+        # Match discovery resources not covered by any other filter.
+        # Corresponds to the JSON property `others`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherResources]
+        attr_accessor :others
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_resource_reference = args[:cloud_storage_resource_reference] if args.key?(:cloud_storage_resource_reference)
+          @collection = args[:collection] if args.key?(:collection)
+          @others = args[:others] if args.key?(:others)
+        end
+      end
+      
+      # How often existing buckets should have their profiles refreshed. New buckets
+      # are scanned as quickly as possible depending on system capacity.
+      class GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence
+        include Google::Apis::Core::Hashable
+      
+        # The cadence at which to update data profiles when the inspection rules defined
+        # by the `InspectTemplate` change.
+        # Corresponds to the JSON property `inspectTemplateModifiedCadence`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence]
+        attr_accessor :inspect_template_modified_cadence
+      
+        # Optional. Data changes in Cloud Storage can't trigger reprofiling. If you set
+        # this field, profiles are refreshed at this frequency regardless of whether the
+        # underlying buckets have changed. Defaults to never.
+        # Corresponds to the JSON property `refreshFrequency`
+        # @return [String]
+        attr_accessor :refresh_frequency
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inspect_template_modified_cadence = args[:inspect_template_modified_cadence] if args.key?(:inspect_template_modified_cadence)
+          @refresh_frequency = args[:refresh_frequency] if args.key?(:refresh_frequency)
+        end
+      end
+      
       # Configuration for discovery to scan resources for profile generation. Only one
       # discovery configuration may exist per organization, folder, or project. The
       # generated data profiles are retained according to the [data retention policy] (
@@ -3481,11 +3684,53 @@ module Google
         end
       end
       
+      # Requirements that must be true before a file store is scanned in discovery for
+      # the first time. There is an AND relationship between the top-level attributes.
+      class GooglePrivacyDlpV2DiscoveryFileStoreConditions
+        include Google::Apis::Core::Hashable
+      
+        # Requirements that must be true before a Cloud Storage bucket or object is
+        # scanned in discovery for the first time. There is an AND relationship between
+        # the top-level attributes.
+        # Corresponds to the JSON property `cloudStorageConditions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryCloudStorageConditions]
+        attr_accessor :cloud_storage_conditions
+      
+        # Optional. File store must have been created after this date. Used to avoid
+        # backfilling.
+        # Corresponds to the JSON property `createdAfter`
+        # @return [String]
+        attr_accessor :created_after
+      
+        # Optional. Minimum age a file store must have. If set, the value must be 1 hour
+        # or greater.
+        # Corresponds to the JSON property `minAge`
+        # @return [String]
+        attr_accessor :min_age
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_conditions = args[:cloud_storage_conditions] if args.key?(:cloud_storage_conditions)
+          @created_after = args[:created_after] if args.key?(:created_after)
+          @min_age = args[:min_age] if args.key?(:min_age)
+        end
+      end
+      
       # What must take place for a profile to be updated and how frequently it should
       # occur. New tables are scanned as quickly as possible depending on system
       # capacity.
       class GooglePrivacyDlpV2DiscoveryGenerationCadence
         include Google::Apis::Core::Hashable
+      
+        # The cadence at which to update data profiles when the inspection rules defined
+        # by the `InspectTemplate` change.
+        # Corresponds to the JSON property `inspectTemplateModifiedCadence`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence]
+        attr_accessor :inspect_template_modified_cadence
       
         # The cadence at which to update data profiles when a schema is modified.
         # Corresponds to the JSON property `schemaModifiedCadence`
@@ -3503,8 +3748,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @inspect_template_modified_cadence = args[:inspect_template_modified_cadence] if args.key?(:inspect_template_modified_cadence)
           @schema_modified_cadence = args[:schema_modified_cadence] if args.key?(:schema_modified_cadence)
           @table_modified_cadence = args[:table_modified_cadence] if args.key?(:table_modified_cadence)
+        end
+      end
+      
+      # The cadence at which to update data profiles when the inspection rules defined
+      # by the `InspectTemplate` change.
+      class GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
+        include Google::Apis::Core::Hashable
+      
+        # How frequently data profiles can be updated when the template is modified.
+        # Defaults to never.
+        # Corresponds to the JSON property `frequency`
+        # @return [String]
+        attr_accessor :frequency
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frequency = args[:frequency] if args.key?(:frequency)
         end
       end
       
@@ -3540,7 +3807,7 @@ module Google
       class GooglePrivacyDlpV2DiscoveryStartingLocation
         include Google::Apis::Core::Hashable
       
-        # The ID of the Folder within an organization to scan.
+        # The ID of the folder within an organization to scan.
         # Corresponds to the JSON property `folderId`
         # @return [Fixnum]
         attr_accessor :folder_id
@@ -3602,6 +3869,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlDiscoveryTarget]
         attr_accessor :cloud_sql_target
       
+        # Target used to match against for discovery with Cloud Storage buckets.
+        # Corresponds to the JSON property `cloudStorageTarget`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageDiscoveryTarget]
+        attr_accessor :cloud_storage_target
+      
         # Discovery target for credentials and secrets in cloud resource metadata. This
         # target does not include any filtering or frequency controls. Cloud DLP will
         # scan cloud resource metadata for secrets daily. No inspect template should be
@@ -3622,6 +3894,7 @@ module Google
         def update!(**args)
           @big_query_target = args[:big_query_target] if args.key?(:big_query_target)
           @cloud_sql_target = args[:cloud_sql_target] if args.key?(:cloud_sql_target)
+          @cloud_storage_target = args[:cloud_storage_target] if args.key?(:cloud_storage_target)
           @secrets_target = args[:secrets_target] if args.key?(:secrets_target)
         end
       end
@@ -4028,7 +4301,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel]
         attr_accessor :data_risk_level
       
-        # A list of Errors detected while scanning this cluster. The list is truncated
+        # A list of errors detected while scanning this cluster. The list is truncated
         # to 10 per cluster.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Error>]
@@ -4172,7 +4445,27 @@ module Google
         end
       end
       
-      # The profile for a file store. * Google Cloud Storage: maps 1:1 with a bucket.
+      # Match file stores (e.g. buckets) using regex filters.
+      class GooglePrivacyDlpV2FileStoreCollection
+        include Google::Apis::Core::Hashable
+      
+        # A collection of regular expressions to determine what file store to match
+        # against.
+        # Corresponds to the JSON property `includeRegexes`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreRegexes]
+        attr_accessor :include_regexes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_regexes = args[:include_regexes] if args.key?(:include_regexes)
+        end
+      end
+      
+      # The profile for a file store. * Cloud Storage: maps 1:1 with a bucket.
       class GooglePrivacyDlpV2FileStoreDataProfile
         include Google::Apis::Core::Hashable
       
@@ -4198,9 +4491,9 @@ module Google
         attr_accessor :data_source_type
       
         # For resources that have multiple storage locations, these are those regions.
-        # For Google Cloud Storage this is the list of regions chosen for dual-region
-        # storage. `file_store_location` will normally be the corresponding multi-region
-        # for the list of individual locations. The first region is always picked as the
+        # For Cloud Storage this is the list of regions chosen for dual-region storage. `
+        # file_store_location` will normally be the corresponding multi-region for the
+        # list of individual locations. The first region is always picked as the
         # processing and storage location for the data profile.
         # Corresponds to the JSON property `dataStorageLocations`
         # @return [Array<String>]
@@ -4222,13 +4515,13 @@ module Google
         attr_accessor :file_store_is_empty
         alias_method :file_store_is_empty?, :file_store_is_empty
       
-        # The location of the file store. * Google Cloud Storage: https://cloud.google.
-        # com/storage/docs/locations#available-locations
+        # The location of the file store. * Cloud Storage: https://cloud.google.com/
+        # storage/docs/locations#available-locations
         # Corresponds to the JSON property `fileStoreLocation`
         # @return [String]
         attr_accessor :file_store_location
       
-        # The file store path. * Google Cloud Storage: `gs://`bucket``
+        # The file store path. * Cloud Storage: `gs://`bucket``
         # Corresponds to the JSON property `fileStorePath`
         # @return [String]
         attr_accessor :file_store_path
@@ -4265,7 +4558,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus]
         attr_accessor :profile_status
       
-        # The resource name to the project data profile for this file store.
+        # The resource name of the project data profile for this file store.
         # Corresponds to the JSON property `projectDataProfile`
         # @return [String]
         attr_accessor :project_data_profile
@@ -4275,10 +4568,10 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # Attributes of the resource being profiled. Currently used attributes: -
-        # customer_managed_encryption: boolean true: the resource is encrypted with a
-        # customer-managed key. false: the resource is encrypted with a provider-managed
-        # key.
+        # Attributes of the resource being profiled. Currently used attributes: *
+        # customer_managed_encryption: boolean - true: the resource is encrypted with a
+        # customer-managed key. - false: the resource is encrypted with a provider-
+        # managed key.
         # Corresponds to the JSON property `resourceAttributes`
         # @return [Hash<String,Google::Apis::DlpV2::GooglePrivacyDlpV2Value>]
         attr_accessor :resource_attributes
@@ -4352,6 +4645,50 @@ module Google
         # Update properties of this object
         def update!(**args)
           @info_type = args[:info_type] if args.key?(:info_type)
+        end
+      end
+      
+      # A pattern to match against one or more file stores.
+      class GooglePrivacyDlpV2FileStoreRegex
+        include Google::Apis::Core::Hashable
+      
+        # A pattern to match against one or more file stores. At least one pattern must
+        # be specified. Regular expressions use RE2 [syntax](https://github.com/google/
+        # re2/wiki/Syntax); a guide can be found under the google/re2 repository on
+        # GitHub.
+        # Corresponds to the JSON property `cloudStorageRegex`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageRegex]
+        attr_accessor :cloud_storage_regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_regex = args[:cloud_storage_regex] if args.key?(:cloud_storage_regex)
+        end
+      end
+      
+      # A collection of regular expressions to determine what file store to match
+      # against.
+      class GooglePrivacyDlpV2FileStoreRegexes
+        include Google::Apis::Core::Hashable
+      
+        # Required. The group of regular expression patterns to match against one or
+        # more file stores. Maximum of 100 entries. The sum of all regular expression's
+        # length can't exceed 10 KiB.
+        # Corresponds to the JSON property `patterns`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreRegex>]
+        attr_accessor :patterns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @patterns = args[:patterns] if args.key?(:patterns)
         end
       end
       
@@ -8761,7 +9098,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus]
         attr_accessor :profile_status
       
-        # The resource name to the project data profile for this table.
+        # The resource name of the project data profile for this table.
         # Corresponds to the JSON property `projectDataProfile`
         # @return [String]
         attr_accessor :project_data_profile
