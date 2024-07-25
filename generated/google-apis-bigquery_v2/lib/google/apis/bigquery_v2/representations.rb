@@ -3863,6 +3863,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :explanation, as: 'explanation'
+          property :staleness, as: 'staleness'
           property :table_reference, as: 'tableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
           property :table_type, as: 'tableType'

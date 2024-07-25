@@ -167,9 +167,9 @@ module Google
         #   Whether to list all datasets, including hidden ones
         # @param [String] filter
         #   An expression for filtering the results of the request by label. The syntax is
-        #   \"labels.<name>[:<value>]\". Multiple filters can be ANDed together by
-        #   connecting with a space. Example: \"labels.department:receiving labels.active\"
-        #   . See [Filtering datasets using labels](/bigquery/docs/filtering-labels#
+        #   `labels.[:]`. Multiple filters can be ANDed together by connecting with a
+        #   space. Example: `labels.department:receiving labels.active`. See [Filtering
+        #   datasets using labels](https://cloud.google.com/bigquery/docs/filtering-labels#
         #   filtering_datasets_using_labels) for details.
         # @param [Fixnum] max_results
         #   The maximum number of results to return in a single response page. Leverage
@@ -331,8 +331,8 @@ module Google
         #   Required. Job ID of the job to cancel
         # @param [String] location
         #   The geographic location of the job. You must specify the location to run the
-        #   job for the following scenarios: - If the location to run a job is not in the `
-        #   us` or the `eu` multi-regional location - If the job's location is in a single
+        #   job for the following scenarios: * If the location to run a job is not in the `
+        #   us` or the `eu` multi-regional location * If the job's location is in a single
         #   region (for example, `us-central1`) For more information, see https://cloud.
         #   google.com/bigquery/docs/locations#specifying_your_location.
         # @param [String] fields
@@ -411,8 +411,8 @@ module Google
         #   Required. Job ID of the requested job.
         # @param [String] location
         #   The geographic location of the job. You must specify the location to run the
-        #   job for the following scenarios: - If the location to run a job is not in the `
-        #   us` or the `eu` multi-regional location - If the job's location is in a single
+        #   job for the following scenarios: * If the location to run a job is not in the `
+        #   us` or the `eu` multi-regional location * If the job's location is in a single
         #   region (for example, `us-central1`) For more information, see https://cloud.
         #   google.com/bigquery/docs/locations#specifying_your_location.
         # @param [String] fields
@@ -453,8 +453,8 @@ module Google
         #   Optional. Output timestamp as usec int64. Default is false.
         # @param [String] location
         #   The geographic location of the job. You must specify the location to run the
-        #   job for the following scenarios: - If the location to run a job is not in the `
-        #   us` or the `eu` multi-regional location - If the job's location is in a single
+        #   job for the following scenarios: * If the location to run a job is not in the `
+        #   us` or the `eu` multi-regional location * If the job's location is in a single
         #   region (for example, `us-central1`) For more information, see https://cloud.
         #   google.com/bigquery/docs/locations#specifying_your_location.
         # @param [Fixnum] max_results
