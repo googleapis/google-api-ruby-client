@@ -1100,7 +1100,10 @@ module Google
         end
       end
       
-      # Nearest Neighbors search config.
+      # Nearest Neighbors search config. The ordering provided by FindNearest
+      # supersedes the order_by stage. If multiple documents have the same vector
+      # distance, the returned document order is not guaranteed to be stable between
+      # queries.
       class FindNearest
         include Google::Apis::Core::Hashable
       
@@ -1223,7 +1226,8 @@ module Google
         attr_accessor :name
       
         # At what relative time in the future, compared to its creation time, the backup
-        # should be deleted, e.g. keep backups for 7 days.
+        # should be deleted, e.g. keep backups for 7 days. The maximum supported
+        # retention period is 14 weeks.
         # Corresponds to the JSON property `retention`
         # @return [String]
         attr_accessor :retention
@@ -1409,20 +1413,12 @@ module Google
       class GoogleFirestoreAdminV1DailyRecurrence
         include Google::Apis::Core::Hashable
       
-        # Represents a time of day. The date and time zone are either not significant or
-        # are specified elsewhere. An API may choose to allow leap seconds. Related
-        # types are google.type.Date and `google.protobuf.Timestamp`.
-        # Corresponds to the JSON property `time`
-        # @return [Google::Apis::FirestoreV1::TimeOfDay]
-        attr_accessor :time
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @time = args[:time] if args.key?(:time)
         end
       end
       
@@ -2412,8 +2408,9 @@ module Google
       class GoogleFirestoreAdminV1RestoreDatabaseRequest
         include Google::Apis::Core::Hashable
       
-        # Backup to restore from. Must be from the same project as the parent. Format is:
-        # `projects/`project_id`/locations/`location`/backups/`backup``
+        # Backup to restore from. Must be from the same project as the parent. The
+        # restored database will be created in the same location as the source backup.
+        # Format is: `projects/`project_id`/locations/`location`/backups/`backup``
         # Corresponds to the JSON property `backup`
         # @return [String]
         attr_accessor :backup
@@ -2429,11 +2426,11 @@ module Google
         attr_accessor :database_id
       
         # Use Customer Managed Encryption Keys (CMEK) for encryption. Only keys in the
-        # same location as this database are allowed to be used for encryption. For
-        # Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us.
-        # For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region
-        # europe. See https://cloud.google.com/kms/docs/locations. The expected format
-        # is `projects/`project_id`/locations/`kms_location`/keyRings/`key_ring`/
+        # same location as the restored database are allowed to be used for encryption.
+        # For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region
+        # us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-
+        # region europe. See https://cloud.google.com/kms/docs/locations. The expected
+        # format is `projects/`project_id`/locations/`kms_location`/keyRings/`key_ring`/
         # cryptoKeys/`crypto_key``.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
@@ -2595,13 +2592,6 @@ module Google
         # @return [String]
         attr_accessor :day
       
-        # Represents a time of day. The date and time zone are either not significant or
-        # are specified elsewhere. An API may choose to allow leap seconds. Related
-        # types are google.type.Date and `google.protobuf.Timestamp`.
-        # Corresponds to the JSON property `time`
-        # @return [Google::Apis::FirestoreV1::TimeOfDay]
-        attr_accessor :time
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2609,7 +2599,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @day = args[:day] if args.key?(:day)
-          @time = args[:time] if args.key?(:time)
         end
       end
       
@@ -3568,7 +3557,10 @@ module Google
         # @return [Google::Apis::FirestoreV1::Cursor]
         attr_accessor :end_at
       
-        # Nearest Neighbors search config.
+        # Nearest Neighbors search config. The ordering provided by FindNearest
+        # supersedes the order_by stage. If multiple documents have the same vector
+        # distance, the returned document order is not guaranteed to be stable between
+        # queries.
         # Corresponds to the JSON property `findNearest`
         # @return [Google::Apis::FirestoreV1::FindNearest]
         attr_accessor :find_nearest
@@ -3800,47 +3792,6 @@ module Google
           @resume_token = args[:resume_token] if args.key?(:resume_token)
           @target_change_type = args[:target_change_type] if args.key?(:target_change_type)
           @target_ids = args[:target_ids] if args.key?(:target_ids)
-        end
-      end
-      
-      # Represents a time of day. The date and time zone are either not significant or
-      # are specified elsewhere. An API may choose to allow leap seconds. Related
-      # types are google.type.Date and `google.protobuf.Timestamp`.
-      class TimeOfDay
-        include Google::Apis::Core::Hashable
-      
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
-        # allow the value "24:00:00" for scenarios like business closing time.
-        # Corresponds to the JSON property `hours`
-        # @return [Fixnum]
-        attr_accessor :hours
-      
-        # Minutes of hour of day. Must be from 0 to 59.
-        # Corresponds to the JSON property `minutes`
-        # @return [Fixnum]
-        attr_accessor :minutes
-      
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        # Corresponds to the JSON property `nanos`
-        # @return [Fixnum]
-        attr_accessor :nanos
-      
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
-        # Corresponds to the JSON property `seconds`
-        # @return [Fixnum]
-        attr_accessor :seconds
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @hours = args[:hours] if args.key?(:hours)
-          @minutes = args[:minutes] if args.key?(:minutes)
-          @nanos = args[:nanos] if args.key?(:nanos)
-          @seconds = args[:seconds] if args.key?(:seconds)
         end
       end
       
