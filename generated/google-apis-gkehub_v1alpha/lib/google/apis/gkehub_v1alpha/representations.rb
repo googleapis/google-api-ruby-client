@@ -1440,7 +1440,9 @@ module Google
           property :git_sync, as: 'gitSync'
           property :importer, as: 'importer'
           property :monitor, as: 'monitor'
+          property :otel_collector, as: 'otelCollector'
           property :reconciler_manager, as: 'reconcilerManager'
+          property :resource_group_controller_manager, as: 'resourceGroupControllerManager'
           property :root_reconciler, as: 'rootReconciler'
           property :syncer, as: 'syncer'
         end
@@ -1477,7 +1479,9 @@ module Google
           property :git_sync, as: 'gitSync'
           property :importer, as: 'importer'
           property :monitor, as: 'monitor'
+          property :otel_collector, as: 'otelCollector'
           property :reconciler_manager, as: 'reconcilerManager'
+          property :resource_group_controller_manager, as: 'resourceGroupControllerManager'
           property :root_reconciler, as: 'rootReconciler'
           property :syncer, as: 'syncer'
         end
@@ -2820,6 +2824,7 @@ module Google
       class ServiceMeshMembershipSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_api, as: 'configApi'
           property :control_plane, as: 'controlPlane'
           property :default_channel, as: 'defaultChannel'
           property :management, as: 'management'

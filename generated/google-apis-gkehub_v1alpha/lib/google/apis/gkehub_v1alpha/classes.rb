@@ -1195,10 +1195,20 @@ module Google
         # @return [String]
         attr_accessor :monitor
       
+        # Deployment state of otel-collector
+        # Corresponds to the JSON property `otelCollector`
+        # @return [String]
+        attr_accessor :otel_collector
+      
         # Deployment state of reconciler-manager pod
         # Corresponds to the JSON property `reconcilerManager`
         # @return [String]
         attr_accessor :reconciler_manager
+      
+        # Deployment state of resource-group-controller-manager
+        # Corresponds to the JSON property `resourceGroupControllerManager`
+        # @return [String]
+        attr_accessor :resource_group_controller_manager
       
         # Deployment state of root-reconciler
         # Corresponds to the JSON property `rootReconciler`
@@ -1220,7 +1230,9 @@ module Google
           @git_sync = args[:git_sync] if args.key?(:git_sync)
           @importer = args[:importer] if args.key?(:importer)
           @monitor = args[:monitor] if args.key?(:monitor)
+          @otel_collector = args[:otel_collector] if args.key?(:otel_collector)
           @reconciler_manager = args[:reconciler_manager] if args.key?(:reconciler_manager)
+          @resource_group_controller_manager = args[:resource_group_controller_manager] if args.key?(:resource_group_controller_manager)
           @root_reconciler = args[:root_reconciler] if args.key?(:root_reconciler)
           @syncer = args[:syncer] if args.key?(:syncer)
         end
@@ -1304,7 +1316,7 @@ module Google
       class ConfigManagementConfigSyncVersion
         include Google::Apis::Core::Hashable
       
-        # Version of the deployed admission_webhook pod
+        # Version of the deployed admission-webhook pod
         # Corresponds to the JSON property `admissionWebhook`
         # @return [String]
         attr_accessor :admission_webhook
@@ -1324,10 +1336,20 @@ module Google
         # @return [String]
         attr_accessor :monitor
       
+        # Version of the deployed otel-collector pod
+        # Corresponds to the JSON property `otelCollector`
+        # @return [String]
+        attr_accessor :otel_collector
+      
         # Version of the deployed reconciler-manager pod
         # Corresponds to the JSON property `reconcilerManager`
         # @return [String]
         attr_accessor :reconciler_manager
+      
+        # Version of the deployed resource-group-controller-manager pod
+        # Corresponds to the JSON property `resourceGroupControllerManager`
+        # @return [String]
+        attr_accessor :resource_group_controller_manager
       
         # Version of the deployed reconciler container in root-reconciler pod
         # Corresponds to the JSON property `rootReconciler`
@@ -1349,7 +1371,9 @@ module Google
           @git_sync = args[:git_sync] if args.key?(:git_sync)
           @importer = args[:importer] if args.key?(:importer)
           @monitor = args[:monitor] if args.key?(:monitor)
+          @otel_collector = args[:otel_collector] if args.key?(:otel_collector)
           @reconciler_manager = args[:reconciler_manager] if args.key?(:reconciler_manager)
+          @resource_group_controller_manager = args[:resource_group_controller_manager] if args.key?(:resource_group_controller_manager)
           @root_reconciler = args[:root_reconciler] if args.key?(:root_reconciler)
           @syncer = args[:syncer] if args.key?(:syncer)
         end
@@ -6054,6 +6078,12 @@ module Google
       class ServiceMeshMembershipSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies the API that will be used for configuring the mesh
+        # workloads.
+        # Corresponds to the JSON property `configApi`
+        # @return [String]
+        attr_accessor :config_api
+      
         # Deprecated: use `management` instead Enables automatic control plane
         # management.
         # Corresponds to the JSON property `controlPlane`
@@ -6066,7 +6096,7 @@ module Google
         # @return [String]
         attr_accessor :default_channel
       
-        # Enables automatic Service Mesh management.
+        # Optional. Enables automatic Service Mesh management.
         # Corresponds to the JSON property `management`
         # @return [String]
         attr_accessor :management
@@ -6077,6 +6107,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @config_api = args[:config_api] if args.key?(:config_api)
           @control_plane = args[:control_plane] if args.key?(:control_plane)
           @default_channel = args[:default_channel] if args.key?(:default_channel)
           @management = args[:management] if args.key?(:management)
