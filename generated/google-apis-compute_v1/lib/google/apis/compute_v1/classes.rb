@@ -3645,7 +3645,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
-        # 
+        # [Output Only] List of resources referencing given backend service.
         # Corresponds to the JSON property `usedBy`
         # @return [Array<Google::Apis::ComputeV1::BackendServiceUsedBy>]
         attr_accessor :used_by
@@ -4619,7 +4619,9 @@ module Google
       class BackendServiceUsedBy
         include Google::Apis::Core::Hashable
       
-        # 
+        # [Output Only] Server-defined URL for resources referencing given
+        # BackendService like UrlMaps, TargetTcpProxies, TargetSslProxies and
+        # ForwardingRule.
         # Corresponds to the JSON property `reference`
         # @return [String]
         attr_accessor :reference
@@ -14641,10 +14643,15 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerAutoHealingPolicy>]
         attr_accessor :auto_healing_policies
       
-        # The base instance name to use for instances in this group. The value must be 1-
-        # 58 characters long. Instances are named by appending a hyphen and a random
-        # four-character string to the base instance name. The base instance name must
-        # comply with RFC1035.
+        # The base instance name is a prefix that you want to attach to the names of all
+        # VMs in a MIG. The maximum character length is 58 and the name must comply with
+        # RFC1035 format. When a VM is created in the group, the MIG appends a hyphen
+        # and a random four-character string to the base instance name. If you want the
+        # MIG to assign sequential numbers instead of a random string, then end the base
+        # instance name with a hyphen followed by one or more hash symbols. The hash
+        # symbols indicate the number of digits. For example, a base instance name of "
+        # vm-###" results in "vm-001" as a VM name. @pattern [a-z](([-a-z0-9]`0,57`)|([-
+        # a-z0-9]`0,52`-#`1,10`(\\[[0-9]`1,10`\\])?))
         # Corresponds to the JSON property `baseInstanceName`
         # @return [String]
         attr_accessor :base_instance_name
@@ -36425,6 +36432,13 @@ module Google
         attr_accessor :automatic_restart
         alias_method :automatic_restart?, :automatic_restart
       
+        # Specifies the availability domain to place the instance in. The value must be
+        # a number between 1 and the number of availability domains specified in the
+        # spread placement policy attached to the instance.
+        # Corresponds to the JSON property `availabilityDomain`
+        # @return [Fixnum]
+        attr_accessor :availability_domain
+      
         # Specifies the termination action for the instance.
         # Corresponds to the JSON property `instanceTerminationAction`
         # @return [String]
@@ -36505,6 +36519,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
+          @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @local_ssd_recovery_timeout = args[:local_ssd_recovery_timeout] if args.key?(:local_ssd_recovery_timeout)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
@@ -48060,8 +48075,9 @@ module Google
         attr_accessor :self_link
       
         # The stack type for this VPN gateway to identify the IP protocols that are
-        # enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified,
-        # IPV4_ONLY will be used.
+        # enabled. Possible values are: IPV4_ONLY, IPV4_IPV6, IPV6_ONLY. If not
+        # specified, IPV4_ONLY is used if the gateway IP version is IPV4, or IPV4_IPV6
+        # if the gateway IP version is IPV6.
         # Corresponds to the JSON property `stackType`
         # @return [String]
         attr_accessor :stack_type
