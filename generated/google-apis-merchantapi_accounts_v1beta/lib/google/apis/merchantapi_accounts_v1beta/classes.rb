@@ -2742,7 +2742,9 @@ module Google
         attr_accessor :accepted
       
         # Identifier. The resource name of the terms of service version. Format: `
-        # accounts/`account`/termsOfServiceAgreementState/`identifier``
+        # accounts/`account`/termsOfServiceAgreementState/`identifier`` The identifier
+        # format is: ``TermsOfServiceKind`-`country`` For example, an identifier could
+        # be: `MERCHANT_CENTER-US`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
