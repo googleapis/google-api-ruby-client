@@ -1838,9 +1838,9 @@ module Google
       class TerraformBlueprint
         include Google::Apis::Core::Hashable
       
-        # Required. URI of an object in Google Cloud Storage. Format: `gs://`bucket`/`
-        # object`` URI may also specify an object version for zipped objects. Format: `
-        # gs://`bucket`/`object`#`version``
+        # URI of an object in Google Cloud Storage. Format: `gs://`bucket`/`object`` URI
+        # may also specify an object version for zipped objects. Format: `gs://`bucket`/`
+        # object`#`version``
         # Corresponds to the JSON property `gcsSource`
         # @return [String]
         attr_accessor :gcs_source
