@@ -34,10 +34,12 @@ module Google
       
         # Optional. The resource name of the [target audience](https://support.google.
         # com/a/answer/9934697) who can discover the space, join the space, and preview
-        # the messages in the space. For details, see [Make a space discoverable to a
-        # target audience](https://developers.google.com/workspace/chat/space-target-
-        # audience). Format: `audiences/`audience`` To use the default target audience
-        # for the Google Workspace organization, set to `audiences/default`.
+        # the messages in the space. If unset, only users or Google Groups who have been
+        # individually invited or added to the space can access it. For details, see [
+        # Make a space discoverable to a target audience](https://developers.google.com/
+        # workspace/chat/space-target-audience). Format: `audiences/`audience`` To use
+        # the default target audience for the Google Workspace organization, set to `
+        # audiences/default`.
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
@@ -870,12 +872,11 @@ module Google
         end
       end
       
-      # A Google Chat app interaction event. To learn about interaction events, see [
-      # Receive and respond to interactions with your Google Chat app](https://
-      # developers.google.com/workspace/chat/api/guides/message-formats). To learn
-      # about event types and for example event payloads, see [Types of Google Chat
-      # app interaction events](https://developers.google.com/workspace/chat/events).
-      # In addition to receiving events from user interactions, Chat apps can receive
+      # A Google Chat app interaction event that represents and contains data about a
+      # user's interaction with a Chat app. To configure your Chat app to receive
+      # interaction events, see [Receive and respond to user interactions](https://
+      # developers.google.com/workspace/chat/receive-respond-interactions). In
+      # addition to receiving events from user interactions, Chat apps can receive
       # events about changes to spaces, such as when a new member is added to a space.
       # To learn about space events, see [Work with events from Google Chat](https://
       # developers.google.com/workspace/chat/events-overview).
@@ -952,8 +953,8 @@ module Google
         # @return [String]
         attr_accessor :token
       
-        # The type of interaction event. For details, see [Types of Google Chat app
-        # interaction events](https://developers.google.com/workspace/chat/events).
+        # The [type](/workspace/chat/api/reference/rest/v1/EventType) of user
+        # interaction with the Chat app, such as `MESSAGE` or `ADDED_TO_SPACE`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4591,13 +4592,8 @@ module Google
         # when creating a space in a Google Workspace organization. Omit this field when
         # creating spaces in the following conditions: * The authenticated user uses a
         # consumer account (unmanaged user account). By default, a space created by a
-        # consumer account permits any Google Chat user. * The space is used to [import
-        # data to Google Chat] (https://developers.google.com/chat/api/guides/import-
-        # data-overview) because import mode spaces must only permit members from the
-        # same Google Workspace organization. However, as part of the [Google Workspace
-        # Developer Preview Program](https://developers.google.com/workspace/preview),
-        # import mode spaces can permit any Google Chat user so this field can then be
-        # set for import mode spaces. For existing spaces, this field is output only.
+        # consumer account permits any Google Chat user. For existing spaces, this field
+        # is output only.
         # Corresponds to the JSON property `externalUserAllowed`
         # @return [Boolean]
         attr_accessor :external_user_allowed
