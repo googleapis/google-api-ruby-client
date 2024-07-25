@@ -190,6 +190,12 @@ module Google
         # @return [String]
         attr_accessor :default
       
+        # Whether the parameter is deprecated.
+        # Corresponds to the JSON property `deprecated`
+        # @return [Boolean]
+        attr_accessor :deprecated
+        alias_method :deprecated?, :deprecated
+      
         # A description of this object.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -199,6 +205,12 @@ module Google
         # Corresponds to the JSON property `enum`
         # @return [Array<String>]
         attr_accessor :enum
+      
+        # The deprecation status for the enums. Each position maps to the corresponding
+        # value in the "enum" array.
+        # Corresponds to the JSON property `enumDeprecated`
+        # @return [Array<Boolean>]
+        attr_accessor :enum_deprecated
       
         # The descriptions for the enums. Each position maps to the corresponding value
         # in the "enum" array.
@@ -294,8 +306,10 @@ module Google
           @additional_properties = args[:additional_properties] if args.key?(:additional_properties)
           @annotations = args[:annotations] if args.key?(:annotations)
           @default = args[:default] if args.key?(:default)
+          @deprecated = args[:deprecated] if args.key?(:deprecated)
           @description = args[:description] if args.key?(:description)
           @enum = args[:enum] if args.key?(:enum)
+          @enum_deprecated = args[:enum_deprecated] if args.key?(:enum_deprecated)
           @enum_descriptions = args[:enum_descriptions] if args.key?(:enum_descriptions)
           @format = args[:format] if args.key?(:format)
           @id = args[:id] if args.key?(:id)
@@ -429,6 +443,12 @@ module Google
         # @return [String]
         attr_accessor :documentation_link
       
+        # A list of location-based endpoint objects for this API. Each object contains
+        # the endpoint URL, location, description and deprecation status.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::DiscoveryV1::RestDescription::Endpoint>]
+        attr_accessor :endpoints
+      
         # The ETag for this response.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -557,6 +577,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @discovery_version = args[:discovery_version] if args.key?(:discovery_version)
           @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
           @etag = args[:etag] if args.key?(:etag)
           @exponential_backoff_default = args[:exponential_backoff_default] if args.key?(:exponential_backoff_default)
           @features = args[:features] if args.key?(:features)
@@ -638,6 +659,44 @@ module Google
           end
         end
         
+        # A single endpoint object
+        class Endpoint
+          include Google::Apis::Core::Hashable
+        
+          # Whether this endpoint is deprecated
+          # Corresponds to the JSON property `deprecated`
+          # @return [Boolean]
+          attr_accessor :deprecated
+          alias_method :deprecated?, :deprecated
+        
+          # A string describing the host designated by the URL
+          # Corresponds to the JSON property `description`
+          # @return [String]
+          attr_accessor :description
+        
+          # The URL of the endpoint target host
+          # Corresponds to the JSON property `endpointUrl`
+          # @return [String]
+          attr_accessor :endpoint_url
+        
+          # The location of the endpoint
+          # Corresponds to the JSON property `location`
+          # @return [String]
+          attr_accessor :location
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @deprecated = args[:deprecated] if args.key?(:deprecated)
+            @description = args[:description] if args.key?(:description)
+            @endpoint_url = args[:endpoint_url] if args.key?(:endpoint_url)
+            @location = args[:location] if args.key?(:location)
+          end
+        end
+        
         # Links to 16x16 and 32x32 icons representing the API.
         class Icons
           include Google::Apis::Core::Hashable
@@ -667,6 +726,18 @@ module Google
       # 
       class RestMethod
         include Google::Apis::Core::Hashable
+      
+        # The API Version of this method, as passed in via the `X-Goog-Api-Version`
+        # header or `$apiVersion` query parameter.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Whether this method is deprecated.
+        # Corresponds to the JSON property `deprecated`
+        # @return [Boolean]
+        attr_accessor :deprecated
+        alias_method :deprecated?, :deprecated
       
         # Description of this method.
         # Corresponds to the JSON property `description`
@@ -766,6 +837,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @deprecated = args[:deprecated] if args.key?(:deprecated)
           @description = args[:description] if args.key?(:description)
           @etag_required = args[:etag_required] if args.key?(:etag_required)
           @flat_path = args[:flat_path] if args.key?(:flat_path)
@@ -943,6 +1016,12 @@ module Google
       class RestResource
         include Google::Apis::Core::Hashable
       
+        # Whether this resource is deprecated.
+        # Corresponds to the JSON property `deprecated`
+        # @return [Boolean]
+        attr_accessor :deprecated
+        alias_method :deprecated?, :deprecated
+      
         # Methods on this resource.
         # Corresponds to the JSON property `methods`
         # @return [Hash<String,Google::Apis::DiscoveryV1::RestMethod>]
@@ -959,6 +1038,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deprecated = args[:deprecated] if args.key?(:deprecated)
           @api_methods = args[:api_methods] if args.key?(:api_methods)
           @resources = args[:resources] if args.key?(:resources)
         end
