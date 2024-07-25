@@ -462,6 +462,9 @@ module Google
         end
         
         # Generates a sign-up URL.
+        # @param [String] admin_email
+        #   Optional. Email address used to prefill the admin field of the enterprise
+        #   signup form. This value is a hint only and can be altered by the user.
         # @param [String] callback_url
         #   The callback URL to which the Admin will be redirected after successfully
         #   creating an enterprise. Before redirecting there the system will add a single
@@ -487,10 +490,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_enterprise_signup_url(callback_url: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def generate_enterprise_signup_url(admin_email: nil, callback_url: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'androidenterprise/v1/enterprises/signupUrl', options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::SignupInfo::Representation
           command.response_class = Google::Apis::AndroidenterpriseV1::SignupInfo
+          command.query['adminEmail'] = admin_email unless admin_email.nil?
           command.query['callbackUrl'] = callback_url unless callback_url.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
