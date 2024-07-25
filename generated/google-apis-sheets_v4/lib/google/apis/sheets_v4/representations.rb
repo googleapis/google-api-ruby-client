@@ -982,6 +982,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LookerDataSourceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManualRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2631,6 +2637,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :big_query, as: 'bigQuery', class: Google::Apis::SheetsV4::BigQueryDataSourceSpec, decorator: Google::Apis::SheetsV4::BigQueryDataSourceSpec::Representation
       
+          property :looker, as: 'looker', class: Google::Apis::SheetsV4::LookerDataSourceSpec, decorator: Google::Apis::SheetsV4::LookerDataSourceSpec::Representation
+      
           collection :parameters, as: 'parameters', class: Google::Apis::SheetsV4::DataSourceParameter, decorator: Google::Apis::SheetsV4::DataSourceParameter::Representation
       
         end
@@ -3208,6 +3216,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
+        end
+      end
+      
+      class LookerDataSourceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :explore, as: 'explore'
+          property :instance_uri, as: 'instanceUri'
+          property :model, as: 'model'
         end
       end
       
