@@ -426,6 +426,7 @@ module Google
           property :filename_suffix, as: 'filenameSuffix'
           property :max_bytes, :numeric_string => true, as: 'maxBytes'
           property :max_duration, as: 'maxDuration'
+          property :max_messages, :numeric_string => true, as: 'maxMessages'
           property :service_account_email, as: 'serviceAccountEmail'
           property :state, as: 'state'
           property :text_config, as: 'textConfig', class: Google::Apis::PubsubV1::TextConfig, decorator: Google::Apis::PubsubV1::TextConfig::Representation
