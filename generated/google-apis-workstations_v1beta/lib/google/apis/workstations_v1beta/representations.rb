@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkstationBoostConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkstationCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -664,6 +670,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          collection :boost_configs, as: 'boostConfigs', class: Google::Apis::WorkstationsV1beta::WorkstationBoostConfig, decorator: Google::Apis::WorkstationsV1beta::WorkstationBoostConfig::Representation
+      
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
@@ -674,11 +682,20 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :source_workstation, as: 'sourceWorkstation'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class WorkstationBoostConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
         end
       end
       
@@ -702,6 +719,8 @@ module Google
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::WorkstationsV1beta::PrivateClusterConfig, decorator: Google::Apis::WorkstationsV1beta::PrivateClusterConfig::Representation
       
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :subnetwork, as: 'subnetwork'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -743,6 +762,8 @@ module Google
           property :reconciling, as: 'reconciling'
           collection :replica_zones, as: 'replicaZones'
           property :running_timeout, as: 'runningTimeout'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
