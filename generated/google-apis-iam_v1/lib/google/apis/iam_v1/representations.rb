@@ -310,12 +310,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PatchServiceAccountKeyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PatchServiceAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1011,15 +1005,6 @@ module Google
         end
       end
       
-      class PatchServiceAccountKeyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :service_account_key, as: 'serviceAccountKey', class: Google::Apis::IamV1::ServiceAccountKey, decorator: Google::Apis::IamV1::ServiceAccountKey::Representation
-      
-          property :update_mask, as: 'updateMask'
-        end
-      end
-      
       class PatchServiceAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1169,9 +1154,6 @@ module Google
       class ServiceAccountKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :contact, as: 'contact'
-          property :creator, as: 'creator'
-          property :description, as: 'description'
           property :disable_reason, as: 'disableReason'
           property :disabled, as: 'disabled'
           collection :extended_status, as: 'extendedStatus', class: Google::Apis::IamV1::ExtendedStatus, decorator: Google::Apis::IamV1::ExtendedStatus::Representation
