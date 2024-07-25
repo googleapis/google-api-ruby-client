@@ -235,7 +235,7 @@ module Google
         # @return [Google::Apis::GkebackupV1::NamespacedNames]
         attr_accessor :selected_applications
       
-        # A list of Kubernetes Namespaces
+        # A list of Kubernetes Namespaces.
         # Corresponds to the JSON property `selectedNamespaces`
         # @return [Google::Apis::GkebackupV1::Namespaces]
         attr_accessor :selected_namespaces
@@ -353,7 +353,7 @@ module Google
         # @return [Google::Apis::GkebackupV1::NamespacedNames]
         attr_accessor :selected_applications
       
-        # A list of Kubernetes Namespaces
+        # A list of Kubernetes Namespaces.
         # Corresponds to the JSON property `selectedNamespaces`
         # @return [Google::Apis::GkebackupV1::Namespaces]
         attr_accessor :selected_namespaces
@@ -1124,7 +1124,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.
-        # io", "storage.k8s.io", etc. Note: use empty string for core API group
+        # io", "storage.k8s.io", etc. Note: use empty string for core API group.
         # Corresponds to the JSON property `resourceGroup`
         # @return [String]
         attr_accessor :resource_group
@@ -1471,11 +1471,11 @@ module Google
         end
       end
       
-      # A list of Kubernetes Namespaces
+      # A list of Kubernetes Namespaces.
       class Namespaces
         include Google::Apis::Core::Hashable
       
-        # Optional. A list of Kubernetes Namespaces
+        # Optional. A list of Kubernetes Namespaces.
         # Corresponds to the JSON property `namespaces`
         # @return [Array<String>]
         attr_accessor :namespaces
@@ -1920,7 +1920,7 @@ module Google
         # @return [Google::Apis::GkebackupV1::ClusterResourceRestoreScope]
         attr_accessor :cluster_resource_restore_scope
       
-        # A list of Kubernetes Namespaces
+        # A list of Kubernetes Namespaces.
         # Corresponds to the JSON property `excludedNamespaces`
         # @return [Google::Apis::GkebackupV1::Namespaces]
         attr_accessor :excluded_namespaces
@@ -1950,7 +1950,7 @@ module Google
         # @return [Google::Apis::GkebackupV1::NamespacedNames]
         attr_accessor :selected_applications
       
-        # A list of Kubernetes Namespaces
+        # A list of Kubernetes Namespaces.
         # Corresponds to the JSON property `selectedNamespaces`
         # @return [Google::Apis::GkebackupV1::Namespaces]
         attr_accessor :selected_namespaces
