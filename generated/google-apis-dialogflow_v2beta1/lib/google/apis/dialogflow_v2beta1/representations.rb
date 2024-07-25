@@ -1414,6 +1414,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2EncryptionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2EntityType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1475,6 +1481,18 @@ module Google
       end
       
       class GoogleCloudDialogflowV2ImportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2110,6 +2128,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1EncryptionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1EntityType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2399,6 +2423,18 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1InferenceParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3612,6 +3648,7 @@ module Google
           property :name, as: 'name'
           property :target_flow, as: 'targetFlow'
           property :target_page, as: 'targetPage'
+          property :target_playbook, as: 'targetPlaybook'
           property :trigger_fulfillment, as: 'triggerFulfillment', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3Fulfillment, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3Fulfillment::Representation
       
         end
@@ -4666,6 +4703,7 @@ module Google
           property :name, as: 'name'
           property :target_flow, as: 'targetFlow'
           property :target_page, as: 'targetPage'
+          property :target_playbook, as: 'targetPlaybook'
           property :trigger_fulfillment, as: 'triggerFulfillment', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1Fulfillment, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1Fulfillment::Representation
       
         end
@@ -5654,6 +5692,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2EncryptionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDialogflowV2EntityType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5751,6 +5797,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2beta1::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2beta1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request, as: 'request', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2InitializeEncryptionSpecRequest, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2InitializeEncryptionSpecRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2EncryptionSpec, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2EncryptionSpec::Representation
       
         end
       end
@@ -6905,6 +6967,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1EncryptionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1EntityType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7380,6 +7450,22 @@ module Google
           property :temperature, as: 'temperature'
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request, as: 'request', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EncryptionSpec, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EncryptionSpec::Representation
+      
         end
       end
       
@@ -8171,6 +8257,8 @@ module Google
           property :name, as: 'name'
           property :participant, as: 'participant'
           property :participant_role, as: 'participantRole'
+          collection :response_messages, as: 'responseMessages', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessage::Representation
+      
           property :send_time, as: 'sendTime'
           property :sentiment_analysis, as: 'sentimentAnalysis', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SentimentAnalysisResult, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SentimentAnalysisResult::Representation
       
