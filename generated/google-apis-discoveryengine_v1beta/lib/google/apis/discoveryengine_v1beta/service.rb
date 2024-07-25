@@ -6793,6 +6793,196 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a Evaluation. Upon creation, the evaluation will be automatically
+        # triggered and begin execution.
+        # @param [String] parent
+        #   Required. The parent resource name, such as `projects/`project`/locations/`
+        #   location``.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEvaluation] google_cloud_discoveryengine_v1beta_evaluation_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_evaluation(parent, google_cloud_discoveryengine_v1beta_evaluation_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/evaluations', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEvaluation::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_evaluation_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Evaluation.
+        # @param [String] name
+        #   Required. Full resource name of Evaluation, such as `projects/`project`/
+        #   locations/`location`/evaluations/`evaluation``. If the caller does not have
+        #   permission to access the Evaluation, regardless of whether or not it exists, a
+        #   PERMISSION_DENIED error is returned. If the requested Evaluation does not
+        #   exist, a NOT_FOUND error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEvaluation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEvaluation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_evaluation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEvaluation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEvaluation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a list of Evaluations.
+        # @param [String] parent
+        #   Required. The parent location resource name, such as `projects/`project`/
+        #   locations/`location``. If the caller does not have permission to list
+        #   Evaluations under this location, regardless of whether or not this location
+        #   exists, a `PERMISSION_DENIED` error is returned.
+        # @param [Fixnum] page_size
+        #   Maximum number of Evaluations to return. If unspecified, defaults to 100. The
+        #   maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If
+        #   this field is negative, an `INVALID_ARGUMENT` error is returned.
+        # @param [String] page_token
+        #   A page token ListEvaluationsResponse.next_page_token, received from a previous
+        #   EvaluationService.ListEvaluations call. Provide this to retrieve the
+        #   subsequent page. When paginating, all other parameters provided to
+        #   EvaluationService.ListEvaluations must match the call that provided the page
+        #   token. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListEvaluationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListEvaluationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_evaluations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/evaluations', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListEvaluationsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListEvaluationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a list of results for a given a Evaluation.
+        # @param [String] evaluation
+        #   Required. The evaluation resource name, such as `projects/`project`/locations/`
+        #   location`/evaluations/`evaluation``. If the caller does not have permission to
+        #   list EvaluationResult under this evaluation, regardless of whether or not this
+        #   evaluation set exists, a `PERMISSION_DENIED` error is returned.
+        # @param [Fixnum] page_size
+        #   Maximum number of EvaluationResult to return. If unspecified, defaults to 100.
+        #   The maximum allowed value is 1000. Values above 1000 will be coerced to 1000.
+        #   If this field is negative, an `INVALID_ARGUMENT` error is returned.
+        # @param [String] page_token
+        #   A page token ListEvaluationResultsResponse.next_page_token, received from a
+        #   previous EvaluationService.ListEvaluationResults call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to EvaluationService.ListEvaluationResults must match the call that provided
+        #   the page token. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_evaluation_results(evaluation, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+evaluation}:listResults', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse
+          command.params['evaluation'] = evaluation unless evaluation.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_evaluation_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Performs a grounding check.
         # @param [String] grounding_config
         #   Required. The resource name of the grounding config, such as `projects/*/
@@ -6927,6 +7117,473 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRankResponse
           command.params['rankingConfig'] = ranking_config unless ranking_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a SampleQuerySet
+        # @param [String] parent
+        #   Required. The parent resource name, such as `projects/`project`/locations/`
+        #   location``.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet] google_cloud_discoveryengine_v1beta_sample_query_set_object
+        # @param [String] sample_query_set_id
+        #   Required. The ID to use for the SampleQuerySet, which will become the final
+        #   component of the SampleQuerySet.name. If the caller does not have permission
+        #   to create the SampleQuerySet, regardless of whether or not it exists, a `
+        #   PERMISSION_DENIED` error is returned. This field must be unique among all
+        #   SampleQuerySets with the same parent. Otherwise, an `ALREADY_EXISTS` error is
+        #   returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/
+        #   rfc1034) standard with a length limit of 63 characters. Otherwise, an `
+        #   INVALID_ARGUMENT` error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_sample_query_set(parent, google_cloud_discoveryengine_v1beta_sample_query_set_object = nil, sample_query_set_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/sampleQuerySets', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_sample_query_set_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet
+          command.params['parent'] = parent unless parent.nil?
+          command.query['sampleQuerySetId'] = sample_query_set_id unless sample_query_set_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a SampleQuerySet.
+        # @param [String] name
+        #   Required. Full resource name of SampleQuerySet, such as `projects/`project`/
+        #   locations/`location`/sampleQuerySets/`sampleQuerySet``. If the caller does not
+        #   have permission to delete the SampleQuerySet, regardless of whether or not it
+        #   exists, a `PERMISSION_DENIED` error is returned. If the SampleQuerySet to
+        #   delete does not exist, a `NOT_FOUND` error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_sample_query_set(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a SampleQuerySet.
+        # @param [String] name
+        #   Required. Full resource name of SampleQuerySet, such as `projects/`project`/
+        #   locations/`location`/sampleQuerySets/`sampleQuerySet``. If the caller does not
+        #   have permission to access the SampleQuerySet, regardless of whether or not it
+        #   exists, a PERMISSION_DENIED error is returned. If the requested SampleQuerySet
+        #   does not exist, a NOT_FOUND error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_sample_query_set(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a list of SampleQuerySets.
+        # @param [String] parent
+        #   Required. The parent location resource name, such as `projects/`project`/
+        #   locations/`location``. If the caller does not have permission to list
+        #   SampleQuerySets under this location, regardless of whether or not this
+        #   location exists, a `PERMISSION_DENIED` error is returned.
+        # @param [Fixnum] page_size
+        #   Maximum number of SampleQuerySets to return. If unspecified, defaults to 100.
+        #   The maximum allowed value is 1000. Values above 1000 will be coerced to 1000.
+        #   If this field is negative, an `INVALID_ARGUMENT` error is returned.
+        # @param [String] page_token
+        #   A page token ListSampleQuerySetsResponse.next_page_token, received from a
+        #   previous SampleQuerySetService.ListSampleQuerySets call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to SampleQuerySetService.ListSampleQuerySets must match the call that provided
+        #   the page token. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListSampleQuerySetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListSampleQuerySetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_sample_query_sets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/sampleQuerySets', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListSampleQuerySetsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListSampleQuerySetsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a SampleQuerySet.
+        # @param [String] name
+        #   Immutable. The full resource name of the SampleQuerySet, in the format of `
+        #   projects/`project`/locations/`location`/sampleQuerySets/`sampleQuerySet``.
+        #   This field must be a UTF-8 encoded string with a length limit of 1024
+        #   characters.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet] google_cloud_discoveryengine_v1beta_sample_query_set_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided imported 'sample query set' to update.
+        #   If not set, will by default update all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_sample_query_set(name, google_cloud_discoveryengine_v1beta_sample_query_set_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_sample_query_set_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuerySet
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_sample_query_set_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a SampleQuery
+        # @param [String] parent
+        #   Required. The parent resource name, such as `projects/`project`/locations/`
+        #   location`/sampleQuerySets/`sampleQuerySet``.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery] google_cloud_discoveryengine_v1beta_sample_query_object
+        # @param [String] sample_query_id
+        #   Required. The ID to use for the SampleQuery, which will become the final
+        #   component of the SampleQuery.name. If the caller does not have permission to
+        #   create the SampleQuery, regardless of whether or not it exists, a `
+        #   PERMISSION_DENIED` error is returned. This field must be unique among all
+        #   SampleQuerys with the same parent. Otherwise, an `ALREADY_EXISTS` error is
+        #   returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/
+        #   rfc1034) standard with a length limit of 63 characters. Otherwise, an `
+        #   INVALID_ARGUMENT` error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_sample_query_set_sample_query(parent, google_cloud_discoveryengine_v1beta_sample_query_object = nil, sample_query_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/sampleQueries', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_sample_query_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery
+          command.params['parent'] = parent unless parent.nil?
+          command.query['sampleQueryId'] = sample_query_id unless sample_query_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a SampleQuery.
+        # @param [String] name
+        #   Required. Full resource name of SampleQuery, such as `projects/`project`/
+        #   locations/`location`/sampleQuerySets/`sampleQuerySet`/sampleQueries/`
+        #   sampleQuery``. If the caller does not have permission to delete the
+        #   SampleQuery, regardless of whether or not it exists, a `PERMISSION_DENIED`
+        #   error is returned. If the SampleQuery to delete does not exist, a `NOT_FOUND`
+        #   error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_sample_query_set_sample_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a SampleQuery.
+        # @param [String] name
+        #   Required. Full resource name of SampleQuery, such as `projects/`project`/
+        #   locations/`location`/sampleQuerySets/`sampleQuerySet`/sampleQueries/`
+        #   sampleQuery``. If the caller does not have permission to access the
+        #   SampleQuery, regardless of whether or not it exists, a PERMISSION_DENIED error
+        #   is returned. If the requested SampleQuery does not exist, a NOT_FOUND error is
+        #   returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_sample_query_set_sample_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Bulk import of multiple SampleQuerys. Sample queries that already exist may be
+        # deleted. Note: It is possible for a subset of the SampleQuerys to be
+        # successfully imported.
+        # @param [String] parent
+        #   Required. The parent sample query set resource name, such as `projects/`
+        #   project`/locations/`location`/sampleQuerySets/`sampleQuerySet``. If the caller
+        #   does not have permission to list SampleQuerys under this sample query set,
+        #   regardless of whether or not this sample query set exists, a `
+        #   PERMISSION_DENIED` error is returned.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequest] google_cloud_discoveryengine_v1beta_import_sample_queries_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_project_location_sample_query_set_sample_query(parent, google_cloud_discoveryengine_v1beta_import_sample_queries_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/sampleQueries:import', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_import_sample_queries_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a list of SampleQuerys.
+        # @param [String] parent
+        #   Required. The parent sample query set resource name, such as `projects/`
+        #   project`/locations/`location`/sampleQuerySets/`sampleQuerySet``. If the caller
+        #   does not have permission to list SampleQuerys under this sample query set,
+        #   regardless of whether or not this sample query set exists, a `
+        #   PERMISSION_DENIED` error is returned.
+        # @param [Fixnum] page_size
+        #   Maximum number of SampleQuerys to return. If unspecified, defaults to 100. The
+        #   maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If
+        #   this field is negative, an `INVALID_ARGUMENT` error is returned.
+        # @param [String] page_token
+        #   A page token ListSampleQueriesResponse.next_page_token, received from a
+        #   previous SampleQueryService.ListSampleQueries call. Provide this to retrieve
+        #   the subsequent page. When paginating, all other parameters provided to
+        #   SampleQueryService.ListSampleQueries must match the call that provided the
+        #   page token. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListSampleQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListSampleQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_sample_query_set_sample_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/sampleQueries', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListSampleQueriesResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListSampleQueriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a SampleQuery.
+        # @param [String] name
+        #   Immutable. The full resource name of the sample query, in the format of `
+        #   projects/`project`/locations/`location`/sampleQuerySets/`sampleQuerySet`/
+        #   sampleQueries/`sampleQuery``. This field must be a UTF-8 encoded string with a
+        #   length limit of 1024 characters.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery] google_cloud_discoveryengine_v1beta_sample_query_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided imported 'simple query' to update. If
+        #   not set, will by default update all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_sample_query_set_sample_query(name, google_cloud_discoveryengine_v1beta_sample_query_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_sample_query_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSampleQuery
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
