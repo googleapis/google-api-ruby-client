@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PortRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivateClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -577,6 +583,14 @@ module Google
         end
       end
       
+      class PortRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first, as: 'first'
+          property :last, as: 'last'
+        end
+      end
+      
       class PrivateClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -693,6 +707,8 @@ module Google
       class WorkstationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_ports, as: 'allowedPorts', class: Google::Apis::WorkstationsV1::PortRange, decorator: Google::Apis::WorkstationsV1::PortRange::Representation
+      
           hash :annotations, as: 'annotations'
           collection :conditions, as: 'conditions', class: Google::Apis::WorkstationsV1::Status, decorator: Google::Apis::WorkstationsV1::Status::Representation
       
