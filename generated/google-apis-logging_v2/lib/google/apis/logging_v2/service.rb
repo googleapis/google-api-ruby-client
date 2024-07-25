@@ -1432,6 +1432,16 @@ module Google
         #   resource must be specified. To get a list of all saved queries, a wildcard
         #   character - can be used for LOCATION_ID, for example: "projects/my-project/
         #   locations/-"
+        # @param [String] filter
+        #   Optional. Specifies the type ("Logging" or "OpsAnalytics") and the visibility (
+        #   PRIVATE or SHARED) of the saved queries to list. If provided, the filter must
+        #   contain either the type function or a visibility token, or both. If both are
+        #   chosen, they can be placed in any order, but they must be joined by the AND
+        #   operator or the empty character.The two supported type function calls are:
+        #   type("Logging") type("OpsAnalytics")The two supported visibility tokens are:
+        #   visibility = PRIVATE visibility = SHAREDFor example:type("Logging") AND
+        #   visibility = PRIVATE visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)
+        #   " visibility = PRIVATE visibility = SHARED
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -1458,11 +1468,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_billing_account_location_saved_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_billing_account_location_saved_queries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/savedQueries', options)
           command.response_representation = Google::Apis::LoggingV2::ListSavedQueriesResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSavedQueriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2338,7 +2349,8 @@ module Google
         # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[
-        #   ORGANIZATION_ID]/settings" For example:"organizations/12345/settings"
+        #   ORGANIZATION_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"
+        #   organizations/12345/settings"
         # @param [Google::Apis::LoggingV2::Settings] settings_object
         # @param [String] update_mask
         #   Optional. Field mask identifying which fields from settings should be updated.
@@ -3790,6 +3802,16 @@ module Google
         #   resource must be specified. To get a list of all saved queries, a wildcard
         #   character - can be used for LOCATION_ID, for example: "projects/my-project/
         #   locations/-"
+        # @param [String] filter
+        #   Optional. Specifies the type ("Logging" or "OpsAnalytics") and the visibility (
+        #   PRIVATE or SHARED) of the saved queries to list. If provided, the filter must
+        #   contain either the type function or a visibility token, or both. If both are
+        #   chosen, they can be placed in any order, but they must be joined by the AND
+        #   operator or the empty character.The two supported type function calls are:
+        #   type("Logging") type("OpsAnalytics")The two supported visibility tokens are:
+        #   visibility = PRIVATE visibility = SHAREDFor example:type("Logging") AND
+        #   visibility = PRIVATE visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)
+        #   " visibility = PRIVATE visibility = SHARED
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -3816,11 +3838,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_folder_location_saved_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_folder_location_saved_queries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/savedQueries', options)
           command.response_representation = Google::Apis::LoggingV2::ListSavedQueriesResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSavedQueriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -5542,7 +5565,8 @@ module Google
         # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[
-        #   ORGANIZATION_ID]/settings" For example:"organizations/12345/settings"
+        #   ORGANIZATION_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"
+        #   organizations/12345/settings"
         # @param [Google::Apis::LoggingV2::Settings] settings_object
         # @param [String] update_mask
         #   Optional. Field mask identifying which fields from settings should be updated.
@@ -6994,6 +7018,16 @@ module Google
         #   resource must be specified. To get a list of all saved queries, a wildcard
         #   character - can be used for LOCATION_ID, for example: "projects/my-project/
         #   locations/-"
+        # @param [String] filter
+        #   Optional. Specifies the type ("Logging" or "OpsAnalytics") and the visibility (
+        #   PRIVATE or SHARED) of the saved queries to list. If provided, the filter must
+        #   contain either the type function or a visibility token, or both. If both are
+        #   chosen, they can be placed in any order, but they must be joined by the AND
+        #   operator or the empty character.The two supported type function calls are:
+        #   type("Logging") type("OpsAnalytics")The two supported visibility tokens are:
+        #   visibility = PRIVATE visibility = SHAREDFor example:type("Logging") AND
+        #   visibility = PRIVATE visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)
+        #   " visibility = PRIVATE visibility = SHARED
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -7020,11 +7054,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_saved_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_saved_queries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/savedQueries', options)
           command.response_representation = Google::Apis::LoggingV2::ListSavedQueriesResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSavedQueriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -8981,6 +9016,16 @@ module Google
         #   resource must be specified. To get a list of all saved queries, a wildcard
         #   character - can be used for LOCATION_ID, for example: "projects/my-project/
         #   locations/-"
+        # @param [String] filter
+        #   Optional. Specifies the type ("Logging" or "OpsAnalytics") and the visibility (
+        #   PRIVATE or SHARED) of the saved queries to list. If provided, the filter must
+        #   contain either the type function or a visibility token, or both. If both are
+        #   chosen, they can be placed in any order, but they must be joined by the AND
+        #   operator or the empty character.The two supported type function calls are:
+        #   type("Logging") type("OpsAnalytics")The two supported visibility tokens are:
+        #   visibility = PRIVATE visibility = SHAREDFor example:type("Logging") AND
+        #   visibility = PRIVATE visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)
+        #   " visibility = PRIVATE visibility = SHARED
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -9007,11 +9052,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_saved_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_saved_queries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/savedQueries', options)
           command.response_representation = Google::Apis::LoggingV2::ListSavedQueriesResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSavedQueriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -10038,7 +10084,8 @@ module Google
         # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[
-        #   ORGANIZATION_ID]/settings" For example:"organizations/12345/settings"
+        #   ORGANIZATION_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"
+        #   organizations/12345/settings"
         # @param [Google::Apis::LoggingV2::Settings] settings_object
         # @param [String] update_mask
         #   Optional. Field mask identifying which fields from settings should be updated.
