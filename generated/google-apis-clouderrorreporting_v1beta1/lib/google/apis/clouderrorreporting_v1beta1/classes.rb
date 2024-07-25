@@ -141,13 +141,16 @@ module Google
         # @return [String]
         attr_accessor :group_id
       
-        # The group resource name. Written as `projects/`projectID`/groups/`group_id``.
-        # Example: `projects/my-project-123/groups/my-group` In the group resource name,
-        # the `group_id` is a unique identifier for a particular error group. The
-        # identifier is derived from key parts of the error-log content and is treated
-        # as Service Data. For information about how Service Data is handled, see [
-        # Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-
-        # notice).
+        # The group resource name. Written as `projects/`projectID`/groups/`group_id``
+        # or `projects/`projectID`/locations/`location`/groups/`group_id`` Examples: `
+        # projects/my-project-123/groups/my-group`, `projects/my-project-123/locations/
+        # us-central1/groups/my-group` In the group resource name, the `group_id` is a
+        # unique identifier for a particular error group. The identifier is derived from
+        # key parts of the error-log content and is treated as Service Data. For
+        # information about how Service Data is handled, see [Google Cloud Privacy
+        # Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a list of
+        # supported locations, see [Supported Regions](https://cloud.google.com/logging/
+        # docs/region-support). `global` is the default when unspecified.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -431,8 +434,8 @@ module Google
         # https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx). * **
         # PHP**: Must be prefixed with `"PHP (Notice|Parse error|Fatal error|Warning): "`
         # and contain the result of [`(string)$exception`](https://php.net/manual/en/
-        # exception.tostring.php). * **Go**: Must be the return value of [`runtime.Stack(
-        # )`](https://golang.org/pkg/runtime/debug/#Stack).
+        # exception.tostring.php). * **Go**: Must be the return value of [`debug.Stack()`
+        # ](https://pkg.go.dev/runtime/debug#Stack).
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
