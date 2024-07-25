@@ -1260,7 +1260,9 @@ module Google
         # @return [String]
         attr_accessor :recurring_event_id
       
-        # Information about the event's reminders for the authenticated user.
+        # Information about the event's reminders for the authenticated user. Note that
+        # changing reminders does not also change the updated property of the enclosing
+        # event.
         # Corresponds to the JSON property `reminders`
         # @return [Google::Apis::CalendarV3::Event::Reminders]
         attr_accessor :reminders
@@ -1328,7 +1330,8 @@ module Google
         # @return [String]
         attr_accessor :transparency
       
-        # Last modification time of the event (as a RFC3339 timestamp). Read-only.
+        # Last modification time of the main event data (as a RFC3339 timestamp).
+        # Updating event reminders will not cause this to change. Read-only.
         # Corresponds to the JSON property `updated`
         # @return [DateTime]
         attr_accessor :updated
@@ -1576,7 +1579,9 @@ module Google
           end
         end
         
-        # Information about the event's reminders for the authenticated user.
+        # Information about the event's reminders for the authenticated user. Note that
+        # changing reminders does not also change the updated property of the enclosing
+        # event.
         class Reminders
           include Google::Apis::Core::Hashable
         
