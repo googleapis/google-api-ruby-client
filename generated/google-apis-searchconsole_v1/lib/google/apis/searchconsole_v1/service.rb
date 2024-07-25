@@ -31,7 +31,7 @@ module Google
       #    Searchconsole = Google::Apis::SearchconsoleV1 # Alias the module
       #    service = Searchconsole::SearchConsoleService.new
       #
-      # @see https://developers.google.com/webmaster-tools/search-console-api/
+      # @see https://developers.google.com/webmaster-tools/about
       class SearchConsoleService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://searchconsole.$UNIVERSE_DOMAIN$/"
 
