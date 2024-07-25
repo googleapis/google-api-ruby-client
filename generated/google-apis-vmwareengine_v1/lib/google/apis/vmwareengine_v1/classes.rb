@@ -93,6 +93,114 @@ module Google
         end
       end
       
+      # Autoscaling policy describes the behavior of the autoscaling with respect to
+      # the resource utilization. The scale-out operation is initiated if the
+      # utilization exceeds ANY of the respective thresholds. The scale-in operation
+      # is initiated if the utilization is below ALL of the respective thresholds.
+      class AutoscalingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Thresholds define the utilization of resources triggering scale-out and scale-
+        # in operations.
+        # Corresponds to the JSON property `consumedMemoryThresholds`
+        # @return [Google::Apis::VmwareengineV1::Thresholds]
+        attr_accessor :consumed_memory_thresholds
+      
+        # Thresholds define the utilization of resources triggering scale-out and scale-
+        # in operations.
+        # Corresponds to the JSON property `cpuThresholds`
+        # @return [Google::Apis::VmwareengineV1::Thresholds]
+        attr_accessor :cpu_thresholds
+      
+        # Thresholds define the utilization of resources triggering scale-out and scale-
+        # in operations.
+        # Corresponds to the JSON property `grantedMemoryThresholds`
+        # @return [Google::Apis::VmwareengineV1::Thresholds]
+        attr_accessor :granted_memory_thresholds
+      
+        # Required. The canonical identifier of the node type to add or remove.
+        # Corresponds to the `NodeType`.
+        # Corresponds to the JSON property `nodeTypeId`
+        # @return [String]
+        attr_accessor :node_type_id
+      
+        # Required. Number of nodes to add to a cluster during a scale-out operation.
+        # Must be divisible by 2 for stretched clusters. During a scale-in operation
+        # only one node (or 2 for stretched clusters) are removed in a single iteration.
+        # Corresponds to the JSON property `scaleOutSize`
+        # @return [Fixnum]
+        attr_accessor :scale_out_size
+      
+        # Thresholds define the utilization of resources triggering scale-out and scale-
+        # in operations.
+        # Corresponds to the JSON property `storageThresholds`
+        # @return [Google::Apis::VmwareengineV1::Thresholds]
+        attr_accessor :storage_thresholds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumed_memory_thresholds = args[:consumed_memory_thresholds] if args.key?(:consumed_memory_thresholds)
+          @cpu_thresholds = args[:cpu_thresholds] if args.key?(:cpu_thresholds)
+          @granted_memory_thresholds = args[:granted_memory_thresholds] if args.key?(:granted_memory_thresholds)
+          @node_type_id = args[:node_type_id] if args.key?(:node_type_id)
+          @scale_out_size = args[:scale_out_size] if args.key?(:scale_out_size)
+          @storage_thresholds = args[:storage_thresholds] if args.key?(:storage_thresholds)
+        end
+      end
+      
+      # Autoscaling settings define the rules used by VMware Engine to automatically
+      # scale-out and scale-in the clusters in a private cloud.
+      class AutoscalingSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. The map with autoscaling policies applied to the cluster. The key is
+        # the identifier of the policy. It must meet the following requirements: * Only
+        # contains 1-63 alphanumeric characters and hyphens * Begins with an
+        # alphabetical character * Ends with a non-hyphen character * Not formatted as a
+        # UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+        # (section 3.5) Currently there map must contain only one element that describes
+        # the autoscaling policy for compute nodes.
+        # Corresponds to the JSON property `autoscalingPolicies`
+        # @return [Hash<String,Google::Apis::VmwareengineV1::AutoscalingPolicy>]
+        attr_accessor :autoscaling_policies
+      
+        # Optional. The minimum duration between consecutive autoscale operations. It
+        # starts once addition or removal of nodes is fully completed. Defaults to 30
+        # minutes if not specified. Cool down period must be in whole minutes (for
+        # example, 30, 31, 50, 180 minutes).
+        # Corresponds to the JSON property `coolDownPeriod`
+        # @return [String]
+        attr_accessor :cool_down_period
+      
+        # Optional. Maximum number of nodes of any type in a cluster. If not specified
+        # the default limits apply.
+        # Corresponds to the JSON property `maxClusterNodeCount`
+        # @return [Fixnum]
+        attr_accessor :max_cluster_node_count
+      
+        # Optional. Minimum number of nodes of any type in a cluster. If not specified
+        # the default limits apply.
+        # Corresponds to the JSON property `minClusterNodeCount`
+        # @return [Fixnum]
+        attr_accessor :min_cluster_node_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autoscaling_policies = args[:autoscaling_policies] if args.key?(:autoscaling_policies)
+          @cool_down_period = args[:cool_down_period] if args.key?(:cool_down_period)
+          @max_cluster_node_count = args[:max_cluster_node_count] if args.key?(:max_cluster_node_count)
+          @min_cluster_node_count = args[:min_cluster_node_count] if args.key?(:min_cluster_node_count)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -198,6 +306,12 @@ module Google
       class Cluster
         include Google::Apis::Core::Hashable
       
+        # Autoscaling settings define the rules used by VMware Engine to automatically
+        # scale-out and scale-in the clusters in a private cloud.
+        # Corresponds to the JSON property `autoscalingSettings`
+        # @return [Google::Apis::VmwareengineV1::AutoscalingSettings]
+        attr_accessor :autoscaling_settings
+      
         # Output only. Creation time of this resource.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -251,6 +365,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoscaling_settings = args[:autoscaling_settings] if args.key?(:autoscaling_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
           @management = args[:management] if args.key?(:management)
           @name = args[:name] if args.key?(:name)
@@ -3024,6 +3139,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Thresholds define the utilization of resources triggering scale-out and scale-
+      # in operations.
+      class Thresholds
+        include Google::Apis::Core::Hashable
+      
+        # Required. The utilization triggering the scale-in operation in percent.
+        # Corresponds to the JSON property `scaleIn`
+        # @return [Fixnum]
+        attr_accessor :scale_in
+      
+        # Required. The utilization triggering the scale-out operation in percent.
+        # Corresponds to the JSON property `scaleOut`
+        # @return [Fixnum]
+        attr_accessor :scale_out
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scale_in = args[:scale_in] if args.key?(:scale_in)
+          @scale_out = args[:scale_out] if args.key?(:scale_out)
         end
       end
       
