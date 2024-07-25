@@ -952,10 +952,10 @@ module Google
         attr_accessor :text
       
         # Ensures in-flight data remains in the region of origin during de-
-        # identification. Using this option results in a significant reduction of
-        # throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME`
-        # infoTypes. `LOCATION` must be excluded within TextConfig, and must also be
-        # excluded within ImageConfig if image redaction is required.
+        # identification. The default value is false. Using this option results in a
+        # significant reduction of throughput, and is not compatible with `LOCATION` or `
+        # ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig,
+        # and must also be excluded within ImageConfig if image redaction is required.
         # Corresponds to the JSON property `useRegionalDataProcessing`
         # @return [Boolean]
         attr_accessor :use_regional_data_processing
@@ -1931,19 +1931,20 @@ module Google
         # @return [String]
         attr_accessor :pubsub_topic
       
-        # Whether to send full FHIR resource to this Pub/Sub topic.
+        # Whether to send full FHIR resource to this Pub/Sub topic. The default value is
+        # false.
         # Corresponds to the JSON property `sendFullResource`
         # @return [Boolean]
         attr_accessor :send_full_resource
         alias_method :send_full_resource?, :send_full_resource
       
         # Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR
-        # resource. Note that setting this to true does not guarantee that all previous
-        # resources will be sent in the format of full FHIR resource. When a resource
-        # change is too large or during heavy traffic, only the resource name will be
-        # sent. Clients should always check the "payloadType" label from a Pub/Sub
-        # message to determine whether it needs to fetch the full previous resource as a
-        # separate operation.
+        # resource. The default value is false. Note that setting this to true does not
+        # guarantee that all previous resources will be sent in the format of full FHIR
+        # resource. When a resource change is too large or during heavy traffic, only
+        # the resource name will be sent. Clients should always check the "payloadType"
+        # label from a Pub/Sub message to determine whether it needs to fetch the full
+        # previous resource as a separate operation.
         # Corresponds to the JSON property `sendPreviousResourceOnDelete`
         # @return [Boolean]
         attr_accessor :send_previous_resource_on_delete
@@ -1982,7 +1983,7 @@ module Google
         # false, uses the FHIR specification default `handling=lenient` which ignores
         # unrecognized search parameters. The handling can always be changed from the
         # default on an individual API call by setting the HTTP header `Prefer: handling=
-        # strict` or `Prefer: handling=lenient`.
+        # strict` or `Prefer: handling=lenient`. Defaults to false.
         # Corresponds to the JSON property `defaultSearchHandlingStrict`
         # @return [Boolean]
         attr_accessor :default_search_handling_strict
@@ -2002,11 +2003,10 @@ module Google
       
         # Immutable. Whether to disable resource versioning for this FHIR store. This
         # field can not be changed after the creation of FHIR store. If set to false,
-        # which is the default behavior, all write operations cause historical versions
-        # to be recorded automatically. The historical versions can be fetched through
-        # the history APIs, but cannot be updated. If set to true, no historical
-        # versions are kept. The server sends errors for attempts to read the historical
-        # versions.
+        # all write operations cause historical versions to be recorded automatically.
+        # The historical versions can be fetched through the history APIs, but cannot be
+        # updated. If set to true, no historical versions are kept. The server sends
+        # errors for attempts to read the historical versions. Defaults to false.
         # Corresponds to the JSON property `disableResourceVersioning`
         # @return [Boolean]
         attr_accessor :disable_resource_versioning
@@ -2021,7 +2021,7 @@ module Google
         # sensitive data such as patient identifiers in client-specified resource IDs.
         # Those IDs are part of the FHIR resource path recorded in Cloud audit logs and
         # Pub/Sub notifications. Those IDs can also be contained in reference fields
-        # within other resources.
+        # within other resources. Defaults to false.
         # Corresponds to the JSON property `enableUpdateCreate`
         # @return [Boolean]
         attr_accessor :enable_update_create
@@ -2540,12 +2540,12 @@ module Google
         # @return [String]
         attr_accessor :dataset_uri
       
-        # If this flag is `TRUE`, all tables are deleted from the dataset before the new
-        # exported tables are written. If the flag is not set and the destination
-        # dataset contains tables, the export call returns an error. If `
-        # write_disposition` is specified, this parameter is ignored. force=false is
-        # equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to
-        # write_disposition=WRITE_TRUNCATE.
+        # The default value is false. If this flag is `TRUE`, all tables are deleted
+        # from the dataset before the new exported tables are written. If the flag is
+        # not set and the destination dataset contains tables, the export call returns
+        # an error. If `write_disposition` is specified, this parameter is ignored.
+        # force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is
+        # equivalent to write_disposition=WRITE_TRUNCATE.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
@@ -3695,7 +3695,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The message type for this message. MSH-9.1.
+        # Output only. The message type for this message. MSH-9.1.
         # Corresponds to the JSON property `messageType`
         # @return [String]
         attr_accessor :message_type
@@ -3712,7 +3712,8 @@ module Google
         # @return [Google::Apis::HealthcareV1::ParsedData]
         attr_accessor :parsed_data
       
-        # All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
+        # Output only. All patient IDs listed in the PID-2, PID-3, and PID-4 segments of
+        # this message.
         # Corresponds to the JSON property `patientIds`
         # @return [Array<Google::Apis::HealthcareV1::PatientId>]
         attr_accessor :patient_ids
@@ -3723,12 +3724,12 @@ module Google
         # @return [Google::Apis::HealthcareV1::SchematizedData]
         attr_accessor :schematized_data
       
-        # The hospital that this message came from. MSH-4.
+        # Output only. The hospital that this message came from. MSH-4.
         # Corresponds to the JSON property `sendFacility`
         # @return [String]
         attr_accessor :send_facility
       
-        # The datetime the sending application sent this message. MSH-7.
+        # Output only. The datetime the sending application sent this message. MSH-7.
         # Corresponds to the JSON property `sendTime`
         # @return [String]
         attr_accessor :send_time
@@ -5194,39 +5195,41 @@ module Google
       class ValidationConfig
         include Google::Apis::Core::Hashable
       
-        # Whether to disable FHIRPath validation for incoming resources. Set this to
-        # true to disable checking incoming resources for conformance against FHIRPath
-        # requirement defined in the FHIR specification. This property only affects
-        # resource types that do not have profiles configured for them, any rules in
-        # enabled implementation guides will still be enforced.
+        # Whether to disable FHIRPath validation for incoming resources. The default
+        # value is false. Set this to true to disable checking incoming resources for
+        # conformance against FHIRPath requirement defined in the FHIR specification.
+        # This property only affects resource types that do not have profiles configured
+        # for them, any rules in enabled implementation guides will still be enforced.
         # Corresponds to the JSON property `disableFhirpathValidation`
         # @return [Boolean]
         attr_accessor :disable_fhirpath_validation
         alias_method :disable_fhirpath_validation?, :disable_fhirpath_validation
       
-        # Whether to disable profile validation for this FHIR store. Set this to true to
-        # disable checking incoming resources for conformance against structure
-        # definitions in this FHIR store.
+        # Whether to disable profile validation for this FHIR store. The default value
+        # is false. Set this to true to disable checking incoming resources for
+        # conformance against structure definitions in this FHIR store.
         # Corresponds to the JSON property `disableProfileValidation`
         # @return [Boolean]
         attr_accessor :disable_profile_validation
         alias_method :disable_profile_validation?, :disable_profile_validation
       
-        # Whether to disable reference type validation for incoming resources. Set this
-        # to true to disable checking incoming resources for conformance against
-        # reference type requirement defined in the FHIR specification. This property
-        # only affects resource types that do not have profiles configured for them, any
-        # rules in enabled implementation guides will still be enforced.
+        # Whether to disable reference type validation for incoming resources. The
+        # default value is false. Set this to true to disable checking incoming
+        # resources for conformance against reference type requirement defined in the
+        # FHIR specification. This property only affects resource types that do not have
+        # profiles configured for them, any rules in enabled implementation guides will
+        # still be enforced.
         # Corresponds to the JSON property `disableReferenceTypeValidation`
         # @return [Boolean]
         attr_accessor :disable_reference_type_validation
         alias_method :disable_reference_type_validation?, :disable_reference_type_validation
       
-        # Whether to disable required fields validation for incoming resources. Set this
-        # to true to disable checking incoming resources for conformance against
-        # required fields requirement defined in the FHIR specification. This property
-        # only affects resource types that do not have profiles configured for them, any
-        # rules in enabled implementation guides will still be enforced.
+        # Whether to disable required fields validation for incoming resources. The
+        # default value is false. Set this to true to disable checking incoming
+        # resources for conformance against required fields requirement defined in the
+        # FHIR specification. This property only affects resource types that do not have
+        # profiles configured for them, any rules in enabled implementation guides will
+        # still be enforced.
         # Corresponds to the JSON property `disableRequiredFieldValidation`
         # @return [Boolean]
         attr_accessor :disable_required_field_validation
