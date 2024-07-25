@@ -319,10 +319,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up a Container by destination ID.
+        # Looks up a Container by destination ID or tag ID.
         # @param [String] destination_id
         #   Destination ID linked to a GTM Container, e.g. AW-123456789. Example: accounts/
-        #   containers:lookup?destination_id=`destination_id`.
+        #   containers:lookup?destination_id=`destination_id`. Only one of destination_id
+        #   or tag_id should be set.
+        # @param [String] tag_id
+        #   Tag ID for a GTM Container, e.g. GTM-123456789. Example: accounts/containers:
+        #   lookup?tag_id=`tag_id`. Only one of destination_id or tag_id should be set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -340,11 +344,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def lookup_account_container(destination_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def lookup_account_container(destination_id: nil, tag_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'tagmanager/v2/accounts/containers:lookup', options)
           command.response_representation = Google::Apis::TagmanagerV2::Container::Representation
           command.response_class = Google::Apis::TagmanagerV2::Container
           command.query['destinationId'] = destination_id unless destination_id.nil?
+          command.query['tagId'] = tag_id unless tag_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
