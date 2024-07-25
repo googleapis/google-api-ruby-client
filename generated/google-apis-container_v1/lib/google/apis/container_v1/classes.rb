@@ -134,7 +134,7 @@ module Google
       class AdditionalPodRangesConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] Information for additional pod range.
+        # Output only. Information for additional pod range.
         # Corresponds to the JSON property `podRangeInfo`
         # @return [Array<Google::Apis::ContainerV1::RangeInfo>]
         attr_accessor :pod_range_info
@@ -220,6 +220,11 @@ module Google
         # @return [Google::Apis::ContainerV1::NetworkPolicyConfig]
         attr_accessor :network_policy_config
       
+        # Configuration options for the Ray Operator add-on.
+        # Corresponds to the JSON property `rayOperatorConfig`
+        # @return [Google::Apis::ContainerV1::RayOperatorConfig]
+        attr_accessor :ray_operator_config
+      
         # Configuration for the Stateful HA add-on.
         # Corresponds to the JSON property `statefulHaConfig`
         # @return [Google::Apis::ContainerV1::StatefulHaConfig]
@@ -242,6 +247,7 @@ module Google
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
+          @ray_operator_config = args[:ray_operator_config] if args.key?(:ray_operator_config)
           @stateful_ha_config = args[:stateful_ha_config] if args.key?(:stateful_ha_config)
         end
       end
@@ -341,14 +347,14 @@ module Google
       class AutoUpgradeOptions
         include Google::Apis::Core::Hashable
       
-        # [Output only] This field is set when upgrades are about to commence with the
+        # Output only. This field is set when upgrades are about to commence with the
         # approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/
         # rfc3339.txt) text format.
         # Corresponds to the JSON property `autoUpgradeStartTime`
         # @return [String]
         attr_accessor :auto_upgrade_start_time
       
-        # [Output only] This field is set when upgrades are about to commence with the
+        # Output only. This field is set when upgrades are about to commence with the
         # description of the upgrade.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -942,24 +948,24 @@ module Google
         # @return [Google::Apis::ContainerV1::CostManagementConfig]
         attr_accessor :cost_management_config
       
-        # [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.
+        # Output only. The time the cluster was created, in [RFC3339](https://www.ietf.
         # org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # [Output only] The current software version of the master endpoint.
+        # Output only. The current software version of the master endpoint.
         # Corresponds to the JSON property `currentMasterVersion`
         # @return [String]
         attr_accessor :current_master_version
       
-        # [Output only] The number of nodes currently in the cluster. Deprecated. Call
+        # Output only. The number of nodes currently in the cluster. Deprecated. Call
         # Kubernetes API directly to retrieve node information.
         # Corresponds to the JSON property `currentNodeCount`
         # @return [Fixnum]
         attr_accessor :current_node_count
       
-        # [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/
+        # Output only. Deprecated, use [NodePools.version](https://cloud.google.com/
         # kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools)
         # instead. The current version of the node software components. If they are
         # currently at multiple versions because they're in the process of being
@@ -1004,7 +1010,7 @@ module Google
         attr_accessor :enable_tpu
         alias_method :enable_tpu?, :enable_tpu
       
-        # [Output only] The IP address of this cluster's master endpoint. The endpoint
+        # Output only. The IP address of this cluster's master endpoint. The endpoint
         # can be accessed from the internet at `https://username:password@endpoint/`.
         # See the `masterAuth` property of this resource for username and password
         # information.
@@ -1024,7 +1030,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # [Output only] The time the cluster will be automatically deleted in [RFC3339](
+        # Output only. The time the cluster will be automatically deleted in [RFC3339](
         # https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
@@ -1071,7 +1077,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :initial_node_count
       
-        # Deprecated. Use node_pools.instance_group_urls.
+        # Output only. Deprecated. Use node_pools.instance_group_urls.
         # Corresponds to the JSON property `instanceGroupUrls`
         # @return [Array<String>]
         attr_accessor :instance_group_urls
@@ -1091,10 +1097,10 @@ module Google
         # @return [Google::Apis::ContainerV1::LegacyAbac]
         attr_accessor :legacy_abac
       
-        # [Output only] The name of the Google Compute Engine [zone](https://cloud.
-        # google.com/compute/docs/regions-zones/regions-zones#available) or [region](
-        # https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
-        # in which the cluster resides.
+        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/regions-zones/regions-zones#available) or [region](https://
+        # cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which
+        # the cluster resides.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -1201,9 +1207,9 @@ module Google
         # @return [Google::Apis::ContainerV1::NodeConfig]
         attr_accessor :node_config
       
-        # [Output only] The size of the address space on each node for hosting
-        # containers. This is provisioned from within the `container_ipv4_cidr` range.
-        # This field will only be set when cluster is in route-based network mode.
+        # Output only. The size of the address space on each node for hosting containers.
+        # This is provisioned from within the `container_ipv4_cidr` range. This field
+        # will only be set when cluster is in route-based network mode.
         # Corresponds to the JSON property `nodeIpv4CidrSize`
         # @return [Fixnum]
         attr_accessor :node_ipv4_cidr_size
@@ -1279,12 +1285,12 @@ module Google
         # @return [Google::Apis::ContainerV1::SecurityPostureConfig]
         attr_accessor :security_posture_config
       
-        # [Output only] Server-defined URL for the resource.
+        # Output only. Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
-        # [Output only] The IP address range of the Kubernetes services in this cluster,
+        # Output only. The IP address range of the Kubernetes services in this cluster,
         # in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
         # notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `
         # /16` from the container CIDR.
@@ -1297,12 +1303,12 @@ module Google
         # @return [Google::Apis::ContainerV1::ShieldedNodes]
         attr_accessor :shielded_nodes
       
-        # [Output only] The current status of this cluster.
+        # Output only. The current status of this cluster.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
-        # [Output only] Deprecated. Use conditions instead. Additional information about
+        # Output only. Deprecated. Use conditions instead. Additional information about
         # the current status of this cluster, if available.
         # Corresponds to the JSON property `statusMessage`
         # @return [String]
@@ -1314,9 +1320,9 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR]
-        # (http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `
-        # 1.2.3.4/29`).
+        # Output only. The IP address range of the Cloud TPUs in this cluster, in [CIDR](
+        # http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.
+        # 2.3.4/29`).
         # Corresponds to the JSON property `tpuIpv4CidrBlock`
         # @return [String]
         attr_accessor :tpu_ipv4_cidr_block
@@ -1333,9 +1339,9 @@ module Google
         # @return [Google::Apis::ContainerV1::WorkloadIdentityConfig]
         attr_accessor :workload_identity_config
       
-        # [Output only] The name of the Google Compute Engine [zone](https://cloud.
-        # google.com/compute/docs/zones#available) in which the cluster resides. This
-        # field is deprecated, use location instead.
+        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field is
+        # deprecated, use location instead.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -2206,7 +2212,7 @@ module Google
       class DailyMaintenanceWindow
         include Google::Apis::Core::Hashable
       
-        # [Output only] Duration of the time window, automatically chosen to be smallest
+        # Output only. Duration of the time window, automatically chosen to be smallest
         # possible in the given scenario. Duration will be in [RFC3339](https://www.ietf.
         # org/rfc/rfc3339.txt) format "PTnHnMnS".
         # Corresponds to the JSON property `duration`
@@ -2337,8 +2343,7 @@ module Google
       class EnterpriseConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] cluster_tier specifies the premium tier of the
-        # cluster.
+        # Output only. cluster_tier specifies the premium tier of the cluster.
         # Corresponds to the JSON property `clusterTier`
         # @return [String]
         attr_accessor :cluster_tier
@@ -2430,14 +2435,14 @@ module Google
       class Fleet
         include Google::Apis::Core::Hashable
       
-        # [Output only] The full resource name of the registered fleet membership of the
+        # Output only. The full resource name of the registered fleet membership of the
         # cluster, in the format `//gkehub.googleapis.com/projects/*/locations/*/
         # memberships/*`.
         # Corresponds to the JSON property `membership`
         # @return [String]
         attr_accessor :membership
       
-        # [Output only] Whether the cluster has been registered through the fleet API.
+        # Output only. Whether the cluster has been registered through the fleet API.
         # Corresponds to the JSON property `preRegistered`
         # @return [Boolean]
         attr_accessor :pre_registered
@@ -2900,9 +2905,9 @@ module Google
         attr_accessor :create_subnetwork
         alias_method :create_subnetwork?, :create_subnetwork
       
-        # Output only. [Output only] The utilization of the cluster default IPv4 range
-        # for the pod. The ratio is Usage/[Total number of IPs in the secondary range],
-        # Usage=numNodes*numZones*podIPsPerNode.
+        # Output only. The utilization of the cluster default IPv4 range for the pod.
+        # The ratio is Usage/[Total number of IPs in the secondary range], Usage=
+        # numNodes*numZones*podIPsPerNode.
         # Corresponds to the JSON property `defaultPodIpv4RangeUtilization`
         # @return [Float]
         attr_accessor :default_pod_ipv4_range_utilization
@@ -2950,7 +2955,7 @@ module Google
         # @return [String]
         attr_accessor :services_ipv4_cidr_block
       
-        # Output only. [Output only] The services IPv6 CIDR block for the cluster.
+        # Output only. The services IPv6 CIDR block for the cluster.
         # Corresponds to the JSON property `servicesIpv6CidrBlock`
         # @return [String]
         attr_accessor :services_ipv6_cidr_block
@@ -2968,7 +2973,7 @@ module Google
         # @return [String]
         attr_accessor :stack_type
       
-        # Output only. [Output only] The subnet's IPv6 CIDR block used by nodes and pods.
+        # Output only. The subnet's IPv6 CIDR block used by nodes and pods.
         # Corresponds to the JSON property `subnetIpv6CidrBlock`
         # @return [String]
         attr_accessor :subnet_ipv6_cidr_block
@@ -3537,8 +3542,8 @@ module Google
       class MasterAuth
         include Google::Apis::Core::Hashable
       
-        # [Output only] Base64-encoded public certificate used by clients to
-        # authenticate to the cluster endpoint.
+        # Output only. Base64-encoded public certificate used by clients to authenticate
+        # to the cluster endpoint.
         # Corresponds to the JSON property `clientCertificate`
         # @return [String]
         attr_accessor :client_certificate
@@ -3548,13 +3553,13 @@ module Google
         # @return [Google::Apis::ContainerV1::ClientCertificateConfig]
         attr_accessor :client_certificate_config
       
-        # [Output only] Base64-encoded private key used by clients to authenticate to
-        # the cluster endpoint.
+        # Output only. Base64-encoded private key used by clients to authenticate to the
+        # cluster endpoint.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
         attr_accessor :client_key
       
-        # [Output only] Base64-encoded public certificate that is the root of trust for
+        # Output only. Base64-encoded public certificate that is the root of trust for
         # the cluster.
         # Corresponds to the JSON property `clusterCaCertificate`
         # @return [String]
@@ -4547,9 +4552,9 @@ module Google
         # @return [String]
         attr_accessor :pod_ipv4_cidr_block
       
-        # Output only. [Output only] The utilization of the IPv4 range for the pod. The
-        # ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*
-        # numZones*podIPsPerNode.
+        # Output only. The utilization of the IPv4 range for the pod. The ratio is Usage/
+        # [Total number of IPs in the secondary range], Usage=numNodes*numZones*
+        # podIPsPerNode.
         # Corresponds to the JSON property `podIpv4RangeUtilization`
         # @return [Float]
         attr_accessor :pod_ipv4_range_utilization
@@ -4628,7 +4633,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :initial_node_count
       
-        # [Output only] The resource URLs of the [managed instance groups](https://cloud.
+        # Output only. The resource URLs of the [managed instance groups](https://cloud.
         # google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)
         # associated with this node pool. During the node pool blue-green upgrade
         # operation, the URLs contain both blue and green resources.
@@ -4672,7 +4677,7 @@ module Google
         # @return [Google::Apis::ContainerV1::PlacementPolicy]
         attr_accessor :placement_policy
       
-        # [Output only] The pod CIDR block size per node in this node pool.
+        # Output only. The pod CIDR block size per node in this node pool.
         # Corresponds to the JSON property `podIpv4CidrSize`
         # @return [Fixnum]
         attr_accessor :pod_ipv4_cidr_size
@@ -4682,17 +4687,17 @@ module Google
         # @return [Google::Apis::ContainerV1::QueuedProvisioning]
         attr_accessor :queued_provisioning
       
-        # [Output only] Server-defined URL for the resource.
+        # Output only. Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
-        # [Output only] The status of the nodes in this pool instance.
+        # Output only. The status of the nodes in this pool instance.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
-        # [Output only] Deprecated. Use conditions instead. Additional information about
+        # Output only. Deprecated. Use conditions instead. Additional information about
         # the current status of this node pool instance, if available.
         # Corresponds to the JSON property `statusMessage`
         # @return [String]
@@ -5000,12 +5005,12 @@ module Google
         # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
         attr_accessor :cluster_conditions
       
-        # Detailed operation progress, if available.
+        # Output only. Detailed operation progress, if available.
         # Corresponds to the JSON property `detail`
         # @return [String]
         attr_accessor :detail
       
-        # [Output only] The time the operation completed, in [RFC3339](https://www.ietf.
+        # Output only. The time the operation completed, in [RFC3339](https://www.ietf.
         # org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -5021,15 +5026,15 @@ module Google
         # @return [Google::Apis::ContainerV1::Status]
         attr_accessor :error
       
-        # [Output only] The name of the Google Compute Engine [zone](https://cloud.
-        # google.com/compute/docs/regions-zones/regions-zones#available) or [region](
-        # https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
-        # in which the cluster resides.
+        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/regions-zones/regions-zones#available) or [region](https://
+        # cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which
+        # the cluster resides.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The server-assigned ID for the operation.
+        # Output only. The server-assigned ID for the operation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5040,7 +5045,7 @@ module Google
         # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
         attr_accessor :nodepool_conditions
       
-        # The operation type.
+        # Output only. The operation type.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
@@ -5050,19 +5055,20 @@ module Google
         # @return [Google::Apis::ContainerV1::OperationProgress]
         attr_accessor :progress
       
-        # Server-defined URI for the operation. Example: `https://container.googleapis.
-        # com/v1alpha1/projects/123/locations/us-central1/operations/operation-123`.
+        # Output only. Server-defined URI for the operation. Example: `https://container.
+        # googleapis.com/v1alpha1/projects/123/locations/us-central1/operations/
+        # operation-123`.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
-        # [Output only] The time the operation started, in [RFC3339](https://www.ietf.
-        # org/rfc/rfc3339.txt) text format.
+        # Output only. The time the operation started, in [RFC3339](https://www.ietf.org/
+        # rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # The current status of the operation.
+        # Output only. The current status of the operation.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -5073,21 +5079,21 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # Server-defined URI for the target of the operation. The format of this is a
-        # URI to the resource being modified (such as a cluster, node pool, or node).
-        # For node pool repairs, there may be multiple nodes being repaired, but only
-        # one will be the target. Examples: - ## `https://container.googleapis.com/v1/
-        # projects/123/locations/us-central1/clusters/my-cluster` ## `https://container.
-        # googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/
-        # nodePools/my-np` `https://container.googleapis.com/v1/projects/123/zones/us-
-        # central1-c/clusters/my-cluster/nodePools/my-np/node/my-node`
+        # Output only. Server-defined URI for the target of the operation. The format of
+        # this is a URI to the resource being modified (such as a cluster, node pool, or
+        # node). For node pool repairs, there may be multiple nodes being repaired, but
+        # only one will be the target. Examples: - ## `https://container.googleapis.com/
+        # v1/projects/123/locations/us-central1/clusters/my-cluster` ## `https://
+        # container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-
+        # cluster/nodePools/my-np` `https://container.googleapis.com/v1/projects/123/
+        # zones/us-central1-c/clusters/my-cluster/nodePools/my-np/node/my-node`
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
       
-        # The name of the Google Compute Engine [zone](https://cloud.google.com/compute/
-        # docs/zones#available) in which the operation is taking place. This field is
-        # deprecated, use location instead.
+        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the operation is taking place. This
+        # field is deprecated, use location instead.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -5447,12 +5453,12 @@ module Google
       class RangeInfo
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] Name of a range.
+        # Output only. Name of a range.
         # Corresponds to the JSON property `rangeName`
         # @return [String]
         attr_accessor :range_name
       
-        # Output only. [Output only] The utilization of the range.
+        # Output only. The utilization of the range.
         # Corresponds to the JSON property `utilization`
         # @return [Float]
         attr_accessor :utilization
@@ -5465,6 +5471,78 @@ module Google
         def update!(**args)
           @range_name = args[:range_name] if args.key?(:range_name)
           @utilization = args[:utilization] if args.key?(:utilization)
+        end
+      end
+      
+      # RayClusterLoggingConfig specifies configuration of Ray logging.
+      class RayClusterLoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable log collection for Ray clusters.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # RayClusterMonitoringConfig specifies monitoring configuration for Ray clusters.
+      class RayClusterMonitoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable metrics collection for Ray clusters.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Configuration options for the Ray Operator add-on.
+      class RayOperatorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Ray Operator addon is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # RayClusterLoggingConfig specifies configuration of Ray logging.
+        # Corresponds to the JSON property `rayClusterLoggingConfig`
+        # @return [Google::Apis::ContainerV1::RayClusterLoggingConfig]
+        attr_accessor :ray_cluster_logging_config
+      
+        # RayClusterMonitoringConfig specifies monitoring configuration for Ray clusters.
+        # Corresponds to the JSON property `rayClusterMonitoringConfig`
+        # @return [Google::Apis::ContainerV1::RayClusterMonitoringConfig]
+        attr_accessor :ray_cluster_monitoring_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @ray_cluster_logging_config = args[:ray_cluster_logging_config] if args.key?(:ray_cluster_logging_config)
+          @ray_cluster_monitoring_config = args[:ray_cluster_monitoring_config] if args.key?(:ray_cluster_monitoring_config)
         end
       end
       
