@@ -296,6 +296,7 @@ module Google
       class Issue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applicable_countries, as: 'applicableCountries'
           property :attribute, as: 'attribute'
           property :description, as: 'description'
           property :destination, as: 'destination'
