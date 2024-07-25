@@ -1007,12 +1007,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_response_extensions
       
-        # A list of full type names of provided contexts.
+        # A list of full type names of provided contexts. It is used to support
+        # propagating HTTP headers and ETags from the response extension.
         # Corresponds to the JSON property `provided`
         # @return [Array<String>]
         attr_accessor :provided
       
-        # A list of full type names of requested contexts.
+        # A list of full type names of requested contexts, only the requested context
+        # will be made available to the backend.
         # Corresponds to the JSON property `requested`
         # @return [Array<String>]
         attr_accessor :requested
@@ -1268,17 +1270,14 @@ module Google
       # overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==
       # ) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==)
       # rules: - selector: google.calendar.Calendar.Get description: > ... - selector:
-      # google.calendar.Calendar.Put description: > ... code_snippet_rules: - selector:
-      # google.calendar.Calendar.Delete code_snippets: - includes: - github_include:
-      # region_tag: calendar_delete code_language: JAVA account: GoogleCloudPlatform
-      # project: java-docs-samples file: calendar/delete.java Documentation is
-      # provided in markdown syntax. In addition to standard markdown features,
-      # definition lists, tables and fenced code blocks are supported. Section headers
-      # can be provided and are interpreted relative to the section nesting of the
-      # context where a documentation fragment is embedded. Documentation from the IDL
-      # is merged with documentation defined via the config at normalization time,
-      # where documentation provided by config rules overrides IDL provided. A number
-      # of constructs specific to the API platform are supported in documentation text.
+      # google.calendar.Calendar.Put description: > ... Documentation is provided in
+      # markdown syntax. In addition to standard markdown features, definition lists,
+      # tables and fenced code blocks are supported. Section headers can be provided
+      # and are interpreted relative to the section nesting of the context where a
+      # documentation fragment is embedded. Documentation from the IDL is merged with
+      # documentation defined via the config at normalization time, where
+      # documentation provided by config rules overrides IDL provided. A number of
+      # constructs specific to the API platform are supported in documentation text.
       # In order to reference a proto element, the following notation can be used: [
       # fully.qualified.proto.name][] To override the display text used for the link,
       # this can be used: [display text][fully.qualified.proto.name] Text can be
@@ -2002,27 +2001,27 @@ module Google
       # effect as the proto annotation. This can be particularly useful if you have a
       # proto that is reused in multiple services. Note that any transcoding specified
       # in the service config will override any matching transcoding configuration in
-      # the proto. Example below selects a gRPC method and applies HttpRule to it.
-      # http: rules: - selector: example.v1.Messaging.GetMessage get: /v1/messages/`
-      # message_id`/`sub.subfield` Special notes When gRPC Transcoding is used to map
-      # a gRPC to JSON REST endpoints, the proto to JSON conversion must follow the [
-      # proto3 specification](https://developers.google.com/protocol-buffers/docs/
-      # proto3#json). While the single segment variable follows the semantics of [RFC
-      # 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String
-      # Expansion, the multi segment variable **does not** follow RFC 6570 Section 3.2.
-      # 3 Reserved Expansion. The reason is that the Reserved Expansion does not
-      # expand special characters like `?` and `#`, which would lead to invalid URLs.
-      # As the result, gRPC Transcoding uses a custom encoding for multi segment
-      # variables. The path variables **must not** refer to any repeated or mapped
-      # field, because client libraries are not capable of handling such variable
-      # expansion. The path variables **must not** capture the leading "/" character.
-      # The reason is that the most common use case "`var`" does not capture the
-      # leading "/" character. For consistency, all path variables must share the same
-      # behavior. Repeated message fields must not be mapped to URL query parameters,
-      # because no client library can support such complicated mapping. If an API
-      # needs to use a JSON array for request or response body, it can map the request
-      # or response body to a repeated field. However, some gRPC Transcoding
-      # implementations may not support this feature.
+      # the proto. The following example selects a gRPC method and applies an `
+      # HttpRule` to it: http: rules: - selector: example.v1.Messaging.GetMessage get:
+      # /v1/messages/`message_id`/`sub.subfield` Special notes When gRPC Transcoding
+      # is used to map a gRPC to JSON REST endpoints, the proto to JSON conversion
+      # must follow the [proto3 specification](https://developers.google.com/protocol-
+      # buffers/docs/proto3#json). While the single segment variable follows the
+      # semantics of [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2
+      # Simple String Expansion, the multi segment variable **does not** follow RFC
+      # 6570 Section 3.2.3 Reserved Expansion. The reason is that the Reserved
+      # Expansion does not expand special characters like `?` and `#`, which would
+      # lead to invalid URLs. As the result, gRPC Transcoding uses a custom encoding
+      # for multi segment variables. The path variables **must not** refer to any
+      # repeated or mapped field, because client libraries are not capable of handling
+      # such variable expansion. The path variables **must not** capture the leading "/
+      # " character. The reason is that the most common use case "`var`" does not
+      # capture the leading "/" character. For consistency, all path variables must
+      # share the same behavior. Repeated message fields must not be mapped to URL
+      # query parameters, because no client library can support such complicated
+      # mapping. If an API needs to use a JSON array for request or response body, it
+      # can map the request or response body to a repeated field. However, some gRPC
+      # Transcoding implementations may not support this feature.
       class HttpRule
         include Google::Apis::Core::Hashable
       
@@ -3799,17 +3798,14 @@ module Google
         # overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==
         # ) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==)
         # rules: - selector: google.calendar.Calendar.Get description: > ... - selector:
-        # google.calendar.Calendar.Put description: > ... code_snippet_rules: - selector:
-        # google.calendar.Calendar.Delete code_snippets: - includes: - github_include:
-        # region_tag: calendar_delete code_language: JAVA account: GoogleCloudPlatform
-        # project: java-docs-samples file: calendar/delete.java Documentation is
-        # provided in markdown syntax. In addition to standard markdown features,
-        # definition lists, tables and fenced code blocks are supported. Section headers
-        # can be provided and are interpreted relative to the section nesting of the
-        # context where a documentation fragment is embedded. Documentation from the IDL
-        # is merged with documentation defined via the config at normalization time,
-        # where documentation provided by config rules overrides IDL provided. A number
-        # of constructs specific to the API platform are supported in documentation text.
+        # google.calendar.Calendar.Put description: > ... Documentation is provided in
+        # markdown syntax. In addition to standard markdown features, definition lists,
+        # tables and fenced code blocks are supported. Section headers can be provided
+        # and are interpreted relative to the section nesting of the context where a
+        # documentation fragment is embedded. Documentation from the IDL is merged with
+        # documentation defined via the config at normalization time, where
+        # documentation provided by config rules overrides IDL provided. A number of
+        # constructs specific to the API platform are supported in documentation text.
         # In order to reference a proto element, the following notation can be used: [
         # fully.qualified.proto.name][] To override the display text used for the link,
         # this can be used: [display text][fully.qualified.proto.name] Text can be
