@@ -700,6 +700,7 @@ module Google
       
           collection :compilation_errors, as: 'compilationErrors', class: Google::Apis::DataformV1beta1::CompilationError, decorator: Google::Apis::DataformV1beta1::CompilationError::Representation
       
+          property :create_time, as: 'createTime'
           property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
       
           property :dataform_core_version, as: 'dataformCoreVersion'
@@ -1343,6 +1344,7 @@ module Google
       class WorkflowConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :cron_schedule, as: 'cronSchedule'
           property :invocation_config, as: 'invocationConfig', class: Google::Apis::DataformV1beta1::InvocationConfig, decorator: Google::Apis::DataformV1beta1::InvocationConfig::Representation
       
@@ -1351,6 +1353,7 @@ module Google
       
           property :release_config, as: 'releaseConfig'
           property :time_zone, as: 'timeZone'
+          property :update_time, as: 'updateTime'
         end
       end
       
