@@ -190,7 +190,7 @@ module Google
       
         # Required. Steps to be accomplished by the AI
         # Corresponds to the JSON property `steps`
-        # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructionsStep>]
+        # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep>]
         attr_accessor :steps
       
         def initialize(**args)
@@ -205,7 +205,7 @@ module Google
       end
       
       # A step to be accomplished by the AI
-      class GoogleFirebaseAppdistroV1alphaAiInstructionsStep
+      class GoogleFirebaseAppdistroV1alphaAiStep
         include Google::Apis::Core::Hashable
       
         # An assertion to be checked by the AI
@@ -226,6 +226,31 @@ module Google
         def update!(**args)
           @assertion = args[:assertion] if args.key?(:assertion)
           @goal = args[:goal] if args.key?(:goal)
+        end
+      end
+      
+      # Captures the results of an AiStep
+      class GoogleFirebaseAppdistroV1alphaAiStepResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the step
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A step to be accomplished by the AI
+        # Corresponds to the JSON property `step`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep]
+        attr_accessor :step
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @step = args[:step] if args.key?(:step)
         end
       end
       
@@ -347,6 +372,11 @@ module Google
       class GoogleFirebaseAppdistroV1alphaDeviceExecution
         include Google::Apis::Core::Hashable
       
+        # Output only. Results of the AI steps if passed in
+        # Corresponds to the JSON property `aiStepResults`
+        # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStepResult>]
+        attr_accessor :ai_step_results
+      
         # An app crash that occurred during an automated test.
         # Corresponds to the JSON property `appCrash`
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAppCrash]
@@ -406,6 +436,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ai_step_results = args[:ai_step_results] if args.key?(:ai_step_results)
           @app_crash = args[:app_crash] if args.key?(:app_crash)
           @crawl_graph_uri = args[:crawl_graph_uri] if args.key?(:crawl_graph_uri)
           @device = args[:device] if args.key?(:device)
