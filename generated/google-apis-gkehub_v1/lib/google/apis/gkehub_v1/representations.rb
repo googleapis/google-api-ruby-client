@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateMembershipRbacRoleBindingYamlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GkeCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1200,7 +1206,9 @@ module Google
           property :git_sync, as: 'gitSync'
           property :importer, as: 'importer'
           property :monitor, as: 'monitor'
+          property :otel_collector, as: 'otelCollector'
           property :reconciler_manager, as: 'reconcilerManager'
+          property :resource_group_controller_manager, as: 'resourceGroupControllerManager'
           property :root_reconciler, as: 'rootReconciler'
           property :syncer, as: 'syncer'
         end
@@ -1237,7 +1245,9 @@ module Google
           property :git_sync, as: 'gitSync'
           property :importer, as: 'importer'
           property :monitor, as: 'monitor'
+          property :otel_collector, as: 'otelCollector'
           property :reconciler_manager, as: 'reconcilerManager'
+          property :resource_group_controller_manager, as: 'resourceGroupControllerManager'
           property :root_reconciler, as: 'rootReconciler'
           property :syncer, as: 'syncer'
         end
@@ -1658,6 +1668,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :manifest, as: 'manifest', class: Google::Apis::GkehubV1::ConnectAgentResource, decorator: Google::Apis::GkehubV1::ConnectAgentResource::Representation
       
+        end
+      end
+      
+      class GenerateMembershipRbacRoleBindingYamlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :role_bindings_yaml, as: 'roleBindingsYaml'
         end
       end
       
