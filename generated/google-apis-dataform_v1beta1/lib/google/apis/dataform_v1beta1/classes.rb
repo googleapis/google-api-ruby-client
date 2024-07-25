@@ -543,6 +543,11 @@ module Google
         # @return [Array<Google::Apis::DataformV1beta1::CompilationError>]
         attr_accessor :compilation_errors
       
+        # Output only. The timestamp of when the compilation result was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Describes encryption state of a resource.
         # Corresponds to the JSON property `dataEncryptionState`
         # @return [Google::Apis::DataformV1beta1::DataEncryptionState]
@@ -591,6 +596,7 @@ module Google
         def update!(**args)
           @code_compilation_config = args[:code_compilation_config] if args.key?(:code_compilation_config)
           @compilation_errors = args[:compilation_errors] if args.key?(:compilation_errors)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @dataform_core_version = args[:dataform_core_version] if args.key?(:dataform_core_version)
           @git_commitish = args[:git_commitish] if args.key?(:git_commitish)
@@ -2781,6 +2787,11 @@ module Google
       class WorkflowConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. The timestamp of when the WorkflowConfig was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Optional. Optional schedule (in cron format) for automatic execution of this
         # workflow config.
         # Corresponds to the JSON property `cronSchedule`
@@ -2819,18 +2830,25 @@ module Google
         # @return [String]
         attr_accessor :time_zone
       
+        # Output only. The timestamp of when the WorkflowConfig was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @cron_schedule = args[:cron_schedule] if args.key?(:cron_schedule)
           @invocation_config = args[:invocation_config] if args.key?(:invocation_config)
           @name = args[:name] if args.key?(:name)
           @recent_scheduled_execution_records = args[:recent_scheduled_execution_records] if args.key?(:recent_scheduled_execution_records)
           @release_config = args[:release_config] if args.key?(:release_config)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
