@@ -3746,6 +3746,11 @@ module Google
         # @return [String]
         attr_accessor :session_affinity
       
+        # The HTTP cookie used for stateful session affinity.
+        # Corresponds to the JSON property `strongSessionAffinityCookie`
+        # @return [Google::Apis::ComputeBeta::BackendServiceHttpCookie]
+        attr_accessor :strong_session_affinity_cookie
+      
         # Subsetting configuration for this BackendService. Currently this is applicable
         # only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and
         # Traffic Director.
@@ -3765,7 +3770,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
-        # 
+        # [Output Only] List of resources referencing given backend service.
         # Corresponds to the JSON property `usedBy`
         # @return [Array<Google::Apis::ComputeBeta::BackendServiceUsedBy>]
         attr_accessor :used_by
@@ -3816,6 +3821,7 @@ module Google
           @service_bindings = args[:service_bindings] if args.key?(:service_bindings)
           @service_lb_policy = args[:service_lb_policy] if args.key?(:service_lb_policy)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
+          @strong_session_affinity_cookie = args[:strong_session_affinity_cookie] if args.key?(:strong_session_affinity_cookie)
           @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
           @used_by = args[:used_by] if args.key?(:used_by)
@@ -4308,6 +4314,40 @@ module Google
         end
       end
       
+      # The HTTP cookie used for stateful session affinity.
+      class BackendServiceHttpCookie
+        include Google::Apis::Core::Hashable
+      
+        # Name of the cookie.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Path to set for the cookie.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `ttl`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @path = args[:path] if args.key?(:path)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
       # Identity-Aware Proxy
       class BackendServiceIap
         include Google::Apis::Core::Hashable
@@ -4740,7 +4780,9 @@ module Google
       class BackendServiceUsedBy
         include Google::Apis::Core::Hashable
       
-        # 
+        # [Output Only] Server-defined URL for resources referencing given
+        # BackendService like UrlMaps, TargetTcpProxies, TargetSslProxies and
+        # ForwardingRule.
         # Corresponds to the JSON property `reference`
         # @return [String]
         attr_accessor :reference
@@ -9365,6 +9407,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A list of packet mirroring rules that belong to this policy.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
         # [Output Only] The parent of the firewall policy. This field is not applicable
         # to network firewall policies.
         # Corresponds to the JSON property `parent`
@@ -9430,6 +9477,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @parent = args[:parent] if args.key?(:parent)
           @region = args[:region] if args.key?(:region)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
@@ -15865,10 +15913,15 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::InstanceGroupManagerAutoHealingPolicy>]
         attr_accessor :auto_healing_policies
       
-        # The base instance name to use for instances in this group. The value must be 1-
-        # 58 characters long. Instances are named by appending a hyphen and a random
-        # four-character string to the base instance name. The base instance name must
-        # comply with RFC1035.
+        # The base instance name is a prefix that you want to attach to the names of all
+        # VMs in a MIG. The maximum character length is 58 and the name must comply with
+        # RFC1035 format. When a VM is created in the group, the MIG appends a hyphen
+        # and a random four-character string to the base instance name. If you want the
+        # MIG to assign sequential numbers instead of a random string, then end the base
+        # instance name with a hyphen followed by one or more hash symbols. The hash
+        # symbols indicate the number of digits. For example, a base instance name of "
+        # vm-###" results in "vm-001" as a VM name. @pattern [a-z](([-a-z0-9]`0,57`)|([-
+        # a-z0-9]`0,52`-#`1,10`(\\[[0-9]`1,10`\\])?))
         # Corresponds to the JSON property `baseInstanceName`
         # @return [String]
         attr_accessor :base_instance_name
@@ -19687,6 +19740,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output only] Priority of firewall policy association. Not applicable for type=
+        # HIERARCHY.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
         # The rules that apply to the network.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRule>]
@@ -19711,6 +19770,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
@@ -25952,12 +26012,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :client_destination_port
       
-        # Represents the port number to which PSC consumer sends packets. Only valid for
-        # network endpoint groups created with CLIENT_PORT_PER_ENDPOINT mapping mode.
-        # Corresponds to the JSON property `clientPort`
-        # @return [Fixnum]
-        attr_accessor :client_port
-      
         # Optional fully qualified domain name of network endpoint. This can only be
         # specified when NetworkEndpointGroup.network_endpoint_type is NON_GCP_FQDN_PORT.
         # Corresponds to the JSON property `fqdn`
@@ -26008,7 +26062,6 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @client_destination_port = args[:client_destination_port] if args.key?(:client_destination_port)
-          @client_port = args[:client_port] if args.key?(:client_port)
           @fqdn = args[:fqdn] if args.key?(:fqdn)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -26037,11 +26090,6 @@ module Google
         # Corresponds to the JSON property `appEngine`
         # @return [Google::Apis::ComputeBeta::NetworkEndpointGroupAppEngine]
         attr_accessor :app_engine
-      
-        # Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
-        # Corresponds to the JSON property `clientPortMappingMode`
-        # @return [String]
-        attr_accessor :client_port_mapping_mode
       
         # Configuration for a Cloud Function network endpoint group (NEG). The function
         # must be provided explicitly or in the URL mask. Note: Cloud Function must be
@@ -26171,7 +26219,6 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @app_engine = args[:app_engine] if args.key?(:app_engine)
-          @client_port_mapping_mode = args[:client_port_mapping_mode] if args.key?(:client_port_mapping_mode)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -34587,6 +34634,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output only] Priority of firewall policy association. Not applicable for type=
+        # HIERARCHY.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
         # The rules that apply to the network.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRule>]
@@ -34606,6 +34659,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @type = args[:type] if args.key?(:type)
         end
@@ -36300,6 +36354,13 @@ module Google
       class ResourceStatusScheduling
         include Google::Apis::Core::Hashable
       
+        # Specifies the availability domain to place the instance in. The value must be
+        # a number between 1 and the number of availability domains specified in the
+        # spread placement policy attached to the instance.
+        # Corresponds to the JSON property `availabilityDomain`
+        # @return [Fixnum]
+        attr_accessor :availability_domain
+      
         # Time in future when the instance will be terminated in RFC3339 text format.
         # Corresponds to the JSON property `terminationTimestamp`
         # @return [String]
@@ -36311,6 +36372,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
           @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
         end
       end
@@ -39105,6 +39167,13 @@ module Google
         attr_accessor :automatic_restart
         alias_method :automatic_restart?, :automatic_restart
       
+        # Specifies the availability domain to place the instance in. The value must be
+        # a number between 1 and the number of availability domains specified in the
+        # spread placement policy attached to the instance.
+        # Corresponds to the JSON property `availabilityDomain`
+        # @return [Fixnum]
+        attr_accessor :availability_domain
+      
         # Specify the time in seconds for host error detection, the value must be within
         # the range of [90, 330] with the increment of 30, if unset, the default
         # behavior of host error recovery will be used.
@@ -39204,6 +39273,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
+          @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
           @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @local_ssd_recovery_timeout = args[:local_ssd_recovery_timeout] if args.key?(:local_ssd_recovery_timeout)
@@ -51381,8 +51451,9 @@ module Google
         attr_accessor :self_link
       
         # The stack type for this VPN gateway to identify the IP protocols that are
-        # enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified,
-        # IPV4_ONLY will be used.
+        # enabled. Possible values are: IPV4_ONLY, IPV4_IPV6, IPV6_ONLY. If not
+        # specified, IPV4_ONLY is used if the gateway IP version is IPV4, or IPV4_IPV6
+        # if the gateway IP version is IPV6.
         # Corresponds to the JSON property `stackType`
         # @return [String]
         attr_accessor :stack_type

@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceHttpCookie
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceIap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7775,6 +7781,8 @@ module Google
           collection :service_bindings, as: 'serviceBindings'
           property :service_lb_policy, as: 'serviceLbPolicy'
           property :session_affinity, as: 'sessionAffinity'
+          property :strong_session_affinity_cookie, as: 'strongSessionAffinityCookie', class: Google::Apis::ComputeBeta::BackendServiceHttpCookie, decorator: Google::Apis::ComputeBeta::BackendServiceHttpCookie::Representation
+      
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeBeta::Subsetting, decorator: Google::Apis::ComputeBeta::Subsetting::Representation
       
           property :timeout_sec, as: 'timeoutSec'
@@ -7878,6 +7886,16 @@ module Google
           collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeBeta::HealthStatus, decorator: Google::Apis::ComputeBeta::HealthStatus::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class BackendServiceHttpCookie
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :path, as: 'path'
+          property :ttl, as: 'ttl', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
+      
         end
       end
       
@@ -9077,6 +9095,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+      
           property :parent, as: 'parent'
           property :region, as: 'region'
           property :rule_tuple_count, as: 'ruleTupleCount'
@@ -11579,6 +11599,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
       
           property :short_name, as: 'shortName'
@@ -13147,7 +13168,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
           property :client_destination_port, as: 'clientDestinationPort'
-          property :client_port, as: 'clientPort'
           property :fqdn, as: 'fqdn'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
@@ -13162,7 +13182,6 @@ module Google
           hash :annotations, as: 'annotations'
           property :app_engine, as: 'appEngine', class: Google::Apis::ComputeBeta::NetworkEndpointGroupAppEngine, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupAppEngine::Representation
       
-          property :client_port_mapping_mode, as: 'clientPortMappingMode'
           property :cloud_function, as: 'cloudFunction', class: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudFunction, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudFunction::Representation
       
           property :cloud_run, as: 'cloudRun', class: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudRun, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudRun::Representation
@@ -15395,6 +15414,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
       
           property :type, as: 'type'
@@ -15860,6 +15880,7 @@ module Google
       class ResourceStatusScheduling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_domain, as: 'availabilityDomain'
           property :termination_timestamp, as: 'terminationTimestamp'
         end
       end
@@ -16500,6 +16521,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
+          property :availability_domain, as: 'availabilityDomain'
           property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :instance_termination_action, as: 'instanceTerminationAction'
           property :local_ssd_recovery_timeout, as: 'localSsdRecoveryTimeout', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
