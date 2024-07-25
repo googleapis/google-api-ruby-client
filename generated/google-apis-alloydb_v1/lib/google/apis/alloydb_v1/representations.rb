@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrialMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -617,6 +623,9 @@ module Google
           property :ssl_config, as: 'sslConfig', class: Google::Apis::AlloydbV1::SslConfig, decorator: Google::Apis::AlloydbV1::SslConfig::Representation
       
           property :state, as: 'state'
+          property :subscription_type, as: 'subscriptionType'
+          property :trial_metadata, as: 'trialMetadata', class: Google::Apis::AlloydbV1::TrialMetadata, decorator: Google::Apis::AlloydbV1::TrialMetadata::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -1303,6 +1312,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :retention_period, as: 'retentionPeriod'
+        end
+      end
+      
+      class TrialMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :upgrade_time, as: 'upgradeTime'
         end
       end
       
