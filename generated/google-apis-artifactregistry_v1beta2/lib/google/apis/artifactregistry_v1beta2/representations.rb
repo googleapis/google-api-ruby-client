@@ -564,6 +564,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :legacy_redirection_state, as: 'legacyRedirectionState'
           property :name, as: 'name'
+          property :pull_percent, as: 'pullPercent'
         end
       end
       

@@ -1015,6 +1015,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The percentage of pull traffic to redirect from GCR to AR when using partial
+        # redirection.
+        # Corresponds to the JSON property `pullPercent`
+        # @return [Fixnum]
+        attr_accessor :pull_percent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1023,6 +1029,7 @@ module Google
         def update!(**args)
           @legacy_redirection_state = args[:legacy_redirection_state] if args.key?(:legacy_redirection_state)
           @name = args[:name] if args.key?(:name)
+          @pull_percent = args[:pull_percent] if args.key?(:pull_percent)
         end
       end
       
