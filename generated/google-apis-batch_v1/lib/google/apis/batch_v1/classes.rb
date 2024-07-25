@@ -373,7 +373,7 @@ module Google
         # @return [Google::Apis::BatchV1::TaskSpec]
         attr_accessor :spec
       
-        # Status of a task
+        # Status of a task.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::BatchV1::TaskStatus]
         attr_accessor :status
@@ -419,7 +419,7 @@ module Google
         # @return [String]
         attr_accessor :task_id
       
-        # Status of a task
+        # Status of a task.
         # Corresponds to the JSON property `taskStatus`
         # @return [Google::Apis::BatchV1::TaskStatus]
         attr_accessor :task_status
@@ -2206,7 +2206,7 @@ module Google
         end
       end
       
-      # Status event
+      # Status event.
       class StatusEvent
         include Google::Apis::Core::Hashable
       
@@ -2226,7 +2226,7 @@ module Google
         # @return [Google::Apis::BatchV1::TaskExecution]
         attr_accessor :task_execution
       
-        # Task State
+        # Task State. This field is only defined for task-level status events.
         # Corresponds to the JSON property `taskState`
         # @return [String]
         attr_accessor :task_state
@@ -2261,7 +2261,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Status of a task
+        # Status of a task.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::BatchV1::TaskStatus]
         attr_accessor :status
@@ -2513,11 +2513,11 @@ module Google
         end
       end
       
-      # Status of a task
+      # Status of a task.
       class TaskStatus
         include Google::Apis::Core::Hashable
       
-        # Task state
+        # Task state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
