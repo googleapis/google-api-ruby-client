@@ -480,7 +480,7 @@ module Google
         # @return [String]
         attr_accessor :feed_type
       
-        # More feed data would be added in subsequent CLs
+        # 
         # Corresponds to the JSON property `observabilityMetricData`
         # @return [Google::Apis::RedisV1::ObservabilityMetricData]
         attr_accessor :observability_metric_data
