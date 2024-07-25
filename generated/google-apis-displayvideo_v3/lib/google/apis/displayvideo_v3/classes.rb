@@ -6928,8 +6928,9 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :ad_group_ids
       
-        # Optional. YouTube Ad Groups QA to download by ID. All IDs must belong to the
-        # same Advertiser or Partner specified in CreateSdfDownloadTaskRequest.
+        # Optional. YouTube Ad Groups, by ID, to download in QA format. All IDs must
+        # belong to the same Advertiser or Partner specified in
+        # CreateSdfDownloadTaskRequest.
         # Corresponds to the JSON property `adGroupQaIds`
         # @return [Array<Fixnum>]
         attr_accessor :ad_group_qa_ids
@@ -6952,8 +6953,8 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :line_item_ids
       
-        # Optional. Line Items QA to download by ID. All IDs must belong to the same
-        # Advertiser or Partner specified in CreateSdfDownloadTaskRequest.
+        # Optional. Line Items, by ID, to download in QA format. All IDs must belong to
+        # the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest.
         # Corresponds to the JSON property `lineItemQaIds`
         # @return [Array<Fixnum>]
         attr_accessor :line_item_qa_ids
@@ -11126,10 +11127,7 @@ module Google
         # @return [Array<Google::Apis::DisplayvideoV3::ExchangeReviewStatus>]
         attr_accessor :exchange_review_statuses
       
-        # Publisher review statuses for the creative. **Warning:** This field will be
-        # deprecated on June 26th, 2024. After this date, this field will be empty. Read
-        # our [feature deprecation announcement](/display-video/api/deprecations#
-        # features.creative_publisher_review_statuses) for more information.
+        # Publisher review statuses for the creative.
         # Corresponds to the JSON property `publisherReviewStatuses`
         # @return [Array<Google::Apis::DisplayvideoV3::PublisherReviewStatus>]
         attr_accessor :publisher_review_statuses
