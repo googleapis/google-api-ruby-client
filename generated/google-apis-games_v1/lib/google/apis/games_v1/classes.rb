@@ -1057,10 +1057,10 @@ module Google
         # @return [String]
         attr_accessor :application_id
       
-        # Recall token data.
-        # Corresponds to the JSON property `token`
-        # @return [Array<Google::Apis::GamesV1::RecallToken>]
-        attr_accessor :token
+        # Recall token data returned from RetrievePlayerTokens RPC
+        # Corresponds to the JSON property `recallToken`
+        # @return [Google::Apis::GamesV1::RecallToken]
+        attr_accessor :recall_token
       
         def initialize(**args)
            update!(**args)
@@ -1069,7 +1069,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @application_id = args[:application_id] if args.key?(:application_id)
-          @token = args[:token] if args.key?(:token)
+          @recall_token = args[:recall_token] if args.key?(:recall_token)
         end
       end
       
@@ -2599,10 +2599,10 @@ module Google
       class RetrieveDeveloperGamesLastPlayerTokenResponse
         include Google::Apis::Core::Hashable
       
-        # Recall token data returned from RetrievePlayerTokens RPC
-        # Corresponds to the JSON property `token`
-        # @return [Google::Apis::GamesV1::RecallToken]
-        attr_accessor :token
+        # Recall tokens for a game.
+        # Corresponds to the JSON property `gamePlayerToken`
+        # @return [Google::Apis::GamesV1::GamePlayerToken]
+        attr_accessor :game_player_token
       
         def initialize(**args)
            update!(**args)
@@ -2610,7 +2610,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @token = args[:token] if args.key?(:token)
+          @game_player_token = args[:game_player_token] if args.key?(:game_player_token)
         end
       end
       
@@ -2621,9 +2621,9 @@ module Google
         # The requested applications along with the recall tokens for the player. If the
         # player does not have recall tokens for an application, that application is not
         # included in the response.
-        # Corresponds to the JSON property `applicationRecallTokens`
+        # Corresponds to the JSON property `gamePlayerTokens`
         # @return [Array<Google::Apis::GamesV1::GamePlayerToken>]
-        attr_accessor :application_recall_tokens
+        attr_accessor :game_player_tokens
       
         def initialize(**args)
            update!(**args)
@@ -2631,7 +2631,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @application_recall_tokens = args[:application_recall_tokens] if args.key?(:application_recall_tokens)
+          @game_player_tokens = args[:game_player_tokens] if args.key?(:game_player_tokens)
         end
       end
       
