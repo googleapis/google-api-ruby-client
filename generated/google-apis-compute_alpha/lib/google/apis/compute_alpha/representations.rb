@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendCustomMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2146,6 +2152,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerResourcePolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerStandbyPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2692,6 +2704,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstantSnapshotGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotGroupResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotGroupSourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstantSnapshotList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3136,6 +3166,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListInstantSnapshotGroups
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocalDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3401,6 +3449,12 @@ module Google
       end
       
       class MultiMigSchedulingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMigStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5345,6 +5399,12 @@ module Google
       end
       
       class ResourcePolicyWeeklyCycleDayOfWeek
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyWorkloadPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8097,6 +8157,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :source_instance_template_id, as: 'sourceInstanceTemplateId'
+          hash :utilizations, as: 'utilizations'
         end
       end
       
@@ -8446,6 +8507,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :balancing_mode, as: 'balancingMode'
           property :capacity_scaler, as: 'capacityScaler'
+          collection :custom_metrics, as: 'customMetrics', class: Google::Apis::ComputeAlpha::BackendCustomMetric, decorator: Google::Apis::ComputeAlpha::BackendCustomMetric::Representation
+      
           property :description, as: 'description'
           property :failover, as: 'failover'
           property :group, as: 'group'
@@ -8554,6 +8617,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class BackendCustomMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dry_run, as: 'dryRun'
+          property :max_utilization, as: 'maxUtilization'
+          property :name, as: 'name'
         end
       end
       
@@ -9160,6 +9232,7 @@ module Google
           property :auto_renew, as: 'autoRenew'
           property :category, as: 'category'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :custom_end_timestamp, as: 'customEndTimestamp'
           property :description, as: 'description'
           property :end_timestamp, as: 'endTimestamp'
           collection :existing_reservations, as: 'existingReservations'
@@ -9257,6 +9330,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cancellation_information, as: 'cancellationInformation', class: Google::Apis::ComputeAlpha::CommitmentResourceStatusCancellationInformation, decorator: Google::Apis::ComputeAlpha::CommitmentResourceStatusCancellationInformation::Representation
       
+          property :custom_term_eligibility_end_timestamp, as: 'customTermEligibilityEndTimestamp'
         end
       end
       
@@ -11693,6 +11767,8 @@ module Google
           property :params, as: 'params', class: Google::Apis::ComputeAlpha::InstanceGroupManagerParams, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerParams::Representation
       
           property :region, as: 'region'
+          property :resource_policies, as: 'resourcePolicies', class: Google::Apis::ComputeAlpha::InstanceGroupManagerResourcePolicies, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerResourcePolicies::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
@@ -12021,6 +12097,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InstanceGroupManagerResourcePolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :workload_policy, as: 'workloadPolicy'
         end
       end
       
@@ -12929,6 +13012,41 @@ module Google
         end
       end
       
+      class InstantSnapshotGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::InstantSnapshotGroupResourceStatus, decorator: Google::Apis::ComputeAlpha::InstantSnapshotGroupResourceStatus::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :status, as: 'status'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class InstantSnapshotGroupResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consistency_membership_resolution_time, as: 'consistencyMembershipResolutionTime'
+          property :source_info, as: 'sourceInfo', class: Google::Apis::ComputeAlpha::InstantSnapshotGroupSourceInfo, decorator: Google::Apis::ComputeAlpha::InstantSnapshotGroupSourceInfo::Representation
+      
+        end
+      end
+      
+      class InstantSnapshotGroupSourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consistency_group, as: 'consistencyGroup'
+          property :consistency_group_id, as: 'consistencyGroupId'
+        end
+      end
+      
       class InstantSnapshotList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13051,6 +13169,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bandwidth_percentage_policy, as: 'bandwidthPercentagePolicy', class: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy, decorator: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy::Representation
+      
+          property :egress_min_bandwidth_percentage_policy, as: 'egressMinBandwidthPercentagePolicy', class: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy, decorator: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy::Representation
       
           property :profile_description, as: 'profileDescription'
           property :strict_priority_policy, as: 'strictPriorityPolicy', class: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectStrictPriorityPolicy, decorator: Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectStrictPriorityPolicy::Representation
@@ -13777,6 +13897,40 @@ module Google
         end
       end
       
+      class ListInstantSnapshotGroups
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::InstantSnapshotGroup, decorator: Google::Apis::ComputeAlpha::InstantSnapshotGroup::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ListInstantSnapshotGroups::Warning, decorator: Google::Apis::ComputeAlpha::ListInstantSnapshotGroups::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ListInstantSnapshotGroups::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ListInstantSnapshotGroups::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class LocalDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14234,6 +14388,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :status, as: 'status', class: Google::Apis::ComputeAlpha::MultiMigStatus, decorator: Google::Apis::ComputeAlpha::MultiMigStatus::Representation
+      
         end
       end
       
@@ -14257,6 +14413,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :provisioning, as: 'provisioning'
+        end
+      end
+      
+      class MultiMigStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :member_instance_group_managers, as: 'memberInstanceGroupManagers'
         end
       end
       
@@ -14585,7 +14748,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
           property :client_destination_port, as: 'clientDestinationPort'
-          property :client_port, as: 'clientPort'
           property :fqdn, as: 'fqdn'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
@@ -14601,7 +14763,6 @@ module Google
           hash :annotations, as: 'annotations'
           property :app_engine, as: 'appEngine', class: Google::Apis::ComputeAlpha::NetworkEndpointGroupAppEngine, decorator: Google::Apis::ComputeAlpha::NetworkEndpointGroupAppEngine::Representation
       
-          property :client_port_mapping_mode, as: 'clientPortMappingMode'
           property :cloud_function, as: 'cloudFunction', class: Google::Apis::ComputeAlpha::NetworkEndpointGroupCloudFunction, decorator: Google::Apis::ComputeAlpha::NetworkEndpointGroupCloudFunction::Representation
       
           property :cloud_run, as: 'cloudRun', class: Google::Apis::ComputeAlpha::NetworkEndpointGroupCloudRun, decorator: Google::Apis::ComputeAlpha::NetworkEndpointGroupCloudRun::Representation
@@ -17592,6 +17753,8 @@ module Google
           property :status, as: 'status'
           property :vm_maintenance_policy, as: 'vmMaintenancePolicy', class: Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicy::Representation
       
+          property :workload_policy, as: 'workloadPolicy', class: Google::Apis::ComputeAlpha::ResourcePolicyWorkloadPolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicyWorkloadPolicy::Representation
+      
         end
       end
       
@@ -17817,6 +17980,13 @@ module Google
           property :day, as: 'day'
           property :duration, as: 'duration'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ResourcePolicyWorkloadPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
