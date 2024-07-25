@@ -22,6 +22,273 @@ module Google
   module Apis
     module BackupdrV1
       
+      # request message for AbandonBackup.
+      class AbandonBackupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # A specification of the type and number of accelerator cards attached to the
+      # instance.
+      class AcceleratorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of the guest accelerator cards exposed to this instance.
+        # Corresponds to the JSON property `acceleratorCount`
+        # @return [Fixnum]
+        attr_accessor :accelerator_count
+      
+        # Optional. Full or partial URL of the accelerator type resource to attach to
+        # this instance.
+        # Corresponds to the JSON property `acceleratorType`
+        # @return [String]
+        attr_accessor :accelerator_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
+          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+        end
+      end
+      
+      # An access configuration attached to an instance's network interface. Only one
+      # access config per instance is supported.
+      class AccessConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The external IPv6 address of this access configuration.
+        # Corresponds to the JSON property `externalIpv6`
+        # @return [String]
+        attr_accessor :external_ipv6
+      
+        # Optional. The prefix length of the external IPv6 range.
+        # Corresponds to the JSON property `externalIpv6PrefixLength`
+        # @return [Fixnum]
+        attr_accessor :external_ipv6_prefix_length
+      
+        # Optional. The name of this access configuration.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The external IP address of this access configuration.
+        # Corresponds to the JSON property `natIP`
+        # @return [String]
+        attr_accessor :nat_ip
+      
+        # Optional. This signifies the networking tier used for configuring this access
+        # Corresponds to the JSON property `networkTier`
+        # @return [String]
+        attr_accessor :network_tier
+      
+        # Optional. The DNS domain name for the public PTR record.
+        # Corresponds to the JSON property `publicPtrDomainName`
+        # @return [String]
+        attr_accessor :public_ptr_domain_name
+      
+        # Optional. Specifies whether a public DNS 'PTR' record should be created to map
+        # the external IP address of the instance to a DNS domain name.
+        # Corresponds to the JSON property `setPublicPtr`
+        # @return [Boolean]
+        attr_accessor :set_public_ptr
+        alias_method :set_public_ptr?, :set_public_ptr
+      
+        # Optional. In accessConfigs (IPv4), the default and only option is
+        # ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is
+        # DIRECT_IPV6.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_ipv6 = args[:external_ipv6] if args.key?(:external_ipv6)
+          @external_ipv6_prefix_length = args[:external_ipv6_prefix_length] if args.key?(:external_ipv6_prefix_length)
+          @name = args[:name] if args.key?(:name)
+          @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
+          @network_tier = args[:network_tier] if args.key?(:network_tier)
+          @public_ptr_domain_name = args[:public_ptr_domain_name] if args.key?(:public_ptr_domain_name)
+          @set_public_ptr = args[:set_public_ptr] if args.key?(:set_public_ptr)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # An alias IP range attached to an instance's network interface.
+      class AliasIpRange
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The IP alias ranges to allocate for this interface.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # Optional. The name of a subnetwork secondary IP range from which to allocate
+        # an IP alias range. If not specified, the primary range of the subnetwork is
+        # used.
+        # Corresponds to the JSON property `subnetworkRangeName`
+        # @return [String]
+        attr_accessor :subnetwork_range_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @subnetwork_range_name = args[:subnetwork_range_name] if args.key?(:subnetwork_range_name)
+        end
+      end
+      
+      # An instance-attached disk resource.
+      class AttachedDisk
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies whether the disk will be auto-deleted when the instance is
+        # deleted (but not when the disk is detached from the instance).
+        # Corresponds to the JSON property `autoDelete`
+        # @return [Boolean]
+        attr_accessor :auto_delete
+        alias_method :auto_delete?, :auto_delete
+      
+        # Optional. Indicates that this is a boot disk. The virtual machine will use the
+        # first partition of the disk for its root filesystem.
+        # Corresponds to the JSON property `boot`
+        # @return [Boolean]
+        attr_accessor :boot
+        alias_method :boot?, :boot
+      
+        # Optional. This is used as an identifier for the disks. This is the unique name
+        # has to provided to modify disk parameters like disk_name and replica_zones (in
+        # case of RePDs)
+        # Corresponds to the JSON property `deviceName`
+        # @return [String]
+        attr_accessor :device_name
+      
+        # A customer-supplied encryption key.
+        # Corresponds to the JSON property `diskEncryptionKey`
+        # @return [Google::Apis::BackupdrV1::CustomerEncryptionKey]
+        attr_accessor :disk_encryption_key
+      
+        # Optional. Specifies the disk interface to use for attaching this disk.
+        # Corresponds to the JSON property `diskInterface`
+        # @return [String]
+        attr_accessor :disk_interface
+      
+        # Optional. The size of the disk in GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Optional. Specifies the type of the disk.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Optional. Output only. The URI of the disk type resource. For example:
+        # projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
+        # Corresponds to the JSON property `diskTypeUri`
+        # @return [String]
+        attr_accessor :disk_type_uri
+      
+        # Optional. A list of features to enable on the guest operating system.
+        # Applicable only for bootable images.
+        # Corresponds to the JSON property `guestOsFeature`
+        # @return [Array<Google::Apis::BackupdrV1::GuestOsFeature>]
+        attr_accessor :guest_os_feature
+      
+        # Optional. A zero-based index to this disk, where 0 is reserved for the boot
+        # disk.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Specifies the parameters to initialize this disk.
+        # Corresponds to the JSON property `initializeParams`
+        # @return [Google::Apis::BackupdrV1::InitializeParams]
+        attr_accessor :initialize_params
+      
+        # Optional. Type of the resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Optional. Any valid publicly visible licenses.
+        # Corresponds to the JSON property `license`
+        # @return [Array<String>]
+        attr_accessor :license
+      
+        # Optional. The mode in which to attach this disk.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Optional. Output only. The state of the disk.
+        # Corresponds to the JSON property `savedState`
+        # @return [String]
+        attr_accessor :saved_state
+      
+        # Optional. Specifies a valid partial or full URL to an existing Persistent Disk
+        # resource.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+          @boot = args[:boot] if args.key?(:boot)
+          @device_name = args[:device_name] if args.key?(:device_name)
+          @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
+          @disk_interface = args[:disk_interface] if args.key?(:disk_interface)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @disk_type_uri = args[:disk_type_uri] if args.key?(:disk_type_uri)
+          @guest_os_feature = args[:guest_os_feature] if args.key?(:guest_os_feature)
+          @index = args[:index] if args.key?(:index)
+          @initialize_params = args[:initialize_params] if args.key?(:initialize_params)
+          @kind = args[:kind] if args.key?(:kind)
+          @license = args[:license] if args.key?(:license)
+          @mode = args[:mode] if args.key?(:mode)
+          @saved_state = args[:saved_state] if args.key?(:saved_state)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -90,6 +357,481 @@ module Google
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
+      # Message describing a Backup object.
+      class Backup
+        include Google::Apis::Core::Hashable
+      
+        # BackupApplianceBackupProperties represents BackupDR backup appliance's
+        # properties.
+        # Corresponds to the JSON property `backupApplianceBackupProperties`
+        # @return [Google::Apis::BackupdrV1::BackupApplianceBackupProperties]
+        attr_accessor :backup_appliance_backup_properties
+      
+        # Optional. The list of BackupLocks taken by the accessor Backup Appliance.
+        # Corresponds to the JSON property `backupApplianceLocks`
+        # @return [Array<Google::Apis::BackupdrV1::BackupLock>]
+        attr_accessor :backup_appliance_locks
+      
+        # 
+        # Corresponds to the JSON property `backupType`
+        # @return [String]
+        attr_accessor :backup_type
+      
+        # ComputeInstanceBackupProperties represents Compute Engine instance backup
+        # properties.
+        # Corresponds to the JSON property `computeInstanceBackupProperties`
+        # @return [Google::Apis::BackupdrV1::ComputeInstanceBackupProperties]
+        attr_accessor :compute_instance_backup_properties
+      
+        # Output only. The point in time when this backup was captured from the source.
+        # Corresponds to the JSON property `consistencyTime`
+        # @return [String]
+        attr_accessor :consistency_time
+      
+        # Output only. The time when the instance was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The description of the Backup instance (2048 characters or less).
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The backup can not be deleted before this time.
+        # Corresponds to the JSON property `enforcedRetentionEndTime`
+        # @return [String]
+        attr_accessor :enforced_retention_end_time
+      
+        # Optional. Server specified ETag to prevent updates from overwriting each other.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. When this backup is automatically expired.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # GCPBackupPlanInfo captures the plan configuration details of Google Cloud
+        # resources at the time of backup.
+        # Corresponds to the JSON property `gcpBackupPlanInfo`
+        # @return [Google::Apis::BackupdrV1::GcpBackupPlanInfo]
+        attr_accessor :gcp_backup_plan_info
+      
+        # Optional. Resource labels to represent user provided metadata. No labels
+        # currently defined.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. source resource size in bytes at the time of the backup.
+        # Corresponds to the JSON property `resourceSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :resource_size_bytes
+      
+        # Output only. The list of BackupLocks taken by the service to prevent the
+        # deletion of the backup.
+        # Corresponds to the JSON property `serviceLocks`
+        # @return [Array<Google::Apis::BackupdrV1::BackupLock>]
+        attr_accessor :service_locks
+      
+        # Output only. The Backup resource instance state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time when the instance was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_appliance_backup_properties = args[:backup_appliance_backup_properties] if args.key?(:backup_appliance_backup_properties)
+          @backup_appliance_locks = args[:backup_appliance_locks] if args.key?(:backup_appliance_locks)
+          @backup_type = args[:backup_type] if args.key?(:backup_type)
+          @compute_instance_backup_properties = args[:compute_instance_backup_properties] if args.key?(:compute_instance_backup_properties)
+          @consistency_time = args[:consistency_time] if args.key?(:consistency_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @enforced_retention_end_time = args[:enforced_retention_end_time] if args.key?(:enforced_retention_end_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @gcp_backup_plan_info = args[:gcp_backup_plan_info] if args.key?(:gcp_backup_plan_info)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @resource_size_bytes = args[:resource_size_bytes] if args.key?(:resource_size_bytes)
+          @service_locks = args[:service_locks] if args.key?(:service_locks)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # BackupApplianceBackupConfig captures the backup configuration for applications
+      # that are protected by Backup Appliances.
+      class BackupApplianceBackupConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the application.
+        # Corresponds to the JSON property `applicationName`
+        # @return [String]
+        attr_accessor :application_name
+      
+        # The ID of the backup appliance.
+        # Corresponds to the JSON property `backupApplianceId`
+        # @return [Fixnum]
+        attr_accessor :backup_appliance_id
+      
+        # The name of the backup appliance.
+        # Corresponds to the JSON property `backupApplianceName`
+        # @return [String]
+        attr_accessor :backup_appliance_name
+      
+        # The name of the host where the application is running.
+        # Corresponds to the JSON property `hostName`
+        # @return [String]
+        attr_accessor :host_name
+      
+        # The ID of the SLA of this application.
+        # Corresponds to the JSON property `slaId`
+        # @return [Fixnum]
+        attr_accessor :sla_id
+      
+        # The name of the SLP associated with the application.
+        # Corresponds to the JSON property `slpName`
+        # @return [String]
+        attr_accessor :slp_name
+      
+        # The name of the SLT associated with the application.
+        # Corresponds to the JSON property `sltName`
+        # @return [String]
+        attr_accessor :slt_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_name = args[:application_name] if args.key?(:application_name)
+          @backup_appliance_id = args[:backup_appliance_id] if args.key?(:backup_appliance_id)
+          @backup_appliance_name = args[:backup_appliance_name] if args.key?(:backup_appliance_name)
+          @host_name = args[:host_name] if args.key?(:host_name)
+          @sla_id = args[:sla_id] if args.key?(:sla_id)
+          @slp_name = args[:slp_name] if args.key?(:slp_name)
+          @slt_name = args[:slt_name] if args.key?(:slt_name)
+        end
+      end
+      
+      # BackupApplianceBackupProperties represents BackupDR backup appliance's
+      # properties.
+      class BackupApplianceBackupProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when this backup object was finalized (if none, backup
+        # is not finalized).
+        # Corresponds to the JSON property `finalizeTime`
+        # @return [String]
+        attr_accessor :finalize_time
+      
+        # Output only. The numeric generation ID of the backup (monotonically increasing)
+        # .
+        # Corresponds to the JSON property `generationId`
+        # @return [Fixnum]
+        attr_accessor :generation_id
+      
+        # Optional. The latest timestamp of data available in this Backup.
+        # Corresponds to the JSON property `recoveryRangeEndTime`
+        # @return [String]
+        attr_accessor :recovery_range_end_time
+      
+        # Optional. The earliest timestamp of data available in this Backup.
+        # Corresponds to the JSON property `recoveryRangeStartTime`
+        # @return [String]
+        attr_accessor :recovery_range_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finalize_time = args[:finalize_time] if args.key?(:finalize_time)
+          @generation_id = args[:generation_id] if args.key?(:generation_id)
+          @recovery_range_end_time = args[:recovery_range_end_time] if args.key?(:recovery_range_end_time)
+          @recovery_range_start_time = args[:recovery_range_start_time] if args.key?(:recovery_range_start_time)
+        end
+      end
+      
+      # BackupApplianceLockInfo contains metadata about the backupappliance that
+      # created the lock.
+      class BackupApplianceLockInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the backup/recovery appliance that created this lock.
+        # Corresponds to the JSON property `backupApplianceId`
+        # @return [Fixnum]
+        attr_accessor :backup_appliance_id
+      
+        # Required. The name of the backup/recovery appliance that created this lock.
+        # Corresponds to the JSON property `backupApplianceName`
+        # @return [String]
+        attr_accessor :backup_appliance_name
+      
+        # The image name that depends on this Backup.
+        # Corresponds to the JSON property `backupImage`
+        # @return [String]
+        attr_accessor :backup_image
+      
+        # The job name on the backup/recovery appliance that created this lock.
+        # Corresponds to the JSON property `jobName`
+        # @return [String]
+        attr_accessor :job_name
+      
+        # Required. The reason for the lock: e.g. MOUNT/RESTORE/BACKUP/etc. The value of
+        # this string is only meaningful to the client and it is not interpreted by the
+        # BackupVault service.
+        # Corresponds to the JSON property `lockReason`
+        # @return [String]
+        attr_accessor :lock_reason
+      
+        # The SLA on the backup/recovery appliance that owns the lock.
+        # Corresponds to the JSON property `slaId`
+        # @return [Fixnum]
+        attr_accessor :sla_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_appliance_id = args[:backup_appliance_id] if args.key?(:backup_appliance_id)
+          @backup_appliance_name = args[:backup_appliance_name] if args.key?(:backup_appliance_name)
+          @backup_image = args[:backup_image] if args.key?(:backup_image)
+          @job_name = args[:job_name] if args.key?(:job_name)
+          @lock_reason = args[:lock_reason] if args.key?(:lock_reason)
+          @sla_id = args[:sla_id] if args.key?(:sla_id)
+        end
+      end
+      
+      # BackupConfigInfo has information about how the resource is configured for
+      # Backup and about the most recent backup to this vault.
+      class BackupConfigInfo
+        include Google::Apis::Core::Hashable
+      
+        # BackupApplianceBackupConfig captures the backup configuration for applications
+        # that are protected by Backup Appliances.
+        # Corresponds to the JSON property `backupApplianceBackupConfig`
+        # @return [Google::Apis::BackupdrV1::BackupApplianceBackupConfig]
+        attr_accessor :backup_appliance_backup_config
+      
+        # GcpBackupConfig captures the Backup configuration details for Google Cloud
+        # resources. All Google Cloud resources regardless of type are protected with
+        # backup plan associations.
+        # Corresponds to the JSON property `gcpBackupConfig`
+        # @return [Google::Apis::BackupdrV1::GcpBackupConfig]
+        attr_accessor :gcp_backup_config
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `lastBackupError`
+        # @return [Google::Apis::BackupdrV1::Status]
+        attr_accessor :last_backup_error
+      
+        # Output only. The status of the last backup to this BackupVault
+        # Corresponds to the JSON property `lastBackupState`
+        # @return [String]
+        attr_accessor :last_backup_state
+      
+        # Output only. If the last backup were successful, this field has the
+        # consistency date.
+        # Corresponds to the JSON property `lastSuccessfulBackupConsistencyTime`
+        # @return [String]
+        attr_accessor :last_successful_backup_consistency_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_appliance_backup_config = args[:backup_appliance_backup_config] if args.key?(:backup_appliance_backup_config)
+          @gcp_backup_config = args[:gcp_backup_config] if args.key?(:gcp_backup_config)
+          @last_backup_error = args[:last_backup_error] if args.key?(:last_backup_error)
+          @last_backup_state = args[:last_backup_state] if args.key?(:last_backup_state)
+          @last_successful_backup_consistency_time = args[:last_successful_backup_consistency_time] if args.key?(:last_successful_backup_consistency_time)
+        end
+      end
+      
+      # BackupLock represents a single lock on a Backup resource. An unexpired lock on
+      # a Backup prevents the Backup from being deleted.
+      class BackupLock
+        include Google::Apis::Core::Hashable
+      
+        # BackupApplianceLockInfo contains metadata about the backupappliance that
+        # created the lock.
+        # Corresponds to the JSON property `backupApplianceLockInfo`
+        # @return [Google::Apis::BackupdrV1::BackupApplianceLockInfo]
+        attr_accessor :backup_appliance_lock_info
+      
+        # Required. The time after which this lock is not considered valid and will no
+        # longer protect the Backup from deletion.
+        # Corresponds to the JSON property `lockUntilTime`
+        # @return [String]
+        attr_accessor :lock_until_time
+      
+        # ServiceLockInfo represents the details of a lock taken by the service on a
+        # Backup resource.
+        # Corresponds to the JSON property `serviceLockInfo`
+        # @return [Google::Apis::BackupdrV1::ServiceLockInfo]
+        attr_accessor :service_lock_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_appliance_lock_info = args[:backup_appliance_lock_info] if args.key?(:backup_appliance_lock_info)
+          @lock_until_time = args[:lock_until_time] if args.key?(:lock_until_time)
+          @service_lock_info = args[:service_lock_info] if args.key?(:service_lock_info)
+        end
+      end
+      
+      # Message describing a BackupVault object.
+      class BackupVault
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User annotations. See https://google.aip.dev/128#annotations Stores
+        # small amounts of arbitrary data.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. The number of backups in this backup vault.
+        # Corresponds to the JSON property `backupCount`
+        # @return [Fixnum]
+        attr_accessor :backup_count
+      
+        # Required. The default and minimum enforced retention for each backup within
+        # the backup vault. The enforced retention for each backup can be extended.
+        # Corresponds to the JSON property `backupMinimumEnforcedRetentionDuration`
+        # @return [String]
+        attr_accessor :backup_minimum_enforced_retention_duration
+      
+        # Output only. The time when the instance was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Set to true when there are no backups nested under this resource.
+        # Corresponds to the JSON property `deletable`
+        # @return [Boolean]
+        attr_accessor :deletable
+        alias_method :deletable?, :deletable
+      
+        # Optional. The description of the BackupVault instance (2048 characters or less)
+        # .
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Time after which the BackupVault resource is locked.
+        # Corresponds to the JSON property `effectiveTime`
+        # @return [String]
+        attr_accessor :effective_time
+      
+        # Required. The default retention period for each backup in the backup vault (
+        # Deprecated).
+        # Corresponds to the JSON property `enforcedRetentionDuration`
+        # @return [String]
+        attr_accessor :enforced_retention_duration
+      
+        # Optional. Server specified ETag for the backup vault resource to prevent
+        # simultaneous updates from overwiting each other.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Resource labels to represent user provided metadata. No labels
+        # currently defined:
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Service account used by the BackupVault Service for this
+        # BackupVault. The user should grant this account permissions in their workload
+        # project to enable the service to run backups and restores there.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Output only. The BackupVault resource instance state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Total size of the storage used by all backup resources.
+        # Corresponds to the JSON property `totalStoredBytes`
+        # @return [Fixnum]
+        attr_accessor :total_stored_bytes
+      
+        # Output only. Output only Immutable after resource creation until resource
+        # deletion.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time when the instance was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @backup_count = args[:backup_count] if args.key?(:backup_count)
+          @backup_minimum_enforced_retention_duration = args[:backup_minimum_enforced_retention_duration] if args.key?(:backup_minimum_enforced_retention_duration)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deletable = args[:deletable] if args.key?(:deletable)
+          @description = args[:description] if args.key?(:description)
+          @effective_time = args[:effective_time] if args.key?(:effective_time)
+          @enforced_retention_duration = args[:enforced_retention_duration] if args.key?(:enforced_retention_duration)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @state = args[:state] if args.key?(:state)
+          @total_stored_bytes = args[:total_stored_bytes] if args.key?(:total_stored_bytes)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -207,6 +949,390 @@ module Google
         end
       end
       
+      # ComputeInstanceBackupProperties represents Compute Engine instance backup
+      # properties.
+      class ComputeInstanceBackupProperties
+        include Google::Apis::Core::Hashable
+      
+        # Enables instances created based on these properties to send packets with
+        # source IP addresses other than their own and receive packets with destination
+        # IP addresses other than their own. If these instances will be used as an IP
+        # gateway or it will be set as the next-hop in a Route resource, specify `true`.
+        # If unsure, leave this set to `false`. See the https://cloud.google.com/vpc/
+        # docs/using-routes#canipforward documentation for more information.
+        # Corresponds to the JSON property `canIpForward`
+        # @return [Boolean]
+        attr_accessor :can_ip_forward
+        alias_method :can_ip_forward?, :can_ip_forward
+      
+        # An optional text description for the instances that are created from these
+        # properties.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # An array of disks that are associated with the instances that are created from
+        # these properties.
+        # Corresponds to the JSON property `disk`
+        # @return [Array<Google::Apis::BackupdrV1::AttachedDisk>]
+        attr_accessor :disk
+      
+        # A list of guest accelerator cards' type and count to use for instances created
+        # from these properties.
+        # Corresponds to the JSON property `guestAccelerator`
+        # @return [Array<Google::Apis::BackupdrV1::AcceleratorConfig>]
+        attr_accessor :guest_accelerator
+      
+        # KeyRevocationActionType of the instance. Supported options are "STOP" and "
+        # NONE". The default value is "NONE" if it is not specified.
+        # Corresponds to the JSON property `keyRevocationActionType`
+        # @return [String]
+        attr_accessor :key_revocation_action_type
+      
+        # The machine type to use for instances that are created from these properties.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # A metadata key/value entry.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::BackupdrV1::Metadata]
+        attr_accessor :metadata
+      
+        # Minimum cpu/platform to be used by instances. The instance may be scheduled on
+        # the specified or newer cpu/platform. Applicable values are the friendly names
+        # of CPU platforms, such as `minCpuPlatform: Intel Haswell` or `minCpuPlatform:
+        # Intel Sandy Bridge`. For more information, read https://cloud.google.com/
+        # compute/docs/instances/specify-min-cpu-platform.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
+        # An array of network access configurations for this interface.
+        # Corresponds to the JSON property `networkInterface`
+        # @return [Array<Google::Apis::BackupdrV1::NetworkInterface>]
+        attr_accessor :network_interface
+      
+        # Sets the scheduling options for an Instance.
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::BackupdrV1::Scheduling]
+        attr_accessor :scheduling
+      
+        # A list of service accounts with specified scopes. Access tokens for these
+        # service accounts are available to the instances that are created from these
+        # properties. Use metadata queries to obtain the access tokens for these
+        # instances.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [Array<Google::Apis::BackupdrV1::ServiceAccount>]
+        attr_accessor :service_account
+      
+        # The source instance used to create this backup. This can be a partial or full
+        # URL to the resource. For example, the following are valid values: -https://www.
+        # googleapis.com/compute/v1/projects/project/zones/zone/instances/instance -
+        # projects/project/zones/zone/instances/instance
+        # Corresponds to the JSON property `sourceInstance`
+        # @return [String]
+        attr_accessor :source_instance
+      
+        # A set of instance tags.
+        # Corresponds to the JSON property `tags`
+        # @return [Google::Apis::BackupdrV1::Tags]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
+          @description = args[:description] if args.key?(:description)
+          @disk = args[:disk] if args.key?(:disk)
+          @guest_accelerator = args[:guest_accelerator] if args.key?(:guest_accelerator)
+          @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
+          @network_interface = args[:network_interface] if args.key?(:network_interface)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # ComputeInstanceDataSourceProperties represents the properties of a
+      # ComputeEngine resource that are stored in the DataSource.
+      class ComputeInstanceDataSourceProperties
+        include Google::Apis::Core::Hashable
+      
+        # The description of the Compute Engine instance.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The machine type of the instance.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Name of the compute instance backed up by the datasource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The total number of disks attached to the Instance.
+        # Corresponds to the JSON property `totalDiskCount`
+        # @return [Fixnum]
+        attr_accessor :total_disk_count
+      
+        # The sum of all the disk sizes.
+        # Corresponds to the JSON property `totalDiskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :total_disk_size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @name = args[:name] if args.key?(:name)
+          @total_disk_count = args[:total_disk_count] if args.key?(:total_disk_count)
+          @total_disk_size_gb = args[:total_disk_size_gb] if args.key?(:total_disk_size_gb)
+        end
+      end
+      
+      # A customer-supplied encryption key.
+      class CustomerEncryptionKey
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the encryption key that is stored in Google Cloud KMS.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Optional. The service account being used for the encryption request for the
+        # given KMS key. If absent, the Compute Engine default service account is used.
+        # Corresponds to the JSON property `kmsKeyServiceAccount`
+        # @return [String]
+        attr_accessor :kms_key_service_account
+      
+        # Optional. Specifies a 256-bit customer-supplied encryption key.
+        # Corresponds to the JSON property `rawKey`
+        # @return [String]
+        attr_accessor :raw_key
+      
+        # Optional. RSA-wrapped 2048-bit customer-supplied encryption key to either
+        # encrypt or decrypt this resource.
+        # Corresponds to the JSON property `rsaEncryptedKey`
+        # @return [String]
+        attr_accessor :rsa_encrypted_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_service_account = args[:kms_key_service_account] if args.key?(:kms_key_service_account)
+          @raw_key = args[:raw_key] if args.key?(:raw_key)
+          @rsa_encrypted_key = args[:rsa_encrypted_key] if args.key?(:rsa_encrypted_key)
+        end
+      end
+      
+      # Message describing a DataSource object. Datasource object used to represent
+      # Datasource details for both admin and basic view.
+      class DataSource
+        include Google::Apis::Core::Hashable
+      
+        # BackupConfigInfo has information about how the resource is configured for
+        # Backup and about the most recent backup to this vault.
+        # Corresponds to the JSON property `backupConfigInfo`
+        # @return [Google::Apis::BackupdrV1::BackupConfigInfo]
+        attr_accessor :backup_config_info
+      
+        # Number of backups in the data source.
+        # Corresponds to the JSON property `backupCount`
+        # @return [Fixnum]
+        attr_accessor :backup_count
+      
+        # The backup configuration state.
+        # Corresponds to the JSON property `configState`
+        # @return [String]
+        attr_accessor :config_state
+      
+        # Output only. The time when the instance was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # BackupApplianceApplication describes a Source Resource when it is an
+        # application backed up by a BackupAppliance.
+        # Corresponds to the JSON property `dataSourceBackupApplianceApplication`
+        # @return [Google::Apis::BackupdrV1::DataSourceBackupApplianceApplication]
+        attr_accessor :data_source_backup_appliance_application
+      
+        # DataSourceGcpResource is used for protected resources that are Google Cloud
+        # Resources. This name is easeier to understand than GcpResourceDataSource or
+        # GcpDataSourceResource
+        # Corresponds to the JSON property `dataSourceGcpResource`
+        # @return [Google::Apis::BackupdrV1::DataSourceGcpResource]
+        attr_accessor :data_source_gcp_resource
+      
+        # Server specified ETag for the ManagementServer resource to prevent
+        # simultaneous updates from overwiting each other.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Resource labels to represent user provided metadata. No labels
+        # currently defined:
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The DataSource resource instance state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The number of bytes (metadata and data) stored in this datasource.
+        # Corresponds to the JSON property `totalStoredBytes`
+        # @return [Fixnum]
+        attr_accessor :total_stored_bytes
+      
+        # Output only. The time when the instance was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_config_info = args[:backup_config_info] if args.key?(:backup_config_info)
+          @backup_count = args[:backup_count] if args.key?(:backup_count)
+          @config_state = args[:config_state] if args.key?(:config_state)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_source_backup_appliance_application = args[:data_source_backup_appliance_application] if args.key?(:data_source_backup_appliance_application)
+          @data_source_gcp_resource = args[:data_source_gcp_resource] if args.key?(:data_source_gcp_resource)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @total_stored_bytes = args[:total_stored_bytes] if args.key?(:total_stored_bytes)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # BackupApplianceApplication describes a Source Resource when it is an
+      # application backed up by a BackupAppliance.
+      class DataSourceBackupApplianceApplication
+        include Google::Apis::Core::Hashable
+      
+        # Appliance Id of the Backup Appliance.
+        # Corresponds to the JSON property `applianceId`
+        # @return [Fixnum]
+        attr_accessor :appliance_id
+      
+        # The appid field of the application within the Backup Appliance.
+        # Corresponds to the JSON property `applicationId`
+        # @return [Fixnum]
+        attr_accessor :application_id
+      
+        # The name of the Application as known to the Backup Appliance.
+        # Corresponds to the JSON property `applicationName`
+        # @return [String]
+        attr_accessor :application_name
+      
+        # Appliance name.
+        # Corresponds to the JSON property `backupAppliance`
+        # @return [String]
+        attr_accessor :backup_appliance
+      
+        # Hostid of the application host.
+        # Corresponds to the JSON property `hostId`
+        # @return [Fixnum]
+        attr_accessor :host_id
+      
+        # Hostname of the host where the application is running.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # The type of the application. e.g. VMBackup
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @appliance_id = args[:appliance_id] if args.key?(:appliance_id)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @application_name = args[:application_name] if args.key?(:application_name)
+          @backup_appliance = args[:backup_appliance] if args.key?(:backup_appliance)
+          @host_id = args[:host_id] if args.key?(:host_id)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # DataSourceGcpResource is used for protected resources that are Google Cloud
+      # Resources. This name is easeier to understand than GcpResourceDataSource or
+      # GcpDataSourceResource
+      class DataSourceGcpResource
+        include Google::Apis::Core::Hashable
+      
+        # ComputeInstanceDataSourceProperties represents the properties of a
+        # ComputeEngine resource that are stored in the DataSource.
+        # Corresponds to the JSON property `computeInstanceDatasourceProperties`
+        # @return [Google::Apis::BackupdrV1::ComputeInstanceDataSourceProperties]
+        attr_accessor :compute_instance_datasource_properties
+      
+        # Output only. Full resource pathname URL of the source Google Cloud resource.
+        # Corresponds to the JSON property `gcpResourcename`
+        # @return [String]
+        attr_accessor :gcp_resourcename
+      
+        # Location of the resource: //"global"/"unspecified".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The type of the Google Cloud resource. Use the Unified Resource Type, eg.
+        # compute.googleapis.com/Instance.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compute_instance_datasource_properties = args[:compute_instance_datasource_properties] if args.key?(:compute_instance_datasource_properties)
+          @gcp_resourcename = args[:gcp_resourcename] if args.key?(:gcp_resourcename)
+          @location = args[:location] if args.key?(:location)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -220,6 +1346,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A key/value pair to be used for storing metadata.
+      class Entry
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Key for the metadata entry.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Value for the metadata entry. These are free-form strings, and only
+        # have meaning as interpreted by the image running in the instance. The only
+        # restriction placed on values is that their size must be less than or equal to
+        # 262144 bytes (256 KiB).
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -277,6 +1431,451 @@ module Google
         end
       end
       
+      # Request message for FetchAccessToken.
+      class FetchAccessTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The generation of the backup to update.
+        # Corresponds to the JSON property `generationId`
+        # @return [Fixnum]
+        attr_accessor :generation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generation_id = args[:generation_id] if args.key?(:generation_id)
+        end
+      end
+      
+      # Response message for FetchAccessToken.
+      class FetchAccessTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token is valid until this time.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The location in bucket that can be used for reading.
+        # Corresponds to the JSON property `readLocation`
+        # @return [String]
+        attr_accessor :read_location
+      
+        # The downscoped token that was created.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # The location in bucket that can be used for writing.
+        # Corresponds to the JSON property `writeLocation`
+        # @return [String]
+        attr_accessor :write_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @read_location = args[:read_location] if args.key?(:read_location)
+          @token = args[:token] if args.key?(:token)
+          @write_location = args[:write_location] if args.key?(:write_location)
+        end
+      end
+      
+      # Response message for fetching usable BackupVaults.
+      class FetchUsableBackupVaultsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of BackupVault instances in the project for the specified location.
+        # If the '`location`' value in the request is "-", the response contains a list
+        # of instances from all locations. In case any location is unreachable, the
+        # response will only return backup vaults in reachable locations and the '
+        # unreachable' field will be populated with a list of unreachable locations.
+        # Corresponds to the JSON property `backupVaults`
+        # @return [Array<Google::Apis::BackupdrV1::BackupVault>]
+        attr_accessor :backup_vaults
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_vaults = args[:backup_vaults] if args.key?(:backup_vaults)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for finalizing a Backup.
+      class FinalizeBackupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource ID of the Backup resource to be finalized. This must be the
+        # same backup_id that was used in the InitiateBackupRequest.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        # The point in time when this backup was captured from the source. This will be
+        # assigned to the consistency_time field of the newly created Backup.
+        # Corresponds to the JSON property `consistencyTime`
+        # @return [String]
+        attr_accessor :consistency_time
+      
+        # This will be assigned to the description field of the newly created Backup.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The latest timestamp of data available in this Backup. This will be set on the
+        # newly created Backup.
+        # Corresponds to the JSON property `recoveryRangeEndTime`
+        # @return [String]
+        attr_accessor :recovery_range_end_time
+      
+        # The earliest timestamp of data available in this Backup. This will set on the
+        # newly created Backup.
+        # Corresponds to the JSON property `recoveryRangeStartTime`
+        # @return [String]
+        attr_accessor :recovery_range_start_time
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes after the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # The ExpireTime on the backup will be set to FinalizeTime plus this duration.
+        # If the resulting ExpireTime is less than EnforcedRetentionEndTime, then
+        # ExpireTime is set to EnforcedRetentionEndTime.
+        # Corresponds to the JSON property `retentionDuration`
+        # @return [String]
+        attr_accessor :retention_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @consistency_time = args[:consistency_time] if args.key?(:consistency_time)
+          @description = args[:description] if args.key?(:description)
+          @recovery_range_end_time = args[:recovery_range_end_time] if args.key?(:recovery_range_end_time)
+          @recovery_range_start_time = args[:recovery_range_start_time] if args.key?(:recovery_range_start_time)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @retention_duration = args[:retention_duration] if args.key?(:retention_duration)
+        end
+      end
+      
+      # GCPBackupPlanInfo captures the plan configuration details of Google Cloud
+      # resources at the time of backup.
+      class GcpBackupPlanInfo
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of backup plan by which workload is protected at the time of the
+        # backup. Format: projects/`project`/locations/`location`/backupPlans/`
+        # backupPlanId`
+        # Corresponds to the JSON property `backupPlan`
+        # @return [String]
+        attr_accessor :backup_plan
+      
+        # The rule id of the backup plan which triggered this backup in case of
+        # scheduled backup or used for
+        # Corresponds to the JSON property `backupPlanRuleId`
+        # @return [String]
+        attr_accessor :backup_plan_rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
+          @backup_plan_rule_id = args[:backup_plan_rule_id] if args.key?(:backup_plan_rule_id)
+        end
+      end
+      
+      # GcpBackupConfig captures the Backup configuration details for Google Cloud
+      # resources. All Google Cloud resources regardless of type are protected with
+      # backup plan associations.
+      class GcpBackupConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the backup plan.
+        # Corresponds to the JSON property `backupPlan`
+        # @return [String]
+        attr_accessor :backup_plan
+      
+        # The name of the backup plan association.
+        # Corresponds to the JSON property `backupPlanAssociation`
+        # @return [String]
+        attr_accessor :backup_plan_association
+      
+        # The description of the backup plan.
+        # Corresponds to the JSON property `backupPlanDescription`
+        # @return [String]
+        attr_accessor :backup_plan_description
+      
+        # The names of the backup plan rules which point to this backupvault
+        # Corresponds to the JSON property `backupPlanRules`
+        # @return [Array<String>]
+        attr_accessor :backup_plan_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
+          @backup_plan_association = args[:backup_plan_association] if args.key?(:backup_plan_association)
+          @backup_plan_description = args[:backup_plan_description] if args.key?(:backup_plan_description)
+          @backup_plan_rules = args[:backup_plan_rules] if args.key?(:backup_plan_rules)
+        end
+      end
+      
+      # Feature type of the Guest OS.
+      class GuestOsFeature
+        include Google::Apis::Core::Hashable
+      
+        # The ID of a supported feature.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Specifies the parameters to initialize this disk.
+      class InitializeParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the disk name. If not specified, the default is to use the
+        # name of the instance.
+        # Corresponds to the JSON property `diskName`
+        # @return [String]
+        attr_accessor :disk_name
+      
+        # Optional. URL of the zone where the disk should be created. Required for each
+        # regional disk associated with the instance.
+        # Corresponds to the JSON property `replicaZones`
+        # @return [Array<String>]
+        attr_accessor :replica_zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_name = args[:disk_name] if args.key?(:disk_name)
+          @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
+        end
+      end
+      
+      # request message for InitiateBackup.
+      class InitiateBackupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource ID of the Backup resource.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Response message for InitiateBackup.
+      class InitiateBackupResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the backup that was created.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # The generation id of the base backup. It is needed for the incremental backups.
+        # Corresponds to the JSON property `baseBackupGenerationId`
+        # @return [Fixnum]
+        attr_accessor :base_backup_generation_id
+      
+        # The generation id of the new backup.
+        # Corresponds to the JSON property `newBackupGenerationId`
+        # @return [Fixnum]
+        attr_accessor :new_backup_generation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @base_backup_generation_id = args[:base_backup_generation_id] if args.key?(:base_backup_generation_id)
+          @new_backup_generation_id = args[:new_backup_generation_id] if args.key?(:new_backup_generation_id)
+        end
+      end
+      
+      # Response message for listing BackupVaults.
+      class ListBackupVaultsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of BackupVault instances in the project for the specified location.
+        # If the '`location`' value in the request is "-", the response contains a list
+        # of instances from all locations. In case any location is unreachable, the
+        # response will only return backup vaults in reachable locations and the '
+        # unreachable' field will be populated with a list of unreachable locations.
+        # Corresponds to the JSON property `backupVaults`
+        # @return [Array<Google::Apis::BackupdrV1::BackupVault>]
+        attr_accessor :backup_vaults
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_vaults = args[:backup_vaults] if args.key?(:backup_vaults)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for listing Backups.
+      class ListBackupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Backup instances in the project for the specified location. If the
+        # '`location`' value in the request is "-", the response contains a list of
+        # instances from all locations. In case any location is unreachable, the
+        # response will only return data sources in reachable locations and the '
+        # unreachable' field will be populated with a list of unreachable locations.
+        # Corresponds to the JSON property `backups`
+        # @return [Array<Google::Apis::BackupdrV1::Backup>]
+        attr_accessor :backups
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backups = args[:backups] if args.key?(:backups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for listing DataSources.
+      class ListDataSourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DataSource instances in the project for the specified location. If
+        # the '`location`' value in the request is "-", the response contains a list of
+        # instances from all locations. In case any location is unreachable, the
+        # response will only return data sources in reachable locations and the '
+        # unreachable' field will be populated with a list of unreachable locations.
+        # Corresponds to the JSON property `dataSources`
+        # @return [Array<Google::Apis::BackupdrV1::DataSource>]
+        attr_accessor :data_sources
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_sources = args[:data_sources] if args.key?(:data_sources)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -307,7 +1906,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The list of ManagementServer instances in the project for the specified
-        # location. If the ``location`` value in the request is "-", the response
+        # location. If the '`location`' value in the request is "-", the response
         # contains a list of instances from all locations. In case any location is
         # unreachable, the response will only return management servers in reachable
         # locations and the 'unreachable' field will be populated with a list of
@@ -462,7 +2061,7 @@ module Google
       
         # Output only. The OAuth 2.0 client id is required to make API calls to the
         # BackupDR instance API of this ManagementServer. This is the value that should
-        # be provided in the ‘aud’ field of the OIDC ID Token (see openid specification
+        # be provided in the 'aud' field of the OIDC ID Token (see openid specification
         # https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
         # Corresponds to the JSON property `oauth2ClientId`
         # @return [String]
@@ -555,6 +2154,26 @@ module Google
         end
       end
       
+      # A metadata key/value entry.
+      class Metadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Array of key/value pairs. The total size of all keys and values must
+        # be less than 512 KB.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::BackupdrV1::Entry>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
       # Network configuration for ManagementServer instance.
       class NetworkConfig
         include Google::Apis::Core::Hashable
@@ -579,6 +2198,154 @@ module Google
         def update!(**args)
           @network = args[:network] if args.key?(:network)
           @peering_mode = args[:peering_mode] if args.key?(:peering_mode)
+        end
+      end
+      
+      # A network interface resource attached to an instance. s
+      class NetworkInterface
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An array of configurations for this interface. Currently, only one
+        # access config,ONE_TO_ONE_NAT is supported. If there are no accessConfigs
+        # specified, then this instance will have no external internet access.
+        # Corresponds to the JSON property `accessConfigs`
+        # @return [Array<Google::Apis::BackupdrV1::AccessConfig>]
+        attr_accessor :access_configs
+      
+        # Optional. An array of alias IP ranges for this network interface. You can only
+        # specify this field for network interfaces in VPC networks.
+        # Corresponds to the JSON property `aliasIpRanges`
+        # @return [Array<Google::Apis::BackupdrV1::AliasIpRange>]
+        attr_accessor :alias_ip_ranges
+      
+        # Optional. The prefix length of the primary internal IPv6 range.
+        # Corresponds to the JSON property `internalIpv6PrefixLength`
+        # @return [Fixnum]
+        attr_accessor :internal_ipv6_prefix_length
+      
+        # Optional. An array of IPv6 access configurations for this interface. Currently,
+        # only one IPv6 access config, DIRECT_IPV6, is supported. If there is no
+        # ipv6AccessConfig specified, then this instance will have no external IPv6
+        # Internet access.
+        # Corresponds to the JSON property `ipv6AccessConfigs`
+        # @return [Array<Google::Apis::BackupdrV1::AccessConfig>]
+        attr_accessor :ipv6_access_configs
+      
+        # Optional. [Output Only] One of EXTERNAL, INTERNAL to indicate whether the IP
+        # can be accessed from the Internet. This field is always inherited from its
+        # subnetwork.
+        # Corresponds to the JSON property `ipv6AccessType`
+        # @return [String]
+        attr_accessor :ipv6_access_type
+      
+        # Optional. An IPv6 internal network address for this network interface. To use
+        # a static internal IP address, it must be unused and in the same region as the
+        # instance's zone. If not specified, Google Cloud will automatically assign an
+        # internal IPv6 address from the instance's subnetwork.
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
+        # Output only. [Output Only] The name of the network interface, which is
+        # generated by the server.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. URL of the VPC network resource for this instance.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Optional. The URL of the network attachment that this interface should connect
+        # to in the following format: projects/`project_number`/regions/`region_name`/
+        # networkAttachments/`network_attachment_name`.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        # Optional. An IPv4 internal IP address to assign to the instance for this
+        # network interface. If not specified by the user, an unused internal IP is
+        # assigned by the system.
+        # Corresponds to the JSON property `networkIP`
+        # @return [String]
+        attr_accessor :network_ip
+      
+        # Optional. The type of vNIC to be used on this interface. This may be gVNIC or
+        # VirtioNet.
+        # Corresponds to the JSON property `nicType`
+        # @return [String]
+        attr_accessor :nic_type
+      
+        # Optional. The networking queue count that's specified by users for the network
+        # interface. Both Rx and Tx queues will be set to this number. It'll be empty if
+        # not specified by the users.
+        # Corresponds to the JSON property `queueCount`
+        # @return [Fixnum]
+        attr_accessor :queue_count
+      
+        # The stack type for this network interface.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
+      
+        # Optional. The URL of the Subnetwork resource for this instance.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_configs = args[:access_configs] if args.key?(:access_configs)
+          @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
+          @internal_ipv6_prefix_length = args[:internal_ipv6_prefix_length] if args.key?(:internal_ipv6_prefix_length)
+          @ipv6_access_configs = args[:ipv6_access_configs] if args.key?(:ipv6_access_configs)
+          @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+          @network_ip = args[:network_ip] if args.key?(:network_ip)
+          @nic_type = args[:nic_type] if args.key?(:nic_type)
+          @queue_count = args[:queue_count] if args.key?(:queue_count)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
+      # Node Affinity: the configuration of desired nodes onto which this Instance
+      # could be scheduled.
+      class NodeAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Corresponds to the label key of Node resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Defines the operation of node selection.
+        # Corresponds to the JSON property `operator`
+        # @return [String]
+        attr_accessor :operator
+      
+        # Optional. Corresponds to the label values of Node resource.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @operator = args[:operator] if args.key?(:operator)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -671,8 +2438,8 @@ module Google
       
         # Output only. Identifies whether the user has requested cancellation of the
         # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # error value with a google.rpc.Status.code of 1, corresponding to 'Code.
+        # CANCELLED'.
         # Corresponds to the JSON property `requestedCancellation`
         # @return [Boolean]
         attr_accessor :requested_cancellation
@@ -805,6 +2572,177 @@ module Google
         end
       end
       
+      # Message for deleting a DataSource.
+      class RemoveDataSourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes after the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Sets the scheduling options for an Instance.
+      class Scheduling
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies whether the instance should be automatically restarted if
+        # it is terminated by Compute Engine (not terminated by a user).
+        # Corresponds to the JSON property `automaticRestart`
+        # @return [Boolean]
+        attr_accessor :automatic_restart
+        alias_method :automatic_restart?, :automatic_restart
+      
+        # Optional. Specifies the termination action for the instance.
+        # Corresponds to the JSON property `instanceTerminationAction`
+        # @return [String]
+        attr_accessor :instance_termination_action
+      
+        # A SchedulingDuration represents a fixed-length span of time represented as a
+        # count of seconds and fractions of seconds at nanosecond resolution. It is
+        # independent of any calendar and concepts like "day" or "month". Range is
+        # approximately 10,000 years.
+        # Corresponds to the JSON property `localSsdRecoveryTimeout`
+        # @return [Google::Apis::BackupdrV1::SchedulingDuration]
+        attr_accessor :local_ssd_recovery_timeout
+      
+        # Optional. The minimum number of virtual CPUs this instance will consume when
+        # running on a sole-tenant node.
+        # Corresponds to the JSON property `minNodeCpus`
+        # @return [Fixnum]
+        attr_accessor :min_node_cpus
+      
+        # Optional. A set of node affinity and anti-affinity configurations. Overrides
+        # reservationAffinity.
+        # Corresponds to the JSON property `nodeAffinities`
+        # @return [Array<Google::Apis::BackupdrV1::NodeAffinity>]
+        attr_accessor :node_affinities
+      
+        # Optional. Defines the maintenance behavior for this instance.
+        # Corresponds to the JSON property `onHostMaintenance`
+        # @return [String]
+        attr_accessor :on_host_maintenance
+      
+        # Optional. Defines whether the instance is preemptible.
+        # Corresponds to the JSON property `preemptible`
+        # @return [Boolean]
+        attr_accessor :preemptible
+        alias_method :preemptible?, :preemptible
+      
+        # Optional. Specifies the provisioning model of the instance.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
+          @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
+          @local_ssd_recovery_timeout = args[:local_ssd_recovery_timeout] if args.key?(:local_ssd_recovery_timeout)
+          @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
+          @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
+          @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
+          @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+        end
+      end
+      
+      # A SchedulingDuration represents a fixed-length span of time represented as a
+      # count of seconds and fractions of seconds at nanosecond resolution. It is
+      # independent of any calendar and concepts like "day" or "month". Range is
+      # approximately 10,000 years.
+      class SchedulingDuration
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Span of time that's a fraction of a second at nanosecond resolution.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Optional. Span of time at a resolution of a second.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # A service account.
+      class ServiceAccount
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Email address of the service account.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Optional. The list of scopes to be made available for this service account.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
+      # ServiceLockInfo represents the details of a lock taken by the service on a
+      # Backup resource.
+      class ServiceLockInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the operation that created this lock. The lock will
+        # automatically be released when the operation completes.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -858,6 +2796,47 @@ module Google
         end
       end
       
+      # Request message for SetStatusInternal method.
+      class SetInternalStatusRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The new BackupConfigState to set for the DataSource.
+        # Corresponds to the JSON property `backupConfigState`
+        # @return [String]
+        attr_accessor :backup_config_state
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes after the first request. The request ID must be a
+        # valid UUID with the exception that zero UUID is not supported (00000000-0000-
+        # 0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. The value required for this method to work. This field must be the
+        # 32-byte SHA256 hash of the DataSourceID. The DataSourceID used here is only
+        # the final piece of the fully qualified resource path for this DataSource (i.e.
+        # the part after '.../dataSources/'). This field exists to make this method
+        # difficult to call since it is intended for use only by Backup Appliances.
+        # Corresponds to the JSON property `value`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_config_state = args[:backup_config_state] if args.key?(:backup_config_state)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -894,6 +2873,26 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # A set of instance tags.
+      class Tags
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An array of tags. Each tag must be 1-63 characters long, and comply
+        # with RFC1035.
+        # Corresponds to the JSON property `items`
+        # @return [Array<String>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
         end
       end
       
