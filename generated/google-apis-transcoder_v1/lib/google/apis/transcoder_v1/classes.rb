@@ -1767,10 +1767,10 @@ module Google
       class Output
         include Google::Apis::Core::Hashable
       
-        # URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty,
-        # the value is populated from Job.output_uri. See [Supported input and output
-        # formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-
-        # output-formats).
+        # URI for the output file(s). For example, `gs://my-bucket/outputs/`. Must be a
+        # directory and not a top-level bucket. If empty, the value is populated from
+        # Job.output_uri. See [Supported input and output formats](https://cloud.google.
+        # com/transcoder/docs/concepts/supported-input-and-output-formats).
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
