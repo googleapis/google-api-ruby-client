@@ -34,9 +34,6 @@ module Google
 
       # View and manage your Google Compute Engine resources
       AUTH_COMPUTE = 'https://www.googleapis.com/auth/compute'
-
-      # View your Google Compute Engine resources
-      AUTH_COMPUTE_READONLY = 'https://www.googleapis.com/auth/compute.readonly'
     end
   end
 end
