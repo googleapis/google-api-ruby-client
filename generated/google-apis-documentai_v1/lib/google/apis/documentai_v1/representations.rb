@@ -1042,6 +1042,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1RawDocument
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3919,6 +3937,8 @@ module Google
           property :display_name, as: 'displayName'
           property :document_schema, as: 'documentSchema', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema::Representation
       
+          property :gen_ai_model_info, as: 'genAiModelInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo::Representation
+      
           property :google_managed, as: 'googleManaged'
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
@@ -3945,6 +3965,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deprecation_time, as: 'deprecationTime'
           property :replacement_processor_version, as: 'replacementProcessorVersion'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_gen_ai_model_info, as: 'customGenAiModelInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo::Representation
+      
+          property :foundation_gen_ai_model_info, as: 'foundationGenAiModelInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_processor_version_id, as: 'baseProcessorVersionId'
+          property :custom_model_type, as: 'customModelType'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finetuning_allowed, as: 'finetuningAllowed'
+          property :min_train_labeled_documents, as: 'minTrainLabeledDocuments'
         end
       end
       
