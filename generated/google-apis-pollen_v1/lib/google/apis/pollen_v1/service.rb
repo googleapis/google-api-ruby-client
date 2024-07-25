@@ -58,24 +58,24 @@ module Google
         #   value 1, maximum value is 5).
         # @param [String] language_code
         #   Optional. Allows the client to choose the language for the response. If data
-        #   cannot be provided for that language the API uses the closest match. Allowed
-        #   values rely on the IETF BCP-47 standard. Default value is "en".
+        #   cannot be provided for that language, the API uses the closest match. Allowed
+        #   values rely on the IETF BCP-47 standard. The default value is "en".
         # @param [Float] location_latitude
         #   The latitude in degrees. It must be in the range [-90.0, +90.0].
         # @param [Float] location_longitude
         #   The longitude in degrees. It must be in the range [-180.0, +180.0].
         # @param [Fixnum] page_size
         #   Optional. The maximum number of daily info records to return per page. The
-        #   default and max value is 5 (5 days of data).
+        #   default and max value is 5, indicating 5 days of data.
         # @param [String] page_token
         #   Optional. A page token received from a previous daily call. It is used to
         #   retrieve the subsequent page. Note that when providing a value for the page
-        #   token all other request parameters provided must match the previous call that
+        #   token, all other request parameters provided must match the previous call that
         #   provided the page token.
         # @param [Boolean] plants_description
         #   Optional. Contains general information about plants, including details on
         #   their seasonality, special shapes and colors, information about allergic cross-
-        #   reactions, and plant photos.
+        #   reactions, and plant photos. The default value is "true".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
