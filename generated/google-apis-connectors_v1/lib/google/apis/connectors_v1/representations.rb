@@ -946,6 +946,7 @@ module Google
       class Connection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_operations_enabled, as: 'asyncOperationsEnabled'
           property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
       
           property :billing_config, as: 'billingConfig', class: Google::Apis::ConnectorsV1::BillingConfig, decorator: Google::Apis::ConnectorsV1::BillingConfig::Representation
@@ -1040,6 +1041,7 @@ module Google
           property :hpa_config, as: 'hpaConfig', class: Google::Apis::ConnectorsV1::HpaConfig, decorator: Google::Apis::ConnectorsV1::HpaConfig::Representation
       
           property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
+          property :migrate_deployment_model, as: 'migrateDeploymentModel'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
           property :resource_limits, as: 'resourceLimits', class: Google::Apis::ConnectorsV1::ResourceLimits, decorator: Google::Apis::ConnectorsV1::ResourceLimits::Representation
       
@@ -1091,6 +1093,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_ratelimit_window_seconds, :numeric_string => true, as: 'connectionRatelimitWindowSeconds'
           property :deployment_model, as: 'deploymentModel'
+          property :deployment_model_migration_state, as: 'deploymentModelMigrationState'
           property :hpa_config, as: 'hpaConfig', class: Google::Apis::ConnectorsV1::HpaConfig, decorator: Google::Apis::ConnectorsV1::HpaConfig::Representation
       
           property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
@@ -2027,10 +2030,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_type, as: 'dataType'
+          property :default_value, as: 'defaultValue'
           property :description, as: 'description'
           property :field, as: 'field'
           property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
       
+          property :nullable, as: 'nullable'
         end
       end
       

@@ -220,8 +220,9 @@ module Google
       
         # Optional. Omit query params from the redirect URI.
         # Corresponds to the JSON property `omitQueryParams`
-        # @return [String]
+        # @return [Boolean]
         attr_accessor :omit_query_params
+        alias_method :omit_query_params?, :omit_query_params
       
         # The scopes for which the user will authorize Google Cloud Connectors on the
         # connector data source.
@@ -550,6 +551,14 @@ module Google
       class Connection
         include Google::Apis::Core::Hashable
       
+        # Optional. Async operations enabled for the connection. If Async Operations is
+        # enabled, Connection allows the customers to initiate async long running
+        # operations using the actions API.
+        # Corresponds to the JSON property `asyncOperationsEnabled`
+        # @return [Boolean]
+        attr_accessor :async_operations_enabled
+        alias_method :async_operations_enabled?, :async_operations_enabled
+      
         # AuthConfig defines details of a authentication type.
         # Corresponds to the JSON property `authConfig`
         # @return [Google::Apis::ConnectorsV1::AuthConfig]
@@ -715,6 +724,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @async_operations_enabled = args[:async_operations_enabled] if args.key?(:async_operations_enabled)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @billing_config = args[:billing_config] if args.key?(:billing_config)
           @config_variables = args[:config_variables] if args.key?(:config_variables)
@@ -962,6 +972,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :internalclient_ratelimit_threshold
       
+        # Indicate whether connector is being migrated to cloud run deployment model.
+        # Corresponds to the JSON property `migrateDeploymentModel`
+        # @return [Boolean]
+        attr_accessor :migrate_deployment_model
+        alias_method :migrate_deployment_model?, :migrate_deployment_model
+      
         # Max QPS supported by the connector version before throttling of requests.
         # Corresponds to the JSON property `ratelimitThreshold`
         # @return [Fixnum]
@@ -992,6 +1008,7 @@ module Google
           @deployment_model = args[:deployment_model] if args.key?(:deployment_model)
           @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
           @internalclient_ratelimit_threshold = args[:internalclient_ratelimit_threshold] if args.key?(:internalclient_ratelimit_threshold)
+          @migrate_deployment_model = args[:migrate_deployment_model] if args.key?(:migrate_deployment_model)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
           @resource_requests = args[:resource_requests] if args.key?(:resource_requests)
@@ -1160,6 +1177,11 @@ module Google
         # @return [String]
         attr_accessor :deployment_model
       
+        # Output only. Status of the deployment model migration.
+        # Corresponds to the JSON property `deploymentModelMigrationState`
+        # @return [String]
+        attr_accessor :deployment_model_migration_state
+      
         # Autoscaling config for connector deployment system metrics.
         # Corresponds to the JSON property `hpaConfig`
         # @return [Google::Apis::ConnectorsV1::HpaConfig]
@@ -1199,6 +1221,7 @@ module Google
         def update!(**args)
           @connection_ratelimit_window_seconds = args[:connection_ratelimit_window_seconds] if args.key?(:connection_ratelimit_window_seconds)
           @deployment_model = args[:deployment_model] if args.key?(:deployment_model)
+          @deployment_model_migration_state = args[:deployment_model_migration_state] if args.key?(:deployment_model_migration_state)
           @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
           @internalclient_ratelimit_threshold = args[:internalclient_ratelimit_threshold] if args.key?(:internalclient_ratelimit_threshold)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
@@ -3847,7 +3870,8 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV1::MultipleSelectOption>]
         attr_accessor :multiple_select_options
       
-        # Required. Value separator.
+        # Required. Value separator. Only "," can be used for OAuth auth code flow scope
+        # field.
         # Corresponds to the JSON property `valueSeparator`
         # @return [String]
         attr_accessor :value_separator
@@ -4624,6 +4648,12 @@ module Google
         # @return [String]
         attr_accessor :data_type
       
+        # The following field specifies the default value of the Parameter provided by
+        # the external system if a value is not provided.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [Object]
+        attr_accessor :default_value
+      
         # A brief description of the field.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -4639,6 +4669,12 @@ module Google
         # @return [Google::Apis::ConnectorsV1::JsonSchema]
         attr_accessor :json_schema
       
+        # Specifies whether a null value is allowed.
+        # Corresponds to the JSON property `nullable`
+        # @return [Boolean]
+        attr_accessor :nullable
+        alias_method :nullable?, :nullable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4646,9 +4682,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_type = args[:data_type] if args.key?(:data_type)
+          @default_value = args[:default_value] if args.key?(:default_value)
           @description = args[:description] if args.key?(:description)
           @field = args[:field] if args.key?(:field)
           @json_schema = args[:json_schema] if args.key?(:json_schema)
+          @nullable = args[:nullable] if args.key?(:nullable)
         end
       end
       
