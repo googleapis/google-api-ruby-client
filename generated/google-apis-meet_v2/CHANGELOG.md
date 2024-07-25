@@ -1,5 +1,9 @@
 # Release history for google-apis-meet_v2
 
+### v0.3.0 (2024-07-25)
+
+* Regenerated from discovery document revision 20240716
+
 ### v0.2.0 (2024-06-30)
 
 * Regenerated from discovery document revision 20240626
