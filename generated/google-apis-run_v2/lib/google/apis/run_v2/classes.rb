@@ -647,6 +647,11 @@ module Google
       class GoogleCloudRunV2ExecutionReference
         include Google::Apis::Core::Hashable
       
+        # Status for the execution completion.
+        # Corresponds to the JSON property `completionStatus`
+        # @return [String]
+        attr_accessor :completion_status
+      
         # Creation timestamp of the execution.
         # Corresponds to the JSON property `completionTime`
         # @return [String]
@@ -656,6 +661,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # The deletion time of the execution. It is only populated as a response to a
+        # Delete request.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
       
         # Name of the execution.
         # Corresponds to the JSON property `name`
@@ -668,8 +679,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @completion_status = args[:completion_status] if args.key?(:completion_status)
           @completion_time = args[:completion_time] if args.key?(:completion_time)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -816,8 +829,7 @@ module Google
       class GoogleCloudRunV2GcsVolumeSource
         include Google::Apis::Core::Hashable
       
-        # Cloud Storage Bucket name. TODO (b/344678062) Fix the error validation once
-        # dynamic mounting is public.
+        # Cloud Storage Bucket name.
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
@@ -1898,7 +1910,8 @@ module Google
         attr_accessor :labels
       
         # Optional. Sets the maximum number of requests that each serving instance can
-        # receive.
+        # receive. If not specified or 0, defaults to 80 when requested CPU >= 1 and
+        # defaults to 1 when requested CPU < 1.
         # Corresponds to the JSON property `maxInstanceRequestConcurrency`
         # @return [Fixnum]
         attr_accessor :max_instance_request_concurrency
@@ -3886,40 +3899,6 @@ module Google
         end
       end
       
-      # Represents a storage location in Cloud Storage
-      class GoogleDevtoolsCloudbuildV1GcsLocation
-        include Google::Apis::Core::Hashable
-      
-        # Cloud Storage bucket. See https://cloud.google.com/storage/docs/naming#
-        # requirements
-        # Corresponds to the JSON property `bucket`
-        # @return [String]
-        attr_accessor :bucket
-      
-        # Cloud Storage generation for the object. If the generation is omitted, the
-        # latest generation will be used.
-        # Corresponds to the JSON property `generation`
-        # @return [Fixnum]
-        attr_accessor :generation
-      
-        # Cloud Storage object. See https://cloud.google.com/storage/docs/naming#
-        # objectnames
-        # Corresponds to the JSON property `object`
-        # @return [String]
-        attr_accessor :object
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bucket = args[:bucket] if args.key?(:bucket)
-          @generation = args[:generation] if args.key?(:generation)
-          @object = args[:object] if args.key?(:object)
-        end
-      end
-      
       # GitConfig is a configuration for git operations.
       class GoogleDevtoolsCloudbuildV1GitConfig
         include Google::Apis::Core::Hashable
@@ -4009,16 +3988,13 @@ module Google
       class GoogleDevtoolsCloudbuildV1HttpConfig
         include Google::Apis::Core::Hashable
       
-        # SecretVersion resource of the HTTP proxy URL. The proxy URL should be in
-        # format protocol://@]proxyhost[:port].
+        # SecretVersion resource of the HTTP proxy URL. The Service Account used in the
+        # build (either the default Service Account or user-specified Service Account)
+        # should have `secretmanager.versions.access` permissions on this secret. The
+        # proxy URL should be in format `protocol://@]proxyhost[:port]`.
         # Corresponds to the JSON property `proxySecretVersionName`
         # @return [String]
         attr_accessor :proxy_secret_version_name
-      
-        # Represents a storage location in Cloud Storage
-        # Corresponds to the JSON property `proxySslCaInfo`
-        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GcsLocation]
-        attr_accessor :proxy_ssl_ca_info
       
         def initialize(**args)
            update!(**args)
@@ -4027,7 +4003,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @proxy_secret_version_name = args[:proxy_secret_version_name] if args.key?(:proxy_secret_version_name)
-          @proxy_ssl_ca_info = args[:proxy_ssl_ca_info] if args.key?(:proxy_ssl_ca_info)
         end
       end
       
