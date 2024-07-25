@@ -167,14 +167,14 @@ module Google
         # @return [Google::Apis::PollenV1::Date]
         attr_accessor :date
       
-        # This list will include (up to) 15 pollen species affecting the location
+        # This list will include up to 15 pollen species affecting the location
         # specified in the request.
         # Corresponds to the JSON property `plantInfo`
         # @return [Array<Google::Apis::PollenV1::PlantInfo>]
         attr_accessor :plant_info
       
-        # This list will include (up to) three pollen types (grass, weed, tree)
-        # affecting the location specified in the request.
+        # This list will include up to three pollen types (GRASS, WEED, TREE) affecting
+        # the location specified in the request.
         # Corresponds to the JSON property `pollenTypeInfo`
         # @return [Array<Google::Apis::PollenV1::PollenTypeInfo>]
         attr_accessor :pollen_type_info
