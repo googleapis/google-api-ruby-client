@@ -459,7 +459,8 @@ module Google
         attr_accessor :name
       
         # Immutable. Type of DnsAuthorization. If unset during resource creation the
-        # following default will be used: - in location global: FIXED_RECORD.
+        # following default will be used: - in location `global`: FIXED_RECORD, - in
+        # other locations: PER_PROJECT_RECORD.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
