@@ -3402,9 +3402,9 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::MutationRecord>]
         attr_accessor :mutation_records
       
-        # The full REST resource name for this channel. The format is: projects/[
-        # PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is
-        # automatically assigned by the server on creation.
+        # Identifier. The full REST resource name for this channel. The format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [
+        # CHANNEL_ID] is automatically assigned by the server on creation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
