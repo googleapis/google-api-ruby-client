@@ -662,6 +662,12 @@ module Google
       class Issue
         include Google::Apis::Core::Hashable
       
+        # Output only. List of country codes (ISO 3166-1 alpha-2) where issue applies to
+        # the manufacturer product.
+        # Corresponds to the JSON property `applicableCountries`
+        # @return [Array<String>]
+        attr_accessor :applicable_countries
+      
         # If present, the attribute that triggered the issue. For more information about
         # attributes, see https://support.google.com/manufacturers/answer/6124116.
         # Corresponds to the JSON property `attribute`
@@ -710,6 +716,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @applicable_countries = args[:applicable_countries] if args.key?(:applicable_countries)
           @attribute = args[:attribute] if args.key?(:attribute)
           @description = args[:description] if args.key?(:description)
           @destination = args[:destination] if args.key?(:destination)
