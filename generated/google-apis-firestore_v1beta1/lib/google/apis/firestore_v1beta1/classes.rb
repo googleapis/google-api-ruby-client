@@ -1100,7 +1100,10 @@ module Google
         end
       end
       
-      # Nearest Neighbors search config.
+      # Nearest Neighbors search config. The ordering provided by FindNearest
+      # supersedes the order_by stage. If multiple documents have the same vector
+      # distance, the returned document order is not guaranteed to be stable between
+      # queries.
       class FindNearest
         include Google::Apis::Core::Hashable
       
@@ -2542,7 +2545,10 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::Cursor]
         attr_accessor :end_at
       
-        # Nearest Neighbors search config.
+        # Nearest Neighbors search config. The ordering provided by FindNearest
+        # supersedes the order_by stage. If multiple documents have the same vector
+        # distance, the returned document order is not guaranteed to be stable between
+        # queries.
         # Corresponds to the JSON property `findNearest`
         # @return [Google::Apis::FirestoreV1beta1::FindNearest]
         attr_accessor :find_nearest
