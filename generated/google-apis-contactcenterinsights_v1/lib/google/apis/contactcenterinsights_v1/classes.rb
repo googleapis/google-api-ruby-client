@@ -3272,6 +3272,11 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # Query source for the answer.
+        # Corresponds to the JSON property `querySource`
+        # @return [String]
+        attr_accessor :query_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3280,6 +3285,7 @@ module Google
         def update!(**args)
           @generator_name = args[:generator_name] if args.key?(:generator_name)
           @query = args[:query] if args.key?(:query)
+          @query_source = args[:query_source] if args.key?(:query_source)
         end
       end
       
@@ -6508,6 +6514,11 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # Query source for the answer.
+        # Corresponds to the JSON property `querySource`
+        # @return [String]
+        attr_accessor :query_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6516,6 +6527,7 @@ module Google
         def update!(**args)
           @generator_name = args[:generator_name] if args.key?(:generator_name)
           @query = args[:query] if args.key?(:query)
+          @query_source = args[:query_source] if args.key?(:query_source)
         end
       end
       

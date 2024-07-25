@@ -2165,6 +2165,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :generator_name, as: 'generatorName'
           property :query, as: 'query'
+          property :query_source, as: 'querySource'
         end
       end
       
@@ -3103,6 +3104,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :generator_name, as: 'generatorName'
           property :query, as: 'query'
+          property :query_source, as: 'querySource'
         end
       end
       
