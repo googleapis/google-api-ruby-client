@@ -80,6 +80,38 @@ module Google
         end
       end
       
+      # The AddIpOverride request message.
+      class GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        # Information about the IP or IP range override.
+        # Corresponds to the JSON property `ipOverrideData`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IpOverrideData]
+        attr_accessor :ip_override_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_override_data = args[:ip_override_data] if args.key?(:ip_override_data)
+        end
+      end
+      
+      # Response for AddIpOverride.
+      class GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Settings specific to keys that can be used by Android apps.
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         include Google::Apis::Core::Hashable
@@ -962,6 +994,35 @@ module Google
           @allow_all_bundle_ids = args[:allow_all_bundle_ids] if args.key?(:allow_all_bundle_ids)
           @allowed_bundle_ids = args[:allowed_bundle_ids] if args.key?(:allowed_bundle_ids)
           @apple_developer_id = args[:apple_developer_id] if args.key?(:apple_developer_id)
+        end
+      end
+      
+      # Information about the IP or IP range override.
+      class GoogleCloudRecaptchaenterpriseV1IpOverrideData
+        include Google::Apis::Core::Hashable
+      
+        # Required. The IP address to override (can be IPv4, IPv6 or CIDR). The IP
+        # override must be a valid IPv4 or IPv6 address, or a CIDR range. The IP
+        # override must be a public IP address. Example of IPv4: 168.192.5.6 Example of
+        # IPv6: 2001:0000:130F:0000:0000:09C0:876A:130B Example of IPv4 with CIDR: 168.
+        # 192.5.0/24 Example of IPv6 with CIDR: 2001:0DB8:1234::/48
+        # Corresponds to the JSON property `ip`
+        # @return [String]
+        attr_accessor :ip
+      
+        # Required. Describes the type of IP override.
+        # Corresponds to the JSON property `overrideType`
+        # @return [String]
+        attr_accessor :override_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip = args[:ip] if args.key?(:ip)
+          @override_type = args[:override_type] if args.key?(:override_type)
         end
       end
       

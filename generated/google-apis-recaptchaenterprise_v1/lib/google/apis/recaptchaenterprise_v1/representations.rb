@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +197,12 @@ module Google
       end
       
       class GoogleCloudRecaptchaenterpriseV1IosKeySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1IpOverrideData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -409,6 +427,20 @@ module Google
           property :language_code, as: 'languageCode'
           property :latest_verification_result, as: 'latestVerificationResult'
           property :username, as: 'username'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_override_data, as: 'ipOverrideData', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IpOverrideData, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IpOverrideData::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -669,6 +701,14 @@ module Google
           collection :allowed_bundle_ids, as: 'allowedBundleIds'
           property :apple_developer_id, as: 'appleDeveloperId', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AppleDeveloperId, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AppleDeveloperId::Representation
       
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1IpOverrideData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip, as: 'ip'
+          property :override_type, as: 'overrideType'
         end
       end
       
