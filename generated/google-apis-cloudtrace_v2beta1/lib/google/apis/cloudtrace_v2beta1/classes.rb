@@ -69,8 +69,8 @@ module Google
       class OutputConfig
         include Google::Apis::Core::Hashable
       
-        # The destination for writing trace data. Supported formats include: "bigquery.
-        # googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        # Required. The destination for writing trace data. Supported formats include: "
+        # bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
@@ -90,11 +90,11 @@ module Google
       class TraceSink
         include Google::Apis::Core::Hashable
       
-        # Required. The canonical sink resource name, unique within the project. Must be
-        # of the form: projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/
-        # 12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256
-        # characters and can include only the following characters: upper and lower-case
-        # alphanumeric characters, underscores, hyphens, and periods.
+        # Identifier. The canonical sink resource name, unique within the project. Must
+        # be of the form: projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"
+        # projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are
+        # limited to 256 characters and can include only the following characters: upper
+        # and lower-case alphanumeric characters, underscores, hyphens, and periods.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
