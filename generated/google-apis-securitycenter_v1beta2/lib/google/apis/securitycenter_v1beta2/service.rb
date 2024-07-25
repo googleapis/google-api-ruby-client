@@ -315,8 +315,8 @@ module Google
         
         # Update the ContainerThreatDetectionSettings resource.
         # @param [String] name
-        #   The resource name of the ContainerThreatDetectionSettings. Formats: *
-        #   organizations/`organization`/containerThreatDetectionSettings * folders/`
+        #   Identifier. The resource name of the ContainerThreatDetectionSettings. Formats:
+        #   * organizations/`organization`/containerThreatDetectionSettings * folders/`
         #   folder`/containerThreatDetectionSettings * projects/`project`/
         #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
         #   clusters/`cluster`/containerThreatDetectionSettings
@@ -355,7 +355,7 @@ module Google
         
         # Update the EventThreatDetectionSettings resource.
         # @param [String] name
-        #   The resource name of the EventThreatDetectionSettings. Formats: *
+        #   Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
         #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings] event_threat_detection_settings_object
@@ -432,9 +432,9 @@ module Google
         
         # Update the SecurityHealthAnalyticsSettings resource.
         # @param [String] name
-        #   The resource name of the SecurityHealthAnalyticsSettings. Formats: *
-        #   organizations/`organization`/securityHealthAnalyticsSettings * folders/`folder`
-        #   /securityHealthAnalyticsSettings * projects/`project`/
+        #   Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats:
+        #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
+        #   folder`/securityHealthAnalyticsSettings * projects/`project`/
         #   securityHealthAnalyticsSettings
         # @param [Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings] security_health_analytics_settings_object
         # @param [String] update_mask
@@ -471,9 +471,9 @@ module Google
         
         # Update the VirtualMachineThreatDetectionSettings resource.
         # @param [String] name
-        #   The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
-        #   organizations/`organization`/virtualMachineThreatDetectionSettings * folders/`
-        #   folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   Identifier. The resource name of the VirtualMachineThreatDetectionSettings.
+        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
+        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
         #   virtualMachineThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] virtual_machine_threat_detection_settings_object
         # @param [String] update_mask
@@ -510,8 +510,8 @@ module Google
         
         # Update the WebSecurityScannerSettings resource.
         # @param [String] name
-        #   The resource name of the WebSecurityScannerSettings. Formats: * organizations/`
-        #   organization`/webSecurityScannerSettings * folders/`folder`/
+        #   Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
+        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
         #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings] web_security_scanner_settings_object
         # @param [String] update_mask
@@ -1073,8 +1073,8 @@ module Google
         
         # Update the ContainerThreatDetectionSettings resource.
         # @param [String] name
-        #   The resource name of the ContainerThreatDetectionSettings. Formats: *
-        #   organizations/`organization`/containerThreatDetectionSettings * folders/`
+        #   Identifier. The resource name of the ContainerThreatDetectionSettings. Formats:
+        #   * organizations/`organization`/containerThreatDetectionSettings * folders/`
         #   folder`/containerThreatDetectionSettings * projects/`project`/
         #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
         #   clusters/`cluster`/containerThreatDetectionSettings
@@ -1113,7 +1113,7 @@ module Google
         
         # Update the EventThreatDetectionSettings resource.
         # @param [String] name
-        #   The resource name of the EventThreatDetectionSettings. Formats: *
+        #   Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
         #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings] event_threat_detection_settings_object
@@ -1190,9 +1190,9 @@ module Google
         
         # Update the SecurityHealthAnalyticsSettings resource.
         # @param [String] name
-        #   The resource name of the SecurityHealthAnalyticsSettings. Formats: *
-        #   organizations/`organization`/securityHealthAnalyticsSettings * folders/`folder`
-        #   /securityHealthAnalyticsSettings * projects/`project`/
+        #   Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats:
+        #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
+        #   folder`/securityHealthAnalyticsSettings * projects/`project`/
         #   securityHealthAnalyticsSettings
         # @param [Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings] security_health_analytics_settings_object
         # @param [String] update_mask
@@ -1229,9 +1229,9 @@ module Google
         
         # Update the VirtualMachineThreatDetectionSettings resource.
         # @param [String] name
-        #   The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
-        #   organizations/`organization`/virtualMachineThreatDetectionSettings * folders/`
-        #   folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   Identifier. The resource name of the VirtualMachineThreatDetectionSettings.
+        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
+        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
         #   virtualMachineThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] virtual_machine_threat_detection_settings_object
         # @param [String] update_mask
@@ -1268,8 +1268,8 @@ module Google
         
         # Update the WebSecurityScannerSettings resource.
         # @param [String] name
-        #   The resource name of the WebSecurityScannerSettings. Formats: * organizations/`
-        #   organization`/webSecurityScannerSettings * folders/`folder`/
+        #   Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
+        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
         #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings] web_security_scanner_settings_object
         # @param [String] update_mask
@@ -1800,8 +1800,8 @@ module Google
         
         # Update the ContainerThreatDetectionSettings resource.
         # @param [String] name
-        #   The resource name of the ContainerThreatDetectionSettings. Formats: *
-        #   organizations/`organization`/containerThreatDetectionSettings * folders/`
+        #   Identifier. The resource name of the ContainerThreatDetectionSettings. Formats:
+        #   * organizations/`organization`/containerThreatDetectionSettings * folders/`
         #   folder`/containerThreatDetectionSettings * projects/`project`/
         #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
         #   clusters/`cluster`/containerThreatDetectionSettings
@@ -1840,7 +1840,7 @@ module Google
         
         # Update the EventThreatDetectionSettings resource.
         # @param [String] name
-        #   The resource name of the EventThreatDetectionSettings. Formats: *
+        #   Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
         #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings] event_threat_detection_settings_object
@@ -1917,9 +1917,9 @@ module Google
         
         # Update the SecurityHealthAnalyticsSettings resource.
         # @param [String] name
-        #   The resource name of the SecurityHealthAnalyticsSettings. Formats: *
-        #   organizations/`organization`/securityHealthAnalyticsSettings * folders/`folder`
-        #   /securityHealthAnalyticsSettings * projects/`project`/
+        #   Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats:
+        #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
+        #   folder`/securityHealthAnalyticsSettings * projects/`project`/
         #   securityHealthAnalyticsSettings
         # @param [Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings] security_health_analytics_settings_object
         # @param [String] update_mask
@@ -1956,9 +1956,9 @@ module Google
         
         # Update the VirtualMachineThreatDetectionSettings resource.
         # @param [String] name
-        #   The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
-        #   organizations/`organization`/virtualMachineThreatDetectionSettings * folders/`
-        #   folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   Identifier. The resource name of the VirtualMachineThreatDetectionSettings.
+        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
+        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
         #   virtualMachineThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] virtual_machine_threat_detection_settings_object
         # @param [String] update_mask
@@ -1995,8 +1995,8 @@ module Google
         
         # Update the WebSecurityScannerSettings resource.
         # @param [String] name
-        #   The resource name of the WebSecurityScannerSettings. Formats: * organizations/`
-        #   organization`/webSecurityScannerSettings * folders/`folder`/
+        #   Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
+        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
         #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings] web_security_scanner_settings_object
         # @param [String] update_mask
@@ -2150,8 +2150,8 @@ module Google
         
         # Update the ContainerThreatDetectionSettings resource.
         # @param [String] name
-        #   The resource name of the ContainerThreatDetectionSettings. Formats: *
-        #   organizations/`organization`/containerThreatDetectionSettings * folders/`
+        #   Identifier. The resource name of the ContainerThreatDetectionSettings. Formats:
+        #   * organizations/`organization`/containerThreatDetectionSettings * folders/`
         #   folder`/containerThreatDetectionSettings * projects/`project`/
         #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
         #   clusters/`cluster`/containerThreatDetectionSettings
