@@ -171,6 +171,15 @@ module Google
         # @return [Google::Apis::WorkflowexecutionsV1::Error]
         attr_accessor :error
       
+        # Optional. Describes the level of the execution history feature to apply to
+        # this execution. If not specified, the level of the execution history feature
+        # will be determined by its workflow's execution history level. If the value is
+        # different from its workflow's value, it will override the workflow's execution
+        # history level for this exeuction.
+        # Corresponds to the JSON property `executionHistoryLevel`
+        # @return [String]
+        attr_accessor :execution_history_level
+      
         # Labels associated with this execution. Labels can contain at most 64 entries.
         # Keys and values can be no longer than 63 characters and can only contain
         # lowercase letters, numeric characters, underscores, and dashes. Label keys
@@ -231,6 +240,7 @@ module Google
           @duration = args[:duration] if args.key?(:duration)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
+          @execution_history_level = args[:execution_history_level] if args.key?(:execution_history_level)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @result = args[:result] if args.key?(:result)

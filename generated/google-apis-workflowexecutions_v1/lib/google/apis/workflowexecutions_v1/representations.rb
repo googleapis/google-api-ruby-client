@@ -186,6 +186,7 @@ module Google
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::WorkflowexecutionsV1::Error, decorator: Google::Apis::WorkflowexecutionsV1::Error::Representation
       
+          property :execution_history_level, as: 'executionHistoryLevel'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :result, as: 'result'
