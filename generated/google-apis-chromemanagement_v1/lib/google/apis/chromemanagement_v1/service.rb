@@ -550,10 +550,12 @@ module Google
         #   Query string to filter results, AND-separated fields in EBNF syntax. Note: OR
         #   operations are not supported in this filter. Supported filter fields: *
         #   app_name * app_type * install_type * number_of_permissions *
-        #   total_install_count * latest_profile_active_date * permission_name * app_id
+        #   total_install_count * latest_profile_active_date * permission_name * app_id *
+        #   manifest_versions
         # @param [String] order_by
         #   Field used to order results. Supported order by fields: * app_name * app_type *
-        #   install_type * number_of_permissions * total_install_count * app_id
+        #   install_type * number_of_permissions * total_install_count * app_id *
+        #   manifest_versions
         # @param [String] org_unit_id
         #   The ID of the organizational unit.
         # @param [Fixnum] page_size
@@ -937,7 +939,7 @@ module Google
         #   user - audio_severe_underrun_event - usb_peripherals_event -
         #   https_latency_change_event - network_state_change_event -
         #   wifi_signal_strength_event - vpn_connection_state_change_event -
-        #   app_install_event - app_uninstall_event - app_launch_event
+        #   app_install_event - app_uninstall_event - app_launch_event - os_crash_event
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
