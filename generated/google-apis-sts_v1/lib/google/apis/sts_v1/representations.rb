@@ -126,6 +126,7 @@ module Google
       class GoogleIdentityStsV1ExchangeTokenResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_boundary_session_key, :base64 => true, as: 'access_boundary_session_key'
           property :access_token, as: 'access_token'
           property :expires_in, as: 'expires_in'
           property :issued_token_type, as: 'issued_token_type'
