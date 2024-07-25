@@ -1,0 +1,7 @@
+{
+    "api_id": "authorizedbuyersmarketplace:v1alpha",
+    "name_pretty": "Authorized Buyers Marketplace API",
+    "distribution_name": "google-apis-authorizedbuyersmarketplace_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
