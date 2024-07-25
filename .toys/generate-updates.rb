@@ -70,12 +70,13 @@ end
 def list_apis_versions
   return requested.map { |request| request.split(":") } unless all
   path = git_cache.find("https://github.com/googleapis/discovery-artifact-manager.git",
-                        path: "discoveries", update: true)
-  apis_versions = Dir.children(path).map do |name|
-    match = /^(\w+)\.(\w+)\.json$/.match name
-    [match[1], match[2]] if match
+                        path: "discoveries/index.json", update: true)
+  apis_versions = []
+  JSON.parse(File.read path)["items"].each do |item|
+    next unless item["preferred"]
+    apis_versions << [item["name"], item["version"]]
   end
-  apis_versions.compact.shuffle
+  apis_versions.shuffle
 end
 
 def pr_single_gem api, version, index, total
