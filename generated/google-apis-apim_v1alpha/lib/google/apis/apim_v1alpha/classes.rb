@@ -141,6 +141,45 @@ module Google
         end
       end
       
+      # Message for requesting batch edit tags for ApiObservations
+      class BatchEditTagsApiObservationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The request message specifying the resources to update. A maximum of
+        # 1000 apiObservations can be modified in a batch.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::ApimV1alpha::EditTagsApiObservationsRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Message for response to edit Tags for ApiObservations
+      class BatchEditTagsApiObservationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # ApiObservations that were changed
+        # Corresponds to the JSON property `apiObservations`
+        # @return [Array<Google::Apis::ApimV1alpha::ApiObservation>]
+        attr_accessor :api_observations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_observations = args[:api_observations] if args.key?(:api_observations)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -164,6 +203,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Message for requesting edit tags for ApiObservation
+      class EditTagsApiObservationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Identifier of ApiObservation need to be edit tags Format example: "
+        # apigee.googleapis.com|us-west1|443"
+        # Corresponds to the JSON property `apiObservationId`
+        # @return [String]
+        attr_accessor :api_observation_id
+      
+        # Required. Tag actions to be applied
+        # Corresponds to the JSON property `tagActions`
+        # @return [Array<Google::Apis::ApimV1alpha::TagAction>]
+        attr_accessor :tag_actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_observation_id = args[:api_observation_id] if args.key?(:api_observation_id)
+          @tag_actions = args[:tag_actions] if args.key?(:tag_actions)
         end
       end
       
@@ -422,6 +487,32 @@ module Google
           @count = args[:count] if args.key?(:count)
           @data_type = args[:data_type] if args.key?(:data_type)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Message for response to listing tags
+      class ListApiObservationTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The tags from the specified project
+        # Corresponds to the JSON property `apiObservationTags`
+        # @return [Array<String>]
+        attr_accessor :api_observation_tags
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_observation_tags = args[:api_observation_tags] if args.key?(:api_observation_tags)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -883,6 +974,31 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Message for edit tag action
+      class TagAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. Action to be applied
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. Tag to be added or removed
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @tag = args[:tag] if args.key?(:tag)
         end
       end
     end

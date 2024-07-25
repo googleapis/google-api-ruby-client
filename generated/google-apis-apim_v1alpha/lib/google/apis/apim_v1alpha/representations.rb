@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchEditTagsApiObservationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchEditTagsApiObservationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +53,12 @@ module Google
       end
       
       class DisableObservationJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EditTagsApiObservationsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +119,12 @@ module Google
       end
       
       class HttpOperationQueryParam
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListApiObservationTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TagAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApiObservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -206,6 +236,22 @@ module Google
         end
       end
       
+      class BatchEditTagsApiObservationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::ApimV1alpha::EditTagsApiObservationsRequest, decorator: Google::Apis::ApimV1alpha::EditTagsApiObservationsRequest::Representation
+      
+        end
+      end
+      
+      class BatchEditTagsApiObservationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :api_observations, as: 'apiObservations', class: Google::Apis::ApimV1alpha::ApiObservation, decorator: Google::Apis::ApimV1alpha::ApiObservation::Representation
+      
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -215,6 +261,15 @@ module Google
       class DisableObservationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EditTagsApiObservationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_observation_id, as: 'apiObservationId'
+          collection :tag_actions, as: 'tagActions', class: Google::Apis::ApimV1alpha::TagAction, decorator: Google::Apis::ApimV1alpha::TagAction::Representation
+      
         end
       end
       
@@ -302,6 +357,14 @@ module Google
           property :count, :numeric_string => true, as: 'count'
           property :data_type, as: 'dataType'
           property :name, as: 'name'
+        end
+      end
+      
+      class ListApiObservationTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :api_observation_tags, as: 'apiObservationTags'
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -426,6 +489,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TagAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :tag, as: 'tag'
         end
       end
     end

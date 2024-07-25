@@ -124,6 +124,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # ListApiObservationTags lists all extant tags on any observation in the given
+        # project.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of tags. Format: projects/`
+        #   project`/locations/`location`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of tags to return. The service may return fewer
+        #   than this value. If unspecified, at most 10 tags will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListApiObservationTags` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListApiObservationTags` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApimV1alpha::ListApiObservationTagsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApimV1alpha::ListApiObservationTagsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_api_observation_tags(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}:listApiObservationTags', options)
+          command.response_representation = Google::Apis::ApimV1alpha::ListApiObservationTagsResponse::Representation
+          command.response_class = Google::Apis::ApimV1alpha::ListApiObservationTagsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # CreateObservationJob creates a new ObservationJob but does not have any
         # effecton its own. It is a configuration that can be used in an Observation Job
         # to collect data about existing APIs.
@@ -308,7 +351,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListObservationJobs gets all ObservationJobs for a given project and location
+        # ListObservationJobs gets all ObservationJobs for a given project and location.
         # @param [String] parent
         #   Required. The parent, which owns this collection of ObservationJobs. Format:
         #   projects/`project`/locations/`location`
@@ -351,6 +394,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # BatchEditTagsApiObservations adds or removes Tags for ApiObservations.
+        # @param [String] parent
+        #   Required. The parent resource shared by all ApiObservations being edited.
+        #   Format: projects/`project`/locations/`location`/observationJobs/`
+        #   observation_job`
+        # @param [Google::Apis::ApimV1alpha::BatchEditTagsApiObservationsRequest] batch_edit_tags_api_observations_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApimV1alpha::BatchEditTagsApiObservationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApimV1alpha::BatchEditTagsApiObservationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_edit_tags_api_observations(parent, batch_edit_tags_api_observations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/apiObservations:batchEditTags', options)
+          command.request_representation = Google::Apis::ApimV1alpha::BatchEditTagsApiObservationsRequest::Representation
+          command.request_object = batch_edit_tags_api_observations_request_object
+          command.response_representation = Google::Apis::ApimV1alpha::BatchEditTagsApiObservationsResponse::Representation
+          command.response_class = Google::Apis::ApimV1alpha::BatchEditTagsApiObservationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # GetApiObservation retrieves a single ApiObservation by name.
         # @param [String] name
         #   Required. The name of the ApiObservation to retrieve. Format: projects/`
@@ -384,7 +462,7 @@ module Google
         end
         
         # ListApiObservations gets all ApiObservations for a given project and location
-        # and ObservationJob
+        # and ObservationJob.
         # @param [String] parent
         #   Required. The parent, which owns this collection of ApiObservations. Format:
         #   projects/`project`/locations/`location`/observationJobs/`observation_job`
@@ -460,7 +538,7 @@ module Google
         end
         
         # ListApiOperations gets all ApiOperations for a given project and location and
-        # ObservationJob and ApiObservation
+        # ObservationJob and ApiObservation.
         # @param [String] parent
         #   Required. The parent, which owns this collection of ApiOperations. Format:
         #   projects/`project`/locations/`location`/observationJobs/`observation_job`/
@@ -619,7 +697,7 @@ module Google
         end
         
         # ListObservationSources gets all ObservationSources for a given project and
-        # location
+        # location.
         # @param [String] parent
         #   Required. The parent, which owns this collection of ObservationSources. Format:
         #   projects/`project`/locations/`location`
