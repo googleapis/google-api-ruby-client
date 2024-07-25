@@ -532,6 +532,7 @@ module Google
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :storage_config, as: 'storageConfig', class: Google::Apis::ComposerV1::StorageConfig, decorator: Google::Apis::ComposerV1::StorageConfig::Representation
