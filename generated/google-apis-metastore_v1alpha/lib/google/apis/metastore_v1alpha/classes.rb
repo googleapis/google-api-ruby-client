@@ -717,6 +717,66 @@ module Google
         end
       end
       
+      # Custom configuration used to specify regions that the metastore service runs
+      # in. Currently only supported in the us multi-region.
+      class CustomRegionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of read-only regions where the metastore service runs in.
+        # These regions should be part (or subset) of the multi-region.
+        # Corresponds to the JSON property `readOnlyRegions`
+        # @return [Array<String>]
+        attr_accessor :read_only_regions
+      
+        # Required. The list of read-write regions where the metastore service runs in.
+        # These regions should be part (or subset) of the multi-region.
+        # Corresponds to the JSON property `readWriteRegions`
+        # @return [Array<String>]
+        attr_accessor :read_write_regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @read_only_regions = args[:read_only_regions] if args.key?(:read_only_regions)
+          @read_write_regions = args[:read_write_regions] if args.key?(:read_write_regions)
+        end
+      end
+      
+      # Metadata about a custom region. This is only populated if the region is a
+      # custom region. For single/multi regions, it will be empty.
+      class CustomRegionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The read-only regions for this custom region.
+        # Corresponds to the JSON property `optionalReadOnlyRegions`
+        # @return [Array<String>]
+        attr_accessor :optional_read_only_regions
+      
+        # The read-write regions for this custom region.
+        # Corresponds to the JSON property `requiredReadWriteRegions`
+        # @return [Array<String>]
+        attr_accessor :required_read_write_regions
+      
+        # The Spanner witness region for this custom region.
+        # Corresponds to the JSON property `witnessRegion`
+        # @return [String]
+        attr_accessor :witness_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @optional_read_only_regions = args[:optional_read_only_regions] if args.key?(:optional_read_only_regions)
+          @required_read_write_regions = args[:required_read_write_regions] if args.key?(:required_read_write_regions)
+          @witness_region = args[:witness_region] if args.key?(:witness_region)
+        end
+      end
+      
       # Specifies how metastore metadata should be integrated with the Data Catalog
       # service.
       class DataCatalogConfig
@@ -1494,6 +1554,11 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
+        # Possible configurations supported if the current region is a custom region.
+        # Corresponds to the JSON property `customRegionMetadata`
+        # @return [Array<Google::Apis::MetastoreV1alpha::CustomRegionMetadata>]
+        attr_accessor :custom_region_metadata
+      
         # The metadata for the multi-region that includes the constituent regions. The
         # metadata is only populated if the region is multi-region. For single region or
         # custom dual region, it will be empty.
@@ -1514,6 +1579,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_region_metadata = args[:custom_region_metadata] if args.key?(:custom_region_metadata)
           @multi_region_metadata = args[:multi_region_metadata] if args.key?(:multi_region_metadata)
           @supported_hive_metastore_versions = args[:supported_hive_metastore_versions] if args.key?(:supported_hive_metastore_versions)
         end
@@ -1799,6 +1865,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The multi-region config for the Dataproc Metastore service.
+      class MultiRegionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of root CA certificates that a gRPC client uses to
+        # connect to a multi-regional Dataproc Metastore service.
+        # Corresponds to the JSON property `certificates`
+        # @return [Array<Google::Apis::MetastoreV1alpha::RootCaCertificate>]
+        attr_accessor :certificates
+      
+        # Custom configuration used to specify regions that the metastore service runs
+        # in. Currently only supported in the us multi-region.
+        # Corresponds to the JSON property `customRegionConfig`
+        # @return [Google::Apis::MetastoreV1alpha::CustomRegionConfig]
+        attr_accessor :custom_region_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificates = args[:certificates] if args.key?(:certificates)
+          @custom_region_config = args[:custom_region_config] if args.key?(:custom_region_config)
         end
       end
       
@@ -2257,6 +2350,32 @@ module Google
         end
       end
       
+      # A gRPC client must install all root CA certificates to connect to a multi-
+      # regional Dataproc Metastore service and achieve failover.
+      class RootCaCertificate
+        include Google::Apis::Core::Hashable
+      
+        # The root CA certificate in PEM format. The maximum length is 65536 bytes.
+        # Corresponds to the JSON property `certificate`
+        # @return [String]
+        attr_accessor :certificate
+      
+        # The certificate expiration time in timestamp format.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate = args[:certificate] if args.key?(:certificate)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+        end
+      end
+      
       # Represents the scaling configuration of a metastore service.
       class ScalingConfig
         include Google::Apis::Core::Hashable
@@ -2432,6 +2551,11 @@ module Google
         # @return [Google::Apis::MetastoreV1alpha::MetadataManagementActivity]
         attr_accessor :metadata_management_activity
       
+        # The multi-region config for the Dataproc Metastore service.
+        # Corresponds to the JSON property `multiRegionConfig`
+        # @return [Google::Apis::MetastoreV1alpha::MultiRegionConfig]
+        attr_accessor :multi_region_config
+      
         # Immutable. The relative resource name of the metastore service, in the
         # following format:projects/`project_number`/locations/`location_id`/services/`
         # service_id`.
@@ -2520,6 +2644,7 @@ module Google
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @metadata_integration = args[:metadata_integration] if args.key?(:metadata_integration)
           @metadata_management_activity = args[:metadata_management_activity] if args.key?(:metadata_management_activity)
+          @multi_region_config = args[:multi_region_config] if args.key?(:multi_region_config)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_config = args[:network_config] if args.key?(:network_config)
