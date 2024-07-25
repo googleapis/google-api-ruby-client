@@ -1226,7 +1226,7 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::MachinePreferences]
         attr_accessor :machine_preferences
       
-        # Optional. Preferences for multithreading support.
+        # Optional. Preferences for multithreading support on Windows Server.
         # Corresponds to the JSON property `multithreading`
         # @return [String]
         attr_accessor :multithreading
@@ -4745,7 +4745,8 @@ module Google
         # @return [String]
         attr_accessor :commitment_plan
       
-        # Optional. License type of the OS image.
+        # Optional. License type for premium images (RHEL, RHEL for SAP, SLES, SLES for
+        # SAP, Windows Server).
         # Corresponds to the JSON property `licenseType`
         # @return [String]
         attr_accessor :license_type
