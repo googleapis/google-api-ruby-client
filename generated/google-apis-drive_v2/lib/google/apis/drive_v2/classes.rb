@@ -2197,7 +2197,8 @@ module Google
         attr_accessor :sharing_user
       
         # Shortcut file details. Only populated for shortcut files, which have the
-        # mimeType field set to `application/vnd.google-apps.shortcut`.
+        # mimeType field set to `application/vnd.google-apps.shortcut`. Can only be set
+        # on `files.insert` requests.
         # Corresponds to the JSON property `shortcutDetails`
         # @return [Google::Apis::DriveV2::File::ShortcutDetails]
         attr_accessor :shortcut_details
@@ -3013,11 +3014,13 @@ module Google
         end
         
         # Shortcut file details. Only populated for shortcut files, which have the
-        # mimeType field set to `application/vnd.google-apps.shortcut`.
+        # mimeType field set to `application/vnd.google-apps.shortcut`. Can only be set
+        # on `files.insert` requests.
         class ShortcutDetails
           include Google::Apis::Core::Hashable
         
-          # The ID of the file that this shortcut points to.
+          # The ID of the file that this shortcut points to. Can only be set on `files.
+          # insert` requests.
           # Corresponds to the JSON property `targetId`
           # @return [String]
           attr_accessor :target_id
