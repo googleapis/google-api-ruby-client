@@ -54,9 +54,9 @@ module Google
         
         # Filters an organization's assets and groups them by their specified properties.
         # @param [String] parent
-        #   Required. The name of the parent to group the assets by. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent to group the assets by. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -91,8 +91,8 @@ module Google
         # @param [String] parent
         #   Required. The name of the parent resource that contains the assets. The value
         #   that you can specify on parent depends on the method in which you specify
-        #   parent. You can specify one of the following values: "organizations/[
-        #   organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+        #   parent. You can specify one of the following values: `organizations/[
+        #   organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
         # @param [String] compare_duration
         #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
         #   is updated to indicate whether the asset was added, removed, or remained
@@ -255,8 +255,8 @@ module Google
         # Creates a BigQuery export.
         # @param [String] parent
         #   Required. The name of the parent resource of the new BigQuery export. Its
-        #   format is "organizations/[organization_id]", "folders/[folder_id]", or "
-        #   projects/[project_id]".
+        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, or `
+        #   projects/[project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -295,9 +295,10 @@ module Google
         
         # Deletes an existing BigQuery export.
         # @param [String] name
-        #   Required. The name of the BigQuery export to delete. Its format is
-        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
-        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. The name of the BigQuery export to delete. Its format is `
+        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
+        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
+        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -327,9 +328,10 @@ module Google
         
         # Gets a BigQuery export.
         # @param [String] name
-        #   Required. Name of the BigQuery export to retrieve. Its format is organizations/
-        #   `organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
-        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. Name of the BigQuery export to retrieve. Its format is `
+        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
+        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
+        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -364,8 +366,8 @@ module Google
         # returned.
         # @param [String] parent
         #   Required. The parent, which owns the collection of BigQuery exports. Its
-        #   format is "organizations/[organization_id]", "folders/[folder_id]", "projects/[
-        #   project_id]".
+        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of configs to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -448,9 +450,9 @@ module Google
         # Validates the given Event Threat Detection custom module.
         # @param [String] parent
         #   Required. Resource name of the parent to validate the Custom Module under. Its
-        #   format is: * "organizations/`organization`/eventThreatDetectionSettings". * "
-        #   folders/`folder`/eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   format is: * `organizations/`organization`/eventThreatDetectionSettings`. * `
+        #   folders/`folder`/eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest] validate_event_threat_detection_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -485,10 +487,10 @@ module Google
         # given Resource Manager parent, and also creates inherited custom modules for
         # all descendants of the given parent. These modules are enabled by default.
         # @param [String] parent
-        #   Required. The new custom module's parent. Its format is: * "organizations/`
-        #   organization`/eventThreatDetectionSettings". * "folders/`folder`/
-        #   eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. The new custom module's parent. Its format is: * `organizations/`
+        #   organization`/eventThreatDetectionSettings`. * `folders/`folder`/
+        #   eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -523,10 +525,10 @@ module Google
         # descendants in the Resource Manager hierarchy. This method is only supported
         # for resident custom modules.
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is: * "organizations/
-        #   `organization`/eventThreatDetectionSettings/customModules/`module`". * "
-        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module`". * "
-        #   projects/`project`/eventThreatDetectionSettings/customModules/`module`".
+        #   Required. Name of the custom module to delete. Its format is: * `organizations/
+        #   `organization`/eventThreatDetectionSettings/customModules/`module``. * `
+        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module``. * `
+        #   projects/`project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -556,10 +558,10 @@ module Google
         
         # Gets an Event Threat Detection custom module.
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is: * "organizations/`
-        #   organization`/eventThreatDetectionSettings/customModules/`module`". * "folders/
-        #   `folder`/eventThreatDetectionSettings/customModules/`module`". * "projects/`
-        #   project`/eventThreatDetectionSettings/customModules/`module`".
+        #   Required. Name of the custom module to get. Its format is: * `organizations/`
+        #   organization`/eventThreatDetectionSettings/customModules/`module``. * `folders/
+        #   `folder`/eventThreatDetectionSettings/customModules/`module``. * `projects/`
+        #   project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -591,10 +593,10 @@ module Google
         # parent. This includes resident modules defined at the scope of the parent
         # along with modules inherited from ancestors.
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * "
-        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
-        #   /eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. Name of the parent to list custom modules under. Its format is: * `
+        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
+        #   /eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
         #   The maximum number of modules to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -636,10 +638,10 @@ module Google
         # Lists all resident Event Threat Detection custom modules under the given
         # Resource Manager parent and its descendants.
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * "
-        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
-        #   /eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. Name of the parent to list custom modules under. Its format is: * `
+        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
+        #   /eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
         #   The maximum number of modules to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -687,10 +689,10 @@ module Google
         # cannot be changed.
         # @param [String] name
         #   Immutable. The resource name of the Event Threat Detection custom module. Its
-        #   format is: * "organizations/`organization`/eventThreatDetectionSettings/
-        #   customModules/`module`". * "folders/`folder`/eventThreatDetectionSettings/
-        #   customModules/`module`". * "projects/`project`/eventThreatDetectionSettings/
-        #   customModules/`module`".
+        #   format is: * `organizations/`organization`/eventThreatDetectionSettings/
+        #   customModules/`module``. * `folders/`folder`/eventThreatDetectionSettings/
+        #   customModules/`module``. * `projects/`project`/eventThreatDetectionSettings/
+        #   customModules/`module``.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] update_mask
         #   The list of fields to be updated. If empty all mutable fields will be updated.
@@ -727,11 +729,11 @@ module Google
         # Gets an effective Event Threat Detection custom module at the given level.
         # @param [String] name
         #   Required. The resource name of the effective Event Threat Detection custom
-        #   module. Its format is: * "organizations/`organization`/
-        #   eventThreatDetectionSettings/effectiveCustomModules/`module`". * "folders/`
-        #   folder`/eventThreatDetectionSettings/effectiveCustomModules/`module`". * "
+        #   module. Its format is: * `organizations/`organization`/
+        #   eventThreatDetectionSettings/effectiveCustomModules/`module``. * `folders/`
+        #   folder`/eventThreatDetectionSettings/effectiveCustomModules/`module``. * `
         #   projects/`project`/eventThreatDetectionSettings/effectiveCustomModules/`module`
-        #   ".
+        #   `.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -763,10 +765,10 @@ module Google
         # This includes resident modules defined at the scope of the parent along with
         # modules inherited from its ancestors.
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules for. Its format is: * "
-        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
-        #   /eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. Name of the parent to list custom modules for. Its format is: * `
+        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
+        #   /eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
         #   The maximum number of modules to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -810,9 +812,9 @@ module Google
         # parent can be either an organization, folder or project. The findings matched
         # by the filter will be muted after the LRO is done.
         # @param [String] parent
-        #   Required. The parent, at which bulk action needs to be applied. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]
-        #   ".
+        #   Required. The parent, at which bulk action needs to be applied. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]
+        #   `.
         # @param [Google::Apis::SecuritycenterV1::BulkMuteFindingsRequest] bulk_mute_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -845,9 +847,9 @@ module Google
         
         # Creates a mute config.
         # @param [String] parent
-        #   Required. Resource name of the new mute configs's parent. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. Resource name of the new mute configs's parent. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -886,12 +888,12 @@ module Google
         
         # Deletes an existing mute config.
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to delete. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -921,12 +923,12 @@ module Google
         
         # Gets a mute config.
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -957,8 +959,8 @@ module Google
         # Lists mute configs.
         # @param [String] parent
         #   Required. The parent, which owns the collection of mute configs. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of configs to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -998,12 +1000,12 @@ module Google
         
         # Updates a mute config.
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format "
-        #   organizations/`organization`/muteConfigs/`mute_config`" "folders/`folder`/
-        #   muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`" "
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`" "
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`" "projects/`
-        #   project`/locations/global/muteConfigs/`mute_config`"
+        #   This field will be ignored if provided on config creation. Format `
+        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
+        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
+        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
+        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
+        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
         #   The list of fields to be updated. If empty all mutable fields will be updated.
@@ -1039,9 +1041,9 @@ module Google
         
         # Creates a mute config.
         # @param [String] parent
-        #   Required. Resource name of the new mute configs's parent. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. Resource name of the new mute configs's parent. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -1080,12 +1082,12 @@ module Google
         
         # Deletes an existing mute config.
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to delete. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1115,12 +1117,12 @@ module Google
         
         # Gets a mute config.
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1151,8 +1153,8 @@ module Google
         # Lists mute configs.
         # @param [String] parent
         #   Required. The parent, which owns the collection of mute configs. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of configs to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -1192,12 +1194,12 @@ module Google
         
         # Updates a mute config.
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format "
-        #   organizations/`organization`/muteConfigs/`mute_config`" "folders/`folder`/
-        #   muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`" "
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`" "
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`" "projects/`
-        #   project`/locations/global/muteConfigs/`mute_config`"
+        #   This field will be ignored if provided on config creation. Format `
+        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
+        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
+        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
+        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
+        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
         #   The list of fields to be updated. If empty all mutable fields will be updated.
@@ -1234,8 +1236,8 @@ module Google
         # Creates a notification config.
         # @param [String] parent
         #   Required. Resource name of the new notification config's parent. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -1273,10 +1275,10 @@ module Google
         
         # Deletes a notification config.
         # @param [String] name
-        #   Required. Name of the notification config to delete. Its format is "
-        #   organizations/[organization_id]/notificationConfigs/[config_id]", "folders/[
-        #   folder_id]/notificationConfigs/[config_id]", or "projects/[project_id]/
-        #   notificationConfigs/[config_id]".
+        #   Required. Name of the notification config to delete. Its format is `
+        #   organizations/[organization_id]/notificationConfigs/[config_id]`, `folders/[
+        #   folder_id]/notificationConfigs/[config_id]`, or `projects/[project_id]/
+        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1306,10 +1308,10 @@ module Google
         
         # Gets a notification config.
         # @param [String] name
-        #   Required. Name of the notification config to get. Its format is "organizations/
-        #   [organization_id]/notificationConfigs/[config_id]", "folders/[folder_id]/
-        #   notificationConfigs/[config_id]", or "projects/[project_id]/
-        #   notificationConfigs/[config_id]".
+        #   Required. Name of the notification config to get. Its format is `organizations/
+        #   [organization_id]/notificationConfigs/[config_id]`, `folders/[folder_id]/
+        #   notificationConfigs/[config_id]`, or `projects/[project_id]/
+        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1425,10 +1427,10 @@ module Google
         # SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
         # parent. These modules are enabled by default.
         # @param [String] parent
-        #   Required. Resource name of the new custom module's parent. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
-        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Resource name of the new custom module's parent. Its format is `
+        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
+        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1463,11 +1465,11 @@ module Google
         # descendants in the CRM hierarchy. This method is only supported for resident
         # custom modules.
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is "organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
-        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule`"
+        #   Required. Name of the custom module to delete. Its format is `organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
+        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1497,11 +1499,11 @@ module Google
         
         # Retrieves a SecurityHealthAnalyticsCustomModule.
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is "organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
-        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule`"
+        #   Required. Name of the custom module to get. Its format is `organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
+        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1533,10 +1535,10 @@ module Google
         # parent. This includes resident modules defined at the scope of the parent, and
         # inherited modules, inherited from CRM ancestors.
         # @param [String] parent
-        #   Required. Name of parent to list custom modules. Its format is "organizations/`
-        #   organization`/securityHealthAnalyticsSettings", "folders/`folder`/
-        #   securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Name of parent to list custom modules. Its format is `organizations/`
+        #   organization`/securityHealthAnalyticsSettings`, `folders/`folder`/
+        #   securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -1574,10 +1576,10 @@ module Google
         # Returns a list of all resident SecurityHealthAnalyticsCustomModules under the
         # given CRM parent and all of the parent’s CRM descendants.
         # @param [String] parent
-        #   Required. Name of parent to list descendant custom modules. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
-        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Name of parent to list descendant custom modules. Its format is `
+        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
+        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -1698,12 +1700,12 @@ module Google
         
         # Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
         # @param [String] name
-        #   Required. Name of the effective custom module to get. Its format is "
+        #   Required. Name of the effective custom module to get. Its format is `
         #   organizations/`organization`/securityHealthAnalyticsSettings/
-        #   effectiveCustomModules/`customModule`", "folders/`folder`/
-        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule`", or "
+        #   effectiveCustomModules/`customModule``, `folders/`folder`/
+        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule``, or `
         #   projects/`project`/securityHealthAnalyticsSettings/effectiveCustomModules/`
-        #   customModule`"
+        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1735,10 +1737,10 @@ module Google
         # given parent. This includes resident modules defined at the scope of the
         # parent, and inherited modules, inherited from CRM ancestors.
         # @param [String] parent
-        #   Required. Name of parent to list effective custom modules. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
-        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Name of parent to list effective custom modules. Its format is `
+        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
+        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -1776,8 +1778,8 @@ module Google
         # Lists all sources belonging to an organization.
         # @param [String] parent
         #   Required. Resource name of the parent of sources to list. Its format should be
-        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -1820,11 +1822,12 @@ module Google
         # folders/`folder_id`/sources/-/findings, /v1/projects/`project_id`/sources/-/
         # findings
         # @param [String] parent
-        #   Required. Name of the source to groupBy. Its format is "organizations/[
-        #   organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id],
-        #   or projects/[project_id]/sources/[source_id]. To groupBy across all sources
-        #   provide a source_id of `-`. For example: organizations/`organization_id`/
-        #   sources/-, folders/`folder_id`/sources/-, or projects/`project_id`/sources/-
+        #   Required. Name of the source to groupBy. Its format is `organizations/[
+        #   organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]
+        #   `, or `projects/[project_id]/sources/[source_id]`. To groupBy across all
+        #   sources provide a source_id of `-`. For example: `organizations/`
+        #   organization_id`/sources/-, folders/`folder_id`/sources/-`, or `projects/`
+        #   project_id`/sources/-`
         # @param [Google::Apis::SecuritycenterV1::GroupFindingsRequest] group_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1859,12 +1862,12 @@ module Google
         # a `-` as the source id. Example: /v1/organizations/`organization_id`/sources/-/
         # findings
         # @param [String] parent
-        #   Required. Name of the source the findings belong to. Its format is "
-        #   organizations/[organization_id]/sources/[source_id], folders/[folder_id]/
-        #   sources/[source_id], or projects/[project_id]/sources/[source_id]". To list
-        #   across all sources provide a source_id of `-`. For example: organizations/`
-        #   organization_id`/sources/-, folders/`folder_id`/sources/- or projects/`
-        #   projects_id`/sources/-
+        #   Required. Name of the source the findings belong to. Its format is `
+        #   organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/
+        #   sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To list
+        #   across all sources provide a source_id of `-`. For example: `organizations/`
+        #   organization_id`/sources/-`, `folders/`folder_id`/sources/-` or `projects/`
+        #   projects_id`/sources/-`
         # @param [String] compare_duration
         #   When compare_duration is set, the ListFindingsResult's "state_change"
         #   attribute is updated to indicate whether the finding had its state changed,
@@ -2017,10 +2020,10 @@ module Google
         # Updates the mute state of a finding.
         # @param [String] name
         #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id`".
+        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2054,10 +2057,10 @@ module Google
         # Updates the state of a finding.
         # @param [String] name
         #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id`".
+        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2178,7 +2181,7 @@ module Google
         # Gets the settings for an organization.
         # @param [String] name
         #   Required. Name of the organization to get organization settings for. Its
-        #   format is "organizations/[organization_id]/organizationSettings".
+        #   format is `organizations/[organization_id]/organizationSettings`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2247,9 +2250,9 @@ module Google
         
         # Filters an organization's assets and groups them by their specified properties.
         # @param [String] parent
-        #   Required. The name of the parent to group the assets by. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent to group the assets by. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2284,8 +2287,8 @@ module Google
         # @param [String] parent
         #   Required. The name of the parent resource that contains the assets. The value
         #   that you can specify on parent depends on the method in which you specify
-        #   parent. You can specify one of the following values: "organizations/[
-        #   organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+        #   parent. You can specify one of the following values: `organizations/[
+        #   organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
         # @param [String] compare_duration
         #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
         #   is updated to indicate whether the asset was added, removed, or remained
@@ -2402,8 +2405,8 @@ module Google
         # This API can only be called with limited frequency for an organization. If it
         # is called too frequently the caller will receive a TOO_MANY_REQUESTS error.
         # @param [String] parent
-        #   Required. Name of the organization to run asset discovery for. Its format is "
-        #   organizations/[organization_id]".
+        #   Required. Name of the organization to run asset discovery for. Its format is `
+        #   organizations/[organization_id]`.
         # @param [Google::Apis::SecuritycenterV1::RunAssetDiscoveryRequest] run_asset_discovery_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2484,8 +2487,8 @@ module Google
         # Creates a BigQuery export.
         # @param [String] parent
         #   Required. The name of the parent resource of the new BigQuery export. Its
-        #   format is "organizations/[organization_id]", "folders/[folder_id]", or "
-        #   projects/[project_id]".
+        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, or `
+        #   projects/[project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -2524,9 +2527,10 @@ module Google
         
         # Deletes an existing BigQuery export.
         # @param [String] name
-        #   Required. The name of the BigQuery export to delete. Its format is
-        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
-        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. The name of the BigQuery export to delete. Its format is `
+        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
+        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
+        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2556,9 +2560,10 @@ module Google
         
         # Gets a BigQuery export.
         # @param [String] name
-        #   Required. Name of the BigQuery export to retrieve. Its format is organizations/
-        #   `organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
-        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. Name of the BigQuery export to retrieve. Its format is `
+        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
+        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
+        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2593,8 +2598,8 @@ module Google
         # returned.
         # @param [String] parent
         #   Required. The parent, which owns the collection of BigQuery exports. Its
-        #   format is "organizations/[organization_id]", "folders/[folder_id]", "projects/[
-        #   project_id]".
+        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of configs to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -2677,9 +2682,9 @@ module Google
         # Validates the given Event Threat Detection custom module.
         # @param [String] parent
         #   Required. Resource name of the parent to validate the Custom Module under. Its
-        #   format is: * "organizations/`organization`/eventThreatDetectionSettings". * "
-        #   folders/`folder`/eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   format is: * `organizations/`organization`/eventThreatDetectionSettings`. * `
+        #   folders/`folder`/eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest] validate_event_threat_detection_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2714,10 +2719,10 @@ module Google
         # given Resource Manager parent, and also creates inherited custom modules for
         # all descendants of the given parent. These modules are enabled by default.
         # @param [String] parent
-        #   Required. The new custom module's parent. Its format is: * "organizations/`
-        #   organization`/eventThreatDetectionSettings". * "folders/`folder`/
-        #   eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. The new custom module's parent. Its format is: * `organizations/`
+        #   organization`/eventThreatDetectionSettings`. * `folders/`folder`/
+        #   eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2752,10 +2757,10 @@ module Google
         # descendants in the Resource Manager hierarchy. This method is only supported
         # for resident custom modules.
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is: * "organizations/
-        #   `organization`/eventThreatDetectionSettings/customModules/`module`". * "
-        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module`". * "
-        #   projects/`project`/eventThreatDetectionSettings/customModules/`module`".
+        #   Required. Name of the custom module to delete. Its format is: * `organizations/
+        #   `organization`/eventThreatDetectionSettings/customModules/`module``. * `
+        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module``. * `
+        #   projects/`project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2785,10 +2790,10 @@ module Google
         
         # Gets an Event Threat Detection custom module.
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is: * "organizations/`
-        #   organization`/eventThreatDetectionSettings/customModules/`module`". * "folders/
-        #   `folder`/eventThreatDetectionSettings/customModules/`module`". * "projects/`
-        #   project`/eventThreatDetectionSettings/customModules/`module`".
+        #   Required. Name of the custom module to get. Its format is: * `organizations/`
+        #   organization`/eventThreatDetectionSettings/customModules/`module``. * `folders/
+        #   `folder`/eventThreatDetectionSettings/customModules/`module``. * `projects/`
+        #   project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2820,10 +2825,10 @@ module Google
         # parent. This includes resident modules defined at the scope of the parent
         # along with modules inherited from ancestors.
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * "
-        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
-        #   /eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. Name of the parent to list custom modules under. Its format is: * `
+        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
+        #   /eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
         #   The maximum number of modules to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -2865,10 +2870,10 @@ module Google
         # Lists all resident Event Threat Detection custom modules under the given
         # Resource Manager parent and its descendants.
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * "
-        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
-        #   /eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. Name of the parent to list custom modules under. Its format is: * `
+        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
+        #   /eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
         #   The maximum number of modules to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -2916,10 +2921,10 @@ module Google
         # cannot be changed.
         # @param [String] name
         #   Immutable. The resource name of the Event Threat Detection custom module. Its
-        #   format is: * "organizations/`organization`/eventThreatDetectionSettings/
-        #   customModules/`module`". * "folders/`folder`/eventThreatDetectionSettings/
-        #   customModules/`module`". * "projects/`project`/eventThreatDetectionSettings/
-        #   customModules/`module`".
+        #   format is: * `organizations/`organization`/eventThreatDetectionSettings/
+        #   customModules/`module``. * `folders/`folder`/eventThreatDetectionSettings/
+        #   customModules/`module``. * `projects/`project`/eventThreatDetectionSettings/
+        #   customModules/`module``.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] update_mask
         #   The list of fields to be updated. If empty all mutable fields will be updated.
@@ -2956,11 +2961,11 @@ module Google
         # Gets an effective Event Threat Detection custom module at the given level.
         # @param [String] name
         #   Required. The resource name of the effective Event Threat Detection custom
-        #   module. Its format is: * "organizations/`organization`/
-        #   eventThreatDetectionSettings/effectiveCustomModules/`module`". * "folders/`
-        #   folder`/eventThreatDetectionSettings/effectiveCustomModules/`module`". * "
+        #   module. Its format is: * `organizations/`organization`/
+        #   eventThreatDetectionSettings/effectiveCustomModules/`module``. * `folders/`
+        #   folder`/eventThreatDetectionSettings/effectiveCustomModules/`module``. * `
         #   projects/`project`/eventThreatDetectionSettings/effectiveCustomModules/`module`
-        #   ".
+        #   `.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2992,10 +2997,10 @@ module Google
         # This includes resident modules defined at the scope of the parent along with
         # modules inherited from its ancestors.
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules for. Its format is: * "
-        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
-        #   /eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. Name of the parent to list custom modules for. Its format is: * `
+        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
+        #   /eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
         #   The maximum number of modules to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -3039,9 +3044,9 @@ module Google
         # parent can be either an organization, folder or project. The findings matched
         # by the filter will be muted after the LRO is done.
         # @param [String] parent
-        #   Required. The parent, at which bulk action needs to be applied. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]
-        #   ".
+        #   Required. The parent, at which bulk action needs to be applied. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]
+        #   `.
         # @param [Google::Apis::SecuritycenterV1::BulkMuteFindingsRequest] bulk_mute_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3074,9 +3079,9 @@ module Google
         
         # Creates a mute config.
         # @param [String] parent
-        #   Required. Resource name of the new mute configs's parent. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. Resource name of the new mute configs's parent. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -3115,12 +3120,12 @@ module Google
         
         # Deletes an existing mute config.
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to delete. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3150,12 +3155,12 @@ module Google
         
         # Gets a mute config.
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3186,8 +3191,8 @@ module Google
         # Lists mute configs.
         # @param [String] parent
         #   Required. The parent, which owns the collection of mute configs. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of configs to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -3227,12 +3232,12 @@ module Google
         
         # Updates a mute config.
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format "
-        #   organizations/`organization`/muteConfigs/`mute_config`" "folders/`folder`/
-        #   muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`" "
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`" "
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`" "projects/`
-        #   project`/locations/global/muteConfigs/`mute_config`"
+        #   This field will be ignored if provided on config creation. Format `
+        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
+        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
+        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
+        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
+        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
         #   The list of fields to be updated. If empty all mutable fields will be updated.
@@ -3268,9 +3273,9 @@ module Google
         
         # Creates a mute config.
         # @param [String] parent
-        #   Required. Resource name of the new mute configs's parent. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. Resource name of the new mute configs's parent. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -3309,12 +3314,12 @@ module Google
         
         # Deletes an existing mute config.
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to delete. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3344,12 +3349,12 @@ module Google
         
         # Gets a mute config.
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3380,8 +3385,8 @@ module Google
         # Lists mute configs.
         # @param [String] parent
         #   Required. The parent, which owns the collection of mute configs. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of configs to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -3421,12 +3426,12 @@ module Google
         
         # Updates a mute config.
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format "
-        #   organizations/`organization`/muteConfigs/`mute_config`" "folders/`folder`/
-        #   muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`" "
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`" "
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`" "projects/`
-        #   project`/locations/global/muteConfigs/`mute_config`"
+        #   This field will be ignored if provided on config creation. Format `
+        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
+        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
+        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
+        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
+        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
         #   The list of fields to be updated. If empty all mutable fields will be updated.
@@ -3463,8 +3468,8 @@ module Google
         # Creates a notification config.
         # @param [String] parent
         #   Required. Resource name of the new notification config's parent. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -3502,10 +3507,10 @@ module Google
         
         # Deletes a notification config.
         # @param [String] name
-        #   Required. Name of the notification config to delete. Its format is "
-        #   organizations/[organization_id]/notificationConfigs/[config_id]", "folders/[
-        #   folder_id]/notificationConfigs/[config_id]", or "projects/[project_id]/
-        #   notificationConfigs/[config_id]".
+        #   Required. Name of the notification config to delete. Its format is `
+        #   organizations/[organization_id]/notificationConfigs/[config_id]`, `folders/[
+        #   folder_id]/notificationConfigs/[config_id]`, or `projects/[project_id]/
+        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3535,10 +3540,10 @@ module Google
         
         # Gets a notification config.
         # @param [String] name
-        #   Required. Name of the notification config to get. Its format is "organizations/
-        #   [organization_id]/notificationConfigs/[config_id]", "folders/[folder_id]/
-        #   notificationConfigs/[config_id]", or "projects/[project_id]/
-        #   notificationConfigs/[config_id]".
+        #   Required. Name of the notification config to get. Its format is `organizations/
+        #   [organization_id]/notificationConfigs/[config_id]`, `folders/[folder_id]/
+        #   notificationConfigs/[config_id]`, or `projects/[project_id]/
+        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3858,8 +3863,8 @@ module Google
         
         # Gets a ResourceValueConfig.
         # @param [String] name
-        #   Required. Name of the resource value config to retrieve. Its format is
-        #   organizations/`organization`/resourceValueConfigs/`config_id`.
+        #   Required. Name of the resource value config to retrieve. Its format is `
+        #   organizations/`organization`/resourceValueConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3890,7 +3895,7 @@ module Google
         # Lists all ResourceValueConfigs.
         # @param [String] parent
         #   Required. The parent, which owns the collection of resource value configs. Its
-        #   format is "organizations/[organization_id]"
+        #   format is `organizations/[organization_id]`
         # @param [Fixnum] page_size
         #   The number of results to return. The service may return fewer than this value.
         #   If unspecified, at most 10 configs will be returned. The maximum value is 1000;
@@ -3971,10 +3976,10 @@ module Google
         # SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
         # parent. These modules are enabled by default.
         # @param [String] parent
-        #   Required. Resource name of the new custom module's parent. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
-        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Resource name of the new custom module's parent. Its format is `
+        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
+        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4009,11 +4014,11 @@ module Google
         # descendants in the CRM hierarchy. This method is only supported for resident
         # custom modules.
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is "organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
-        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule`"
+        #   Required. Name of the custom module to delete. Its format is `organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
+        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4043,11 +4048,11 @@ module Google
         
         # Retrieves a SecurityHealthAnalyticsCustomModule.
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is "organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
-        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule`"
+        #   Required. Name of the custom module to get. Its format is `organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
+        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4079,10 +4084,10 @@ module Google
         # parent. This includes resident modules defined at the scope of the parent, and
         # inherited modules, inherited from CRM ancestors.
         # @param [String] parent
-        #   Required. Name of parent to list custom modules. Its format is "organizations/`
-        #   organization`/securityHealthAnalyticsSettings", "folders/`folder`/
-        #   securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Name of parent to list custom modules. Its format is `organizations/`
+        #   organization`/securityHealthAnalyticsSettings`, `folders/`folder`/
+        #   securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -4120,10 +4125,10 @@ module Google
         # Returns a list of all resident SecurityHealthAnalyticsCustomModules under the
         # given CRM parent and all of the parent’s CRM descendants.
         # @param [String] parent
-        #   Required. Name of parent to list descendant custom modules. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
-        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Name of parent to list descendant custom modules. Its format is `
+        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
+        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -4244,12 +4249,12 @@ module Google
         
         # Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
         # @param [String] name
-        #   Required. Name of the effective custom module to get. Its format is "
+        #   Required. Name of the effective custom module to get. Its format is `
         #   organizations/`organization`/securityHealthAnalyticsSettings/
-        #   effectiveCustomModules/`customModule`", "folders/`folder`/
-        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule`", or "
+        #   effectiveCustomModules/`customModule``, `folders/`folder`/
+        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule``, or `
         #   projects/`project`/securityHealthAnalyticsSettings/effectiveCustomModules/`
-        #   customModule`"
+        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4281,10 +4286,10 @@ module Google
         # given parent. This includes resident modules defined at the scope of the
         # parent, and inherited modules, inherited from CRM ancestors.
         # @param [String] parent
-        #   Required. Name of parent to list effective custom modules. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
-        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Name of parent to list effective custom modules. Its format is `
+        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
+        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -4322,8 +4327,8 @@ module Google
         # Get the simulation by name or the latest simulation for the given organization.
         # @param [String] name
         #   Required. The organization name or simulation name of this simulation Valid
-        #   format: "organizations/`organization`/simulations/latest" "organizations/`
-        #   organization`/simulations/`simulation`"
+        #   format: `organizations/`organization`/simulations/latest` `organizations/`
+        #   organization`/simulations/`simulation``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4354,11 +4359,11 @@ module Google
         # Lists the attack paths for a set of simulation results or valued resources and
         # filter.
         # @param [String] parent
-        #   Required. Name of parent to list attack paths. Valid formats: "organizations/`
-        #   organization`", "organizations/`organization`/simulations/`simulation`" "
+        #   Required. Name of parent to list attack paths. Valid formats: `organizations/`
+        #   organization``, `organizations/`organization`/simulations/`simulation`` `
         #   organizations/`organization`/simulations/`simulation`/attackExposureResults/`
-        #   attack_exposure_result_v2`" "organizations/`organization`/simulations/`
-        #   simulation`/valuedResources/`valued_resource`"
+        #   attack_exposure_result_v2`` `organizations/`organization`/simulations/`
+        #   simulation`/valuedResources/`valued_resource``
         # @param [String] filter
         #   The filter expression that filters the attack path in the response. Supported
         #   fields: * `valued_resources` supports =
@@ -4401,10 +4406,10 @@ module Google
         
         # Lists the valued resources for a set of simulation results and filter.
         # @param [String] parent
-        #   Required. Name of parent to list valued resources. Valid formats: "
-        #   organizations/`organization`", "organizations/`organization`/simulations/`
-        #   simulation`" "organizations/`organization`/simulations/`simulation`/
-        #   attackExposureResults/`attack_exposure_result_v2`"
+        #   Required. Name of parent to list valued resources. Valid formats: `
+        #   organizations/`organization``, `organizations/`organization`/simulations/`
+        #   simulation`` `organizations/`organization`/simulations/`simulation`/
+        #   attackExposureResults/`attack_exposure_result_v2``
         # @param [String] filter
         #   The filter expression that filters the valued resources in the response.
         #   Supported fields: * `resource_value` supports = * `resource_type` supports =
@@ -4413,8 +4418,8 @@ module Google
         #   Supported fields: * `exposed_score` * `resource_value` * `resource_type` * `
         #   resource` * `display_name` Values should be a comma separated list of fields.
         #   For example: `exposed_score,resource_value`. The default sorting order is
-        #   descending. To specify ascending or descending order for a field, append a "
-        #   ASC" or a " DESC" suffix, respectively; for example: `exposed_score DESC`.
+        #   descending. To specify ascending or descending order for a field, append a `
+        #   ASC` or a ` DESC` suffix, respectively; for example: `exposed_score DESC`.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -4456,11 +4461,11 @@ module Google
         # Lists the attack paths for a set of simulation results or valued resources and
         # filter.
         # @param [String] parent
-        #   Required. Name of parent to list attack paths. Valid formats: "organizations/`
-        #   organization`", "organizations/`organization`/simulations/`simulation`" "
+        #   Required. Name of parent to list attack paths. Valid formats: `organizations/`
+        #   organization``, `organizations/`organization`/simulations/`simulation`` `
         #   organizations/`organization`/simulations/`simulation`/attackExposureResults/`
-        #   attack_exposure_result_v2`" "organizations/`organization`/simulations/`
-        #   simulation`/valuedResources/`valued_resource`"
+        #   attack_exposure_result_v2`` `organizations/`organization`/simulations/`
+        #   simulation`/valuedResources/`valued_resource``
         # @param [String] filter
         #   The filter expression that filters the attack path in the response. Supported
         #   fields: * `valued_resources` supports =
@@ -4503,8 +4508,8 @@ module Google
         
         # Get the valued resource by name
         # @param [String] name
-        #   Required. The name of this valued resource Valid format: "organizations/`
-        #   organization`/simulations/`simulation`/valuedResources/`valued_resource`"
+        #   Required. The name of this valued resource Valid format: `organizations/`
+        #   organization`/simulations/`simulation`/valuedResources/`valued_resource``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4534,10 +4539,10 @@ module Google
         
         # Lists the valued resources for a set of simulation results and filter.
         # @param [String] parent
-        #   Required. Name of parent to list valued resources. Valid formats: "
-        #   organizations/`organization`", "organizations/`organization`/simulations/`
-        #   simulation`" "organizations/`organization`/simulations/`simulation`/
-        #   attackExposureResults/`attack_exposure_result_v2`"
+        #   Required. Name of parent to list valued resources. Valid formats: `
+        #   organizations/`organization``, `organizations/`organization`/simulations/`
+        #   simulation`` `organizations/`organization`/simulations/`simulation`/
+        #   attackExposureResults/`attack_exposure_result_v2``
         # @param [String] filter
         #   The filter expression that filters the valued resources in the response.
         #   Supported fields: * `resource_value` supports = * `resource_type` supports =
@@ -4546,8 +4551,8 @@ module Google
         #   Supported fields: * `exposed_score` * `resource_value` * `resource_type` * `
         #   resource` * `display_name` Values should be a comma separated list of fields.
         #   For example: `exposed_score,resource_value`. The default sorting order is
-        #   descending. To specify ascending or descending order for a field, append a "
-        #   ASC" or a " DESC" suffix, respectively; for example: `exposed_score DESC`.
+        #   descending. To specify ascending or descending order for a field, append a `
+        #   ASC` or a ` DESC` suffix, respectively; for example: `exposed_score DESC`.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -4589,11 +4594,11 @@ module Google
         # Lists the attack paths for a set of simulation results or valued resources and
         # filter.
         # @param [String] parent
-        #   Required. Name of parent to list attack paths. Valid formats: "organizations/`
-        #   organization`", "organizations/`organization`/simulations/`simulation`" "
+        #   Required. Name of parent to list attack paths. Valid formats: `organizations/`
+        #   organization``, `organizations/`organization`/simulations/`simulation`` `
         #   organizations/`organization`/simulations/`simulation`/attackExposureResults/`
-        #   attack_exposure_result_v2`" "organizations/`organization`/simulations/`
-        #   simulation`/valuedResources/`valued_resource`"
+        #   attack_exposure_result_v2`` `organizations/`organization`/simulations/`
+        #   simulation`/valuedResources/`valued_resource``
         # @param [String] filter
         #   The filter expression that filters the attack path in the response. Supported
         #   fields: * `valued_resources` supports =
@@ -4636,8 +4641,8 @@ module Google
         
         # Creates a source.
         # @param [String] parent
-        #   Required. Resource name of the new source's parent. Its format should be "
-        #   organizations/[organization_id]".
+        #   Required. Resource name of the new source's parent. Its format should be `
+        #   organizations/[organization_id]`.
         # @param [Google::Apis::SecuritycenterV1::Source] source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4670,8 +4675,8 @@ module Google
         
         # Gets a source.
         # @param [String] name
-        #   Required. Relative resource name of the source. Its format is "organizations/[
-        #   organization_id]/source/[source_id]".
+        #   Required. Relative resource name of the source. Its format is `organizations/[
+        #   organization_id]/source/[source_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4737,8 +4742,8 @@ module Google
         # Lists all sources belonging to an organization.
         # @param [String] parent
         #   Required. Resource name of the parent of sources to list. Its format should be
-        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -4887,8 +4892,8 @@ module Google
         # Creates a finding. The corresponding source must exist for finding creation to
         # succeed.
         # @param [String] parent
-        #   Required. Resource name of the new finding's parent. Its format should be "
-        #   organizations/[organization_id]/sources/[source_id]".
+        #   Required. Resource name of the new finding's parent. Its format should be `
+        #   organizations/[organization_id]/sources/[source_id]`.
         # @param [Google::Apis::SecuritycenterV1::Finding] finding_object
         # @param [String] finding_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -4930,11 +4935,12 @@ module Google
         # folders/`folder_id`/sources/-/findings, /v1/projects/`project_id`/sources/-/
         # findings
         # @param [String] parent
-        #   Required. Name of the source to groupBy. Its format is "organizations/[
-        #   organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id],
-        #   or projects/[project_id]/sources/[source_id]. To groupBy across all sources
-        #   provide a source_id of `-`. For example: organizations/`organization_id`/
-        #   sources/-, folders/`folder_id`/sources/-, or projects/`project_id`/sources/-
+        #   Required. Name of the source to groupBy. Its format is `organizations/[
+        #   organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]
+        #   `, or `projects/[project_id]/sources/[source_id]`. To groupBy across all
+        #   sources provide a source_id of `-`. For example: `organizations/`
+        #   organization_id`/sources/-, folders/`folder_id`/sources/-`, or `projects/`
+        #   project_id`/sources/-`
         # @param [Google::Apis::SecuritycenterV1::GroupFindingsRequest] group_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4969,12 +4975,12 @@ module Google
         # a `-` as the source id. Example: /v1/organizations/`organization_id`/sources/-/
         # findings
         # @param [String] parent
-        #   Required. Name of the source the findings belong to. Its format is "
-        #   organizations/[organization_id]/sources/[source_id], folders/[folder_id]/
-        #   sources/[source_id], or projects/[project_id]/sources/[source_id]". To list
-        #   across all sources provide a source_id of `-`. For example: organizations/`
-        #   organization_id`/sources/-, folders/`folder_id`/sources/- or projects/`
-        #   projects_id`/sources/-
+        #   Required. Name of the source the findings belong to. Its format is `
+        #   organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/
+        #   sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To list
+        #   across all sources provide a source_id of `-`. For example: `organizations/`
+        #   organization_id`/sources/-`, `folders/`folder_id`/sources/-` or `projects/`
+        #   projects_id`/sources/-`
         # @param [String] compare_duration
         #   When compare_duration is set, the ListFindingsResult's "state_change"
         #   attribute is updated to indicate whether the finding had its state changed,
@@ -5127,10 +5133,10 @@ module Google
         # Updates the mute state of a finding.
         # @param [String] name
         #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id`".
+        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5164,10 +5170,10 @@ module Google
         # Updates the state of a finding.
         # @param [String] name
         #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id`".
+        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5287,9 +5293,9 @@ module Google
         
         # Filters an organization's assets and groups them by their specified properties.
         # @param [String] parent
-        #   Required. The name of the parent to group the assets by. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent to group the assets by. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5324,8 +5330,8 @@ module Google
         # @param [String] parent
         #   Required. The name of the parent resource that contains the assets. The value
         #   that you can specify on parent depends on the method in which you specify
-        #   parent. You can specify one of the following values: "organizations/[
-        #   organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+        #   parent. You can specify one of the following values: `organizations/[
+        #   organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
         # @param [String] compare_duration
         #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
         #   is updated to indicate whether the asset was added, removed, or remained
@@ -5488,8 +5494,8 @@ module Google
         # Creates a BigQuery export.
         # @param [String] parent
         #   Required. The name of the parent resource of the new BigQuery export. Its
-        #   format is "organizations/[organization_id]", "folders/[folder_id]", or "
-        #   projects/[project_id]".
+        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, or `
+        #   projects/[project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -5528,9 +5534,10 @@ module Google
         
         # Deletes an existing BigQuery export.
         # @param [String] name
-        #   Required. The name of the BigQuery export to delete. Its format is
-        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
-        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. The name of the BigQuery export to delete. Its format is `
+        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
+        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
+        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5560,9 +5567,10 @@ module Google
         
         # Gets a BigQuery export.
         # @param [String] name
-        #   Required. Name of the BigQuery export to retrieve. Its format is organizations/
-        #   `organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
-        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. Name of the BigQuery export to retrieve. Its format is `
+        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
+        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
+        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5597,8 +5605,8 @@ module Google
         # returned.
         # @param [String] parent
         #   Required. The parent, which owns the collection of BigQuery exports. Its
-        #   format is "organizations/[organization_id]", "folders/[folder_id]", "projects/[
-        #   project_id]".
+        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of configs to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -5681,9 +5689,9 @@ module Google
         # Validates the given Event Threat Detection custom module.
         # @param [String] parent
         #   Required. Resource name of the parent to validate the Custom Module under. Its
-        #   format is: * "organizations/`organization`/eventThreatDetectionSettings". * "
-        #   folders/`folder`/eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   format is: * `organizations/`organization`/eventThreatDetectionSettings`. * `
+        #   folders/`folder`/eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest] validate_event_threat_detection_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5718,10 +5726,10 @@ module Google
         # given Resource Manager parent, and also creates inherited custom modules for
         # all descendants of the given parent. These modules are enabled by default.
         # @param [String] parent
-        #   Required. The new custom module's parent. Its format is: * "organizations/`
-        #   organization`/eventThreatDetectionSettings". * "folders/`folder`/
-        #   eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. The new custom module's parent. Its format is: * `organizations/`
+        #   organization`/eventThreatDetectionSettings`. * `folders/`folder`/
+        #   eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5756,10 +5764,10 @@ module Google
         # descendants in the Resource Manager hierarchy. This method is only supported
         # for resident custom modules.
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is: * "organizations/
-        #   `organization`/eventThreatDetectionSettings/customModules/`module`". * "
-        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module`". * "
-        #   projects/`project`/eventThreatDetectionSettings/customModules/`module`".
+        #   Required. Name of the custom module to delete. Its format is: * `organizations/
+        #   `organization`/eventThreatDetectionSettings/customModules/`module``. * `
+        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module``. * `
+        #   projects/`project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5789,10 +5797,10 @@ module Google
         
         # Gets an Event Threat Detection custom module.
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is: * "organizations/`
-        #   organization`/eventThreatDetectionSettings/customModules/`module`". * "folders/
-        #   `folder`/eventThreatDetectionSettings/customModules/`module`". * "projects/`
-        #   project`/eventThreatDetectionSettings/customModules/`module`".
+        #   Required. Name of the custom module to get. Its format is: * `organizations/`
+        #   organization`/eventThreatDetectionSettings/customModules/`module``. * `folders/
+        #   `folder`/eventThreatDetectionSettings/customModules/`module``. * `projects/`
+        #   project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5824,10 +5832,10 @@ module Google
         # parent. This includes resident modules defined at the scope of the parent
         # along with modules inherited from ancestors.
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * "
-        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
-        #   /eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. Name of the parent to list custom modules under. Its format is: * `
+        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
+        #   /eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
         #   The maximum number of modules to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -5869,10 +5877,10 @@ module Google
         # Lists all resident Event Threat Detection custom modules under the given
         # Resource Manager parent and its descendants.
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * "
-        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
-        #   /eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. Name of the parent to list custom modules under. Its format is: * `
+        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
+        #   /eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
         #   The maximum number of modules to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -5920,10 +5928,10 @@ module Google
         # cannot be changed.
         # @param [String] name
         #   Immutable. The resource name of the Event Threat Detection custom module. Its
-        #   format is: * "organizations/`organization`/eventThreatDetectionSettings/
-        #   customModules/`module`". * "folders/`folder`/eventThreatDetectionSettings/
-        #   customModules/`module`". * "projects/`project`/eventThreatDetectionSettings/
-        #   customModules/`module`".
+        #   format is: * `organizations/`organization`/eventThreatDetectionSettings/
+        #   customModules/`module``. * `folders/`folder`/eventThreatDetectionSettings/
+        #   customModules/`module``. * `projects/`project`/eventThreatDetectionSettings/
+        #   customModules/`module``.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] update_mask
         #   The list of fields to be updated. If empty all mutable fields will be updated.
@@ -5960,11 +5968,11 @@ module Google
         # Gets an effective Event Threat Detection custom module at the given level.
         # @param [String] name
         #   Required. The resource name of the effective Event Threat Detection custom
-        #   module. Its format is: * "organizations/`organization`/
-        #   eventThreatDetectionSettings/effectiveCustomModules/`module`". * "folders/`
-        #   folder`/eventThreatDetectionSettings/effectiveCustomModules/`module`". * "
+        #   module. Its format is: * `organizations/`organization`/
+        #   eventThreatDetectionSettings/effectiveCustomModules/`module``. * `folders/`
+        #   folder`/eventThreatDetectionSettings/effectiveCustomModules/`module``. * `
         #   projects/`project`/eventThreatDetectionSettings/effectiveCustomModules/`module`
-        #   ".
+        #   `.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5996,10 +6004,10 @@ module Google
         # This includes resident modules defined at the scope of the parent along with
         # modules inherited from its ancestors.
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules for. Its format is: * "
-        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
-        #   /eventThreatDetectionSettings". * "projects/`project`/
-        #   eventThreatDetectionSettings".
+        #   Required. Name of the parent to list custom modules for. Its format is: * `
+        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
+        #   /eventThreatDetectionSettings`. * `projects/`project`/
+        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
         #   The maximum number of modules to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -6043,9 +6051,9 @@ module Google
         # parent can be either an organization, folder or project. The findings matched
         # by the filter will be muted after the LRO is done.
         # @param [String] parent
-        #   Required. The parent, at which bulk action needs to be applied. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]
-        #   ".
+        #   Required. The parent, at which bulk action needs to be applied. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]
+        #   `.
         # @param [Google::Apis::SecuritycenterV1::BulkMuteFindingsRequest] bulk_mute_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6078,9 +6086,9 @@ module Google
         
         # Creates a mute config.
         # @param [String] parent
-        #   Required. Resource name of the new mute configs's parent. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. Resource name of the new mute configs's parent. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -6119,12 +6127,12 @@ module Google
         
         # Deletes an existing mute config.
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to delete. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6154,12 +6162,12 @@ module Google
         
         # Gets a mute config.
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6190,8 +6198,8 @@ module Google
         # Lists mute configs.
         # @param [String] parent
         #   Required. The parent, which owns the collection of mute configs. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of configs to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -6231,12 +6239,12 @@ module Google
         
         # Updates a mute config.
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format "
-        #   organizations/`organization`/muteConfigs/`mute_config`" "folders/`folder`/
-        #   muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`" "
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`" "
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`" "projects/`
-        #   project`/locations/global/muteConfigs/`mute_config`"
+        #   This field will be ignored if provided on config creation. Format `
+        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
+        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
+        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
+        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
+        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
         #   The list of fields to be updated. If empty all mutable fields will be updated.
@@ -6272,9 +6280,9 @@ module Google
         
         # Creates a mute config.
         # @param [String] parent
-        #   Required. Resource name of the new mute configs's parent. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. Resource name of the new mute configs's parent. Its format is `
+        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -6313,12 +6321,12 @@ module Google
         
         # Deletes an existing mute config.
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to delete. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6348,12 +6356,12 @@ module Google
         
         # Gets a mute config.
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is organizations/`
-        #   organization`/muteConfigs/`config_id`, folders/`folder`/muteConfigs/`config_id`
-        #   , projects/`project`/muteConfigs/`config_id`, organizations/`organization`/
-        #   locations/global/muteConfigs/`config_id`, folders/`folder`/locations/global/
-        #   muteConfigs/`config_id`, or projects/`project`/locations/global/muteConfigs/`
-        #   config_id`.
+        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
+        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
+        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
+        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
+        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
+        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6384,8 +6392,8 @@ module Google
         # Lists mute configs.
         # @param [String] parent
         #   Required. The parent, which owns the collection of mute configs. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of configs to return. The service may return fewer than
         #   this value. If unspecified, at most 10 configs will be returned. The maximum
@@ -6425,12 +6433,12 @@ module Google
         
         # Updates a mute config.
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format "
-        #   organizations/`organization`/muteConfigs/`mute_config`" "folders/`folder`/
-        #   muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`" "
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`" "
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`" "projects/`
-        #   project`/locations/global/muteConfigs/`mute_config`"
+        #   This field will be ignored if provided on config creation. Format `
+        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
+        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
+        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
+        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
+        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
         #   The list of fields to be updated. If empty all mutable fields will be updated.
@@ -6467,8 +6475,8 @@ module Google
         # Creates a notification config.
         # @param [String] parent
         #   Required. Resource name of the new notification config's parent. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -6506,10 +6514,10 @@ module Google
         
         # Deletes a notification config.
         # @param [String] name
-        #   Required. Name of the notification config to delete. Its format is "
-        #   organizations/[organization_id]/notificationConfigs/[config_id]", "folders/[
-        #   folder_id]/notificationConfigs/[config_id]", or "projects/[project_id]/
-        #   notificationConfigs/[config_id]".
+        #   Required. Name of the notification config to delete. Its format is `
+        #   organizations/[organization_id]/notificationConfigs/[config_id]`, `folders/[
+        #   folder_id]/notificationConfigs/[config_id]`, or `projects/[project_id]/
+        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6539,10 +6547,10 @@ module Google
         
         # Gets a notification config.
         # @param [String] name
-        #   Required. Name of the notification config to get. Its format is "organizations/
-        #   [organization_id]/notificationConfigs/[config_id]", "folders/[folder_id]/
-        #   notificationConfigs/[config_id]", or "projects/[project_id]/
-        #   notificationConfigs/[config_id]".
+        #   Required. Name of the notification config to get. Its format is `organizations/
+        #   [organization_id]/notificationConfigs/[config_id]`, `folders/[folder_id]/
+        #   notificationConfigs/[config_id]`, or `projects/[project_id]/
+        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6658,10 +6666,10 @@ module Google
         # SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
         # parent. These modules are enabled by default.
         # @param [String] parent
-        #   Required. Resource name of the new custom module's parent. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
-        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Resource name of the new custom module's parent. Its format is `
+        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
+        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6696,11 +6704,11 @@ module Google
         # descendants in the CRM hierarchy. This method is only supported for resident
         # custom modules.
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is "organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
-        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule`"
+        #   Required. Name of the custom module to delete. Its format is `organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
+        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6730,11 +6738,11 @@ module Google
         
         # Retrieves a SecurityHealthAnalyticsCustomModule.
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is "organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
-        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule`"
+        #   Required. Name of the custom module to get. Its format is `organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
+        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6766,10 +6774,10 @@ module Google
         # parent. This includes resident modules defined at the scope of the parent, and
         # inherited modules, inherited from CRM ancestors.
         # @param [String] parent
-        #   Required. Name of parent to list custom modules. Its format is "organizations/`
-        #   organization`/securityHealthAnalyticsSettings", "folders/`folder`/
-        #   securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Name of parent to list custom modules. Its format is `organizations/`
+        #   organization`/securityHealthAnalyticsSettings`, `folders/`folder`/
+        #   securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -6807,10 +6815,10 @@ module Google
         # Returns a list of all resident SecurityHealthAnalyticsCustomModules under the
         # given CRM parent and all of the parent’s CRM descendants.
         # @param [String] parent
-        #   Required. Name of parent to list descendant custom modules. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
-        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Name of parent to list descendant custom modules. Its format is `
+        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
+        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -6931,12 +6939,12 @@ module Google
         
         # Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
         # @param [String] name
-        #   Required. Name of the effective custom module to get. Its format is "
+        #   Required. Name of the effective custom module to get. Its format is `
         #   organizations/`organization`/securityHealthAnalyticsSettings/
-        #   effectiveCustomModules/`customModule`", "folders/`folder`/
-        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule`", or "
+        #   effectiveCustomModules/`customModule``, `folders/`folder`/
+        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule``, or `
         #   projects/`project`/securityHealthAnalyticsSettings/effectiveCustomModules/`
-        #   customModule`"
+        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6968,10 +6976,10 @@ module Google
         # given parent. This includes resident modules defined at the scope of the
         # parent, and inherited modules, inherited from CRM ancestors.
         # @param [String] parent
-        #   Required. Name of parent to list effective custom modules. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
-        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
-        #   securityHealthAnalyticsSettings"
+        #   Required. Name of parent to list effective custom modules. Its format is `
+        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
+        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
+        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -7009,8 +7017,8 @@ module Google
         # Lists all sources belonging to an organization.
         # @param [String] parent
         #   Required. Resource name of the parent of sources to list. Its format should be
-        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
+        #   project_id]`.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -7053,11 +7061,12 @@ module Google
         # folders/`folder_id`/sources/-/findings, /v1/projects/`project_id`/sources/-/
         # findings
         # @param [String] parent
-        #   Required. Name of the source to groupBy. Its format is "organizations/[
-        #   organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id],
-        #   or projects/[project_id]/sources/[source_id]. To groupBy across all sources
-        #   provide a source_id of `-`. For example: organizations/`organization_id`/
-        #   sources/-, folders/`folder_id`/sources/-, or projects/`project_id`/sources/-
+        #   Required. Name of the source to groupBy. Its format is `organizations/[
+        #   organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]
+        #   `, or `projects/[project_id]/sources/[source_id]`. To groupBy across all
+        #   sources provide a source_id of `-`. For example: `organizations/`
+        #   organization_id`/sources/-, folders/`folder_id`/sources/-`, or `projects/`
+        #   project_id`/sources/-`
         # @param [Google::Apis::SecuritycenterV1::GroupFindingsRequest] group_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7092,12 +7101,12 @@ module Google
         # a `-` as the source id. Example: /v1/organizations/`organization_id`/sources/-/
         # findings
         # @param [String] parent
-        #   Required. Name of the source the findings belong to. Its format is "
-        #   organizations/[organization_id]/sources/[source_id], folders/[folder_id]/
-        #   sources/[source_id], or projects/[project_id]/sources/[source_id]". To list
-        #   across all sources provide a source_id of `-`. For example: organizations/`
-        #   organization_id`/sources/-, folders/`folder_id`/sources/- or projects/`
-        #   projects_id`/sources/-
+        #   Required. Name of the source the findings belong to. Its format is `
+        #   organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/
+        #   sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To list
+        #   across all sources provide a source_id of `-`. For example: `organizations/`
+        #   organization_id`/sources/-`, `folders/`folder_id`/sources/-` or `projects/`
+        #   projects_id`/sources/-`
         # @param [String] compare_duration
         #   When compare_duration is set, the ListFindingsResult's "state_change"
         #   attribute is updated to indicate whether the finding had its state changed,
@@ -7250,10 +7259,10 @@ module Google
         # Updates the mute state of a finding.
         # @param [String] name
         #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id`".
+        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7287,10 +7296,10 @@ module Google
         # Updates the state of a finding.
         # @param [String] name
         #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id`".
+        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
