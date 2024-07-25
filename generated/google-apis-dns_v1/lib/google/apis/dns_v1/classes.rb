@@ -1792,6 +1792,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :gke_clusters_per_response_policy
       
+        # 
+        # Corresponds to the JSON property `internetHealthChecksPerManagedZone`
+        # @return [Fixnum]
+        attr_accessor :internet_health_checks_per_managed_zone
+      
         # Maximum allowed number of items per routing policy.
         # Corresponds to the JSON property `itemsPerRoutingPolicy`
         # @return [Fixnum]
@@ -1910,6 +1915,7 @@ module Google
           @gke_clusters_per_managed_zone = args[:gke_clusters_per_managed_zone] if args.key?(:gke_clusters_per_managed_zone)
           @gke_clusters_per_policy = args[:gke_clusters_per_policy] if args.key?(:gke_clusters_per_policy)
           @gke_clusters_per_response_policy = args[:gke_clusters_per_response_policy] if args.key?(:gke_clusters_per_response_policy)
+          @internet_health_checks_per_managed_zone = args[:internet_health_checks_per_managed_zone] if args.key?(:internet_health_checks_per_managed_zone)
           @items_per_routing_policy = args[:items_per_routing_policy] if args.key?(:items_per_routing_policy)
           @kind = args[:kind] if args.key?(:kind)
           @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
@@ -1946,6 +1952,13 @@ module Google
         # @return [Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy]
         attr_accessor :geo
       
+        # The selfLink attribute of the HealthCheck resource to use for this
+        # RRSetRoutingPolicy. https://cloud.google.com/compute/docs/reference/rest/v1/
+        # healthChecks
+        # Corresponds to the JSON property `healthCheck`
+        # @return [String]
+        attr_accessor :health_check
+      
         # 
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -1970,6 +1983,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @geo = args[:geo] if args.key?(:geo)
+          @health_check = args[:health_check] if args.key?(:health_check)
           @kind = args[:kind] if args.key?(:kind)
           @primary_backup = args[:primary_backup] if args.key?(:primary_backup)
           @wrr = args[:wrr] if args.key?(:wrr)
@@ -2070,6 +2084,13 @@ module Google
       class RrSetRoutingPolicyHealthCheckTargets
         include Google::Apis::Core::Hashable
       
+        # The Internet IP addresses to be health checked. The format matches the format
+        # of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (
+        # section 3.6.1)
+        # Corresponds to the JSON property `externalEndpoints`
+        # @return [Array<String>]
+        attr_accessor :external_endpoints
+      
         # Configuration for internal load balancers to be health checked.
         # Corresponds to the JSON property `internalLoadBalancers`
         # @return [Array<Google::Apis::DnsV1::RrSetRoutingPolicyLoadBalancerTarget>]
@@ -2081,6 +2102,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @external_endpoints = args[:external_endpoints] if args.key?(:external_endpoints)
           @internal_load_balancers = args[:internal_load_balancers] if args.key?(:internal_load_balancers)
         end
       end
