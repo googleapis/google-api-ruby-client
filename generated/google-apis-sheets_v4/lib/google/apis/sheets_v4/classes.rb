@@ -127,7 +127,7 @@ module Google
       # Adds a data source. After the data source is added successfully, an associated
       # DATA_SOURCE sheet is created and an execution is triggered to refresh the
       # sheet to read data from the data source. The request requires an additional `
-      # bigquery.readonly` OAuth scope.
+      # bigquery.readonly` OAuth scope if you are adding a BigQuery data source.
       class AddDataSourceRequest
         include Google::Apis::Core::Hashable
       
@@ -2355,7 +2355,9 @@ module Google
       end
       
       # Cancels one or multiple refreshes of data source objects in the spreadsheet by
-      # the specified references.
+      # the specified references. The request requires an additional `bigquery.
+      # readonly` OAuth scope if you are cancelling a refresh on a BigQuery data
+      # source.
       class CancelDataSourceRefreshRequest
         include Google::Apis::Core::Hashable
       
@@ -4314,6 +4316,11 @@ module Google
         # @return [Google::Apis::SheetsV4::BigQueryDataSourceSpec]
         attr_accessor :big_query
       
+        # The specification of a Looker data source.
+        # Corresponds to the JSON property `looker`
+        # @return [Google::Apis::SheetsV4::LookerDataSourceSpec]
+        attr_accessor :looker
+      
         # The parameters of the data source, used when querying the data source.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::SheetsV4::DataSourceParameter>]
@@ -4326,6 +4333,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @big_query = args[:big_query] if args.key?(:big_query)
+          @looker = args[:looker] if args.key?(:looker)
           @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
@@ -6596,6 +6604,37 @@ module Google
         end
       end
       
+      # The specification of a Looker data source.
+      class LookerDataSourceSpec
+        include Google::Apis::Core::Hashable
+      
+        # Name of a LookerML model explore.
+        # Corresponds to the JSON property `explore`
+        # @return [String]
+        attr_accessor :explore
+      
+        # A Looker instance URL.
+        # Corresponds to the JSON property `instanceUri`
+        # @return [String]
+        attr_accessor :instance_uri
+      
+        # Name of a LookerML model.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explore = args[:explore] if args.key?(:explore)
+          @instance_uri = args[:instance_uri] if args.key?(:instance_uri)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
       # Allows you to manually organize the values in a source data column into
       # buckets with names of your choosing. For example, a pivot table that
       # aggregates population by state: +-------+-------------------+ | State | SUM of
@@ -7860,9 +7899,10 @@ module Google
       
       # Refreshes one or multiple data source objects in the spreadsheet by the
       # specified references. The request requires an additional `bigquery.readonly`
-      # OAuth scope. If there are multiple refresh requests referencing the same data
-      # source objects in one batch, only the last refresh request is processed, and
-      # all those requests will have the same response accordingly.
+      # OAuth scope if you are refreshing a BigQuery data source. If there are
+      # multiple refresh requests referencing the same data source objects in one
+      # batch, only the last refresh request is processed, and all those requests will
+      # have the same response accordingly.
       class RefreshDataSourceRequest
         include Google::Apis::Core::Hashable
       
@@ -8000,7 +8040,7 @@ module Google
         # Adds a data source. After the data source is added successfully, an associated
         # DATA_SOURCE sheet is created and an execution is triggered to refresh the
         # sheet to read data from the data source. The request requires an additional `
-        # bigquery.readonly` OAuth scope.
+        # bigquery.readonly` OAuth scope if you are adding a BigQuery data source.
         # Corresponds to the JSON property `addDataSource`
         # @return [Google::Apis::SheetsV4::AddDataSourceRequest]
         attr_accessor :add_data_source
@@ -8073,7 +8113,9 @@ module Google
         attr_accessor :auto_resize_dimensions
       
         # Cancels one or multiple refreshes of data source objects in the spreadsheet by
-        # the specified references.
+        # the specified references. The request requires an additional `bigquery.
+        # readonly` OAuth scope if you are cancelling a refresh on a BigQuery data
+        # source.
         # Corresponds to the JSON property `cancelDataSourceRefresh`
         # @return [Google::Apis::SheetsV4::CancelDataSourceRefreshRequest]
         attr_accessor :cancel_data_source_refresh
@@ -8222,9 +8264,10 @@ module Google
       
         # Refreshes one or multiple data source objects in the spreadsheet by the
         # specified references. The request requires an additional `bigquery.readonly`
-        # OAuth scope. If there are multiple refresh requests referencing the same data
-        # source objects in one batch, only the last refresh request is processed, and
-        # all those requests will have the same response accordingly.
+        # OAuth scope if you are refreshing a BigQuery data source. If there are
+        # multiple refresh requests referencing the same data source objects in one
+        # batch, only the last refresh request is processed, and all those requests will
+        # have the same response accordingly.
         # Corresponds to the JSON property `refreshDataSource`
         # @return [Google::Apis::SheetsV4::RefreshDataSourceRequest]
         attr_accessor :refresh_data_source
@@ -8313,7 +8356,7 @@ module Google
         # Updates a data source. After the data source is updated successfully, an
         # execution is triggered to refresh the associated DATA_SOURCE sheet to read
         # data from the updated data source. The request requires an additional `
-        # bigquery.readonly` OAuth scope.
+        # bigquery.readonly` OAuth scope if you are updating a BigQuery data source.
         # Corresponds to the JSON property `updateDataSource`
         # @return [Google::Apis::SheetsV4::UpdateDataSourceRequest]
         attr_accessor :update_data_source
@@ -10594,7 +10637,7 @@ module Google
       # Updates a data source. After the data source is updated successfully, an
       # execution is triggered to refresh the associated DATA_SOURCE sheet to read
       # data from the updated data source. The request requires an additional `
-      # bigquery.readonly` OAuth scope.
+      # bigquery.readonly` OAuth scope if you are updating a BigQuery data source.
       class UpdateDataSourceRequest
         include Google::Apis::Core::Hashable
       
