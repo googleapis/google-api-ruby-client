@@ -136,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomRegionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomRegionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataCatalogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiRegionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MultiRegionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +407,12 @@ module Google
       end
       
       class RestoreServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RootCaCertificate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -624,6 +648,23 @@ module Google
         end
       end
       
+      class CustomRegionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :read_only_regions, as: 'readOnlyRegions'
+          collection :read_write_regions, as: 'readWriteRegions'
+        end
+      end
+      
+      class CustomRegionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :optional_read_only_regions, as: 'optionalReadOnlyRegions'
+          collection :required_read_write_regions, as: 'requiredReadWriteRegions'
+          property :witness_region, as: 'witnessRegion'
+        end
+      end
+      
       class DataCatalogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -843,6 +884,8 @@ module Google
       class LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_region_metadata, as: 'customRegionMetadata', class: Google::Apis::MetastoreV1alpha::CustomRegionMetadata, decorator: Google::Apis::MetastoreV1alpha::CustomRegionMetadata::Representation
+      
           property :multi_region_metadata, as: 'multiRegionMetadata', class: Google::Apis::MetastoreV1alpha::MultiRegionMetadata, decorator: Google::Apis::MetastoreV1alpha::MultiRegionMetadata::Representation
       
           collection :supported_hive_metastore_versions, as: 'supportedHiveMetastoreVersions', class: Google::Apis::MetastoreV1alpha::HiveMetastoreVersion, decorator: Google::Apis::MetastoreV1alpha::HiveMetastoreVersion::Representation
@@ -929,6 +972,16 @@ module Google
       class MoveTableToDatabaseResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class MultiRegionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :certificates, as: 'certificates', class: Google::Apis::MetastoreV1alpha::RootCaCertificate, decorator: Google::Apis::MetastoreV1alpha::RootCaCertificate::Representation
+      
+          property :custom_region_config, as: 'customRegionConfig', class: Google::Apis::MetastoreV1alpha::CustomRegionConfig, decorator: Google::Apis::MetastoreV1alpha::CustomRegionConfig::Representation
+      
         end
       end
       
@@ -1036,6 +1089,14 @@ module Google
         end
       end
       
+      class RootCaCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate, as: 'certificate'
+          property :expiration_time, as: 'expirationTime'
+        end
+      end
+      
       class ScalingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1084,6 +1145,8 @@ module Google
           property :metadata_integration, as: 'metadataIntegration', class: Google::Apis::MetastoreV1alpha::MetadataIntegration, decorator: Google::Apis::MetastoreV1alpha::MetadataIntegration::Representation
       
           property :metadata_management_activity, as: 'metadataManagementActivity', class: Google::Apis::MetastoreV1alpha::MetadataManagementActivity, decorator: Google::Apis::MetastoreV1alpha::MetadataManagementActivity::Representation
+      
+          property :multi_region_config, as: 'multiRegionConfig', class: Google::Apis::MetastoreV1alpha::MultiRegionConfig, decorator: Google::Apis::MetastoreV1alpha::MultiRegionConfig::Representation
       
           property :name, as: 'name'
           property :network, as: 'network'
