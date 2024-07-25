@@ -196,6 +196,31 @@ module Google
         end
       end
       
+      # A reference to a bookmark in this document.
+      class BookmarkLink
+        include Google::Apis::Core::Hashable
+      
+        # The ID of a bookmark in this document.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The ID of the tab containing this bookmark.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
+        end
+      end
+      
       # Describes the bullet of a paragraph.
       class Bullet
         include Google::Apis::Core::Hashable
@@ -699,6 +724,16 @@ module Google
         # @return [String]
         attr_accessor :footer_id
       
+        # The tab that contains the footer to delete. When omitted, the request is
+        # applied to the first tab. In a document containing a single tab: - If provided,
+        # must match the singular tab's ID. - If omitted, the request applies to the
+        # singular tab. In a document containing multiple tabs: - If provided, the
+        # request applies to the specified tab. - If omitted, the request applies to the
+        # first tab in the document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -706,6 +741,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @footer_id = args[:footer_id] if args.key?(:footer_id)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
       
@@ -722,6 +758,16 @@ module Google
         # @return [String]
         attr_accessor :header_id
       
+        # The tab containing the header to delete. When omitted, the request is applied
+        # to the first tab. In a document containing a single tab: - If provided, must
+        # match the singular tab's ID. - If omitted, the request applies to the singular
+        # tab. In a document containing multiple tabs: - If provided, the request
+        # applies to the specified tab. - If omitted, the request applies to the first
+        # tab in the document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -729,6 +775,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @header_id = args[:header_id] if args.key?(:header_id)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
       
@@ -747,6 +794,11 @@ module Google
         # @return [String]
         attr_accessor :named_range_id
       
+        # A criteria that specifies in which tabs a request executes.
+        # Corresponds to the JSON property `tabsCriteria`
+        # @return [Google::Apis::DocsV1::TabsCriteria]
+        attr_accessor :tabs_criteria
+      
         def initialize(**args)
            update!(**args)
         end
@@ -755,6 +807,7 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @named_range_id = args[:named_range_id] if args.key?(:named_range_id)
+          @tabs_criteria = args[:tabs_criteria] if args.key?(:tabs_criteria)
         end
       end
       
@@ -788,6 +841,16 @@ module Google
         # @return [String]
         attr_accessor :object_id_prop
       
+        # The tab that the positioned object to delete is in. When omitted, the request
+        # is applied to the first tab. In a document containing a single tab: - If
+        # provided, must match the singular tab's ID. - If omitted, the request applies
+        # to the singular tab. In a document containing multiple tabs: - If provided,
+        # the request applies to the specified tab. - If omitted, the request applies to
+        # the first tab in the document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -795,6 +858,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
       
@@ -956,6 +1020,12 @@ module Google
         # @return [String]
         attr_accessor :suggestions_view_mode
       
+        # Tabs that are part of a document. Tabs can contain child tabs, a tab nested
+        # within another tab. Child tabs are represented by the Tab.child_tabs field.
+        # Corresponds to the JSON property `tabs`
+        # @return [Array<Google::Apis::DocsV1::Tab>]
+        attr_accessor :tabs
+      
         # The title of the document.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -982,6 +1052,7 @@ module Google
           @suggested_document_style_changes = args[:suggested_document_style_changes] if args.key?(:suggested_document_style_changes)
           @suggested_named_styles_changes = args[:suggested_named_styles_changes] if args.key?(:suggested_named_styles_changes)
           @suggestions_view_mode = args[:suggestions_view_mode] if args.key?(:suggestions_view_mode)
+          @tabs = args[:tabs] if args.key?(:tabs)
           @title = args[:title] if args.key?(:title)
         end
       end
@@ -1287,6 +1358,94 @@ module Google
         end
       end
       
+      # A tab with document contents.
+      class DocumentTab
+        include Google::Apis::Core::Hashable
+      
+        # The document body. The body typically contains the full document contents
+        # except for headers, footers, and footnotes.
+        # Corresponds to the JSON property `body`
+        # @return [Google::Apis::DocsV1::Body]
+        attr_accessor :body
+      
+        # The style of the document.
+        # Corresponds to the JSON property `documentStyle`
+        # @return [Google::Apis::DocsV1::DocumentStyle]
+        attr_accessor :document_style
+      
+        # The footers in the document tab, keyed by footer ID.
+        # Corresponds to the JSON property `footers`
+        # @return [Hash<String,Google::Apis::DocsV1::Footer>]
+        attr_accessor :footers
+      
+        # The footnotes in the document tab, keyed by footnote ID.
+        # Corresponds to the JSON property `footnotes`
+        # @return [Hash<String,Google::Apis::DocsV1::Footnote>]
+        attr_accessor :footnotes
+      
+        # The headers in the document tab, keyed by header ID.
+        # Corresponds to the JSON property `headers`
+        # @return [Hash<String,Google::Apis::DocsV1::Header>]
+        attr_accessor :headers
+      
+        # The inline objects in the document tab, keyed by object ID.
+        # Corresponds to the JSON property `inlineObjects`
+        # @return [Hash<String,Google::Apis::DocsV1::InlineObject>]
+        attr_accessor :inline_objects
+      
+        # The lists in the document tab, keyed by list ID.
+        # Corresponds to the JSON property `lists`
+        # @return [Hash<String,Google::Apis::DocsV1::List>]
+        attr_accessor :lists
+      
+        # The named ranges in the document tab, keyed by name.
+        # Corresponds to the JSON property `namedRanges`
+        # @return [Hash<String,Google::Apis::DocsV1::NamedRanges>]
+        attr_accessor :named_ranges
+      
+        # The named styles. Paragraphs in the document can inherit their TextStyle and
+        # ParagraphStyle from these named styles.
+        # Corresponds to the JSON property `namedStyles`
+        # @return [Google::Apis::DocsV1::NamedStyles]
+        attr_accessor :named_styles
+      
+        # The positioned objects in the document tab, keyed by object ID.
+        # Corresponds to the JSON property `positionedObjects`
+        # @return [Hash<String,Google::Apis::DocsV1::PositionedObject>]
+        attr_accessor :positioned_objects
+      
+        # The suggested changes to the style of the document tab, keyed by suggestion ID.
+        # Corresponds to the JSON property `suggestedDocumentStyleChanges`
+        # @return [Hash<String,Google::Apis::DocsV1::SuggestedDocumentStyle>]
+        attr_accessor :suggested_document_style_changes
+      
+        # The suggested changes to the named styles of the document tab, keyed by
+        # suggestion ID.
+        # Corresponds to the JSON property `suggestedNamedStylesChanges`
+        # @return [Hash<String,Google::Apis::DocsV1::SuggestedNamedStyles>]
+        attr_accessor :suggested_named_styles_changes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+          @document_style = args[:document_style] if args.key?(:document_style)
+          @footers = args[:footers] if args.key?(:footers)
+          @footnotes = args[:footnotes] if args.key?(:footnotes)
+          @headers = args[:headers] if args.key?(:headers)
+          @inline_objects = args[:inline_objects] if args.key?(:inline_objects)
+          @lists = args[:lists] if args.key?(:lists)
+          @named_ranges = args[:named_ranges] if args.key?(:named_ranges)
+          @named_styles = args[:named_styles] if args.key?(:named_styles)
+          @positioned_objects = args[:positioned_objects] if args.key?(:positioned_objects)
+          @suggested_document_style_changes = args[:suggested_document_style_changes] if args.key?(:suggested_document_style_changes)
+          @suggested_named_styles_changes = args[:suggested_named_styles_changes] if args.key?(:suggested_named_styles_changes)
+        end
+      end
+      
       # The properties of an embedded drawing and used to differentiate the object
       # type. An embedded drawing is one that's created and edited within a document.
       # Note that extensive details are not supported.
@@ -1588,6 +1747,16 @@ module Google
         # @return [String]
         attr_accessor :segment_id
       
+        # The tab that the location is in. When omitted, the request is applied to the
+        # first tab. In a document containing a single tab: - If provided, must match
+        # the singular tab's ID. - If omitted, the request applies to the singular tab.
+        # In a document containing multiple tabs: - If provided, the request applies to
+        # the specified tab. - If omitted, the request applies to the first tab in the
+        # document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1595,6 +1764,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @segment_id = args[:segment_id] if args.key?(:segment_id)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
       
@@ -1761,6 +1931,31 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @header_id = args[:header_id] if args.key?(:header_id)
+        end
+      end
+      
+      # A reference to a heading in this document.
+      class HeadingLink
+        include Google::Apis::Core::Hashable
+      
+        # The ID of a heading in this document.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The ID of the tab containing this heading.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
       
@@ -2366,15 +2561,30 @@ module Google
       class Link
         include Google::Apis::Core::Hashable
       
+        # A reference to a bookmark in this document.
+        # Corresponds to the JSON property `bookmark`
+        # @return [Google::Apis::DocsV1::BookmarkLink]
+        attr_accessor :bookmark
+      
         # The ID of a bookmark in this document.
         # Corresponds to the JSON property `bookmarkId`
         # @return [String]
         attr_accessor :bookmark_id
       
+        # A reference to a heading in this document.
+        # Corresponds to the JSON property `heading`
+        # @return [Google::Apis::DocsV1::HeadingLink]
+        attr_accessor :heading
+      
         # The ID of a heading in this document.
         # Corresponds to the JSON property `headingId`
         # @return [String]
         attr_accessor :heading_id
+      
+        # The ID of a tab in this document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
       
         # An external URL.
         # Corresponds to the JSON property `url`
@@ -2387,8 +2597,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bookmark = args[:bookmark] if args.key?(:bookmark)
           @bookmark_id = args[:bookmark_id] if args.key?(:bookmark_id)
+          @heading = args[:heading] if args.key?(:heading)
           @heading_id = args[:heading_id] if args.key?(:heading_id)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
           @url = args[:url] if args.key?(:url)
         end
       end
@@ -2539,6 +2752,16 @@ module Google
         # @return [String]
         attr_accessor :segment_id
       
+        # The tab that the location is in. When omitted, the request is applied to the
+        # first tab. In a document containing a single tab: - If provided, must match
+        # the singular tab's ID. - If omitted, the request applies to the singular tab.
+        # In a document containing multiple tabs: - If provided, the request applies to
+        # the specified tab. - If omitted, the request applies to the first tab in the
+        # document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2547,6 +2770,7 @@ module Google
         def update!(**args)
           @index = args[:index] if args.key?(:index)
           @segment_id = args[:segment_id] if args.key?(:segment_id)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
       
@@ -3873,6 +4097,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :start_index
       
+        # The tab that contains this range. When omitted, the request applies to the
+        # first tab. In a document containing a single tab: - If provided, must match
+        # the singular tab's ID. - If omitted, the request applies to the singular tab.
+        # In a document containing multiple tabs: - If provided, the request applies to
+        # the specified tab. - If omitted, the request applies to the first tab in the
+        # document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3882,6 +4116,7 @@ module Google
           @end_index = args[:end_index] if args.key?(:end_index)
           @segment_id = args[:segment_id] if args.key?(:segment_id)
           @start_index = args[:start_index] if args.key?(:start_index)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
       
@@ -3899,6 +4134,11 @@ module Google
         # @return [String]
         attr_accessor :replace_text
       
+        # A criteria that specifies in which tabs a request executes.
+        # Corresponds to the JSON property `tabsCriteria`
+        # @return [Google::Apis::DocsV1::TabsCriteria]
+        attr_accessor :tabs_criteria
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3907,6 +4147,7 @@ module Google
         def update!(**args)
           @contains_text = args[:contains_text] if args.key?(:contains_text)
           @replace_text = args[:replace_text] if args.key?(:replace_text)
+          @tabs_criteria = args[:tabs_criteria] if args.key?(:tabs_criteria)
         end
       end
       
@@ -3946,6 +4187,16 @@ module Google
         # @return [String]
         attr_accessor :image_replace_method
       
+        # The tab that the image to be replaced is in. When omitted, the request is
+        # applied to the first tab. In a document containing a single tab: - If provided,
+        # must match the singular tab's ID. - If omitted, the request applies to the
+        # singular tab. In a document containing multiple tabs: - If provided, the
+        # request applies to the specified tab. - If omitted, the request applies to the
+        # first tab in the document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
         # The URI of the new image. The image is fetched once at insertion time and a
         # copy is stored for display inside the document. Images must be less than 50MB,
         # cannot exceed 25 megapixels, and must be in PNG, JPEG, or GIF format. The
@@ -3963,6 +4214,7 @@ module Google
         def update!(**args)
           @image_object_id = args[:image_object_id] if args.key?(:image_object_id)
           @image_replace_method = args[:image_replace_method] if args.key?(:image_replace_method)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -3990,6 +4242,11 @@ module Google
         # @return [String]
         attr_accessor :named_range_name
       
+        # A criteria that specifies in which tabs a request executes.
+        # Corresponds to the JSON property `tabsCriteria`
+        # @return [Google::Apis::DocsV1::TabsCriteria]
+        attr_accessor :tabs_criteria
+      
         # Replaces the content of the specified named range(s) with the given text.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -4003,6 +4260,7 @@ module Google
         def update!(**args)
           @named_range_id = args[:named_range_id] if args.key?(:named_range_id)
           @named_range_name = args[:named_range_name] if args.key?(:named_range_name)
+          @tabs_criteria = args[:tabs_criteria] if args.key?(:tabs_criteria)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -5185,6 +5443,82 @@ module Google
         end
       end
       
+      # A tab in a document.
+      class Tab
+        include Google::Apis::Core::Hashable
+      
+        # The child tabs nested within this tab.
+        # Corresponds to the JSON property `childTabs`
+        # @return [Array<Google::Apis::DocsV1::Tab>]
+        attr_accessor :child_tabs
+      
+        # A tab with document contents.
+        # Corresponds to the JSON property `documentTab`
+        # @return [Google::Apis::DocsV1::DocumentTab]
+        attr_accessor :document_tab
+      
+        # Properties of a tab.
+        # Corresponds to the JSON property `tabProperties`
+        # @return [Google::Apis::DocsV1::TabProperties]
+        attr_accessor :tab_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @child_tabs = args[:child_tabs] if args.key?(:child_tabs)
+          @document_tab = args[:document_tab] if args.key?(:document_tab)
+          @tab_properties = args[:tab_properties] if args.key?(:tab_properties)
+        end
+      end
+      
+      # Properties of a tab.
+      class TabProperties
+        include Google::Apis::Core::Hashable
+      
+        # The index of the tab within the parent.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Output only. The depth of the tab within the document. Root-level tabs start
+        # at 0.
+        # Corresponds to the JSON property `nestingLevel`
+        # @return [Fixnum]
+        attr_accessor :nesting_level
+      
+        # Optional. The ID of the parent tab. Empty when the current tab is a root-level
+        # tab, which means it doesn't have any parents.
+        # Corresponds to the JSON property `parentTabId`
+        # @return [String]
+        attr_accessor :parent_tab_id
+      
+        # Output only. The ID of the tab. This field can't be changed.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
+        # The user-visible name of the tab.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index = args[:index] if args.key?(:index)
+          @nesting_level = args[:nesting_level] if args.key?(:nesting_level)
+          @parent_tab_id = args[:parent_tab_id] if args.key?(:parent_tab_id)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # A tab stop within a paragraph.
       class TabStop
         include Google::Apis::Core::Hashable
@@ -5805,6 +6139,25 @@ module Google
         end
       end
       
+      # A criteria that specifies in which tabs a request executes.
+      class TabsCriteria
+        include Google::Apis::Core::Hashable
+      
+        # The list of tab IDs in which the request executes.
+        # Corresponds to the JSON property `tabIds`
+        # @return [Array<String>]
+        attr_accessor :tab_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tab_ids = args[:tab_ids] if args.key?(:tab_ids)
+        end
+      end
+      
       # A ParagraphElement that represents a run of text that all has the same styling.
       class TextRun
         include Google::Apis::Core::Hashable
@@ -6089,6 +6442,16 @@ module Google
         # @return [String]
         attr_accessor :fields
       
+        # The tab that contains the style to update. When omitted, the request applies
+        # to the first tab. In a document containing a single tab: - If provided, must
+        # match the singular tab's ID. - If omitted, the request applies to the singular
+        # tab. In a document containing multiple tabs: - If provided, the request
+        # applies to the specified tab. - If not provided, the request applies to the
+        # first tab in the document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6097,6 +6460,7 @@ module Google
         def update!(**args)
           @document_style = args[:document_style] if args.key?(:document_style)
           @fields = args[:fields] if args.key?(:fields)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
       
