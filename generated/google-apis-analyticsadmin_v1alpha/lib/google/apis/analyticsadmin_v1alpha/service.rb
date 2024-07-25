@@ -166,7 +166,7 @@ module Google
         # Get data sharing settings on an account. Data sharing settings are singletons.
         # @param [String] name
         #   Required. The name of the settings to lookup. Format: accounts/`account`/
-        #   dataSharingSettings Example: "accounts/1000/dataSharingSettings"
+        #   dataSharingSettings Example: `accounts/1000/dataSharingSettings`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -362,7 +362,7 @@ module Google
         # set of filters.
         # @param [String] account
         #   Required. The account resource for which to return change history resources.
-        #   Format: accounts/`account` Example: "accounts/100"
+        #   Format: accounts/`account` Example: `accounts/100`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest] google_analytics_admin_v1alpha_search_change_history_events_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2087,6 +2087,70 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a BigQueryLink.
+        # @param [String] parent
+        #   Required. Example format: properties/1234
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink] google_analytics_admin_v1alpha_big_query_link_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_property_big_query_link(parent, google_analytics_admin_v1alpha_big_query_link_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/bigQueryLinks', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
+          command.request_object = google_analytics_admin_v1alpha_big_query_link_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a BigQueryLink on a property.
+        # @param [String] name
+        #   Required. The BigQueryLink to delete. Example format: properties/1234/
+        #   bigQueryLinks/5678
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_property_big_query_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lookup for a single BigQuery Link.
         # @param [String] name
         #   Required. The name of the BigQuery link to lookup. Format: properties/`
@@ -2157,6 +2221,46 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a BigQueryLink.
+        # @param [String] name
+        #   Output only. Resource name of this BigQuery link. Format: 'properties/`
+        #   property_id`/bigQueryLinks/`bigquery_link_id`' Format: 'properties/1234/
+        #   bigQueryLinks/abc567'
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink] google_analytics_admin_v1alpha_big_query_link_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_property_big_query_link(name, google_analytics_admin_v1alpha_big_query_link_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
+          command.request_object = google_analytics_admin_v1alpha_big_query_link_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2524,7 +2628,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a conversion event with the specified attributes.
+        # Deprecated: Use `CreateKeyEvent` instead. Creates a conversion event with the
+        # specified attributes.
         # @param [String] parent
         #   Required. The resource name of the parent property where this conversion event
         #   will be created. Format: properties/123
@@ -2558,7 +2663,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a conversion event in a property.
+        # Deprecated: Use `DeleteKeyEvent` instead. Deletes a conversion event in a
+        # property.
         # @param [String] name
         #   Required. The resource name of the conversion event to delete. Format:
         #   properties/`property`/conversionEvents/`conversion_event` Example: "properties/
@@ -2590,7 +2696,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve a single conversion event.
+        # Deprecated: Use `GetKeyEvent` instead. Retrieve a single conversion event.
         # @param [String] name
         #   Required. The resource name of the conversion event to retrieve. Format:
         #   properties/`property`/conversionEvents/`conversion_event` Example: "properties/
@@ -2622,8 +2728,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of conversion events in the specified parent property. Returns
-        # an empty list if no conversion events are found.
+        # Deprecated: Use `ListKeyEvents` instead. Returns a list of conversion events
+        # in the specified parent property. Returns an empty list if no conversion
+        # events are found.
         # @param [String] parent
         #   Required. The resource name of the parent property. Example: 'properties/123'
         # @param [Fixnum] page_size
@@ -2664,7 +2771,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a conversion event with the specified attributes.
+        # Deprecated: Use `UpdateKeyEvent` instead. Updates a conversion event with the
+        # specified attributes.
         # @param [String] name
         #   Output only. Resource name of this conversion event. Format: properties/`
         #   property`/conversionEvents/`conversion_event`
@@ -3224,8 +3332,8 @@ module Google
         # @param [String] name
         #   Required. The name of the site tag to lookup. Note that site tags are
         #   singletons and do not have unique IDs. Format: properties/`property_id`/
-        #   dataStreams/`stream_id`/globalSiteTag Example: "properties/123/dataStreams/456/
-        #   globalSiteTag"
+        #   dataStreams/`stream_id`/globalSiteTag Example: `properties/123/dataStreams/456/
+        #   globalSiteTag`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3584,39 +3692,6 @@ module Google
           command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventCreateRule
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Changes the processing order of event edit rules on the specified stream.
-        # @param [String] parent
-        #   Required. Example format: properties/123/dataStreams/456
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest] google_analytics_admin_v1alpha_reorder_event_edit_rules_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reorder_property_data_stream_event_edit_rule(parent, google_analytics_admin_v1alpha_reorder_event_edit_rules_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+parent}/eventEditRules:reorder', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_reorder_event_edit_rules_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty
-          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4549,7 +4624,7 @@ module Google
         
         # Creates a FirebaseLink. Properties can have at most one FirebaseLink.
         # @param [String] parent
-        #   Required. Format: properties/`property_id` Example: properties/1234
+        #   Required. Format: properties/`property_id` Example: `properties/1234`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink] google_analytics_admin_v1alpha_firebase_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4583,7 +4658,7 @@ module Google
         # Deletes a FirebaseLink on a property
         # @param [String] name
         #   Required. Format: properties/`property_id`/firebaseLinks/`firebase_link_id`
-        #   Example: properties/1234/firebaseLinks/5678
+        #   Example: `properties/1234/firebaseLinks/5678`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4614,7 +4689,7 @@ module Google
         # Lists FirebaseLinks on a property. Properties can have at most one
         # FirebaseLink.
         # @param [String] parent
-        #   Required. Format: properties/`property_id` Example: properties/1234
+        #   Required. Format: properties/`property_id` Example: `properties/1234`
         # @param [Fixnum] page_size
         #   The maximum number of resources to return. The service may return fewer than
         #   this value, even if there are additional pages. If unspecified, at most 50

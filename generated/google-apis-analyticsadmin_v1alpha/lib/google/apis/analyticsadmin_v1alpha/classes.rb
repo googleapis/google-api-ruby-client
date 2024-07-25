@@ -1564,6 +1564,13 @@ module Google
         attr_accessor :daily_export_enabled
         alias_method :daily_export_enabled?, :daily_export_enabled
       
+        # Required. Immutable. The geographic location where the created BigQuery
+        # dataset should reside. See https://cloud.google.com/bigquery/docs/locations
+        # for supported locations.
+        # Corresponds to the JSON property `datasetLocation`
+        # @return [String]
+        attr_accessor :dataset_location
+      
         # The list of event names that will be excluded from exports.
         # Corresponds to the JSON property `excludedEvents`
         # @return [Array<String>]
@@ -1619,6 +1626,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @daily_export_enabled = args[:daily_export_enabled] if args.key?(:daily_export_enabled)
+          @dataset_location = args[:dataset_location] if args.key?(:dataset_location)
           @excluded_events = args[:excluded_events] if args.key?(:excluded_events)
           @export_streams = args[:export_streams] if args.key?(:export_streams)
           @fresh_daily_export_enabled = args[:fresh_daily_export_enabled] if args.key?(:fresh_daily_export_enabled)
@@ -4973,27 +4981,6 @@ module Google
         end
       end
       
-      # Request message for ReorderEventEditRules RPC.
-      class GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. EventEditRule resource names for the specified data stream, in the
-        # needed processing order. All EventEditRules for the stream must be present in
-        # the list.
-        # Corresponds to the JSON property `eventEditRules`
-        # @return [Array<String>]
-        attr_accessor :event_edit_rules
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @event_edit_rules = args[:event_edit_rules] if args.key?(:event_edit_rules)
-        end
-      end
-      
       # A link that references a source property under the parent rollup property.
       class GoogleAnalyticsAdminV1alphaRollupPropertySourceLink
         include Google::Apis::Core::Hashable
@@ -5362,7 +5349,7 @@ module Google
       
         # Optional. Resource name for a child property. If set, only return changes made
         # to this property or its child resources. Format: properties/`propertyId`
-        # Example: "properties/100"
+        # Example: `properties/100`
         # Corresponds to the JSON property `property`
         # @return [String]
         attr_accessor :property

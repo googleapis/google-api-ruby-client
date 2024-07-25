@@ -892,12 +892,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAnalyticsAdminV1alphaRollupPropertySourceLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1493,6 +1487,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :daily_export_enabled, as: 'dailyExportEnabled'
+          property :dataset_location, as: 'datasetLocation'
           collection :excluded_events, as: 'excludedEvents'
           collection :export_streams, as: 'exportStreams'
           property :fresh_daily_export_enabled, as: 'freshDailyExportEnabled'
@@ -2439,13 +2434,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_ticket_id, as: 'accountTicketId'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :event_edit_rules, as: 'eventEditRules'
         end
       end
       
