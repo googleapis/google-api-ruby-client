@@ -260,22 +260,38 @@ module Google
       class GoogleCloudAiplatformV1beta1CountTokensRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Input content.
+        # Optional. Input content.
         # Corresponds to the JSON property `contents`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content>]
         attr_accessor :contents
       
-        # Required. The instances that are the input to token counting call. Schema is
+        # Optional. The instances that are the input to token counting call. Schema is
         # identical to the prediction schema of the underlying model.
         # Corresponds to the JSON property `instances`
         # @return [Array<Object>]
         attr_accessor :instances
       
-        # Required. The name of the publisher model requested to serve the prediction.
+        # Optional. The name of the publisher model requested to serve the prediction.
         # Format: `projects/`project`/locations/`location`/publishers/*/models/*`
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
+      
+        # The base structured datatype containing multi-part content of a message. A `
+        # Content` includes a `role` field designating the producer of the `Content` and
+        # a `parts` field containing multi-part data that contains the content of the
+        # message turn.
+        # Corresponds to the JSON property `systemInstruction`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content]
+        attr_accessor :system_instruction
+      
+        # Optional. A list of `Tools` the model may use to generate the next response. A
+        # `Tool` is a piece of code that enables the system to interact with external
+        # systems to perform an action, or set of actions, outside of knowledge and
+        # scope of the model.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Tool>]
+        attr_accessor :tools
       
         def initialize(**args)
            update!(**args)
@@ -286,6 +302,8 @@ module Google
           @contents = args[:contents] if args.key?(:contents)
           @instances = args[:instances] if args.key?(:instances)
           @model = args[:model] if args.key?(:model)
+          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
+          @tools = args[:tools] if args.key?(:tools)
         end
       end
       
@@ -725,94 +743,6 @@ module Google
         end
       end
       
-      # Grounding attribution.
-      class GoogleCloudAiplatformV1beta1GroundingAttribution
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Output only. Confidence score of the attribution. Ranges from 0 to 1.
-        # 1 is the most confident.
-        # Corresponds to the JSON property `confidenceScore`
-        # @return [Float]
-        attr_accessor :confidence_score
-      
-        # Attribution from context retrieved by the retrieval tools.
-        # Corresponds to the JSON property `retrievedContext`
-        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext]
-        attr_accessor :retrieved_context
-      
-        # Segment of the content.
-        # Corresponds to the JSON property `segment`
-        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Segment]
-        attr_accessor :segment
-      
-        # Attribution from the web.
-        # Corresponds to the JSON property `web`
-        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttributionWeb]
-        attr_accessor :web
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
-          @retrieved_context = args[:retrieved_context] if args.key?(:retrieved_context)
-          @segment = args[:segment] if args.key?(:segment)
-          @web = args[:web] if args.key?(:web)
-        end
-      end
-      
-      # Attribution from context retrieved by the retrieval tools.
-      class GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Title of the attribution.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # Output only. URI reference of the attribution.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @title = args[:title] if args.key?(:title)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # Attribution from the web.
-      class GoogleCloudAiplatformV1beta1GroundingAttributionWeb
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Title of the attribution.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # Output only. URI reference of the attribution.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @title = args[:title] if args.key?(:title)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
       # Grounding chunk.
       class GoogleCloudAiplatformV1beta1GroundingChunk
         include Google::Apis::Core::Hashable
@@ -892,11 +822,6 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingMetadata
         include Google::Apis::Core::Hashable
       
-        # Optional. List of grounding attributions.
-        # Corresponds to the JSON property `groundingAttributions`
-        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingAttribution>]
-        attr_accessor :grounding_attributions
-      
         # List of supporting references retrieved from specified grounding source.
         # Corresponds to the JSON property `groundingChunks`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunk>]
@@ -928,7 +853,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @grounding_attributions = args[:grounding_attributions] if args.key?(:grounding_attributions)
           @grounding_chunks = args[:grounding_chunks] if args.key?(:grounding_chunks)
           @grounding_supports = args[:grounding_supports] if args.key?(:grounding_supports)
           @retrieval_queries = args[:retrieval_queries] if args.key?(:retrieval_queries)
@@ -1034,9 +958,7 @@ module Google
       class GoogleCloudAiplatformV1beta1Retrieval
         include Google::Apis::Core::Hashable
       
-        # Optional. Disable using the result from this tool in detecting grounding
-        # attribution. This does not affect how the result is given to the model for
-        # generation.
+        # Optional. Deprecated. This option is no longer supported.
         # Corresponds to the JSON property `disableAttribution`
         # @return [Boolean]
         attr_accessor :disable_attribution
