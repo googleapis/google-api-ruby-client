@@ -32,6 +32,8 @@ module Google
       #
       # @see https://developers.google.com/shopping-content/v2/
       class ShoppingContentService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://shoppingcontent.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://shoppingcontent.googleapis.com/', 'content/v2.1/',
+          super(DEFAULT_ENDPOINT_TEMPLATE, 'content/v2.1/',
                 client_name: 'google-apis-content_v2_1',
                 client_version: Google::Apis::ContentV2_1::GEM_VERSION)
           @batch_path = 'batch'
@@ -2896,7 +2898,7 @@ module Google
         # @param [String] language_code
         #   Optional. The [IETF BCP-47](https://tools.ietf.org/html/bcp47) language code
         #   used to localize support content. If not set, the result will be in default
-        #   language ('en-US').
+        #   language `en-US`.
         # @param [String] time_zone
         #   Optional. The [IANA](https://www.iana.org/time-zones) timezone used to
         #   localize times in support content. For example 'America/Los_Angeles'. If not
@@ -2945,7 +2947,7 @@ module Google
         # @param [String] language_code
         #   Optional. The [IETF BCP-47](https://tools.ietf.org/html/bcp47) language code
         #   used to localize support content. If not set, the result will be in default
-        #   language ('en-US').
+        #   language `en-US`.
         # @param [String] time_zone
         #   Optional. The [IANA](https://www.iana.org/time-zones) timezone used to
         #   localize times in support content. For example 'America/Los_Angeles'. If not
@@ -2977,6 +2979,51 @@ module Google
           command.params['productId'] = product_id unless product_id.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['timeZone'] = time_zone unless time_zone.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Start an action. The action can be requested by merchants in third-party
+        # application. Before merchants can request the action, the third-party
+        # application needs to show them action specific content and display a user
+        # input form. The action can be successfully started only once all `required`
+        # inputs are provided. If any `required` input is missing, or invalid value was
+        # provided, the service will return 400 error. Validation errors will contain
+        # Ids for all problematic field together with translated, human readable error
+        # messages that can be shown to the user.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the merchant's account.
+        # @param [Google::Apis::ContentV2_1::TriggerActionPayload] trigger_action_payload_object
+        # @param [String] language_code
+        #   Optional. Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47)
+        #   used to localize the response. If not set, the result will be in default
+        #   language `en-US`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::TriggerActionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::TriggerActionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def triggeraction_merchantsupport(merchant_id, trigger_action_payload_object = nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/merchantsupport/triggeraction', options)
+          command.request_representation = Google::Apis::ContentV2_1::TriggerActionPayload::Representation
+          command.request_object = trigger_action_payload_object
+          command.response_representation = Google::Apis::ContentV2_1::TriggerActionResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::TriggerActionResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4991,67 +5038,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the metrics report for a given Repricing product.
-        # @param [Fixnum] merchant_id
-        #   Required. Id of the merchant who owns the Repricing rule.
-        # @param [String] product_id
-        #   Required. Id of the Repricing product. Also known as the [REST_ID](https://
-        #   developers.google.com/shopping-content/reference/rest/v2.1/products#Product.
-        #   FIELDS.id)
-        # @param [String] end_date
-        #   Gets Repricing reports on and before this date in the merchant's timezone. You
-        #   can only retrieve data up to 7 days ago (default) or earlier. Format is YYYY-
-        #   MM-DD.
-        # @param [Fixnum] page_size
-        #   Maximum number of days of reports to return. There can be more than one rule
-        #   report returned per day. For example, if 3 rule types got applied to the same
-        #   product within a 24-hour period, then a page_size of 1 will return 3 rule
-        #   reports. The page size defaults to 50 and values above 1000 are coerced to
-        #   1000. This service may return fewer days of reports than this value, for
-        #   example, if the time between your start and end date is less than the page
-        #   size.
-        # @param [String] page_token
-        #   Token (if provided) to retrieve the subsequent page. All other parameters must
-        #   match the original call that provided the page token.
-        # @param [String] rule_id
-        #   Id of the Repricing rule. If specified, only gets this rule's reports.
-        # @param [String] start_date
-        #   Gets Repricing reports on and after this date in the merchant's timezone, up
-        #   to one year ago. Do not use a start date later than 7 days ago (default).
-        #   Format is YYYY-MM-DD.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2_1::ListRepricingProductReportsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2_1::ListRepricingProductReportsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_productstatus_repricingreports(merchant_id, product_id, end_date: nil, page_size: nil, page_token: nil, rule_id: nil, start_date: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{merchantId}/productstatuses/{productId}/repricingreports', options)
-          command.response_representation = Google::Apis::ContentV2_1::ListRepricingProductReportsResponse::Representation
-          command.response_class = Google::Apis::ContentV2_1::ListRepricingProductReportsResponse
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['productId'] = product_id unless product_id.nil?
-          command.query['endDate'] = end_date unless end_date.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['ruleId'] = rule_id unless rule_id.nil?
-          command.query['startDate'] = start_date unless start_date.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Inserts a promotion for your Merchant Center account. If the promotion already
         # exists, then it updates the promotion instead. To [end or delete] (https://
         # developers.google.com/shopping-content/guides/promotions#end_a_promotion) a
@@ -5597,7 +5583,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves merchant performance mertrics matching the search query and
+        # Retrieves merchant performance metrics matching the search query and
         # optionally segmented by selected dimensions.
         # @param [Fixnum] merchant_id
         #   Required. Id of the merchant making the call. Must be a standalone account or
@@ -5627,249 +5613,6 @@ module Google
           command.response_representation = Google::Apis::ContentV2_1::SearchResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::SearchResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a repricing rule for your Merchant Center account.
-        # @param [Fixnum] merchant_id
-        #   Required. The id of the merchant who owns the repricing rule.
-        # @param [Google::Apis::ContentV2_1::RepricingRule] repricing_rule_object
-        # @param [String] rule_id
-        #   Required. The id of the rule to create.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2_1::RepricingRule] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2_1::RepricingRule]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_repricingrule(merchant_id, repricing_rule_object = nil, rule_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, '{merchantId}/repricingrules', options)
-          command.request_representation = Google::Apis::ContentV2_1::RepricingRule::Representation
-          command.request_object = repricing_rule_object
-          command.response_representation = Google::Apis::ContentV2_1::RepricingRule::Representation
-          command.response_class = Google::Apis::ContentV2_1::RepricingRule
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.query['ruleId'] = rule_id unless rule_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a repricing rule in your Merchant Center account.
-        # @param [Fixnum] merchant_id
-        #   Required. The id of the merchant who owns the repricing rule.
-        # @param [String] rule_id
-        #   Required. The id of the rule to Delete.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [void]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_repricingrule(merchant_id, rule_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, '{merchantId}/repricingrules/{ruleId}', options)
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['ruleId'] = rule_id unless rule_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves a repricing rule from your Merchant Center account.
-        # @param [Fixnum] merchant_id
-        #   Required. The id of the merchant who owns the repricing rule.
-        # @param [String] rule_id
-        #   Required. The id of the rule to retrieve.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2_1::RepricingRule] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2_1::RepricingRule]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_repricingrule(merchant_id, rule_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{merchantId}/repricingrules/{ruleId}', options)
-          command.response_representation = Google::Apis::ContentV2_1::RepricingRule::Representation
-          command.response_class = Google::Apis::ContentV2_1::RepricingRule
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['ruleId'] = rule_id unless rule_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists the repricing rules in your Merchant Center account.
-        # @param [Fixnum] merchant_id
-        #   Required. The id of the merchant who owns the repricing rule.
-        # @param [String] country_code
-        #   [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/
-        #   en.xml) (for example, "US"), used as a filter on repricing rules.
-        # @param [String] language_code
-        #   The two-letter ISO 639-1 language code associated with the repricing rule,
-        #   used as a filter.
-        # @param [Fixnum] page_size
-        #   The maximum number of repricing rules to return. The service may return fewer
-        #   than this value. If unspecified, at most 50 rules will be returned. The
-        #   maximum value is 1000; values above 1000 will be coerced to 1000.
-        # @param [String] page_token
-        #   A page token, received from a previous `ListRepricingRules` call. Provide this
-        #   to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListRepricingRules` must match the call that provided the page
-        #   token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2_1::ListRepricingRulesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2_1::ListRepricingRulesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_repricingrules(merchant_id, country_code: nil, language_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{merchantId}/repricingrules', options)
-          command.response_representation = Google::Apis::ContentV2_1::ListRepricingRulesResponse::Representation
-          command.response_class = Google::Apis::ContentV2_1::ListRepricingRulesResponse
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.query['countryCode'] = country_code unless country_code.nil?
-          command.query['languageCode'] = language_code unless language_code.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates a repricing rule in your Merchant Center account. All mutable fields
-        # will be overwritten in each update request. In each update, you must provide
-        # all required mutable fields, or an error will be thrown. If you do not provide
-        # an optional field in the update request, if that field currently exists, it
-        # will be deleted from the rule.
-        # @param [Fixnum] merchant_id
-        #   Required. The id of the merchant who owns the repricing rule.
-        # @param [String] rule_id
-        #   Required. The id of the rule to update.
-        # @param [Google::Apis::ContentV2_1::RepricingRule] repricing_rule_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2_1::RepricingRule] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2_1::RepricingRule]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_repricingrule(merchant_id, rule_id, repricing_rule_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{merchantId}/repricingrules/{ruleId}', options)
-          command.request_representation = Google::Apis::ContentV2_1::RepricingRule::Representation
-          command.request_object = repricing_rule_object
-          command.response_representation = Google::Apis::ContentV2_1::RepricingRule::Representation
-          command.response_class = Google::Apis::ContentV2_1::RepricingRule
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['ruleId'] = rule_id unless rule_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # *Deprecated*: New merchants can't start using this service. Lists the metrics
-        # report for a given Repricing rule.
-        # @param [Fixnum] merchant_id
-        #   Required. Id of the merchant who owns the Repricing rule.
-        # @param [String] rule_id
-        #   Required. Id of the Repricing rule.
-        # @param [String] end_date
-        #   Gets Repricing reports on and before this date in the merchant's timezone. You
-        #   can only retrieve data up to 7 days ago (default) or earlier. Format: YYYY-MM-
-        #   DD.
-        # @param [Fixnum] page_size
-        #   Maximum number of daily reports to return. Each report includes data from a
-        #   single 24-hour period. The page size defaults to 50 and values above 1000 are
-        #   coerced to 1000. This service may return fewer days than this value, for
-        #   example, if the time between your start and end date is less than page size.
-        # @param [String] page_token
-        #   Token (if provided) to retrieve the subsequent page. All other parameters must
-        #   match the original call that provided the page token.
-        # @param [String] start_date
-        #   Gets Repricing reports on and after this date in the merchant's timezone, up
-        #   to one year ago. Do not use a start date later than 7 days ago (default).
-        #   Format: YYYY-MM-DD.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2_1::ListRepricingRuleReportsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2_1::ListRepricingRuleReportsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_repricingrule_repricingreports(merchant_id, rule_id, end_date: nil, page_size: nil, page_token: nil, start_date: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{merchantId}/repricingrules/{ruleId}/repricingreports', options)
-          command.response_representation = Google::Apis::ContentV2_1::ListRepricingRuleReportsResponse::Representation
-          command.response_class = Google::Apis::ContentV2_1::ListRepricingRuleReportsResponse
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['ruleId'] = rule_id unless rule_id.nil?
-          command.query['endDate'] = end_date unless end_date.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['startDate'] = start_date unless start_date.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

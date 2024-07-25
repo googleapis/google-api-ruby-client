@@ -346,6 +346,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActionFlow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActionInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ActionReason
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -424,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuiltInUserInputAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BusinessDayConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +449,12 @@ module Google
       end
       
       class BuyOnGoogleProgramStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Callout
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -724,6 +748,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FreeShippingThreshold
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenerateRecommendationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -766,7 +796,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InapplicabilityDetails
+      class InputField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputFieldCheckboxInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputFieldChoiceInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputFieldChoiceInputChoiceInputOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputFieldTextInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputValueCheckboxInputValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputValueChoiceInputValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputValueTextInputValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -976,24 +1054,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListRepricingProductReportsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListRepricingRuleReportsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListRepricingRulesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListReturnPolicyOnlineResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1036,7 +1096,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LoyaltyPoints
+      class LoyaltyProgram
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1912,6 +1972,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductStructuredDescription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductStructuredTitle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductSubscriptionCost
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2183,84 +2255,6 @@ module Google
       end
       
       class ReportRow
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingProductReport
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingProductReportBuyboxWinningProductStats
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingRuleCostOfGoodsSaleRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingRuleEffectiveTime
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingRuleEffectiveTimeFixedTimePeriod
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingRuleEligibleOfferMatcher
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingRuleEligibleOfferMatcherStringMatcher
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingRuleReport
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingRuleReportBuyboxWinningRuleStats
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingRuleRestriction
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingRuleRestrictionBoundary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepricingRuleStatsBasedRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2668,6 +2662,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextWithTooltip
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimePeriod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2675,6 +2675,12 @@ module Google
       end
       
       class TimeZone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TopicTrends
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2693,6 +2699,18 @@ module Google
       end
       
       class TransitTableTransitTimeRowTransitTimeValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TriggerActionPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TriggerActionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3338,11 +3356,38 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :builtin_simple_action, as: 'builtinSimpleAction', class: Google::Apis::ContentV2_1::BuiltInSimpleAction, decorator: Google::Apis::ContentV2_1::BuiltInSimpleAction::Representation
       
+          property :builtin_user_input_action, as: 'builtinUserInputAction', class: Google::Apis::ContentV2_1::BuiltInUserInputAction, decorator: Google::Apis::ContentV2_1::BuiltInUserInputAction::Representation
+      
           property :button_label, as: 'buttonLabel'
           property :external_action, as: 'externalAction', class: Google::Apis::ContentV2_1::ExternalAction, decorator: Google::Apis::ContentV2_1::ExternalAction::Representation
       
           property :is_available, as: 'isAvailable'
           collection :reasons, as: 'reasons', class: Google::Apis::ContentV2_1::ActionReason, decorator: Google::Apis::ContentV2_1::ActionReason::Representation
+      
+        end
+      end
+      
+      class ActionFlow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dialog_button_label, as: 'dialogButtonLabel'
+          property :dialog_callout, as: 'dialogCallout', class: Google::Apis::ContentV2_1::Callout, decorator: Google::Apis::ContentV2_1::Callout::Representation
+      
+          property :dialog_message, as: 'dialogMessage', class: Google::Apis::ContentV2_1::TextWithTooltip, decorator: Google::Apis::ContentV2_1::TextWithTooltip::Representation
+      
+          property :dialog_title, as: 'dialogTitle'
+          property :id, as: 'id'
+          collection :inputs, as: 'inputs', class: Google::Apis::ContentV2_1::InputField, decorator: Google::Apis::ContentV2_1::InputField::Representation
+      
+          property :label, as: 'label'
+        end
+      end
+      
+      class ActionInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_flow_id, as: 'actionFlowId'
+          collection :input_values, as: 'inputValues', class: Google::Apis::ContentV2_1::InputValue, decorator: Google::Apis::ContentV2_1::InputValue::Representation
       
         end
       end
@@ -3468,6 +3513,15 @@ module Google
         end
       end
       
+      class BuiltInUserInputAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_context, as: 'actionContext'
+          collection :flows, as: 'flows', class: Google::Apis::ContentV2_1::ActionFlow, decorator: Google::Apis::ContentV2_1::ActionFlow::Representation
+      
+        end
+      end
+      
       class BusinessDayConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3487,6 +3541,15 @@ module Google
           property :customer_service_verified_phone_region_code, as: 'customerServiceVerifiedPhoneRegionCode'
           property :online_sales_channel, as: 'onlineSalesChannel'
           property :participation_stage, as: 'participationStage'
+        end
+      end
+      
+      class Callout
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_message, as: 'fullMessage', class: Google::Apis::ContentV2_1::TextWithTooltip, decorator: Google::Apis::ContentV2_1::TextWithTooltip::Representation
+      
+          property :style_hint, as: 'styleHint'
         end
       end
       
@@ -4035,6 +4098,15 @@ module Google
         end
       end
       
+      class FreeShippingThreshold
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
+          property :price_threshold, as: 'priceThreshold', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+        end
+      end
+      
       class GenerateRecommendationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4110,11 +4182,89 @@ module Google
         end
       end
       
-      class InapplicabilityDetails
+      class InputField
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :inapplicable_count, :numeric_string => true, as: 'inapplicableCount'
-          property :inapplicable_reason, as: 'inapplicableReason'
+          property :checkbox_input, as: 'checkboxInput', class: Google::Apis::ContentV2_1::InputFieldCheckboxInput, decorator: Google::Apis::ContentV2_1::InputFieldCheckboxInput::Representation
+      
+          property :choice_input, as: 'choiceInput', class: Google::Apis::ContentV2_1::InputFieldChoiceInput, decorator: Google::Apis::ContentV2_1::InputFieldChoiceInput::Representation
+      
+          property :id, as: 'id'
+          property :label, as: 'label', class: Google::Apis::ContentV2_1::TextWithTooltip, decorator: Google::Apis::ContentV2_1::TextWithTooltip::Representation
+      
+          property :required, as: 'required'
+          property :text_input, as: 'textInput', class: Google::Apis::ContentV2_1::InputFieldTextInput, decorator: Google::Apis::ContentV2_1::InputFieldTextInput::Representation
+      
+        end
+      end
+      
+      class InputFieldCheckboxInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class InputFieldChoiceInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :options, as: 'options', class: Google::Apis::ContentV2_1::InputFieldChoiceInputChoiceInputOption, decorator: Google::Apis::ContentV2_1::InputFieldChoiceInputChoiceInputOption::Representation
+      
+        end
+      end
+      
+      class InputFieldChoiceInputChoiceInputOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_input, as: 'additionalInput', class: Google::Apis::ContentV2_1::InputField, decorator: Google::Apis::ContentV2_1::InputField::Representation
+      
+          property :id, as: 'id'
+          property :label, as: 'label', class: Google::Apis::ContentV2_1::TextWithTooltip, decorator: Google::Apis::ContentV2_1::TextWithTooltip::Representation
+      
+        end
+      end
+      
+      class InputFieldTextInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_info, as: 'additionalInfo', class: Google::Apis::ContentV2_1::TextWithTooltip, decorator: Google::Apis::ContentV2_1::TextWithTooltip::Representation
+      
+          property :aria_label, as: 'ariaLabel'
+          property :format_info, as: 'formatInfo'
+          property :type, as: 'type'
+        end
+      end
+      
+      class InputValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :checkbox_input_value, as: 'checkboxInputValue', class: Google::Apis::ContentV2_1::InputValueCheckboxInputValue, decorator: Google::Apis::ContentV2_1::InputValueCheckboxInputValue::Representation
+      
+          property :choice_input_value, as: 'choiceInputValue', class: Google::Apis::ContentV2_1::InputValueChoiceInputValue, decorator: Google::Apis::ContentV2_1::InputValueChoiceInputValue::Representation
+      
+          property :input_field_id, as: 'inputFieldId'
+          property :text_input_value, as: 'textInputValue', class: Google::Apis::ContentV2_1::InputValueTextInputValue, decorator: Google::Apis::ContentV2_1::InputValueTextInputValue::Representation
+      
+        end
+      end
+      
+      class InputValueCheckboxInputValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
+      class InputValueChoiceInputValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :choice_input_option_id, as: 'choiceInputOptionId'
+        end
+      end
+      
+      class InputValueTextInputValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
         end
       end
       
@@ -4130,6 +4280,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amount, as: 'amount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :credit_type, as: 'creditType'
+          property :downpayment, as: 'downpayment', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
           property :months, :numeric_string => true, as: 'months'
         end
@@ -4442,33 +4595,6 @@ module Google
         end
       end
       
-      class ListRepricingProductReportsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :repricing_product_reports, as: 'repricingProductReports', class: Google::Apis::ContentV2_1::RepricingProductReport, decorator: Google::Apis::ContentV2_1::RepricingProductReport::Representation
-      
-        end
-      end
-      
-      class ListRepricingRuleReportsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :repricing_rule_reports, as: 'repricingRuleReports', class: Google::Apis::ContentV2_1::RepricingRuleReport, decorator: Google::Apis::ContentV2_1::RepricingRuleReport::Representation
-      
-        end
-      end
-      
-      class ListRepricingRulesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :repricing_rules, as: 'repricingRules', class: Google::Apis::ContentV2_1::RepricingRule, decorator: Google::Apis::ContentV2_1::RepricingRule::Representation
-      
-        end
-      end
-      
       class ListReturnPolicyOnlineResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4543,12 +4669,17 @@ module Google
         end
       end
       
-      class LoyaltyPoints
+      class LoyaltyProgram
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :points_value, :numeric_string => true, as: 'pointsValue'
-          property :ratio, as: 'ratio'
+          property :cashback_for_future_use, as: 'cashbackForFutureUse', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :loyalty_points, :numeric_string => true, as: 'loyaltyPoints'
+          property :member_price_effective_date, as: 'memberPriceEffectiveDate'
+          property :price, as: 'price', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :program_label, as: 'programLabel'
+          property :tier_label, as: 'tierLabel'
         end
       end
       
@@ -4614,6 +4745,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :method_prop, as: 'method'
           property :quota_limit, :numeric_string => true, as: 'quotaLimit'
+          property :quota_minute_limit, :numeric_string => true, as: 'quotaMinuteLimit'
           property :quota_usage, :numeric_string => true, as: 'quotaUsage'
         end
       end
@@ -5922,6 +6054,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :gcid_category, as: 'gcidCategory'
           property :kind, as: 'kind'
+          property :matching_status, as: 'matchingStatus'
+          property :matching_status_hint, as: 'matchingStatusHint'
           property :phone_number, as: 'phoneNumber'
           property :place_id, as: 'placeId'
           property :store_address, as: 'storeAddress'
@@ -5977,6 +6111,7 @@ module Google
       class PriceInsights
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :effectiveness, as: 'effectiveness'
           property :predicted_clicks_change_fraction, as: 'predictedClicksChangeFraction'
           property :predicted_conversions_change_fraction, as: 'predictedConversionsChangeFraction'
           property :predicted_gross_profit_change_fraction, as: 'predictedGrossProfitChangeFraction'
@@ -5998,6 +6133,8 @@ module Google
           property :ads_redirect, as: 'adsRedirect'
           property :adult, as: 'adult'
           property :age_group, as: 'ageGroup'
+          property :auto_pricing_min_price, as: 'autoPricingMinPrice', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
           property :availability, as: 'availability'
           property :availability_date, as: 'availabilityDate'
           property :brand, as: 'brand'
@@ -6031,6 +6168,8 @@ module Google
           property :expiration_date, as: 'expirationDate'
           property :external_seller_id, as: 'externalSellerId'
           property :feed_label, as: 'feedLabel'
+          collection :free_shipping_threshold, as: 'freeShippingThreshold', class: Google::Apis::ContentV2_1::FreeShippingThreshold, decorator: Google::Apis::ContentV2_1::FreeShippingThreshold::Representation
+      
           property :gender, as: 'gender'
           property :google_product_category, as: 'googleProductCategory'
           property :gtin, as: 'gtin'
@@ -6046,7 +6185,9 @@ module Google
           collection :lifestyle_image_links, as: 'lifestyleImageLinks'
           property :link, as: 'link'
           property :link_template, as: 'linkTemplate'
-          property :loyalty_points, as: 'loyaltyPoints', class: Google::Apis::ContentV2_1::LoyaltyPoints, decorator: Google::Apis::ContentV2_1::LoyaltyPoints::Representation
+          property :loyalty_program, as: 'loyaltyProgram', class: Google::Apis::ContentV2_1::LoyaltyProgram, decorator: Google::Apis::ContentV2_1::LoyaltyProgram::Representation
+      
+          collection :loyalty_programs, as: 'loyaltyPrograms', class: Google::Apis::ContentV2_1::LoyaltyProgram, decorator: Google::Apis::ContentV2_1::LoyaltyProgram::Representation
       
           property :material, as: 'material'
           property :max_energy_efficiency_class, as: 'maxEnergyEfficiencyClass'
@@ -6097,6 +6238,10 @@ module Google
           property :size_type, as: 'sizeType'
           collection :sizes, as: 'sizes'
           property :source, as: 'source'
+          property :structured_description, as: 'structuredDescription', class: Google::Apis::ContentV2_1::ProductStructuredDescription, decorator: Google::Apis::ContentV2_1::ProductStructuredDescription::Representation
+      
+          property :structured_title, as: 'structuredTitle', class: Google::Apis::ContentV2_1::ProductStructuredTitle, decorator: Google::Apis::ContentV2_1::ProductStructuredTitle::Representation
+      
           property :subscription_cost, as: 'subscriptionCost', class: Google::Apis::ContentV2_1::ProductSubscriptionCost, decorator: Google::Apis::ContentV2_1::ProductSubscriptionCost::Representation
       
           property :target_country, as: 'targetCountry'
@@ -6131,6 +6276,7 @@ module Google
           property :certification_authority, as: 'certificationAuthority'
           property :certification_code, as: 'certificationCode'
           property :certification_name, as: 'certificationName'
+          property :certification_value, as: 'certificationValue'
         end
       end
       
@@ -6303,6 +6449,22 @@ module Google
         end
       end
       
+      class ProductStructuredDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :digital_source_type, as: 'digitalSourceType'
+        end
+      end
+      
+      class ProductStructuredTitle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :digital_source_type, as: 'digitalSourceType'
+        end
+      end
+      
       class ProductSubscriptionCost
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6353,6 +6515,8 @@ module Google
           property :category_l4, as: 'categoryL4'
           property :category_l5, as: 'categoryL5'
           property :channel, as: 'channel'
+          property :click_potential, as: 'clickPotential'
+          property :click_potential_rank, :numeric_string => true, as: 'clickPotentialRank'
           property :condition, as: 'condition'
           property :creation_time, as: 'creationTime'
           property :currency_code, as: 'currencyCode'
@@ -6787,6 +6951,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_option, as: 'contentOption'
+          property :user_input_action_option, as: 'userInputActionOption'
         end
       end
       
@@ -6804,6 +6969,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_option, as: 'contentOption'
+          property :user_input_action_option, as: 'userInputActionOption'
         end
       end
       
@@ -6848,154 +7014,8 @@ module Google
       
           property :segments, as: 'segments', class: Google::Apis::ContentV2_1::Segments, decorator: Google::Apis::ContentV2_1::Segments::Representation
       
-        end
-      end
+          property :topic_trends, as: 'topicTrends', class: Google::Apis::ContentV2_1::TopicTrends, decorator: Google::Apis::ContentV2_1::TopicTrends::Representation
       
-      class RepricingProductReport
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :application_count, :numeric_string => true, as: 'applicationCount'
-          property :buybox_winning_product_stats, as: 'buyboxWinningProductStats', class: Google::Apis::ContentV2_1::RepricingProductReportBuyboxWinningProductStats, decorator: Google::Apis::ContentV2_1::RepricingProductReportBuyboxWinningProductStats::Representation
-      
-          property :date, as: 'date', class: Google::Apis::ContentV2_1::Date, decorator: Google::Apis::ContentV2_1::Date::Representation
-      
-          property :high_watermark, as: 'highWatermark', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
-      
-          collection :inapplicability_details, as: 'inapplicabilityDetails', class: Google::Apis::ContentV2_1::InapplicabilityDetails, decorator: Google::Apis::ContentV2_1::InapplicabilityDetails::Representation
-      
-          property :low_watermark, as: 'lowWatermark', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
-      
-          property :order_item_count, as: 'orderItemCount'
-          collection :rule_ids, as: 'ruleIds'
-          property :total_gmv, as: 'totalGmv', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
-      
-          property :type, as: 'type'
-        end
-      end
-      
-      class RepricingProductReportBuyboxWinningProductStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :buybox_wins_count, as: 'buyboxWinsCount'
-        end
-      end
-      
-      class RepricingRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cogs_based_rule, as: 'cogsBasedRule', class: Google::Apis::ContentV2_1::RepricingRuleCostOfGoodsSaleRule, decorator: Google::Apis::ContentV2_1::RepricingRuleCostOfGoodsSaleRule::Representation
-      
-          property :country_code, as: 'countryCode'
-          property :effective_time_period, as: 'effectiveTimePeriod', class: Google::Apis::ContentV2_1::RepricingRuleEffectiveTime, decorator: Google::Apis::ContentV2_1::RepricingRuleEffectiveTime::Representation
-      
-          property :eligible_offer_matcher, as: 'eligibleOfferMatcher', class: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcher, decorator: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcher::Representation
-      
-          property :language_code, as: 'languageCode'
-          property :merchant_id, :numeric_string => true, as: 'merchantId'
-          property :paused, as: 'paused'
-          property :restriction, as: 'restriction', class: Google::Apis::ContentV2_1::RepricingRuleRestriction, decorator: Google::Apis::ContentV2_1::RepricingRuleRestriction::Representation
-      
-          property :rule_id, as: 'ruleId'
-          property :stats_based_rule, as: 'statsBasedRule', class: Google::Apis::ContentV2_1::RepricingRuleStatsBasedRule, decorator: Google::Apis::ContentV2_1::RepricingRuleStatsBasedRule::Representation
-      
-          property :title, as: 'title'
-          property :type, as: 'type'
-        end
-      end
-      
-      class RepricingRuleCostOfGoodsSaleRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :percentage_delta, as: 'percentageDelta'
-          property :price_delta, as: 'priceDelta'
-        end
-      end
-      
-      class RepricingRuleEffectiveTime
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :fixed_time_periods, as: 'fixedTimePeriods', class: Google::Apis::ContentV2_1::RepricingRuleEffectiveTimeFixedTimePeriod, decorator: Google::Apis::ContentV2_1::RepricingRuleEffectiveTimeFixedTimePeriod::Representation
-      
-        end
-      end
-      
-      class RepricingRuleEffectiveTimeFixedTimePeriod
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-        end
-      end
-      
-      class RepricingRuleEligibleOfferMatcher
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :brand_matcher, as: 'brandMatcher', class: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher, decorator: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher::Representation
-      
-          property :item_group_id_matcher, as: 'itemGroupIdMatcher', class: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher, decorator: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher::Representation
-      
-          property :matcher_option, as: 'matcherOption'
-          property :offer_id_matcher, as: 'offerIdMatcher', class: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher, decorator: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher::Representation
-      
-          property :skip_when_on_promotion, as: 'skipWhenOnPromotion'
-        end
-      end
-      
-      class RepricingRuleEligibleOfferMatcherStringMatcher
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :str_attributes, as: 'strAttributes'
-        end
-      end
-      
-      class RepricingRuleReport
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :buybox_winning_rule_stats, as: 'buyboxWinningRuleStats', class: Google::Apis::ContentV2_1::RepricingRuleReportBuyboxWinningRuleStats, decorator: Google::Apis::ContentV2_1::RepricingRuleReportBuyboxWinningRuleStats::Representation
-      
-          property :date, as: 'date', class: Google::Apis::ContentV2_1::Date, decorator: Google::Apis::ContentV2_1::Date::Representation
-      
-          collection :impacted_products, as: 'impactedProducts'
-          collection :inapplicability_details, as: 'inapplicabilityDetails', class: Google::Apis::ContentV2_1::InapplicabilityDetails, decorator: Google::Apis::ContentV2_1::InapplicabilityDetails::Representation
-      
-          collection :inapplicable_products, as: 'inapplicableProducts'
-          property :order_item_count, as: 'orderItemCount'
-          property :rule_id, as: 'ruleId'
-          property :total_gmv, as: 'totalGmv', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
-      
-          property :type, as: 'type'
-        end
-      end
-      
-      class RepricingRuleReportBuyboxWinningRuleStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :buybox_won_product_count, as: 'buyboxWonProductCount'
-        end
-      end
-      
-      class RepricingRuleRestriction
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :floor, as: 'floor', class: Google::Apis::ContentV2_1::RepricingRuleRestrictionBoundary, decorator: Google::Apis::ContentV2_1::RepricingRuleRestrictionBoundary::Representation
-      
-          property :use_auto_pricing_min_price, as: 'useAutoPricingMinPrice'
-        end
-      end
-      
-      class RepricingRuleRestrictionBoundary
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :percentage_delta, as: 'percentageDelta'
-          property :price_delta, as: 'priceDelta'
-        end
-      end
-      
-      class RepricingRuleStatsBasedRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :percentage_delta, as: 'percentageDelta'
-          property :price_delta, as: 'priceDelta'
         end
       end
       
@@ -7762,6 +7782,15 @@ module Google
         end
       end
       
+      class TextWithTooltip
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :simple_tooltip_value, as: 'simpleTooltipValue'
+          property :simple_value, as: 'simpleValue'
+          property :tooltip_icon_style, as: 'tooltipIconStyle'
+        end
+      end
+      
       class TimePeriod
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7775,6 +7804,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :version, as: 'version'
+        end
+      end
+      
+      class TopicTrends
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_country_code, as: 'customerCountryCode'
+          property :date, as: 'date', class: Google::Apis::ContentV2_1::Date, decorator: Google::Apis::ContentV2_1::Date::Representation
+      
+          property :last120_days_search_interest, as: 'last120DaysSearchInterest'
+          property :last30_days_search_interest, as: 'last30DaysSearchInterest'
+          property :last7_days_search_interest, as: 'last7DaysSearchInterest'
+          property :last90_days_search_interest, as: 'last90DaysSearchInterest'
+          property :next7_days_search_interest, as: 'next7DaysSearchInterest'
+          property :search_interest, as: 'searchInterest'
+          property :topic, as: 'topic'
         end
       end
       
@@ -7801,6 +7846,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_transit_time_in_days, as: 'maxTransitTimeInDays'
           property :min_transit_time_in_days, as: 'minTransitTimeInDays'
+        end
+      end
+      
+      class TriggerActionPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_context, as: 'actionContext'
+          property :action_input, as: 'actionInput', class: Google::Apis::ContentV2_1::ActionInput, decorator: Google::Apis::ContentV2_1::ActionInput::Representation
+      
+        end
+      end
+      
+      class TriggerActionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
         end
       end
       
