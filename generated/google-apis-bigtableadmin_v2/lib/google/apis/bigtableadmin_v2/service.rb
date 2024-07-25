@@ -856,7 +856,7 @@ module Google
         # located in the destination instance and project.
         # @param [String] parent
         #   Required. The name of the destination cluster that will contain the backup
-        #   copy. The cluster must already exists. Values are of the form: `projects/`
+        #   copy. The cluster must already exist. Values are of the form: `projects/`
         #   project`/instances/`instance`/clusters/`cluster``.
         # @param [Google::Apis::BigtableadminV2::CopyBackupRequest] copy_backup_request_object
         # @param [String] fields
