@@ -1548,6 +1548,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :array_val
       
+        # Optional. Value of the parameter if type is object.
+        # Corresponds to the JSON property `objectVal`
+        # @return [Hash<String,String>]
+        attr_accessor :object_val
+      
         # Value of the parameter if type is string.
         # Corresponds to the JSON property `stringVal`
         # @return [String]
@@ -1565,6 +1570,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @array_val = args[:array_val] if args.key?(:array_val)
+          @object_val = args[:object_val] if args.key?(:object_val)
           @string_val = args[:string_val] if args.key?(:string_val)
           @type = args[:type] if args.key?(:type)
         end

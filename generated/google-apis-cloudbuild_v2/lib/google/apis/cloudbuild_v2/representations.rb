@@ -911,6 +911,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :array_val, as: 'arrayVal'
+          hash :object_val, as: 'objectVal'
           property :string_val, as: 'stringVal'
           property :type, as: 'type'
         end
