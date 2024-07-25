@@ -1387,6 +1387,12 @@ module Google
         # @return [String]
         attr_accessor :source_instance_template_id
       
+        # Per service utilization breakdown. The Key is the Google Cloud managed service
+        # name.
+        # Corresponds to the JSON property `utilizations`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :utilizations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1394,6 +1400,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @source_instance_template_id = args[:source_instance_template_id] if args.key?(:source_instance_template_id)
+          @utilizations = args[:utilizations] if args.key?(:utilizations)
         end
       end
       
@@ -3017,6 +3024,12 @@ module Google
         # @return [Float]
         attr_accessor :capacity_scaler
       
+        # List of custom metrics that are used for CUSTOM_METRICS BalancingMode and
+        # WEIGHTED_ROUND_ROBIN BackendService locality_lb_policy.
+        # Corresponds to the JSON property `customMetrics`
+        # @return [Array<Google::Apis::ComputeAlpha::BackendCustomMetric>]
+        attr_accessor :custom_metrics
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -3107,6 +3120,7 @@ module Google
         def update!(**args)
           @balancing_mode = args[:balancing_mode] if args.key?(:balancing_mode)
           @capacity_scaler = args[:capacity_scaler] if args.key?(:capacity_scaler)
+          @custom_metrics = args[:custom_metrics] if args.key?(:custom_metrics)
           @description = args[:description] if args.key?(:description)
           @failover = args[:failover] if args.key?(:failover)
           @group = args[:group] if args.key?(:group)
@@ -3583,6 +3597,49 @@ module Google
         end
       end
       
+      # Custom Metrics are used for CUSTOM_METRICS balancing_mode and
+      # WEIGHTED_ROUND_ROBIN BackendService locality_lb_policy.
+      class BackendCustomMetric
+        include Google::Apis::Core::Hashable
+      
+        # If true, the metric data is collected and reported to Cloud Monitoring, but is
+        # not used for load balancing.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
+        # Optional parameter to define a target utilization for the Custom Metrics
+        # balancing mode. The valid range is [0.0, 1.0].
+        # Corresponds to the JSON property `maxUtilization`
+        # @return [Float]
+        attr_accessor :max_utilization
+      
+        # Name of a custom utilization signal. The name must be 1-24 characters long,
+        # and comply with RFC1035. Specifically, the name must be 1-24 characters long
+        # and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the
+        # first character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which cannot
+        # be a dash. For usage guidelines, see Custom Metrics balancing mode. This field
+        # can only be used for a global or regional backend service with the
+        # loadBalancingScheme set to EXTERNAL_MANAGED, INTERNAL_MANAGED
+        # INTERNAL_SELF_MANAGED.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @max_utilization = args[:max_utilization] if args.key?(:max_utilization)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Represents a Backend Service resource. A backend service defines how Google
       # Cloud load balancers distribute traffic. The backend service configuration
       # contains a set of values, such as the protocol used to connect to backends,
@@ -3984,7 +4041,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
-        # 
+        # [Output Only] List of resources referencing given backend service.
         # Corresponds to the JSON property `usedBy`
         # @return [Array<Google::Apis::ComputeAlpha::BackendServiceUsedBy>]
         attr_accessor :used_by
@@ -5191,7 +5248,9 @@ module Google
       class BackendServiceUsedBy
         include Google::Apis::Core::Hashable
       
-        # 
+        # [Output Only] Server-defined URL for resources referencing given
+        # BackendService like UrlMaps, TargetTcpProxies, TargetSslProxies and
+        # ForwardingRule.
         # Corresponds to the JSON property `reference`
         # @return [String]
         attr_accessor :reference
@@ -6274,6 +6333,13 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # [Input Only] Optional, specifies the CUD end time requested by the customer in
+        # RFC3339 text format. Needed when the customer wants CUD's end date is later
+        # than the start date + term duration.
+        # Corresponds to the JSON property `customEndTimestamp`
+        # @return [String]
+        attr_accessor :custom_end_timestamp
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -6402,6 +6468,7 @@ module Google
           @auto_renew = args[:auto_renew] if args.key?(:auto_renew)
           @category = args[:category] if args.key?(:category)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @custom_end_timestamp = args[:custom_end_timestamp] if args.key?(:custom_end_timestamp)
           @description = args[:description] if args.key?(:description)
           @end_timestamp = args[:end_timestamp] if args.key?(:end_timestamp)
           @existing_reservations = args[:existing_reservations] if args.key?(:existing_reservations)
@@ -6676,6 +6743,13 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CommitmentResourceStatusCancellationInformation]
         attr_accessor :cancellation_information
       
+        # [Output Only] Indicates the end time of customer's eligibility to send custom
+        # term requests in RFC3339 text format. Term extension requests that (not the
+        # end time in the request) after this time will be rejected.
+        # Corresponds to the JSON property `customTermEligibilityEndTimestamp`
+        # @return [String]
+        attr_accessor :custom_term_eligibility_end_timestamp
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6683,6 +6757,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cancellation_information = args[:cancellation_information] if args.key?(:cancellation_information)
+          @custom_term_eligibility_end_timestamp = args[:custom_term_eligibility_end_timestamp] if args.key?(:custom_term_eligibility_end_timestamp)
         end
       end
       
@@ -17168,10 +17243,15 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerAutoHealingPolicy>]
         attr_accessor :auto_healing_policies
       
-        # The base instance name to use for instances in this group. The value must be 1-
-        # 58 characters long. Instances are named by appending a hyphen and a random
-        # four-character string to the base instance name. The base instance name must
-        # comply with RFC1035.
+        # The base instance name is a prefix that you want to attach to the names of all
+        # VMs in a MIG. The maximum character length is 58 and the name must comply with
+        # RFC1035 format. When a VM is created in the group, the MIG appends a hyphen
+        # and a random four-character string to the base instance name. If you want the
+        # MIG to assign sequential numbers instead of a random string, then end the base
+        # instance name with a hyphen followed by one or more hash symbols. The hash
+        # symbols indicate the number of digits. For example, a base instance name of "
+        # vm-###" results in "vm-001" as a VM name. @pattern [a-z](([-a-z0-9]`0,57`)|([-
+        # a-z0-9]`0,52`-#`1,10`(\\[[0-9]`1,10`\\])?))
         # Corresponds to the JSON property `baseInstanceName`
         # @return [String]
         attr_accessor :base_instance_name
@@ -17281,6 +17361,11 @@ module Google
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
+      
+        # Resource policies for this managed instance group.
+        # Corresponds to the JSON property `resourcePolicies`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerResourcePolicies]
+        attr_accessor :resource_policies
       
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
@@ -17411,6 +17496,7 @@ module Google
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
+          @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -18589,6 +18675,30 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerResourcePolicies
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the workload policy that is specified for this managed instance
+        # group. It can be a full or partial URL. For example, the following are all
+        # valid URLs to a workload policy: - https://www.googleapis.com/compute/v1/
+        # projects/project/regions/region /resourcePolicies/resourcePolicy - projects/
+        # project/regions/region/resourcePolicies/resourcePolicy - regions/region/
+        # resourcePolicies/resourcePolicy
+        # Corresponds to the JSON property `workloadPolicy`
+        # @return [String]
+        attr_accessor :workload_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @workload_policy = args[:workload_policy] if args.key?(:workload_policy)
         end
       end
       
@@ -21857,6 +21967,147 @@ module Google
         end
       end
       
+      # 
+      class InstantSnapshotGroup
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # Optional. An optional description of this resource. Provide this property when
+        # you create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#instantSnapshotGroup for
+        # InstantSnapshotGroup resources.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Identifier. Name of the resource; provided by the client when the resource is
+        # created. The name must be 1-63 characters long, and comply with RFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] URL of the region where the instant snapshot group resides. You
+        # must specify this field as part of the HTTP request URL. It is not settable as
+        # a field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # 
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeAlpha::InstantSnapshotGroupResourceStatus]
+        attr_accessor :resource_status
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output Only]
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] URL of the zone where the instant snapshot group resides. You
+        # must specify this field as part of the HTTP request URL. It is not settable as
+        # a field in the request body.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @status = args[:status] if args.key?(:status)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class InstantSnapshotGroupResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only]
+        # Corresponds to the JSON property `consistencyMembershipResolutionTime`
+        # @return [String]
+        attr_accessor :consistency_membership_resolution_time
+      
+        # [Output Only]
+        # Corresponds to the JSON property `sourceInfo`
+        # @return [Google::Apis::ComputeAlpha::InstantSnapshotGroupSourceInfo]
+        attr_accessor :source_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consistency_membership_resolution_time = args[:consistency_membership_resolution_time] if args.key?(:consistency_membership_resolution_time)
+          @source_info = args[:source_info] if args.key?(:source_info)
+        end
+      end
+      
+      # 
+      class InstantSnapshotGroupSourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `consistencyGroup`
+        # @return [String]
+        attr_accessor :consistency_group
+      
+        # 
+        # Corresponds to the JSON property `consistencyGroupId`
+        # @return [String]
+        attr_accessor :consistency_group_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consistency_group = args[:consistency_group] if args.key?(:consistency_group)
+          @consistency_group_id = args[:consistency_group_id] if args.key?(:consistency_group_id)
+        end
+      end
+      
       # Contains a list of InstantSnapshot resources.
       class InstantSnapshotList
         include Google::Apis::Core::Hashable
@@ -22404,6 +22655,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy]
         attr_accessor :bandwidth_percentage_policy
       
+        # 
+        # Corresponds to the JSON property `egressMinBandwidthPercentagePolicy`
+        # @return [Google::Apis::ComputeAlpha::InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy]
+        attr_accessor :egress_min_bandwidth_percentage_policy
+      
         # A description for the AAI profile on this interconnect.
         # Corresponds to the JSON property `profileDescription`
         # @return [String]
@@ -22421,6 +22677,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bandwidth_percentage_policy = args[:bandwidth_percentage_policy] if args.key?(:bandwidth_percentage_policy)
+          @egress_min_bandwidth_percentage_policy = args[:egress_min_bandwidth_percentage_policy] if args.key?(:egress_min_bandwidth_percentage_policy)
           @profile_description = args[:profile_description] if args.key?(:profile_description)
           @strict_priority_policy = args[:strict_priority_policy] if args.key?(:strict_priority_policy)
         end
@@ -25393,6 +25650,136 @@ module Google
         end
       end
       
+      # Contains a list of InstantSnapshotGroup resources.
+      class ListInstantSnapshotGroups
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of InstantSnapshotGroup resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::InstantSnapshotGroup>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources. end_interface:
+        # MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::ListInstantSnapshotGroups::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::ListInstantSnapshotGroups::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # 
       class LocalDisk
         include Google::Apis::Core::Hashable
@@ -27093,6 +27480,11 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeAlpha::MultiMigStatus]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -27110,6 +27502,7 @@ module Google
           @scheduling_policy = args[:scheduling_policy] if args.key?(:scheduling_policy)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -27178,6 +27571,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @provisioning = args[:provisioning] if args.key?(:provisioning)
+        end
+      end
+      
+      # 
+      class MultiMigStatus
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `memberInstanceGroupManagers`
+        # @return [Array<String>]
+        attr_accessor :member_instance_group_managers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @member_instance_group_managers = args[:member_instance_group_managers] if args.key?(:member_instance_group_managers)
         end
       end
       
@@ -28496,12 +28908,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :client_destination_port
       
-        # Represents the port number to which PSC consumer sends packets. Only valid for
-        # network endpoint groups created with CLIENT_PORT_PER_ENDPOINT mapping mode.
-        # Corresponds to the JSON property `clientPort`
-        # @return [Fixnum]
-        attr_accessor :client_port
-      
         # Optional fully qualified domain name of network endpoint. This can only be
         # specified when NetworkEndpointGroup.network_endpoint_type is NON_GCP_FQDN_PORT.
         # Corresponds to the JSON property `fqdn`
@@ -28559,7 +28965,6 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @client_destination_port = args[:client_destination_port] if args.key?(:client_destination_port)
-          @client_port = args[:client_port] if args.key?(:client_port)
           @fqdn = args[:fqdn] if args.key?(:fqdn)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -28589,11 +28994,6 @@ module Google
         # Corresponds to the JSON property `appEngine`
         # @return [Google::Apis::ComputeAlpha::NetworkEndpointGroupAppEngine]
         attr_accessor :app_engine
-      
-        # Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
-        # Corresponds to the JSON property `clientPortMappingMode`
-        # @return [String]
-        attr_accessor :client_port_mapping_mode
       
         # Configuration for a Cloud Function network endpoint group (NEG). The function
         # must be provided explicitly or in the URL mask. Note: Cloud Function must be
@@ -28734,7 +29134,6 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @app_engine = args[:app_engine] if args.key?(:app_engine)
-          @client_port_mapping_mode = args[:client_port_mapping_mode] if args.key?(:client_port_mapping_mode)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -40138,6 +40537,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicy]
         attr_accessor :vm_maintenance_policy
       
+        # Represents the workload policy.
+        # Corresponds to the JSON property `workloadPolicy`
+        # @return [Google::Apis::ComputeAlpha::ResourcePolicyWorkloadPolicy]
+        attr_accessor :workload_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -40159,6 +40563,7 @@ module Google
           @snapshot_schedule_policy = args[:snapshot_schedule_policy] if args.key?(:snapshot_schedule_policy)
           @status = args[:status] if args.key?(:status)
           @vm_maintenance_policy = args[:vm_maintenance_policy] if args.key?(:vm_maintenance_policy)
+          @workload_policy = args[:workload_policy] if args.key?(:workload_policy)
         end
       end
       
@@ -40936,6 +41341,25 @@ module Google
         end
       end
       
+      # Represents the workload policy.
+      class ResourcePolicyWorkloadPolicy
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Contains output only fields. Use this sub-message for actual values set on
       # Instance attributes as compared to the value requested by the user (intent) in
       # their instance CRUD calls.
@@ -41013,11 +41437,9 @@ module Google
       class ResourceStatusScheduling
         include Google::Apis::Core::Hashable
       
-        # Specifies the availability domain (AD), which this instance should be
-        # scheduled on. The AD belongs to the spread GroupPlacementPolicy resource
-        # policy that has been assigned to the instance. Specify a value between 1-max
-        # count of availability domains in your GroupPlacementPolicy. See go/placement-
-        # policy-extension for more details.
+        # Specifies the availability domain to place the instance in. The value must be
+        # a number between 1 and the number of availability domains specified in the
+        # spread placement policy attached to the instance.
         # Corresponds to the JSON property `availabilityDomain`
         # @return [Fixnum]
         attr_accessor :availability_domain
@@ -44167,11 +44589,9 @@ module Google
         attr_accessor :automatic_restart
         alias_method :automatic_restart?, :automatic_restart
       
-        # Specifies the availability domain (AD), which this instance should be
-        # scheduled on. The AD belongs to the spread GroupPlacementPolicy resource
-        # policy that has been assigned to the instance. Specify a value between 1-max
-        # count of availability domains in your GroupPlacementPolicy. See go/placement-
-        # policy-extension for more details.
+        # Specifies the availability domain to place the instance in. The value must be
+        # a number between 1 and the number of availability domains specified in the
+        # spread placement policy attached to the instance.
         # Corresponds to the JSON property `availabilityDomain`
         # @return [Fixnum]
         attr_accessor :availability_domain
@@ -57602,8 +58022,9 @@ module Google
         attr_accessor :self_link
       
         # The stack type for this VPN gateway to identify the IP protocols that are
-        # enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified,
-        # IPV4_ONLY will be used.
+        # enabled. Possible values are: IPV4_ONLY, IPV4_IPV6, IPV6_ONLY. If not
+        # specified, IPV4_ONLY is used if the gateway IP version is IPV4, or IPV4_IPV6
+        # if the gateway IP version is IPV6.
         # Corresponds to the JSON property `stackType`
         # @return [String]
         attr_accessor :stack_type
