@@ -1,0 +1,7 @@
+{
+    "api_id": "css:v1",
+    "name_pretty": "CSS API",
+    "distribution_name": "google-apis-css_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
