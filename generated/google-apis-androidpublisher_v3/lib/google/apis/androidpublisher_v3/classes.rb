@@ -2240,12 +2240,12 @@ module Google
         attr_accessor :test_purchase
       
         # Optional. The transaction program code, used to help determine service fee for
-        # apps partcipating in special partner programs. This field can not be used for
-        # external offers transactions. Developers participating in the Play Media
-        # Experience Program (https://play.google.com/console/about/programs/
-        # mediaprogram/) must provide the program code when reporting alternative
-        # billing external transactions. If you are an eligible developer, please
-        # contact your BDM for more information on how to set this field.
+        # eligible apps participating in partner programs. Developers participating in
+        # the Play Media Experience Program (https://play.google.com/console/about/
+        # programs/mediaprogram/) must provide the program code when reporting
+        # alternative billing transactions. If you are an eligible developer, please
+        # contact your BDM for more information on how to set this field. Note: this
+        # field can not be used for external offers transactions.
         # Corresponds to the JSON property `transactionProgramCode`
         # @return [Fixnum]
         attr_accessor :transaction_program_code
