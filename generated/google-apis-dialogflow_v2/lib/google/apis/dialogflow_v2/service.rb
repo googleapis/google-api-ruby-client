@@ -5013,6 +5013,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets location-level encryption key specification.
+        # @param [String] name
+        #   Required. The name of the encryption spec resource to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EncryptionSpec] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EncryptionSpec]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_encryption_spec(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EncryptionSpec::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EncryptionSpec
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists information about the supported locations for this service.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
@@ -8954,6 +8984,44 @@ module Google
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestConversationSummaryResponse::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestConversationSummaryResponse
           command.params['conversation'] = conversation unless conversation.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Initializes a location-level encryption key specification. An error will be
+        # thrown if the location has resources already created before the initialization.
+        # Once the encryption specification is initialized at a location, it is
+        # immutable and all newly created resources under the location will be encrypted
+        # with the existing specification.
+        # @param [String] name
+        #   Immutable. The resource name of the encryption key specification resource.
+        #   Format: projects/`project`/locations/`location`/encryptionSpec
+        # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InitializeEncryptionSpecRequest] google_cloud_dialogflow_v2_initialize_encryption_spec_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def initialize_project_location_encryption_spec(name, google_cloud_dialogflow_v2_initialize_encryption_spec_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:initialize', options)
+          command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InitializeEncryptionSpecRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2_initialize_encryption_spec_request_object
+          command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
