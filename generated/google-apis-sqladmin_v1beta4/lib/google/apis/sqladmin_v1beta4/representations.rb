@@ -213,6 +213,12 @@ module Google
           
             include Google::Apis::Core::JsonObjectSupport
           end
+          
+          class PostgresExportOptions
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -279,6 +285,12 @@ module Google
         
         class SqlImportOptions
           class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class PostgresImportOptions
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -841,6 +853,7 @@ module Google
           property :region, as: 'region'
           property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
       
+          property :server_ca_mode, as: 'serverCaMode'
         end
       end
       
@@ -932,6 +945,7 @@ module Google
           property :sql_network_architecture, as: 'sqlNetworkArchitecture'
           property :state, as: 'state'
           collection :suspension_reason, as: 'suspensionReason'
+          property :switch_transaction_logs_to_cloud_storage_enabled, as: 'switchTransactionLogsToCloudStorageEnabled'
           collection :upgradable_database_versions, as: 'upgradableDatabaseVersions', class: Google::Apis::SqladminV1beta4::AvailableDatabaseVersion, decorator: Google::Apis::SqladminV1beta4::AvailableDatabaseVersion::Representation
       
           property :write_endpoint, as: 'writeEndpoint'
@@ -1071,6 +1085,8 @@ module Google
             property :mysql_export_options, as: 'mysqlExportOptions', class: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::MysqlExportOptions, decorator: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::MysqlExportOptions::Representation
         
             property :parallel, as: 'parallel'
+            property :postgres_export_options, as: 'postgresExportOptions', class: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::PostgresExportOptions, decorator: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::PostgresExportOptions::Representation
+        
             property :schema_only, as: 'schemaOnly'
             collection :tables, as: 'tables'
             property :threads, as: 'threads'
@@ -1080,6 +1096,14 @@ module Google
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :master_data, as: 'masterData'
+            end
+          end
+          
+          class PostgresExportOptions
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :clean, as: 'clean'
+              property :if_exists, as: 'ifExists'
             end
           end
         end
@@ -1203,7 +1227,17 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :parallel, as: 'parallel'
+            property :postgres_import_options, as: 'postgresImportOptions', class: Google::Apis::SqladminV1beta4::ImportContext::SqlImportOptions::PostgresImportOptions, decorator: Google::Apis::SqladminV1beta4::ImportContext::SqlImportOptions::PostgresImportOptions::Representation
+        
             property :threads, as: 'threads'
+          end
+          
+          class PostgresImportOptions
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :clean, as: 'clean'
+              property :if_exists, as: 'ifExists'
+            end
           end
         end
       end
@@ -1350,6 +1384,7 @@ module Google
           property :psc_config, as: 'pscConfig', class: Google::Apis::SqladminV1beta4::PscConfig, decorator: Google::Apis::SqladminV1beta4::PscConfig::Representation
       
           property :require_ssl, as: 'requireSsl'
+          property :server_ca_mode, as: 'serverCaMode'
           property :ssl_mode, as: 'sslMode'
         end
       end

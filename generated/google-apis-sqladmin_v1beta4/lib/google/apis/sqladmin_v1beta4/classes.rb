@@ -654,6 +654,11 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::SslCert]
         attr_accessor :server_ca_cert
       
+        # Specify what type of CA is used for the server certificate.
+        # Corresponds to the JSON property `serverCaMode`
+        # @return [String]
+        attr_accessor :server_ca_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -668,6 +673,7 @@ module Google
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
           @region = args[:region] if args.key?(:region)
           @server_ca_cert = args[:server_ca_cert] if args.key?(:server_ca_cert)
+          @server_ca_mode = args[:server_ca_mode] if args.key?(:server_ca_mode)
         end
       end
       
@@ -1030,6 +1036,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :suspension_reason
       
+        # Input only. Whether Cloud SQL is enabled to switch storing point-in-time
+        # recovery log files from a data disk to Cloud Storage.
+        # Corresponds to the JSON property `switchTransactionLogsToCloudStorageEnabled`
+        # @return [Boolean]
+        attr_accessor :switch_transaction_logs_to_cloud_storage_enabled
+        alias_method :switch_transaction_logs_to_cloud_storage_enabled?, :switch_transaction_logs_to_cloud_storage_enabled
+      
         # Output only. All database versions that are available for upgrade.
         # Corresponds to the JSON property `upgradableDatabaseVersions`
         # @return [Array<Google::Apis::SqladminV1beta4::AvailableDatabaseVersion>]
@@ -1088,6 +1101,7 @@ module Google
           @sql_network_architecture = args[:sql_network_architecture] if args.key?(:sql_network_architecture)
           @state = args[:state] if args.key?(:state)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
+          @switch_transaction_logs_to_cloud_storage_enabled = args[:switch_transaction_logs_to_cloud_storage_enabled] if args.key?(:switch_transaction_logs_to_cloud_storage_enabled)
           @upgradable_database_versions = args[:upgradable_database_versions] if args.key?(:upgradable_database_versions)
           @write_endpoint = args[:write_endpoint] if args.key?(:write_endpoint)
         end
@@ -1589,6 +1603,11 @@ module Google
           attr_accessor :parallel
           alias_method :parallel?, :parallel
         
+          # Options for exporting from a Cloud SQL for PostgreSQL instance.
+          # Corresponds to the JSON property `postgresExportOptions`
+          # @return [Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::PostgresExportOptions]
+          attr_accessor :postgres_export_options
+        
           # Export only schemas.
           # Corresponds to the JSON property `schemaOnly`
           # @return [Boolean]
@@ -1615,6 +1634,7 @@ module Google
           def update!(**args)
             @mysql_export_options = args[:mysql_export_options] if args.key?(:mysql_export_options)
             @parallel = args[:parallel] if args.key?(:parallel)
+            @postgres_export_options = args[:postgres_export_options] if args.key?(:postgres_export_options)
             @schema_only = args[:schema_only] if args.key?(:schema_only)
             @tables = args[:tables] if args.key?(:tables)
             @threads = args[:threads] if args.key?(:threads)
@@ -1640,6 +1660,35 @@ module Google
             # Update properties of this object
             def update!(**args)
               @master_data = args[:master_data] if args.key?(:master_data)
+            end
+          end
+          
+          # Options for exporting from a Cloud SQL for PostgreSQL instance.
+          class PostgresExportOptions
+            include Google::Apis::Core::Hashable
+          
+            # Optional. Use this option to include DROP SQL statements. These statements are
+            # used to delete database objects before running the import operation.
+            # Corresponds to the JSON property `clean`
+            # @return [Boolean]
+            attr_accessor :clean
+            alias_method :clean?, :clean
+          
+            # Optional. Option to include an IF EXISTS SQL statement with each DROP
+            # statement produced by clean.
+            # Corresponds to the JSON property `ifExists`
+            # @return [Boolean]
+            attr_accessor :if_exists
+            alias_method :if_exists?, :if_exists
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @clean = args[:clean] if args.key?(:clean)
+              @if_exists = args[:if_exists] if args.key?(:if_exists)
             end
           end
         end
@@ -2127,6 +2176,11 @@ module Google
           attr_accessor :parallel
           alias_method :parallel?, :parallel
         
+          # Optional. Options for importing from a Cloud SQL for PostgreSQL instance.
+          # Corresponds to the JSON property `postgresImportOptions`
+          # @return [Google::Apis::SqladminV1beta4::ImportContext::SqlImportOptions::PostgresImportOptions]
+          attr_accessor :postgres_import_options
+        
           # Optional. The number of threads to use for parallel import.
           # Corresponds to the JSON property `threads`
           # @return [Fixnum]
@@ -2139,7 +2193,37 @@ module Google
           # Update properties of this object
           def update!(**args)
             @parallel = args[:parallel] if args.key?(:parallel)
+            @postgres_import_options = args[:postgres_import_options] if args.key?(:postgres_import_options)
             @threads = args[:threads] if args.key?(:threads)
+          end
+          
+          # Optional. Options for importing from a Cloud SQL for PostgreSQL instance.
+          class PostgresImportOptions
+            include Google::Apis::Core::Hashable
+          
+            # Optional. The --clean flag for the pg_restore utility. This flag applies only
+            # if you enabled Cloud SQL to import files in parallel.
+            # Corresponds to the JSON property `clean`
+            # @return [Boolean]
+            attr_accessor :clean
+            alias_method :clean?, :clean
+          
+            # Optional. The --if-exists flag for the pg_restore utility. This flag applies
+            # only if you enabled Cloud SQL to import files in parallel.
+            # Corresponds to the JSON property `ifExists`
+            # @return [Boolean]
+            attr_accessor :if_exists
+            alias_method :if_exists?, :if_exists
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @clean = args[:clean] if args.key?(:clean)
+              @if_exists = args[:if_exists] if args.key?(:if_exists)
+            end
           end
         end
       end
@@ -2567,6 +2651,11 @@ module Google
         attr_accessor :require_ssl
         alias_method :require_ssl?, :require_ssl
       
+        # Specify what type of CA is used for the server certificate.
+        # Corresponds to the JSON property `serverCaMode`
+        # @return [String]
+        attr_accessor :server_ca_mode
+      
         # Specify how SSL/TLS is enforced in database connections. If you must use the `
         # require_ssl` flag for backward compatibility, then only the following value
         # pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=
@@ -2597,6 +2686,7 @@ module Google
           @private_network = args[:private_network] if args.key?(:private_network)
           @psc_config = args[:psc_config] if args.key?(:psc_config)
           @require_ssl = args[:require_ssl] if args.key?(:require_ssl)
+          @server_ca_mode = args[:server_ca_mode] if args.key?(:server_ca_mode)
           @ssl_mode = args[:ssl_mode] if args.key?(:ssl_mode)
         end
       end
