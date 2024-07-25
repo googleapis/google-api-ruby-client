@@ -1316,7 +1316,7 @@ module Google
         
         # Updates a Dataset.
         # @param [String] name
-        #   Output only. The resource name of the Dataset.
+        #   Output only. Identifier. The resource name of the Dataset.
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset] google_cloud_aiplatform_v1_dataset_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
@@ -2272,7 +2272,7 @@ module Google
         
         # Updates a DatasetVersion.
         # @param [String] name
-        #   Output only. The resource name of the DatasetVersion.
+        #   Output only. Identifier. The resource name of the DatasetVersion.
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion] google_cloud_aiplatform_v1_dataset_version_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
@@ -2916,6 +2916,44 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a DeploymentResourcePool.
+        # @param [String] name
+        #   Immutable. The resource name of the DeploymentResourcePool. Format: `projects/`
+        #   project`/locations/`location`/deploymentResourcePools/`
+        #   deployment_resource_pool``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeploymentResourcePool] google_cloud_aiplatform_v1_deployment_resource_pool_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_deployment_resource_pool(name, google_cloud_aiplatform_v1_deployment_resource_pool_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeploymentResourcePool::Representation
+          command.request_object = google_cloud_aiplatform_v1_deployment_resource_pool_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4194,7 +4232,8 @@ module Google
         #   to the resource, not the full request. A field will be overwritten if it is in
         #   the mask. If the user does not provide a mask then only the non-empty fields
         #   present in the request will be overwritten. Set the update_mask to `*` to
-        #   override all fields. Updatable fields: * `labels`
+        #   override all fields. Updatable fields: * `labels` * `description` * `big_query`
+        #   * `big_query.entity_id_columns`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4424,7 +4463,8 @@ module Google
         #   the mask. If the user does not provide a mask then only the non-empty fields
         #   present in the request will be overwritten. Set the update_mask to `*` to
         #   override all fields. Updatable fields: * `description` * `labels` * `
-        #   disable_monitoring` (Not supported for FeatureRegistry Feature)
+        #   disable_monitoring` (Not supported for FeatureRegistryService Feature) * `
+        #   point_of_contact` (Not supported for FeaturestoreService FeatureStore)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4924,8 +4964,9 @@ module Google
         #   update_mask are relative to the resource, not the full request. A field will
         #   be overwritten if it is in the mask. If the user does not provide a mask then
         #   only the non-empty fields present in the request will be overwritten. Set the
-        #   update_mask to `*` to override all fields. Updatable fields: * `
-        #   big_query_source` * `bigtable` * `labels` * `sync_config`
+        #   update_mask to `*` to override all fields. Updatable fields: * `labels` * `
+        #   description` * `bigtable` * `bigtable.auto_scaling` * `bigtable.
+        #   enable_multi_region_replica`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5171,7 +5212,10 @@ module Google
         #   to the resource, not the full request. A field will be overwritten if it is in
         #   the mask. If the user does not provide a mask then only the non-empty fields
         #   present in the request will be overwritten. Set the update_mask to `*` to
-        #   override all fields. Updatable fields: * `labels` * `serviceAgentType`
+        #   override all fields. Updatable fields: * `labels` * `service_agent_type` * `
+        #   big_query_source` * `big_query_source.uri` * `big_query_source.
+        #   entity_id_columns` * `feature_registry_source` * `feature_registry_source.
+        #   feature_groups` * `sync_config` * `sync_config.cron`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6915,7 +6959,8 @@ module Google
         #   the mask. If the user does not provide a mask then only the non-empty fields
         #   present in the request will be overwritten. Set the update_mask to `*` to
         #   override all fields. Updatable fields: * `description` * `labels` * `
-        #   disable_monitoring` (Not supported for FeatureRegistry Feature)
+        #   disable_monitoring` (Not supported for FeatureRegistryService Feature) * `
+        #   point_of_contact` (Not supported for FeaturestoreService FeatureStore)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13031,6 +13076,163 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a NotebookExecutionJob.
+        # @param [String] parent
+        #   Required. The resource name of the Location to create the NotebookExecutionJob.
+        #   Format: `projects/`project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJob] google_cloud_aiplatform_v1_notebook_execution_job_object
+        # @param [String] notebook_execution_job_id
+        #   Optional. User specified ID for the NotebookExecutionJob.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_notebook_execution_job(parent, google_cloud_aiplatform_v1_notebook_execution_job_object = nil, notebook_execution_job_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/notebookExecutionJobs', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJob::Representation
+          command.request_object = google_cloud_aiplatform_v1_notebook_execution_job_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['notebookExecutionJobId'] = notebook_execution_job_id unless notebook_execution_job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a NotebookExecutionJob.
+        # @param [String] name
+        #   Required. The name of the NotebookExecutionJob resource to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_notebook_execution_job(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a NotebookExecutionJob.
+        # @param [String] name
+        #   Required. The name of the NotebookExecutionJob resource.
+        # @param [String] view
+        #   Optional. The NotebookExecutionJob view. Defaults to BASIC.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_notebook_execution_job(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJob::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJob
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists NotebookExecutionJobs in a Location.
+        # @param [String] parent
+        #   Required. The resource name of the Location from which to list the
+        #   NotebookExecutionJobs. Format: `projects/`project`/locations/`location``
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. For field
+        #   names both snake_case and camelCase are supported. * `notebookExecutionJob`
+        #   supports = and !=. `notebookExecutionJob` represents the NotebookExecutionJob
+        #   ID. * `displayName` supports = and != and regex. * `schedule` supports = and !=
+        #   and regex. Some examples: * `notebookExecutionJob="123"` * `
+        #   notebookExecutionJob="my-execution-job"` * `displayName="myDisplayName"` and `
+        #   displayName=~"myDisplayNameRegex"`
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order. Use "desc" after a field name for descending. Supported fields: * `
+        #   display_name` * `create_time` * `update_time` Example: `display_name,
+        #   create_time desc`.
+        # @param [Fixnum] page_size
+        #   Optional. The standard list page size.
+        # @param [String] page_token
+        #   Optional. The standard list page token. Typically obtained via
+        #   ListNotebookExecutionJobs.next_page_token of the previous NotebookService.
+        #   ListNotebookExecutionJobs call.
+        # @param [String] view
+        #   Optional. The NotebookExecutionJob view. Defaults to BASIC.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListNotebookExecutionJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListNotebookExecutionJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_notebook_execution_jobs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/notebookExecutionJobs', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListNotebookExecutionJobsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListNotebookExecutionJobsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -19691,9 +19893,12 @@ module Google
         # @param [String] name
         #   Required. The name of the PublisherModel resource. Format: `publishers/`
         #   publisher`/models/`publisher_model``
+        # @param [Boolean] is_hugging_face_model
+        #   Optional. Boolean indicates whether the requested model is a Hugging Face
+        #   model.
         # @param [String] language_code
         #   Optional. The IETF BCP-47 language code representing the language in which the
-        #   publisher model's text information should be written in (see go/bcp47).
+        #   publisher model's text information should be written in.
         # @param [String] view
         #   Optional. PublisherModel view specifying which fields to read.
         # @param [String] fields
@@ -19713,11 +19918,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_publisher_model(name, language_code: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_publisher_model(name, is_hugging_face_model: nil, language_code: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModel::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModel
           command.params['name'] = name unless name.nil?
+          command.query['isHuggingFaceModel'] = is_hugging_face_model unless is_hugging_face_model.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?

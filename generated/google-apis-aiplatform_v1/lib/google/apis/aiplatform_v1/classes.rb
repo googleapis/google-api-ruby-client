@@ -41,11 +41,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :rai_media_filtered_reasons
       
-        # Billable prediction metrics.
-        # Corresponds to the JSON property `reportingMetrics`
-        # @return [Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsReportingMetrics]
-        attr_accessor :reporting_metrics
-      
         def initialize(**args)
            update!(**args)
         end
@@ -55,7 +50,6 @@ module Google
           @generated_samples = args[:generated_samples] if args.key?(:generated_samples)
           @rai_media_filtered_count = args[:rai_media_filtered_count] if args.key?(:rai_media_filtered_count)
           @rai_media_filtered_reasons = args[:rai_media_filtered_reasons] if args.key?(:rai_media_filtered_reasons)
-          @reporting_metrics = args[:reporting_metrics] if args.key?(:reporting_metrics)
         end
       end
       
@@ -2227,12 +2221,19 @@ module Google
       class GoogleCloudAiplatformV1BleuSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether to use_effective_order to compute bleu score.
+        # Corresponds to the JSON property `useEffectiveOrder`
+        # @return [Boolean]
+        attr_accessor :use_effective_order
+        alias_method :use_effective_order?, :use_effective_order
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @use_effective_order = args[:use_effective_order] if args.key?(:use_effective_order)
         end
       end
       
@@ -2454,6 +2455,11 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating>]
         attr_accessor :safety_ratings
       
+        # Output only. Confidence score of the candidate.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2467,6 +2473,7 @@ module Google
           @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
           @index = args[:index] if args.key?(:index)
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -2787,12 +2794,23 @@ module Google
       class GoogleCloudAiplatformV1ComputeTokensRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The instances that are the input to token computing API call. Schema
+        # Optional. Input content.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
+        attr_accessor :contents
+      
+        # Optional. The instances that are the input to token computing API call. Schema
         # is identical to the prediction schema of the text model, even for the non-text
         # models, like chat models, or Codey models.
         # Corresponds to the JSON property `instances`
         # @return [Array<Object>]
         attr_accessor :instances
+      
+        # Optional. The name of the publisher model requested to serve the prediction.
+        # Format: projects/`project`/locations/`location`/publishers/*/models/*
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
       
         def initialize(**args)
            update!(**args)
@@ -2800,7 +2818,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
           @instances = args[:instances] if args.key?(:instances)
+          @model = args[:model] if args.key?(:model)
         end
       end
       
@@ -3103,22 +3123,38 @@ module Google
       class GoogleCloudAiplatformV1CountTokensRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Input content.
+        # Optional. Input content.
         # Corresponds to the JSON property `contents`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
         attr_accessor :contents
       
-        # Required. The instances that are the input to token counting call. Schema is
+        # Optional. The instances that are the input to token counting call. Schema is
         # identical to the prediction schema of the underlying model.
         # Corresponds to the JSON property `instances`
         # @return [Array<Object>]
         attr_accessor :instances
       
-        # Required. The name of the publisher model requested to serve the prediction.
+        # Optional. The name of the publisher model requested to serve the prediction.
         # Format: `projects/`project`/locations/`location`/publishers/*/models/*`
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
+      
+        # The base structured datatype containing multi-part content of a message. A `
+        # Content` includes a `role` field designating the producer of the `Content` and
+        # a `parts` field containing multi-part data that contains the content of the
+        # message turn.
+        # Corresponds to the JSON property `systemInstruction`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
+        attr_accessor :system_instruction
+      
+        # Optional. A list of `Tools` the model may use to generate the next response. A
+        # `Tool` is a piece of code that enables the system to interact with external
+        # systems to perform an action, or set of actions, outside of knowledge and
+        # scope of the model.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tool>]
+        attr_accessor :tools
       
         def initialize(**args)
            update!(**args)
@@ -3129,6 +3165,8 @@ module Google
           @contents = args[:contents] if args.key?(:contents)
           @instances = args[:instances] if args.key?(:instances)
           @model = args[:model] if args.key?(:model)
+          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
+          @tools = args[:tools] if args.key?(:tools)
         end
       end
       
@@ -3477,6 +3515,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Metadata information for NotebookService.CreateNotebookExecutionJob.
+      class GoogleCloudAiplatformV1CreateNotebookExecutionJobOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        # A human-readable message that shows the intermediate progress details of
+        # NotebookRuntime.
+        # Corresponds to the JSON property `progressMessage`
+        # @return [String]
+        attr_accessor :progress_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+          @progress_message = args[:progress_message] if args.key?(:progress_message)
         end
       end
       
@@ -4303,7 +4367,7 @@ module Google
         # @return [String]
         attr_accessor :model_reference
       
-        # Output only. The resource name of the Dataset.
+        # Output only. Identifier. The resource name of the Dataset.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4383,7 +4447,7 @@ module Google
         # @return [String]
         attr_accessor :model_reference
       
-        # Output only. The resource name of the DatasetVersion.
+        # Output only. Identifier. The resource name of the DatasetVersion.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5473,6 +5537,24 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. DNS of the dedicated endpoint. Will only be populated if
+        # dedicated_endpoint_enabled is true. Format: `https://`endpoint_id`.`region`-`
+        # project_number`.prediction.vertexai.goog`.
+        # Corresponds to the JSON property `dedicatedEndpointDns`
+        # @return [String]
+        attr_accessor :dedicated_endpoint_dns
+      
+        # If true, the endpoint will be exposed through a dedicated DNS [Endpoint.
+        # dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated
+        # from other users' traffic and will have better performance and reliability.
+        # Note: Once you enabled dedicated endpoint, you won't be able to send request
+        # to the shared DNS `region`-aiplatform.googleapis.com. The limitation will be
+        # removed soon.
+        # Corresponds to the JSON property `dedicatedEndpointEnabled`
+        # @return [Boolean]
+        attr_accessor :dedicated_endpoint_enabled
+        alias_method :dedicated_endpoint_enabled?, :dedicated_endpoint_enabled
+      
         # Output only. The models deployed in this Endpoint. To add or remove
         # DeployedModels use EndpointService.DeployModel and EndpointService.
         # UndeployModel respectively.
@@ -5575,6 +5657,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dedicated_endpoint_dns = args[:dedicated_endpoint_dns] if args.key?(:dedicated_endpoint_dns)
+          @dedicated_endpoint_enabled = args[:dedicated_endpoint_enabled] if args.key?(:dedicated_endpoint_enabled)
           @deployed_models = args[:deployed_models] if args.key?(:deployed_models)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -8169,11 +8253,22 @@ module Google
       class GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint
         include Google::Apis::Core::Hashable
       
+        # Represents configuration for private service connect.
+        # Corresponds to the JSON property `privateServiceConnectConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrivateServiceConnectConfig]
+        attr_accessor :private_service_connect_config
+      
         # Output only. This field will be populated with the domain name to use for this
         # FeatureOnlineStore
         # Corresponds to the JSON property `publicEndpointDomainName`
         # @return [String]
         attr_accessor :public_endpoint_domain_name
+      
+        # Output only. The name of the service attachment resource. Populated if private
+        # service connect is enabled and after FeatureViewSync is created.
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
       
         def initialize(**args)
            update!(**args)
@@ -8181,7 +8276,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @private_service_connect_config = args[:private_service_connect_config] if args.key?(:private_service_connect_config)
           @public_endpoint_domain_name = args[:public_endpoint_domain_name] if args.key?(:public_endpoint_domain_name)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
         end
       end
       
@@ -10315,9 +10412,94 @@ module Google
         end
       end
       
+      # Grounding chunk.
+      class GoogleCloudAiplatformV1GroundingChunk
+        include Google::Apis::Core::Hashable
+      
+        # Chunk from context retrieved by the retrieval tools.
+        # Corresponds to the JSON property `retrievedContext`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkRetrievedContext]
+        attr_accessor :retrieved_context
+      
+        # Chunk from the web.
+        # Corresponds to the JSON property `web`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkWeb]
+        attr_accessor :web
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retrieved_context = args[:retrieved_context] if args.key?(:retrieved_context)
+          @web = args[:web] if args.key?(:web)
+        end
+      end
+      
+      # Chunk from context retrieved by the retrieval tools.
+      class GoogleCloudAiplatformV1GroundingChunkRetrievedContext
+        include Google::Apis::Core::Hashable
+      
+        # Title of the attribution.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URI reference of the attribution.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Chunk from the web.
+      class GoogleCloudAiplatformV1GroundingChunkWeb
+        include Google::Apis::Core::Hashable
+      
+        # Title of the chunk.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URI reference of the chunk.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Metadata returned to client when grounding is enabled.
       class GoogleCloudAiplatformV1GroundingMetadata
         include Google::Apis::Core::Hashable
+      
+        # List of supporting references retrieved from specified grounding source.
+        # Corresponds to the JSON property `groundingChunks`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunk>]
+        attr_accessor :grounding_chunks
+      
+        # Optional. List of grounding support.
+        # Corresponds to the JSON property `groundingSupports`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingSupport>]
+        attr_accessor :grounding_supports
       
         # Google search entry point.
         # Corresponds to the JSON property `searchEntryPoint`
@@ -10335,8 +10517,45 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @grounding_chunks = args[:grounding_chunks] if args.key?(:grounding_chunks)
+          @grounding_supports = args[:grounding_supports] if args.key?(:grounding_supports)
           @search_entry_point = args[:search_entry_point] if args.key?(:search_entry_point)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
+        end
+      end
+      
+      # Grounding support.
+      class GoogleCloudAiplatformV1GroundingSupport
+        include Google::Apis::Core::Hashable
+      
+        # Confidence score of the support references. Ranges from 0 to 1. 1 is the most
+        # confident. This list must have the same size as the grounding_chunk_indices.
+        # Corresponds to the JSON property `confidenceScores`
+        # @return [Array<Float>]
+        attr_accessor :confidence_scores
+      
+        # A list of indices (into 'grounding_chunk') specifying the citations associated
+        # with the claim. For instance [1,3,4] means that grounding_chunk[1],
+        # grounding_chunk[3], grounding_chunk[4] are the retrieved content attributed to
+        # the claim.
+        # Corresponds to the JSON property `groundingChunkIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :grounding_chunk_indices
+      
+        # Segment of the content.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Segment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_scores = args[:confidence_scores] if args.key?(:confidence_scores)
+          @grounding_chunk_indices = args[:grounding_chunk_indices] if args.key?(:grounding_chunk_indices)
+          @segment = args[:segment] if args.key?(:segment)
         end
       end
       
@@ -12375,6 +12594,32 @@ module Google
         end
       end
       
+      # Response message for [NotebookService.CreateNotebookExecutionJob]
+      class GoogleCloudAiplatformV1ListNotebookExecutionJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve next page of results. Pass to ListNotebookExecutionJobs.
+        # page_token to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of NotebookExecutionJobs in the requested page.
+        # Corresponds to the JSON property `notebookExecutionJobs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJob>]
+        attr_accessor :notebook_execution_jobs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @notebook_execution_jobs = args[:notebook_execution_jobs] if args.key?(:notebook_execution_jobs)
+        end
+      end
+      
       # Response message for NotebookService.ListNotebookRuntimeTemplates.
       class GoogleCloudAiplatformV1ListNotebookRuntimeTemplatesResponse
         include Google::Apis::Core::Hashable
@@ -13666,6 +13911,18 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictSchemata]
         attr_accessor :predict_schemata
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. When this Model is deployed, its prediction resources are
         # described by the `prediction_resources` field of the Endpoint.deployed_models
         # object. Because not all Models support all resource configuration types, the
@@ -13792,6 +14049,8 @@ module Google
           @original_model_info = args[:original_model_info] if args.key?(:original_model_info)
           @pipeline_job = args[:pipeline_job] if args.key?(:pipeline_job)
           @predict_schemata = args[:predict_schemata] if args.key?(:predict_schemata)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @supported_deployment_resources_types = args[:supported_deployment_resources_types] if args.key?(:supported_deployment_resources_types)
           @supported_export_formats = args[:supported_export_formats] if args.key?(:supported_export_formats)
           @supported_input_storage_formats = args[:supported_input_storage_formats] if args.key?(:supported_input_storage_formats)
@@ -15785,6 +16044,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :neighbor_count
       
+        # Optional. The list of numeric filters.
+        # Corresponds to the JSON property `numericFilters`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter>]
+        attr_accessor :numeric_filters
+      
         # Parameters that can be overrided in each query to tune query latency and
         # recall.
         # Corresponds to the JSON property `parameters`
@@ -15813,6 +16077,7 @@ module Google
           @embedding = args[:embedding] if args.key?(:embedding)
           @entity_id = args[:entity_id] if args.key?(:entity_id)
           @neighbor_count = args[:neighbor_count] if args.key?(:neighbor_count)
+          @numeric_filters = args[:numeric_filters] if args.key?(:numeric_filters)
           @parameters = args[:parameters] if args.key?(:parameters)
           @per_crowding_attribute_neighbor_count = args[:per_crowding_attribute_neighbor_count] if args.key?(:per_crowding_attribute_neighbor_count)
           @string_filters = args[:string_filters] if args.key?(:string_filters)
@@ -15835,6 +16100,56 @@ module Google
         # Update properties of this object
         def update!(**args)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Numeric filter is used to search a subset of the entities by using boolean
+      # rules on numeric columns. For example: Database Point 0: `name: “a” value_int:
+      # 42` `name: “b” value_float: 1.0` Database Point 1: `name: “a” value_int: 10` `
+      # name: “b” value_float: 2.0` Database Point 2: `name: “a” value_int: -1` `name:
+      # “b” value_float: 3.0` Query: `name: “a” value_int: 12 operator: LESS` //
+      # Matches Point 1, 2 `name: “b” value_float: 2.0 operator: EQUAL` // Matches
+      # Point 1
+      class GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. Column name in BigQuery that used as filters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. This MUST be specified for queries and must NOT be specified for
+        # database points.
+        # Corresponds to the JSON property `op`
+        # @return [String]
+        attr_accessor :op
+      
+        # double value type.
+        # Corresponds to the JSON property `valueDouble`
+        # @return [Float]
+        attr_accessor :value_double
+      
+        # float value type.
+        # Corresponds to the JSON property `valueFloat`
+        # @return [Float]
+        attr_accessor :value_float
+      
+        # int value type.
+        # Corresponds to the JSON property `valueInt`
+        # @return [Fixnum]
+        attr_accessor :value_int
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @op = args[:op] if args.key?(:op)
+          @value_double = args[:value_double] if args.key?(:value_double)
+          @value_float = args[:value_float] if args.key?(:value_float)
+          @value_int = args[:value_int] if args.key?(:value_int)
         end
       end
       
@@ -16203,6 +16518,204 @@ module Google
         def update!(**args)
           @bypass_actas_check = args[:bypass_actas_check] if args.key?(:bypass_actas_check)
           @euc_disabled = args[:euc_disabled] if args.key?(:euc_disabled)
+        end
+      end
+      
+      # NotebookExecutionJob represents an instance of a notebook execution.
+      class GoogleCloudAiplatformV1NotebookExecutionJob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this NotebookExecutionJob was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The Dataform Repository containing the input notebook.
+        # Corresponds to the JSON property `dataformRepositorySource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobDataformRepositorySource]
+        attr_accessor :dataform_repository_source
+      
+        # The content of the input notebook in ipynb format.
+        # Corresponds to the JSON property `directNotebookSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobDirectNotebookSource]
+        attr_accessor :direct_notebook_source
+      
+        # The display name of the NotebookExecutionJob. The name can be up to 128
+        # characters long and can consist of any UTF-8 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Max running time of the execution job in seconds (default 86400s / 24 hrs).
+        # Corresponds to the JSON property `executionTimeout`
+        # @return [String]
+        attr_accessor :execution_timeout
+      
+        # The user email to run the execution as. Only supported by Colab runtimes.
+        # Corresponds to the JSON property `executionUser`
+        # @return [String]
+        attr_accessor :execution_user
+      
+        # The Cloud Storage uri for the input notebook.
+        # Corresponds to the JSON property `gcsNotebookSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobGcsNotebookSource]
+        attr_accessor :gcs_notebook_source
+      
+        # The Cloud Storage location to upload the result to. Format: `gs://bucket-name`
+        # Corresponds to the JSON property `gcsOutputUri`
+        # @return [String]
+        attr_accessor :gcs_output_uri
+      
+        # Output only. The state of the NotebookExecutionJob.
+        # Corresponds to the JSON property `jobState`
+        # @return [String]
+        attr_accessor :job_state
+      
+        # The labels with user-defined metadata to organize NotebookExecutionJobs. Label
+        # keys and values can be no longer than 64 characters (Unicode codepoints), can
+        # only contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. See https://goo.gl/xmQnxf for more
+        # information and examples of labels. System reserved label keys are prefixed
+        # with "aiplatform.googleapis.com/" and are immutable.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The resource name of this NotebookExecutionJob. Format: `projects/
+        # `project_id`/locations/`location`/notebookExecutionJobs/`job_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The NotebookRuntimeTemplate to source compute configuration from.
+        # Corresponds to the JSON property `notebookRuntimeTemplateResourceName`
+        # @return [String]
+        attr_accessor :notebook_runtime_template_resource_name
+      
+        # Output only. The Schedule resource name if this job is triggered by one.
+        # Format: `projects/`project_id`/locations/`location`/schedules/`schedule_id``
+        # Corresponds to the JSON property `scheduleResourceName`
+        # @return [String]
+        attr_accessor :schedule_resource_name
+      
+        # The service account to run the execution as.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::AiplatformV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        # Output only. Timestamp when this NotebookExecutionJob was most recently
+        # updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @dataform_repository_source = args[:dataform_repository_source] if args.key?(:dataform_repository_source)
+          @direct_notebook_source = args[:direct_notebook_source] if args.key?(:direct_notebook_source)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @execution_timeout = args[:execution_timeout] if args.key?(:execution_timeout)
+          @execution_user = args[:execution_user] if args.key?(:execution_user)
+          @gcs_notebook_source = args[:gcs_notebook_source] if args.key?(:gcs_notebook_source)
+          @gcs_output_uri = args[:gcs_output_uri] if args.key?(:gcs_output_uri)
+          @job_state = args[:job_state] if args.key?(:job_state)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @notebook_runtime_template_resource_name = args[:notebook_runtime_template_resource_name] if args.key?(:notebook_runtime_template_resource_name)
+          @schedule_resource_name = args[:schedule_resource_name] if args.key?(:schedule_resource_name)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @status = args[:status] if args.key?(:status)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The Dataform Repository containing the input notebook.
+      class GoogleCloudAiplatformV1NotebookExecutionJobDataformRepositorySource
+        include Google::Apis::Core::Hashable
+      
+        # The commit SHA to read repository with. If unset, the file will be read at
+        # HEAD.
+        # Corresponds to the JSON property `commitSha`
+        # @return [String]
+        attr_accessor :commit_sha
+      
+        # The resource name of the Dataform Repository. Format: `projects/`project_id`/
+        # locations/`location`/repositories/`repository_id``
+        # Corresponds to the JSON property `dataformRepositoryResourceName`
+        # @return [String]
+        attr_accessor :dataform_repository_resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
+          @dataform_repository_resource_name = args[:dataform_repository_resource_name] if args.key?(:dataform_repository_resource_name)
+        end
+      end
+      
+      # The content of the input notebook in ipynb format.
+      class GoogleCloudAiplatformV1NotebookExecutionJobDirectNotebookSource
+        include Google::Apis::Core::Hashable
+      
+        # The base64-encoded contents of the input notebook file.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+        end
+      end
+      
+      # The Cloud Storage uri for the input notebook.
+      class GoogleCloudAiplatformV1NotebookExecutionJobGcsNotebookSource
+        include Google::Apis::Core::Hashable
+      
+        # The version of the Cloud Storage object to read. If unset, the current version
+        # of the object is read. See https://cloud.google.com/storage/docs/metadata#
+        # generation-number.
+        # Corresponds to the JSON property `generation`
+        # @return [String]
+        attr_accessor :generation
+      
+        # The Cloud Storage uri pointing to the ipynb file. Format: `gs://bucket/
+        # notebook_file.ipynb`
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generation = args[:generation] if args.key?(:generation)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -16981,6 +17494,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Configuration for PSC-I.
+        # Corresponds to the JSON property `pscInterfaceConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig]
+        attr_accessor :psc_interface_config
+      
         # Optional. A list of names for the reserved IP ranges under the VPC network
         # that can be used for this persistent resource. If set, we will deploy the
         # persistent resource within the provided IP ranges. Otherwise, the persistent
@@ -17036,6 +17554,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
           @reserved_ip_ranges = args[:reserved_ip_ranges] if args.key?(:reserved_ip_ranges)
           @resource_pools = args[:resource_pools] if args.key?(:resource_pools)
           @resource_runtime = args[:resource_runtime] if args.key?(:resource_runtime)
@@ -18011,6 +18530,33 @@ module Google
         end
       end
       
+      # Configuration for PSC-I.
+      class GoogleCloudAiplatformV1PscInterfaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The full name of the Compute Engine [network attachment](https://
+        # cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource.
+        # For example, `projects/12345/regions/us-central1/networkAttachments/myNA`. is
+        # of the form `projects/`project`/regions/`region`/networkAttachments/`
+        # networkAttachment``. Where `project` is a project number, as in `12345`, and `
+        # networkAttachment` is a network attachment name. To specify this field, you
+        # must have already [created a network attachment] (https://cloud.google.com/vpc/
+        # docs/create-manage-network-attachments#create-network-attachments). This field
+        # is only used for resources using PSC-I.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+        end
+      end
+      
       # A Model Garden Publisher Model.
       class GoogleCloudAiplatformV1PublisherModel
         include Google::Apis::Core::Hashable
@@ -18214,6 +18760,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DedicatedResources]
         attr_accessor :dedicated_resources
       
+        # Metadata information about the deployment for managing deployment config.
+        # Corresponds to the JSON property `deployMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata]
+        attr_accessor :deploy_metadata
+      
         # Optional. The name of the deploy task (e.g., "text to image generation").
         # Corresponds to the JSON property `deployTaskName`
         # @return [String]
@@ -18256,12 +18807,33 @@ module Google
           @automatic_resources = args[:automatic_resources] if args.key?(:automatic_resources)
           @container_spec = args[:container_spec] if args.key?(:container_spec)
           @dedicated_resources = args[:dedicated_resources] if args.key?(:dedicated_resources)
+          @deploy_metadata = args[:deploy_metadata] if args.key?(:deploy_metadata)
           @deploy_task_name = args[:deploy_task_name] if args.key?(:deploy_task_name)
           @large_model_reference = args[:large_model_reference] if args.key?(:large_model_reference)
           @model_display_name = args[:model_display_name] if args.key?(:model_display_name)
           @public_artifact_uri = args[:public_artifact_uri] if args.key?(:public_artifact_uri)
           @shared_resources = args[:shared_resources] if args.key?(:shared_resources)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Metadata information about the deployment for managing deployment config.
+      class GoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Labels for the deployment. For managing deployment config like
+        # verifying, source of deployment config, etc.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -19289,6 +19861,26 @@ module Google
         end
       end
       
+      # Configuration for the Ray OSS Logs.
+      class GoogleCloudAiplatformV1RayLogsSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Flag to disable the export of Ray OSS logs to Cloud Logging.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
       # Configuration for the Ray metrics.
       class GoogleCloudAiplatformV1RayMetricSpec
         include Google::Apis::Core::Hashable
@@ -19332,6 +19924,11 @@ module Google
         # @return [String]
         attr_accessor :image_uri
       
+        # Configuration for the Ray OSS Logs.
+        # Corresponds to the JSON property `rayLogsSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RayLogsSpec]
+        attr_accessor :ray_logs_spec
+      
         # Configuration for the Ray metrics.
         # Corresponds to the JSON property `rayMetricSpec`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RayMetricSpec]
@@ -19354,6 +19951,7 @@ module Google
         def update!(**args)
           @head_node_resource_pool_id = args[:head_node_resource_pool_id] if args.key?(:head_node_resource_pool_id)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @ray_logs_spec = args[:ray_logs_spec] if args.key?(:ray_logs_spec)
           @ray_metric_spec = args[:ray_metric_spec] if args.key?(:ray_metric_spec)
           @resource_pool_images = args[:resource_pool_images] if args.key?(:resource_pool_images)
         end
@@ -19843,7 +20441,12 @@ module Google
         attr_accessor :max_replica_count
       
         # Optional. min replicas in the node pool, must be ≤ replica_count and <
-        # max_replica_count or will throw error
+        # max_replica_count or will throw error. For autoscaling enabled Ray-on-Vertex,
+        # we allow min_replica_count of a resource_pool to be 0 to match the OSS Ray
+        # behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-
+        # autoscaling.html#cluster-config-parameters). As for Persistent Resource, the
+        # min_replica_count must be > 0, we added a corresponding validation inside
+        # CreatePersistentResourceRequestValidator.java.
         # Corresponds to the JSON property `minReplicaCount`
         # @return [Fixnum]
         attr_accessor :min_replica_count
@@ -19989,9 +20592,7 @@ module Google
       class GoogleCloudAiplatformV1Retrieval
         include Google::Apis::Core::Hashable
       
-        # Optional. Disable using the result from this tool in detecting grounding
-        # attribution. This does not affect how the result is given to the model for
-        # generation.
+        # Optional. Deprecated. This option is no longer supported.
         # Corresponds to the JSON property `disableAttribution`
         # @return [Boolean]
         attr_accessor :disable_attribution
@@ -20701,6 +21302,11 @@ module Google
         attr_accessor :restart_job_on_worker_restart
         alias_method :restart_job_on_worker_restart?, :restart_job_on_worker_restart
       
+        # Optional. This determines which type of scheduling strategy to use.
+        # Corresponds to the JSON property `strategy`
+        # @return [String]
+        attr_accessor :strategy
+      
         # The maximum job running time. The default is 7 days.
         # Corresponds to the JSON property `timeout`
         # @return [String]
@@ -20714,6 +21320,7 @@ module Google
         def update!(**args)
           @disable_retries = args[:disable_retries] if args.key?(:disable_retries)
           @restart_job_on_worker_restart = args[:restart_job_on_worker_restart] if args.key?(:restart_job_on_worker_restart)
+          @strategy = args[:strategy] if args.key?(:strategy)
           @timeout = args[:timeout] if args.key?(:timeout)
         end
       end
@@ -27318,6 +27925,45 @@ module Google
         end
       end
       
+      # Segment of the content.
+      class GoogleCloudAiplatformV1Segment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. End index in the given Part, measured in bytes. Offset from the
+        # start of the Part, exclusive, starting at zero.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # Output only. The index of a Part object within its parent Content object.
+        # Corresponds to the JSON property `partIndex`
+        # @return [Fixnum]
+        attr_accessor :part_index
+      
+        # Output only. Start index in the given Part, measured in bytes. Offset from the
+        # start of the Part, inclusive, starting at zero.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        # Output only. The text corresponding to the segment from the response.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @part_index = args[:part_index] if args.key?(:part_index)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # Configuration for the use of custom service account to run the workloads.
       class GoogleCloudAiplatformV1ServiceAccountSpec
         include Google::Apis::Core::Hashable
@@ -28987,6 +29633,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_billable_character_count
       
+        # Output only. Number of billable tokens in the tuning dataset.
+        # Corresponds to the JSON property `totalBillableTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_billable_token_count
+      
         # Output only. Number of tuning characters in the tuning dataset.
         # Corresponds to the JSON property `totalTuningCharacterCount`
         # @return [Fixnum]
@@ -29029,6 +29680,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @total_billable_character_count = args[:total_billable_character_count] if args.key?(:total_billable_character_count)
+          @total_billable_token_count = args[:total_billable_token_count] if args.key?(:total_billable_token_count)
           @total_tuning_character_count = args[:total_tuning_character_count] if args.key?(:total_tuning_character_count)
           @tuning_dataset_example_count = args[:tuning_dataset_example_count] if args.key?(:tuning_dataset_example_count)
           @tuning_step_count = args[:tuning_step_count] if args.key?(:tuning_step_count)
@@ -29042,6 +29694,11 @@ module Google
       # Dataset distribution for Supervised Tuning.
       class GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution
         include Google::Apis::Core::Hashable
+      
+        # Output only. Sum of a given population of values that are billable.
+        # Corresponds to the JSON property `billableSum`
+        # @return [Fixnum]
+        attr_accessor :billable_sum
       
         # Output only. Defines the histogram bucket.
         # Corresponds to the JSON property `buckets`
@@ -29089,6 +29746,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billable_sum = args[:billable_sum] if args.key?(:billable_sum)
           @buckets = args[:buckets] if args.key?(:buckets)
           @max = args[:max] if args.key?(:max)
           @mean = args[:mean] if args.key?(:mean)
@@ -29389,6 +30047,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :run_count
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Timestamp when this Tensorboard was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -29410,6 +30080,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @run_count = args[:run_count] if args.key?(:run_count)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -29893,6 +30565,11 @@ module Google
       class GoogleCloudAiplatformV1TokensInfo
         include Google::Apis::Core::Hashable
       
+        # Optional. Optional fields for the role from the corresponding Content.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
         # A list of token ids from the input.
         # Corresponds to the JSON property `tokenIds`
         # @return [Array<Fixnum>]
@@ -29909,6 +30586,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @role = args[:role] if args.key?(:role)
           @token_ids = args[:token_ids] if args.key?(:token_ids)
           @tokens = args[:tokens] if args.key?(:tokens)
         end
@@ -32554,102 +33232,6 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
-        end
-      end
-      
-      # 
-      class IntelligenceCloudAutomlXpsMetricEntry
-        include Google::Apis::Core::Hashable
-      
-        # For billing metrics that are using legacy sku's, set the legacy billing metric
-        # id here. This will be sent to Chemist as the "cloudbilling.googleapis.com/
-        # argentum_metric_id" label. Otherwise leave empty.
-        # Corresponds to the JSON property `argentumMetricId`
-        # @return [String]
-        attr_accessor :argentum_metric_id
-      
-        # A double value.
-        # Corresponds to the JSON property `doubleValue`
-        # @return [Float]
-        attr_accessor :double_value
-      
-        # A signed 64-bit integer value.
-        # Corresponds to the JSON property `int64Value`
-        # @return [Fixnum]
-        attr_accessor :int64_value
-      
-        # The metric name defined in the service configuration.
-        # Corresponds to the JSON property `metricName`
-        # @return [String]
-        attr_accessor :metric_name
-      
-        # Billing system labels for this (metric, value) pair.
-        # Corresponds to the JSON property `systemLabels`
-        # @return [Array<Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntryLabel>]
-        attr_accessor :system_labels
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @argentum_metric_id = args[:argentum_metric_id] if args.key?(:argentum_metric_id)
-          @double_value = args[:double_value] if args.key?(:double_value)
-          @int64_value = args[:int64_value] if args.key?(:int64_value)
-          @metric_name = args[:metric_name] if args.key?(:metric_name)
-          @system_labels = args[:system_labels] if args.key?(:system_labels)
-        end
-      end
-      
-      # 
-      class IntelligenceCloudAutomlXpsMetricEntryLabel
-        include Google::Apis::Core::Hashable
-      
-        # The name of the label.
-        # Corresponds to the JSON property `labelName`
-        # @return [String]
-        attr_accessor :label_name
-      
-        # The value of the label.
-        # Corresponds to the JSON property `labelValue`
-        # @return [String]
-        attr_accessor :label_value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @label_name = args[:label_name] if args.key?(:label_name)
-          @label_value = args[:label_value] if args.key?(:label_value)
-        end
-      end
-      
-      # 
-      class IntelligenceCloudAutomlXpsReportingMetrics
-        include Google::Apis::Core::Hashable
-      
-        # The effective time training used. If set, this is used for quota management
-        # and billing. Deprecated. AutoML BE doesn't use this. Don't set.
-        # Corresponds to the JSON property `effectiveTrainingDuration`
-        # @return [String]
-        attr_accessor :effective_training_duration
-      
-        # One entry per metric name. The values must be aggregated per metric name.
-        # Corresponds to the JSON property `metricEntries`
-        # @return [Array<Google::Apis::AiplatformV1::IntelligenceCloudAutomlXpsMetricEntry>]
-        attr_accessor :metric_entries
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @effective_training_duration = args[:effective_training_duration] if args.key?(:effective_training_duration)
-          @metric_entries = args[:metric_entries] if args.key?(:metric_entries)
         end
       end
     end
