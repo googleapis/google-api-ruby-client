@@ -36,3 +36,5 @@ platforms :ruby do
     gem 'pry-byebug', '~> 3.2'
   end
 end
+
+gem "google-apis-core", path: "../google-apis-core"
