@@ -14,9 +14,6 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            ruby: "2.7"
-            task: "--include-spec"
-          - os: ubuntu-latest
             ruby: "3.0"
             task: "--include-spec"
           - os: ubuntu-latest
