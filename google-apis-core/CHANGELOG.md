@@ -1,5 +1,11 @@
 # Release History
 
+### 0.15.1 (2024-07-29)
+
+#### Bug Fixes
+
+* remove rexml from dependencies ([#19971](https://github.com/googleapis/google-api-ruby-client/issues/19971)) 
+
 ### 0.15.0 (2024-05-13)
 
 #### Features
