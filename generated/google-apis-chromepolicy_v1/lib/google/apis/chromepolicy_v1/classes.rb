@@ -635,8 +635,7 @@ module Google
       
         # Corresponding to deprecated_in_favor_of, the fully qualified namespace(s) of
         # the old policies that will be deprecated because of introduction of this
-        # policy. This field should not be manually set but will be set and exposed
-        # through PolicyAPI automatically.
+        # policy.
         # Corresponds to the JSON property `scheduledToDeprecatePolicies`
         # @return [Array<String>]
         attr_accessor :scheduled_to_deprecate_policies
