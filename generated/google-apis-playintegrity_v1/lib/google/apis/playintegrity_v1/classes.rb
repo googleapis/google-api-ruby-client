@@ -189,6 +189,11 @@ module Google
       class DeviceIntegrity
         include Google::Apis::Core::Hashable
       
+        # Contains the recall bits per device set by the developer. Next tag: 3
+        # Corresponds to the JSON property `deviceRecall`
+        # @return [Google::Apis::PlayintegrityV1::DeviceRecall]
+        attr_accessor :device_recall
+      
         # Details about the integrity of the device the app is running on.
         # Corresponds to the JSON property `deviceRecognitionVerdict`
         # @return [Array<String>]
@@ -207,8 +212,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @device_recall = args[:device_recall] if args.key?(:device_recall)
           @device_recognition_verdict = args[:device_recognition_verdict] if args.key?(:device_recognition_verdict)
           @recent_device_activity = args[:recent_device_activity] if args.key?(:recent_device_activity)
+        end
+      end
+      
+      # Contains the recall bits per device set by the developer. Next tag: 3
+      class DeviceRecall
+        include Google::Apis::Core::Hashable
+      
+        # Contains the recall bits values.
+        # Corresponds to the JSON property `values`
+        # @return [Google::Apis::PlayintegrityV1::Values]
+        attr_accessor :values
+      
+        # Contains the recall bits write dates.
+        # Corresponds to the JSON property `writeDates`
+        # @return [Google::Apis::PlayintegrityV1::WriteDates]
+        attr_accessor :write_dates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+          @write_dates = args[:write_dates] if args.key?(:write_dates)
         end
       end
       
@@ -403,6 +434,40 @@ module Google
           @bit_first = args[:bit_first] if args.key?(:bit_first)
           @bit_second = args[:bit_second] if args.key?(:bit_second)
           @bit_third = args[:bit_third] if args.key?(:bit_third)
+        end
+      end
+      
+      # Contains the recall bits write dates.
+      class WriteDates
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the first bit.
+        # Note that this value won't be set if the first bit is false.
+        # Corresponds to the JSON property `yyyymmFirst`
+        # @return [Fixnum]
+        attr_accessor :yyyymm_first
+      
+        # Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the second bit.
+        # Note that this value won't be set if the second bit is false.
+        # Corresponds to the JSON property `yyyymmSecond`
+        # @return [Fixnum]
+        attr_accessor :yyyymm_second
+      
+        # Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the third bit.
+        # Note that this value won't be set if the third bit is false.
+        # Corresponds to the JSON property `yyyymmThird`
+        # @return [Fixnum]
+        attr_accessor :yyyymm_third
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @yyyymm_first = args[:yyyymm_first] if args.key?(:yyyymm_first)
+          @yyyymm_second = args[:yyyymm_second] if args.key?(:yyyymm_second)
+          @yyyymm_third = args[:yyyymm_third] if args.key?(:yyyymm_third)
         end
       end
       

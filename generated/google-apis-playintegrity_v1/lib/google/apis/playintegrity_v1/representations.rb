@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceRecall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnvironmentDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,12 @@ module Google
       end
       
       class Values
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WriteDates
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -165,8 +177,20 @@ module Google
       class DeviceIntegrity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_recall, as: 'deviceRecall', class: Google::Apis::PlayintegrityV1::DeviceRecall, decorator: Google::Apis::PlayintegrityV1::DeviceRecall::Representation
+      
           collection :device_recognition_verdict, as: 'deviceRecognitionVerdict'
           property :recent_device_activity, as: 'recentDeviceActivity', class: Google::Apis::PlayintegrityV1::RecentDeviceActivity, decorator: Google::Apis::PlayintegrityV1::RecentDeviceActivity::Representation
+      
+        end
+      end
+      
+      class DeviceRecall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :values, as: 'values', class: Google::Apis::PlayintegrityV1::Values, decorator: Google::Apis::PlayintegrityV1::Values::Representation
+      
+          property :write_dates, as: 'writeDates', class: Google::Apis::PlayintegrityV1::WriteDates, decorator: Google::Apis::PlayintegrityV1::WriteDates::Representation
       
         end
       end
@@ -228,6 +252,15 @@ module Google
           property :bit_first, as: 'bitFirst'
           property :bit_second, as: 'bitSecond'
           property :bit_third, as: 'bitThird'
+        end
+      end
+      
+      class WriteDates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :yyyymm_first, as: 'yyyymmFirst'
+          property :yyyymm_second, as: 'yyyymmSecond'
+          property :yyyymm_third, as: 'yyyymmThird'
         end
       end
       
