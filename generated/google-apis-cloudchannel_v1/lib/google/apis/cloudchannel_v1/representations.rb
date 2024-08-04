@@ -1608,6 +1608,7 @@ module Google
       class GoogleCloudChannelV1RegisterSubscriberRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :integrator, as: 'integrator'
           property :service_account, as: 'serviceAccount'
         end
       end
@@ -1889,6 +1890,7 @@ module Google
       class GoogleCloudChannelV1UnregisterSubscriberRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :integrator, as: 'integrator'
           property :service_account, as: 'serviceAccount'
         end
       end
