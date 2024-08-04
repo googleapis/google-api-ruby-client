@@ -463,8 +463,8 @@ module Google
         #   and match pattern `projects/*/locations/*/functions/*`
         # @param [Google::Apis::CloudfunctionsV2::Function] function_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If no field mask is provided, all provided
-        #   fields in the request will be updated.
+        #   The list of fields to be updated. If no field mask is provided, all fields
+        #   will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
