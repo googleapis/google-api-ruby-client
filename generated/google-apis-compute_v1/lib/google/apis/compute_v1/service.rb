@@ -7085,7 +7085,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
-        #   Name of the Operations resource to delete.
+        #   Name of the Operations resource to delete, or its unique numeric identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7119,7 +7119,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
-        #   Name of the Operations resource to return.
+        #   Name of the Operations resource to return, or its unique numeric identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7255,7 +7255,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
-        #   Name of the Operations resource to return.
+        #   Name of the Operations resource to return, or its unique numeric identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7289,7 +7289,7 @@ module Google
         
         # Deletes the specified Operations resource.
         # @param [String] operation
-        #   Name of the Operations resource to delete.
+        #   Name of the Operations resource to delete, or its unique numeric identifier.
         # @param [String] parent_id
         #   Parent ID for this request.
         # @param [String] fields
@@ -7324,7 +7324,7 @@ module Google
         # Retrieves the specified Operations resource. Gets a list of operations by
         # making a `list()` request.
         # @param [String] operation
-        #   Name of the Operations resource to return.
+        #   Name of the Operations resource to return, or its unique numeric identifier.
         # @param [String] parent_id
         #   Parent ID for this request.
         # @param [String] fields
@@ -30753,7 +30753,7 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] operation
-        #   Name of the Operations resource to delete.
+        #   Name of the Operations resource to delete, or its unique numeric identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30790,7 +30790,7 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] operation
-        #   Name of the Operations resource to return.
+        #   Name of the Operations resource to return, or its unique numeric identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30932,7 +30932,7 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] operation
-        #   Name of the Operations resource to return.
+        #   Name of the Operations resource to return, or its unique numeric identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -44789,7 +44789,7 @@ module Google
         # @param [String] zone
         #   Name of the zone for this request.
         # @param [String] operation
-        #   Name of the Operations resource to delete.
+        #   Name of the Operations resource to delete, or its unique numeric identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -44826,7 +44826,7 @@ module Google
         # @param [String] zone
         #   Name of the zone for this request.
         # @param [String] operation
-        #   Name of the Operations resource to return.
+        #   Name of the Operations resource to return, or its unique numeric identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -44968,7 +44968,7 @@ module Google
         # @param [String] zone
         #   Name of the zone for this request.
         # @param [String] operation
-        #   Name of the Operations resource to return.
+        #   Name of the Operations resource to return, or its unique numeric identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

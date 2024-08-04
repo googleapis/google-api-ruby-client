@@ -3502,8 +3502,10 @@ module Google
         # set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to
         # INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
         # set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If
-        # sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH,
-        # session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH
+        # sessionAffinity is not configured—that is, if session affinity remains at the
+        # default value of NONE—then the default value for localityLbPolicy is
+        # ROUND_ROBIN. If session affinity is set to a value other than NONE, then the
+        # default value for localityLbPolicy is MAGLEV. Only ROUND_ROBIN and RING_HASH
         # are supported when the backend service is referenced by a URL map that is
         # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `localityLbPolicy`
@@ -11149,6 +11151,20 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # The list of cloud regions from which health checks are performed. If any
+        # regions are specified, then exactly 3 regions should be specified. The region
+        # names must be valid names of Google Cloud regions. This can only be set for
+        # global health check. If this list is non-empty, then there are restrictions on
+        # what other health check fields are supported and what other resources can use
+        # this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The
+        # TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS,
+        # and TCP is not supported. - The checkIntervalSec field must be at least 30. -
+        # The health check cannot be used with BackendService nor with managed instance
+        # group auto-healing.
+        # Corresponds to the JSON property `sourceRegions`
+        # @return [Array<String>]
+        attr_accessor :source_regions
+      
         # 
         # Corresponds to the JSON property `sslHealthCheck`
         # @return [Google::Apis::ComputeV1::SslHealthCheck]
@@ -11199,6 +11215,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @source_regions = args[:source_regions] if args.key?(:source_regions)
           @ssl_health_check = args[:ssl_health_check] if args.key?(:ssl_health_check)
           @tcp_health_check = args[:tcp_health_check] if args.key?(:tcp_health_check)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
@@ -14651,7 +14668,7 @@ module Google
         # instance name with a hyphen followed by one or more hash symbols. The hash
         # symbols indicate the number of digits. For example, a base instance name of "
         # vm-###" results in "vm-001" as a VM name. @pattern [a-z](([-a-z0-9]`0,57`)|([-
-        # a-z0-9]`0,52`-#`1,10`(\\[[0-9]`1,10`\\])?))
+        # a-z0-9]`0,51`-#`1,10`(\\[[0-9]`1,10`\\])?))
         # Corresponds to the JSON property `baseInstanceName`
         # @return [String]
         attr_accessor :base_instance_name
@@ -34036,6 +34053,11 @@ module Google
         # @return [String]
         attr_accessor :physical_host
       
+        # 
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::ComputeV1::ResourceStatusScheduling]
+        attr_accessor :scheduling
+      
         # Upcoming Maintenance notification information.
         # Corresponds to the JSON property `upcomingMaintenance`
         # @return [Google::Apis::ComputeV1::UpcomingMaintenance]
@@ -34048,7 +34070,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @physical_host = args[:physical_host] if args.key?(:physical_host)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
           @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
+        end
+      end
+      
+      # 
+      class ResourceStatusScheduling
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the availability domain to place the instance in. The value must be
+        # a number between 1 and the number of availability domains specified in the
+        # spread placement policy attached to the instance.
+        # Corresponds to the JSON property `availabilityDomain`
+        # @return [Fixnum]
+        attr_accessor :availability_domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
         end
       end
       
@@ -43845,10 +43889,11 @@ module Google
         attr_accessor :authorization_policy
       
         # URL of a certificate map that identifies a certificate map associated with the
-        # given target proxy. This field can only be set for global target proxies. If
-        # set, sslCertificates will be ignored. Accepted format is //certificatemanager.
-        # googleapis.com/projects/`project `/locations/`location`/certificateMaps/`
-        # resourceName`.
+        # given target proxy. This field can only be set for Global external Application
+        # Load Balancer or Classic Application Load Balancer. For other products use
+        # Certificate Manager Certificates instead. If set, sslCertificates will be
+        # ignored. Accepted format is //certificatemanager.googleapis.com/projects/`
+        # project `/locations/`location`/certificateMaps/`resourceName`.
         # Corresponds to the JSON property `certificateMap`
         # @return [String]
         attr_accessor :certificate_map
@@ -43956,9 +44001,18 @@ module Google
       
         # URLs to SslCertificate resources that are used to authenticate connections
         # between users and the load balancer. At least one SSL certificate must be
-        # specified. Currently, you may specify up to 15 SSL certificates.
-        # sslCertificates do not apply when the load balancing scheme is set to
-        # INTERNAL_SELF_MANAGED.
+        # specified. SslCertificates do not apply when the load balancing scheme is set
+        # to INTERNAL_SELF_MANAGED. The URLs should refer to a SSL Certificate resource
+        # or Certificate Manager Certificate resource. Mixing Classic Certificates and
+        # Certificate Manager Certificates is not allowed. Certificate Manager
+        # Certificates must include the certificatemanager API. Certificate Manager
+        # Certificates are not supported by Global external Application Load Balancer or
+        # Classic Application Load Balancer, use certificate_map instead. Currently, you
+        # may specify up to 15 Classic SSL Certificates. Certificate Manager
+        # Certificates accepted formats are: - //certificatemanager.googleapis.com/
+        # projects/`project`/locations/` location`/certificates/`resourceName`. - https:/
+        # /certificatemanager.googleapis.com/v1alpha1/projects/`project `/locations/`
+        # location`/certificates/`resourceName`.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
@@ -46742,8 +46796,9 @@ module Google
         # directed if none of the hostRules match. If defaultRouteAction is also
         # specified, advanced routing actions, such as URL rewrites, take effect before
         # sending the request to the backend. However, if defaultService is specified,
-        # defaultRouteAction cannot contain any weightedBackendServices. Conversely, if
-        # routeAction specifies any weightedBackendServices, service must not be
+        # defaultRouteAction cannot contain any defaultRouteAction.
+        # weightedBackendServices. Conversely, if defaultRouteAction specifies any
+        # defaultRouteAction.weightedBackendServices, defaultService must not be
         # specified. If defaultService is specified, then set either defaultUrlRedirect ,
         # or defaultRouteAction.weightedBackendService Don't set both. defaultService
         # has no effect when the URL map is bound to a target gRPC proxy that has the
