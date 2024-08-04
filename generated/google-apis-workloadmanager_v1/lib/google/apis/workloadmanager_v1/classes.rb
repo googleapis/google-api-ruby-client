@@ -474,8 +474,9 @@ module Google
       class ExternalDataSources
         include Google::Apis::Core::Hashable
       
-        # Required. The asset type of the external data source must be one of go/cai-
-        # asset-types
+        # Required. The asset type of the external data source this can be one of go/cai-
+        # asset-types to override the default asset type or it can be a custom type
+        # defined by the user custom type must match the asset type in the rule
         # Corresponds to the JSON property `assetType`
         # @return [String]
         attr_accessor :asset_type
@@ -598,6 +599,12 @@ module Google
       class IsolationExpectations
         include Google::Apis::Core::Hashable
       
+        # Explicit overrides for ZI and ZS requirements to be used for resources that
+        # should be excluded from ZI/ZS verification logic.
+        # Corresponds to the JSON property `requirementOverride`
+        # @return [Google::Apis::WorkloadmanagerV1::RequirementOverride]
+        attr_accessor :requirement_override
+      
         # 
         # Corresponds to the JSON property `ziOrgPolicy`
         # @return [String]
@@ -641,6 +648,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @requirement_override = args[:requirement_override] if args.key?(:requirement_override)
           @zi_org_policy = args[:zi_org_policy] if args.key?(:zi_org_policy)
           @zi_region_policy = args[:zi_region_policy] if args.key?(:zi_region_policy)
           @zi_region_state = args[:zi_region_state] if args.key?(:zi_region_state)
@@ -1129,6 +1137,31 @@ module Google
         def update!(**args)
           @target_shape = args[:target_shape] if args.key?(:target_shape)
           @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
+      # 
+      class RequirementOverride
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `ziOverride`
+        # @return [String]
+        attr_accessor :zi_override
+      
+        # 
+        # Corresponds to the JSON property `zsOverride`
+        # @return [String]
+        attr_accessor :zs_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zi_override = args[:zi_override] if args.key?(:zi_override)
+          @zs_override = args[:zs_override] if args.key?(:zs_override)
         end
       end
       
