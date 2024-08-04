@@ -21,5 +21,3 @@ platforms :ruby do
     gem "redcarpet", "~> 3.5"
   end
 end
-
-gem "google-apis-core", path: "../../google-apis-core"
