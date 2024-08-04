@@ -628,7 +628,7 @@ module Google
         
         # Updates the parameters of a single EndpointPolicy.
         # @param [String] name
-        #   Required. Name of the EndpointPolicy resource. It matches pattern `projects/`
+        #   Identifier. Name of the EndpointPolicy resource. It matches pattern `projects/`
         #   project`/locations/global/endpointPolicies/`endpoint_policy``.
         # @param [Google::Apis::NetworkservicesV1::EndpointPolicy] endpoint_policy_object
         # @param [String] update_mask
@@ -807,7 +807,7 @@ module Google
         
         # Updates the parameters of a single Gateway.
         # @param [String] name
-        #   Required. Name of the Gateway resource. It matches pattern `projects/*/
+        #   Identifier. Name of the Gateway resource. It matches pattern `projects/*/
         #   locations/*/gateways/`.
         # @param [Google::Apis::NetworkservicesV1::Gateway] gateway_object
         # @param [String] update_mask
@@ -986,7 +986,7 @@ module Google
         
         # Updates the parameters of a single GrpcRoute.
         # @param [String] name
-        #   Required. Name of the GrpcRoute resource. It matches pattern `projects/*/
+        #   Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/
         #   locations/global/grpcRoutes/`
         # @param [Google::Apis::NetworkservicesV1::GrpcRoute] grpc_route_object
         # @param [String] update_mask
@@ -1165,7 +1165,7 @@ module Google
         
         # Updates the parameters of a single HttpRoute.
         # @param [String] name
-        #   Required. Name of the HttpRoute resource. It matches pattern `projects/*/
+        #   Identifier. Name of the HttpRoute resource. It matches pattern `projects/*/
         #   locations/global/httpRoutes/http_route_name>`.
         # @param [Google::Apis::NetworkservicesV1::HttpRoute] http_route_object
         # @param [String] update_mask
@@ -1792,8 +1792,8 @@ module Google
         
         # Updates the parameters of a single Mesh.
         # @param [String] name
-        #   Required. Name of the Mesh resource. It matches pattern `projects/*/locations/
-        #   global/meshes/`.
+        #   Identifier. Name of the Mesh resource. It matches pattern `projects/*/
+        #   locations/global/meshes/`.
         # @param [Google::Apis::NetworkservicesV1::Mesh] mesh_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -2555,7 +2555,7 @@ module Google
         
         # Updates the parameters of a single TcpRoute.
         # @param [String] name
-        #   Required. Name of the TcpRoute resource. It matches pattern `projects/*/
+        #   Identifier. Name of the TcpRoute resource. It matches pattern `projects/*/
         #   locations/global/tcpRoutes/tcp_route_name>`.
         # @param [Google::Apis::NetworkservicesV1::TcpRoute] tcp_route_object
         # @param [String] update_mask

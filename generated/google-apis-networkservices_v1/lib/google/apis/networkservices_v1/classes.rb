@@ -355,7 +355,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Name of the EndpointPolicy resource. It matches pattern `projects/`
+        # Identifier. Name of the EndpointPolicy resource. It matches pattern `projects/`
         # project`/locations/global/endpointPolicies/`endpoint_policy``.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -658,7 +658,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Name of the Gateway resource. It matches pattern `projects/*/
+        # Identifier. Name of the Gateway resource. It matches pattern `projects/*/
         # locations/*/gateways/`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -802,7 +802,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :meshes
       
-        # Required. Name of the GrpcRoute resource. It matches pattern `projects/*/
+        # Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/
         # locations/global/grpcRoutes/`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1279,7 +1279,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :meshes
       
-        # Required. Name of the HttpRoute resource. It matches pattern `projects/*/
+        # Identifier. Name of the HttpRoute resource. It matches pattern `projects/*/
         # locations/global/httpRoutes/http_route_name>`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2744,8 +2744,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Name of the Mesh resource. It matches pattern `projects/*/locations/
-        # global/meshes/`.
+        # Identifier. Name of the Mesh resource. It matches pattern `projects/*/
+        # locations/global/meshes/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3013,8 +3013,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Name of the ServiceBinding resource. It matches pattern `projects/*/
-        # locations/global/serviceBindings/service_binding_name`.
+        # Identifier. Name of the ServiceBinding resource. It matches pattern `projects/*
+        # /locations/global/serviceBindings/service_binding_name`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3297,7 +3297,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :meshes
       
-        # Required. Name of the TcpRoute resource. It matches pattern `projects/*/
+        # Identifier. Name of the TcpRoute resource. It matches pattern `projects/*/
         # locations/global/tcpRoutes/tcp_route_name>`.
         # Corresponds to the JSON property `name`
         # @return [String]
