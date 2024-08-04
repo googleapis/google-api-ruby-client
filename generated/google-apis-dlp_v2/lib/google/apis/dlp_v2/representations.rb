@@ -2862,6 +2862,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :inspect_template_modified_cadence, as: 'inspectTemplateModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence::Representation
       
+          property :refresh_frequency, as: 'refreshFrequency'
           property :schema_modified_cadence, as: 'schemaModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoverySchemaModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoverySchemaModifiedCadence::Representation
       
           property :table_modified_cadence, as: 'tableModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTableModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTableModifiedCadence::Representation
