@@ -1770,6 +1770,8 @@ module Google
       
           property :logo, as: 'logo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
       
+          collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
+      
           property :notifications, as: 'notifications', class: Google::Apis::WalletobjectsV1::Notifications, decorator: Google::Apis::WalletobjectsV1::Notifications::Representation
       
           property :pass_constraints, as: 'passConstraints', class: Google::Apis::WalletobjectsV1::PassConstraints, decorator: Google::Apis::WalletobjectsV1::PassConstraints::Representation
