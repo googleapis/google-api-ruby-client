@@ -2372,7 +2372,9 @@ module Google
         attr_accessor :limit
       
         # Aggregation of metrics. Aggregated metric values will be shown in rows where
-        # the dimension_values are set to "RESERVED_(MetricAggregation)".
+        # the dimension_values are set to "RESERVED_(MetricAggregation)". Aggregates
+        # including both comparisons and multiple date ranges will be aggregated based
+        # on the date ranges.
         # Corresponds to the JSON property `metricAggregations`
         # @return [Array<String>]
         attr_accessor :metric_aggregations
@@ -2399,7 +2401,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :offset
       
-        # Specifies how rows are ordered in the response.
+        # Specifies how rows are ordered in the response. Requests including both
+        # comparisons and multiple date ranges will have order bys applied on the
+        # comparisons.
         # Corresponds to the JSON property `orderBys`
         # @return [Array<Google::Apis::AnalyticsdataV1beta::OrderBy>]
         attr_accessor :order_bys
