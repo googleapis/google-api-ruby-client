@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1AnswerReferenceStructuredDocumentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -958,7 +964,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1PurgeDocumentsRequestInlineSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1PurgeDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeErrorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -977,6 +995,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeUserEventsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1379,6 +1403,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1841,18 +1871,6 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaOutputResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3159,6 +3177,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunk_info, as: 'chunkInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceChunkInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceChunkInfo::Representation
       
+          property :structured_document_info, as: 'structuredDocumentInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceStructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceStructuredDocumentInfo::Representation
+      
           property :unstructured_document_info, as: 'unstructuredDocumentInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo::Representation
       
         end
@@ -3186,6 +3206,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1AnswerReferenceStructuredDocumentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document, as: 'document'
+          hash :struct_data, as: 'structData'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3203,6 +3231,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :page_identifier, as: 'pageIdentifier'
+          property :relevance_score, as: 'relevanceScore'
         end
       end
       
@@ -4355,8 +4384,21 @@ module Google
       class GoogleCloudDiscoveryengineV1PurgeDocumentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeErrorConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeErrorConfig::Representation
+      
           property :filter, as: 'filter'
           property :force, as: 'force'
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource::Representation
+      
+          property :inline_source, as: 'inlineSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeDocumentsRequestInlineSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeDocumentsRequestInlineSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeDocumentsRequestInlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :documents, as: 'documents'
         end
       end
       
@@ -4365,6 +4407,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :purge_count, :numeric_string => true, as: 'purgeCount'
           collection :purge_sample, as: 'purgeSample'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeErrorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_prefix, as: 'gcsPrefix'
         end
       end
       
@@ -4388,6 +4437,14 @@ module Google
           collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
       
           property :purge_count, :numeric_string => true, as: 'purgeCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeUserEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :force, as: 'force'
         end
       end
       
@@ -4600,6 +4657,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ignore_adversarial_query, as: 'ignoreAdversarialQuery'
+          property :ignore_low_relevant_content, as: 'ignoreLowRelevantContent'
           property :ignore_non_summary_seeking_query, as: 'ignoreNonSummarySeekingQuery'
           property :include_citations, as: 'includeCitations'
           property :language_code, as: 'languageCode'
@@ -5075,6 +5133,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunk_info, as: 'chunkInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo::Representation
       
+          property :structured_document_info, as: 'structuredDocumentInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo::Representation
+      
           property :unstructured_document_info, as: 'unstructuredDocumentInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo::Representation
       
         end
@@ -5102,6 +5162,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document, as: 'document'
+          hash :struct_data, as: 'structData'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5119,6 +5187,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :page_identifier, as: 'pageIdentifier'
+          property :relevance_score, as: 'relevanceScore'
         end
       end
       
@@ -5648,8 +5717,6 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaExportUserEventsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :output_result, as: 'outputResult', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaOutputResult, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaOutputResult::Representation
-      
           property :status, as: 'status', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
       
         end
@@ -5829,22 +5896,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :models, as: 'models', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCustomTuningModel, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCustomTuningModel::Representation
       
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaOutputResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bigquery_result, as: 'bigqueryResult', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dataset_id, as: 'datasetId'
-          property :table_id, as: 'tableId'
         end
       end
       
@@ -6164,6 +6215,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ignore_adversarial_query, as: 'ignoreAdversarialQuery'
+          property :ignore_low_relevant_content, as: 'ignoreLowRelevantContent'
           property :ignore_non_summary_seeking_query, as: 'ignoreNonSummarySeekingQuery'
           property :include_citations, as: 'includeCitations'
           property :language_code, as: 'languageCode'
@@ -7167,6 +7219,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ignore_adversarial_query, as: 'ignoreAdversarialQuery'
+          property :ignore_low_relevant_content, as: 'ignoreLowRelevantContent'
           property :ignore_non_summary_seeking_query, as: 'ignoreNonSummarySeekingQuery'
           property :include_citations, as: 'includeCitations'
           property :language_code, as: 'languageCode'

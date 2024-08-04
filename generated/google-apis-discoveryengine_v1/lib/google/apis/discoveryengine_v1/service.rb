@@ -239,6 +239,12 @@ module Google
         #   component of the DataStore's resource name. This field must conform to [RFC-
         #   1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
         #   characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # @param [Boolean] skip_default_schema_creation
+        #   A boolean flag indicating whether to skip the default schema creation for the
+        #   data store. Only enable this flag if you are certain that the default schema
+        #   is incompatible with your use case. If set to true, you must manually create a
+        #   schema for the data store before any documents can be ingested. This flag
+        #   cannot be specified if `data_store.starting_schema` is specified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -256,7 +262,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_collection_data_store(parent, google_cloud_discoveryengine_v1_data_store_object = nil, create_advanced_site_search: nil, data_store_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_collection_data_store(parent, google_cloud_discoveryengine_v1_data_store_object = nil, create_advanced_site_search: nil, data_store_id: nil, skip_default_schema_creation: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/dataStores', options)
           command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStore::Representation
           command.request_object = google_cloud_discoveryengine_v1_data_store_object
@@ -265,6 +271,7 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['createAdvancedSiteSearch'] = create_advanced_site_search unless create_advanced_site_search.nil?
           command.query['dataStoreId'] = data_store_id unless data_store_id.nil?
+          command.query['skipDefaultSchemaCreation'] = skip_default_schema_creation unless skip_default_schema_creation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2781,6 +2788,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes permanently all user events specified by the filter provided.
+        # Depending on the number of events specified by the filter, this operation
+        # could take hours or days to complete. To test a filter, use the list command
+        # first.
+        # @param [String] parent
+        #   Required. The resource name of the catalog under which the events are created.
+        #   The format is `projects/$`projectId`/locations/global/collections/`$
+        #   collectionId`/dataStores/$`dataStoreId``
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeUserEventsRequest] google_cloud_discoveryengine_v1_purge_user_events_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_collection_data_store_user_event(parent, google_cloud_discoveryengine_v1_purge_user_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/userEvents:purge', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeUserEventsRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_purge_user_events_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Writes a single user event.
         # @param [String] parent
         #   Required. The parent resource name. If the write user event action is applied
@@ -3991,6 +4036,12 @@ module Google
         #   component of the DataStore's resource name. This field must conform to [RFC-
         #   1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
         #   characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # @param [Boolean] skip_default_schema_creation
+        #   A boolean flag indicating whether to skip the default schema creation for the
+        #   data store. Only enable this flag if you are certain that the default schema
+        #   is incompatible with your use case. If set to true, you must manually create a
+        #   schema for the data store before any documents can be ingested. This flag
+        #   cannot be specified if `data_store.starting_schema` is specified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4008,7 +4059,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_data_store(parent, google_cloud_discoveryengine_v1_data_store_object = nil, create_advanced_site_search: nil, data_store_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_data_store(parent, google_cloud_discoveryengine_v1_data_store_object = nil, create_advanced_site_search: nil, data_store_id: nil, skip_default_schema_creation: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/dataStores', options)
           command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStore::Representation
           command.request_object = google_cloud_discoveryengine_v1_data_store_object
@@ -4017,6 +4068,7 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['createAdvancedSiteSearch'] = create_advanced_site_search unless create_advanced_site_search.nil?
           command.query['dataStoreId'] = data_store_id unless data_store_id.nil?
+          command.query['skipDefaultSchemaCreation'] = skip_default_schema_creation unless skip_default_schema_creation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6231,6 +6283,44 @@ module Google
           command = make_simple_command(:post, 'v1/{+parent}/userEvents:import', options)
           command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportUserEventsRequest::Representation
           command.request_object = google_cloud_discoveryengine_v1_import_user_events_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes permanently all user events specified by the filter provided.
+        # Depending on the number of events specified by the filter, this operation
+        # could take hours or days to complete. To test a filter, use the list command
+        # first.
+        # @param [String] parent
+        #   Required. The resource name of the catalog under which the events are created.
+        #   The format is `projects/$`projectId`/locations/global/collections/`$
+        #   collectionId`/dataStores/$`dataStoreId``
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeUserEventsRequest] google_cloud_discoveryengine_v1_purge_user_events_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_data_store_user_event(parent, google_cloud_discoveryengine_v1_purge_user_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/userEvents:purge', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeUserEventsRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_purge_user_events_request_object
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
