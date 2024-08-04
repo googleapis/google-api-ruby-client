@@ -797,6 +797,7 @@ module Google
           property :instance, as: 'instance'
           property :kind, as: 'kind'
           property :location, as: 'location'
+          property :max_chargeable_bytes, :numeric_string => true, as: 'maxChargeableBytes'
           property :self_link, as: 'selfLink'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
@@ -932,6 +933,7 @@ module Google
           property :replication_cluster, as: 'replicationCluster', class: Google::Apis::SqladminV1::ReplicationCluster, decorator: Google::Apis::SqladminV1::ReplicationCluster::Representation
       
           property :root_password, as: 'rootPassword'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduled_maintenance, as: 'scheduledMaintenance', class: Google::Apis::SqladminV1::SqlScheduledMaintenance, decorator: Google::Apis::SqladminV1::SqlScheduledMaintenance::Representation
       

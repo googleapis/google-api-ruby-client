@@ -403,6 +403,11 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Output only. The maximum chargeable bytes for the backup.
+        # Corresponds to the JSON property `maxChargeableBytes`
+        # @return [Fixnum]
+        attr_accessor :max_chargeable_bytes
+      
         # The URI of this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -457,6 +462,7 @@ module Google
           @instance = args[:instance] if args.key?(:instance)
           @kind = args[:kind] if args.key?(:kind)
           @location = args[:location] if args.key?(:location)
+          @max_chargeable_bytes = args[:max_chargeable_bytes] if args.key?(:max_chargeable_bytes)
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
@@ -980,6 +986,13 @@ module Google
         # @return [String]
         attr_accessor :root_password
       
+        # Output only. This status indicates whether the instance satisfies PZI. The
+        # status is reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
         # This status indicates whether the instance satisfies PZS. The status is
         # reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
@@ -1091,6 +1104,7 @@ module Google
           @replica_names = args[:replica_names] if args.key?(:replica_names)
           @replication_cluster = args[:replication_cluster] if args.key?(:replication_cluster)
           @root_password = args[:root_password] if args.key?(:root_password)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scheduled_maintenance = args[:scheduled_maintenance] if args.key?(:scheduled_maintenance)
           @secondary_gce_zone = args[:secondary_gce_zone] if args.key?(:secondary_gce_zone)
