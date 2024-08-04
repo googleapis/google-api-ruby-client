@@ -2677,6 +2677,11 @@ module Google
       class GoogleCloudChannelV1RegisterSubscriberRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Resource name of the integrator.
+        # Corresponds to the JSON property `integrator`
+        # @return [String]
+        attr_accessor :integrator
+      
         # Required. Service account that provides subscriber access to the registered
         # topic.
         # Corresponds to the JSON property `serviceAccount`
@@ -2689,6 +2694,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @integrator = args[:integrator] if args.key?(:integrator)
           @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
@@ -3594,6 +3600,11 @@ module Google
       class GoogleCloudChannelV1UnregisterSubscriberRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Resource name of the integrator.
+        # Corresponds to the JSON property `integrator`
+        # @return [String]
+        attr_accessor :integrator
+      
         # Required. Service account to unregister from subscriber access to the topic.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -3605,6 +3616,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @integrator = args[:integrator] if args.key?(:integrator)
           @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
