@@ -133,7 +133,7 @@ module Google
         attr_accessor :enable_interaction_logging
         alias_method :enable_interaction_logging?, :enable_interaction_logging
       
-        # Enables StackDriver logging.
+        # Enables Google Cloud Logging.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_logging
@@ -648,8 +648,7 @@ module Google
       class GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Format of test case names: `projects//locations/ /agents//testCases/`
-        # .
+        # Required. Format of test case names: `projects//locations//agents//testCases/`.
         # Corresponds to the JSON property `names`
         # @return [Array<String>]
         attr_accessor :names
@@ -2047,7 +2046,7 @@ module Google
         alias_method :enable_predeployment_run?, :enable_predeployment_run
       
         # A list of test case names to run. They should be under the same agent. Format
-        # of each test case name: `projects//locations/ /agents//testCases/`
+        # of each test case name: `projects//locations//agents//testCases/`
         # Corresponds to the JSON property `testCases`
         # @return [Array<String>]
         attr_accessor :test_cases
@@ -2229,7 +2228,7 @@ module Google
         attr_accessor :last_update_time
       
         # The name of the experiment. Format: projects//locations//agents//environments//
-        # experiments/..
+        # experiments/.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2989,6 +2988,13 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3KnowledgeConnectorSettings]
         attr_accessor :knowledge_connector_settings
       
+        # Indicates whether the flow is locked for changes. If the flow is locked,
+        # modifications to the flow will be rejected.
+        # Corresponds to the JSON property `locked`
+        # @return [Boolean]
+        attr_accessor :locked
+        alias_method :locked?, :locked
+      
         # Settings for multi-lingual agents.
         # Corresponds to the JSON property `multiLanguageSettings`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowMultiLanguageSettings]
@@ -3008,7 +3014,7 @@ module Google
         # A flow's transition route group serve two purposes: * They are responsible for
         # matching the user's first utterances in the flow. * They are inherited by
         # every page's transition route groups. Transition route groups defined in the
-        # page have higher priority than those defined in the flow. Format:`projects//
+        # page have higher priority than those defined in the flow. Format: `projects//
         # locations//agents//flows//transitionRouteGroups/` or `projects//locations//
         # agents//transitionRouteGroups/` for agent-level groups.
         # Corresponds to the JSON property `transitionRouteGroups`
@@ -3039,6 +3045,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
           @knowledge_connector_settings = args[:knowledge_connector_settings] if args.key?(:knowledge_connector_settings)
+          @locked = args[:locked] if args.key?(:locked)
           @multi_language_settings = args[:multi_language_settings] if args.key?(:multi_language_settings)
           @name = args[:name] if args.key?(:name)
           @nlu_settings = args[:nlu_settings] if args.key?(:nlu_settings)
@@ -7357,7 +7364,7 @@ module Google
         attr_accessor :last_test_result
       
         # The unique identifier of the test case. TestCases.CreateTestCase will populate
-        # the name automatically. Otherwise use format: `projects//locations//agents/ /
+        # the name automatically. Otherwise use format: `projects//locations//agents//
         # testCases/`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -7451,7 +7458,7 @@ module Google
         attr_accessor :environment
       
         # The resource name for the test case result. Format: `projects//locations//
-        # agents//testCases/ /results/`.
+        # agents//testCases//results/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -8956,7 +8963,7 @@ module Google
         attr_accessor :enable_interaction_logging
         alias_method :enable_interaction_logging?, :enable_interaction_logging
       
-        # Enables StackDriver logging.
+        # Enables Google Cloud Logging.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_logging
@@ -9580,7 +9587,7 @@ module Google
         alias_method :enable_predeployment_run?, :enable_predeployment_run
       
         # A list of test case names to run. They should be under the same agent. Format
-        # of each test case name: `projects//locations/ /agents//testCases/`
+        # of each test case name: `projects//locations//agents//testCases/`
         # Corresponds to the JSON property `testCases`
         # @return [Array<String>]
         attr_accessor :test_cases
@@ -11767,7 +11774,7 @@ module Google
         attr_accessor :last_test_result
       
         # The unique identifier of the test case. TestCases.CreateTestCase will populate
-        # the name automatically. Otherwise use format: `projects//locations//agents/ /
+        # the name automatically. Otherwise use format: `projects//locations//agents//
         # testCases/`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -11861,7 +11868,7 @@ module Google
         attr_accessor :environment
       
         # The resource name for the test case result. Format: `projects//locations//
-        # agents//testCases/ /results/`.
+        # agents//testCases//results/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

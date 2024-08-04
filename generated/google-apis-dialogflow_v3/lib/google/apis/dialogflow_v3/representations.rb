@@ -4162,6 +4162,7 @@ module Google
       
           property :knowledge_connector_settings, as: 'knowledgeConnectorSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3KnowledgeConnectorSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3KnowledgeConnectorSettings::Representation
       
+          property :locked, as: 'locked'
           property :multi_language_settings, as: 'multiLanguageSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowMultiLanguageSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowMultiLanguageSettings::Representation
       
           property :name, as: 'name'
