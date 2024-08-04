@@ -962,7 +962,7 @@ module Google
         # fields: - `metadata`: DeployFlowMetadata - `response`: DeployFlowResponse
         # @param [String] environment
         #   Required. The environment to deploy the flow to. Format: `projects//locations//
-        #   agents// environments/`.
+        #   agents//environments/`.
         # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DeployFlowRequest] google_cloud_dialogflow_cx_v3_deploy_flow_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1181,7 +1181,7 @@ module Google
         # Fetches a list of continuous test results for a given environment.
         # @param [String] parent
         #   Required. The environment to list results for. Format: `projects//locations//
-        #   agents// environments/`.
+        #   agents//environments/`.
         # @param [Fixnum] page_size
         #   The maximum number of items to return in a single page. By default 100 and at
         #   most 1000.
@@ -1422,7 +1422,7 @@ module Google
         # Updates the specified Experiment.
         # @param [String] name
         #   The name of the experiment. Format: projects//locations//agents//environments//
-        #   experiments/..
+        #   experiments/.
         # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Experiment] google_cloud_dialogflow_cx_v3_experiment_object
         # @param [String] update_mask
         #   Required. The mask to control which fields get updated.
@@ -2767,7 +2767,7 @@ module Google
         # @param [String] base_version
         #   Required. Name of the base flow version to compare with the target version.
         #   Use version ID `0` to indicate the draft version of the specified flow. Format:
-        #   `projects//locations//agents/ /flows//versions/`.
+        #   `projects//locations//agents//flows//versions/`.
         # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3CompareVersionsRequest] google_cloud_dialogflow_cx_v3_compare_versions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3918,7 +3918,7 @@ module Google
         # returned `Operation` type has the following method-specific fields: - `
         # metadata`: BatchRunTestCasesMetadata - `response`: BatchRunTestCasesResponse
         # @param [String] parent
-        #   Required. Agent name. Format: `projects//locations//agents/ `.
+        #   Required. Agent name. Format: `projects//locations//agents/`.
         # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3BatchRunTestCasesRequest] google_cloud_dialogflow_cx_v3_batch_run_test_cases_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4172,7 +4172,7 @@ module Google
         # Updates the specified test case.
         # @param [String] name
         #   The unique identifier of the test case. TestCases.CreateTestCase will populate
-        #   the name automatically. Otherwise use format: `projects//locations//agents/ /
+        #   the name automatically. Otherwise use format: `projects//locations//agents//
         #   testCases/`.
         # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TestCase] google_cloud_dialogflow_cx_v3_test_case_object
         # @param [String] update_mask
@@ -4213,7 +4213,7 @@ module Google
         # Operation` type has the following method-specific fields: - `metadata`:
         # RunTestCaseMetadata - `response`: RunTestCaseResponse
         # @param [String] name
-        #   Required. Format of test case name to run: `projects//locations/ /agents//
+        #   Required. Format of test case name to run: `projects//locations//agents//
         #   testCases/`.
         # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3RunTestCaseRequest] google_cloud_dialogflow_cx_v3_run_test_case_request_object
         # @param [String] fields
@@ -4280,7 +4280,7 @@ module Google
         # results are kept for each test case.
         # @param [String] parent
         #   Required. The test case to list results for. Format: `projects//locations//
-        #   agents// testCases/`. Specify a `-` as a wildcard for TestCase ID to list
+        #   agents//testCases/`. Specify a `-` as a wildcard for TestCase ID to list
         #   results across multiple test cases.
         # @param [String] filter
         #   The filter expression used to filter test case results. See [API Filtering](
