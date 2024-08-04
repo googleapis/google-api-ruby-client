@@ -286,7 +286,8 @@ module Google
         # @return [String]
         attr_accessor :runtime
       
-        # [Preview] Service account to be used for building the container
+        # Service account to be used for building the container. The format of this
+        # field is `projects/`projectId`/serviceAccounts/`serviceAccountEmail``.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -807,6 +808,11 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
+        # The build name of the function for create and update operations.
+        # Corresponds to the JSON property `buildName`
+        # @return [String]
+        attr_accessor :build_name
+      
         # Identifies whether the user has requested cancellation of the operation.
         # Operations that have successfully been cancelled have google.longrunning.
         # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
@@ -869,6 +875,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_version = args[:api_version] if args.key?(:api_version)
+          @build_name = args[:build_name] if args.key?(:build_name)
           @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -990,6 +997,11 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
+        # The build name of the function for create and update operations.
+        # Corresponds to the JSON property `buildName`
+        # @return [String]
+        attr_accessor :build_name
+      
         # Identifies whether the user has requested cancellation of the operation.
         # Operations that have successfully been cancelled have google.longrunning.
         # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
@@ -1052,6 +1064,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_version = args[:api_version] if args.key?(:api_version)
+          @build_name = args[:build_name] if args.key?(:build_name)
           @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -1173,6 +1186,11 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
+        # The build name of the function for create and update operations.
+        # Corresponds to the JSON property `buildName`
+        # @return [String]
+        attr_accessor :build_name
+      
         # Identifies whether the user has requested cancellation of the operation.
         # Operations that have successfully been cancelled have google.longrunning.
         # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
@@ -1235,6 +1253,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_version = args[:api_version] if args.key?(:api_version)
+          @build_name = args[:build_name] if args.key?(:build_name)
           @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
