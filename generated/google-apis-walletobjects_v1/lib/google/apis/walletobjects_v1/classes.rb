@@ -3349,6 +3349,12 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :logo
       
+        # An array of messages displayed in the app. All users of this object will
+        # receive its associated messages. The maximum number of these fields is 10.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::WalletobjectsV1::Message>]
+        attr_accessor :messages
+      
         # Indicates if the object needs to have notification enabled. We support only
         # one of ExpiryNotification/UpcomingNotification. `expiryNotification` takes
         # precedence over `upcomingNotification`. In other words if `expiryNotification`
@@ -3434,6 +3440,7 @@ module Google
           @image_modules_data = args[:image_modules_data] if args.key?(:image_modules_data)
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @logo = args[:logo] if args.key?(:logo)
+          @messages = args[:messages] if args.key?(:messages)
           @notifications = args[:notifications] if args.key?(:notifications)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
