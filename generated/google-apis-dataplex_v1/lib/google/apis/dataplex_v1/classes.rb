@@ -337,7 +337,7 @@ module Google
       class GoogleCloudDataplexV1Aspect
         include Google::Apis::Core::Hashable
       
-        # AspectSource contains information related to the source system of the Aspect.
+        # Information related to the source system of the aspect.
         # Corresponds to the JSON property `aspectSource`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectSource]
         attr_accessor :aspect_source
@@ -383,16 +383,16 @@ module Google
         end
       end
       
-      # AspectSource contains information related to the source system of the Aspect.
+      # Information related to the source system of the aspect.
       class GoogleCloudDataplexV1AspectSource
         include Google::Apis::Core::Hashable
       
-        # The create time of the aspect in the source system.
+        # The time the aspect was created in the source system.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # The update time of the aspect in the source system.
+        # The time the aspect was last updated in the source system.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1167,6 +1167,19 @@ module Google
         end
       end
       
+      # Cancel metadata job request.
+      class GoogleCloudDataplexV1CancelMetadataJobRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Content represents a user-visible notebook or a sql script
       class GoogleCloudDataplexV1Content
         include Google::Apis::Core::Hashable
@@ -1682,7 +1695,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Ratio of rows with distinct values against total scanned rows. Not available
-        # for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+        # for complex non-groupable field type, including RECORD, ARRAY, GEOGRAPHY, and
+        # JSON, as well as fields with REPEATABLE mode.
         # Corresponds to the JSON property `distinctRatio`
         # @return [Float]
         attr_accessor :distinct_ratio
@@ -1710,7 +1724,8 @@ module Google
         # The list of top N non-null values, frequency and ratio with which they occur
         # in the scanned data. N is 10 or equal to the number of distinct values in the
         # field, whichever is smaller. Not available for complex non-groupable field
-        # type RECORD and fields with REPEATABLE mode.
+        # type, including RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with
+        # REPEATABLE mode.
         # Corresponds to the JSON property `topNValues`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>]
         attr_accessor :top_n_values
@@ -2288,6 +2303,12 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation]
         attr_accessor :statistic_range_expectation
       
+        # Optional. Whether the Rule is active or suspended. Default is false.
+        # Corresponds to the JSON property `suspended`
+        # @return [Boolean]
+        attr_accessor :suspended
+        alias_method :suspended?, :suspended
+      
         # Evaluates whether the provided expression is true.The SQL expression needs to
         # use BigQuery standard SQL syntax and should produce a scalar boolean result.
         # Example: MIN(col1) >= 0
@@ -2325,6 +2346,7 @@ module Google
           @set_expectation = args[:set_expectation] if args.key?(:set_expectation)
           @sql_assertion = args[:sql_assertion] if args.key?(:sql_assertion)
           @statistic_range_expectation = args[:statistic_range_expectation] if args.key?(:statistic_range_expectation)
+          @suspended = args[:suspended] if args.key?(:suspended)
           @table_condition_expectation = args[:table_condition_expectation] if args.key?(:table_condition_expectation)
           @threshold = args[:threshold] if args.key?(:threshold)
           @uniqueness_expectation = args[:uniqueness_expectation] if args.key?(:uniqueness_expectation)
@@ -3959,43 +3981,48 @@ module Google
         end
       end
       
-      # An entry is a representation of a data asset which can be described by various
-      # metadata.
+      # An entry is a representation of a data resource that can be described by
+      # various metadata.
       class GoogleCloudDataplexV1Entry
         include Google::Apis::Core::Hashable
       
-        # Optional. The Aspects attached to the Entry. The format for the key can be one
-        # of the following: `projectId`.`locationId`.`aspectTypeId` (if the aspect is
-        # attached directly to the entry) `projectId`.`locationId`.`aspectTypeId`@`path`
-        # (if the aspect is attached to an entry's path)
+        # Optional. The aspects that are attached to the entry. Depending on how the
+        # aspect is attached to the entry, the format of the aspect key can be one of
+        # the following: If the aspect is attached directly to the entry: `
+        # project_id_or_number`.`location_id`.`aspect_type_id` If the aspect is attached
+        # to an entry's path: `project_id_or_number`.`location_id`.`aspect_type_id`@`
+        # path`
         # Corresponds to the JSON property `aspects`
         # @return [Hash<String,Google::Apis::DataplexV1::GoogleCloudDataplexV1Aspect>]
         attr_accessor :aspects
       
-        # Output only. The time when the Entry was created.
+        # Output only. The time when the entry was created in Dataplex.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # EntrySource contains information related to the source system of the Entry.
+        # Information related to the source system of the data resource that is
+        # represented by the entry.
         # Corresponds to the JSON property `entrySource`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntrySource]
         attr_accessor :entry_source
       
-        # Required. Immutable. The resource name of the EntryType used to create this
-        # Entry.
+        # Required. Immutable. The relative resource name of the entry type that was
+        # used to create this entry, in the format projects/`project_id_or_number`/
+        # locations/`location_id`/entryTypes/`entry_type_id`.
         # Corresponds to the JSON property `entryType`
         # @return [String]
         attr_accessor :entry_type
       
-        # Optional. A name for the entry that can reference it in an external system.
+        # Optional. A name for the entry that can be referenced by an external system.
         # The maximum size of the field is 4000 characters.
         # Corresponds to the JSON property `fullyQualifiedName`
         # @return [String]
         attr_accessor :fully_qualified_name
       
-        # Identifier. The relative resource name of the Entry, of the form: projects/`
-        # project`/locations/`location`/entryGroups/`entry_group`/entries/`entry`.
+        # Identifier. The relative resource name of the entry, in the format projects/`
+        # project_id_or_number`/locations/`location_id`/entryGroups/`entry_group_id`/
+        # entries/`entry_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4005,7 +4032,7 @@ module Google
         # @return [String]
         attr_accessor :parent_entry
       
-        # Output only. The time when the Entry was last updated.
+        # Output only. The time when the entry was last updated in Dataplex.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -4057,8 +4084,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The relative resource name of the EntryGroup, of the form:
-        # projects/`project_number`/locations/`location_id`/entryGroups/`entry_group_id`.
+        # Output only. The relative resource name of the EntryGroup, in the format
+        # projects/`project_id_or_number`/locations/`location_id`/entryGroups/`
+        # entry_group_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4092,26 +4120,28 @@ module Google
         end
       end
       
-      # EntrySource contains information related to the source system of the Entry.
+      # Information related to the source system of the data resource that is
+      # represented by the entry.
       class GoogleCloudDataplexV1EntrySource
         include Google::Apis::Core::Hashable
       
-        # Immutable. The ancestors of the Entry in the source system.
+        # Immutable. The entries representing the ancestors of the data resource in the
+        # source system.
         # Corresponds to the JSON property `ancestors`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1EntrySourceAncestor>]
         attr_accessor :ancestors
       
-        # The create time of the resource in the source system.
+        # The time when the resource was created in the source system.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Description of the Entry. The maximum size of the field is 2000 characters.
+        # A description of the data resource. Maximum length is 2,000 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # User friendly display name. The maximum size of the field is 500 characters.
+        # A user-friendly display name. Maximum length is 500 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -4123,31 +4153,33 @@ module Google
         attr_accessor :labels
       
         # Output only. Location of the resource in the source system. You can search the
-        # Entry by this location. By default, this should match the location of the
-        # EntryGroup containing this entry. A different value allows capturing the
+        # entry by this location. By default, this should match the location of the
+        # entry group containing this entry. A different value allows capturing the
         # source location for data external to Google Cloud.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The platform containing the source system. The maximum size of the field is 64
-        # characters.
+        # The platform containing the source system. Maximum length is 64 characters.
         # Corresponds to the JSON property `platform`
         # @return [String]
         attr_accessor :platform
       
-        # The name of the resource in the source system. The maximum size of the field
-        # is 4000 characters.
+        # The name of the resource in the source system. Maximum length is 4,000
+        # characters.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
       
-        # The name of the source system. The maximum size of the field is 64 characters.
+        # The name of the source system. Maximum length is 64 characters.
         # Corresponds to the JSON property `system`
         # @return [String]
         attr_accessor :system
       
-        # The update time of the resource in the source system.
+        # The time when the resource was last updated in the source system. If the entry
+        # exists in the system and its EntrySource has update_time populated, further
+        # updates to the EntrySource of the entry must provide incremental updates to
+        # its update_time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -4171,8 +4203,8 @@ module Google
         end
       end
       
-      # Ancestor contains information about individual items in the hierarchy of an
-      # Entry.
+      # Information about individual items in the hierarchy that is associated with
+      # the data resource.
       class GoogleCloudDataplexV1EntrySourceAncestor
         include Google::Apis::Core::Hashable
       
@@ -4690,6 +4722,63 @@ module Google
         def update!(**args)
           @entity = args[:entity] if args.key?(:entity)
           @entity_type = args[:entity_type] if args.key?(:entity_type)
+        end
+      end
+      
+      # An object that describes the values that you want to set for an entry and its
+      # attached aspects when you import metadata. Used when you run a metadata import
+      # job. See CreateMetadataJob.You provide a collection of import items in a
+      # metadata import file. For more information about how to create a metadata
+      # import file, see Metadata import file (https://cloud.google.com/dataplex/docs/
+      # import-metadata#metadata-import-file).
+      class GoogleCloudDataplexV1ImportItem
+        include Google::Apis::Core::Hashable
+      
+        # The aspects to modify. Supports the following syntaxes: `aspect_type_reference`
+        # : matches aspects that belong to the specified aspect type and are attached
+        # directly to the entry. `aspect_type_reference`@`path`: matches aspects that
+        # belong to the specified aspect type and path. `aspect_type_reference`@*:
+        # matches aspects that belong to the specified aspect type for all paths.Replace
+        # `aspect_type_reference` with a reference to the aspect type, in the format `
+        # project_id_or_number`.`location_id`.`aspect_type_id`.If you leave this field
+        # empty, it is treated as specifying exactly those aspects that are present
+        # within the specified entry.In FULL entry sync mode, Dataplex implicitly adds
+        # the keys for all of the required aspects of an entry.
+        # Corresponds to the JSON property `aspectKeys`
+        # @return [Array<String>]
+        attr_accessor :aspect_keys
+      
+        # An entry is a representation of a data resource that can be described by
+        # various metadata.
+        # Corresponds to the JSON property `entry`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry]
+        attr_accessor :entry
+      
+        # The fields to update, in paths that are relative to the Entry resource.
+        # Separate each field with a comma.In FULL entry sync mode, Dataplex includes
+        # the paths of all of the fields for an entry that can be modified, including
+        # aspects. This means that Dataplex replaces the existing entry with the entry
+        # in the metadata import file. All modifiable fields are updated, regardless of
+        # the fields that are listed in the update mask, and regardless of whether a
+        # field is present in the entry object.The update_mask field is ignored when an
+        # entry is created or re-created.Dataplex also determines which entries and
+        # aspects to modify by comparing the values and timestamps that you provide in
+        # the metadata import file with the values and timestamps that exist in your
+        # project. For more information, see Comparison logic (https://cloud.google.com/
+        # dataplex/docs/import-metadata#data-modification-logic).
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aspect_keys = args[:aspect_keys] if args.key?(:aspect_keys)
+          @entry = args[:entry] if args.key?(:entry)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -5472,6 +5561,38 @@ module Google
         end
       end
       
+      # List metadata jobs response.
+      class GoogleCloudDataplexV1ListMetadataJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Metadata jobs under the specified parent location.
+        # Corresponds to the JSON property `metadataJobs`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJob>]
+        attr_accessor :metadata_jobs
+      
+        # A token to retrieve the next page of results. If there are no more results in
+        # the list, the value is empty.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that the service couldn't reach.
+        # Corresponds to the JSON property `unreachableLocations`
+        # @return [Array<String>]
+        attr_accessor :unreachable_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata_jobs = args[:metadata_jobs] if args.key?(:metadata_jobs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
+        end
+      end
+      
       # List metadata partitions response.
       class GoogleCloudDataplexV1ListPartitionsResponse
         include Google::Apis::Core::Hashable
@@ -5579,6 +5700,281 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
+      # A metadata job resource.
+      class GoogleCloudDataplexV1MetadataJob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the metadata job was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Results from a metadata import job.
+        # Corresponds to the JSON property `importResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobResult]
+        attr_accessor :import_result
+      
+        # Job specification for a metadata import job
+        # Corresponds to the JSON property `importSpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobSpec]
+        attr_accessor :import_spec
+      
+        # Optional. User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The name of the resource that the configuration is applied to, in
+        # the format projects/`project_number`/locations/`location_id`/metadataJobs/`
+        # metadata_job_id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Metadata job status.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobStatus]
+        attr_accessor :status
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. A system-generated, globally unique ID for the metadata job. If
+        # the metadata job is deleted and then re-created with the same name, this ID is
+        # different.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time when the metadata job was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @import_result = args[:import_result] if args.key?(:import_result)
+          @import_spec = args[:import_spec] if args.key?(:import_spec)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Results from a metadata import job.
+      class GoogleCloudDataplexV1MetadataJobImportJobResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The total number of entries that were created.
+        # Corresponds to the JSON property `createdEntries`
+        # @return [Fixnum]
+        attr_accessor :created_entries
+      
+        # Output only. The total number of entries that were deleted.
+        # Corresponds to the JSON property `deletedEntries`
+        # @return [Fixnum]
+        attr_accessor :deleted_entries
+      
+        # Output only. The total number of entries that were recreated.
+        # Corresponds to the JSON property `recreatedEntries`
+        # @return [Fixnum]
+        attr_accessor :recreated_entries
+      
+        # Output only. The total number of entries that were unchanged.
+        # Corresponds to the JSON property `unchangedEntries`
+        # @return [Fixnum]
+        attr_accessor :unchanged_entries
+      
+        # Output only. The time when the status was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. The total number of entries that were updated.
+        # Corresponds to the JSON property `updatedEntries`
+        # @return [Fixnum]
+        attr_accessor :updated_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_entries = args[:created_entries] if args.key?(:created_entries)
+          @deleted_entries = args[:deleted_entries] if args.key?(:deleted_entries)
+          @recreated_entries = args[:recreated_entries] if args.key?(:recreated_entries)
+          @unchanged_entries = args[:unchanged_entries] if args.key?(:unchanged_entries)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @updated_entries = args[:updated_entries] if args.key?(:updated_entries)
+        end
+      end
+      
+      # Job specification for a metadata import job
+      class GoogleCloudDataplexV1MetadataJobImportJobSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The sync mode for aspects. Only INCREMENTAL mode is supported for
+        # aspects. An aspect is modified only if the metadata import file includes a
+        # reference to the aspect in the update_mask field and the aspect_keys field.
+        # Corresponds to the JSON property `aspectSyncMode`
+        # @return [String]
+        attr_accessor :aspect_sync_mode
+      
+        # Required. The sync mode for entries. Only FULL mode is supported for entries.
+        # All entries in the job's scope are modified. If an entry exists in Dataplex
+        # but isn't included in the metadata import file, the entry is deleted when you
+        # run the metadata job.
+        # Corresponds to the JSON property `entrySyncMode`
+        # @return [String]
+        attr_accessor :entry_sync_mode
+      
+        # Optional. The level of logs to write to Cloud Logging for this job.Debug-level
+        # logs provide highly-detailed information for troubleshooting, but their
+        # increased verbosity could incur additional costs (https://cloud.google.com/
+        # stackdriver/pricing) that might not be merited for all jobs.If unspecified,
+        # defaults to INFO.
+        # Corresponds to the JSON property `logLevel`
+        # @return [String]
+        attr_accessor :log_level
+      
+        # A boundary on the scope of impact that the metadata import job can have.
+        # Corresponds to the JSON property `scope`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope]
+        attr_accessor :scope
+      
+        # Optional. The time when the process that created the metadata import files
+        # began.
+        # Corresponds to the JSON property `sourceCreateTime`
+        # @return [String]
+        attr_accessor :source_create_time
+      
+        # Optional. The URI of a Cloud Storage bucket or folder (beginning with gs://
+        # and ending with /) that contains the metadata import files for this job.A
+        # metadata import file defines the values to set for each of the entries and
+        # aspects in a metadata job. For more information about how to create a metadata
+        # import file and the file requirements, see Metadata import file (https://cloud.
+        # google.com/dataplex/docs/import-metadata#metadata-import-file).You can provide
+        # multiple metadata import files in the same metadata job. The bucket or folder
+        # must contain at least one metadata import file, in JSON Lines format (either .
+        # json or .jsonl file extension).In FULL entry sync mode, don't save the
+        # metadata import file in a folder named SOURCE_STORAGE_URI/deletions/.Caution:
+        # If the metadata import file contains no data, all entries and aspects that
+        # belong to the job's scope are deleted.
+        # Corresponds to the JSON property `sourceStorageUri`
+        # @return [String]
+        attr_accessor :source_storage_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aspect_sync_mode = args[:aspect_sync_mode] if args.key?(:aspect_sync_mode)
+          @entry_sync_mode = args[:entry_sync_mode] if args.key?(:entry_sync_mode)
+          @log_level = args[:log_level] if args.key?(:log_level)
+          @scope = args[:scope] if args.key?(:scope)
+          @source_create_time = args[:source_create_time] if args.key?(:source_create_time)
+          @source_storage_uri = args[:source_storage_uri] if args.key?(:source_storage_uri)
+        end
+      end
+      
+      # A boundary on the scope of impact that the metadata import job can have.
+      class GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The aspect types that are in scope for the import job, specified as
+        # relative resource names in the format projects/`project_number_or_id`/
+        # locations/`location_id`/aspectTypes/`aspect_type_id`. The job modifies only
+        # the aspects that belong to these aspect types.If the metadata import file
+        # attempts to modify an aspect whose type isn't included in this list, the
+        # import job is halted before modifying any entries or aspects.The location of
+        # an aspect type must either match the location of the job, or the aspect type
+        # must be global.
+        # Corresponds to the JSON property `aspectTypes`
+        # @return [Array<String>]
+        attr_accessor :aspect_types
+      
+        # Required. The entry group that is in scope for the import job, specified as a
+        # relative resource name in the format projects/`project_number_or_id`/locations/
+        # `location_id`/entryGroups/`entry_group_id`. Only entries that belong to the
+        # specified entry group are affected by the job.Must contain exactly one element.
+        # The entry group and the job must be in the same location.
+        # Corresponds to the JSON property `entryGroups`
+        # @return [Array<String>]
+        attr_accessor :entry_groups
+      
+        # Required. The entry types that are in scope for the import job, specified as
+        # relative resource names in the format projects/`project_number_or_id`/
+        # locations/`location_id`/entryTypes/`entry_type_id`. The job modifies only the
+        # entries that belong to these entry types.If the metadata import file attempts
+        # to modify an entry whose type isn't included in this list, the import job is
+        # halted before modifying any entries or aspects.The location of an entry type
+        # must either match the location of the job, or the entry type must be global.
+        # Corresponds to the JSON property `entryTypes`
+        # @return [Array<String>]
+        attr_accessor :entry_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aspect_types = args[:aspect_types] if args.key?(:aspect_types)
+          @entry_groups = args[:entry_groups] if args.key?(:entry_groups)
+          @entry_types = args[:entry_types] if args.key?(:entry_types)
+        end
+      end
+      
+      # Metadata job status.
+      class GoogleCloudDataplexV1MetadataJobStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Progress tracking.
+        # Corresponds to the JSON property `completionPercent`
+        # @return [Fixnum]
+        attr_accessor :completion_percent
+      
+        # Output only. Message relating to the progression of a metadata job.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. State of the metadata job.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time when the status was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion_percent = args[:completion_percent] if args.key?(:completion_percent)
+          @message = args[:message] if args.key?(:message)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -6024,8 +6420,8 @@ module Google
       class GoogleCloudDataplexV1SearchEntriesResult
         include Google::Apis::Core::Hashable
       
-        # An entry is a representation of a data asset which can be described by various
-        # metadata.
+        # An entry is a representation of a data resource that can be described by
+        # various metadata.
         # Corresponds to the JSON property `dataplexEntry`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry]
         attr_accessor :dataplex_entry
@@ -6058,8 +6454,8 @@ module Google
       class GoogleCloudDataplexV1SearchEntriesResultSnippets
         include Google::Apis::Core::Hashable
       
-        # An entry is a representation of a data asset which can be described by various
-        # metadata.
+        # An entry is a representation of a data resource that can be described by
+        # various metadata.
         # Corresponds to the JSON property `dataplexEntry`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry]
         attr_accessor :dataplex_entry
