@@ -4454,6 +4454,105 @@ module Google
         end
       end
       
+      # Filtering fields for an HL7 rollback. Currently only supports a list of
+      # operation ids to roll back.
+      class RollbackHl7MessagesFilteringFields
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of operation IDs to roll back.
+        # Corresponds to the JSON property `operationIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :operation_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_ids = args[:operation_ids] if args.key?(:operation_ids)
+        end
+      end
+      
+      # Point in time recovery rollback request.
+      class RollbackHl7V2MessagesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. CREATE/UPDATE/DELETE/ALL for reverting all txns of a certain type.
+        # Corresponds to the JSON property `changeType`
+        # @return [String]
+        attr_accessor :change_type
+      
+        # Optional. Specifies whether to exclude earlier rollbacks.
+        # Corresponds to the JSON property `excludeRollbacks`
+        # @return [Boolean]
+        attr_accessor :exclude_rollbacks
+        alias_method :exclude_rollbacks?, :exclude_rollbacks
+      
+        # Filtering fields for an HL7 rollback. Currently only supports a list of
+        # operation ids to roll back.
+        # Corresponds to the JSON property `filteringFields`
+        # @return [Google::Apis::HealthcareV1::RollbackHl7MessagesFilteringFields]
+        attr_accessor :filtering_fields
+      
+        # Optional. When enabled, changes will be reverted without explicit confirmation.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Optional. Cloud storage object containing list of `resourceId` lines,
+        # identifying resources to be reverted
+        # Corresponds to the JSON property `inputGcsObject`
+        # @return [String]
+        attr_accessor :input_gcs_object
+      
+        # Required. Bucket to deposit result
+        # Corresponds to the JSON property `resultGcsBucket`
+        # @return [String]
+        attr_accessor :result_gcs_bucket
+      
+        # Required. Times point to rollback to.
+        # Corresponds to the JSON property `rollbackTime`
+        # @return [String]
+        attr_accessor :rollback_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_type = args[:change_type] if args.key?(:change_type)
+          @exclude_rollbacks = args[:exclude_rollbacks] if args.key?(:exclude_rollbacks)
+          @filtering_fields = args[:filtering_fields] if args.key?(:filtering_fields)
+          @force = args[:force] if args.key?(:force)
+          @input_gcs_object = args[:input_gcs_object] if args.key?(:input_gcs_object)
+          @result_gcs_bucket = args[:result_gcs_bucket] if args.key?(:result_gcs_bucket)
+          @rollback_time = args[:rollback_time] if args.key?(:rollback_time)
+        end
+      end
+      
+      # Final response of rollback HL7v2 messages request.
+      class RollbackHl7V2MessagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the HL7 store to rollback, in the format of "projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id` /hl7v2Stores/`hl7v2_store_id`".
+        # Corresponds to the JSON property `hl7v2Store`
+        # @return [String]
+        attr_accessor :hl7v2_store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hl7v2_store = args[:hl7v2_store] if args.key?(:hl7v2_store)
+        end
+      end
+      
       # Configuration for the FHIR BigQuery schema. Determines how the server
       # generates the schema.
       class SchemaConfig
