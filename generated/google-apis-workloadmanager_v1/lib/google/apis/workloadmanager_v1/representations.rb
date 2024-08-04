@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RequirementOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -573,6 +579,8 @@ module Google
       class IsolationExpectations
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :requirement_override, as: 'requirementOverride', class: Google::Apis::WorkloadmanagerV1::RequirementOverride, decorator: Google::Apis::WorkloadmanagerV1::RequirementOverride::Representation
+      
           property :zi_org_policy, as: 'ziOrgPolicy'
           property :zi_region_policy, as: 'ziRegionPolicy'
           property :zi_region_state, as: 'ziRegionState'
@@ -723,6 +731,14 @@ module Google
           property :target_shape, as: 'targetShape'
           collection :zones, as: 'zones', class: Google::Apis::WorkloadmanagerV1::ZoneConfiguration, decorator: Google::Apis::WorkloadmanagerV1::ZoneConfiguration::Representation
       
+        end
+      end
+      
+      class RequirementOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zi_override, as: 'ziOverride'
+          property :zs_override, as: 'zsOverride'
         end
       end
       
