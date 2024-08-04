@@ -639,6 +639,7 @@ module Google
           property :internal_ip, as: 'internalIp'
           collection :network_tags, as: 'networkTags'
           property :network_uri, as: 'networkUri'
+          property :psc_network_attachment_uri, as: 'pscNetworkAttachmentUri'
           property :service_account, as: 'serviceAccount'
           property :uri, as: 'uri'
         end
