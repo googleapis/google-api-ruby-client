@@ -1138,7 +1138,9 @@ module Google
         #   The ID of the file.
         # @param [Boolean] acknowledge_abuse
         #   Whether the user is acknowledging the risk of downloading known malware or
-        #   other abusive files. This is only applicable when alt=media.
+        #   other abusive files. This is only applicable when the `alt` parameter is set
+        #   to `media` and the user is the owner of the file or an organizer of the shared
+        #   drive in which the file resides.
         # @param [String] include_labels
         #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
@@ -1442,7 +1444,9 @@ module Google
         # @param [Google::Apis::DriveV3::Channel] channel_object
         # @param [Boolean] acknowledge_abuse
         #   Whether the user is acknowledging the risk of downloading known malware or
-        #   other abusive files. This is only applicable when alt=media.
+        #   other abusive files. This is only applicable when the `alt` parameter is set
+        #   to `media` and the user is the owner of the file or an organizer of the shared
+        #   drive in which the file resides.
         # @param [String] include_labels
         #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
@@ -1991,7 +1995,9 @@ module Google
         #   The ID of the revision.
         # @param [Boolean] acknowledge_abuse
         #   Whether the user is acknowledging the risk of downloading known malware or
-        #   other abusive files. This is only applicable when alt=media.
+        #   other abusive files. This is only applicable when the `alt` parameter is set
+        #   to `media` and the user is the owner of the file or an organizer of the shared
+        #   drive in which the file resides.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
