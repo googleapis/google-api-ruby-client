@@ -33,25 +33,25 @@ module Google
       # Private Service: https://www.googleapis.com/auth/chat.bot
       AUTH_CHAT_BOT = 'https://www.googleapis.com/auth/chat.bot'
 
-      # View, add, update, and remove members from conversations in Google Chat
+      # See, add, update, and remove members from conversations and spaces in Google Chat
       AUTH_CHAT_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.memberships'
 
       # View members in Google Chat conversations.
       AUTH_CHAT_MEMBERSHIPS_READONLY = 'https://www.googleapis.com/auth/chat.memberships.readonly'
 
-      # View, compose, send, update, and delete messages, and add, view, and delete reactions to messages.
+      # See, compose, send, update, and delete messages and their associated attachments, and add, see, and delete reactions to messages.
       AUTH_CHAT_MESSAGES = 'https://www.googleapis.com/auth/chat.messages'
 
-      # View, add, and delete reactions to messages in Google Chat
+      # See, add, and delete reactions to messages in Google Chat
       AUTH_CHAT_MESSAGES_REACTIONS = 'https://www.googleapis.com/auth/chat.messages.reactions'
 
       # View reactions to messages in Google Chat
       AUTH_CHAT_MESSAGES_REACTIONS_READONLY = 'https://www.googleapis.com/auth/chat.messages.reactions.readonly'
 
-      # View messages and reactions in Google Chat
+      # See messages and their associated reactions and attachments in Google Chat
       AUTH_CHAT_MESSAGES_READONLY = 'https://www.googleapis.com/auth/chat.messages.readonly'
 
-      # Create conversations and spaces and see or edit metadata (including history settings and access settings) in Google Chat
+      # Create conversations and spaces and see or update metadata (including history settings and access settings) in Google Chat
       AUTH_CHAT_SPACES = 'https://www.googleapis.com/auth/chat.spaces'
 
       # View chat and spaces in Google Chat
