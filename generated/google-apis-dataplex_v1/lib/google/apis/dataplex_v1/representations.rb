@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1CancelMetadataJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1Content
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -712,6 +718,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1ImportItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1Job
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -838,6 +850,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1ListMetadataJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1ListPartitionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -857,6 +875,36 @@ module Google
       end
       
       class GoogleCloudDataplexV1ListZonesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobImportJobResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobImportJobSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1505,6 +1553,12 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1CancelMetadataJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDataplexV1Content
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1812,6 +1866,7 @@ module Google
       
           property :statistic_range_expectation, as: 'statisticRangeExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation::Representation
       
+          property :suspended, as: 'suspended'
           property :table_condition_expectation, as: 'tableConditionExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation::Representation
       
           property :threshold, as: 'threshold'
@@ -2457,6 +2512,16 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1ImportItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aspect_keys, as: 'aspectKeys'
+          property :entry, as: 'entry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
       class GoogleCloudDataplexV1Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2682,6 +2747,16 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1ListMetadataJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metadata_jobs, as: 'metadataJobs', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJob, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJob::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable_locations, as: 'unreachableLocations'
+        end
+      end
+      
       class GoogleCloudDataplexV1ListPartitionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2716,6 +2791,68 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :zones, as: 'zones', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Zone, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Zone::Representation
       
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :import_result, as: 'importResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobResult::Representation
+      
+          property :import_spec, as: 'importSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobSpec::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :status, as: 'status', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobStatus, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobStatus::Representation
+      
+          property :type, as: 'type'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobImportJobResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_entries, :numeric_string => true, as: 'createdEntries'
+          property :deleted_entries, :numeric_string => true, as: 'deletedEntries'
+          property :recreated_entries, :numeric_string => true, as: 'recreatedEntries'
+          property :unchanged_entries, :numeric_string => true, as: 'unchangedEntries'
+          property :update_time, as: 'updateTime'
+          property :updated_entries, :numeric_string => true, as: 'updatedEntries'
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobImportJobSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aspect_sync_mode, as: 'aspectSyncMode'
+          property :entry_sync_mode, as: 'entrySyncMode'
+          property :log_level, as: 'logLevel'
+          property :scope, as: 'scope', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope::Representation
+      
+          property :source_create_time, as: 'sourceCreateTime'
+          property :source_storage_uri, as: 'sourceStorageUri'
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aspect_types, as: 'aspectTypes'
+          collection :entry_groups, as: 'entryGroups'
+          collection :entry_types, as: 'entryTypes'
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_percent, as: 'completionPercent'
+          property :message, as: 'message'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
