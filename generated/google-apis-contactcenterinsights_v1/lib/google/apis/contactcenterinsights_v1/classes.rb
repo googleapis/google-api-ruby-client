@@ -1670,6 +1670,37 @@ module Google
         end
       end
       
+      # A customer-managed encryption key specification that can be applied to all
+      # created resources (e.g. Conversation).
+      class GoogleCloudContactcenterinsightsV1EncryptionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of customer-managed encryption key that is used to secure a
+        # resource and its sub-resources. If empty, the resource is secured by the
+        # default Google encryption key. Only the key in the same location as this
+        # resource is allowed to be used for encryption. Format: `projects/`project`/
+        # locations/`location`/keyRings/`keyRing`/cryptoKeys/`key``
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Immutable. The resource name of the encryption key specification resource.
+        # Format: projects/`project`/locations/`location`/encryptionSpec
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # The data for an entity annotation. Represents a phrase in the conversation
       # that is a known entity, such as a person, an organization, or location.
       class GoogleCloudContactcenterinsightsV1Entity
@@ -2435,6 +2466,77 @@ module Google
       
       # The response to an IngestConversations operation.
       class GoogleCloudContactcenterinsightsV1IngestConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for initializing a location-level encryption specification.
+      class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Partial errors during initialising operation that might cause the operation
+        # output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # The request to initialize a location-level encryption specification.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to initialize a location-level encryption specification.
+      class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest
+        include Google::Apis::Core::Hashable
+      
+        # A customer-managed encryption key specification that can be applied to all
+        # created resources (e.g. Conversation).
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
+        end
+      end
+      
+      # The response to initialize a location-level encryption specification.
+      class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -5285,6 +5387,37 @@ module Google
         end
       end
       
+      # A customer-managed encryption key specification that can be applied to all
+      # created resources (e.g. Conversation).
+      class GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of customer-managed encryption key that is used to secure a
+        # resource and its sub-resources. If empty, the resource is secured by the
+        # default Google encryption key. Only the key in the same location as this
+        # resource is allowed to be used for encryption. Format: `projects/`project`/
+        # locations/`location`/keyRings/`keyRing`/cryptoKeys/`key``
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Immutable. The resource name of the encryption key specification resource.
+        # Format: projects/`project`/locations/`location`/encryptionSpec
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # The data for an entity annotation. Represents a phrase in the conversation
       # that is a known entity, such as a person, an organization, or location.
       class GoogleCloudContactcenterinsightsV1alpha1Entity
@@ -6030,6 +6163,77 @@ module Google
       
       # The response to an IngestConversations operation.
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for initializing a location-level encryption specification.
+      class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Partial errors during initialising operation that might cause the operation
+        # output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # The request to initialize a location-level encryption specification.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to initialize a location-level encryption specification.
+      class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest
+        include Google::Apis::Core::Hashable
+      
+        # A customer-managed encryption key specification that can be applied to all
+        # created resources (e.g. Conversation).
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
+        end
+      end
+      
+      # The response to initialize a location-level encryption specification.
+      class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
