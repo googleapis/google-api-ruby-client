@@ -4749,6 +4749,12 @@ module Google
         # @return [Array<Google::Apis::DatamigrationV1::SqlServerDatabaseBackup>]
         attr_accessor :database_backups
       
+        # Optional. Promote databases when ready.
+        # Corresponds to the JSON property `promoteWhenReady`
+        # @return [Boolean]
+        attr_accessor :promote_when_ready
+        alias_method :promote_when_ready?, :promote_when_ready
+      
         # Optional. Enable differential backups.
         # Corresponds to the JSON property `useDiffBackup`
         # @return [Boolean]
@@ -4763,6 +4769,7 @@ module Google
         def update!(**args)
           @backup_file_pattern = args[:backup_file_pattern] if args.key?(:backup_file_pattern)
           @database_backups = args[:database_backups] if args.key?(:database_backups)
+          @promote_when_ready = args[:promote_when_ready] if args.key?(:promote_when_ready)
           @use_diff_backup = args[:use_diff_backup] if args.key?(:use_diff_backup)
         end
       end
