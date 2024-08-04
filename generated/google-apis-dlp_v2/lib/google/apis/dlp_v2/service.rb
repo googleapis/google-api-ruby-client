@@ -757,6 +757,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists Connections in a parent. Use SearchConnections to see all connections
+        # within an organization.
+        # @param [String] parent
+        #   Required. Resource name of the organization or project, for example `
+        #   organizations/433245324/locations/europe` or `projects/project-id/locations/
+        #   asia`.
+        # @param [String] filter
+        #   Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR
+        # @param [Fixnum] page_size
+        #   Optional. Number of results per page, max 1000.
+        # @param [String] page_token
+        #   Optional. Page token from a previous page to return the next set of results.
+        #   If set, all other request fields must match the original request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListConnectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListConnectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_connections(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/connections', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListConnectionsResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListConnectionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Update a Connection.
         # @param [String] name
         #   Required. Resource name in the format: `projects/`project`/locations/`location`
@@ -793,8 +836,9 @@ module Google
         
         # Searches for Connections in a parent.
         # @param [String] parent
-        #   Required. Parent name, typically an organization, without location. For
-        #   example: `organizations/12345678`.
+        #   Required. Resource name of the organization or project with a wildcard
+        #   location, for example `organizations/433245324/locations/-` or `projects/
+        #   project-id/locations/-`.
         # @param [String] filter
         #   Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR
         # @param [Fixnum] page_size
@@ -3778,9 +3822,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Connections in a parent.
+        # Lists Connections in a parent. Use SearchConnections to see all connections
+        # within an organization.
         # @param [String] parent
-        #   Required. Parent name, for example: `projects/project-id/locations/global`.
+        #   Required. Resource name of the organization or project, for example `
+        #   organizations/433245324/locations/europe` or `projects/project-id/locations/
+        #   asia`.
         # @param [String] filter
         #   Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR
         # @param [Fixnum] page_size
@@ -3854,8 +3901,9 @@ module Google
         
         # Searches for Connections in a parent.
         # @param [String] parent
-        #   Required. Parent name, typically an organization, without location. For
-        #   example: `organizations/12345678`.
+        #   Required. Resource name of the organization or project with a wildcard
+        #   location, for example `organizations/433245324/locations/-` or `projects/
+        #   project-id/locations/-`.
         # @param [String] filter
         #   Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR
         # @param [Fixnum] page_size

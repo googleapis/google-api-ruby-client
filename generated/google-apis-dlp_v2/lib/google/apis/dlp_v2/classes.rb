@@ -3732,6 +3732,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence]
         attr_accessor :inspect_template_modified_cadence
       
+        # Frequency to update profiles regardless of whether the underlying resource has
+        # changed. Defaults to never.
+        # Corresponds to the JSON property `refreshFrequency`
+        # @return [String]
+        attr_accessor :refresh_frequency
+      
         # The cadence at which to update data profiles when a schema is modified.
         # Corresponds to the JSON property `schemaModifiedCadence`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoverySchemaModifiedCadence]
@@ -3749,6 +3755,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @inspect_template_modified_cadence = args[:inspect_template_modified_cadence] if args.key?(:inspect_template_modified_cadence)
+          @refresh_frequency = args[:refresh_frequency] if args.key?(:refresh_frequency)
           @schema_modified_cadence = args[:schema_modified_cadence] if args.key?(:schema_modified_cadence)
           @table_modified_cadence = args[:table_modified_cadence] if args.key?(:table_modified_cadence)
         end
