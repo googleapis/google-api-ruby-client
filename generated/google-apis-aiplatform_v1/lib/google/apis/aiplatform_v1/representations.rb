@@ -3010,12 +3010,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1PscInterfaceConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1PublisherModel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5562,6 +5556,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encoding, as: 'encoding'
+          property :generation_seed, as: 'generationSeed'
           property :image, :base64 => true, as: 'image'
           property :image_rai_scores, as: 'imageRaiScores', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionImageRaiScores, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionImageRaiScores::Representation
       
@@ -6026,6 +6021,8 @@ module Google
       
           property :resources_consumed, as: 'resourcesConsumed', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ResourcesConsumed, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ResourcesConsumed::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
@@ -6271,7 +6268,6 @@ module Google
           property :index, as: 'index'
           collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating::Representation
       
-          property :score, as: 'score'
         end
       end
       
@@ -6756,6 +6752,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :payload, as: 'payload'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -6815,6 +6813,8 @@ module Google
           property :metadata_schema_uri, as: 'metadataSchemaUri'
           property :model_reference, as: 'modelReference'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           collection :saved_queries, as: 'savedQueries', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SavedQuery, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SavedQuery::Representation
       
           property :update_time, as: 'updateTime'
@@ -6831,6 +6831,8 @@ module Google
           property :metadata, as: 'metadata'
           property :model_reference, as: 'modelReference'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -7066,6 +7068,8 @@ module Google
           property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec::Representation
       
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
         end
       end
@@ -7157,6 +7161,8 @@ module Google
       
           property :private_service_connect_config, as: 'privateServiceConnectConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrivateServiceConnectConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrivateServiceConnectConfig::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           hash :traffic_split, as: 'trafficSplit'
           property :update_time, as: 'updateTime'
         end
@@ -8432,6 +8438,7 @@ module Google
           property :response_mime_type, as: 'responseMimeType'
           property :response_schema, as: 'responseSchema', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
       
+          property :seed, as: 'seed'
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
           property :top_k, as: 'topK'
@@ -10454,8 +10461,6 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
-          property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig::Representation
-      
           collection :reserved_ip_ranges, as: 'reservedIpRanges'
           collection :resource_pools, as: 'resourcePools', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ResourcePool, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ResourcePool::Representation
       
@@ -10715,13 +10720,6 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1PscInterfaceConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :network_attachment, as: 'networkAttachment'
-        end
-      end
-      
       class GoogleCloudAiplatformV1PublisherModel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10797,6 +10795,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
+          property :sample_request, as: 'sampleRequest'
         end
       end
       

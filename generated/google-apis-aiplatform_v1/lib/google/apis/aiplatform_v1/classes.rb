@@ -62,6 +62,13 @@ module Google
         # @return [String]
         attr_accessor :encoding
       
+        # Generation seed for the sampled image. This parameter is exposed to the user
+        # only if one of the following is true: 1. The user specified per-example seeds
+        # in the request. 2. The user doesn't specify the generation seed in the request.
+        # Corresponds to the JSON property `generationSeed`
+        # @return [Fixnum]
+        attr_accessor :generation_seed
+      
         # Raw bytes.
         # Corresponds to the JSON property `image`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -100,6 +107,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @encoding = args[:encoding] if args.key?(:encoding)
+          @generation_seed = args[:generation_seed] if args.key?(:generation_seed)
           @image = args[:image] if args.key?(:image)
           @image_rai_scores = args[:image_rai_scores] if args.key?(:image_rai_scores)
           @rai_info = args[:rai_info] if args.key?(:rai_info)
@@ -1680,6 +1688,18 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ResourcesConsumed]
         attr_accessor :resources_consumed
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # The service account that the DeployedModel's container runs as. If not
         # specified, a system generated one will be used, which has minimal permissions
         # and the custom container, if used, may not have enough permission to access
@@ -1739,6 +1759,8 @@ module Google
           @output_info = args[:output_info] if args.key?(:output_info)
           @partial_failures = args[:partial_failures] if args.key?(:partial_failures)
           @resources_consumed = args[:resources_consumed] if args.key?(:resources_consumed)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
@@ -2455,11 +2477,6 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating>]
         attr_accessor :safety_ratings
       
-        # Output only. Confidence score of the candidate.
-        # Corresponds to the JSON property `score`
-        # @return [Float]
-        attr_accessor :score
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2473,7 +2490,6 @@ module Google
           @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
           @index = args[:index] if args.key?(:index)
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
-          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -4077,6 +4093,18 @@ module Google
         # @return [Object]
         attr_accessor :payload
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Timestamp when this DataItem was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -4093,6 +4121,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @payload = args[:payload] if args.key?(:payload)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -4372,6 +4402,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # All SavedQueries belong to the Dataset will be returned in List/Get Dataset
         # response. The annotation_specs field will not be populated except for UI cases
         # which will only use annotation_spec_count. In CreateDataset request, a
@@ -4405,6 +4447,8 @@ module Google
           @metadata_schema_uri = args[:metadata_schema_uri] if args.key?(:metadata_schema_uri)
           @model_reference = args[:model_reference] if args.key?(:model_reference)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @saved_queries = args[:saved_queries] if args.key?(:saved_queries)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -4452,6 +4496,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Timestamp when this DatasetVersion was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -4470,6 +4526,8 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @model_reference = args[:model_reference] if args.key?(:model_reference)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -5309,6 +5367,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # The service account that the DeploymentResourcePool's container(s) run as.
         # Specify the email address of the service account. If this service account is
         # not specified, the container(s) run as a service account that doesn't have
@@ -5330,6 +5400,8 @@ module Google
           @disable_container_logging = args[:disable_container_logging] if args.key?(:disable_container_logging)
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
@@ -5636,6 +5708,18 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrivateServiceConnectConfig]
         attr_accessor :private_service_connect_config
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # A map from a DeployedModel's ID to the percentage of this Endpoint's traffic
         # that should be forwarded to that DeployedModel. If a DeployedModel's ID is not
         # listed in this map, then it receives no traffic. The traffic percentage values
@@ -5671,6 +5755,8 @@ module Google
           @network = args[:network] if args.key?(:network)
           @predict_request_response_logging_config = args[:predict_request_response_logging_config] if args.key?(:predict_request_response_logging_config)
           @private_service_connect_config = args[:private_service_connect_config] if args.key?(:private_service_connect_config)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @traffic_split = args[:traffic_split] if args.key?(:traffic_split)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -10205,6 +10291,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema]
         attr_accessor :response_schema
       
+        # Optional. Seed.
+        # Corresponds to the JSON property `seed`
+        # @return [Fixnum]
+        attr_accessor :seed
+      
         # Optional. Stop sequences.
         # Corresponds to the JSON property `stopSequences`
         # @return [Array<String>]
@@ -10237,6 +10328,7 @@ module Google
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
           @response_schema = args[:response_schema] if args.key?(:response_schema)
+          @seed = args[:seed] if args.key?(:seed)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
           @top_k = args[:top_k] if args.key?(:top_k)
@@ -17494,11 +17586,6 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Configuration for PSC-I.
-        # Corresponds to the JSON property `pscInterfaceConfig`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig]
-        attr_accessor :psc_interface_config
-      
         # Optional. A list of names for the reserved IP ranges under the VPC network
         # that can be used for this persistent resource. If set, we will deploy the
         # persistent resource within the provided IP ranges. Otherwise, the persistent
@@ -17554,7 +17641,6 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
-          @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
           @reserved_ip_ranges = args[:reserved_ip_ranges] if args.key?(:reserved_ip_ranges)
           @resource_pools = args[:resource_pools] if args.key?(:resource_pools)
           @resource_runtime = args[:resource_runtime] if args.key?(:resource_runtime)
@@ -18530,33 +18616,6 @@ module Google
         end
       end
       
-      # Configuration for PSC-I.
-      class GoogleCloudAiplatformV1PscInterfaceConfig
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The full name of the Compute Engine [network attachment](https://
-        # cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource.
-        # For example, `projects/12345/regions/us-central1/networkAttachments/myNA`. is
-        # of the form `projects/`project`/regions/`region`/networkAttachments/`
-        # networkAttachment``. Where `project` is a project number, as in `12345`, and `
-        # networkAttachment` is a network attachment name. To specify this field, you
-        # must have already [created a network attachment] (https://cloud.google.com/vpc/
-        # docs/create-manage-network-attachments#create-network-attachments). This field
-        # is only used for resources using PSC-I.
-        # Corresponds to the JSON property `networkAttachment`
-        # @return [String]
-        attr_accessor :network_attachment
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
-        end
-      end
-      
       # A Model Garden Publisher Model.
       class GoogleCloudAiplatformV1PublisherModel
         include Google::Apis::Core::Hashable
@@ -18827,6 +18886,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Optional. Sample request for deployed endpoint.
+        # Corresponds to the JSON property `sampleRequest`
+        # @return [String]
+        attr_accessor :sample_request
+      
         def initialize(**args)
            update!(**args)
         end
@@ -18834,6 +18898,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
+          @sample_request = args[:sample_request] if args.key?(:sample_request)
         end
       end
       
@@ -31337,7 +31402,7 @@ module Google
         end
       end
       
-      # Next ID: 3
+      # 
       class GoogleCloudAiplatformV1TrialContext
         include Google::Apis::Core::Hashable
       
