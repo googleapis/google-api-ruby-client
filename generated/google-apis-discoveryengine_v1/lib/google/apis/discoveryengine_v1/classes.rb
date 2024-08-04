@@ -1161,6 +1161,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceChunkInfo]
         attr_accessor :chunk_info
       
+        # Structured search information.
+        # Corresponds to the JSON property `structuredDocumentInfo`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceStructuredDocumentInfo]
+        attr_accessor :structured_document_info
+      
         # Unstructured document information.
         # Corresponds to the JSON property `unstructuredDocumentInfo`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo]
@@ -1173,6 +1178,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunk_info = args[:chunk_info] if args.key?(:chunk_info)
+          @structured_document_info = args[:structured_document_info] if args.key?(:structured_document_info)
           @unstructured_document_info = args[:unstructured_document_info] if args.key?(:unstructured_document_info)
         end
       end
@@ -1196,7 +1202,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceChunkInfoDocumentMetadata]
         attr_accessor :document_metadata
       
-        # Relevance score.
+        # The relevance of the chunk for a given query. Values range from 0.0 (
+        # completely irrelevant) to 1.0 (completely relevant). This value is for
+        # informational purpose only. It may change for the same query and chunk at any
+        # time due to a model retraining or change in implementation.
         # Corresponds to the JSON property `relevanceScore`
         # @return [Float]
         attr_accessor :relevance_score
@@ -1258,6 +1267,31 @@ module Google
         end
       end
       
+      # Structured search information.
+      class GoogleCloudDiscoveryengineV1AnswerReferenceStructuredDocumentInfo
+        include Google::Apis::Core::Hashable
+      
+        # Document resource name.
+        # Corresponds to the JSON property `document`
+        # @return [String]
+        attr_accessor :document
+      
+        # Structured search data.
+        # Corresponds to the JSON property `structData`
+        # @return [Hash<String,Object>]
+        attr_accessor :struct_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document = args[:document] if args.key?(:document)
+          @struct_data = args[:struct_data] if args.key?(:struct_data)
+        end
+      end
+      
       # Unstructured document information.
       class GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo
         include Google::Apis::Core::Hashable
@@ -1316,6 +1350,14 @@ module Google
         # @return [String]
         attr_accessor :page_identifier
       
+        # The relevance of the chunk for a given query. Values range from 0.0 (
+        # completely irrelevant) to 1.0 (completely relevant). This value is for
+        # informational purpose only. It may change for the same query and chunk at any
+        # time due to a model retraining or change in implementation.
+        # Corresponds to the JSON property `relevanceScore`
+        # @return [Float]
+        attr_accessor :relevance_score
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1324,6 +1366,7 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @page_identifier = args[:page_identifier] if args.key?(:page_identifier)
+          @relevance_score = args[:relevance_score] if args.key?(:relevance_score)
         end
       end
       
@@ -1474,7 +1517,10 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # Relevance score.
+        # The relevance of the chunk for a given query. Values range from 0.0 (
+        # completely irrelevant) to 1.0 (completely relevant). This value is for
+        # informational purpose only. It may change for the same query and chunk at any
+        # time due to a model retraining or change in implementation.
         # Corresponds to the JSON property `relevanceScore`
         # @return [Float]
         attr_accessor :relevance_score
@@ -5343,6 +5389,11 @@ module Google
       class GoogleCloudDiscoveryengineV1PurgeDocumentsRequest
         include Google::Apis::Core::Hashable
       
+        # Configuration of destination for Purge related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeErrorConfig]
+        attr_accessor :error_config
+      
         # Required. Filter matching documents to purge. Only currently supported value
         # is `*` (all items).
         # Corresponds to the JSON property `filter`
@@ -5356,14 +5407,50 @@ module Google
         attr_accessor :force
         alias_method :force?, :force
       
+        # Cloud Storage location for input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource]
+        attr_accessor :gcs_source
+      
+        # The inline source for the input config for DocumentService.PurgeDocuments
+        # method.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeDocumentsRequestInlineSource]
+        attr_accessor :inline_source
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @error_config = args[:error_config] if args.key?(:error_config)
           @filter = args[:filter] if args.key?(:filter)
           @force = args[:force] if args.key?(:force)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+        end
+      end
+      
+      # The inline source for the input config for DocumentService.PurgeDocuments
+      # method.
+      class GoogleCloudDiscoveryengineV1PurgeDocumentsRequestInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of full resource name of documents to purge. In the format `
+        # projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+        # Recommended max of 100 items.
+        # Corresponds to the JSON property `documents`
+        # @return [Array<String>]
+        attr_accessor :documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documents = args[:documents] if args.key?(:documents)
         end
       end
       
@@ -5393,6 +5480,27 @@ module Google
         def update!(**args)
           @purge_count = args[:purge_count] if args.key?(:purge_count)
           @purge_sample = args[:purge_sample] if args.key?(:purge_sample)
+        end
+      end
+      
+      # Configuration of destination for Purge related errors.
+      class GoogleCloudDiscoveryengineV1PurgeErrorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage prefix for purge errors. This must be an empty, existing Cloud
+        # Storage directory. Purge errors are written to sharded files in this directory,
+        # one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Corresponds to the JSON property `gcsPrefix`
+        # @return [String]
+        attr_accessor :gcs_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
         end
       end
       
@@ -5458,6 +5566,46 @@ module Google
         def update!(**args)
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @purge_count = args[:purge_count] if args.key?(:purge_count)
+        end
+      end
+      
+      # Request message for PurgeUserEvents method.
+      class GoogleCloudDiscoveryengineV1PurgeUserEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The filter string to specify the events to be deleted with a length
+        # limit of 5,000 characters. The eligible fields for filtering are: * `eventType`
+        # : Double quoted UserEvent.event_type string. * `eventTime`: in ISO 8601 "zulu"
+        # format. * `userPseudoId`: Double quoted string. Specifying this will delete
+        # all events associated with a visitor. * `userId`: Double quoted string.
+        # Specifying this will delete all events associated with a user. Examples: *
+        # Deleting all events in a time range: `eventTime > "2012-04-23T18:25:43.511Z"
+        # eventTime < "2012-04-23T18:30:43.511Z"` * Deleting specific eventType: `
+        # eventType = "search"` * Deleting all events for a specific visitor: `
+        # userPseudoId = "visitor1024"` * Deleting all events inside a DataStore: `*`
+        # The filtering fields are assumed to have an implicit AND.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The `force` field is currently not supported. Purge user event requests will
+        # permanently delete all purgeable events. Once the development is complete: If `
+        # force` is set to false, the method will return the expected purge count
+        # without deleting any user events. This field will default to false if not
+        # included in the request.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @force = args[:force] if args.key?(:force)
         end
       end
       
@@ -5983,9 +6131,12 @@ module Google
       
         # The order in which documents are returned. Documents can be ordered by a field
         # in an Document object. Leave it unset if ordered by relevance. `order_by`
-        # expression is case-sensitive. For more information on ordering for retail
-        # search, see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#
-        # order) If this field is unrecognizable, an `INVALID_ARGUMENT` is returned.
+        # expression is case-sensitive. For more information on ordering the website
+        # search results, see [Order web search results](https://cloud.google.com/
+        # generative-ai-app-builder/docs/order-web-search-results). For more information
+        # on ordering the healthcare search results, see [Order healthcare search
+        # results](https://cloud.google.com/generative-ai-app-builder/docs/order-hc-
+        # results). If this field is unrecognizable, an `INVALID_ARGUMENT` is returned.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
@@ -6391,6 +6542,15 @@ module Google
         attr_accessor :ignore_adversarial_query
         alias_method :ignore_adversarial_query?, :ignore_adversarial_query
       
+        # Specifies whether to filter out queries that have low relevance. The default
+        # value is `false`. If this field is set to `false`, all search results are used
+        # regardless of relevance to generate answers. If set to `true`, only queries
+        # with high relevance search results will generate answers.
+        # Corresponds to the JSON property `ignoreLowRelevantContent`
+        # @return [Boolean]
+        attr_accessor :ignore_low_relevant_content
+        alias_method :ignore_low_relevant_content?, :ignore_low_relevant_content
+      
         # Specifies whether to filter out queries that are not summary-seeking. The
         # default value is `false`. Google employs search-query classification to detect
         # summary-seeking queries. No summary is returned if the search query is
@@ -6461,6 +6621,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ignore_adversarial_query = args[:ignore_adversarial_query] if args.key?(:ignore_adversarial_query)
+          @ignore_low_relevant_content = args[:ignore_low_relevant_content] if args.key?(:ignore_low_relevant_content)
           @ignore_non_summary_seeking_query = args[:ignore_non_summary_seeking_query] if args.key?(:ignore_non_summary_seeking_query)
           @include_citations = args[:include_citations] if args.key?(:include_citations)
           @language_code = args[:language_code] if args.key?(:language_code)
@@ -8203,6 +8364,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo]
         attr_accessor :chunk_info
       
+        # Structured search information.
+        # Corresponds to the JSON property `structuredDocumentInfo`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo]
+        attr_accessor :structured_document_info
+      
         # Unstructured document information.
         # Corresponds to the JSON property `unstructuredDocumentInfo`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo]
@@ -8215,6 +8381,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunk_info = args[:chunk_info] if args.key?(:chunk_info)
+          @structured_document_info = args[:structured_document_info] if args.key?(:structured_document_info)
           @unstructured_document_info = args[:unstructured_document_info] if args.key?(:unstructured_document_info)
         end
       end
@@ -8238,7 +8405,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata]
         attr_accessor :document_metadata
       
-        # Relevance score.
+        # The relevance of the chunk for a given query. Values range from 0.0 (
+        # completely irrelevant) to 1.0 (completely relevant). This value is for
+        # informational purpose only. It may change for the same query and chunk at any
+        # time due to a model retraining or change in implementation.
         # Corresponds to the JSON property `relevanceScore`
         # @return [Float]
         attr_accessor :relevance_score
@@ -8300,6 +8470,31 @@ module Google
         end
       end
       
+      # Structured search information.
+      class GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo
+        include Google::Apis::Core::Hashable
+      
+        # Document resource name.
+        # Corresponds to the JSON property `document`
+        # @return [String]
+        attr_accessor :document
+      
+        # Structured search data.
+        # Corresponds to the JSON property `structData`
+        # @return [Hash<String,Object>]
+        attr_accessor :struct_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document = args[:document] if args.key?(:document)
+          @struct_data = args[:struct_data] if args.key?(:struct_data)
+        end
+      end
+      
       # Unstructured document information.
       class GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo
         include Google::Apis::Core::Hashable
@@ -8358,6 +8553,14 @@ module Google
         # @return [String]
         attr_accessor :page_identifier
       
+        # The relevance of the chunk for a given query. Values range from 0.0 (
+        # completely irrelevant) to 1.0 (completely relevant). This value is for
+        # informational purpose only. It may change for the same query and chunk at any
+        # time due to a model retraining or change in implementation.
+        # Corresponds to the JSON property `relevanceScore`
+        # @return [Float]
+        attr_accessor :relevance_score
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8366,6 +8569,7 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @page_identifier = args[:page_identifier] if args.key?(:page_identifier)
+          @relevance_score = args[:relevance_score] if args.key?(:relevance_score)
         end
       end
       
@@ -8516,7 +8720,10 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # Relevance score.
+        # The relevance of the chunk for a given query. Values range from 0.0 (
+        # completely irrelevant) to 1.0 (completely relevant). This value is for
+        # informational purpose only. It may change for the same query and chunk at any
+        # time due to a model retraining or change in implementation.
         # Corresponds to the JSON property `relevanceScore`
         # @return [Float]
         attr_accessor :relevance_score
@@ -10046,7 +10253,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpec]
         attr_accessor :evaluation_spec
       
-        # Immutable. The full resource name of the Evaluation, in the format of `
+        # Identifier. The full resource name of the Evaluation, in the format of `
         # projects/`project`/locations/`location`/evaluations/`evaluation``. This field
         # must be a UTF-8 encoded string with a length limit of 1024 characters.
         # Corresponds to the JSON property `name`
@@ -10159,12 +10366,6 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaExportUserEventsResponse
         include Google::Apis::Core::Hashable
       
-        # Output result that stores the information about where the exported data is
-        # stored.
-        # Corresponds to the JSON property `outputResult`
-        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaOutputResult]
-        attr_accessor :output_result
-      
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by [
         # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -10181,7 +10382,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @output_result = args[:output_result] if args.key?(:output_result)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -10852,51 +11052,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @models = args[:models] if args.key?(:models)
-        end
-      end
-      
-      # Output result that stores the information about where the exported data is
-      # stored.
-      class GoogleCloudDiscoveryengineV1alphaOutputResult
-        include Google::Apis::Core::Hashable
-      
-        # A BigQuery output result.
-        # Corresponds to the JSON property `bigqueryResult`
-        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult]
-        attr_accessor :bigquery_result
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bigquery_result = args[:bigquery_result] if args.key?(:bigquery_result)
-        end
-      end
-      
-      # A BigQuery output result.
-      class GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult
-        include Google::Apis::Core::Hashable
-      
-        # The ID of a BigQuery Dataset.
-        # Corresponds to the JSON property `datasetId`
-        # @return [String]
-        attr_accessor :dataset_id
-      
-        # The ID of a BigQuery Table.
-        # Corresponds to the JSON property `tableId`
-        # @return [String]
-        attr_accessor :table_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
-          @table_id = args[:table_id] if args.key?(:table_id)
         end
       end
       
@@ -11627,9 +11782,12 @@ module Google
       
         # The order in which documents are returned. Documents can be ordered by a field
         # in an Document object. Leave it unset if ordered by relevance. `order_by`
-        # expression is case-sensitive. For more information on ordering for retail
-        # search, see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#
-        # order) If this field is unrecognizable, an `INVALID_ARGUMENT` is returned.
+        # expression is case-sensitive. For more information on ordering the website
+        # search results, see [Order web search results](https://cloud.google.com/
+        # generative-ai-app-builder/docs/order-web-search-results). For more information
+        # on ordering the healthcare search results, see [Order healthcare search
+        # results](https://cloud.google.com/generative-ai-app-builder/docs/order-hc-
+        # results). If this field is unrecognizable, an `INVALID_ARGUMENT` is returned.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
@@ -12168,6 +12326,15 @@ module Google
         attr_accessor :ignore_adversarial_query
         alias_method :ignore_adversarial_query?, :ignore_adversarial_query
       
+        # Specifies whether to filter out queries that have low relevance. The default
+        # value is `false`. If this field is set to `false`, all search results are used
+        # regardless of relevance to generate answers. If set to `true`, only queries
+        # with high relevance search results will generate answers.
+        # Corresponds to the JSON property `ignoreLowRelevantContent`
+        # @return [Boolean]
+        attr_accessor :ignore_low_relevant_content
+        alias_method :ignore_low_relevant_content?, :ignore_low_relevant_content
+      
         # Specifies whether to filter out queries that are not summary-seeking. The
         # default value is `false`. Google employs search-query classification to detect
         # summary-seeking queries. No summary is returned if the search query is
@@ -12238,6 +12405,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ignore_adversarial_query = args[:ignore_adversarial_query] if args.key?(:ignore_adversarial_query)
+          @ignore_low_relevant_content = args[:ignore_low_relevant_content] if args.key?(:ignore_low_relevant_content)
           @ignore_non_summary_seeking_query = args[:ignore_non_summary_seeking_query] if args.key?(:ignore_non_summary_seeking_query)
           @include_citations = args[:include_citations] if args.key?(:include_citations)
           @language_code = args[:language_code] if args.key?(:language_code)
@@ -14364,7 +14532,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec]
         attr_accessor :evaluation_spec
       
-        # Immutable. The full resource name of the Evaluation, in the format of `
+        # Identifier. The full resource name of the Evaluation, in the format of `
         # projects/`project`/locations/`location`/evaluations/`evaluation``. This field
         # must be a UTF-8 encoded string with a length limit of 1024 characters.
         # Corresponds to the JSON property `name`
@@ -15350,9 +15518,12 @@ module Google
       
         # The order in which documents are returned. Documents can be ordered by a field
         # in an Document object. Leave it unset if ordered by relevance. `order_by`
-        # expression is case-sensitive. For more information on ordering for retail
-        # search, see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#
-        # order) If this field is unrecognizable, an `INVALID_ARGUMENT` is returned.
+        # expression is case-sensitive. For more information on ordering the website
+        # search results, see [Order web search results](https://cloud.google.com/
+        # generative-ai-app-builder/docs/order-web-search-results). For more information
+        # on ordering the healthcare search results, see [Order healthcare search
+        # results](https://cloud.google.com/generative-ai-app-builder/docs/order-hc-
+        # results). If this field is unrecognizable, an `INVALID_ARGUMENT` is returned.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
@@ -15882,6 +16053,15 @@ module Google
         attr_accessor :ignore_adversarial_query
         alias_method :ignore_adversarial_query?, :ignore_adversarial_query
       
+        # Specifies whether to filter out queries that have low relevance. The default
+        # value is `false`. If this field is set to `false`, all search results are used
+        # regardless of relevance to generate answers. If set to `true`, only queries
+        # with high relevance search results will generate answers.
+        # Corresponds to the JSON property `ignoreLowRelevantContent`
+        # @return [Boolean]
+        attr_accessor :ignore_low_relevant_content
+        alias_method :ignore_low_relevant_content?, :ignore_low_relevant_content
+      
         # Specifies whether to filter out queries that are not summary-seeking. The
         # default value is `false`. Google employs search-query classification to detect
         # summary-seeking queries. No summary is returned if the search query is
@@ -15952,6 +16132,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ignore_adversarial_query = args[:ignore_adversarial_query] if args.key?(:ignore_adversarial_query)
+          @ignore_low_relevant_content = args[:ignore_low_relevant_content] if args.key?(:ignore_low_relevant_content)
           @ignore_non_summary_seeking_query = args[:ignore_non_summary_seeking_query] if args.key?(:ignore_non_summary_seeking_query)
           @include_citations = args[:include_citations] if args.key?(:include_citations)
           @language_code = args[:language_code] if args.key?(:language_code)
