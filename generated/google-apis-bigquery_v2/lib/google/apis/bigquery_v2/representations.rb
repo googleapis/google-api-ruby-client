@@ -2601,6 +2601,7 @@ module Google
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :data_masking_statistics, as: 'dataMaskingStatistics', class: Google::Apis::BigqueryV2::DataMaskingStatistics, decorator: Google::Apis::BigqueryV2::DataMaskingStatistics::Representation
       
+          property :edition, as: 'edition'
           property :end_time, :numeric_string => true, as: 'endTime'
           property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobStatistics4, decorator: Google::Apis::BigqueryV2::JobStatistics4::Representation
       

@@ -1712,7 +1712,9 @@ module Google
         # access.specialGroup: projectReaders; access.role: READER; access.specialGroup:
         # projectWriters; access.role: WRITER; access.specialGroup: projectOwners;
         # access.role: OWNER; access.userByEmail: [dataset creator email]; access.role:
-        # OWNER;
+        # OWNER; If you patch a dataset, then this field is overwritten by the patched
+        # dataset's access field. To add entities, you must supply the entire existing
+        # access array in addition to any new entities that you want to add.
         # Corresponds to the JSON property `access`
         # @return [Array<Google::Apis::BigqueryV2::Dataset::Access>]
         attr_accessor :access
@@ -1910,7 +1912,8 @@ module Google
         # @return [String]
         attr_accessor :storage_billing_model
       
-        # Output only. Tags for the Dataset.
+        # Output only. Tags for the dataset. To provide tags as inputs, use the `
+        # resourceTags` field.
         # Corresponds to the JSON property `tags`
         # @return [Array<Google::Apis::BigqueryV2::Dataset::Tag>]
         attr_accessor :tags
@@ -5381,6 +5384,12 @@ module Google
         # @return [Google::Apis::BigqueryV2::DataMaskingStatistics]
         attr_accessor :data_masking_statistics
       
+        # Output only. Name of edition corresponding to the reservation for this job at
+        # the time of this update.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # Output only. End time of this job, in milliseconds since the epoch. This field
         # will be present whenever a job is in the DONE state.
         # Corresponds to the JSON property `endTime`
@@ -5483,6 +5492,7 @@ module Google
           @copy = args[:copy] if args.key?(:copy)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @data_masking_statistics = args[:data_masking_statistics] if args.key?(:data_masking_statistics)
+          @edition = args[:edition] if args.key?(:edition)
           @end_time = args[:end_time] if args.key?(:end_time)
           @extract = args[:extract] if args.key?(:extract)
           @final_execution_duration_ms = args[:final_execution_duration_ms] if args.key?(:final_execution_duration_ms)
