@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -487,6 +493,8 @@ module Google
       
           property :account_verification, as: 'accountVerification', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo::Representation
       
+          property :assessment_environment, as: 'assessmentEnvironment', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment::Representation
+      
           property :event, as: 'event', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event::Representation
       
           property :firewall_policy_assessment, as: 'firewallPolicyAssessment', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment::Representation
@@ -504,6 +512,14 @@ module Google
       
           property :token_properties, as: 'tokenProperties', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TokenProperties, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TokenProperties::Representation
       
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client, as: 'client'
+          property :version, as: 'version'
         end
       end
       
