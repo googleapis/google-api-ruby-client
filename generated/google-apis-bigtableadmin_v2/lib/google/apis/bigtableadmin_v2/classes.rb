@@ -770,8 +770,8 @@ module Google
         # always sort data based on the raw encoded value, *not* the decoded type. -
         # Example: BYTES values sort in the same order as their raw encodings. -
         # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. INT64(1) > INT64(-1),
-        # but STRING("-00001") > STRING("00001). * Self-delimiting: If we concatenate
+        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
+        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
         # two encoded values, can we always tell where the first one ends and the second
         # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
         # value will always contain exactly N digits, possibly preceded by a sign. -
@@ -1610,8 +1610,8 @@ module Google
         # always sort data based on the raw encoded value, *not* the decoded type. -
         # Example: BYTES values sort in the same order as their raw encodings. -
         # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. INT64(1) > INT64(-1),
-        # but STRING("-00001") > STRING("00001). * Self-delimiting: If we concatenate
+        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
+        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
         # two encoded values, can we always tell where the first one ends and the second
         # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
         # value will always contain exactly N digits, possibly preceded by a sign. -
@@ -1645,8 +1645,8 @@ module Google
         # always sort data based on the raw encoded value, *not* the decoded type. -
         # Example: BYTES values sort in the same order as their raw encodings. -
         # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. INT64(1) > INT64(-1),
-        # but STRING("-00001") > STRING("00001). * Self-delimiting: If we concatenate
+        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
+        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
         # two encoded values, can we always tell where the first one ends and the second
         # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
         # value will always contain exactly N digits, possibly preceded by a sign. -
@@ -1753,8 +1753,8 @@ module Google
         # always sort data based on the raw encoded value, *not* the decoded type. -
         # Example: BYTES values sort in the same order as their raw encodings. -
         # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. INT64(1) > INT64(-1),
-        # but STRING("-00001") > STRING("00001). * Self-delimiting: If we concatenate
+        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
+        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
         # two encoded values, can we always tell where the first one ends and the second
         # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
         # value will always contain exactly N digits, possibly preceded by a sign. -
@@ -1963,8 +1963,8 @@ module Google
         # always sort data based on the raw encoded value, *not* the decoded type. -
         # Example: BYTES values sort in the same order as their raw encodings. -
         # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. INT64(1) > INT64(-1),
-        # but STRING("-00001") > STRING("00001). * Self-delimiting: If we concatenate
+        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
+        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
         # two encoded values, can we always tell where the first one ends and the second
         # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
         # value will always contain exactly N digits, possibly preceded by a sign. -
@@ -1986,8 +1986,8 @@ module Google
         # always sort data based on the raw encoded value, *not* the decoded type. -
         # Example: BYTES values sort in the same order as their raw encodings. -
         # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. INT64(1) > INT64(-1),
-        # but STRING("-00001") > STRING("00001). * Self-delimiting: If we concatenate
+        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
+        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
         # two encoded values, can we always tell where the first one ends and the second
         # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
         # value will always contain exactly N digits, possibly preceded by a sign. -
@@ -2040,6 +2040,11 @@ module Google
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes]
         attr_accessor :utf8_bytes
       
+        # Deprecated: prefer the equivalent `Utf8Bytes`.
+        # Corresponds to the JSON property `utf8Raw`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStringEncodingUtf8Raw]
+        attr_accessor :utf8_raw
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2047,6 +2052,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @utf8_bytes = args[:utf8_bytes] if args.key?(:utf8_bytes)
+          @utf8_raw = args[:utf8_raw] if args.key?(:utf8_raw)
         end
       end
       
@@ -2054,6 +2060,19 @@ module Google
       # No * Compatibility? - BigQuery Federation `TEXT` encoding - HBase `Bytes.
       # toBytes` - Java `String#getBytes(StandardCharsets.UTF_8)`
       class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Deprecated: prefer the equivalent `Utf8Bytes`.
+      class GoogleBigtableAdminV2TypeStringEncodingUtf8Raw
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2106,8 +2125,8 @@ module Google
         # always sort data based on the raw encoded value, *not* the decoded type. -
         # Example: BYTES values sort in the same order as their raw encodings. -
         # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. INT64(1) > INT64(-1),
-        # but STRING("-00001") > STRING("00001). * Self-delimiting: If we concatenate
+        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
+        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
         # two encoded values, can we always tell where the first one ends and the second
         # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
         # value will always contain exactly N digits, possibly preceded by a sign. -
@@ -3512,8 +3531,8 @@ module Google
       # always sort data based on the raw encoded value, *not* the decoded type. -
       # Example: BYTES values sort in the same order as their raw encodings. -
       # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-      # preserve sort order when dealing with negative numbers. INT64(1) > INT64(-1),
-      # but STRING("-00001") > STRING("00001). * Self-delimiting: If we concatenate
+      # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
+      # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
       # two encoded values, can we always tell where the first one ends and the second
       # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
       # value will always contain exactly N digits, possibly preceded by a sign. -

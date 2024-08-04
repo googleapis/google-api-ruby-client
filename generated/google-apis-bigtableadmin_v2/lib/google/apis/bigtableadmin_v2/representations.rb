@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleBigtableAdminV2TypeStringEncodingUtf8Raw
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleBigtableAdminV2TypeStruct
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1254,10 +1260,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :utf8_bytes, as: 'utf8Bytes', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes::Representation
       
+          property :utf8_raw, as: 'utf8Raw', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStringEncodingUtf8Raw, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStringEncodingUtf8Raw::Representation
+      
         end
       end
       
       class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeStringEncodingUtf8Raw
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
