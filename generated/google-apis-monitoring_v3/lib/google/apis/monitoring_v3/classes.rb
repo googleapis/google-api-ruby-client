@@ -4670,6 +4670,13 @@ module Google
       class TimeSeries
         include Google::Apis::Core::Hashable
       
+        # Input only. A detailed description of the time series that will be associated
+        # with the google.api.MetricDescriptor for the metric. Once set, this field
+        # cannot be changed through CreateTimeSeries.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
         # contain the minimum set of information to uniquely identify a monitored
         # resource instance. There is some other useful auxiliary metadata. Monitoring
@@ -4722,7 +4729,8 @@ module Google
       
         # The units in which the metric value is reported. It is only applicable if the
         # value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the
-        # representation of the stored metric values.
+        # representation of the stored metric values. This field can only be changed
+        # through CreateTimeSeries when it is empty or "1".
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -4742,6 +4750,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @metadata = args[:metadata] if args.key?(:metadata)
           @metric = args[:metric] if args.key?(:metric)
           @metric_kind = args[:metric_kind] if args.key?(:metric_kind)

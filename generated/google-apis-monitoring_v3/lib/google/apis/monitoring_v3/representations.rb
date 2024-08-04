@@ -1849,6 +1849,7 @@ module Google
       class TimeSeries
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :metadata, as: 'metadata', class: Google::Apis::MonitoringV3::MonitoredResourceMetadata, decorator: Google::Apis::MonitoringV3::MonitoredResourceMetadata::Representation
       
           property :metric, as: 'metric', class: Google::Apis::MonitoringV3::Metric, decorator: Google::Apis::MonitoringV3::Metric::Representation
