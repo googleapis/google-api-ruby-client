@@ -525,6 +525,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
+          property :build_name, as: 'buildName'
           property :cancel_requested, as: 'cancelRequested'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
@@ -572,6 +573,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
+          property :build_name, as: 'buildName'
           property :cancel_requested, as: 'cancelRequested'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
@@ -619,6 +621,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
+          property :build_name, as: 'buildName'
           property :cancel_requested, as: 'cancelRequested'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
