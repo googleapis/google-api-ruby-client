@@ -2726,8 +2726,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :generated_customer_metadata
       
-        # Relative name of the service within the application. Example: default.@
-        # OutputOnly
+        # Output only. Relative name of the service within the application. Example:
+        # default.@OutputOnly
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2746,8 +2746,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Full path to the Service resource in the API. Example: apps/myapp/services/
-        # default.@OutputOnly
+        # Output only. Full path to the Service resource in the API. Example: apps/myapp/
+        # services/default.@OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3157,7 +3157,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Email address of the user who created this version.@OutputOnly
+        # Output only. Email address of the user who created this version.@OutputOnly
         # Corresponds to the JSON property `createdBy`
         # @return [String]
         attr_accessor :created_by
@@ -3176,8 +3176,8 @@ module Google
         # @return [Google::Apis::AppengineV1::Deployment]
         attr_accessor :deployment
       
-        # Total size in bytes of all the files that are included in this version and
-        # currently hosted on the App Engine disk.@OutputOnly
+        # Output only. Total size in bytes of all the files that are included in this
+        # version and currently hosted on the App Engine disk.@OutputOnly
         # Corresponds to the JSON property `diskUsageBytes`
         # @return [Fixnum]
         attr_accessor :disk_usage_bytes
@@ -3279,8 +3279,8 @@ module Google
         # @return [Google::Apis::AppengineV1::ManualScaling]
         attr_accessor :manual_scaling
       
-        # Full path to the Version resource in the API. Example: apps/myapp/services/
-        # default/versions/v1.@OutputOnly
+        # Output only. Full path to the Version resource in the API. Example: apps/myapp/
+        # services/default/versions/v1.@OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3350,8 +3350,8 @@ module Google
         attr_accessor :threadsafe
         alias_method :threadsafe?, :threadsafe
       
-        # Serving URL for this version. Example: "https://myversion-dot-myservice-dot-
-        # myapp.appspot.com"@OutputOnly
+        # Output only. Serving URL for this version. Example: "https://myversion-dot-
+        # myservice-dot-myapp.appspot.com"@OutputOnly
         # Corresponds to the JSON property `versionUrl`
         # @return [String]
         attr_accessor :version_url
