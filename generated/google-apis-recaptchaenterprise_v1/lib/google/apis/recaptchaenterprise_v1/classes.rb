@@ -259,6 +259,12 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo]
         attr_accessor :account_verification
       
+        # The environment creating the assessment. This describes your environment (the
+        # system invoking CreateAssessment), NOT the environment of your user.
+        # Corresponds to the JSON property `assessmentEnvironment`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment]
+        attr_accessor :assessment_environment
+      
         # The event being assessed.
         # Corresponds to the JSON property `event`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event]
@@ -313,6 +319,7 @@ module Google
         def update!(**args)
           @account_defender_assessment = args[:account_defender_assessment] if args.key?(:account_defender_assessment)
           @account_verification = args[:account_verification] if args.key?(:account_verification)
+          @assessment_environment = args[:assessment_environment] if args.key?(:assessment_environment)
           @event = args[:event] if args.key?(:event)
           @firewall_policy_assessment = args[:firewall_policy_assessment] if args.key?(:firewall_policy_assessment)
           @fraud_prevention_assessment = args[:fraud_prevention_assessment] if args.key?(:fraud_prevention_assessment)
@@ -322,6 +329,37 @@ module Google
           @private_password_leak_verification = args[:private_password_leak_verification] if args.key?(:private_password_leak_verification)
           @risk_analysis = args[:risk_analysis] if args.key?(:risk_analysis)
           @token_properties = args[:token_properties] if args.key?(:token_properties)
+        end
+      end
+      
+      # The environment creating the assessment. This describes your environment (the
+      # system invoking CreateAssessment), NOT the environment of your user.
+      class GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Identifies the client module initiating the CreateAssessment request.
+        # This can be the link to the client module's project. Examples include: - "
+        # github.com/GoogleCloudPlatform/recaptcha-enterprise-google-tag-manager" - "
+        # cloud.google.com/recaptcha/docs/implement-waf-akamai" - "cloud.google.com/
+        # recaptcha/docs/implement-waf-cloudflare" - "wordpress.org/plugins/recaptcha-
+        # something"
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Optional. The version of the client module. For example, "1.0.0".
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client = args[:client] if args.key?(:client)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
