@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1EncryptionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1Entity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +431,24 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1IngestConversationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -892,6 +916,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1Entity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1031,6 +1061,24 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1682,6 +1730,14 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1EncryptionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1Entity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1910,6 +1966,32 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1IngestConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1EncryptionSpec, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1EncryptionSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -2736,6 +2818,14 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1Entity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2957,6 +3047,32 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
