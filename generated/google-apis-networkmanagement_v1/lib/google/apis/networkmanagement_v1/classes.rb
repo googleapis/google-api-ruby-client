@@ -1211,6 +1211,11 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
+        # URI of the PSC network attachment the NIC is attached to (if relevant).
+        # Corresponds to the JSON property `pscNetworkAttachmentUri`
+        # @return [String]
+        attr_accessor :psc_network_attachment_uri
+      
         # Service account authorized for the instance.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -1233,6 +1238,7 @@ module Google
           @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @psc_network_attachment_uri = args[:psc_network_attachment_uri] if args.key?(:psc_network_attachment_uri)
           @service_account = args[:service_account] if args.key?(:service_account)
           @uri = args[:uri] if args.key?(:uri)
         end
