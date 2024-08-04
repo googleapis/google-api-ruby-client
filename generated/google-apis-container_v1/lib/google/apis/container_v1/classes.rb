@@ -2343,7 +2343,7 @@ module Google
       class EnterpriseConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. cluster_tier specifies the premium tier of the cluster.
+        # Output only. cluster_tier indicates the effective tier of the cluster.
         # Corresponds to the JSON property `clusterTier`
         # @return [String]
         attr_accessor :cluster_tier
