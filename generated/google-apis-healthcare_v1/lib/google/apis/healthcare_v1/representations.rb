@@ -772,6 +772,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RollbackHl7MessagesFilteringFields
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackHl7V2MessagesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackHl7V2MessagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SchemaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2074,6 +2092,34 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fhir_store, as: 'fhirStore'
+        end
+      end
+      
+      class RollbackHl7MessagesFilteringFields
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operation_ids, as: 'operationIds'
+        end
+      end
+      
+      class RollbackHl7V2MessagesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_type, as: 'changeType'
+          property :exclude_rollbacks, as: 'excludeRollbacks'
+          property :filtering_fields, as: 'filteringFields', class: Google::Apis::HealthcareV1::RollbackHl7MessagesFilteringFields, decorator: Google::Apis::HealthcareV1::RollbackHl7MessagesFilteringFields::Representation
+      
+          property :force, as: 'force'
+          property :input_gcs_object, as: 'inputGcsObject'
+          property :result_gcs_bucket, as: 'resultGcsBucket'
+          property :rollback_time, as: 'rollbackTime'
+        end
+      end
+      
+      class RollbackHl7V2MessagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hl7v2_store, as: 'hl7v2Store'
         end
       end
       
