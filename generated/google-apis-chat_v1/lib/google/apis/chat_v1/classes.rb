@@ -1801,8 +1801,7 @@ module Google
       # devices, the second column wraps if the screen width is less than or equal to
       # 320 dp. To include more than 2 columns, or to use rows, use the `Grid` widget.
       # [Google Workspace Add-ons and Chat apps](https://developers.google.com/
-      # workspace/extend): Columns for Google Workspace Add-ons are in Developer
-      # Preview.
+      # workspace/extend):
       class GoogleAppsCardV1Columns
         include Google::Apis::Core::Hashable
       
@@ -2971,8 +2970,7 @@ module Google
         # devices, the second column wraps if the screen width is less than or equal to
         # 320 dp. To include more than 2 columns, or to use rows, use the `Grid` widget.
         # [Google Workspace Add-ons and Chat apps](https://developers.google.com/
-        # workspace/extend): Columns for Google Workspace Add-ons are in Developer
-        # Preview.
+        # workspace/extend):
         # Corresponds to the JSON property `columns`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Columns]
         attr_accessor :columns
