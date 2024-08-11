@@ -1726,6 +1726,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1GenerationConfigRoutingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingMode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1GenericOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3377,6 +3395,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1RemoveDatapointsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ReservationAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6714,6 +6738,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
@@ -6846,6 +6872,7 @@ module Google
       
           property :max_replica_count, as: 'maxReplicaCount'
           property :min_replica_count, as: 'minReplicaCount'
+          property :spot, as: 'spot'
         end
       end
       
@@ -8438,11 +8465,36 @@ module Google
           property :response_mime_type, as: 'responseMimeType'
           property :response_schema, as: 'responseSchema', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
       
-          property :seed, as: 'seed'
+          property :routing_config, as: 'routingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfig::Representation
+      
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GenerationConfigRoutingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_mode, as: 'autoMode', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingMode, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingMode::Representation
+      
+          property :manual_mode, as: 'manualMode', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingMode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_routing_preference, as: 'modelRoutingPreference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_name, as: 'modelName'
         end
       end
       
@@ -8567,6 +8619,8 @@ module Google
           property :max_trial_count, as: 'maxTrialCount'
           property :name, as: 'name'
           property :parallel_trial_count, as: 'parallelTrialCount'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :study_spec, as: 'studySpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StudySpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StudySpec::Representation
@@ -9306,6 +9360,8 @@ module Google
           property :accelerator_count, as: 'acceleratorCount'
           property :accelerator_type, as: 'acceleratorType'
           property :machine_type, as: 'machineType'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReservationAffinity, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReservationAffinity::Representation
+      
           property :tpu_topology, as: 'tpuTopology'
         end
       end
@@ -9974,6 +10030,8 @@ module Google
       
           property :nas_job_spec, as: 'nasJobSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NasJobSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NasJobSpec::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
@@ -10220,6 +10278,8 @@ module Google
           property :direct_notebook_source, as: 'directNotebookSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobDirectNotebookSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobDirectNotebookSource::Representation
       
           property :display_name, as: 'displayName'
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec::Representation
+      
           property :execution_timeout, as: 'executionTimeout'
           property :execution_user, as: 'executionUser'
           property :gcs_notebook_source, as: 'gcsNotebookSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobGcsNotebookSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobGcsNotebookSource::Representation
@@ -10691,6 +10751,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_private_service_connect, as: 'enablePrivateServiceConnect'
           collection :project_allowlist, as: 'projectAllowlist'
+          property :service_attachment, as: 'serviceAttachment'
         end
       end
       
@@ -11296,6 +11357,15 @@ module Google
       class GoogleCloudAiplatformV1RemoveDatapointsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :reservation_affinity_type, as: 'reservationAffinityType'
+          collection :values, as: 'values'
         end
       end
       
