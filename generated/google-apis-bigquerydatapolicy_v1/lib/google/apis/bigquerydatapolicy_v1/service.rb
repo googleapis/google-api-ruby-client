@@ -90,6 +90,9 @@ module Google
         # @param [String] name
         #   Required. Resource name of the data policy to delete. Format is `projects/`
         #   project_number`/locations/`location_id`/dataPolicies/`data_policy_id``.
+        # @param [Boolean] force
+        #   Optional. If true, the data policy will be deleted even when it is referenced
+        #   by one or more table columns.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -107,11 +110,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_data_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_data_policy(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatapolicyV1::Empty::Representation
           command.response_class = Google::Apis::BigquerydatapolicyV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -236,6 +240,9 @@ module Google
         #   Output only. Resource name of this data policy, in the format of `projects/`
         #   project_number`/locations/`location_id`/dataPolicies/`data_policy_id``.
         # @param [Google::Apis::BigquerydatapolicyV1::DataPolicy] data_policy_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the data policy is not found, a new data policy
+        #   will be created. In this situation, update_mask is ignored.
         # @param [String] update_mask
         #   The update mask applies to the resource. For the `FieldMask` definition, see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
@@ -258,13 +265,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_data_policy(name, data_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_data_policy(name, data_policy_object = nil, allow_missing: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::BigquerydatapolicyV1::DataPolicy::Representation
           command.request_object = data_policy_object
           command.response_representation = Google::Apis::BigquerydatapolicyV1::DataPolicy::Representation
           command.response_class = Google::Apis::BigquerydatapolicyV1::DataPolicy
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
