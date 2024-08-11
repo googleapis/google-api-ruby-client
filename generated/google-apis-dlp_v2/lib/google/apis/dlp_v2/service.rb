@@ -760,7 +760,7 @@ module Google
         # Lists Connections in a parent. Use SearchConnections to see all connections
         # within an organization.
         # @param [String] parent
-        #   Required. Resource name of the organization or project, for example `
+        #   Required. Resource name of the organization or project, for example, `
         #   organizations/433245324/locations/europe` or `projects/project-id/locations/
         #   asia`.
         # @param [String] filter
@@ -837,7 +837,7 @@ module Google
         # Searches for Connections in a parent.
         # @param [String] parent
         #   Required. Resource name of the organization or project with a wildcard
-        #   location, for example `organizations/433245324/locations/-` or `projects/
+        #   location, for example, `organizations/433245324/locations/-` or `projects/
         #   project-id/locations/-`.
         # @param [String] filter
         #   Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR
@@ -3825,7 +3825,7 @@ module Google
         # Lists Connections in a parent. Use SearchConnections to see all connections
         # within an organization.
         # @param [String] parent
-        #   Required. Resource name of the organization or project, for example `
+        #   Required. Resource name of the organization or project, for example, `
         #   organizations/433245324/locations/europe` or `projects/project-id/locations/
         #   asia`.
         # @param [String] filter
@@ -3902,7 +3902,7 @@ module Google
         # Searches for Connections in a parent.
         # @param [String] parent
         #   Required. Resource name of the organization or project with a wildcard
-        #   location, for example `organizations/433245324/locations/-` or `projects/
+        #   location, for example, `organizations/433245324/locations/-` or `projects/
         #   project-id/locations/-`.
         # @param [String] filter
         #   Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR
