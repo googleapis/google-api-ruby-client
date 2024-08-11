@@ -3449,6 +3449,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Output only. Whether the referenced Document can be found in the data store.
+        # Corresponds to the JSON property `joined`
+        # @return [Boolean]
+        attr_accessor :joined
+        alias_method :joined?, :joined
+      
         # The Document resource full name, of the form: `projects/`project_id`/locations/
         # `location`/collections/`collection_id`/dataStores/`data_store_id`/branches/`
         # branch_id`/documents/`document_id``
@@ -3482,6 +3488,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @joined = args[:joined] if args.key?(:joined)
           @name = args[:name] if args.key?(:name)
           @promotion_ids = args[:promotion_ids] if args.key?(:promotion_ids)
           @quantity = args[:quantity] if args.key?(:quantity)
@@ -3517,7 +3524,9 @@ module Google
         # Override parsing config for HTML files, only digital parsing and layout
         # parsing are supported. * `docx`: Override parsing config for DOCX files, only
         # digital parsing and layout parsing are supported. * `pptx`: Override parsing
-        # config for PPTX files, only digital parsing and layout parsing are supported.
+        # config for PPTX files, only digital parsing and layout parsing are supported. *
+        # `xlsx`: Override parsing config for XLSX files, only digital parsing and
+        # layout parsing are supported.
         # Corresponds to the JSON property `parsingConfigOverrides`
         # @return [Hash<String,Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig>]
         attr_accessor :parsing_config_overrides
@@ -4053,6 +4062,14 @@ module Google
         # @return [String]
         attr_accessor :gcs_staging_dir
       
+        # The FHIR resource types to import. The resource types should be a subset of
+        # all [supported FHIR resource types](https://cloud.google.com/generative-ai-app-
+        # builder/docs/fhir-schema-reference#resource-level-specification). Default to
+        # all supported FHIR resource types if empty.
+        # Corresponds to the JSON property `resourceTypes`
+        # @return [Array<String>]
+        attr_accessor :resource_types
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4061,6 +4078,7 @@ module Google
         def update!(**args)
           @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
           @gcs_staging_dir = args[:gcs_staging_dir] if args.key?(:gcs_staging_dir)
+          @resource_types = args[:resource_types] if args.key?(:resource_types)
         end
       end
       
@@ -9586,7 +9604,9 @@ module Google
         # Override parsing config for HTML files, only digital parsing and layout
         # parsing are supported. * `docx`: Override parsing config for DOCX files, only
         # digital parsing and layout parsing are supported. * `pptx`: Override parsing
-        # config for PPTX files, only digital parsing and layout parsing are supported.
+        # config for PPTX files, only digital parsing and layout parsing are supported. *
+        # `xlsx`: Override parsing config for XLSX files, only digital parsing and
+        # layout parsing are supported.
         # Corresponds to the JSON property `parsingConfigOverrides`
         # @return [Hash<String,Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig>]
         attr_accessor :parsing_config_overrides
@@ -10330,59 +10350,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @sample_query_set = args[:sample_query_set] if args.key?(:sample_query_set)
-        end
-      end
-      
-      # Metadata related to the progress of the Export operation. This is returned by
-      # the google.longrunning.Operation.metadata field.
-      class GoogleCloudDiscoveryengineV1alphaExportUserEventsMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Operation create time.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Operation last update time. If the operation is done, this is also the finish
-        # time.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Response of the ExportUserEventsRequest. If the long running operation was
-      # successful, then this message is returned by the google.longrunning.Operations.
-      # response field.
-      class GoogleCloudDiscoveryengineV1alphaExportUserEventsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by [
-        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-        # data: error code, error message, and error details. You can find out more
-        # about this error model and how to work with it in the [API Design Guide](https:
-        # //cloud.google.com/apis/design/errors).
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::DiscoveryengineV1::GoogleRpcStatus]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -14065,7 +14032,9 @@ module Google
         # Override parsing config for HTML files, only digital parsing and layout
         # parsing are supported. * `docx`: Override parsing config for DOCX files, only
         # digital parsing and layout parsing are supported. * `pptx`: Override parsing
-        # config for PPTX files, only digital parsing and layout parsing are supported.
+        # config for PPTX files, only digital parsing and layout parsing are supported. *
+        # `xlsx`: Override parsing config for XLSX files, only digital parsing and
+        # layout parsing are supported.
         # Corresponds to the JSON property `parsingConfigOverrides`
         # @return [Hash<String,Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig>]
         attr_accessor :parsing_config_overrides

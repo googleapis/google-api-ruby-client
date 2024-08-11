@@ -1756,18 +1756,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1alphaExportUserEventsMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaExportUserEventsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDiscoveryengineV1alphaFieldConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3808,6 +3796,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :joined, as: 'joined'
           property :name, as: 'name'
           collection :promotion_ids, as: 'promotionIds'
           property :quantity, as: 'quantity'
@@ -3983,6 +3972,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fhir_store, as: 'fhirStore'
           property :gcs_staging_dir, as: 'gcsStagingDir'
+          collection :resource_types, as: 'resourceTypes'
         end
       end
       
@@ -5703,22 +5693,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sample_query_set, as: 'sampleQuerySet'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaExportUserEventsMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaExportUserEventsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :status, as: 'status', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
-      
         end
       end
       
