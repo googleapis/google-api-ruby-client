@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2ServiceMesh
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2ServiceScaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1074,6 +1080,8 @@ module Google
       
           property :service, as: 'service'
           property :service_account, as: 'serviceAccount'
+          property :service_mesh, as: 'serviceMesh', class: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh, decorator: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh::Representation
+      
           property :session_affinity, as: 'sessionAffinity'
           property :timeout, as: 'timeout'
           property :uid, as: 'uid'
@@ -1117,6 +1125,8 @@ module Google
           property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling::Representation
       
           property :service_account, as: 'serviceAccount'
+          property :service_mesh, as: 'serviceMesh', class: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh, decorator: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh::Representation
+      
           property :session_affinity, as: 'sessionAffinity'
           property :timeout, as: 'timeout'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
@@ -1196,6 +1206,13 @@ module Google
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudRunV2ServiceMesh
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mesh, as: 'mesh'
         end
       end
       
