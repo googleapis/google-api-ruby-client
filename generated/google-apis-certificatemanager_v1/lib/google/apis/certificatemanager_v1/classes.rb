@@ -53,7 +53,7 @@ module Google
         # @return [String]
         attr_accessor :details
       
-        # Domain name of the authorization attempt.
+        # Output only. Domain name of the authorization attempt.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
@@ -103,7 +103,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # One or more paragraphs of text description of a certificate.
+        # Optional. One or more paragraphs of text description of a certificate.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -113,7 +113,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Set of labels associated with a Certificate.
+        # Optional. Set of labels associated with a Certificate.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -125,8 +125,8 @@ module Google
         # @return [Google::Apis::CertificatemanagerV1::ManagedCertificate]
         attr_accessor :managed
       
-        # A user-defined name of the certificate. Certificate names must be unique
-        # globally and match pattern `projects/*/locations/*/certificates/*`.
+        # Identifier. A user-defined name of the certificate. Certificate names must be
+        # unique globally and match pattern `projects/*/locations/*/certificates/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -144,7 +144,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :san_dnsnames
       
-        # Immutable. The scope of the certificate.
+        # Optional. Immutable. The scope of the certificate.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -237,7 +237,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # One or more paragraphs of text description of a CertificateIssuanceConfig.
+        # Optional. One or more paragraphs of text description of a
+        # CertificateIssuanceConfig.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -247,7 +248,7 @@ module Google
         # @return [String]
         attr_accessor :key_algorithm
       
-        # Set of labels associated with a CertificateIssuanceConfig.
+        # Optional. Set of labels associated with a CertificateIssuanceConfig.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -257,7 +258,7 @@ module Google
         # @return [String]
         attr_accessor :lifetime
       
-        # A user-defined name of the certificate issuance config.
+        # Identifier. A user-defined name of the certificate issuance config.
         # CertificateIssuanceConfig names must be unique globally and match pattern `
         # projects/*/locations/*/certificateIssuanceConfigs/*`.
         # Corresponds to the JSON property `name`
@@ -303,7 +304,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # One or more paragraphs of text description of a certificate map.
+        # Optional. One or more paragraphs of text description of a certificate map.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -314,13 +315,14 @@ module Google
         # @return [Array<Google::Apis::CertificatemanagerV1::GclbTarget>]
         attr_accessor :gclb_targets
       
-        # Set of labels associated with a Certificate Map.
+        # Optional. Set of labels associated with a Certificate Map.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # A user-defined name of the Certificate Map. Certificate Map names must be
-        # unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
+        # Identifier. A user-defined name of the Certificate Map. Certificate Map names
+        # must be unique globally and match pattern `projects/*/locations/*/
+        # certificateMaps/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -349,9 +351,9 @@ module Google
       class CertificateMapEntry
         include Google::Apis::Core::Hashable
       
-        # A set of Certificates defines for the given `hostname`. There can be defined
-        # up to four certificates in each Certificate Map Entry. Each certificate must
-        # match pattern `projects/*/locations/*/certificates/*`.
+        # Optional. A set of Certificates defines for the given `hostname`. There can be
+        # defined up to four certificates in each Certificate Map Entry. Each
+        # certificate must match pattern `projects/*/locations/*/certificates/*`.
         # Corresponds to the JSON property `certificates`
         # @return [Array<String>]
         attr_accessor :certificates
@@ -361,7 +363,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # One or more paragraphs of text description of a certificate map entry.
+        # Optional. One or more paragraphs of text description of a certificate map
+        # entry.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -373,7 +376,7 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
-        # Set of labels associated with a Certificate Map Entry.
+        # Optional. Set of labels associated with a Certificate Map Entry.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -383,8 +386,8 @@ module Google
         # @return [String]
         attr_accessor :matcher
       
-        # A user-defined name of the Certificate Map Entry. Certificate Map Entry names
-        # must be unique globally and match pattern `projects/*/locations/*/
+        # Identifier. A user-defined name of the Certificate Map Entry. Certificate Map
+        # Entry names must be unique globally and match pattern `projects/*/locations/*/
         # certificateMaps/*/certificateMapEntries/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -428,7 +431,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # One or more paragraphs of text description of a DnsAuthorization.
+        # Optional. One or more paragraphs of text description of a DnsAuthorization.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -447,20 +450,21 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Set of labels associated with a DnsAuthorization.
+        # Optional. Set of labels associated with a DnsAuthorization.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # A user-defined name of the dns authorization. DnsAuthorization names must be
-        # unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
+        # Identifier. A user-defined name of the dns authorization. DnsAuthorization
+        # names must be unique globally and match pattern `projects/*/locations/*/
+        # dnsAuthorizations/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Immutable. Type of DnsAuthorization. If unset during resource creation the
-        # following default will be used: - in location `global`: FIXED_RECORD, - in
-        # other locations: PER_PROJECT_RECORD.
+        # Optional. Immutable. Type of DnsAuthorization. If unset during resource
+        # creation the following default will be used: - in location `global`:
+        # FIXED_RECORD, - in other locations: PER_PROJECT_RECORD.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -922,20 +926,20 @@ module Google
         # @return [Array<Google::Apis::CertificatemanagerV1::AuthorizationAttemptInfo>]
         attr_accessor :authorization_attempt_info
       
-        # Immutable. Authorizations that will be used for performing domain
+        # Optional. Immutable. Authorizations that will be used for performing domain
         # authorization.
         # Corresponds to the JSON property `dnsAuthorizations`
         # @return [Array<String>]
         attr_accessor :dns_authorizations
       
-        # Immutable. The domains for which a managed SSL certificate will be generated.
-        # Wildcard domains are only supported with DNS challenge resolution.
+        # Optional. Immutable. The domains for which a managed SSL certificate will be
+        # generated. Wildcard domains are only supported with DNS challenge resolution.
         # Corresponds to the JSON property `domains`
         # @return [Array<String>]
         attr_accessor :domains
       
-        # Immutable. The resource name for a CertificateIssuanceConfig used to configure
-        # private PKI certificates in the format `projects/*/locations/*/
+        # Optional. Immutable. The resource name for a CertificateIssuanceConfig used to
+        # configure private PKI certificates in the format `projects/*/locations/*/
         # certificateIssuanceConfigs/*`. If this field is not set, the certificates will
         # instead be publicly signed as documented at https://cloud.google.com/load-
         # balancing/docs/ssl-certificates/google-managed-certs#caa.
@@ -1121,13 +1125,13 @@ module Google
       class SelfManagedCertificate
         include Google::Apis::Core::Hashable
       
-        # Input only. The PEM-encoded certificate chain. Leaf certificate comes first,
-        # followed by intermediate ones if any.
+        # Optional. Input only. The PEM-encoded certificate chain. Leaf certificate
+        # comes first, followed by intermediate ones if any.
         # Corresponds to the JSON property `pemCertificate`
         # @return [String]
         attr_accessor :pem_certificate
       
-        # Input only. The PEM-encoded private key of the leaf certificate.
+        # Optional. Input only. The PEM-encoded private key of the leaf certificate.
         # Corresponds to the JSON property `pemPrivateKey`
         # @return [String]
         attr_accessor :pem_private_key
@@ -1219,7 +1223,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # One or more paragraphs of text description of a TrustConfig.
+        # Optional. One or more paragraphs of text description of a TrustConfig.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1231,21 +1235,21 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Set of labels associated with a TrustConfig.
+        # Optional. Set of labels associated with a TrustConfig.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # A user-defined name of the trust config. TrustConfig names must be unique
-        # globally and match pattern `projects/*/locations/*/trustConfigs/*`.
+        # Identifier. A user-defined name of the trust config. TrustConfig names must be
+        # unique globally and match pattern `projects/*/locations/*/trustConfigs/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Set of trust stores to perform validation against. This field is supported
-        # when TrustConfig is configured with Load Balancers, currently not supported
-        # for SPIFFE certificate validation. Only one TrustStore specified is currently
-        # allowed.
+        # Optional. Set of trust stores to perform validation against. This field is
+        # supported when TrustConfig is configured with Load Balancers, currently not
+        # supported for SPIFFE certificate validation. Only one TrustStore specified is
+        # currently allowed.
         # Corresponds to the JSON property `trustStores`
         # @return [Array<Google::Apis::CertificatemanagerV1::TrustStore>]
         attr_accessor :trust_stores
@@ -1276,15 +1280,15 @@ module Google
       class TrustStore
         include Google::Apis::Core::Hashable
       
-        # Set of intermediate CA certificates used for the path building phase of chain
-        # validation. The field is currently not supported if TrustConfig is used for
-        # the workload certificate feature.
+        # Optional. Set of intermediate CA certificates used for the path building phase
+        # of chain validation. The field is currently not supported if TrustConfig is
+        # used for the workload certificate feature.
         # Corresponds to the JSON property `intermediateCas`
         # @return [Array<Google::Apis::CertificatemanagerV1::IntermediateCa>]
         attr_accessor :intermediate_cas
       
-        # List of Trust Anchors to be used while performing validation against a given
-        # TrustStore.
+        # Optional. List of Trust Anchors to be used while performing validation against
+        # a given TrustStore.
         # Corresponds to the JSON property `trustAnchors`
         # @return [Array<Google::Apis::CertificatemanagerV1::TrustAnchor>]
         attr_accessor :trust_anchors
