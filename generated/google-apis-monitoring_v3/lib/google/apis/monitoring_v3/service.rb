@@ -495,21 +495,22 @@ module Google
         #   the alerting policies to be listed are stored. To retrieve a single alerting
         #   policy by name, use the GetAlertPolicy operation, instead.
         # @param [String] filter
-        #   If provided, this field specifies the criteria that must be met by alert
-        #   policies to be included in the response.For more details, see sorting and
-        #   filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
-        # @param [String] order_by
-        #   A comma-separated list of fields by which to sort the result. Supports the
-        #   same set of field references as the filter field. Entries can be prefixed with
-        #   a minus sign to sort by the field in descending order.For more details, see
-        #   sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-
+        #   Optional. If provided, this field specifies the criteria that must be met by
+        #   alert policies to be included in the response.For more details, see sorting
+        #   and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-
         #   filtering).
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields by which to sort the result.
+        #   Supports the same set of field references as the filter field. Entries can be
+        #   prefixed with a minus sign to sort by the field in descending order.For more
+        #   details, see sorting and filtering (https://cloud.google.com/monitoring/api/v3/
+        #   sorting-and-filtering).
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response.
+        #   Optional. The maximum number of results to return in a single response.
         # @param [String] page_token
-        #   If this field is not empty then it must contain the nextPageToken value
-        #   returned by a previous call to this method. Using this field causes the method
-        #   to return more results from the previous method call.
+        #   Optional. If this field is not empty then it must contain the nextPageToken
+        #   value returned by a previous call to this method. Using this field causes the
+        #   method to return more results from the previous method call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -548,9 +549,9 @@ module Google
         # the state of alerting policies in a single project. This includes calls to
         # CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy.
         # @param [String] name
-        #   Required if the policy exists. The resource name for this policy. The format
-        #   is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [
-        #   ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created.
+        #   Identifier. Required if the policy exists. The resource name for this policy.
+        #   The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+        #   [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created.
         #   When calling the alertPolicies.create method, do not include the name field in
         #   the alerting policy passed as part of the request.
         # @param [Google::Apis::MonitoringV3::AlertPolicy] alert_policy_object
@@ -1378,22 +1379,22 @@ module Google
         #   specific channel by REST resource name, use the GetNotificationChannel
         #   operation.
         # @param [String] filter
-        #   If provided, this field specifies the criteria that must be met by
+        #   Optional. If provided, this field specifies the criteria that must be met by
         #   notification channels to be included in the response.For more details, see
         #   sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-
         #   filtering).
         # @param [String] order_by
-        #   A comma-separated list of fields by which to sort the result. Supports the
-        #   same set of fields as in filter. Entries can be prefixed with a minus sign to
-        #   sort in descending rather than ascending order.For more details, see sorting
-        #   and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-
-        #   filtering).
+        #   Optional. A comma-separated list of fields by which to sort the result.
+        #   Supports the same set of fields as in filter. Entries can be prefixed with a
+        #   minus sign to sort in descending rather than ascending order.For more details,
+        #   see sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-
+        #   and-filtering).
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. If not set to a
-        #   positive number, a reasonable value will be chosen by the service.
+        #   Optional. The maximum number of results to return in a single response. If not
+        #   set to a positive number, a reasonable value will be chosen by the service.
         # @param [String] page_token
-        #   If non-empty, page_token must contain a value returned as the next_page_token
-        #   in a previous response to request the next set of results.
+        #   Optional. If non-empty, page_token must contain a value returned as the
+        #   next_page_token in a previous response to request the next set of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1436,7 +1437,7 @@ module Google
         #   CHANNEL_ID] is automatically assigned by the server on creation.
         # @param [Google::Apis::MonitoringV3::NotificationChannel] notification_channel_object
         # @param [String] update_mask
-        #   The fields to update.
+        #   Optional. The fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

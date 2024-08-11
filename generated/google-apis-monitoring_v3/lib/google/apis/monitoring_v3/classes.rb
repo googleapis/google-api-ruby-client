@@ -184,9 +184,9 @@ module Google
         # @return [Google::Apis::MonitoringV3::MutationRecord]
         attr_accessor :mutation_record
       
-        # Required if the policy exists. The resource name for this policy. The format
-        # is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [
-        # ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created.
+        # Identifier. Required if the policy exists. The resource name for this policy.
+        # The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+        # [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created.
         # When calling the alertPolicies.create method, do not include the name field in
         # the alerting policy passed as part of the request.
         # Corresponds to the JSON property `name`
@@ -4730,7 +4730,7 @@ module Google
         # The units in which the metric value is reported. It is only applicable if the
         # value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the
         # representation of the stored metric values. This field can only be changed
-        # through CreateTimeSeries when it is empty or "1".
+        # through CreateTimeSeries when it is empty.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
