@@ -228,18 +228,18 @@ module Google
         #   Required. The project and location from which the certificate should be listed,
         #   specified in the format `projects/*/locations/*`.
         # @param [String] filter
-        #   Filter expression to restrict the Certificates Configs returned.
+        #   Optional. Filter expression to restrict the Certificates Configs returned.
         # @param [String] order_by
-        #   A list of Certificate Config field names used to specify the order of the
-        #   returned results. The default sorting order is ascending. To specify
+        #   Optional. A list of Certificate Config field names used to specify the order
+        #   of the returned results. The default sorting order is ascending. To specify
         #   descending order for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
-        #   Maximum number of certificate configs to return per call.
+        #   Optional. Maximum number of certificate configs to return per call.
         # @param [String] page_token
-        #   The value returned by the last `ListCertificateIssuanceConfigsResponse`.
-        #   Indicates that this is a continuation of a prior `
-        #   ListCertificateIssuanceConfigs` call, and that the system should return the
-        #   next page of data.
+        #   Optional. The value returned by the last `
+        #   ListCertificateIssuanceConfigsResponse`. Indicates that this is a continuation
+        #   of a prior `ListCertificateIssuanceConfigs` call, and that the system should
+        #   return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -266,6 +266,46 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a CertificateIssuanceConfig.
+        # @param [String] name
+        #   Identifier. A user-defined name of the certificate issuance config.
+        #   CertificateIssuanceConfig names must be unique globally and match pattern `
+        #   projects/*/locations/*/certificateIssuanceConfigs/*`.
+        # @param [Google::Apis::CertificatemanagerV1::CertificateIssuanceConfig] certificate_issuance_config_object
+        # @param [String] update_mask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CertificatemanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CertificatemanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_certificate_issuance_config(name, certificate_issuance_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CertificatemanagerV1::CertificateIssuanceConfig::Representation
+          command.request_object = certificate_issuance_config_object
+          command.response_representation = Google::Apis::CertificatemanagerV1::Operation::Representation
+          command.response_class = Google::Apis::CertificatemanagerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -377,17 +417,17 @@ module Google
         #   Required. The project and location from which the certificate maps should be
         #   listed, specified in the format `projects/*/locations/*`.
         # @param [String] filter
-        #   Filter expression to restrict the Certificates Maps returned.
+        #   Optional. Filter expression to restrict the Certificates Maps returned.
         # @param [String] order_by
-        #   A list of Certificate Map field names used to specify the order of the
-        #   returned results. The default sorting order is ascending. To specify
+        #   Optional. A list of Certificate Map field names used to specify the order of
+        #   the returned results. The default sorting order is ascending. To specify
         #   descending order for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
-        #   Maximum number of certificate maps to return per call.
+        #   Optional. Maximum number of certificate maps to return per call.
         # @param [String] page_token
-        #   The value returned by the last `ListCertificateMapsResponse`. Indicates that
-        #   this is a continuation of a prior `ListCertificateMaps` call, and that the
-        #   system should return the next page of data.
+        #   Optional. The value returned by the last `ListCertificateMapsResponse`.
+        #   Indicates that this is a continuation of a prior `ListCertificateMaps` call,
+        #   and that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -421,8 +461,9 @@ module Google
         
         # Updates a CertificateMap.
         # @param [String] name
-        #   A user-defined name of the Certificate Map. Certificate Map names must be
-        #   unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
+        #   Identifier. A user-defined name of the Certificate Map. Certificate Map names
+        #   must be unique globally and match pattern `projects/*/locations/*/
+        #   certificateMaps/*`.
         # @param [Google::Apis::CertificatemanagerV1::CertificateMap] certificate_map_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
@@ -563,20 +604,20 @@ module Google
         #   map entries should be listed, specified in the format `projects/*/locations/*/
         #   certificateMaps/*`.
         # @param [String] filter
-        #   Filter expression to restrict the returned Certificate Map Entries.
+        #   Optional. Filter expression to restrict the returned Certificate Map Entries.
         # @param [String] order_by
-        #   A list of Certificate Map Entry field names used to specify the order of the
-        #   returned results. The default sorting order is ascending. To specify
-        #   descending order for a field, add a suffix `" desc"`.
+        #   Optional. A list of Certificate Map Entry field names used to specify the
+        #   order of the returned results. The default sorting order is ascending. To
+        #   specify descending order for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
-        #   Maximum number of certificate map entries to return. The service may return
-        #   fewer than this value. If unspecified, at most 50 certificate map entries will
-        #   be returned. The maximum value is 1000; values above 1000 will be coerced to
-        #   1000.
+        #   Optional. Maximum number of certificate map entries to return. The service may
+        #   return fewer than this value. If unspecified, at most 50 certificate map
+        #   entries will be returned. The maximum value is 1000; values above 1000 will be
+        #   coerced to 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListCertificateMapEntriesResponse`. Indicates
-        #   that this is a continuation of a prior `ListCertificateMapEntries` call, and
-        #   that the system should return the next page of data.
+        #   Optional. The value returned by the last `ListCertificateMapEntriesResponse`.
+        #   Indicates that this is a continuation of a prior `ListCertificateMapEntries`
+        #   call, and that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -610,8 +651,8 @@ module Google
         
         # Updates a CertificateMapEntry.
         # @param [String] name
-        #   A user-defined name of the Certificate Map Entry. Certificate Map Entry names
-        #   must be unique globally and match pattern `projects/*/locations/*/
+        #   Identifier. A user-defined name of the Certificate Map Entry. Certificate Map
+        #   Entry names must be unique globally and match pattern `projects/*/locations/*/
         #   certificateMaps/*/certificateMapEntries/*`.
         # @param [Google::Apis::CertificatemanagerV1::CertificateMapEntry] certificate_map_entry_object
         # @param [String] update_mask
@@ -752,17 +793,17 @@ module Google
         #   Required. The project and location from which the certificate should be listed,
         #   specified in the format `projects/*/locations/*`.
         # @param [String] filter
-        #   Filter expression to restrict the Certificates returned.
+        #   Optional. Filter expression to restrict the Certificates returned.
         # @param [String] order_by
-        #   A list of Certificate field names used to specify the order of the returned
-        #   results. The default sorting order is ascending. To specify descending order
-        #   for a field, add a suffix `" desc"`.
+        #   Optional. A list of Certificate field names used to specify the order of the
+        #   returned results. The default sorting order is ascending. To specify
+        #   descending order for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
-        #   Maximum number of certificates to return per call.
+        #   Optional. Maximum number of certificates to return per call.
         # @param [String] page_token
-        #   The value returned by the last `ListCertificatesResponse`. Indicates that this
-        #   is a continuation of a prior `ListCertificates` call, and that the system
-        #   should return the next page of data.
+        #   Optional. The value returned by the last `ListCertificatesResponse`. Indicates
+        #   that this is a continuation of a prior `ListCertificates` call, and that the
+        #   system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -796,8 +837,8 @@ module Google
         
         # Updates a Certificate.
         # @param [String] name
-        #   A user-defined name of the certificate. Certificate names must be unique
-        #   globally and match pattern `projects/*/locations/*/certificates/*`.
+        #   Identifier. A user-defined name of the certificate. Certificate names must be
+        #   unique globally and match pattern `projects/*/locations/*/certificates/*`.
         # @param [Google::Apis::CertificatemanagerV1::Certificate] certificate_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
@@ -937,17 +978,17 @@ module Google
         #   Required. The project and location from which the dns authorizations should be
         #   listed, specified in the format `projects/*/locations/*`.
         # @param [String] filter
-        #   Filter expression to restrict the Dns Authorizations returned.
+        #   Optional. Filter expression to restrict the Dns Authorizations returned.
         # @param [String] order_by
-        #   A list of Dns Authorization field names used to specify the order of the
-        #   returned results. The default sorting order is ascending. To specify
+        #   Optional. A list of Dns Authorization field names used to specify the order of
+        #   the returned results. The default sorting order is ascending. To specify
         #   descending order for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
-        #   Maximum number of dns authorizations to return per call.
+        #   Optional. Maximum number of dns authorizations to return per call.
         # @param [String] page_token
-        #   The value returned by the last `ListDnsAuthorizationsResponse`. Indicates that
-        #   this is a continuation of a prior `ListDnsAuthorizations` call, and that the
-        #   system should return the next page of data.
+        #   Optional. The value returned by the last `ListDnsAuthorizationsResponse`.
+        #   Indicates that this is a continuation of a prior `ListDnsAuthorizations` call,
+        #   and that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -981,8 +1022,9 @@ module Google
         
         # Updates a DnsAuthorization.
         # @param [String] name
-        #   A user-defined name of the dns authorization. DnsAuthorization names must be
-        #   unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
+        #   Identifier. A user-defined name of the dns authorization. DnsAuthorization
+        #   names must be unique globally and match pattern `projects/*/locations/*/
+        #   dnsAuthorizations/*`.
         # @param [Google::Apis::CertificatemanagerV1::DnsAuthorization] dns_authorization_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
@@ -1205,9 +1247,9 @@ module Google
         #   Required. A name of the TrustConfig to delete. Must be in the format `projects/
         #   */locations/*/trustConfigs/*`.
         # @param [String] etag
-        #   The current etag of the TrustConfig. If an etag is provided and does not match
-        #   the current etag of the resource, deletion will be blocked and an ABORTED
-        #   error will be returned.
+        #   Optional. The current etag of the TrustConfig. If an etag is provided and does
+        #   not match the current etag of the resource, deletion will be blocked and an
+        #   ABORTED error will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1272,17 +1314,17 @@ module Google
         #   Required. The project and location from which the TrustConfigs should be
         #   listed, specified in the format `projects/*/locations/*`.
         # @param [String] filter
-        #   Filter expression to restrict the TrustConfigs returned.
+        #   Optional. Filter expression to restrict the TrustConfigs returned.
         # @param [String] order_by
-        #   A list of TrustConfig field names used to specify the order of the returned
-        #   results. The default sorting order is ascending. To specify descending order
-        #   for a field, add a suffix `" desc"`.
+        #   Optional. A list of TrustConfig field names used to specify the order of the
+        #   returned results. The default sorting order is ascending. To specify
+        #   descending order for a field, add a suffix `" desc"`.
         # @param [Fixnum] page_size
-        #   Maximum number of TrustConfigs to return per call.
+        #   Optional. Maximum number of TrustConfigs to return per call.
         # @param [String] page_token
-        #   The value returned by the last `ListTrustConfigsResponse`. Indicates that this
-        #   is a continuation of a prior `ListTrustConfigs` call, and that the system
-        #   should return the next page of data.
+        #   Optional. The value returned by the last `ListTrustConfigsResponse`. Indicates
+        #   that this is a continuation of a prior `ListTrustConfigs` call, and that the
+        #   system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1316,8 +1358,8 @@ module Google
         
         # Updates a TrustConfig.
         # @param [String] name
-        #   A user-defined name of the trust config. TrustConfig names must be unique
-        #   globally and match pattern `projects/*/locations/*/trustConfigs/*`.
+        #   Identifier. A user-defined name of the trust config. TrustConfig names must be
+        #   unique globally and match pattern `projects/*/locations/*/trustConfigs/*`.
         # @param [Google::Apis::CertificatemanagerV1::TrustConfig] trust_config_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
