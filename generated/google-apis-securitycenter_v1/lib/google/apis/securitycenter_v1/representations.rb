@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DynamicMuteRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EffectiveEventThreatDetectionCustomModule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -706,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2DynamicMuteRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2EnvironmentVariable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -815,6 +827,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2MuteConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2MuteInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -959,6 +977,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2StaticMute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1198,6 +1222,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MuteInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Node
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1427,6 +1457,12 @@ module Google
       end
       
       class Source
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StaticMute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1789,6 +1825,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filter, as: 'filter'
           property :mute_annotation, as: 'muteAnnotation'
+          property :mute_state, as: 'muteState'
         end
       end
       
@@ -1931,6 +1968,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvssv3, as: 'cvssv3', class: Google::Apis::SecuritycenterV1::Cvssv3, decorator: Google::Apis::SecuritycenterV1::Cvssv3::Representation
       
+          property :exploit_release_date, as: 'exploitReleaseDate'
           property :exploitation_activity, as: 'exploitationActivity'
           property :id, as: 'id'
           property :impact, as: 'impact'
@@ -1982,6 +2020,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :partition_uuid, as: 'partitionUuid'
           property :relative_path, as: 'relativePath'
+        end
+      end
+      
+      class DynamicMuteRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :match_time, as: 'matchTime'
+          property :mute_config, as: 'muteConfig'
         end
       end
       
@@ -2127,6 +2173,8 @@ module Google
       
           property :module_name, as: 'moduleName'
           property :mute, as: 'mute'
+          property :mute_info, as: 'muteInfo', class: Google::Apis::SecuritycenterV1::MuteInfo, decorator: Google::Apis::SecuritycenterV1::MuteInfo::Representation
+      
           property :mute_initiator, as: 'muteInitiator'
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
@@ -2287,9 +2335,11 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :expiry_time, as: 'expiryTime'
           property :filter, as: 'filter'
           property :most_recent_editor, as: 'mostRecentEditor'
           property :name, as: 'name'
+          property :type, as: 'type'
           property :update_time, as: 'updateTime'
         end
       end
@@ -2754,6 +2804,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvssv3, as: 'cvssv3', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Cvssv3, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Cvssv3::Representation
       
+          property :exploit_release_date, as: 'exploitReleaseDate'
           property :exploitation_activity, as: 'exploitationActivity'
           property :id, as: 'id'
           property :impact, as: 'impact'
@@ -2805,6 +2856,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :partition_uuid, as: 'partitionUuid'
           property :relative_path, as: 'relativePath'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2DynamicMuteRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :match_time, as: 'matchTime'
+          property :mute_config, as: 'muteConfig'
         end
       end
       
@@ -2925,6 +2984,8 @@ module Google
       
           property :module_name, as: 'moduleName'
           property :mute, as: 'mute'
+          property :mute_info, as: 'muteInfo', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2MuteInfo, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2MuteInfo::Representation
+      
           property :mute_initiator, as: 'muteInitiator'
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
@@ -3078,11 +3139,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :expiry_time, as: 'expiryTime'
           property :filter, as: 'filter'
           property :most_recent_editor, as: 'mostRecentEditor'
           property :name, as: 'name'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2MuteInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dynamic_mute_records, as: 'dynamicMuteRecords', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DynamicMuteRecord, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DynamicMuteRecord::Representation
+      
+          property :static_mute, as: 'staticMute', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2StaticMute, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2StaticMute::Representation
+      
         end
       end
       
@@ -3342,6 +3414,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :principal_email, as: 'principalEmail'
           property :principal_subject, as: 'principalSubject'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2StaticMute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_time, as: 'applyTime'
+          property :state, as: 'state'
         end
       end
       
@@ -3728,6 +3808,16 @@ module Google
           property :primary_tactic, as: 'primaryTactic'
           collection :primary_techniques, as: 'primaryTechniques'
           property :version, as: 'version'
+        end
+      end
+      
+      class MuteInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dynamic_mute_records, as: 'dynamicMuteRecords', class: Google::Apis::SecuritycenterV1::DynamicMuteRecord, decorator: Google::Apis::SecuritycenterV1::DynamicMuteRecord::Representation
+      
+          property :static_mute, as: 'staticMute', class: Google::Apis::SecuritycenterV1::StaticMute, decorator: Google::Apis::SecuritycenterV1::StaticMute::Representation
+      
         end
       end
       
@@ -4132,6 +4222,14 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+        end
+      end
+      
+      class StaticMute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_time, as: 'applyTime'
+          property :state, as: 'state'
         end
       end
       
