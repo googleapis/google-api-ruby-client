@@ -1216,6 +1216,108 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FutureReservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationSpecificSkuProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationStatusExistingMatchingUsageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationStatusLastKnownGoodState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationStatusSpecificSkuProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationTimeWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationsAggregatedListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GrpcHealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8850,6 +8952,209 @@ module Google
         end
       end
       
+      class FutureReservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_created_reservations_delete_time, as: 'autoCreatedReservationsDeleteTime'
+          property :auto_created_reservations_duration, as: 'autoCreatedReservationsDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
+          property :auto_delete_auto_created_reservations, as: 'autoDeleteAutoCreatedReservations'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :name_prefix, as: 'namePrefix'
+          property :planning_status, as: 'planningStatus'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeV1::ShareSettings, decorator: Google::Apis::ComputeV1::ShareSettings::Representation
+      
+          property :specific_reservation_required, as: 'specificReservationRequired'
+          property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties, decorator: Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties::Representation
+      
+          property :status, as: 'status', class: Google::Apis::ComputeV1::FutureReservationStatus, decorator: Google::Apis::ComputeV1::FutureReservationStatus::Representation
+      
+          property :time_window, as: 'timeWindow', class: Google::Apis::ComputeV1::FutureReservationTimeWindow, decorator: Google::Apis::ComputeV1::FutureReservationTimeWindow::Representation
+      
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class FutureReservationSpecificSkuProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationReservedInstanceProperties, decorator: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationReservedInstanceProperties::Representation
+      
+          property :source_instance_template, as: 'sourceInstanceTemplate'
+          property :total_count, :numeric_string => true, as: 'totalCount'
+        end
+      end
+      
+      class FutureReservationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amendment_status, as: 'amendmentStatus'
+          collection :auto_created_reservations, as: 'autoCreatedReservations'
+          property :existing_matching_usage_info, as: 'existingMatchingUsageInfo', class: Google::Apis::ComputeV1::FutureReservationStatusExistingMatchingUsageInfo, decorator: Google::Apis::ComputeV1::FutureReservationStatusExistingMatchingUsageInfo::Representation
+      
+          property :fulfilled_count, :numeric_string => true, as: 'fulfilledCount'
+          property :last_known_good_state, as: 'lastKnownGoodState', class: Google::Apis::ComputeV1::FutureReservationStatusLastKnownGoodState, decorator: Google::Apis::ComputeV1::FutureReservationStatusLastKnownGoodState::Representation
+      
+          property :lock_time, as: 'lockTime'
+          property :procurement_status, as: 'procurementStatus'
+          property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeV1::FutureReservationStatusSpecificSkuProperties, decorator: Google::Apis::ComputeV1::FutureReservationStatusSpecificSkuProperties::Representation
+      
+        end
+      end
+      
+      class FutureReservationStatusExistingMatchingUsageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class FutureReservationStatusLastKnownGoodState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :existing_matching_usage_info, as: 'existingMatchingUsageInfo', class: Google::Apis::ComputeV1::FutureReservationStatusExistingMatchingUsageInfo, decorator: Google::Apis::ComputeV1::FutureReservationStatusExistingMatchingUsageInfo::Representation
+      
+          property :future_reservation_specs, as: 'futureReservationSpecs', class: Google::Apis::ComputeV1::FutureReservationStatusLastKnownGoodStateFutureReservationSpecs, decorator: Google::Apis::ComputeV1::FutureReservationStatusLastKnownGoodStateFutureReservationSpecs::Representation
+      
+          property :lock_time, as: 'lockTime'
+          property :name_prefix, as: 'namePrefix'
+          property :procurement_status, as: 'procurementStatus'
+        end
+      end
+      
+      class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeV1::ShareSettings, decorator: Google::Apis::ComputeV1::ShareSettings::Representation
+      
+          property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties, decorator: Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties::Representation
+      
+          property :time_window, as: 'timeWindow', class: Google::Apis::ComputeV1::FutureReservationTimeWindow, decorator: Google::Apis::ComputeV1::FutureReservationTimeWindow::Representation
+      
+        end
+      end
+      
+      class FutureReservationStatusSpecificSkuProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_instance_template_id, as: 'sourceInstanceTemplateId'
+        end
+      end
+      
+      class FutureReservationTimeWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class FutureReservationsAggregatedListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::FutureReservationsScopedList, decorator: Google::Apis::ComputeV1::FutureReservationsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::FutureReservationsAggregatedListResponse::Warning, decorator: Google::Apis::ComputeV1::FutureReservationsAggregatedListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::FutureReservationsAggregatedListResponse::Warning::Datum, decorator: Google::Apis::ComputeV1::FutureReservationsAggregatedListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class FutureReservationsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::FutureReservation, decorator: Google::Apis::ComputeV1::FutureReservation::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::FutureReservationsListResponse::Warning, decorator: Google::Apis::ComputeV1::FutureReservationsListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::FutureReservationsListResponse::Warning::Datum, decorator: Google::Apis::ComputeV1::FutureReservationsListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class FutureReservationsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :future_reservations, as: 'futureReservations', class: Google::Apis::ComputeV1::FutureReservation, decorator: Google::Apis::ComputeV1::FutureReservation::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::FutureReservationsScopedList::Warning, decorator: Google::Apis::ComputeV1::FutureReservationsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::FutureReservationsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::FutureReservationsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class GrpcHealthCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10748,6 +11053,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
       
           property :short_name, as: 'shortName'
