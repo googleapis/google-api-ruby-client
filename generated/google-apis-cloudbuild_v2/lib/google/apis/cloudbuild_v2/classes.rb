@@ -1580,7 +1580,7 @@ module Google
       class PipelineRef
         include Google::Apis::Core::Hashable
       
-        # Name of the Pipeline.
+        # Optional. Name of the Pipeline.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2831,7 +2831,7 @@ module Google
       class TaskRef
         include Google::Apis::Core::Hashable
       
-        # Name of the task.
+        # Optional. Name of the task.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
