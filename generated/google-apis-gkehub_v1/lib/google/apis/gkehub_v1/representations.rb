@@ -1537,6 +1537,7 @@ module Google
       
           property :state, as: 'state', class: Google::Apis::GkehubV1::CommonFeatureState, decorator: Google::Apis::GkehubV1::CommonFeatureState::Representation
       
+          collection :unreachable, as: 'unreachable'
           property :update_time, as: 'updateTime'
         end
       end
