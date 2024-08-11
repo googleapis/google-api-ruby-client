@@ -1413,6 +1413,7 @@ module Google
           property :info_module_data, as: 'infoModuleData', class: Google::Apis::WalletobjectsV1::InfoModuleData, decorator: Google::Apis::WalletobjectsV1::InfoModuleData::Representation
       
           property :kind, as: 'kind'
+          collection :linked_object_ids, as: 'linkedObjectIds'
           collection :linked_offer_ids, as: 'linkedOfferIds'
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
@@ -1644,6 +1645,7 @@ module Google
           property :info_module_data, as: 'infoModuleData', class: Google::Apis::WalletobjectsV1::InfoModuleData, decorator: Google::Apis::WalletobjectsV1::InfoModuleData::Representation
       
           property :kind, as: 'kind'
+          collection :linked_object_ids, as: 'linkedObjectIds'
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
@@ -1766,6 +1768,7 @@ module Google
           property :id, as: 'id'
           collection :image_modules_data, as: 'imageModulesData', class: Google::Apis::WalletobjectsV1::ImageModuleData, decorator: Google::Apis::WalletobjectsV1::ImageModuleData::Representation
       
+          collection :linked_object_ids, as: 'linkedObjectIds'
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
           property :logo, as: 'logo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
@@ -1923,6 +1926,7 @@ module Google
           property :info_module_data, as: 'infoModuleData', class: Google::Apis::WalletobjectsV1::InfoModuleData, decorator: Google::Apis::WalletobjectsV1::InfoModuleData::Representation
       
           property :kind, as: 'kind'
+          collection :linked_object_ids, as: 'linkedObjectIds'
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
@@ -2249,6 +2253,7 @@ module Google
           property :info_module_data, as: 'infoModuleData', class: Google::Apis::WalletobjectsV1::InfoModuleData, decorator: Google::Apis::WalletobjectsV1::InfoModuleData::Representation
       
           property :kind, as: 'kind'
+          collection :linked_object_ids, as: 'linkedObjectIds'
           collection :linked_offer_ids, as: 'linkedOfferIds'
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
@@ -2549,6 +2554,7 @@ module Google
           property :info_module_data, as: 'infoModuleData', class: Google::Apis::WalletobjectsV1::InfoModuleData, decorator: Google::Apis::WalletobjectsV1::InfoModuleData::Representation
       
           property :kind, as: 'kind'
+          collection :linked_object_ids, as: 'linkedObjectIds'
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
@@ -3020,6 +3026,7 @@ module Google
       
           property :info_module_data, as: 'infoModuleData', class: Google::Apis::WalletobjectsV1::InfoModuleData, decorator: Google::Apis::WalletobjectsV1::InfoModuleData::Representation
       
+          collection :linked_object_ids, as: 'linkedObjectIds'
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
