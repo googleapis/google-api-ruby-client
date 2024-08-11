@@ -1481,6 +1481,11 @@ module Google
         # @return [Array<Google::Apis::VaultV1::MatterPermission>]
         attr_accessor :matter_permissions
       
+        # Optional. The requested data region for the matter.
+        # Corresponds to the JSON property `matterRegion`
+        # @return [String]
+        attr_accessor :matter_region
+      
         # The name of the matter.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1500,6 +1505,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @matter_id = args[:matter_id] if args.key?(:matter_id)
           @matter_permissions = args[:matter_permissions] if args.key?(:matter_permissions)
+          @matter_region = args[:matter_region] if args.key?(:matter_region)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
         end

@@ -870,6 +870,7 @@ module Google
           property :matter_id, as: 'matterId'
           collection :matter_permissions, as: 'matterPermissions', class: Google::Apis::VaultV1::MatterPermission, decorator: Google::Apis::VaultV1::MatterPermission::Representation
       
+          property :matter_region, as: 'matterRegion'
           property :name, as: 'name'
           property :state, as: 'state'
         end
