@@ -583,6 +583,7 @@ module Google
       class V2ResourceEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_id, :numeric_string => true, as: 'contextId'
           property :destinations, as: 'destinations'
           property :parent, as: 'parent', class: Google::Apis::ServicecontrolV2::Resource, decorator: Google::Apis::ServicecontrolV2::Resource::Representation
       

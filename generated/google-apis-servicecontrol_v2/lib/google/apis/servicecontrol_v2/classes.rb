@@ -1664,6 +1664,13 @@ module Google
       class V2ResourceEvent
         include Google::Apis::Core::Hashable
       
+        # The ESF unique context id of the api request, from which this resource event
+        # originated. This field is only needed for CAIS integration via api annotation.
+        # See go/cais-lro-delete for more details.
+        # Corresponds to the JSON property `contextId`
+        # @return [Fixnum]
+        attr_accessor :context_id
+      
         # The destinations field determines which backend services should handle the
         # event. This should be specified as a comma-delimited string.
         # Corresponds to the JSON property `destinations`
@@ -1710,6 +1717,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @context_id = args[:context_id] if args.key?(:context_id)
           @destinations = args[:destinations] if args.key?(:destinations)
           @parent = args[:parent] if args.key?(:parent)
           @path = args[:path] if args.key?(:path)
