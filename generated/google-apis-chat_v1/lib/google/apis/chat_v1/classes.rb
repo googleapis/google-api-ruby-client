@@ -2601,8 +2601,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :multi_select_min_query_length
       
-        # The name that identifies the selection input in a form input event. For
-        # details about working with form inputs, see [Receive form data](https://
+        # Required. The name that identifies the selection input in a form input event.
+        # For details about working with form inputs, see [Receive form data](https://
         # developers.google.com/workspace/chat/read-form-data).
         # Corresponds to the JSON property `name`
         # @return [String]
