@@ -1144,6 +1144,13 @@ module Google
         # @return [String]
         attr_accessor :mute_annotation
       
+        # Optional. All findings matching the given filter will have their mute state
+        # set to this value. The default value is `MUTED`. Setting this to `UNDEFINED`
+        # will clear the mute state on all matching findings.
+        # Corresponds to the JSON property `muteState`
+        # @return [String]
+        attr_accessor :mute_state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1152,6 +1159,7 @@ module Google
         def update!(**args)
           @filter = args[:filter] if args.key?(:filter)
           @mute_annotation = args[:mute_annotation] if args.key?(:mute_annotation)
+          @mute_state = args[:mute_state] if args.key?(:mute_state)
         end
       end
       
@@ -1637,6 +1645,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::Cvssv3]
         attr_accessor :cvssv3
       
+        # Date the first publicly available exploit or PoC was released.
+        # Corresponds to the JSON property `exploitReleaseDate`
+        # @return [String]
+        attr_accessor :exploit_release_date
+      
         # The exploitation activity of the vulnerability in the wild.
         # Corresponds to the JSON property `exploitationActivity`
         # @return [String]
@@ -1683,6 +1696,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
+          @exploit_release_date = args[:exploit_release_date] if args.key?(:exploit_release_date)
           @exploitation_activity = args[:exploitation_activity] if args.key?(:exploitation_activity)
           @id = args[:id] if args.key?(:id)
           @impact = args[:impact] if args.key?(:impact)
@@ -1882,6 +1896,33 @@ module Google
         def update!(**args)
           @partition_uuid = args[:partition_uuid] if args.key?(:partition_uuid)
           @relative_path = args[:relative_path] if args.key?(:relative_path)
+        end
+      end
+      
+      # The record of a dynamic mute rule that matches the finding.
+      class DynamicMuteRecord
+        include Google::Apis::Core::Hashable
+      
+        # When the dynamic mute rule first matched the finding.
+        # Corresponds to the JSON property `matchTime`
+        # @return [String]
+        attr_accessor :match_time
+      
+        # The relative resource name of the mute rule, represented by a mute config,
+        # that created this record, for example `organizations/123/muteConfigs/
+        # mymuteconfig` or `organizations/123/locations/global/muteConfigs/mymuteconfig`.
+        # Corresponds to the JSON property `muteConfig`
+        # @return [String]
+        attr_accessor :mute_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @match_time = args[:match_time] if args.key?(:match_time)
+          @mute_config = args[:mute_config] if args.key?(:mute_config)
         end
       end
       
@@ -2457,6 +2498,12 @@ module Google
         # @return [String]
         attr_accessor :mute
       
+        # Mute information about the finding, including whether the finding has a static
+        # mute or any matching dynamic mute rules.
+        # Corresponds to the JSON property `muteInfo`
+        # @return [Google::Apis::SecuritycenterV1::MuteInfo]
+        attr_accessor :mute_info
+      
         # Records additional information about the mute operation, for example, the [
         # mute configuration](/security-command-center/docs/how-to-mute-findings) that
         # muted the finding and the user who muted the finding.
@@ -2608,6 +2655,7 @@ module Google
           @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
           @module_name = args[:module_name] if args.key?(:module_name)
           @mute = args[:mute] if args.key?(:mute)
+          @mute_info = args[:mute_info] if args.key?(:mute_info)
           @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
@@ -3162,6 +3210,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. The expiry of the mute config. Only applicable for dynamic configs.
+        # If the expiry is set, when the config expires, it is removed from all findings.
+        # Corresponds to the JSON property `expiryTime`
+        # @return [String]
+        attr_accessor :expiry_time
+      
         # Required. An expression that defines the filter to apply across create/update
         # events of findings. While creating a filter string, be mindful of the scope in
         # which the mute configuration is being created. E.g., If a filter contains
@@ -3193,6 +3247,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The type of the mute config, which determines what type of mute
+        # state the config affects. The static mute state takes precedence over the
+        # dynamic mute state. Immutable after creation. STATIC by default if not set
+        # during creation.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Output only. The most recent time at which the mute config was updated. This
         # field is set by the server and will be ignored if provided on config creation
         # or update.
@@ -3209,9 +3271,11 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
           @filter = args[:filter] if args.key?(:filter)
           @most_recent_editor = args[:most_recent_editor] if args.key?(:most_recent_editor)
           @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -5075,6 +5139,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Cvssv3]
         attr_accessor :cvssv3
       
+        # Date the first publicly available exploit or PoC was released.
+        # Corresponds to the JSON property `exploitReleaseDate`
+        # @return [String]
+        attr_accessor :exploit_release_date
+      
         # The exploitation activity of the vulnerability in the wild.
         # Corresponds to the JSON property `exploitationActivity`
         # @return [String]
@@ -5121,6 +5190,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
+          @exploit_release_date = args[:exploit_release_date] if args.key?(:exploit_release_date)
           @exploitation_activity = args[:exploitation_activity] if args.key?(:exploitation_activity)
           @id = args[:id] if args.key?(:id)
           @impact = args[:impact] if args.key?(:impact)
@@ -5320,6 +5390,33 @@ module Google
         def update!(**args)
           @partition_uuid = args[:partition_uuid] if args.key?(:partition_uuid)
           @relative_path = args[:relative_path] if args.key?(:relative_path)
+        end
+      end
+      
+      # The record of a dynamic mute rule that matches the finding.
+      class GoogleCloudSecuritycenterV2DynamicMuteRecord
+        include Google::Apis::Core::Hashable
+      
+        # When the dynamic mute rule first matched the finding.
+        # Corresponds to the JSON property `matchTime`
+        # @return [String]
+        attr_accessor :match_time
+      
+        # The relative resource name of the mute rule, represented by a mute config,
+        # that created this record, for example `organizations/123/muteConfigs/
+        # mymuteconfig` or `organizations/123/locations/global/muteConfigs/mymuteconfig`.
+        # Corresponds to the JSON property `muteConfig`
+        # @return [String]
+        attr_accessor :mute_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @match_time = args[:match_time] if args.key?(:match_time)
+          @mute_config = args[:mute_config] if args.key?(:mute_config)
         end
       end
       
@@ -5778,6 +5875,12 @@ module Google
         # @return [String]
         attr_accessor :mute
       
+        # Mute information about the finding, including whether the finding has a static
+        # mute or any matching dynamic mute rules.
+        # Corresponds to the JSON property `muteInfo`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2MuteInfo]
+        attr_accessor :mute_info
+      
         # Records additional information about the mute operation, for example, the [
         # mute configuration](https://cloud.google.com/security-command-center/docs/how-
         # to-mute-findings) that muted the finding and the user who muted the finding.
@@ -5938,6 +6041,7 @@ module Google
           @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
           @module_name = args[:module_name] if args.key?(:module_name)
           @mute = args[:mute] if args.key?(:mute)
+          @mute_info = args[:mute_info] if args.key?(:mute_info)
           @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
@@ -6410,6 +6514,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. The expiry of the mute config. Only applicable for dynamic configs.
+        # If the expiry is set, when the config expires, it is removed from all findings.
+        # Corresponds to the JSON property `expiryTime`
+        # @return [String]
+        attr_accessor :expiry_time
+      
         # Required. An expression that defines the filter to apply across create/update
         # events of findings. While creating a filter string, be mindful of the scope in
         # which the mute configuration is being created. E.g., If a filter contains
@@ -6463,11 +6573,40 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
           @filter = args[:filter] if args.key?(:filter)
           @most_recent_editor = args[:most_recent_editor] if args.key?(:most_recent_editor)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Mute information about the finding, including whether the finding has a static
+      # mute or any matching dynamic mute rules.
+      class GoogleCloudSecuritycenterV2MuteInfo
+        include Google::Apis::Core::Hashable
+      
+        # The list of dynamic mute rules that currently match the finding.
+        # Corresponds to the JSON property `dynamicMuteRecords`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DynamicMuteRecord>]
+        attr_accessor :dynamic_mute_records
+      
+        # Information about the static mute state. A static mute state overrides any
+        # dynamic mute rules that apply to this finding. The static mute state can be
+        # set by a static mute rule or by muting the finding directly.
+        # Corresponds to the JSON property `staticMute`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2StaticMute]
+        attr_accessor :static_mute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_mute_records = args[:dynamic_mute_records] if args.key?(:dynamic_mute_records)
+          @static_mute = args[:static_mute] if args.key?(:static_mute)
         end
       end
       
@@ -7455,6 +7594,34 @@ module Google
         def update!(**args)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
           @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
+        end
+      end
+      
+      # Information about the static mute state. A static mute state overrides any
+      # dynamic mute rules that apply to this finding. The static mute state can be
+      # set by a static mute rule or by muting the finding directly.
+      class GoogleCloudSecuritycenterV2StaticMute
+        include Google::Apis::Core::Hashable
+      
+        # When the static mute was applied.
+        # Corresponds to the JSON property `applyTime`
+        # @return [String]
+        attr_accessor :apply_time
+      
+        # The static mute state. If the value is `MUTED` or `UNMUTED`, then the finding'
+        # s overall mute state will have the same value.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_time = args[:apply_time] if args.key?(:apply_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -8865,6 +9032,34 @@ module Google
           @primary_tactic = args[:primary_tactic] if args.key?(:primary_tactic)
           @primary_techniques = args[:primary_techniques] if args.key?(:primary_techniques)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Mute information about the finding, including whether the finding has a static
+      # mute or any matching dynamic mute rules.
+      class MuteInfo
+        include Google::Apis::Core::Hashable
+      
+        # The list of dynamic mute rules that currently match the finding.
+        # Corresponds to the JSON property `dynamicMuteRecords`
+        # @return [Array<Google::Apis::SecuritycenterV1::DynamicMuteRecord>]
+        attr_accessor :dynamic_mute_records
+      
+        # Information about the static mute state. A static mute state overrides any
+        # dynamic mute rules that apply to this finding. The static mute state can be
+        # set by a static mute rule or by muting the finding directly.
+        # Corresponds to the JSON property `staticMute`
+        # @return [Google::Apis::SecuritycenterV1::StaticMute]
+        attr_accessor :static_mute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_mute_records = args[:dynamic_mute_records] if args.key?(:dynamic_mute_records)
+          @static_mute = args[:static_mute] if args.key?(:static_mute)
         end
       end
       
@@ -10470,6 +10665,34 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Information about the static mute state. A static mute state overrides any
+      # dynamic mute rules that apply to this finding. The static mute state can be
+      # set by a static mute rule or by muting the finding directly.
+      class StaticMute
+        include Google::Apis::Core::Hashable
+      
+        # When the static mute was applied.
+        # Corresponds to the JSON property `applyTime`
+        # @return [String]
+        attr_accessor :apply_time
+      
+        # The static mute state. If the value is `MUTED` or `UNMUTED`, then the finding'
+        # s overall mute state will have the same value.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_time = args[:apply_time] if args.key?(:apply_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
