@@ -715,6 +715,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :detected_attributes
       
+        # Output only. IDs of the detected categories, if any. The taxonomy in which the
+        # categories are expressed is specified by the detected_categories_taxonomy
+        # field. Can be used to filter the response of the creatives.list method.
+        # Corresponds to the JSON property `detectedCategories`
+        # @return [Array<String>]
+        attr_accessor :detected_categories
+      
+        # Output only. The taxonomy in which the detected_categories field is expressed.
+        # Corresponds to the JSON property `detectedCategoriesTaxonomy`
+        # @return [String]
+        attr_accessor :detected_categories_taxonomy
+      
         # The set of detected destination URLs for the creative. Can be used to filter
         # the response of the creatives.list method.
         # Corresponds to the JSON property `detectedClickThroughUrls`
@@ -793,6 +805,8 @@ module Google
           @deals_policy_compliance = args[:deals_policy_compliance] if args.key?(:deals_policy_compliance)
           @detected_advertisers = args[:detected_advertisers] if args.key?(:detected_advertisers)
           @detected_attributes = args[:detected_attributes] if args.key?(:detected_attributes)
+          @detected_categories = args[:detected_categories] if args.key?(:detected_categories)
+          @detected_categories_taxonomy = args[:detected_categories_taxonomy] if args.key?(:detected_categories_taxonomy)
           @detected_click_through_urls = args[:detected_click_through_urls] if args.key?(:detected_click_through_urls)
           @detected_domains = args[:detected_domains] if args.key?(:detected_domains)
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
