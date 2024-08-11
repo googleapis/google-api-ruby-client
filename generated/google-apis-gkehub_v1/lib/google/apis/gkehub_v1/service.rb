@@ -267,6 +267,11 @@ module Google
         # @param [String] name
         #   Required. The Feature resource name in the format `projects/*/locations/*/
         #   features/*`
+        # @param [Boolean] return_partial_success
+        #   Optional. If set to true, the response will return partial results when some
+        #   regions are unreachable and the unreachable field in Feature proto will be
+        #   populated. If set to false, the request will fail when some regions are
+        #   unreachable.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -284,11 +289,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_feature(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_feature(name, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GkehubV1::Feature::Representation
           command.response_class = Google::Apis::GkehubV1::Feature
           command.params['name'] = name unless name.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -359,6 +365,11 @@ module Google
         # @param [String] page_token
         #   Token returned by previous call to `ListFeatures` which specifies the position
         #   in the list from where to continue listing the resources.
+        # @param [Boolean] return_partial_success
+        #   Optional. If set to true, the response will return partial results when some
+        #   regions are unreachable and the unreachable field in Feature proto will be
+        #   populated. If set to false, the request will fail when some regions are
+        #   unreachable.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -376,7 +387,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_features(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_features(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/features', options)
           command.response_representation = Google::Apis::GkehubV1::ListFeaturesResponse::Representation
           command.response_class = Google::Apis::GkehubV1::ListFeaturesResponse
@@ -385,6 +396,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

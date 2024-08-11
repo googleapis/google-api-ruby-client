@@ -2096,6 +2096,12 @@ module Google
         # @return [Google::Apis::GkehubV1::CommonFeatureState]
         attr_accessor :state
       
+        # Output only. List of locations that could not be reached while fetching this
+        # feature.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         # Output only. When the Feature resource was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -2119,6 +2125,7 @@ module Google
           @scope_states = args[:scope_states] if args.key?(:scope_states)
           @spec = args[:spec] if args.key?(:spec)
           @state = args[:state] if args.key?(:state)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
