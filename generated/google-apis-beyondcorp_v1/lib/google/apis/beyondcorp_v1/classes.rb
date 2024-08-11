@@ -2390,6 +2390,26 @@ module Google
         end
       end
       
+      # Response message for calling ShouldThrottle
+      class ShouldThrottleResponse
+        include Google::Apis::Core::Hashable
+      
+        # Whether the port should be throttled
+        # Corresponds to the JSON property `shouldThrottle`
+        # @return [Boolean]
+        attr_accessor :should_throttle
+        alias_method :should_throttle?, :should_throttle
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @should_throttle = args[:should_throttle] if args.key?(:should_throttle)
+        end
+      end
+      
       # TunnelerError is an error proto for errors returned by the connection manager.
       class Tunnelv1ProtoTunnelerError
         include Google::Apis::Core::Hashable
