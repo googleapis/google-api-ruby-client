@@ -1040,6 +1040,12 @@ module Google
       class GoogleCloudRetailV2CompleteQueryResponse
         include Google::Apis::Core::Hashable
       
+        # A map of matched attribute suggestions. This field is only available for "
+        # cloud-retail" dataset. Current supported keys: * `brands` * `categories`
+        # Corresponds to the JSON property `attributeResults`
+        # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2CompleteQueryResponseAttributeResult>]
+        attr_accessor :attribute_results
+      
         # A unique complete token. This should be included in the UserEvent.
         # completion_detail for search events resulting from this completion, which
         # enables accurate attribution of complete model performance.
@@ -1072,9 +1078,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attribute_results = args[:attribute_results] if args.key?(:attribute_results)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @completion_results = args[:completion_results] if args.key?(:completion_results)
           @recent_search_results = args[:recent_search_results] if args.key?(:recent_search_results)
+        end
+      end
+      
+      # Resource that represents attribute results.
+      class GoogleCloudRetailV2CompleteQueryResponseAttributeResult
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `suggestions`
+        # @return [Array<String>]
+        attr_accessor :suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggestions = args[:suggestions] if args.key?(:suggestions)
         end
       end
       
