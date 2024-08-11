@@ -3148,9 +3148,10 @@ module Google
       
         # A list of identities that are allowed access through [EgressPolicy].
         # Identities can be an individual user, service account, Google group, or third-
-        # party identity. The `v1` identities that have the prefix `user`, `group`, `
-        # serviceAccount`, `principal`, and `principalSet` in https://cloud.google.com/
-        # iam/docs/principal-identifiers#v1 are supported.
+        # party identity. For third-party identity, only single identities are supported
+        # and other identity types are not supported. The `v1` identities that have the
+        # prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.
+        # google.com/iam/docs/principal-identifiers#v1 are supported.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -3318,9 +3319,10 @@ module Google
       
         # A list of identities that are allowed access through [IngressPolicy].
         # Identities can be an individual user, service account, Google group, or third-
-        # party identity. The `v1` identities that have the prefix `user`, `group`, `
-        # serviceAccount`, `principal`, and `principalSet` in https://cloud.google.com/
-        # iam/docs/principal-identifiers#v1 are supported.
+        # party identity. For third-party identity, only single identities are supported
+        # and other identity types are not supported. The `v1` identities that have the
+        # prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.
+        # google.com/iam/docs/principal-identifiers#v1 are supported.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -4956,9 +4958,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The query response, which can be either an `error` or a valid `response`. If `
-        # done` == `false` and the query result is being saved in a output, the
+        # done` == `false` and the query result is being saved in an output, the
         # output_config field will be set. If `done` == `true`, exactly one of `error`, `
-        # query_result` or `output_config` will be set.
+        # query_result` or `output_config` will be set. [done] is unset unless the [
+        # QueryAssetsResponse] contains a [QueryAssetsResponse.job_reference].
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
