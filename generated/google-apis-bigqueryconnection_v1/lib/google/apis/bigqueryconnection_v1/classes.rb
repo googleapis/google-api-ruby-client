@@ -516,7 +516,8 @@ module Google
         attr_accessor :has_credential
         alias_method :has_credential?, :has_credential
       
-        # Optional. The Cloud KMS key that is used for encryption. Example: `projects/[
+        # Optional. The Cloud KMS key that is used for credentials encryption. If
+        # omitted, internal Google owned encryption keys are used. Example: `projects/[
         # kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]`
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
