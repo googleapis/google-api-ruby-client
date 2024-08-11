@@ -502,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityColumnInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IndexUnusedReason
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2284,6 +2290,15 @@ module Google
         end
       end
       
+      class IdentityColumnInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generated_mode, as: 'generatedMode'
+          property :increment, as: 'increment'
+          property :start, as: 'start'
+        end
+      end
+      
       class IndexUnusedReason
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3780,6 +3795,8 @@ module Google
           collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::TableFieldSchema, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Representation
       
           property :foreign_type_definition, as: 'foreignTypeDefinition'
+          property :identity_column_info, as: 'identityColumnInfo', class: Google::Apis::BigqueryV2::IdentityColumnInfo, decorator: Google::Apis::BigqueryV2::IdentityColumnInfo::Representation
+      
           property :max_length, :numeric_string => true, as: 'maxLength'
           property :mode, as: 'mode'
           property :name, as: 'name'

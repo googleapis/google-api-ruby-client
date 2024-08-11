@@ -3966,6 +3966,40 @@ module Google
         end
       end
       
+      # Metadata for value generation for an identity column.
+      class IdentityColumnInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Dictates when system generated values are used to populate the field.
+        # Corresponds to the JSON property `generatedMode`
+        # @return [String]
+        attr_accessor :generated_mode
+      
+        # Optional. The minimum difference between two successive generated values.
+        # Should be INTEGER compatible. Can be negative or positive but not 0. The
+        # default value is 1 if the field is not specified.
+        # Corresponds to the JSON property `increment`
+        # @return [String]
+        attr_accessor :increment
+      
+        # Optional. The first generated value. Should be INTEGER compatible. The default
+        # value is 1 if the field is not specified.
+        # Corresponds to the JSON property `start`
+        # @return [String]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generated_mode = args[:generated_mode] if args.key?(:generated_mode)
+          @increment = args[:increment] if args.key?(:increment)
+          @start = args[:start] if args.key?(:start)
+        end
+      end
+      
       # Reason about why no search index was used in the search query (or sub-query).
       class IndexUnusedReason
         include Google::Apis::Core::Hashable
@@ -9964,6 +9998,11 @@ module Google
         # @return [String]
         attr_accessor :foreign_type_definition
       
+        # Metadata for value generation for an identity column.
+        # Corresponds to the JSON property `identityColumnInfo`
+        # @return [Google::Apis::BigqueryV2::IdentityColumnInfo]
+        attr_accessor :identity_column_info
+      
         # Optional. Maximum length of values of this field for STRINGS or BYTES. If
         # max_length is not specified, no maximum length constraint is imposed on this
         # field. If type = "STRING", then max_length represents the maximum UTF-8 length
@@ -10050,6 +10089,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @fields = args[:fields] if args.key?(:fields)
           @foreign_type_definition = args[:foreign_type_definition] if args.key?(:foreign_type_definition)
+          @identity_column_info = args[:identity_column_info] if args.key?(:identity_column_info)
           @max_length = args[:max_length] if args.key?(:max_length)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
