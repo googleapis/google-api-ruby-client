@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1CustomerManagedEncryptionOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1DailyRecurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +287,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1DeleteDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1EncryptionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -317,6 +329,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1FlatIndex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +431,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1RestoreDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1SourceEncryptionOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1082,6 +1106,13 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1CustomerManagedEncryptionOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
       class GoogleFirestoreAdminV1DailyRecurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1115,6 +1146,18 @@ module Google
       class GoogleFirestoreAdminV1DeleteDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_managed_encryption, as: 'customerManagedEncryption', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CustomerManagedEncryptionOptions, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CustomerManagedEncryptionOptions::Representation
+      
+          property :google_default_encryption, as: 'googleDefaultEncryption', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions::Representation
+      
+          property :use_source_encryption, as: 'useSourceEncryption', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceEncryptionOptions, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceEncryptionOptions::Representation
+      
         end
       end
       
@@ -1182,6 +1225,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1FlatIndex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1345,11 +1394,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
           property :database_id, as: 'databaseId'
-          property :kms_key_name, as: 'kmsKeyName'
-          property :use_backup_encryption, as: 'useBackupEncryption', class: Google::Apis::FirestoreV1::Empty, decorator: Google::Apis::FirestoreV1::Empty::Representation
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig::Representation
       
-          property :use_google_default_encryption, as: 'useGoogleDefaultEncryption', class: Google::Apis::FirestoreV1::Empty, decorator: Google::Apis::FirestoreV1::Empty::Representation
+        end
+      end
       
+      class GoogleFirestoreAdminV1SourceEncryptionOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -637,10 +637,7 @@ module Google
       # A Document has changed. May be the result of multiple writes, including
       # deletes, that ultimately resulted in a new value for the Document. Multiple
       # DocumentChange messages may be returned for the same logical change, if
-      # multiple targets are affected. For PipelineQueryTargets, `document` will be in
-      # the new pipeline format, For a Listen stream with both QueryTargets and
-      # PipelineQueryTargets present, if a document matches both types of queries,
-      # then a separate DocumentChange messages will be sent out one for each set.
+      # multiple targets are affected.
       class DocumentChange
         include Google::Apis::Core::Hashable
       
@@ -1409,6 +1406,31 @@ module Google
         end
       end
       
+      # The configuration options for using CMEK (Customer Managed Encryption Key)
+      # encryption.
+      class GoogleFirestoreAdminV1CustomerManagedEncryptionOptions
+        include Google::Apis::Core::Hashable
+      
+        # Required. Only keys in the same location as the database are allowed to be
+        # used for encryption. For Firestore's nam5 multi-region, this corresponds to
+        # Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds
+        # to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/
+        # locations. The expected format is `projects/`project_id`/locations/`
+        # kms_location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
       # Represents a recurring schedule that runs every day. The time zone is UTC.
       class GoogleFirestoreAdminV1DailyRecurrence
         include Google::Apis::Core::Hashable
@@ -1572,6 +1594,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Encryption configuration for a new database being created from another source.
+      # The source could be a Backup or a DatabaseSnapshot.
+      class GoogleFirestoreAdminV1EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration options for using CMEK (Customer Managed Encryption Key)
+        # encryption.
+        # Corresponds to the JSON property `customerManagedEncryption`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CustomerManagedEncryptionOptions]
+        attr_accessor :customer_managed_encryption
+      
+        # The configuration options for using Google default encryption.
+        # Corresponds to the JSON property `googleDefaultEncryption`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions]
+        attr_accessor :google_default_encryption
+      
+        # The configuration options for using the same encryption method as the source.
+        # Corresponds to the JSON property `useSourceEncryption`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceEncryptionOptions]
+        attr_accessor :use_source_encryption
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_managed_encryption = args[:customer_managed_encryption] if args.key?(:customer_managed_encryption)
+          @google_default_encryption = args[:google_default_encryption] if args.key?(:google_default_encryption)
+          @use_source_encryption = args[:use_source_encryption] if args.key?(:use_source_encryption)
         end
       end
       
@@ -1843,6 +1898,19 @@ module Google
       # An index that stores vectors in a flat data structure, and supports exhaustive
       # search.
       class GoogleFirestoreAdminV1FlatIndex
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The configuration options for using Google default encryption.
+      class GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2425,32 +2493,11 @@ module Google
         # @return [String]
         attr_accessor :database_id
       
-        # Use Customer Managed Encryption Keys (CMEK) for encryption. Only keys in the
-        # same location as the restored database are allowed to be used for encryption.
-        # For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region
-        # us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-
-        # region europe. See https://cloud.google.com/kms/docs/locations. The expected
-        # format is `projects/`project_id`/locations/`kms_location`/keyRings/`key_ring`/
-        # cryptoKeys/`crypto_key``.
-        # Corresponds to the JSON property `kmsKeyName`
-        # @return [String]
-        attr_accessor :kms_key_name
-      
-        # A generic empty message that you can re-use to avoid defining duplicated empty
-        # messages in your APIs. A typical example is to use it as the request or the
-        # response type of an API method. For instance: service Foo ` rpc Bar(google.
-        # protobuf.Empty) returns (google.protobuf.Empty); `
-        # Corresponds to the JSON property `useBackupEncryption`
-        # @return [Google::Apis::FirestoreV1::Empty]
-        attr_accessor :use_backup_encryption
-      
-        # A generic empty message that you can re-use to avoid defining duplicated empty
-        # messages in your APIs. A typical example is to use it as the request or the
-        # response type of an API method. For instance: service Foo ` rpc Bar(google.
-        # protobuf.Empty) returns (google.protobuf.Empty); `
-        # Corresponds to the JSON property `useGoogleDefaultEncryption`
-        # @return [Google::Apis::FirestoreV1::Empty]
-        attr_accessor :use_google_default_encryption
+        # Encryption configuration for a new database being created from another source.
+        # The source could be a Backup or a DatabaseSnapshot.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig]
+        attr_accessor :encryption_config
       
         def initialize(**args)
            update!(**args)
@@ -2460,9 +2507,20 @@ module Google
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
           @database_id = args[:database_id] if args.key?(:database_id)
-          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
-          @use_backup_encryption = args[:use_backup_encryption] if args.key?(:use_backup_encryption)
-          @use_google_default_encryption = args[:use_google_default_encryption] if args.key?(:use_google_default_encryption)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+        end
+      end
+      
+      # The configuration options for using the same encryption method as the source.
+      class GoogleFirestoreAdminV1SourceEncryptionOptions
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2877,10 +2935,7 @@ module Google
         # A Document has changed. May be the result of multiple writes, including
         # deletes, that ultimately resulted in a new value for the Document. Multiple
         # DocumentChange messages may be returned for the same logical change, if
-        # multiple targets are affected. For PipelineQueryTargets, `document` will be in
-        # the new pipeline format, For a Listen stream with both QueryTargets and
-        # PipelineQueryTargets present, if a document matches both types of queries,
-        # then a separate DocumentChange messages will be sent out one for each set.
+        # multiple targets are affected.
         # Corresponds to the JSON property `documentChange`
         # @return [Google::Apis::FirestoreV1::DocumentChange]
         attr_accessor :document_change
