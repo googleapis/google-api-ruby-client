@@ -662,6 +662,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
+        # Optional. The minimum CPU platform to use for this instance. The list of valid
+        # values can be found in https://cloud.google.com/compute/docs/instances/specify-
+        # min-cpu-platform#availablezones
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
         # Optional. The network interfaces for the VM. Supports only one interface.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::NotebooksV2::NetworkInterface>]
@@ -707,6 +714,7 @@ module Google
           @gpu_driver_config = args[:gpu_driver_config] if args.key?(:gpu_driver_config)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
