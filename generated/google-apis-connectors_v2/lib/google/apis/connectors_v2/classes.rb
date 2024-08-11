@@ -110,6 +110,39 @@ module Google
         end
       end
       
+      # AuthCodeData contains the data the runtime plane will give the connector
+      # backend in exchange for access and refresh tokens.
+      class AuthCodeData
+        include Google::Apis::Core::Hashable
+      
+        # OAuth authorization code.
+        # Corresponds to the JSON property `authCode`
+        # @return [String]
+        attr_accessor :auth_code
+      
+        # OAuth PKCE verifier, needed if PKCE is enabled for this particular connection.
+        # Corresponds to the JSON property `pkceVerifier`
+        # @return [String]
+        attr_accessor :pkce_verifier
+      
+        # OAuth redirect URI passed in during the auth code flow, required by some OAuth
+        # backends.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_code = args[:auth_code] if args.key?(:auth_code)
+          @pkce_verifier = args[:pkce_verifier] if args.key?(:pkce_verifier)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+        end
+      end
+      
       # Response containing status of the connector for readiness prober.
       class CheckReadinessResponse
         include Google::Apis::Core::Hashable
@@ -352,9 +385,15 @@ module Google
         end
       end
       
-      # ExchangeAuthCodeRequest currently includes no fields.
+      # ExchangeAuthCodeRequest currently includes the auth code data.
       class ExchangeAuthCodeRequest
         include Google::Apis::Core::Hashable
+      
+        # AuthCodeData contains the data the runtime plane will give the connector
+        # backend in exchange for access and refresh tokens.
+        # Corresponds to the JSON property `authCodeData`
+        # @return [Google::Apis::ConnectorsV2::AuthCodeData]
+        attr_accessor :auth_code_data
       
         def initialize(**args)
            update!(**args)
@@ -362,6 +401,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auth_code_data = args[:auth_code_data] if args.key?(:auth_code_data)
         end
       end
       
@@ -1319,9 +1359,15 @@ module Google
         end
       end
       
-      # RefreshAccessTokenRequest currently includes no fields.
+      # RefreshAccessTokenRequest includes the refresh token.
       class RefreshAccessTokenRequest
         include Google::Apis::Core::Hashable
+      
+        # Optional. Refresh Token String. If the Refresh Token is not provided, the
+        # runtime will read the data from the secret manager.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
       
         def initialize(**args)
            update!(**args)
@@ -1329,6 +1375,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
         end
       end
       
