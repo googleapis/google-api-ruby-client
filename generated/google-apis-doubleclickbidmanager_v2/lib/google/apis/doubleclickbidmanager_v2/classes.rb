@@ -22,7 +22,7 @@ module Google
   module Apis
     module DoubleclickbidmanagerV2
       
-      # Report data range.
+      # The date range to be reported on.
       class DataRange
         include Google::Apis::Core::Hashable
       
@@ -50,7 +50,9 @@ module Google
         # @return [Google::Apis::DoubleclickbidmanagerV2::Date]
         attr_accessor :custom_start_date
       
-        # Report data range used to generate the report.
+        # The preset date range to be reported on. If `CUSTOM_DATES` is assigned to this
+        # field, fields custom_start_date and custom_end_date must be set to specify the
+        # custom date range.
         # Corresponds to the JSON property `range`
         # @return [String]
         attr_accessor :range
@@ -108,16 +110,17 @@ module Google
         end
       end
       
-      # Filter used to match traffic data in your report.
+      # Represents a single filter rule.
       class FilterPair
         include Google::Apis::Core::Hashable
       
-        # Filter type.
+        # The type of value to filter by. Defined by a [Filter](/bid-manager/reference/
+        # rest/v2/filters-metrics#filters) value.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Filter value.
+        # The identifying value to filter by, such as a relevant resource ID.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -137,13 +140,14 @@ module Google
       class ListQueriesResponse
         include Google::Apis::Core::Hashable
       
-        # A token, which can be sent as page_token to retrieve the next page of queries.
-        # If this field is omitted, there are no subsequent pages.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `queries.list` method to retrieve
+        # the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of queries.
+        # The list of queries. This field will be absent if empty.
         # Corresponds to the JSON property `queries`
         # @return [Array<Google::Apis::DoubleclickbidmanagerV2::Query>]
         attr_accessor :queries
@@ -163,13 +167,14 @@ module Google
       class ListReportsResponse
         include Google::Apis::Core::Hashable
       
-        # A token, which can be sent as page_token to retrieve the next page of reports.
-        # If this field is omitted, there are no subsequent pages.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `queries.reports.list` method to
+        # retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # Retrieved reports.
+        # The list of reports. This field will be absent if empty.
         # Corresponds to the JSON property `reports`
         # @return [Array<Google::Apis::DoubleclickbidmanagerV2::Report>]
         attr_accessor :reports
@@ -185,13 +190,13 @@ module Google
         end
       end
       
-      # Additional query options.
+      # Report parameter options.
       class Options
         include Google::Apis::Core::Hashable
       
-        # Set to true and filter your report by `FILTER_INSERTION_ORDER` or `
-        # FILTER_LINE_ITEM` to include data for audience lists specifically targeted by
-        # those items.
+        # Whether to include data for audience lists specifically targeted by filtered
+        # line items or insertion orders. Requires the use of `FILTER_INSERTION_ORDER`
+        # or `FILTER_LINE_ITEM` filters.
         # Corresponds to the JSON property `includeOnlyTargetedUserLists`
         # @return [Boolean]
         attr_accessor :include_only_targeted_user_lists
@@ -207,32 +212,34 @@ module Google
         end
       end
       
-      # Parameters of a query or report.
+      # Parameters of a generated report.
       class Parameters
         include Google::Apis::Core::Hashable
       
-        # Filters used to match traffic data in your report.
+        # Filters to limit the scope of reported data.
         # Corresponds to the JSON property `filters`
         # @return [Array<Google::Apis::DoubleclickbidmanagerV2::FilterPair>]
         attr_accessor :filters
       
-        # Data is grouped by the filters listed in this field.
+        # Dimensions by which to segment and group the data. Defined by [Filter](/bid-
+        # manager/reference/rest/v2/filters-metrics#filters) values.
         # Corresponds to the JSON property `groupBys`
         # @return [Array<String>]
         attr_accessor :group_bys
       
-        # Metrics to include as columns in your report.
+        # Metrics to define the data populating the report. Defined by [Metric](/bid-
+        # manager/reference/rest/v2/filters-metrics#metrics) values.
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
       
-        # Additional query options.
+        # Report parameter options.
         # Corresponds to the JSON property `options`
         # @return [Google::Apis::DoubleclickbidmanagerV2::Options]
         attr_accessor :options
       
-        # The type of the report. The type of the report will dictate what dimesions,
-        # filters, and metrics can be used.
+        # The type of the report. The type of the report determines the dimesions,
+        # filters, and metrics that can be used.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -251,26 +258,26 @@ module Google
         end
       end
       
-      # Represents a query.
+      # A single query used to generate a report.
       class Query
         include Google::Apis::Core::Hashable
       
-        # Query metadata.
+        # The metadata of the query.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::DoubleclickbidmanagerV2::QueryMetadata]
         attr_accessor :metadata
       
-        # Parameters of a query or report.
+        # Parameters of a generated report.
         # Corresponds to the JSON property `params`
         # @return [Google::Apis::DoubleclickbidmanagerV2::Parameters]
         attr_accessor :params
       
-        # Output only. Query ID.
+        # Output only. The unique ID of the query.
         # Corresponds to the JSON property `queryId`
         # @return [Fixnum]
         attr_accessor :query_id
       
-        # Information on when and how frequently to run a query.
+        # Settings on when and how frequently to run a query.
         # Corresponds to the JSON property `schedule`
         # @return [Google::Apis::DoubleclickbidmanagerV2::QuerySchedule]
         attr_accessor :schedule
@@ -288,34 +295,38 @@ module Google
         end
       end
       
-      # Query metadata.
+      # The metadata of the query.
       class QueryMetadata
         include Google::Apis::Core::Hashable
       
-        # Report data range.
+        # The date range to be reported on.
         # Corresponds to the JSON property `dataRange`
         # @return [Google::Apis::DoubleclickbidmanagerV2::DataRange]
         attr_accessor :data_range
       
-        # Format of the generated report.
+        # The format of the report generated by the query.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
       
-        # Whether to send an email notification when a report is ready. Defaults to
-        # false.
+        # Whether an email notification is sent to the query creator when a report
+        # generated by the query is ready. This value is `false` by default.
         # Corresponds to the JSON property `sendNotification`
         # @return [Boolean]
         attr_accessor :send_notification
         alias_method :send_notification?, :send_notification
       
-        # List of email addresses which are sent email notifications when the report is
-        # finished. Separate from send_notification.
+        # List of additional email addresses with which to share the query. If
+        # send_notification is `true`, these email addresses will receive a notification
+        # when a report generated by the query is ready. If these email addresses are
+        # connected to Display & Video 360 users, the query will be available to them in
+        # the Display & Video 360 interface.
         # Corresponds to the JSON property `shareEmailAddress`
         # @return [Array<String>]
         attr_accessor :share_email_address
       
-        # Query title. It is used to name the reports generated from this query.
+        # The display name of the query. This value will be used in the file name of
+        # reports generated by the query.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -334,7 +345,7 @@ module Google
         end
       end
       
-      # Information on when and how frequently to run a query.
+      # Settings on when and how frequently to run a query.
       class QuerySchedule
         include Google::Apis::Core::Hashable
       
@@ -350,12 +361,14 @@ module Google
         # @return [Google::Apis::DoubleclickbidmanagerV2::Date]
         attr_accessor :end_date
       
-        # How often the query is run.
+        # How frequently to run the query. If set to `ONE_TIME`, the query will only be
+        # run when queries.run is called.
         # Corresponds to the JSON property `frequency`
         # @return [String]
         attr_accessor :frequency
       
-        # Canonical timezone code for report generation time. Defaults to `America/
+        # The canonical code for the timezone the query schedule is based on. Scheduled
+        # runs are usually conducted in the morning of a given day. Defaults to `America/
         # New_York`.
         # Corresponds to the JSON property `nextRunTimezoneCode`
         # @return [String]
@@ -386,21 +399,21 @@ module Google
         end
       end
       
-      # Represents a report.
+      # A single report generated by its parent report.
       class Report
         include Google::Apis::Core::Hashable
       
-        # Key used to identify a report.
+        # Identifying information of a report.
         # Corresponds to the JSON property `key`
         # @return [Google::Apis::DoubleclickbidmanagerV2::ReportKey]
         attr_accessor :key
       
-        # Report metadata.
+        # The metadata of a report.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::DoubleclickbidmanagerV2::ReportMetadata]
         attr_accessor :metadata
       
-        # Parameters of a query or report.
+        # Parameters of a generated report.
         # Corresponds to the JSON property `params`
         # @return [Google::Apis::DoubleclickbidmanagerV2::Parameters]
         attr_accessor :params
@@ -417,16 +430,16 @@ module Google
         end
       end
       
-      # Key used to identify a report.
+      # Identifying information of a report.
       class ReportKey
         include Google::Apis::Core::Hashable
       
-        # Output only. Query ID.
+        # Output only. The unique ID of the query that generated the report.
         # Corresponds to the JSON property `queryId`
         # @return [Fixnum]
         attr_accessor :query_id
       
-        # Output only. Report ID.
+        # Output only. The unique ID of the report.
         # Corresponds to the JSON property `reportId`
         # @return [Fixnum]
         attr_accessor :report_id
@@ -442,12 +455,12 @@ module Google
         end
       end
       
-      # Report metadata.
+      # The metadata of a report.
       class ReportMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. The path to the location in Google Cloud Storage where the report
-        # is stored.
+        # Output only. The location of the generated report file in Google Cloud Storage.
+        # This field will be absent if status.state is not `DONE`.
         # Corresponds to the JSON property `googleCloudStoragePath`
         # @return [String]
         attr_accessor :google_cloud_storage_path
@@ -476,7 +489,7 @@ module Google
         # @return [Google::Apis::DoubleclickbidmanagerV2::Date]
         attr_accessor :report_data_start_date
       
-        # Report status.
+        # The status of a report.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::DoubleclickbidmanagerV2::ReportStatus]
         attr_accessor :status
@@ -494,21 +507,22 @@ module Google
         end
       end
       
-      # Report status.
+      # The status of a report.
       class ReportStatus
         include Google::Apis::Core::Hashable
       
-        # Output only. The time when this report either completed successfully or failed.
+        # Output only. The timestamp of when report generation finished successfully or
+        # in failure. This field will not be set unless state is `DONE` or `FAILED`.
         # Corresponds to the JSON property `finishTime`
         # @return [String]
         attr_accessor :finish_time
       
-        # The file type of the report.
+        # The format of the generated report file.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
       
-        # Output only. The state of the report.
+        # Output only. The state of the report generation.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -525,11 +539,11 @@ module Google
         end
       end
       
-      # Request to run a stored query to generate a report.
+      # Details specifying how to run a query.
       class RunQueryRequest
         include Google::Apis::Core::Hashable
       
-        # Report data range.
+        # The date range to be reported on.
         # Corresponds to the JSON property `dataRange`
         # @return [Google::Apis::DoubleclickbidmanagerV2::DataRange]
         attr_accessor :data_range
