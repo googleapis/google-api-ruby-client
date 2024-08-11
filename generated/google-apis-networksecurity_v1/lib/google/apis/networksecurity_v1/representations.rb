@@ -387,6 +387,7 @@ module Google
           collection :items, as: 'items'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :purpose, as: 'purpose'
           property :self_link, as: 'selfLink'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
