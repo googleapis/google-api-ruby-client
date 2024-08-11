@@ -4015,7 +4015,9 @@ module Google
         attr_accessor :entry_type
       
         # Optional. A name for the entry that can be referenced by an external system.
-        # The maximum size of the field is 4000 characters.
+        # For more information, see Fully qualified names (https://cloud.google.com/data-
+        # catalog/docs/fully-qualified-names). The maximum size of the field is 4000
+        # characters.
         # Corresponds to the JSON property `fullyQualifiedName`
         # @return [String]
         attr_accessor :fully_qualified_name
@@ -5727,9 +5729,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The name of the resource that the configuration is applied to, in
-        # the format projects/`project_number`/locations/`location_id`/metadataJobs/`
-        # metadata_job_id`.
+        # Output only. Identifier. The name of the resource that the configuration is
+        # applied to, in the format projects/`project_number`/locations/`location_id`/
+        # metadataJobs/`metadata_job_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5739,7 +5741,7 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobStatus]
         attr_accessor :status
       
-        # 
+        # Required. Metadata job type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
