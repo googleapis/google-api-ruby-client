@@ -1738,6 +1738,11 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Service mesh configuration.
+        # Corresponds to the JSON property `serviceMesh`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh]
+        attr_accessor :service_mesh
+      
         # Enable session affinity.
         # Corresponds to the JSON property `sessionAffinity`
         # @return [Boolean]
@@ -1803,6 +1808,7 @@ module Google
           @scaling_status = args[:scaling_status] if args.key?(:scaling_status)
           @service = args[:service] if args.key?(:service)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @service_mesh = args[:service_mesh] if args.key?(:service_mesh)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @timeout = args[:timeout] if args.key?(:timeout)
           @uid = args[:uid] if args.key?(:uid)
@@ -1940,6 +1946,11 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Service mesh configuration.
+        # Corresponds to the JSON property `serviceMesh`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh]
+        attr_accessor :service_mesh
+      
         # Optional. Enable session affinity.
         # Corresponds to the JSON property `sessionAffinity`
         # @return [Boolean]
@@ -1979,6 +1990,7 @@ module Google
           @revision = args[:revision] if args.key?(:revision)
           @scaling = args[:scaling] if args.key?(:scaling)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @service_mesh = args[:service_mesh] if args.key?(:service_mesh)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @timeout = args[:timeout] if args.key?(:timeout)
           @volumes = args[:volumes] if args.key?(:volumes)
@@ -2376,6 +2388,26 @@ module Google
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Service mesh configuration.
+      class GoogleCloudRunV2ServiceMesh
+        include Google::Apis::Core::Hashable
+      
+        # The service mesh resource name. Format: projects/`project_number`/locations/
+        # global/meshes/`mesh`.
+        # Corresponds to the JSON property `mesh`
+        # @return [String]
+        attr_accessor :mesh
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mesh = args[:mesh] if args.key?(:mesh)
         end
       end
       
