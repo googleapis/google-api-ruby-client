@@ -579,6 +579,7 @@ module Google
           property :firewall_rule_type, as: 'firewallRuleType'
           property :network_uri, as: 'networkUri'
           property :policy, as: 'policy'
+          property :policy_uri, as: 'policyUri'
           property :priority, as: 'priority'
           collection :target_service_accounts, as: 'targetServiceAccounts'
           collection :target_tags, as: 'targetTags'

@@ -921,7 +921,7 @@ module Google
       end
       
       # For display only. Metadata associated with a VPC firewall rule, an implied VPC
-      # firewall rule, or a hierarchical firewall policy rule.
+      # firewall rule, or a firewall policy rule.
       class FirewallInfo
         include Google::Apis::Core::Hashable
       
@@ -935,8 +935,8 @@ module Google
         # @return [String]
         attr_accessor :direction
       
-        # The display name of the VPC firewall rule. This field is not applicable to
-        # hierarchical firewall policy rules.
+        # The display name of the firewall rule. This field might be empty for firewall
+        # policy rules.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -952,11 +952,17 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
-        # The hierarchical firewall policy that this rule is associated with. This field
-        # is not applicable to VPC firewall rules.
+        # The name of the firewall policy that this rule is associated with. This field
+        # is not applicable to VPC firewall rules and implied VPC firewall rules.
         # Corresponds to the JSON property `policy`
         # @return [String]
         attr_accessor :policy
+      
+        # The URI of the firewall policy that this rule is associated with. This field
+        # is not applicable to VPC firewall rules and implied VPC firewall rules.
+        # Corresponds to the JSON property `policyUri`
+        # @return [String]
+        attr_accessor :policy_uri
       
         # The priority of the firewall rule.
         # Corresponds to the JSON property `priority`
@@ -969,13 +975,13 @@ module Google
         attr_accessor :target_service_accounts
       
         # The target tags defined by the VPC firewall rule. This field is not applicable
-        # to hierarchical firewall policy rules.
+        # to firewall policy rules.
         # Corresponds to the JSON property `targetTags`
         # @return [Array<String>]
         attr_accessor :target_tags
       
-        # The URI of the VPC firewall rule. This field is not applicable to implied
-        # firewall rules or hierarchical firewall policy rules.
+        # The URI of the firewall rule. This field is not applicable to implied VPC
+        # firewall rules.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -992,6 +998,7 @@ module Google
           @firewall_rule_type = args[:firewall_rule_type] if args.key?(:firewall_rule_type)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @policy = args[:policy] if args.key?(:policy)
+          @policy_uri = args[:policy_uri] if args.key?(:policy_uri)
           @priority = args[:priority] if args.key?(:priority)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
           @target_tags = args[:target_tags] if args.key?(:target_tags)
@@ -2417,7 +2424,7 @@ module Google
         attr_accessor :endpoint
       
         # For display only. Metadata associated with a VPC firewall rule, an implied VPC
-        # firewall rule, or a hierarchical firewall policy rule.
+        # firewall rule, or a firewall policy rule.
         # Corresponds to the JSON property `firewall`
         # @return [Google::Apis::NetworkmanagementV1::FirewallInfo]
         attr_accessor :firewall
