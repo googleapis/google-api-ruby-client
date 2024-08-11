@@ -957,6 +957,12 @@ module Google
       class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
         include Google::Apis::Core::Hashable
       
+        # Optional. Allow partner to view support case details for an AXT log
+        # Corresponds to the JSON property `accessTransparencyLogsSupportCaseViewer`
+        # @return [Boolean]
+        attr_accessor :access_transparency_logs_support_case_viewer
+        alias_method :access_transparency_logs_support_case_viewer?, :access_transparency_logs_support_case_viewer
+      
         # Optional. Allow partner to view violation alerts.
         # Corresponds to the JSON property `assuredWorkloadsMonitoring`
         # @return [Boolean]
@@ -981,6 +987,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_transparency_logs_support_case_viewer = args[:access_transparency_logs_support_case_viewer] if args.key?(:access_transparency_logs_support_case_viewer)
           @assured_workloads_monitoring = args[:assured_workloads_monitoring] if args.key?(:assured_workloads_monitoring)
           @data_logs_viewer = args[:data_logs_viewer] if args.key?(:data_logs_viewer)
           @service_access_approver = args[:service_access_approver] if args.key?(:service_access_approver)

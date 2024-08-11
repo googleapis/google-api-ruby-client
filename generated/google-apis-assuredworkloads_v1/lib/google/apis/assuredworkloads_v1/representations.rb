@@ -472,6 +472,7 @@ module Google
       class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_transparency_logs_support_case_viewer, as: 'accessTransparencyLogsSupportCaseViewer'
           property :assured_workloads_monitoring, as: 'assuredWorkloadsMonitoring'
           property :data_logs_viewer, as: 'dataLogsViewer'
           property :service_access_approver, as: 'serviceAccessApprover'
