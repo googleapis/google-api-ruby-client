@@ -2148,6 +2148,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_personal_usage, as: 'allowPersonalUsage'
+          property :default_status, as: 'defaultStatus'
           property :qr_code, as: 'qrCode'
           property :signin_enrollment_token, as: 'signinEnrollmentToken'
           property :signin_url, as: 'signinUrl'
