@@ -3864,6 +3864,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Time when the CustomJob for the first time entered the `
         # JOB_STATE_RUNNING` state.
         # Corresponds to the JSON property `startTime`
@@ -3905,6 +3917,8 @@ module Google
           @job_spec = args[:job_spec] if args.key?(:job_spec)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -4583,6 +4597,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_replica_count
       
+        # Optional. If true, schedule the deployment workload on [spot VMs](https://
+        # cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
+        # Corresponds to the JSON property `spot`
+        # @return [Boolean]
+        attr_accessor :spot
+        alias_method :spot?, :spot
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4593,6 +4614,7 @@ module Google
           @machine_spec = args[:machine_spec] if args.key?(:machine_spec)
           @max_replica_count = args[:max_replica_count] if args.key?(:max_replica_count)
           @min_replica_count = args[:min_replica_count] if args.key?(:min_replica_count)
+          @spot = args[:spot] if args.key?(:spot)
         end
       end
       
@@ -10291,10 +10313,10 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema]
         attr_accessor :response_schema
       
-        # Optional. Seed.
-        # Corresponds to the JSON property `seed`
-        # @return [Fixnum]
-        attr_accessor :seed
+        # Routing config.
+        # Corresponds to the JSON property `routingConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfig]
+        attr_accessor :routing_config
       
         # Optional. Stop sequences.
         # Corresponds to the JSON property `stopSequences`
@@ -10328,11 +10350,77 @@ module Google
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
           @response_schema = args[:response_schema] if args.key?(:response_schema)
-          @seed = args[:seed] if args.key?(:seed)
+          @routing_config = args[:routing_config] if args.key?(:routing_config)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
+        end
+      end
+      
+      # Routing config.
+      class GoogleCloudAiplatformV1GenerationConfigRoutingConfig
+        include Google::Apis::Core::Hashable
+      
+        # When automated routing is specified, the routing will be determined by the
+        # pretrained routing model and customer provided model routing preference.
+        # Corresponds to the JSON property `autoMode`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingMode]
+        attr_accessor :auto_mode
+      
+        # When manual routing is set, the specified model will be used directly.
+        # Corresponds to the JSON property `manualMode`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode]
+        attr_accessor :manual_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_mode = args[:auto_mode] if args.key?(:auto_mode)
+          @manual_mode = args[:manual_mode] if args.key?(:manual_mode)
+        end
+      end
+      
+      # When automated routing is specified, the routing will be determined by the
+      # pretrained routing model and customer provided model routing preference.
+      class GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingMode
+        include Google::Apis::Core::Hashable
+      
+        # The model routing preference.
+        # Corresponds to the JSON property `modelRoutingPreference`
+        # @return [String]
+        attr_accessor :model_routing_preference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_routing_preference = args[:model_routing_preference] if args.key?(:model_routing_preference)
+        end
+      end
+      
+      # When manual routing is set, the specified model will be used directly.
+      class GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode
+        include Google::Apis::Core::Hashable
+      
+        # The model name to use. Only the public LLM models are accepted. e.g. gemini-1.
+        # 5-pro-001.
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_name = args[:model_name] if args.key?(:model_name)
         end
       end
       
@@ -10721,6 +10809,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :parallel_trial_count
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Time when the HyperparameterTuningJob for the first time entered
         # the `JOB_STATE_RUNNING` state.
         # Corresponds to the JSON property `startTime`
@@ -10768,6 +10868,8 @@ module Google
           @max_trial_count = args[:max_trial_count] if args.key?(:max_trial_count)
           @name = args[:name] if args.key?(:name)
           @parallel_trial_count = args[:parallel_trial_count] if args.key?(:parallel_trial_count)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @study_spec = args[:study_spec] if args.key?(:study_spec)
@@ -13182,6 +13284,13 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+        # DeployedModel) to draw its Compute Engine resources from a Shared Reservation,
+        # or exclusively from on-demand capacity.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReservationAffinity]
+        attr_accessor :reservation_affinity
+      
         # Immutable. The topology of the TPUs. Corresponds to the TPU topologies
         # available from GKE. (Example: tpu_topology: "2x2x1").
         # Corresponds to the JSON property `tpuTopology`
@@ -13197,6 +13306,7 @@ module Google
           @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
         end
       end
@@ -15782,6 +15892,18 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NasJobSpec]
         attr_accessor :nas_job_spec
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Time when the NasJob for the first time entered the `
         # JOB_STATE_RUNNING` state.
         # Corresponds to the JSON property `startTime`
@@ -15814,6 +15936,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nas_job_output = args[:nas_job_output] if args.key?(:nas_job_output)
           @nas_job_spec = args[:nas_job_spec] if args.key?(:nas_job_spec)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -16638,6 +16762,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents a customer-managed encryption key spec that can be applied to a top-
+        # level resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Max running time of the execution job in seconds (default 86400s / 24 hrs).
         # Corresponds to the JSON property `executionTimeout`
         # @return [String]
@@ -16721,6 +16851,7 @@ module Google
           @dataform_repository_source = args[:dataform_repository_source] if args.key?(:dataform_repository_source)
           @direct_notebook_source = args[:direct_notebook_source] if args.key?(:direct_notebook_source)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @execution_timeout = args[:execution_timeout] if args.key?(:execution_timeout)
           @execution_user = args[:execution_user] if args.key?(:execution_user)
           @gcs_notebook_source = args[:gcs_notebook_source] if args.key?(:gcs_notebook_source)
@@ -18513,6 +18644,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :project_allowlist
       
+        # Output only. The name of the generated service attachment resource. This is
+        # only populated if the endpoint is deployed with PrivateServiceConnect.
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
+      
         def initialize(**args)
            update!(**args)
         end
@@ -18521,6 +18658,7 @@ module Google
         def update!(**args)
           @enable_private_service_connect = args[:enable_private_service_connect] if args.key?(:enable_private_service_connect)
           @project_allowlist = args[:project_allowlist] if args.key?(:project_allowlist)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
         end
       end
       
@@ -20439,6 +20577,42 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+      # DeployedModel) to draw its Compute Engine resources from a Shared Reservation,
+      # or exclusively from on-demand capacity.
+      class GoogleCloudAiplatformV1ReservationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Corresponds to the label key of a reservation resource. To target a
+        # SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as
+        # the key and specify the name of your reservation as its value.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Required. Specifies the reservation affinity type.
+        # Corresponds to the JSON property `reservationAffinityType`
+        # @return [String]
+        attr_accessor :reservation_affinity_type
+      
+        # Optional. Corresponds to the label values of a reservation resource. This must
+        # be the full resource name of the reservation.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @reservation_affinity_type = args[:reservation_affinity_type] if args.key?(:reservation_affinity_type)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
