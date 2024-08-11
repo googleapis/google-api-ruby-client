@@ -545,6 +545,8 @@ module Google
           collection :detected_advertisers, as: 'detectedAdvertisers', class: Google::Apis::RealtimebiddingV1::AdvertiserAndBrand, decorator: Google::Apis::RealtimebiddingV1::AdvertiserAndBrand::Representation
       
           collection :detected_attributes, as: 'detectedAttributes'
+          collection :detected_categories, as: 'detectedCategories'
+          property :detected_categories_taxonomy, as: 'detectedCategoriesTaxonomy'
           collection :detected_click_through_urls, as: 'detectedClickThroughUrls'
           collection :detected_domains, as: 'detectedDomains'
           collection :detected_languages, as: 'detectedLanguages'
