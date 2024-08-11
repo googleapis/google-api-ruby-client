@@ -945,32 +945,56 @@ module Google
         # @return [Google::Apis::DocsV1::DocumentStyle]
         attr_accessor :document_style
       
-        # Output only. The footers in the document, keyed by footer ID.
+        # Output only. The footers in the document, keyed by footer ID. Legacy field:
+        # Instead, use Document.tabs.documentTab.footers, which exposes the actual
+        # document content from all tabs when the includeTabsContent parameter is set to
+        # `true`. If `false` or unset, this field contains information about the first
+        # tab in the document.
         # Corresponds to the JSON property `footers`
         # @return [Hash<String,Google::Apis::DocsV1::Footer>]
         attr_accessor :footers
       
-        # Output only. The footnotes in the document, keyed by footnote ID.
+        # Output only. The footnotes in the document, keyed by footnote ID. Legacy field:
+        # Instead, use Document.tabs.documentTab.footnotes, which exposes the actual
+        # document content from all tabs when the includeTabsContent parameter is set to
+        # `true`. If `false` or unset, this field contains information about the first
+        # tab in the document.
         # Corresponds to the JSON property `footnotes`
         # @return [Hash<String,Google::Apis::DocsV1::Footnote>]
         attr_accessor :footnotes
       
-        # Output only. The headers in the document, keyed by header ID.
+        # Output only. The headers in the document, keyed by header ID. Legacy field:
+        # Instead, use Document.tabs.documentTab.headers, which exposes the actual
+        # document content from all tabs when the includeTabsContent parameter is set to
+        # `true`. If `false` or unset, this field contains information about the first
+        # tab in the document.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,Google::Apis::DocsV1::Header>]
         attr_accessor :headers
       
-        # Output only. The inline objects in the document, keyed by object ID.
+        # Output only. The inline objects in the document, keyed by object ID. Legacy
+        # field: Instead, use Document.tabs.documentTab.inlineObjects, which exposes the
+        # actual document content from all tabs when the includeTabsContent parameter is
+        # set to `true`. If `false` or unset, this field contains information about the
+        # first tab in the document.
         # Corresponds to the JSON property `inlineObjects`
         # @return [Hash<String,Google::Apis::DocsV1::InlineObject>]
         attr_accessor :inline_objects
       
-        # Output only. The lists in the document, keyed by list ID.
+        # Output only. The lists in the document, keyed by list ID. Legacy field:
+        # Instead, use Document.tabs.documentTab.lists, which exposes the actual
+        # document content from all tabs when the includeTabsContent parameter is set to
+        # `true`. If `false` or unset, this field contains information about the first
+        # tab in the document.
         # Corresponds to the JSON property `lists`
         # @return [Hash<String,Google::Apis::DocsV1::List>]
         attr_accessor :lists
       
-        # Output only. The named ranges in the document, keyed by name.
+        # Output only. The named ranges in the document, keyed by name. Legacy field:
+        # Instead, use Document.tabs.documentTab.namedRanges, which exposes the actual
+        # document content from all tabs when the includeTabsContent parameter is set to
+        # `true`. If `false` or unset, this field contains information about the first
+        # tab in the document.
         # Corresponds to the JSON property `namedRanges`
         # @return [Hash<String,Google::Apis::DocsV1::NamedRanges>]
         attr_accessor :named_ranges
@@ -982,6 +1006,10 @@ module Google
         attr_accessor :named_styles
       
         # Output only. The positioned objects in the document, keyed by object ID.
+        # Legacy field: Instead, use Document.tabs.documentTab.positionedObjects, which
+        # exposes the actual document content from all tabs when the includeTabsContent
+        # parameter is set to `true`. If `false` or unset, this field contains
+        # information about the first tab in the document.
         # Corresponds to the JSON property `positionedObjects`
         # @return [Hash<String,Google::Apis::DocsV1::PositionedObject>]
         attr_accessor :positioned_objects
@@ -1002,13 +1030,19 @@ module Google
         attr_accessor :revision_id
       
         # Output only. The suggested changes to the style of the document, keyed by
-        # suggestion ID.
+        # suggestion ID. Legacy field: Instead, use Document.tabs.documentTab.
+        # suggestedDocumentStyleChanges, which exposes the actual document content from
+        # all tabs when the includeTabsContent parameter is set to `true`. If `false` or
+        # unset, this field contains information about the first tab in the document.
         # Corresponds to the JSON property `suggestedDocumentStyleChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedDocumentStyle>]
         attr_accessor :suggested_document_style_changes
       
         # Output only. The suggested changes to the named styles of the document, keyed
-        # by suggestion ID.
+        # by suggestion ID. Legacy field: Instead, use Document.tabs.documentTab.
+        # suggestedNamedStylesChanges, which exposes the actual document content from
+        # all tabs when the includeTabsContent parameter is set to `true`. If `false` or
+        # unset, this field contains information about the first tab in the document.
         # Corresponds to the JSON property `suggestedNamedStylesChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedNamedStyles>]
         attr_accessor :suggested_named_styles_changes
@@ -1021,7 +1055,7 @@ module Google
         attr_accessor :suggestions_view_mode
       
         # Tabs that are part of a document. Tabs can contain child tabs, a tab nested
-        # within another tab. Child tabs are represented by the Tab.child_tabs field.
+        # within another tab. Child tabs are represented by the Tab.childTabs field.
         # Corresponds to the JSON property `tabs`
         # @return [Array<Google::Apis::DocsV1::Tab>]
         attr_accessor :tabs
@@ -2566,7 +2600,14 @@ module Google
         # @return [Google::Apis::DocsV1::BookmarkLink]
         attr_accessor :bookmark
       
-        # The ID of a bookmark in this document.
+        # The ID of a bookmark in this document. Legacy field: Instead, set
+        # includeTabsContent to `true` and use Link.bookmark for read and write
+        # operations. This field is only returned when includeTabsContent is set to `
+        # false` in documents containing a single tab and links to a bookmark within the
+        # singular tab. Otherwise, Link.bookmark is returned. If this field is used in a
+        # write request, the bookmark is considered to be from the tab ID specified in
+        # the request. If a tab ID is not specified in the request, it is considered to
+        # be from the first tab in the document.
         # Corresponds to the JSON property `bookmarkId`
         # @return [String]
         attr_accessor :bookmark_id
@@ -2576,7 +2617,14 @@ module Google
         # @return [Google::Apis::DocsV1::HeadingLink]
         attr_accessor :heading
       
-        # The ID of a heading in this document.
+        # The ID of a heading in this document. Legacy field: Instead, set
+        # includeTabsContent to `true` and use Link.heading for read and write
+        # operations. This field is only returned when includeTabsContent is set to `
+        # false` in documents containing a single tab and links to a heading within the
+        # singular tab. Otherwise, Link.heading is returned. If this field is used in a
+        # write request, the heading is considered to be from the tab ID specified in
+        # the request. If a tab ID is not specified in the request, it is considered to
+        # be from the first tab in the document.
         # Corresponds to the JSON property `headingId`
         # @return [String]
         attr_accessor :heading_id
@@ -5478,7 +5526,7 @@ module Google
       class TabProperties
         include Google::Apis::Core::Hashable
       
-        # The index of the tab within the parent.
+        # The zero-based index of the tab within the parent.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
