@@ -543,8 +543,8 @@ module Google
         # @return [Google::Apis::ClouddeployV1::AdvanceRolloutRule]
         attr_accessor :advance_rollout_rule
       
-        # `PromoteRelease` rule will automatically promote a release from the current
-        # target to a specified target.
+        # The `PromoteRelease` rule will automatically promote a release from the
+        # current target to a specified target.
         # Corresponds to the JSON property `promoteReleaseRule`
         # @return [Google::Apis::ClouddeployV1::PromoteReleaseRule]
         attr_accessor :promote_release_rule
@@ -1458,6 +1458,45 @@ module Google
         end
       end
       
+      # Payload proto for "clouddeploy.googleapis.com/customtargettype_notification"
+      # Platform Log event that describes the failure to send a custom target type
+      # status change Pub/Sub notification.
+      class CustomTargetTypeNotificationEvent
+        include Google::Apis::Core::Hashable
+      
+        # The name of the `CustomTargetType`.
+        # Corresponds to the JSON property `customTargetType`
+        # @return [String]
+        attr_accessor :custom_target_type
+      
+        # Unique identifier of the `CustomTargetType`.
+        # Corresponds to the JSON property `customTargetTypeUid`
+        # @return [String]
+        attr_accessor :custom_target_type_uid
+      
+        # Debug message for when a notification fails to send.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Type of this notification, e.g. for a Pub/Sub failure.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_target_type = args[:custom_target_type] if args.key?(:custom_target_type)
+          @custom_target_type_uid = args[:custom_target_type_uid] if args.key?(:custom_target_type_uid)
+          @message = args[:message] if args.key?(:message)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
@@ -1807,6 +1846,45 @@ module Google
         end
       end
       
+      # Payload proto for "clouddeploy.googleapis.com/deploypolicy_notification".
+      # Platform Log event that describes the failure to send a pub/sub notification
+      # when there is a DeployPolicy status change.
+      class DeployPolicyNotificationEvent
+        include Google::Apis::Core::Hashable
+      
+        # The name of the `DeployPolicy`.
+        # Corresponds to the JSON property `deployPolicy`
+        # @return [String]
+        attr_accessor :deploy_policy
+      
+        # Unique identifier of the deploy policy.
+        # Corresponds to the JSON property `deployPolicyUid`
+        # @return [String]
+        attr_accessor :deploy_policy_uid
+      
+        # Debug message for when a deploy policy fails to send a pub/sub notification.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Type of this notification, e.g. for a Pub/Sub failure.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deploy_policy = args[:deploy_policy] if args.key?(:deploy_policy)
+          @deploy_policy_uid = args[:deploy_policy_uid] if args.key?(:deploy_policy_uid)
+          @message = args[:message] if args.key?(:message)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Deployment job composition.
       class DeploymentJobs
         include Google::Apis::Core::Hashable
@@ -2000,6 +2078,12 @@ module Google
         # @return [String]
         attr_accessor :http_route
       
+        # Optional. The label to use when selecting Pods for the Deployment and Service
+        # resources. This label must already be present in both resources.
+        # Corresponds to the JSON property `podSelectorLabel`
+        # @return [String]
+        attr_accessor :pod_selector_label
+      
         # Optional. The time to wait for route updates to propagate. The maximum
         # configurable time is 3 hours, in seconds format. If unspecified, there is no
         # wait time.
@@ -2027,6 +2111,7 @@ module Google
         def update!(**args)
           @deployment = args[:deployment] if args.key?(:deployment)
           @http_route = args[:http_route] if args.key?(:http_route)
+          @pod_selector_label = args[:pod_selector_label] if args.key?(:pod_selector_label)
           @route_update_wait_time = args[:route_update_wait_time] if args.key?(:route_update_wait_time)
           @service = args[:service] if args.key?(:service)
           @stable_cutback_duration = args[:stable_cutback_duration] if args.key?(:stable_cutback_duration)
@@ -3426,8 +3511,8 @@ module Google
         end
       end
       
-      # `PromoteRelease` rule will automatically promote a release from the current
-      # target to a specified target.
+      # The `PromoteRelease` rule will automatically promote a release from the
+      # current target to a specified target.
       class PromoteReleaseRule
         include Google::Apis::Core::Hashable
       
@@ -4515,6 +4600,12 @@ module Google
         attr_accessor :disable_pod_overprovisioning
         alias_method :disable_pod_overprovisioning?, :disable_pod_overprovisioning
       
+        # Optional. The label to use when selecting Pods for the Deployment resource.
+        # This label must already be present in the Deployment.
+        # Corresponds to the JSON property `podSelectorLabel`
+        # @return [String]
+        attr_accessor :pod_selector_label
+      
         # Required. Name of the Kubernetes Service.
         # Corresponds to the JSON property `service`
         # @return [String]
@@ -4528,6 +4619,7 @@ module Google
         def update!(**args)
           @deployment = args[:deployment] if args.key?(:deployment)
           @disable_pod_overprovisioning = args[:disable_pod_overprovisioning] if args.key?(:disable_pod_overprovisioning)
+          @pod_selector_label = args[:pod_selector_label] if args.key?(:pod_selector_label)
           @service = args[:service] if args.key?(:service)
         end
       end

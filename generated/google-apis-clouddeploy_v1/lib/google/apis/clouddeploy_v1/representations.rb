@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomTargetTypeNotificationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,6 +341,12 @@ module Google
       end
       
       class DeployParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeployPolicyNotificationEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1273,6 +1285,16 @@ module Google
         end
       end
       
+      class CustomTargetTypeNotificationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_target_type, as: 'customTargetType'
+          property :custom_target_type_uid, as: 'customTargetTypeUid'
+          property :message, as: 'message'
+          property :type, as: 'type'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1366,6 +1388,16 @@ module Google
         end
       end
       
+      class DeployPolicyNotificationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deploy_policy, as: 'deployPolicy'
+          property :deploy_policy_uid, as: 'deployPolicyUid'
+          property :message, as: 'message'
+          property :type, as: 'type'
+        end
+      end
+      
       class DeploymentJobs
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1417,6 +1449,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deployment, as: 'deployment'
           property :http_route, as: 'httpRoute'
+          property :pod_selector_label, as: 'podSelectorLabel'
           property :route_update_wait_time, as: 'routeUpdateWaitTime'
           property :service, as: 'service'
           property :stable_cutback_duration, as: 'stableCutbackDuration'
@@ -2088,6 +2121,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deployment, as: 'deployment'
           property :disable_pod_overprovisioning, as: 'disablePodOverprovisioning'
+          property :pod_selector_label, as: 'podSelectorLabel'
           property :service, as: 'service'
         end
       end
