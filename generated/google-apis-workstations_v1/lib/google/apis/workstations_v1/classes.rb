@@ -566,9 +566,9 @@ module Google
         attr_accessor :tags
       
         # Optional. Resource manager tags to be bound to this instance. Tag keys and
-        # values have the same definition as https://cloud.google.com/resource-manager/
-        # docs/tags/tags-overview Keys must be in the format `tagKeys/`tag_key_id``, and
-        # values are in the format `tagValues/456`.
+        # values have the same definition as [resource manager tags](https://cloud.
+        # google.com/resource-manager/docs/tags/tags-overview). Keys must be in the
+        # format `tagKeys/`tag_key_id``, and values are in the format `tagValues/456`.
         # Corresponds to the JSON property `vmTags`
         # @return [Hash<String,String>]
         attr_accessor :vm_tags
@@ -1340,12 +1340,14 @@ module Google
       class PortRange
         include Google::Apis::Core::Hashable
       
-        # Required. Starting port number for the current range of ports.
+        # Required. Starting port number for the current range of ports. Valid ports are
+        # 22, 80, and ports within the range 1024-65535.
         # Corresponds to the JSON property `first`
         # @return [Fixnum]
         attr_accessor :first
       
-        # Required. Ending port number for the current range of ports.
+        # Required. Ending port number for the current range of ports. Valid ports are
+        # 22, 80, and ports within the range 1024-65535.
         # Corresponds to the JSON property `last`
         # @return [Fixnum]
         attr_accessor :last
@@ -1880,8 +1882,10 @@ module Google
       class WorkstationConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. A Single or Range of ports externally accessible in the workstation.
-        # If not specified defaults to ports 22, 80 and ports 1024-65535.
+        # Optional. A list of PortRanges specifying single ports or ranges of ports that
+        # are externally accessible in the workstation. Allowed ports must be one of 22,
+        # 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and
+        # ports 1024-65535.
         # Corresponds to the JSON property `allowedPorts`
         # @return [Array<Google::Apis::WorkstationsV1::PortRange>]
         attr_accessor :allowed_ports
