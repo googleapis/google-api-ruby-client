@@ -554,7 +554,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Permanently deletes an empty bucket.
+        # Deletes an empty bucket. Deletions are permanent unless soft delete is enabled
+        # on the bucket.
         # @param [String] bucket
         #   Name of a bucket.
         # @param [Fixnum] if_metageneration_match
@@ -598,6 +599,9 @@ module Google
         # Returns metadata for the specified bucket.
         # @param [String] bucket
         #   Name of a bucket.
+        # @param [Fixnum] generation
+        #   If present, specifies the generation of the bucket. This is required if
+        #   softDeleted is true.
         # @param [Fixnum] if_metageneration_match
         #   Makes the return of the bucket metadata conditional on whether the bucket's
         #   current metageneration matches the given value.
@@ -606,6 +610,10 @@ module Google
         #   current metageneration does not match the given value.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
+        # @param [Boolean] soft_deleted
+        #   If true, return the soft-deleted version of this bucket. The default is false.
+        #   For more information, see [Soft Delete](https://cloud.google.com/storage/docs/
+        #   soft-delete).
         # @param [String] user_project
         #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
@@ -627,14 +635,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_bucket(bucket, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_bucket(bucket, generation: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, soft_deleted: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'b/{bucket}', options)
           command.response_representation = Google::Apis::StorageV1::Bucket::Representation
           command.response_class = Google::Apis::StorageV1::Bucket
           command.params['bucket'] = bucket unless bucket.nil?
+          command.query['generation'] = generation unless generation.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
           command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['softDeleted'] = soft_deleted unless soft_deleted.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -786,6 +796,10 @@ module Google
         #   Filter results to buckets whose names begin with this prefix.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
+        # @param [Boolean] soft_deleted
+        #   If true, only soft-deleted bucket versions will be returned. The default is
+        #   false. For more information, see [Soft Delete](https://cloud.google.com/
+        #   storage/docs/soft-delete).
         # @param [String] user_project
         #   The project to be billed for this request.
         # @param [String] fields
@@ -807,7 +821,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_buckets(project, max_results: nil, page_token: nil, prefix: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_buckets(project, max_results: nil, page_token: nil, prefix: nil, projection: nil, soft_deleted: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'b', options)
           command.response_representation = Google::Apis::StorageV1::Buckets::Representation
           command.response_class = Google::Apis::StorageV1::Buckets
@@ -816,6 +830,7 @@ module Google
           command.query['prefix'] = prefix unless prefix.nil?
           command.query['project'] = project unless project.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['softDeleted'] = soft_deleted unless soft_deleted.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -913,6 +928,43 @@ module Google
           command.query['predefinedAcl'] = predefined_acl unless predefined_acl.nil?
           command.query['predefinedDefaultObjectAcl'] = predefined_default_object_acl unless predefined_default_object_acl.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['userProject'] = user_project unless user_project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Restores a soft-deleted bucket.
+        # @param [String] bucket
+        #   Name of a bucket.
+        # @param [Fixnum] generation
+        #   Generation of a bucket.
+        # @param [String] user_project
+        #   The project to be billed for this request. Required for Requester Pays buckets.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_bucket(bucket, generation, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/restore', options)
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['generation'] = generation unless generation.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2610,7 +2662,8 @@ module Google
         #   Set of properties to return. Defaults to noAcl.
         # @param [Boolean] soft_deleted
         #   If true, only soft-deleted object versions will be listed. The default is
-        #   false. For more information, see Soft Delete.
+        #   false. For more information, see [Soft Delete](https://cloud.google.com/
+        #   storage/docs/soft-delete).
         # @param [String] user_project
         #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
@@ -2834,7 +2887,8 @@ module Google
         #   Set of properties to return. Defaults to noAcl.
         # @param [Boolean] soft_deleted
         #   If true, only soft-deleted object versions will be listed. The default is
-        #   false. For more information, see Soft Delete.
+        #   false. For more information, see [Soft Delete](https://cloud.google.com/
+        #   storage/docs/soft-delete).
         # @param [String] start_offset
         #   Filter results to objects whose names are lexicographically equal to or after
         #   startOffset. If endOffset is also set, the objects listed will have names

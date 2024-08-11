@@ -461,6 +461,7 @@ module Google
           property :encryption, as: 'encryption', class: Google::Apis::StorageV1::Bucket::Encryption, decorator: Google::Apis::StorageV1::Bucket::Encryption::Representation
       
           property :etag, as: 'etag'
+          property :generation, :numeric_string => true, as: 'generation'
           property :hierarchical_namespace, as: 'hierarchicalNamespace', class: Google::Apis::StorageV1::Bucket::HierarchicalNamespace, decorator: Google::Apis::StorageV1::Bucket::HierarchicalNamespace::Representation
       
           property :iam_configuration, as: 'iamConfiguration', class: Google::Apis::StorageV1::Bucket::IamConfiguration, decorator: Google::Apis::StorageV1::Bucket::IamConfiguration::Representation
@@ -486,6 +487,7 @@ module Google
           property :retention_policy, as: 'retentionPolicy', class: Google::Apis::StorageV1::Bucket::RetentionPolicy, decorator: Google::Apis::StorageV1::Bucket::RetentionPolicy::Representation
       
           property :rpo, as: 'rpo'
+          property :satisfies_pzi, as: 'satisfiesPZI'
           property :satisfies_pzs, as: 'satisfiesPZS'
           property :self_link, as: 'selfLink'
           property :soft_delete_policy, as: 'softDeletePolicy', class: Google::Apis::StorageV1::Bucket::SoftDeletePolicy, decorator: Google::Apis::StorageV1::Bucket::SoftDeletePolicy::Representation
