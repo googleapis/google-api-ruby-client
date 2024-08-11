@@ -63,9 +63,10 @@ module Google
         # Criteria for Information Technology Security Evaluation (https://www.
         # commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode increases
         # certain security components on a device, including AES-GCM encryption of
-        # Bluetooth Long Term Keys, and Wi-Fi configuration stores.Warning: Common
-        # Criteria Mode enforces a strict security model typically only required for IT
-        # products used in national security systems and other highly sensitive
+        # Bluetooth Long Term Keys, and Wi-Fi configuration stores.Common Criteria Mode
+        # is only supported on company-owned devices running Android 11 or above.Warning:
+        # Common Criteria Mode enforces a strict security model typically only required
+        # for IT products used in national security systems and other highly sensitive
         # organizations. Standard device use may be affected. Only enabled if required.
         # Corresponds to the JSON property `commonCriteriaMode`
         # @return [String]
@@ -5362,6 +5363,19 @@ module Google
         # @return [String]
         attr_accessor :allow_personal_usage
       
+        # Optional. Whether the sign-in URL should be used by default for the enterprise.
+        # The SigninDetail with defaultStatus set to SIGNIN_DETAIL_IS_DEFAULT is used
+        # for Google account enrollment method. Only one of an enterprise's
+        # signinDetails can have defaultStatus set to SIGNIN_DETAIL_IS_DEFAULT. If an
+        # Enterprise has at least one signinDetails and none of them have defaultStatus
+        # set to SIGNIN_DETAIL_IS_DEFAULT then the first one from the list is selected
+        # and has set defaultStatus to SIGNIN_DETAIL_IS_DEFAULT. If no signinDetails
+        # specified for the Enterprise then the Google Account device enrollment will
+        # fail.
+        # Corresponds to the JSON property `defaultStatus`
+        # @return [String]
+        attr_accessor :default_status
+      
         # A JSON string whose UTF-8 representation can be used to generate a QR code to
         # enroll a device with this enrollment token. To enroll a device using NFC, the
         # NFC record must contain a serialized java.util.Properties representation of
@@ -5397,6 +5411,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_personal_usage = args[:allow_personal_usage] if args.key?(:allow_personal_usage)
+          @default_status = args[:default_status] if args.key?(:default_status)
           @qr_code = args[:qr_code] if args.key?(:qr_code)
           @signin_enrollment_token = args[:signin_enrollment_token] if args.key?(:signin_enrollment_token)
           @signin_url = args[:signin_url] if args.key?(:signin_url)
@@ -5661,7 +5676,8 @@ module Google
         attr_accessor :application_reports_enabled
         alias_method :application_reports_enabled?, :application_reports_enabled
       
-        # Whether Common Criteria Mode reporting is enabled.
+        # Whether Common Criteria Mode reporting is enabled. This is supported only on
+        # company-owned devices.
         # Corresponds to the JSON property `commonCriteriaModeEnabled`
         # @return [Boolean]
         attr_accessor :common_criteria_mode_enabled
