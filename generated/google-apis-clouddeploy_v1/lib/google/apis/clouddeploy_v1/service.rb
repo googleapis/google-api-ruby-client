@@ -156,8 +156,8 @@ module Google
         
         # Creates a new CustomTargetType in a given project and location.
         # @param [String] parent
-        #   Required. The parent collection in which the `CustomTargetType` should be
-        #   created. Format should be `projects/`project_id`/locations/`location_name``.
+        #   Required. The parent collection in which the `CustomTargetType` must be
+        #   created. The format is `projects/`project_id`/locations/`location_name``.
         # @param [Google::Apis::ClouddeployV1::CustomTargetType] custom_target_type_object
         # @param [String] custom_target_type_id
         #   Required. ID of the `CustomTargetType`.
@@ -411,8 +411,8 @@ module Google
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the `
-        #   CustomTargetType` resource by the update. The fields specified in the
+        #   Required. Field mask is used to specify the fields to be overwritten by the
+        #   update in the `CustomTargetType` resource. The fields specified in the
         #   update_mask are relative to the resource, not the full request. A field will
         #   be overwritten if it's in the mask. If the user doesn't provide a mask then
         #   all fields are overwritten.
@@ -491,8 +491,8 @@ module Google
         
         # Creates a new DeliveryPipeline in a given project and location.
         # @param [String] parent
-        #   Required. The parent collection in which the `DeliveryPipeline` should be
-        #   created. Format should be `projects/`project_id`/locations/`location_name``.
+        #   Required. The parent collection in which the `DeliveryPipeline` must be
+        #   created. The format is `projects/`project_id`/locations/`location_name``.
         # @param [Google::Apis::ClouddeployV1::DeliveryPipeline] delivery_pipeline_object
         # @param [String] delivery_pipeline_id
         #   Required. ID of the `DeliveryPipeline`.
@@ -544,7 +544,7 @@ module Google
         
         # Deletes a single DeliveryPipeline.
         # @param [String] name
-        #   Required. The name of the `DeliveryPipeline` to delete. Format should be `
+        #   Required. The name of the `DeliveryPipeline` to delete. The format is `
         #   projects/`project_id`/locations/`location_name`/deliveryPipelines/`
         #   pipeline_name``.
         # @param [Boolean] allow_missing
@@ -749,8 +749,8 @@ module Google
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the `
-        #   DeliveryPipeline` resource by the update. The fields specified in the
+        #   Required. Field mask is used to specify the fields to be overwritten by the
+        #   update in the `DeliveryPipeline` resource. The fields specified in the
         #   update_mask are relative to the resource, not the full request. A field will
         #   be overwritten if it's in the mask. If the user doesn't provide a mask then
         #   all fields are overwritten.
@@ -792,8 +792,8 @@ module Google
         
         # Creates a `Rollout` to roll back the specified target.
         # @param [String] name
-        #   Required. The `DeliveryPipeline` for which the rollback `Rollout` should be
-        #   created. Format should be `projects/`project_id`/locations/`location_name`/
+        #   Required. The `DeliveryPipeline` for which the rollback `Rollout` must be
+        #   created. The format is `projects/`project_id`/locations/`location_name`/
         #   deliveryPipelines/`pipeline_name``.
         # @param [Google::Apis::ClouddeployV1::RollbackTargetRequest] rollback_target_request_object
         # @param [String] fields
@@ -1021,9 +1021,9 @@ module Google
         
         # Creates a new Automation in a given project and location.
         # @param [String] parent
-        #   Required. The parent collection in which the `Automation` should be created.
-        #   Format should be `projects/`project_id`/locations/`location_name`/
-        #   deliveryPipelines/`pipeline_name``.
+        #   Required. The parent collection in which the `Automation` must be created. The
+        #   format is `projects/`project_id`/locations/`location_name`/deliveryPipelines/`
+        #   pipeline_name``.
         # @param [Google::Apis::ClouddeployV1::Automation] automation_object
         # @param [String] automation_id
         #   Required. ID of the `Automation`.
@@ -1075,7 +1075,7 @@ module Google
         
         # Deletes a single Automation resource.
         # @param [String] name
-        #   Required. The name of the `Automation` to delete. Format should be `projects/`
+        #   Required. The name of the `Automation` to delete. The format is `projects/`
         #   project_id`/locations/`location_name`/deliveryPipelines/`pipeline_name`/
         #   automations/`automation_name``.
         # @param [Boolean] allow_missing
@@ -1230,8 +1230,8 @@ module Google
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the `
-        #   Automation` resource by the update. The fields specified in the update_mask
+        #   Required. Field mask is used to specify the fields to be overwritten by the
+        #   update in the `Automation` resource. The fields specified in the update_mask
         #   are relative to the resource, not the full request. A field will be
         #   overwritten if it's in the mask. If the user doesn't provide a mask then all
         #   fields are overwritten.
@@ -1307,9 +1307,9 @@ module Google
         
         # Creates a new Release in a given project and location.
         # @param [String] parent
-        #   Required. The parent collection in which the `Release` should be created.
-        #   Format should be `projects/`project_id`/locations/`location_name`/
-        #   deliveryPipelines/`pipeline_name``.
+        #   Required. The parent collection in which the `Release` is created. The format
+        #   is `projects/`project_id`/locations/`location_name`/deliveryPipelines/`
+        #   pipeline_name``.
         # @param [Google::Apis::ClouddeployV1::Release] release_object
         # @param [String] release_id
         #   Required. ID of the `Release`.
@@ -1548,9 +1548,9 @@ module Google
         
         # Creates a new Rollout in a given project and location.
         # @param [String] parent
-        #   Required. The parent collection in which the `Rollout` should be created.
-        #   Format should be `projects/`project_id`/locations/`location_name`/
-        #   deliveryPipelines/`pipeline_name`/releases/`release_name``.
+        #   Required. The parent collection in which the `Rollout` must be created. The
+        #   format is `projects/`project_id`/locations/`location_name`/deliveryPipelines/`
+        #   pipeline_name`/releases/`release_name``.
         # @param [Google::Apis::ClouddeployV1::Rollout] rollout_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
@@ -2016,8 +2016,8 @@ module Google
         
         # Creates a new Target in a given project and location.
         # @param [String] parent
-        #   Required. The parent collection in which the `Target` should be created.
-        #   Format should be `projects/`project_id`/locations/`location_name``.
+        #   Required. The parent collection in which the `Target` must be created. The
+        #   format is `projects/`project_id`/locations/`location_name``.
         # @param [Google::Apis::ClouddeployV1::Target] target_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
@@ -2069,7 +2069,7 @@ module Google
         
         # Deletes a single Target.
         # @param [String] name
-        #   Required. The name of the `Target` to delete. Format should be `projects/`
+        #   Required. The name of the `Target` to delete. The format is `projects/`
         #   project_id`/locations/`location_name`/targets/`target_name``.
         # @param [Boolean] allow_missing
         #   Optional. If set to true, then deleting an already deleted or non-existing `
@@ -2269,8 +2269,8 @@ module Google
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the
-        #   Target resource by the update. The fields specified in the update_mask are
+        #   Required. Field mask is used to specify the fields to be overwritten by the
+        #   update in the `Target` resource. The fields specified in the update_mask are
         #   relative to the resource, not the full request. A field will be overwritten if
         #   it's in the mask. If the user doesn't provide a mask then all fields are
         #   overwritten.
