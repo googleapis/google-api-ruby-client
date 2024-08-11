@@ -572,6 +572,7 @@ module Google
       class HealthCheckTargets
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :external_endpoints, as: 'externalEndpoints'
           collection :internal_load_balancer, as: 'internalLoadBalancer', class: Google::Apis::DomainsV1::LoadBalancerTarget, decorator: Google::Apis::DomainsV1::LoadBalancerTarget::Representation
       
         end
@@ -733,6 +734,7 @@ module Google
       
           property :geo_policy, as: 'geoPolicy', class: Google::Apis::DomainsV1::GeoPolicy, decorator: Google::Apis::DomainsV1::GeoPolicy::Representation
       
+          property :health_check, as: 'healthCheck'
           property :primary_backup, as: 'primaryBackup', class: Google::Apis::DomainsV1::PrimaryBackupPolicy, decorator: Google::Apis::DomainsV1::PrimaryBackupPolicy::Representation
       
           property :wrr, as: 'wrr', class: Google::Apis::DomainsV1::WrrPolicy, decorator: Google::Apis::DomainsV1::WrrPolicy::Representation
