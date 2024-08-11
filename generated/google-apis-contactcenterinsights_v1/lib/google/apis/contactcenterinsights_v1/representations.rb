@@ -2022,6 +2022,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :display_description, as: 'displayDescription'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           collection :sample_utterances, as: 'sampleUtterances'

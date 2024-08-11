@@ -2618,6 +2618,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Representative description of the issue.
+        # Corresponds to the JSON property `displayDescription`
+        # @return [String]
+        attr_accessor :display_description
+      
         # The representative name for the issue.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -2647,6 +2652,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @display_description = args[:display_description] if args.key?(:display_description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @sample_utterances = args[:sample_utterances] if args.key?(:sample_utterances)
