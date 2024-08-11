@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthCodeData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckReadinessResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -312,6 +318,15 @@ module Google
         end
       end
       
+      class AuthCodeData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_code, as: 'authCode'
+          property :pkce_verifier, as: 'pkceVerifier'
+          property :redirect_uri, as: 'redirectUri'
+        end
+      end
+      
       class CheckReadinessResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -386,6 +401,8 @@ module Google
       class ExchangeAuthCodeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_code_data, as: 'authCodeData', class: Google::Apis::ConnectorsV2::AuthCodeData, decorator: Google::Apis::ConnectorsV2::AuthCodeData::Representation
+      
         end
       end
       
@@ -640,6 +657,7 @@ module Google
       class RefreshAccessTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :refresh_token, as: 'refreshToken'
         end
       end
       
