@@ -3732,8 +3732,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence]
         attr_accessor :inspect_template_modified_cadence
       
-        # Frequency to update profiles regardless of whether the underlying resource has
-        # changed. Defaults to never.
+        # Frequency at which profiles should be updated, regardless of whether the
+        # underlying resource has changed. Defaults to never.
         # Corresponds to the JSON property `refreshFrequency`
         # @return [String]
         attr_accessor :refresh_frequency
@@ -3814,7 +3814,7 @@ module Google
       class GooglePrivacyDlpV2DiscoveryStartingLocation
         include Google::Apis::Core::Hashable
       
-        # The ID of the folder within an organization to scan.
+        # The ID of the folder within an organization to be scanned.
         # Corresponds to the JSON property `folderId`
         # @return [Fixnum]
         attr_accessor :folder_id
