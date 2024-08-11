@@ -204,6 +204,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # The generation of this bucket.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
         # The bucket's hierarchical namespace configuration.
         # Corresponds to the JSON property `hierarchicalNamespace`
         # @return [Google::Apis::StorageV1::Bucket::HierarchicalNamespace]
@@ -305,6 +310,12 @@ module Google
         attr_accessor :rpo
       
         # Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPZI`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Reserved for future use.
         # Corresponds to the JSON property `satisfiesPZS`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -369,6 +380,7 @@ module Google
           @default_object_acl = args[:default_object_acl] if args.key?(:default_object_acl)
           @encryption = args[:encryption] if args.key?(:encryption)
           @etag = args[:etag] if args.key?(:etag)
+          @generation = args[:generation] if args.key?(:generation)
           @hierarchical_namespace = args[:hierarchical_namespace] if args.key?(:hierarchical_namespace)
           @iam_configuration = args[:iam_configuration] if args.key?(:iam_configuration)
           @id = args[:id] if args.key?(:id)
@@ -386,6 +398,7 @@ module Google
           @project_number = args[:project_number] if args.key?(:project_number)
           @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
           @rpo = args[:rpo] if args.key?(:rpo)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @soft_delete_policy = args[:soft_delete_policy] if args.key?(:soft_delete_policy)
