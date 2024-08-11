@@ -3848,7 +3848,7 @@ module Google
         end
       end
       
-      # Represents a list of apis.
+      # Represents a list of ABIs.
       class MultiAbi
         include Google::Apis::Core::Hashable
       
@@ -4549,25 +4549,21 @@ module Google
         end
       end
       
-      # Configuration for a price migration.
+      # Configuration for migration of a legacy price cohort.
       class RegionalPriceMigrationConfig
         include Google::Apis::Core::Hashable
       
-        # Required. The cutoff time for historical prices that subscribers can remain
-        # paying. Subscribers on prices which were available at this cutoff time or
-        # later will stay on their existing price. Subscribers on older prices will be
-        # migrated to the currently-offered price. The migrated subscribers will receive
-        # a notification that they will be paying a different price. Subscribers who do
-        # not agree to the new price will have their subscription ended at the next
-        # renewal.
+        # Required. Subscribers in all legacy price cohorts before this time will be
+        # migrated to the current price. Subscribers in any newer price cohorts are
+        # unaffected. Affected subscribers will receive one or more notifications from
+        # Google Play about the price change. Price decreases occur at the subscriber's
+        # next billing date. Price increases occur at the subscriber's next billing date
+        # following a notification period that varies by region and price increase type.
         # Corresponds to the JSON property `oldestAllowedPriceVersionTime`
         # @return [String]
         attr_accessor :oldest_allowed_price_version_time
       
-        # Optional. The behavior the caller wants users to see when there is a price
-        # increase during migration. If left unset, the behavior defaults to
-        # PRICE_INCREASE_TYPE_OPT_IN. Note that the first opt-out price increase
-        # migration for each app must be initiated in Play Console.
+        # Optional. The requested type of price increase
         # Corresponds to the JSON property `priceIncreaseType`
         # @return [String]
         attr_accessor :price_increase_type
