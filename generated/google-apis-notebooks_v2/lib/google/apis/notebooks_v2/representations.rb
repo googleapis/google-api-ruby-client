@@ -444,6 +444,7 @@ module Google
       
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
+          property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::NotebooksV2::NetworkInterface, decorator: Google::Apis::NotebooksV2::NetworkInterface::Representation
       
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::NotebooksV2::ServiceAccount, decorator: Google::Apis::NotebooksV2::ServiceAccount::Representation
