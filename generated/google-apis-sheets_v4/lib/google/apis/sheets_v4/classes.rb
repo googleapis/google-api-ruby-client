@@ -6608,7 +6608,7 @@ module Google
       class LookerDataSourceSpec
         include Google::Apis::Core::Hashable
       
-        # Name of a LookerML model explore.
+        # Name of a Looker model explore.
         # Corresponds to the JSON property `explore`
         # @return [String]
         attr_accessor :explore
@@ -6618,7 +6618,7 @@ module Google
         # @return [String]
         attr_accessor :instance_uri
       
-        # Name of a LookerML model.
+        # Name of a Looker model.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
