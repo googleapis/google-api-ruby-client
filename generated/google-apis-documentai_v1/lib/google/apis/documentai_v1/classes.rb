@@ -5208,6 +5208,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsDocument]
         attr_accessor :gcs_document
       
+        # Optional. Option to remove images from the document.
+        # Corresponds to the JSON property `imagelessMode`
+        # @return [Boolean]
+        attr_accessor :imageless_mode
+        alias_method :imageless_mode?, :imageless_mode
+      
         # Document represents the canonical document resource in Document AI. It is an
         # interchange format that provides insights into documents and allows for
         # collaboration between users and Document AI to iterate and optimize for
@@ -5249,6 +5255,7 @@ module Google
         def update!(**args)
           @field_mask = args[:field_mask] if args.key?(:field_mask)
           @gcs_document = args[:gcs_document] if args.key?(:gcs_document)
+          @imageless_mode = args[:imageless_mode] if args.key?(:imageless_mode)
           @inline_document = args[:inline_document] if args.key?(:inline_document)
           @labels = args[:labels] if args.key?(:labels)
           @process_options = args[:process_options] if args.key?(:process_options)

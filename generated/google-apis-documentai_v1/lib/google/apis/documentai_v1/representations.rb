@@ -3868,6 +3868,7 @@ module Google
           property :field_mask, as: 'fieldMask'
           property :gcs_document, as: 'gcsDocument', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsDocument, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsDocument::Representation
       
+          property :imageless_mode, as: 'imagelessMode'
           property :inline_document, as: 'inlineDocument', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Document, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Document::Representation
       
           hash :labels, as: 'labels'
