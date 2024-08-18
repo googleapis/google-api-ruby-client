@@ -1279,6 +1279,11 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # SecretManagerConfig is config for secret manager enablement.
+        # Corresponds to the JSON property `secretManagerConfig`
+        # @return [Google::Apis::ContainerV1::SecretManagerConfig]
+        attr_accessor :secret_manager_config
+      
         # SecurityPostureConfig defines the flags needed to enable/disable features for
         # the Security Posture API.
         # Corresponds to the JSON property `securityPostureConfig`
@@ -1411,6 +1416,7 @@ module Google
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @secret_manager_config = args[:secret_manager_config] if args.key?(:secret_manager_config)
           @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
@@ -1797,6 +1803,11 @@ module Google
         # @return [Google::Apis::ContainerV1::ResourceUsageExportConfig]
         attr_accessor :desired_resource_usage_export_config
       
+        # SecretManagerConfig is config for secret manager enablement.
+        # Corresponds to the JSON property `desiredSecretManagerConfig`
+        # @return [Google::Apis::ContainerV1::SecretManagerConfig]
+        attr_accessor :desired_secret_manager_config
+      
         # SecurityPostureConfig defines the flags needed to enable/disable features for
         # the Security Posture API.
         # Corresponds to the JSON property `desiredSecurityPostureConfig`
@@ -1904,6 +1915,7 @@ module Google
           @desired_private_ipv6_google_access = args[:desired_private_ipv6_google_access] if args.key?(:desired_private_ipv6_google_access)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
+          @desired_secret_manager_config = args[:desired_secret_manager_config] if args.key?(:desired_secret_manager_config)
           @desired_security_posture_config = args[:desired_security_posture_config] if args.key?(:desired_security_posture_config)
           @desired_service_external_ips_config = args[:desired_service_external_ips_config] if args.key?(:desired_service_external_ips_config)
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
@@ -4260,6 +4272,11 @@ module Google
         attr_accessor :spot
         alias_method :spot?, :spot
       
+        # List of Storage Pools where boot disks are provisioned.
+        # Corresponds to the JSON property `storagePools`
+        # @return [Array<String>]
+        attr_accessor :storage_pools
+      
         # The list of instance tags applied to all nodes. Tags are used to identify
         # valid sources or targets for network firewalls and are specified by the client
         # during cluster or node pool creation. Each tag within the list must comply
@@ -4329,6 +4346,7 @@ module Google
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @sole_tenant_config = args[:sole_tenant_config] if args.key?(:sole_tenant_config)
           @spot = args[:spot] if args.key?(:spot)
+          @storage_pools = args[:storage_pools] if args.key?(:storage_pools)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @windows_node_config = args[:windows_node_config] if args.key?(:windows_node_config)
@@ -5902,6 +5920,26 @@ module Google
         end
       end
       
+      # SecretManagerConfig is config for secret manager enablement.
+      class SecretManagerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable/Disable Secret Manager Config.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # SecurityBulletinEvent is a notification sent to customers when a security
       # bulletin has been posted that they are vulnerable to.
       class SecurityBulletinEvent
@@ -7301,6 +7339,12 @@ module Google
         # @return [Google::Apis::ContainerV1::ResourceManagerTags]
         attr_accessor :resource_manager_tags
       
+        # List of Storage Pools where boot disks are provisioned. Existing Storage Pools
+        # will be replaced with storage-pools.
+        # Corresponds to the JSON property `storagePools`
+        # @return [Array<String>]
+        attr_accessor :storage_pools
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance.
         # Corresponds to the JSON property `tags`
@@ -7399,6 +7443,7 @@ module Google
           @queued_provisioning = args[:queued_provisioning] if args.key?(:queued_provisioning)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+          @storage_pools = args[:storage_pools] if args.key?(:storage_pools)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
