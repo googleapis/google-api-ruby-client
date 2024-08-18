@@ -16,13 +16,13 @@ module Google
   module Apis
     module PlayintegrityV1
       # Version of the google-apis-playintegrity_v1 gem
-      GEM_VERSION = "0.28.0"
+      GEM_VERSION = "0.29.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.15.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240725"
+      REVISION = "20240813"
     end
   end
 end

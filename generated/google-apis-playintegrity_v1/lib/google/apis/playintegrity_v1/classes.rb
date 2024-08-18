@@ -185,11 +185,11 @@ module Google
         end
       end
       
-      # Contains the device attestation information. Next tag: 4
+      # Contains the device attestation information.
       class DeviceIntegrity
         include Google::Apis::Core::Hashable
       
-        # Contains the recall bits per device set by the developer. Next tag: 3
+        # Contains the recall bits per device set by the developer.
         # Corresponds to the JSON property `deviceRecall`
         # @return [Google::Apis::PlayintegrityV1::DeviceRecall]
         attr_accessor :device_recall
@@ -218,7 +218,7 @@ module Google
         end
       end
       
-      # Contains the recall bits per device set by the developer. Next tag: 3
+      # Contains the recall bits per device set by the developer.
       class DeviceRecall
         include Google::Apis::Core::Hashable
       
@@ -367,7 +367,7 @@ module Google
         # @return [Google::Apis::PlayintegrityV1::AppIntegrity]
         attr_accessor :app_integrity
       
-        # Contains the device attestation information. Next tag: 4
+        # Contains the device attestation information.
         # Corresponds to the JSON property `deviceIntegrity`
         # @return [Google::Apis::PlayintegrityV1::DeviceIntegrity]
         attr_accessor :device_integrity
@@ -475,9 +475,7 @@ module Google
       class WriteDeviceRecallRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Integrity token obtained from calling Play Integrity API. Note that
-        # the integrity token contains the existing device recall bits. The write will
-        # only succeed if those bits in the integrity token are up to date.
+        # Required. Integrity token obtained from calling Play Integrity API.
         # Corresponds to the JSON property `integrityToken`
         # @return [String]
         attr_accessor :integrity_token
