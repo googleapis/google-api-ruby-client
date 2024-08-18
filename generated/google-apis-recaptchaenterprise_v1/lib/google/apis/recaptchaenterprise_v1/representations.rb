@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1ListKeysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +275,18 @@ module Google
       end
       
       class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -745,6 +763,15 @@ module Google
         end
       end
       
+      class GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_overrides, as: 'ipOverrides', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IpOverrideData, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IpOverrideData::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1ListKeysResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -822,6 +849,20 @@ module Google
           property :account_id, as: 'accountId'
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_override_data, as: 'ipOverrideData', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IpOverrideData, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IpOverrideData::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

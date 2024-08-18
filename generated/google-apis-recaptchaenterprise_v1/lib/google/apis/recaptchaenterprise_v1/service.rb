@@ -533,6 +533,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all IP overrides for a key.
+        # @param [String] parent
+        #   Required. The parent key for which the IP overrides are listed, in the format `
+        #   projects/`project`/keys/`key``.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of overrides to return. Default is 10. Max limit
+        #   is 100. If the number of overrides is less than the page_size, all overrides
+        #   are returned. If the page size is more than 100, it is coerced to 100.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous
+        #   ListIpOverridesRequest, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_key_ip_overrides(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}:listIpOverrides', options)
+          command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse::Representation
+          command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Migrates an existing key from reCAPTCHA to reCAPTCHA Enterprise. Once a key is
         # migrated, it can be used from either product. SiteVerify requests are billed
         # as CreateAssessment calls. You must be authenticated as one of the current
@@ -604,6 +644,43 @@ module Google
           command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes an IP override from a key. The following restrictions hold: * If the
+        # IP isn't found in an existing IP override, a `NOT_FOUND` error will be
+        # returned. * If the IP is found in an existing IP override, but the override
+        # type does not match, a `NOT_FOUND` error will be returned.
+        # @param [String] name
+        #   Required. The name of the key from which the IP override is removed, in the
+        #   format `projects/`project`/keys/`key``.
+        # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest] google_cloud_recaptchaenterprise_v1_remove_ip_override_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_key_ip_override(name, google_cloud_recaptchaenterprise_v1_remove_ip_override_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:removeIpOverride', options)
+          command.request_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest::Representation
+          command.request_object = google_cloud_recaptchaenterprise_v1_remove_ip_override_request_object
+          command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse::Representation
+          command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

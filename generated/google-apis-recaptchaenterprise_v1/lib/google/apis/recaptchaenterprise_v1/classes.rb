@@ -1148,6 +1148,32 @@ module Google
         end
       end
       
+      # Response for ListIpOverrides.
+      class GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse
+        include Google::Apis::Core::Hashable
+      
+        # IP Overrides details.
+        # Corresponds to the JSON property `ipOverrides`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IpOverrideData>]
+        attr_accessor :ip_overrides
+      
+        # Token to retrieve the next page of results. If this field is empty, no keys
+        # remain in the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_overrides = args[:ip_overrides] if args.key?(:ip_overrides)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response to request to list keys in a project.
       class GoogleCloudRecaptchaenterpriseV1ListKeysResponse
         include Google::Apis::Core::Hashable
@@ -1415,6 +1441,38 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The removeIpOverride request message.
+      class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        # Information about the IP or IP range override.
+        # Corresponds to the JSON property `ipOverrideData`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IpOverrideData]
+        attr_accessor :ip_override_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_override_data = args[:ip_override_data] if args.key?(:ip_override_data)
+        end
+      end
+      
+      # Response for RemoveIpOverride.
+      class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
