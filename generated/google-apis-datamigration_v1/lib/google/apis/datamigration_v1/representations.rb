@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OracleAsmConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OracleConnectionProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1641,6 +1647,20 @@ module Google
         end
       end
       
+      class OracleAsmConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asm_service, as: 'asmService'
+          property :hostname, as: 'hostname'
+          property :password, as: 'password'
+          property :password_set, as: 'passwordSet'
+          property :port, as: 'port'
+          property :ssl, as: 'ssl', class: Google::Apis::DatamigrationV1::SslConfig, decorator: Google::Apis::DatamigrationV1::SslConfig::Representation
+      
+          property :username, as: 'username'
+        end
+      end
+      
       class OracleConnectionProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1648,6 +1668,8 @@ module Google
           property :forward_ssh_connectivity, as: 'forwardSshConnectivity', class: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity, decorator: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity::Representation
       
           property :host, as: 'host'
+          property :oracle_asm_config, as: 'oracleAsmConfig', class: Google::Apis::DatamigrationV1::OracleAsmConfig, decorator: Google::Apis::DatamigrationV1::OracleAsmConfig::Representation
+      
           property :password, as: 'password'
           property :password_set, as: 'passwordSet'
           property :port, as: 'port'
