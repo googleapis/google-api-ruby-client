@@ -241,15 +241,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The bucket's lifecycle configuration. See lifecycle management for more
-        # information.
+        # The bucket's lifecycle configuration. See [Lifecycle Management](https://cloud.
+        # google.com/storage/docs/lifecycle) for more information.
         # Corresponds to the JSON property `lifecycle`
         # @return [Google::Apis::StorageV1::Bucket::Lifecycle]
         attr_accessor :lifecycle
       
         # The location of the bucket. Object data for objects in the bucket resides in
-        # physical storage within this region. Defaults to US. See the developer's guide
-        # for the authoritative list.
+        # physical storage within this region. Defaults to US. See the [Developer's
+        # Guide](https://cloud.google.com/storage/docs/locations) for the authoritative
+        # list.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -337,8 +338,8 @@ module Google
         # and determines the SLA and the cost of storage. Values include MULTI_REGIONAL,
         # REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and
         # DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket
-        # is created, it will default to STANDARD. For more information, see storage
-        # classes.
+        # is created, it will default to STANDARD. For more information, see [Storage
+        # Classes](https://cloud.google.com/storage/docs/storage-classes).
         # Corresponds to the JSON property `storageClass`
         # @return [String]
         attr_accessor :storage_class
@@ -359,8 +360,8 @@ module Google
         attr_accessor :versioning
       
         # The bucket's website configuration, controlling how the service behaves when
-        # accessing bucket contents as a web site. See the Static Website Examples for
-        # more information.
+        # accessing bucket contents as a web site. See the [Static Website Examples](
+        # https://cloud.google.com/storage/docs/static-website) for more information.
         # Corresponds to the JSON property `website`
         # @return [Google::Apis::StorageV1::Bucket::Website]
         attr_accessor :website
@@ -751,8 +752,8 @@ module Google
           end
         end
         
-        # The bucket's lifecycle configuration. See lifecycle management for more
-        # information.
+        # The bucket's lifecycle configuration. See [Lifecycle Management](https://cloud.
+        # google.com/storage/docs/lifecycle) for more information.
         class Lifecycle
           include Google::Apis::Core::Hashable
         
@@ -1096,8 +1097,8 @@ module Google
         end
         
         # The bucket's website configuration, controlling how the service behaves when
-        # accessing bucket contents as a web site. See the Static Website Examples for
-        # more information.
+        # accessing bucket contents as a web site. See the [Static Website Examples](
+        # https://cloud.google.com/storage/docs/static-website) for more information.
         class Website
           include Google::Apis::Core::Hashable
         
@@ -2297,7 +2298,8 @@ module Google
       
         # CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in
         # big-endian byte order. For more information about using the CRC32c checksum,
-        # see Hashes and ETags: Best Practices.
+        # see [Data Validation and Change Detection](https://cloud.google.com/storage/
+        # docs/data-validation).
         # Corresponds to the JSON property `crc32c`
         # @return [String]
         attr_accessor :crc32c
@@ -2364,7 +2366,8 @@ module Google
         attr_accessor :kms_key_name
       
         # MD5 hash of the data; encoded using base64. For more information about using
-        # the MD5 hash, see Hashes and ETags: Best Practices.
+        # the MD5 hash, see [Data Validation and Change Detection](https://cloud.google.
+        # com/storage/docs/data-validation).
         # Corresponds to the JSON property `md5Hash`
         # @return [String]
         attr_accessor :md5_hash

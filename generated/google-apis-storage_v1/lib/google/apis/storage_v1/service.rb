@@ -2897,7 +2897,8 @@ module Google
         #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [Boolean] versions
         #   If true, lists all versions of an object as distinct results. The default is
-        #   false. For more information, see Object Versioning.
+        #   false. For more information, see [Object Versioning](https://cloud.google.com/
+        #   storage/docs/object-versioning).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3023,7 +3024,8 @@ module Google
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/
+        #   request-endpoints#encoding).
         # @param [Fixnum] generation
         #   Selects a specific revision of this object.
         # @param [Boolean] copy_source_acl
@@ -3419,7 +3421,8 @@ module Google
         #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [Boolean] versions
         #   If true, lists all versions of an object as distinct results. The default is
-        #   false. For more information, see Object Versioning.
+        #   false. For more information, see [Object Versioning](https://cloud.google.com/
+        #   storage/docs/object-versioning).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3747,8 +3750,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the state of an HMAC key. See the HMAC Key resource descriptor for
-        # valid states.
+        # Updates the state of an HMAC key. See the [HMAC Key resource descriptor](https:
+        # //cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys/update#request-
+        # body) for valid states.
         # @param [String] project_id
         #   Project ID owning the service account of the updated key.
         # @param [String] access_id
