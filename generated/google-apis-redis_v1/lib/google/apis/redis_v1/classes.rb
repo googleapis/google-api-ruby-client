@@ -218,6 +218,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Cross cluster replication config.
+        # Corresponds to the JSON property `crossClusterReplicationConfig`
+        # @return [Google::Apis::RedisV1::CrossClusterReplicationConfig]
+        attr_accessor :cross_cluster_replication_config
+      
         # Optional. The delete operation will fail when the value is set to true.
         # Corresponds to the JSON property `deletionProtectionEnabled`
         # @return [Boolean]
@@ -276,7 +281,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :replica_count
       
-        # Required. Number of shards for the Redis cluster.
+        # Optional. Number of shards for the Redis cluster.
         # Corresponds to the JSON property `shardCount`
         # @return [Fixnum]
         attr_accessor :shard_count
@@ -322,6 +327,7 @@ module Google
         def update!(**args)
           @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @cross_cluster_replication_config = args[:cross_cluster_replication_config] if args.key?(:cross_cluster_replication_config)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @discovery_endpoints = args[:discovery_endpoints] if args.key?(:discovery_endpoints)
           @name = args[:name] if args.key?(:name)
@@ -399,16 +405,63 @@ module Google
         end
       end
       
-      # Any custom metadata associated with the resource. i.e. A spanner instance can
+      # Cross cluster replication config.
+      class CrossClusterReplicationConfig
+        include Google::Apis::Core::Hashable
+      
+        # The role of the cluster in cross cluster replication.
+        # Corresponds to the JSON property `clusterRole`
+        # @return [String]
+        attr_accessor :cluster_role
+      
+        # An output only view of all the member clusters participating in the cross
+        # cluster replication.
+        # Corresponds to the JSON property `membership`
+        # @return [Google::Apis::RedisV1::Membership]
+        attr_accessor :membership
+      
+        # Details of the remote cluster associated with this cluster in a cross cluster
+        # replication setup.
+        # Corresponds to the JSON property `primaryCluster`
+        # @return [Google::Apis::RedisV1::RemoteCluster]
+        attr_accessor :primary_cluster
+      
+        # List of secondary clusters that are replicating from this primary cluster.
+        # This field is only set for a primary cluster.
+        # Corresponds to the JSON property `secondaryClusters`
+        # @return [Array<Google::Apis::RedisV1::RemoteCluster>]
+        attr_accessor :secondary_clusters
+      
+        # Output only. The last time cross cluster replication config was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_role = args[:cluster_role] if args.key?(:cluster_role)
+          @membership = args[:membership] if args.key?(:membership)
+          @primary_cluster = args[:primary_cluster] if args.key?(:primary_cluster)
+          @secondary_clusters = args[:secondary_clusters] if args.key?(:secondary_clusters)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Any custom metadata associated with the resource. e.g. A spanner instance can
       # have multiple databases with its own unique metadata. Information for these
       # individual databases can be captured in custom metadata data
       class CustomMetadataData
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `databaseMetadata`
-        # @return [Array<Google::Apis::RedisV1::DatabaseMetadata>]
-        attr_accessor :database_metadata
+        # Metadata for individual internal resources in an instance. e.g. spanner
+        # instance can have multiple databases with unique configuration.
+        # Corresponds to the JSON property `internalResourceMetadata`
+        # @return [Array<Google::Apis::RedisV1::InternalResourceMetadata>]
+        attr_accessor :internal_resource_metadata
       
         def initialize(**args)
            update!(**args)
@@ -416,52 +469,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @database_metadata = args[:database_metadata] if args.key?(:database_metadata)
-        end
-      end
-      
-      # Metadata for individual databases created in an instance. i.e. spanner
-      # instance can have multiple databases with unique configuration settings.
-      class DatabaseMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Configuration for automatic backups
-        # Corresponds to the JSON property `backupConfiguration`
-        # @return [Google::Apis::RedisV1::BackupConfiguration]
-        attr_accessor :backup_configuration
-      
-        # A backup run.
-        # Corresponds to the JSON property `backupRun`
-        # @return [Google::Apis::RedisV1::BackupRun]
-        attr_accessor :backup_run
-      
-        # Product specification for Condor resources.
-        # Corresponds to the JSON property `product`
-        # @return [Google::Apis::RedisV1::Product]
-        attr_accessor :product
-      
-        # DatabaseResourceId will serve as primary key for any resource ingestion event.
-        # Corresponds to the JSON property `resourceId`
-        # @return [Google::Apis::RedisV1::DatabaseResourceId]
-        attr_accessor :resource_id
-      
-        # Required. Database name. Resource name to follow CAIS resource_name format as
-        # noted here go/condor-common-datamodel
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
-          @backup_run = args[:backup_run] if args.key?(:backup_run)
-          @product = args[:product] if args.key?(:product)
-          @resource_id = args[:resource_id] if args.key?(:resource_id)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @internal_resource_metadata = args[:internal_resource_metadata] if args.key?(:internal_resource_metadata)
         end
       end
       
@@ -593,6 +601,11 @@ module Google
         # @return [String]
         attr_accessor :signal_id
       
+        # The severity of the signal, such as if it's a HIGH or LOW severity.
+        # Corresponds to the JSON property `signalSeverity`
+        # @return [String]
+        attr_accessor :signal_severity
+      
         # Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `
         # LOGGING_MOST_ERRORS`, etc.
         # Corresponds to the JSON property `signalType`
@@ -621,6 +634,7 @@ module Google
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @signal_class = args[:signal_class] if args.key?(:signal_class)
           @signal_id = args[:signal_id] if args.key?(:signal_id)
+          @signal_severity = args[:signal_severity] if args.key?(:signal_severity)
           @signal_type = args[:signal_type] if args.key?(:signal_type)
           @state = args[:state] if args.key?(:state)
         end
@@ -642,8 +656,10 @@ module Google
       
         # Required. The type of resource this ID is identifying. Ex redis.googleapis.com/
         # Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster,
-        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance REQUIRED
-        # Please refer go/condor-common-datamodel
+        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance, spanner.
+        # googleapis.com/Database, firestore.googleapis.com/Database, sqladmin.
+        # googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.
+        # googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -697,7 +713,7 @@ module Google
         # @return [String]
         attr_accessor :current_state
       
-        # Any custom metadata associated with the resource. i.e. A spanner instance can
+        # Any custom metadata associated with the resource. e.g. A spanner instance can
         # have multiple databases with its own unique metadata. Information for these
         # individual databases can be captured in custom metadata data
         # Corresponds to the JSON property `customMetadata`
@@ -1473,6 +1489,52 @@ module Google
         end
       end
       
+      # Metadata for individual internal resources in an instance. e.g. spanner
+      # instance can have multiple databases with unique configuration settings.
+      # Similarly bigtable can have multiple clusters within same bigtable instance.
+      class InternalResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for automatic backups
+        # Corresponds to the JSON property `backupConfiguration`
+        # @return [Google::Apis::RedisV1::BackupConfiguration]
+        attr_accessor :backup_configuration
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::RedisV1::BackupRun]
+        attr_accessor :backup_run
+      
+        # Product specification for Condor resources.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::RedisV1::Product]
+        attr_accessor :product
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::RedisV1::DatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Required. internal resource name for spanner this will be database name e.g."
+        # spanner.googleapis.com/projects/123/abc/instances/inst1/databases/db1"
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @product = args[:product] if args.key?(:product)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
       # Response for ListClusters.
       class ListClustersResponse
         include Google::Apis::Core::Hashable
@@ -1776,6 +1838,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ca_certs = args[:ca_certs] if args.key?(:ca_certs)
+        end
+      end
+      
+      # An output only view of all the member clusters participating in the cross
+      # cluster replication.
+      class Membership
+        include Google::Apis::Core::Hashable
+      
+        # Details of the remote cluster associated with this cluster in a cross cluster
+        # replication setup.
+        # Corresponds to the JSON property `primaryCluster`
+        # @return [Google::Apis::RedisV1::RemoteCluster]
+        attr_accessor :primary_cluster
+      
+        # Output only. The list of secondary clusters replicating from the primary
+        # cluster.
+        # Corresponds to the JSON property `secondaryClusters`
+        # @return [Array<Google::Apis::RedisV1::RemoteCluster>]
+        attr_accessor :secondary_clusters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_cluster = args[:primary_cluster] if args.key?(:primary_cluster)
+          @secondary_clusters = args[:secondary_clusters] if args.key?(:secondary_clusters)
         end
       end
       
@@ -2219,6 +2309,33 @@ module Google
         def update!(**args)
           @delete_resource = args[:delete_resource] if args.key?(:delete_resource)
           @exclusive_action = args[:exclusive_action] if args.key?(:exclusive_action)
+        end
+      end
+      
+      # Details of the remote cluster associated with this cluster in a cross cluster
+      # replication setup.
+      class RemoteCluster
+        include Google::Apis::Core::Hashable
+      
+        # The full resource path of the remote cluster in the format: projects//
+        # locations//clusters/
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Output only. The unique identifier of the remote cluster.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
