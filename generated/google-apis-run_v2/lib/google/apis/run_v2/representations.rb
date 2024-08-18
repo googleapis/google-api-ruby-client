@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2BuildpacksBuild
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2CancelExecutionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class GoogleCloudRunV2ContainerPort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2DockerBuild
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -281,6 +293,24 @@ module Google
       end
       
       class GoogleCloudRunV2ServiceScaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2StorageSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2SubmitBuildRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2SubmitBuildResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -673,6 +703,18 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2BuildpacksBuild
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_image, as: 'baseImage'
+          property :cache_image_uri, as: 'cacheImageUri'
+          property :enable_automatic_updates, as: 'enableAutomaticUpdates'
+          hash :environment_variables, as: 'environmentVariables'
+          property :function_target, as: 'functionTarget'
+          property :runtime, as: 'runtime'
+        end
+      end
+      
       class GoogleCloudRunV2CancelExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -742,6 +784,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_port, as: 'containerPort'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRunV2DockerBuild
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1220,6 +1268,40 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :min_instance_count, as: 'minInstanceCount'
+        end
+      end
+      
+      class GoogleCloudRunV2StorageSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object, as: 'object'
+        end
+      end
+      
+      class GoogleCloudRunV2SubmitBuildRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buildpack_build, as: 'buildpackBuild', class: Google::Apis::RunV2::GoogleCloudRunV2BuildpacksBuild, decorator: Google::Apis::RunV2::GoogleCloudRunV2BuildpacksBuild::Representation
+      
+          property :docker_build, as: 'dockerBuild', class: Google::Apis::RunV2::GoogleCloudRunV2DockerBuild, decorator: Google::Apis::RunV2::GoogleCloudRunV2DockerBuild::Representation
+      
+          property :image_uri, as: 'imageUri'
+          property :service_account, as: 'serviceAccount'
+          property :storage_source, as: 'storageSource', class: Google::Apis::RunV2::GoogleCloudRunV2StorageSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2StorageSource::Representation
+      
+          collection :tags, as: 'tags'
+          property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class GoogleCloudRunV2SubmitBuildResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_image_uri, as: 'baseImageUri'
+          property :build_operation, as: 'buildOperation', class: Google::Apis::RunV2::GoogleLongrunningOperation, decorator: Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+      
         end
       end
       
