@@ -2135,9 +2135,9 @@ module Google
         # mode natively supports. This happens before/after encryption/decryption. Each
         # character listed must appear only once. Number of characters must be in the
         # range [2, 95]. This must be encoded as ASCII. The order of characters does not
-        # matter. The full list of allowed characters is:
-        # 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+=
-        # `[`]|\:;"'<,>.?/
+        # matter. The full list of allowed characters is: ``
+        # 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~`!@#$%^&*()_-+=`
+        # [`]|\:;"'<,>.?/``
         # Corresponds to the JSON property `customAlphabet`
         # @return [String]
         attr_accessor :custom_alphabet
@@ -2282,6 +2282,15 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubNotification]
         attr_accessor :pub_sub_notification
       
+        # If set, attaches the [tags] (https://cloud.google.com/resource-manager/docs/
+        # tags/tags-overview) provided to profiled resources. Tags support [access
+        # control](https://cloud.google.com/iam/docs/tags-access-control). You can
+        # conditionally grant or deny access to a resource based on whether the resource
+        # has a specific tag.
+        # Corresponds to the JSON property `tagResources`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TagResources]
+        attr_accessor :tag_resources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2290,6 +2299,7 @@ module Google
         def update!(**args)
           @export_data = args[:export_data] if args.key?(:export_data)
           @pub_sub_notification = args[:pub_sub_notification] if args.key?(:pub_sub_notification)
+          @tag_resources = args[:tag_resources] if args.key?(:tag_resources)
         end
       end
       
@@ -3471,6 +3481,12 @@ module Google
       class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence
         include Google::Apis::Core::Hashable
       
+        # The cadence at which to update data profiles when the inspection rules defined
+        # by the `InspectTemplate` change.
+        # Corresponds to the JSON property `inspectTemplateModifiedCadence`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence]
+        attr_accessor :inspect_template_modified_cadence
+      
         # Data changes (non-schema changes) in Cloud SQL tables can't trigger
         # reprofiling. If you set this field, profiles are refreshed at this frequency
         # regardless of whether the underlying tables have changed. Defaults to never.
@@ -3489,6 +3505,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @inspect_template_modified_cadence = args[:inspect_template_modified_cadence] if args.key?(:inspect_template_modified_cadence)
           @refresh_frequency = args[:refresh_frequency] if args.key?(:refresh_frequency)
           @schema_modified_cadence = args[:schema_modified_cadence] if args.key?(:schema_modified_cadence)
         end
@@ -4320,11 +4337,13 @@ module Google
         attr_accessor :file_cluster_type
       
         # A sample of file types scanned in this cluster. Empty if no files were scanned.
+        # File extensions can be derived from the file name or the file content.
         # Corresponds to the JSON property `fileExtensionsScanned`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileExtensionInfo>]
         attr_accessor :file_extensions_scanned
       
-        # A sample of file types seen in this cluster. Empty if no files were seen.
+        # A sample of file types seen in this cluster. Empty if no files were seen. File
+        # extensions can be derived from the file name or the file content.
         # Corresponds to the JSON property `fileExtensionsSeen`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileExtensionInfo>]
         attr_accessor :file_extensions_seen
@@ -9255,6 +9274,101 @@ module Google
         def update!(**args)
           @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
           @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
+      # The tag to attach to profiles matching the condition. At most one `
+      # TagCondition` can be specified per sensitivity level.
+      class GooglePrivacyDlpV2TagCondition
+        include Google::Apis::Core::Hashable
+      
+        # Score is calculated from of all elements in the data profile. A higher level
+        # means the data is more sensitive.
+        # Corresponds to the JSON property `sensitivityScore`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
+        attr_accessor :sensitivity_score
+      
+        # A value of a tag.
+        # Corresponds to the JSON property `tag`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TagValue]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # If set, attaches the [tags] (https://cloud.google.com/resource-manager/docs/
+      # tags/tags-overview) provided to profiled resources. Tags support [access
+      # control](https://cloud.google.com/iam/docs/tags-access-control). You can
+      # conditionally grant or deny access to a resource based on whether the resource
+      # has a specific tag.
+      class GooglePrivacyDlpV2TagResources
+        include Google::Apis::Core::Hashable
+      
+        # Whether applying a tag to a resource should lower the risk of the profile for
+        # that resource. For example, in conjunction with an [IAM deny policy](https://
+        # cloud.google.com/iam/docs/deny-overview), you can deny all principals a
+        # permission if a tag value is present, mitigating the risk of the resource.
+        # This also lowers the data risk of resources at the lower levels of the
+        # resource hierarchy. For example, reducing the data risk of a table data
+        # profile also reduces the data risk of the constituent column data profiles.
+        # Corresponds to the JSON property `lowerDataRiskToLow`
+        # @return [Boolean]
+        attr_accessor :lower_data_risk_to_low
+        alias_method :lower_data_risk_to_low?, :lower_data_risk_to_low
+      
+        # The profile generations for which the tag should be attached to resources. If
+        # you attach a tag to only new profiles, then if the sensitivity score of a
+        # profile subsequently changes, its tag doesn't change. By default, this field
+        # includes only new profiles. To include both new and updated profiles for
+        # tagging, this field should explicitly include both `PROFILE_GENERATION_NEW`
+        # and `PROFILE_GENERATION_UPDATE`.
+        # Corresponds to the JSON property `profileGenerationsToTag`
+        # @return [Array<String>]
+        attr_accessor :profile_generations_to_tag
+      
+        # The tags to associate with different conditions.
+        # Corresponds to the JSON property `tagConditions`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2TagCondition>]
+        attr_accessor :tag_conditions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lower_data_risk_to_low = args[:lower_data_risk_to_low] if args.key?(:lower_data_risk_to_low)
+          @profile_generations_to_tag = args[:profile_generations_to_tag] if args.key?(:profile_generations_to_tag)
+          @tag_conditions = args[:tag_conditions] if args.key?(:tag_conditions)
+        end
+      end
+      
+      # A value of a tag.
+      class GooglePrivacyDlpV2TagValue
+        include Google::Apis::Core::Hashable
+      
+        # The namespaced name for the tag value to attach to resources. Must be in the
+        # format ``parent_id`/`tag_key_short_name`/`short_name``, for example, "123456/
+        # environment/prod".
+        # Corresponds to the JSON property `namespacedValue`
+        # @return [String]
+        attr_accessor :namespaced_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespaced_value = args[:namespaced_value] if args.key?(:namespaced_value)
         end
       end
       

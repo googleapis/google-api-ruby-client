@@ -64,8 +64,8 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] parent
-        #   The parent resource name. The format of this value is as follows: locations/
-        #   LOCATION_ID
+        #   The parent resource name. The format of this value is as follows: `locations/`
+        #   location_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -100,8 +100,8 @@ module Google
         # https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to
         # learn more.
         # @param [String] parent
-        #   The parent resource name. The format of this value is as follows: locations/
-        #   LOCATION_ID
+        #   The parent resource name. The format of this value is as follows: `locations/`
+        #   location_id``
         # @param [String] filter
         #   filter to only return infoTypes supported by certain parts of the API.
         #   Defaults to supported_by=INSPECT.
@@ -148,14 +148,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -259,14 +259,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -358,14 +358,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -469,14 +469,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -663,8 +663,8 @@ module Google
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization): + Projects scope: `
-        #   projects/`PROJECT_ID`/locations/`LOCATION_ID + Organizations scope: `
-        #   organizations/`ORG_ID`/locations/`LOCATION_ID
+        #   projects/`project_id`/locations/`location_id`` + Organizations scope: `
+        #   organizations/`org_id`/locations/`location_id``
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateConnectionRequest] google_privacy_dlp_v2_create_connection_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -884,14 +884,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -995,14 +995,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -1090,8 +1090,8 @@ module Google
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization): + Projects scope: `
-        #   projects/`PROJECT_ID`/locations/`LOCATION_ID + Organizations scope: `
-        #   organizations/`ORG_ID`/locations/`LOCATION_ID The following example `parent`
+        #   projects/`project_id`/locations/`location_id`` + Organizations scope: `
+        #   organizations/`org_id`/locations/`location_id`` The following example `parent`
         #   string specifies a parent project with the identifier `example-project`, and
         #   specifies the `europe-west3` location for processing data: parent=projects/
         #   example-project/locations/europe-west3
@@ -1190,7 +1190,7 @@ module Google
         # Lists discovery configurations.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value is as follows: `
-        #   projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent`
+        #   projects/`project_id`/locations/`location_id`` The following example `parent`
         #   string specifies a parent project with the identifier `example-project`, and
         #   specifies the `europe-west3` location for processing data: parent=projects/
         #   example-project/locations/europe-west3
@@ -1278,8 +1278,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -1487,14 +1487,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1598,14 +1598,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -1696,8 +1696,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -1801,8 +1801,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -2006,14 +2006,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2117,8 +2117,8 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID The following example `
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` The following example `
         #   parent` string specifies a parent project with the identifier `example-project`
         #   , and specifies the `europe-west3` location for processing data: parent=
         #   projects/example-project/locations/europe-west3
@@ -2345,14 +2345,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2456,8 +2456,8 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID The following example `
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` The following example `
         #   parent` string specifies a parent project with the identifier `example-project`
         #   , and specifies the `europe-west3` location for processing data: parent=
         #   projects/example-project/locations/europe-west3
@@ -2556,8 +2556,8 @@ module Google
         #   Parent resource name. The format of this value varies depending on whether you
         #   have [specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID The following example `
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` The following example `
         #   parent` string specifies a parent project with the identifier `example-project`
         #   , and specifies the `europe-west3` location for processing data: parent=
         #   projects/example-project/locations/europe-west3
@@ -2602,8 +2602,8 @@ module Google
         #   Parent resource name. The format of this value varies depending on whether you
         #   have [specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID The following example `
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` The following example `
         #   parent` string specifies a parent project with the identifier `example-project`
         #   , and specifies the `europe-west3` location for processing data: parent=
         #   projects/example-project/locations/europe-west3
@@ -2644,8 +2644,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -2687,14 +2687,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2798,14 +2798,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -2936,8 +2936,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -3045,8 +3045,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -3126,8 +3126,8 @@ module Google
         #   Parent resource name. The format of this value varies depending on whether you
         #   have [specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID The following example `
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` The following example `
         #   parent` string specifies a parent project with the identifier `example-project`
         #   , and specifies the `europe-west3` location for processing data: parent=
         #   projects/example-project/locations/europe-west3
@@ -3169,14 +3169,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3280,14 +3280,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -3413,8 +3413,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -3518,8 +3518,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -3728,8 +3728,8 @@ module Google
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization): + Projects scope: `
-        #   projects/`PROJECT_ID`/locations/`LOCATION_ID + Organizations scope: `
-        #   organizations/`ORG_ID`/locations/`LOCATION_ID
+        #   projects/`project_id`/locations/`location_id`` + Organizations scope: `
+        #   organizations/`org_id`/locations/`location_id``
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateConnectionRequest] google_privacy_dlp_v2_create_connection_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3951,8 +3951,8 @@ module Google
         #   Parent resource name. The format of this value varies depending on whether you
         #   have [specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID The following example `
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` The following example `
         #   parent` string specifies a parent project with the identifier `example-project`
         #   , and specifies the `europe-west3` location for processing data: parent=
         #   projects/example-project/locations/europe-west3
@@ -3997,8 +3997,8 @@ module Google
         #   Parent resource name. The format of this value varies depending on whether you
         #   have [specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID The following example `
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` The following example `
         #   parent` string specifies a parent project with the identifier `example-project`
         #   , and specifies the `europe-west3` location for processing data: parent=
         #   projects/example-project/locations/europe-west3
@@ -4039,8 +4039,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -4082,14 +4082,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4193,14 +4193,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -4288,8 +4288,8 @@ module Google
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization): + Projects scope: `
-        #   projects/`PROJECT_ID`/locations/`LOCATION_ID + Organizations scope: `
-        #   organizations/`ORG_ID`/locations/`LOCATION_ID The following example `parent`
+        #   projects/`project_id`/locations/`location_id`` + Organizations scope: `
+        #   organizations/`org_id`/locations/`location_id`` The following example `parent`
         #   string specifies a parent project with the identifier `example-project`, and
         #   specifies the `europe-west3` location for processing data: parent=projects/
         #   example-project/locations/europe-west3
@@ -4388,7 +4388,7 @@ module Google
         # Lists discovery configurations.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value is as follows: `
-        #   projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent`
+        #   projects/`project_id`/locations/`location_id`` The following example `parent`
         #   string specifies a parent project with the identifier `example-project`, and
         #   specifies the `europe-west3` location for processing data: parent=projects/
         #   example-project/locations/europe-west3
@@ -4515,8 +4515,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -4693,8 +4693,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -4904,8 +4904,8 @@ module Google
         #   Parent resource name. The format of this value varies depending on whether you
         #   have [specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID The following example `
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` The following example `
         #   parent` string specifies a parent project with the identifier `example-project`
         #   , and specifies the `europe-west3` location for processing data: parent=
         #   projects/example-project/locations/europe-west3
@@ -4947,14 +4947,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5058,14 +5058,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -5191,8 +5191,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -5332,8 +5332,8 @@ module Google
         #   Required. Parent resource name. The format of this value varies depending on
         #   whether you have [specified a processing location](https://cloud.google.com/
         #   sensitive-data-protection/docs/specifying-location): + Projects scope,
-        #   location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-        #   scope, no location specified (defaults to global): `projects/`PROJECT_ID The
+        #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
+        #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
         #   identifier `example-project`, and specifies the `europe-west3` location for
         #   processing data: parent=projects/example-project/locations/europe-west3
@@ -5537,14 +5537,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5648,8 +5648,8 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID The following example `
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` The following example `
         #   parent` string specifies a parent project with the identifier `example-project`
         #   , and specifies the `europe-west3` location for processing data: parent=
         #   projects/example-project/locations/europe-west3
@@ -5876,14 +5876,14 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-        #   location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID +
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
+        #   location specified: `organizations/`org_id`/locations/`location_id`` +
         #   Organizations scope, no location specified (defaults to global): `
-        #   organizations/`ORG_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   organizations/`org_id`` The following example `parent` string specifies a
+        #   parent project with the identifier `example-project`, and specifies the `
+        #   europe-west3` location for processing data: parent=projects/example-project/
+        #   locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5987,8 +5987,8 @@ module Google
         #   the scope of the request (project or organization) and whether you have [
         #   specified a processing location](https://cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-        #   specified (defaults to global): `projects/`PROJECT_ID The following example `
+        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
+        #   specified (defaults to global): `projects/`project_id`` The following example `
         #   parent` string specifies a parent project with the identifier `example-project`
         #   , and specifies the `europe-west3` location for processing data: parent=
         #   projects/example-project/locations/europe-west3
