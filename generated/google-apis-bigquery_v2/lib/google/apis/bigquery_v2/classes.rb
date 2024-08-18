@@ -1669,6 +1669,27 @@ module Google
         end
       end
       
+      # Data policy option proto, it currently supports name only, will support
+      # precedence later.
+      class DataPolicyOption
+        include Google::Apis::Core::Hashable
+      
+        # Data policy resource name in the form of projects/project_id/locations/
+        # location_id/dataPolicies/data_policy_id.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Data split result. This contains references to the training and evaluation
       # data tables that were used to train the model.
       class DataSplitResult
@@ -3963,40 +3984,6 @@ module Google
           @status = args[:status] if args.key?(:status)
           @training_loss = args[:training_loss] if args.key?(:training_loss)
           @trial_id = args[:trial_id] if args.key?(:trial_id)
-        end
-      end
-      
-      # Metadata for value generation for an identity column.
-      class IdentityColumnInfo
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Dictates when system generated values are used to populate the field.
-        # Corresponds to the JSON property `generatedMode`
-        # @return [String]
-        attr_accessor :generated_mode
-      
-        # Optional. The minimum difference between two successive generated values.
-        # Should be INTEGER compatible. Can be negative or positive but not 0. The
-        # default value is 1 if the field is not specified.
-        # Corresponds to the JSON property `increment`
-        # @return [String]
-        attr_accessor :increment
-      
-        # Optional. The first generated value. Should be INTEGER compatible. The default
-        # value is 1 if the field is not specified.
-        # Corresponds to the JSON property `start`
-        # @return [String]
-        attr_accessor :start
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generated_mode = args[:generated_mode] if args.key?(:generated_mode)
-          @increment = args[:increment] if args.key?(:increment)
-          @start = args[:start] if args.key?(:start)
         end
       end
       
@@ -9975,6 +9962,11 @@ module Google
         # @return [String]
         attr_accessor :collation
       
+        # Optional. Data policy options, will replace the data_policies.
+        # Corresponds to the JSON property `dataPolicies`
+        # @return [Array<Google::Apis::BigqueryV2::DataPolicyOption>]
+        attr_accessor :data_policies
+      
         # Optional. A SQL expression to specify the [default value] (https://cloud.
         # google.com/bigquery/docs/default-values) for this field.
         # Corresponds to the JSON property `defaultValueExpression`
@@ -9997,11 +9989,6 @@ module Google
         # Corresponds to the JSON property `foreignTypeDefinition`
         # @return [String]
         attr_accessor :foreign_type_definition
-      
-        # Metadata for value generation for an identity column.
-        # Corresponds to the JSON property `identityColumnInfo`
-        # @return [Google::Apis::BigqueryV2::IdentityColumnInfo]
-        attr_accessor :identity_column_info
       
         # Optional. Maximum length of values of this field for STRINGS or BYTES. If
         # max_length is not specified, no maximum length constraint is imposed on this
@@ -10085,11 +10072,11 @@ module Google
         def update!(**args)
           @categories = args[:categories] if args.key?(:categories)
           @collation = args[:collation] if args.key?(:collation)
+          @data_policies = args[:data_policies] if args.key?(:data_policies)
           @default_value_expression = args[:default_value_expression] if args.key?(:default_value_expression)
           @description = args[:description] if args.key?(:description)
           @fields = args[:fields] if args.key?(:fields)
           @foreign_type_definition = args[:foreign_type_definition] if args.key?(:foreign_type_definition)
-          @identity_column_info = args[:identity_column_info] if args.key?(:identity_column_info)
           @max_length = args[:max_length] if args.key?(:max_length)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
