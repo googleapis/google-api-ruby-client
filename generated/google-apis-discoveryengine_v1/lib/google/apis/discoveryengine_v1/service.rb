@@ -468,6 +468,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Trains a custom model.
+        # @param [String] data_store
+        #   Required. The resource name of the Data Store, such as `projects/*/locations/
+        #   global/collections/default_collection/dataStores/default_data_store`. This
+        #   field is used to identify the data store where to train the models.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1TrainCustomModelRequest] google_cloud_discoveryengine_v1_train_custom_model_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def train_project_location_collection_data_store_custom_model(data_store, google_cloud_discoveryengine_v1_train_custom_model_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+dataStore}:trainCustomModel', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1TrainCustomModelRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_train_custom_model_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
+          command.params['dataStore'] = data_store unless data_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets index freshness metadata for Documents. Supported for website search only.
+        # @param [String] parent
+        #   Required. The parent branch resource name, such as `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
+        #   `branch``.
+        # @param [Array<String>, String] matcher_uris_matcher_uris
+        #   The exact URIs to match by.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_collection_data_store_branch_get_documents_metadata(parent, matcher_uris_matcher_uris: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/batchGetDocumentsMetadata', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['matcher.urisMatcher.uris'] = matcher_uris_matcher_uris unless matcher_uris_matcher_uris.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Document.
         # @param [String] parent
         #   Required. The parent resource name, such as `projects/`project`/locations/`
@@ -1345,6 +1415,38 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Conversation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a list of all the custom models.
+        # @param [String] data_store
+        #   Required. The resource name of the parent Data Store, such as `projects/*/
+        #   locations/global/collections/default_collection/dataStores/default_data_store`.
+        #   This field is used to identify the data store where to fetch the models from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ListCustomModelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ListCustomModelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_collection_data_store_custom_models(data_store, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+dataStore}/customModels', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ListCustomModelsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ListCustomModelsResponse
+          command.params['dataStore'] = data_store unless data_store.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4260,6 +4362,41 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStore
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets index freshness metadata for Documents. Supported for website search only.
+        # @param [String] parent
+        #   Required. The parent branch resource name, such as `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
+        #   `branch``.
+        # @param [Array<String>, String] matcher_uris_matcher_uris
+        #   The exact URIs to match by.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_data_store_branch_get_documents_metadata(parent, matcher_uris_matcher_uris: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/batchGetDocumentsMetadata', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['matcher.urisMatcher.uris'] = matcher_uris_matcher_uris unless matcher_uris_matcher_uris.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
