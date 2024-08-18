@@ -184,9 +184,9 @@ module Google
         attr_accessor :methods_prop
       
         # The service for this restriction. It should be the canonical service name, for
-        # example: `translate.googleapis.com`. You can use [`gcloud services list`](/sdk/
-        # gcloud/reference/services/list) to get a list of services that are enabled in
-        # the project.
+        # example: `translate.googleapis.com`. You can use [`gcloud services list`](
+        # https://cloud.google.com/sdk/gcloud/reference/services/list) to get a list of
+        # services that are enabled in the project.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
