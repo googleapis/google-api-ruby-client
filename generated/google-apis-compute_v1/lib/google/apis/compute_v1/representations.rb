@@ -8970,7 +8970,6 @@ module Google
           property :self_link_with_id, as: 'selfLinkWithId'
           property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeV1::ShareSettings, decorator: Google::Apis::ComputeV1::ShareSettings::Representation
       
-          property :specific_reservation_required, as: 'specificReservationRequired'
           property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties, decorator: Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties::Representation
       
           property :status, as: 'status', class: Google::Apis::ComputeV1::FutureReservationStatus, decorator: Google::Apis::ComputeV1::FutureReservationStatus::Representation
@@ -12071,6 +12070,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeV1::MachineType::Accelerator, decorator: Google::Apis::ComputeV1::MachineType::Accelerator::Representation
       
+          property :architecture, as: 'architecture'
           property :creation_timestamp, as: 'creationTimestamp'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatus::Representation
       
