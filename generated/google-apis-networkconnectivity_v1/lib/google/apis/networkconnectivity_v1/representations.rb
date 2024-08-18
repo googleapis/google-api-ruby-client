@@ -698,6 +698,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exclude_export_ranges, as: 'excludeExportRanges'
           collection :include_export_ranges, as: 'includeExportRanges'
+          collection :producer_vpc_spokes, as: 'producerVpcSpokes'
           property :uri, as: 'uri'
         end
       end
