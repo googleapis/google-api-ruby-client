@@ -127,6 +127,106 @@ module Google
         end
       end
       
+      # A message to group the analysis information.
+      class Analysis
+        include Google::Apis::Core::Hashable
+      
+        # An analysis result including blockers and warnings.
+        # Corresponds to the JSON property `analysis`
+        # @return [Google::Apis::ServiceusageV1::AnalysisResult]
+        attr_accessor :analysis
+      
+        # Output only. The type of analysis.
+        # Corresponds to the JSON property `analysisType`
+        # @return [String]
+        attr_accessor :analysis_type
+      
+        # Output only. The user friendly display name of the analysis type. E.g. service
+        # dependency analysis, service resource usage analysis, etc.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The names of the service that has analysis result of warnings or blockers.
+        # Example: `services/storage.googleapis.com`.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis = args[:analysis] if args.key?(:analysis)
+          @analysis_type = args[:analysis_type] if args.key?(:analysis_type)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # An analysis result including blockers and warnings.
+      class AnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # Blocking information that would prevent the policy changes at runtime.
+        # Corresponds to the JSON property `blockers`
+        # @return [Array<Google::Apis::ServiceusageV1::Impact>]
+        attr_accessor :blockers
+      
+        # Warning information indicating that the policy changes might be unsafe, but
+        # will not block the changes at runtime.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::ServiceusageV1::Impact>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blockers = args[:blockers] if args.key?(:blockers)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Metadata for the `AnalyzeConsumerPolicy` method.
+      class AnalyzeConsumerPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response of analyzing a consumer policy update.
+      class AnalyzeConsumerPolicyResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of analyses returned from performing the intended policy update
+        # analysis. The analysis is grouped by service name and different analysis types.
+        # The empty analysis list means that the consumer policy can be updated without
+        # any warnings or blockers.
+        # Corresponds to the JSON property `analysis`
+        # @return [Array<Google::Apis::ServiceusageV1::Analysis>]
+        attr_accessor :analysis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis = args[:analysis] if args.key?(:analysis)
+        end
+      end
+      
       # Api is a light-weight descriptor for an API Interface. Interfaces are also
       # described as "protocol buffer services" in some contexts, such as by the "
       # service" keyword in a .proto file, but they are different from API Services,
@@ -2707,6 +2807,31 @@ module Google
           @put = args[:put] if args.key?(:put)
           @response_body = args[:response_body] if args.key?(:response_body)
           @selector = args[:selector] if args.key?(:selector)
+        end
+      end
+      
+      # A message to group impacts of updating a policy.
+      class Impact
+        include Google::Apis::Core::Hashable
+      
+        # Output only. User friendly impact detail in a free form message.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # Output only. The type of impact.
+        # Corresponds to the JSON property `impactType`
+        # @return [String]
+        attr_accessor :impact_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
+          @impact_type = args[:impact_type] if args.key?(:impact_type)
         end
       end
       

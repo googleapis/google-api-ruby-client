@@ -40,6 +40,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Analysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeConsumerPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeConsumerPolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Api
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +395,12 @@ module Google
       end
       
       class HttpRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Impact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -711,6 +741,41 @@ module Google
           property :name, as: 'name'
           property :policy_value, :numeric_string => true, as: 'policyValue'
           property :unit, as: 'unit'
+        end
+      end
+      
+      class Analysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis, as: 'analysis', class: Google::Apis::ServiceusageV1::AnalysisResult, decorator: Google::Apis::ServiceusageV1::AnalysisResult::Representation
+      
+          property :analysis_type, as: 'analysisType'
+          property :display_name, as: 'displayName'
+          property :service, as: 'service'
+        end
+      end
+      
+      class AnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blockers, as: 'blockers', class: Google::Apis::ServiceusageV1::Impact, decorator: Google::Apis::ServiceusageV1::Impact::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::ServiceusageV1::Impact, decorator: Google::Apis::ServiceusageV1::Impact::Representation
+      
+        end
+      end
+      
+      class AnalyzeConsumerPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AnalyzeConsumerPolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :analysis, as: 'analysis', class: Google::Apis::ServiceusageV1::Analysis, decorator: Google::Apis::ServiceusageV1::Analysis::Representation
+      
         end
       end
       
@@ -1323,6 +1388,14 @@ module Google
           property :put, as: 'put'
           property :response_body, as: 'responseBody'
           property :selector, as: 'selector'
+        end
+      end
+      
+      class Impact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          property :impact_type, as: 'impactType'
         end
       end
       
