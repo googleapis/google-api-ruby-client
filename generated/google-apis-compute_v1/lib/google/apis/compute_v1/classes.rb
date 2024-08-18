@@ -10496,16 +10496,6 @@ module Google
         # @return [Google::Apis::ComputeV1::ShareSettings]
         attr_accessor :share_settings
       
-        # Indicates whether the auto-created reservation can be consumed by VMs with
-        # affinity for "any" reservation. If the field is set, then only VMs that target
-        # the reservation by name can consume from the delivered reservation. If set to
-        # true,the delivered resevervation will have the same name as the future
-        # reservation.
-        # Corresponds to the JSON property `specificReservationRequired`
-        # @return [Boolean]
-        attr_accessor :specific_reservation_required
-        alias_method :specific_reservation_required?, :specific_reservation_required
-      
         # Future Reservation configuration to indicate instance properties and total
         # count.
         # Corresponds to the JSON property `specificSkuProperties`
@@ -10546,7 +10536,6 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @share_settings = args[:share_settings] if args.key?(:share_settings)
-          @specific_reservation_required = args[:specific_reservation_required] if args.key?(:specific_reservation_required)
           @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
           @status = args[:status] if args.key?(:status)
           @time_window = args[:time_window] if args.key?(:time_window)
@@ -23010,6 +22999,11 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::MachineType::Accelerator>]
         attr_accessor :accelerators
       
+        # [Output Only] The architecture of the machine type.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -23099,6 +23093,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deprecated = args[:deprecated] if args.key?(:deprecated)
           @description = args[:description] if args.key?(:description)
@@ -49530,7 +49525,8 @@ module Google
       
         # Local traffic selector to use when establishing the VPN tunnel with the peer
         # VPN gateway. The value should be a CIDR formatted string, for example: 192.168.
-        # 0.0/16. The ranges must be disjoint. Only IPv4 is supported.
+        # 0.0/16. The ranges must be disjoint. Only IPv4 is supported for Classic VPN
+        # tunnels. This field is output only for HA VPN tunnels.
         # Corresponds to the JSON property `localTrafficSelector`
         # @return [Array<String>]
         attr_accessor :local_traffic_selector
@@ -49570,7 +49566,8 @@ module Google
         # @return [String]
         attr_accessor :peer_gcp_gateway
       
-        # IP address of the peer VPN gateway. Only IPv4 is supported.
+        # IP address of the peer VPN gateway. Only IPv4 is supported. This field can be
+        # set only for Classic VPN tunnels.
         # Corresponds to the JSON property `peerIp`
         # @return [String]
         attr_accessor :peer_ip
@@ -49584,7 +49581,8 @@ module Google
       
         # Remote traffic selectors to use when establishing the VPN tunnel with the peer
         # VPN gateway. The value should be a CIDR formatted string, for example: 192.168.
-        # 0.0/16. The ranges should be disjoint. Only IPv4 is supported.
+        # 0.0/16. The ranges should be disjoint. Only IPv4 is supported for Classic VPN
+        # tunnels. This field is output only for HA VPN tunnels.
         # Corresponds to the JSON property `remoteTrafficSelector`
         # @return [Array<String>]
         attr_accessor :remote_traffic_selector
@@ -49633,7 +49631,8 @@ module Google
         attr_accessor :status
       
         # URL of the Target VPN gateway with which this VPN tunnel is associated.
-        # Provided by the client when the VPN tunnel is created.
+        # Provided by the client when the VPN tunnel is created. This field can be set
+        # only for Classic VPN tunnels.
         # Corresponds to the JSON property `targetVpnGateway`
         # @return [String]
         attr_accessor :target_vpn_gateway
