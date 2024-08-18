@@ -1196,6 +1196,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :include_export_ranges
       
+        # Output only. The list of Producer VPC spokes that this VPC spoke is a service
+        # consumer VPC spoke for. These producer VPCs are connected through VPC peering
+        # to this spoke's backing VPC network.
+        # Corresponds to the JSON property `producerVpcSpokes`
+        # @return [Array<String>]
+        attr_accessor :producer_vpc_spokes
+      
         # Required. The URI of the VPC network resource.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -1209,6 +1216,7 @@ module Google
         def update!(**args)
           @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
           @include_export_ranges = args[:include_export_ranges] if args.key?(:include_export_ranges)
+          @producer_vpc_spokes = args[:producer_vpc_spokes] if args.key?(:producer_vpc_spokes)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
