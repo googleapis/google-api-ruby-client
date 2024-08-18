@@ -1811,7 +1811,7 @@ module Google
         #   The id of the live chat for which comments should be returned.
         # @param [Array<String>, String] part
         #   The *part* parameter specifies the liveChatComment resource parts that the API
-        #   response will include. Supported values are id and snippet.
+        #   response will include. Supported values are id, snippet, and authorDetails.
         # @param [String] hl
         #   Specifies the localization language in which the system messages should be
         #   returned.

@@ -2918,6 +2918,7 @@ module Google
       class PlaylistStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :podcast_status, as: 'podcastStatus'
           property :privacy_status, as: 'privacyStatus'
         end
       end
