@@ -4300,7 +4300,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Each instance corresponds to a force return attribute for the given condition.
-        # There can't be more 3 instances here.
+        # There can't be more 15 instances here.
         # Corresponds to the JSON property `facetPositionAdjustments`
         # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment>]
         attr_accessor :facet_position_adjustments
