@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0CommonAdTextAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0CommonAgeRangeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -987,6 +993,13 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0CommonAdTextAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+        end
+      end
+      
       class GoogleAdsSearchads360V0CommonAgeRangeInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1192,6 +1205,7 @@ module Google
           property :average_cost, as: 'averageCost'
           property :average_cpc, as: 'averageCpc'
           property :average_cpm, as: 'averageCpm'
+          property :average_quality_score, as: 'averageQualityScore'
           property :clicks, :numeric_string => true, as: 'clicks'
           property :client_account_conversions, as: 'clientAccountConversions'
           property :client_account_conversions_value, as: 'clientAccountConversionsValue'
@@ -1320,6 +1334,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_tracking_id, :numeric_string => true, as: 'adTrackingId'
+          collection :descriptions, as: 'descriptions', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAdTextAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAdTextAsset::Representation
+      
+          collection :headlines, as: 'headlines', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAdTextAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAdTextAsset::Representation
+      
           property :path1, as: 'path1'
           property :path2, as: 'path2'
         end
@@ -1351,6 +1369,11 @@ module Google
           property :date, as: 'date'
           property :day_of_week, as: 'dayOfWeek'
           property :device, as: 'device'
+          property :geo_target_city, as: 'geoTargetCity'
+          property :geo_target_country, as: 'geoTargetCountry'
+          property :geo_target_metro, as: 'geoTargetMetro'
+          property :geo_target_region, as: 'geoTargetRegion'
+          property :hour, as: 'hour'
           property :keyword, as: 'keyword', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeyword, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeyword::Representation
       
           property :month, as: 'month'
@@ -2561,6 +2584,7 @@ module Google
           property :manager_customer, as: 'managerCustomer'
           property :manager_link_id, :numeric_string => true, as: 'managerLinkId'
           property :resource_name, as: 'resourceName'
+          property :start_time, as: 'startTime'
           property :status, as: 'status'
         end
       end

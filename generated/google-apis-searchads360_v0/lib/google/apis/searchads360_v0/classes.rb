@@ -75,6 +75,25 @@ module Google
         end
       end
       
+      # A text asset used inside an ad.
+      class GoogleAdsSearchads360V0CommonAdTextAsset
+        include Google::Apis::Core::Hashable
+      
+        # Asset text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # An age range criterion.
       class GoogleAdsSearchads360V0CommonAgeRangeInfo
         include Google::Apis::Core::Hashable
@@ -777,6 +796,11 @@ module Google
         # @return [Float]
         attr_accessor :average_cpm
       
+        # The average quality score.
+        # Corresponds to the JSON property `averageQualityScore`
+        # @return [Float]
+        attr_accessor :average_quality_score
+      
         # The number of clicks.
         # Corresponds to the JSON property `clicks`
         # @return [Fixnum]
@@ -1430,6 +1454,7 @@ module Google
           @average_cost = args[:average_cost] if args.key?(:average_cost)
           @average_cpc = args[:average_cpc] if args.key?(:average_cpc)
           @average_cpm = args[:average_cpm] if args.key?(:average_cpm)
+          @average_quality_score = args[:average_quality_score] if args.key?(:average_quality_score)
           @clicks = args[:clicks] if args.key?(:clicks)
           @client_account_conversions = args[:client_account_conversions] if args.key?(:client_account_conversions)
           @client_account_conversions_value = args[:client_account_conversions_value] if args.key?(:client_account_conversions_value)
@@ -1693,6 +1718,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :ad_tracking_id
       
+        # List of text assets for descriptions. When the ad serves the descriptions will
+        # be selected from this list.
+        # Corresponds to the JSON property `descriptions`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAdTextAsset>]
+        attr_accessor :descriptions
+      
+        # List of text assets for headlines. When the ad serves the headlines will be
+        # selected from this list.
+        # Corresponds to the JSON property `headlines`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAdTextAsset>]
+        attr_accessor :headlines
+      
         # Text appended to the auto-generated visible URL with a delimiter.
         # Corresponds to the JSON property `path1`
         # @return [String]
@@ -1710,6 +1747,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ad_tracking_id = args[:ad_tracking_id] if args.key?(:ad_tracking_id)
+          @descriptions = args[:descriptions] if args.key?(:descriptions)
+          @headlines = args[:headlines] if args.key?(:headlines)
           @path1 = args[:path1] if args.key?(:path1)
           @path2 = args[:path2] if args.key?(:path2)
         end
@@ -1812,6 +1851,31 @@ module Google
         # Corresponds to the JSON property `device`
         # @return [String]
         attr_accessor :device
+      
+        # Resource name of the geo target constant that represents a city.
+        # Corresponds to the JSON property `geoTargetCity`
+        # @return [String]
+        attr_accessor :geo_target_city
+      
+        # Resource name of the geo target constant that represents a country.
+        # Corresponds to the JSON property `geoTargetCountry`
+        # @return [String]
+        attr_accessor :geo_target_country
+      
+        # Resource name of the geo target constant that represents a metro.
+        # Corresponds to the JSON property `geoTargetMetro`
+        # @return [String]
+        attr_accessor :geo_target_metro
+      
+        # Resource name of the geo target constant that represents a region.
+        # Corresponds to the JSON property `geoTargetRegion`
+        # @return [String]
+        attr_accessor :geo_target_region
+      
+        # Hour of day as a number between 0 and 23, inclusive.
+        # Corresponds to the JSON property `hour`
+        # @return [Fixnum]
+        attr_accessor :hour
       
         # A Keyword criterion segment.
         # Corresponds to the JSON property `keyword`
@@ -2078,6 +2142,11 @@ module Google
           @date = args[:date] if args.key?(:date)
           @day_of_week = args[:day_of_week] if args.key?(:day_of_week)
           @device = args[:device] if args.key?(:device)
+          @geo_target_city = args[:geo_target_city] if args.key?(:geo_target_city)
+          @geo_target_country = args[:geo_target_country] if args.key?(:geo_target_country)
+          @geo_target_metro = args[:geo_target_metro] if args.key?(:geo_target_metro)
+          @geo_target_region = args[:geo_target_region] if args.key?(:geo_target_region)
+          @hour = args[:hour] if args.key?(:hour)
           @keyword = args[:keyword] if args.key?(:keyword)
           @month = args[:month] if args.key?(:month)
           @product_bidding_category_level1 = args[:product_bidding_category_level1] if args.key?(:product_bidding_category_level1)
@@ -2317,11 +2386,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :cpc_bid_ceiling_micros
       
-        # The spend target under which to maximize clicks. A TargetSpend bidder will
-        # attempt to spend the smaller of this value or the natural throttling spend
-        # amount. If not specified, the budget is used as the spend target. This field
-        # is deprecated and should no longer be used. See https://ads-developers.
-        # googleblog.com/2020/05/reminder-about-sunset-creation-of.html for details.
+        # Deprecated: The spend target under which to maximize clicks. A TargetSpend
+        # bidder will attempt to spend the smaller of this value or the natural
+        # throttling spend amount. If not specified, the budget is used as the spend
+        # target. This field is deprecated and should no longer be used. See https://ads-
+        # developers.googleblog.com/2020/05/reminder-about-sunset-creation-of.html for
+        # details.
         # Corresponds to the JSON property `targetSpendMicros`
         # @return [Fixnum]
         attr_accessor :target_spend_micros
@@ -2382,7 +2452,7 @@ module Google
       class GoogleAdsSearchads360V0CommonTextLabel
         include Google::Apis::Core::Hashable
       
-        # Background color of the label in RGB format. This string must match the
+        # Background color of the label in HEX format. This string must match the
         # regular expression '^\#([a-fA-F0-9]`6`|[a-fA-F0-9]`3`)$'. Note: The background
         # color may not be visible for manager accounts.
         # Corresponds to the JSON property `backgroundColor`
@@ -3037,7 +3107,7 @@ module Google
         end
       end
       
-      # SearchAds360-specific error.
+      # Search Ads 360-specific error.
       class GoogleAdsSearchads360V0ErrorsSearchAds360Error
         include Google::Apis::Core::Hashable
       
@@ -4138,8 +4208,8 @@ module Google
         attr_accessor :creation_time
       
         # Output only. ID of the ad in the external engine account. This field is for
-        # SearchAds 360 account only, for example, Yahoo Japan, Microsoft, Baidu etc.
-        # For non-SearchAds 360 entity, use "ad_group_ad.ad.id" instead.
+        # Search Ads 360 account only, for example, Yahoo Japan, Microsoft, Baidu etc.
+        # For non-Search Ads 360 entity, use "ad_group_ad.ad.id" instead.
         # Corresponds to the JSON property `engineId`
         # @return [String]
         attr_accessor :engine_id
@@ -6057,9 +6127,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Output only. The SearchAds360 inventory account ID containing the product that
-        # was clicked on. SearchAds360 generates this ID when you link an inventory
-        # account in SearchAds360.
+        # Output only. The Search Ads 360 inventory account ID containing the product
+        # that was clicked on. Search Ads 360 generates this ID when you link an
+        # inventory account in Search Ads 360.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
         attr_accessor :merchant_id
@@ -6105,7 +6175,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Output only. The SearchAds360 visit ID that the conversion is attributed to.
+        # Output only. The Search Ads 360 visit ID that the conversion is attributed to.
         # Corresponds to the JSON property `visitId`
         # @return [Fixnum]
         attr_accessor :visit_id
@@ -6819,6 +6889,12 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
+        # Output only. The timestamp when the CustomerManagerLink was created. The
+        # timestamp is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
         # Status of the link between the customer and the manager.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -6833,6 +6909,7 @@ module Google
           @manager_customer = args[:manager_customer] if args.key?(:manager_customer)
           @manager_link_id = args[:manager_link_id] if args.key?(:manager_link_id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
         end
       end
