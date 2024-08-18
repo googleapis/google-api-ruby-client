@@ -1026,22 +1026,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :backup_retention_days
       
-        # Optional. TODO b/341576760: Remove deprecated BV and Datasource field form BP
-        # and BPA once UI removed all dependencies on them Required. Resource name of
-        # backup vault which will be used as storage location for backups. Format:
-        # projects/`project`/locations/`location`/backupVaults/`backupvault`
-        # Corresponds to the JSON property `backupVault`
-        # @return [String]
-        attr_accessor :backup_vault
-      
-        # Output only. TODO b/341576760: Remove deprecated BV and Datasource field form
-        # BP and BPA once UI removed all dependencies on them Output only. The Google
-        # Cloud Platform Service Account to be used by the BackupVault for taking
-        # backups. Specify the email address of the Backup Vault Service Account.
-        # Corresponds to the JSON property `backupVaultServiceAccount`
-        # @return [String]
-        attr_accessor :backup_vault_service_account
-      
         # Required. Immutable. The unique id of this `BackupRule`. The `rule_id` is
         # unique per `BackupPlan`.The `rule_id` must start with a lowercase letter
         # followed by up to 62 lowercase letters, numbers, or hyphens. Pattern, /a-z`,62`
@@ -1064,8 +1048,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup_retention_days = args[:backup_retention_days] if args.key?(:backup_retention_days)
-          @backup_vault = args[:backup_vault] if args.key?(:backup_vault)
-          @backup_vault_service_account = args[:backup_vault_service_account] if args.key?(:backup_vault_service_account)
           @rule_id = args[:rule_id] if args.key?(:rule_id)
           @standard_schedule = args[:standard_schedule] if args.key?(:standard_schedule)
         end
@@ -3703,15 +3685,6 @@ module Google
       class RuleConfigInfo
         include Google::Apis::Core::Hashable
       
-        # Output only. TODO b/341576760: Remove deprecated BV and Datasource field form
-        # BP and BPA once UI removed all dependencies on them Output Only. Resource name
-        # of data source which will be used as storage location for backups taken by
-        # specified rule. Format : projects/`project`/locations/`location`/backupVaults/`
-        # backupvault`/dataSources/`datasource`
-        # Corresponds to the JSON property `dataSource`
-        # @return [String]
-        attr_accessor :data_source
-      
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by [
         # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -3744,7 +3717,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data_source = args[:data_source] if args.key?(:data_source)
           @last_backup_error = args[:last_backup_error] if args.key?(:last_backup_error)
           @last_backup_state = args[:last_backup_state] if args.key?(:last_backup_state)
           @last_successful_backup_consistency_time = args[:last_successful_backup_consistency_time] if args.key?(:last_successful_backup_consistency_time)

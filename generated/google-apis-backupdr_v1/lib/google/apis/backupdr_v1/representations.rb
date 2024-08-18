@@ -850,8 +850,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_retention_days, as: 'backupRetentionDays'
-          property :backup_vault, as: 'backupVault'
-          property :backup_vault_service_account, as: 'backupVaultServiceAccount'
           property :rule_id, as: 'ruleId'
           property :standard_schedule, as: 'standardSchedule', class: Google::Apis::BackupdrV1::StandardSchedule, decorator: Google::Apis::BackupdrV1::StandardSchedule::Representation
       
@@ -1525,7 +1523,6 @@ module Google
       class RuleConfigInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :data_source, as: 'dataSource'
           property :last_backup_error, as: 'lastBackupError', class: Google::Apis::BackupdrV1::Status, decorator: Google::Apis::BackupdrV1::Status::Representation
       
           property :last_backup_state, as: 'lastBackupState'
