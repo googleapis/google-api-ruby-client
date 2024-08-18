@@ -59,6 +59,63 @@ module Google
         end
       end
       
+      # Build the source using Buildpacks.
+      class GoogleCloudRunV2BuildpacksBuild
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The base image used to opt into automatic base image updates.
+        # Corresponds to the JSON property `baseImage`
+        # @return [String]
+        attr_accessor :base_image
+      
+        # Optional. cache_image_uri is the GCR/AR URL where the cache image will be
+        # stored. cache_image_uri is optional and omitting it will disable caching. This
+        # URL must be stable across builds. It is used to derive a build-specific
+        # temporary URL by substituting the tag with the build ID. The build will clean
+        # up the temporary image on a best-effort basis.
+        # Corresponds to the JSON property `cacheImageUri`
+        # @return [String]
+        attr_accessor :cache_image_uri
+      
+        # Optional. Whether or not the application container will be enrolled in
+        # automatic base image updates. When true, the application will be built on a
+        # scratch base image, so the base layers can be appended at run time.
+        # Corresponds to the JSON property `enableAutomaticUpdates`
+        # @return [Boolean]
+        attr_accessor :enable_automatic_updates
+        alias_method :enable_automatic_updates?, :enable_automatic_updates
+      
+        # Optional. User-provided build-time environment variables.
+        # Corresponds to the JSON property `environmentVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :environment_variables
+      
+        # Optional. Name of the function target if the source is a function source.
+        # Required for function builds.
+        # Corresponds to the JSON property `functionTarget`
+        # @return [String]
+        attr_accessor :function_target
+      
+        # The runtime name, e.g. 'go113'. Leave blank for generic builds.
+        # Corresponds to the JSON property `runtime`
+        # @return [String]
+        attr_accessor :runtime
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_image = args[:base_image] if args.key?(:base_image)
+          @cache_image_uri = args[:cache_image_uri] if args.key?(:cache_image_uri)
+          @enable_automatic_updates = args[:enable_automatic_updates] if args.key?(:enable_automatic_updates)
+          @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
+          @function_target = args[:function_target] if args.key?(:function_target)
+          @runtime = args[:runtime] if args.key?(:runtime)
+        end
+      end
+      
       # Request message for deleting an Execution.
       class GoogleCloudRunV2CancelExecutionRequest
         include Google::Apis::Core::Hashable
@@ -339,6 +396,19 @@ module Google
         end
       end
       
+      # Build the source using Docker. This means the source has a Dockerfile.
+      class GoogleCloudRunV2DockerBuild
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when
       # the sandbox is taken down, the data is destroyed with it (it does not persist
       # across sandbox runs).
@@ -383,13 +453,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Variable references $(VAR_NAME) are expanded using the previous defined
-        # environment variables in the container and any route environment variables. If
-        # a variable cannot be resolved, the reference in the input string will be
-        # unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(
-        # VAR_NAME). Escaped references will never be expanded, regardless of whether
-        # the variable exists or not. Defaults to "", and the maximum length is 32768
-        # bytes.
+        # Literal value of the environment variable. Defaults to "", and the maximum
+        # length is 32768 bytes. Variable references are not supported in Cloud Run.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2430,6 +2495,128 @@ module Google
         # Update properties of this object
         def update!(**args)
           @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
+        end
+      end
+      
+      # Location of the source in an archive file in Google Cloud Storage.
+      class GoogleCloudRunV2StorageSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Google Cloud Storage bucket containing the source (see [Bucket Name
+        # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
+        # ).
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Optional. Google Cloud Storage generation for the object. If the generation is
+        # omitted, the latest generation will be used.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Required. Google Cloud Storage object containing the source. This object must
+        # be a gzipped archive file (`.tar.gz`) containing source to build.
+        # Corresponds to the JSON property `object`
+        # @return [String]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @generation = args[:generation] if args.key?(:generation)
+          @object = args[:object] if args.key?(:object)
+        end
+      end
+      
+      # Request message for submitting a Build.
+      class GoogleCloudRunV2SubmitBuildRequest
+        include Google::Apis::Core::Hashable
+      
+        # Build the source using Buildpacks.
+        # Corresponds to the JSON property `buildpackBuild`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2BuildpacksBuild]
+        attr_accessor :buildpack_build
+      
+        # Build the source using Docker. This means the source has a Dockerfile.
+        # Corresponds to the JSON property `dockerBuild`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2DockerBuild]
+        attr_accessor :docker_build
+      
+        # Required. Artifact Registry URI to store the built image.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # Optional. The service account to use for the build. If not set, the default
+        # Cloud Build service account for the project will be used.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Location of the source in an archive file in Google Cloud Storage.
+        # Corresponds to the JSON property `storageSource`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2StorageSource]
+        attr_accessor :storage_source
+      
+        # Optional. Additional tags to annotate the build.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Optional. Name of the Cloud Build Custom Worker Pool that should be used to
+        # build the function. The format of this field is `projects/`project`/locations/`
+        # region`/workerPools/`workerPool`` where `project` and `region` are the project
+        # id and region respectively where the worker pool is defined and `workerPool`
+        # is the short name of the worker pool.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buildpack_build = args[:buildpack_build] if args.key?(:buildpack_build)
+          @docker_build = args[:docker_build] if args.key?(:docker_build)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @storage_source = args[:storage_source] if args.key?(:storage_source)
+          @tags = args[:tags] if args.key?(:tags)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
+      # Response message for submitting a Build.
+      class GoogleCloudRunV2SubmitBuildResponse
+        include Google::Apis::Core::Hashable
+      
+        # URI of the base builder image in Artifact Registry being used in the build.
+        # Used to opt into automatic base image updates.
+        # Corresponds to the JSON property `baseImageUri`
+        # @return [String]
+        attr_accessor :base_image_uri
+      
+        # This resource represents a long-running operation that is the result of a
+        # network API call.
+        # Corresponds to the JSON property `buildOperation`
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        attr_accessor :build_operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_image_uri = args[:base_image_uri] if args.key?(:base_image_uri)
+          @build_operation = args[:build_operation] if args.key?(:build_operation)
         end
       end
       
