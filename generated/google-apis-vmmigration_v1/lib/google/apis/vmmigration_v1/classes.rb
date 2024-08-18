@@ -272,11 +272,6 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :migration_resources_user_tags
       
-        # Information about the network coniguration of the source.
-        # Corresponds to the JSON property `networkInsights`
-        # @return [Google::Apis::VmmigrationV1::NetworkInsights]
-        attr_accessor :network_insights
-      
         # Output only. The source's public IP. All communication initiated by this
         # source will originate from this IP.
         # Corresponds to the JSON property `publicIp`
@@ -300,7 +295,6 @@ module Google
           @inventory_security_group_names = args[:inventory_security_group_names] if args.key?(:inventory_security_group_names)
           @inventory_tag_list = args[:inventory_tag_list] if args.key?(:inventory_tag_list)
           @migration_resources_user_tags = args[:migration_resources_user_tags] if args.key?(:migration_resources_user_tags)
-          @network_insights = args[:network_insights] if args.key?(:network_insights)
           @public_ip = args[:public_ip] if args.key?(:public_ip)
           @state = args[:state] if args.key?(:state)
         end
@@ -804,19 +798,6 @@ module Google
         end
       end
       
-      # Request message for 'CancelDiskMigrationJob' request.
-      class CancelDiskMigrationJobRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Request message for 'CancelImageImportJob' request.
       class CancelImageImportJobRequest
         include Google::Apis::Core::Hashable
@@ -1092,6 +1073,13 @@ module Google
         # @return [Google::Apis::VmmigrationV1::AppliedLicense]
         attr_accessor :applied_license
       
+        # Optional. By default the virtual machine will keep its existing boot option.
+        # Setting this property will trigger an internal process which will convert the
+        # virtual machine from using the existing boot option to another.
+        # Corresponds to the JSON property `bootConversion`
+        # @return [String]
+        attr_accessor :boot_conversion
+      
         # Output only. The VM Boot Option, as set in the source VM.
         # Corresponds to the JSON property `bootOption`
         # @return [String]
@@ -1107,6 +1095,20 @@ module Google
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
+      
+        # Optional. Defines whether the instance has integrity monitoring enabled. This
+        # can be set to true only if the VM boot option is EFI, and vTPM is enabled.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Optional. Defines whether the instance has vTPM enabled. This can be set to
+        # true only if the VM boot option is EFI.
+        # Corresponds to the JSON property `enableVtpm`
+        # @return [Boolean]
+        attr_accessor :enable_vtpm
+        alias_method :enable_vtpm?, :enable_vtpm
       
         # Encryption message describes the details of the applied encryption.
         # Corresponds to the JSON property `encryption`
@@ -1189,9 +1191,12 @@ module Google
         def update!(**args)
           @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
           @applied_license = args[:applied_license] if args.key?(:applied_license)
+          @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
           @encryption = args[:encryption] if args.key?(:encryption)
           @hostname = args[:hostname] if args.key?(:hostname)
           @labels = args[:labels] if args.key?(:labels)
@@ -1224,6 +1229,13 @@ module Google
         # @return [Google::Apis::VmmigrationV1::AppliedLicense]
         attr_accessor :applied_license
       
+        # Optional. By default the virtual machine will keep its existing boot option.
+        # Setting this property will trigger an internal process which will convert the
+        # virtual machine from using the existing boot option to another.
+        # Corresponds to the JSON property `bootConversion`
+        # @return [String]
+        attr_accessor :boot_conversion
+      
         # The VM Boot Option, as set in the source VM.
         # Corresponds to the JSON property `bootOption`
         # @return [String]
@@ -1239,6 +1251,18 @@ module Google
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
+      
+        # Optional. Defines whether the instance has integrity monitoring enabled.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Optional. Defines whether the instance has vTPM enabled.
+        # Corresponds to the JSON property `enableVtpm`
+        # @return [Boolean]
+        attr_accessor :enable_vtpm
+        alias_method :enable_vtpm?, :enable_vtpm
       
         # Encryption message describes the details of the applied encryption.
         # Corresponds to the JSON property `encryption`
@@ -1320,9 +1344,12 @@ module Google
         def update!(**args)
           @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
           @applied_license = args[:applied_license] if args.key?(:applied_license)
+          @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
           @encryption = args[:encryption] if args.key?(:encryption)
           @hostname = args[:hostname] if args.key?(:hostname)
           @labels = args[:labels] if args.key?(:labels)
@@ -1909,6 +1936,18 @@ module Google
         # @return [Google::Apis::VmmigrationV1::ComputeScheduling]
         attr_accessor :compute_scheduling
       
+        # Optional. Defines whether the instance has integrity monitoring enabled.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Optional. Defines whether the instance has vTPM enabled.
+        # Corresponds to the JSON property `enableVtpm`
+        # @return [Boolean]
+        attr_accessor :enable_vtpm
+        alias_method :enable_vtpm?, :enable_vtpm
+      
         # Encryption message describes the details of the applied encryption.
         # Corresponds to the JSON property `encryption`
         # @return [Google::Apis::VmmigrationV1::Encryption]
@@ -1975,6 +2014,8 @@ module Google
           @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
           @boot_disk_defaults = args[:boot_disk_defaults] if args.key?(:boot_disk_defaults)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
           @encryption = args[:encryption] if args.key?(:encryption)
           @hostname = args[:hostname] if args.key?(:hostname)
           @labels = args[:labels] if args.key?(:labels)
@@ -3324,33 +3365,6 @@ module Google
         end
       end
       
-      # Information about the network coniguration of the source.
-      class NetworkInsights
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The gathered network configuration of the source. Presented in
-        # json format.
-        # Corresponds to the JSON property `sourceNetworkConfig`
-        # @return [String]
-        attr_accessor :source_network_config
-      
-        # Output only. The gathered network configuration of the source. Presented in
-        # terraform format.
-        # Corresponds to the JSON property `sourceNetworkTerraform`
-        # @return [String]
-        attr_accessor :source_network_terraform
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @source_network_config = args[:source_network_config] if args.key?(:source_network_config)
-          @source_network_terraform = args[:source_network_terraform] if args.key?(:source_network_terraform)
-        end
-      end
-      
       # NetworkInterface represents a NIC of a VM.
       class NetworkInterface
         include Google::Apis::Core::Hashable
@@ -3371,8 +3385,9 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Optional. The networking tier used for configuring network access
-        # configuration. If left empty, will default to PREMIUM.
+        # Optional. The networking tier used for optimizing connectivity between
+        # instances and systems on the internet. Applies only for external ephemeral IP
+        # addresses. If left empty, will default to PREMIUM.
         # Corresponds to the JSON property `networkTier`
         # @return [String]
         attr_accessor :network_tier
@@ -3856,19 +3871,6 @@ module Google
       
       # Request message for 'ResumeMigration' request.
       class ResumeMigrationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Request message for 'RunDiskMigrationJobRequest' request.
-      class RunDiskMigrationJobRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)

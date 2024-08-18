@@ -142,12 +142,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CancelDiskMigrationJobRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CancelImageImportJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -496,12 +490,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NetworkInsights
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class NetworkInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,12 +575,6 @@ module Google
       end
       
       class ResumeMigrationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RunDiskMigrationJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -815,8 +797,6 @@ module Google
           collection :inventory_tag_list, as: 'inventoryTagList', class: Google::Apis::VmmigrationV1::Tag, decorator: Google::Apis::VmmigrationV1::Tag::Representation
       
           hash :migration_resources_user_tags, as: 'migrationResourcesUserTags'
-          property :network_insights, as: 'networkInsights', class: Google::Apis::VmmigrationV1::NetworkInsights, decorator: Google::Apis::VmmigrationV1::NetworkInsights::Representation
-      
           property :public_ip, as: 'publicIp'
           property :state, as: 'state'
         end
@@ -958,12 +938,6 @@ module Google
         end
       end
       
-      class CancelDiskMigrationJobRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class CancelImageImportJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1050,10 +1024,13 @@ module Google
           collection :additional_licenses, as: 'additionalLicenses'
           property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1::AppliedLicense, decorator: Google::Apis::VmmigrationV1::AppliedLicense::Representation
       
+          property :boot_conversion, as: 'bootConversion'
           property :boot_option, as: 'bootOption'
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
       
           property :disk_type, as: 'diskType'
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_vtpm, as: 'enableVtpm'
           property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1::Encryption, decorator: Google::Apis::VmmigrationV1::Encryption::Representation
       
           property :hostname, as: 'hostname'
@@ -1079,10 +1056,13 @@ module Google
           collection :additional_licenses, as: 'additionalLicenses'
           property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1::AppliedLicense, decorator: Google::Apis::VmmigrationV1::AppliedLicense::Representation
       
+          property :boot_conversion, as: 'bootConversion'
           property :boot_option, as: 'bootOption'
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
       
           property :disk_type, as: 'diskType'
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_vtpm, as: 'enableVtpm'
           property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1::Encryption, decorator: Google::Apis::VmmigrationV1::Encryption::Representation
       
           property :hostname, as: 'hostname'
@@ -1263,6 +1243,8 @@ module Google
       
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
       
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_vtpm, as: 'enableVtpm'
           property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1::Encryption, decorator: Google::Apis::VmmigrationV1::Encryption::Representation
       
           property :hostname, as: 'hostname'
@@ -1677,14 +1659,6 @@ module Google
         end
       end
       
-      class NetworkInsights
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :source_network_config, as: 'sourceNetworkConfig'
-          property :source_network_terraform, as: 'sourceNetworkTerraform'
-        end
-      end
-      
       class NetworkInterface
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1824,12 +1798,6 @@ module Google
       end
       
       class ResumeMigrationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class RunDiskMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
