@@ -1612,6 +1612,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2TagCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2TagResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2TagValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2TaggedField
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2436,6 +2454,8 @@ module Google
       
           property :pub_sub_notification, as: 'pubSubNotification', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubNotification, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubNotification::Representation
       
+          property :tag_resources, as: 'tagResources', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TagResources, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TagResources::Representation
+      
         end
       end
       
@@ -2791,6 +2811,8 @@ module Google
       class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :inspect_template_modified_cadence, as: 'inspectTemplateModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence::Representation
+      
           property :refresh_frequency, as: 'refreshFrequency'
           property :schema_modified_cadence, as: 'schemaModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SchemaModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SchemaModifiedCadence::Representation
       
@@ -4544,6 +4566,33 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_id, as: 'datasetId'
           property :table_id, as: 'tableId'
+        end
+      end
+      
+      class GooglePrivacyDlpV2TagCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
+      
+          property :tag, as: 'tag', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TagValue, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TagValue::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2TagResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lower_data_risk_to_low, as: 'lowerDataRiskToLow'
+          collection :profile_generations_to_tag, as: 'profileGenerationsToTag'
+          collection :tag_conditions, as: 'tagConditions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TagCondition, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TagCondition::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2TagValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :namespaced_value, as: 'namespacedValue'
         end
       end
       
