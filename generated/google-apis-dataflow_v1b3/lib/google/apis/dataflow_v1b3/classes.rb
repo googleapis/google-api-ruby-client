@@ -2998,6 +2998,11 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Optional. The project number of the project this worker belongs to.
+        # Corresponds to the JSON property `projectNumber`
+        # @return [Fixnum]
+        attr_accessor :project_number
+      
         # The initial lease period.
         # Corresponds to the JSON property `requestedLeaseDuration`
         # @return [String]
@@ -3033,6 +3038,7 @@ module Google
         def update!(**args)
           @current_worker_time = args[:current_worker_time] if args.key?(:current_worker_time)
           @location = args[:location] if args.key?(:location)
+          @project_number = args[:project_number] if args.key?(:project_number)
           @requested_lease_duration = args[:requested_lease_duration] if args.key?(:requested_lease_duration)
           @unified_worker_request = args[:unified_worker_request] if args.key?(:unified_worker_request)
           @work_item_types = args[:work_item_types] if args.key?(:work_item_types)
@@ -4280,6 +4286,11 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Optional. The project number of the project which owns the WorkItem's job.
+        # Corresponds to the JSON property `projectNumber`
+        # @return [Fixnum]
+        attr_accessor :project_number
+      
         # Untranslated bag-of-bytes WorkProgressUpdateRequest from UnifiedWorker.
         # Corresponds to the JSON property `unifiedWorkerRequest`
         # @return [Hash<String,Object>]
@@ -4307,6 +4318,7 @@ module Google
         def update!(**args)
           @current_worker_time = args[:current_worker_time] if args.key?(:current_worker_time)
           @location = args[:location] if args.key?(:location)
+          @project_number = args[:project_number] if args.key?(:project_number)
           @unified_worker_request = args[:unified_worker_request] if args.key?(:unified_worker_request)
           @work_item_statuses = args[:work_item_statuses] if args.key?(:work_item_statuses)
           @worker_id = args[:worker_id] if args.key?(:worker_id)
