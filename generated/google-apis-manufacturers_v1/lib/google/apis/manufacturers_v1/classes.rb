@@ -135,6 +135,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :included_destination
       
+        # Optional. List of countries to show this product in. Countries provided in
+        # this attribute will override any of the countries configured at feed level.
+        # The values should be: the [CLDR territory code](http://www.unicode.org/repos/
+        # cldr/tags/latest/common/main/en.xml) of the countries in which this item will
+        # be shown.
+        # Corresponds to the JSON property `intendedCountry`
+        # @return [Array<String>]
+        attr_accessor :intended_country
+      
         # The item group id of the product. For more information, see https://support.
         # google.com/manufacturers/answer/6124116#itemgroupid.
         # Corresponds to the JSON property `itemGroupId`
@@ -296,6 +305,7 @@ module Google
           @gtin = args[:gtin] if args.key?(:gtin)
           @image_link = args[:image_link] if args.key?(:image_link)
           @included_destination = args[:included_destination] if args.key?(:included_destination)
+          @intended_country = args[:intended_country] if args.key?(:intended_country)
           @item_group_id = args[:item_group_id] if args.key?(:item_group_id)
           @material = args[:material] if args.key?(:material)
           @mpn = args[:mpn] if args.key?(:mpn)
@@ -433,10 +443,28 @@ module Google
       class DestinationStatus
         include Google::Apis::Core::Hashable
       
+        # Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is
+        # approved.
+        # Corresponds to the JSON property `approvedCountries`
+        # @return [Array<String>]
+        attr_accessor :approved_countries
+      
         # The name of the destination.
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
+      
+        # Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is
+        # disapproved.
+        # Corresponds to the JSON property `disapprovedCountries`
+        # @return [Array<String>]
+        attr_accessor :disapproved_countries
+      
+        # Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is
+        # pending approval.
+        # Corresponds to the JSON property `pendingCountries`
+        # @return [Array<String>]
+        attr_accessor :pending_countries
       
         # The status of the destination.
         # Corresponds to the JSON property `status`
@@ -449,7 +477,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @approved_countries = args[:approved_countries] if args.key?(:approved_countries)
           @destination = args[:destination] if args.key?(:destination)
+          @disapproved_countries = args[:disapproved_countries] if args.key?(:disapproved_countries)
+          @pending_countries = args[:pending_countries] if args.key?(:pending_countries)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -1096,6 +1127,11 @@ module Google
         # @return [Array<Google::Apis::ManufacturersV1::DestinationStatus>]
         attr_accessor :destination_statuses
       
+        # Optional. The feed label for the product.
+        # Corresponds to the JSON property `feedLabel`
+        # @return [String]
+        attr_accessor :feed_label
+      
         # A server-generated list of issues associated with the product.
         # Corresponds to the JSON property `issues`
         # @return [Array<Google::Apis::ManufacturersV1::Issue>]
@@ -1137,6 +1173,7 @@ module Google
           @attributes = args[:attributes] if args.key?(:attributes)
           @content_language = args[:content_language] if args.key?(:content_language)
           @destination_statuses = args[:destination_statuses] if args.key?(:destination_statuses)
+          @feed_label = args[:feed_label] if args.key?(:feed_label)
           @issues = args[:issues] if args.key?(:issues)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
