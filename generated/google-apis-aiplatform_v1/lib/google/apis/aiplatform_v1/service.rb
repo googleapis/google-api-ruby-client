@@ -19893,6 +19893,8 @@ module Google
         # @param [String] name
         #   Required. The name of the PublisherModel resource. Format: `publishers/`
         #   publisher`/models/`publisher_model``
+        # @param [String] hugging_face_token
+        #   Optional. Token used to access Hugging Face gated models.
         # @param [Boolean] is_hugging_face_model
         #   Optional. Boolean indicates whether the requested model is a Hugging Face
         #   model.
@@ -19918,11 +19920,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_publisher_model(name, is_hugging_face_model: nil, language_code: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_publisher_model(name, hugging_face_token: nil, is_hugging_face_model: nil, language_code: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModel::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModel
           command.params['name'] = name unless name.nil?
+          command.query['huggingFaceToken'] = hugging_face_token unless hugging_face_token.nil?
           command.query['isHuggingFaceModel'] = is_hugging_face_model unless is_hugging_face_model.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['view'] = view unless view.nil?

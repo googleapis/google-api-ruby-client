@@ -1336,6 +1336,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2812,6 +2818,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1PairwiseMetricInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseMetricInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseMetricResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseMetricSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2951,6 +2981,30 @@ module Google
       end
       
       class GoogleCloudAiplatformV1PipelineTemplateMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PointwiseMetricInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PointwiseMetricInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PointwiseMetricResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PointwiseMetricSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6281,6 +6335,7 @@ module Google
       class GoogleCloudAiplatformV1Candidate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :avg_logprobs, as: 'avgLogprobs'
           property :citation_metadata, as: 'citationMetadata', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CitationMetadata, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CitationMetadata::Representation
       
           property :content, as: 'content', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
@@ -7215,6 +7270,8 @@ module Google
       
           property :name, as: 'name'
           property :offline_storage_ttl_days, as: 'offlineStorageTtlDays'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -7261,9 +7318,13 @@ module Google
       
           property :groundedness_input, as: 'groundednessInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessInput::Representation
       
+          property :pairwise_metric_input, as: 'pairwiseMetricInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricInput::Representation
+      
           property :pairwise_question_answering_quality_input, as: 'pairwiseQuestionAnsweringQualityInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput::Representation
       
           property :pairwise_summarization_quality_input, as: 'pairwiseSummarizationQualityInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityInput::Representation
+      
+          property :pointwise_metric_input, as: 'pointwiseMetricInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricInput::Representation
       
           property :question_answering_correctness_input, as: 'questionAnsweringCorrectnessInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInput::Representation
       
@@ -7309,9 +7370,13 @@ module Google
       
           property :groundedness_result, as: 'groundednessResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessResult::Representation
       
+          property :pairwise_metric_result, as: 'pairwiseMetricResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricResult::Representation
+      
           property :pairwise_question_answering_quality_result, as: 'pairwiseQuestionAnsweringQualityResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResult::Representation
       
           property :pairwise_summarization_quality_result, as: 'pairwiseSummarizationQualityResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityResult::Representation
+      
+          property :pointwise_metric_result, as: 'pointwiseMetricResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricResult::Representation
       
           property :question_answering_correctness_result, as: 'questionAnsweringCorrectnessResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QuestionAnsweringCorrectnessResult::Representation
       
@@ -7828,6 +7893,15 @@ module Google
           property :big_query_source, as: 'bigQuerySource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQuerySource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQuerySource::Representation
       
           collection :entity_id_columns, as: 'entityIdColumns'
+          property :time_series, as: 'timeSeries', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :timestamp_column, as: 'timestampColumn'
         end
       end
       
@@ -7871,6 +7945,8 @@ module Google
           property :name, as: 'name'
           property :optimized, as: 'optimized', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureOnlineStoreOptimized, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureOnlineStoreOptimized::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -7993,6 +8069,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :sync_config, as: 'syncConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncConfig::Representation
       
           property :update_time, as: 'updateTime'
@@ -8077,6 +8155,8 @@ module Google
           property :name, as: 'name'
           property :run_time, as: 'runTime', class: Google::Apis::AiplatformV1::GoogleTypeInterval, decorator: Google::Apis::AiplatformV1::GoogleTypeInterval::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :sync_summary, as: 'syncSummary', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncSyncSummary, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncSyncSummary::Representation
       
         end
@@ -8109,6 +8189,8 @@ module Google
           property :online_serving_config, as: 'onlineServingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig::Representation
       
           property :online_storage_ttl_days, as: 'onlineStorageTtlDays'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -8467,6 +8549,7 @@ module Google
       
           property :routing_config, as: 'routingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfig::Representation
       
+          property :seed, as: 'seed'
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
           property :top_k, as: 'topK'
@@ -8751,6 +8834,8 @@ module Google
           property :metadata, as: 'metadata'
           property :metadata_schema_uri, as: 'metadataSchemaUri'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -8825,6 +8910,8 @@ module Google
       
           property :public_endpoint_domain_name, as: 'publicEndpointDomainName'
           property :public_endpoint_enabled, as: 'publicEndpointEnabled'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -9698,6 +9785,8 @@ module Google
           property :next_schedule_time, as: 'nextScheduleTime'
           property :predict_instance_schema_uri, as: 'predictInstanceSchemaUri'
           property :sample_predict_instance, as: 'samplePredictInstance'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :schedule_state, as: 'scheduleState'
           property :state, as: 'state'
           property :stats_anomalies_base_directory, as: 'statsAnomaliesBaseDirectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination::Representation
@@ -10396,6 +10485,38 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1PairwiseMetricInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseMetricInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_instance, as: 'jsonInstance'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseMetricResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :explanation, as: 'explanation'
+          property :pairwise_choice, as: 'pairwiseChoice'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PairwiseMetricSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric_prompt_template, as: 'metricPromptTemplate'
+        end
+      end
+      
       class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10672,6 +10793,38 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PointwiseMetricInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PointwiseMetricInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_instance, as: 'jsonInstance'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PointwiseMetricResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :explanation, as: 'explanation'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PointwiseMetricSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric_prompt_template, as: 'metricPromptTemplate'
         end
       end
       
