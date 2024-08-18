@@ -16,13 +16,13 @@ module Google
   module Apis
     module ChatV1
       # Version of the google-apis-chat_v1 gem
-      GEM_VERSION = "0.100.0"
+      GEM_VERSION = "0.101.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.15.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240804"
+      REVISION = "20240813"
     end
   end
 end

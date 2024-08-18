@@ -897,10 +897,11 @@ module Google
         # @return [Google::Apis::ChatV1::CommonEventObject]
         attr_accessor :common
       
-        # The URL the Chat app should redirect the user to after they have completed an
-        # authorization or configuration flow outside of Google Chat. For more
-        # information, see [Connect a Chat app with other services & tools](https://
-        # developers.google.com/workspace/chat/connect-web-services-tools).
+        # For `MESSAGE` interaction events, the URL that users must be redirected to
+        # after they complete an authorization or configuration flow outside of Google
+        # Chat. For more information, see [Connect a Chat app with other services and
+        # tools](https://developers.google.com/workspace/chat/connect-web-services-tools)
+        # .
         # Corresponds to the JSON property `configCompleteRedirectUrl`
         # @return [String]
         attr_accessor :config_complete_redirect_url
@@ -5102,8 +5103,7 @@ module Google
       class Thread
         include Google::Apis::Core::Hashable
       
-        # Output only. Resource name of the thread. Example: `spaces/`space`/threads/`
-        # thread``
+        # Resource name of the thread. Example: `spaces/`space`/threads/`thread``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
