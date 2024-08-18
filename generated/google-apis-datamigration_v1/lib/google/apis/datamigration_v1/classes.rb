@@ -3287,6 +3287,62 @@ module Google
         end
       end
       
+      # Configuration for Oracle Automatic Storage Management (ASM) connection.
+      class OracleAsmConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. ASM service name for the Oracle ASM connection.
+        # Corresponds to the JSON property `asmService`
+        # @return [String]
+        attr_accessor :asm_service
+      
+        # Required. Hostname for the Oracle ASM connection.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Required. Input only. Password for the Oracle ASM connection.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Output only. Indicates whether a new password is included in the request.
+        # Corresponds to the JSON property `passwordSet`
+        # @return [Boolean]
+        attr_accessor :password_set
+        alias_method :password_set?, :password_set
+      
+        # Required. Port for the Oracle ASM connection.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # SSL configuration information.
+        # Corresponds to the JSON property `ssl`
+        # @return [Google::Apis::DatamigrationV1::SslConfig]
+        attr_accessor :ssl
+      
+        # Required. Username for the Oracle ASM connection.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asm_service = args[:asm_service] if args.key?(:asm_service)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @password = args[:password] if args.key?(:password)
+          @password_set = args[:password_set] if args.key?(:password_set)
+          @port = args[:port] if args.key?(:port)
+          @ssl = args[:ssl] if args.key?(:ssl)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
       # Specifies connection parameters required specifically for Oracle databases.
       class OracleConnectionProfile
         include Google::Apis::Core::Hashable
@@ -3305,6 +3361,11 @@ module Google
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
+      
+        # Configuration for Oracle Automatic Storage Management (ASM) connection.
+        # Corresponds to the JSON property `oracleAsmConfig`
+        # @return [Google::Apis::DatamigrationV1::OracleAsmConfig]
+        attr_accessor :oracle_asm_config
       
         # Required. Input only. The password for the user that Database Migration
         # Service will be using to connect to the database. This field is not returned
@@ -3355,6 +3416,7 @@ module Google
           @database_service = args[:database_service] if args.key?(:database_service)
           @forward_ssh_connectivity = args[:forward_ssh_connectivity] if args.key?(:forward_ssh_connectivity)
           @host = args[:host] if args.key?(:host)
+          @oracle_asm_config = args[:oracle_asm_config] if args.key?(:oracle_asm_config)
           @password = args[:password] if args.key?(:password)
           @password_set = args[:password_set] if args.key?(:password_set)
           @port = args[:port] if args.key?(:port)
