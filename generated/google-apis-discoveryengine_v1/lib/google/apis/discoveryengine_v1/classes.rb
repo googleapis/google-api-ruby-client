@@ -307,7 +307,7 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # The project ID that the AlloyDB source is in with a length limit of 128
+        # The project ID that contains the AlloyDB source. Has a length limit of 128
         # characters. If not specified, inherits the project ID from the parent request.
         # Corresponds to the JSON property `projectId`
         # @return [String]
@@ -1648,6 +1648,75 @@ module Google
         end
       end
       
+      # Response message for DocumentService.BatchGetDocumentsMetadata method.
+      class GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        # The metadata of the Documents.
+        # Corresponds to the JSON property `documentsMetadata`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata>]
+        attr_accessor :documents_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documents_metadata = args[:documents_metadata] if args.key?(:documents_metadata)
+        end
+      end
+      
+      # The metadata of a Document.
+      class GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp of the last time the Document was last indexed.
+        # Corresponds to the JSON property `lastRefreshedTime`
+        # @return [String]
+        attr_accessor :last_refreshed_time
+      
+        # The value of the matcher that was used to match the Document.
+        # Corresponds to the JSON property `matcherValue`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue]
+        attr_accessor :matcher_value
+      
+        # The status of the document.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_refreshed_time = args[:last_refreshed_time] if args.key?(:last_refreshed_time)
+          @matcher_value = args[:matcher_value] if args.key?(:matcher_value)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The value of the matcher that was used to match the Document.
+      class GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue
+        include Google::Apis::Core::Hashable
+      
+        # If match by URI, the URI of the Document.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Request message for SiteSearchEngineService.BatchVerifyTargetSites method.
       class GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest
         include Google::Apis::Core::Hashable
@@ -1701,7 +1770,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleTypeDate]
         attr_accessor :partition_date
       
-        # The project ID (can be project # or ID) that the BigQuery source is in with a
+        # The project ID or the project number that contains the BigQuery source. Has a
         # length limit of 128 characters. If not specified, inherits the project ID from
         # the parent request.
         # Corresponds to the JSON property `projectId`
@@ -1866,7 +1935,7 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
-        # The project ID that the Bigtable source is in with a length limit of 128
+        # The project ID that contains the Bigtable source. Has a length limit of 128
         # characters. If not specified, inherits the project ID from the parent request.
         # Corresponds to the JSON property `projectId`
         # @return [String]
@@ -2003,6 +2072,11 @@ module Google
         attr_accessor :grounding_check_required
         alias_method :grounding_check_required?, :grounding_check_required
       
+        # Confidence score for the claim in the answer candidate, in the range of [0, 1].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
         # Position indicating the start of the claim in the answer candidate, measured
         # in bytes.
         # Corresponds to the JSON property `startPos`
@@ -2019,6 +2093,7 @@ module Google
           @claim_text = args[:claim_text] if args.key?(:claim_text)
           @end_pos = args[:end_pos] if args.key?(:end_pos)
           @grounding_check_required = args[:grounding_check_required] if args.key?(:grounding_check_required)
+          @score = args[:score] if args.key?(:score)
           @start_pos = args[:start_pos] if args.key?(:start_pos)
         end
       end
@@ -2236,7 +2311,7 @@ module Google
         attr_accessor :offload
         alias_method :offload?, :offload
       
-        # The project ID that the Cloud SQL source is in with a length limit of 128
+        # The project ID that contains the Cloud SQL source. Has a length limit of 128
         # characters. If not specified, inherits the project ID from the parent request.
         # Corresponds to the JSON property `projectId`
         # @return [String]
@@ -2490,7 +2565,7 @@ module Google
       class GoogleCloudDiscoveryengineV1Control
         include Google::Apis::Core::Hashable
       
-        # Output only. List of all ServingConfig ids this control is attached to. May
+        # Output only. List of all ServingConfig IDs this control is attached to. May
         # take up to 10 minutes to update after changes.
         # Corresponds to the JSON property `associatedServingConfigIds`
         # @return [Array<String>]
@@ -3075,6 +3150,64 @@ module Google
         end
       end
       
+      # Metadata that describes a custom tuned model.
+      class GoogleCloudDiscoveryengineV1CustomTuningModel
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp the Model was created at.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The display name of the model.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The metrics of the trained model.
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Float>]
+        attr_accessor :metrics
+      
+        # The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).
+        # Corresponds to the JSON property `modelState`
+        # @return [String]
+        attr_accessor :model_state
+      
+        # The version of the model.
+        # Corresponds to the JSON property `modelVersion`
+        # @return [Fixnum]
+        attr_accessor :model_version
+      
+        # Required. The fully qualified resource name of the model. Format: `projects/`
+        # project_number`/locations/`location`/collections/`collection`/dataStores/`
+        # data_store`/customTuningModels/`custom_tuning_model`` model must be an alpha-
+        # numerical string with limit of 40 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Timestamp the model training was initiated.
+        # Corresponds to the JSON property `trainingStartTime`
+        # @return [String]
+        attr_accessor :training_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @model_state = args[:model_state] if args.key?(:model_state)
+          @model_version = args[:model_version] if args.key?(:model_version)
+          @name = args[:name] if args.key?(:name)
+          @training_start_time = args[:training_start_time] if args.key?(:training_start_time)
+        end
+      end
+      
       # DataStore captures global settings and configs at the DataStore level.
       class GoogleCloudDiscoveryengineV1DataStore
         include Google::Apis::Core::Hashable
@@ -3135,6 +3268,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Schema]
         attr_accessor :starting_schema
       
+        # Config to store data store type configuration for workspace data
+        # Corresponds to the JSON property `workspaceConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WorkspaceConfig]
+        attr_accessor :workspace_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3150,6 +3288,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
+          @workspace_config = args[:workspace_config] if args.key?(:workspace_config)
         end
       end
       
@@ -4872,6 +5011,25 @@ module Google
         def update!(**args)
           @conversations = args[:conversations] if args.key?(:conversations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for SearchTuningService.ListCustomModels method.
+      class GoogleCloudDiscoveryengineV1ListCustomModelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of custom tuning models.
+        # Corresponds to the JSON property `models`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CustomTuningModel>]
+        attr_accessor :models
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @models = args[:models] if args.key?(:models)
         end
       end
       
@@ -7607,7 +7765,7 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
-        # The project ID that the Spanner source is in with a length limit of 128
+        # The project ID that contains the Spanner source. Has a length limit of 128
         # characters. If not specified, inherits the project ID from the parent request.
         # Corresponds to the JSON property `projectId`
         # @return [String]
@@ -7805,6 +7963,169 @@ module Google
         def update!(**args)
           @context = args[:context] if args.key?(:context)
           @input = args[:input] if args.key?(:input)
+        end
+      end
+      
+      # Metadata related to the progress of the TrainCustomModel operation. This is
+      # returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1TrainCustomModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for SearchTuningService.TrainCustomModel method.
+      class GoogleCloudDiscoveryengineV1TrainCustomModelRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of destination for Import related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportErrorConfig]
+        attr_accessor :error_config
+      
+        # Cloud Storage training data input.
+        # Corresponds to the JSON property `gcsTrainingInput`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1TrainCustomModelRequestGcsTrainingInput]
+        attr_accessor :gcs_training_input
+      
+        # If not provided, a UUID will be generated.
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        # Model to be trained. Supported values are: * **search-tuning**: Fine tuning
+        # the search system based on data provided.
+        # Corresponds to the JSON property `modelType`
+        # @return [String]
+        attr_accessor :model_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_config = args[:error_config] if args.key?(:error_config)
+          @gcs_training_input = args[:gcs_training_input] if args.key?(:gcs_training_input)
+          @model_id = args[:model_id] if args.key?(:model_id)
+          @model_type = args[:model_type] if args.key?(:model_type)
+        end
+      end
+      
+      # Cloud Storage training data input.
+      class GoogleCloudDiscoveryengineV1TrainCustomModelRequestGcsTrainingInput
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Storage corpus data which could be associated in train data. The
+        # data path format is `gs:///`. A newline delimited jsonl/ndjson file. For
+        # search-tuning model, each line should have the _id, title and text. Example: ``
+        # "_id": "doc1", title: "relevant doc", "text": "relevant text"``
+        # Corresponds to the JSON property `corpusDataPath`
+        # @return [String]
+        attr_accessor :corpus_data_path
+      
+        # The gcs query data which could be associated in train data. The data path
+        # format is `gs:///`. A newline delimited jsonl/ndjson file. For search-tuning
+        # model, each line should have the _id and text. Example: `"_id": "query1", "
+        # text": "example query"`
+        # Corresponds to the JSON property `queryDataPath`
+        # @return [String]
+        attr_accessor :query_data_path
+      
+        # Cloud Storage test data. Same format as train_data_path. If not provided, a
+        # random 80/20 train/test split will be performed on train_data_path.
+        # Corresponds to the JSON property `testDataPath`
+        # @return [String]
+        attr_accessor :test_data_path
+      
+        # Cloud Storage training data path whose format should be `gs:///`. The file
+        # should be in tsv format. Each line should have the doc_id and query_id and
+        # score (number). For search-tuning model, it should have the query-id corpus-id
+        # score as tsv file header. The score should be a number in `[0, inf+)`. The
+        # larger the number is, the more relevant the pair is. Example: * `query-id\
+        # tcorpus-id\tscore` * `query1\tdoc1\t1`
+        # Corresponds to the JSON property `trainDataPath`
+        # @return [String]
+        attr_accessor :train_data_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @corpus_data_path = args[:corpus_data_path] if args.key?(:corpus_data_path)
+          @query_data_path = args[:query_data_path] if args.key?(:query_data_path)
+          @test_data_path = args[:test_data_path] if args.key?(:test_data_path)
+          @train_data_path = args[:train_data_path] if args.key?(:train_data_path)
+        end
+      end
+      
+      # Response of the TrainCustomModelRequest. This message is returned by the
+      # google.longrunning.Operations.response field.
+      class GoogleCloudDiscoveryengineV1TrainCustomModelResponse
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of destination for Import related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportErrorConfig]
+        attr_accessor :error_config
+      
+        # A sample of errors encountered while processing the data.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # The metrics of the trained model.
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Float>]
+        attr_accessor :metrics
+      
+        # Fully qualified name of the CustomTuningModel.
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
+        # The trained model status. Possible values are: * **bad-data**: The training
+        # data quality is bad. * **no-improvement**: Tuning didn't improve performance.
+        # Won't deploy. * **in-progress**: Model training job creation is in progress. *
+        # **training**: Model is actively training. * **evaluating**: The model is
+        # evaluating trained metrics. * **indexing**: The model trained metrics are
+        # indexing. * **ready**: The model is ready for serving.
+        # Corresponds to the JSON property `modelStatus`
+        # @return [String]
+        attr_accessor :model_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_config = args[:error_config] if args.key?(:error_config)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @model_name = args[:model_name] if args.key?(:model_name)
+          @model_status = args[:model_status] if args.key?(:model_status)
         end
       end
       
@@ -8167,6 +8488,31 @@ module Google
         def update!(**args)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Config to store data store type configuration for workspace data
+      class GoogleCloudDiscoveryengineV1WorkspaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Obfuscated Dasher customer ID.
+        # Corresponds to the JSON property `dasherCustomerId`
+        # @return [String]
+        attr_accessor :dasher_customer_id
+      
+        # The Google Workspace data source.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dasher_customer_id = args[:dasher_customer_id] if args.key?(:dasher_customer_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -8934,7 +9280,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaControl
         include Google::Apis::Core::Hashable
       
-        # Output only. List of all ServingConfig ids this control is attached to. May
+        # Output only. List of all ServingConfig IDs this control is attached to. May
         # take up to 10 minutes to update after changes.
         # Corresponds to the JSON property `associatedServingConfigIds`
         # @return [Array<String>]
@@ -9405,6 +9751,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSchema]
         attr_accessor :starting_schema
       
+        # Config to store data store type configuration for workspace data
+        # Corresponds to the JSON property `workspaceConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaWorkspaceConfig]
+        attr_accessor :workspace_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9423,6 +9774,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
+          @workspace_config = args[:workspace_config] if args.key?(:workspace_config)
         end
       end
       
@@ -13268,6 +13620,31 @@ module Google
         end
       end
       
+      # Config to store data store type configuration for workspace data
+      class GoogleCloudDiscoveryengineV1alphaWorkspaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Obfuscated Dasher customer ID.
+        # Corresponds to the JSON property `dasherCustomerId`
+        # @return [String]
+        attr_accessor :dasher_customer_id
+      
+        # The Google Workspace data source.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dasher_customer_id = args[:dasher_customer_id] if args.key?(:dasher_customer_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Metadata related to the progress of the SiteSearchEngineService.
       # BatchCreateTargetSites operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
@@ -13400,7 +13777,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaControl
         include Google::Apis::Core::Hashable
       
-        # Output only. List of all ServingConfig ids this control is attached to. May
+        # Output only. List of all ServingConfig IDs this control is attached to. May
         # take up to 10 minutes to update after changes.
         # Corresponds to the JSON property `associatedServingConfigIds`
         # @return [Array<String>]
@@ -13835,6 +14212,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSchema]
         attr_accessor :starting_schema
       
+        # Config to store data store type configuration for workspace data
+        # Corresponds to the JSON property `workspaceConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaWorkspaceConfig]
+        attr_accessor :workspace_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13851,6 +14233,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
+          @workspace_config = args[:workspace_config] if args.key?(:workspace_config)
         end
       end
       
@@ -15560,6 +15943,13 @@ module Google
         # @return [String]
         attr_accessor :region_code
       
+        # The relevance threshold of the search results. Default to Google defined
+        # threshold, leveraging a balance of precision and recall to deliver both highly
+        # accurate results and comprehensive coverage of relevant information.
+        # Corresponds to the JSON property `relevanceThreshold`
+        # @return [String]
+        attr_accessor :relevance_threshold
+      
         # Whether to turn on safe search. This is only supported for website search.
         # Corresponds to the JSON property `safeSearch`
         # @return [Boolean]
@@ -15672,6 +16062,7 @@ module Google
           @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
           @ranking_expression = args[:ranking_expression] if args.key?(:ranking_expression)
           @region_code = args[:region_code] if args.key?(:region_code)
+          @relevance_threshold = args[:relevance_threshold] if args.key?(:relevance_threshold)
           @safe_search = args[:safe_search] if args.key?(:safe_search)
           @search_as_you_type_spec = args[:search_as_you_type_spec] if args.key?(:search_as_you_type_spec)
           @serving_config = args[:serving_config] if args.key?(:serving_config)
@@ -16877,6 +17268,31 @@ module Google
         def update!(**args)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Config to store data store type configuration for workspace data
+      class GoogleCloudDiscoveryengineV1betaWorkspaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Obfuscated Dasher customer ID.
+        # Corresponds to the JSON property `dasherCustomerId`
+        # @return [String]
+        attr_accessor :dasher_customer_id
+      
+        # The Google Workspace data source.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dasher_customer_id = args[:dasher_customer_id] if args.key?(:dasher_customer_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
