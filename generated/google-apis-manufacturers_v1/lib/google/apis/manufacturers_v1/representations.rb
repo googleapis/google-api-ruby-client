@@ -170,6 +170,7 @@ module Google
           property :image_link, as: 'imageLink', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
       
           collection :included_destination, as: 'includedDestination'
+          collection :intended_country, as: 'intendedCountry'
           property :item_group_id, as: 'itemGroupId'
           property :material, as: 'material'
           property :mpn, as: 'mpn'
@@ -231,7 +232,10 @@ module Google
       class DestinationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :approved_countries, as: 'approvedCountries'
           property :destination, as: 'destination'
+          collection :disapproved_countries, as: 'disapprovedCountries'
+          collection :pending_countries, as: 'pendingCountries'
           property :status, as: 'status'
         end
       end
@@ -414,6 +418,7 @@ module Google
           property :content_language, as: 'contentLanguage'
           collection :destination_statuses, as: 'destinationStatuses', class: Google::Apis::ManufacturersV1::DestinationStatus, decorator: Google::Apis::ManufacturersV1::DestinationStatus::Representation
       
+          property :feed_label, as: 'feedLabel'
           collection :issues, as: 'issues', class: Google::Apis::ManufacturersV1::Issue, decorator: Google::Apis::ManufacturersV1::Issue::Representation
       
           property :name, as: 'name'
