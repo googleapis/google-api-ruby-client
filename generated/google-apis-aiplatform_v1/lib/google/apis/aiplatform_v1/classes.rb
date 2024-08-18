@@ -2436,6 +2436,11 @@ module Google
       class GoogleCloudAiplatformV1Candidate
         include Google::Apis::Core::Hashable
       
+        # Output only. Average log probability score of the candidate.
+        # Corresponds to the JSON property `avgLogprobs`
+        # @return [Float]
+        attr_accessor :avg_logprobs
+      
         # A collection of source attributions for a piece of content.
         # Corresponds to the JSON property `citationMetadata`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CitationMetadata]
@@ -2483,6 +2488,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @avg_logprobs = args[:avg_logprobs] if args.key?(:avg_logprobs)
           @citation_metadata = args[:citation_metadata] if args.key?(:citation_metadata)
           @content = args[:content] if args.key?(:content)
           @finish_message = args[:finish_message] if args.key?(:finish_message)
@@ -5867,6 +5873,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :offline_storage_ttl_days
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Timestamp when this EntityType was most recently updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -5885,6 +5903,8 @@ module Google
           @monitoring_config = args[:monitoring_config] if args.key?(:monitoring_config)
           @name = args[:name] if args.key?(:name)
           @offline_storage_ttl_days = args[:offline_storage_ttl_days] if args.key?(:offline_storage_ttl_days)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -6018,6 +6038,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessInput]
         attr_accessor :groundedness_input
       
+        # Input for pairwise metric.
+        # Corresponds to the JSON property `pairwiseMetricInput`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricInput]
+        attr_accessor :pairwise_metric_input
+      
         # Input for pairwise question answering quality metric.
         # Corresponds to the JSON property `pairwiseQuestionAnsweringQualityInput`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput]
@@ -6027,6 +6052,11 @@ module Google
         # Corresponds to the JSON property `pairwiseSummarizationQualityInput`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityInput]
         attr_accessor :pairwise_summarization_quality_input
+      
+        # Input for pointwise metric.
+        # Corresponds to the JSON property `pointwiseMetricInput`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricInput]
+        attr_accessor :pointwise_metric_input
       
         # Input for question answering correctness metric.
         # Corresponds to the JSON property `questionAnsweringCorrectnessInput`
@@ -6105,8 +6135,10 @@ module Google
           @fluency_input = args[:fluency_input] if args.key?(:fluency_input)
           @fulfillment_input = args[:fulfillment_input] if args.key?(:fulfillment_input)
           @groundedness_input = args[:groundedness_input] if args.key?(:groundedness_input)
+          @pairwise_metric_input = args[:pairwise_metric_input] if args.key?(:pairwise_metric_input)
           @pairwise_question_answering_quality_input = args[:pairwise_question_answering_quality_input] if args.key?(:pairwise_question_answering_quality_input)
           @pairwise_summarization_quality_input = args[:pairwise_summarization_quality_input] if args.key?(:pairwise_summarization_quality_input)
+          @pointwise_metric_input = args[:pointwise_metric_input] if args.key?(:pointwise_metric_input)
           @question_answering_correctness_input = args[:question_answering_correctness_input] if args.key?(:question_answering_correctness_input)
           @question_answering_helpfulness_input = args[:question_answering_helpfulness_input] if args.key?(:question_answering_helpfulness_input)
           @question_answering_quality_input = args[:question_answering_quality_input] if args.key?(:question_answering_quality_input)
@@ -6157,6 +6189,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessResult]
         attr_accessor :groundedness_result
       
+        # Spec for pairwise metric result.
+        # Corresponds to the JSON property `pairwiseMetricResult`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricResult]
+        attr_accessor :pairwise_metric_result
+      
         # Spec for pairwise question answering quality result.
         # Corresponds to the JSON property `pairwiseQuestionAnsweringQualityResult`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResult]
@@ -6166,6 +6203,11 @@ module Google
         # Corresponds to the JSON property `pairwiseSummarizationQualityResult`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseSummarizationQualityResult]
         attr_accessor :pairwise_summarization_quality_result
+      
+        # Spec for pointwise metric result.
+        # Corresponds to the JSON property `pointwiseMetricResult`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricResult]
+        attr_accessor :pointwise_metric_result
       
         # Spec for question answering correctness result.
         # Corresponds to the JSON property `questionAnsweringCorrectnessResult`
@@ -6244,8 +6286,10 @@ module Google
           @fluency_result = args[:fluency_result] if args.key?(:fluency_result)
           @fulfillment_result = args[:fulfillment_result] if args.key?(:fulfillment_result)
           @groundedness_result = args[:groundedness_result] if args.key?(:groundedness_result)
+          @pairwise_metric_result = args[:pairwise_metric_result] if args.key?(:pairwise_metric_result)
           @pairwise_question_answering_quality_result = args[:pairwise_question_answering_quality_result] if args.key?(:pairwise_question_answering_quality_result)
           @pairwise_summarization_quality_result = args[:pairwise_summarization_quality_result] if args.key?(:pairwise_summarization_quality_result)
+          @pointwise_metric_result = args[:pointwise_metric_result] if args.key?(:pointwise_metric_result)
           @question_answering_correctness_result = args[:question_answering_correctness_result] if args.key?(:question_answering_correctness_result)
           @question_answering_helpfulness_result = args[:question_answering_helpfulness_result] if args.key?(:question_answering_helpfulness_result)
           @question_answering_quality_result = args[:question_answering_quality_result] if args.key?(:question_answering_quality_result)
@@ -8116,6 +8160,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :entity_id_columns
       
+        # Optional. If the source is a time-series source, this can be set to control
+        # how downstream sources (ex: FeatureOnlineStore.FeatureView) will treat time
+        # series sources. If not set, will treat the source as a time-series source with
+        # feature_timestamp as timestamp column and no scan boundary.
+        # Corresponds to the JSON property `timeSeries`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries]
+        attr_accessor :time_series
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8124,6 +8176,28 @@ module Google
         def update!(**args)
           @big_query_source = args[:big_query_source] if args.key?(:big_query_source)
           @entity_id_columns = args[:entity_id_columns] if args.key?(:entity_id_columns)
+          @time_series = args[:time_series] if args.key?(:time_series)
+        end
+      end
+      
+      # 
+      class GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Column hosting timestamp values for a time-series source. Will be
+        # used to determine the latest featureValues for each entity. Optional. If not
+        # provided, a feature_timestamp column of type TIMESTAMP will be used.
+        # Corresponds to the JSON property `timestampColumn`
+        # @return [String]
+        attr_accessor :timestamp_column
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @timestamp_column = args[:timestamp_column] if args.key?(:timestamp_column)
         end
       end
       
@@ -8269,6 +8343,18 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureOnlineStoreOptimized]
         attr_accessor :optimized
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. State of the featureOnlineStore.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -8293,6 +8379,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @optimized = args[:optimized] if args.key?(:optimized)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -8710,6 +8798,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Configuration for Sync. Only one option is set.
         # Corresponds to the JSON property `syncConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncConfig]
@@ -8733,6 +8833,8 @@ module Google
           @index_config = args[:index_config] if args.key?(:index_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @sync_config = args[:sync_config] if args.key?(:sync_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -8991,6 +9093,18 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleTypeInterval]
         attr_accessor :run_time
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Summary from the Sync job. For continuous syncs, the summary is updated
         # periodically. For batch syncs, it gets updated on completion of the sync.
         # Corresponds to the JSON property `syncSummary`
@@ -9007,6 +9121,8 @@ module Google
           @final_status = args[:final_status] if args.key?(:final_status)
           @name = args[:name] if args.key?(:name)
           @run_time = args[:run_time] if args.key?(:run_time)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @sync_summary = args[:sync_summary] if args.key?(:sync_summary)
         end
       end
@@ -9116,6 +9232,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :online_storage_ttl_days
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. State of the featurestore.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -9139,6 +9267,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @online_serving_config = args[:online_serving_config] if args.key?(:online_serving_config)
           @online_storage_ttl_days = args[:online_storage_ttl_days] if args.key?(:online_storage_ttl_days)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -10251,7 +10381,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :candidates_token_count
       
-        # Number of tokens in the request.
+        # Number of tokens in the request. When `cached_content` is set, this is still
+        # the total effective prompt size meaning this includes the number of tokens in
+        # the cached content.
         # Corresponds to the JSON property `promptTokenCount`
         # @return [Fixnum]
         attr_accessor :prompt_token_count
@@ -10318,6 +10450,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfig]
         attr_accessor :routing_config
       
+        # Optional. Seed.
+        # Corresponds to the JSON property `seed`
+        # @return [Fixnum]
+        attr_accessor :seed
+      
         # Optional. Stop sequences.
         # Corresponds to the JSON property `stopSequences`
         # @return [Array<String>]
@@ -10351,6 +10488,7 @@ module Google
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
           @response_schema = args[:response_schema] if args.key?(:response_schema)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
+          @seed = args[:seed] if args.key?(:seed)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
           @top_k = args[:top_k] if args.key?(:top_k)
@@ -11322,6 +11460,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Timestamp when this Index was most recently updated. This also
         # includes any update to the contents of the Index. Note that Operations working
         # on this Index may have their Operations.metadata.generic_metadata.update_time
@@ -11350,6 +11500,8 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @metadata_schema_uri = args[:metadata_schema_uri] if args.key?(:metadata_schema_uri)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -11629,6 +11781,18 @@ module Google
         attr_accessor :public_endpoint_enabled
         alias_method :public_endpoint_enabled?, :public_endpoint_enabled
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Timestamp when this IndexEndpoint was last updated. This
         # timestamp is not updated when the endpoint's DeployedIndexes are updated, e.g.
         # due to updates of the original Indexes they are the deployments of.
@@ -11655,6 +11819,8 @@ module Google
           @private_service_connect_config = args[:private_service_connect_config] if args.key?(:private_service_connect_config)
           @public_endpoint_domain_name = args[:public_endpoint_domain_name] if args.key?(:public_endpoint_domain_name)
           @public_endpoint_enabled = args[:public_endpoint_enabled] if args.key?(:public_endpoint_enabled)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -14738,6 +14904,18 @@ module Google
         # @return [Object]
         attr_accessor :sample_predict_instance
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Schedule state when the monitoring job is in Running state.
         # Corresponds to the JSON property `scheduleState`
         # @return [String]
@@ -14787,6 +14965,8 @@ module Google
           @next_schedule_time = args[:next_schedule_time] if args.key?(:next_schedule_time)
           @predict_instance_schema_uri = args[:predict_instance_schema_uri] if args.key?(:predict_instance_schema_uri)
           @sample_predict_instance = args[:sample_predict_instance] if args.key?(:sample_predict_instance)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @schedule_state = args[:schedule_state] if args.key?(:schedule_state)
           @state = args[:state] if args.key?(:state)
           @stats_anomalies_base_directory = args[:stats_anomalies_base_directory] if args.key?(:stats_anomalies_base_directory)
@@ -17293,6 +17473,97 @@ module Google
         end
       end
       
+      # Input for pairwise metric.
+      class GoogleCloudAiplatformV1PairwiseMetricInput
+        include Google::Apis::Core::Hashable
+      
+        # Pairwise metric instance. Usually one instance corresponds to one row in an
+        # evaluation dataset.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricInstance]
+        attr_accessor :instance
+      
+        # Spec for pairwise metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Pairwise metric instance. Usually one instance corresponds to one row in an
+      # evaluation dataset.
+      class GoogleCloudAiplatformV1PairwiseMetricInstance
+        include Google::Apis::Core::Hashable
+      
+        # Instance specified as a json string. String key-value pairs are expected in
+        # the json_instance to render PairwiseMetricSpec.instance_prompt_template.
+        # Corresponds to the JSON property `jsonInstance`
+        # @return [String]
+        attr_accessor :json_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_instance = args[:json_instance] if args.key?(:json_instance)
+        end
+      end
+      
+      # Spec for pairwise metric result.
+      class GoogleCloudAiplatformV1PairwiseMetricResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Explanation for pairwise metric score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Pairwise metric choice.
+        # Corresponds to the JSON property `pairwiseChoice`
+        # @return [String]
+        attr_accessor :pairwise_choice
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @pairwise_choice = args[:pairwise_choice] if args.key?(:pairwise_choice)
+        end
+      end
+      
+      # Spec for pairwise metric.
+      class GoogleCloudAiplatformV1PairwiseMetricSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. Metric prompt template for pairwise metric.
+        # Corresponds to the JSON property `metricPromptTemplate`
+        # @return [String]
+        attr_accessor :metric_prompt_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_prompt_template = args[:metric_prompt_template] if args.key?(:metric_prompt_template)
+        end
+      end
+      
       # Input for pairwise question answering quality metric.
       class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput
         include Google::Apis::Core::Hashable
@@ -18336,6 +18607,97 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Input for pointwise metric.
+      class GoogleCloudAiplatformV1PointwiseMetricInput
+        include Google::Apis::Core::Hashable
+      
+        # Pointwise metric instance. Usually one instance corresponds to one row in an
+        # evaluation dataset.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricInstance]
+        attr_accessor :instance
+      
+        # Spec for pointwise metric.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Pointwise metric instance. Usually one instance corresponds to one row in an
+      # evaluation dataset.
+      class GoogleCloudAiplatformV1PointwiseMetricInstance
+        include Google::Apis::Core::Hashable
+      
+        # Instance specified as a json string. String key-value pairs are expected in
+        # the json_instance to render PointwiseMetricSpec.instance_prompt_template.
+        # Corresponds to the JSON property `jsonInstance`
+        # @return [String]
+        attr_accessor :json_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_instance = args[:json_instance] if args.key?(:json_instance)
+        end
+      end
+      
+      # Spec for pointwise metric result.
+      class GoogleCloudAiplatformV1PointwiseMetricResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Explanation for pointwise metric score.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Output only. Pointwise metric score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Spec for pointwise metric.
+      class GoogleCloudAiplatformV1PointwiseMetricSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. Metric prompt template for pointwise metric.
+        # Corresponds to the JSON property `metricPromptTemplate`
+        # @return [String]
+        attr_accessor :metric_prompt_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_prompt_template = args[:metric_prompt_template] if args.key?(:metric_prompt_template)
         end
       end
       
