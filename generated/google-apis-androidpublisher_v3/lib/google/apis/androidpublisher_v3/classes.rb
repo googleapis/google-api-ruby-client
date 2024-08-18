@@ -5015,6 +5015,11 @@ module Google
       class RevocationContext
         include Google::Apis::Core::Hashable
       
+        # Used to determine if the refund type in the RevocationContext is a full refund.
+        # Corresponds to the JSON property `fullRefund`
+        # @return [Google::Apis::AndroidpublisherV3::RevocationContextFullRefund]
+        attr_accessor :full_refund
+      
         # Used to determine if the refund type in the RevocationContext is a prorated
         # refund.
         # Corresponds to the JSON property `proratedRefund`
@@ -5027,7 +5032,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @full_refund = args[:full_refund] if args.key?(:full_refund)
           @prorated_refund = args[:prorated_refund] if args.key?(:prorated_refund)
+        end
+      end
+      
+      # Used to determine if the refund type in the RevocationContext is a full refund.
+      class RevocationContextFullRefund
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

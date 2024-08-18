@@ -1012,6 +1012,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RevocationContextFullRefund
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RevocationContextProratedRefund
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2960,8 +2966,16 @@ module Google
       class RevocationContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_refund, as: 'fullRefund', class: Google::Apis::AndroidpublisherV3::RevocationContextFullRefund, decorator: Google::Apis::AndroidpublisherV3::RevocationContextFullRefund::Representation
+      
           property :prorated_refund, as: 'proratedRefund', class: Google::Apis::AndroidpublisherV3::RevocationContextProratedRefund, decorator: Google::Apis::AndroidpublisherV3::RevocationContextProratedRefund::Representation
       
+        end
+      end
+      
+      class RevocationContextFullRefund
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
