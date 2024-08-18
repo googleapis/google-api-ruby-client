@@ -1920,6 +1920,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_worker_time, as: 'currentWorkerTime'
           property :location, as: 'location'
+          property :project_number, :numeric_string => true, as: 'projectNumber'
           property :requested_lease_duration, as: 'requestedLeaseDuration'
           hash :unified_worker_request, as: 'unifiedWorkerRequest'
           collection :work_item_types, as: 'workItemTypes'
@@ -2275,6 +2276,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_worker_time, as: 'currentWorkerTime'
           property :location, as: 'location'
+          property :project_number, :numeric_string => true, as: 'projectNumber'
           hash :unified_worker_request, as: 'unifiedWorkerRequest'
           collection :work_item_statuses, as: 'workItemStatuses', class: Google::Apis::DataflowV1b3::WorkItemStatus, decorator: Google::Apis::DataflowV1b3::WorkItemStatus::Representation
       

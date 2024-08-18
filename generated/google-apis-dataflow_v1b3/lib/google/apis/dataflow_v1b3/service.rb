@@ -1494,7 +1494,11 @@ module Google
         end
         
         # Creates a Cloud Dataflow job from a template. Do not enter confidential
-        # information when you supply string values using the API.
+        # information when you supply string values using the API. To create a job, we
+        # recommend using `projects.locations.templates.create` with a [regional
+        # endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+        # Using `projects.templates.create` is not recommended, because your job will
+        # always start in `us-central1`.
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
@@ -1531,7 +1535,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the template associated with a template.
+        # Get the template associated with a template. To get the template, we recommend
+        # using `projects.locations.templates.get` with a [regional endpoint] (https://
+        # cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.
+        # templates.get` is not recommended, because only templates that are running in `
+        # us-central1` are retrieved.
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
@@ -1572,7 +1580,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Launch a template.
+        # Launches a template. To launch a template, we recommend using `projects.
+        # locations.templates.launch` with a [regional endpoint] (https://cloud.google.
+        # com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.
+        # launch` is not recommended, because jobs launched from the template will
+        # always start in `us-central1`.
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
@@ -1697,7 +1709,11 @@ module Google
         end
         
         # Creates a Cloud Dataflow job from a template. Do not enter confidential
-        # information when you supply string values using the API.
+        # information when you supply string values using the API. To create a job, we
+        # recommend using `projects.locations.templates.create` with a [regional
+        # endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+        # Using `projects.templates.create` is not recommended, because your job will
+        # always start in `us-central1`.
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest] create_job_from_template_request_object
@@ -1730,7 +1746,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the template associated with a template.
+        # Get the template associated with a template. To get the template, we recommend
+        # using `projects.locations.templates.get` with a [regional endpoint] (https://
+        # cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.
+        # templates.get` is not recommended, because only templates that are running in `
+        # us-central1` are retrieved.
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] gcs_path
@@ -1771,7 +1791,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Launch a template.
+        # Launches a template. To launch a template, we recommend using `projects.
+        # locations.templates.launch` with a [regional endpoint] (https://cloud.google.
+        # com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.
+        # launch` is not recommended, because jobs launched from the template will
+        # always start in `us-central1`.
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
