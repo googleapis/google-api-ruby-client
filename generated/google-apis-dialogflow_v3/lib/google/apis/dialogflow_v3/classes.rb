@@ -772,6 +772,13 @@ module Google
         # @return [Float]
         attr_accessor :boost
       
+        # Specification for custom ranking based on customer specified attribute value.
+        # It provides more controls for customized ranking than the simple (condition,
+        # boost) combination above.
+        # Corresponds to the JSON property `boostControlSpec`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec]
+        attr_accessor :boost_control_spec
+      
         # Optional. An expression which specifies a boost condition. The syntax and
         # supported fields are the same as a filter expression. Examples: * To boost
         # documents with document ID "doc_1" or "doc_2", and color "Red" or "Blue": * (
@@ -787,7 +794,86 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boost = args[:boost] if args.key?(:boost)
+          @boost_control_spec = args[:boost_control_spec] if args.key?(:boost_control_spec)
           @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # Specification for custom ranking based on customer specified attribute value.
+      # It provides more controls for customized ranking than the simple (condition,
+      # boost) combination above.
+      class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The attribute type to be used to determine the boost amount. The
+        # attribute value can be derived from the field value of the specified
+        # field_name. In the case of numerical it is straightforward i.e.
+        # attribute_value = numerical_field_value. In the case of freshness however,
+        # attribute_value = (time.now() - datetime_field_value).
+        # Corresponds to the JSON property `attributeType`
+        # @return [String]
+        attr_accessor :attribute_type
+      
+        # Optional. The control points used to define the curve. The monotonic function (
+        # defined through the interpolation_type above) passes through the control
+        # points listed here.
+        # Corresponds to the JSON property `controlPoints`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint>]
+        attr_accessor :control_points
+      
+        # Optional. The name of the field whose value will be used to determine the
+        # boost amount.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Optional. The interpolation type to be applied to connect the control points
+        # listed below.
+        # Corresponds to the JSON property `interpolationType`
+        # @return [String]
+        attr_accessor :interpolation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_type = args[:attribute_type] if args.key?(:attribute_type)
+          @control_points = args[:control_points] if args.key?(:control_points)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @interpolation_type = args[:interpolation_type] if args.key?(:interpolation_type)
+        end
+      end
+      
+      # The control points used to define the curve. The curve defined through these
+      # control points can only be monotonically increasing or decreasing(constant
+      # values are acceptable).
+      class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Can be one of: 1. The numerical field value. 2. The duration spec
+        # for freshness: The value must be formatted as an XSD `dayTimeDuration` value (
+        # a restricted subset of an ISO 8601 duration value). The pattern for this is: `
+        # nDnM]`.
+        # Corresponds to the JSON property `attributeValue`
+        # @return [String]
+        attr_accessor :attribute_value
+      
+        # Optional. The value between -1 to 1 by which to boost the score if the
+        # attribute_value evaluates to the value specified above.
+        # Corresponds to the JSON property `boostAmount`
+        # @return [Float]
+        attr_accessor :boost_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_value = args[:attribute_value] if args.key?(:attribute_value)
+          @boost_amount = args[:boost_amount] if args.key?(:boost_amount)
         end
       end
       
@@ -1191,25 +1277,6 @@ module Google
         end
       end
       
-      # Metadata for CreateDocument operation.
-      class GoogleCloudDialogflowCxV3CreateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
       # Metadata associated with the long running operation for Versions.CreateVersion.
       class GoogleCloudDialogflowCxV3CreateVersionOperationMetadata
         include Google::Apis::Core::Hashable
@@ -1528,25 +1595,6 @@ module Google
           @document_title = args[:document_title] if args.key?(:document_title)
           @document_uri = args[:document_uri] if args.key?(:document_uri)
           @text = args[:text] if args.key?(:text)
-        end
-      end
-      
-      # Metadata for DeleteDocument operation.
-      class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
@@ -3819,63 +3867,6 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Metadata in google::longrunning::Operation for Knowledge operations.
-      class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Required. Output only. The current state of this operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Metadata for ImportDocuments operation.
-      class GoogleCloudDialogflowCxV3ImportDocumentsOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
-      # Response message for Documents.ImportDocuments.
-      class GoogleCloudDialogflowCxV3ImportDocumentsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Includes details about skipped documents or any other warnings.
-        # Corresponds to the JSON property `warnings`
-        # @return [Array<Google::Apis::DialogflowV3::GoogleRpcStatus>]
-        attr_accessor :warnings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -6169,25 +6160,6 @@ module Google
         end
       end
       
-      # Metadata for ReloadDocument operation.
-      class GoogleCloudDialogflowCxV3ReloadDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
       # Resource name and display name.
       class GoogleCloudDialogflowCxV3ResourceName
         include Google::Apis::Core::Hashable
@@ -6568,7 +6540,8 @@ module Google
         attr_accessor :allow_playback_interruption
         alias_method :allow_playback_interruption?, :allow_playback_interruption
       
-        # Required. A collection of text responses.
+        # Required. A collection of text response variants. If multiple variants are
+        # defined, only one text response variant is returned at runtime.
         # Corresponds to the JSON property `text`
         # @return [Array<String>]
         attr_accessor :text
@@ -8066,25 +8039,6 @@ module Google
         end
       end
       
-      # Metadata for UpdateDocument operation.
-      class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
       # The request message for Agents.ValidateAgent.
       class GoogleCloudDialogflowCxV3ValidateAgentRequest
         include Google::Apis::Core::Hashable
@@ -9340,25 +9294,6 @@ module Google
         end
       end
       
-      # Metadata for CreateDocument operation.
-      class GoogleCloudDialogflowCxV3beta1CreateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
       # Metadata associated with the long running operation for Versions.CreateVersion.
       class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
         include Google::Apis::Core::Hashable
@@ -9404,25 +9339,6 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
-        end
-      end
-      
-      # Metadata for DeleteDocument operation.
-      class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
@@ -10281,63 +10197,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # Metadata in google::longrunning::Operation for Knowledge operations.
-      class GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Required. Output only. The current state of this operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Metadata for ImportDocuments operation.
-      class GoogleCloudDialogflowCxV3beta1ImportDocumentsOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
-      # Response message for Documents.ImportDocuments.
-      class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Includes details about skipped documents or any other warnings.
-        # Corresponds to the JSON property `warnings`
-        # @return [Array<Google::Apis::DialogflowV3::GoogleRpcStatus>]
-        attr_accessor :warnings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -11259,25 +11118,6 @@ module Google
         end
       end
       
-      # Metadata for ReloadDocument operation.
-      class GoogleCloudDialogflowCxV3beta1ReloadDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
       # Represents a response message that can be returned by a conversational agent.
       # Response messages are also used for output audio synthesis. The approach is as
       # follows: * If at least one OutputAudioText response is present, then all
@@ -11633,7 +11473,8 @@ module Google
         attr_accessor :allow_playback_interruption
         alias_method :allow_playback_interruption?, :allow_playback_interruption
       
-        # Required. A collection of text responses.
+        # Required. A collection of text response variants. If multiple variants are
+        # defined, only one text response variant is returned at runtime.
         # Corresponds to the JSON property `text`
         # @return [Array<String>]
         attr_accessor :text
@@ -12261,25 +12102,6 @@ module Google
           @sentiment_score = args[:sentiment_score] if args.key?(:sentiment_score)
           @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
           @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
-        end
-      end
-      
-      # Metadata for UpdateDocument operation.
-      class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
@@ -19270,7 +19092,8 @@ module Google
       class GoogleCloudDialogflowV2beta1ResponseMessageText
         include Google::Apis::Core::Hashable
       
-        # A collection of text responses.
+        # A collection of text response variants. If multiple variants are defined, only
+        # one text response variant is returned at runtime.
         # Corresponds to the JSON property `text`
         # @return [Array<String>]
         attr_accessor :text
@@ -19872,120 +19695,6 @@ module Google
         end
       end
       
-      # Metadata for CreateDocument operation.
-      class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
-      # Metadata for DeleteDocument operation.
-      class GoogleCloudDialogflowV3alpha1DeleteDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
-      # Metadata in google::longrunning::Operation for Knowledge operations.
-      class GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Required. Output only. The current state of this operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Metadata for ImportDocuments operation.
-      class GoogleCloudDialogflowV3alpha1ImportDocumentsOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
-      # Response message for Documents.ImportDocuments.
-      class GoogleCloudDialogflowV3alpha1ImportDocumentsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Includes details about skipped documents or any other warnings.
-        # Corresponds to the JSON property `warnings`
-        # @return [Array<Google::Apis::DialogflowV3::GoogleRpcStatus>]
-        attr_accessor :warnings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @warnings = args[:warnings] if args.key?(:warnings)
-        end
-      end
-      
-      # Metadata for ReloadDocument operation.
-      class GoogleCloudDialogflowV3alpha1ReloadDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
       # Collection of all signals that were extracted for a single turn of the
       # conversation.
       class GoogleCloudDialogflowV3alpha1TurnSignals
@@ -20073,25 +19782,6 @@ module Google
           @triggered_abandonment_event = args[:triggered_abandonment_event] if args.key?(:triggered_abandonment_event)
           @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
           @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
-        end
-      end
-      
-      # Metadata for UpdateDocument operation.
-      class GoogleCloudDialogflowV3alpha1UpdateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
