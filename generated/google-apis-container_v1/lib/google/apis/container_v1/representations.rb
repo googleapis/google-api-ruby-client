@@ -844,6 +844,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecretManagerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityBulletinEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1419,6 +1425,8 @@ module Google
       
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :secret_manager_config, as: 'secretManagerConfig', class: Google::Apis::ContainerV1::SecretManagerConfig, decorator: Google::Apis::ContainerV1::SecretManagerConfig::Representation
+      
           property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::ContainerV1::SecurityPostureConfig, decorator: Google::Apis::ContainerV1::SecurityPostureConfig::Representation
       
           property :self_link, as: 'selfLink'
@@ -1541,6 +1549,8 @@ module Google
           property :desired_release_channel, as: 'desiredReleaseChannel', class: Google::Apis::ContainerV1::ReleaseChannel, decorator: Google::Apis::ContainerV1::ReleaseChannel::Representation
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
+      
+          property :desired_secret_manager_config, as: 'desiredSecretManagerConfig', class: Google::Apis::ContainerV1::SecretManagerConfig, decorator: Google::Apis::ContainerV1::SecretManagerConfig::Representation
       
           property :desired_security_posture_config, as: 'desiredSecurityPostureConfig', class: Google::Apis::ContainerV1::SecurityPostureConfig, decorator: Google::Apis::ContainerV1::SecurityPostureConfig::Representation
       
@@ -2224,6 +2234,7 @@ module Google
           property :sole_tenant_config, as: 'soleTenantConfig', class: Google::Apis::ContainerV1::SoleTenantConfig, decorator: Google::Apis::ContainerV1::SoleTenantConfig::Representation
       
           property :spot, as: 'spot'
+          collection :storage_pools, as: 'storagePools'
           collection :tags, as: 'tags'
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaint, decorator: Google::Apis::ContainerV1::NodeTaint::Representation
       
@@ -2651,6 +2662,13 @@ module Google
         end
       end
       
+      class SecretManagerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class SecurityBulletinEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2989,6 +3007,7 @@ module Google
       
           property :resource_manager_tags, as: 'resourceManagerTags', class: Google::Apis::ContainerV1::ResourceManagerTags, decorator: Google::Apis::ContainerV1::ResourceManagerTags::Representation
       
+          collection :storage_pools, as: 'storagePools'
           property :tags, as: 'tags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
       
           property :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaints, decorator: Google::Apis::ContainerV1::NodeTaints::Representation
