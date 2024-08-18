@@ -624,6 +624,57 @@ module Google
         end
       end
       
+      # Upgrade details of a cluster. This cluster can be primary or secondary.
+      class ClusterUpgradeDetails
+        include Google::Apis::Core::Hashable
+      
+        # Cluster type which can either be primary or secondary.
+        # Corresponds to the JSON property `clusterType`
+        # @return [String]
+        attr_accessor :cluster_type
+      
+        # Database version of the cluster after the upgrade operation. This will be the
+        # target version if the upgrade was successful otherwise it remains the same as
+        # that before the upgrade operation.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
+        # Upgrade details of the instances directly associated with this cluster.
+        # Corresponds to the JSON property `instanceUpgradeDetails`
+        # @return [Array<Google::Apis::AlloydbV1::InstanceUpgradeDetails>]
+        attr_accessor :instance_upgrade_details
+      
+        # Normalized name of the cluster
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Array containing stage info associated with this cluster.
+        # Corresponds to the JSON property `stageInfo`
+        # @return [Array<Google::Apis::AlloydbV1::StageInfo>]
+        attr_accessor :stage_info
+      
+        # Upgrade status of the cluster.
+        # Corresponds to the JSON property `upgradeStatus`
+        # @return [String]
+        attr_accessor :upgrade_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
+          @database_version = args[:database_version] if args.key?(:database_version)
+          @instance_upgrade_details = args[:instance_upgrade_details] if args.key?(:instance_upgrade_details)
+          @name = args[:name] if args.key?(:name)
+          @stage_info = args[:stage_info] if args.key?(:stage_info)
+          @upgrade_status = args[:upgrade_status] if args.key?(:upgrade_status)
+        end
+      end
+      
       # ConnectionInfo singleton resource. https://google.aip.dev/156
       class ConnectionInfo
         include Google::Apis::Core::Hashable
@@ -1256,6 +1307,37 @@ module Google
         def update!(**args)
           @authorized_external_networks = args[:authorized_external_networks] if args.key?(:authorized_external_networks)
           @enable_public_ip = args[:enable_public_ip] if args.key?(:enable_public_ip)
+        end
+      end
+      
+      # Details regarding the upgrade of instaces associated with a cluster.
+      class InstanceUpgradeDetails
+        include Google::Apis::Core::Hashable
+      
+        # Instance type.
+        # Corresponds to the JSON property `instanceType`
+        # @return [String]
+        attr_accessor :instance_type
+      
+        # Normalized name of the instance.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Upgrade status of the instance.
+        # Corresponds to the JSON property `upgradeStatus`
+        # @return [String]
+        attr_accessor :upgrade_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @name = args[:name] if args.key?(:name)
+          @upgrade_status = args[:upgrade_status] if args.key?(:upgrade_status)
         end
       end
       
@@ -2017,6 +2099,12 @@ module Google
       class RestartInstanceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Full name of the nodes as obtained from INSTANCE_VIEW_FULL to
+        # restart upon. Only applicable for read instances.
+        # Corresponds to the JSON property `nodeIds`
+        # @return [Array<String>]
+        attr_accessor :node_ids
+      
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server will know to
         # ignore the request if it has already been completed. The server will guarantee
@@ -2044,6 +2132,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @node_ids = args[:node_ids] if args.key?(:node_ids)
           @request_id = args[:request_id] if args.key?(:request_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
@@ -2156,6 +2245,39 @@ module Google
         def update!(**args)
           @ca_source = args[:ca_source] if args.key?(:ca_source)
           @ssl_mode = args[:ssl_mode] if args.key?(:ssl_mode)
+        end
+      end
+      
+      # Stage information for different stages in the upgrade process.
+      class StageInfo
+        include Google::Apis::Core::Hashable
+      
+        # logs_url is the URL for the logs associated with a stage if that stage has
+        # logs. Right now, only three stages have logs: ALLOYDB_PRECHECK,
+        # PG_UPGRADE_CHECK, PRIMARY_INSTANCE_UPGRADE.
+        # Corresponds to the JSON property `logsUrl`
+        # @return [String]
+        attr_accessor :logs_url
+      
+        # The stage.
+        # Corresponds to the JSON property `stage`
+        # @return [String]
+        attr_accessor :stage
+      
+        # Status of the stage.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logs_url = args[:logs_url] if args.key?(:logs_url)
+          @stage = args[:stage] if args.key?(:stage)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -2340,16 +2462,17 @@ module Google
         end
       end
       
-      # Any custom metadata associated with the resource. i.e. A spanner instance can
+      # Any custom metadata associated with the resource. e.g. A spanner instance can
       # have multiple databases with its own unique metadata. Information for these
       # individual databases can be captured in custom metadata data
       class StorageDatabasecenterPartnerapiV1mainCustomMetadataData
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `databaseMetadata`
-        # @return [Array<Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseMetadata>]
-        attr_accessor :database_metadata
+        # Metadata for individual internal resources in an instance. e.g. spanner
+        # instance can have multiple databases with unique configuration.
+        # Corresponds to the JSON property `internalResourceMetadata`
+        # @return [Array<Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata>]
+        attr_accessor :internal_resource_metadata
       
         def initialize(**args)
            update!(**args)
@@ -2357,52 +2480,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @database_metadata = args[:database_metadata] if args.key?(:database_metadata)
-        end
-      end
-      
-      # Metadata for individual databases created in an instance. i.e. spanner
-      # instance can have multiple databases with unique configuration settings.
-      class StorageDatabasecenterPartnerapiV1mainDatabaseMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Configuration for automatic backups
-        # Corresponds to the JSON property `backupConfiguration`
-        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupConfiguration]
-        attr_accessor :backup_configuration
-      
-        # A backup run.
-        # Corresponds to the JSON property `backupRun`
-        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupRun]
-        attr_accessor :backup_run
-      
-        # Product specification for Condor resources.
-        # Corresponds to the JSON property `product`
-        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterProtoCommonProduct]
-        attr_accessor :product
-      
-        # DatabaseResourceId will serve as primary key for any resource ingestion event.
-        # Corresponds to the JSON property `resourceId`
-        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
-        attr_accessor :resource_id
-      
-        # Required. Database name. Resource name to follow CAIS resource_name format as
-        # noted here go/condor-common-datamodel
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
-          @backup_run = args[:backup_run] if args.key?(:backup_run)
-          @product = args[:product] if args.key?(:product)
-          @resource_id = args[:resource_id] if args.key?(:resource_id)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @internal_resource_metadata = args[:internal_resource_metadata] if args.key?(:internal_resource_metadata)
         end
       end
       
@@ -2421,7 +2499,7 @@ module Google
         # @return [String]
         attr_accessor :feed_type
       
-        # More feed data would be added in subsequent CLs
+        # 
         # Corresponds to the JSON property `observabilityMetricData`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData]
         attr_accessor :observability_metric_data
@@ -2534,6 +2612,11 @@ module Google
         # @return [String]
         attr_accessor :signal_id
       
+        # The severity of the signal, such as if it's a HIGH or LOW severity.
+        # Corresponds to the JSON property `signalSeverity`
+        # @return [String]
+        attr_accessor :signal_severity
+      
         # Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `
         # LOGGING_MOST_ERRORS`, etc.
         # Corresponds to the JSON property `signalType`
@@ -2562,6 +2645,7 @@ module Google
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @signal_class = args[:signal_class] if args.key?(:signal_class)
           @signal_id = args[:signal_id] if args.key?(:signal_id)
+          @signal_severity = args[:signal_severity] if args.key?(:signal_severity)
           @signal_type = args[:signal_type] if args.key?(:signal_type)
           @state = args[:state] if args.key?(:state)
         end
@@ -2583,8 +2667,10 @@ module Google
       
         # Required. The type of resource this ID is identifying. Ex redis.googleapis.com/
         # Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster,
-        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance REQUIRED
-        # Please refer go/condor-common-datamodel
+        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance, spanner.
+        # googleapis.com/Database, firestore.googleapis.com/Database, sqladmin.
+        # googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.
+        # googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -2638,7 +2724,7 @@ module Google
         # @return [String]
         attr_accessor :current_state
       
-        # Any custom metadata associated with the resource. i.e. A spanner instance can
+        # Any custom metadata associated with the resource. e.g. A spanner instance can
         # have multiple databases with its own unique metadata. Information for these
         # individual databases can be captured in custom metadata data
         # Corresponds to the JSON property `customMetadata`
@@ -2839,6 +2925,52 @@ module Google
         def update!(**args)
           @entitlement_state = args[:entitlement_state] if args.key?(:entitlement_state)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Metadata for individual internal resources in an instance. e.g. spanner
+      # instance can have multiple databases with unique configuration settings.
+      # Similarly bigtable can have multiple clusters within same bigtable instance.
+      class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for automatic backups
+        # Corresponds to the JSON property `backupConfiguration`
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupConfiguration]
+        attr_accessor :backup_configuration
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupRun]
+        attr_accessor :backup_run
+      
+        # Product specification for Condor resources.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterProtoCommonProduct]
+        attr_accessor :product
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Required. internal resource name for spanner this will be database name e.g."
+        # spanner.googleapis.com/projects/123/abc/instances/inst1/databases/db1"
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @product = args[:product] if args.key?(:product)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -3227,6 +3359,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # grace end time of the cluster.
+        # Corresponds to the JSON property `graceEndTime`
+        # @return [String]
+        attr_accessor :grace_end_time
+      
         # start time of the trial cluster.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -3244,8 +3381,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @grace_end_time = args[:grace_end_time] if args.key?(:grace_end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @upgrade_time = args[:upgrade_time] if args.key?(:upgrade_time)
+        end
+      end
+      
+      # UpgradeClusterResponse contains the response for upgrade cluster operation.
+      class UpgradeClusterResponse
+        include Google::Apis::Core::Hashable
+      
+        # Array of upgrade details for the current cluster and all the secondary
+        # clusters associated with this cluster.
+        # Corresponds to the JSON property `clusterUpgradeDetails`
+        # @return [Array<Google::Apis::AlloydbV1::ClusterUpgradeDetails>]
+        attr_accessor :cluster_upgrade_details
+      
+        # A user friendly message summarising the upgrade operation details and the next
+        # steps for the user if there is any.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Status of upgrade operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_upgrade_details = args[:cluster_upgrade_details] if args.key?(:cluster_upgrade_details)
+          @message = args[:message] if args.key?(:message)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
