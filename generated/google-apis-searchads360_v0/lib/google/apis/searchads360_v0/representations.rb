@@ -1987,6 +1987,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_group_ad, as: 'adGroupAd'
           property :label, as: 'label'
+          property :owner_customer_id, :numeric_string => true, as: 'ownerCustomerId'
           property :resource_name, as: 'resourceName'
         end
       end
@@ -2074,6 +2075,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_group_criterion, as: 'adGroupCriterion'
           property :label, as: 'label'
+          property :owner_customer_id, :numeric_string => true, as: 'ownerCustomerId'
           property :resource_name, as: 'resourceName'
         end
       end
@@ -2083,6 +2085,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_group, as: 'adGroup'
           property :label, as: 'label'
+          property :owner_customer_id, :numeric_string => true, as: 'ownerCustomerId'
           property :resource_name, as: 'resourceName'
         end
       end
@@ -2405,6 +2408,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :campaign, as: 'campaign'
           property :label, as: 'label'
+          property :owner_customer_id, :numeric_string => true, as: 'ownerCustomerId'
           property :resource_name, as: 'resourceName'
         end
       end
@@ -2511,6 +2515,7 @@ module Google
           collection :referenced_system_columns, as: 'referencedSystemColumns'
           property :references_attributes, as: 'referencesAttributes'
           property :references_metrics, as: 'referencesMetrics'
+          property :render_type, as: 'renderType'
           property :resource_name, as: 'resourceName'
           property :value_type, as: 'valueType'
         end
