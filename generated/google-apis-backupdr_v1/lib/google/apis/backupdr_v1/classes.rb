@@ -1096,12 +1096,6 @@ module Google
         # @return [String]
         attr_accessor :effective_time
       
-        # Required. The default retention period for each backup in the backup vault (
-        # Deprecated).
-        # Corresponds to the JSON property `enforcedRetentionDuration`
-        # @return [String]
-        attr_accessor :enforced_retention_duration
-      
         # Optional. Server specified ETag for the backup vault resource to prevent
         # simultaneous updates from overwiting each other.
         # Corresponds to the JSON property `etag`
@@ -1160,7 +1154,6 @@ module Google
           @deletable = args[:deletable] if args.key?(:deletable)
           @description = args[:description] if args.key?(:description)
           @effective_time = args[:effective_time] if args.key?(:effective_time)
-          @enforced_retention_duration = args[:enforced_retention_duration] if args.key?(:enforced_retention_duration)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
