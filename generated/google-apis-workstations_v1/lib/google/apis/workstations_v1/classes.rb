@@ -1973,6 +1973,15 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Optional. Grant creator of a workstation `roles/workstations.policyAdmin` role
+        # along with `roles/workstations.user` role on the workstation created by them.
+        # This allows workstation users to share access to either their entire
+        # workstation, or individual ports. Defaults to false.
+        # Corresponds to the JSON property `grantWorkstationAdminRoleOnCreate`
+        # @return [Boolean]
+        attr_accessor :grant_workstation_admin_role_on_create
+        alias_method :grant_workstation_admin_role_on_create?, :grant_workstation_admin_role_on_create
+      
         # Runtime host for a workstation.
         # Corresponds to the JSON property `host`
         # @return [Google::Apis::WorkstationsV1::Host]
@@ -1994,6 +2003,18 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Optional. Maximum number of workstations under this config a user can have `
+        # workstations.workstation.use` permission on. Only enforced on
+        # CreateWorkstation API calls on the user issuing the API request. Can be
+        # overridden by: - granting a user workstations.workstationConfigs.
+        # exemptMaxUsableWorkstationLimit permission, or - having a user with that
+        # permission create a workstation and granting another user `workstations.
+        # workstation.use` permission on that workstation. If not specified defaults to
+        # 0 which indicates unlimited.
+        # Corresponds to the JSON property `maxUsableWorkstations`
+        # @return [Fixnum]
+        attr_accessor :max_usable_workstations
       
         # Identifier. Full name of this workstation configuration.
         # Corresponds to the JSON property `name`
@@ -2076,9 +2097,11 @@ module Google
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @ephemeral_directories = args[:ephemeral_directories] if args.key?(:ephemeral_directories)
           @etag = args[:etag] if args.key?(:etag)
+          @grant_workstation_admin_role_on_create = args[:grant_workstation_admin_role_on_create] if args.key?(:grant_workstation_admin_role_on_create)
           @host = args[:host] if args.key?(:host)
           @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
           @labels = args[:labels] if args.key?(:labels)
+          @max_usable_workstations = args[:max_usable_workstations] if args.key?(:max_usable_workstations)
           @name = args[:name] if args.key?(:name)
           @persistent_directories = args[:persistent_directories] if args.key?(:persistent_directories)
           @readiness_checks = args[:readiness_checks] if args.key?(:readiness_checks)
