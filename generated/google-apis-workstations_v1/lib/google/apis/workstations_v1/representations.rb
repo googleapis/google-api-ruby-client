@@ -725,10 +725,12 @@ module Google
           collection :ephemeral_directories, as: 'ephemeralDirectories', class: Google::Apis::WorkstationsV1::EphemeralDirectory, decorator: Google::Apis::WorkstationsV1::EphemeralDirectory::Representation
       
           property :etag, as: 'etag'
+          property :grant_workstation_admin_role_on_create, as: 'grantWorkstationAdminRoleOnCreate'
           property :host, as: 'host', class: Google::Apis::WorkstationsV1::Host, decorator: Google::Apis::WorkstationsV1::Host::Representation
       
           property :idle_timeout, as: 'idleTimeout'
           hash :labels, as: 'labels'
+          property :max_usable_workstations, as: 'maxUsableWorkstations'
           property :name, as: 'name'
           collection :persistent_directories, as: 'persistentDirectories', class: Google::Apis::WorkstationsV1::PersistentDirectory, decorator: Google::Apis::WorkstationsV1::PersistentDirectory::Representation
       
