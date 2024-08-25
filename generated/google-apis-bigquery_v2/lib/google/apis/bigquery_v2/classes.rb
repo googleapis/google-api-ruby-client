@@ -131,7 +131,8 @@ module Google
         # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
         # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
         # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
-        # DATE"` ` ` ] ` `
+        # DATE"` ` ` ] ` ` * RANGE: ` "typeKind": "RANGE", "rangeElementType": `"
+        # typeKind": "DATE"` `
         # Corresponds to the JSON property `dataType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :data_type
@@ -4235,8 +4236,7 @@ module Google
         # com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `
         # JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.
         # google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will
-        # always be `REQUESTED`. This feature is not yet available. Jobs will always be
-        # created.
+        # always be `REQUESTED`. [Preview](/products/#product-launch-stages)
         # Corresponds to the JSON property `jobCreationReason`
         # @return [Google::Apis::BigqueryV2::JobCreationReason]
         attr_accessor :job_creation_reason
@@ -5202,8 +5202,7 @@ module Google
       # com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `
       # JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.
       # google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will
-      # always be `REQUESTED`. This feature is not yet available. Jobs will always be
-      # created.
+      # always be `REQUESTED`. [Preview](/products/#product-launch-stages)
       class JobCreationReason
         include Google::Apis::Core::Hashable
       
@@ -7492,8 +7491,8 @@ module Google
         attr_accessor :format_options
       
         # Optional. If not set, jobs are always required. If set, the query request will
-        # follow the behavior described JobCreationMode. This feature is not yet
-        # available. Jobs will always be created.
+        # follow the behavior described JobCreationMode. [Preview](/products/#product-
+        # launch-stages)
         # Corresponds to the JSON property `jobCreationMode`
         # @return [String]
         attr_accessor :job_creation_mode
@@ -7676,8 +7675,7 @@ module Google
         # com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `
         # JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.
         # google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will
-        # always be `REQUESTED`. This feature is not yet available. Jobs will always be
-        # created.
+        # always be `REQUESTED`. [Preview](/products/#product-launch-stages)
         # Corresponds to the JSON property `jobCreationReason`
         # @return [Google::Apis::BigqueryV2::JobCreationReason]
         attr_accessor :job_creation_reason
@@ -7707,8 +7705,7 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
-        # Query ID for the completed query. This ID will be auto-generated. This field
-        # is not yet available and it is currently not guaranteed to be populated.
+        # Auto-generated ID for the query. [Preview](/products/#product-launch-stages)
         # Corresponds to the JSON property `queryId`
         # @return [String]
         attr_accessor :query_id
@@ -8195,7 +8192,8 @@ module Google
         # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
         # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
         # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
-        # DATE"` ` ` ] ` `
+        # DATE"` ` ` ] ` ` * RANGE: ` "typeKind": "RANGE", "rangeElementType": `"
+        # typeKind": "DATE"` `
         # Corresponds to the JSON property `returnType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :return_type
@@ -8990,7 +8988,8 @@ module Google
       # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
       # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
       # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
-      # DATE"` ` ` ] ` `
+      # DATE"` ` ` ] ` ` * RANGE: ` "typeKind": "RANGE", "rangeElementType": `"
+      # typeKind": "DATE"` `
       class StandardSqlDataType
         include Google::Apis::Core::Hashable
       
@@ -8999,7 +8998,8 @@ module Google
         # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
         # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
         # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
-        # DATE"` ` ` ] ` `
+        # DATE"` ` ` ] ` ` * RANGE: ` "typeKind": "RANGE", "rangeElementType": `"
+        # typeKind": "DATE"` `
         # Corresponds to the JSON property `arrayElementType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :array_element_type
@@ -9009,7 +9009,8 @@ module Google
         # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
         # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
         # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
-        # DATE"` ` ` ] ` `
+        # DATE"` ` ` ] ` ` * RANGE: ` "typeKind": "RANGE", "rangeElementType": `"
+        # typeKind": "DATE"` `
         # Corresponds to the JSON property `rangeElementType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :range_element_type
@@ -9052,7 +9053,8 @@ module Google
         # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
         # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
         # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
-        # DATE"` ` ` ] ` `
+        # DATE"` ` ` ] ` ` * RANGE: ` "typeKind": "RANGE", "rangeElementType": `"
+        # typeKind": "DATE"` `
         # Corresponds to the JSON property `type`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :type
@@ -10058,8 +10060,8 @@ module Google
         # Required. The field data type. Possible values include: * STRING * BYTES *
         # INTEGER (or INT64) * FLOAT (or FLOAT64) * BOOLEAN (or BOOL) * TIMESTAMP * DATE
         # * TIME * DATETIME * GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON * RECORD (or
-        # STRUCT) * RANGE ([Preview](/products/#product-launch-stages)) Use of RECORD/
-        # STRUCT indicates that the field contains a nested schema.
+        # STRUCT) * RANGE Use of RECORD/STRUCT indicates that the field contains a
+        # nested schema.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -11284,7 +11286,8 @@ module Google
         # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
         # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
         # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
-        # DATE"` ` ` ] ` `
+        # DATE"` ` ` ] ` ` * RANGE: ` "typeKind": "RANGE", "rangeElementType": `"
+        # typeKind": "DATE"` `
         # Corresponds to the JSON property `type`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :type
