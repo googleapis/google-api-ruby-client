@@ -4275,6 +4275,11 @@ module Google
         # @return [String]
         attr_accessor :label
       
+        # Output only. The ID of the Customer which owns the label.
+        # Corresponds to the JSON property `ownerCustomerId`
+        # @return [Fixnum]
+        attr_accessor :owner_customer_id
+      
         # Immutable. The resource name of the ad group ad label. Ad group ad label
         # resource names have the form: `customers/`customer_id`/adGroupAdLabels/`
         # ad_group_id`~`ad_id`~`label_id``
@@ -4290,6 +4295,7 @@ module Google
         def update!(**args)
           @ad_group_ad = args[:ad_group_ad] if args.key?(:ad_group_ad)
           @label = args[:label] if args.key?(:label)
+          @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
@@ -4635,6 +4641,11 @@ module Google
         # @return [String]
         attr_accessor :label
       
+        # Output only. The ID of the Customer which owns the label.
+        # Corresponds to the JSON property `ownerCustomerId`
+        # @return [Fixnum]
+        attr_accessor :owner_customer_id
+      
         # Immutable. The resource name of the ad group criterion label. Ad group
         # criterion label resource names have the form: `customers/`customer_id`/
         # adGroupCriterionLabels/`ad_group_id`~`criterion_id`~`label_id``
@@ -4650,6 +4661,7 @@ module Google
         def update!(**args)
           @ad_group_criterion = args[:ad_group_criterion] if args.key?(:ad_group_criterion)
           @label = args[:label] if args.key?(:label)
+          @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
@@ -4668,6 +4680,11 @@ module Google
         # @return [String]
         attr_accessor :label
       
+        # Output only. The ID of the Customer which owns the label.
+        # Corresponds to the JSON property `ownerCustomerId`
+        # @return [Fixnum]
+        attr_accessor :owner_customer_id
+      
         # Immutable. The resource name of the ad group label. Ad group label resource
         # names have the form: `customers/`customer_id`/adGroupLabels/`ad_group_id`~`
         # label_id``
@@ -4683,6 +4700,7 @@ module Google
         def update!(**args)
           @ad_group = args[:ad_group] if args.key?(:ad_group)
           @label = args[:label] if args.key?(:label)
+          @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
@@ -5997,6 +6015,11 @@ module Google
         # @return [String]
         attr_accessor :label
       
+        # Output only. The ID of the Customer which owns the label.
+        # Corresponds to the JSON property `ownerCustomerId`
+        # @return [Fixnum]
+        attr_accessor :owner_customer_id
+      
         # Immutable. Name of the resource. Campaign label resource names have the form: `
         # customers/`customer_id`/campaignLabels/`campaign_id`~`label_id``
         # Corresponds to the JSON property `resourceName`
@@ -6011,6 +6034,7 @@ module Google
         def update!(**args)
           @campaign = args[:campaign] if args.key?(:campaign)
           @label = args[:label] if args.key?(:label)
+          @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
@@ -6545,6 +6569,11 @@ module Google
         attr_accessor :references_metrics
         alias_method :references_metrics?, :references_metrics
       
+        # Output only. How the result value of the custom column should be interpreted.
+        # Corresponds to the JSON property `renderType`
+        # @return [String]
+        attr_accessor :render_type
+      
         # Immutable. The resource name of the custom column. Custom column resource
         # names have the form: `customers/`customer_id`/customColumns/`custom_column_id``
         # Corresponds to the JSON property `resourceName`
@@ -6569,6 +6598,7 @@ module Google
           @referenced_system_columns = args[:referenced_system_columns] if args.key?(:referenced_system_columns)
           @references_attributes = args[:references_attributes] if args.key?(:references_attributes)
           @references_metrics = args[:references_metrics] if args.key?(:references_metrics)
+          @render_type = args[:render_type] if args.key?(:render_type)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @value_type = args[:value_type] if args.key?(:value_type)
         end
