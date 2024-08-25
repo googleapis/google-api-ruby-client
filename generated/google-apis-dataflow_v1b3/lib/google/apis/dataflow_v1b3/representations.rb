@@ -2810,6 +2810,8 @@ module Google
           collection :streaming_computation_configs, as: 'streamingComputationConfigs', class: Google::Apis::DataflowV1b3::StreamingComputationConfig, decorator: Google::Apis::DataflowV1b3::StreamingComputationConfig::Representation
       
           hash :user_step_to_state_family_name_map, as: 'userStepToStateFamilyNameMap'
+          property :user_worker_runner_v1_settings, :base64 => true, as: 'userWorkerRunnerV1Settings'
+          property :user_worker_runner_v2_settings, :base64 => true, as: 'userWorkerRunnerV2Settings'
           property :windmill_service_endpoint, as: 'windmillServiceEndpoint'
           property :windmill_service_port, :numeric_string => true, as: 'windmillServicePort'
         end
