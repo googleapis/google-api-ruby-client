@@ -430,6 +430,11 @@ module Google
         # @return [Array<Google::Apis::FirebasedynamiclinksV1::DynamicLinkEventStat>]
         attr_accessor :link_event_stats
       
+        # Optional warnings associated this API request.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning>]
+        attr_accessor :warnings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -437,6 +442,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @link_event_stats = args[:link_event_stats] if args.key?(:link_event_stats)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -754,6 +760,11 @@ module Google
         # @return [String]
         attr_accessor :utm_term
       
+        # Optional warnings associated this API request.
+        # Corresponds to the JSON property `warning`
+        # @return [Array<Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning>]
+        attr_accessor :warning
+      
         def initialize(**args)
            update!(**args)
         end
@@ -769,6 +780,7 @@ module Google
           @utm_medium = args[:utm_medium] if args.key?(:utm_medium)
           @utm_source = args[:utm_source] if args.key?(:utm_source)
           @utm_term = args[:utm_term] if args.key?(:utm_term)
+          @warning = args[:warning] if args.key?(:warning)
         end
       end
       
