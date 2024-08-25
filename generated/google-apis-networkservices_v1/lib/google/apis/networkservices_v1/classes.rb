@@ -679,6 +679,13 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :ports
       
+        # Optional. The routing mode of the Gateway. This field is configurable only for
+        # gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of
+        # type SECURE_WEB_GATEWAY.
+        # Corresponds to the JSON property `routingMode`
+        # @return [String]
+        attr_accessor :routing_mode
+      
         # Optional. Scope determines how configuration across multiple Gateway instances
         # are merged. The configuration for multiple Gateway instances with the same
         # scope will be merged as presented as a single coniguration to the proxy/load
@@ -735,6 +742,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @ports = args[:ports] if args.key?(:ports)
+          @routing_mode = args[:routing_mode] if args.key?(:routing_mode)
           @scope = args[:scope] if args.key?(:scope)
           @self_link = args[:self_link] if args.key?(:self_link)
           @server_tls_policy = args[:server_tls_policy] if args.key?(:server_tls_policy)
@@ -1039,7 +1047,8 @@ module Google
         end
       end
       
-      # The specifications for retries.
+      # The specifications for retries. Specifies one or more conditions for which
+      # this retry rule applies. Valid values are:
       class GrpcRouteRetryPolicy
         include Google::Apis::Core::Hashable
       
@@ -1103,7 +1112,8 @@ module Google
         # @return [String]
         attr_accessor :idle_timeout
       
-        # The specifications for retries.
+        # The specifications for retries. Specifies one or more conditions for which
+        # this retry rule applies. Valid values are:
         # Corresponds to the JSON property `retryPolicy`
         # @return [Google::Apis::NetworkservicesV1::GrpcRouteRetryPolicy]
         attr_accessor :retry_policy

@@ -664,6 +664,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           collection :ports, as: 'ports'
+          property :routing_mode, as: 'routingMode'
           property :scope, as: 'scope'
           property :self_link, as: 'selfLink'
           property :server_tls_policy, as: 'serverTlsPolicy'
