@@ -156,6 +156,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes all step entries for an execution.
+        # @param [String] name
+        #   Required. Name of the execution for which step entries should be deleted.
+        #   Format: projects/`project`/locations/`location`/workflows/`workflow`/
+        #   executions/`execution`
+        # @param [Google::Apis::WorkflowexecutionsV1::DeleteExecutionHistoryRequest] delete_execution_history_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkflowexecutionsV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkflowexecutionsV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_execution_history(name, delete_execution_history_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:deleteExecutionHistory', options)
+          command.request_representation = Google::Apis::WorkflowexecutionsV1::DeleteExecutionHistoryRequest::Representation
+          command.request_object = delete_execution_history_request_object
+          command.response_representation = Google::Apis::WorkflowexecutionsV1::Empty::Representation
+          command.response_class = Google::Apis::WorkflowexecutionsV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns all metadata stored about an execution, excluding most data that is
         # already accessible using other API methods.
         # @param [String] name
@@ -337,6 +372,8 @@ module Google
         #   Required. The name of the step entry to retrieve. Format: projects/`project`/
         #   locations/`location`/workflows/`workflow`/executions/`execution`/stepEntries/`
         #   step_entry`
+        # @param [String] view
+        #   Deprecated field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -354,11 +391,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_workflow_execution_step_entry(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_workflow_execution_step_entry(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::WorkflowexecutionsV1::StepEntry::Representation
           command.response_class = Google::Apis::WorkflowexecutionsV1::StepEntry
           command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -368,14 +406,13 @@ module Google
         # are ordered by their create_time.
         # @param [String] parent
         #   Required. Name of the workflow execution to list entries for. Format: projects/
-        #   `project`/locations/`location`/workflows/`workflow`/executions/`execution`/
-        #   stepEntries/
+        #   `project`/locations/`location`/workflows/`workflow`/executions/`execution`
         # @param [String] filter
         #   Optional. Filters applied to the `[StepEntries.ListStepEntries]` results. The
         #   following fields are supported for filtering: `entryId`, `createTime`, `
-        #   updateTime`, `routine`, `step`, `stepType`, `state`. For details, see AIP-160.
-        #   For example, if you are using the Google APIs Explorer: `state="SUCCEEDED"` or
-        #   `createTime>"2023-08-01" AND state="FAILED"`
+        #   updateTime`, `routine`, `step`, `stepType`, `parent`, `state`. For details,
+        #   see AIP-160. For example, if you are using the Google APIs Explorer: `state="
+        #   SUCCEEDED"` or `createTime>"2023-08-01" AND state="FAILED"`
         # @param [String] order_by
         #   Optional. Comma-separated list of fields that specify the ordering applied to
         #   the `[StepEntries.ListStepEntries]` results. By default the ordering is based
@@ -393,6 +430,8 @@ module Google
         #   Optional. The number of step entries to skip. It can be used with or without a
         #   pageToken. If used with a pageToken, then it indicates the number of step
         #   entries to skip starting from the requested page.
+        # @param [String] view
+        #   Deprecated field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -410,7 +449,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_workflow_execution_step_entries(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, skip: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_workflow_execution_step_entries(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, skip: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/stepEntries', options)
           command.response_representation = Google::Apis::WorkflowexecutionsV1::ListStepEntriesResponse::Representation
           command.response_class = Google::Apis::WorkflowexecutionsV1::ListStepEntriesResponse
@@ -420,6 +459,7 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['skip'] = skip unless skip.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

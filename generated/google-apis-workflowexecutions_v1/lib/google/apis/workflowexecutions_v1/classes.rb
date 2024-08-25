@@ -75,6 +75,35 @@ module Google
         end
       end
       
+      # Request for the DeleteExecutionHistory method.
+      class DeleteExecutionHistoryRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Error describes why the execution was abnormally terminated.
       class Error
         include Google::Apis::Core::Hashable
@@ -686,6 +715,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # VariableData contains the variable data for this step.
+        # Corresponds to the JSON property `variableData`
+        # @return [Google::Apis::WorkflowexecutionsV1::VariableData]
+        attr_accessor :variable_data
+      
         def initialize(**args)
            update!(**args)
         end
@@ -703,6 +737,7 @@ module Google
           @step_entry_metadata = args[:step_entry_metadata] if args.key?(:step_entry_metadata)
           @step_type = args[:step_type] if args.key?(:step_type)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @variable_data = args[:variable_data] if args.key?(:variable_data)
         end
       end
       
@@ -789,6 +824,25 @@ module Google
           @delivery_attempt = args[:delivery_attempt] if args.key?(:delivery_attempt)
           @message = args[:message] if args.key?(:message)
           @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
+      # VariableData contains the variable data for this step.
+      class VariableData
+        include Google::Apis::Core::Hashable
+      
+        # Variables that are associated with this step.
+        # Corresponds to the JSON property `variables`
+        # @return [Hash<String,Object>]
+        attr_accessor :variables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @variables = args[:variables] if args.key?(:variables)
         end
       end
     end
