@@ -1156,6 +1156,22 @@ module Google
       class InstancePolicyOrTemplate
         include Google::Apis::Core::Hashable
       
+        # Optional. Set this field to `true` if you want Batch to block project-level
+        # SSH keys from accessing this job's VMs. Alternatively, you can configure the
+        # job to specify a VM instance template that blocks project-level SSH keys. In
+        # either case, Batch blocks project-level SSH keys while creating the VMs for
+        # this job. Batch allows project-level SSH keys for a job's VMs only if all the
+        # following are true: + This field is undefined or set to `false`. + The job's
+        # VM instance template (if any) doesn't block project-level SSH keys. Notably,
+        # you can override this behavior by manually updating a VM to block or allow
+        # project-level SSH keys. For more information about blocking project-level SSH
+        # keys, see the Compute Engine documentation: https://cloud.google.com/compute/
+        # docs/connect/restrict-ssh-keys#block-keys
+        # Corresponds to the JSON property `blockProjectSshKeys`
+        # @return [Boolean]
+        attr_accessor :block_project_ssh_keys
+        alias_method :block_project_ssh_keys?, :block_project_ssh_keys
+      
         # Set this field true if you want Batch to help fetch drivers from a third party
         # location and install them for GPUs specified in `policy.accelerators` or `
         # instance_template` on your behalf. Default is false. For Container-Optimized
@@ -1194,6 +1210,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @block_project_ssh_keys = args[:block_project_ssh_keys] if args.key?(:block_project_ssh_keys)
           @install_gpu_drivers = args[:install_gpu_drivers] if args.key?(:install_gpu_drivers)
           @install_ops_agent = args[:install_ops_agent] if args.key?(:install_ops_agent)
           @instance_template = args[:instance_template] if args.key?(:instance_template)

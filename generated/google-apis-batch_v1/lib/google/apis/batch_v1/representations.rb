@@ -667,6 +667,7 @@ module Google
       class InstancePolicyOrTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_project_ssh_keys, as: 'blockProjectSshKeys'
           property :install_gpu_drivers, as: 'installGpuDrivers'
           property :install_ops_agent, as: 'installOpsAgent'
           property :instance_template, as: 'instanceTemplate'
