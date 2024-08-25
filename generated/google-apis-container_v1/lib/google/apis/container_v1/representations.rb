@@ -748,6 +748,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RbacBindingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RangeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1418,6 +1424,8 @@ module Google
       
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
       
+          property :rbac_binding_config, as: 'rbacBindingConfig', class: Google::Apis::ContainerV1::RbacBindingConfig, decorator: Google::Apis::ContainerV1::RbacBindingConfig::Representation
+      
           property :release_channel, as: 'releaseChannel', class: Google::Apis::ContainerV1::ReleaseChannel, decorator: Google::Apis::ContainerV1::ReleaseChannel::Representation
       
           hash :resource_labels, as: 'resourceLabels'
@@ -1546,6 +1554,8 @@ module Google
           property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
       
           property :desired_private_ipv6_google_access, as: 'desiredPrivateIpv6GoogleAccess'
+          property :desired_rbac_binding_config, as: 'desiredRbacBindingConfig', class: Google::Apis::ContainerV1::RbacBindingConfig, decorator: Google::Apis::ContainerV1::RbacBindingConfig::Representation
+      
           property :desired_release_channel, as: 'desiredReleaseChannel', class: Google::Apis::ContainerV1::ReleaseChannel, decorator: Google::Apis::ContainerV1::ReleaseChannel::Representation
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
@@ -2525,6 +2535,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class RbacBindingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_insecure_binding_system_authenticated, as: 'enableInsecureBindingSystemAuthenticated'
+          property :enable_insecure_binding_system_unauthenticated, as: 'enableInsecureBindingSystemUnauthenticated'
         end
       end
       
