@@ -462,6 +462,8 @@ module Google
       
           property :etag, as: 'etag'
           property :generation, :numeric_string => true, as: 'generation'
+          property :hard_delete_time, as: 'hardDeleteTime', type: DateTime
+      
           property :hierarchical_namespace, as: 'hierarchicalNamespace', class: Google::Apis::StorageV1::Bucket::HierarchicalNamespace, decorator: Google::Apis::StorageV1::Bucket::HierarchicalNamespace::Representation
       
           property :iam_configuration, as: 'iamConfiguration', class: Google::Apis::StorageV1::Bucket::IamConfiguration, decorator: Google::Apis::StorageV1::Bucket::IamConfiguration::Representation
@@ -491,6 +493,8 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPZS'
           property :self_link, as: 'selfLink'
           property :soft_delete_policy, as: 'softDeletePolicy', class: Google::Apis::StorageV1::Bucket::SoftDeletePolicy, decorator: Google::Apis::StorageV1::Bucket::SoftDeletePolicy::Representation
+      
+          property :soft_delete_time, as: 'softDeleteTime', type: DateTime
       
           property :storage_class, as: 'storageClass'
           property :time_created, as: 'timeCreated', type: DateTime

@@ -209,6 +209,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :generation
       
+        # The hard delete time of the bucket in RFC 3339 format.
+        # Corresponds to the JSON property `hardDeleteTime`
+        # @return [DateTime]
+        attr_accessor :hard_delete_time
+      
         # The bucket's hierarchical namespace configuration.
         # Corresponds to the JSON property `hierarchicalNamespace`
         # @return [Google::Apis::StorageV1::Bucket::HierarchicalNamespace]
@@ -333,6 +338,11 @@ module Google
         # @return [Google::Apis::StorageV1::Bucket::SoftDeletePolicy]
         attr_accessor :soft_delete_policy
       
+        # The soft delete time of the bucket in RFC 3339 format.
+        # Corresponds to the JSON property `softDeleteTime`
+        # @return [DateTime]
+        attr_accessor :soft_delete_time
+      
         # The bucket's default storage class, used whenever no storageClass is specified
         # for a newly-created object. This defines how objects in the bucket are stored
         # and determines the SLA and the cost of storage. Values include MULTI_REGIONAL,
@@ -382,6 +392,7 @@ module Google
           @encryption = args[:encryption] if args.key?(:encryption)
           @etag = args[:etag] if args.key?(:etag)
           @generation = args[:generation] if args.key?(:generation)
+          @hard_delete_time = args[:hard_delete_time] if args.key?(:hard_delete_time)
           @hierarchical_namespace = args[:hierarchical_namespace] if args.key?(:hierarchical_namespace)
           @iam_configuration = args[:iam_configuration] if args.key?(:iam_configuration)
           @id = args[:id] if args.key?(:id)
@@ -403,6 +414,7 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @soft_delete_policy = args[:soft_delete_policy] if args.key?(:soft_delete_policy)
+          @soft_delete_time = args[:soft_delete_time] if args.key?(:soft_delete_time)
           @storage_class = args[:storage_class] if args.key?(:storage_class)
           @time_created = args[:time_created] if args.key?(:time_created)
           @updated = args[:updated] if args.key?(:updated)
