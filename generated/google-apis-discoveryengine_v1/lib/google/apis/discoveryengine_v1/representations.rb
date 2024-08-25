@@ -3397,6 +3397,7 @@ module Google
       class GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_ingestion_source, as: 'dataIngestionSource'
           property :last_refreshed_time, as: 'lastRefreshedTime'
           property :matcher_value, as: 'matcherValue', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue::Representation
       
@@ -3407,6 +3408,7 @@ module Google
       class GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :fhir_resource, as: 'fhirResource'
           property :uri, as: 'uri'
         end
       end

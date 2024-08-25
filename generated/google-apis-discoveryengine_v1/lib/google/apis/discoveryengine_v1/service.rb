@@ -508,6 +508,10 @@ module Google
         #   Required. The parent branch resource name, such as `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
         #   `branch``.
+        # @param [Array<String>, String] matcher_fhir_matcher_fhir_resources
+        #   Required. The FHIR resources to match by. Format: projects/`project`/locations/
+        #   `location`/datasets/`dataset`/fhirStores/`fhir_store`/fhir/`resource_type`/`
+        #   fhir_resource_id`
         # @param [Array<String>, String] matcher_uris_matcher_uris
         #   The exact URIs to match by.
         # @param [String] fields
@@ -527,11 +531,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_project_location_collection_data_store_branch_get_documents_metadata(parent, matcher_uris_matcher_uris: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_project_location_collection_data_store_branch_get_documents_metadata(parent, matcher_fhir_matcher_fhir_resources: nil, matcher_uris_matcher_uris: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/batchGetDocumentsMetadata', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['matcher.fhirMatcher.fhirResources'] = matcher_fhir_matcher_fhir_resources unless matcher_fhir_matcher_fhir_resources.nil?
           command.query['matcher.urisMatcher.uris'] = matcher_uris_matcher_uris unless matcher_uris_matcher_uris.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -4372,6 +4377,10 @@ module Google
         #   Required. The parent branch resource name, such as `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
         #   `branch``.
+        # @param [Array<String>, String] matcher_fhir_matcher_fhir_resources
+        #   Required. The FHIR resources to match by. Format: projects/`project`/locations/
+        #   `location`/datasets/`dataset`/fhirStores/`fhir_store`/fhir/`resource_type`/`
+        #   fhir_resource_id`
         # @param [Array<String>, String] matcher_uris_matcher_uris
         #   The exact URIs to match by.
         # @param [String] fields
@@ -4391,11 +4400,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_project_location_data_store_branch_get_documents_metadata(parent, matcher_uris_matcher_uris: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_project_location_data_store_branch_get_documents_metadata(parent, matcher_fhir_matcher_fhir_resources: nil, matcher_uris_matcher_uris: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/batchGetDocumentsMetadata', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['matcher.fhirMatcher.fhirResources'] = matcher_fhir_matcher_fhir_resources unless matcher_fhir_matcher_fhir_resources.nil?
           command.query['matcher.urisMatcher.uris'] = matcher_uris_matcher_uris unless matcher_uris_matcher_uris.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
