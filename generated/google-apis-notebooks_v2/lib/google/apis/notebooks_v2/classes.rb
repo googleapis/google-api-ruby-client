@@ -1329,6 +1329,27 @@ module Google
         end
       end
       
+      # Request for restoring the notebook instance from a BackupSource.
+      class RestoreInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Snapshot represents the snapshot of the data disk used to restore the
+        # Workbench Instance from. Refers to: compute/v1/projects/`project_id`/global/
+        # snapshots/`snapshot_id`
+        # Corresponds to the JSON property `snapshot`
+        # @return [Google::Apis::NotebooksV2::Snapshot]
+        attr_accessor :snapshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshot = args[:snapshot] if args.key?(:snapshot)
+        end
+      end
+      
       # Request for rollbacking a notebook instance
       class RollbackInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1467,6 +1488,33 @@ module Google
           @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
           @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
+        end
+      end
+      
+      # Snapshot represents the snapshot of the data disk used to restore the
+      # Workbench Instance from. Refers to: compute/v1/projects/`project_id`/global/
+      # snapshots/`snapshot_id`
+      class Snapshot
+        include Google::Apis::Core::Hashable
+      
+        # Required. The project ID of the snapshot.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The ID of the snapshot.
+        # Corresponds to the JSON property `snapshotId`
+        # @return [String]
+        attr_accessor :snapshot_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @snapshot_id = args[:snapshot_id] if args.key?(:snapshot_id)
         end
       end
       

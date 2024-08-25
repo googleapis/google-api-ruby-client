@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RollbackInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,12 @@ module Google
       end
       
       class ShieldedInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Snapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -601,6 +613,14 @@ module Google
         end
       end
       
+      class RestoreInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot, as: 'snapshot', class: Google::Apis::NotebooksV2::Snapshot, decorator: Google::Apis::NotebooksV2::Snapshot::Representation
+      
+        end
+      end
+      
       class RollbackInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -631,6 +651,14 @@ module Google
           property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
           property :enable_secure_boot, as: 'enableSecureBoot'
           property :enable_vtpm, as: 'enableVtpm'
+        end
+      end
+      
+      class Snapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+          property :snapshot_id, as: 'snapshotId'
         end
       end
       
