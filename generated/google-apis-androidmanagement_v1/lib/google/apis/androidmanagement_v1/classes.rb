@@ -5894,6 +5894,11 @@ module Google
         # @return [String]
         attr_accessor :carrier_name
       
+        # Output only. The ICCID associated with this SIM card.
+        # Corresponds to the JSON property `iccId`
+        # @return [String]
+        attr_accessor :icc_id
+      
         # The phone number associated with this SIM card.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
@@ -5906,6 +5911,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @carrier_name = args[:carrier_name] if args.key?(:carrier_name)
+          @icc_id = args[:icc_id] if args.key?(:icc_id)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
