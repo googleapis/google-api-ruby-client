@@ -54,6 +54,8 @@ module Google
         # Locates the closest building to a query point. Returns an error with code `
         # NOT_FOUND` if there are no buildings within approximately 50m of the query
         # point.
+        # @param [Array<String>, String] experiments
+        #   Optional. Specifies the pre-GA features to enable.
         # @param [Float] location_latitude
         #   The latitude in degrees. It must be in the range [-90.0, +90.0].
         # @param [Float] location_longitude
@@ -79,10 +81,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def find_building_insight_closest(location_latitude: nil, location_longitude: nil, required_quality: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def find_building_insight_closest(experiments: nil, location_latitude: nil, location_longitude: nil, required_quality: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/buildingInsights:findClosest', options)
           command.response_representation = Google::Apis::SolarV1::BuildingInsights::Representation
           command.response_class = Google::Apis::SolarV1::BuildingInsights
+          command.query['experiments'] = experiments unless experiments.nil?
           command.query['location.latitude'] = location_latitude unless location_latitude.nil?
           command.query['location.longitude'] = location_longitude unless location_longitude.nil?
           command.query['requiredQuality'] = required_quality unless required_quality.nil?
@@ -100,6 +103,8 @@ module Google
         #   to MEDIUM. If set to true, `required_quality` is interpreted as the exact
         #   required quality and only `MEDIUM` quality imagery is returned if `
         #   required_quality` is set to `MEDIUM`.
+        # @param [Array<String>, String] experiments
+        #   Optional. Specifies the pre-GA experiments to enable.
         # @param [Float] location_latitude
         #   The latitude in degrees. It must be in the range [-90.0, +90.0].
         # @param [Float] location_longitude
@@ -141,11 +146,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_data_layer(exact_quality_required: nil, location_latitude: nil, location_longitude: nil, pixel_size_meters: nil, radius_meters: nil, required_quality: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_data_layer(exact_quality_required: nil, experiments: nil, location_latitude: nil, location_longitude: nil, pixel_size_meters: nil, radius_meters: nil, required_quality: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/dataLayers:get', options)
           command.response_representation = Google::Apis::SolarV1::DataLayers::Representation
           command.response_class = Google::Apis::SolarV1::DataLayers
           command.query['exactQualityRequired'] = exact_quality_required unless exact_quality_required.nil?
+          command.query['experiments'] = experiments unless experiments.nil?
           command.query['location.latitude'] = location_latitude unless location_latitude.nil?
           command.query['location.longitude'] = location_longitude unless location_longitude.nil?
           command.query['pixelSizeMeters'] = pixel_size_meters unless pixel_size_meters.nil?
