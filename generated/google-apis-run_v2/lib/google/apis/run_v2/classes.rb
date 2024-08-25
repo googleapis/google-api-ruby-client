@@ -2415,6 +2415,11 @@ module Google
         # @return [String]
         attr_accessor :uri
       
+        # Output only. All URLs serving traffic for this Service.
+        # Corresponds to the JSON property `urls`
+        # @return [Array<String>]
+        attr_accessor :urls
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2453,6 +2458,7 @@ module Google
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @uri = args[:uri] if args.key?(:uri)
+          @urls = args[:urls] if args.key?(:urls)
         end
       end
       
