@@ -705,9 +705,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [Boolean] ack_bundle_installation_warning
-        #   Must be set to true if the app bundle installation may trigger a warning on
-        #   user devices (for example, if installation size may be over a threshold,
-        #   typically 100 MB).
+        #   Deprecated. The installation warning has been removed, it's not necessary to
+        #   set this field anymore.
         # @param [String] device_tier_config_id
         #   Device tier config (DTC) to be used for generating deliverables (APKs).
         #   Contains id of the DTC or "LATEST" for last uploaded DTC.
