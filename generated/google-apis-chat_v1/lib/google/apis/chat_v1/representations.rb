@@ -526,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MembershipCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MembershipCreatedEventData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -635,6 +641,12 @@ module Google
       end
       
       class RichLinkMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSpacesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1690,6 +1702,14 @@ module Google
         end
       end
       
+      class MembershipCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :joined_direct_human_user_count, as: 'joinedDirectHumanUserCount'
+          property :joined_group_count, as: 'joinedGroupCount'
+        end
+      end
+      
       class MembershipCreatedEventData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1888,6 +1908,16 @@ module Google
         end
       end
       
+      class SearchSpacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spaces, as: 'spaces', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
+      
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
       class Section
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1945,6 +1975,9 @@ module Google
           property :display_name, as: 'displayName'
           property :external_user_allowed, as: 'externalUserAllowed'
           property :import_mode, as: 'importMode'
+          property :last_active_time, as: 'lastActiveTime'
+          property :membership_count, as: 'membershipCount', class: Google::Apis::ChatV1::MembershipCount, decorator: Google::Apis::ChatV1::MembershipCount::Representation
+      
           property :name, as: 'name'
           property :single_user_bot_dm, as: 'singleUserBotDm'
           property :space_details, as: 'spaceDetails', class: Google::Apis::ChatV1::SpaceDetails, decorator: Google::Apis::ChatV1::SpaceDetails::Representation
