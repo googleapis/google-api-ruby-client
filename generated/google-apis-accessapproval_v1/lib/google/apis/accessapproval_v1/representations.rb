@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AugmentedInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DismissApprovalRequestMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -164,6 +170,8 @@ module Google
       
           property :name, as: 'name'
           property :request_time, as: 'requestTime'
+          property :requested_augmented_info, as: 'requestedAugmentedInfo', class: Google::Apis::AccessapprovalV1::AugmentedInfo, decorator: Google::Apis::AccessapprovalV1::AugmentedInfo::Representation
+      
           property :requested_duration, as: 'requestedDuration'
           property :requested_expiration, as: 'requestedExpiration'
           property :requested_locations, as: 'requestedLocations', class: Google::Apis::AccessapprovalV1::AccessLocations, decorator: Google::Apis::AccessapprovalV1::AccessLocations::Representation
@@ -192,6 +200,13 @@ module Google
           property :invalidate_time, as: 'invalidateTime'
           property :signature_info, as: 'signatureInfo', class: Google::Apis::AccessapprovalV1::SignatureInfo, decorator: Google::Apis::AccessapprovalV1::SignatureInfo::Representation
       
+        end
+      end
+      
+      class AugmentedInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :command, as: 'command'
         end
       end
       
