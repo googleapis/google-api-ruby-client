@@ -281,6 +281,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :link_event_stats, as: 'linkEventStats', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkEventStat, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkEventStat::Representation
       
+          collection :warnings, as: 'warnings', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning::Representation
+      
         end
       end
       
@@ -351,6 +353,8 @@ module Google
           property :utm_medium, as: 'utmMedium'
           property :utm_source, as: 'utmSource'
           property :utm_term, as: 'utmTerm'
+          collection :warning, as: 'warning', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning::Representation
+      
         end
       end
       
