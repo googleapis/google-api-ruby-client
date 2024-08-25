@@ -6162,6 +6162,19 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :user_step_to_state_family_name_map
       
+        # Binary encoded proto to control runtime behavior of the java runner v1 user
+        # worker.
+        # Corresponds to the JSON property `userWorkerRunnerV1Settings`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :user_worker_runner_v1_settings
+      
+        # Binary encoded proto to control runtime behavior of the runner v2 user worker.
+        # Corresponds to the JSON property `userWorkerRunnerV2Settings`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :user_worker_runner_v2_settings
+      
         # If present, the worker must use this endpoint to communicate with Windmill
         # Service dispatchers, otherwise the worker must continue to use whatever
         # endpoint it had been using.
@@ -6187,6 +6200,8 @@ module Google
           @operational_limits = args[:operational_limits] if args.key?(:operational_limits)
           @streaming_computation_configs = args[:streaming_computation_configs] if args.key?(:streaming_computation_configs)
           @user_step_to_state_family_name_map = args[:user_step_to_state_family_name_map] if args.key?(:user_step_to_state_family_name_map)
+          @user_worker_runner_v1_settings = args[:user_worker_runner_v1_settings] if args.key?(:user_worker_runner_v1_settings)
+          @user_worker_runner_v2_settings = args[:user_worker_runner_v2_settings] if args.key?(:user_worker_runner_v2_settings)
           @windmill_service_endpoint = args[:windmill_service_endpoint] if args.key?(:windmill_service_endpoint)
           @windmill_service_port = args[:windmill_service_port] if args.key?(:windmill_service_port)
         end
