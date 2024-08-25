@@ -1671,6 +1671,13 @@ module Google
       class GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata
         include Google::Apis::Core::Hashable
       
+        # The data ingestion source of the Document. Allowed values are: * `batch`: Data
+        # ingested via Batch API, e.g., ImportDocuments. * `streaming` Data ingested via
+        # Streaming API, e.g., FHIR streaming.
+        # Corresponds to the JSON property `dataIngestionSource`
+        # @return [String]
+        attr_accessor :data_ingestion_source
+      
         # The timestamp of the last time the Document was last indexed.
         # Corresponds to the JSON property `lastRefreshedTime`
         # @return [String]
@@ -1692,6 +1699,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_ingestion_source = args[:data_ingestion_source] if args.key?(:data_ingestion_source)
           @last_refreshed_time = args[:last_refreshed_time] if args.key?(:last_refreshed_time)
           @matcher_value = args[:matcher_value] if args.key?(:matcher_value)
           @status = args[:status] if args.key?(:status)
@@ -1701,6 +1709,12 @@ module Google
       # The value of the matcher that was used to match the Document.
       class GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue
         include Google::Apis::Core::Hashable
+      
+        # Required. Format: projects/`project`/locations/`location`/datasets/`dataset`/
+        # fhirStores/`fhir_store`/fhir/`resource_type`/`fhir_resource_id`
+        # Corresponds to the JSON property `fhirResource`
+        # @return [String]
+        attr_accessor :fhir_resource
       
         # If match by URI, the URI of the Document.
         # Corresponds to the JSON property `uri`
@@ -1713,6 +1727,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @fhir_resource = args[:fhir_resource] if args.key?(:fhir_resource)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -7160,7 +7175,8 @@ module Google
       
         # A unique search token. This should be included in the UserEvent logs resulting
         # from this search, which enables accurate attribution of search model
-        # performance.
+        # performance. This also helps to identify a request during the customer support
+        # scenarios.
         # Corresponds to the JSON property `attributionToken`
         # @return [String]
         attr_accessor :attribution_token
