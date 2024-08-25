@@ -1248,6 +1248,12 @@ module Google
         # @return [Google::Apis::ContainerV1::PrivateClusterConfig]
         attr_accessor :private_cluster_config
       
+        # RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings
+        # that can be created.
+        # Corresponds to the JSON property `rbacBindingConfig`
+        # @return [Google::Apis::ContainerV1::RbacBindingConfig]
+        attr_accessor :rbac_binding_config
+      
         # ReleaseChannel indicates which release channel a cluster is subscribed to.
         # Release channels are arranged in order of risk. When a cluster is subscribed
         # to a release channel, Google maintains both the master version and the node
@@ -1411,6 +1417,7 @@ module Google
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @parent_product_config = args[:parent_product_config] if args.key?(:parent_product_config)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
+          @rbac_binding_config = args[:rbac_binding_config] if args.key?(:rbac_binding_config)
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
@@ -1790,6 +1797,12 @@ module Google
         # @return [String]
         attr_accessor :desired_private_ipv6_google_access
       
+        # RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings
+        # that can be created.
+        # Corresponds to the JSON property `desiredRbacBindingConfig`
+        # @return [Google::Apis::ContainerV1::RbacBindingConfig]
+        attr_accessor :desired_rbac_binding_config
+      
         # ReleaseChannel indicates which release channel a cluster is subscribed to.
         # Release channels are arranged in order of risk. When a cluster is subscribed
         # to a release channel, Google maintains both the master version and the node
@@ -1913,6 +1926,7 @@ module Google
           @desired_parent_product_config = args[:desired_parent_product_config] if args.key?(:desired_parent_product_config)
           @desired_private_cluster_config = args[:desired_private_cluster_config] if args.key?(:desired_private_cluster_config)
           @desired_private_ipv6_google_access = args[:desired_private_ipv6_google_access] if args.key?(:desired_private_ipv6_google_access)
+          @desired_rbac_binding_config = args[:desired_rbac_binding_config] if args.key?(:desired_rbac_binding_config)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_secret_manager_config = args[:desired_secret_manager_config] if args.key?(:desired_secret_manager_config)
@@ -3555,7 +3569,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Base64-encoded public certificate used by clients to authenticate
-        # to the cluster endpoint.
+        # to the cluster endpoint. Issued only if client_certificate_config is set.
         # Corresponds to the JSON property `clientCertificate`
         # @return [String]
         attr_accessor :client_certificate
@@ -5464,6 +5478,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings
+      # that can be created.
+      class RbacBindingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Setting this to true will allow any ClusterRoleBinding and RoleBinding with
+        # subjects system:authenticated.
+        # Corresponds to the JSON property `enableInsecureBindingSystemAuthenticated`
+        # @return [Boolean]
+        attr_accessor :enable_insecure_binding_system_authenticated
+        alias_method :enable_insecure_binding_system_authenticated?, :enable_insecure_binding_system_authenticated
+      
+        # Setting this to true will allow any ClusterRoleBinding and RoleBinding with
+        # subjets system:anonymous or system:unauthenticated.
+        # Corresponds to the JSON property `enableInsecureBindingSystemUnauthenticated`
+        # @return [Boolean]
+        attr_accessor :enable_insecure_binding_system_unauthenticated
+        alias_method :enable_insecure_binding_system_unauthenticated?, :enable_insecure_binding_system_unauthenticated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_insecure_binding_system_authenticated = args[:enable_insecure_binding_system_authenticated] if args.key?(:enable_insecure_binding_system_authenticated)
+          @enable_insecure_binding_system_unauthenticated = args[:enable_insecure_binding_system_unauthenticated] if args.key?(:enable_insecure_binding_system_unauthenticated)
         end
       end
       
