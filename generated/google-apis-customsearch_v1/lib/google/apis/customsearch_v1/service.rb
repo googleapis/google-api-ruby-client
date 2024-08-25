@@ -75,6 +75,9 @@ module Google
         #   requests results from the specified number of past weeks. * `m[number]`:
         #   requests results from the specified number of past months. * `y[number]`:
         #   requests results from the specified number of past years.
+        # @param [Boolean] enable_alternate_search_handler
+        #   Optional. Enables routing of Programmable Search Engine requests to an
+        #   alternate search handler.
         # @param [String] exact_terms
         #   Identifies a phrase that all documents in the search results must contain.
         # @param [String] exclude_terms
@@ -215,7 +218,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_cses(c2coff: nil, cr: nil, cx: nil, date_restrict: nil, exact_terms: nil, exclude_terms: nil, file_type: nil, filter: nil, gl: nil, googlehost: nil, high_range: nil, hl: nil, hq: nil, img_color_type: nil, img_dominant_color: nil, img_size: nil, img_type: nil, link_site: nil, low_range: nil, lr: nil, num: nil, or_terms: nil, q: nil, related_site: nil, rights: nil, safe: nil, search_type: nil, site_search: nil, site_search_filter: nil, snippet_length: nil, sort: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_cses(c2coff: nil, cr: nil, cx: nil, date_restrict: nil, enable_alternate_search_handler: nil, exact_terms: nil, exclude_terms: nil, file_type: nil, filter: nil, gl: nil, googlehost: nil, high_range: nil, hl: nil, hq: nil, img_color_type: nil, img_dominant_color: nil, img_size: nil, img_type: nil, link_site: nil, low_range: nil, lr: nil, num: nil, or_terms: nil, q: nil, related_site: nil, rights: nil, safe: nil, search_type: nil, site_search: nil, site_search_filter: nil, snippet_length: nil, sort: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'customsearch/v1', options)
           command.response_representation = Google::Apis::CustomsearchV1::Search::Representation
           command.response_class = Google::Apis::CustomsearchV1::Search
@@ -223,6 +226,7 @@ module Google
           command.query['cr'] = cr unless cr.nil?
           command.query['cx'] = cx unless cx.nil?
           command.query['dateRestrict'] = date_restrict unless date_restrict.nil?
+          command.query['enableAlternateSearchHandler'] = enable_alternate_search_handler unless enable_alternate_search_handler.nil?
           command.query['exactTerms'] = exact_terms unless exact_terms.nil?
           command.query['excludeTerms'] = exclude_terms unless exclude_terms.nil?
           command.query['fileType'] = file_type unless file_type.nil?
@@ -280,6 +284,9 @@ module Google
         #   requests results from the specified number of past weeks. * `m[number]`:
         #   requests results from the specified number of past months. * `y[number]`:
         #   requests results from the specified number of past years.
+        # @param [Boolean] enable_alternate_search_handler
+        #   Optional. Enables routing of Programmable Search Engine requests to an
+        #   alternate search handler.
         # @param [String] exact_terms
         #   Identifies a phrase that all documents in the search results must contain.
         # @param [String] exclude_terms
@@ -420,7 +427,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_cse_siterestricts(c2coff: nil, cr: nil, cx: nil, date_restrict: nil, exact_terms: nil, exclude_terms: nil, file_type: nil, filter: nil, gl: nil, googlehost: nil, high_range: nil, hl: nil, hq: nil, img_color_type: nil, img_dominant_color: nil, img_size: nil, img_type: nil, link_site: nil, low_range: nil, lr: nil, num: nil, or_terms: nil, q: nil, related_site: nil, rights: nil, safe: nil, search_type: nil, site_search: nil, site_search_filter: nil, snippet_length: nil, sort: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_cse_siterestricts(c2coff: nil, cr: nil, cx: nil, date_restrict: nil, enable_alternate_search_handler: nil, exact_terms: nil, exclude_terms: nil, file_type: nil, filter: nil, gl: nil, googlehost: nil, high_range: nil, hl: nil, hq: nil, img_color_type: nil, img_dominant_color: nil, img_size: nil, img_type: nil, link_site: nil, low_range: nil, lr: nil, num: nil, or_terms: nil, q: nil, related_site: nil, rights: nil, safe: nil, search_type: nil, site_search: nil, site_search_filter: nil, snippet_length: nil, sort: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'customsearch/v1/siterestrict', options)
           command.response_representation = Google::Apis::CustomsearchV1::Search::Representation
           command.response_class = Google::Apis::CustomsearchV1::Search
@@ -428,6 +435,7 @@ module Google
           command.query['cr'] = cr unless cr.nil?
           command.query['cx'] = cx unless cx.nil?
           command.query['dateRestrict'] = date_restrict unless date_restrict.nil?
+          command.query['enableAlternateSearchHandler'] = enable_alternate_search_handler unless enable_alternate_search_handler.nil?
           command.query['exactTerms'] = exact_terms unless exact_terms.nil?
           command.query['excludeTerms'] = exclude_terms unless exclude_terms.nil?
           command.query['fileType'] = file_type unless file_type.nil?
