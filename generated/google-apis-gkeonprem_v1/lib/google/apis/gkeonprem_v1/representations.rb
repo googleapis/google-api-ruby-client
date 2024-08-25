@@ -646,6 +646,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Version
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Versions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmwareAagConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1245,6 +1257,7 @@ module Google
       class BareMetalClusterUpgradePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :pause, as: 'pause'
           property :policy, as: 'policy'
         end
       end
@@ -1863,6 +1876,9 @@ module Google
           collection :conditions, as: 'conditions', class: Google::Apis::GkeonpremV1::ResourceCondition, decorator: Google::Apis::GkeonpremV1::ResourceCondition::Representation
       
           property :error_message, as: 'errorMessage'
+          property :version, as: 'version'
+          property :versions, as: 'versions', class: Google::Apis::GkeonpremV1::Versions, decorator: Google::Apis::GkeonpremV1::Versions::Representation
+      
         end
       end
       
@@ -1932,6 +1948,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :result, as: 'result', class: Google::Apis::GkeonpremV1::ValidationCheckResult, decorator: Google::Apis::GkeonpremV1::ValidationCheckResult::Representation
+      
+        end
+      end
+      
+      class Version
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :version, as: 'version'
+        end
+      end
+      
+      class Versions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :versions, as: 'versions', class: Google::Apis::GkeonpremV1::Version, decorator: Google::Apis::GkeonpremV1::Version::Representation
       
         end
       end
@@ -2008,6 +2040,8 @@ module Google
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+          property :validation_check, as: 'validationCheck', class: Google::Apis::GkeonpremV1::ValidationCheck, decorator: Google::Apis::GkeonpremV1::ValidationCheck::Representation
+      
           property :vcenter, as: 'vcenter', class: Google::Apis::GkeonpremV1::VmwareAdminVCenterConfig, decorator: Google::Apis::GkeonpremV1::VmwareAdminVCenterConfig::Representation
       
         end
