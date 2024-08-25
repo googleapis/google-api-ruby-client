@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteExecutionHistoryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Error
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VariableData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Callback
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -153,6 +171,18 @@ module Google
       end
       
       class CancelExecutionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteExecutionHistoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -324,6 +354,8 @@ module Google
       
           property :step_type, as: 'stepType'
           property :update_time, as: 'updateTime'
+          property :variable_data, as: 'variableData', class: Google::Apis::WorkflowexecutionsV1::VariableData, decorator: Google::Apis::WorkflowexecutionsV1::VariableData::Representation
+      
         end
       end
       
@@ -345,6 +377,13 @@ module Google
           property :message, as: 'message', class: Google::Apis::WorkflowexecutionsV1::PubsubMessage, decorator: Google::Apis::WorkflowexecutionsV1::PubsubMessage::Representation
       
           property :subscription, as: 'subscription'
+        end
+      end
+      
+      class VariableData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :variables, as: 'variables'
         end
       end
     end
