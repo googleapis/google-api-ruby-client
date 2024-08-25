@@ -1,5 +1,9 @@
 # Release history for google-apis-chat_v1
 
+### v0.102.0 (2024-08-25)
+
+* Regenerated from discovery document revision 20240818
+
 ### v0.101.0 (2024-08-18)
 
 * Regenerated from discovery document revision 20240813

@@ -227,6 +227,13 @@ module Google
         # authorize-chat-user) from a user who has permission to delete the space.
         # @param [String] name
         #   Required. Resource name of the space to delete. Format: `spaces/`space``
+        # @param [Boolean] use_admin_access
+        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
+        #   true`, the method runs using the user's Google Workspace administrator
+        #   privileges. The calling user must be a Google Workspace administrator with the
+        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
+        #   answer/13369245). Requires the `chat.admin.delete` [OAuth 2.0 scope](https://
+        #   developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -244,11 +251,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_space(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_space(name, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ChatV1::Empty::Representation
           command.response_class = Google::Apis::ChatV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -312,6 +320,14 @@ module Google
         # @param [String] name
         #   Required. Resource name of the space, in the form `spaces/`space``. Format: `
         #   spaces/`space``
+        # @param [Boolean] use_admin_access
+        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
+        #   true`, the method runs using the user's Google Workspace administrator
+        #   privileges. The calling user must be a Google Workspace administrator with the
+        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
+        #   answer/13369245). Requires the `chat.admin.spaces` or `chat.admin.spaces.
+        #   readonly` [OAuth 2.0 scopes](https://developers.google.com/workspace/chat/
+        #   authenticate-authorize#chat-api-scopes).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -329,11 +345,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_space(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_space(name, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ChatV1::Space::Representation
           command.response_class = Google::Apis::ChatV1::Space
           command.params['name'] = name unless name.nil?
+          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -446,6 +463,15 @@ module Google
         #   permission_settings.reply_messages` (Warning: mutually exclusive with all
         #   other non-permission settings field paths). `permission_settings` is not
         #   supported with admin access.
+        # @param [Boolean] use_admin_access
+        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
+        #   true`, the method runs using the user's Google Workspace administrator
+        #   privileges. The calling user must be a Google Workspace administrator with the
+        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
+        #   answer/13369245). Requires the `chat.admin.spaces` [OAuth 2.0 scope](https://
+        #   developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
+        #   Some `FieldMask` values are not supported using admin access. For details, see
+        #   the description of `update_mask`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -463,7 +489,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_space(name, space_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_space(name, space_object = nil, update_mask: nil, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::ChatV1::Space::Representation
           command.request_object = space_object
@@ -471,6 +497,108 @@ module Google
           command.response_class = Google::Apis::ChatV1::Space
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # [Developer Preview](https://developers.google.com/workspace/preview). Returns
+        # a list of spaces based on a user's search. Requires [user authentication](
+        # https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        # The user must be an administrator for the Google Workspace organization. In
+        # the request, set `use_admin_access` to `true`.
+        # @param [String] order_by
+        #   Optional. How the list of spaces is ordered. Supported attributes to order by
+        #   are: - `membership_count.joined_direct_human_user_count` — Denotes the count
+        #   of human users that have directly joined a space. - `last_active_time` —
+        #   Denotes the time when last eligible item is added to any topic of this space. -
+        #   `create_time` — Denotes the time of the space creation. Valid ordering
+        #   operation values are: - `ASC` for ascending. Default value. - `DESC` for
+        #   descending. The supported syntax are: - `membership_count.
+        #   joined_direct_human_user_count DESC` - `membership_count.
+        #   joined_direct_human_user_count ASC` - `last_active_time DESC` - `
+        #   last_active_time ASC` - `create_time DESC` - `create_time ASC`
+        # @param [Fixnum] page_size
+        #   The maximum number of spaces to return. The service may return fewer than this
+        #   value. If unspecified, at most 100 spaces are returned. The maximum value is
+        #   1000. If you use a value more than 1000, it's automatically changed to 1000.
+        # @param [String] page_token
+        #   A token, received from the previous search spaces call. Provide this parameter
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided should match the call that provided the page token. Passing different
+        #   values to the other parameters might lead to unexpected results.
+        # @param [String] query
+        #   Required. A search query. You can search by using the following parameters: - `
+        #   create_time` - `customer` - `display_name` - `external_user_allowed` - `
+        #   last_active_time` - `space_history_state` - `space_type` `create_time` and `
+        #   last_active_time` accept a timestamp in [RFC-3339](https://www.rfc-editor.org/
+        #   rfc/rfc3339) format and the supported comparison operators are: `=`, `<`, `>`,
+        #   `<=`, `>=`. `customer` is required and is used to indicate which customer to
+        #   fetch spaces from. `customers/my_customer` is the only supported value. `
+        #   display_name` only accepts the `HAS` (`:`) operator. The text to match is
+        #   first tokenized into tokens and each token is prefix-matched case-
+        #   insensitively and independently as a substring anywhere in the space's `
+        #   display_name`. For example, `Fun Eve` matches `Fun event` or `The evening was
+        #   fun`, but not `notFun event` or `even`. `external_user_allowed` accepts either
+        #   `true` or `false`. `space_history_state` only accepts values from the [`
+        #   historyState`] (https://developers.google.com/workspace/chat/api/reference/
+        #   rest/v1/spaces#Space.HistoryState) field of a `space` resource. `space_type`
+        #   is required and the only valid value is `SPACE`. Across different fields, only
+        #   `AND` operators are supported. A valid example is `space_type = "SPACE" AND
+        #   display_name:"Hello"` and an invalid example is `space_type = "SPACE" OR
+        #   display_name:"Hello"`. Among the same field, `space_type` doesn't support `AND`
+        #   or `OR` operators. `display_name`, 'space_history_state', and '
+        #   external_user_allowed' only support `OR` operators. `last_active_time` and `
+        #   create_time` support both `AND` and `OR` operators. `AND` can only be used to
+        #   represent an interval, such as `last_active_time < "2022-01-01T00:00:00+00:00"
+        #   AND last_active_time > "2023-01-01T00:00:00+00:00"`. The following example
+        #   queries are valid: ``` customer = "customers/my_customer" AND space_type = "
+        #   SPACE" customer = "customers/my_customer" AND space_type = "SPACE" AND
+        #   display_name:"Hello World" customer = "customers/my_customer" AND space_type =
+        #   "SPACE" AND (last_active_time < "2020-01-01T00:00:00+00:00" OR
+        #   last_active_time > "2022-01-01T00:00:00+00:00") customer = "customers/
+        #   my_customer" AND space_type = "SPACE" AND (display_name:"Hello World" OR
+        #   display_name:"Fun event") AND (last_active_time > "2020-01-01T00:00:00+00:00"
+        #   AND last_active_time < "2022-01-01T00:00:00+00:00") customer = "customers/
+        #   my_customer" AND space_type = "SPACE" AND (create_time > "2019-01-01T00:00:00+
+        #   00:00" AND create_time < "2020-01-01T00:00:00+00:00") AND (
+        #   external_user_allowed = "true") AND (space_history_state = "HISTORY_ON" OR
+        #   space_history_state = "HISTORY_OFF") ```
+        # @param [Boolean] use_admin_access
+        #   When `true`, the method runs using the user's Google Workspace administrator
+        #   privileges. The calling user must be a Google Workspace administrator with the
+        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
+        #   answer/13369245). Requires either the `chat.admin.spaces.readonly` or `chat.
+        #   admin.spaces` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/
+        #   authenticate-authorize#chat-api-scopes). This method currently only supports
+        #   admin access, thus only `true` is accepted for this field.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::SearchSpacesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::SearchSpacesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_spaces(order_by: nil, page_size: nil, page_token: nil, query: nil, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/spaces:search', options)
+          command.response_representation = Google::Apis::ChatV1::SearchSpacesResponse::Representation
+          command.response_class = Google::Apis::ChatV1::SearchSpacesResponse
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -542,36 +670,32 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a human membership or app membership for the calling app. Creating
-        # memberships for other apps isn't supported. For an example, see [Invite or add
-        # a user or a Google Chat app to a space](https://developers.google.com/
-        # workspace/chat/create-members). When creating a membership, if the specified
-        # member has their auto-accept policy turned off, then they're invited, and must
-        # accept the space invitation before joining. Otherwise, creating a membership
-        # adds the member directly to the specified space. Requires [user authentication]
-        # (https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-        # . To specify the member to add, set the `membership.member.name` for the human
-        # or app member, or set the `membership.group_member.name` for the group member.
-        # - To add the calling app to a space or a direct message between two human
-        # users, use `users/app`. Unable to add other apps to the space. - To add a
-        # human user, use `users/`user``, where ``user`` can be the email address for
-        # the user. For users in the same Workspace organization ``user`` can also be
-        # the `id` for the person from the People API, or the `id` for the user in the
-        # Directory API. For example, if the People API Person profile ID for `user@
-        # example.com` is `123456789`, you can add the user to the space by setting the `
-        # membership.member.name` to `users/user@example.com` or `users/123456789`. - To
-        # add or invite a Google group in a named space, use `groups/`group``, where ``
-        # group`` is the `id` for the group from the Cloud Identity Groups API. For
-        # example, you can use [Cloud Identity Groups lookup API](https://cloud.google.
-        # com/identity/docs/reference/rest/v1/groups/lookup) to retrieve the ID `
-        # 123456789` for group email `group@example.com`, then you can add or invite the
-        # group to a named space by setting the `membership.group_member.name` to `
-        # groups/123456789`. Group email is not supported, and Google groups can only be
-        # added as members in named spaces.
+        # Creates a membership for the calling Chat app, a user, or a Google Group.
+        # Creating memberships for other Chat apps isn't supported. When creating a
+        # membership, if the specified member has their auto-accept policy turned off,
+        # then they're invited, and must accept the space invitation before joining.
+        # Otherwise, creating a membership adds the member directly to the specified
+        # space. Requires [user authentication](https://developers.google.com/workspace/
+        # chat/authenticate-authorize-chat-user). For example usage, see: - [Invite or
+        # add a user to a space](https://developers.google.com/workspace/chat/create-
+        # members#create-user-membership). - [Invite or add a Google Group to a space](
+        # https://developers.google.com/workspace/chat/create-members#create-group-
+        # membership). - [Add the Chat app to a space](https://developers.google.com/
+        # workspace/chat/create-members#create-membership-calling-api).
         # @param [String] parent
         #   Required. The resource name of the space for which to create the membership.
         #   Format: spaces/`space`
         # @param [Google::Apis::ChatV1::Membership] membership_object
+        # @param [Boolean] use_admin_access
+        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
+        #   true`, the method runs using the user's Google Workspace administrator
+        #   privileges. The calling user must be a Google Workspace administrator with the
+        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
+        #   answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](
+        #   https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
+        #   scopes). Creating app memberships or creating memberships for users outside
+        #   the administrator's Google Workspace organization isn't supported using admin
+        #   access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -589,13 +713,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_space_member(parent, membership_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_space_member(parent, membership_object = nil, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/members', options)
           command.request_representation = Google::Apis::ChatV1::Membership::Representation
           command.request_object = membership_object
           command.response_representation = Google::Apis::ChatV1::Membership::Representation
           command.response_class = Google::Apis::ChatV1::Membership
           command.params['parent'] = parent unless parent.nil?
+          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -615,6 +740,15 @@ module Google
         #   deleting an app membership, requires the `chat.memberships.app` scope and `
         #   spaces/`space`/members/app` format. Format: `spaces/`space`/members/`member``
         #   or `spaces/`space`/members/app`.
+        # @param [Boolean] use_admin_access
+        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
+        #   true`, the method runs using the user's Google Workspace administrator
+        #   privileges. The calling user must be a Google Workspace administrator with the
+        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
+        #   answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](
+        #   https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
+        #   scopes). Deleting app memberships in a space isn't supported using admin
+        #   access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -632,11 +766,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_space_member(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_space_member(name, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ChatV1::Membership::Representation
           command.response_class = Google::Apis::ChatV1::Membership
           command.params['name'] = name unless name.nil?
+          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -659,6 +794,15 @@ module Google
         #   user's email as an alias for ``member``. For example, `spaces/`space`/members/
         #   example@gmail.com` where `example@gmail.com` is the email of the Google Chat
         #   user.
+        # @param [Boolean] use_admin_access
+        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
+        #   true`, the method runs using the user's Google Workspace administrator
+        #   privileges. The calling user must be a Google Workspace administrator with the
+        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
+        #   answer/13369245). Requires the `chat.admin.memberships` or `chat.admin.
+        #   memberships.readonly` [OAuth 2.0 scopes](https://developers.google.com/
+        #   workspace/chat/authenticate-authorize#chat-api-scopes). Getting app
+        #   memberships in a space isn't supported when using admin access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -676,11 +820,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_space_member(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_space_member(name, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ChatV1::Membership::Representation
           command.response_class = Google::Apis::ChatV1::Membership
           command.params['name'] = name unless name.nil?
+          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -739,6 +884,15 @@ module Google
         #   invited memberships that don't match the filter criteria aren't returned.
         #   Currently requires [user authentication](https://developers.google.com/
         #   workspace/chat/authenticate-authorize-chat-user).
+        # @param [Boolean] use_admin_access
+        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
+        #   true`, the method runs using the user's Google Workspace administrator
+        #   privileges. The calling user must be a Google Workspace administrator with the
+        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
+        #   answer/13369245). Requires either the `chat.admin.memberships.readonly` or `
+        #   chat.admin.memberships` [OAuth 2.0 scope](https://developers.google.com/
+        #   workspace/chat/authenticate-authorize#chat-api-scopes). Listing app
+        #   memberships in a space isn't supported when using admin access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -756,7 +910,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_space_members(parent, filter: nil, page_size: nil, page_token: nil, show_groups: nil, show_invited: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_space_members(parent, filter: nil, page_size: nil, page_token: nil, show_groups: nil, show_invited: nil, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/members', options)
           command.response_representation = Google::Apis::ChatV1::ListMembershipsResponse::Representation
           command.response_class = Google::Apis::ChatV1::ListMembershipsResponse
@@ -766,6 +920,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['showGroups'] = show_groups unless show_groups.nil?
           command.query['showInvited'] = show_invited unless show_invited.nil?
+          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -782,6 +937,14 @@ module Google
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas or
         #   use `*` to update all field paths. Currently supported field paths: - `role`
+        # @param [Boolean] use_admin_access
+        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
+        #   true`, the method runs using the user's Google Workspace administrator
+        #   privileges. The calling user must be a Google Workspace administrator with the
+        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
+        #   answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](
+        #   https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
+        #   scopes).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -799,7 +962,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_space_member(name, membership_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_space_member(name, membership_object = nil, update_mask: nil, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::ChatV1::Membership::Representation
           command.request_object = membership_object
@@ -807,6 +970,7 @@ module Google
           command.response_class = Google::Apis::ChatV1::Membership
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -969,9 +1133,12 @@ module Google
         end
         
         # Lists messages in a space that the caller is a member of, including messages
-        # from blocked members and spaces. For an example, see [List messages](/chat/api/
-        # guides/v1/messages/list). Requires [user authentication](https://developers.
-        # google.com/workspace/chat/authenticate-authorize-chat-user).
+        # from blocked members and spaces. If you list messages from a space with no
+        # messages, the response is an empty object. When using a REST/HTTP interface,
+        # the response contains an empty JSON object, ````. For an example, see [List
+        # messages](https://developers.google.com/workspace/chat/api/guides/v1/messages/
+        # list). Requires [user authentication](https://developers.google.com/workspace/
+        # chat/authenticate-authorize-chat-user).
         # @param [String] parent
         #   Required. The resource name of the space to list messages from. Format: `
         #   spaces/`space``

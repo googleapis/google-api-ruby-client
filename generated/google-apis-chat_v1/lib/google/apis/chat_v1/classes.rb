@@ -3732,6 +3732,33 @@ module Google
         end
       end
       
+      # [Developer Preview](https://developers.google.com/workspace/preview).
+      # Represents the count of memberships of a space, grouped into categories.
+      class MembershipCount
+        include Google::Apis::Core::Hashable
+      
+        # Count of human users that have directly joined the space, not counting users
+        # joined by having membership in a joined group.
+        # Corresponds to the JSON property `joinedDirectHumanUserCount`
+        # @return [Fixnum]
+        attr_accessor :joined_direct_human_user_count
+      
+        # Count of all groups that have directly joined the space.
+        # Corresponds to the JSON property `joinedGroupCount`
+        # @return [Fixnum]
+        attr_accessor :joined_group_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @joined_direct_human_user_count = args[:joined_direct_human_user_count] if args.key?(:joined_direct_human_user_count)
+          @joined_group_count = args[:joined_group_count] if args.key?(:joined_group_count)
+        end
+      end
+      
       # Event payload for a new membership. Event type: `google.workspace.chat.
       # membership.v1.created`.
       class MembershipCreatedEventData
@@ -4376,6 +4403,39 @@ module Google
         end
       end
       
+      # Response with a list of spaces corresponding to the search spaces request.
+      class SearchSpacesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be used to retrieve the next page. If this field is empty,
+        # there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A page of the requested spaces.
+        # Corresponds to the JSON property `spaces`
+        # @return [Array<Google::Apis::ChatV1::Space>]
+        attr_accessor :spaces
+      
+        # The total number of spaces that match the query, across all pages. If the
+        # result is over 10,000 spaces, this value is an estimate.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spaces = args[:spaces] if args.key?(:spaces)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
       # A section contains a collection of widgets that are rendered (vertically) in
       # the order that they are specified. Across all platforms, cards have a narrow
       # fixed width, so there's currently no need for layout properties (for example,
@@ -4606,6 +4666,18 @@ module Google
         attr_accessor :import_mode
         alias_method :import_mode?, :import_mode
       
+        # Output only. Timestamp of the last message in the space. [Developer Preview](
+        # https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `lastActiveTime`
+        # @return [String]
+        attr_accessor :last_active_time
+      
+        # [Developer Preview](https://developers.google.com/workspace/preview).
+        # Represents the count of memberships of a space, grouped into categories.
+        # Corresponds to the JSON property `membershipCount`
+        # @return [Google::Apis::ChatV1::MembershipCount]
+        attr_accessor :membership_count
+      
         # Resource name of the space. Format: `spaces/`space``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4667,6 +4739,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @external_user_allowed = args[:external_user_allowed] if args.key?(:external_user_allowed)
           @import_mode = args[:import_mode] if args.key?(:import_mode)
+          @last_active_time = args[:last_active_time] if args.key?(:last_active_time)
+          @membership_count = args[:membership_count] if args.key?(:membership_count)
           @name = args[:name] if args.key?(:name)
           @single_user_bot_dm = args[:single_user_bot_dm] if args.key?(:single_user_bot_dm)
           @space_details = args[:space_details] if args.key?(:space_details)
