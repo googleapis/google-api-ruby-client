@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssetEnrichment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AttachedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -730,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceOwners
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceSearchResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -984,6 +1002,14 @@ module Google
         end
       end
       
+      class AssetEnrichment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_owners, as: 'resourceOwners', class: Google::Apis::CloudassetV1::ResourceOwners, decorator: Google::Apis::CloudassetV1::ResourceOwners::Representation
+      
+        end
+      end
+      
       class AttachedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1045,6 +1071,12 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2088,6 +2120,13 @@ module Google
         end
       end
       
+      class ResourceOwners
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_owners, as: 'resourceOwners'
+        end
+      end
+      
       class ResourceSearchResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2099,6 +2138,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           collection :effective_tags, as: 'effectiveTags', class: Google::Apis::CloudassetV1::EffectiveTagDetails, decorator: Google::Apis::CloudassetV1::EffectiveTagDetails::Representation
+      
+          collection :enrichments, as: 'enrichments', class: Google::Apis::CloudassetV1::AssetEnrichment, decorator: Google::Apis::CloudassetV1::AssetEnrichment::Representation
       
           collection :folders, as: 'folders'
           property :kms_key, as: 'kmsKey'
