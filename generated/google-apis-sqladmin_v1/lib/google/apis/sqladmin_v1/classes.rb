@@ -581,6 +581,14 @@ module Google
         # @return [String]
         attr_accessor :point_in_time
       
+        # Optional. Copy clone and point-in-time recovery clone of a regional instance
+        # in the specified zones. If not specified, clone to the same secondary zone as
+        # the source instance. This value cannot be the same as the preferred_zone field.
+        # This field applies to all DB types.
+        # Corresponds to the JSON property `preferredSecondaryZone`
+        # @return [String]
+        attr_accessor :preferred_secondary_zone
+      
         # Optional. Copy clone and point-in-time recovery clone of an instance to the
         # specified zone. If no zone is specified, clone to the same primary zone as the
         # source instance. This field applies to all DB types.
@@ -601,6 +609,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
           @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
+          @preferred_secondary_zone = args[:preferred_secondary_zone] if args.key?(:preferred_secondary_zone)
           @preferred_zone = args[:preferred_zone] if args.key?(:preferred_zone)
         end
       end
