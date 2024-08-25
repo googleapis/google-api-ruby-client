@@ -188,7 +188,7 @@ module Google
         # Configures which glossary is used for a specific target language and defines
         # options for applying that glossary.
         # Corresponds to the JSON property `glossaryConfig`
-        # @return [Google::Apis::TranslateV3::TranslateTextGlossaryConfig]
+        # @return [Google::Apis::TranslateV3::GlossaryConfig]
         attr_accessor :glossary_config
       
         # Message of caller-provided reference configuration.
@@ -812,7 +812,7 @@ module Google
       
         # Output only. The resource name of the example, in form of `projects/`project-
         # number-or-id`/locations/`location_id`/datasets/`dataset_id`/examples/`
-        # example_id`'
+        # example_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1041,6 +1041,36 @@ module Google
         end
       end
       
+      # Configures which glossary is used for a specific target language and defines
+      # options for applying that glossary.
+      class GlossaryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The `glossary` to be applied for this translation. The format
+        # depends on the glossary: - User-provided custom glossary: `projects/`project-
+        # number-or-id`/locations/`location-id`/glossaries/`glossary-id``
+        # Corresponds to the JSON property `glossary`
+        # @return [String]
+        attr_accessor :glossary
+      
+        # Optional. Indicates match is case insensitive. The default value is `false` if
+        # missing.
+        # Corresponds to the JSON property `ignoreCase`
+        # @return [Boolean]
+        attr_accessor :ignore_case
+        alias_method :ignore_case?, :ignore_case
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @glossary = args[:glossary] if args.key?(:glossary)
+          @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
+        end
+      end
+      
       # Represents a single entry in a glossary.
       class GlossaryEntry
         include Google::Apis::Core::Hashable
@@ -1050,8 +1080,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Identifier. The resource name of the entry. Format: "projects/*/locations/*/
-        # glossaries/*/glossaryEntries/*"
+        # Identifier. The resource name of the entry. Format: `projects/*/locations/*/
+        # glossaries/*/glossaryEntries/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
