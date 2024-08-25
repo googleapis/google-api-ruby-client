@@ -844,6 +844,7 @@ module Google
           property :role, as: 'role'
           collection :secondary_ip_range_specs, as: 'secondaryIpRangeSpecs', class: Google::Apis::ServicenetworkingV1::SecondaryIpRangeSpec, decorator: Google::Apis::ServicenetworkingV1::SecondaryIpRangeSpec::Representation
       
+          property :skip_requested_address_validation, as: 'skipRequestedAddressValidation'
           property :subnetwork, as: 'subnetwork'
           collection :subnetwork_users, as: 'subnetworkUsers'
           property :use_custom_compute_idempotency_window, as: 'useCustomComputeIdempotencyWindow'
