@@ -2160,6 +2160,27 @@ module Google
         end
       end
       
+      # Details about the first time a user/device completed a transaction using
+      # external offers.
+      class ExternalOfferInitialAcquisitionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. The external transaction id of the first completed purchase made by
+        # the user.
+        # Corresponds to the JSON property `externalTransactionId`
+        # @return [String]
+        attr_accessor :external_transaction_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_transaction_id = args[:external_transaction_id] if args.key?(:external_transaction_id)
+        end
+      end
+      
       # Details of an external subscription.
       class ExternalSubscription
         include Google::Apis::Core::Hashable
@@ -2198,6 +2219,12 @@ module Google
         # Corresponds to the JSON property `currentTaxAmount`
         # @return [Google::Apis::AndroidpublisherV3::Price]
         attr_accessor :current_tax_amount
+      
+        # Details about the first time a user/device completed a transaction using
+        # external offers.
+        # Corresponds to the JSON property `externalOfferInitialAcquisitionDetails`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalOfferInitialAcquisitionDetails]
+        attr_accessor :external_offer_initial_acquisition_details
       
         # Output only. The id of this transaction. All transaction ids under the same
         # package name must be unique. Set when creating the external transaction.
@@ -2274,6 +2301,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_pre_tax_amount = args[:current_pre_tax_amount] if args.key?(:current_pre_tax_amount)
           @current_tax_amount = args[:current_tax_amount] if args.key?(:current_tax_amount)
+          @external_offer_initial_acquisition_details = args[:external_offer_initial_acquisition_details] if args.key?(:external_offer_initial_acquisition_details)
           @external_transaction_id = args[:external_transaction_id] if args.key?(:external_transaction_id)
           @one_time_transaction = args[:one_time_transaction] if args.key?(:one_time_transaction)
           @original_pre_tax_amount = args[:original_pre_tax_amount] if args.key?(:original_pre_tax_amount)
