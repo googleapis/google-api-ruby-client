@@ -260,6 +260,11 @@ module Google
         # @return [String]
         attr_accessor :request_time
       
+        # This field contains the augmented information of the request.
+        # Corresponds to the JSON property `requestedAugmentedInfo`
+        # @return [Google::Apis::AccessapprovalV1::AugmentedInfo]
+        attr_accessor :requested_augmented_info
+      
         # The requested access duration.
         # Corresponds to the JSON property `requestedDuration`
         # @return [String]
@@ -305,6 +310,7 @@ module Google
           @dismiss = args[:dismiss] if args.key?(:dismiss)
           @name = args[:name] if args.key?(:name)
           @request_time = args[:request_time] if args.key?(:request_time)
+          @requested_augmented_info = args[:requested_augmented_info] if args.key?(:requested_augmented_info)
           @requested_duration = args[:requested_duration] if args.key?(:requested_duration)
           @requested_expiration = args[:requested_expiration] if args.key?(:requested_expiration)
           @requested_locations = args[:requested_locations] if args.key?(:requested_locations)
@@ -374,6 +380,26 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @invalidate_time = args[:invalidate_time] if args.key?(:invalidate_time)
           @signature_info = args[:signature_info] if args.key?(:signature_info)
+        end
+      end
+      
+      # This field contains the augmented information of the request.
+      class AugmentedInfo
+        include Google::Apis::Core::Hashable
+      
+        # For command-line tools, the full command-line exactly as entered by the actor
+        # without adding any additional characters (such as quotation marks).
+        # Corresponds to the JSON property `command`
+        # @return [String]
+        attr_accessor :command
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command = args[:command] if args.key?(:command)
         end
       end
       
