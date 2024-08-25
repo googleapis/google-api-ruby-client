@@ -525,6 +525,25 @@ module Google
         end
       end
       
+      # The enhanced metadata information for a resource.
+      class AssetEnrichment
+        include Google::Apis::Core::Hashable
+      
+        # The resource owners information.
+        # Corresponds to the JSON property `resourceOwners`
+        # @return [Google::Apis::CloudassetV1::ResourceOwners]
+        attr_accessor :resource_owners
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_owners = args[:resource_owners] if args.key?(:resource_owners)
+        end
+      end
+      
       # Attached resource representation, which is defined by the corresponding
       # service provider. It represents an attached resource's payload.
       class AttachedResource
@@ -840,6 +859,19 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -5305,6 +5337,25 @@ module Google
         end
       end
       
+      # The resource owners information.
+      class ResourceOwners
+        include Google::Apis::Core::Hashable
+      
+        # List of resource owners.
+        # Corresponds to the JSON property `resourceOwners`
+        # @return [Array<String>]
+        attr_accessor :resource_owners
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_owners = args[:resource_owners] if args.key?(:resource_owners)
+        end
+      end
+      
       # A result of Resource Search, containing information of a cloud resource.
       class ResourceSearchResult
         include Google::Apis::Core::Hashable
@@ -5383,6 +5434,11 @@ module Google
         # Corresponds to the JSON property `effectiveTags`
         # @return [Array<Google::Apis::CloudassetV1::EffectiveTagDetails>]
         attr_accessor :effective_tags
+      
+        # Enrichments of the asset.
+        # Corresponds to the JSON property `enrichments`
+        # @return [Array<Google::Apis::CloudassetV1::AssetEnrichment>]
+        attr_accessor :enrichments
       
         # The folder(s) that this resource belongs to, in the form of folders/`
         # FOLDER_NUMBER`. This field is available when the resource belongs to one or
@@ -5597,6 +5653,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @effective_tags = args[:effective_tags] if args.key?(:effective_tags)
+          @enrichments = args[:enrichments] if args.key?(:enrichments)
           @folders = args[:folders] if args.key?(:folders)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @kms_keys = args[:kms_keys] if args.key?(:kms_keys)
