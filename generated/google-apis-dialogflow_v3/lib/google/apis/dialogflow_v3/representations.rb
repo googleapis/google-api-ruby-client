@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3AgentClientCertificateSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3284,6 +3290,8 @@ module Google
           property :answer_feedback_settings, as: 'answerFeedbackSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings::Representation
       
           property :avatar_uri, as: 'avatarUri'
+          property :client_certificate_settings, as: 'clientCertificateSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentClientCertificateSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentClientCertificateSettings::Representation
+      
           property :default_language_code, as: 'defaultLanguageCode'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -3313,6 +3321,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_answer_feedback, as: 'enableAnswerFeedback'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3AgentClientCertificateSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :passphrase, as: 'passphrase'
+          property :private_key, as: 'privateKey'
+          property :ssl_certificate, as: 'sslCertificate'
         end
       end
       

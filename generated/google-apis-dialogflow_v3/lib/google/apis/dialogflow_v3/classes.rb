@@ -227,6 +227,11 @@ module Google
         # @return [String]
         attr_accessor :avatar_uri
       
+        # Settings for custom client certificates.
+        # Corresponds to the JSON property `clientCertificateSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentClientCertificateSettings]
+        attr_accessor :client_certificate_settings
+      
         # Required. Immutable. The default language of the agent as a language tag. See [
         # Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/
         # language) for a list of the currently supported language codes. This field
@@ -339,6 +344,7 @@ module Google
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @answer_feedback_settings = args[:answer_feedback_settings] if args.key?(:answer_feedback_settings)
           @avatar_uri = args[:avatar_uri] if args.key?(:avatar_uri)
+          @client_certificate_settings = args[:client_certificate_settings] if args.key?(:client_certificate_settings)
           @default_language_code = args[:default_language_code] if args.key?(:default_language_code)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -378,6 +384,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_answer_feedback = args[:enable_answer_feedback] if args.key?(:enable_answer_feedback)
+        end
+      end
+      
+      # Settings for custom client certificates.
+      class GoogleCloudDialogflowCxV3AgentClientCertificateSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the SecretManager secret version resource storing the
+        # passphrase. 'passphrase' should be left unset if the private key is not
+        # encrypted. Format: `projects/`project`/secrets/`secret`/versions/`version``
+        # Corresponds to the JSON property `passphrase`
+        # @return [String]
+        attr_accessor :passphrase
+      
+        # Required. The name of the SecretManager secret version resource storing the
+        # private key encoded in PEM format. Format: `projects/`project`/secrets/`secret`
+        # /versions/`version``
+        # Corresponds to the JSON property `privateKey`
+        # @return [String]
+        attr_accessor :private_key
+      
+        # Required. The ssl certificate encoded in PEM format. This string must include
+        # the begin header and end footer lines.
+        # Corresponds to the JSON property `sslCertificate`
+        # @return [String]
+        attr_accessor :ssl_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @passphrase = args[:passphrase] if args.key?(:passphrase)
+          @private_key = args[:private_key] if args.key?(:private_key)
+          @ssl_certificate = args[:ssl_certificate] if args.key?(:ssl_certificate)
         end
       end
       
