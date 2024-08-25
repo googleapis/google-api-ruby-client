@@ -1254,6 +1254,7 @@ module Google
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :uri, as: 'uri'
+          collection :urls, as: 'urls'
         end
       end
       
