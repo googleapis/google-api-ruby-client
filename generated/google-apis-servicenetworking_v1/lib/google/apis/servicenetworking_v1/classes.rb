@@ -344,6 +344,18 @@ module Google
         # @return [Array<Google::Apis::ServicenetworkingV1::SecondaryIpRangeSpec>]
         attr_accessor :secondary_ip_range_specs
       
+        # Optional. Skips validating if the requested_address is in use by SN VPC’s
+        # peering group. Compute Engine will still perform this check and fail the
+        # request if the requested_address is in use. Note that Compute Engine does not
+        # check for the existence of dynamic routes when performing this check. Caller
+        # of this API should make sure that there are no dynamic routes overlapping with
+        # the requested_address/prefix_length IP address range otherwise the created
+        # subnet could cause misrouting.
+        # Corresponds to the JSON property `skipRequestedAddressValidation`
+        # @return [Boolean]
+        attr_accessor :skip_requested_address_validation
+        alias_method :skip_requested_address_validation?, :skip_requested_address_validation
+      
         # Required. A name for the new subnet. For information about the naming
         # requirements, see [subnetwork](/compute/docs/reference/rest/v1/subnetworks) in
         # the Compute API documentation.
@@ -389,6 +401,7 @@ module Google
           @requested_ranges = args[:requested_ranges] if args.key?(:requested_ranges)
           @role = args[:role] if args.key?(:role)
           @secondary_ip_range_specs = args[:secondary_ip_range_specs] if args.key?(:secondary_ip_range_specs)
+          @skip_requested_address_validation = args[:skip_requested_address_validation] if args.key?(:skip_requested_address_validation)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @subnetwork_users = args[:subnetwork_users] if args.key?(:subnetwork_users)
           @use_custom_compute_idempotency_window = args[:use_custom_compute_idempotency_window] if args.key?(:use_custom_compute_idempotency_window)
@@ -3670,10 +3683,10 @@ module Google
         # granularity. The role must be one of the following: - 'roles/container.
         # hostServiceAgentUser' applied on the shared VPC host project - 'roles/compute.
         # securityAdmin' applied on the shared VPC host project - 'roles/compute.
-        # networkAdmin' applied on the shared VPC host project - 'roles/compute.xpnAdmin'
+        # networkAdmin' applied on the shared VPC host project - 'roles/tpu.xpnAgent'
         # applied on the shared VPC host project - 'roles/dns.admin' applied on the
         # shared VPC host project - 'roles/logging.admin' applied on the shared VPC host
-        # project
+        # project - 'roles/monitoring.viewer' applied on the shared VPC host project
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
