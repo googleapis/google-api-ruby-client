@@ -19,13 +19,13 @@ require 'google/apis/gkeonprem_v1/gem_version.rb'
 
 module Google
   module Apis
-    # Anthos On-Prem API
+    # GDC Virtual API
     #
     # 
     #
     # @see https://cloud.google.com/anthos/clusters/docs/on-prem/
     module GkeonpremV1
-      # Version of the Anthos On-Prem API this client connects to.
+      # Version of the GDC Virtual API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
 

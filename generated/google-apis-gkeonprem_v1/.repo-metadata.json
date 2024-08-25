@@ -1,6 +1,6 @@
 {
     "api_id": "gkeonprem:v1",
-    "name_pretty": "Anthos On-Prem API",
+    "name_pretty": "GDC Virtual API",
     "distribution_name": "google-apis-gkeonprem_v1",
     "language": "ruby",
     "library_type": "REST"

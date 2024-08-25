@@ -1118,6 +1118,13 @@ module Google
       class BareMetalClusterUpgradePolicy
         include Google::Apis::Core::Hashable
       
+        # Output only. Pause is used to show the upgrade pause status. It's view only
+        # for now.
+        # Corresponds to the JSON property `pause`
+        # @return [Boolean]
+        attr_accessor :pause
+        alias_method :pause?, :pause
+      
         # Specifies which upgrade policy to use.
         # Corresponds to the JSON property `policy`
         # @return [String]
@@ -1129,6 +1136,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @pause = args[:pause] if args.key?(:pause)
           @policy = args[:policy] if args.key?(:policy)
         end
       end
@@ -3314,6 +3322,17 @@ module Google
         # @return [String]
         attr_accessor :error_message
       
+        # Reflect current version of the resource.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        # Versions describes the mapping of a given version to the number of machines
+        # under this version.
+        # Corresponds to the JSON property `versions`
+        # @return [Google::Apis::GkeonpremV1::Versions]
+        attr_accessor :versions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3322,6 +3341,8 @@ module Google
         def update!(**args)
           @conditions = args[:conditions] if args.key?(:conditions)
           @error_message = args[:error_message] if args.key?(:error_message)
+          @version = args[:version] if args.key?(:version)
+          @versions = args[:versions] if args.key?(:versions)
         end
       end
       
@@ -3577,6 +3598,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # Version describes the number of nodes at a given version under a resource.
+      class Version
+        include Google::Apis::Core::Hashable
+      
+        # Number of machines under the above version.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Resource version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Versions describes the mapping of a given version to the number of machines
+      # under this version.
+      class Versions
+        include Google::Apis::Core::Hashable
+      
+        # Shows the mapping of a given version to the number of machines under this
+        # version.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::GkeonpremV1::Version>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @versions = args[:versions] if args.key?(:versions)
         end
       end
       
@@ -3841,6 +3908,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # ValidationCheck represents the result of preflight check.
+        # Corresponds to the JSON property `validationCheck`
+        # @return [Google::Apis::GkeonpremV1::ValidationCheck]
+        attr_accessor :validation_check
+      
         # VmwareAdminVCenterConfig contains VCenter configuration for VMware admin
         # cluster.
         # Corresponds to the JSON property `vcenter`
@@ -3878,6 +3950,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @validation_check = args[:validation_check] if args.key?(:validation_check)
           @vcenter = args[:vcenter] if args.key?(:vcenter)
         end
       end

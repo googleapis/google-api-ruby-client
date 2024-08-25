@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GkeonpremV1
-      # Anthos On-Prem API
+      # GDC Virtual API
       #
       # 
       #
@@ -132,6 +132,11 @@ module Google
         #   Required. The parent of the project and location where the cluster is created
         #   in. Format: "projects/`project`/locations/`location`"
         # @param [Google::Apis::GkeonpremV1::BareMetalAdminCluster] bare_metal_admin_cluster_object
+        # @param [Boolean] allow_preflight_failure
+        #   Optional. If set to true, CLM will force CCFE to persist the cluster resource
+        #   in RMS when the creation fails during standalone preflight checks. In that
+        #   case the subsequent create call will fail with "cluster already exists" error
+        #   and hence a update cluster is required to fix the cluster.
         # @param [String] bare_metal_admin_cluster_id
         #   Required. User provided identifier that is used as part of the resource name;
         #   must conform to RFC-1034 and additionally restrict to lower-cased letters.
@@ -155,13 +160,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_bare_metal_admin_cluster(parent, bare_metal_admin_cluster_object = nil, bare_metal_admin_cluster_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_bare_metal_admin_cluster(parent, bare_metal_admin_cluster_object = nil, allow_preflight_failure: nil, bare_metal_admin_cluster_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/bareMetalAdminClusters', options)
           command.request_representation = Google::Apis::GkeonpremV1::BareMetalAdminCluster::Representation
           command.request_object = bare_metal_admin_cluster_object
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['allowPreflightFailure'] = allow_preflight_failure unless allow_preflight_failure.nil?
           command.query['bareMetalAdminClusterId'] = bare_metal_admin_cluster_id unless bare_metal_admin_cluster_id.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -212,6 +218,9 @@ module Google
         #   Required. Name of the bare metal admin cluster to get. Format: "projects/`
         #   project`/locations/`location`/bareMetalAdminClusters/`bare_metal_admin_cluster`
         #   "
+        # @param [Boolean] allow_missing
+        #   Optional. If true, return BareMetal Admin Cluster including the one that only
+        #   exists in RMS.
         # @param [String] view
         #   View for bare metal admin cluster. When `BASIC` is specified, only the cluster
         #   resource name and membership are returned. The default/unset value `
@@ -234,11 +243,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_bare_metal_admin_cluster(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_bare_metal_admin_cluster(name, allow_missing: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GkeonpremV1::BareMetalAdminCluster::Representation
           command.response_class = Google::Apis::GkeonpremV1::BareMetalAdminCluster
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -294,6 +304,9 @@ module Google
         # @param [String] parent
         #   Required. The parent of the project and location where the clusters are listed
         #   in. Format: "projects/`project`/locations/`location`"
+        # @param [Boolean] allow_missing
+        #   Optional. If true, return list of BareMetal Admin Clusters including the ones
+        #   that only exists in RMS.
         # @param [Fixnum] page_size
         #   Requested page size. Server may return fewer items than requested. If
         #   unspecified, at most 50 clusters will be returned. The maximum value is 1000;
@@ -322,11 +335,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_bare_metal_admin_clusters(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_bare_metal_admin_clusters(parent, allow_missing: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/bareMetalAdminClusters', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListBareMetalAdminClustersResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListBareMetalAdminClustersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
@@ -623,6 +637,11 @@ module Google
         #   Required. The parent of the project and location where the cluster is created
         #   in. Format: "projects/`project`/locations/`location`"
         # @param [Google::Apis::GkeonpremV1::BareMetalCluster] bare_metal_cluster_object
+        # @param [Boolean] allow_preflight_failure
+        #   Optional. If set to true, CLM will force CCFE to persist the cluster resource
+        #   in RMS when the creation fails during standalone preflight checks. In that
+        #   case the subsequent create call will fail with "cluster already exists" error
+        #   and hence a update cluster is required to fix the cluster.
         # @param [String] bare_metal_cluster_id
         #   Required. User provided identifier that is used as part of the resource name;
         #   must conform to RFC-1034 and additionally restrict to lower-cased letters.
@@ -646,13 +665,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_bare_metal_cluster(parent, bare_metal_cluster_object = nil, bare_metal_cluster_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_bare_metal_cluster(parent, bare_metal_cluster_object = nil, allow_preflight_failure: nil, bare_metal_cluster_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/bareMetalClusters', options)
           command.request_representation = Google::Apis::GkeonpremV1::BareMetalCluster::Representation
           command.request_object = bare_metal_cluster_object
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['allowPreflightFailure'] = allow_preflight_failure unless allow_preflight_failure.nil?
           command.query['bareMetalClusterId'] = bare_metal_cluster_id unless bare_metal_cluster_id.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -756,6 +776,9 @@ module Google
         # @param [String] name
         #   Required. Name of the bare metal user cluster to get. Format: "projects/`
         #   project`/locations/`location`/bareMetalClusters/`bare_metal_cluster`"
+        # @param [Boolean] allow_missing
+        #   Optional. If true, return BareMetal Cluster including the one that only exists
+        #   in RMS.
         # @param [String] view
         #   View for bare metal user cluster. When `BASIC` is specified, only the cluster
         #   resource name and admin cluster membership are returned. The default/unset
@@ -778,11 +801,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_bare_metal_cluster(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_bare_metal_cluster(name, allow_missing: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GkeonpremV1::BareMetalCluster::Representation
           command.response_class = Google::Apis::GkeonpremV1::BareMetalCluster
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -838,6 +862,9 @@ module Google
         # @param [String] parent
         #   Required. The parent of the project and location where the clusters are listed
         #   in. Format: "projects/`project`/locations/`location`"
+        # @param [Boolean] allow_missing
+        #   Optional. If true, return list of BareMetal Clusters including the ones that
+        #   only exists in RMS.
         # @param [String] filter
         #   A resource filtering expression following https://google.aip.dev/160. When non-
         #   empty, only resource's whose attributes field matches the filter are returned.
@@ -869,11 +896,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_bare_metal_clusters(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_bare_metal_clusters(parent, allow_missing: nil, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/bareMetalClusters', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListBareMetalClustersResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListBareMetalClustersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1866,6 +1894,9 @@ module Google
         # @param [String] name
         #   Required. Name of the VMware admin cluster to be returned. Format: "projects/`
         #   project`/locations/`location`/vmwareAdminClusters/`vmware_admin_cluster`"
+        # @param [Boolean] allow_missing
+        #   Optional. If true, return Vmware Admin Cluster including the one that only
+        #   exists in RMS.
         # @param [String] view
         #   View for VMware admin cluster. When `BASIC` is specified, only the cluster
         #   resource name and membership are returned. The default/unset value `
@@ -1888,11 +1919,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_vmware_admin_cluster(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_vmware_admin_cluster(name, allow_missing: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GkeonpremV1::VmwareAdminCluster::Representation
           command.response_class = Google::Apis::GkeonpremV1::VmwareAdminCluster
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1948,6 +1980,9 @@ module Google
         # @param [String] parent
         #   Required. The parent of the project and location where the clusters are listed
         #   in. Format: "projects/`project`/locations/`location`"
+        # @param [Boolean] allow_missing
+        #   Optional. If true, return list of Vmware Admin Clusters including the ones
+        #   that only exists in RMS.
         # @param [Fixnum] page_size
         #   Requested page size. Server may return fewer items than requested. If
         #   unspecified, at most 50 clusters will be returned. The maximum value is 1000;
@@ -1976,11 +2011,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_vmware_admin_clusters(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_vmware_admin_clusters(parent, allow_missing: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/vmwareAdminClusters', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListVmwareAdminClustersResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListVmwareAdminClustersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
@@ -2232,6 +2268,11 @@ module Google
         #   Required. The parent of the project and location where this cluster is created
         #   in. Format: "projects/`project`/locations/`location`"
         # @param [Google::Apis::GkeonpremV1::VmwareCluster] vmware_cluster_object
+        # @param [Boolean] allow_preflight_failure
+        #   Optional. If set to true, CLM will force CCFE to persist the cluster resource
+        #   in RMS when the creation fails during standalone preflight checks. In that
+        #   case the subsequent create call will fail with "cluster already exists" error
+        #   and hence a update cluster is required to fix the cluster.
         # @param [Boolean] validate_only
         #   Validate the request without actually doing any updates.
         # @param [String] vmware_cluster_id
@@ -2255,13 +2296,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_vmware_cluster(parent, vmware_cluster_object = nil, validate_only: nil, vmware_cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_vmware_cluster(parent, vmware_cluster_object = nil, allow_preflight_failure: nil, validate_only: nil, vmware_cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/vmwareClusters', options)
           command.request_representation = Google::Apis::GkeonpremV1::VmwareCluster::Representation
           command.request_object = vmware_cluster_object
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['allowPreflightFailure'] = allow_preflight_failure unless allow_preflight_failure.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['vmwareClusterId'] = vmware_cluster_id unless vmware_cluster_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2365,6 +2407,9 @@ module Google
         # @param [String] name
         #   Required. Name of the VMware user cluster to be returned. Format: "projects/`
         #   project`/locations/`location`/vmwareClusters/`vmware_cluster`"
+        # @param [Boolean] allow_missing
+        #   Optional. If true, return Vmware Cluster including the one that only exists in
+        #   RMS.
         # @param [String] view
         #   View for VMware user cluster. When `BASIC` is specified, only the cluster
         #   resource name and admin cluster membership are returned. The default/unset
@@ -2387,11 +2432,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_vmware_cluster(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_vmware_cluster(name, allow_missing: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GkeonpremV1::VmwareCluster::Representation
           command.response_class = Google::Apis::GkeonpremV1::VmwareCluster
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2447,6 +2493,9 @@ module Google
         # @param [String] parent
         #   Required. The parent of the project and location where the clusters are listed
         #   in. Format: "projects/`project`/locations/`location`"
+        # @param [Boolean] allow_missing
+        #   Optional. If true, return list of Vmware Clusters including the ones that only
+        #   exists in RMS.
         # @param [String] filter
         #   A resource filtering expression following https://google.aip.dev/160. When non-
         #   empty, only resource's whose attributes field matches the filter are returned.
@@ -2478,11 +2527,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_vmware_clusters(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_vmware_clusters(parent, allow_missing: nil, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/vmwareClusters', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListVmwareClustersResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListVmwareClustersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
