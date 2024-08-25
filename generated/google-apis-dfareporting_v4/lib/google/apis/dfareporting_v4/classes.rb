@@ -2085,6 +2085,81 @@ module Google
         end
       end
       
+      # Contains additional information about cart data.
+      class CartData
+        include Google::Apis::Core::Hashable
+      
+        # Data of the items purchased.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::DfareportingV4::CartDataItem>]
+        attr_accessor :items
+      
+        # The feed labels associated with the feed where your items are uploaded. For
+        # more information, please refer to ​​ https://support.google.com/merchants/
+        # answer/12453549. This is a required field.
+        # Corresponds to the JSON property `merchantFeedLabel`
+        # @return [String]
+        attr_accessor :merchant_feed_label
+      
+        # The language associated with the feed where your items are uploaded. Use ISO
+        # 639-1 language codes. This field is needed only when item IDs are not unique
+        # across multiple Merchant Center feeds.
+        # Corresponds to the JSON property `merchantFeedLanguage`
+        # @return [String]
+        attr_accessor :merchant_feed_language
+      
+        # The Merchant Center ID where the items are uploaded.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @merchant_feed_label = args[:merchant_feed_label] if args.key?(:merchant_feed_label)
+          @merchant_feed_language = args[:merchant_feed_language] if args.key?(:merchant_feed_language)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+        end
+      end
+      
+      # Contains data of the items purchased.
+      class CartDataItem
+        include Google::Apis::Core::Hashable
+      
+        # The shopping id of the item. Must be equal to the Merchant Center product
+        # identifier. This is a required field.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # Number of items sold. This is a required field.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # Unit price excluding tax, shipping, and any transaction level discounts.
+        # Interpreted in CM360 Floodlight config parent advertiser's currency code. This
+        # is a required field.
+        # Corresponds to the JSON property `unitPrice`
+        # @return [Float]
+        attr_accessor :unit_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @unit_price = args[:unit_price] if args.key?(:unit_price)
+        end
+      end
+      
       # Describes a change that a user has made to a resource.
       class ChangeLog
         include Google::Apis::Core::Hashable
@@ -2681,6 +2756,11 @@ module Google
         # @return [String]
         attr_accessor :ad_user_data_consent
       
+        # Contains additional information about cart data.
+        # Corresponds to the JSON property `cartData`
+        # @return [Google::Apis::DfareportingV4::CartData]
+        attr_accessor :cart_data
+      
         # Whether this particular request may come from a user under the age of 13,
         # under COPPA compliance.
         # Corresponds to the JSON property `childDirectedTreatment`
@@ -2828,6 +2908,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ad_user_data_consent = args[:ad_user_data_consent] if args.key?(:ad_user_data_consent)
+          @cart_data = args[:cart_data] if args.key?(:cart_data)
           @child_directed_treatment = args[:child_directed_treatment] if args.key?(:child_directed_treatment)
           @custom_variables = args[:custom_variables] if args.key?(:custom_variables)
           @dclid = args[:dclid] if args.key?(:dclid)
@@ -5532,6 +5613,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Default publisher specification ID of video placements under this
+        # directory site. Possible values are: * `1`, Hulu * `2`, NBC * `3`, CBS * `4`,
+        # CBS Desktop * `5`, Discovery * `6`, VEVO HD * `7`, VEVO Vertical * `8`, Fox * `
+        # 9`, CW Network * `10`, Disney * `11`, IGN * `12`, NFL.com * `13`, Turner
+        # Broadcasting * `14`, Tubi on Fox * `15`, Hearst Corporation * `16`, Twitch
+        # Desktop * `17`, ABC * `18`, Univision * `19`, MLB.com * `20`, MLB.com Mobile *
+        # `21`, MLB.com OTT * `22`, Polsat * `23`, TVN * `24`, Mediaset * `25`, Antena 3
+        # * `26`, Mediamond * `27`, Sky Italia * `28`, Tubi on CBS * `29`, Spotify * `30`
+        # , Paramount * `31`, Max
+        # Corresponds to the JSON property `publisherSpecificationId`
+        # @return [Fixnum]
+        attr_accessor :publisher_specification_id
+      
         # Directory Site Settings
         # Corresponds to the JSON property `settings`
         # @return [Google::Apis::DfareportingV4::DirectorySiteSettings]
@@ -5554,6 +5648,7 @@ module Google
           @interstitial_tag_formats = args[:interstitial_tag_formats] if args.key?(:interstitial_tag_formats)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @publisher_specification_id = args[:publisher_specification_id] if args.key?(:publisher_specification_id)
           @settings = args[:settings] if args.key?(:settings)
           @url = args[:url] if args.key?(:url)
         end
@@ -8650,6 +8745,18 @@ module Google
         attr_accessor :ad_blocking_opt_out
         alias_method :ad_blocking_opt_out?, :ad_blocking_opt_out
       
+        # Optional. Ad serving platform ID to identify the ad serving platform used by
+        # the placement. Measurement partners can use this field to add ad-server
+        # specific macros. Possible values are: * `1`, Adelphic * `2`, Adform * `3`,
+        # Adobe * `4`, Amobee * `5`, Basis (Centro) * `6`, Beeswax * `7`, Amazon * `8`,
+        # DV360 (DBM) * `9`, Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`,
+        # TabMo Hawk * `13`, The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo DSP *
+        # `16`, Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn * `20`,
+        # Teads * `21`, Quantcast * `22`, Cognitiv
+        # Corresponds to the JSON property `adServingPlatformId`
+        # @return [Fixnum]
+        attr_accessor :ad_serving_platform_id
+      
         # Additional sizes associated with this placement. When inserting or updating a
         # placement, only the size ID field is used.
         # Corresponds to the JSON property `additionalSizes`
@@ -8825,6 +8932,14 @@ module Google
         # @return [Google::Apis::DfareportingV4::DimensionValue]
         attr_accessor :site_id_dimension_value
       
+        # Optional. Whether the ads in the placement are served by another platform and
+        # CM is only used for tracking or they are served by CM. A false value indicates
+        # the ad is served by CM.
+        # Corresponds to the JSON property `siteServed`
+        # @return [Boolean]
+        attr_accessor :site_served
+        alias_method :site_served?, :site_served
+      
         # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `size`
         # @return [Google::Apis::DfareportingV4::Size]
@@ -8906,6 +9021,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @active_status = args[:active_status] if args.key?(:active_status)
           @ad_blocking_opt_out = args[:ad_blocking_opt_out] if args.key?(:ad_blocking_opt_out)
+          @ad_serving_platform_id = args[:ad_serving_platform_id] if args.key?(:ad_serving_platform_id)
           @additional_sizes = args[:additional_sizes] if args.key?(:additional_sizes)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] if args.key?(:advertiser_id_dimension_value)
@@ -8937,6 +9053,7 @@ module Google
           @publisher_update_info = args[:publisher_update_info] if args.key?(:publisher_update_info)
           @site_id = args[:site_id] if args.key?(:site_id)
           @site_id_dimension_value = args[:site_id_dimension_value] if args.key?(:site_id_dimension_value)
+          @site_served = args[:site_served] if args.key?(:site_served)
           @size = args[:size] if args.key?(:size)
           @ssl_required = args[:ssl_required] if args.key?(:ssl_required)
           @status = args[:status] if args.key?(:status)
@@ -11166,6 +11283,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :account_id
       
+        # Optional. Ad serving platform ID to identify the ad serving platform used by
+        # the site. Measurement partners can use this field to add ad-server specific
+        # macros. If set, this value acts as the default during placement creation.
+        # Possible values are: * `1`, Adelphic * `2`, Adform * `3`, Adobe * `4`, Amobee *
+        # `5`, Basis (Centro) * `6`, Beeswax * `7`, Amazon * `8`, DV360 (DBM) * `9`,
+        # Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`, TabMo Hawk * `13`,
+        # The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo DSP * `16`, Zeta Global *
+        # `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn * `20`, Teads * `21`,
+        # Quantcast * `22`, Cognitiv
+        # Corresponds to the JSON property `adServingPlatformId`
+        # @return [Fixnum]
+        attr_accessor :ad_serving_platform_id
+      
         # Whether this site is approved.
         # Corresponds to the JSON property `approved`
         # @return [Boolean]
@@ -11239,6 +11369,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
+          @ad_serving_platform_id = args[:ad_serving_platform_id] if args.key?(:ad_serving_platform_id)
           @approved = args[:approved] if args.key?(:approved)
           @directory_site_id = args[:directory_site_id] if args.key?(:directory_site_id)
           @directory_site_id_dimension_value = args[:directory_site_id_dimension_value] if args.key?(:directory_site_id_dimension_value)
@@ -11524,6 +11655,14 @@ module Google
         # Publisher specification ID used to identify site-associated publisher
         # requirements and automatically populate transcode settings. If publisher
         # specification ID is specified, it will take precedence over transcode settings.
+        # Possible values are: * `1`, Hulu * `2`, NBC * `3`, CBS * `4`, CBS Desktop * `
+        # 5`, Discovery * `6`, VEVO HD * `7`, VEVO Vertical * `8`, Fox * `9`, CW Network
+        # * `10`, Disney * `11`, IGN * `12`, NFL.com * `13`, Turner Broadcasting * `14`,
+        # Tubi on Fox * `15`, Hearst Corporation * `16`, Twitch Desktop * `17`, ABC * `
+        # 18`, Univision * `19`, MLB.com * `20`, MLB.com Mobile * `21`, MLB.com OTT * `
+        # 22`, Polsat * `23`, TVN * `24`, Mediaset * `25`, Antena 3 * `26`, Mediamond * `
+        # 27`, Sky Italia * `28`, Tubi on CBS * `29`, Spotify * `30`, Paramount * `31`,
+        # Max
         # Corresponds to the JSON property `publisherSpecificationId`
         # @return [Fixnum]
         attr_accessor :publisher_specification_id
@@ -12908,7 +13047,14 @@ module Google
         # @return [String]
         attr_accessor :orientation
       
-        # Publisher specification ID of a video placement.
+        # Publisher specification ID of a video placement. Possible values are: * `1`,
+        # Hulu * `2`, NBC * `3`, CBS * `4`, CBS Desktop * `5`, Discovery * `6`, VEVO HD *
+        # `7`, VEVO Vertical * `8`, Fox * `9`, CW Network * `10`, Disney * `11`, IGN * `
+        # 12`, NFL.com * `13`, Turner Broadcasting * `14`, Tubi on Fox * `15`, Hearst
+        # Corporation * `16`, Twitch Desktop * `17`, ABC * `18`, Univision * `19`, MLB.
+        # com * `20`, MLB.com Mobile * `21`, MLB.com OTT * `22`, Polsat * `23`, TVN * `
+        # 24`, Mediaset * `25`, Antena 3 * `26`, Mediamond * `27`, Sky Italia * `28`,
+        # Tubi on CBS * `29`, Spotify * `30`, Paramount * `31`, Max
         # Corresponds to the JSON property `publisherSpecificationId`
         # @return [Fixnum]
         attr_accessor :publisher_specification_id
