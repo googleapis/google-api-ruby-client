@@ -416,6 +416,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Describes the level of the execution history feature to apply to
+        # this workflow.
+        # Corresponds to the JSON property `executionHistoryLevel`
+        # @return [String]
+        attr_accessor :execution_history_level
+      
         # Labels associated with this workflow. Labels can contain at most 64 entries.
         # Keys and values can be no longer than 63 characters and can only contain
         # lowercase letters, numeric characters, underscores, and dashes. Label keys
@@ -500,6 +506,7 @@ module Google
           @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
           @crypto_key_version = args[:crypto_key_version] if args.key?(:crypto_key_version)
           @description = args[:description] if args.key?(:description)
+          @execution_history_level = args[:execution_history_level] if args.key?(:execution_history_level)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)

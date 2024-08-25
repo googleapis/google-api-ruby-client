@@ -192,6 +192,7 @@ module Google
           property :crypto_key_name, as: 'cryptoKeyName'
           property :crypto_key_version, as: 'cryptoKeyVersion'
           property :description, as: 'description'
+          property :execution_history_level, as: 'executionHistoryLevel'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :revision_create_time, as: 'revisionCreateTime'
