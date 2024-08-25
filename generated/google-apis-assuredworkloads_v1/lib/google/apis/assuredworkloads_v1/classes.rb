@@ -781,6 +781,15 @@ module Google
         # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions]
         attr_accessor :partner_permissions
       
+        # Optional. Billing account necessary for purchasing services from Sovereign
+        # Partners. This field is required for creating SIA/PSN partner workloads. The
+        # caller should have 'billing.resourceAssociations.create' IAM permission on
+        # this billing-account. The format of this string is billingAccounts/AAAAAA-
+        # BBBBBB-CCCCCC
+        # Corresponds to the JSON property `partnerServicesBillingAccount`
+        # @return [String]
+        attr_accessor :partner_services_billing_account
+      
         # Input only. The parent resource for the resources managed by this Assured
         # Workload. May be either empty or a folder resource which is a child of the
         # Workload parent. If not specified all resources are created under the parent
@@ -847,6 +856,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @partner = args[:partner] if args.key?(:partner)
           @partner_permissions = args[:partner_permissions] if args.key?(:partner_permissions)
+          @partner_services_billing_account = args[:partner_services_billing_account] if args.key?(:partner_services_billing_account)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
           @resource_monitoring_enabled = args[:resource_monitoring_enabled] if args.key?(:resource_monitoring_enabled)
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
