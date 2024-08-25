@@ -16,13 +16,13 @@ module Google
   module Apis
     module StorageV1
       # Version of the google-apis-storage_v1 gem
-      GEM_VERSION = "0.43.0"
+      GEM_VERSION = "0.44.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.15.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240809"
+      REVISION = "20240819"
     end
   end
 end
