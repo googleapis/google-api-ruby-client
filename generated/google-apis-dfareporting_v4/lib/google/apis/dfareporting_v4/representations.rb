@@ -238,6 +238,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CartData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CartDataItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChangeLog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1989,6 +2001,26 @@ module Google
         end
       end
       
+      class CartData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::DfareportingV4::CartDataItem, decorator: Google::Apis::DfareportingV4::CartDataItem::Representation
+      
+          property :merchant_feed_label, as: 'merchantFeedLabel'
+          property :merchant_feed_language, as: 'merchantFeedLanguage'
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+        end
+      end
+      
+      class CartDataItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :item_id, as: 'itemId'
+          property :quantity, as: 'quantity'
+          property :unit_price, as: 'unitPrice'
+        end
+      end
+      
       class ChangeLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2151,6 +2183,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_user_data_consent, as: 'adUserDataConsent'
+          property :cart_data, as: 'cartData', class: Google::Apis::DfareportingV4::CartData, decorator: Google::Apis::DfareportingV4::CartData::Representation
+      
           property :child_directed_treatment, as: 'childDirectedTreatment'
           collection :custom_variables, as: 'customVariables', class: Google::Apis::DfareportingV4::CustomFloodlightVariable, decorator: Google::Apis::DfareportingV4::CustomFloodlightVariable::Representation
       
@@ -2803,6 +2837,7 @@ module Google
           collection :interstitial_tag_formats, as: 'interstitialTagFormats'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :publisher_specification_id, :numeric_string => true, as: 'publisherSpecificationId'
           property :settings, as: 'settings', class: Google::Apis::DfareportingV4::DirectorySiteSettings, decorator: Google::Apis::DfareportingV4::DirectorySiteSettings::Representation
       
           property :url, as: 'url'
@@ -3594,6 +3629,7 @@ module Google
           property :account_id, :numeric_string => true, as: 'accountId'
           property :active_status, as: 'activeStatus'
           property :ad_blocking_opt_out, as: 'adBlockingOptOut'
+          property :ad_serving_platform_id, :numeric_string => true, as: 'adServingPlatformId'
           collection :additional_sizes, as: 'additionalSizes', class: Google::Apis::DfareportingV4::Size, decorator: Google::Apis::DfareportingV4::Size::Representation
       
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
@@ -3639,6 +3675,7 @@ module Google
           property :site_id, :numeric_string => true, as: 'siteId'
           property :site_id_dimension_value, as: 'siteIdDimensionValue', class: Google::Apis::DfareportingV4::DimensionValue, decorator: Google::Apis::DfareportingV4::DimensionValue::Representation
       
+          property :site_served, as: 'siteServed'
           property :size, as: 'size', class: Google::Apis::DfareportingV4::Size, decorator: Google::Apis::DfareportingV4::Size::Representation
       
           property :ssl_required, as: 'sslRequired'
@@ -4246,6 +4283,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, :numeric_string => true, as: 'accountId'
+          property :ad_serving_platform_id, :numeric_string => true, as: 'adServingPlatformId'
           property :approved, as: 'approved'
           property :directory_site_id, :numeric_string => true, as: 'directorySiteId'
           property :directory_site_id_dimension_value, as: 'directorySiteIdDimensionValue', class: Google::Apis::DfareportingV4::DimensionValue, decorator: Google::Apis::DfareportingV4::DimensionValue::Representation
