@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GlossaryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlossaryEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -494,7 +500,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :content, as: 'content'
           property :dataset, as: 'dataset'
-          property :glossary_config, as: 'glossaryConfig', class: Google::Apis::TranslateV3::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3::TranslateTextGlossaryConfig::Representation
+          property :glossary_config, as: 'glossaryConfig', class: Google::Apis::TranslateV3::GlossaryConfig, decorator: Google::Apis::TranslateV3::GlossaryConfig::Representation
       
           property :reference_sentence_config, as: 'referenceSentenceConfig', class: Google::Apis::TranslateV3::ReferenceSentenceConfig, decorator: Google::Apis::TranslateV3::ReferenceSentenceConfig::Representation
       
@@ -737,6 +743,14 @@ module Google
       
           property :name, as: 'name'
           property :submit_time, as: 'submitTime'
+        end
+      end
+      
+      class GlossaryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :glossary, as: 'glossary'
+          property :ignore_case, as: 'ignoreCase'
         end
       end
       
