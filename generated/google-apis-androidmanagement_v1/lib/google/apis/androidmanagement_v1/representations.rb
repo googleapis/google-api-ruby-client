@@ -2284,6 +2284,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :carrier_name, as: 'carrierName'
+          property :icc_id, as: 'iccId'
           property :phone_number, as: 'phoneNumber'
         end
       end
