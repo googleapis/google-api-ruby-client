@@ -1422,14 +1422,16 @@ module Google
         #   logical operators. A sequence of restrictions implicitly uses `AND`. * A
         #   restriction has the form of ``field` `operator` `value``. * Supported fields/
         #   values: - `project_id` - The Google Cloud project ID. - `file_store_path` -
-        #   The path like "gs://bucket". - `sensitivity_level` - HIGH|MODERATE|LOW - `
-        #   data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|
-        #   RESTRICTED - `status_code` - an RPC status code as defined in https://github.
-        #   com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator
-        #   must be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `
-        #   project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
-        #   resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` The length
-        #   of this field should be no more than 500 characters.
+        #   The path like "gs://bucket". - `data_source_type` - The profile's data source
+        #   type, like "google/storage/bucket". - `data_storage_location` - The location
+        #   where the file store's data is stored, like "us-central1". - `
+        #   sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW
+        #   - `resource_visibility`: PUBLIC|RESTRICTED - `status_code` - an RPC status
+        #   code as defined in https://github.com/googleapis/googleapis/blob/master/google/
+        #   rpc/code.proto * The operator must be `=` or `!=`. Examples: * `project_id =
+        #   12345 AND status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH`
+        #   * `project_id = 12345 AND resource_visibility = PUBLIC` * `file_store_path = "
+        #   gs://mybucket"` The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Optional. Comma-separated list of fields to order by, followed by `asc` or `
         #   desc` postfix. This list is case insensitive. The default sorting order is
@@ -4837,14 +4839,16 @@ module Google
         #   logical operators. A sequence of restrictions implicitly uses `AND`. * A
         #   restriction has the form of ``field` `operator` `value``. * Supported fields/
         #   values: - `project_id` - The Google Cloud project ID. - `file_store_path` -
-        #   The path like "gs://bucket". - `sensitivity_level` - HIGH|MODERATE|LOW - `
-        #   data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|
-        #   RESTRICTED - `status_code` - an RPC status code as defined in https://github.
-        #   com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator
-        #   must be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `
-        #   project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
-        #   resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` The length
-        #   of this field should be no more than 500 characters.
+        #   The path like "gs://bucket". - `data_source_type` - The profile's data source
+        #   type, like "google/storage/bucket". - `data_storage_location` - The location
+        #   where the file store's data is stored, like "us-central1". - `
+        #   sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW
+        #   - `resource_visibility`: PUBLIC|RESTRICTED - `status_code` - an RPC status
+        #   code as defined in https://github.com/googleapis/googleapis/blob/master/google/
+        #   rpc/code.proto * The operator must be `=` or `!=`. Examples: * `project_id =
+        #   12345 AND status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH`
+        #   * `project_id = 12345 AND resource_visibility = PUBLIC` * `file_store_path = "
+        #   gs://mybucket"` The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Optional. Comma-separated list of fields to order by, followed by `asc` or `
         #   desc` postfix. This list is case insensitive. The default sorting order is
