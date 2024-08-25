@@ -866,7 +866,6 @@ module Google
           property :deletable, as: 'deletable'
           property :description, as: 'description'
           property :effective_time, as: 'effectiveTime'
-          property :enforced_retention_duration, as: 'enforcedRetentionDuration'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
