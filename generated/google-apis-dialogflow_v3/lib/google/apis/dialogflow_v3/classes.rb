@@ -2157,7 +2157,9 @@ module Google
       class GoogleCloudDialogflowCxV3EnvironmentVersionConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Format: projects//locations//agents//flows//versions/.
+        # Required. Both flow and playbook versions are supported. Format for flow
+        # version: projects//locations//agents//flows//versions/. Format for playbook
+        # version: projects//locations//agents//playbooks//versions/.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -9566,7 +9568,9 @@ module Google
       class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Format: projects//locations//agents//flows//versions/.
+        # Required. Both flow and playbook versions are supported. Format for flow
+        # version: projects//locations//agents//flows//versions/. Format for playbook
+        # version: projects//locations//agents//playbooks//versions/.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
