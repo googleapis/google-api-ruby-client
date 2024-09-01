@@ -437,6 +437,19 @@ module Google
         # Lists repositories.
         # @param [String] parent
         #   Required. The name of the parent resource whose repositories will be listed.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Filter rules
+        #   are case insensitive. The fields eligible for filtering are: * `name` Examples
+        #   of using a filter: To filter the results of your request to repositories with
+        #   the name "my-repo" in project my-project in the us-central region, append the
+        #   following filter expression to your request: * `name="projects/my-project/
+        #   locations/us-central1/repositories/my-repo` You can also use wildcards to
+        #   match any number of characters before or after the value: * `name="projects/my-
+        #   project/locations/us-central1/repositories/my-*"` * `name="projects/my-project/
+        #   locations/us-central1/repositories/*repo"` * `name="projects/my-project/
+        #   locations/us-central1/repositories/*repo*"`
+        # @param [String] order_by
+        #   Optional. The field to order the results by.
         # @param [Fixnum] page_size
         #   The maximum number of repositories to return. Maximum page size is 1,000.
         # @param [String] page_token
@@ -458,11 +471,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_repositories(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_repositories(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/repositories', options)
           command.response_representation = Google::Apis::ArtifactregistryV1::ListRepositoriesResponse::Representation
           command.response_class = Google::Apis::ArtifactregistryV1::ListRepositoriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1315,6 +1330,33 @@ module Google
         # Lists packages.
         # @param [String] parent
         #   Required. The name of the parent resource whose packages will be listed.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Filter rules
+        #   are case insensitive. The fields eligible for filtering are: * `name` * `
+        #   annotations` Examples of using a filter: To filter the results of your request
+        #   to packages with the name "my-package" in project my-project in the us-central
+        #   region, in repository my-repo, append the following filter expression to your
+        #   request: * `name="projects/my-project/locations/us-central1/repositories/my-
+        #   repo/packages/my-package"` You can also use wildcards to match any number of
+        #   characters before or after the value: * `name="projects/my-project/locations/
+        #   us-central1/repositories/my-repo/packages/my-*"` * `name="projects/my-project/
+        #   locations/us-central1/repositories/my-repo/packages/*package"` * `name="
+        #   projects/my-project/locations/us-central1/repositories/my-repo/packages/*pack*"
+        #   ` To filter the results of your request to packages with the annotation key-
+        #   value pair [`external_link`:`external_link_value`], append the following
+        #   filter expression to your request": * "annotations.external_link:
+        #   external_link_value" To filter the results just for a specific annotation key `
+        #   external_link`, append the following filter expression to your request: * "
+        #   annotations.external_link" If the annotation key or value contains special
+        #   characters, you can escape them by surrounding the value with backticks. For
+        #   example, to filter the results of your request to packages with the annotation
+        #   key-value pair [`external.link`:`https://example.com/my-package`], append the
+        #   following filter expression to your request: * "annotations.`external.link`:`
+        #   https://example.com/my-package`" You can also filter with annotations with a
+        #   wildcard to match any number of characters before or after the value: * "
+        #   annotations.*_link:`*example.com*`"
+        # @param [String] order_by
+        #   Optional. The field to order the results by.
         # @param [Fixnum] page_size
         #   The maximum number of packages to return. Maximum page size is 1,000.
         # @param [String] page_token
@@ -1336,11 +1378,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_repository_packages(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_repository_packages(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/packages', options)
           command.response_representation = Google::Apis::ArtifactregistryV1::ListPackagesResponse::Representation
           command.response_class = Google::Apis::ArtifactregistryV1::ListPackagesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1685,6 +1729,32 @@ module Google
         # Lists versions.
         # @param [String] parent
         #   The name of the parent resource whose versions will be listed.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Filter rules
+        #   are case insensitive. The fields eligible for filtering are: * `name` * `
+        #   annotations` Examples of using a filter: To filter the results of your request
+        #   to versions with the name "my-version" in project my-project in the us-central
+        #   region, in repository my-repo, append the following filter expression to your
+        #   request: * `name="projects/my-project/locations/us-central1/repositories/my-
+        #   repo/packages/my-package/versions/my-version"` You can also use wildcards to
+        #   match any number of characters before or after the value: * `name="projects/my-
+        #   project/locations/us-central1/repositories/my-repo/packages/my-package/
+        #   versions/*version"` * `name="projects/my-project/locations/us-central1/
+        #   repositories/my-repo/packages/my-package/versions/my*"` * `name="projects/my-
+        #   project/locations/us-central1/repositories/my-repo/packages/my-package/
+        #   versions/*version*"` To filter the results of your request to versions with
+        #   the annotation key-value pair [`external_link`:`external_link_value`], append
+        #   the following filter expression to your request: * "annotations.external_link:
+        #   external_link_value" To filter just for a specific annotation key `
+        #   external_link`, append the following filter expression to your request: * "
+        #   annotations.external_link" If the annotation key or value contains special
+        #   characters, you can escape them by surrounding the value with backticks. For
+        #   example, to filter the results of your request to versions with the annotation
+        #   key-value pair [`external.link`:`https://example.com/my-version`], append the
+        #   following filter expression to your request: * "annotations.`external.link`:`
+        #   https://example.com/my-version`" You can also filter with annotations with a
+        #   wildcard to match any number of characters before or after the value: * "
+        #   annotations.*_link:`*example.com*`"
         # @param [String] order_by
         #   Optional. The field to order the results by.
         # @param [Fixnum] page_size
@@ -1710,11 +1780,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_repository_package_versions(parent, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_repository_package_versions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/versions', options)
           command.response_representation = Google::Apis::ArtifactregistryV1::ListVersionsResponse::Representation
           command.response_class = Google::Apis::ArtifactregistryV1::ListVersionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
