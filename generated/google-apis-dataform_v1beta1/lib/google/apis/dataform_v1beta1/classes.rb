@@ -622,6 +622,11 @@ module Google
         # @return [Google::Apis::DataformV1beta1::Target]
         attr_accessor :canonical_target
       
+        # Defines a compiled Data Preparation entity
+        # Corresponds to the JSON property `dataPreparation`
+        # @return [Google::Apis::DataformV1beta1::DataPreparation]
+        attr_accessor :data_preparation
+      
         # Represents a relation which is not managed by Dataform but which may be
         # referenced by Dataform actions.
         # Corresponds to the JSON property `declaration`
@@ -663,6 +668,7 @@ module Google
         def update!(**args)
           @assertion = args[:assertion] if args.key?(:assertion)
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
+          @data_preparation = args[:data_preparation] if args.key?(:data_preparation)
           @declaration = args[:declaration] if args.key?(:declaration)
           @file_path = args[:file_path] if args.key?(:file_path)
           @notebook = args[:notebook] if args.key?(:notebook)
@@ -691,6 +697,32 @@ module Google
         end
       end
       
+      # Config for all repositories in a given project and location.
+      class Config
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The default KMS key that is used if no encryption key is provided
+        # when a repository is created.
+        # Corresponds to the JSON property `defaultKmsKeyName`
+        # @return [String]
+        attr_accessor :default_kms_key_name
+      
+        # Identifier. The config name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_kms_key_name = args[:default_kms_key_name] if args.key?(:default_kms_key_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Describes encryption state of a resource.
       class DataEncryptionState
         include Google::Apis::Core::Hashable
@@ -707,6 +739,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
+        end
+      end
+      
+      # Defines a compiled Data Preparation entity
+      class DataPreparation
+        include Google::Apis::Core::Hashable
+      
+        # The data preparation definition, stored as a binary encoded proto.
+        # Corresponds to the JSON property `contents`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :contents
+      
+        # A list of actions that this action depends on.
+        # Corresponds to the JSON property `dependencyTargets`
+        # @return [Array<Google::Apis::DataformV1beta1::Target>]
+        attr_accessor :dependency_targets
+      
+        # Whether this action is disabled (i.e. should not be run).
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Arbitrary, user-defined tags on this action.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @dependency_targets = args[:dependency_targets] if args.key?(:dependency_targets)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       

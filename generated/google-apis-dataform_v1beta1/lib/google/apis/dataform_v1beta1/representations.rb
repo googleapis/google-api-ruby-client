@@ -118,7 +118,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataEncryptionState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataPreparation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -719,6 +731,8 @@ module Google
       
           property :canonical_target, as: 'canonicalTarget', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
+          property :data_preparation, as: 'dataPreparation', class: Google::Apis::DataformV1beta1::DataPreparation, decorator: Google::Apis::DataformV1beta1::DataPreparation::Representation
+      
           property :declaration, as: 'declaration', class: Google::Apis::DataformV1beta1::Declaration, decorator: Google::Apis::DataformV1beta1::Declaration::Representation
       
           property :file_path, as: 'filePath'
@@ -740,10 +754,29 @@ module Google
         end
       end
       
+      class Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_kms_key_name, as: 'defaultKmsKeyName'
+          property :name, as: 'name'
+        end
+      end
+      
       class DataEncryptionState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_version_name, as: 'kmsKeyVersionName'
+        end
+      end
+      
+      class DataPreparation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, :base64 => true, as: 'contents'
+          collection :dependency_targets, as: 'dependencyTargets', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
+      
+          property :disabled, as: 'disabled'
+          collection :tags, as: 'tags'
         end
       end
       
