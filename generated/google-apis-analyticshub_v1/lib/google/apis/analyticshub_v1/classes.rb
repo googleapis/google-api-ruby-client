@@ -1932,7 +1932,7 @@ module Google
         end
       end
       
-      # Message for response when you revoke a subscription.
+      # Message for response when you revoke a subscription. Empty for now.
       class RevokeSubscriptionResponse
         include Google::Apis::Core::Hashable
       
