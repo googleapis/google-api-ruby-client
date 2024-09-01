@@ -1066,6 +1066,8 @@ module Google
             property :bak_type, as: 'bakType'
             property :copy_only, as: 'copyOnly'
             property :differential_base, as: 'differentialBase'
+            property :export_log_end_time, as: 'exportLogEndTime'
+            property :export_log_start_time, as: 'exportLogStartTime'
             property :stripe_count, as: 'stripeCount'
             property :striped, as: 'striped'
           end
