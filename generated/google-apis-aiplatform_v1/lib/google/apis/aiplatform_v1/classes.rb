@@ -8161,9 +8161,9 @@ module Google
         attr_accessor :entity_id_columns
       
         # Optional. If the source is a time-series source, this can be set to control
-        # how downstream sources (ex: FeatureOnlineStore.FeatureView) will treat time
-        # series sources. If not set, will treat the source as a time-series source with
-        # feature_timestamp as timestamp column and no scan boundary.
+        # how downstream sources (ex: FeatureView ) will treat time-series sources. If
+        # not set, will treat the source as a time-series source with `feature_timestamp`
+        # as timestamp column and no scan boundary.
         # Corresponds to the JSON property `timeSeries`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries]
         attr_accessor :time_series
@@ -8185,8 +8185,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Column hosting timestamp values for a time-series source. Will be
-        # used to determine the latest featureValues for each entity. Optional. If not
-        # provided, a feature_timestamp column of type TIMESTAMP will be used.
+        # used to determine the latest `feature_values` for each entity. Optional. If
+        # not provided, column named `feature_timestamp` of type `TIMESTAMP` will be
+        # used.
         # Corresponds to the JSON property `timestampColumn`
         # @return [String]
         attr_accessor :timestamp_column
@@ -9160,6 +9161,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :row_synced
       
+        # Lower bound of the system time watermark for the sync job. This is only set
+        # for continuously syncing feature views.
+        # Corresponds to the JSON property `systemWatermarkTime`
+        # @return [String]
+        attr_accessor :system_watermark_time
+      
         # Output only. BigQuery slot milliseconds consumed for the sync job.
         # Corresponds to the JSON property `totalSlot`
         # @return [Fixnum]
@@ -9172,6 +9179,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @row_synced = args[:row_synced] if args.key?(:row_synced)
+          @system_watermark_time = args[:system_watermark_time] if args.key?(:system_watermark_time)
           @total_slot = args[:total_slot] if args.key?(:total_slot)
         end
       end
@@ -10445,7 +10453,7 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema]
         attr_accessor :response_schema
       
-        # Routing config.
+        # The configuration for routing the request to a specific model.
         # Corresponds to the JSON property `routingConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfig]
         attr_accessor :routing_config
@@ -10496,7 +10504,7 @@ module Google
         end
       end
       
-      # Routing config.
+      # The configuration for routing the request to a specific model.
       class GoogleCloudAiplatformV1GenerationConfigRoutingConfig
         include Google::Apis::Core::Hashable
       
@@ -10546,8 +10554,8 @@ module Google
       class GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode
         include Google::Apis::Core::Hashable
       
-        # The model name to use. Only the public LLM models are accepted. e.g. gemini-1.
-        # 5-pro-001.
+        # The model name to use. Only the public LLM models are accepted. e.g. 'gemini-1.
+        # 5-pro-001'.
         # Corresponds to the JSON property `modelName`
         # @return [String]
         attr_accessor :model_name
@@ -16500,11 +16508,11 @@ module Google
       end
       
       # Numeric filter is used to search a subset of the entities by using boolean
-      # rules on numeric columns. For example: Database Point 0: `name: “a” value_int:
-      # 42` `name: “b” value_float: 1.0` Database Point 1: `name: “a” value_int: 10` `
-      # name: “b” value_float: 2.0` Database Point 2: `name: “a” value_int: -1` `name:
-      # “b” value_float: 3.0` Query: `name: “a” value_int: 12 operator: LESS` //
-      # Matches Point 1, 2 `name: “b” value_float: 2.0 operator: EQUAL` // Matches
+      # rules on numeric columns. For example: Database Point 0: `name: "a" value_int:
+      # 42` `name: "b" value_float: 1.0` Database Point 1: `name: "a" value_int: 10` `
+      # name: "b" value_float: 2.0` Database Point 2: `name: "a" value_int: -1` `name:
+      # "b" value_float: 3.0` Query: `name: "a" value_int: 12 operator: LESS` //
+      # Matches Point 1, 2 `name: "b" value_float: 2.0 operator: EQUAL` // Matches
       # Point 1
       class GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter
         include Google::Apis::Core::Hashable
@@ -18014,6 +18022,18 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ResourceRuntimeSpec]
         attr_accessor :resource_runtime_spec
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Time when the PersistentResource for the first time entered the `
         # RUNNING` state.
         # Corresponds to the JSON property `startTime`
@@ -18047,6 +18067,8 @@ module Google
           @resource_pools = args[:resource_pools] if args.key?(:resource_pools)
           @resource_runtime = args[:resource_runtime] if args.key?(:resource_runtime)
           @resource_runtime_spec = args[:resource_runtime_spec] if args.key?(:resource_runtime_spec)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -19208,6 +19230,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke]
         attr_accessor :deploy_gke
       
+        # Multiple setups to deploy the PublisherModel.
+        # Corresponds to the JSON property `multiDeployVertex`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex]
+        attr_accessor :multi_deploy_vertex
+      
         # The regional resource name or the URI. Key is region, e.g., us-central1,
         # europe-west2, global, etc..
         # Corresponds to the JSON property `openEvaluationPipeline`
@@ -19274,6 +19301,7 @@ module Google
           @create_application = args[:create_application] if args.key?(:create_application)
           @deploy = args[:deploy] if args.key?(:deploy)
           @deploy_gke = args[:deploy_gke] if args.key?(:deploy_gke)
+          @multi_deploy_vertex = args[:multi_deploy_vertex] if args.key?(:multi_deploy_vertex)
           @open_evaluation_pipeline = args[:open_evaluation_pipeline] if args.key?(:open_evaluation_pipeline)
           @open_fine_tuning_pipeline = args[:open_fine_tuning_pipeline] if args.key?(:open_fine_tuning_pipeline)
           @open_fine_tuning_pipelines = args[:open_fine_tuning_pipelines] if args.key?(:open_fine_tuning_pipelines)
@@ -19418,6 +19446,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gke_yaml_configs = args[:gke_yaml_configs] if args.key?(:gke_yaml_configs)
+        end
+      end
+      
+      # Multiple setups to deploy the PublisherModel.
+      class GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex
+        include Google::Apis::Core::Hashable
+      
+        # Optional. One click deployment configurations.
+        # Corresponds to the JSON property `multiDeployVertex`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeploy>]
+        attr_accessor :multi_deploy_vertex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multi_deploy_vertex = args[:multi_deploy_vertex] if args.key?(:multi_deploy_vertex)
         end
       end
       
@@ -21200,10 +21247,15 @@ module Google
         alias_method :disable_attribution?, :disable_attribution
       
         # Retrieve from Vertex AI Search datastore for grounding. See https://cloud.
-        # google.com/vertex-ai-search-and-conversation
+        # google.com/products/agent-builder
         # Corresponds to the JSON property `vertexAiSearch`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexAiSearch]
         attr_accessor :vertex_ai_search
+      
+        # Retrieve from Vertex RAG Store for grounding.
+        # Corresponds to the JSON property `vertexRagStore`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexRagStore]
+        attr_accessor :vertex_rag_store
       
         def initialize(**args)
            update!(**args)
@@ -21213,6 +21265,7 @@ module Google
         def update!(**args)
           @disable_attribution = args[:disable_attribution] if args.key?(:disable_attribution)
           @vertex_ai_search = args[:vertex_ai_search] if args.key?(:vertex_ai_search)
+          @vertex_rag_store = args[:vertex_rag_store] if args.key?(:vertex_rag_store)
         end
       end
       
@@ -21895,6 +21948,14 @@ module Google
         attr_accessor :disable_retries
         alias_method :disable_retries?, :disable_retries
       
+        # Optional. This is the maximum duration that a job will wait for the requested
+        # resources to be provisioned if the scheduling strategy is set to [Strategy.
+        # DWS_FLEX_START]. If set to 0, the job will wait indefinitely. The default is
+        # 24 hours.
+        # Corresponds to the JSON property `maxWaitDuration`
+        # @return [String]
+        attr_accessor :max_wait_duration
+      
         # Restarts the entire CustomJob if a worker gets restarted. This feature can be
         # used by distributed training jobs that are not resilient to workers leaving
         # and joining a job.
@@ -21920,6 +21981,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable_retries = args[:disable_retries] if args.key?(:disable_retries)
+          @max_wait_duration = args[:max_wait_duration] if args.key?(:max_wait_duration)
           @restart_job_on_worker_restart = args[:restart_job_on_worker_restart] if args.key?(:restart_job_on_worker_restart)
           @strategy = args[:strategy] if args.key?(:strategy)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -30239,10 +30301,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_billable_token_count
       
+        # The number of examples in the dataset that have been truncated by any amount.
+        # Corresponds to the JSON property `totalTruncatedExampleCount`
+        # @return [Fixnum]
+        attr_accessor :total_truncated_example_count
+      
         # Output only. Number of tuning characters in the tuning dataset.
         # Corresponds to the JSON property `totalTuningCharacterCount`
         # @return [Fixnum]
         attr_accessor :total_tuning_character_count
+      
+        # A partial sample of the indices (starting from 1) of the truncated examples.
+        # Corresponds to the JSON property `truncatedExampleIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :truncated_example_indices
       
         # Output only. Number of examples in the tuning dataset.
         # Corresponds to the JSON property `tuningDatasetExampleCount`
@@ -30282,7 +30354,9 @@ module Google
         def update!(**args)
           @total_billable_character_count = args[:total_billable_character_count] if args.key?(:total_billable_character_count)
           @total_billable_token_count = args[:total_billable_token_count] if args.key?(:total_billable_token_count)
+          @total_truncated_example_count = args[:total_truncated_example_count] if args.key?(:total_truncated_example_count)
           @total_tuning_character_count = args[:total_tuning_character_count] if args.key?(:total_tuning_character_count)
+          @truncated_example_indices = args[:truncated_example_indices] if args.key?(:truncated_example_indices)
           @tuning_dataset_example_count = args[:tuning_dataset_example_count] if args.key?(:tuning_dataset_example_count)
           @tuning_step_count = args[:tuning_step_count] if args.key?(:tuning_step_count)
           @user_dataset_examples = args[:user_dataset_examples] if args.key?(:user_dataset_examples)
@@ -32845,11 +32919,11 @@ module Google
       end
       
       # Retrieve from Vertex AI Search datastore for grounding. See https://cloud.
-      # google.com/vertex-ai-search-and-conversation
+      # google.com/products/agent-builder
       class GoogleCloudAiplatformV1VertexAiSearch
         include Google::Apis::Core::Hashable
       
-        # Required. Fully-qualified Vertex AI Search's datastore resource ID. Format: `
+        # Required. Fully-qualified Vertex AI Search data store resource ID. Format: `
         # projects/`project`/locations/`location`/collections/`collection`/dataStores/`
         # dataStore``
         # Corresponds to the JSON property `datastore`
@@ -32863,6 +32937,72 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
+        end
+      end
+      
+      # Retrieve from Vertex RAG Store for grounding.
+      class GoogleCloudAiplatformV1VertexRagStore
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Deprecated. Please use rag_resources instead.
+        # Corresponds to the JSON property `ragCorpora`
+        # @return [Array<String>]
+        attr_accessor :rag_corpora
+      
+        # Optional. The representation of the rag source. It can be used to specify
+        # corpus only or ragfiles. Currently only support one corpus or multiple files
+        # from one corpus. In the future we may open up multiple corpora support.
+        # Corresponds to the JSON property `ragResources`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexRagStoreRagResource>]
+        attr_accessor :rag_resources
+      
+        # Optional. Number of top k results to return from the selected corpora.
+        # Corresponds to the JSON property `similarityTopK`
+        # @return [Fixnum]
+        attr_accessor :similarity_top_k
+      
+        # Optional. Only return results with vector distance smaller than the threshold.
+        # Corresponds to the JSON property `vectorDistanceThreshold`
+        # @return [Float]
+        attr_accessor :vector_distance_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rag_corpora = args[:rag_corpora] if args.key?(:rag_corpora)
+          @rag_resources = args[:rag_resources] if args.key?(:rag_resources)
+          @similarity_top_k = args[:similarity_top_k] if args.key?(:similarity_top_k)
+          @vector_distance_threshold = args[:vector_distance_threshold] if args.key?(:vector_distance_threshold)
+        end
+      end
+      
+      # The definition of the Rag resource.
+      class GoogleCloudAiplatformV1VertexRagStoreRagResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. RagCorpora resource name. Format: `projects/`project`/locations/`
+        # location`/ragCorpora/`rag_corpus``
+        # Corresponds to the JSON property `ragCorpus`
+        # @return [String]
+        attr_accessor :rag_corpus
+      
+        # Optional. rag_file_id. The files should be in the same rag_corpus set in
+        # rag_corpus field.
+        # Corresponds to the JSON property `ragFileIds`
+        # @return [Array<String>]
+        attr_accessor :rag_file_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rag_corpus = args[:rag_corpus] if args.key?(:rag_corpus)
+          @rag_file_ids = args[:rag_file_ids] if args.key?(:rag_file_ids)
         end
       end
       
