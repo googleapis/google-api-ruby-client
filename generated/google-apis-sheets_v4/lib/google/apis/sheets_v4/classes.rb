@@ -9527,7 +9527,8 @@ module Google
         attr_accessor :default_format
       
         # Whether to allow external URL access for image and import functions. Read only
-        # when true. When false, you can set to true.
+        # when true. When false, you can set to true. This value will be bypassed and
+        # always return true if the admin has enabled the allowlisting feature.
         # Corresponds to the JSON property `importFunctionsExternalUrlAccessAllowed`
         # @return [Boolean]
         attr_accessor :import_functions_external_url_access_allowed
