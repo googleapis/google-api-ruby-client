@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentTaskLoggingOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentTaskRunnable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -496,6 +502,13 @@ module Google
         end
       end
       
+      class AgentTaskLoggingOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+        end
+      end
+      
       class AgentTaskRunnable
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -516,6 +529,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :environment, as: 'environment', class: Google::Apis::BatchV1::AgentEnvironment, decorator: Google::Apis::BatchV1::AgentEnvironment::Representation
+      
+          property :logging_option, as: 'loggingOption', class: Google::Apis::BatchV1::AgentTaskLoggingOption, decorator: Google::Apis::BatchV1::AgentTaskLoggingOption::Representation
       
           property :max_run_duration, as: 'maxRunDuration'
           collection :runnables, as: 'runnables', class: Google::Apis::BatchV1::AgentTaskRunnable, decorator: Google::Apis::BatchV1::AgentTaskRunnable::Representation

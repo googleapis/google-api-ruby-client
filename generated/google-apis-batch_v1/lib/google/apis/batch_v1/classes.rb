@@ -436,6 +436,25 @@ module Google
         end
       end
       
+      # AgentTaskLoggingOption contains the options for the logging of the task.
+      class AgentTaskLoggingOption
+        include Google::Apis::Core::Hashable
+      
+        # Labels to be added to the log entry. Now only cloud logging is supported.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
       # AgentTaskRunnable is the Runnable representation between Agent and CLH
       # communication.
       class AgentTaskRunnable
@@ -515,6 +534,11 @@ module Google
         # @return [Google::Apis::BatchV1::AgentEnvironment]
         attr_accessor :environment
       
+        # AgentTaskLoggingOption contains the options for the logging of the task.
+        # Corresponds to the JSON property `loggingOption`
+        # @return [Google::Apis::BatchV1::AgentTaskLoggingOption]
+        attr_accessor :logging_option
+      
         # Maximum duration the task should run before being automatically retried (if
         # enabled) or automatically failed. Format the value of this field as a time
         # limit in seconds followed by `s`—for example, `3600s` for 1 hour. The field
@@ -545,6 +569,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @environment = args[:environment] if args.key?(:environment)
+          @logging_option = args[:logging_option] if args.key?(:logging_option)
           @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
           @runnables = args[:runnables] if args.key?(:runnables)
           @user_account = args[:user_account] if args.key?(:user_account)
