@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RedisInstanceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RerunConnectivityTestRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -853,6 +859,18 @@ module Google
         end
       end
       
+      class RedisInstanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :network_uri, as: 'networkUri'
+          property :primary_endpoint_ip, as: 'primaryEndpointIp'
+          property :read_endpoint_ip, as: 'readEndpointIp'
+          property :region, as: 'region'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class RerunConnectivityTestRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -949,6 +967,8 @@ module Google
       
           property :project_id, as: 'projectId'
           property :proxy_connection, as: 'proxyConnection', class: Google::Apis::NetworkmanagementV1::ProxyConnectionInfo, decorator: Google::Apis::NetworkmanagementV1::ProxyConnectionInfo::Representation
+      
+          property :redis_instance, as: 'redisInstance', class: Google::Apis::NetworkmanagementV1::RedisInstanceInfo, decorator: Google::Apis::NetworkmanagementV1::RedisInstanceInfo::Representation
       
           property :route, as: 'route', class: Google::Apis::NetworkmanagementV1::RouteInfo, decorator: Google::Apis::NetworkmanagementV1::RouteInfo::Representation
       
