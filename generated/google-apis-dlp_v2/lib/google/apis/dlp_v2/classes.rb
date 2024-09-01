@@ -2541,7 +2541,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. An identifying string to the type of resource being profiled.
-        # Current values: google/bigquery/table, google/project
+        # Current values: * google/bigquery/table * google/project * google/sql/table *
+        # google/gcs/bucket
         # Corresponds to the JSON property `dataSource`
         # @return [String]
         attr_accessor :data_source
@@ -7475,7 +7476,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus]
         attr_accessor :profile_status
       
-        # Project ID that was profiled.
+        # Project ID or account that was profiled.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id

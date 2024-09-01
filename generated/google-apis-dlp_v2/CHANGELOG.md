@@ -1,5 +1,9 @@
 # Release history for google-apis-dlp_v2
 
+### v0.74.0 (2024-09-01)
+
+* Regenerated from discovery document revision 20240825
+
 ### v0.73.0 (2024-08-25)
 
 * Regenerated from discovery document revision 20240818
