@@ -1803,7 +1803,8 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
-        # Service mesh configuration.
+        # Settings for Cloud Service Mesh. For more information see https://cloud.google.
+        # com/service-mesh/docs/overview.
         # Corresponds to the JSON property `serviceMesh`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh]
         attr_accessor :service_mesh
@@ -2011,7 +2012,8 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
-        # Service mesh configuration.
+        # Settings for Cloud Service Mesh. For more information see https://cloud.google.
+        # com/service-mesh/docs/overview.
         # Corresponds to the JSON property `serviceMesh`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh]
         attr_accessor :service_mesh
@@ -2462,12 +2464,13 @@ module Google
         end
       end
       
-      # Service mesh configuration.
+      # Settings for Cloud Service Mesh. For more information see https://cloud.google.
+      # com/service-mesh/docs/overview.
       class GoogleCloudRunV2ServiceMesh
         include Google::Apis::Core::Hashable
       
-        # The service mesh resource name. Format: projects/`project_number`/locations/
-        # global/meshes/`mesh`.
+        # The Mesh resource name. Format: projects/`project`/locations/global/meshes/`
+        # mesh`, where `project` can be project id or number.
         # Corresponds to the JSON property `mesh`
         # @return [String]
         attr_accessor :mesh
