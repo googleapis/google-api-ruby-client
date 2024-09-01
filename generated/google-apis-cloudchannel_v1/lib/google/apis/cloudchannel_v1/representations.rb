@@ -975,6 +975,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :domain, as: 'domain'
+          property :primary_admin_email, as: 'primaryAdminEmail'
         end
       end
       
@@ -989,8 +990,10 @@ module Google
       class GoogleCloudChannelV1CloudIdentityCustomerAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_partner_cloud_identity_id, as: 'channelPartnerCloudIdentityId'
           property :customer_cloud_identity_id, as: 'customerCloudIdentityId'
           property :customer_name, as: 'customerName'
+          property :customer_type, as: 'customerType'
           property :existing, as: 'existing'
           property :owned, as: 'owned'
         end
@@ -1223,6 +1226,7 @@ module Google
           property :customer, as: 'customer'
           property :domain, as: 'domain'
           property :overwrite_if_exists, as: 'overwriteIfExists'
+          property :primary_admin_email, as: 'primaryAdminEmail'
         end
       end
       

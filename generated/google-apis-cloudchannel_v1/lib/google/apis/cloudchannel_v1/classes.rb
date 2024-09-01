@@ -462,6 +462,12 @@ module Google
         # @return [String]
         attr_accessor :domain
       
+        # Optional. Primary admin email to fetch for Cloud Identity account domainless
+        # customer.
+        # Corresponds to the JSON property `primaryAdminEmail`
+        # @return [String]
+        attr_accessor :primary_admin_email
+      
         def initialize(**args)
            update!(**args)
         end
@@ -469,6 +475,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @domain = args[:domain] if args.key?(:domain)
+          @primary_admin_email = args[:primary_admin_email] if args.key?(:primary_admin_email)
         end
       end
       
@@ -496,6 +503,12 @@ module Google
       class GoogleCloudChannelV1CloudIdentityCustomerAccount
         include Google::Apis::Core::Hashable
       
+        # If existing = true, and is 2-tier customer, the channel partner of the
+        # customer.
+        # Corresponds to the JSON property `channelPartnerCloudIdentityId`
+        # @return [String]
+        attr_accessor :channel_partner_cloud_identity_id
+      
         # If existing = true, the Cloud Identity ID of the customer.
         # Corresponds to the JSON property `customerCloudIdentityId`
         # @return [String]
@@ -506,6 +519,11 @@ module Google
         # Corresponds to the JSON property `customerName`
         # @return [String]
         attr_accessor :customer_name
+      
+        # If existing = true, the type of the customer.
+        # Corresponds to the JSON property `customerType`
+        # @return [String]
+        attr_accessor :customer_type
       
         # Returns true if a Cloud Identity account exists for a specific domain.
         # Corresponds to the JSON property `existing`
@@ -526,8 +544,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @channel_partner_cloud_identity_id = args[:channel_partner_cloud_identity_id] if args.key?(:channel_partner_cloud_identity_id)
           @customer_cloud_identity_id = args[:customer_cloud_identity_id] if args.key?(:customer_cloud_identity_id)
           @customer_name = args[:customer_name] if args.key?(:customer_name)
+          @customer_type = args[:customer_type] if args.key?(:customer_type)
           @existing = args[:existing] if args.key?(:existing)
           @owned = args[:owned] if args.key?(:owned)
         end
@@ -1447,6 +1467,11 @@ module Google
         attr_accessor :overwrite_if_exists
         alias_method :overwrite_if_exists?, :overwrite_if_exists
       
+        # Optional. Customer's primary admin email.
+        # Corresponds to the JSON property `primaryAdminEmail`
+        # @return [String]
+        attr_accessor :primary_admin_email
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1459,6 +1484,7 @@ module Google
           @customer = args[:customer] if args.key?(:customer)
           @domain = args[:domain] if args.key?(:domain)
           @overwrite_if_exists = args[:overwrite_if_exists] if args.key?(:overwrite_if_exists)
+          @primary_admin_email = args[:primary_admin_email] if args.key?(:primary_admin_email)
         end
       end
       
