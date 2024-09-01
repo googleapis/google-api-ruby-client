@@ -6903,6 +6903,7 @@ module Google
           property :enable_uefi_networking, as: 'enableUefiNetworking'
           property :performance_monitoring_unit, as: 'performanceMonitoringUnit'
           property :threads_per_core, as: 'threadsPerCore'
+          property :turbo_mode, as: 'turboMode'
           property :visible_core_count, as: 'visibleCoreCount'
         end
       end
@@ -12924,6 +12925,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
       
           property :short_name, as: 'shortName'
