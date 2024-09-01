@@ -301,11 +301,6 @@ module Google
       class Backup
         include Google::Apis::Core::Hashable
       
-        # Indicates the backup type of the backup.
-        # Corresponds to the JSON property `backupType`
-        # @return [String]
-        attr_accessor :backup_type
-      
         # Encryption information for a given resource. If this resource is protected
         # with customer managed encryption, the in-use Cloud Key Management Service (
         # Cloud KMS) key version is specified along with its status.
@@ -326,16 +321,6 @@ module Google
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
-      
-        # The time at which the hot backup will be converted to a standard backup. Once
-        # the `hot_to_standard_time` has passed, Cloud Bigtable will convert the hot
-        # backup to a standard backup. This value must be greater than the backup
-        # creation time by: - At least 24 hours This field only applies for hot backups.
-        # When creating or updating a standard backup, attempting to set this field will
-        # fail the request.
-        # Corresponds to the JSON property `hotToStandardTime`
-        # @return [String]
-        attr_accessor :hot_to_standard_time
       
         # A globally unique identifier for the backup which cannot be changed. Values
         # are of the form `projects/`project`/instances/`instance`/clusters/`cluster`/
@@ -384,11 +369,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @backup_type = args[:backup_type] if args.key?(:backup_type)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @end_time = args[:end_time] if args.key?(:end_time)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
-          @hot_to_standard_time = args[:hot_to_standard_time] if args.key?(:hot_to_standard_time)
           @name = args[:name] if args.key?(:name)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
