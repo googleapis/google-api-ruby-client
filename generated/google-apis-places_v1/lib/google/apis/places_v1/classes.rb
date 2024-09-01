@@ -2443,7 +2443,7 @@ module Google
         # index in the places field. The contents that are relevant to the `text_query`
         # in the request are preferred. If the contextual content is not available for
         # one of the places, it will return non-contextual content. It will be empty
-        # only when the content is unavailable for this place. This list should have as
+        # only when the content is unavailable for this place. This list will have as
         # many entries as the list of places if requested.
         # Corresponds to the JSON property `contextualContents`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContent>]
