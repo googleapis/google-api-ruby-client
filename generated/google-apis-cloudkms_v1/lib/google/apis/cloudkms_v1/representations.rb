@@ -451,6 +451,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_project, as: 'keyProject'
           property :name, as: 'name'
+          property :state, as: 'state'
         end
       end
       
@@ -761,6 +762,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :key_handles, as: 'keyHandles', class: Google::Apis::CloudkmsV1::KeyHandle, decorator: Google::Apis::CloudkmsV1::KeyHandle::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

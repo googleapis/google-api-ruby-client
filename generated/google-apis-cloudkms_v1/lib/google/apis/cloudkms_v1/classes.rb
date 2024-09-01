@@ -341,6 +341,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The state for the AutokeyConfig.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -349,6 +354,7 @@ module Google
         def update!(**args)
           @key_project = args[:key_project] if args.key?(:key_project)
           @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1058,9 +1064,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A list of ServiceResolvers where the EKM can be reached. There should be one
-        # ServiceResolver per EKM replica. Currently, only a single ServiceResolver is
-        # supported.
+        # Optional. A list of ServiceResolvers where the EKM can be reached. There
+        # should be one ServiceResolver per EKM replica. Currently, only a single
+        # ServiceResolver is supported.
         # Corresponds to the JSON property `serviceResolvers`
         # @return [Array<Google::Apis::CloudkmsV1::ServiceResolver>]
         attr_accessor :service_resolvers
@@ -1796,6 +1802,12 @@ module Google
         # @return [Array<Google::Apis::CloudkmsV1::KeyHandle>]
         attr_accessor :key_handles
       
+        # A token to retrieve next page of results. Pass this value in
+        # ListKeyHandlesRequest.page_token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1803,6 +1815,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @key_handles = args[:key_handles] if args.key?(:key_handles)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
