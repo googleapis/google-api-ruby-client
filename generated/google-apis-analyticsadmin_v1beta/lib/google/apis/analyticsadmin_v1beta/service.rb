@@ -195,7 +195,7 @@ module Google
         end
         
         # Returns all accounts accessible by the caller. Note that these accounts might
-        # not currently have GA4 properties. Soft-deleted (ie: "trashed") accounts are
+        # not currently have GA properties. Soft-deleted (ie: "trashed") accounts are
         # excluded by default. Returns an empty list if no relevant accounts are found.
         # @param [Fixnum] page_size
         #   The maximum number of resources to return. The service may return fewer than
@@ -314,7 +314,7 @@ module Google
         # for a property. Reports may be requested for any property, but dimensions that
         # aren't related to quota can only be requested on Google Analytics 360
         # properties. This method is only available to Administrators. These data access
-        # records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data API, and other
+        # records include GA UI Reporting, GA UI Explorations, GA Data API, and other
         # products like Firebase & Admob that can retrieve data from Google Analytics
         # through a linkage. These records don't include property configuration changes
         # like adding a stream or changing a property's time zone. For configuration
@@ -325,9 +325,9 @@ module Google
         #   The Data Access Report supports requesting at the property level or account
         #   level. If requested at the account level, Data Access Reports include all
         #   access for all properties under that account. To request at the property level,
-        #   entity should be for example 'properties/123' if "123" is your GA4 property
-        #   ID. To request at the account level, entity should be for example 'accounts/
-        #   1234' if "1234" is your GA4 Account ID.
+        #   entity should be for example 'properties/123' if "123" is your Google
+        #   Analytics property ID. To request at the account level, entity should be for
+        #   example 'accounts/1234' if "1234" is your Google Analytics Account ID.
         # @param [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaRunAccessReportRequest] google_analytics_admin_v1beta_run_access_report_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -428,7 +428,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an "GA4" property with the specified location and attributes.
+        # Creates a Google Analytics property with the specified location and attributes.
         # @param [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaProperty] google_analytics_admin_v1beta_property_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -463,8 +463,7 @@ module Google
         # be restored using the Trash Can UI. If the properties are not restored before
         # the expiration time, the Property and all child resources (eg: GoogleAdsLinks,
         # Streams, AccessBindings) will be permanently purged. https://support.google.
-        # com/analytics/answer/6154772 Returns an error if the target is not found, or
-        # is not a GA4 Property.
+        # com/analytics/answer/6154772 Returns an error if the target is not found.
         # @param [String] name
         #   Required. The name of the Property to soft-delete. Format: properties/`
         #   property_id` Example: "properties/1000"
@@ -495,7 +494,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single "GA4" Property.
+        # Lookup for a single GA Property.
         # @param [String] name
         #   Required. The name of the property to lookup. Format: properties/`property_id`
         #   Example: "properties/1000"
@@ -557,10 +556,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns child Properties under the specified parent Account. Only "GA4"
-        # properties will be returned. Properties will be excluded if the caller does
-        # not have access. Soft-deleted (ie: "trashed") properties are excluded by
-        # default. Returns an empty list if no relevant properties are found.
+        # Returns child Properties under the specified parent Account. Properties will
+        # be excluded if the caller does not have access. Soft-deleted (ie: "trashed")
+        # properties are excluded by default. Returns an empty list if no relevant
+        # properties are found.
         # @param [String] filter
         #   Required. An expression for filtering the results of the request. Fields
         #   eligible for filtering are: `parent:`(The resource name of the parent account/
@@ -659,7 +658,7 @@ module Google
         # for a property. Reports may be requested for any property, but dimensions that
         # aren't related to quota can only be requested on Google Analytics 360
         # properties. This method is only available to Administrators. These data access
-        # records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data API, and other
+        # records include GA UI Reporting, GA UI Explorations, GA Data API, and other
         # products like Firebase & Admob that can retrieve data from Google Analytics
         # through a linkage. These records don't include property configuration changes
         # like adding a stream or changing a property's time zone. For configuration
@@ -670,9 +669,9 @@ module Google
         #   The Data Access Report supports requesting at the property level or account
         #   level. If requested at the account level, Data Access Reports include all
         #   access for all properties under that account. To request at the property level,
-        #   entity should be for example 'properties/123' if "123" is your GA4 property
-        #   ID. To request at the account level, entity should be for example 'accounts/
-        #   1234' if "1234" is your GA4 Account ID.
+        #   entity should be for example 'properties/123' if "123" is your Google
+        #   Analytics property ID. To request at the account level, entity should be for
+        #   example 'accounts/1234' if "1234" is your Google Analytics Account ID.
         # @param [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaRunAccessReportRequest] google_analytics_admin_v1beta_run_access_report_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1522,7 +1521,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single "GA4" MeasurementProtocolSecret.
+        # Lookup for a single MeasurementProtocolSecret.
         # @param [String] name
         #   Required. The name of the measurement protocol secret to lookup. Format:
         #   properties/`property`/dataStreams/`dataStream`/measurementProtocolSecrets/`
