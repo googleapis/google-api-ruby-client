@@ -2081,16 +2081,12 @@ module Google
         # Indicates that this claim required grounding check. When the system decided
         # this claim doesn't require attribution/grounding check, this field will be set
         # to false. In that case, no grounding check was done for the claim and
-        # therefore citation_indices, and anti_citation_indices should not be returned.
+        # therefore citation_indices, anti_citation_indices, and score should not be
+        # returned.
         # Corresponds to the JSON property `groundingCheckRequired`
         # @return [Boolean]
         attr_accessor :grounding_check_required
         alias_method :grounding_check_required?, :grounding_check_required
-      
-        # Confidence score for the claim in the answer candidate, in the range of [0, 1].
-        # Corresponds to the JSON property `score`
-        # @return [Float]
-        attr_accessor :score
       
         # Position indicating the start of the claim in the answer candidate, measured
         # in bytes.
@@ -2108,7 +2104,6 @@ module Google
           @claim_text = args[:claim_text] if args.key?(:claim_text)
           @end_pos = args[:end_pos] if args.key?(:end_pos)
           @grounding_check_required = args[:grounding_check_required] if args.key?(:grounding_check_required)
-          @score = args[:score] if args.key?(:score)
           @start_pos = args[:start_pos] if args.key?(:start_pos)
         end
       end
