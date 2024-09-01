@@ -779,12 +779,10 @@ module Google
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_type, as: 'backupType'
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::BigtableadminV2::EncryptionInfo, decorator: Google::Apis::BigtableadminV2::EncryptionInfo::Representation
       
           property :end_time, as: 'endTime'
           property :expire_time, as: 'expireTime'
-          property :hot_to_standard_time, as: 'hotToStandardTime'
           property :name, as: 'name'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :source_backup, as: 'sourceBackup'
