@@ -603,9 +603,9 @@ module Google
         # @return [Google::Apis::CloudfunctionsV2::EventTrigger]
         attr_accessor :event_trigger
       
-        # [Preview] Resource name of a KMS crypto key (managed by the user) used to
-        # encrypt/decrypt function resources. It must match the pattern `projects/`
-        # project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``.
+        # Resource name of a KMS crypto key (managed by the user) used to encrypt/
+        # decrypt function resources. It must match the pattern `projects/`project`/
+        # locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -727,14 +727,14 @@ module Google
         # @return [String]
         attr_accessor :environment
       
-        # [Preview] Resource name of a KMS crypto key (managed by the user) used to
-        # encrypt/decrypt function source code objects in intermediate Cloud Storage
-        # buckets. When you generate an upload url and upload your source code, it gets
-        # copied to an intermediate Cloud Storage bucket. The source code is then copied
-        # to a versioned directory in the sources bucket in the consumer project during
-        # the function deployment. It must match the pattern `projects/`project`/
-        # locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``. The Google
-        # Cloud Functions service account (service-`project_number`@gcf-admin-robot.iam.
+        # Resource name of a KMS crypto key (managed by the user) used to encrypt/
+        # decrypt function source code objects in intermediate Cloud Storage buckets.
+        # When you generate an upload url and upload your source code, it gets copied to
+        # an intermediate Cloud Storage bucket. The source code is then copied to a
+        # versioned directory in the sources bucket in the consumer project during the
+        # function deployment. It must match the pattern `projects/`project`/locations/`
+        # location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``. The Google Cloud
+        # Functions service account (service-`project_number`@gcf-admin-robot.iam.
         # gserviceaccount.com) must be granted the role 'Cloud KMS CryptoKey Encrypter/
         # Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/
         # Project/Organization (least access preferred).
