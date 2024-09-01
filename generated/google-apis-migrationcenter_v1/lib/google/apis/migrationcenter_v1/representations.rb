@@ -418,6 +418,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportRowErrorCsvErrorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportRowErrorXlsxErrorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Insight
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1570,11 +1582,30 @@ module Google
       class ImportRowError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv_error, as: 'csvError', class: Google::Apis::MigrationcenterV1::ImportRowErrorCsvErrorDetails, decorator: Google::Apis::MigrationcenterV1::ImportRowErrorCsvErrorDetails::Representation
+      
           collection :errors, as: 'errors', class: Google::Apis::MigrationcenterV1::ImportError, decorator: Google::Apis::MigrationcenterV1::ImportError::Representation
       
           property :row_number, as: 'rowNumber'
           property :vm_name, as: 'vmName'
           property :vm_uuid, as: 'vmUuid'
+          property :xlsx_error, as: 'xlsxError', class: Google::Apis::MigrationcenterV1::ImportRowErrorXlsxErrorDetails, decorator: Google::Apis::MigrationcenterV1::ImportRowErrorXlsxErrorDetails::Representation
+      
+        end
+      end
+      
+      class ImportRowErrorCsvErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :row_number, as: 'rowNumber'
+        end
+      end
+      
+      class ImportRowErrorXlsxErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :row_number, as: 'rowNumber'
+          property :sheet, as: 'sheet'
         end
       end
       
