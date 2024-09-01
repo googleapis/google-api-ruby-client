@@ -3503,7 +3503,6 @@ module Google
           property :claim_text, as: 'claimText'
           property :end_pos, as: 'endPos'
           property :grounding_check_required, as: 'groundingCheckRequired'
-          property :score, as: 'score'
           property :start_pos, as: 'startPos'
         end
       end
