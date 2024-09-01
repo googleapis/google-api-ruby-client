@@ -16,13 +16,13 @@ module Google
   module Apis
     module ContentV2_1
       # Version of the google-apis-content_v2_1 gem
-      GEM_VERSION = "0.33.0"
+      GEM_VERSION = "0.34.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.15.0"
+      GENERATOR_VERSION = "0.15.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240723"
+      REVISION = "20240825"
     end
   end
 end
