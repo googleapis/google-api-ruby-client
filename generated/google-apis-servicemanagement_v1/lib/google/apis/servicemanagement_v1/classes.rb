@@ -1544,6 +1544,30 @@ module Google
         end
       end
       
+      # Experimental features to be included during client library generation. These
+      # fields will be deprecated once the feature graduates and is enabled by default.
+      class ExperimentalFeatures
+        include Google::Apis::Core::Hashable
+      
+        # Enables generation of asynchronous REST clients if `rest` transport is enabled.
+        # By default, asynchronous REST clients will not be generated. This feature
+        # will be enabled by default 1 month after launching the feature in preview
+        # packages.
+        # Corresponds to the JSON property `restAsyncIoEnabled`
+        # @return [Boolean]
+        attr_accessor :rest_async_io_enabled
+        alias_method :rest_async_io_enabled?, :rest_async_io_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rest_async_io_enabled = args[:rest_async_io_enabled] if args.key?(:rest_async_io_enabled)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -2814,6 +2838,11 @@ module Google
         # @return [String]
         attr_accessor :sample_period
       
+        # The scope of the timeseries data of the metric.
+        # Corresponds to the JSON property `timeSeriesResourceHierarchyLevel`
+        # @return [Array<String>]
+        attr_accessor :time_series_resource_hierarchy_level
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2823,6 +2852,7 @@ module Google
           @ingest_delay = args[:ingest_delay] if args.key?(:ingest_delay)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @sample_period = args[:sample_period] if args.key?(:sample_period)
+          @time_series_resource_hierarchy_level = args[:time_series_resource_hierarchy_level] if args.key?(:time_series_resource_hierarchy_level)
         end
       end
       
@@ -3537,6 +3567,12 @@ module Google
         # @return [Google::Apis::ServicemanagementV1::CommonLanguageSettings]
         attr_accessor :common
       
+        # Experimental features to be included during client library generation. These
+        # fields will be deprecated once the feature graduates and is enabled by default.
+        # Corresponds to the JSON property `experimentalFeatures`
+        # @return [Google::Apis::ServicemanagementV1::ExperimentalFeatures]
+        attr_accessor :experimental_features
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3544,6 +3580,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common = args[:common] if args.key?(:common)
+          @experimental_features = args[:experimental_features] if args.key?(:experimental_features)
         end
       end
       
