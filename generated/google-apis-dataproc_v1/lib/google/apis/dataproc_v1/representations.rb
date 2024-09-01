@@ -712,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SparkConnectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SparkHistoryServerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2100,6 +2106,8 @@ module Google
           property :runtime_info, as: 'runtimeInfo', class: Google::Apis::DataprocV1::RuntimeInfo, decorator: Google::Apis::DataprocV1::RuntimeInfo::Representation
       
           property :session_template, as: 'sessionTemplate'
+          property :spark_connect_session, as: 'sparkConnectSession', class: Google::Apis::DataprocV1::SparkConnectConfig, decorator: Google::Apis::DataprocV1::SparkConnectConfig::Representation
+      
           property :state, as: 'state'
           collection :state_history, as: 'stateHistory', class: Google::Apis::DataprocV1::SessionStateHistory, decorator: Google::Apis::DataprocV1::SessionStateHistory::Representation
       
@@ -2147,6 +2155,8 @@ module Google
           property :name, as: 'name'
           property :runtime_config, as: 'runtimeConfig', class: Google::Apis::DataprocV1::RuntimeConfig, decorator: Google::Apis::DataprocV1::RuntimeConfig::Representation
       
+          property :spark_connect_session, as: 'sparkConnectSession', class: Google::Apis::DataprocV1::SparkConnectConfig, decorator: Google::Apis::DataprocV1::SparkConnectConfig::Representation
+      
           property :update_time, as: 'updateTime'
           property :uuid, as: 'uuid'
         end
@@ -2187,6 +2197,12 @@ module Google
           collection :jar_file_uris, as: 'jarFileUris'
           property :main_class, as: 'mainClass'
           property :main_jar_file_uri, as: 'mainJarFileUri'
+        end
+      end
+      
+      class SparkConnectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
