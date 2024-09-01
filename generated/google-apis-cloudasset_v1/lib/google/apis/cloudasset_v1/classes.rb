@@ -5435,7 +5435,14 @@ module Google
         # @return [Array<Google::Apis::CloudassetV1::EffectiveTagDetails>]
         attr_accessor :effective_tags
       
-        # Enrichments of the asset.
+        # Enrichments of the asset. Currently supported enrichment types with
+        # SearchAllResources API: * RESOURCE_OWNERS The corresponding read masks in
+        # order to get the enrichment: * enrichments.resource_owners The corresponding
+        # required permissions: * cloudasset.assets.searchEnrichmentResourceOwners
+        # Example query to get resource owner enrichment: scope: "projects/my-project"
+        # query: "name: my-project" assetTypes: "cloudresourcemanager.googleapis.com/
+        # Project" readMask: ` paths: "asset_type" paths: "name" paths: "enrichments.
+        # resource_owners" `
         # Corresponds to the JSON property `enrichments`
         # @return [Array<Google::Apis::CloudassetV1::AssetEnrichment>]
         attr_accessor :enrichments
