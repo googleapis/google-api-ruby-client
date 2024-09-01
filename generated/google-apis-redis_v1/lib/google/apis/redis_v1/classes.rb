@@ -45,6 +45,14 @@ module Google
       class AvailabilityConfiguration
         include Google::Apis::Core::Hashable
       
+        # Checks for existence of (multi-cluster) routing configuration that allows
+        # automatic failover to a different zone/region in case of an outage. Applicable
+        # to Bigtable resources.
+        # Corresponds to the JSON property `automaticFailoverRoutingConfigured`
+        # @return [Boolean]
+        attr_accessor :automatic_failover_routing_configured
+        alias_method :automatic_failover_routing_configured?, :automatic_failover_routing_configured
+      
         # Availability type. Potential values: * `ZONAL`: The instance serves data from
         # only one zone. Outages in that zone affect data accessibility. * `REGIONAL`:
         # The instance can serve data from more than one zone in a region (it is highly
@@ -78,6 +86,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @automatic_failover_routing_configured = args[:automatic_failover_routing_configured] if args.key?(:automatic_failover_routing_configured)
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @cross_region_replica_configured = args[:cross_region_replica_configured] if args.key?(:cross_region_replica_configured)
           @external_replica_configured = args[:external_replica_configured] if args.key?(:external_replica_configured)
@@ -235,6 +244,16 @@ module Google
         # @return [Array<Google::Apis::RedisV1::DiscoveryEndpoint>]
         attr_accessor :discovery_endpoints
       
+        # Maintenance policy per cluster.
+        # Corresponds to the JSON property `maintenancePolicy`
+        # @return [Google::Apis::RedisV1::ClusterMaintenancePolicy]
+        attr_accessor :maintenance_policy
+      
+        # Upcoming maitenance schedule.
+        # Corresponds to the JSON property `maintenanceSchedule`
+        # @return [Google::Apis::RedisV1::ClusterMaintenanceSchedule]
+        attr_accessor :maintenance_schedule
+      
         # Required. Identifier. Unique name of the resource in this scope including
         # project and location using the form: `projects/`project_id`/locations/`
         # location_id`/clusters/`cluster_id``
@@ -330,6 +349,8 @@ module Google
           @cross_cluster_replication_config = args[:cross_cluster_replication_config] if args.key?(:cross_cluster_replication_config)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @discovery_endpoints = args[:discovery_endpoints] if args.key?(:discovery_endpoints)
+          @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
+          @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
           @persistence_config = args[:persistence_config] if args.key?(:persistence_config)
@@ -345,6 +366,75 @@ module Google
           @transit_encryption_mode = args[:transit_encryption_mode] if args.key?(:transit_encryption_mode)
           @uid = args[:uid] if args.key?(:uid)
           @zone_distribution_config = args[:zone_distribution_config] if args.key?(:zone_distribution_config)
+        end
+      end
+      
+      # Maintenance policy per cluster.
+      class ClusterMaintenancePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the policy was created i.e. Maintenance Window or
+        # Deny Period was assigned.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time when the policy was updated i.e. Maintenance Window or
+        # Deny Period was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. Maintenance window that is applied to resources covered by this
+        # policy. Minimum 1. For the current version, the maximum number of
+        # weekly_maintenance_window is expected to be one.
+        # Corresponds to the JSON property `weeklyMaintenanceWindow`
+        # @return [Array<Google::Apis::RedisV1::ClusterWeeklyMaintenanceWindow>]
+        attr_accessor :weekly_maintenance_window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @weekly_maintenance_window = args[:weekly_maintenance_window] if args.key?(:weekly_maintenance_window)
+        end
+      end
+      
+      # Upcoming maitenance schedule.
+      class ClusterMaintenanceSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The end time of any upcoming scheduled maintenance for this
+        # instance.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. The deadline that the maintenance schedule start time can not go
+        # beyond, including reschedule.
+        # Corresponds to the JSON property `scheduleDeadlineTime`
+        # @return [String]
+        attr_accessor :schedule_deadline_time
+      
+        # Output only. The start time of any upcoming scheduled maintenance for this
+        # instance.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @schedule_deadline_time = args[:schedule_deadline_time] if args.key?(:schedule_deadline_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -376,6 +466,39 @@ module Google
           @aof_config = args[:aof_config] if args.key?(:aof_config)
           @mode = args[:mode] if args.key?(:mode)
           @rdb_config = args[:rdb_config] if args.key?(:rdb_config)
+        end
+      end
+      
+      # Time window specified for weekly operations.
+      class ClusterWeeklyMaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Allows to define schedule that runs specified day of the week.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Duration of the time window.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::RedisV1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @duration = args[:duration] if args.key?(:duration)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -2336,6 +2459,34 @@ module Google
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
           @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Request for rescheduling a cluster maintenance.
+      class RescheduleClusterMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. If reschedule type is SPECIFIC_TIME, must set up schedule_time as
+        # well.
+        # Corresponds to the JSON property `rescheduleType`
+        # @return [String]
+        attr_accessor :reschedule_type
+      
+        # Optional. Timestamp when the maintenance shall be rescheduled to if
+        # reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example `2012-11-15T16:
+        # 19:00.094Z`.
+        # Corresponds to the JSON property `scheduleTime`
+        # @return [String]
+        attr_accessor :schedule_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reschedule_type = args[:reschedule_type] if args.key?(:reschedule_type)
+          @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
         end
       end
       

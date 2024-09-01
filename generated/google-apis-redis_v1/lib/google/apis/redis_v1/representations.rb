@@ -64,7 +64,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterMaintenancePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterMaintenanceSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterPersistenceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterWeeklyMaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -346,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RescheduleClusterMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RescheduleMaintenanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -428,6 +452,7 @@ module Google
       class AvailabilityConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic_failover_routing_configured, as: 'automaticFailoverRoutingConfigured'
           property :availability_type, as: 'availabilityType'
           property :cross_region_replica_configured, as: 'crossRegionReplicaConfigured'
           property :external_replica_configured, as: 'externalReplicaConfigured'
@@ -482,6 +507,10 @@ module Google
           property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           collection :discovery_endpoints, as: 'discoveryEndpoints', class: Google::Apis::RedisV1::DiscoveryEndpoint, decorator: Google::Apis::RedisV1::DiscoveryEndpoint::Representation
       
+          property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::RedisV1::ClusterMaintenancePolicy, decorator: Google::Apis::RedisV1::ClusterMaintenancePolicy::Representation
+      
+          property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::RedisV1::ClusterMaintenanceSchedule, decorator: Google::Apis::RedisV1::ClusterMaintenanceSchedule::Representation
+      
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
           property :persistence_config, as: 'persistenceConfig', class: Google::Apis::RedisV1::ClusterPersistenceConfig, decorator: Google::Apis::RedisV1::ClusterPersistenceConfig::Representation
@@ -505,6 +534,25 @@ module Google
         end
       end
       
+      class ClusterMaintenancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+          collection :weekly_maintenance_window, as: 'weeklyMaintenanceWindow', class: Google::Apis::RedisV1::ClusterWeeklyMaintenanceWindow, decorator: Google::Apis::RedisV1::ClusterWeeklyMaintenanceWindow::Representation
+      
+        end
+      end
+      
+      class ClusterMaintenanceSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :schedule_deadline_time, as: 'scheduleDeadlineTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class ClusterPersistenceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -512,6 +560,16 @@ module Google
       
           property :mode, as: 'mode'
           property :rdb_config, as: 'rdbConfig', class: Google::Apis::RedisV1::RdbConfig, decorator: Google::Apis::RedisV1::RdbConfig::Representation
+      
+        end
+      end
+      
+      class ClusterWeeklyMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime', class: Google::Apis::RedisV1::TimeOfDay, decorator: Google::Apis::RedisV1::TimeOfDay::Representation
       
         end
       end
@@ -1025,6 +1083,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
           property :uid, as: 'uid'
+        end
+      end
+      
+      class RescheduleClusterMaintenanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reschedule_type, as: 'rescheduleType'
+          property :schedule_time, as: 'scheduleTime'
         end
       end
       
