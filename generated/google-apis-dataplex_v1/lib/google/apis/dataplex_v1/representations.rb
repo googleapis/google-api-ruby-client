@@ -22,6 +22,96 @@ module Google
   module Apis
     module DataplexV1
       
+      class CloudReliabilityZicyWs3DataplaneProtosAssetLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectationsRequirementOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosBlobstoreLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosCloudAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosCloudAssetComposition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosDirectLocationAssignment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosExtraParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosLocationAssignment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosLocationData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosPlacerLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosRegionalMigDistributionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosSpannerLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosTenantProjectProxy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosZoneConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1238,6 +1328,147 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosAssetLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ccfe_rms_path, as: 'ccfeRmsPath'
+          property :expected, as: 'expected', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectations, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectations::Representation
+      
+          collection :extra_parameters, as: 'extraParameters', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosExtraParameter, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosExtraParameter::Representation
+      
+          collection :location_data, as: 'locationData', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosLocationData, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosLocationData::Representation
+      
+          collection :parent_asset, as: 'parentAsset', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosCloudAsset, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosCloudAsset::Representation
+      
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requirement_override, as: 'requirementOverride', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectationsRequirementOverride, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectationsRequirementOverride::Representation
+      
+          property :zi_org_policy, as: 'ziOrgPolicy'
+          property :zi_region_policy, as: 'ziRegionPolicy'
+          property :zi_region_state, as: 'ziRegionState'
+          property :zone_isolation, as: 'zoneIsolation'
+          property :zone_separation, as: 'zoneSeparation'
+          property :zs_org_policy, as: 'zsOrgPolicy'
+          property :zs_region_state, as: 'zsRegionState'
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectationsRequirementOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zi_override, as: 'ziOverride'
+          property :zs_override, as: 'zsOverride'
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosBlobstoreLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :policy_id, as: 'policyId'
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosCloudAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_name, as: 'assetName'
+          property :asset_type, as: 'assetType'
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosCloudAssetComposition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :child_asset, as: 'childAsset', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosCloudAsset, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosCloudAsset::Representation
+      
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosDirectLocationAssignment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :location, as: 'location', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosLocationAssignment, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosLocationAssignment::Representation
+      
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosExtraParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :regional_mig_distribution_policy, as: 'regionalMigDistributionPolicy', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosRegionalMigDistributionPolicy, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosRegionalMigDistributionPolicy::Representation
+      
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosLocationAssignment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :location_type, as: 'locationType'
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosLocationData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blobstore_location, as: 'blobstoreLocation', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosBlobstoreLocation, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosBlobstoreLocation::Representation
+      
+          property :child_asset_location, as: 'childAssetLocation', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosCloudAssetComposition, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosCloudAssetComposition::Representation
+      
+          property :direct_location, as: 'directLocation', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosDirectLocationAssignment, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosDirectLocationAssignment::Representation
+      
+          property :gcp_project_proxy, as: 'gcpProjectProxy', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosTenantProjectProxy, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosTenantProjectProxy::Representation
+      
+          property :placer_location, as: 'placerLocation', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosPlacerLocation, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosPlacerLocation::Representation
+      
+          property :spanner_location, as: 'spannerLocation', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosSpannerLocation, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosSpannerLocation::Representation
+      
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosPlacerLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :placer_config, as: 'placerConfig'
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosRegionalMigDistributionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_shape, as: 'targetShape'
+          collection :zones, as: 'zones', class: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosZoneConfiguration, decorator: Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosZoneConfiguration::Representation
+      
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosSpannerLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_name, as: 'backupName'
+          collection :db_name, as: 'dbName'
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosTenantProjectProxy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :project_numbers, as: 'projectNumbers'
+        end
+      end
+      
+      class CloudReliabilityZicyWs3DataplaneProtosZoneConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zone, as: 'zone'
+        end
       end
       
       class Empty
