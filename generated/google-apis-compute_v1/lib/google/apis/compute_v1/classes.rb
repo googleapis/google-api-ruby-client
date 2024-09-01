@@ -1157,6 +1157,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :threads_per_core
       
+        # Turbo frequency mode to use for the instance. Supported modes include: *
+        # ALL_CORE_MAX Using empty string or not setting this field will use the
+        # platform-specific default turbo mode.
+        # Corresponds to the JSON property `turboMode`
+        # @return [String]
+        attr_accessor :turbo_mode
+      
         # The number of physical cores to expose to an instance. Multiply by the number
         # of threads per core to compute the total number of virtual CPUs to expose to
         # the instance. If unset, the number of cores is inferred from the instance's
@@ -1175,6 +1182,7 @@ module Google
           @enable_uefi_networking = args[:enable_uefi_networking] if args.key?(:enable_uefi_networking)
           @performance_monitoring_unit = args[:performance_monitoring_unit] if args.key?(:performance_monitoring_unit)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
+          @turbo_mode = args[:turbo_mode] if args.key?(:turbo_mode)
           @visible_core_count = args[:visible_core_count] if args.key?(:visible_core_count)
         end
       end
@@ -26400,6 +26408,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output only] Priority of firewall policy association. Not applicable for type=
+        # HIERARCHY.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
         # The rules that apply to the network.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
@@ -26423,6 +26437,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
