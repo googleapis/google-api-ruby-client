@@ -22,6 +22,433 @@ module Google
   module Apis
     module DataplexV1
       
+      # Provides the mapping of a cloud asset to a direct physical location or to a
+      # proxy that defines the location on its behalf.
+      class CloudReliabilityZicyWs3DataplaneProtosAssetLocation
+        include Google::Apis::Core::Hashable
+      
+        # Spanner path of the CCFE RMS database. It is only applicable for CCFE tenants
+        # that use CCFE RMS for storing resource metadata.
+        # Corresponds to the JSON property `ccfeRmsPath`
+        # @return [String]
+        attr_accessor :ccfe_rms_path
+      
+        # Defines the customer expectation around ZI/ZS for this asset and ZI/ZS state
+        # of the region at the time of asset creation.
+        # Corresponds to the JSON property `expected`
+        # @return [Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectations]
+        attr_accessor :expected
+      
+        # Defines extra parameters required for specific asset types.
+        # Corresponds to the JSON property `extraParameters`
+        # @return [Array<Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosExtraParameter>]
+        attr_accessor :extra_parameters
+      
+        # Contains all kinds of physical location definitions for this asset.
+        # Corresponds to the JSON property `locationData`
+        # @return [Array<Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosLocationData>]
+        attr_accessor :location_data
+      
+        # Defines parents assets if any in order to allow later generation of
+        # child_asset_location data via child assets.
+        # Corresponds to the JSON property `parentAsset`
+        # @return [Array<Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosCloudAsset>]
+        attr_accessor :parent_asset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ccfe_rms_path = args[:ccfe_rms_path] if args.key?(:ccfe_rms_path)
+          @expected = args[:expected] if args.key?(:expected)
+          @extra_parameters = args[:extra_parameters] if args.key?(:extra_parameters)
+          @location_data = args[:location_data] if args.key?(:location_data)
+          @parent_asset = args[:parent_asset] if args.key?(:parent_asset)
+        end
+      end
+      
+      # 
+      class CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectations
+        include Google::Apis::Core::Hashable
+      
+        # Explicit overrides for ZI and ZS requirements to be used for resources that
+        # should be excluded from ZI/ZS verification logic.
+        # Corresponds to the JSON property `requirementOverride`
+        # @return [Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectationsRequirementOverride]
+        attr_accessor :requirement_override
+      
+        # 
+        # Corresponds to the JSON property `ziOrgPolicy`
+        # @return [String]
+        attr_accessor :zi_org_policy
+      
+        # 
+        # Corresponds to the JSON property `ziRegionPolicy`
+        # @return [String]
+        attr_accessor :zi_region_policy
+      
+        # 
+        # Corresponds to the JSON property `ziRegionState`
+        # @return [String]
+        attr_accessor :zi_region_state
+      
+        # Deprecated: use zi_org_policy, zi_region_policy and zi_region_state instead
+        # for setting ZI expectations as per go/zicy-publish-physical-location.
+        # Corresponds to the JSON property `zoneIsolation`
+        # @return [String]
+        attr_accessor :zone_isolation
+      
+        # Deprecated: use zs_org_policy, and zs_region_stateinstead for setting Zs
+        # expectations as per go/zicy-publish-physical-location.
+        # Corresponds to the JSON property `zoneSeparation`
+        # @return [String]
+        attr_accessor :zone_separation
+      
+        # 
+        # Corresponds to the JSON property `zsOrgPolicy`
+        # @return [String]
+        attr_accessor :zs_org_policy
+      
+        # 
+        # Corresponds to the JSON property `zsRegionState`
+        # @return [String]
+        attr_accessor :zs_region_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requirement_override = args[:requirement_override] if args.key?(:requirement_override)
+          @zi_org_policy = args[:zi_org_policy] if args.key?(:zi_org_policy)
+          @zi_region_policy = args[:zi_region_policy] if args.key?(:zi_region_policy)
+          @zi_region_state = args[:zi_region_state] if args.key?(:zi_region_state)
+          @zone_isolation = args[:zone_isolation] if args.key?(:zone_isolation)
+          @zone_separation = args[:zone_separation] if args.key?(:zone_separation)
+          @zs_org_policy = args[:zs_org_policy] if args.key?(:zs_org_policy)
+          @zs_region_state = args[:zs_region_state] if args.key?(:zs_region_state)
+        end
+      end
+      
+      # 
+      class CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectationsRequirementOverride
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `ziOverride`
+        # @return [String]
+        attr_accessor :zi_override
+      
+        # 
+        # Corresponds to the JSON property `zsOverride`
+        # @return [String]
+        attr_accessor :zs_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zi_override = args[:zi_override] if args.key?(:zi_override)
+          @zs_override = args[:zs_override] if args.key?(:zs_override)
+        end
+      end
+      
+      # Policy ID that identified data placement in Blobstore as per go/blobstore-user-
+      # guide#data-metadata-placement-and-failure-domains
+      class CloudReliabilityZicyWs3DataplaneProtosBlobstoreLocation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `policyId`
+        # @return [Array<String>]
+        attr_accessor :policy_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_id = args[:policy_id] if args.key?(:policy_id)
+        end
+      end
+      
+      # 
+      class CloudReliabilityZicyWs3DataplaneProtosCloudAsset
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `assetName`
+        # @return [String]
+        attr_accessor :asset_name
+      
+        # 
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_name = args[:asset_name] if args.key?(:asset_name)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
+        end
+      end
+      
+      # 
+      class CloudReliabilityZicyWs3DataplaneProtosCloudAssetComposition
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `childAsset`
+        # @return [Array<Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosCloudAsset>]
+        attr_accessor :child_asset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @child_asset = args[:child_asset] if args.key?(:child_asset)
+        end
+      end
+      
+      # 
+      class CloudReliabilityZicyWs3DataplaneProtosDirectLocationAssignment
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `location`
+        # @return [Array<Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosLocationAssignment>]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # Defines parameters that should only be used for specific asset types.
+      class CloudReliabilityZicyWs3DataplaneProtosExtraParameter
+        include Google::Apis::Core::Hashable
+      
+        # To be used for specifying the intended distribution of regional compute.
+        # googleapis.com/InstanceGroupManager instances
+        # Corresponds to the JSON property `regionalMigDistributionPolicy`
+        # @return [Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosRegionalMigDistributionPolicy]
+        attr_accessor :regional_mig_distribution_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regional_mig_distribution_policy = args[:regional_mig_distribution_policy] if args.key?(:regional_mig_distribution_policy)
+        end
+      end
+      
+      # 
+      class CloudReliabilityZicyWs3DataplaneProtosLocationAssignment
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # 
+        # Corresponds to the JSON property `locationType`
+        # @return [String]
+        attr_accessor :location_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @location_type = args[:location_type] if args.key?(:location_type)
+        end
+      end
+      
+      # 
+      class CloudReliabilityZicyWs3DataplaneProtosLocationData
+        include Google::Apis::Core::Hashable
+      
+        # Policy ID that identified data placement in Blobstore as per go/blobstore-user-
+        # guide#data-metadata-placement-and-failure-domains
+        # Corresponds to the JSON property `blobstoreLocation`
+        # @return [Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosBlobstoreLocation]
+        attr_accessor :blobstore_location
+      
+        # 
+        # Corresponds to the JSON property `childAssetLocation`
+        # @return [Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosCloudAssetComposition]
+        attr_accessor :child_asset_location
+      
+        # 
+        # Corresponds to the JSON property `directLocation`
+        # @return [Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosDirectLocationAssignment]
+        attr_accessor :direct_location
+      
+        # 
+        # Corresponds to the JSON property `gcpProjectProxy`
+        # @return [Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosTenantProjectProxy]
+        attr_accessor :gcp_project_proxy
+      
+        # Message describing that the location of the customer resource is tied to
+        # placer allocations
+        # Corresponds to the JSON property `placerLocation`
+        # @return [Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosPlacerLocation]
+        attr_accessor :placer_location
+      
+        # 
+        # Corresponds to the JSON property `spannerLocation`
+        # @return [Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosSpannerLocation]
+        attr_accessor :spanner_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blobstore_location = args[:blobstore_location] if args.key?(:blobstore_location)
+          @child_asset_location = args[:child_asset_location] if args.key?(:child_asset_location)
+          @direct_location = args[:direct_location] if args.key?(:direct_location)
+          @gcp_project_proxy = args[:gcp_project_proxy] if args.key?(:gcp_project_proxy)
+          @placer_location = args[:placer_location] if args.key?(:placer_location)
+          @spanner_location = args[:spanner_location] if args.key?(:spanner_location)
+        end
+      end
+      
+      # Message describing that the location of the customer resource is tied to
+      # placer allocations
+      class CloudReliabilityZicyWs3DataplaneProtosPlacerLocation
+        include Google::Apis::Core::Hashable
+      
+        # Directory with a config related to it in placer (e.g. "/placer/prod/home/my-
+        # root/my-dir")
+        # Corresponds to the JSON property `placerConfig`
+        # @return [String]
+        attr_accessor :placer_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @placer_config = args[:placer_config] if args.key?(:placer_config)
+        end
+      end
+      
+      # To be used for specifying the intended distribution of regional compute.
+      # googleapis.com/InstanceGroupManager instances
+      class CloudReliabilityZicyWs3DataplaneProtosRegionalMigDistributionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The shape in which the group converges around distribution of resources.
+        # Instance of proto2 enum
+        # Corresponds to the JSON property `targetShape`
+        # @return [Fixnum]
+        attr_accessor :target_shape
+      
+        # Cloud zones used by regional MIG to create instances.
+        # Corresponds to the JSON property `zones`
+        # @return [Array<Google::Apis::DataplexV1::CloudReliabilityZicyWs3DataplaneProtosZoneConfiguration>]
+        attr_accessor :zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_shape = args[:target_shape] if args.key?(:target_shape)
+          @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
+      # 
+      class CloudReliabilityZicyWs3DataplaneProtosSpannerLocation
+        include Google::Apis::Core::Hashable
+      
+        # Set of backups used by the resource with name in the same format as what is
+        # available at http://table/spanner_automon.backup_metadata
+        # Corresponds to the JSON property `backupName`
+        # @return [Array<String>]
+        attr_accessor :backup_name
+      
+        # Set of databases used by the resource in format /span//
+        # Corresponds to the JSON property `dbName`
+        # @return [Array<String>]
+        attr_accessor :db_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_name = args[:backup_name] if args.key?(:backup_name)
+          @db_name = args[:db_name] if args.key?(:db_name)
+        end
+      end
+      
+      # 
+      class CloudReliabilityZicyWs3DataplaneProtosTenantProjectProxy
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `projectNumbers`
+        # @return [Array<String>]
+        attr_accessor :project_numbers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_numbers = args[:project_numbers] if args.key?(:project_numbers)
+        end
+      end
+      
+      # 
+      class CloudReliabilityZicyWs3DataplaneProtosZoneConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
