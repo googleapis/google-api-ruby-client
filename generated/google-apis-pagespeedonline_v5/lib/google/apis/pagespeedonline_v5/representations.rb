@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MetricSavings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PagespeedApiLoadingExperienceV5
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -230,6 +236,8 @@ module Google
           property :error_message, as: 'errorMessage'
           property :explanation, as: 'explanation'
           property :id, as: 'id'
+          property :metric_savings, as: 'metricSavings', class: Google::Apis::PagespeedonlineV5::MetricSavings, decorator: Google::Apis::PagespeedonlineV5::MetricSavings::Representation
+      
           property :numeric_unit, as: 'numericUnit'
           property :numeric_value, as: 'numericValue'
           property :score, as: 'score'
@@ -284,6 +292,17 @@ module Google
           property :timing, as: 'timing', class: Google::Apis::PagespeedonlineV5::Timing, decorator: Google::Apis::PagespeedonlineV5::Timing::Representation
       
           property :user_agent, as: 'userAgent'
+        end
+      end
+      
+      class MetricSavings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cls, as: 'CLS'
+          property :fcp, as: 'FCP'
+          property :inp, as: 'INP'
+          property :lcp, as: 'LCP'
+          property :tbt, as: 'TBT'
         end
       end
       

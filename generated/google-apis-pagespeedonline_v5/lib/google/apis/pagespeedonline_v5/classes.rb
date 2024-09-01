@@ -352,6 +352,11 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # The metric savings of the audit.
+        # Corresponds to the JSON property `metricSavings`
+        # @return [Google::Apis::PagespeedonlineV5::MetricSavings]
+        attr_accessor :metric_savings
+      
         # The unit of the numeric_value field. Used to format the numeric value for
         # display.
         # Corresponds to the JSON property `numericUnit`
@@ -397,6 +402,7 @@ module Google
           @error_message = args[:error_message] if args.key?(:error_message)
           @explanation = args[:explanation] if args.key?(:explanation)
           @id = args[:id] if args.key?(:id)
+          @metric_savings = args[:metric_savings] if args.key?(:metric_savings)
           @numeric_unit = args[:numeric_unit] if args.key?(:numeric_unit)
           @numeric_value = args[:numeric_value] if args.key?(:numeric_value)
           @score = args[:score] if args.key?(:score)
@@ -581,6 +587,54 @@ module Google
           @stack_packs = args[:stack_packs] if args.key?(:stack_packs)
           @timing = args[:timing] if args.key?(:timing)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
+        end
+      end
+      
+      # The metric savings of the audit.
+      class MetricSavings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional numeric value representing the audit's savings for the CLS
+        # metric.
+        # Corresponds to the JSON property `CLS`
+        # @return [Float]
+        attr_accessor :cls
+      
+        # Optional. Optional numeric value representing the audit's savings for the FCP
+        # metric.
+        # Corresponds to the JSON property `FCP`
+        # @return [Float]
+        attr_accessor :fcp
+      
+        # Optional. Optional numeric value representing the audit's savings for the INP
+        # metric.
+        # Corresponds to the JSON property `INP`
+        # @return [Float]
+        attr_accessor :inp
+      
+        # Optional. Optional numeric value representing the audit's savings for the LCP
+        # metric.
+        # Corresponds to the JSON property `LCP`
+        # @return [Float]
+        attr_accessor :lcp
+      
+        # Optional. Optional numeric value representing the audit's savings for the TBT
+        # metric.
+        # Corresponds to the JSON property `TBT`
+        # @return [Float]
+        attr_accessor :tbt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cls = args[:cls] if args.key?(:cls)
+          @fcp = args[:fcp] if args.key?(:fcp)
+          @inp = args[:inp] if args.key?(:inp)
+          @lcp = args[:lcp] if args.key?(:lcp)
+          @tbt = args[:tbt] if args.key?(:tbt)
         end
       end
       
