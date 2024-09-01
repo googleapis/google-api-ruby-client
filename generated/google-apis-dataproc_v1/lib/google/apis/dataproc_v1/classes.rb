@@ -4952,6 +4952,11 @@ module Google
         # @return [String]
         attr_accessor :session_template
       
+        # Spark connect configuration for an interactive session.
+        # Corresponds to the JSON property `sparkConnectSession`
+        # @return [Google::Apis::DataprocV1::SparkConnectConfig]
+        attr_accessor :spark_connect_session
+      
         # Output only. A state of the session.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -4999,6 +5004,7 @@ module Google
           @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
           @runtime_info = args[:runtime_info] if args.key?(:runtime_info)
           @session_template = args[:session_template] if args.key?(:session_template)
+          @spark_connect_session = args[:spark_connect_session] if args.key?(:spark_connect_session)
           @state = args[:state] if args.key?(:state)
           @state_history = args[:state_history] if args.key?(:state_history)
           @state_message = args[:state_message] if args.key?(:state_message)
@@ -5148,6 +5154,11 @@ module Google
         # @return [Google::Apis::DataprocV1::RuntimeConfig]
         attr_accessor :runtime_config
       
+        # Spark connect configuration for an interactive session.
+        # Corresponds to the JSON property `sparkConnectSession`
+        # @return [Google::Apis::DataprocV1::SparkConnectConfig]
+        attr_accessor :spark_connect_session
+      
         # Output only. The time the template was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -5173,6 +5184,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
+          @spark_connect_session = args[:spark_connect_session] if args.key?(:spark_connect_session)
           @update_time = args[:update_time] if args.key?(:update_time)
           @uuid = args[:uuid] if args.key?(:uuid)
         end
@@ -5264,8 +5276,8 @@ module Google
       
         # Optional. The version of software inside the cluster. It must be one of the
         # supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/
-        # versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (
-        # including a subminor version, such as "1.2.29"), or the "preview" version (
+        # versioning/dataproc-versions#supported-dataproc-image-versions), such as "1.2"
+        # (including a subminor version, such as "1.2.29"), or the "preview" version (
         # https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#
         # other_versions). If unspecified, it defaults to the latest Debian version.
         # Corresponds to the JSON property `imageVersion`
@@ -5354,6 +5366,19 @@ module Google
           @jar_file_uris = args[:jar_file_uris] if args.key?(:jar_file_uris)
           @main_class = args[:main_class] if args.key?(:main_class)
           @main_jar_file_uri = args[:main_jar_file_uri] if args.key?(:main_jar_file_uri)
+        end
+      end
+      
+      # Spark connect configuration for an interactive session.
+      class SparkConnectConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
