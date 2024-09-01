@@ -608,6 +608,7 @@ module Google
       
           property :subject_key_id, as: 'subjectKeyId', class: Google::Apis::PrivatecaV1::KeyId, decorator: Google::Apis::PrivatecaV1::KeyId::Representation
       
+          property :tbs_certificate_digest, as: 'tbsCertificateDigest'
           property :x509_description, as: 'x509Description', class: Google::Apis::PrivatecaV1::X509Parameters, decorator: Google::Apis::PrivatecaV1::X509Parameters::Representation
       
         end

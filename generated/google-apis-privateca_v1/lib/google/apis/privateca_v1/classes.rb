@@ -769,6 +769,13 @@ module Google
         # @return [Google::Apis::PrivatecaV1::KeyId]
         attr_accessor :subject_key_id
       
+        # The hash of the pre-signed certificate, which will be signed by the CA.
+        # Corresponds to the TBS Certificate in https://tools.ietf.org/html/rfc5280#
+        # section-4.1.2. The field will always be populated.
+        # Corresponds to the JSON property `tbsCertificateDigest`
+        # @return [String]
+        attr_accessor :tbs_certificate_digest
+      
         # An X509Parameters is used to describe certain fields of an X.509 certificate,
         # such as the key usage fields, fields specific to CA certificates, certificate
         # policy extensions and custom extensions.
@@ -789,6 +796,7 @@ module Google
           @public_key = args[:public_key] if args.key?(:public_key)
           @subject_description = args[:subject_description] if args.key?(:subject_description)
           @subject_key_id = args[:subject_key_id] if args.key?(:subject_key_id)
+          @tbs_certificate_digest = args[:tbs_certificate_digest] if args.key?(:tbs_certificate_digest)
           @x509_description = args[:x509_description] if args.key?(:x509_description)
         end
       end
