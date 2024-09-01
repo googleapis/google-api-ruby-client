@@ -1990,8 +1990,8 @@ module Google
         # If false or unspecified, each row with all metrics equal to 0 will not be
         # returned. If true, these rows will be returned if they are not separately
         # removed by a filter. Regardless of this `keep_empty_rows` setting, only data
-        # recorded by the Google Analytics (GA4) property can be displayed in a report.
-        # For example if a property never logs a `purchase` event, then a query for the `
+        # recorded by the Google Analytics property can be displayed in a report. For
+        # example if a property never logs a `purchase` event, then a query for the `
         # eventName` dimension and `eventCount` metric will not have a row eventName: "
         # purchase" and eventCount: 0.
         # Corresponds to the JSON property `keepEmptyRows`
@@ -2020,18 +2020,18 @@ module Google
         # @return [Array<Google::Apis::AnalyticsdataV1beta::Pivot>]
         attr_accessor :pivots
       
-        # A Google Analytics GA4 property identifier whose events are tracked. Specified
-        # in the URL path and not the body. To learn more, see [where to find your
-        # Property ID](https://developers.google.com/analytics/devguides/reporting/data/
-        # v1/property-id). Within a batch request, this property should either be
+        # A Google Analytics property identifier whose events are tracked. Specified in
+        # the URL path and not the body. To learn more, see [where to find your Property
+        # ID](https://developers.google.com/analytics/devguides/reporting/data/v1/
+        # property-id). Within a batch request, this property should either be
         # unspecified or consistent with the batch-level property. Example: properties/
         # 1234
         # Corresponds to the JSON property `property`
         # @return [String]
         attr_accessor :property
       
-        # Toggles whether to return the current state of this Analytics Property's quota.
-        # Quota is returned in [PropertyQuota](#PropertyQuota).
+        # Toggles whether to return the current state of this Google Analytics property'
+        # s quota. Quota is returned in [PropertyQuota](#PropertyQuota).
         # Corresponds to the JSON property `returnPropertyQuota`
         # @return [Boolean]
         attr_accessor :return_property_quota
@@ -2192,8 +2192,8 @@ module Google
         # @return [Array<Google::Apis::AnalyticsdataV1beta::OrderBy>]
         attr_accessor :order_bys
       
-        # Toggles whether to return the current state of this Analytics Property's
-        # Realtime quota. Quota is returned in [PropertyQuota](#PropertyQuota).
+        # Toggles whether to return the current state of this Google Analytics property'
+        # s Realtime quota. Quota is returned in [PropertyQuota](#PropertyQuota).
         # Corresponds to the JSON property `returnPropertyQuota`
         # @return [Boolean]
         attr_accessor :return_property_quota
@@ -2349,8 +2349,8 @@ module Google
         # If false or unspecified, each row with all metrics equal to 0 will not be
         # returned. If true, these rows will be returned if they are not separately
         # removed by a filter. Regardless of this `keep_empty_rows` setting, only data
-        # recorded by the Google Analytics (GA4) property can be displayed in a report.
-        # For example if a property never logs a `purchase` event, then a query for the `
+        # recorded by the Google Analytics property can be displayed in a report. For
+        # example if a property never logs a `purchase` event, then a query for the `
         # eventName` dimension and `eventCount` metric will not have a row eventName: "
         # purchase" and eventCount: 0.
         # Corresponds to the JSON property `keepEmptyRows`
@@ -2408,18 +2408,18 @@ module Google
         # @return [Array<Google::Apis::AnalyticsdataV1beta::OrderBy>]
         attr_accessor :order_bys
       
-        # A Google Analytics GA4 property identifier whose events are tracked. Specified
-        # in the URL path and not the body. To learn more, see [where to find your
-        # Property ID](https://developers.google.com/analytics/devguides/reporting/data/
-        # v1/property-id). Within a batch request, this property should either be
+        # A Google Analytics property identifier whose events are tracked. Specified in
+        # the URL path and not the body. To learn more, see [where to find your Property
+        # ID](https://developers.google.com/analytics/devguides/reporting/data/v1/
+        # property-id). Within a batch request, this property should either be
         # unspecified or consistent with the batch-level property. Example: properties/
         # 1234
         # Corresponds to the JSON property `property`
         # @return [String]
         attr_accessor :property
       
-        # Toggles whether to return the current state of this Analytics Property's quota.
-        # Quota is returned in [PropertyQuota](#PropertyQuota).
+        # Toggles whether to return the current state of this Google Analytics property'
+        # s quota. Quota is returned in [PropertyQuota](#PropertyQuota).
         # Corresponds to the JSON property `returnPropertyQuota`
         # @return [Boolean]
         attr_accessor :return_property_quota

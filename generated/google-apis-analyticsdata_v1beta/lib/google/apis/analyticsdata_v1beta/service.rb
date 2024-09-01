@@ -57,12 +57,12 @@ module Google
         end
         
         # Returns multiple pivot reports in a batch. All reports must be for the same
-        # GA4 Property.
+        # Google Analytics property.
         # @param [String] property
-        #   A Google Analytics GA4 property identifier whose events are tracked. Specified
-        #   in the URL path and not the body. To learn more, see [where to find your
-        #   Property ID](https://developers.google.com/analytics/devguides/reporting/data/
-        #   v1/property-id). This property must be specified for the batch. The property
+        #   A Google Analytics property identifier whose events are tracked. Specified in
+        #   the URL path and not the body. To learn more, see [where to find your Property
+        #   ID](https://developers.google.com/analytics/devguides/reporting/data/v1/
+        #   property-id). This property must be specified for the batch. The property
         #   within RunPivotReportRequest may either be unspecified or consistent with this
         #   property. Example: properties/1234
         # @param [Google::Apis::AnalyticsdataV1beta::BatchRunPivotReportsRequest] batch_run_pivot_reports_request_object
@@ -95,13 +95,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns multiple reports in a batch. All reports must be for the same GA4
-        # Property.
+        # Returns multiple reports in a batch. All reports must be for the same Google
+        # Analytics property.
         # @param [String] property
-        #   A Google Analytics GA4 property identifier whose events are tracked. Specified
-        #   in the URL path and not the body. To learn more, see [where to find your
-        #   Property ID](https://developers.google.com/analytics/devguides/reporting/data/
-        #   v1/property-id). This property must be specified for the batch. The property
+        #   A Google Analytics property identifier whose events are tracked. Specified in
+        #   the URL path and not the body. To learn more, see [where to find your Property
+        #   ID](https://developers.google.com/analytics/devguides/reporting/data/v1/
+        #   property-id). This property must be specified for the batch. The property
         #   within RunReportRequest may either be unspecified or consistent with this
         #   property. Example: properties/1234
         # @param [Google::Apis::AnalyticsdataV1beta::BatchRunReportsRequest] batch_run_reports_request_object
@@ -142,10 +142,10 @@ module Google
         # the report is compatible. The Realtime and Core reports have different
         # compatibility rules. This method checks compatibility for Core reports.
         # @param [String] property
-        #   A Google Analytics GA4 property identifier whose events are tracked. To learn
-        #   more, see [where to find your Property ID](https://developers.google.com/
-        #   analytics/devguides/reporting/data/v1/property-id). `property` should be the
-        #   same value as in your `runReport` request. Example: properties/1234
+        #   A Google Analytics property identifier whose events are tracked. To learn more,
+        #   see [where to find your Property ID](https://developers.google.com/analytics/
+        #   devguides/reporting/data/v1/property-id). `property` should be the same value
+        #   as in your `runReport` request. Example: properties/1234
         # @param [Google::Apis::AnalyticsdataV1beta::CheckCompatibilityRequest] check_compatibility_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -178,7 +178,7 @@ module Google
         
         # Returns metadata for dimensions and metrics available in reporting methods.
         # Used to explore the dimensions and metrics. In this method, a Google Analytics
-        # GA4 Property Identifier is specified in the request, and the metadata response
+        # property identifier is specified in the request, and the metadata response
         # includes Custom dimensions and metrics as well as Universal metadata. For
         # example if a custom metric with parameter name `levels_unlocked` is registered
         # to a property, the Metadata response will contain `customEvent:levels_unlocked`
@@ -187,11 +187,11 @@ module Google
         # @param [String] name
         #   Required. The resource name of the metadata to retrieve. This name field is
         #   specified in the URL path and not URL parameters. Property is a numeric Google
-        #   Analytics GA4 Property identifier. To learn more, see [where to find your
-        #   Property ID](https://developers.google.com/analytics/devguides/reporting/data/
-        #   v1/property-id). Example: properties/1234/metadata Set the Property ID to 0
-        #   for dimensions and metrics common to all properties. In this special mode,
-        #   this method will not return custom dimensions and metrics.
+        #   Analytics property identifier. To learn more, see [where to find your Property
+        #   ID](https://developers.google.com/analytics/devguides/reporting/data/v1/
+        #   property-id). Example: properties/1234/metadata Set the Property ID to 0 for
+        #   dimensions and metrics common to all properties. In this special mode, this
+        #   method will not return custom dimensions and metrics.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -224,10 +224,10 @@ module Google
         # pivot report, dimensions are only visible if they are included in a pivot.
         # Multiple pivots can be specified to further dissect your data.
         # @param [String] property
-        #   A Google Analytics GA4 property identifier whose events are tracked. Specified
-        #   in the URL path and not the body. To learn more, see [where to find your
-        #   Property ID](https://developers.google.com/analytics/devguides/reporting/data/
-        #   v1/property-id). Within a batch request, this property should either be
+        #   A Google Analytics property identifier whose events are tracked. Specified in
+        #   the URL path and not the body. To learn more, see [where to find your Property
+        #   ID](https://developers.google.com/analytics/devguides/reporting/data/v1/
+        #   property-id). Within a batch request, this property should either be
         #   unspecified or consistent with the batch-level property. Example: properties/
         #   1234
         # @param [Google::Apis::AnalyticsdataV1beta::RunPivotReportRequest] run_pivot_report_request_object
@@ -268,10 +268,10 @@ module Google
         # understanding responses, see [Creating a Realtime Report](https://developers.
         # google.com/analytics/devguides/reporting/data/v1/realtime-basics).
         # @param [String] property
-        #   A Google Analytics GA4 property identifier whose events are tracked. Specified
-        #   in the URL path and not the body. To learn more, see [where to find your
-        #   Property ID](https://developers.google.com/analytics/devguides/reporting/data/
-        #   v1/property-id). Example: properties/1234
+        #   A Google Analytics property identifier whose events are tracked. Specified in
+        #   the URL path and not the body. To learn more, see [where to find your Property
+        #   ID](https://developers.google.com/analytics/devguides/reporting/data/v1/
+        #   property-id). Example: properties/1234
         # @param [Google::Apis::AnalyticsdataV1beta::RunRealtimeReportRequest] run_realtime_report_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -312,10 +312,10 @@ module Google
         # see [Creating a Report](https://developers.google.com/analytics/devguides/
         # reporting/data/v1/basics).
         # @param [String] property
-        #   A Google Analytics GA4 property identifier whose events are tracked. Specified
-        #   in the URL path and not the body. To learn more, see [where to find your
-        #   Property ID](https://developers.google.com/analytics/devguides/reporting/data/
-        #   v1/property-id). Within a batch request, this property should either be
+        #   A Google Analytics property identifier whose events are tracked. Specified in
+        #   the URL path and not the body. To learn more, see [where to find your Property
+        #   ID](https://developers.google.com/analytics/devguides/reporting/data/v1/
+        #   property-id). Within a batch request, this property should either be
         #   unspecified or consistent with the batch-level property. Example: properties/
         #   1234
         # @param [Google::Apis::AnalyticsdataV1beta::RunReportRequest] run_report_request_object
