@@ -1032,6 +1032,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :distance_measure, as: 'distanceMeasure'
+          property :distance_result_field, as: 'distanceResultField'
+          property :distance_threshold, as: 'distanceThreshold'
           property :limit, as: 'limit'
           property :query_vector, as: 'queryVector', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
       

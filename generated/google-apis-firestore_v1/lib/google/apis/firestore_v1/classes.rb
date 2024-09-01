@@ -1109,6 +1109,22 @@ module Google
         # @return [String]
         attr_accessor :distance_measure
       
+        # Optional. Optional name of the field to output the result of the vector
+        # distance calculation. Must conform to document field name limitations.
+        # Corresponds to the JSON property `distanceResultField`
+        # @return [String]
+        attr_accessor :distance_result_field
+      
+        # Optional. Option to specify a threshold for which no less similar documents
+        # will be returned. The behavior of the specified `distance_measure` will affect
+        # the meaning of the distance threshold. Since DOT_PRODUCT distances increase
+        # when the vectors are more similar, the comparison is inverted. For EUCLIDEAN,
+        # COSINE: WHERE distance <= distance_threshold For DOT_PRODUCT: WHERE distance >=
+        # distance_threshold
+        # Corresponds to the JSON property `distanceThreshold`
+        # @return [Float]
+        attr_accessor :distance_threshold
+      
         # Required. The number of nearest neighbors to return. Must be a positive
         # integer of no more than 1000.
         # Corresponds to the JSON property `limit`
@@ -1132,6 +1148,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @distance_measure = args[:distance_measure] if args.key?(:distance_measure)
+          @distance_result_field = args[:distance_result_field] if args.key?(:distance_result_field)
+          @distance_threshold = args[:distance_threshold] if args.key?(:distance_threshold)
           @limit = args[:limit] if args.key?(:limit)
           @query_vector = args[:query_vector] if args.key?(:query_vector)
           @vector_field = args[:vector_field] if args.key?(:vector_field)
@@ -1262,7 +1280,7 @@ module Google
       class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
         include Google::Apis::Core::Hashable
       
-        # The ids of the collection groups that are being deleted.
+        # The IDs of the collection groups that are being deleted.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
@@ -1273,7 +1291,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Which namespace ids are being deleted.
+        # Which namespace IDs are being deleted.
         # Corresponds to the JSON property `namespaceIds`
         # @return [Array<String>]
         attr_accessor :namespace_ids
@@ -1500,7 +1518,7 @@ module Google
         attr_accessor :etag
       
         # Output only. The key_prefix for this database. This key_prefix is used, in
-        # combination with the project id ("~") to construct the application id that is
+        # combination with the project ID ("~") to construct the application ID that is
         # returned from the Cloud Datastore APIs in Google App Engine first generation
         # runtimes. This value may be empty in which case the appid to use for URL-
         # encoded keys is the project_id (eg: foo instead of v~foo).
@@ -1598,7 +1616,7 @@ module Google
       end
       
       # Encryption configuration for a new database being created from another source.
-      # The source could be a Backup or a DatabaseSnapshot.
+      # The source could be a Backup .
       class GoogleFirestoreAdminV1EncryptionConfig
         include Google::Apis::Core::Hashable
       
@@ -1635,7 +1653,7 @@ module Google
       class GoogleFirestoreAdminV1ExportDocumentsMetadata
         include Google::Apis::Core::Hashable
       
-        # Which collection ids are being exported.
+        # Which collection IDs are being exported.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
@@ -1646,7 +1664,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Which namespace ids are being exported.
+        # Which namespace IDs are being exported.
         # Corresponds to the JSON property `namespaceIds`
         # @return [Array<String>]
         attr_accessor :namespace_ids
@@ -1707,8 +1725,8 @@ module Google
       class GoogleFirestoreAdminV1ExportDocumentsRequest
         include Google::Apis::Core::Hashable
       
-        # Which collection ids to export. Unspecified means all collections. Each
-        # collection id in this list must be unique.
+        # Which collection IDs to export. Unspecified means all collections. Each
+        # collection ID in this list must be unique.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
@@ -1778,7 +1796,7 @@ module Google
       
       # Represents a single field in the database. Fields are grouped by their "
       # Collection Group", which represent all collections in the database with the
-      # same id.
+      # same ID.
       class GoogleFirestoreAdminV1Field
         include Google::Apis::Core::Hashable
       
@@ -1927,7 +1945,7 @@ module Google
       class GoogleFirestoreAdminV1ImportDocumentsMetadata
         include Google::Apis::Core::Hashable
       
-        # Which collection ids are being imported.
+        # Which collection IDs are being imported.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
@@ -1943,7 +1961,7 @@ module Google
         # @return [String]
         attr_accessor :input_uri_prefix
       
-        # Which namespace ids are being imported.
+        # Which namespace IDs are being imported.
         # Corresponds to the JSON property `namespaceIds`
         # @return [Array<String>]
         attr_accessor :namespace_ids
@@ -1991,8 +2009,8 @@ module Google
       class GoogleFirestoreAdminV1ImportDocumentsRequest
         include Google::Apis::Core::Hashable
       
-        # Which collection ids to import. Unspecified means all collections included in
-        # the import. Each collection id in this list must be unique.
+        # Which collection IDs to import. Unspecified means all collections included in
+        # the import. Each collection ID in this list must be unique.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
@@ -2057,10 +2075,10 @@ module Google
       
         # Indexes with a collection query scope specified allow queries against a
         # collection that is the child of a specific document, specified at query time,
-        # and that has the same collection id. Indexes with a collection group query
+        # and that has the same collection ID. Indexes with a collection group query
         # scope specified allow queries against all collections descended from a
         # specific document, specified at query time, and that have the same collection
-        # id as this index.
+        # ID as this index.
         # Corresponds to the JSON property `queryScope`
         # @return [String]
         attr_accessor :query_scope
@@ -2476,25 +2494,26 @@ module Google
       class GoogleFirestoreAdminV1RestoreDatabaseRequest
         include Google::Apis::Core::Hashable
       
-        # Backup to restore from. Must be from the same project as the parent. The
-        # restored database will be created in the same location as the source backup.
-        # Format is: `projects/`project_id`/locations/`location`/backups/`backup``
+        # Required. Backup to restore from. Must be from the same project as the parent.
+        # The restored database will be created in the same location as the source
+        # backup. Format is: `projects/`project_id`/locations/`location`/backups/`backup`
+        # `
         # Corresponds to the JSON property `backup`
         # @return [String]
         attr_accessor :backup
       
         # Required. The ID to use for the database, which will become the final
-        # component of the database's resource name. This database id must not be
+        # component of the database's resource name. This database ID must not be
         # associated with an existing database. This value should be 4-63 characters.
         # Valid characters are /a-z-/ with first character a letter and the last a
         # letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-[0-9a-
-        # f]`12`/. "(default)" database id is also valid.
+        # f]`12`/. "(default)" database ID is also valid.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
       
         # Encryption configuration for a new database being created from another source.
-        # The source could be a Backup or a DatabaseSnapshot.
+        # The source could be a Backup .
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig]
         attr_accessor :encryption_config
