@@ -455,8 +455,7 @@ module Google
         attr_accessor :expected_action
       
         # Optional. Flag for a reCAPTCHA express request for an assessment without a
-        # token. If enabled, `site_key` must reference a SCORE key with WAF feature set
-        # to EXPRESS.
+        # token. If enabled, `site_key` must reference an Express site key.
         # Corresponds to the JSON property `express`
         # @return [Boolean]
         attr_accessor :express
@@ -560,6 +559,19 @@ module Google
           @user_info = args[:user_info] if args.key?(:user_info)
           @user_ip_address = args[:user_ip_address] if args.key?(:user_ip_address)
           @waf_token_assessment = args[:waf_token_assessment] if args.key?(:waf_token_assessment)
+        end
+      end
+      
+      # Settings specific to keys that can be used for reCAPTCHA Express.
+      class GoogleCloudRecaptchaenterpriseV1ExpressKeySettings
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1072,6 +1084,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Settings specific to keys that can be used for reCAPTCHA Express.
+        # Corresponds to the JSON property `expressSettings`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ExpressKeySettings]
+        attr_accessor :express_settings
+      
         # Settings specific to keys that can be used by iOS apps.
         # Corresponds to the JSON property `iosSettings`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IosKeySettings]
@@ -1113,6 +1130,7 @@ module Google
           @android_settings = args[:android_settings] if args.key?(:android_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @express_settings = args[:express_settings] if args.key?(:express_settings)
           @ios_settings = args[:ios_settings] if args.key?(:ios_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)

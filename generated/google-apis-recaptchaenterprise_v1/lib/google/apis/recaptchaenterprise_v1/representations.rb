@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1ExpressKeySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1FirewallAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -578,6 +584,12 @@ module Google
         end
       end
       
+      class GoogleCloudRecaptchaenterpriseV1ExpressKeySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1FirewallAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -741,6 +753,8 @@ module Google
       
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :express_settings, as: 'expressSettings', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ExpressKeySettings, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ExpressKeySettings::Representation
+      
           property :ios_settings, as: 'iosSettings', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IosKeySettings, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IosKeySettings::Representation
       
           hash :labels, as: 'labels'
