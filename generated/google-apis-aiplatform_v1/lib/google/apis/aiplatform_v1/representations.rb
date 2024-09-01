@@ -3112,6 +3112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5465,6 +5471,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1VertexAiSearch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1VertexRagStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1VertexRagStoreRagResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8173,6 +8191,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :row_synced, :numeric_string => true, as: 'rowSynced'
+          property :system_watermark_time, as: 'systemWatermarkTime'
           property :total_slot, :numeric_string => true, as: 'totalSlot'
         end
       end
@@ -10649,6 +10668,8 @@ module Google
       
           property :resource_runtime_spec, as: 'resourceRuntimeSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ResourceRuntimeSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ResourceRuntimeSpec::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
@@ -10960,6 +10981,8 @@ module Google
       
           property :deploy_gke, as: 'deployGke', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke::Representation
       
+          property :multi_deploy_vertex, as: 'multiDeployVertex', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex::Representation
+      
           property :open_evaluation_pipeline, as: 'openEvaluationPipeline', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::Representation
       
           property :open_fine_tuning_pipeline, as: 'openFineTuningPipeline', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::Representation
@@ -11017,6 +11040,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :gke_yaml_configs, as: 'gkeYamlConfigs'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :multi_deploy_vertex, as: 'multiDeployVertex', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeploy, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeploy::Representation
+      
         end
       end
       
@@ -11596,6 +11627,8 @@ module Google
           property :disable_attribution, as: 'disableAttribution'
           property :vertex_ai_search, as: 'vertexAiSearch', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexAiSearch, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexAiSearch::Representation
       
+          property :vertex_rag_store, as: 'vertexRagStore', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexRagStore, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexRagStore::Representation
+      
         end
       end
       
@@ -11787,6 +11820,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_retries, as: 'disableRetries'
+          property :max_wait_duration, as: 'maxWaitDuration'
           property :restart_job_on_worker_restart, as: 'restartJobOnWorkerRestart'
           property :strategy, as: 'strategy'
           property :timeout, as: 'timeout'
@@ -14014,7 +14048,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :total_billable_character_count, :numeric_string => true, as: 'totalBillableCharacterCount'
           property :total_billable_token_count, :numeric_string => true, as: 'totalBillableTokenCount'
+          property :total_truncated_example_count, :numeric_string => true, as: 'totalTruncatedExampleCount'
           property :total_tuning_character_count, :numeric_string => true, as: 'totalTuningCharacterCount'
+          collection :truncated_example_indices, as: 'truncatedExampleIndices'
           property :tuning_dataset_example_count, :numeric_string => true, as: 'tuningDatasetExampleCount'
           property :tuning_step_count, :numeric_string => true, as: 'tuningStepCount'
           collection :user_dataset_examples, as: 'userDatasetExamples', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
@@ -14792,6 +14828,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1VertexRagStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rag_corpora, as: 'ragCorpora'
+          collection :rag_resources, as: 'ragResources', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexRagStoreRagResource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexRagStoreRagResource::Representation
+      
+          property :similarity_top_k, as: 'similarityTopK'
+          property :vector_distance_threshold, as: 'vectorDistanceThreshold'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1VertexRagStoreRagResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rag_corpus, as: 'ragCorpus'
+          collection :rag_file_ids, as: 'ragFileIds'
         end
       end
       

@@ -52,6 +52,552 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a Dataset.
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset] google_cloud_aiplatform_v1_dataset_object
+        # @param [String] parent
+        #   Required. The resource name of the Location to create the Dataset in. Format: `
+        #   projects/`project`/locations/`location``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_dataset(google_cloud_aiplatform_v1_dataset_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/datasets', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset::Representation
+          command.request_object = google_cloud_aiplatform_v1_dataset_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Dataset.
+        # @param [String] name
+        #   Required. The resource name of the Dataset to delete. Format: `projects/`
+        #   project`/locations/`location`/datasets/`dataset``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_dataset(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Dataset.
+        # @param [String] name
+        #   Required. The name of the Dataset resource.
+        # @param [String] read_mask
+        #   Mask specifying which fields to read.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_dataset(name, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset
+          command.params['name'] = name unless name.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Datasets in a Location.
+        # @param [String] filter
+        #   An expression for filtering the results of the request. For field names both
+        #   snake_case and camelCase are supported. * `display_name`: supports = and != * `
+        #   metadata_schema_uri`: supports = and != * `labels` supports general map
+        #   functions that is: * `labels.key=value` - key:value equality * `labels.key:*
+        #   or labels:key - key existence * A key including a space must be quoted. `
+        #   labels."a key"`. Some examples: * `displayName="myDisplayName"` * `labels.
+        #   myKey="myValue"`
+        # @param [String] order_by
+        #   A comma-separated list of fields to order by, sorted in ascending order. Use "
+        #   desc" after a field name for descending. Supported fields: * `display_name` * `
+        #   create_time` * `update_time`
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [String] parent
+        #   Required. The name of the Dataset's parent resource. Format: `projects/`
+        #   project`/locations/`location``
+        # @param [String] read_mask
+        #   Mask specifying which fields to read.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_datasets(filter: nil, order_by: nil, page_size: nil, page_token: nil, parent: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/datasets', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetsResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Dataset.
+        # @param [String] name
+        #   Output only. Identifier. The resource name of the Dataset.
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset] google_cloud_aiplatform_v1_dataset_object
+        # @param [String] update_mask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see google.protobuf.FieldMask. Updatable fields: * `display_name` *
+        #   `description` * `labels`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_dataset(name, google_cloud_aiplatform_v1_dataset_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset::Representation
+          command.request_object = google_cloud_aiplatform_v1_dataset_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a version from a Dataset.
+        # @param [String] parent
+        #   Required. The name of the Dataset resource. Format: `projects/`project`/
+        #   locations/`location`/datasets/`dataset``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion] google_cloud_aiplatform_v1_dataset_version_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_dataset_dataset_version(parent, google_cloud_aiplatform_v1_dataset_version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/datasetVersions', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion::Representation
+          command.request_object = google_cloud_aiplatform_v1_dataset_version_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Dataset version.
+        # @param [String] name
+        #   Required. The resource name of the Dataset version to delete. Format: `
+        #   projects/`project`/locations/`location`/datasets/`dataset`/datasetVersions/`
+        #   dataset_version``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_dataset_dataset_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Dataset version.
+        # @param [String] name
+        #   Required. The resource name of the Dataset version to delete. Format: `
+        #   projects/`project`/locations/`location`/datasets/`dataset`/datasetVersions/`
+        #   dataset_version``
+        # @param [String] read_mask
+        #   Mask specifying which fields to read.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_dataset_dataset_version(name, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion
+          command.params['name'] = name unless name.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DatasetVersions in a Dataset.
+        # @param [String] parent
+        #   Required. The resource name of the Dataset to list DatasetVersions from.
+        #   Format: `projects/`project`/locations/`location`/datasets/`dataset``
+        # @param [String] filter
+        #   Optional. The standard list filter.
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order. Use "desc" after a field name for descending.
+        # @param [Fixnum] page_size
+        #   Optional. The standard list page size.
+        # @param [String] page_token
+        #   Optional. The standard list page token.
+        # @param [String] read_mask
+        #   Optional. Mask specifying which fields to read.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_dataset_dataset_versions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/datasetVersions', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetVersionsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetVersionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a DatasetVersion.
+        # @param [String] name
+        #   Output only. Identifier. The resource name of the DatasetVersion.
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion] google_cloud_aiplatform_v1_dataset_version_object
+        # @param [String] update_mask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see google.protobuf.FieldMask. Updatable fields: * `display_name`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_dataset_dataset_version(name, google_cloud_aiplatform_v1_dataset_version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion::Representation
+          command.request_object = google_cloud_aiplatform_v1_dataset_version_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Restores a dataset version.
+        # @param [String] name
+        #   Required. The name of the DatasetVersion resource. Format: `projects/`project`/
+        #   locations/`location`/datasets/`dataset`/datasetVersions/`dataset_version``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_dataset_dataset_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:restore', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Return a list of tokens based on the input text.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to get lists of tokens and token
+        #   ids.
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensRequest] google_cloud_aiplatform_v1_compute_tokens_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def compute_endpoint_tokens(endpoint, google_cloud_aiplatform_v1_compute_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:computeTokens', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_compute_tokens_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Perform a token counting.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to perform token counting. Format:
+        #   `projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensRequest] google_cloud_aiplatform_v1_count_tokens_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_endpoint_tokens(endpoint, google_cloud_aiplatform_v1_count_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:countTokens', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_count_tokens_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate content with multimodal inputs.
+        # @param [String] model
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest] google_cloud_aiplatform_v1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_endpoint_content(model, google_cloud_aiplatform_v1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+model}:generateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate content with multimodal inputs with streaming support.
+        # @param [String] model
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest] google_cloud_aiplatform_v1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_endpoint_generate_content(model, google_cloud_aiplatform_v1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+model}:streamGenerateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Evaluates instances based on a given metric.
         # @param [String] location
         #   Required. The resource name of the Location to evaluate the instances. Format:
@@ -3471,8 +4017,10 @@ module Google
         
         # Generate content with multimodal inputs.
         # @param [String] model
-        #   Required. The name of the publisher model requested to serve the prediction.
-        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest] google_cloud_aiplatform_v1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3775,8 +4323,10 @@ module Google
         
         # Generate content with multimodal inputs with streaming support.
         # @param [String] model
-        #   Required. The name of the publisher model requested to serve the prediction.
-        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest] google_cloud_aiplatform_v1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -15474,8 +16024,10 @@ module Google
         
         # Generate content with multimodal inputs.
         # @param [String] model
-        #   Required. The name of the publisher model requested to serve the prediction.
-        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest] google_cloud_aiplatform_v1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -15614,8 +16166,10 @@ module Google
         
         # Generate content with multimodal inputs with streaming support.
         # @param [String] model
-        #   Required. The name of the publisher model requested to serve the prediction.
-        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest] google_cloud_aiplatform_v1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -19889,6 +20443,110 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Return a list of tokens based on the input text.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to get lists of tokens and token
+        #   ids.
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensRequest] google_cloud_aiplatform_v1_compute_tokens_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def compute_publisher_model_tokens(endpoint, google_cloud_aiplatform_v1_compute_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:computeTokens', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_compute_tokens_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputeTokensResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Perform a token counting.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to perform token counting. Format:
+        #   `projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensRequest] google_cloud_aiplatform_v1_count_tokens_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_publisher_model_tokens(endpoint, google_cloud_aiplatform_v1_count_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:countTokens', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_count_tokens_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CountTokensResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate content with multimodal inputs.
+        # @param [String] model
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest] google_cloud_aiplatform_v1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_publisher_model_content(model, google_cloud_aiplatform_v1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+model}:generateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a Model Garden publisher model.
         # @param [String] name
         #   Required. The name of the PublisherModel resource. Format: `publishers/`
@@ -19929,6 +20587,42 @@ module Google
           command.query['isHuggingFaceModel'] = is_hugging_face_model unless is_hugging_face_model.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate content with multimodal inputs with streaming support.
+        # @param [String] model
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest] google_cloud_aiplatform_v1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_publisher_model_generate_content(model, google_cloud_aiplatform_v1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+model}:streamGenerateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
