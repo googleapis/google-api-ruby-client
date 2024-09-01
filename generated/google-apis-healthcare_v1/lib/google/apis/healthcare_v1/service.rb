@@ -2549,6 +2549,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # SetBlobStorageSettings sets the blob storage settings of the specified
+        # resources.
+        # @param [String] resource
+        #   Required. The path of the resource to update the blob storage settings in the
+        #   format of `projects/`projectID`/locations/`locationID`/datasets/`datasetID`/
+        #   dicomStores/`dicomStoreID`/dicomWeb/studies/`studyUID``, `projects/`projectID`/
+        #   locations/`locationID`/datasets/`datasetID`/dicomStores/`dicomStoreID`/
+        #   dicomWeb/studies/`studyUID`/series/`seriesUID`/`, or `projects/`projectID`/
+        #   locations/`locationID`/datasets/`datasetID`/dicomStores/`dicomStoreID`/
+        #   dicomWeb/studies/`studyUID`/series/`seriesUID`/instances/`instanceUID``. If `
+        #   filter_config` is specified, set the value of `resource` to the resource name
+        #   of a DICOM store in the format `projects/`projectID`/locations/`locationID`/
+        #   datasets/`datasetID`/dicomStores/`dicomStoreID``.
+        # @param [Google::Apis::HealthcareV1::SetBlobStorageSettingsRequest] set_blob_storage_settings_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_dicom_store_blob_storage_settings(resource, set_blob_storage_settings_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:setBlobStorageSettings', options)
+          command.request_representation = Google::Apis::HealthcareV1::SetBlobStorageSettingsRequest::Representation
+          command.request_object = set_blob_storage_settings_request_object
+          command.response_representation = Google::Apis::HealthcareV1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1::Operation
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
@@ -2703,6 +2746,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # SetBlobStorageSettings sets the blob storage settings of the specified
+        # resources.
+        # @param [String] resource
+        #   Required. The path of the resource to update the blob storage settings in the
+        #   format of `projects/`projectID`/locations/`locationID`/datasets/`datasetID`/
+        #   dicomStores/`dicomStoreID`/dicomWeb/studies/`studyUID``, `projects/`projectID`/
+        #   locations/`locationID`/datasets/`datasetID`/dicomStores/`dicomStoreID`/
+        #   dicomWeb/studies/`studyUID`/series/`seriesUID`/`, or `projects/`projectID`/
+        #   locations/`locationID`/datasets/`datasetID`/dicomStores/`dicomStoreID`/
+        #   dicomWeb/studies/`studyUID`/series/`seriesUID`/instances/`instanceUID``. If `
+        #   filter_config` is specified, set the value of `resource` to the resource name
+        #   of a DICOM store in the format `projects/`projectID`/locations/`locationID`/
+        #   datasets/`datasetID`/dicomStores/`dicomStoreID``.
+        # @param [Google::Apis::HealthcareV1::SetBlobStorageSettingsRequest] set_blob_storage_settings_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_study_blob_storage_settings(resource, set_blob_storage_settings_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:setBlobStorageSettings', options)
+          command.request_representation = Google::Apis::HealthcareV1::SetBlobStorageSettingsRequest::Representation
+          command.request_object = set_blob_storage_settings_request_object
+          command.response_representation = Google::Apis::HealthcareV1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1::Operation
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # GetSeriesMetrics returns metrics for a series.
         # @param [String] series
         #   Required. The series resource path. For example, `projects/`project_id`/
@@ -2730,6 +2816,39 @@ module Google
           command.response_representation = Google::Apis::HealthcareV1::SeriesMetrics::Representation
           command.response_class = Google::Apis::HealthcareV1::SeriesMetrics
           command.params['series'] = series unless series.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # GetStorageInfo returns the storage info of the specified resource.
+        # @param [String] resource
+        #   Required. The path of the instance to return storage info for, in the form: `
+        #   projects/`projectID`/locations/`locationID`/datasets/`datasetID`/dicomStores/`
+        #   dicomStoreID`/dicomWeb/studies/`studyUID`/series/`seriesUID`/instances/`
+        #   instanceUID``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::StorageInfo] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::StorageInfo]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_dicom_store_dicom_web_study_series_instance_storage_info(resource, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+resource}:getStorageInfo', options)
+          command.response_representation = Google::Apis::HealthcareV1::StorageInfo::Representation
+          command.response_class = Google::Apis::HealthcareV1::StorageInfo
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5373,7 +5492,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rolls back messages from the HL7 store to the specified time. This method
+        # Rolls back messages from the HL7v2 store to the specified time. This method
         # returns an Operation that can be used to track the status of the rollback by
         # calling GetOperation. Immediate fatal errors appear in the error field, errors
         # are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](
