@@ -2156,6 +2156,11 @@ module Google
       class ImportRowError
         include Google::Apis::Core::Hashable
       
+        # Error details for a CSV file.
+        # Corresponds to the JSON property `csvError`
+        # @return [Google::Apis::MigrationcenterV1::ImportRowErrorCsvErrorDetails]
+        attr_accessor :csv_error
+      
         # The list of errors detected in the row.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::MigrationcenterV1::ImportError>]
@@ -2176,16 +2181,67 @@ module Google
         # @return [String]
         attr_accessor :vm_uuid
       
+        # Error details for an XLSX file.
+        # Corresponds to the JSON property `xlsxError`
+        # @return [Google::Apis::MigrationcenterV1::ImportRowErrorXlsxErrorDetails]
+        attr_accessor :xlsx_error
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @csv_error = args[:csv_error] if args.key?(:csv_error)
           @errors = args[:errors] if args.key?(:errors)
           @row_number = args[:row_number] if args.key?(:row_number)
           @vm_name = args[:vm_name] if args.key?(:vm_name)
           @vm_uuid = args[:vm_uuid] if args.key?(:vm_uuid)
+          @xlsx_error = args[:xlsx_error] if args.key?(:xlsx_error)
+        end
+      end
+      
+      # Error details for a CSV file.
+      class ImportRowErrorCsvErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # The row number where the error was detected.
+        # Corresponds to the JSON property `rowNumber`
+        # @return [Fixnum]
+        attr_accessor :row_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @row_number = args[:row_number] if args.key?(:row_number)
+        end
+      end
+      
+      # Error details for an XLSX file.
+      class ImportRowErrorXlsxErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # The row number where the error was detected.
+        # Corresponds to the JSON property `rowNumber`
+        # @return [Fixnum]
+        attr_accessor :row_number
+      
+        # The name of the sheet where the error was detected.
+        # Corresponds to the JSON property `sheet`
+        # @return [String]
+        attr_accessor :sheet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @row_number = args[:row_number] if args.key?(:row_number)
+          @sheet = args[:sheet] if args.key?(:sheet)
         end
       end
       
