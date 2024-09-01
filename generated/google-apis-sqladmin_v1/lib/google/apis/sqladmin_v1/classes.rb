@@ -1538,6 +1538,23 @@ module Google
           attr_accessor :differential_base
           alias_method :differential_base?, :differential_base
         
+          # Optional. The end timestamp when transaction log will be included in the
+          # export operation. [RFC 3339](https://tools.ietf.org/html/rfc3339) format (for
+          # example, `2023-10-01T16:19:00.094`) in UTC. When omitted, all available logs
+          # until current time will be included. Only applied to Cloud SQL for SQL Server.
+          # Corresponds to the JSON property `exportLogEndTime`
+          # @return [String]
+          attr_accessor :export_log_end_time
+        
+          # Optional. The begin timestamp when transaction log will be included in the
+          # export operation. [RFC 3339](https://tools.ietf.org/html/rfc3339) format (for
+          # example, `2023-10-01T16:19:00.094`) in UTC. When omitted, all available logs
+          # from the beginning of retention period will be included. Only applied to Cloud
+          # SQL for SQL Server.
+          # Corresponds to the JSON property `exportLogStartTime`
+          # @return [String]
+          attr_accessor :export_log_start_time
+        
           # Option for specifying how many stripes to use for the export. If blank, and
           # the value of the striped field is true, the number of stripes is automatically
           # chosen.
@@ -1560,6 +1577,8 @@ module Google
             @bak_type = args[:bak_type] if args.key?(:bak_type)
             @copy_only = args[:copy_only] if args.key?(:copy_only)
             @differential_base = args[:differential_base] if args.key?(:differential_base)
+            @export_log_end_time = args[:export_log_end_time] if args.key?(:export_log_end_time)
+            @export_log_start_time = args[:export_log_start_time] if args.key?(:export_log_start_time)
             @stripe_count = args[:stripe_count] if args.key?(:stripe_count)
             @striped = args[:striped] if args.key?(:striped)
           end
