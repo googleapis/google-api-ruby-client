@@ -826,6 +826,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::AzureSubscription]
         attr_accessor :subscription
       
+        # Represents a Microsoft Entra tenant.
+        # Corresponds to the JSON property `tenant`
+        # @return [Google::Apis::SecuritycenterV1::AzureTenant]
+        attr_accessor :tenant
+      
         def initialize(**args)
            update!(**args)
         end
@@ -835,6 +840,7 @@ module Google
           @management_groups = args[:management_groups] if args.key?(:management_groups)
           @resource_group = args[:resource_group] if args.key?(:resource_group)
           @subscription = args[:subscription] if args.key?(:subscription)
+          @tenant = args[:tenant] if args.key?(:tenant)
         end
       end
       
@@ -879,6 +885,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Represents a Microsoft Entra tenant.
+      class AzureTenant
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the Microsoft Entra tenant, for example, "a11aaa11-aa11-1aa1-11aa-
+        # 1aaa11a".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] if args.key?(:id)
         end
       end
@@ -1655,6 +1681,11 @@ module Google
         # @return [String]
         attr_accessor :exploitation_activity
       
+        # Date of the earliest known exploitation.
+        # Corresponds to the JSON property `firstExploitationDate`
+        # @return [String]
+        attr_accessor :first_exploitation_date
+      
         # The unique identifier for the vulnerability. e.g. CVE-2021-34527
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -1698,6 +1729,7 @@ module Google
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
           @exploit_release_date = args[:exploit_release_date] if args.key?(:exploit_release_date)
           @exploitation_activity = args[:exploitation_activity] if args.key?(:exploitation_activity)
+          @first_exploitation_date = args[:first_exploitation_date] if args.key?(:first_exploitation_date)
           @id = args[:id] if args.key?(:id)
           @impact = args[:impact] if args.key?(:impact)
           @observed_in_the_wild = args[:observed_in_the_wild] if args.key?(:observed_in_the_wild)
@@ -1781,6 +1813,91 @@ module Google
           @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
           @scope = args[:scope] if args.key?(:scope)
           @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+        end
+      end
+      
+      # Details about a data access attempt made by a principal not authorized under
+      # applicable data security policy.
+      class DataAccessEvent
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for data access event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # Timestamp of data access event.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # The operation performed by the principal to access the data.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The email address of the principal that accessed the data. The principal could
+        # be a user account, service account, Google group, or other.
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @operation = args[:operation] if args.key?(:operation)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
+        end
+      end
+      
+      # Details about a data flow event, in which either the data is moved to or is
+      # accessed from a non-compliant geo-location, as defined in the applicable data
+      # security policy.
+      class DataFlowEvent
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for data flow event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # Timestamp of data flow event.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # The operation performed by the principal for the data flow event.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The email address of the principal that initiated the data flow event. The
+        # principal could be a user account, service account, Google group, or other.
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        # Non-compliant location of the principal or the data destination.
+        # Corresponds to the JSON property `violatedLocation`
+        # @return [String]
+        attr_accessor :violated_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @operation = args[:operation] if args.key?(:operation)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @violated_location = args[:violated_location] if args.key?(:violated_location)
         end
       end
       
@@ -2381,6 +2498,16 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Data access events associated with the finding.
+        # Corresponds to the JSON property `dataAccessEvents`
+        # @return [Array<Google::Apis::SecuritycenterV1::DataAccessEvent>]
+        attr_accessor :data_access_events
+      
+        # Data flow events associated with the finding.
+        # Corresponds to the JSON property `dataFlowEvents`
+        # @return [Array<Google::Apis::SecuritycenterV1::DataFlowEvent>]
+        attr_accessor :data_flow_events
+      
         # Represents database access information, such as queries. A database may be a
         # sub-resource of an instance (as in the case of Cloud SQL instances or Cloud
         # Spanner instances), or the database instance itself. Some database resources
@@ -2637,6 +2764,8 @@ module Google
           @contacts = args[:contacts] if args.key?(:contacts)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_access_events = args[:data_access_events] if args.key?(:data_access_events)
+          @data_flow_events = args[:data_flow_events] if args.key?(:data_flow_events)
           @database = args[:database] if args.key?(:database)
           @description = args[:description] if args.key?(:description)
           @event_time = args[:event_time] if args.key?(:event_time)
@@ -4514,6 +4643,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureSubscription]
         attr_accessor :subscription
       
+        # Represents a Microsoft Entra tenant.
+        # Corresponds to the JSON property `tenant`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureTenant]
+        attr_accessor :tenant
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4523,6 +4657,7 @@ module Google
           @management_groups = args[:management_groups] if args.key?(:management_groups)
           @resource_group = args[:resource_group] if args.key?(:resource_group)
           @subscription = args[:subscription] if args.key?(:subscription)
+          @tenant = args[:tenant] if args.key?(:tenant)
         end
       end
       
@@ -4567,6 +4702,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Represents a Microsoft Entra tenant.
+      class GoogleCloudSecuritycenterV2AzureTenant
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the Microsoft Entra tenant, for example, "a11aaa11-aa11-1aa1-11aa-
+        # 1aaa11a".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] if args.key?(:id)
         end
       end
@@ -5149,6 +5304,11 @@ module Google
         # @return [String]
         attr_accessor :exploitation_activity
       
+        # Date of the earliest known exploitation.
+        # Corresponds to the JSON property `firstExploitationDate`
+        # @return [String]
+        attr_accessor :first_exploitation_date
+      
         # The unique identifier for the vulnerability. e.g. CVE-2021-34527
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -5192,6 +5352,7 @@ module Google
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
           @exploit_release_date = args[:exploit_release_date] if args.key?(:exploit_release_date)
           @exploitation_activity = args[:exploitation_activity] if args.key?(:exploitation_activity)
+          @first_exploitation_date = args[:first_exploitation_date] if args.key?(:first_exploitation_date)
           @id = args[:id] if args.key?(:id)
           @impact = args[:impact] if args.key?(:impact)
           @observed_in_the_wild = args[:observed_in_the_wild] if args.key?(:observed_in_the_wild)
@@ -5275,6 +5436,91 @@ module Google
           @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
           @scope = args[:scope] if args.key?(:scope)
           @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+        end
+      end
+      
+      # Details about a data access attempt made by a principal not authorized under
+      # applicable data security policy.
+      class GoogleCloudSecuritycenterV2DataAccessEvent
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for data access event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # Timestamp of data access event.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # The operation performed by the principal to access the data.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The email address of the principal that accessed the data. The principal could
+        # be a user account, service account, Google group, or other.
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @operation = args[:operation] if args.key?(:operation)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
+        end
+      end
+      
+      # Details about a data flow event, in which either the data is moved to or is
+      # accessed from a non-compliant geo-location, as defined in the applicable data
+      # security policy.
+      class GoogleCloudSecuritycenterV2DataFlowEvent
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for data flow event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # Timestamp of data flow event.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # The operation performed by the principal for the data flow event.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The email address of the principal that initiated the data flow event. The
+        # principal could be a user account, service account, Google group, or other.
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        # Non-compliant location of the principal or the data destination.
+        # Corresponds to the JSON property `violatedLocation`
+        # @return [String]
+        attr_accessor :violated_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @operation = args[:operation] if args.key?(:operation)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @violated_location = args[:violated_location] if args.key?(:violated_location)
         end
       end
       
@@ -5758,6 +6004,16 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Data access events associated with the finding.
+        # Corresponds to the JSON property `dataAccessEvents`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DataAccessEvent>]
+        attr_accessor :data_access_events
+      
+        # Data flow events associated with the finding.
+        # Corresponds to the JSON property `dataFlowEvents`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DataFlowEvent>]
+        attr_accessor :data_flow_events
+      
         # Represents database access information, such as queries. A database may be a
         # sub-resource of an instance (as in the case of Cloud SQL instances or Cloud
         # Spanner instances), or the database instance itself. Some database resources
@@ -6023,6 +6279,8 @@ module Google
           @contacts = args[:contacts] if args.key?(:contacts)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_access_events = args[:data_access_events] if args.key?(:data_access_events)
+          @data_flow_events = args[:data_flow_events] if args.key?(:data_flow_events)
           @database = args[:database] if args.key?(:database)
           @description = args[:description] if args.key?(:description)
           @event_time = args[:event_time] if args.key?(:event_time)
