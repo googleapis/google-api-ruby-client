@@ -1086,7 +1086,8 @@ module Google
         attr_accessor :boot_option
       
         # Scheduling information for VM on maintenance/restart behaviour and node
-        # allocation in sole tenant nodes.
+        # allocation in sole tenant nodes. Options for instance behavior when the host
+        # machine undergoes maintenance that may temporarily impact instance performance.
         # Corresponds to the JSON property `computeScheduling`
         # @return [Google::Apis::VmmigrationV1::ComputeScheduling]
         attr_accessor :compute_scheduling
@@ -1242,7 +1243,8 @@ module Google
         attr_accessor :boot_option
       
         # Scheduling information for VM on maintenance/restart behaviour and node
-        # allocation in sole tenant nodes.
+        # allocation in sole tenant nodes. Options for instance behavior when the host
+        # machine undergoes maintenance that may temporarily impact instance performance.
         # Corresponds to the JSON property `computeScheduling`
         # @return [Google::Apis::VmmigrationV1::ComputeScheduling]
         attr_accessor :compute_scheduling
@@ -1368,7 +1370,8 @@ module Google
       end
       
       # Scheduling information for VM on maintenance/restart behaviour and node
-      # allocation in sole tenant nodes.
+      # allocation in sole tenant nodes. Options for instance behavior when the host
+      # machine undergoes maintenance that may temporarily impact instance performance.
       class ComputeScheduling
         include Google::Apis::Core::Hashable
       
@@ -1931,7 +1934,8 @@ module Google
         attr_accessor :boot_disk_defaults
       
         # Scheduling information for VM on maintenance/restart behaviour and node
-        # allocation in sole tenant nodes.
+        # allocation in sole tenant nodes. Options for instance behavior when the host
+        # machine undergoes maintenance that may temporarily impact instance performance.
         # Corresponds to the JSON property `computeScheduling`
         # @return [Google::Apis::VmmigrationV1::ComputeScheduling]
         attr_accessor :compute_scheduling
