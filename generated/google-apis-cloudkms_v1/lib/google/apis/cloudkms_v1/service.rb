@@ -843,6 +843,15 @@ module Google
         # @param [String] filter
         #   Optional. Filter to apply when listing KeyHandles, e.g. `
         #   resource_type_selector="`SERVICE`.googleapis.com/`TYPE`"`.
+        # @param [Fixnum] page_size
+        #   Optional. Optional limit on the number of KeyHandles to include in the
+        #   response. The service may return fewer than this value. Further KeyHandles can
+        #   subsequently be obtained by including the ListKeyHandlesResponse.
+        #   next_page_token in a subsequent request. If unspecified, at most KeyHandles
+        #   100 will be returned.
+        # @param [String] page_token
+        #   Optional. Optional pagination token, returned earlier via
+        #   ListKeyHandlesResponse.next_page_token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -860,12 +869,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_key_handles(parent, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_key_handles(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/keyHandles', options)
           command.response_representation = Google::Apis::CloudkmsV1::ListKeyHandlesResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ListKeyHandlesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
