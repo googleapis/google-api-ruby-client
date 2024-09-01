@@ -629,7 +629,7 @@ module Google
       end
       
       # A virtual resource representing an overview of an account and all its child
-      # GA4 properties.
+      # Google Analytics properties.
       class GoogleAnalyticsAdminV1betaAccountSummary
         include Google::Apis::Core::Hashable
       
@@ -795,12 +795,12 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaDataStream]
         attr_accessor :data_stream
       
-        # A link between a GA4 property and a Firebase project.
+        # A link between a Google Analytics property and a Firebase project.
         # Corresponds to the JSON property `firebaseLink`
         # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaFirebaseLink]
         attr_accessor :firebase_link
       
-        # A link between a GA4 property and a Google Ads account.
+        # A link between a Google Analytics property and a Google Ads account.
         # Corresponds to the JSON property `googleAdsLink`
         # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaGoogleAdsLink]
         attr_accessor :google_ads_link
@@ -810,7 +810,7 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaMeasurementProtocolSecret]
         attr_accessor :measurement_protocol_secret
       
-        # A resource message representing a Google Analytics GA4 property.
+        # A resource message representing a Google Analytics property.
         # Corresponds to the JSON property `property`
         # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaProperty]
         attr_accessor :property
@@ -1356,7 +1356,7 @@ module Google
         end
       end
       
-      # A link between a GA4 property and a Firebase project.
+      # A link between a Google Analytics property and a Firebase project.
       class GoogleAnalyticsAdminV1betaFirebaseLink
         include Google::Apis::Core::Hashable
       
@@ -1391,7 +1391,7 @@ module Google
         end
       end
       
-      # A link between a GA4 property and a Google Ads account.
+      # A link between a Google Analytics property and a Google Ads account.
       class GoogleAnalyticsAdminV1betaGoogleAdsLink
         include Google::Apis::Core::Hashable
       
@@ -1894,7 +1894,7 @@ module Google
         end
       end
       
-      # A resource message representing a Google Analytics GA4 property.
+      # A resource message representing a Google Analytics property.
       class GoogleAnalyticsAdminV1betaProperty
         include Google::Apis::Core::Hashable
       
@@ -2000,7 +2000,7 @@ module Google
         end
       end
       
-      # A virtual resource representing metadata for a GA4 property.
+      # A virtual resource representing metadata for a Google Analytics property.
       class GoogleAnalyticsAdminV1betaPropertySummary
         include Google::Apis::Core::Hashable
       
