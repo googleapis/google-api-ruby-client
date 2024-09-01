@@ -32,6 +32,9 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # Move a copy of the Google Alerts subscriptions you created.
+      AUTH_DATAPORTABILITY_ALERTS_SUBSCRIPTIONS = 'https://www.googleapis.com/auth/dataportability.alerts.subscriptions'
+
       # Move a copy of messages between you and the businesses you have conversations with across Google services.
       AUTH_DATAPORTABILITY_BUSINESSMESSAGING_CONVERSATIONS = 'https://www.googleapis.com/auth/dataportability.businessmessaging.conversations'
 
@@ -181,6 +184,9 @@ module Google
 
       # Move a copy of information about your YouTube channel.
       AUTH_DATAPORTABILITY_YOUTUBE_CHANNEL = 'https://www.googleapis.com/auth/dataportability.youtube.channel'
+
+      # Move a copy of your YouTube clips metadata.
+      AUTH_DATAPORTABILITY_YOUTUBE_CLIPS = 'https://www.googleapis.com/auth/dataportability.youtube.clips'
 
       # Move a copy of your YouTube comments.
       AUTH_DATAPORTABILITY_YOUTUBE_COMMENTS = 'https://www.googleapis.com/auth/dataportability.youtube.comments'
