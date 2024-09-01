@@ -1107,6 +1107,7 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic_failover_routing_configured, as: 'automaticFailoverRoutingConfigured'
           property :availability_type, as: 'availabilityType'
           property :cross_region_replica_configured, as: 'crossRegionReplicaConfigured'
           property :external_replica_configured, as: 'externalReplicaConfigured'
@@ -1397,6 +1398,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :database_roles, as: 'databaseRoles'
+          property :keep_extra_roles, as: 'keepExtraRoles'
           property :name, as: 'name'
           property :password, as: 'password'
           property :user_type, as: 'userType'

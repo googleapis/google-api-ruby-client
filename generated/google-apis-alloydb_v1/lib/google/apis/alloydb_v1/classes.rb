@@ -2324,6 +2324,14 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration
         include Google::Apis::Core::Hashable
       
+        # Checks for existence of (multi-cluster) routing configuration that allows
+        # automatic failover to a different zone/region in case of an outage. Applicable
+        # to Bigtable resources.
+        # Corresponds to the JSON property `automaticFailoverRoutingConfigured`
+        # @return [Boolean]
+        attr_accessor :automatic_failover_routing_configured
+        alias_method :automatic_failover_routing_configured?, :automatic_failover_routing_configured
+      
         # Availability type. Potential values: * `ZONAL`: The instance serves data from
         # only one zone. Outages in that zone affect data accessibility. * `REGIONAL`:
         # The instance can serve data from more than one zone in a region (it is highly
@@ -2357,6 +2365,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @automatic_failover_routing_configured = args[:automatic_failover_routing_configured] if args.key?(:automatic_failover_routing_configured)
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @cross_region_replica_configured = args[:cross_region_replica_configured] if args.key?(:cross_region_replica_configured)
           @external_replica_configured = args[:external_replica_configured] if args.key?(:external_replica_configured)
@@ -3430,6 +3439,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :database_roles
       
+        # Input only. If the user already exists and it has additional roles, keep them
+        # granted.
+        # Corresponds to the JSON property `keepExtraRoles`
+        # @return [Boolean]
+        attr_accessor :keep_extra_roles
+        alias_method :keep_extra_roles?, :keep_extra_roles
+      
         # Output only. Name of the resource in the form of projects/`project`/locations/`
         # location`/cluster/`cluster`/users/`user`.
         # Corresponds to the JSON property `name`
@@ -3453,6 +3469,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @database_roles = args[:database_roles] if args.key?(:database_roles)
+          @keep_extra_roles = args[:keep_extra_roles] if args.key?(:keep_extra_roles)
           @name = args[:name] if args.key?(:name)
           @password = args[:password] if args.key?(:password)
           @user_type = args[:user_type] if args.key?(:user_type)
