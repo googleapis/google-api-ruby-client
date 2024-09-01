@@ -3875,9 +3875,9 @@ module Google
         # rest/v1/cards). Only Chat apps can create cards. If your Chat app [
         # authenticates as a user](https://developers.google.com/workspace/chat/
         # authenticate-authorize-chat-user), the messages can't contain cards. To learn
-        # about cards and how to create them, see [Send card messages](https://
-        # developers.google.com/workspace/chat/create-messages#create). [Card builder](
-        # https://addons.gsuite.google.com/uikit/builder)
+        # how to create a message that contains cards, see [Send a message](https://
+        # developers.google.com/workspace/chat/create-messages). [Card builder](https://
+        # addons.gsuite.google.com/uikit/builder)
         # Corresponds to the JSON property `cardsV2`
         # @return [Array<Google::Apis::ChatV1::CardWithId>]
         attr_accessor :cards_v2
@@ -4004,9 +4004,8 @@ module Google
         # generates a [preview chip](https://developers.google.com/workspace/chat/
         # preview-links). You can also [@mention a Google Chat user](https://developers.
         # google.com/workspace/chat/format-messages#messages-@mention), or everyone in
-        # the space. To learn about creating text messages, see [Send a text message](
-        # https://developers.google.com/workspace/chat/create-messages#create-text-
-        # messages).
+        # the space. To learn about creating text messages, see [Send a message](https://
+        # developers.google.com/workspace/chat/create-messages).
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -4678,7 +4677,12 @@ module Google
         # @return [Google::Apis::ChatV1::MembershipCount]
         attr_accessor :membership_count
       
-        # Resource name of the space. Format: `spaces/`space``
+        # Resource name of the space. Format: `spaces/`space`` Where ``space``
+        # represents the system-assigned ID for the space. You can obtain the space ID
+        # by calling the [`spaces.list()`](https://developers.google.com/workspace/chat/
+        # api/reference/rest/v1/spaces/list) method or from the space URL. For example,
+        # if the space URL is `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`,
+        # the space ID is `AAAAAAAAA`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
