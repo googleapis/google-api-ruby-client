@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AzureTenant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupDisasterRecovery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +275,18 @@ module Google
       end
       
       class Cvssv3
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataAccessEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataFlowEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -604,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2AzureTenant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2BackupDisasterRecovery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +713,18 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Cvssv3
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2DataAccessEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2DataFlowEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1760,6 +1796,8 @@ module Google
       
           property :subscription, as: 'subscription', class: Google::Apis::SecuritycenterV1::AzureSubscription, decorator: Google::Apis::SecuritycenterV1::AzureSubscription::Representation
       
+          property :tenant, as: 'tenant', class: Google::Apis::SecuritycenterV1::AzureTenant, decorator: Google::Apis::SecuritycenterV1::AzureTenant::Representation
+      
         end
       end
       
@@ -1774,6 +1812,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :id, as: 'id'
+        end
+      end
+      
+      class AzureTenant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
         end
       end
@@ -1970,6 +2015,7 @@ module Google
       
           property :exploit_release_date, as: 'exploitReleaseDate'
           property :exploitation_activity, as: 'exploitationActivity'
+          property :first_exploitation_date, as: 'firstExploitationDate'
           property :id, as: 'id'
           property :impact, as: 'impact'
           property :observed_in_the_wild, as: 'observedInTheWild'
@@ -1992,6 +2038,27 @@ module Google
           property :privileges_required, as: 'privilegesRequired'
           property :scope, as: 'scope'
           property :user_interaction, as: 'userInteraction'
+        end
+      end
+      
+      class DataAccessEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_id, as: 'eventId'
+          property :event_time, as: 'eventTime'
+          property :operation, as: 'operation'
+          property :principal_email, as: 'principalEmail'
+        end
+      end
+      
+      class DataFlowEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_id, as: 'eventId'
+          property :event_time, as: 'eventTime'
+          property :operation, as: 'operation'
+          property :principal_email, as: 'principalEmail'
+          property :violated_location, as: 'violatedLocation'
         end
       end
       
@@ -2143,6 +2210,10 @@ module Google
           collection :containers, as: 'containers', class: Google::Apis::SecuritycenterV1::Container, decorator: Google::Apis::SecuritycenterV1::Container::Representation
       
           property :create_time, as: 'createTime'
+          collection :data_access_events, as: 'dataAccessEvents', class: Google::Apis::SecuritycenterV1::DataAccessEvent, decorator: Google::Apis::SecuritycenterV1::DataAccessEvent::Representation
+      
+          collection :data_flow_events, as: 'dataFlowEvents', class: Google::Apis::SecuritycenterV1::DataFlowEvent, decorator: Google::Apis::SecuritycenterV1::DataFlowEvent::Representation
+      
           property :database, as: 'database', class: Google::Apis::SecuritycenterV1::Database, decorator: Google::Apis::SecuritycenterV1::Database::Representation
       
           property :description, as: 'description'
@@ -2642,6 +2713,8 @@ module Google
       
           property :subscription, as: 'subscription', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureSubscription, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureSubscription::Representation
       
+          property :tenant, as: 'tenant', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureTenant, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureTenant::Representation
+      
         end
       end
       
@@ -2656,6 +2729,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :id, as: 'id'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AzureTenant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
         end
       end
@@ -2806,6 +2886,7 @@ module Google
       
           property :exploit_release_date, as: 'exploitReleaseDate'
           property :exploitation_activity, as: 'exploitationActivity'
+          property :first_exploitation_date, as: 'firstExploitationDate'
           property :id, as: 'id'
           property :impact, as: 'impact'
           property :observed_in_the_wild, as: 'observedInTheWild'
@@ -2828,6 +2909,27 @@ module Google
           property :privileges_required, as: 'privilegesRequired'
           property :scope, as: 'scope'
           property :user_interaction, as: 'userInteraction'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2DataAccessEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_id, as: 'eventId'
+          property :event_time, as: 'eventTime'
+          property :operation, as: 'operation'
+          property :principal_email, as: 'principalEmail'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2DataFlowEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_id, as: 'eventId'
+          property :event_time, as: 'eventTime'
+          property :operation, as: 'operation'
+          property :principal_email, as: 'principalEmail'
+          property :violated_location, as: 'violatedLocation'
         end
       end
       
@@ -2954,6 +3056,10 @@ module Google
           collection :containers, as: 'containers', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Container, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Container::Representation
       
           property :create_time, as: 'createTime'
+          collection :data_access_events, as: 'dataAccessEvents', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DataAccessEvent, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DataAccessEvent::Representation
+      
+          collection :data_flow_events, as: 'dataFlowEvents', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DataFlowEvent, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DataFlowEvent::Representation
+      
           property :database, as: 'database', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Database, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Database::Representation
       
           property :description, as: 'description'

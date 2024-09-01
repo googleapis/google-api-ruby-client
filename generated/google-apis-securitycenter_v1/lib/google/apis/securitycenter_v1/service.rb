@@ -5291,6 +5291,60 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the valued resources for a set of simulation results and filter.
+        # @param [String] parent
+        #   Required. Name of parent to list valued resources. Valid formats: `
+        #   organizations/`organization``, `organizations/`organization`/simulations/`
+        #   simulation`` `organizations/`organization`/simulations/`simulation`/
+        #   attackExposureResults/`attack_exposure_result_v2``
+        # @param [String] filter
+        #   The filter expression that filters the valued resources in the response.
+        #   Supported fields: * `resource_value` supports = * `resource_type` supports =
+        # @param [String] order_by
+        #   Optional. The fields by which to order the valued resources response.
+        #   Supported fields: * `exposed_score` * `resource_value` * `resource_type` * `
+        #   resource` * `display_name` Values should be a comma separated list of fields.
+        #   For example: `exposed_score,resource_value`. The default sorting order is
+        #   descending. To specify ascending or descending order for a field, append a `
+        #   ASC` or a ` DESC` suffix, respectively; for example: `exposed_score DESC`.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last `ListValuedResourcesResponse`; indicates that
+        #   this is a continuation of a prior `ListValuedResources` call, and that the
+        #   system should return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListValuedResourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListValuedResourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_valued_resources(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/valuedResources', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListValuedResourcesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListValuedResourcesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Filters an organization's assets and groups them by their specified properties.
         # @param [String] parent
         #   Required. The name of the parent to group the assets by. Its format is `
