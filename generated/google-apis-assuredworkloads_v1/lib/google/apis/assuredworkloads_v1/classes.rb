@@ -782,8 +782,8 @@ module Google
         attr_accessor :partner_permissions
       
         # Optional. Billing account necessary for purchasing services from Sovereign
-        # Partners. This field is required for creating SIA/PSN partner workloads. The
-        # caller should have 'billing.resourceAssociations.create' IAM permission on
+        # Partners. This field is required for creating SIA/PSN/CNTXT partner workloads.
+        # The caller should have 'billing.resourceAssociations.create' IAM permission on
         # this billing-account. The format of this string is billingAccounts/AAAAAA-
         # BBBBBB-CCCCCC
         # Corresponds to the JSON property `partnerServicesBillingAccount`
