@@ -2129,6 +2129,55 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a Cloud Redis Instance.
+      class RedisInstanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of a Cloud Redis Instance.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # URI of a Cloud Redis Instance network.
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Primary endpoint IP address of a Cloud Redis Instance.
+        # Corresponds to the JSON property `primaryEndpointIp`
+        # @return [String]
+        attr_accessor :primary_endpoint_ip
+      
+        # Read endpoint IP address of a Cloud Redis Instance (if applicable).
+        # Corresponds to the JSON property `readEndpointIp`
+        # @return [String]
+        attr_accessor :read_endpoint_ip
+      
+        # Region in which the Cloud Redis Instance is defined.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # URI of a Cloud Redis Instance.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @primary_endpoint_ip = args[:primary_endpoint_ip] if args.key?(:primary_endpoint_ip)
+          @read_endpoint_ip = args[:read_endpoint_ip] if args.key?(:read_endpoint_ip)
+          @region = args[:region] if args.key?(:region)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Request for the `RerunConnectivityTest` method.
       class RerunConnectivityTestRequest
         include Google::Apis::Core::Hashable
@@ -2489,6 +2538,11 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::ProxyConnectionInfo]
         attr_accessor :proxy_connection
       
+        # For display only. Metadata associated with a Cloud Redis Instance.
+        # Corresponds to the JSON property `redisInstance`
+        # @return [Google::Apis::NetworkmanagementV1::RedisInstanceInfo]
+        attr_accessor :redis_instance
+      
         # For display only. Metadata associated with a Compute Engine route.
         # Corresponds to the JSON property `route`
         # @return [Google::Apis::NetworkmanagementV1::RouteInfo]
@@ -2553,6 +2607,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @project_id = args[:project_id] if args.key?(:project_id)
           @proxy_connection = args[:proxy_connection] if args.key?(:proxy_connection)
+          @redis_instance = args[:redis_instance] if args.key?(:redis_instance)
           @route = args[:route] if args.key?(:route)
           @serverless_neg = args[:serverless_neg] if args.key?(:serverless_neg)
           @state = args[:state] if args.key?(:state)
