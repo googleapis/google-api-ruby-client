@@ -2282,6 +2282,16 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubNotification]
         attr_accessor :pub_sub_notification
       
+        # Message expressing intention to publish to Google Security Operations.
+        # Corresponds to the JSON property `publishToChronicle`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToChronicle]
+        attr_accessor :publish_to_chronicle
+      
+        # If set, a summary finding will be created/updated in SCC for each profile.
+        # Corresponds to the JSON property `publishToScc`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToSecurityCommandCenter]
+        attr_accessor :publish_to_scc
+      
         # If set, attaches the [tags] (https://cloud.google.com/resource-manager/docs/
         # tags/tags-overview) provided to profiled resources. Tags support [access
         # control](https://cloud.google.com/iam/docs/tags-access-control). You can
@@ -2299,6 +2309,8 @@ module Google
         def update!(**args)
           @export_data = args[:export_data] if args.key?(:export_data)
           @pub_sub_notification = args[:pub_sub_notification] if args.key?(:pub_sub_notification)
+          @publish_to_chronicle = args[:publish_to_chronicle] if args.key?(:publish_to_chronicle)
+          @publish_to_scc = args[:publish_to_scc] if args.key?(:publish_to_scc)
           @tag_resources = args[:tag_resources] if args.key?(:tag_resources)
         end
       end
@@ -7675,6 +7687,19 @@ module Google
         end
       end
       
+      # Message expressing intention to publish to Google Security Operations.
+      class GooglePrivacyDlpV2PublishToChronicle
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Publish a message into a given Pub/Sub topic when DlpJob has completed. The
       # message contains a single field, `DlpJobName`, which is equal to the finished
       # job's [`DlpJob.name`](https://cloud.google.com/sensitive-data-protection/docs/
@@ -7697,6 +7722,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # If set, a summary finding will be created/updated in SCC for each profile.
+      class GooglePrivacyDlpV2PublishToSecurityCommandCenter
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
