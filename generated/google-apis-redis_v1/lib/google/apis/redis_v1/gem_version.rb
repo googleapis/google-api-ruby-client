@@ -16,13 +16,13 @@ module Google
   module Apis
     module RedisV1
       # Version of the google-apis-redis_v1 gem
-      GEM_VERSION = "0.59.0"
+      GEM_VERSION = "0.60.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.15.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240822"
+      REVISION = "20240904"
     end
   end
 end

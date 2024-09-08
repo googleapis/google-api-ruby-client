@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssetLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AvailabilityConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BlobstoreLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CertChain
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +65,18 @@ module Google
       end
       
       class CertificateAuthority
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAssetComposition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectLocationAssignment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiscoveryEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +185,12 @@ module Google
       end
       
       class ExportInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtraParameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IsolationExpectations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClustersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +293,18 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationAssignment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlacerLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Product
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,7 +418,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionalMigDistributionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RemoteCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequirementOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -382,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpannerLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StateInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +467,18 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Tags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TenantProjectProxy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -436,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ZoneConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ZoneDistributionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -446,6 +542,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :append_fsync, as: 'appendFsync'
+        end
+      end
+      
+      class AssetLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ccfe_rms_path, as: 'ccfeRmsPath'
+          property :expected, as: 'expected', class: Google::Apis::RedisV1::IsolationExpectations, decorator: Google::Apis::RedisV1::IsolationExpectations::Representation
+      
+          collection :extra_parameters, as: 'extraParameters', class: Google::Apis::RedisV1::ExtraParameter, decorator: Google::Apis::RedisV1::ExtraParameter::Representation
+      
+          collection :location_data, as: 'locationData', class: Google::Apis::RedisV1::LocationData, decorator: Google::Apis::RedisV1::LocationData::Representation
+      
+          collection :parent_asset, as: 'parentAsset', class: Google::Apis::RedisV1::CloudAsset, decorator: Google::Apis::RedisV1::CloudAsset::Representation
+      
         end
       end
       
@@ -481,6 +592,13 @@ module Google
         end
       end
       
+      class BlobstoreLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :policy_id, as: 'policyId'
+        end
+      end
+      
       class CertChain
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -494,6 +612,22 @@ module Google
           property :managed_server_ca, as: 'managedServerCa', class: Google::Apis::RedisV1::ManagedCertificateAuthority, decorator: Google::Apis::RedisV1::ManagedCertificateAuthority::Representation
       
           property :name, as: 'name'
+        end
+      end
+      
+      class CloudAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_name, as: 'assetName'
+          property :asset_type, as: 'assetType'
+        end
+      end
+      
+      class CloudAssetComposition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :child_asset, as: 'childAsset', class: Google::Apis::RedisV1::CloudAsset, decorator: Google::Apis::RedisV1::CloudAsset::Representation
+      
         end
       end
       
@@ -681,6 +815,8 @@ module Google
       
           property :resource_container, as: 'resourceContainer'
           property :resource_name, as: 'resourceName'
+          property :tags_set, as: 'tagsSet', class: Google::Apis::RedisV1::Tags, decorator: Google::Apis::RedisV1::Tags::Representation
+      
           property :updation_time, as: 'updationTime'
           property :user_label_set, as: 'userLabelSet', class: Google::Apis::RedisV1::UserLabels, decorator: Google::Apis::RedisV1::UserLabels::Representation
       
@@ -698,6 +834,14 @@ module Google
           property :recommender_subtype, as: 'recommenderSubtype'
           property :resource_name, as: 'resourceName'
           property :signal_type, as: 'signalType'
+        end
+      end
+      
+      class DirectLocationAssignment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :location, as: 'location', class: Google::Apis::RedisV1::LocationAssignment, decorator: Google::Apis::RedisV1::LocationAssignment::Representation
+      
         end
       end
       
@@ -729,6 +873,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :output_config, as: 'outputConfig', class: Google::Apis::RedisV1::OutputConfig, decorator: Google::Apis::RedisV1::OutputConfig::Representation
+      
+        end
+      end
+      
+      class ExtraParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :regional_mig_distribution_policy, as: 'regionalMigDistributionPolicy', class: Google::Apis::RedisV1::RegionalMigDistributionPolicy, decorator: Google::Apis::RedisV1::RegionalMigDistributionPolicy::Representation
       
         end
       end
@@ -867,6 +1019,21 @@ module Google
         end
       end
       
+      class IsolationExpectations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requirement_override, as: 'requirementOverride', class: Google::Apis::RedisV1::RequirementOverride, decorator: Google::Apis::RedisV1::RequirementOverride::Representation
+      
+          property :zi_org_policy, as: 'ziOrgPolicy'
+          property :zi_region_policy, as: 'ziRegionPolicy'
+          property :zi_region_state, as: 'ziRegionState'
+          property :zone_isolation, as: 'zoneIsolation'
+          property :zone_separation, as: 'zoneSeparation'
+          property :zs_org_policy, as: 'zsOrgPolicy'
+          property :zs_region_state, as: 'zsRegionState'
+        end
+      end
+      
       class ListClustersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -913,6 +1080,32 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class LocationAssignment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :location_type, as: 'locationType'
+        end
+      end
+      
+      class LocationData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blobstore_location, as: 'blobstoreLocation', class: Google::Apis::RedisV1::BlobstoreLocation, decorator: Google::Apis::RedisV1::BlobstoreLocation::Representation
+      
+          property :child_asset_location, as: 'childAssetLocation', class: Google::Apis::RedisV1::CloudAssetComposition, decorator: Google::Apis::RedisV1::CloudAssetComposition::Representation
+      
+          property :direct_location, as: 'directLocation', class: Google::Apis::RedisV1::DirectLocationAssignment, decorator: Google::Apis::RedisV1::DirectLocationAssignment::Representation
+      
+          property :gcp_project_proxy, as: 'gcpProjectProxy', class: Google::Apis::RedisV1::TenantProjectProxy, decorator: Google::Apis::RedisV1::TenantProjectProxy::Representation
+      
+          property :placer_location, as: 'placerLocation', class: Google::Apis::RedisV1::PlacerLocation, decorator: Google::Apis::RedisV1::PlacerLocation::Representation
+      
+          property :spanner_location, as: 'spannerLocation', class: Google::Apis::RedisV1::SpannerLocation, decorator: Google::Apis::RedisV1::SpannerLocation::Representation
+      
         end
       end
       
@@ -1035,6 +1228,13 @@ module Google
         end
       end
       
+      class PlacerLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :placer_config, as: 'placerConfig'
+        end
+      end
+      
       class Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1078,11 +1278,28 @@ module Google
         end
       end
       
+      class RegionalMigDistributionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_shape, as: 'targetShape'
+          collection :zones, as: 'zones', class: Google::Apis::RedisV1::ZoneConfiguration, decorator: Google::Apis::RedisV1::ZoneConfiguration::Representation
+      
+        end
+      end
+      
       class RemoteCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
           property :uid, as: 'uid'
+        end
+      end
+      
+      class RequirementOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zi_override, as: 'ziOverride'
+          property :zs_override, as: 'zsOverride'
         end
       end
       
@@ -1111,6 +1328,14 @@ module Google
         end
       end
       
+      class SpannerLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_name, as: 'backupName'
+          collection :db_name, as: 'dbName'
+        end
+      end
+      
       class StateInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1125,6 +1350,20 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class Tags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :tags, as: 'tags'
+        end
+      end
+      
+      class TenantProjectProxy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :project_numbers, as: 'projectNumbers'
         end
       end
       
@@ -1188,6 +1427,13 @@ module Google
           property :duration, as: 'duration'
           property :start_time, as: 'startTime', class: Google::Apis::RedisV1::TimeOfDay, decorator: Google::Apis::RedisV1::TimeOfDay::Representation
       
+        end
+      end
+      
+      class ZoneConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zone, as: 'zone'
         end
       end
       
