@@ -72,6 +72,12 @@ module Google
         # @return [String]
         attr_accessor :common_criteria_mode
       
+        # Optional. Controls whether content protection, which scans for deceptive apps,
+        # is enabled. This is supported on Android 15 and above.
+        # Corresponds to the JSON property `contentProtectionPolicy`
+        # @return [String]
+        attr_accessor :content_protection_policy
+      
         # Controls access to developer settings: developer options and safe boot.
         # Replaces safeBootDisabled (deprecated) and debuggingFeaturesAllowed (
         # deprecated).
@@ -114,6 +120,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_criteria_mode = args[:common_criteria_mode] if args.key?(:common_criteria_mode)
+          @content_protection_policy = args[:content_protection_policy] if args.key?(:content_protection_policy)
           @developer_settings = args[:developer_settings] if args.key?(:developer_settings)
           @google_play_protect_verify_apps = args[:google_play_protect_verify_apps] if args.key?(:google_play_protect_verify_apps)
           @mte_policy = args[:mte_policy] if args.key?(:mte_policy)
@@ -4289,6 +4296,15 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationPolicy>]
         attr_accessor :applications
       
+        # Optional. Controls whether AssistContent (https://developer.android.com/
+        # reference/android/app/assist/AssistContent) is allowed to be sent to a
+        # privileged app such as an assistant app. AssistContent includes screenshots
+        # and information about an app, such as package name. This is supported on
+        # Android 15 and above.
+        # Corresponds to the JSON property `assistContentPolicy`
+        # @return [String]
+        attr_accessor :assist_content_policy
+      
         # Whether auto date, time, and time zone are enabled on a company-owned device.
         # If this is set, then autoTimeRequired is ignored.
         # Corresponds to the JSON property `autoDateAndTimeZone`
@@ -4851,7 +4867,7 @@ module Google
         attr_accessor :wifi_config_disabled
         alias_method :wifi_config_disabled?, :wifi_config_disabled
       
-        # DEPRECATED - Use wifi_config_disabled.
+        # This is deprecated.
         # Corresponds to the JSON property `wifiConfigsLockdownEnabled`
         # @return [Boolean]
         attr_accessor :wifi_configs_lockdown_enabled
@@ -4871,6 +4887,7 @@ module Google
           @android_device_policy_tracks = args[:android_device_policy_tracks] if args.key?(:android_device_policy_tracks)
           @app_auto_update_policy = args[:app_auto_update_policy] if args.key?(:app_auto_update_policy)
           @applications = args[:applications] if args.key?(:applications)
+          @assist_content_policy = args[:assist_content_policy] if args.key?(:assist_content_policy)
           @auto_date_and_time_zone = args[:auto_date_and_time_zone] if args.key?(:auto_date_and_time_zone)
           @auto_time_required = args[:auto_time_required] if args.key?(:auto_time_required)
           @block_applications_enabled = args[:block_applications_enabled] if args.key?(:block_applications_enabled)
