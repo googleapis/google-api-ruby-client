@@ -269,6 +269,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :download_bytes, :numeric_string => true, as: 'downloadBytes'
+          property :file_system_protocol, as: 'fileSystemProtocol'
           property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -441,6 +442,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
+          property :deletion_protection_reason, as: 'deletionProtectionReason'
           property :description, as: 'description'
           property :etag, as: 'etag'
           collection :file_shares, as: 'fileShares', class: Google::Apis::FileV1::FileShareConfig, decorator: Google::Apis::FileV1::FileShareConfig::Representation
@@ -450,6 +453,7 @@ module Google
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1::NetworkConfig, decorator: Google::Apis::FileV1::NetworkConfig::Representation
       
+          property :protocol, as: 'protocol'
           property :replication, as: 'replication', class: Google::Apis::FileV1::Replication, decorator: Google::Apis::FileV1::Replication::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
