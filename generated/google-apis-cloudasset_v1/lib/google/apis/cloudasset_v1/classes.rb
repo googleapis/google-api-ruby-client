@@ -862,19 +862,6 @@ module Google
         end
       end
       
-      # The request message for Operations.CancelOperation.
-      class CancelOperationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # The IAM conditions context.
       class ConditionContext
         include Google::Apis::Core::Hashable
@@ -5439,10 +5426,10 @@ module Google
         # SearchAllResources API: * RESOURCE_OWNERS The corresponding read masks in
         # order to get the enrichment: * enrichments.resource_owners The corresponding
         # required permissions: * cloudasset.assets.searchEnrichmentResourceOwners
-        # Example query to get resource owner enrichment: scope: "projects/my-project"
-        # query: "name: my-project" assetTypes: "cloudresourcemanager.googleapis.com/
-        # Project" readMask: ` paths: "asset_type" paths: "name" paths: "enrichments.
-        # resource_owners" `
+        # Example query to get resource owner enrichment: ``` scope: "projects/my-
+        # project" query: "name: my-project" assetTypes: "cloudresourcemanager.
+        # googleapis.com/Project" readMask: ` paths: "asset_type" paths: "name" paths: "
+        # enrichments.resource_owners" ` ```
         # Corresponds to the JSON property `enrichments`
         # @return [Array<Google::Apis::CloudassetV1::AssetEnrichment>]
         attr_accessor :enrichments

@@ -142,12 +142,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CancelOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ConditionContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1071,12 +1065,6 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
-        end
-      end
-      
-      class CancelOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
