@@ -490,6 +490,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpgradeClusterResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -799,6 +805,7 @@ module Google
       
           collection :nodes, as: 'nodes', class: Google::Apis::AlloydbV1::Node, decorator: Google::Apis::AlloydbV1::Node::Representation
       
+          collection :outbound_public_ip_addresses, as: 'outboundPublicIpAddresses'
           property :psc_instance_config, as: 'pscInstanceConfig', class: Google::Apis::AlloydbV1::PscInstanceConfig, decorator: Google::Apis::AlloydbV1::PscInstanceConfig::Representation
       
           property :public_ip_address, as: 'publicIpAddress'
@@ -821,6 +828,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :authorized_external_networks, as: 'authorizedExternalNetworks', class: Google::Apis::AlloydbV1::AuthorizedNetwork, decorator: Google::Apis::AlloydbV1::AuthorizedNetwork::Representation
       
+          property :enable_outbound_public_ip, as: 'enableOutboundPublicIp'
           property :enable_public_ip, as: 'enablePublicIp'
         end
       end
@@ -1381,6 +1389,16 @@ module Google
           property :grace_end_time, as: 'graceEndTime'
           property :start_time, as: 'startTime'
           property :upgrade_time, as: 'upgradeTime'
+        end
+      end
+      
+      class UpgradeClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :request_id, as: 'requestId'
+          property :validate_only, as: 'validateOnly'
+          property :version, as: 'version'
         end
       end
       
