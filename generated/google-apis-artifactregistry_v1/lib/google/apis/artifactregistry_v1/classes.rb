@@ -364,6 +364,25 @@ module Google
         end
       end
       
+      # Common remote repository settings type.
+      class CommonRemoteRepository
+        include Google::Apis::Core::Hashable
+      
+        # Required. A common public repository base for Remote Repository.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # DockerImage represents a docker artifact. The following fields are returned as
       # untyped metadata in the Version resource, using camelcase keys (i.e. metadata.
       # imageSizeBytes): * imageSizeBytes * mediaType * buildTime
@@ -2151,6 +2170,11 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::AptRepository]
         attr_accessor :apt_repository
       
+        # Common remote repository settings type.
+        # Corresponds to the JSON property `commonRepository`
+        # @return [Google::Apis::ArtifactregistryV1::CommonRemoteRepository]
+        attr_accessor :common_repository
+      
         # The description of the remote source.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -2200,6 +2224,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @apt_repository = args[:apt_repository] if args.key?(:apt_repository)
+          @common_repository = args[:common_repository] if args.key?(:common_repository)
           @description = args[:description] if args.key?(:description)
           @disable_upstream_validation = args[:disable_upstream_validation] if args.key?(:disable_upstream_validation)
           @docker_repository = args[:docker_repository] if args.key?(:docker_repository)
