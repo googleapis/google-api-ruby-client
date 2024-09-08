@@ -1018,6 +1018,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Downloads content of a file. Operations are valid for 24 hours from the time
+        # of creation.
+        # @param [String] file_id
+        #   Required. The ID of the file to download.
+        # @param [String] mime_type
+        #   Optional. The MIME type the file should be downloaded as. This field can only
+        #   be set when downloading Google Workspace documents. See [Export MIME types for
+        #   Google Workspace documents](/drive/api/guides/ref-export-formats) for the list
+        #   of supported MIME types. If not set, a Google Workspace document is downloaded
+        #   with a default MIME type. The default MIME type might change in the future.
+        # @param [String] revision_id
+        #   Optional. The revision ID of the file to download. This field can only be set
+        #   when downloading blob files, Google Docs, and Google Sheets. Returns `
+        #   INVALID_ARGUMENT` if downloading a specific revision on the file is
+        #   unsupported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def download_file(file_id, mime_type: nil, revision_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/download', options)
+          command.response_representation = Google::Apis::DriveV3::Operation::Representation
+          command.response_class = Google::Apis::DriveV3::Operation
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.query['mimeType'] = mime_type unless mime_type.nil?
+          command.query['revisionId'] = revision_id unless revision_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Permanently deletes all of the user's trashed files.
         # @param [String] drive_id
         #   If set, empties the trash of the provided shared drive.
@@ -1486,6 +1530,143 @@ module Google
           command.query['includePermissionsForView'] = include_permissions_for_view unless include_permissions_for_view.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
+        # @param [String] name
+        #   The name of the operation resource to be cancelled.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'operation/{name}:cancel', options)
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation resource to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'operation/{name}', options)
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'operations/{name}', options)
+          command.response_representation = Google::Apis::DriveV3::Operation::Representation
+          command.response_class = Google::Apis::DriveV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [String] name
+        #   The name of the operation's parent resource.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::ListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::ListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_operations(filter: nil, name: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'operations', options)
+          command.response_representation = Google::Apis::DriveV3::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::DriveV3::ListOperationsResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
