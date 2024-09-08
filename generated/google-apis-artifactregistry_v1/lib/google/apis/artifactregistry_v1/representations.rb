@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommonRemoteRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DockerImage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -719,6 +725,13 @@ module Google
         end
       end
       
+      class CommonRemoteRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
       class DockerImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1245,6 +1258,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :apt_repository, as: 'aptRepository', class: Google::Apis::ArtifactregistryV1::AptRepository, decorator: Google::Apis::ArtifactregistryV1::AptRepository::Representation
+      
+          property :common_repository, as: 'commonRepository', class: Google::Apis::ArtifactregistryV1::CommonRemoteRepository, decorator: Google::Apis::ArtifactregistryV1::CommonRemoteRepository::Representation
       
           property :description, as: 'description'
           property :disable_upstream_validation, as: 'disableUpstreamValidation'
