@@ -1413,6 +1413,11 @@ module Google
         # @return [String]
         attr_accessor :key_revocation_action_type
       
+        # Labels to apply to instances that are created from these properties.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The machine type to use for instances that are created from these properties.
         # Corresponds to the JSON property `machineType`
         # @return [String]
@@ -1474,6 +1479,7 @@ module Google
           @disk = args[:disk] if args.key?(:disk)
           @guest_accelerator = args[:guest_accelerator] if args.key?(:guest_accelerator)
           @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
+          @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
