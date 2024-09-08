@@ -1306,7 +1306,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2PublishToChronicle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2PublishToPubSub
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2PublishToSecurityCommandCenter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2453,6 +2465,10 @@ module Google
           property :export_data, as: 'exportData', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Export, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Export::Representation
       
           property :pub_sub_notification, as: 'pubSubNotification', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubNotification, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubNotification::Representation
+      
+          property :publish_to_chronicle, as: 'publishToChronicle', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToChronicle, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToChronicle::Representation
+      
+          property :publish_to_scc, as: 'publishToScc', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToSecurityCommandCenter, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToSecurityCommandCenter::Representation
       
           property :tag_resources, as: 'tagResources', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TagResources, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TagResources::Representation
       
@@ -4064,10 +4080,22 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2PublishToChronicle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2PublishToPubSub
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :topic, as: 'topic'
+        end
+      end
+      
+      class GooglePrivacyDlpV2PublishToSecurityCommandCenter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
