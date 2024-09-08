@@ -24998,6 +24998,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Represents the port number to which PSC consumer sends packets. Only valid for
+        # network endpoint groups created with GCE_VM_IP_PORTMAP endpoint type.
+        # Corresponds to the JSON property `clientDestinationPort`
+        # @return [Fixnum]
+        attr_accessor :client_destination_port
+      
         # Optional fully qualified domain name of network endpoint. This can only be
         # specified when NetworkEndpointGroup.network_endpoint_type is NON_GCP_FQDN_PORT.
         # Corresponds to the JSON property `fqdn`
@@ -25042,6 +25048,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client_destination_port = args[:client_destination_port] if args.key?(:client_destination_port)
           @fqdn = args[:fqdn] if args.key?(:fqdn)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
