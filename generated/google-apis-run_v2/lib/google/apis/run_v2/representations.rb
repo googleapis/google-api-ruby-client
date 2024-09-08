@@ -1301,6 +1301,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :base_image_uri, as: 'baseImageUri'
+          property :base_image_warning, as: 'baseImageWarning'
           property :build_operation, as: 'buildOperation', class: Google::Apis::RunV2::GoogleLongrunningOperation, decorator: Google::Apis::RunV2::GoogleLongrunningOperation::Representation
       
         end
