@@ -1498,6 +1498,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1FeatureViewVertexRagSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1Featurestore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7910,7 +7916,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :big_query_source, as: 'bigQuerySource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQuerySource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQuerySource::Representation
       
+          property :dense, as: 'dense'
           collection :entity_id_columns, as: 'entityIdColumns'
+          property :static_data_source, as: 'staticDataSource'
           property :time_series, as: 'timeSeries', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries::Representation
       
         end
@@ -8092,6 +8100,8 @@ module Google
           property :sync_config, as: 'syncConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncConfig::Representation
       
           property :update_time, as: 'updateTime'
+          property :vertex_rag_source, as: 'vertexRagSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewVertexRagSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewVertexRagSource::Representation
+      
         end
       end
       
@@ -8193,6 +8203,14 @@ module Google
           property :row_synced, :numeric_string => true, as: 'rowSynced'
           property :system_watermark_time, as: 'systemWatermarkTime'
           property :total_slot, :numeric_string => true, as: 'totalSlot'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FeatureViewVertexRagSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rag_corpus_id, :numeric_string => true, as: 'ragCorpusId'
+          property :uri, as: 'uri'
         end
       end
       
@@ -8481,6 +8499,8 @@ module Google
           property :description, as: 'description'
           property :name, as: 'name'
           property :parameters, as: 'parameters', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
+      
+          property :response, as: 'response', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
       
         end
       end
