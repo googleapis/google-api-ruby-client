@@ -1889,6 +1889,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Maximum number of serving instances that this resource should have.
+        # When unspecified, the field is set to the server default value of 100. For
+        # more information see https://cloud.google.com/run/docs/configuring/max-
+        # instances
         # Corresponds to the JSON property `maxInstanceCount`
         # @return [Fixnum]
         attr_accessor :max_instance_count
@@ -2612,6 +2615,11 @@ module Google
         # @return [String]
         attr_accessor :base_image_uri
       
+        # Warning message for the base image.
+        # Corresponds to the JSON property `baseImageWarning`
+        # @return [String]
+        attr_accessor :base_image_warning
+      
         # This resource represents a long-running operation that is the result of a
         # network API call.
         # Corresponds to the JSON property `buildOperation`
@@ -2625,6 +2633,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @base_image_uri = args[:base_image_uri] if args.key?(:base_image_uri)
+          @base_image_warning = args[:base_image_warning] if args.key?(:base_image_warning)
           @build_operation = args[:build_operation] if args.key?(:build_operation)
         end
       end
