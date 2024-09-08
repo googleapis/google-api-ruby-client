@@ -934,6 +934,7 @@ module Google
           collection :guest_accelerator, as: 'guestAccelerator', class: Google::Apis::BackupdrV1::AcceleratorConfig, decorator: Google::Apis::BackupdrV1::AcceleratorConfig::Representation
       
           property :key_revocation_action_type, as: 'keyRevocationActionType'
+          hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::BackupdrV1::Metadata, decorator: Google::Apis::BackupdrV1::Metadata::Representation
       
