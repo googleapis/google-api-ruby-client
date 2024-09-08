@@ -867,6 +867,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_criteria_mode, as: 'commonCriteriaMode'
+          property :content_protection_policy, as: 'contentProtectionPolicy'
           property :developer_settings, as: 'developerSettings'
           property :google_play_protect_verify_apps, as: 'googlePlayProtectVerifyApps'
           property :mte_policy, as: 'mtePolicy'
@@ -1930,6 +1931,7 @@ module Google
           property :app_auto_update_policy, as: 'appAutoUpdatePolicy'
           collection :applications, as: 'applications', class: Google::Apis::AndroidmanagementV1::ApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicy::Representation
       
+          property :assist_content_policy, as: 'assistContentPolicy'
           property :auto_date_and_time_zone, as: 'autoDateAndTimeZone'
           property :auto_time_required, as: 'autoTimeRequired'
           property :block_applications_enabled, as: 'blockApplicationsEnabled'
