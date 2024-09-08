@@ -4278,6 +4278,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow, as: 'allow', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionAllow, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionAllow::Representation
       
+          collection :api_proxies, as: 'apiProxies'
           property :condition_config, as: 'conditionConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionConditionConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionConditionConfig::Representation
       
           property :create_time, as: 'createTime'

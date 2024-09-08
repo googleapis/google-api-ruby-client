@@ -9352,6 +9352,16 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionAllow]
         attr_accessor :allow
       
+        # Optional. If unset, this would apply to all proxies in the environment. If set,
+        # this action is enforced only if at least one proxy in the repeated list is
+        # deployed at the time of enforcement. If set, several restrictions are enforced
+        # on SecurityActions. There can be at most 100 enabled actions with proxies set
+        # in an env. Several other restrictions apply on conditions and are detailed
+        # later.
+        # Corresponds to the JSON property `apiProxies`
+        # @return [Array<String>]
+        attr_accessor :api_proxies
+      
         # The following are a list of conditions. A valid SecurityAction must contain at
         # least one condition. Within a condition, each element is ORed. Across
         # conditions elements are ANDed. For example if a SecurityAction has the
@@ -9421,6 +9431,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow = args[:allow] if args.key?(:allow)
+          @api_proxies = args[:api_proxies] if args.key?(:api_proxies)
           @condition_config = args[:condition_config] if args.key?(:condition_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deny = args[:deny] if args.key?(:deny)
