@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChatSpaceLinkData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Color
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -964,6 +970,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :space_data_source, as: 'spaceDataSource', class: Google::Apis::ChatV1::SpaceDataSource, decorator: Google::Apis::ChatV1::SpaceDataSource::Representation
       
+        end
+      end
+      
+      class ChatSpaceLinkData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :space, as: 'space'
+          property :thread, as: 'thread'
         end
       end
       
@@ -1901,6 +1916,8 @@ module Google
       class RichLinkMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chat_space_link_data, as: 'chatSpaceLinkData', class: Google::Apis::ChatV1::ChatSpaceLinkData, decorator: Google::Apis::ChatV1::ChatSpaceLinkData::Representation
+      
           property :drive_link_data, as: 'driveLinkData', class: Google::Apis::ChatV1::DriveLinkData, decorator: Google::Apis::ChatV1::DriveLinkData::Representation
       
           property :rich_link_type, as: 'richLinkType'
