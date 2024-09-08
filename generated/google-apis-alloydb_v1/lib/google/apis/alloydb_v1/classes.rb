@@ -1188,6 +1188,11 @@ module Google
         # @return [Array<Google::Apis::AlloydbV1::Node>]
         attr_accessor :nodes
       
+        # Output only. All outbound public IP addresses configured for the instance.
+        # Corresponds to the JSON property `outboundPublicIpAddresses`
+        # @return [Array<String>]
+        attr_accessor :outbound_public_ip_addresses
+      
         # PscInstanceConfig contains PSC related configuration at an instance level.
         # Corresponds to the JSON property `pscInstanceConfig`
         # @return [Google::Apis::AlloydbV1::PscInstanceConfig]
@@ -1271,6 +1276,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @outbound_public_ip_addresses = args[:outbound_public_ip_addresses] if args.key?(:outbound_public_ip_addresses)
           @psc_instance_config = args[:psc_instance_config] if args.key?(:psc_instance_config)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
@@ -1293,6 +1299,13 @@ module Google
         # @return [Array<Google::Apis::AlloydbV1::AuthorizedNetwork>]
         attr_accessor :authorized_external_networks
       
+        # Optional. Enabling an outbound public IP address to support a database server
+        # sending requests out into the internet.
+        # Corresponds to the JSON property `enableOutboundPublicIp`
+        # @return [Boolean]
+        attr_accessor :enable_outbound_public_ip
+        alias_method :enable_outbound_public_ip?, :enable_outbound_public_ip
+      
         # Optional. Enabling public ip for the instance.
         # Corresponds to the JSON property `enablePublicIp`
         # @return [Boolean]
@@ -1306,6 +1319,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authorized_external_networks = args[:authorized_external_networks] if args.key?(:authorized_external_networks)
+          @enable_outbound_public_ip = args[:enable_outbound_public_ip] if args.key?(:enable_outbound_public_ip)
           @enable_public_ip = args[:enable_public_ip] if args.key?(:enable_public_ip)
         end
       end
@@ -3393,6 +3407,56 @@ module Google
           @grace_end_time = args[:grace_end_time] if args.key?(:grace_end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @upgrade_time = args[:upgrade_time] if args.key?(:upgrade_time)
+        end
+      end
+      
+      # Upgrades a cluster.
+      class UpgradeClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The current etag of the Cluster. If an etag is provided and does not
+        # match the current etag of the Cluster, upgrade will be blocked and an ABORTED
+        # error will be returned.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes after the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Optional. If set, performs request validation (e.g. permission checks and any
+        # other type of validation), but does not actually execute the upgrade.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        # Required. The version the cluster is going to be upgraded to.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
