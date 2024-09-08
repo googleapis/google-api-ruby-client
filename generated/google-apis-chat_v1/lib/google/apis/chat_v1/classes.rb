@@ -590,6 +590,40 @@ module Google
         end
       end
       
+      # Data for Chat space links. [Developer Preview](https://developers.google.com/
+      # workspace/preview).
+      class ChatSpaceLinkData
+        include Google::Apis::Core::Hashable
+      
+        # The message of the linked Chat space resource. Format: `spaces/`space`/
+        # messages/`message``
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The space of the linked Chat space resource. Format: `spaces/`space``
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        # The thread of the linked Chat space resource. Format: `spaces/`space`/threads/`
+        # thread``
+        # Corresponds to the JSON property `thread`
+        # @return [String]
+        attr_accessor :thread
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @space = args[:space] if args.key?(:space)
+          @thread = args[:thread] if args.key?(:thread)
+        end
+      end
+      
       # Represents a color in the RGBA color space. This representation is designed
       # for simplicity of conversion to and from color representations in various
       # languages over compactness. For example, the fields of this representation can
@@ -4375,6 +4409,12 @@ module Google
       class RichLinkMetadata
         include Google::Apis::Core::Hashable
       
+        # Data for Chat space links. [Developer Preview](https://developers.google.com/
+        # workspace/preview).
+        # Corresponds to the JSON property `chatSpaceLinkData`
+        # @return [Google::Apis::ChatV1::ChatSpaceLinkData]
+        attr_accessor :chat_space_link_data
+      
         # Data for Google Drive links.
         # Corresponds to the JSON property `driveLinkData`
         # @return [Google::Apis::ChatV1::DriveLinkData]
@@ -4396,6 +4436,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chat_space_link_data = args[:chat_space_link_data] if args.key?(:chat_space_link_data)
           @drive_link_data = args[:drive_link_data] if args.key?(:drive_link_data)
           @rich_link_type = args[:rich_link_type] if args.key?(:rich_link_type)
           @uri = args[:uri] if args.key?(:uri)
