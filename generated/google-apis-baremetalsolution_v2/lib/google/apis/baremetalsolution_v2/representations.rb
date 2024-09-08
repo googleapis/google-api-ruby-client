@@ -837,6 +837,7 @@ module Google
           collection :vlan_attachments, as: 'vlanAttachments', class: Google::Apis::BaremetalsolutionV2::IntakeVlanAttachment, decorator: Google::Apis::BaremetalsolutionV2::IntakeVlanAttachment::Representation
       
           property :vlan_same_project, as: 'vlanSameProject'
+          property :vrf, as: 'vrf'
         end
       end
       
