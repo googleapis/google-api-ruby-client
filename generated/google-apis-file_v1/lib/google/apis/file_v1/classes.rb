@@ -49,6 +49,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :download_bytes
       
+        # Output only. The file system protocol of the source Filestore instance that
+        # this backup is created from.
+        # Corresponds to the JSON property `fileSystemProtocol`
+        # @return [String]
+        attr_accessor :file_system_protocol
+      
         # Immutable. KMS key name used for data encryption.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
@@ -107,7 +113,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :storage_bytes
       
-        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # Optional. Input only. Immutable. Tag key-value pairs are bound to this
         # resource. For example: "123/environment": "production", "123/costCenter": "
         # marketing"
         # Corresponds to the JSON property `tags`
@@ -124,6 +130,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
+          @file_system_protocol = args[:file_system_protocol] if args.key?(:file_system_protocol)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -768,6 +775,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Indicates whether the instance is protected against deletion.
+        # Corresponds to the JSON property `deletionProtectionEnabled`
+        # @return [Boolean]
+        attr_accessor :deletion_protection_enabled
+        alias_method :deletion_protection_enabled?, :deletion_protection_enabled
+      
+        # Optional. The reason for enabling deletion protection.
+        # Corresponds to the JSON property `deletionProtectionReason`
+        # @return [String]
+        attr_accessor :deletion_protection_reason
+      
         # The description of the instance (2048 characters or less).
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -807,6 +825,13 @@ module Google
         # @return [Array<Google::Apis::FileV1::NetworkConfig>]
         attr_accessor :networks
       
+        # Immutable. The protocol indicates the access protocol for all shares in the
+        # instance. This field is immutable and it cannot be changed after the instance
+        # has been created. Default value: `NFS_V3`.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
         # Replication specifications.
         # Corresponds to the JSON property `replication`
         # @return [Google::Apis::FileV1::Replication]
@@ -840,7 +865,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :suspension_reasons
       
-        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # Optional. Input only. Immutable. Tag key-value pairs are bound to this
         # resource. For example: "123/environment": "production", "123/costCenter": "
         # marketing"
         # Corresponds to the JSON property `tags`
@@ -859,6 +884,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
+          @deletion_protection_reason = args[:deletion_protection_reason] if args.key?(:deletion_protection_reason)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @file_shares = args[:file_shares] if args.key?(:file_shares)
@@ -866,6 +893,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
+          @protocol = args[:protocol] if args.key?(:protocol)
           @replication = args[:replication] if args.key?(:replication)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -1451,8 +1479,8 @@ module Google
       class Replication
         include Google::Apis::Core::Hashable
       
-        # Optional. Replicas configuration on the instance. For now, only a single
-        # replica config is supported.
+        # Optional. Replication configuration for the replica instance associated with
+        # this instance. Only a single replica is supported.
         # Corresponds to the JSON property `replicas`
         # @return [Array<Google::Apis::FileV1::ReplicaConfig>]
         attr_accessor :replicas
@@ -1595,7 +1623,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # Optional. Input only. Immutable. Tag key-value pairs are bound to this
         # resource. For example: "123/environment": "production", "123/costCenter": "
         # marketing"
         # Corresponds to the JSON property `tags`
