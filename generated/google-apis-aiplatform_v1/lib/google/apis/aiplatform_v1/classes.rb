@@ -8154,11 +8154,30 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQuerySource]
         attr_accessor :big_query_source
       
+        # Optional. If set, all feature values will be fetched from a single row per
+        # unique entityId including nulls. If not set, will collapse all rows for each
+        # unique entityId into a singe row with any non-null values if present, if no
+        # non-null values are present will sync null. ex: If source has schema (
+        # entity_id, feature_timestamp, f0, f1) and values (e1, 2020-01-01T10:00:00.123Z,
+        # 10, 15) (e1, 2020-02-01T10:00:00.123Z, 20, null) If dense is set, (e1, 20,
+        # null) is synced to online stores. If dense is not set, (e1, 20, 15) is synced
+        # to online stores.
+        # Corresponds to the JSON property `dense`
+        # @return [Boolean]
+        attr_accessor :dense
+        alias_method :dense?, :dense
+      
         # Optional. Columns to construct entity_id / row keys. If not provided defaults
         # to `entity_id`.
         # Corresponds to the JSON property `entityIdColumns`
         # @return [Array<String>]
         attr_accessor :entity_id_columns
+      
+        # Optional. Set if the data source is not a time-series.
+        # Corresponds to the JSON property `staticDataSource`
+        # @return [Boolean]
+        attr_accessor :static_data_source
+        alias_method :static_data_source?, :static_data_source
       
         # Optional. If the source is a time-series source, this can be set to control
         # how downstream sources (ex: FeatureView ) will treat time-series sources. If
@@ -8175,7 +8194,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @big_query_source = args[:big_query_source] if args.key?(:big_query_source)
+          @dense = args[:dense] if args.key?(:dense)
           @entity_id_columns = args[:entity_id_columns] if args.key?(:entity_id_columns)
+          @static_data_source = args[:static_data_source] if args.key?(:static_data_source)
           @time_series = args[:time_series] if args.key?(:time_series)
         end
       end
@@ -8821,6 +8842,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # A Vertex Rag source for features that need to be synced to Online Store.
+        # Corresponds to the JSON property `vertexRagSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewVertexRagSource]
+        attr_accessor :vertex_rag_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8838,6 +8864,7 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @sync_config = args[:sync_config] if args.key?(:sync_config)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @vertex_rag_source = args[:vertex_rag_source] if args.key?(:vertex_rag_source)
         end
       end
       
@@ -9181,6 +9208,36 @@ module Google
           @row_synced = args[:row_synced] if args.key?(:row_synced)
           @system_watermark_time = args[:system_watermark_time] if args.key?(:system_watermark_time)
           @total_slot = args[:total_slot] if args.key?(:total_slot)
+        end
+      end
+      
+      # A Vertex Rag source for features that need to be synced to Online Store.
+      class GoogleCloudAiplatformV1FeatureViewVertexRagSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The RAG corpus id corresponding to this FeatureView.
+        # Corresponds to the JSON property `ragCorpusId`
+        # @return [Fixnum]
+        attr_accessor :rag_corpus_id
+      
+        # Required. The BigQuery view/table URI that will be materialized on each manual
+        # sync trigger. The table/view is expected to have the following columns at
+        # least: Field name Type Mode corpus_id STRING REQUIRED/NULLABLE file_id STRING
+        # REQUIRED/NULLABLE chunk_id STRING REQUIRED/NULLABLE chunk_data_type STRING
+        # REQUIRED/NULLABLE chunk_data STRING REQUIRED/NULLABLE embeddings FLOAT
+        # REPEATED file_original_uri STRING REQUIRED/NULLABLE
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rag_corpus_id = args[:rag_corpus_id] if args.key?(:rag_corpus_id)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -10172,10 +10229,17 @@ module Google
       
         # Schema is used to define the format of input/output data. Represents a select
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
-        # schema). More fields may be added in the future as needed.
+        # schema-object). More fields may be added in the future as needed.
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema]
         attr_accessor :parameters
+      
+        # Schema is used to define the format of input/output data. Represents a select
+        # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
+        # schema-object). More fields may be added in the future as needed.
+        # Corresponds to the JSON property `response`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema]
+        attr_accessor :response
       
         def initialize(**args)
            update!(**args)
@@ -10186,6 +10250,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -10202,7 +10267,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The function response in JSON object format.
+        # Required. The function response in JSON object format. Use "output" key to
+        # specify function output and "error" key to specify error details (if any). If "
+        # output" and "error" keys are not specified, then whole "response" is treated
+        # as function output.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -10396,7 +10464,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :prompt_token_count
       
-        # 
+        # Total token count for prompt and response candidates.
         # Corresponds to the JSON property `totalTokenCount`
         # @return [Fixnum]
         attr_accessor :total_token_count
@@ -10448,7 +10516,7 @@ module Google
       
         # Schema is used to define the format of input/output data. Represents a select
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
-        # schema). More fields may be added in the future as needed.
+        # schema-object). More fields may be added in the future as needed.
         # Corresponds to the JSON property `responseSchema`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema]
         attr_accessor :response_schema
@@ -21990,7 +22058,7 @@ module Google
       
       # Schema is used to define the format of input/output data. Represents a select
       # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
-      # schema). More fields may be added in the future as needed.
+      # schema-object). More fields may be added in the future as needed.
       class GoogleCloudAiplatformV1Schema
         include Google::Apis::Core::Hashable
       
@@ -22026,7 +22094,7 @@ module Google
       
         # Schema is used to define the format of input/output data. Represents a select
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
-        # schema). More fields may be added in the future as needed.
+        # schema-object). More fields may be added in the future as needed.
         # Corresponds to the JSON property `items`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema]
         attr_accessor :items
@@ -30511,7 +30579,7 @@ module Google
         end
       end
       
-      # Respose message for FeatureOnlineStoreAdminService.SyncFeatureView.
+      # Response message for FeatureOnlineStoreAdminService.SyncFeatureView.
       class GoogleCloudAiplatformV1SyncFeatureViewResponse
         include Google::Apis::Core::Hashable
       
