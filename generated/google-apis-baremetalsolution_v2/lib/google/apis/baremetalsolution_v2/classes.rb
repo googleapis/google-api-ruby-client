@@ -1425,7 +1425,8 @@ module Google
         attr_accessor :user_note
       
         # List of VLAN attachments. As of now there are always 2 attachments, but it is
-        # going to change in the future (multi vlan).
+        # going to change in the future (multi vlan). Use only one of vlan_attachments
+        # or vrf
         # Corresponds to the JSON property `vlanAttachments`
         # @return [Array<Google::Apis::BaremetalsolutionV2::IntakeVlanAttachment>]
         attr_accessor :vlan_attachments
@@ -1435,6 +1436,13 @@ module Google
         # @return [Boolean]
         attr_accessor :vlan_same_project
         alias_method :vlan_same_project?, :vlan_same_project
+      
+        # Optional. The name of a pre-existing Vrf that the network should be attached
+        # to. Format is `vrfs/`vrf``. If vrf is specified, vlan_attachments must be
+        # empty.
+        # Corresponds to the JSON property `vrf`
+        # @return [String]
+        attr_accessor :vrf
       
         def initialize(**args)
            update!(**args)
@@ -1453,6 +1461,7 @@ module Google
           @user_note = args[:user_note] if args.key?(:user_note)
           @vlan_attachments = args[:vlan_attachments] if args.key?(:vlan_attachments)
           @vlan_same_project = args[:vlan_same_project] if args.key?(:vlan_same_project)
+          @vrf = args[:vrf] if args.key?(:vrf)
         end
       end
       
