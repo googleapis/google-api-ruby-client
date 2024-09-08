@@ -3716,7 +3716,8 @@ module Google
         # networkAdmin' applied on the shared VPC host project - 'roles/tpu.xpnAgent'
         # applied on the shared VPC host project - 'roles/dns.admin' applied on the
         # shared VPC host project - 'roles/logging.admin' applied on the shared VPC host
-        # project - 'roles/monitoring.viewer' applied on the shared VPC host project
+        # project - 'roles/monitoring.viewer' applied on the shared VPC host project - '
+        # roles/servicemanagement.quotaViewer' applied on the shared VPC host project
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
