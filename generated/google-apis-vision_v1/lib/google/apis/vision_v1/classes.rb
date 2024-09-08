@@ -1881,7 +1881,10 @@ module Google
         end
       end
       
-      # A face-specific landmark (for example, a face feature).
+      # A face-specific landmark (for example, a face feature). Landmark positions may
+      # fall outside the bounds of the image if the face is near one or more edges of
+      # the image. Therefore it is NOT guaranteed that `0 <= x < width` or `0 <= y <
+      # height`.
       class GoogleCloudVisionV1p1beta1FaceAnnotationLandmark
         include Google::Apis::Core::Hashable
       
@@ -3602,7 +3605,10 @@ module Google
         end
       end
       
-      # A face-specific landmark (for example, a face feature).
+      # A face-specific landmark (for example, a face feature). Landmark positions may
+      # fall outside the bounds of the image if the face is near one or more edges of
+      # the image. Therefore it is NOT guaranteed that `0 <= x < width` or `0 <= y <
+      # height`.
       class GoogleCloudVisionV1p2beta1FaceAnnotationLandmark
         include Google::Apis::Core::Hashable
       
@@ -5357,7 +5363,10 @@ module Google
         end
       end
       
-      # A face-specific landmark (for example, a face feature).
+      # A face-specific landmark (for example, a face feature). Landmark positions may
+      # fall outside the bounds of the image if the face is near one or more edges of
+      # the image. Therefore it is NOT guaranteed that `0 <= x < width` or `0 <= y <
+      # height`.
       class GoogleCloudVisionV1p3beta1FaceAnnotationLandmark
         include Google::Apis::Core::Hashable
       
@@ -7261,7 +7270,10 @@ module Google
         end
       end
       
-      # A face-specific landmark (for example, a face feature).
+      # A face-specific landmark (for example, a face feature). Landmark positions may
+      # fall outside the bounds of the image if the face is near one or more edges of
+      # the image. Therefore it is NOT guaranteed that `0 <= x < width` or `0 <= y <
+      # height`.
       class GoogleCloudVisionV1p4beta1FaceAnnotationLandmark
         include Google::Apis::Core::Hashable
       
@@ -8865,7 +8877,10 @@ module Google
         end
       end
       
-      # A face-specific landmark (for example, a face feature).
+      # A face-specific landmark (for example, a face feature). Landmark positions may
+      # fall outside the bounds of the image if the face is near one or more edges of
+      # the image. Therefore it is NOT guaranteed that `0 <= x < width` or `0 <= y <
+      # height`.
       class Landmark
         include Google::Apis::Core::Hashable
       
