@@ -622,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1DocumentIndexStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1DocumentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3888,6 +3894,8 @@ module Google
       
           hash :derived_struct_data, as: 'derivedStructData'
           property :id, as: 'id'
+          property :index_status, as: 'indexStatus', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentIndexStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentIndexStatus::Representation
+      
           property :index_time, as: 'indexTime'
           property :json_data, as: 'jsonData'
           property :name, as: 'name'
@@ -3903,6 +3911,15 @@ module Google
           property :mime_type, as: 'mimeType'
           property :raw_bytes, :base64 => true, as: 'rawBytes'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DocumentIndexStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
+          property :index_time, as: 'indexTime'
         end
       end
       

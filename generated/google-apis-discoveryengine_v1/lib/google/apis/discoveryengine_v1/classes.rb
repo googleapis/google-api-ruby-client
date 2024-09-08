@@ -3488,6 +3488,11 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Index status of the document.
+        # Corresponds to the JSON property `indexStatus`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentIndexStatus]
+        attr_accessor :index_status
+      
         # Output only. The last time the document was indexed. If this field is set, the
         # document could be returned in search results. This field is OUTPUT_ONLY. If
         # this field is not populated, it means the document has never been indexed.
@@ -3536,6 +3541,7 @@ module Google
           @content = args[:content] if args.key?(:content)
           @derived_struct_data = args[:derived_struct_data] if args.key?(:derived_struct_data)
           @id = args[:id] if args.key?(:id)
+          @index_status = args[:index_status] if args.key?(:index_status)
           @index_time = args[:index_time] if args.key?(:index_time)
           @json_data = args[:json_data] if args.key?(:json_data)
           @name = args[:name] if args.key?(:name)
@@ -3586,6 +3592,33 @@ module Google
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @raw_bytes = args[:raw_bytes] if args.key?(:raw_bytes)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Index status of the document.
+      class GoogleCloudDiscoveryengineV1DocumentIndexStatus
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while indexing the document. If this field is
+        # populated, the document is not indexed due to errors.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # The time when the document was indexed. If this field is populated, it means
+        # the document has been indexed.
+        # Corresponds to the JSON property `indexTime`
+        # @return [String]
+        attr_accessor :index_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @index_time = args[:index_time] if args.key?(:index_time)
         end
       end
       
