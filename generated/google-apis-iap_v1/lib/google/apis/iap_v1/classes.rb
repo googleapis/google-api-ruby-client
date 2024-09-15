@@ -1002,7 +1002,7 @@ module Google
         # @return [String]
         attr_accessor :max_age
       
-        # Reauth method requested.
+        # Optional. Reauth method requested.
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
