@@ -2557,6 +2557,44 @@ module Google
         end
       end
       
+      # Instances ListServerCertificates response.
+      class InstancesListServerCertificatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `sha1_fingerprint` of the active certificate from `server_certs`.
+        # Corresponds to the JSON property `activeVersion`
+        # @return [String]
+        attr_accessor :active_version
+      
+        # List of server CA certificates for the instance.
+        # Corresponds to the JSON property `caCerts`
+        # @return [Array<Google::Apis::SqladminV1::SslCert>]
+        attr_accessor :ca_certs
+      
+        # This is always `sql#instancesListServerCertificates`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # List of server certificates for the instance, signed by the corresponding CA
+        # from the `ca_certs` list.
+        # Corresponds to the JSON property `serverCerts`
+        # @return [Array<Google::Apis::SqladminV1::SslCert>]
+        attr_accessor :server_certs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_version = args[:active_version] if args.key?(:active_version)
+          @ca_certs = args[:ca_certs] if args.key?(:ca_certs)
+          @kind = args[:kind] if args.key?(:kind)
+          @server_certs = args[:server_certs] if args.key?(:server_certs)
+        end
+      end
+      
       # Database Instance reencrypt request.
       class InstancesReencryptRequest
         include Google::Apis::Core::Hashable
@@ -2612,6 +2650,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rotate_server_ca_context = args[:rotate_server_ca_context] if args.key?(:rotate_server_ca_context)
+        end
+      end
+      
+      # Rotate server certificate request.
+      class InstancesRotateServerCertificateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Instance rotate server certificate context.
+        # Corresponds to the JSON property `rotateServerCertificateContext`
+        # @return [Google::Apis::SqladminV1::RotateServerCertificateContext]
+        attr_accessor :rotate_server_certificate_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rotate_server_certificate_context = args[:rotate_server_certificate_context] if args.key?(:rotate_server_certificate_context)
         end
       end
       
@@ -3603,6 +3660,32 @@ module Google
       
         # The fingerprint of the next version to be rotated to. If left unspecified,
         # will be rotated to the most recently added server CA version.
+        # Corresponds to the JSON property `nextVersion`
+        # @return [String]
+        attr_accessor :next_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_version = args[:next_version] if args.key?(:next_version)
+        end
+      end
+      
+      # Instance rotate server certificate context.
+      class RotateServerCertificateContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. This is always `sql#rotateServerCertificateContext`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The fingerprint of the next version to be rotated to. If left unspecified,
+        # will be rotated to the most recently added server certificate version.
         # Corresponds to the JSON property `nextVersion`
         # @return [String]
         attr_accessor :next_version

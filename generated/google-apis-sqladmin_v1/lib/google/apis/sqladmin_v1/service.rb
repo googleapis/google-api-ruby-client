@@ -531,6 +531,80 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all versions of server certificates and certificate authorities (CAs)
+        # for the specified instance. There can be up to three sets of certs listed: the
+        # certificate that is currently in use, a future that has been added but not yet
+        # used to sign a certificate, and a certificate that has been rotated out.
+        # @param [String] project
+        #   Required. Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::InstancesListServerCertificatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::InstancesListServerCertificatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_instance_server_certificates(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}/listServerCertificates', options)
+          command.response_representation = Google::Apis::SqladminV1::InstancesListServerCertificatesResponse::Representation
+          command.response_class = Google::Apis::SqladminV1::InstancesListServerCertificatesResponse
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rotates the server certificate version to one previously added with the
+        # addServerCertificate method. For instances not using Certificate Authority
+        # Service (CAS) server CA, please use RotateServerCa instead.
+        # @param [String] project
+        #   Required. Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1::InstancesRotateServerCertificateRequest] instances_rotate_server_certificate_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rotate_instance_server_certificate(project, instance, instances_rotate_server_certificate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/rotateServerCertificate', options)
+          command.request_representation = Google::Apis::SqladminV1::InstancesRotateServerCertificateRequest::Representation
+          command.request_object = instances_rotate_server_certificate_request_object
+          command.response_representation = Google::Apis::SqladminV1::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Acquire a lease for the setup of SQL Server Reporting Services (SSRS).
         # @param [String] project
         #   Required. Project ID of the project that contains the instance (Example:
@@ -600,6 +674,44 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_instance_server_ca(project, instance, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/addServerCa', options)
+          command.response_representation = Google::Apis::SqladminV1::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Add a new trusted server certificate version for the specified instance using
+        # Certificate Authority Service (CAS) server CA. Required to prepare for a
+        # certificate rotation. If a server certificate version was previously added but
+        # never used in a certificate rotation, this operation replaces that version.
+        # There cannot be more than one certificate version waiting to be rotated in.
+        # For instances not using CAS server CA, please use AddServerCa instead.
+        # @param [String] project
+        #   Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_instance_server_certificate(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/addServerCertificate', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?

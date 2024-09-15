@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesListServerCertificatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesReencryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +383,12 @@ module Google
       end
       
       class InstancesRotateServerCaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesRotateServerCertificateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -509,6 +521,12 @@ module Google
       end
       
       class RotateServerCaContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RotateServerCertificateContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1345,6 +1363,18 @@ module Google
         end
       end
       
+      class InstancesListServerCertificatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_version, as: 'activeVersion'
+          collection :ca_certs, as: 'caCerts', class: Google::Apis::SqladminV1::SslCert, decorator: Google::Apis::SqladminV1::SslCert::Representation
+      
+          property :kind, as: 'kind'
+          collection :server_certs, as: 'serverCerts', class: Google::Apis::SqladminV1::SslCert, decorator: Google::Apis::SqladminV1::SslCert::Representation
+      
+        end
+      end
+      
       class InstancesReencryptRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1365,6 +1395,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rotate_server_ca_context, as: 'rotateServerCaContext', class: Google::Apis::SqladminV1::RotateServerCaContext, decorator: Google::Apis::SqladminV1::RotateServerCaContext::Representation
+      
+        end
+      end
+      
+      class InstancesRotateServerCertificateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rotate_server_certificate_context, as: 'rotateServerCertificateContext', class: Google::Apis::SqladminV1::RotateServerCertificateContext, decorator: Google::Apis::SqladminV1::RotateServerCertificateContext::Representation
       
         end
       end
@@ -1610,6 +1648,14 @@ module Google
       end
       
       class RotateServerCaContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_version, as: 'nextVersion'
+        end
+      end
+      
+      class RotateServerCertificateContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
