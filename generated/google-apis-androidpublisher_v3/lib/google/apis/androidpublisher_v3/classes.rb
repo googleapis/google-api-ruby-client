@@ -737,8 +737,9 @@ module Google
         # @return [String]
         attr_accessor :account_hold_duration
       
-        # Required. Subscription period, specified in ISO 8601 format. For a list of
-        # acceptable billing periods, refer to the help center.
+        # Required. Immutable. Subscription period, specified in ISO 8601 format. For a
+        # list of acceptable billing periods, refer to the help center. The duration is
+        # immutable after the base plan is created.
         # Corresponds to the JSON property `billingPeriodDuration`
         # @return [String]
         attr_accessor :billing_period_duration
@@ -3286,13 +3287,15 @@ module Google
         # @return [String]
         attr_accessor :account_hold_duration
       
-        # Required. Subscription period, specified in ISO 8601 format. For a list of
-        # acceptable billing periods, refer to the help center.
+        # Required. Immutable. Subscription period, specified in ISO 8601 format. For a
+        # list of acceptable billing periods, refer to the help center. The duration is
+        # immutable after the base plan is created.
         # Corresponds to the JSON property `billingPeriodDuration`
         # @return [String]
         attr_accessor :billing_period_duration
       
-        # Required. The number of payments the user is committed to.
+        # Required. Immutable. The number of payments the user is committed to. It is
+        # immutable after the base plan is created.
         # Corresponds to the JSON property `committedPaymentsCount`
         # @return [Fixnum]
         attr_accessor :committed_payments_count
@@ -3312,8 +3315,9 @@ module Google
         # @return [String]
         attr_accessor :proration_mode
       
-        # Required. Installments base plan renewal type. Determines the behavior at the
-        # end of the initial commitment.
+        # Required. Immutable. Installments base plan renewal type. Determines the
+        # behavior at the end of the initial commitment. The renewal type is immutable
+        # after the base plan is created.
         # Corresponds to the JSON property `renewalType`
         # @return [String]
         attr_accessor :renewal_type
@@ -4249,8 +4253,9 @@ module Google
       class PrepaidBasePlanType
         include Google::Apis::Core::Hashable
       
-        # Required. Subscription period, specified in ISO 8601 format. For a list of
-        # acceptable billing periods, refer to the help center.
+        # Required. Immutable. Subscription period, specified in ISO 8601 format. For a
+        # list of acceptable billing periods, refer to the help center. The duration is
+        # immutable after the base plan is created.
         # Corresponds to the JSON property `billingPeriodDuration`
         # @return [String]
         attr_accessor :billing_period_duration
