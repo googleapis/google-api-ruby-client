@@ -227,7 +227,7 @@ module Google
       
         # Required. An identifier for the type of requested security token. Can be `urn:
         # ietf:params:oauth:token-type:access_token` or `urn:ietf:params:oauth:token-
-        # type:access_boundary_intermediate_token`.
+        # type:access_boundary_intermediary_token`.
         # Corresponds to the JSON property `requestedTokenType`
         # @return [String]
         attr_accessor :requested_token_type
@@ -348,10 +348,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The access boundary session key. This key is used along with the access
-        # boundary intermediate token to generate Credential Access Boundary tokens at
+        # boundary intermediary token to generate Credential Access Boundary tokens at
         # client side. This field is absent when the `requested_token_type` from the
         # request is not `urn:ietf:params:oauth:token-type:
-        # access_boundary_intermediate_token`.
+        # access_boundary_intermediary_token`.
         # Corresponds to the JSON property `access_boundary_session_key`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
