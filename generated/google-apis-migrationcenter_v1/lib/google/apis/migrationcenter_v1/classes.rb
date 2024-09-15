@@ -800,12 +800,12 @@ module Google
       class ComputeEngineShapeDescriptor
         include Google::Apis::Core::Hashable
       
-        # Number of logical cores.
+        # Output only. Number of logical cores.
         # Corresponds to the JSON property `logicalCoreCount`
         # @return [Fixnum]
         attr_accessor :logical_core_count
       
-        # Compute Engine machine type.
+        # Output only. Compute Engine machine type.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -820,12 +820,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :physical_core_count
       
-        # Compute Engine machine series.
+        # Output only. Compute Engine machine series.
         # Corresponds to the JSON property `series`
         # @return [String]
         attr_accessor :series
       
-        # Compute Engine storage. Never empty.
+        # Output only. Compute Engine storage. Never empty.
         # Corresponds to the JSON property `storage`
         # @return [Array<Google::Apis::MigrationcenterV1::ComputeStorageDescriptor>]
         attr_accessor :storage
@@ -849,12 +849,12 @@ module Google
       class ComputeStorageDescriptor
         include Google::Apis::Core::Hashable
       
-        # Disk size in GiB.
+        # Output only. Disk size in GiB.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
       
-        # Disk type backing the storage.
+        # Output only. Disk type backing the storage.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1509,7 +1509,7 @@ module Google
       class FitDescriptor
         include Google::Apis::Core::Hashable
       
-        # Fit level.
+        # Output only. Fit level.
         # Corresponds to the JSON property `fitLevel`
         # @return [String]
         attr_accessor :fit_level
