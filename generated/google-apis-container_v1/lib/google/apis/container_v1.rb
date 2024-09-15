@@ -24,7 +24,7 @@ module Google
     # Builds and manages container-based applications, powered by the open source
     # Kubernetes technology.
     #
-    # @see https://cloud.google.com/container-engine/
+    # @see https://cloud.google.com/kubernetes-engine/docs/
     module ContainerV1
       # Version of the Kubernetes Engine API this client connects to.
       # This is NOT the gem version.

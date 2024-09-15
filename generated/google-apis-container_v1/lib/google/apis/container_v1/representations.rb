@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CompliancePostureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComplianceStandard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfidentialNodes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1350,6 +1362,8 @@ module Google
           property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::ContainerV1::BinaryAuthorization, decorator: Google::Apis::ContainerV1::BinaryAuthorization::Representation
       
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
+          property :compliance_posture_config, as: 'compliancePostureConfig', class: Google::Apis::ContainerV1::CompliancePostureConfig, decorator: Google::Apis::ContainerV1::CompliancePostureConfig::Representation
+      
           collection :conditions, as: 'conditions', class: Google::Apis::ContainerV1::StatusCondition, decorator: Google::Apis::ContainerV1::StatusCondition::Representation
       
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
@@ -1488,6 +1502,8 @@ module Google
       
           property :desired_cluster_autoscaling, as: 'desiredClusterAutoscaling', class: Google::Apis::ContainerV1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1::ClusterAutoscaling::Representation
       
+          property :desired_compliance_posture_config, as: 'desiredCompliancePostureConfig', class: Google::Apis::ContainerV1::CompliancePostureConfig, decorator: Google::Apis::ContainerV1::CompliancePostureConfig::Representation
+      
           property :desired_containerd_config, as: 'desiredContainerdConfig', class: Google::Apis::ContainerV1::ContainerdConfig, decorator: Google::Apis::ContainerV1::ContainerdConfig::Representation
       
           property :desired_cost_management_config, as: 'desiredCostManagementConfig', class: Google::Apis::ContainerV1::CostManagementConfig, decorator: Google::Apis::ContainerV1::CostManagementConfig::Representation
@@ -1594,6 +1610,22 @@ module Google
       class CompleteNodePoolUpgradeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CompliancePostureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :compliance_standards, as: 'complianceStandards', class: Google::Apis::ContainerV1::ComplianceStandard, decorator: Google::Apis::ContainerV1::ComplianceStandard::Representation
+      
+          property :mode, as: 'mode'
+        end
+      end
+      
+      class ComplianceStandard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :standard, as: 'standard'
         end
       end
       

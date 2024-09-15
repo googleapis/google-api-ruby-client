@@ -31,7 +31,7 @@ module Google
       #    Container = Google::Apis::ContainerV1 # Alias the module
       #    service = Container::ContainerService.new
       #
-      # @see https://cloud.google.com/container-engine/
+      # @see https://cloud.google.com/kubernetes-engine/docs/
       class ContainerService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://container.$UNIVERSE_DOMAIN$/"
 
