@@ -2980,6 +2980,11 @@ module Google
         # @return [String]
         attr_accessor :sample_period
       
+        # The scope of the timeseries data of the metric.
+        # Corresponds to the JSON property `timeSeriesResourceHierarchyLevel`
+        # @return [Array<String>]
+        attr_accessor :time_series_resource_hierarchy_level
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2989,6 +2994,7 @@ module Google
           @ingest_delay = args[:ingest_delay] if args.key?(:ingest_delay)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @sample_period = args[:sample_period] if args.key?(:sample_period)
+          @time_series_resource_hierarchy_level = args[:time_series_resource_hierarchy_level] if args.key?(:time_series_resource_hierarchy_level)
         end
       end
       
@@ -3905,7 +3911,9 @@ module Google
         end
       end
       
-      # The QueryTimeSeries request.
+      # The QueryTimeSeries request. For information about the status of Monitoring
+      # Query Language (MQL), see the MQL deprecation notice (https://cloud.google.com/
+      # stackdriver/docs/deprecations/mql).
       class QueryTimeSeriesRequest
         include Google::Apis::Core::Hashable
       
@@ -3939,7 +3947,9 @@ module Google
         end
       end
       
-      # The QueryTimeSeries response.
+      # The QueryTimeSeries response. For information about the status of Monitoring
+      # Query Language (MQL), see the MQL deprecation notice (https://cloud.google.com/
+      # stackdriver/docs/deprecations/mql).
       class QueryTimeSeriesResponse
         include Google::Apis::Core::Hashable
       

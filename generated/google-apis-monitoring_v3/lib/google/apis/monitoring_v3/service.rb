@@ -1946,7 +1946,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Queries time series using Monitoring Query Language.
+        # Queries time series by using Monitoring Query Language (MQL). We recommend
+        # using PromQL instead of MQL. For more information about the status of MQL, see
+        # the MQL deprecation notice (https://cloud.google.com/stackdriver/docs/
+        # deprecations/mql).
         # @param [String] name
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   on which to execute the request. The format is: projects/[
