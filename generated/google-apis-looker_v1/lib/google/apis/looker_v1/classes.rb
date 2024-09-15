@@ -635,6 +635,18 @@ module Google
         # @return [Google::Apis::LookerV1::EncryptionConfig]
         attr_accessor :encryption_config
       
+        # Optional. Whether FIPS is enabled on the Looker instance.
+        # Corresponds to the JSON property `fipsEnabled`
+        # @return [Boolean]
+        attr_accessor :fips_enabled
+        alias_method :fips_enabled?, :fips_enabled
+      
+        # Optional. Whether Gemini feature is enabled on the Looker instance or not.
+        # Corresponds to the JSON property `geminiEnabled`
+        # @return [Boolean]
+        attr_accessor :gemini_enabled
+        alias_method :gemini_enabled?, :gemini_enabled
+      
         # Output only. Private Ingress IP (IPv4).
         # Corresponds to the JSON property `ingressPrivateIp`
         # @return [String]
@@ -752,6 +764,8 @@ module Google
           @deny_maintenance_period = args[:deny_maintenance_period] if args.key?(:deny_maintenance_period)
           @egress_public_ip = args[:egress_public_ip] if args.key?(:egress_public_ip)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @fips_enabled = args[:fips_enabled] if args.key?(:fips_enabled)
+          @gemini_enabled = args[:gemini_enabled] if args.key?(:gemini_enabled)
           @ingress_private_ip = args[:ingress_private_ip] if args.key?(:ingress_private_ip)
           @ingress_public_ip = args[:ingress_public_ip] if args.key?(:ingress_public_ip)
           @last_deny_maintenance_period = args[:last_deny_maintenance_period] if args.key?(:last_deny_maintenance_period)
