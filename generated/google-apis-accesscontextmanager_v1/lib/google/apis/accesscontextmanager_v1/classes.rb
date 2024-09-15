@@ -147,6 +147,57 @@ module Google
         end
       end
       
+      # Access scope represents the client scope, etc. to which the settings will be
+      # applied to.
+      class AccessScope
+        include Google::Apis::Core::Hashable
+      
+        # Client scope represents the application, etc. subject to this binding's
+        # restrictions.
+        # Corresponds to the JSON property `clientScope`
+        # @return [Google::Apis::AccesscontextmanagerV1::ClientScope]
+        attr_accessor :client_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_scope = args[:client_scope] if args.key?(:client_scope)
+        end
+      end
+      
+      # Access settings represent the set of conditions that must be met for access to
+      # be granted. At least one of the fields must be set.
+      class AccessSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Access level that a user must have to be granted access. Only one
+        # access level is supported, not multiple. This repeated field must have exactly
+        # one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        # Corresponds to the JSON property `accessLevels`
+        # @return [Array<String>]
+        attr_accessor :access_levels
+      
+        # Stores settings related to Google Cloud Session Length including session
+        # duration, the type of challenge (i.e. method) they should face when their
+        # session expires, and other related settings.
+        # Corresponds to the JSON property `reauthSettings`
+        # @return [Google::Apis::AccesscontextmanagerV1::ReauthSettings]
+        attr_accessor :reauth_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_levels = args[:access_levels] if args.key?(:access_levels)
+          @reauth_settings = args[:reauth_settings] if args.key?(:reauth_settings)
+        end
+      end
+      
       # Identification for an API Operation.
       class ApiOperation
         include Google::Apis::Core::Hashable
@@ -474,6 +525,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Client scope represents the application, etc. subject to this binding's
+      # restrictions.
+      class ClientScope
+        include Google::Apis::Core::Hashable
+      
+        # An application that accesses Google Cloud APIs.
+        # Corresponds to the JSON property `restrictedClientApplication`
+        # @return [Google::Apis::AccesscontextmanagerV1::Application]
+        attr_accessor :restricted_client_application
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @restricted_client_application = args[:restricted_client_application] if args.key?(:restricted_client_application)
         end
       end
       
@@ -980,12 +1051,26 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Stores settings related to Google Cloud Session Length including session
+        # duration, the type of challenge (i.e. method) they should face when their
+        # session expires, and other related settings.
+        # Corresponds to the JSON property `reauthSettings`
+        # @return [Google::Apis::AccesscontextmanagerV1::ReauthSettings]
+        attr_accessor :reauth_settings
+      
         # Optional. A list of applications that are subject to this binding's
         # restrictions. If the list is empty, the binding restrictions will universally
         # apply to all applications.
         # Corresponds to the JSON property `restrictedClientApplications`
         # @return [Array<Google::Apis::AccesscontextmanagerV1::Application>]
         attr_accessor :restricted_client_applications
+      
+        # Optional. A list of scoped access settings that set this binding's
+        # restrictions on a subset of applications. This field cannot be set if
+        # restricted_client_applications is set.
+        # Corresponds to the JSON property `scopedAccessSettings`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings>]
+        attr_accessor :scoped_access_settings
       
         def initialize(**args)
            update!(**args)
@@ -997,7 +1082,9 @@ module Google
           @dry_run_access_levels = args[:dry_run_access_levels] if args.key?(:dry_run_access_levels)
           @group_key = args[:group_key] if args.key?(:group_key)
           @name = args[:name] if args.key?(:name)
+          @reauth_settings = args[:reauth_settings] if args.key?(:reauth_settings)
           @restricted_client_applications = args[:restricted_client_applications] if args.key?(:restricted_client_applications)
+          @scoped_access_settings = args[:scoped_access_settings] if args.key?(:scoped_access_settings)
         end
       end
       
@@ -1614,6 +1701,61 @@ module Google
         end
       end
       
+      # Stores settings related to Google Cloud Session Length including session
+      # duration, the type of challenge (i.e. method) they should face when their
+      # session expires, and other related settings.
+      class ReauthSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. How long a user is allowed to take between actions before a new
+        # access token must be issued. Presently only set for Cloud Apps.
+        # Corresponds to the JSON property `maxInactivity`
+        # @return [String]
+        attr_accessor :max_inactivity
+      
+        # Optional. Reauth method when users GCP session is up.
+        # Corresponds to the JSON property `reauthMethod`
+        # @return [String]
+        attr_accessor :reauth_method
+      
+        # Optional. The session length. Setting this field to zero is equal to disabling.
+        # Reauth. Also can set infinite session by flipping the enabled bit to false
+        # below. If use_oidc_max_age is true, for OIDC apps, the session length will be
+        # the minimum of this field and OIDC max_age param.
+        # Corresponds to the JSON property `sessionLength`
+        # @return [String]
+        attr_accessor :session_length
+      
+        # Optional. Big red button to turn off GCSL. When false, all fields set above
+        # will be disregarded and the session length is basically infinite.
+        # Corresponds to the JSON property `sessionLengthEnabled`
+        # @return [Boolean]
+        attr_accessor :session_length_enabled
+        alias_method :session_length_enabled?, :session_length_enabled
+      
+        # Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if
+        # passed in the authentication request will be ignored. When true, the re-auth
+        # period will be the minimum of the session_length field and the max_age OIDC
+        # param.
+        # Corresponds to the JSON property `useOidcMaxAge`
+        # @return [Boolean]
+        attr_accessor :use_oidc_max_age
+        alias_method :use_oidc_max_age?, :use_oidc_max_age
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_inactivity = args[:max_inactivity] if args.key?(:max_inactivity)
+          @reauth_method = args[:reauth_method] if args.key?(:reauth_method)
+          @session_length = args[:session_length] if args.key?(:session_length)
+          @session_length_enabled = args[:session_length_enabled] if args.key?(:session_length_enabled)
+          @use_oidc_max_age = args[:use_oidc_max_age] if args.key?(:use_oidc_max_age)
+        end
+      end
+      
       # A request to replace all existing Access Levels in an Access Policy with the
       # Access Levels provided. This is done atomically.
       class ReplaceAccessLevelsRequest
@@ -1715,6 +1857,40 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service_perimeters = args[:service_perimeters] if args.key?(:service_perimeters)
+        end
+      end
+      
+      # A relationship between access settings and its scope.
+      class ScopedAccessSettings
+        include Google::Apis::Core::Hashable
+      
+        # Access settings represent the set of conditions that must be met for access to
+        # be granted. At least one of the fields must be set.
+        # Corresponds to the JSON property `activeSettings`
+        # @return [Google::Apis::AccesscontextmanagerV1::AccessSettings]
+        attr_accessor :active_settings
+      
+        # Access settings represent the set of conditions that must be met for access to
+        # be granted. At least one of the fields must be set.
+        # Corresponds to the JSON property `dryRunSettings`
+        # @return [Google::Apis::AccesscontextmanagerV1::AccessSettings]
+        attr_accessor :dry_run_settings
+      
+        # Access scope represents the client scope, etc. to which the settings will be
+        # applied to.
+        # Corresponds to the JSON property `scope`
+        # @return [Google::Apis::AccesscontextmanagerV1::AccessScope]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_settings = args[:active_settings] if args.key?(:active_settings)
+          @dry_run_settings = args[:dry_run_settings] if args.key?(:dry_run_settings)
+          @scope = args[:scope] if args.key?(:scope)
         end
       end
       
