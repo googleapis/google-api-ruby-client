@@ -2237,6 +2237,12 @@ module Google
         # @return [Google::Apis::DatastreamV1::CdcStrategy]
         attr_accessor :cdc_strategy
       
+        # Optional. Update the stream without validating it.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2244,6 +2250,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cdc_strategy = args[:cdc_strategy] if args.key?(:cdc_strategy)
+          @force = args[:force] if args.key?(:force)
         end
       end
       

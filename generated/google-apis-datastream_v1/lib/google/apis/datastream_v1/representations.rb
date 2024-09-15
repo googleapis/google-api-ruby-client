@@ -1241,6 +1241,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cdc_strategy, as: 'cdcStrategy', class: Google::Apis::DatastreamV1::CdcStrategy, decorator: Google::Apis::DatastreamV1::CdcStrategy::Representation
       
+          property :force, as: 'force'
         end
       end
       
