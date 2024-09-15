@@ -1941,11 +1941,11 @@ module Google
         # enabled, a service_account must also be specified that has `roles/logging.
         # logWriter` and `roles/monitoring.metricWriter` on the project. Operating
         # system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.
-        # com/workstations/docs/audit-logging) and [Container output logging](http://
-        # cloud/workstations/docs/container-output-logging#overview). Operating system
-        # audit logs are available in the [Cloud Logging](https://cloud.google.com/
-        # logging/docs) console by querying: resource.type="gce_instance" log_name:"/
-        # logs/linux-auditd"
+        # com/workstations/docs/audit-logging) and [Container output logging](https://
+        # cloud.google.com/workstations/docs/container-output-logging#overview).
+        # Operating system audit logs are available in the [Cloud Logging](https://cloud.
+        # google.com/logging/docs) console by querying: resource.type="gce_instance"
+        # log_name:"/logs/linux-auditd"
         # Corresponds to the JSON property `enableAuditAgent`
         # @return [Boolean]
         attr_accessor :enable_audit_agent
@@ -2004,14 +2004,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. Maximum number of workstations under this config a user can have `
-        # workstations.workstation.use` permission on. Only enforced on
+        # Optional. Maximum number of workstations under this configuration a user can
+        # have `workstations.workstation.use` permission on. Only enforced on
         # CreateWorkstation API calls on the user issuing the API request. Can be
         # overridden by: - granting a user workstations.workstationConfigs.
         # exemptMaxUsableWorkstationLimit permission, or - having a user with that
         # permission create a workstation and granting another user `workstations.
-        # workstation.use` permission on that workstation. If not specified defaults to
-        # 0 which indicates unlimited.
+        # workstation.use` permission on that workstation. If not specified, defaults to
+        # `0`, which indicates unlimited.
         # Corresponds to the JSON property `maxUsableWorkstations`
         # @return [Fixnum]
         attr_accessor :max_usable_workstations
