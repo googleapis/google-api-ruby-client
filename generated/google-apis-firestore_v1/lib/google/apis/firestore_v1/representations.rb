@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1BackupSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +443,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1SourceEncryptionOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1SourceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1070,6 +1082,13 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1BackupSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+        end
+      end
+      
       class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1138,6 +1157,8 @@ module Google
           property :name, as: 'name'
           property :point_in_time_recovery_enablement, as: 'pointInTimeRecoveryEnablement'
           property :previous_id, as: 'previousId'
+          property :source_info, as: 'sourceInfo', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceInfo, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceInfo::Representation
+      
           property :type, as: 'type'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -1404,6 +1425,15 @@ module Google
       class GoogleFirestoreAdminV1SourceEncryptionOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1SourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSource, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSource::Representation
+      
+          property :operation, as: 'operation'
         end
       end
       
