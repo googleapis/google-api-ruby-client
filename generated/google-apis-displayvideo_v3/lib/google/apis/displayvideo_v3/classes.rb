@@ -10156,7 +10156,10 @@ module Google
         attr_accessor :pacing_period
       
         # Required. The type of pacing that defines how the budget amount will be spent
-        # across the pacing_period.
+        # across the pacing_period. *Warning*: Starting on **November 5, 2024**, `
+        # PACING_TYPE_ASAP` will no longer be compatible with pacing_period `
+        # PACING_PERIOD_FLIGHT` for insertion orders. [Read more about this announced
+        # change](/display-video/api/deprecations#features.io_asap).
         # Corresponds to the JSON property `pacingType`
         # @return [String]
         attr_accessor :pacing_type
@@ -11574,7 +11577,10 @@ module Google
         attr_accessor :audience_expansion_seed_list_excluded
         alias_method :audience_expansion_seed_list_excluded?, :audience_expansion_seed_list_excluded
       
-        # Required. Whether to enable Optimized Targeting for the line item.
+        # Required. Whether to enable Optimized Targeting for the line item. *Warning*:
+        # Starting on **September 30, 2024**, optimized targeting will no longer be
+        # compatible with a subset of bid strategies. [Read more about this announced
+        # change](/display-video/api/deprecations#features.ot_bid_strategies).
         # Corresponds to the JSON property `enableOptimizedTargeting`
         # @return [Boolean]
         attr_accessor :enable_optimized_targeting
