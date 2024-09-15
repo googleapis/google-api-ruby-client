@@ -2949,6 +2949,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] List of resources referencing that backend bucket.
+        # Corresponds to the JSON property `usedBy`
+        # @return [Array<Google::Apis::ComputeV1::BackendBucketUsedBy>]
+        attr_accessor :used_by
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2967,6 +2972,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @used_by = args[:used_by] if args.key?(:used_by)
         end
       end
       
@@ -3318,6 +3324,25 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class BackendBucketUsedBy
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Server-defined URL for UrlMaps referencing that BackendBucket.
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference = args[:reference] if args.key?(:reference)
         end
       end
       
@@ -25589,6 +25614,12 @@ module Google
         # @return [String]
         attr_accessor :consumer_psc_address
       
+        # The psc producer port is used to connect PSC NEG with specific port on the PSC
+        # Producer side; should only be used for the PRIVATE_SERVICE_CONNECT NEG type
+        # Corresponds to the JSON property `producerPort`
+        # @return [Fixnum]
+        attr_accessor :producer_port
+      
         # [Output Only] The PSC connection id of the PSC Network Endpoint Group Consumer.
         # Corresponds to the JSON property `pscConnectionId`
         # @return [Fixnum]
@@ -25606,6 +25637,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consumer_psc_address = args[:consumer_psc_address] if args.key?(:consumer_psc_address)
+          @producer_port = args[:producer_port] if args.key?(:producer_port)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @psc_connection_status = args[:psc_connection_status] if args.key?(:psc_connection_status)
         end
@@ -43139,8 +43171,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # [Output Only] The internal IPv6 address range that is assigned to this
-        # subnetwork.
+        # The internal IPv6 address range that is owned by this subnetwork.
         # Corresponds to the JSON property `internalIpv6Prefix`
         # @return [String]
         attr_accessor :internal_ipv6_prefix

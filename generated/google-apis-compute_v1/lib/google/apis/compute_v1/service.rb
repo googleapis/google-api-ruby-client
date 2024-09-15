@@ -2294,8 +2294,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of all usable backend services in the specified
-        # project.
+        # Retrieves a list of all usable backend services in the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -25058,8 +25057,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of all usable backend services in the specified
-        # project in the given region.
+        # Retrieves a list of all usable backend services in the specified project in
+        # the given region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region

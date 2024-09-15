@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketUsedBy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7292,6 +7298,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          collection :used_by, as: 'usedBy', class: Google::Apis::ComputeV1::BackendBucketUsedBy, decorator: Google::Apis::ComputeV1::BackendBucketUsedBy::Representation
+      
         end
       end
       
@@ -7368,6 +7376,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class BackendBucketUsedBy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reference, as: 'reference'
         end
       end
       
@@ -12714,6 +12729,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_psc_address, as: 'consumerPscAddress'
+          property :producer_port, as: 'producerPort'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :psc_connection_status, as: 'pscConnectionStatus'
         end
