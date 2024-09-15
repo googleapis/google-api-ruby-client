@@ -661,7 +661,10 @@ module Google
           property :measurement_id, as: 'measurementId'
           property :messaging_sender_id, as: 'messagingSenderId'
           property :project_id, as: 'projectId'
+          property :project_number, as: 'projectNumber'
+          property :realtime_database_url, as: 'realtimeDatabaseUrl'
           property :storage_bucket, as: 'storageBucket'
+          property :version, as: 'version'
         end
       end
     end

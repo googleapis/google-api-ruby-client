@@ -1756,6 +1756,23 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Output only. Immutable. The globally unique, Google-assigned canonical
+        # identifier for the Project. Use this identifier when configuring integrations
+        # and/or making API calls to Google Cloud or third-party services.
+        # Corresponds to the JSON property `projectNumber`
+        # @return [String]
+        attr_accessor :project_number
+      
+        # Optional. Duplicate field for the URL of the default RTDB instances (if there
+        # is one) that uses the same field name as the unified V2 config file format. We
+        # wanted to make a single config file format for all the app platforms (Android,
+        # iOS and web) and we had to pick consistent names for all the fields since
+        # there was some varience between the platforms. If the request asks for the V2
+        # format we will populate this field instead of realtime_database_instance_uri.
+        # Corresponds to the JSON property `realtimeDatabaseUrl`
+        # @return [String]
+        attr_accessor :realtime_database_url
+      
         # **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase bucket
         # using the [list endpoint](https://firebase.google.com/docs/reference/rest/
         # storage/rest/v1beta/projects.buckets/list) within the Cloud Storage for
@@ -1765,6 +1782,11 @@ module Google
         # Corresponds to the JSON property `storageBucket`
         # @return [String]
         attr_accessor :storage_bucket
+      
+        # Version of the config specification.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
       
         def initialize(**args)
            update!(**args)
@@ -1780,7 +1802,10 @@ module Google
           @measurement_id = args[:measurement_id] if args.key?(:measurement_id)
           @messaging_sender_id = args[:messaging_sender_id] if args.key?(:messaging_sender_id)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @project_number = args[:project_number] if args.key?(:project_number)
+          @realtime_database_url = args[:realtime_database_url] if args.key?(:realtime_database_url)
           @storage_bucket = args[:storage_bucket] if args.key?(:storage_bucket)
+          @version = args[:version] if args.key?(:version)
         end
       end
     end
